@@ -1,0 +1,52 @@
+{
+    "name"        : "tst/install-test",
+    "description" : "Test project for WordPress stack via Composer",
+    "authors"     : [
+        {
+            "name"    : "Teplitsa",
+            "email"   : "support@te-st.ru",
+            "homepage": "http://te-st.ru/"
+        }
+    ],
+    "type"        : "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url" : "http://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "http://languages.koodimonni.fi"
+        },
+        {
+            "type": "artifact",
+            "url": "artifacts/"
+        }
+    ],
+    "config"      : {
+        "vendor-dir": "wp-content/vendor"
+    },
+    "require"     : {
+        "johnpbloch/wordpress" : ">=4.2",
+        "wpackagist-plugin/cyr3lat" : "dev-trunk",
+        "wpackagist-plugin/responsive-lightbox" : "dev-trunk",
+        "wpackagist-plugin/disable-comments" : "dev-trunk",
+        "wpackagist-plugin/leyka" : "dev-trunk",
+        "wpackagist-plugin/simple-css-for-widgets" : "dev-trunk",
+        "wpackagist-plugin/simple-google-maps-short-code" : "dev-trunk",
+        "wpackagist-plugin/widget-logic" : "dev-trunk",
+        "wpackagist-plugin/wordpress-seo" : "dev-trunk",
+        "koodimonni-language/core-ru_RU": "*",
+        "tst/advanced-custom-fields-pro" : ">=5.2.9",
+        "tst/formidable" : ">=2.0.11"
+    },
+    "require-dev" : {
+
+    },
+    "extra"       : {
+        "wordpress-install-dir": "core",
+        "dropin-paths": {
+            "wp-content/languages/": ["vendor:koodimonni-language"]
+        }
+    }
+}
