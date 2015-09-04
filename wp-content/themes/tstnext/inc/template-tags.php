@@ -703,11 +703,11 @@ function tst_get_default_author_avatar(){
 
 
 /** Logo **/
-function tst_site_logo($size = 'regular'){
-	
-	switch($size){
+function tst_site_logo($size = 'regular') {
+
+	switch($size) {
 		case 'context':
-			$file = 'logo-pink';
+			$file = 'logo-accent';
 			break;
 		case 'small':
 			$file = 'logo-small';
@@ -718,54 +718,52 @@ function tst_site_logo($size = 'regular'){
 	}
 	
 	$file = get_template_directory_uri().'/assets/images/'.$file;
-	$alt = esc_attr(__('Logo', 'tst'));
-?>
-	<img src="<?php echo $file;?>.svg" onerror="this.onerror=null;this.src=<?php echo $file;?>.png" alt="<?php echo $alt;?>">
+	$alt = esc_attr(__('Logo', 'tst'));?>
+
+	<img src="<?php echo $file;?>.svg" onerror="this.onerror=null;this.src='<?php echo $file;?>.png'" alt="<?php echo $alt;?>">
 <?php
 }
 
 
 /** Author **/
 function tst_get_post_author($cpost = null) {
+
 	global $post;
 		
-	if(!$cpost)
+	if( !$cpost ) {
 		$cpost = $post;
+    }
 		
-	$author = wp_get_object_terms($cpost->ID, 'auctor');
-	if(!empty($author))
-		$author = $author[0];
-	
+	$author = taxonomy_exists('auctor') ? wp_get_object_terms($cpost->ID, 'auctor') : false;
+	if($author) {
+        $author = $author[0];
+    }
+
 	return $author;
 }
 
-function tst_get_author_avatar($author_term_id){
-	
-	$avatar = (function_exists('get_field')) ? get_field('auctor_photo', 'auctor_'.$author_term_id) : '';
-	if(empty($avatar)){
-		$avatar = tst_get_default_author_avatar();
-	}
-	else {
-		$avatar = wp_get_attachment_image($avatar, 'avatar');
-	}
-	
-	return $avatar;
+function tst_get_author_avatar($author_term_id) {
+
+	$avatar = get_field('auctor_photo', 'auctor_'.$author_term_id);
+
+    return $avatar ? wp_get_attachment_image($avatar, 'avatar') : tst_get_default_author_avatar();
 }
 
 
 /** Compact post item **/
-function tst_compact_post_item($cpost = null, $show_thumb = true, $thumb_size = 'thumbnail-landscape'){
+function tst_compact_post_item($cpost = null, $show_thumb = true, $thumb_size = 'thumbnail-landscape') {
+
 	global $post;
-		
-	if(!$cpost)
+
+	if( !$cpost ) {
 		$cpost = $post;
-		
-		
+    }
+
 	$author = tst_get_post_author();
-	$name = ($author) ? $author->name : '';
-?>
+	$name = $author ? $author->name : '';?>
+
 	<div class="tpl-related-post"><a href="<?php echo get_permalink($cpost);?>">
-	
+
 	<div class="mdl-grid mdl-grid--no-spacing">
 		<div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone">
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
@@ -780,7 +778,7 @@ function tst_compact_post_item($cpost = null, $show_thumb = true, $thumb_size = 
 					<h5 class="author-name mdl-typography--body-1"><?php echo apply_filters('tst_the_title', $name);?></h5>
 					<p class="post-date mdl-typography--caption"><time><?php echo get_the_date('d.m.Y.', $cpost);?></time></p>
 				</div>
-				
+
 			</div>	
 		<?php } else { ?>
 			<div class="entry-author plain-card-item">
@@ -1043,43 +1041,44 @@ function tst_material_icon($icon){
 
 /** Header image **/
 function tst_header_image_url(){
-	
+
 	$img = '';
-	if(is_tax()){
+	if(is_tax()) {
+
 		$qo = get_queried_object();
-		$img = (function_exists('get_field')) ? get_field('header_img', $qo->taxonomy.'_'.$qo->term_id) : 0;
+		$img = get_field('header_img', $qo->taxonomy.'_'.$qo->term_id);
+		$img = wp_get_attachment_url($img);
+
+	} elseif(is_single() || is_page()) {
+
+		$qo = get_queried_object();
+		$img = get_field('header_img', $qo->ID);
 		$img = wp_get_attachment_url($img);
 	}
-	elseif(is_single() || is_page()){
-		$qo = get_queried_object();
-		$img = (function_exists('get_field')) ? get_field('header_img', $qo->ID) : 0;
-		$img = wp_get_attachment_url($img);
-	}
-	
-	if(empty($img)){ // fallback
+
+	if( !$img ) { // Fallback
 		$img = get_template_directory_uri().'/assets/images/header-default.jpg';
 	}
-	
+
 	return $img;
 }
 
-
 /** Post card content **/
-function tst_post_card_content($cpost = null){
+function tst_post_card_content($cpost = null) {
+
 	global $post;
-		
-	if(!$cpost)
+
+	if( !$cpost ) {
 		$cpost = $post;
-		
-	$author = tst_get_post_author($cpost); 
-?>
-	<?php if(has_post_thumbnail($cpost->ID)){ ?>
-	<div class="mdl-card__media">
-		<?php echo tst_get_post_thumbnail($cpost, 'embed'); ?>		
-	</div>			
+    }
+
+	$author = tst_get_post_author($cpost);?>
+
+	<?php if(has_post_thumbnail($cpost->ID)) {?>
+	<div class="mdl-card__media"><?php echo tst_get_post_thumbnail($cpost, 'embed');?></div>
 	<?php } ?>
 	
-	<?php if(!empty($author)) { ?>
+	<?php if($author) {?>
 		<div class="entry-author mdl-card__supporting-text">
 		<?php $avatar = tst_get_author_avatar($author->term_id) ; ?>				
 			
@@ -1098,7 +1097,7 @@ function tst_post_card_content($cpost = null){
 		<h4 class="mdl-card__title-text"><a href="<?php echo get_permalink($cpost);?>"><?php echo get_the_title($cpost->ID);?></a></h4>
 	</div>
 	
-	<?php echo tst_card_summary($cpost); ?>
+	<?php echo tst_card_summary($cpost);?>
 	<div class="mdl-card--expand"></div>
 	<div class="mdl-card__actions mdl-card--border">
 		<a href="<?php echo get_permalink($cpost);?>" class="mdl-button mdl-js-button">Подробнее</a>

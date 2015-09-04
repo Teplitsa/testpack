@@ -57,7 +57,8 @@ if(is_front_page()) { ?>
 		}				
 	?>
 	</h1>
-	<?php if(is_tax('auctor')) {
+	<?php if(taxonomy_exists('auctor') && is_tax('auctor')) {
+
 		$qo = get_queried_object();
 		echo "<div class='author-description'>"; //print event empty - we need it for layout
 		if(isset($qo->description)){			

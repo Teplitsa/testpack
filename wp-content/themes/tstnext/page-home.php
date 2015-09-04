@@ -12,15 +12,14 @@ $today = strtotime(sprintf('now %s hours', get_option('gmt_offset')));
 
 
 //featured event
-$f_event = (function_exists('get_field')) ? get_field('featured_event', $home_id) : 0; 
+$f_event = get_field('featured_event', $home_id);
 if($f_event > 0){
 	$dnd[] = $f_event;
 }
 
 $f_event = get_post($f_event);
 
-
-//featured articles
+// Featured articles:
 $f_post = new WP_Query(array(
 	'post_type' => 'post',
 	'posts_per_page' => 1,
@@ -84,10 +83,10 @@ $news = new WP_Query(array(
 ));
 
 /* functions */
-function tst_featured_event_media($fe, $size = 'embed'){
-	
-	$img = tst_get_post_thumbnail_src($fe, $size);	
-?>
+function tst_featured_event_media($fe, $size = 'embed') {
+
+	$img = tst_get_post_thumbnail_src($fe, $size);?>
+
 	<div class="hfe-media-content" style="background-image: url('<?php echo $img;?>');"></div>	
 <?php
 }
@@ -158,7 +157,7 @@ get_header();
 		<?php } ?>
 		
 		<div class="home-blog-section-header">
-			<h3>Бежим вместе</h3>
+			<h3>Наши истории</h3>
 			<a href="<?php echo get_term_link('members-blogs', 'category');?>" class="all-stories">Все истории</a>
 		</div>
 		
@@ -208,11 +207,9 @@ get_header();
 </div>
 </section>
 
-<?php
-	$partner_bg = (function_exists('get_field')) ? get_field('partners_bg', $home_id) : 0;
-	$parnter_bg = wp_get_attachment_url($partner_bg);
-?>
-<section class="home-partners-block"<?php if($parnter_bg) echo " style='background-image: url($parnter_bg);'";?>>
+<?php $partner_bg = wp_get_attachment_url(get_field('partners_bg', $home_id));?>
+
+<section class="home-partners-block"<?php if($partner_bg) echo " style='background-image: url($partner_bg);'";?>>
 <div class="mdl-grid">
 <div class="mdl-cell mdl-cell--12-col">
 	<h5 class="widget-title">Нас поддерживают</h5>

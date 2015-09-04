@@ -25,7 +25,7 @@ $footer_text = get_theme_mod('footer_text');
 			<div class="bottom-logo"><?php tst_site_logo('context');?></div>
 			<div class="copy">
 				<?php echo apply_filters('tst_the_content', $footer_text);?>
-				<p><a href="<?php home_url();?>"><?php bloginfo('name');?></a> - программа фонда "ОРБИ".</a> 
+				<p><a href="<?php home_url();?>"><?php bloginfo('name');?></a></a>
 				<?php printf(__('All materials of the site are avaliabe under license %s.', 'tst'), $cc_link);?></p>
 			</div>
 			</div>

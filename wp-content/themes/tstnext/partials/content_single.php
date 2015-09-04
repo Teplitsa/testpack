@@ -4,10 +4,11 @@
  */
 
 global $post;
-$show_thumb = (function_exists('get_field')) ? (bool)get_field('show_thumb') : true;
-$author = tst_get_post_author();
+
+$show_thumb = !!get_field('show_thumb');
+$author = taxonomy_exists('auctor') ? tst_get_post_author() : false;
 $avatar = '';
-$side_quote = (function_exists('get_field')) ? get_field('side_quote') : true;
+$side_quote = get_field('side_quote');
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('tpl-post-full'); ?>>

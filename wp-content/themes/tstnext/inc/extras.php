@@ -326,12 +326,14 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
 /** Facebook author tag **/
 add_action('wp_head', 'tst_facebook_author_tag');
-function tst_facebook_author_tag(){
+function tst_facebook_author_tag() {
+
 	global $post;
-	
-	if(!is_single())
+
+	if( !is_single() ) {
 		return;
-	
+    }
+
 	$author = tst_get_post_author();
 	$fb = (function_exists('get_field') && $author) ? get_field('auctor_facebook', 'auctor_'.$author->term_id) : '';
 	
@@ -341,3 +343,24 @@ function tst_facebook_author_tag(){
 <?php
 	}
 }
+
+add_action('plugins_loaded', function(){
+
+    if( !function_exists('get_field') ) {
+
+        function get_field($name, $id = false) {
+
+            if( !$id ) {
+
+                global $post;
+                if($post) {
+                    $id = $post->ID;
+                } else {
+                    return '';
+                }
+            }
+
+            return get_post_meta($id, $name, true);
+        }
+    }
+});
