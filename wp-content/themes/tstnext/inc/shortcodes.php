@@ -89,7 +89,7 @@ function tst_partners_gallery_screen($atts){
 					<span class="partner-cat"><?php echo $cat;?></span>
 				<?php }?>
 			</div>
-			
+
 		</li>
         <?php endforeach; ?>        
     </ul>
