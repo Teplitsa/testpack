@@ -8,10 +8,9 @@ global $post;
 $show_thumb = !!get_field('show_thumb');
 $author = taxonomy_exists('auctor') ? tst_get_post_author() : false;
 $avatar = '';
-$side_quote = get_field('side_quote');
-?>
+$side_quote = get_field('side_quote');?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('tpl-post-full'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('tpl-post-full');?>>
 
 	<div class="entry-meta">
 		<div class="mdl-grid mdl-grid--no-spacing">
@@ -22,8 +21,8 @@ $side_quote = get_field('side_quote');
 					<div class="text"><?php echo get_the_term_list(get_the_ID(), 'auctor', '', ', ', '');?></div>
 				</div>
 			</div>
-			<?php } ?>
-			<div class="mdl-cell <?php echo ($author) ? 'mdl-cell--8-col' : 'mdl-cell--12-col';?>">
+			<?php }?>
+			<div class="mdl-cell <?php echo $author ? 'mdl-cell--8-col' : 'mdl-cell--12-col';?>">
 				<div class="captioned-text">
 					<div class="caption"><?php _e('Published', 'tst');?></div>
 					<div class="text"><?php echo tst_posted_on();?></div>
@@ -35,11 +34,9 @@ $side_quote = get_field('side_quote');
 	<div class="entry-summary"><?php the_excerpt();?></div>
 	<div class="sharing-on-top"><?php tst_social_share();?></div>
 	
-	<?php
-		if($show_thumb && has_post_thumbnail()) {
-			echo tst_single_post_thumbnail_html(null, 'embed', $side_quote);
-		}
-	?>
+	<?php if($show_thumb && has_post_thumbnail()) {
+        echo tst_single_post_thumbnail_html(null, 'embed', $side_quote);
+    }?>
 	
 	<div class="entry-content">
 		<?php if(!empty($side_quote) && (!$show_thumb || !has_post_thumbnail())) { ?>

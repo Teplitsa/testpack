@@ -109,7 +109,6 @@ if( !function_exists('tst_custom_content') ) {
             'taxonomies'          => array(),
         ));
     }
-
 }
 
 /* Alter post labels... */

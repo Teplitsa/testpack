@@ -1068,8 +1068,10 @@ function tst_post_card_content($cpost = null) {
 
 	global $post;
 
+    $cpost = $cpost ? $cpost : $post;
+
 	if( !$cpost ) {
-		$cpost = $post;
+		return false;
     }
 
 	$author = tst_get_post_author($cpost);?>

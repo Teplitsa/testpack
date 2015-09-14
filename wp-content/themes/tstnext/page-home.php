@@ -160,28 +160,26 @@ get_header();
 			<h3>Наши истории</h3>
 			<a href="<?php echo get_term_link('members-blogs', 'category');?>" class="all-stories">Все истории</a>
 		</div>
-		
+
 		<div class="mdl-grid mdl-grid--no-spacing blog-items">
-			<div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet"><div class="no-spacing-correct-left featured-story">			
-			<?php
-				if(isset($f_post->posts[0])){
-					echo "<div class='tpl-post featured mdl-card mdl-shadow--2dp invert'>";
-					tst_post_card_content($f_post->posts[0]);
-					echo "</div>";
-				}
-			?>
+			<div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet"><div class="no-spacing-correct-left featured-story">
+			<?php if(isset($f_post->posts[0])) {?>
+                <div class='tpl-post featured mdl-card mdl-shadow--2dp invert'>
+					<?php tst_post_card_content($f_post->posts[0]);?>
+                </div>
+            <?php }?>
 			</div></div><!-- .mdl-cell -->
 			
 			<div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet"><div class="no-spacing-correct-right blog-list">
-			<?php
-				if($blog->have_posts()){
-					while($blog->have_posts()){
-						$blog->the_post();	
-						tst_compact_post_item($post, false, 'thumbnail-landscape');
-					}
-					wp_reset_postdata();
-				}
-			?>
+			<?php if($blog->have_posts()) {
+
+                while($blog->have_posts()) {
+
+                    $blog->the_post();
+                    tst_compact_post_item($post, false, 'thumbnail-landscape');
+                }
+                wp_reset_postdata();
+            }?>
 			</div></div><!-- .mdl-cell -->
 		</div><!-- .mdl-grid -->
 		
@@ -193,13 +191,11 @@ get_header();
 			<div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet">
 				<div class="no-spacing-correct-right ev-future">
 					<h5 class="widget-title">Календарь</h5>
-				<?php
-					if($events->have_posts()){
-						foreach($events->posts as $ev){
-							tst_compact_event_item($ev);
-						}
-					}
-				?>
+				<?php if($events->have_posts()) {
+                    foreach($events->posts as $ev) {
+                        tst_compact_event_item($ev);
+                    }
+                }?>
 				</div>
 			</div><!-- mdl-cell--4-col-tablet -->
 		</div>
@@ -216,18 +212,16 @@ get_header();
 	<div class="widget-content mdl-shadow--2dp">
 		
 		<!-- gallery -->
-		<?php if(function_exists('have_rows')) { if(have_rows('our_partners', $home_id)) { ?>
+		<?php if(function_exists('have_rows')) { if(have_rows('our_partners', $home_id)) {?>
 		<div class="partners-gallery">
-		<?php
-			while(have_rows('our_partners', $home_id)){
-				the_row();
-				
+		<?php while(have_rows('our_partners', $home_id)){ the_row();
+
 				$title = get_sub_field('partner_title');  
-				$url = get_sub_field('partner_link');
-				$url = (!empty($url)) ? esc_url($url) : $url;
-				$logo_id = get_sub_field('partner_logo');
-				$logo = wp_get_attachment_image($logo_id, 'full', false, array('alt' => $title));
-			?>	
+				$url = esc_url(get_sub_field('partner_link'));
+				$logo = wp_get_attachment_image(
+                    get_sub_field('partner_logo'), 'full', false, array('alt' => $title)
+                );?>
+
 			<div class="logo"><div class="logo-frame">			
 				<a class="logo-link" title="<?php echo esc_attr($title);?>" href="<?php echo $url;?>"><?php echo $logo ;?></a>
 			</div></div>
@@ -254,25 +248,23 @@ get_header();
 		<h5 class="widget-title">Новости</h5>
 		<div class="widget-content news-list">
 			<div class="mdl-grid mdl-grid--no-spacing">	
-			<?php
-				if($news->have_posts()){ foreach($news->posts as $np) {
-			?>
+			<?php if($news->have_posts()){ foreach($news->posts as $np) {?>
+
 				<div class="mdl-cell mdl-cell--4-col mdl-cell--6-col-desktop">
 					<a href="<?php echo get_the_permalink($np);?>" class="tpl-hn-item">
 						<h4 class="hn-title"><?php echo get_the_title($np);?></h4>
 						<div class="hn-summary"><?php echo tst_home_news_summary($np, 15); ?></div>
 					</a>				
 				</div>
-			<?php
-				}}
-			?>			
+			<?php }
+            }?>
 			</div>
 		</div>
-		
+
 		<div class="widget-action">
 			<a href="<?php echo get_term_link('news', 'category');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Все истории</a>
 		</div>
 	</div>
-	
+
 </section>
 <?php get_footer(); ?>

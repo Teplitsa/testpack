@@ -3,7 +3,7 @@
  * Template Name: Cards
  */
 
-get_header(); ?>
+get_header();?>
 
 	
 <section class="cards-gallery">

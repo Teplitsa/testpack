@@ -3,7 +3,7 @@
  * Template Name: Partners
  */
 
-get_header(); ?>
+get_header();?>
 
 	
 <section class="partners-gallery">

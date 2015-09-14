@@ -11,35 +11,33 @@
  * @package bb
  */
 
-get_header(); ?>
+get_header();?>
 <div class="mdl-grid masonry-grid">
-	
-	<?php
-		if(have_posts()){
-			while(have_posts()){
-				the_post();
-				
-				if(is_search())
-					get_template_part('partials/content', 'search');
-				else
-					get_template_part('partials/content', get_post_type());
-			}  		
-		}
-		else {
-			get_template_part('partials/content', 'none');
-			
-		}
-	?>
-	<div class="mdl-cell mdl-cell--4-col masonry-item movable-widget"><?php get_sidebar(); ?></div>
+
+	<?php if(have_posts()) {
+
+        while(have_posts()) {
+
+            the_post();
+
+            if(is_search()) {
+                get_template_part('partials/content', 'search');
+            } else {
+                get_template_part('partials/content', get_post_type());
+            }
+        }
+
+    } else {
+        get_template_part('partials/content', 'none');
+    }?>
+	<div class="mdl-cell mdl-cell--4-col masonry-item movable-widget"><?php get_sidebar();?></div>
 </div>
 
-<?php
-	$p = tst_paging_nav();
-	if(!empty($p)) {
-?>
+<?php $p = tst_paging_nav();
+	if($p) {?>
 	<div class="mdl-grid">
 		<div class="mdl-cell mdl-cell--12-col"><?php echo $p; ?></div>
 	</div>
-<?php } ?>
+<?php }?>
 
-<?php get_footer(); ?>
+<?php get_footer();?>
