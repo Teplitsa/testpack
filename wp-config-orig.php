@@ -77,13 +77,19 @@ $table_prefix  = 'str_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
 
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
+
+/** Move wp-content **/
+$host = 'starter.local'; //define your host rules here
+define( 'WP_CONTENT_DIR', dirname(__FILE__) . '/wp-content' );
+define( 'WP_CONTENT_URL', '//'.$host.'/wp-content' );
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
