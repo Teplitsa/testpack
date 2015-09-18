@@ -39,13 +39,7 @@ jQuery(document).ready(function($){
 		}		
 	});
 	
-	/**  Second sharing **/
-	if ($('.sharing-on-bottom').length) {
-		var sharingDist = $('.sharing-on-bottom').offset().top - $('.sharing-on-top').offset().top;
-		if (sharingDist <= $(window).height() *0.8) {
-			$('.sharing-on-bottom').hide();
-		}
-	}
+	
 	
 	/** Tooltips in calendar **/
 	function position_tooltip(trigger, tip){
@@ -266,7 +260,7 @@ jQuery(document).ready(function($){
 				field = $(this).parents('.tst-select');
 			
 			field.find('.tst-menu-trigger').text(selVal);
-			field.find('select').val(selVal);
+			field.find('select').val(selVal).change();
 			field.find('.mdl-menu__item').removeClass('selected');
 			$(this).addClass('selected');
 			
@@ -318,7 +312,7 @@ jQuery(document).ready(function($){
 		$('input[type="number"]').numeric();
 	}
 
-	//calendat height bugfix
+	//calendar height bugfix
 	function fix_calendar_height() {
 		var gridCell = $('#calendar_content').find('.mdl-cell--9-col'),
 			gridCellContent = gridCell.find('.calendar-card');
