@@ -12,11 +12,7 @@ function tst_sitemap_screen($atts){
 }
 
 
-/** == Defaults == **/
-
-/**
- * Clear
- **/
+/** Clear **/
 add_shortcode('clear', 'tst_clear_screen');
 function tst_clear_screen($atts){
 		
@@ -27,50 +23,28 @@ function tst_clear_screen($atts){
 }
 
 
-/**
- * Partners gallery
- **/
-
-add_shortcode('partners_gallery', 'tst_partners_gallery_screen');
+/** Partners gallery **/
+add_shortcode('tst_partners_gallery', 'tst_partners_gallery_screen');
 function tst_partners_gallery_screen($atts){
 	
-	extract(shortcode_atts(array(
-		'type' => '',
-		'num'  => -1,
+	extract(shortcode_atts(array(				
 		'css'  => ''
 	), $atts));
 		
 	$size = 'full'; // logo size
 	
-	$args = array(
-		'post_type' => 'partner',
-		'posts_per_page' => $num,
-		'orderby' => array('menu_order' => 'DESC')
-	);
+	$partners = (function_exists('get_field')) ? get_field('partners_to_show') : false;
+	if(!$partners)
+		return '';
 	
-	if(!empty($type)){
-		
-		$type = array_map('trim', explode('_', $type));
-		
-		
-		$args['tax_query'][] = array(
-			'taxonomy' => ($type[0] == 'category') ? 'partner_cat' : 'period',
-			'field' => 'id',
-			'terms' => intval($type[1])
-		);
-	}
-	
-	$query = new WP_Query($args);
-		
-	ob_start();
 ?>
-	<ul class="cf partners logo-gallery frame <?php echo $css;?>">
+	<ul class="partners-logo-gallery frame <?php echo $css;?>">
     <?php
-		foreach($query->posts as $item):
+		foreach($partners as $item):
         
             $url = $item->post_excerpt ? esc_url($item->post_excerpt) : '';
             $txt = esc_attr($item->post_title);					
-			$cat = tst_get_partner_type($item);
+			//$cat = tst_get_partner_type($item);
         ?>
 		<li class="bit mf-4 md-3 lg-2">
 			<div class="logo">
@@ -89,9 +63,7 @@ function tst_partners_gallery_screen($atts){
 					</span>
 				<?php endif;?>
 				</div>
-				<?php if(!empty($cat)):?>
-					<span class="partner-cat"><?php echo $cat;?></span>
-				<?php endif;?>
+				
 			</div>
 			
 		</li>
@@ -103,3 +75,5 @@ function tst_partners_gallery_screen($atts){
 	
 	return $out;
 }
+
+

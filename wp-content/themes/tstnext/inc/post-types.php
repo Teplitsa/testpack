@@ -78,7 +78,7 @@ function tst_custom_content(){
         'labels' => array(
             'name'               => 'Организации',
             'singular_name'      => 'Организация',
-            'menu_name'          => 'Организации',
+            'menu_name'          => 'Партнеры',
             'name_admin_bar'     => 'Добавить организацию',
             'add_new'            => 'Добавить новую',
             'add_new_item'       => 'Добавить организацию',
@@ -100,7 +100,7 @@ function tst_custom_content(){
         'show_in_admin_bar'   => true,
         //'query_var'           => true,
         'capability_type'     => 'post',
-        'has_archive'         => false,
+        'has_archive'         => 'partners',
         'rewrite'             => array('slug' => 'org', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 5,

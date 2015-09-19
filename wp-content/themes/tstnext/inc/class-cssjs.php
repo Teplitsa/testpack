@@ -87,6 +87,11 @@ class TST_CssJs {
 			$style_dependencies,
 			null
 		);
+		
+		//remove leyka default styles
+		if(!is_admin()){
+			wp_dequeue_style('leyka-plugin-styles');					
+		}
 	}
 	
 	

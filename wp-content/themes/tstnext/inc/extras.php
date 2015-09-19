@@ -290,10 +290,10 @@ function tst_main_menu_link($atts, $item, $args, $depth){
 add_action('customize_register', 'tst_customize_register');
 function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
-    $wp_customize->add_section('tst_spec_settings', array(
-        'title'      => __('Website settings', 'tst'),
-        'priority'   => 30,
-    ));
+    //$wp_customize->add_section('tst_spec_settings', array(
+    //    'title'      => __('Website settings', 'tst'),
+    //    'priority'   => 30,
+    //));
    
 
     $wp_customize->add_setting('default_thumbnail', array(
@@ -303,7 +303,7 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 	
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'default_thumbnail', array(
         'label'    => __('Default thumbnail', 'tst'),
-        'section'  => 'tst_spec_settings',
+        'section'  => 'title_tagline',
         'settings' => 'default_thumbnail',
         'priority' => 1,
     )));
@@ -317,7 +317,7 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
     $wp_customize->add_control('footer_text', array(
         'type'     => 'textarea',		
         'label'    => __('Footer text', 'tst'),
-        'section'  => 'tst_spec_settings',
+        'section'  => 'title_tagline',
         'settings' => 'footer_text',
         'priority' => 30,
     ));
@@ -329,10 +329,13 @@ add_action('wp_head', 'tst_facebook_author_tag');
 function tst_facebook_author_tag(){
 	global $post;
 	
-	if(!is_single())
+	if(!is_singular('post'))
+		return;
+		
+	$author = tst_get_post_author($post);
+	if(!$author || is_wp_error($author))
 		return;
 	
-	$author = tst_get_post_author();
 	$fb = (function_exists('get_field') && $author) ? get_field('auctor_facebook', 'auctor_'.$author->term_id) : '';
 	
 	if(!empty($fb)) {

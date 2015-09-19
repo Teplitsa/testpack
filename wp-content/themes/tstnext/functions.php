@@ -81,10 +81,10 @@ function tst_widgets_init() {
 						'name' => 'Футер - 3 кол.',
 						'description' => 'Динамическая нижняя область - 3 колонка'
 					),
-		'bottom' => array(
-						'name' => 'Нижняя панель',
-						'description' => 'Динамическая область на нижней панели'
-					)
+		//'bottom' => array(
+		//				'name' => 'Нижняя панель',
+		//				'description' => 'Динамическая область на нижней панели'
+		//			)
 		
 	);
 	
@@ -115,18 +115,19 @@ add_action( 'widgets_init', 'tst_widgets_init' );
  * Includes
  */
 
- require get_template_directory().'/inc/class-cssjs.php';
- 
-require get_template_directory().'/inc/aq_resizer.php';
+require get_template_directory().'/inc/class-cssjs.php';
 require get_template_directory().'/inc/post-types.php';
-//require get_template_directory().'/inc/media.php';
+require get_template_directory().'/inc/aq_resizer.php';
 require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/forms.php';
 require get_template_directory().'/inc/template-tags.php';
 require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/widgets.php';
 require get_template_directory().'/inc/related.php';
+
+require get_template_directory().'/inc/events.php';
 require get_template_directory().'/inc/calendar.php';
+
 
 if(is_admin()){
 	require get_template_directory() . '/inc/admin.php';

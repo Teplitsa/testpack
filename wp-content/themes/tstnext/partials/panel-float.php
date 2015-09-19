@@ -10,7 +10,7 @@ global $post;
 <div class="mdl-grid full-width">
 	
 <?php if(is_singular('event')) { ?>	
-	<div class="mdl-cell mdl-cell--7-col mdl-cell--hide-phone mdl-cell--hide-tablet">
+	<div class="mdl-cell mdl-cell--8-col mdl-cell--hide-phone mdl-cell--hide-tablet">
 		<div class="event-meta-panel pictured-card-item">
 		<?php
 			$addr = array();
@@ -32,10 +32,11 @@ global $post;
 			</div>
 		</div>
 	</div>
-<?php } elseif(is_singular('product')) { ?>
-	<div class="mdl-cell mdl-cell--7-col mdl-cell--hide-phone mdl-cell--hide-tablet">
+<?php } elseif(is_singular('project')) { ?>
+
+	<div class="mdl-cell mdl-cell--8-col mdl-cell--hide-phone mdl-cell--hide-tablet">
 		<div class="product-meta-panel pictured-card-item">
-		<?php $price = (function_exists('get_field')) ? get_field('product_price', get_the_ID()) : ''; ?>
+		
 			<div class="pr-avatar round-image pci-img"><?php echo get_the_post_thumbnail(get_the_ID(), 'thumbnail')?></div>
 			
 			<div class="pr-content pci-content">
@@ -43,17 +44,17 @@ global $post;
 					<?php the_title();?>
 				</h5>
 				<p class="pr-price mdl-typography--caption">
-					<?php echo number_format ((int)$price , 0 , "." , " " );?> руб.
+					<?php echo tst_posted_on($post);?>
 				</p>
 			</div>
 		</div>
 	</div>
 <?php } else { ?>	
-	<div class="mdl-cell mdl-cell--7-col mdl-cell--hide-phone mdl-cell--hide-tablet">
+	<div class="mdl-cell mdl-cell--8-col mdl-cell--hide-phone mdl-cell--hide-tablet">
 		<div class="mdl-grid mdl-grid--no-spacing">
 			<div class="mdl-cell mdl-cell--6-col">
 			<?php
-				$author = tst_get_post_author();					
+				$author = tst_get_post_author($post);					
 				if(!empty($author)) {
 					$avatar = tst_get_author_avatar($author->term_id) ;
 			?>
@@ -65,7 +66,7 @@ global $post;
 							<a href="<?php echo get_term_link($author);?>"><?php echo apply_filters('tst_the_title', $author->name);?></a>
 						</h5>
 						<p class="author-role mdl-typography--caption">
-							<?php echo apply_filters('tst_the_title', $author->description);?>
+							<?php echo apply_filters('tst_the_title', wp_trim_words($author->description, 10));?>
 						</p>
 					</div>
 				</div>
@@ -79,19 +80,18 @@ global $post;
 			</div>
 		</div><!-- .row -->
 	</div>
-<?php } ?>
-
-	<div class="mdl-cell mdl-cell--8-col-tablet mdl-cell--5-col">
+<?php } ?>	
+	
+	<div class="mdl-cell mdl-cell--8-col-tablet mdl-cell--4-col">
 		<div class="mdl-grid mdl-grid--no-spacing">
 			<div class="mdl-cell mdl-cell--9-col mdl-cell--2-col-phone mdl-cell--5-col-tablet">
-				<div class="sharing-on-panel"><?php tst_social_share();?></div>
+				<div class="sharing-on-panel"><?php tst_social_share_no_js();?></div>
 			</div>
 			<div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--3-col-tablet">
 				<span class="next-link"><?php echo tst_next_link($post); ?></span>
 			</div>
 		</div><!-- .row -->
 	</div>
-
 
 </div><!-- .row -->
 </div>
