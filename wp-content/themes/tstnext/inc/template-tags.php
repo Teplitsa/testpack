@@ -633,13 +633,13 @@ function tst_general_card($block, $link_label = null, $ext_link = true){
 	$name = (isset($block['name'])) ? apply_filters('tst_the_title', $block['name']) : '';
     $url =  (isset($block['url'])) ? esc_url($block['url']) : '';
 	$pic_id = (isset($block['pic'])) ? intval($block['pic']) : 0;
-    $logo = wp_get_attachment_image($pic_id, 'post-thumbnail', false, array('alt' => $name));
+    $logo = wp_get_attachment_image($pic_id, 'thumbnail-embed', false, array('alt' => $name));
     $text = (isset($block['descr'])) ? apply_filters('tst_the_content', $block['descr']) : ''; 
 	$label = ($link_label) ? $link_label : __('Website', 'tst');
 	$target = ($ext_link) ? " target='_blank'" : '';
 		
 ?>
-<article <?php post_class('mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet'); ?>>
+<article <?php post_class('mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'); ?>>
 <div class="tpl-card-mix mdl-card mdl-shadow--2dp">
 	
 	<div class="mdl-card__media">
