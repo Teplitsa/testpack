@@ -17,3 +17,4 @@ wp-content/vendor/*
 wp-config.php
 .komodotools
 debug.log
+_temp
