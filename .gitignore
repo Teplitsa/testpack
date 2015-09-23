@@ -15,4 +15,5 @@ wp-content/vendor/*
 */bower_components/*
 */node_modules/*
 wp-config.php
-searchreplacedb2.php
+.komodotools
+debug.log

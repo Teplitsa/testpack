@@ -1,6 +1,6 @@
 {
     "name"        : "tst/install-test",
-    "description" : "Test project for WordPress stack via Composer",
+    "description" : "SWC winner website",
     "authors"     : [
         {
             "name"    : "Teplitsa",
@@ -21,27 +21,43 @@
         {
             "type": "artifact",
             "url": "artifacts/"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/wp-sync-db/wp-sync-db"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/wp-sync-db/wp-sync-db-media-files"
         }
     ],
     "config"      : {
         "vendor-dir": "wp-content/vendor"
     },
     "require"     : {
-        "johnpbloch/wordpress" : ">=4.2",
-        "wpackagist-plugin/cyr3lat" : "dev-trunk",
-        "wpackagist-plugin/responsive-lightbox" : "dev-trunk",
-        "wpackagist-plugin/disable-comments" : "dev-trunk",
-        "wpackagist-plugin/leyka" : "dev-trunk",
-        "wpackagist-plugin/simple-css-for-widgets" : "dev-trunk",
-        "wpackagist-plugin/simple-google-maps-short-code" : "dev-trunk",
-        "wpackagist-plugin/widget-logic" : "dev-trunk",
-        "wpackagist-plugin/wordpress-seo" : "dev-trunk",
+        "composer/installers": "~1.0",  
+        "johnpbloch/wordpress" : ">=4.3",
+        "wpackagist-plugin/cyr3lat" : "@stable",
+        "wpackagist-plugin/disable-comments" : "@stable",
+        "wpackagist-plugin/imsanity" : "@stable",
+        "wpackagist-plugin/leyka" : "@stable",
+        "wpackagist-plugin/responsive-lightbox" : "@stable",
+        "wpackagist-plugin/shortcodes-ultimate": "@stable",
+        "wpackagist-plugin/simple-css-for-widgets" : "@stable",        
+        "wpackagist-plugin/widget-logic" : ">=0.57",
+        "wpackagist-plugin/wordpress-seo" : "@stable",
         "koodimonni-language/core-ru_RU": "*",
-        "tst/advanced-custom-fields-pro" : ">=5.2.9",
-        "tst/formidable" : ">=2.0.11"
+        "tst/advanced-custom-fields-pro" : ">=5.3.0",
+        "tst/formidable" : ">=2.0.13"
     },
     "require-dev" : {
-
+        "wpackagist-plugin/debug-bar" : "@stable",
+        "wpackagist-plugin/query-monitor" : ">=2.7.4",        
+        "wpackagist-plugin/debug-objects" : "@stable",
+        "wp-sync-db/wp-sync-db" : "dev-master",
+        "wp-sync-db/wp-sync-db-media-files" : "dev-master",
+        "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
+        "wpackagist-plugin/post-duplicator" : "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",
@@ -50,3 +66,4 @@
         }
     }
 }
+

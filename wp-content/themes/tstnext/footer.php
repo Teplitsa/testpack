@@ -24,8 +24,7 @@ $footer_text = get_theme_mod('footer_text');
 			<div class="credits">
 			<div class="bottom-logo"><?php tst_site_logo('context');?></div>
 			<div class="copy">
-				<?php echo apply_filters('tst_the_content', $footer_text);?>
-				<p><a href="<?php home_url();?>"><?php bloginfo('name');?></a></a>
+				<?php echo apply_filters('tst_the_content', $footer_text);?>				
 				<?php printf(__('All materials of the site are avaliabe under license %s.', 'tst'), $cc_link);?></p>
 			</div>
 			</div>
@@ -49,7 +48,7 @@ $footer_text = get_theme_mod('footer_text');
 </div><!-- .mdl-layout -->
 
 <?php wp_footer(); ?>
-<?php if(!is_products() && !is_singular('leyka_campaign')) { ?>
+<?php if(!is_singular('leyka_campaign')) { ?>
 <a id="fab-mobile" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect" href="<?php echo home_url('campaign/help-us');?>"><i class="material-icons">favorite_border</i></a>
 <?php }?>
 
