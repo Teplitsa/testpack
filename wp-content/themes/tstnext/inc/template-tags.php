@@ -481,7 +481,7 @@ function tst_post_card($cpost, $tax = 'auctor'){
 	
 	<?php if(has_post_thumbnail($cpost->ID)){ ?>
 		<div class="mdl-card__media"><a href="<?php echo $pl;?>">
-			<?php echo get_the_post_thumbnail($cpost->ID, 'embed', array('alt' => __('Thumbnail', 'tst'))); ?>
+			<?php echo get_the_post_thumbnail($cpost->ID, 'post-thumbnail', array('alt' => __('Thumbnail', 'tst'))); ?>
 		</a></div>			
 	<?php } ?>
 	
@@ -530,7 +530,7 @@ function tst_project_card($cpost){
 	
 	<?php if(has_post_thumbnail($cpost->ID)){ ?>
 	<div class="mdl-card__media">
-		<a href="<?php echo $pl;?>"><?php echo get_the_post_thumbnail($cpost->ID, 'embed', array('alt' => __('Thumbnail', 'tst'))); ?></a>
+		<a href="<?php echo $pl;?>"><?php echo get_the_post_thumbnail($cpost->ID, 'post-thumbnail', array('alt' => __('Thumbnail', 'tst'))); ?></a>
 	</div>			
 	<?php } ?>
 		
@@ -601,7 +601,7 @@ function tst_page_card($cpost){
 	$pl = get_permalink($cpost);
 	
 	$img = (function_exists('get_field')) ? get_field('header_img', $cpost->ID) : 0;
-	$img = wp_get_attachment_image($img, 'embed', false, array('alt' => __('Thumbnail', 'tst')));
+	$img = wp_get_attachment_image($img, 'post-thumbnail', false, array('alt' => __('Thumbnail', 'tst')));
 ?>
 <article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
 <div class="tpl-card-color mdl-card mdl-shadow--2dp">
