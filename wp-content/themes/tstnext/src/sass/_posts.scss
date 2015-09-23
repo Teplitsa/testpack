@@ -263,7 +263,7 @@ $margin-base: 16px !default;
 	@extend .tpl-related-post;
 	
 	.entry-summary {
-		@include  typo-body-1;
+		@include  typo-caption;
 		line-height: 1.42857;
 		color: $tst-color-text-semi;
 		margin: 0;	

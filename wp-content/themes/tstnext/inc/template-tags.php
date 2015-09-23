@@ -807,7 +807,7 @@ function tst_compact_project_item($cpost){
 	<div class="tpl-related-project"><a href="<?php echo get_permalink($cpost);?>">
 	
 	<div class="mdl-grid mdl-grid--no-spacing">
-		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--2-col-phone">
+		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--4-col-phone">
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 				
 			<!-- summary -->
@@ -816,7 +816,7 @@ function tst_compact_project_item($cpost){
 			</p>
 		</div>
 		
-		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--2-col-phone">
+		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--hide-phone">
 		<?php
 			$thumb = get_the_post_thumbnail($cpost->ID, 'thumbnail-landscape', array('alt' => __('Thumbnail', 'tst')) ) ;
 			if(empty($thumb)){
@@ -853,7 +853,7 @@ function tst_compact_post_item($cpost, $show_thumb = true, $tax = 'category'){
 	<div class="tpl-related-post"><a href="<?php echo get_permalink($cpost);?>">
 	
 	<div class="mdl-grid mdl-grid--no-spacing">
-		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--2-col-phone">
+		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--4-col-phone">
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 			
 		<?php if($show_thumb) { ?>	
@@ -874,7 +874,7 @@ function tst_compact_post_item($cpost, $show_thumb = true, $tax = 'category'){
 		<?php } ?>
 		</div>
 		
-		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--2-col-phone">
+		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--hide-phone">
 		<?php
 			$thumb = get_the_post_thumbnail($cpost->ID, 'thumbnail-landscape', array('alt' => __('Thumbnail', 'tst')) ) ;
 			if(empty($thumb)){

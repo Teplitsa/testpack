@@ -99,6 +99,7 @@ $sh-base : $cell-elementary-2x;
 	}
 	
 	.navigation-logo {
+		display: block;
 		line-height: $layout-desktop-header-height;
 		img {
 			max-height: $layout-desktop-header-height - 16px;
