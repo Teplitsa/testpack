@@ -28,7 +28,7 @@ get_header();
 </div>
 
 <div class="page-footer"><div class="mdl-grid">
-	<div class="mdl-cell mdl-cell--8-col mdl-cell--6-col-phone">
+	<div class="mdl-cell mdl-cell--5-col mdl-cell--6-col-tablet">
 	<?php		
 		if('post' == $pt){ //related posts
 			
@@ -69,7 +69,7 @@ get_header();
 		}		
 	?>		
 	</div>
-	<div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--6-col-phone"></div>
+	<div class="mdl-cell mdl-cell--7-col mdl-cell--2-col-tablet mdl-cell--hide-phone"></div>
 </div></div>
 
 <?php get_footer(); ?>

@@ -11,8 +11,9 @@
 function frl_related_posts_rules(){
 	
 	return array(
-		'post'       => array('post'),
-		//'reference'  => array('reference'),		
+		'post'     => array('post'),
+		'project'  => array('project'),
+		'event' => array('event'),
 	);
 }
 
@@ -79,5 +80,14 @@ function frl_get_related_query($cpost, $tax = 'post_tag', $limit = 5) {
 	
 	$r_ids = frl_get_related_ids($cpost, $tax, $limit);
 	
-	return new WP_Query(array('post__in' => $r_ids, 'post_type' => 'any', 'posts_per_page' => $limit));
+	if(!empty($r_ids)){
+		$q = new WP_Query(array('post__in' => $r_ids, 'post_type' => 'any', 'posts_per_page' => $limit));
+	}
+	else {
+		$related_pt_rules = frl_related_posts_rules();
+		$post_type = (isset($related_pt_rules[$cpost->post_type])) ? $related_pt_rules[$cpost->post_type] : $cpost->post_type;
+		$q = new WP_Query(array('post_type' => $post_type, 'posts_per_page' => $limit, 'post__not_in' => array($cpost->ID)));
+	}
+	
+	return $q;
 }

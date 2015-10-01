@@ -19,13 +19,20 @@ get_header(); ?>
 			while(have_posts()){
 				the_post();
 				
-				$callback = "tst_".get_post_type()."_card";
-				if(is_callable($callback)) {
-					call_user_func($callback, $post);
+				$pt = get_post_type();
+				if($pt == 'post'){
+					tst_post_card($post, 'category');
 				}
 				else {
-					tst_post_card($post);
-				}	
+					$callback = "tst_".$pt."_card";
+					if(is_callable($callback)) {
+						call_user_func($callback, $post);
+					}
+					else {
+						tst_post_card($post);
+					}	
+				}
+				
 			}  		
 		}		
 	?>

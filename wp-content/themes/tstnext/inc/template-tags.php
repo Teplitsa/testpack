@@ -56,6 +56,9 @@ function is_about(){
 	if(is_page_branch('about'))
 		return true;
 	
+	if(is_post_type_archive('org'))
+		return true;
+	
 	return false;
 }
 
@@ -130,7 +133,7 @@ function is_projects() {
 		
 	if(is_singular('project'))
 		return true;
-	
+		
 	return false;
 }
 
@@ -179,11 +182,11 @@ function tst_posted_on($cpost) {
 }
 
 /** Logo **/
-function tst_site_logo($size = 'regular'){
-	
-	switch($size){
+function tst_site_logo($size = 'regular') {
+
+	switch($size) {
 		case 'context':
-			$file = 'logo-pink';
+			$file = 'logo-accent';
 			break;
 		case 'small':
 			$file = 'logo-small';
@@ -195,10 +198,13 @@ function tst_site_logo($size = 'regular'){
 	
 	$file = get_template_directory_uri().'/assets/images/'.$file;
 	$alt = esc_attr(__('Logo', 'tst'));
+	
+	//add svg back
 ?>
 	<img src="<?php echo $file;?>.svg" onerror="this.onerror=null;this.src=<?php echo $file;?>.png" alt="<?php echo $alt;?>">
 <?php
 }
+
 
 /** Separator **/
 function tst_get_sep($mark = '//') {
@@ -451,7 +457,7 @@ function tst_next_fallback_link($cpost){
 /** == Cards in loop == **/
 
 /** Post card content **/
-function tst_post_card($cpost){
+function tst_post_card($cpost, $tax = 'auctor'){
 	
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
@@ -459,7 +465,21 @@ function tst_post_card($cpost){
 	$pl = get_permalink($cpost);
 	$e = tst_get_post_excerpt($cpost, 30, true);
 	$date = "<time>".get_the_date('d.m.Y.', $cpost->ID)."</time> - ";
-	$author = tst_get_post_author($cpost); 
+	
+	$name = $desc = $avatar = '';
+	
+	if($tax == 'auctor'){
+		$author = tst_get_post_author($cpost);
+		$name = ($author) ? $author->name : '';
+		$desc = ($author) ? wp_trim_words($author->description, 20) : '';
+		$avatar = ($author) ? tst_get_author_avatar($author->term_id) : '';
+	}
+	elseif($tax) { //category
+		$cat = get_the_terms($cpost->ID, $tax);
+		$name = (isset($cat[0])) ? $cat[0]->name : '';
+		$desc = (isset($cat[0])) ? wp_trim_words($cat[0]->description, 20) : '';
+		$avatar = (isset($cat[0])) ? tst_get_tax_avatar($cat[0]) : '';
+	}
 
 ?>
 <article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
@@ -467,23 +487,20 @@ function tst_post_card($cpost){
 	
 	<?php if(has_post_thumbnail($cpost->ID)){ ?>
 		<div class="mdl-card__media"><a href="<?php echo $pl;?>">
-			<?php echo get_the_post_thumbnail($cpost->ID, 'embed', array('alt' => __('Thumbnail', 'tst'))); ?>
+			<?php echo get_the_post_thumbnail($cpost->ID, 'post-thumbnail', array('alt' => __('Thumbnail', 'tst'))); ?>
 		</a></div>			
 	<?php } ?>
 	
-	<?php if(!empty($author)) { ?>
-		<div class="entry-author mdl-card__supporting-text">
-		<?php
-			$avatar = tst_get_author_avatar($author->term_id) ;
-			$desc = wp_trim_words($author->description, 20);
-		?>				
-			
+	<?php if(!empty($name)) { ?>
+		<div class="entry-author mdl-card__supporting-text">		
 			<div class="pictured-card-item">
 				<div class="author-avatar round-image pci-img"><?php echo $avatar;?></div>
 					
 				<div class="author-content card-footer-content pci-content">
-					<h5 class="author-name mdl-typography--body-1"><?php echo apply_filters('tst_the_title', $author->name);?></h5>
-					<p class="author-role mdl-typography--caption"><?php echo apply_filters('tst_the_title', $desc);?></p>
+					<h5 class="author-name mdl-typography--body-1"><?php echo apply_filters('tst_the_title', $name);?></h5>
+					<?php if(!empty($desc)) { ?>
+						<p class="author-role mdl-typography--caption"><?php echo apply_filters('tst_the_title', $desc);?></p>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
@@ -519,7 +536,7 @@ function tst_project_card($cpost){
 	
 	<?php if(has_post_thumbnail($cpost->ID)){ ?>
 	<div class="mdl-card__media">
-		<a href="<?php echo $pl;?>"><?php echo get_the_post_thumbnail($cpost->ID, 'embed', array('alt' => __('Thumbnail', 'tst'))); ?></a>
+		<a href="<?php echo $pl;?>"><?php echo get_the_post_thumbnail($cpost->ID, 'post-thumbnail', array('alt' => __('Thumbnail', 'tst'))); ?></a>
 	</div>			
 	<?php } ?>
 		
@@ -580,6 +597,76 @@ function tst_org_card($cpost, $ext_link = true){
 <?php
 }
 
+/** Page card content **/
+function tst_page_card($cpost){
+		
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+	
+	$e = tst_get_post_excerpt($cpost, 30, true);	
+	$pl = get_permalink($cpost);
+	
+	$img = (function_exists('get_field')) ? get_field('header_img', $cpost->ID) : 0;
+	$img = wp_get_attachment_image($img, 'post-thumbnail', false, array('alt' => __('Thumbnail', 'tst')));
+?>
+<article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
+<div class="tpl-card-color mdl-card mdl-shadow--2dp">
+	
+	<?php if($img){ ?>
+	<div class="mdl-card__media">
+		<a href="<?php echo $pl;?>"><?php echo $img; ?></a>
+	</div>			
+	<?php } ?>
+		
+	<div class="mdl-card__title">
+		<h4 class="mdl-card__title-text"><a href="<?php echo $pl;?>"><?php echo get_the_title($cpost->ID);?></a></h4>
+	</div>
+	
+	<?php echo tst_card_summary($e); ?>
+	
+	<div class="mdl-card__actions mdl-card--border">
+		<a href="<?php echo $pl;?>" class="mdl-button mdl-js-button"><?php _e('Details', 'tst');?></a>
+	</div>
+</div>	
+</article>
+<?php
+}
+
+
+/** Partner card content **/
+function tst_general_card($block, $link_label = null, $ext_link = true){
+	
+	$name = (isset($block['name'])) ? apply_filters('tst_the_title', $block['name']) : '';
+    $url =  (isset($block['url'])) ? esc_url($block['url']) : '';
+	$pic_id = (isset($block['pic'])) ? intval($block['pic']) : 0;
+    $logo = wp_get_attachment_image($pic_id, 'thumbnail-embed', false, array('alt' => $name));
+    $text = (isset($block['descr'])) ? apply_filters('tst_the_content', $block['descr']) : ''; 
+	$label = ($link_label) ? $link_label : __('Website', 'tst');
+	$target = ($ext_link) ? " target='_blank'" : '';
+		
+?>
+<article <?php post_class('mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'); ?>>
+<div class="tpl-card-mix mdl-card mdl-shadow--2dp">
+	
+	<div class="mdl-card__media">
+		<a class="logo-link" href="<?php echo $url;?>"<?php echo $target;?>><?php echo $logo; ?></a>
+	</div>
+			
+	<div class="mdl-card__title">
+		<h4 class="mdl-card__title-text"><a href="<?php echo $url;?>"><?php echo $name;?></a></h4>
+	</div>
+			
+	<?php echo tst_card_summary($text); ?>
+	
+	<?php if(!empty($url)) { ?>
+	<div class="mdl-card__actions mdl-card--border">
+		<a href="<?php echo $url;?>"<?php echo $target;?> class="mdl-button mdl-js-button"><?php echo $label;?></a>
+	</div>
+	<?php } ?>
+</div>	
+</article>
+<?php
+}
 
 
 /** == Social buttons == **/
@@ -675,7 +762,6 @@ function tst_get_default_author_avatar(){
 	return "<img src='{$src}' alt='{$alt}'>";
 }
 
-
 /** Author **/
 function tst_get_post_author($cpost) {
 			
@@ -686,19 +772,20 @@ function tst_get_post_author($cpost) {
 	return $author;
 }
 
-function tst_get_author_avatar($author_term_id){
-	
-	$avatar = (function_exists('get_field')) ? get_field('auctor_photo', 'auctor_'.$author_term_id) : '';
-	if(empty($avatar)){
-		$avatar = tst_get_default_author_avatar();
-	}
-	else {
-		$avatar = wp_get_attachment_image($avatar, 'avatar');
-	}
-	
-	return $avatar;
+
+function tst_get_author_avatar($author_term_id) {
+
+	$avatar = get_field('auctor_photo', 'auctor_'.$author_term_id);
+
+    return $avatar ? wp_get_attachment_image($avatar, 'avatar') : tst_get_default_author_avatar();
 }
 
+function tst_get_tax_avatar($term) {
+
+	$avatar = get_field('header_img', $term->taxonomy.'_'.$term->term_id);
+
+    return $avatar ? wp_get_attachment_image($avatar, 'avatar') : tst_get_default_author_avatar();
+}
 
 
 /** == Compact Items for posts in widgets and related section == **/
@@ -715,6 +802,7 @@ function tst_get_default_post_thumbnail($size){
 	return $img;
 }
 
+
 /** Compact post item **/
 function tst_compact_project_item($cpost){
 	
@@ -726,7 +814,7 @@ function tst_compact_project_item($cpost){
 	<div class="tpl-related-project"><a href="<?php echo get_permalink($cpost);?>">
 	
 	<div class="mdl-grid mdl-grid--no-spacing">
-		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--2-col-phone">
+		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--4-col-phone">
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 				
 			<!-- summary -->
@@ -735,7 +823,7 @@ function tst_compact_project_item($cpost){
 			</p>
 		</div>
 		
-		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--2-col-phone">
+		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--hide-phone">
 		<?php
 			$thumb = get_the_post_thumbnail($cpost->ID, 'thumbnail-landscape', array('alt' => __('Thumbnail', 'tst')) ) ;
 			if(empty($thumb)){
@@ -751,26 +839,32 @@ function tst_compact_project_item($cpost){
 }
 
 /** Compact post item **/
-function tst_compact_post_item($cpost, $show_thumb = true){
+function tst_compact_post_item($cpost, $show_thumb = true, $tax = 'category'){
 	global $post;
 		
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
-		
-		
-	$author = tst_get_post_author($cpost);
-	$name = ($author) ? $author->name : '';
+	
+	if($tax == 'auctor'){
+		$author = tst_get_post_author($cpost);
+		$name = ($author) ? $author->name : '';
+		$avatar = ($show_thumb && $author) ? tst_get_author_avatar($author->term_id) : '';
+	}
+	else { //category
+		$cat = get_the_terms($cpost->ID, $tax);
+		$name = (isset($cat[0])) ? $cat[0]->name : '';
+		$avatar = ($show_thumb && isset($cat[0])) ? tst_get_tax_avatar($cat[0]) : '';
+	}
+	
 ?>
 	<div class="tpl-related-post"><a href="<?php echo get_permalink($cpost);?>">
 	
 	<div class="mdl-grid mdl-grid--no-spacing">
-		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--2-col-phone">
+		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--4-col-phone">
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 			
 		<?php if($show_thumb) { ?>	
 			<div class="entry-author pictured-card-item">
-			<?php $avatar = ($author) ? tst_get_author_avatar($author->term_id) : ''; ?>				
-					
 				<div class="author-avatar round-image pci-img"><?php echo $avatar;?></div>
 					
 				<div class="author-content card-footer-content pci-content">
@@ -787,7 +881,7 @@ function tst_compact_post_item($cpost, $show_thumb = true){
 		<?php } ?>
 		</div>
 		
-		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--2-col-phone">
+		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--hide-phone">
 		<?php
 			$thumb = get_the_post_thumbnail($cpost->ID, 'thumbnail-landscape', array('alt' => __('Thumbnail', 'tst')) ) ;
 			if(empty($thumb)){
@@ -805,10 +899,56 @@ function tst_compact_post_item($cpost, $show_thumb = true){
 
 
 
-
-
-
-
-
-
-
+/** Post card content **/
+function tst_post_card_content($cpost = null, $tax = 'auctor'){
+			
+	if(!$cpost)
+		$cpost = $post;
+	
+	$name = $desc = $avatar = '';
+	
+	if($tax == 'auctor'){
+		$author = tst_get_post_author($cpost);
+		$name = ($author) ? $author->name : '';
+		$desc = ($author) ? $author->description : '';
+		$avatar = ($show_thumb && $author) ? tst_get_author_avatar($author->term_id) : '';
+	}
+	elseif($tax) { //category
+		$cat = get_the_terms($cpost->ID, $tax);
+		$name = (isset($cat[0])) ? $cat[0]->name : '';
+		$desc = (isset($cat[0])) ? $cat[0]->description : '';
+		$avatar = ($show_thumb && isset($cat[0])) ? tst_get_tax_avatar($cat[0]) : '';
+	}
+?>
+	<?php if(has_post_thumbnail($cpost->ID)){ ?>
+	<div class="mdl-card__media">
+		<?php echo tst_get_post_thumbnail($cpost, 'embed'); ?>		
+	</div>			
+	<?php } ?>
+	
+	<?php if(!empty($name)) { ?>
+		<div class="entry-author mdl-card__supporting-text">
+			<div class="pictured-card-item">
+				<div class="author-avatar round-image pci-img"><?php echo $avatar;?></div>
+					
+				<div class="author-content card-footer-content pci-content">
+					<h5 class="author-name mdl-typography--body-1"><?php echo apply_filters('tst_the_title', $name);?></h5>
+				<?php if(!empty($desc)) { ?>	
+					<p class="author-role mdl-typography--caption"><?php echo apply_filters('tst_the_title', $desc);?></p>
+				<?php  } ?>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
+	
+	<div class="mdl-card__title">
+		<h4 class="mdl-card__title-text"><a href="<?php echo get_permalink($cpost);?>"><?php echo get_the_title($cpost->ID);?></a></h4>
+	</div>
+	
+	<?php echo tst_card_summary($cpost); ?>
+	<div class="mdl-card--expand"></div>
+	<div class="mdl-card__actions mdl-card--border">
+		<a href="<?php echo get_permalink($cpost);?>" class="mdl-button mdl-js-button">Подробнее</a>
+	</div>
+<?php
+}

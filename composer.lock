@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7e00ebea558083469e223b5e40644bd8",
+    "hash": "28102a146536314ba2543096ed2ee11e",
     "packages": [
         {
             "name": "composer/installers",
@@ -248,12 +248,15 @@
         },
         {
             "name": "tst/advanced-custom-fields-pro",
-            "version": "5.3.0",
+            "version": "5.3.1",
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-advanced-custom-fields-pro-5.3.0.zip",
+                "url": "artifacts/tst-advanced-custom-fields-pro-5.3.1.zip",
                 "reference": null,
-                "shasum": "de319611f0181c925508e909e3620e0e1b0efd6b"
+                "shasum": "0e164735ab6a98c88c05dd7acac91dd35043b0d2"
+            },
+            "require": {
+                "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin"
         },
@@ -353,15 +356,15 @@
         },
         {
             "name": "wpackagist-plugin/responsive-lightbox",
-            "version": "1.6.2",
+            "version": "1.6.3",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/responsive-lightbox/",
-                "reference": "tags/1.6.2"
+                "reference": "tags/1.6.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/responsive-lightbox.1.6.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/responsive-lightbox.1.6.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -370,6 +373,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/responsive-lightbox/"
+        },
+        {
+            "name": "wpackagist-plugin/shortcodes-ultimate",
+            "version": "4.9.8.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/shortcodes-ultimate/",
+                "reference": "tags/4.9.8.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/shortcodes-ultimate.4.9.8.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/shortcodes-ultimate/"
         },
         {
             "name": "wpackagist-plugin/simple-css-for-widgets",
@@ -390,26 +413,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/simple-css-for-widgets/"
-        },
-        {
-            "name": "wpackagist-plugin/simple-google-maps-short-code",
-            "version": "1.1.2",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/simple-google-maps-short-code/",
-                "reference": "tags/1.1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/simple-google-maps-short-code.1.1.2.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/simple-google-maps-short-code/"
         },
         {
             "name": "wpackagist-plugin/widget-logic",
@@ -632,8 +635,8 @@
         "wpackagist-plugin/imsanity": 0,
         "wpackagist-plugin/leyka": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
+        "wpackagist-plugin/shortcodes-ultimate": 0,
         "wpackagist-plugin/simple-css-for-widgets": 0,
-        "wpackagist-plugin/simple-google-maps-short-code": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/debug-bar": 0,
         "wpackagist-plugin/debug-objects": 0,

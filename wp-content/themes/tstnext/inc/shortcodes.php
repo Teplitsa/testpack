@@ -15,11 +15,18 @@ function tst_sitemap_screen($atts){
 /** Clear **/
 add_shortcode('clear', 'tst_clear_screen');
 function tst_clear_screen($atts){
-		
-	
-	$out = '<div class="clear"></div>';		
 
-	return $out;
+	return '<div class="clear"></div>';
+}
+
+/** lead **/
+add_shortcode('lead', 'tst_lead_screen');
+function tst_lead_screen($atts, $content){
+	
+	if(empty($content))
+		return '';
+	
+	return '<div class="entry-summary">'.apply_filters('the_content', $content).'</div>';
 }
 
 
@@ -54,10 +61,10 @@ function tst_partners_gallery_screen($atts){
 				<?php else: ?>
 					<span class="logo-link" title="<?php echo $txt;?>">
 				<?php endif;?>
-				
+
 				<?php echo get_the_post_thumbnail($item->ID, $size);?>
-			
-				<?php if(!empty($url)): ?>
+
+				<?php if($url): ?>
 					</a>
 				<?php else: ?>
 					</span>
@@ -76,4 +83,49 @@ function tst_partners_gallery_screen($atts){
 	return $out;
 }
 
+add_shortcode('tst_cards_from_posts', 'tst_cards_from_posts');
+function tst_cards_from_posts($atts) {
+
+    extract(shortcode_atts(array(
+        'ids' => '',
+        'css'  => '',
+        'pic_size' => 'full',
+        'link_text' => 'Веб-сайт',
+    ), $atts));
+
+    /** @var $ids */
+    /** @var $css */
+    /** @var $pic_size */
+    /** @var $link_text */
+
+    $posts = get_posts(array(
+        'post__in' => array_map('trim', explode(',', $ids)),
+        'post_type' => 'any',
+        'orderby' => array('menu_order' => 'DESC')
+    ));
+
+    ob_start();
+?>
+
+    <section class="embed-cards-gallery" <?php echo $css;?>>
+    <div class="mdl-grid">
+    <?php
+		foreach($posts as $item) {
+			$callback = "tst_".get_post_type($item)."_card";
+			if(is_callable($callback)) {
+				call_user_func($callback, $item);
+			}
+			else {
+				tst_post_card($item);
+			}	
+		}
+	?>
+    </div>
+    </section>
+
+    <?php $out = ob_get_contents();
+    ob_end_clean();
+
+    return $out;
+}
 

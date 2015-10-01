@@ -9,12 +9,12 @@
 ?><!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta charset="<?php bloginfo('charset');?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<?php wp_head(); ?>
+<?php wp_head();?>
 </head>
 
 <body id="top" <?php body_class(); ?>>
@@ -52,7 +52,7 @@
 </header>
 
 <div id="site_nav" class="mdl-layout__drawer">
-    <span class="mdl-layout-title"><span class="navigation-logo"><?php tst_site_logo('context');?></span></span>
+    <span class="mdl-layout-title"><a href="<?php echo home_url();?>" class="navigation-logo"><?php tst_site_logo('context');?></a></span>
 	<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'mdl-navigation')); ?>
 </div>
 

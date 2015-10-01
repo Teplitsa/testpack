@@ -25,7 +25,7 @@ function tst_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size(370, 208, true ); // regular thumbnails 16:9
 	add_image_size('embed', 760, 420, true ); // fixed size for embedding 
-	//add_image_size('thumbnail-long', 806, 335, true ); // large thumbnail for products
+	add_image_size('thumbnail-embed', 400, 260, true ); // large thumbnail for products
 	add_image_size('avatar', 40, 40, true ); // fixed size for embedding
 	add_image_size('thumbnail-landscape', 190, 142, true ); // fixed size for embedding
 	

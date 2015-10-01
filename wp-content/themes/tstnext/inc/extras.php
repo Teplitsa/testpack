@@ -326,7 +326,8 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
 /** Facebook author tag **/
 add_action('wp_head', 'tst_facebook_author_tag');
-function tst_facebook_author_tag(){
+function tst_facebook_author_tag() {
+
 	global $post;
 	
 	if(!is_singular('post'))
@@ -344,3 +345,141 @@ function tst_facebook_author_tag(){
 <?php
 	}
 }
+
+add_action('plugins_loaded', function(){
+
+    if( !function_exists('get_field') ) {
+
+        function get_field($name, $id = false) {
+
+            if( !$id ) {
+
+                global $post;
+                if($post) {
+                    $id = $post->ID;
+                } else {
+                    return '';
+                }
+            }
+
+            return get_post_meta($id, $name, true);
+        }
+    }
+});
+
+
+/** Humans txt **/
+class TST_Humans_Txt {
+	
+	private static $_instance = null;		
+	
+	private function __construct() {	
+		
+		add_action('init', array( $this, 'rewrite'));
+		add_filter('redirect_canonical', array( $this, 'canonical'));
+		add_action('template_redirect', array( $this, 'template_redirect'));
+		add_action('wp_head', array($this, 'head_link'));
+	}
+	
+	public static function get_instance() {
+
+        // If the single instance hasn't been set, set it now.
+        if( !self::$_instance ) {
+            self::$_instance = new self;
+        }
+		
+        return self::$_instance;
+    }
+	
+	
+	public function rewrite() { //rewrite rules
+		global $wp_rewrite, $wp;
+		
+		add_rewrite_rule('humans\.txt$', $wp_rewrite->index.'?humans=1', 'top');
+		$wp->add_query_var('humans');
+	}
+
+
+	public function canonical($redirect) { //revome slash in link
+		
+		$humans = get_query_var( 'humans' );
+		if (!empty($humans))
+			return false;
+
+		return $redirect;
+	}
+	
+	public function head_link(){ // add link at header
+					
+		$url = esc_url(home_url('humans.txt'));
+		echo "<link rel='author' href='{$url}'>\n";
+	}
+
+	public function template_redirect(){ //show text
+	
+		if(1 != get_query_var('humans'))
+			return;
+			
+		//serve correct headers
+		header( 'Content-Type: text/plain; charset=utf-8' ); 
+	
+		//prepare default content
+		$content = "/* MADE BY */
+
+The Project by Teplitsa of social technologies
+www: te-st.ru
+
+Idea & Project Lead
+Gleb Suvorov
+suvorov.gleb[at]gmail.com
+
+Design & Development:
+Anna Ladoshkina 
+webdev[at]foralien.com
+
+Contributors:
+
+Denis Cherniatev
+denis.cherniatev[at]gmail.com
+
+Lev Zvyagincev
+ahaenor[at]gmail.com
+
+Denis Kulandin
+kulandin[at]gmail.com
+
+Tools we use with admiration and love to make things real:
+WordPress, MDL Framework, Gulp, SASS
+
+       _            _                 _        _          _     
+      /\ \         /\ \              /\ \     /\ \       /\_\   
+     /  \ \____   /  \ \             \ \ \    \_\ \     / / /   
+    / /\ \_____\ / /\ \ \            /\ \_\   /\__ \   / / /_   
+   / / /\/___  // / /\ \ \          / /\/_/  / /_ \ \ / /___/\  
+  / / /   / / // / /  \ \_\        / / /    / / /\ \ \\____ \ \ 
+ / / /   / / // / /   / / /       / / /    / / /  \/_/    / / / 
+/ / /   / / // / /   / / /       / / /    / / /          / / /  
+\ \ \__/ / // / /___/ / /    ___/ / /__  / / /          _\/_/   
+ \ \___\/ // / /____\/ /    /\__\/_/___\/_/ /          /\_\     
+  \/_____/ \/_________/     \/_________/\_\/           \/_/     
+";
+
+		//make it filterable
+		$content = apply_filters('humans_txt', $content);
+		
+		//correct line ends
+		$content = str_replace("\r\n", "\n", $content);
+		$content = str_replace("\r", "\n", $content);
+		
+		//output
+		echo $content;		
+		die();		
+	}
+	
+} //class end
+
+$humans = TST_Humans_Txt::get_instance();
+
+
+
+

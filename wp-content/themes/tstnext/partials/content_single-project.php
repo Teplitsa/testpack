@@ -3,7 +3,7 @@
  * Single project
  **/
 
-$show_thumb = (function_exists('get_field')) ? (bool)get_field('show_thumb') : true;
+
 ?>
 
 <article <?php post_class('tpl-project-full'); ?>>
@@ -11,14 +11,7 @@ $show_thumb = (function_exists('get_field')) ? (bool)get_field('show_thumb') : t
 		
 	<div class="entry-summary"><?php the_excerpt();?></div>
 	<div class="sharing-on-top"><?php tst_social_share_no_js();?></div>
-	
-	<?php
-		if($show_thumb && has_post_thumbnail()) {
-			echo "<div class='entry-media'>";
-			the_post_thumbnail('embed', array('alt' => __('Thumbnail', 'tst')));
-			echo "</div>";
-		}
-	?>
+		
 	
 	<div class="entry-content">		
 		<?php the_content(); ?>
