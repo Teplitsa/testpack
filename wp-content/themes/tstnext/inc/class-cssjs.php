@@ -17,6 +17,9 @@ class TST_CssJs {
 		
 		add_action('admin_enqueue_scripts',  array($this, 'load_admin_scripts'), 30);
 		add_action('login_enqueue_scripts',  array($this, 'load_login_scripts'), 30);
+		
+		add_action('init',  array($this, 'leyka_fix'), 30);
+		
 	}
 	
 	public static function get_instance() {
@@ -151,6 +154,19 @@ class TST_CssJs {
 	<?php
 	}
 	
+	public function leyka_fix() {
+		
+		if(!class_exists('Leyka'))
+			return;
+		
+		$leyka = leyka();
+		
+		if(!is_singular('leyka_campaign')){
+			remove_action('wp_enqueue_scripts', array($leyka, 'enqueue_styles'));
+			remove_action('wp_enqueue_scripts', array($leyka, 'enqueue_scripts'));
+		}
+		
+	}
 	
 } //class
 

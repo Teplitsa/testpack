@@ -169,7 +169,7 @@ function tst_add_to_calendar_url($event){
 
 }
 
-add_action('wp_footer', 'tst_add_to_calendar_scripts');
+
 function tst_add_to_calendar_scripts(){
 	
 ?>
@@ -185,6 +185,8 @@ function tst_add_to_calendar_scripts(){
 }
 
 function tst_add_to_calendar_link($event, $echo = true, $container_class = 'tst-add-calendar') {
+	
+	add_action('wp_footer', 'tst_add_to_calendar_scripts');
 	
 	$date = (function_exists('get_field')) ? get_field('event_date', $event->ID) : $event->post_date;
 	$time = (function_exists('get_field')) ? get_field('event_time', $event->ID) : '';

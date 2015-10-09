@@ -24,8 +24,19 @@ $footer_text = get_theme_mod('footer_text');
 			<div class="credits">
 			<div class="bottom-logo"><?php tst_site_logo('context');?></div>
 			<div class="copy">
-				<?php echo apply_filters('tst_the_content', $footer_text);?>				
-				<?php printf(__('All materials of the site are avaliabe under license %s.', 'tst'), $cc_link);?></p>
+				<?php
+					echo apply_filters('tst_the_content', $footer_text);
+					wp_nav_menu(array(
+						'theme_location'  => 'social',
+						//'menu'          => ,
+						'menu_class'      => 'social-menu',
+						'menu_id'         => 'social',
+						'echo'            => true,                
+						'depth'           => 0,
+						'fallback_cb'     => ''
+					));
+				?>
+				<p><?php printf(__('All materials of the site are avaliabe under license %s.', 'tst'), $cc_link);?></p>
 			</div>
 			</div>
 		</div><!-- .col -->

@@ -1,8 +1,15 @@
 /** Home **/
 // top item
 
-.home-section.intro .featured_text {
-	padding: $cell-elementary-3x;
+.home-section.intro {
+	.featured_text {
+		padding: $cell-elementary-3x;
+	}
+	
+	.social-menu {
+		float: left;
+		padding-left: 16px;
+	}
 }
 
 .home-section.posts,
@@ -93,6 +100,12 @@
 	}
 }
 
-
+.page-template-page-home .widget_socila_links {
+	margin-left: 72px;
+	
+	.social-menu {
+		margin-top: 0;
+	}
+}
 
 

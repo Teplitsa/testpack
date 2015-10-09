@@ -14,16 +14,7 @@
   font-weight: normal;
   font-style: normal;
 }
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?37317661#fontello') format('svg');
-  }
-}
-*/
+
  
 @mixin icon-fontello {
 	font-family: "fontello";
@@ -45,13 +36,16 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.fontello {
+	@include icon-fontello();
+}
 
-/*
 .icon-facebook:before { content: '\e800'; }
 .icon-vkontakte:before { content: '\e801'; } 
-.icon-odnoklassniki:before { content: '\e802'; }
-.icon-twitter:before { content: '\e803'; }
-*/
+.icon-odnoklassniki:before { content: '\e802'; } 
+.icon-twitter:before { content: '\e803'; } 
+.icon-instagram:before { content: '\e804'; } 
+.icon-youtube:before { content: '\e805'; } 
 
 
 // Buttons styles
@@ -276,4 +270,83 @@ $i: 1; //widths
    $i: $i + 1;
 }
 
+/** Social menu **/
+.social-menu {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	@include clearfix;
+	
+	li {
+		float: left;
+		margin-left: 8px;
+		&:first-child { margin-left: 0; }
+		
+		a {
+			display: block;
+			font-size: 20px;
+			text-align: center;		
+			background: $tst-color-link;
+			color: $tst-color-white;
+			text-decoration: none;
+			width: 36px;
+			height: 36px;
+			border-radius: 3px;
+			@include transition(all 0.35s);
+		}
+		
+		i {
+			color: $tst-color-white;
+			line-height: 36px;
+			margin: 0;
+			span {
+				display: none;
+			}
+		}
+	}
+	
+	.vk a {
+		background: #3C6792;
+		&:hover, &:focus, &:active {
+			background: lighten(#3C6792, 10%);
+		}
+	}
+	
+	.facebook a {
+		background: #3D549A;
+		&:hover, &:focus, &:active {
+			background: lighten(#3D549A, 10%);
+		}
+	}
+		
+	.twitter a {
+		background: #01ADED;
+		&:hover, &:focus, &:active {
+			background: darken(#01ADED, 10%);
+		}
+	}
+	.odnoklassniki a {
+		background: #EB9130;
+		&:hover, &:focus, &:active {
+			background: darken(#EB9130, 10%);
+		}
+	}
+	.instagram a {
+		background: #2A5B83;
+		&:hover, &:focus, &:active {
+			background: darken(#2A5B83, 10%);
+		}
+	}
+	.youtube a {
+		background: #E83832;
+		&:hover, &:focus, &:active {
+			background: darken(#E83832, 10%);
+		}
+	}
+}
 
+
+.widget_socila_links .social-menu  {
+	float: left;
+	margin-top: 40px;
+}

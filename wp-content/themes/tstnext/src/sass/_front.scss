@@ -283,10 +283,8 @@ body.tax-auctor {
 	
 	.copy {
 		margin-left: 92px;
-		padding-top: 5px;
-		a {
-			font-weight: normal;
-		}
+		
+		a { font-weight: normal; }
 		p {
 			margin: 0;
 			color: $tst-color-text;
@@ -294,6 +292,23 @@ body.tax-auctor {
 			&:last-child {
 				color: $tst-color-text-semi;
 				font-size: 12px;				
+			}
+		}
+		
+		.social-menu {
+			margin-bottom: 18px;
+			
+			li {				
+				a {
+					width: 24px;
+					height: 24px;
+					font-size: 14px;
+				}
+				
+				i {
+					line-height: 20px;
+					vertical-align: middle; 
+				}
 			}
 		}
 	}
@@ -460,5 +475,4 @@ section.error-404 {
 .pw_map_canvas {
 	margin: $margin-base 0;
 }
-
 

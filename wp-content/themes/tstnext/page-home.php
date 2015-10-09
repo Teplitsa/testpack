@@ -33,6 +33,17 @@ get_header();
 				</div>
 				
 				<div class="mdl-card__actions mdl-card--border">
+					<?php wp_nav_menu(array(
+						'theme_location'  => 'social',
+						//'menu'          => ,
+						'menu_class'      => 'social-menu',
+						'menu_id'         => 'social',
+						'echo'            => true,                
+						'depth'           => 0,
+						'fallback_cb'     => ''
+					));
+					?>
+					
 					<a class="mdl-button mdl-js-button mdl-button--colored" href="<?php echo $more_link;?>">Контакты</a>
 				</div>		
 				
