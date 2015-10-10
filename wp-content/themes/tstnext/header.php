@@ -18,6 +18,7 @@
 </head>
 
 <body id="top" <?php body_class(); ?>>
+<?php include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
 
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'tst' ); ?></a>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--overlay-drawer-button">
@@ -38,8 +39,7 @@
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                     mdl-textfield--floating-label mdl-textfield--align-right">
 			<label class="mdl-button mdl-js-button mdl-button--icon"
-				   for="fixed-header-drawer-exp">
-			  <i class="material-icons">search</i>
+				   for="fixed-header-drawer-exp"><svg class="search-icon"><use xlink:href="#pic-search" /></svg>
 			</label>
 			<div class="mdl-textfield__expandable-holder">
 				<form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">

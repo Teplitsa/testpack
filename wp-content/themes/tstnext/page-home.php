@@ -9,18 +9,22 @@ $more_link = home_url('about/contacts');
 
 
 //news
-$f_post = new WP_Query(array(
+$f_post = get_posts(array(
 	'post_type' => 'post',
-	'posts_per_page' => 3	
+	'posts_per_page' => 3,
+	'cache_results' => false
 ));
 
 //progs
 $progs = new WP_Query(array(
 	'post_type' => 'project',
 	'posts_per_page' => 3,
-	'orderby' => 'radn'
+	'orderby' => 'radn',
+	'cache_results' => false
+	
 ));
 
+//var_dump($progs->get('query_thumbnails'));
 get_header();
 ?>
 <section class="home-section intro">
@@ -33,16 +37,7 @@ get_header();
 				</div>
 				
 				<div class="mdl-card__actions mdl-card--border">
-					<?php wp_nav_menu(array(
-						'theme_location'  => 'social',
-						//'menu'          => ,
-						'menu_class'      => 'social-menu',
-						'menu_id'         => 'social',
-						'echo'            => true,                
-						'depth'           => 0,
-						'fallback_cb'     => ''
-					));
-					?>
+					<?php tst_get_social_menu(); ?>
 					
 					<a class="mdl-button mdl-js-button mdl-button--colored" href="<?php echo $more_link;?>">Контакты</a>
 				</div>		
@@ -56,17 +51,17 @@ get_header();
 </section>
 
 <?php
-	if($f_post->have_posts()) {
-		$p = get_option('page_for_posts');	
+	if(!empty($f_post)) {
+		
 ?>
 <section class="home-section posts">
 	
 	<div class="mdl-grid">
 		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Последние новости  <a href="<?php echo get_permalink($p);?>">&gt;</a></h3>
+			<h3 class="home-section-title">Последние новости  <a href="<?php echo get_permalink('blog');?>">&gt;</a></h3>
 		</header>
 	<?php
-		foreach($f_post->posts as $fp){
+		foreach($f_post as $fp){
 			tst_post_card($fp);
 		}
 	?>
@@ -74,15 +69,15 @@ get_header();
 </section>
 <?php } ?>
 
-<?php if($progs->have_posts()) { ?>
+<?php if(!empty($progs->posts)) { ?>
 <section class="home-section programms">
 	
 	<div class="mdl-grid">
 		<header class="mdl-cell mdl-cell--12-col">
 			<h3 class="home-section-title">Наши программы  <a href="<?php echo home_url('activity/education');?>">&gt;</a></h3>
 		</header>
-	<?php
-		foreach($progs->posts as $mp){
+	<?php		
+		foreach($progs->posts as $mp){			
 			tst_project_card($mp);
 		}
 	?>
@@ -91,10 +86,15 @@ get_header();
 <?php } ?>
 
 <?php
-	$partner_bg = (function_exists('get_field')) ? get_field('partners_bg', $home_id) : 0;
-	$parnter_bg = wp_get_attachment_url($partner_bg);
-	$partners = (function_exists('get_field')) ? get_field('home_partners', $home_id) : array();
-?>
+	$parnter_bg = wp_get_attachment_url(get_post_meta($home_id, 'partners_bg', true));
+	
+	$part_ids = (get_post_meta($home_id, 'home_partners', true));
+	$parterns = array();
+	if(!empty($part_ids)){
+		$partners  = get_posts(array('post_type' =>'org', 'post__in' => $part_ids, 'post_status' => 'publish', 'cache_results' => false));
+		
+	}	
+	?>
 <section class="home-partners-block"<?php if($parnter_bg) echo " style='background-image: url($parnter_bg);'";?>>
 <div class="mdl-grid">
 <div class="mdl-cell mdl-cell--12-col">
@@ -105,6 +105,7 @@ get_header();
 		<?php if(!empty($partners)) { ?>
 		<div class="partners-gallery">
 		<?php
+			
 			foreach($partners as $org){
 				
 				$title = apply_filters('tst_the_title', $org->post_title);  

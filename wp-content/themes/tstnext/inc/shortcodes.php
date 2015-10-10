@@ -29,6 +29,27 @@ function tst_lead_screen($atts, $content){
 	return '<div class="entry-summary">'.apply_filters('the_content', $content).'</div>';
 }
 
+/** lead **/
+add_shortcode('fab', 'tst_fab_screen');
+function tst_fab_screen($atts){
+	
+	extract(shortcode_atts(array(				
+		'url'  => ''
+	), $atts));
+	
+	if(empty($url))
+		return '';
+	
+	ob_start();
+?>
+<div class="fab"><a href="<?php echo $url;?>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"><svg class="mi"><use xlink:href="#pic-favorite_border" /></svg></a></div>
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}
+
 
 /** Partners gallery **/
 add_shortcode('tst_partners_gallery', 'tst_partners_gallery_screen');

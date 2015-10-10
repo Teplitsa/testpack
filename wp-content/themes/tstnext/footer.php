@@ -26,15 +26,7 @@ $footer_text = get_theme_mod('footer_text');
 			<div class="copy">
 				<?php
 					echo apply_filters('tst_the_content', $footer_text);
-					wp_nav_menu(array(
-						'theme_location'  => 'social',
-						//'menu'          => ,
-						'menu_class'      => 'social-menu',
-						'menu_id'         => 'social',
-						'echo'            => true,                
-						'depth'           => 0,
-						'fallback_cb'     => ''
-					));
+					tst_get_social_menu();
 				?>
 				<p><?php printf(__('All materials of the site are avaliabe under license %s.', 'tst'), $cc_link);?></p>
 			</div>
@@ -45,7 +37,7 @@ $footer_text = get_theme_mod('footer_text');
 			<div class="te-st-bn">
 				<span class="support">Сайт сделан <br>при поддержке</span>
 				<a title="<?php echo $tst;?>" href="http://te-st.ru/">
-					<img alt="<?php echo $tst;?>" src="<?php echo $banner;?>.svg" onerror="this.onerror=null;this.src=<?php echo $banner;?>.png;">
+					<img alt="<?php echo $tst;?>" src="<?php echo $banner;?>.svg" onerror="this.onerror=null;this.src=<?php echo $banner;?>.png;">					
 				</a>
 			</div>
 		</div><!-- .col -->

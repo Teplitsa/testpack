@@ -258,15 +258,7 @@ class TST_Social_Links extends WP_Widget {
 		
         echo $before_widget;
        
-		wp_nav_menu(array(
-			'theme_location'  => 'social',
-			//'menu'          => ,
-			'menu_class'      => 'social-menu',
-			'menu_id'         => 'social',
-			'echo'            => true,                
-			'depth'           => 0,
-			'fallback_cb'     => ''
-		));
+		tst_get_social_menu();
 				
 		echo $after_widget;
     }

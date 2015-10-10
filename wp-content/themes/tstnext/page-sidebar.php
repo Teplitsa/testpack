@@ -31,9 +31,11 @@ get_header();
 
 <div class="page-footer"><div class="mdl-grid">
 <?php
-	$embeds = (function_exists('get_field')) ? get_field('embed_posts', $post_id) : array();
-	if(!empty($embeds)){
-		$title = get_field('embed_posts_title', $post_id);
+	//$embeds = (function_exists('get_field')) ? get_field('embed_posts', $post_id) : array();
+	$em_ids = get_post_meta($post_id, 'embed_posts', true); 
+	$embeds = get_posts(array('post_type' => 'any', 'post__in' => $em_ids, 'posts_per_page' => -1));
+	if(!empty($em_ids) && !empty($embeds)){
+		$title = get_post_meta($post_id, 'embed_posts_title', true); 
 		if(!empty($title)){
 	?>
 		<div class="mdl-cell mdl-cell--12-col"><h5><?php echo $title; ?></h5></div>

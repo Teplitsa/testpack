@@ -157,10 +157,10 @@ function bp_pre_wp_nav_menu_social( $output, $args ) {
 		'instagram.com'      => 'icon-instagram',	
 		'facebook.com'       => 'icon-facebook',		
 		'twitter.com'        => 'icon-twitter',
-		'vk.com'             => 'icon-vkontakte',
-		'youtube.com'        => 'icon-youtube',		
-		'odnoklassniki.ru'   => 'icon-odnoklassniki',
-		'ok.ru'              => 'icon-odnoklassniki'
+		'vk.com'             => 'icon-vk',
+		//'youtube.com'        => 'icon-youtube',		
+		'odnoklassniki.ru'   => 'icon-ok',
+		'ok.ru'              => 'icon-ok'
 	));
 
 	// Process each menu item
@@ -170,11 +170,14 @@ function bp_pre_wp_nav_menu_social( $output, $args ) {
 		// Look for matching icons
 		foreach ( $supported_icons as $pattern => $class ) {
 			if ( false !== strpos( $item->url, $pattern ) ) {
+				
+				$icon = '<svg class="sh-icon"><use xlink:href="#'.$class.'" /></svg>';
+				
 				$item_output .= '<li class="' . esc_attr( str_replace( array('fa-', 'icon-'), '', $class ) ) . '">';
 				$item_output .= '<a href="' . esc_url( $item->url ) . '">';				
-				$item_output .= '<i class="fontello ' .esc_attr($class). '">';
+				$item_output .= $icon;
 				$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
-				$item_output .= '</i></a></li>';
+				$item_output .= '</a></li>';
 				break;
 			}
 		}
