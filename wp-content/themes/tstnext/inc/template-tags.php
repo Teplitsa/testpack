@@ -783,7 +783,7 @@ foreach($data as $key => $obj){
 			'url' => 'tg://msg?text='.$text,
 			'txt' => 'Telegram',
 			'icon' => 'icon-telegram',
-			'show_desktop' => true
+			'show_desktop' => false
 		),
 	);
 	
