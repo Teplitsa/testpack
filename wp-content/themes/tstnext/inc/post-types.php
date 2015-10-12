@@ -1,4 +1,5 @@
 <?php
+
 add_action('init', 'tst_custom_content', 20);
 if( !function_exists('tst_custom_content') ) {
 function tst_custom_content(){
@@ -36,7 +37,6 @@ function tst_custom_content(){
         'rewrite'           => array('slug' => 'auctor', 'with_front' => false),
         //'update_count_callback' => '',        
     ));
-	
 	
     /** Post types: */
     register_post_type('event', array(
