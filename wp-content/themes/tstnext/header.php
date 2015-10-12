@@ -54,6 +54,7 @@
 <div id="site_nav" class="mdl-layout__drawer">
     <span class="mdl-layout-title"><a href="<?php echo home_url();?>" class="navigation-logo"><?php tst_site_logo('context');?></a></span>
 	<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'mdl-navigation')); ?>
+	<?php tst_get_social_menu(); ?>
 </div>
 
 
