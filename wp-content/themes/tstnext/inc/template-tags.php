@@ -785,8 +785,15 @@ foreach($data as $key => $obj){
 			'icon' => 'icon-telegram',
 			'show_desktop' => false
 		),
+		'viber' => array(
+			'label' => 'Поделиться ссылкой в Viber',
+			'url' => 'viber://forward?text='.$text,
+			'txt' => 'Viber',
+			'icon' => 'icon-viber',
+			'show_desktop' => false
+		),
 	);
-	
+		
 	foreach($mobile as $key => $obj) {
 		
 		if((!tst_is_mobile_user_agent() && $obj['show_desktop']) || tst_is_mobile_user_agent()) {
