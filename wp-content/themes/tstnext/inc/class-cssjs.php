@@ -18,7 +18,7 @@ class TST_CssJs {
 		add_action('admin_enqueue_scripts',  array($this, 'load_admin_scripts'), 30);
 		add_action('login_enqueue_scripts',  array($this, 'load_login_scripts'), 30);
 		
-		add_action('init',  array($this, 'leyka_fix'), 30);
+		add_action('template_redirect',  array($this, 'leyka_fix'), 80);
 		
 	}
 	
