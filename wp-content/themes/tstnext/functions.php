@@ -4,8 +4,8 @@
  **/
 
 define('TST_VERSION', '1.1');
- 
- 
+
+
 if ( ! isset( $content_width ) ) {
 	$content_width = 760; /* pixels */
 }
