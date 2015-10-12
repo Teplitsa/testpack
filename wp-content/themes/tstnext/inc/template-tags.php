@@ -716,59 +716,86 @@ function tst_social_share_no_js() {
 	
 	$title = (class_exists('WPSEO_Frontend')) ? WPSEO_Frontend::get_instance()->title( '' ) : '';
 	$link = tst_current_url();
+	$text = $title.' '.$link;
 
 	$data = array(
 		'vkontakte' => array(
 			'label' => 'Поделиться во Вконтакте',
 			'url' => 'https://vk.com/share.php?url='.$link.'&title='.$title,
 			'txt' => 'Вконтакте',
-			'icon' => 'icon-vk'
+			'icon' => 'icon-vk',
+			'show_mobile' => true
 		),
 		'facebook' => array(
 			'label' => 'Поделиться на Фейсбуке',
 			'url' => 'https://www.facebook.com/sharer/sharer.php?u='.$link,
 			'txt' => 'Facebook',
-			'icon' => 'icon-facebook'
-		),
-		
-		'odnoklassniki' => array(
-			'label' => 'Поделиться ссылкой в Одноклассниках',
-			'url' => 'http://connect.ok.ru/dk?st.cmd=WidgetSharePreview&service=odnoklassniki&st.shareUrl='.$link,
-			'txt' => 'Одноклассники',
-			'icon' => 'icon-ok'
-		),
+			'icon' => 'icon-facebook',
+			'show_mobile' => true
+		),		
 		'twitter' => array(
 			'label' => 'Поделиться ссылкой в Твиттере',
 			'url' => 'https://twitter.com/intent/tweet?url='.$link.'&text='.$title,
 			'txt' => 'Twitter',
-			'icon' => 'icon-twitter'
-		)
+			'icon' => 'icon-twitter',
+			'show_mobile' => false		
+		),
+		'odnoklassniki' => array(
+			'label' => 'Поделиться ссылкой в Одноклассниках',
+			'url' => 'http://connect.ok.ru/dk?st.cmd=WidgetSharePreview&service=odnoklassniki&st.shareUrl='.$link,
+			'txt' => 'Одноклассники',
+			'icon' => 'icon-ok',
+			'show_mobile' => false
+			
+		),
 	);
-
 	
 ?>
 <div class="social-likes-wrapper">
 <div class="social-likes social-likes_visible social-likes_ready">
 
 <?php
-	foreach($data as $key => $obj){
+foreach($data as $key => $obj){		
+	if((tst_is_mobile_user_agent() && $obj['show_mobile']) || !tst_is_mobile_user_agent()){
 ?>
 	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
 		<a href="<?php echo $obj['url'];?>" class="social-likes__button social-likes__button_<?php echo $key;?>" target="_blank" onClick="window.open('<?php echo $obj['url'];?>','<?php echo $obj['label'];?>','top=320,left=325,width=650,height=430,status=no,scrollbars=no,menubar=no,tollbars=no');return false;">
 			<svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span>
 		</a>
 	</div>
-<?php }	?>
+<?php 
+	}
+	
+} //foreach
 
-<?php
-	if(tst_is_mobile_user_agent()) {
-		$text = $title.' '.$link;
+	$text = $title.' '.$link;
+	
+	$mobile = array(
+		'whatsapp' => array(
+			'label' => 'Поделиться ссылкой в WhatsApp',
+			'url' => 'whatsapp://send?text='.$text,
+			'txt' => 'WhatsApp',
+			'icon' => 'icon-whatsup',
+			'show_desktop' => false
+		),
+		'telegram' => array(
+			'label' => 'Поделиться ссылкой в Telegram',
+			'url' => 'tg://msg?text='.$text,
+			'txt' => 'Telegram',
+			'icon' => 'icon-telegram',
+			'show_desktop' => true
+		),
+	);
+	
+	foreach($mobile as $key => $obj) {
+		
+		if((!tst_is_mobile_user_agent() && $obj['show_desktop']) || tst_is_mobile_user_agent()) {
 ?>
-	<!-- whats app -->
-	<div title="Поделиться ссылкой в WhatsApp" class="social-likes__widget social-likes__widget_whatsapp">
-	<a href="whatsapp://send?text=<?php echo $text;?>" class="social-likes__button social-likes__button_whatsapp"><svg class="sh-icon"><use xlink:href="#icon-whatsup" /></svg><span class="sh-text">WhatsApp</span></a>
-	</div>
-<?php } ?>
+	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
+	<a href="<?php echo $obj['url'];?>" target="_blank" class="social-likes__button social-likes__button_<?php echo $key;?>"><svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span></a>
+	</div>	
+<?php } } //endforeach ?>
+
 </div>
 </div>
 <?php
