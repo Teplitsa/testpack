@@ -744,6 +744,7 @@ function tst_social_share_no_js() {
 			'icon' => 'icon-twitter'
 		)
 	);
+
 	
 ?>
 <div class="social-likes-wrapper">
@@ -754,19 +755,38 @@ function tst_social_share_no_js() {
 ?>
 	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
 		<a href="<?php echo $obj['url'];?>" class="social-likes__button social-likes__button_<?php echo $key;?>" target="_blank" onClick="window.open('<?php echo $obj['url'];?>','<?php echo $obj['label'];?>','top=320,left=325,width=650,height=430,status=no,scrollbars=no,menubar=no,tollbars=no');return false;">
-			<svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><?php echo $obj['txt'];?>
+			<svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span>
 		</a>
 	</div>
-<?php
-	}
-?>
+<?php }	?>
 
+<?php if(tst_is_mobile_user_agent()) { ?>
+	<!-- whats app -->
+	<div title="Поделиться ссылкой в WhatsApp" class="social-likes__widget social-likes__widget_whatsapp">
+	<a href="whatsapp://send" data-text="<?php $title;?>" data-href="<?php echo $link;?>" class="social-likes__button social-likes__button_whatsapp"><svg class="sh-icon"><use xlink:href="#icon-whatsup" /></svg><span class="sh-text">WhatsApp</span></a>
+	</div>
+<?php } ?>
 </div>
 </div>
 <?php
 }
 
-
+function tst_is_mobile_user_agent(){
+	//may be need some more sophisticated testing
+	$test = false;
+	
+	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+		$test = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+		$test = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
+		$test = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
+		$test = true;
+	}
+	
+	return $test;
+}
 
 
 
