@@ -760,10 +760,13 @@ function tst_social_share_no_js() {
 	</div>
 <?php }	?>
 
-<?php if(tst_is_mobile_user_agent()) { ?>
+<?php
+	if(tst_is_mobile_user_agent()) {
+		$text = $title.' '.$link;
+?>
 	<!-- whats app -->
 	<div title="Поделиться ссылкой в WhatsApp" class="social-likes__widget social-likes__widget_whatsapp">
-	<a href="whatsapp://send" data-text="<?php $title;?>" data-href="<?php echo $link;?>" class="social-likes__button social-likes__button_whatsapp"><svg class="sh-icon"><use xlink:href="#icon-whatsup" /></svg><span class="sh-text">WhatsApp</span></a>
+	<a href="whatsapp://send?text=<?php echo $text;?>" class="social-likes__button social-likes__button_whatsapp"><svg class="sh-icon"><use xlink:href="#icon-whatsup" /></svg><span class="sh-text">WhatsApp</span></a>
 	</div>
 <?php } ?>
 </div>
