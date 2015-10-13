@@ -129,6 +129,29 @@ gulp.task('full-build-js', function(callback) {
 });
 
 
+//svg - combine and clear svg assets
+gulp.task('svg-opt', function() {
+    
+    var icons = gulp.src([basePaths.src+'svg/icon-*.svg'])
+        .pipe(plugins.cheerio({ 
+            run: function ($) { //remove fill from icons
+                $('[fill]').removeAttr('fill');
+                $('[fill-rule]').removeAttr('fill-rule');
+            },
+            parserOptions: { xmlMode: true }
+        })),
+        pics = gulp.src([basePaths.src+'svg/pic-*.svg']);
+    
+    return es.concat(icons, pics)         
+        .pipe(plugins.svgmin({
+            plugins: [{
+                removeComments: true
+            }]
+        })) //minification
+        .pipe(plugins.svgstore({ inlineSvg: true })) //combine for inline usage
+        .pipe(gulp.dest(basePaths.dest+'svg'));    
+});
+
 //watchers
 gulp.task('watch', function(){
     gulp.watch(basePaths.src+'sass/*.scss', ['full-build-css']).on('change', function(evt) {

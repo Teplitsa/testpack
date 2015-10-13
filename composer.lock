@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "28102a146536314ba2543096ed2ee11e",
+    "hash": "e90bf9261123189970e73497581fc3b4",
     "packages": [
         {
             "name": "composer/installers",
@@ -262,12 +262,12 @@
         },
         {
             "name": "tst/formidable",
-            "version": "2.0.13",
+            "version": "2.0.14",
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-formidable-2.0.13.zip",
+                "url": "artifacts/tst-formidable-2.0.14.zip",
                 "reference": null,
-                "shasum": "1ded0eed8b2133222ff8fd367f5d85c157530141"
+                "shasum": "78468fb348141bb954b86961726efbddf2392032"
             },
             "require": {
                 "composer/installers": "~1.0"
