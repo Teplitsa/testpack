@@ -1,8 +1,15 @@
 /** Home **/
 // top item
 
-.home-section.intro .featured_text {
-	padding: $cell-elementary-3x;
+.home-section.intro {
+	.featured_text {
+		padding: $cell-elementary-3x;
+	}
+	
+	.social-menu {
+		float: left;
+		padding-left: 16px;
+	}
 }
 
 .home-section.posts,
@@ -28,30 +35,13 @@
 
 //partners
 .home-partners-block {
-	position: relative;
 	margin: $margin-base 0;
 	padding: 16px 0 56px;
 	background-color: #333;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center center;	
-	
-	&:before {
-		content: '';
-		display: block;
-		width: 100%;
-		height: 100%;
-		background: rgba(0,0,0, 0.35);
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 1;
-	}
-	
-	.mdl-grid {
-		z-index: 10;
-		position: relative;
-	}
+	background-position: center center;
+		
 	.widget-title {
 		font-size: 12px;
 		font-weight: 400;
@@ -110,6 +100,12 @@
 	}
 }
 
-
+.page-template-page-home .widget_socila_links {
+	margin-left: 72px;
+	
+	.social-menu {
+		margin-top: 0;
+	}
+}
 
 

@@ -12,7 +12,7 @@ p {
 
 /**  Header **/ 
 $sh-base : $cell-elementary-2x;
-
+body > svg { display: none; }
 .site-logo {
 	display: block;
 	width: auto;	
@@ -39,14 +39,18 @@ $sh-base : $cell-elementary-2x;
 		}
 	}
 	
-	img {
-		width: auto;
-		vertical-align: middle;
-		max-height: $layout-desktop-header-height - 16px;
-		@media screen and (max-width: $layout-screen-size-threshold) {
-			max-height: $layout-mobile-header-height - 14px;
-		}
+	.logo {
+		display: inline-block;
+		width: 82px;
+		height: 42px;
 	}
+}
+
+.mdl-layout__header-row .search-icon {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	use { fill: #fff;}
 }
 
 .page-template-page-home .site-logo {
@@ -100,19 +104,13 @@ $sh-base : $cell-elementary-2x;
 	
 	.navigation-logo {
 		display: block;
-		line-height: $layout-desktop-header-height;
-		img {
-			max-height: $layout-desktop-header-height - 16px;
-			width: auto;
-			vertical-align: middle;
+				
+		.logo {
+			display: inline-block;
+			width: 27px;
+			height: 46px;
 		}
-		
-		@media screen and (max-width: $layout-screen-size-threshold) {
-			line-height: $layout-mobile-header-height;
-			img {
-				max-height: $layout-mobile-header-height - 8;
-			}
-		}		
+			
 	}
 	
 	.mdl-navigation__link {
@@ -129,6 +127,11 @@ $sh-base : $cell-elementary-2x;
 				content: '— ';				
 			}
 		}
+	}
+	
+	.social-menu {
+		padding-left: 40px;
+		margin-top: 16px;
 	}
 }
 
@@ -174,6 +177,12 @@ $sh-base : $cell-elementary-2x;
 		position: relative;
 		z-index: 10;
 		padding: 8px 0 48px;
+		
+		.logo {
+			display: inline-block;
+			width: 406px;
+			height: 120px;
+		}
 	}
 }
 
@@ -187,12 +196,11 @@ $sh-base : $cell-elementary-2x;
 body.error404,
 body.single,
 body.page-template-default,
-body.page-template-page-simple,
 body.page-template-page-cards,
 body.page-template-page-sidebar {
 	
 	.page-header .page-title {
-		padding: $sh-base*4 0 $sh-base*1;		
+		padding: $sh-base*3 0 $sh-base*2;		
 		line-height: 1.2;
 	}
 	
@@ -272,9 +280,11 @@ body.tax-auctor {
 	.bottom-logo {
 		float: left;
 		height: 50px;
-		img {
-			height: 100%;
-			width: auto;
+		
+		.logo {
+			display: inline-block;
+			width: 56px;
+			height: 51px;
 		}
 	}
 	
@@ -284,10 +294,8 @@ body.tax-auctor {
 	
 	.copy {
 		margin-left: 92px;
-		padding-top: 5px;
-		a {
-			font-weight: normal;
-		}
+		
+		a { font-weight: normal; }
 		p {
 			margin: 0;
 			color: $tst-color-text;
@@ -295,6 +303,27 @@ body.tax-auctor {
 			&:last-child {
 				color: $tst-color-text-semi;
 				font-size: 12px;				
+			}
+		}
+		
+		.social-menu {
+			margin-bottom: 18px;
+			
+			li {				
+				a {
+					width: 24px;
+					height: 24px;
+					font-size: 14px;
+				}
+				
+				.sh-icon  {
+					width: 14px;
+					height: 14px;
+					display: inline-block;
+					fill: #ffffff;			
+					margin: 0 0 0;
+					vertical-align: middle;		
+				}
 			}
 		}
 	}
@@ -307,26 +336,42 @@ body.tax-auctor {
 	
 	a {
 		display: block;
-		width: 106px;
+		width: 110px;
+		height: 50px;
+		padding-top: 5px;
+		text-align: center;
+		box-sizing: border-box;
 		position: absolute;
 		top: 0;
 		right: 0;		
-		&:hover, &:focus, &:active {
-			
-		}
+		
+		border-radius: 5px;
+		box-shadow: 1px 1px 0px rgba(150,150,150, 0.5);
+		
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+1,e0e0e0+99 */
+background: #f9f9f9; /* Old browsers */
+background: -moz-linear-gradient(top,  #f9f9f9 1%, #e0e0e0 99%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f9f9f9), color-stop(99%,#e0e0e0)); 
+background: -webkit-linear-gradient(top,  #f9f9f9 1%,#e0e0e0 99%); 
+background: -o-linear-gradient(top,  #f9f9f9 1%,#e0e0e0 99%);
+background: -ms-linear-gradient(top,  #f9f9f9 1%,#e0e0e0 99%); 
+background: linear-gradient(to bottom,  #f9f9f9 1%,#e0e0e0 99%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#e0e0e0',GradientType=0 ); 
 	}
-	
-	img {
-		vertical-align: top;
-	}
-	
+		
 	span {
 		font-size: 12px;
 		line-height: 16px;
 		color: $tst-color-text-semi;
 		display: inline-block;
-		margin-right: 115px;
+		margin-right: 120px;
 		padding-top: 10px;
+	}
+	
+	.tst-icon {
+		display: inline-block;
+		width: 87px;
+		height: 40px;
 	}
 }
 
@@ -336,6 +381,14 @@ body.tax-auctor {
 	.fab {
 		@include upto(tablet){
 			display: none;
+		}
+		
+		.mi {
+			display: inline-block;
+			width: 24px;
+			height: 24px;			
+			margin-top: 16px;
+			use { fill: #fff; }
 		}
 	}
 	
@@ -435,15 +488,6 @@ body.tax-auctor {
 	}
 }
 
-.post-type-archive-project .sidebar {
-	@include for(desktop) {		
-		margin-left: 72px;
-		.donate-widget {
-			margin-left: -72px;
-		}
-	}
-}
-
 
 /** Elements **/
 .paging-navigation {
@@ -470,5 +514,4 @@ section.error-404 {
 .pw_map_canvas {
 	margin: $margin-base 0;
 }
-
 

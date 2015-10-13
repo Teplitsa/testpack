@@ -48,6 +48,15 @@ function tst_request_corrected($query) {
 } 
 
 
+function tst_get_post_id_from_posts($posts){
+		
+	$ids = array();
+	if(!empty($posts)){ foreach($posts as $p) {
+		$ids[] = $p->ID;
+	}}
+	
+	return $ids;
+}
 
 /* Custom conditions */
 function is_about(){
@@ -62,22 +71,31 @@ function is_about(){
 	return false;
 }
 
-function is_page_branch($slug){
+function is_page_branch($pageID){
 	global $post;
 	
-	if(empty($slug))
+	if(empty($pageID))
 		return false;
-	
 		
-	if(!is_page())
+	if(!is_page() || is_front_page())
 		return false;
 	
-	if(is_page($slug))
+	if(is_page($pageID))
 		return true;
 	
+	if($post->post_parent == 0)
+		return false;
+	
 	$parents = get_post_ancestors($post);
-	$test = get_page_by_path($slug);
-	if(in_array($test->ID, $parents))
+	
+	if(is_string($pageID)){
+		$test_id = get_page_by_path($pageID)->ID;
+	}
+	else {
+		$test_id = (int)$pageID;
+	}
+	
+	if(in_array($test_id, $parents))
 		return true;
 	
 	return false;
@@ -186,22 +204,21 @@ function tst_site_logo($size = 'regular') {
 
 	switch($size) {
 		case 'context':
-			$file = 'logo-accent';
+			$file = 'pic-logo-accent';
 			break;
 		case 'small':
-			$file = 'logo-small';
+			$file = 'pic-logo-small';
 			break;
 		default:
-			$file = 'logo';
+			$file = 'pic-logo';
 			break;	
 	}
 	
-	$file = get_template_directory_uri().'/assets/images/'.$file;
-	$alt = esc_attr(__('Logo', 'tst'));
-	
-	//add svg back
+	$file = esc_attr($file);	
 ?>
-	<img src="<?php echo $file;?>.svg" onerror="this.onerror=null;this.src=<?php echo $file;?>.png" alt="<?php echo $alt;?>">
+<svg class="logo <?php echo $file;?>">
+	<use xlink:href="#<?php echo $file;?>" />
+</svg>
 <?php
 }
 
@@ -248,7 +265,7 @@ function tst_header_image_url(){
 	}
 	elseif(is_single() || is_page()){
 		$qo = get_queried_object();
-		$img = (function_exists('get_field')) ? get_field('header_img', $qo->ID) : 0;
+		$img = get_post_meta($qo->ID,'header_img', true);		
 		$img = wp_get_attachment_url($img);
 	}
 	
@@ -674,29 +691,38 @@ function tst_social_share_no_js() {
 	
 	$title = (class_exists('WPSEO_Frontend')) ? WPSEO_Frontend::get_instance()->title( '' ) : '';
 	$link = tst_current_url();
+	$text = $title.' '.$link;
 
 	$data = array(
 		'vkontakte' => array(
 			'label' => 'Поделиться во Вконтакте',
 			'url' => 'https://vk.com/share.php?url='.$link.'&title='.$title,
-			'txt' => 'Вконтакте'
+			'txt' => 'Вконтакте',
+			'icon' => 'icon-vk',
+			'show_mobile' => false
 		),
 		'facebook' => array(
 			'label' => 'Поделиться на Фейсбуке',
 			'url' => 'https://www.facebook.com/sharer/sharer.php?u='.$link,
-			'txt' => 'Facebook'
-		),
-		
-		'odnoklassniki' => array(
-			'label' => 'Поделиться ссылкой в Одноклассниках',
-			'url' => 'http://connect.ok.ru/dk?st.cmd=WidgetSharePreview&service=odnoklassniki&st.shareUrl='.$link,
-			'txt' => 'Одноклассники'
-		),
+			'txt' => 'Facebook',
+			'icon' => 'icon-facebook',
+			'show_mobile' => false
+		),		
 		'twitter' => array(
 			'label' => 'Поделиться ссылкой в Твиттере',
 			'url' => 'https://twitter.com/intent/tweet?url='.$link.'&text='.$title,
-			'txt' => 'Twitter'
-		)
+			'txt' => 'Twitter',
+			'icon' => 'icon-twitter',
+			'show_mobile' => false		
+		),
+		'odnoklassniki' => array(
+			'label' => 'Поделиться ссылкой в Одноклассниках',
+			'url' => 'http://connect.ok.ru/dk?st.cmd=WidgetSharePreview&service=odnoklassniki&st.shareUrl='.$link,
+			'txt' => 'Одноклассники',
+			'icon' => 'icon-ok',
+			'show_mobile' => false
+			
+		),
 	);
 	
 ?>
@@ -704,23 +730,82 @@ function tst_social_share_no_js() {
 <div class="social-likes social-likes_visible social-likes_ready">
 
 <?php
-	foreach($data as $key => $obj){
+foreach($data as $key => $obj){		
+	if((tst_is_mobile_user_agent() && $obj['show_mobile']) || !tst_is_mobile_user_agent()){
 ?>
 	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
 		<a href="<?php echo $obj['url'];?>" class="social-likes__button social-likes__button_<?php echo $key;?>" target="_blank" onClick="window.open('<?php echo $obj['url'];?>','<?php echo $obj['label'];?>','top=320,left=325,width=650,height=430,status=no,scrollbars=no,menubar=no,tollbars=no');return false;">
-			<span class="social-likes__icon social-likes__icon_<?php echo $key;?>"></span><?php echo $obj['txt'];?>
+			<svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span>
 		</a>
 	</div>
-<?php
+<?php 
 	}
+	
+} //foreach
+
+	$text = $title.' '.$link;
+	
+	$mobile = array(
+		'twitter' => array(
+			'label' => 'Поделиться ссылкой в Твиттере',
+			'url' => 'twitter://post?message='.$text,
+			'txt' => 'Twitter',
+			'icon' => 'icon-twitter',
+			'show_desktop' => false		
+		),
+		'whatsapp' => array(
+			'label' => 'Поделиться ссылкой в WhatsApp',
+			'url' => 'whatsapp://send?text='.$text,
+			'txt' => 'WhatsApp',
+			'icon' => 'icon-whatsup',
+			'show_desktop' => false
+		),
+		'telegram' => array(
+			'label' => 'Поделиться ссылкой в Telegram',
+			'url' => 'tg://msg?text='.$text,
+			'txt' => 'Telegram',
+			'icon' => 'icon-telegram',
+			'show_desktop' => false
+		),
+		'viber' => array(
+			'label' => 'Поделиться ссылкой в Viber',
+			'url' => 'viber://forward?text='.$text,
+			'txt' => 'Viber',
+			'icon' => 'icon-viber',
+			'show_desktop' => false
+		),
+	);
+		
+	foreach($mobile as $key => $obj) {
+		
+		if((!tst_is_mobile_user_agent() && $obj['show_desktop']) || tst_is_mobile_user_agent()) {
 ?>
+	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
+	<a href="<?php echo $obj['url'];?>" target="_blank" class="social-likes__button social-likes__button_<?php echo $key;?>"><svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span></a>
+	</div>	
+<?php } } //endforeach ?>
 
 </div>
 </div>
 <?php
 }
 
-
+function tst_is_mobile_user_agent(){
+	//may be need some more sophisticated testing
+	$test = false;
+	
+	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+		$test = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+		$test = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
+		$test = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
+		$test = true;
+	}
+	
+	return $test;
+}
 
 
 
@@ -790,58 +875,9 @@ function tst_get_tax_avatar($term) {
 
 /** == Compact Items for posts in widgets and related section == **/
 
-// deafult thumbnail for posts
-function tst_get_default_post_thumbnail($size){
-		
-	$default_thumb_id = attachment_url_to_postid(get_theme_mod('default_thumbnail'));
-	$img = '';
-	if($default_thumb_id){
-		$img = wp_get_attachment_image($default_thumb_id, $size);	
-	}
-	
-	return $img;
-}
-
-
-/** Compact post item **/
-function tst_compact_project_item($cpost){
-	
-	if(is_int($cpost))
-		$cpost = get_post($cpost);
-	
-	$e = tst_get_post_excerpt($cpost, 30, true);	
-?>
-	<div class="tpl-related-project"><a href="<?php echo get_permalink($cpost);?>">
-	
-	<div class="mdl-grid mdl-grid--no-spacing">
-		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--4-col-phone">
-			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-				
-			<!-- summary -->
-			<p class="entry-summary">
-				<?php echo apply_filters('tstpsk_the_tite', $e); ?>
-			</p>
-		</div>
-		
-		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--hide-phone">
-		<?php
-			$thumb = get_the_post_thumbnail($cpost->ID, 'thumbnail-landscape', array('alt' => __('Thumbnail', 'tst')) ) ;
-			if(empty($thumb)){
-				$thumb = tst_get_default_post_thumbnail('thumbnail-landscape');
-			}
-			echo $thumb;
-		?>
-		</div>
-	</div>	
-	
-	</a></div>
-<?php
-}
-
 /** Compact post item **/
 function tst_compact_post_item($cpost, $show_thumb = true, $tax = 'category'){
-	global $post;
-		
+			
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
 	
@@ -898,57 +934,48 @@ function tst_compact_post_item($cpost, $show_thumb = true, $tax = 'category'){
 }
 
 
-
-/** Post card content **/
-function tst_post_card_content($cpost = null, $tax = 'auctor'){
-			
-	if(!$cpost)
-		$cpost = $post;
+function tst_compact_project_item($cpost){
 	
-	$name = $desc = $avatar = '';
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
 	
-	if($tax == 'auctor'){
-		$author = tst_get_post_author($cpost);
-		$name = ($author) ? $author->name : '';
-		$desc = ($author) ? $author->description : '';
-		$avatar = ($show_thumb && $author) ? tst_get_author_avatar($author->term_id) : '';
-	}
-	elseif($tax) { //category
-		$cat = get_the_terms($cpost->ID, $tax);
-		$name = (isset($cat[0])) ? $cat[0]->name : '';
-		$desc = (isset($cat[0])) ? $cat[0]->description : '';
-		$avatar = ($show_thumb && isset($cat[0])) ? tst_get_tax_avatar($cat[0]) : '';
-	}
+	$e = tst_get_post_excerpt($cpost, 30, true);	
 ?>
-	<?php if(has_post_thumbnail($cpost->ID)){ ?>
-	<div class="mdl-card__media">
-		<?php echo tst_get_post_thumbnail($cpost, 'embed'); ?>		
-	</div>			
-	<?php } ?>
+	<div class="tpl-related-project"><a href="<?php echo get_permalink($cpost);?>">
 	
-	<?php if(!empty($name)) { ?>
-		<div class="entry-author mdl-card__supporting-text">
-			<div class="pictured-card-item">
-				<div class="author-avatar round-image pci-img"><?php echo $avatar;?></div>
-					
-				<div class="author-content card-footer-content pci-content">
-					<h5 class="author-name mdl-typography--body-1"><?php echo apply_filters('tst_the_title', $name);?></h5>
-				<?php if(!empty($desc)) { ?>	
-					<p class="author-role mdl-typography--caption"><?php echo apply_filters('tst_the_title', $desc);?></p>
-				<?php  } ?>
-				</div>
-			</div>
+	<div class="mdl-grid mdl-grid--no-spacing">
+		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--4-col-phone">
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+				
+			<!-- summary -->
+			<p class="entry-summary">
+				<?php echo apply_filters('tstpsk_the_tite', $e); ?>
+			</p>
 		</div>
-	<?php } ?>
+		
+		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--hide-phone">
+		<?php
+			$thumb = get_the_post_thumbnail($cpost->ID, 'thumbnail-landscape', array('alt' => __('Thumbnail', 'tst')) ) ;
+			if(empty($thumb)){
+				$thumb = tst_get_default_post_thumbnail('thumbnail-landscape');
+			}
+			echo $thumb;
+		?>
+		</div>
+	</div>	
 	
-	<div class="mdl-card__title">
-		<h4 class="mdl-card__title-text"><a href="<?php echo get_permalink($cpost);?>"><?php echo get_the_title($cpost->ID);?></a></h4>
-	</div>
-	
-	<?php echo tst_card_summary($cpost); ?>
-	<div class="mdl-card--expand"></div>
-	<div class="mdl-card__actions mdl-card--border">
-		<a href="<?php echo get_permalink($cpost);?>" class="mdl-button mdl-js-button">Подробнее</a>
-	</div>
+	</a></div>
 <?php
+}
+
+// deafult thumbnail for posts
+function tst_get_default_post_thumbnail($size){
+		
+	$default_thumb_id = attachment_url_to_postid(get_theme_mod('default_thumbnail'));
+	$img = '';
+	if($default_thumb_id){
+		$img = wp_get_attachment_image($default_thumb_id, $size);	
+	}
+	
+	return $img;
 }

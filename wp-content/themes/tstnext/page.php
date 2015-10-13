@@ -1,4 +1,7 @@
 <?php
+/**
+ * The template for displaying all pages.
+ */
 
 $post_id = '';
 get_header();

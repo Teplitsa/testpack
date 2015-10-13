@@ -122,7 +122,7 @@ function tst_body_classes( $classes ) {
 
 
 /** Support for social icons in menu **/
-//add_filter( 'pre_wp_nav_menu', 'tst_pre_wp_nav_menu_social', 10, 2 );
+add_filter( 'pre_wp_nav_menu', 'tst_pre_wp_nav_menu_social', 10, 2 );
 function tst_pre_wp_nav_menu_social( $output, $args ) {
 	if ( ! $args->theme_location || 'social' !== $args->theme_location ) {
 		return $output;
@@ -154,48 +154,13 @@ function tst_pre_wp_nav_menu_social( $output, $args ) {
 
 	// Supported social icons (filterable); [url pattern] => [css class]
 	$supported_icons = apply_filters( 'tst_supported_social_icons', array(
-		'app.net'            => 'fa-adn',
-		'behance.net'        => 'fa-behance',
-		'bitbucket.org'      => 'fa-bitbucket',
-		'codepen.io'         => 'fa-codepen',
-		'delicious.com'      => 'fa-delicious',
-		'deviantart.com'     => 'fa-deviantart',
-		'digg.com'           => 'fa-digg',
-		'dribbble.com'       => 'fa-dribbble',
-		'facebook.com'       => 'fa-facebook',
-		'flickr.com'         => 'fa-flickr',
-		'foursquare.com'     => 'fa-foursquare',
-		'github.com'         => 'fa-github',
-		'gittip.com'         => 'fa-gittip',
-		'plus.google.com'    => 'fa-google-plus-square',
-		'instagram.com'      => 'fa-instagram',
-		'jsfiddle.net'       => 'fa-jsfiddle',
-		'linkedin.com'       => 'fa-linkedin',
-		'pinterest.com'      => 'fa-pinterest',
-		'qzone.qq.com'       => 'fa-qq',
-		'reddit.com'         => 'fa-reddit',
-		'renren.com'         => 'fa-renren',
-		'soundcloud.com'     => 'fa-soundcloud',
-		'spotify.com'        => 'fa-spotify',
-		'stackexchange.com'  => 'fa-stack-exchange',
-		'stackoverflow.com'  => 'fa-stack-overflow',
-		'steamcommunity.com' => 'fa-steam',
-		'stumbleupon.com'    => 'fa-stumbleupon',
-		't.qq.com'           => 'fa-tencent-weibo',
-		'trello.com'         => 'fa-trello',
-		'tumblr.com'         => 'fa-tumblr',
-		'twitter.com'        => 'fa-twitter',
-		'vimeo.com'          => 'fa-vimeo-square',
-		'vine.co'            => 'fa-vine',
-		'vk.com'             => 'fa-vk',
-		'weibo.com'          => 'fa-weibo',
-		'weixin.qq.com'      => 'fa-weixin',
-		'wordpress.com'      => 'fa-wordpress',
-		'xing.com'           => 'fa-xing',
-		'yahoo.com'          => 'fa-yahoo',
-		'youtube.com'        => 'fa-youtube',
-		'feed'               => 'fa-rss',
-		'odnoklassniki.ru'   => 'icon-odnoklassniki'
+		'instagram.com'      => 'icon-instagram',	
+		'facebook.com'       => 'icon-facebook',		
+		'twitter.com'        => 'icon-twitter',
+		'vk.com'             => 'icon-vk',
+		//'youtube.com'        => 'icon-youtube',		
+		'odnoklassniki.ru'   => 'icon-ok',
+		'ok.ru'              => 'icon-ok'
 	));
 
 	// Process each menu item
@@ -205,22 +170,25 @@ function tst_pre_wp_nav_menu_social( $output, $args ) {
 		// Look for matching icons
 		foreach ( $supported_icons as $pattern => $class ) {
 			if ( false !== strpos( $item->url, $pattern ) ) {
+				
+				$icon = '<svg class="sh-icon"><use xlink:href="#'.$class.'" /></svg>';
+				
 				$item_output .= '<li class="' . esc_attr( str_replace( array('fa-', 'icon-'), '', $class ) ) . '">';
 				$item_output .= '<a href="' . esc_url( $item->url ) . '">';				
-				$item_output .= '<i class="fa fa-fw ' .esc_attr($class). '">';
+				$item_output .= $icon;
 				$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
-				$item_output .= '</i></a></li>';
+				$item_output .= '</a></li>';
 				break;
 			}
 		}
 
 		// No matching icons
 		if ( '' === $item_output ) {
-			$item_output .= '<li class="external-link-square">';
-			$item_output .= '<a href="' . esc_url( $item->url ) . '">';
-			$item_output .= '<i class="fa fa-fw fa-external-link-square">';
-			$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
-			$item_output .= '</i></a></li>';
+			//$item_output .= '<li class="external-link-square">';
+			//$item_output .= '<a href="' . esc_url( $item->url ) . '">';
+			//$item_output .= '<i class="fa fa-fw fa-external-link-square">';
+			//$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
+			//$item_output .= '</i></a></li>';
 		}
 
 		// Add item to list

@@ -4,8 +4,8 @@
  **/
 
 define('TST_VERSION', '1.1');
- 
- 
+
+
 if ( ! isset( $content_width ) ) {
 	$content_width = 760; /* pixels */
 }
@@ -116,6 +116,7 @@ add_action( 'widgets_init', 'tst_widgets_init' );
  */
 
 require get_template_directory().'/inc/class-cssjs.php';
+require get_template_directory().'/inc/class-statics.php';
 require get_template_directory().'/inc/post-types.php';
 require get_template_directory().'/inc/aq_resizer.php';
 require get_template_directory().'/inc/extras.php';

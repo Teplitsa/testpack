@@ -4,7 +4,7 @@
  **/
 
  
-add_action('widgets_init', 'tst_custom_widgets', 11);
+add_action('widgets_init', 'tst_custom_widgets', 20);
 function tst_custom_widgets(){
 
 	unregister_widget('WP_Widget_Pages');
@@ -15,9 +15,15 @@ function tst_custom_widgets(){
 	unregister_widget('WP_Widget_Recent_Posts');
 	unregister_widget('WP_Widget_Tag_Cloud');
 	unregister_widget('WP_Widget_RSS');
-	//unregister_widget('WP_Widget_Search');
+	unregister_widget('WP_Widget_Search');
 	unregister_widget('FrmListEntries');
+	unregister_widget('FrmShowForm');
 	
+	//Most of widgets do not perform well with MDL as for now
+	unregister_widget('Leyka_Donations_List_Widget');
+	unregister_widget('Leyka_Campaign_Card_Widget');
+	unregister_widget('Leyka_Campaigns_List_Widget');
+	unregister_widget('Su_Widget');
 	
 	//register_widget('BB_RSS_Widget');
 	//register_widget('BB_Recent_Posts_Widget');
@@ -249,68 +255,26 @@ class TST_Social_Links extends WP_Widget {
     
     function widget($args, $instance) {
         extract($args); 
-						
-		
-		$title = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
-		$desc = apply_filters('the_content', $instance['desc']);
 		
         echo $before_widget;
-        if($title){			
-            echo $before_title.$title.$after_title;
-        }
-		
-		echo "<div class='social-menu-position'>";
-		wp_nav_menu(array(
-			'theme_location'  => 'social',
-			//'menu'          => ,
-			'menu_class'      => 'social-menu',
-			'menu_id'         => 'social',
-			'echo'            => true,                
-			'depth'           => 0,
-			'fallback_cb'     => ''
-		));
-		echo "</div>";
-		
-		if(!empty($desc))
-			echo "<div class='social-desc'>{$desc}</div>";
-		
+       
+		tst_get_social_menu();
+				
 		echo $after_widget;
     }
 	
 	
 	
-	
     function form($instance) {
-		
-        /* Set up some default widget settings */
-		$defaults = array(
-			'title' => '',			
-			'desc'  => '',			
-		);
-
-		$instance = wp_parse_args((array)$instance, $defaults);
-		
 	?>
-        <p>
-            <label for="<?php echo $this->get_field_id('title');?>">
-            Заголовок:</label>
-            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($instance['title']);?>">
-        </p>
-		
-		<p>
-            <label for="<?php echo $this->get_field_id('desc');?>">Описание:</label>         
-            <textarea id="<?php echo $this->get_field_id('desc'); ?>" name="<?php echo $this->get_field_name('desc');?>" class="widefat"><?php echo esc_textarea($instance['desc']); ?></textarea>
-			
-        </p>	
+        <p>Виджет не имеет настроек</p>
     <?php
     }
 
     
     function update($new_instance, $old_instance) {
-        $instance = $old_instance;
-        
-		$instance['title'] = sanitize_text_field($new_instance['title'], 'save');				
-		$instance['desc'] = wp_kses_post(trim($new_instance['desc']));	
+        $instance = $new_instance;
+		
 		
         return $instance;
     }
