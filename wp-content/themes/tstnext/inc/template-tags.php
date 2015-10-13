@@ -724,14 +724,14 @@ function tst_social_share_no_js() {
 			'url' => 'https://vk.com/share.php?url='.$link.'&title='.$title,
 			'txt' => 'Вконтакте',
 			'icon' => 'icon-vk',
-			'show_mobile' => true
+			'show_mobile' => false
 		),
 		'facebook' => array(
 			'label' => 'Поделиться на Фейсбуке',
 			'url' => 'https://www.facebook.com/sharer/sharer.php?u='.$link,
 			'txt' => 'Facebook',
 			'icon' => 'icon-facebook',
-			'show_mobile' => true
+			'show_mobile' => false
 		),		
 		'twitter' => array(
 			'label' => 'Поделиться ссылкой в Твиттере',
