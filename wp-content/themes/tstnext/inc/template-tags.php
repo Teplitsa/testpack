@@ -771,6 +771,13 @@ foreach($data as $key => $obj){
 	$text = $title.' '.$link;
 	
 	$mobile = array(
+		'twitter' => array(
+			'label' => 'Поделиться ссылкой в Твиттере',
+			'url' => 'twitter://post?message='.$text,
+			'txt' => 'Twitter',
+			'icon' => 'icon-twitter',
+			'show_desktop' => false		
+		),
 		'whatsapp' => array(
 			'label' => 'Поделиться ссылкой в WhatsApp',
 			'url' => 'whatsapp://send?text='.$text,
