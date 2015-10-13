@@ -18,3 +18,4 @@ wp-config.php
 .komodotools
 debug.log
 _temp
+.htaccess
