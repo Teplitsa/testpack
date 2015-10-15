@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f22a6d182e40821f4d38d51298de735d",
-    "content-hash": "4227148757016b57f882bd7caf6ea98d",
+    "hash": "d18ea948777e1b400763f1a1f754d8af",
+    "content-hash": "71c3a856339f6652ad282fa5bdd00c2b",
     "packages": [
         {
             "name": "composer/installers",
@@ -456,6 +456,26 @@
             "homepage": "https://wordpress.org/plugins/simple-css-for-widgets/"
         },
         {
+            "name": "wpackagist-plugin/w3-total-cache",
+            "version": "0.9.4.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/w3-total-cache/",
+                "reference": "tags/0.9.4.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.0.9.4.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/w3-total-cache/"
+        },
+        {
             "name": "wpackagist-plugin/widget-logic",
             "version": "0.57",
             "source": {
@@ -681,6 +701,7 @@
         "wpackagist-plugin/shortcodes-ultimate": 0,
         "wpackagist-plugin/simple-css-for-widgets": 0,
         "wpackagist-plugin/wordpress-seo": 0,
+        "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/debug-bar": 0,
         "wpackagist-plugin/debug-objects": 0,
         "wp-sync-db/wp-sync-db": 20,
