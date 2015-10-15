@@ -618,7 +618,7 @@ function tst_org_card($cpost, $ext_link = true){
 	$text = apply_filters('tst_the_content', $cpost->post_content);	
 	
 ?>
-<article <?php post_class('mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet'); ?>>
+<article <?php post_class('mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'); ?>>
 <div class="tpl-card-mix mdl-card mdl-shadow--2dp">
 	
 	<div class="mdl-card__media">
