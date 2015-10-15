@@ -215,6 +215,7 @@
 .gallery {
 	@include clearfix;
 	margin: $margin-base -4px;
+	&:first-child { margin-top: 0; }
 	
 	.gallery-caption { display: none; }
 	
