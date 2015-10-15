@@ -63,6 +63,8 @@ get_header();
 				)
 			)
 		);
+		
+		if($r_query->have_posts()) {
 		?>
 		<aside class="related-posts ev-future section">	
 			<h5><?php _e('More events', 'tst');?></h5>
@@ -73,6 +75,7 @@ get_header();
 			}				
 		?>
 		</aside>
+		<?php } //have posts?>
 	</div>
 	<div class="mdl-cell mdl-cell--4-col mdl-cell--hide-phone mdl-cell--hide-tablet"></div>
 </div></div>

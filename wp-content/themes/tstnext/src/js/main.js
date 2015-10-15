@@ -32,7 +32,7 @@ jQuery(document).ready(function($){
 		docHeight = $(document).height();
 		
 	$('.mdl-layout__content').scroll(function() {
-		if($('.mdl-layout__content').scrollTop() >= 450 && ($('.mdl-layout__content').scrollTop() + $(window).height() +50 <= docHeight)){
+		if($('.mdl-layout__content').scrollTop() >= 250 && ($('.mdl-layout__content').scrollTop() + $(window).height() +40 <= docHeight)) {
 			floatPanel.slideDown(300);			
 		} else {
 			floatPanel.slideUp(300);
@@ -330,6 +330,25 @@ jQuery(document).ready(function($){
 	fix_calendar_height();
 	$(window).resize(function(){
 		fix_calendar_height();	
+	});
+	
+	//fix for equal height in flexbox
+	function flex_equal_height(){
+		
+		$('.mdl-cell .mdl-card').each(function(){
+			
+			var $_this = $(this);
+			
+			if (!$_this.hasClass('widget')) {
+				var h = $_this.parents('.mdl-cell').height();
+				$_this.height(h);
+			}			
+		});
+	}
+	
+	flex_equal_height();
+	$(window).resize(function(){
+		flex_equal_height();	
 	});
 	
 }); //jQuery
