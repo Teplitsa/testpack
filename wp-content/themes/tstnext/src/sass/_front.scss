@@ -427,7 +427,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 
 .widget_nav_menu.mdl-card { //nav widget
 	
-	@include for(desktop) { height: 310px; }
+	@include for(desktop) { height: 280px; }
 	
 	h5 {
 		padding: $cell-elementary-2x;

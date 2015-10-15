@@ -731,7 +731,7 @@ function tst_social_share_no_js() {
 			'url' => 'https://www.facebook.com/sharer/sharer.php?u='.$link,
 			'txt' => 'Facebook',
 			'icon' => 'icon-facebook',
-			'show_mobile' => false
+			'show_mobile' => true
 		),		
 		'twitter' => array(
 			'label' => 'Поделиться ссылкой в Твиттере',

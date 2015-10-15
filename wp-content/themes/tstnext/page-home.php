@@ -93,8 +93,10 @@ get_header();
 	if(!empty($part_ids)){
 		$partners  = get_posts(array('post_type' =>'org', 'post__in' => $part_ids, 'post_status' => 'publish', 'cache_results' => false));
 		
-	}	
-	?>
+	}
+
+	if(!empty($parterns)) {
+?>
 <section class="home-partners-block"<?php if($parnter_bg) echo " style='background-image: url($parnter_bg);'";?>>
 <div class="mdl-grid">
 <div class="mdl-cell mdl-cell--12-col">
@@ -122,7 +124,7 @@ get_header();
 </div>
 </div>
 </section>
-
+<?php } ?>
 
 <section class="home-footer-block">
 	<div class="mdl-grid">
