@@ -50,35 +50,32 @@ get_header();
 	</div>
 </section>
 
-<?php
-	if(!empty($f_post)) {
-		
-?>
-<section class="home-section posts">
+<?php if(!empty($progs->posts)) { ?>
+<section class="home-section programms">
 	
 	<div class="mdl-grid">
 		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Последние новости  <a href="<?php echo get_permalink('blog');?>">&gt;</a></h3>
+			<h3 class="home-section-title">Наши программы  <a href="<?php echo home_url('activity/education');?>" title="Все программы">&gt;</a></h3>
 		</header>
-	<?php
-		foreach($f_post as $fp){
-			tst_post_card($fp);
+	<?php		
+		foreach($progs->posts as $mp){			
+			tst_project_card($mp);
 		}
 	?>
 	</div>
 </section>
 <?php } ?>
 
-<?php if(!empty($progs->posts)) { ?>
-<section class="home-section programms">
+<?php if(!empty($f_post)) { ?>
+<section class="home-section posts">
 	
 	<div class="mdl-grid">
 		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Наши программы  <a href="<?php echo home_url('activity/education');?>">&gt;</a></h3>
+			<h3 class="home-section-title">Последние новости  <a href="<?php echo get_permalink('blog');?>" title="Все новости">&gt;</a></h3>
 		</header>
-	<?php		
-		foreach($progs->posts as $mp){			
-			tst_project_card($mp);
+	<?php
+		foreach($f_post as $fp){
+			tst_post_card($fp);
 		}
 	?>
 	</div>
