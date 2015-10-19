@@ -472,7 +472,7 @@ function tst_next_fallback_link($cpost){
 	$link = '';
 	
 	if(isset($query->posts[0]) && $query->posts[0]->ID != $cpost->ID){
-		$label = __('Next post', 'tst');
+		$label = 'След.';
 		$link = "<a href='".get_permalink($query->posts[0])."' rel='next' class='mdl-button mdl-js-button mdl-button--primary'>{$label}&nbsp;&raquo;</a>";
 	}
 	
