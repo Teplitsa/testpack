@@ -78,7 +78,7 @@ function tst_get_post_id_from_posts($posts){
 function is_about(){
 	global $post;
 		
-	if(is_page_branch('about'))
+	if(is_page_branch(2))
 		return true;
 	
 	return false;
@@ -159,7 +159,7 @@ function is_events() {
 
 function is_activity() {	
 		
-	if(is_page_branch('activity'))
+	if(is_page_branch(868))
 		return true;
 		
 	return false;
