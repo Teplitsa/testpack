@@ -444,12 +444,12 @@ function tst_next_link($cpost){
 		$next = '';
 		
 		if(isset($news_query->posts[0]) && $news_query->posts[0]->ID != $cpost->ID){
-			$label = __('Next event', 'tst');
+			$label = 'След.';
 			$next = "<a href='".get_permalink($news_query->posts[0])."' rel='next'>".$label." &raquo;</a>";
 		}
 	}
 	else {
-		$label = __('Next post', 'tst');
+		$label = 'След.';
 		$next =  get_next_post_link('%link', $label.' &raquo;', true);
 		if(empty($next)) {
 			$next = tst_next_fallback_link($cpost);
