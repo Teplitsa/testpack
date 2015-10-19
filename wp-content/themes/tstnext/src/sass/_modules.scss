@@ -76,8 +76,6 @@
 	background: #774C98;
 }
 
-
-
 .sh-icon {
 	display: inline-block;
 	width: 16px;
@@ -94,7 +92,10 @@
 		a {
 			display: block;
 			@include image-replace;
+			padding: 10px 8px;
 		}
+		
+		.sh-icon { margin: 0; }
 	}
 	
 	.social-likes__icon {

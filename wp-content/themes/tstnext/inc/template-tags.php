@@ -445,7 +445,7 @@ function tst_next_link($cpost){
 		
 		if(isset($news_query->posts[0]) && $news_query->posts[0]->ID != $cpost->ID){
 			$label = 'След.';
-			$next = "<a href='".get_permalink($news_query->posts[0])."' rel='next'>".$label." &raquo;</a>";
+			$next = "<a href='".get_permalink($news_query->posts[0])."' rel='next' class='mdl-button mdl-js-button mdl-button--primary'>".$label." &raquo;</a>";
 		}
 	}
 	else {
@@ -473,7 +473,7 @@ function tst_next_fallback_link($cpost){
 	
 	if(isset($query->posts[0]) && $query->posts[0]->ID != $cpost->ID){
 		$label = __('Next post', 'tst');
-		$link = "<a href='".get_permalink($query->posts[0])."' rel='next'>{$label}&nbsp;&raquo;</a>";
+		$link = "<a href='".get_permalink($query->posts[0])."' rel='next' class='mdl-button mdl-js-button mdl-button--primary'>{$label}&nbsp;&raquo;</a>";
 	}
 	
 	return $link;
@@ -852,9 +852,8 @@ function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 function tst_card_summary($summary_content){
 			
 	$text = apply_filters('tst_the_content', $summary_content);
-	$text = str_replace('<p>', '<div class="mdl-card__supporting-text mdl-card--expand">', $text);	
-	$text = str_replace('</p>', '</div>', $text);
-	
+	$text = '<div class="card-summary mdl-card__supporting-text mdl-card--expand">'.$text.'</div>';
+		
 	return $text;
 }
 
@@ -867,7 +866,7 @@ function tst_get_default_author_avatar(){
 	
 	$theme_dir_url = get_template_directory_uri();
 	$src = get_template_directory_uri().'/assets/images/author-default.jpg';
-	$alt = __('Author', 'tst');
+	$alt = 'Аватар';
 	
 	return "<img src='{$src}' alt='{$alt}'>";
 }
