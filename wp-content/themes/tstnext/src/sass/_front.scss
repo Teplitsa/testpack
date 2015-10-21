@@ -423,6 +423,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 		height: 100%;
 	}
 	
+	.widget_socila_links {
+		display: none;
+		@include for(desktop) { display: block; }
+	}
 }
 
 .widget_nav_menu.mdl-card { //nav widget
@@ -477,14 +481,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 	}
 }
 
-.page-template-page-sidebar .sidebar,
-.single .sidebar {	
-	@include for(desktop) {
-		margin-top: -52px;
+
+.sidebar {		
+	
+	@include for(desktop) {		
 		margin-left: 72px;
+		
 		.donate-widget {
 			margin-left: -72px;
 		}
+	}
+}
+
+.page-template-page-sidebar .sidebar,
+.single .sidebar {	
+	
+	@include for(desktop) {				
+		margin-top: -52px;				
 	}
 }
 

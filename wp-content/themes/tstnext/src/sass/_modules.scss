@@ -331,7 +331,19 @@ $i: 1; //widths
 }
 
 
-.widget_socila_links .social-menu  {
-	float: left;
-	margin-top: 40px;
+.widget_socila_links {
+	@include clearfix;
+	.social-menu  {
+		float: left;
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
 }
+
+.donate-widget + .widget_socila_links {
+	.social-menu {
+		margin-top: 0;
+		
+	}
+}
+
