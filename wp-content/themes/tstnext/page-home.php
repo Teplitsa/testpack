@@ -9,7 +9,7 @@ $more_link = home_url('about/contacts');
 
 
 //news
-$f_post = get_posts(array(
+$f_post = new WP_Query(array(
 	'post_type' => 'post',
 	'posts_per_page' => 3,
 	'cache_results' => false
@@ -55,47 +55,38 @@ get_header();
 	
 	<div class="mdl-grid">
 		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Наши программы  <a href="<?php echo home_url('activity/education');?>" title="Все программы">&gt;</a></h3>
+			<h3 class="home-section-title">Наши программы <a href="<?php echo home_url('activity/education');?>" title="Все программы">(<?php echo $progs->found_posts;?>) &gt;</a></h3>
 		</header>
-	<?php		
-		foreach($progs->posts as $mp){			
-			tst_project_card($mp);
-		}
-	?>
+	<?php foreach($progs->get_posts() as $mp) {
+        tst_project_card($mp);
+    }?>
 	</div>
 </section>
-<?php } ?>
+<?php }?>
 
 <?php if(!empty($f_post)) { ?>
 <section class="home-section posts">
 	
 	<div class="mdl-grid">
 		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Последние новости  <a href="<?php echo get_permalink('blog');?>" title="Все новости">&gt;</a></h3>
+			<h3 class="home-section-title">Последние новости <a href="<?php echo get_permalink('blog');?>" title="Все новости">(<?php echo $f_post->found_posts;?>) &gt;</a></h3>
 		</header>
-	<?php
-		foreach($f_post as $fp){
-			tst_post_card($fp);
-		}
-	?>
+	<?php foreach($f_post->get_posts() as $fp) {
+        tst_post_card($fp);
+    }?>
 	</div>
 </section>
-<?php } ?>
+<?php }?>
 
+<?php $parnter_bg = wp_get_attachment_url(get_post_meta($home_id, 'partners_bg', true));
 
-
-<?php
-	$parnter_bg = wp_get_attachment_url(get_post_meta($home_id, 'partners_bg', true));
-	
 	$part_ids = (get_post_meta($home_id, 'home_partners', true));
 	$parterns = array();
-	if(!empty($part_ids)){
+	if($part_ids) {
 		$partners  = get_posts(array('post_type' =>'org', 'post__in' => $part_ids, 'post_status' => 'publish', 'cache_results' => false));
-		
 	}
 
-	if(!empty($parterns)) {
-?>
+	if($parterns) {?>
 <section class="home-partners-block"<?php if($parnter_bg) echo " style='background-image: url($parnter_bg);'";?>>
 <div class="mdl-grid">
 <div class="mdl-cell mdl-cell--12-col">
@@ -105,16 +96,14 @@ get_header();
 		<!-- gallery -->
 		<?php if(!empty($partners)) { ?>
 		<div class="partners-gallery">
-		<?php
-			
-			foreach($partners as $org){
-				
+		<?php foreach($partners as $org) {
+
 				$title = apply_filters('tst_the_title', $org->post_title);  
 				$url = esc_url($org->post_excerpt);								
-				$logo = get_the_post_thumbnail($org->ID,'full', array('alt' => $title));
-			?>	
+				$logo = get_the_post_thumbnail($org->ID,'full', array('alt' => $title));?>
+
 			<div class="logo"><div class="logo-frame">			
-				<a class="logo-link" title="<?php echo esc_attr($title);?>" target="_blank" href="<?php echo $url;?>"><?php echo $logo ;?></a>
+				<a class="logo-link" title="<?php echo esc_attr($title);?>" target="_blank" href="<?php echo $url;?>"><?php echo $logo;?></a>
 			</div></div>
 		<?php } ?>
 		</div>
