@@ -11,11 +11,10 @@ get_header();
 <div class="mdl-grid">
 		
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--6-col-phone">
-		<?php		
-			while(have_posts()){
-				the_post();				
-				$post_id = get_the_ID();
-		?>
+		<?php while(have_posts()) { the_post();
+
+            $post_id = get_the_ID();?>
+
 			<article <?php post_class('tpl-page'); ?>>
 				<div class="entry-content">
 					<?php the_content(); ?>		
@@ -30,34 +29,36 @@ get_header();
 </div>
 
 <div class="page-footer"><div class="mdl-grid">
-<?php
-	//$embeds = (function_exists('get_field')) ? get_field('embed_posts', $post_id) : array();
-	$em_ids = get_post_meta($post_id, 'embed_posts', true); 
-	$embeds = get_posts(array('post_type' => 'any', 'post__in' => $em_ids, 'posts_per_page' => -1));
-	if(!empty($em_ids) && !empty($embeds)){
+
+<?php $embeds = get_field('embed_posts', $post_id);
+
+//	$em_ids = get_post_meta($post_id, 'embed_posts', true);
+//	$embeds = get_posts(array('post_type' => 'any', 'post__in' => $em_ids, 'posts_per_page' => -1));
+
+	if($embeds) {
+
 		$title = get_post_meta($post_id, 'embed_posts_title', true); 
-		if(!empty($title)){
-	?>
-		<div class="mdl-cell mdl-cell--12-col"><h5><?php echo $title; ?></h5></div>
-	<?php
-		}
+		if($title) {?>
+		<div class="mdl-cell mdl-cell--12-col"><h5><?php echo $title;?></h5></div>
+	<?php }
+
 		foreach($embeds as $ep) {
+
 			$callback = "tst_".get_post_type($ep)."_card";
 			if(is_callable($callback)) {
 				call_user_func($callback, $ep);
-			}
-			else {
+			} else {
 				tst_post_card($ep);
 			}	
 		}
-	}
-	else {
-?>		
+
+	} else {?>
+
 <div class="mdl-cell mdl-cell--5-col mdl-cell--6-col-tablet">
-	<?php	
-		$r_query = new WP_Query(array('post_type' => 'post', 'posts_per_page' => 3)); 
-		if($r_query->have_posts()){					
-	?>
+
+	<?php $r_query = new WP_Query(array('post_type' => 'post', 'posts_per_page' => 3));
+		if($r_query->have_posts()) {?>
+
 		<aside class="related-posts section">	
 			<h5>Последние новости</h5>	
 			<?php
