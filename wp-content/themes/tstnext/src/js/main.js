@@ -358,7 +358,10 @@ jQuery(document).ready(function($){
 		});
 	}
 	
-	flex_equal_height();
+	imagesLoaded('#page_content', function() {
+		flex_equal_height();
+	});
+		
 	$(window).resize(function(){
 		flex_equal_height();	
 	});
