@@ -28,11 +28,22 @@ jQuery(document).ready(function($){
 	}
 	
 	/** Float panel **/
+	function getDocHeight() {
+		var D = document;
+		return Math.max(
+			D.body.scrollHeight, D.documentElement.scrollHeight,
+			D.body.offsetHeight, D.documentElement.offsetHeight,
+			D.body.clientHeight, D.documentElement.clientHeight );
+	}
+	
 	var floatPanel = $('#float-panel'),
-		docHeight = $(document).height();
-		
+		docHeight =  $(document).height();
+		console.log(docHeight);
+				
 	$('.mdl-layout__content').scroll(function() {
-		if($('.mdl-layout__content').scrollTop() >= 250 && ($('.mdl-layout__content').scrollTop() + $(window).height() +40 <= docHeight)) {
+		//console.log($('.mdl-layout__content').scrollTop() + $(window).height() +30);
+		//&& ($('.mdl-layout__content').scrollTop() + $(window).height() +50 <= docHeight)
+		if($('.mdl-layout__content').scrollTop() >= 250 && ($('.mdl-layout__content').scrollTop() + $(window).height() +40 <= docHeight)){
 			floatPanel.slideDown(300);			
 		} else {
 			floatPanel.slideUp(300);
@@ -332,6 +343,7 @@ jQuery(document).ready(function($){
 		fix_calendar_height();	
 	});
 	
+	
 	//fix for equal height in flexbox
 	function flex_equal_height(){
 		
@@ -346,9 +358,13 @@ jQuery(document).ready(function($){
 		});
 	}
 	
-	flex_equal_height();
+	imagesLoaded('#page_content', function() {
+		flex_equal_height();
+	});
+		
 	$(window).resize(function(){
 		flex_equal_height();	
 	});
+	
 	
 }); //jQuery

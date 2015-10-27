@@ -3,8 +3,6 @@
  * Floating panel
  **/
 
-global $post;
-
 ?>
 <div id="float-panel">
 <div class="mdl-grid full-width">

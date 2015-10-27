@@ -25,25 +25,6 @@ function tst_request_corrected($query) {
 		}
 	}
 	
-	//var_dump($query->query_vars);
-	
-	/*if(is_tag() && $query->is_main_query()){
-		//var_dump($query->query_vars);
-		
-		$query->query_vars['post_type'] = array('post', 'event', 'material');
-	}
-	elseif((is_post_type_archive('element') ) && $query->is_main_query()){
-		$query->query_vars['orderby'] = 'menu_order';
-		$query->query_vars['order'] = 'ASC';
-		
-	}
-	elseif((is_post_type_archive('member') || is_tax('membercat')) && $query->is_main_query()){
-		$query->query_vars['orderby'] = 'meta_value';
-		$query->query_vars['meta_key'] = 'brand_name';
-		$query->query_vars['order'] = 'ASC';
-		$query->query_vars['posts_per_page'] = 24;
-	}*/
-	
 	
 } 
 
@@ -62,7 +43,10 @@ function tst_get_post_id_from_posts($posts){
 function is_about(){
 	global $post;
 		
-	if(is_page_branch('about'))
+	if(is_page_branch(2))
+		return true;
+	
+	if(is_post_type_archive('org'))
 		return true;
 	
 	if(is_post_type_archive('org'))
@@ -434,12 +418,12 @@ function tst_next_link($cpost){
 		$next = '';
 		
 		if(isset($news_query->posts[0]) && $news_query->posts[0]->ID != $cpost->ID){
-			$label = __('Next event', 'tst');
+			$label = __('Next item', 'tst');
 			$next = "<a href='".get_permalink($news_query->posts[0])."' rel='next'>".$label." &raquo;</a>";
 		}
 	}
 	else {
-		$label = __('Next post', 'tst');
+		$label = __('Next item', 'tst');
 		$next =  get_next_post_link('%link', $label.' &raquo;', true);
 		if(empty($next)) {
 			$next = tst_next_fallback_link($cpost);
@@ -462,7 +446,7 @@ function tst_next_fallback_link($cpost){
 	$link = '';
 	
 	if(isset($query->posts[0]) && $query->posts[0]->ID != $cpost->ID){
-		$label = __('Next post', 'tst');
+		$label = __('Next item', 'tst');
 		$link = "<a href='".get_permalink($query->posts[0])."' rel='next'>{$label}&nbsp;&raquo;</a>";
 	}
 	
@@ -827,11 +811,11 @@ function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 function tst_card_summary($summary_content){
 			
 	$text = apply_filters('tst_the_content', $summary_content);
-	$text = str_replace('<p>', '<div class="mdl-card__supporting-text mdl-card--expand">', $text);	
-	$text = str_replace('</p>', '</div>', $text);
-	
+	$text = '<div class="card-summary mdl-card__supporting-text mdl-card--expand">'.$text.'</div>';
+		
 	return $text;
 }
+
 
 
 

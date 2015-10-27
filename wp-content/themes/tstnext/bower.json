@@ -13,8 +13,9 @@
     "tests"
   ],
   "dependencies": {
-    "material-design-lite": "~1.0.2",
-    "animate.css": "~3.4.0",    
-    "easyModal.js": "https://github.com/flaviusmatis/easyModal.js.git"
+    "material-design-lite": "~1.0.5",
+    "animate.css": "~3.4.0",
+    "easyModal.js": "https://github.com/flaviusmatis/easyModal.js.git",
+    "imagesloaded": "~3.1.8"
   }
 }

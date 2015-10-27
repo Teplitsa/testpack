@@ -65,4 +65,4 @@
 	<?php get_template_part('partials/title', 'section');?>	
 </header>
 
-<div class="page-content">
+<div id="page_content" class="page-content">

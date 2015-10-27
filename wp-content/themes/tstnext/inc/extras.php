@@ -394,7 +394,7 @@ class TST_Humans_Txt {
 		//prepare default content
 		$content = "/* MADE BY */
 
-The Project by Teplitsa of social technologies
+The Project by Teplitsa. Technologies for Social Good
 www: te-st.ru
 
 Idea & Project Lead
@@ -417,19 +417,19 @@ Denis Kulandin
 kulandin[at]gmail.com
 
 Tools we use with admiration and love to make things real:
-WordPress, MDL Framework, Gulp, SASS
+WordPress, MDL Framework, Gulp, SASS, Leyka
 
-       _            _                 _        _          _     
-      /\ \         /\ \              /\ \     /\ \       /\_\   
-     /  \ \____   /  \ \             \ \ \    \_\ \     / / /   
-    / /\ \_____\ / /\ \ \            /\ \_\   /\__ \   / / /_   
-   / / /\/___  // / /\ \ \          / /\/_/  / /_ \ \ / /___/\  
-  / / /   / / // / /  \ \_\        / / /    / / /\ \ \\____ \ \ 
- / / /   / / // / /   / / /       / / /    / / /  \/_/    / / / 
-/ / /   / / // / /   / / /       / / /    / / /          / / /  
-\ \ \__/ / // / /___/ / /    ___/ / /__  / / /          _\/_/   
- \ \___\/ // / /____\/ /    /\__\/_/___\/_/ /          /\_\     
-  \/_____/ \/_________/     \/_________/\_\/           \/_/     
+       _             _    _        _   
+      /\ \          /\ \ /\ \     /\_\ 
+     /  \ \____     \ \ \\ \ \   / / / 
+    / /\ \_____\    /\ \_\\ \ \_/ / /  
+   / / /\/___  /   / /\/_/ \ \___/ /   
+  / / /   / / /   / / /     \ \ \_/    
+ / / /   / / /   / / /       \ \ \     
+/ / /   / / /   / / /         \ \ \    
+\ \ \__/ / /___/ / /__         \ \ \   
+ \ \___\/ //\__\/_/___\         \ \_\  
+  \/_____/ \/_________/          \/_/  
 ";
 
 		//make it filterable

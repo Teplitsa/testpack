@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e6f316de26d276f667ce35254643dabd",
-    "content-hash": "ad5eeb00118da6549cb221bf63ab18a7",
+    "hash": "244c65b5966ec7c3ba30a2217c8e16aa",
+    "content-hash": "71c3a856339f6652ad282fa5bdd00c2b",
     "packages": [
         {
             "name": "composer/installers",
@@ -263,12 +263,12 @@
         },
         {
             "name": "tst/formidable",
-            "version": "2.0.14",
+            "version": "2.0.15",
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-formidable-2.0.14.zip",
+                "url": "artifacts/tst-formidable-2.0.15.zip",
                 "reference": null,
-                "shasum": "78468fb348141bb954b86961726efbddf2392032"
+                "shasum": "5e664b368b5a11e344c6932d56aae7d3a45ea300"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -397,15 +397,15 @@
         },
         {
             "name": "wpackagist-plugin/responsive-lightbox",
-            "version": "1.6.3",
+            "version": "1.6.4",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/responsive-lightbox/",
-                "reference": "tags/1.6.3"
+                "reference": "tags/1.6.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/responsive-lightbox.1.6.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/responsive-lightbox.1.6.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -669,15 +669,15 @@
         },
         {
             "name": "wpackagist-plugin/query-monitor",
-            "version": "2.7.4",
+            "version": "2.8.0",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/query-monitor/",
-                "reference": "tags/2.7.4"
+                "reference": "tags/2.8.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/query-monitor.2.7.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/query-monitor.2.8.0.zip",
                 "reference": null,
                 "shasum": null
             },
