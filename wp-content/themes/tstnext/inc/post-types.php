@@ -100,7 +100,7 @@ function tst_custom_content(){
         'show_in_admin_bar'   => true,
         //'query_var'           => true,
         'capability_type'     => 'post',
-        'has_archive'         => 'partners',
+        'has_archive'         => false,
         'rewrite'             => array('slug' => 'org', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 5,
