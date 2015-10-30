@@ -41,7 +41,7 @@ body > svg { display: none; }
 	
 	.logo {
 		display: inline-block;
-		width: 82px;
+		width: 127px;
 		height: 42px;
 	}
 }
@@ -107,8 +107,8 @@ body > svg { display: none; }
 				
 		.logo {
 			display: inline-block;
-			width: 27px;
-			height: 46px;
+			width: 127px;
+			height: 42px;
 		}
 			
 	}
@@ -283,8 +283,8 @@ body.tax-auctor {
 		
 		.logo {
 			display: inline-block;
-			width: 27px;
-			height: 46px;
+			width: 100px;
+			height: 42px;
 		}
 	}
 	
@@ -293,7 +293,7 @@ body.tax-auctor {
 	}
 	
 	.copy {
-		margin-left: 72px;
+		margin-left: 132px;
 		
 		a { font-weight: normal; }
 		p {
@@ -431,7 +431,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 
 .widget_nav_menu.mdl-card { //nav widget
 	
-	@include for(desktop) { height: 280px; }
+	@include for(desktop) { height: 320px; }
 	
 	h5 {
 		padding: $cell-elementary-2x;

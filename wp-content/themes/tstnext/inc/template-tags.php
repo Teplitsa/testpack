@@ -55,6 +55,18 @@ function is_about(){
 	return false;
 }
 
+function is_reports(){
+	global $post;
+	
+	if(!is_page())
+		return false;
+	
+	if($post->post_parent == 76) //report page
+		return true;
+		
+	return false;
+}
+
 function is_page_branch($pageID){
 	global $post;
 	
@@ -458,7 +470,7 @@ function tst_next_fallback_link($cpost){
 /** == Cards in loop == **/
 
 /** Post card content **/
-function tst_post_card($cpost, $tax = 'auctor'){
+function tst_post_card($cpost, $tax = 'category'){
 	
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
@@ -467,21 +479,15 @@ function tst_post_card($cpost, $tax = 'auctor'){
 	$e = tst_get_post_excerpt($cpost, 30, true);
 	$date = "<time>".get_the_date('d.m.Y.', $cpost->ID)."</time> - ";
 	
-	$name = $desc = $avatar = '';
+	//$name = $desc = $avatar = '';	
+	//if($tax == 'auctor'){
+	//	$author = tst_get_post_author($cpost);
+	//	$name = ($author) ? $author->name : '';
+	//	$desc = ($author) ? wp_trim_words($author->description, 20) : '';
+	//	$avatar = ($author) ? tst_get_author_avatar($author->term_id) : '';
+	//}
 	
-	if($tax == 'auctor'){
-		$author = tst_get_post_author($cpost);
-		$name = ($author) ? $author->name : '';
-		$desc = ($author) ? wp_trim_words($author->description, 20) : '';
-		$avatar = ($author) ? tst_get_author_avatar($author->term_id) : '';
-	}
-	elseif($tax) { //category
-		$cat = get_the_terms($cpost->ID, $tax);
-		$name = (isset($cat[0])) ? $cat[0]->name : '';
-		$desc = (isset($cat[0])) ? wp_trim_words($cat[0]->description, 20) : '';
-		$avatar = (isset($cat[0])) ? tst_get_tax_avatar($cat[0]) : '';
-	}
-
+	$cat = get_the_term_list($cpost, $tax, '', ', ', '');
 ?>
 <article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
 <div class="tpl-card-blank mdl-card mdl-shadow--2dp">
@@ -492,18 +498,9 @@ function tst_post_card($cpost, $tax = 'auctor'){
 		</a></div>			
 	<?php } ?>
 	
-	<?php if(!empty($name)) { ?>
-		<div class="entry-author mdl-card__supporting-text">		
-			<div class="pictured-card-item">
-				<div class="author-avatar round-image pci-img"><?php echo $avatar;?></div>
-					
-				<div class="author-content card-footer-content pci-content">
-					<h5 class="author-name mdl-typography--body-1"><?php echo apply_filters('tst_the_title', $name);?></h5>
-					<?php if(!empty($desc)) { ?>
-						<p class="author-role mdl-typography--caption"><?php echo apply_filters('tst_the_title', $desc);?></p>
-					<?php } ?>
-				</div>
-			</div>
+	<?php if(!empty($cat)) { ?>
+		<div class="entry-submeta mdl-card__supporting-text">		
+			<?php echo $cat;?>
 		</div>
 	<?php } ?>
 	

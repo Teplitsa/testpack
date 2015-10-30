@@ -37,6 +37,10 @@
 
 
 /** Cards  **/
+.cards-gallery {
+	padding-top: $cell-elementary-3x;
+	padding-bottom: $cell-elementary-3x;
+}
 .mdl-card {
 	.mdl-card__media {
 		background: $tst-color-white

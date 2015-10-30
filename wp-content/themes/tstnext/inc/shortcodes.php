@@ -61,43 +61,21 @@ function tst_partners_gallery_screen($atts){
 		
 	$size = 'full'; // logo size
 	
-	$partners = (function_exists('get_field')) ? get_field('partners_to_show') : false;
-	if(!$partners)
+	$partners = new WP_Query(array(
+		'post_type' => 'org',
+		'posts_per_page' => -1,
+		'orderby' => 'rand'
+	));
+		
+	if(!$partners->have_posts())
 		return '';
 	
-?>
-	<ul class="partners-logo-gallery frame <?php echo $css;?>">
-    <?php
-		foreach($partners as $item):
-        
-            $url = $item->post_excerpt ? esc_url($item->post_excerpt) : '';
-            $txt = esc_attr($item->post_title);					
-			//$cat = tst_get_partner_type($item);
-        ?>
-		<li class="bit mf-4 md-3 lg-2">
-			<div class="logo">
-				<div class='logo-frame'>			
-				<?php if(!empty($url)): ?>
-					<a href="<?php echo $url;?>" target="_blank" title="<?php echo $txt;?>" class="logo-link">
-				<?php else: ?>
-					<span class="logo-link" title="<?php echo $txt;?>">
-				<?php endif;?>
-
-				<?php echo get_the_post_thumbnail($item->ID, $size);?>
-
-				<?php if($url): ?>
-					</a>
-				<?php else: ?>
-					</span>
-				<?php endif;?>
-				</div>
-				
-			</div>
-			
-		</li>
-        <?php endforeach; ?>        
-    </ul>
-<?php	
+	ob_start();
+	
+	foreach($partners->posts as $p){
+		tst_org_card($p);
+	}
+	
 	$out = ob_get_contents();
 	ob_end_clean();
 	
