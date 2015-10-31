@@ -666,126 +666,38 @@ function tst_general_card($block, $link_label = null, $ext_link = true){
 <?php
 }
 
-
-/** == Social buttons == **/
-function tst_social_share_no_js() {
+/** Children cards **/
+function tst_children_card($cpost){
 	
-	$title = (class_exists('WPSEO_Frontend')) ? WPSEO_Frontend::get_instance()->title( '' ) : '';
-	$link = tst_current_url();
-	$text = $title.' '.$link;
-
-	$data = array(
-		'vkontakte' => array(
-			'label' => 'Поделиться во Вконтакте',
-			'url' => 'https://vk.com/share.php?url='.$link.'&title='.$title,
-			'txt' => 'Вконтакте',
-			'icon' => 'icon-vk',
-			'show_mobile' => false
-		),
-		'facebook' => array(
-			'label' => 'Поделиться на Фейсбуке',
-			'url' => 'https://www.facebook.com/sharer/sharer.php?u='.$link,
-			'txt' => 'Facebook',
-			'icon' => 'icon-facebook',
-			'show_mobile' => false
-		),		
-		'twitter' => array(
-			'label' => 'Поделиться ссылкой в Твиттере',
-			'url' => 'https://twitter.com/intent/tweet?url='.$link.'&text='.$title,
-			'txt' => 'Twitter',
-			'icon' => 'icon-twitter',
-			'show_mobile' => false		
-		),
-		'odnoklassniki' => array(
-			'label' => 'Поделиться ссылкой в Одноклассниках',
-			'url' => 'http://connect.ok.ru/dk?st.cmd=WidgetSharePreview&service=odnoklassniki&st.shareUrl='.$link,
-			'txt' => 'Одноклассники',
-			'icon' => 'icon-ok',
-			'show_mobile' => false
-			
-		),
-	);
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
 	
+	$pl = get_permalink($cpost);
+	$e = tst_get_post_excerpt($cpost, 30, true);
+	$age = get_post_meta($cpost->ID, 'child_age', true);
+	$age = (!empty($age)) ? '<b>'.$age.'</b> - ' : '';	
 ?>
-<div class="social-likes-wrapper">
-<div class="social-likes social-likes_visible social-likes_ready">
-
-<?php
-foreach($data as $key => $obj){		
-	if((tst_is_mobile_user_agent() && $obj['show_mobile']) || !tst_is_mobile_user_agent()){
-?>
-	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
-		<a href="<?php echo $obj['url'];?>" class="social-likes__button social-likes__button_<?php echo $key;?>" target="_blank" onClick="window.open('<?php echo $obj['url'];?>','<?php echo $obj['label'];?>','top=320,left=325,width=650,height=430,status=no,scrollbars=no,menubar=no,tollbars=no');return false;">
-			<svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span>
-		</a>
+<article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
+<div class="tpl-card-blank mdl-card mdl-shadow--2dp">
+	
+	<?php if(has_post_thumbnail($cpost->ID)){ ?>
+		<div class="mdl-card__media"><a href="<?php echo $pl;?>">
+			<?php echo get_the_post_thumbnail($cpost->ID, 'post-thumbnail', array('alt' => __('Thumbnail', 'tst'))); ?>
+		</a></div>			
+	<?php } ?>
+	
+	<div class="mdl-card__title">
+		<h4 class="mdl-card__title-text"><a href="<?php echo $pl;?>"><?php echo get_the_title($cpost->ID);?></a></h4>
 	</div>
-<?php 
-	}
 	
-} //foreach
-
-	$text = $title.' '.$link;
-	
-	$mobile = array(
-		'twitter' => array(
-			'label' => 'Поделиться ссылкой в Твиттере',
-			'url' => 'twitter://post?message='.$text,
-			'txt' => 'Twitter',
-			'icon' => 'icon-twitter',
-			'show_desktop' => false		
-		),
-		'whatsapp' => array(
-			'label' => 'Поделиться ссылкой в WhatsApp',
-			'url' => 'whatsapp://send?text='.$text,
-			'txt' => 'WhatsApp',
-			'icon' => 'icon-whatsup',
-			'show_desktop' => false
-		),
-		'telegram' => array(
-			'label' => 'Поделиться ссылкой в Telegram',
-			'url' => 'tg://msg?text='.$text,
-			'txt' => 'Telegram',
-			'icon' => 'icon-telegram',
-			'show_desktop' => false
-		),
-		'viber' => array(
-			'label' => 'Поделиться ссылкой в Viber',
-			'url' => 'viber://forward?text='.$text,
-			'txt' => 'Viber',
-			'icon' => 'icon-viber',
-			'show_desktop' => false
-		),
-	);
-		
-	foreach($mobile as $key => $obj) {
-		
-		if((!tst_is_mobile_user_agent() && $obj['show_desktop']) || tst_is_mobile_user_agent()) {
-?>
-	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
-	<a href="<?php echo $obj['url'];?>" target="_blank" class="social-likes__button social-likes__button_<?php echo $key;?>"><svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span></a>
-	</div>	
-<?php } } //endforeach ?>
-
+	<?php echo tst_card_summary($age.$e); ?>
+	<div class="mdl-card--expand"></div>
+	<div class="mdl-card__actions mdl-card--border">
+		<a href="<?php echo $pl;?>" class="mdl-button mdl-js-button"><?php _e('Details', 'tst');?></a>
+	</div>
 </div>
-</div>
+</article>
 <?php
-}
-
-function tst_is_mobile_user_agent(){
-	//may be need some more sophisticated testing
-	$test = false;
-	
-	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
-		$test = true;
-	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
-		$test = true;
-	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
-		$test = true;
-	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
-		$test = true;
-	}
-	
-	return $test;
 }
 
 
@@ -949,6 +861,43 @@ function tst_compact_project_item($cpost){
 <?php
 }
 
+function tst_compact_children_item($cpost){
+	
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+	
+	$e = tst_get_post_excerpt($cpost, 30, true);
+	$age = get_post_meta($cpost->ID, 'child_age', true);
+	$age = (!empty($age)) ? '<b>'.$age.'</b> - ' : '';	
+	
+?>
+	<div class="tpl-related-project"><a href="<?php echo get_permalink($cpost);?>">
+	
+	<div class="mdl-grid mdl-grid--no-spacing">
+		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--4-col-phone">
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+				
+			<!-- summary -->
+			<p class="entry-summary">
+				<?php echo apply_filters('tstpsk_the_tite', $age.$e); ?>
+			</p>
+		</div>
+		
+		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--hide-phone">
+		<?php
+			$thumb = get_the_post_thumbnail($cpost->ID, 'thumbnail-landscape', array('alt' => __('Thumbnail', 'tst')) ) ;
+			if(empty($thumb)){
+				$thumb = tst_get_default_post_thumbnail('thumbnail-landscape');
+			}
+			echo $thumb;
+		?>
+		</div>
+	</div>	
+	
+	</a></div>
+<?php	
+}
+
 // deafult thumbnail for posts
 function tst_get_default_post_thumbnail($size){
 		
@@ -959,4 +908,57 @@ function tst_get_default_post_thumbnail($size){
 	}
 	
 	return $img;
+}
+
+
+
+/** Inpage cards **/
+function tst_org_inpage_card($cpost, $ext_link = true){
+	tst_org_card($cpost, $ext_link);
+}
+
+function tst_children_inpage_card($cpost) {
+	
+	$logo = get_the_post_thumbnail($cpost->ID, 'full');
+	$text = apply_filters('tst_the_content', $cpost->post_content);	
+?>
+<article <?php post_class('mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'); ?>>
+<div class="tpl-card-mix mdl-card mdl-shadow--2dp">
+	
+	<div class="mdl-card__media">
+		<span class="logo-link" ><?php echo $logo; ?></span>
+	</div>
+			
+	<div class="mdl-card__title">
+		<h4 class="mdl-card__title-text"><?php echo get_the_title($cpost->ID);?></h4>
+	</div>
+			
+	<?php echo tst_card_summary($text); ?>
+	
+</div>	
+</article>
+<?php
+}
+
+function tst_general_inpage_card($cpost){
+	
+	$logo = get_the_post_thumbnail($cpost->ID, 'full');
+	$text = apply_filters('tst_the_content', $cpost->post_content);	
+?>
+<article <?php post_class('mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'); ?>>
+<div class="tpl-card-mix mdl-card mdl-shadow--2dp">
+	
+	<div class="mdl-card__media">
+		<a class="logo-link" href="#"><?php echo $logo; ?></a>
+	</div>
+			
+	<div class="mdl-card__title">
+		<h4 class="mdl-card__title-text"><?php echo get_the_title($cpost->ID);?></h4>
+	</div>
+			
+	<?php echo tst_card_summary($text); ?>
+	
+</div>	
+</article>
+<?php
 }

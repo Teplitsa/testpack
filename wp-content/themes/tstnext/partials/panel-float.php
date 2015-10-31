@@ -47,36 +47,35 @@
 			</div>
 		</div>
 	</div>
+<?php } elseif(is_singular('children')) { ?>
+
+	<div class="mdl-cell mdl-cell--8-col mdl-cell--hide-phone mdl-cell--hide-tablet">
+		<div class="product-meta-panel pictured-card-item">
+		
+			<div class="pr-avatar round-image pci-img"><?php echo get_the_post_thumbnail(get_the_ID(), 'thumbnail')?></div>
+			
+			<div class="pr-content pci-content">
+				<h5 class="pr-title mdl-typography--body-1">
+					<?php the_title();?>
+				</h5>
+				<p class="pr-price mdl-typography--caption">
+					<?php echo get_post_meta(get_the_ID(), 'child_age', true);?>
+				</p>
+			</div>
+		</div>
+	</div>
 <?php } else { ?>	
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--hide-phone mdl-cell--hide-tablet">
-		<div class="mdl-grid mdl-grid--no-spacing">
-			<div class="mdl-cell mdl-cell--6-col">
-			<?php
-				$author = tst_get_post_author($post);					
-				if(!empty($author)) {
-					$avatar = tst_get_author_avatar($author->term_id) ;
-			?>
-				<div class="entry-author pictured-card-item">
-					<div class="author-avatar round-image pci-img"><?php echo $avatar;?></div>
-					
-					<div class="author-content pci-content">
-						<h5 class="author-name mdl-typography--body-1">
-							<a href="<?php echo get_term_link($author);?>"><?php echo apply_filters('tst_the_title', $author->name);?></a>
-						</h5>
-						<p class="author-role mdl-typography--caption">
-							<?php echo apply_filters('tst_the_title', wp_trim_words($author->description, 10));?>
-						</p>
-					</div>
-				</div>
-				<?php } ?>
+		
+			
+		<div class="post-data">
+			<div class="post-data-avatar panel-logo"><?php echo get_the_post_thumbnail($post->ID, 'thumbnail');?></div>
+			<div class="captioned-text panel-content">
+				<div class="caption"><?php _e('Published', 'tst');?></div>
+				<div class="text"><?php echo tst_posted_on($post);?></div>
 			</div>
-			<div class="mdl-cell mdl-cell--6-col">
-				<div class="captioned-text">
-					<div class="caption"><?php _e('Published', 'tst');?></div>
-					<div class="text"><?php echo tst_posted_on($post);?></div>
-				</div>
-			</div>
-		</div><!-- .row -->
+		</div>
+		
 	</div>
 <?php } ?>	
 	

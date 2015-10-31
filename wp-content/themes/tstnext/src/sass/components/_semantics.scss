@@ -175,9 +175,7 @@ h6 { font-size: $h6-fontsize; line-height: 1.1*$h6-fontsize; margin: ($h6-fontsi
 	// headings
 	h1,  h2,  h3,  h4,  h5,  h6 {
 		font-weight: normal;
-		
-		&:first-child,
-		&:first-of-type {
+		&:first-child {
 			margin-top: 0;
 		}
 	}	
@@ -189,6 +187,14 @@ h6 { font-size: $h6-fontsize; line-height: 1.1*$h6-fontsize; margin: ($h6-fontsi
 	h5+h1,  h5+h2,  h5+h3,  h5+h4,  h5+h5,  h5+h6,
 	h6+h1,  h6+h2,  h6+h3,  h6+h4,  h6+h5,  h6+h6 {
 		//margin-top: rem($b-margin);
+	}
+	
+	h5 {
+		margin-top: 1.2em;
+	}
+	
+	h6 {
+		margin-top: 1.2em;
 	}
 	
 	cite {

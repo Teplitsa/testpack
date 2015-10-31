@@ -37,10 +37,6 @@
 
 
 /** Cards  **/
-.cards-gallery {
-	padding-top: $cell-elementary-3x;
-	padding-bottom: $cell-elementary-3x;
-}
 .mdl-card {
 	.mdl-card__media {
 		background: $tst-color-white
@@ -196,6 +192,9 @@ $margin-base: 16px !default;
 		}
 	}
 	
+	.entry-footer {
+		margin-top: $cell-elementary-3x;
+	}
 	.entry-meta-bottom {
 		border-top: 1px solid $tst-color-border;		
 		padding: $margin-base 0 0;
@@ -310,6 +309,15 @@ $margin-base: 16px !default;
 	}
 }
 
+.cards-preface-bottom .entry-content {
+	padding-top: $cell-elementary-3x;	
+}
+
+.page-template-page-post_cards .max-content-col {
+	max-width: 760px;
+}
+
+
 // Events
 .tpl-event {
 	
@@ -417,153 +425,6 @@ $margin-base: 16px !default;
 
 
 
-// Products
-	
-.tpl-product-banner {
-	height: 100%;
-	min-height: 368px;
-	
-	@include for(desktop) {
-		height: auto;
-	}
-	
-	.mdl-card__title {
-		padding-bottom: 0;
-	}
-	
-	.mdl-card__title-text {
-		@include typo-subhead;
-		margin: 0;
-		color: $tst-color-text;
-		
-		a {
-			text-decoration: none;
-			color: inherit;
-			&:hover, &:focus, &:active {
-				color: $tst-color-primary;
-			}
-		}
-	}
-	
-	.price-mark {
-		@include typo-display-1;
-		font-size: 28px;
-		color: $tst-color-primary;
-		margin: 0;
-		padding: 0 $card-horizontal-padding $card-vertical-padding $card-horizontal-padding;		
-	}
-		
-	.mdl-card__media {
-		background-color: transparent;
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center center;
-		min-height: 200px;	
-	}
-	
-	.mdl-card__actions {
-		text-align:  right;
-		padding: $card-horizontal-padding;
-	}
-		
-}
-
-.page .tpl-product-banner,
-.single .tpl-product-banner {
-	@include for(tablet) {		
-		min-height: 368px;
-	}
-}
-
-.post-type-archive-product .page-header .mdl-grid, 
-.catalogue-grid {
-	max-width: 830px;
-}
-
-
-.tpl-product {
-	.mdl-card__title-text {
-		@include typo-headline;
-		margin: 0;
-		color: $tst-color-text;
-		
-		a {
-			text-decoration: none;
-			color: inherit;
-			&:hover, &:focus, &:active {
-				color: $tst-color-primary;
-			}
-		}
-	}
-	
-	.mdl-card__title {
-		padding-bottom: 0;
-	}
-	
-	.mdl-typography--caption {
-		margin-top: 8px;
-		font-weight: 500;
-	}
-		
-	.price-mark {
-		@include typo-display-1;
-		//font-size: 28px;
-		color: $tst-color-primary;		
-		margin: 0;
-		padding: 0 $card-vertical-padding $card-horizontal-padding;		
-	}
-	
-	.mdl-card__actions {
-		text-align: right;
-	}
-}
-
-.tpl-product-full {
-	padding-bottom: $margin-base*1.5;
-	
-	.entry-summary {
-		@include lead;
-	}
-	
-	@include wp-caption;
-	
-	.entry-meta {
-		border-bottom: 1px solid $tst-color-border;
-		padding-bottom: $margin-base*1.5;
-		margin-bottom: $margin-base*1.5;
-	}
-	
-	.price-mark {
-		@include typo-display-1;
-		color: $tst-color-primary;
-		font-size: 28px;
-	}
-}
-
-.tpl-compact-product{
-	padding: $grid-desktop-gutter 0;
-	border-bottom: 1px solid $tst-color-border;
-	&:last-child {
-		border-bottom: none;
-	}
-	
-	.pr-content {
-		position: relative;
-		padding-right: 88px;
-	}
-	
-	.pci-content  .pr-price {
-		color: $tst-color-primary;		
-	}
-	
-	.buy {
-		width: 88px;
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
-}
-
 
 // Search
 .tpl-search {
@@ -585,5 +446,33 @@ $margin-base: 16px !default;
 .search-holder {
 	.mdl-textfield {
 		@include calc(width, "100% - 40px");
+	}
+}
+
+
+//children profile
+.tpl-children-full {
+	
+	.profile-meta {
+		margin-bottom: $grid-desktop-gutter;
+		
+		.captioned-text {
+			margin: 0 0 $grid-desktop-gutter 0;
+			
+			@include for(tablet) {
+				margin-left: $grid-desktop-gutter;
+			}
+		}
+		
+		.text, .text p {
+			@include typo-headline(); 
+		}
+	}
+	
+	.profile-pic {
+		margin-top: -52px;
+		border-radius: 2px;
+		max-width: 300px;
+		margin-bottom: $grid-desktop-gutter;
 	}
 }

@@ -60,8 +60,8 @@
 
 <main class="mdl-layout__content">
 	
-<?php $bg = tst_header_image_url();?>
-<header id="page_header" class="page-header" <?php echo " style='background-image: url({$bg})'";?>>
+<?php //$bg = tst_header_image_url();?>
+<header id="page_header" class="page-header" <?php //echo " style='background-image: url({$bg})'";?>>
 	<?php get_template_part('partials/title', 'section');?>	
 </header>
 

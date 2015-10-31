@@ -6,7 +6,7 @@
 add_filter('manage_posts_columns', 'tst_common_columns_names', 50, 2);
 function tst_common_columns_names($columns, $post_type) {
 		
-	if(in_array($post_type, array('post', 'event', 'project', 'org', 'attachment'))){
+	if(in_array($post_type, array('post', 'event', 'project', 'org', 'attachment', 'children'))){
 		
 		
 		if(!in_array($post_type, array('attachment')))

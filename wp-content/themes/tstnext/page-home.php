@@ -7,6 +7,19 @@
 $home_id = $post->ID;
 $more_link = home_url('about/contacts');
 
+//news
+$f_children =new WP_Query(array(
+	'post_type' => 'children',	
+	'posts_per_page' => 3,
+	'orderby' => 'rand',
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'children_status',
+			'field' => 'slug',
+			'terms' => 'need-help'
+		)
+	)
+));
 
 //news
 $f_post = new WP_Query(array(
@@ -27,26 +40,22 @@ $progs = new WP_Query(array(
 //var_dump($progs->get('query_thumbnails'));
 get_header();
 ?>
-<section class="home-section intro">
+<?php if(!empty($f_children->posts)) { ?>
+<section class="home-section children">
+	
+	<div class="mdl-grid">	
+		<?php foreach($f_children->get_posts() as $chp) {
+			tst_children_card($chp);
+		}?>
+	</div>
+</section>
+<?php }?>
+
+<section class="home-section help-info">
 	<div class="mdl-grid">
-		<div class="mdl-cell mdl-cell--8-col">
-			
-			<div class="mdl-card mdl-shadow--2dp">
-				<div class=" mdl-card--expand">
-					<div class="featured_text"><?php echo apply_filters('the_content', $post->post_content);?></div>
-				</div>
-				
-				<div class="mdl-card__actions mdl-card--border">
-					<?php tst_get_social_menu(); ?>
-					
-					<a class="mdl-button mdl-js-button mdl-button--colored" href="<?php echo $more_link;?>">Контакты</a>
-				</div>		
-				
-			</div><!-- .card -->
-				
-		</div>
-		
-		<div class="mdl-cell mdl-cell--4-col mdl-cell--hide-phone mdl-cell--hide-tablet"><?php get_sidebar(); ?></div>
+		<div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
+		<div class="mdl-cell mdl-cell--8-col"><?php get_sidebar();?></div>
+		<div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
 	</div>
 </section>
 
@@ -78,7 +87,7 @@ get_header();
 </section>
 <?php }?>
 
-<?php $parnter_bg = wp_get_attachment_url(get_post_meta($home_id, 'partners_bg', true));
+<?php //$parnter_bg = wp_get_attachment_url(get_post_meta($home_id, 'partners_bg', true));
 
 	$part_ids = (get_post_meta($home_id, 'home_partners', true)); 
 	$partners = array();
@@ -87,7 +96,7 @@ get_header();
 	}
 
 	if($partners) { ?>
-<section class="home-partners-block"<?php if($parnter_bg) echo " style='background-image: url($parnter_bg);'";?>>
+<section class="home-partners-block">
 <div class="mdl-grid">
 <div class="mdl-cell mdl-cell--12-col">
 	<h5 class="widget-title">Нас поддерживают</h5>

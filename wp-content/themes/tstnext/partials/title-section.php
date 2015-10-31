@@ -9,7 +9,7 @@ if(is_front_page()) { ?>
 		<div class="home-logo"><?php tst_site_logo('regular');?></div>
 	</div>
 </div>
-<?php } elseif(is_singular(array('post', 'event', 'project'))) { ?>
+<?php } elseif(is_singular(array('post', 'event', 'project', 'children'))) { ?>
 <div class="mdl-grid">
 	
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--6-col-phone">
@@ -99,11 +99,12 @@ if(is_front_page()) { ?>
 	<?php if(is_tax('auctor') || is_category()) {
 
 		$qo = get_queried_object();
-		echo "<div class='author-description'>"; //print event empty - we need it for layout
-		if(isset($qo->description)){			
-			echo apply_filters('tst_the_title', $qo->description);			
-		}
-		echo "</div>";
+		
+		if(isset($qo->description) && !empty($qo->description)){
+			echo "<div class='author-description'>"; 
+			echo apply_filters('tst_the_title', $qo->description);
+			echo "</div>";
+		}		
 	}
 	?>
 	</div>

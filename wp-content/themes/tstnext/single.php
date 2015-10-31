@@ -47,20 +47,69 @@ get_header();
 			}
 			
 		}
-		elseif('project' == $pt) {
+		elseif('children' == $pt){ //related posts
+			
 			$r_query = new WP_Query(array(
-				'post_type' => 'project',
+				'post_type' => 'children',
 				'post__not_in' => array($post_id),
 				'posts_per_page' => 3,
-				'orderby' => 'rand'
-			)); 
+				'orderby' => 'rand',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'children_status',
+						'field' => 'slug',
+						'terms' => 'need-help'
+					)
+				)
+			));
+			
 			if($r_query->have_posts()){					
 	?>
 			<aside class="related-posts section">	
-				<h5><?php _e('More projects', 'tst'); ?></h5>	
+				<h5>Требуется помощь</h5>	
 				<?php
 					foreach($r_query->posts as $rp){
-						tst_compact_project_item($rp);
+						tst_compact_children_item($rp);
+					}	
+				?>
+			</aside>
+	<?php
+			}
+			
+		}
+		elseif('project' == $pt) {
+			$r_query = new WP_Query(array(
+				'post_type'       => 'post',
+				'connected_type'  => 'project_post',
+				'connected_items' => $post,
+				'posts_per_page' => 3
+			));
+			
+			$label = 'Новости проекта';
+			
+			if(!$r_query->have_posts()){
+			
+				$r_query = new WP_Query(array(
+					'post_type' => 'project',
+					'post__not_in' => array($post_id),
+					'posts_per_page' => 3,
+					'orderby' => 'rand'
+				));
+				
+				$label = 'Еще проекты';
+			}
+			if($r_query->have_posts()){					
+	?>
+			<aside class="related-posts section">	
+				<h5><?php echo $label; ?></h5>	
+				<?php
+					foreach($r_query->posts as $rp){
+						if($rp->post_type == 'post'){
+							tst_compact_post_item($rp);
+						}
+						else {
+							tst_compact_project_item($rp);
+						}						
 					}	
 				?>
 			</aside>

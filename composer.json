@@ -49,6 +49,7 @@
         "wpackagist-plugin/widget-logic" : ">=0.57",
         "wpackagist-plugin/wordpress-seo" : "@stable",
         "wpackagist-plugin/w3-total-cache": "@stable",
+        "wpackagist-plugin/posts-to-posts": "@stable",
         "koodimonni-language/core-ru_RU": "*",
         "tst/advanced-custom-fields-pro" : ">=5.3.1",
         "tst/formidable" : ">=2.0.14"

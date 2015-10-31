@@ -142,6 +142,11 @@
 		margin-left: 58px;
 	}
 	
+	.post-data-avatar {
+		border-radius: 50%;
+		img { border-radius: 50%; }
+	}
+	
 	.next-link {
 		display: block;
 		text-align: right;

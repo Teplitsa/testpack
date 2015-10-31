@@ -29,6 +29,16 @@ function tst_lead_screen($atts, $content){
 	return '<div class="entry-summary">'.apply_filters('the_content', $content).'</div>';
 }
 
+add_shortcode('max_content_col', 'tst_max_content_col_screen');
+function tst_max_content_col_screen($atts, $content){
+	
+	if(empty($content))
+		return '';
+	
+	return '<div class="max-content-col">'.apply_filters('the_content', $content).'</div>';
+}
+
+
 /** lead **/
 add_shortcode('fab', 'tst_fab_screen');
 function tst_fab_screen($atts){
