@@ -12,94 +12,129 @@ function tst_sitemap_screen($atts){
 }
 
 
-/** == Defaults == **/
-
-/**
- * Clear
- **/
+/** Clear **/
 add_shortcode('clear', 'tst_clear_screen');
 function tst_clear_screen($atts){
-		
-	
-	$out = '<div class="clear"></div>';		
 
-	return $out;
+	return '<div class="clear"></div>';
+}
+
+/** lead **/
+add_shortcode('lead', 'tst_lead_screen');
+function tst_lead_screen($atts, $content){
+	
+	if(empty($content))
+		return '';
+	
+	return '<div class="entry-summary">'.apply_filters('the_content', $content).'</div>';
+}
+
+add_shortcode('max_content_col', 'tst_max_content_col_screen');
+function tst_max_content_col_screen($atts, $content){
+	
+	if(empty($content))
+		return '';
+	
+	return '<div class="max-content-col">'.apply_filters('the_content', $content).'</div>';
 }
 
 
-/**
- * Partners gallery
- **/
-
-add_shortcode('partners_gallery', 'tst_partners_gallery_screen');
-function tst_partners_gallery_screen($atts){
+/** lead **/
+add_shortcode('fab', 'tst_fab_screen');
+function tst_fab_screen($atts){
 	
-	extract(shortcode_atts(array(
-		'type' => '',
-		'num'  => -1,
-		'css'  => ''
+	extract(shortcode_atts(array(				
+		'url'  => ''
 	), $atts));
-		
-	$size = 'full'; // logo size
 	
-	$args = array(
-		'post_type' => 'partner',
-		'posts_per_page' => $num,
-		'orderby' => array('menu_order' => 'DESC')
-	);
+	if(empty($url))
+		return '';
 	
-	if(!empty($type)){
-		
-		$type = array_map('trim', explode('_', $type));
-		
-		
-		$args['tax_query'][] = array(
-			'taxonomy' => ($type[0] == 'category') ? 'partner_cat' : 'period',
-			'field' => 'id',
-			'terms' => intval($type[1])
-		);
-	}
-	
-	$query = new WP_Query($args);
-		
 	ob_start();
 ?>
-	<ul class="cf partners logo-gallery frame <?php echo $css;?>">
-    <?php
-		foreach($query->posts as $item):
-        
-            $url = $item->post_excerpt ? esc_url($item->post_excerpt) : '';
-            $txt = esc_attr($item->post_title);					
-			$cat = tst_get_partner_type($item);
-        ?>
-		<li class="bit mf-4 md-3 lg-2">
-			<div class="logo">
-				<div class='logo-frame'>			
-				<?php if(!empty($url)): ?>
-					<a href="<?php echo $url;?>" target="_blank" title="<?php echo $txt;?>" class="logo-link">
-				<?php else: ?>
-					<span class="logo-link" title="<?php echo $txt;?>">
-				<?php endif;?>
-				
-				<?php echo get_the_post_thumbnail($item->ID, $size);?>
-			
-				<?php if(!empty($url)): ?>
-					</a>
-				<?php else: ?>
-					</span>
-				<?php endif;?>
-				</div>
-				<?php if(!empty($cat)):?>
-					<span class="partner-cat"><?php echo $cat;?></span>
-				<?php endif;?>
-			</div>
-			
-		</li>
-        <?php endforeach; ?>        
-    </ul>
-<?php	
+<div class="fab"><a href="<?php echo $url;?>" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"><svg class="mi"><use xlink:href="#pic-favorite_border" /></svg></a></div>
+<?php
 	$out = ob_get_contents();
 	ob_end_clean();
 	
 	return $out;
 }
+
+
+/** Partners gallery **/
+add_shortcode('tst_partners_gallery', 'tst_partners_gallery_screen');
+function tst_partners_gallery_screen($atts){
+	
+	extract(shortcode_atts(array(				
+		'css'  => ''
+	), $atts));
+		
+	$size = 'full'; // logo size
+	
+	$partners = new WP_Query(array(
+		'post_type' => 'org',
+		'posts_per_page' => -1,
+		'orderby' => 'rand'
+	));
+		
+	if(!$partners->have_posts())
+		return '';
+	
+	ob_start();
+	
+	foreach($partners->posts as $p){
+		tst_org_card($p);
+	}
+	
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}
+
+add_shortcode('tst_cards_from_posts', 'tst_cards_from_posts');
+function tst_cards_from_posts($atts) {
+
+    extract(shortcode_atts(array(
+        'ids' => '',
+        'css'  => '',
+        'pic_size' => 'full',
+        'link_text' => 'Веб-сайт',
+    ), $atts));
+
+    /** @var $ids */
+    /** @var $css */
+    /** @var $pic_size */
+    /** @var $link_text */
+
+    $posts = get_posts(array(
+        'post__in' => array_map('trim', explode(',', $ids)),
+        'post_type' => 'any',
+        'orderby' => array('menu_order' => 'DESC')
+    ));
+
+    ob_start();
+?>
+
+    <section class="embed-cards-gallery" <?php echo $css;?>>
+    <div class="mdl-grid">
+    <?php
+		foreach($posts as $item) {
+			$callback = "tst_".get_post_type($item)."_card";
+			if(is_callable($callback)) {
+				call_user_func($callback, $item);
+			}
+			else {
+				tst_post_card($item);
+			}	
+		}
+	?>
+    </div>
+    </section>
+
+    <?php $out = ob_get_contents();
+    ob_end_clean();
+
+    return $out;
+}
+

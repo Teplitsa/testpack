@@ -1,3 +1,11 @@
+/**
+ * TST Next - WordPress Theme based on material design
+ * Developed in Teplitsa of social technologies https://te-st.ru
+ * GNU General Public License
+ * Contributors: Gleb Suvorov (suvorov.gleb@gmail.com), Anna Ladoshkina (webdev@foralien.com), Lev Zvyagincev (ahaenor@gmail.com),
+ * Denis Cherniatev (denis.cherniatev@gmail.com), Denis Kulandin (kulandin@gmail.com )
+ **/
+
 /*---------------------------------------------------------
  Project vars (_vars.scss)
 -------------------------------------------------------- */
@@ -22,13 +30,15 @@ $mono : '  Lucida Sans Typewriter', 'Lucida Console', Monaco, monospace;
 
 /* Colors (shortcuts) */
 
-$tst-color-text:       $text-color-primary !default;
-$tst-color-border:     rgba(0,0,0,0.12) !default;
-$tst-color-text-semi:  rgba(0,0,0,0.54) !default;
-$tst-color-link:       $text-link-color !default;
-$tst-color-white:      unquote("rgba(#{$color-white}, 1)") !default;
-$tst-color-primary:    unquote("rgba(#{$color-primary}, 1)") !default;
-$tst-color-white-semi: rgba(255,255,255, 0.8) !default;
+$tst-color-text:         $text-color-primary !default;
+$tst-color-border:       rgba(0,0,0,0.12) !default;
+$tst-color-text-semi:    rgba(0,0,0,0.54) !default;
+$tst-color-link:         $text-link-color !default;
+$tst-color-white:        unquote("rgba(#{$color-white}, 1)") !default;
+$tst-color-primary:      unquote("rgba(#{$color-primary}, 1)") !default;
+$tst-color-primary-dark: unquote("rgba(#{$color-primary-dark}, 1)") !default;  
+$tst-color-accent:       unquote("rgba(#{$color-accent}, 1)") !default;  
+$tst-color-white-semi:   rgba(255,255,255, 0.8) !default;
 
 
 /* Media Queries */
@@ -63,7 +73,7 @@ $tst-color-white-semi: rgba(255,255,255, 0.8) !default;
   @include typo-preferred-font($usePreferred);
   font-size: 14px;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 21px;
   letter-spacing: 0;
 
   @if $colorContrast {

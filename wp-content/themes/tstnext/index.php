@@ -19,16 +19,22 @@ get_header(); ?>
 			while(have_posts()){
 				the_post();
 				
-				if(is_search())
-					get_template_part('partials/content', 'search');
-				else
-					get_template_part('partials/content', get_post_type());
+				$pt = get_post_type();
+				if($pt == 'post'){
+					tst_post_card($post, 'category');
+				}
+				else {
+					$callback = "tst_".$pt."_card";
+					if(is_callable($callback)) {
+						call_user_func($callback, $post);
+					}
+					else {
+						tst_post_card($post);
+					}	
+				}
+				
 			}  		
-		}
-		else {
-			get_template_part('partials/content', 'none');
-			
-		}
+		}		
 	?>
 	<div class="mdl-cell mdl-cell--4-col masonry-item movable-widget"><?php get_sidebar(); ?></div>
 </div>

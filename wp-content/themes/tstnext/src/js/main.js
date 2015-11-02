@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
 	
 	
 	/** smart crumbs **/
-	var crumb = $('.crumb-name');
+	var crumb = $('.crumb-name, .page-template-page-home .site-logo');
 	if (crumb.length) {
 		$('.mdl-layout__content').scroll(function(){
 			
@@ -28,24 +28,29 @@ jQuery(document).ready(function($){
 	}
 	
 	/** Float panel **/
+	function getDocHeight() {
+		var D = document;
+		return Math.max(
+			D.body.scrollHeight, D.documentElement.scrollHeight,
+			D.body.offsetHeight, D.documentElement.offsetHeight,
+			D.body.clientHeight, D.documentElement.clientHeight );
+	}
+	
 	var floatPanel = $('#float-panel'),
-		docHeight = $(document).height();
-		
+		docHeight =  $(document).height();
+		console.log(docHeight);
+				
 	$('.mdl-layout__content').scroll(function() {
-		if($('.mdl-layout__content').scrollTop() >= 450 && ($('.mdl-layout__content').scrollTop() + $(window).height() +50 <= docHeight)){
+		//console.log($('.mdl-layout__content').scrollTop() + $(window).height() +30);
+		//&& ($('.mdl-layout__content').scrollTop() + $(window).height() +50 <= docHeight)
+		if($('.mdl-layout__content').scrollTop() >= 250 && ($('.mdl-layout__content').scrollTop() + $(window).height() +40 <= docHeight)){
 			floatPanel.slideDown(300);			
 		} else {
 			floatPanel.slideUp(300);
 		}		
 	});
 	
-	/**  Second sharing **/
-	if ($('.sharing-on-bottom').length) {
-		var sharingDist = $('.sharing-on-bottom').offset().top - $('.sharing-on-top').offset().top;
-		if (sharingDist <= $(window).height() *0.8) {
-			$('.sharing-on-bottom').hide();
-		}
-	}
+	
 	
 	/** Tooltips in calendar **/
 	function position_tooltip(trigger, tip){
@@ -266,7 +271,7 @@ jQuery(document).ready(function($){
 				field = $(this).parents('.tst-select');
 			
 			field.find('.tst-menu-trigger').text(selVal);
-			field.find('select').val(selVal);
+			field.find('select').val(selVal).change();
 			field.find('.mdl-menu__item').removeClass('selected');
 			$(this).addClass('selected');
 			
@@ -318,7 +323,7 @@ jQuery(document).ready(function($){
 		$('input[type="number"]').numeric();
 	}
 
-	//calendat height bugfix
+	//calendar height bugfix
 	function fix_calendar_height() {
 		var gridCell = $('#calendar_content').find('.mdl-cell--9-col'),
 			gridCellContent = gridCell.find('.calendar-card');
@@ -337,5 +342,29 @@ jQuery(document).ready(function($){
 	$(window).resize(function(){
 		fix_calendar_height();	
 	});
+	
+	
+	//fix for equal height in flexbox
+	function flex_equal_height(){
+		
+		$('.mdl-cell .mdl-card').each(function(){
+			
+			var $_this = $(this);
+			
+			if (!$_this.hasClass('widget')) {
+				var h = $_this.parents('.mdl-cell').height();
+				$_this.height(h);
+			}			
+		});
+	}
+	
+	imagesLoaded('#page_content', function() {
+		flex_equal_height();
+	});
+		
+	$(window).resize(function(){
+		flex_equal_height();	
+	});
+	
 	
 }); //jQuery

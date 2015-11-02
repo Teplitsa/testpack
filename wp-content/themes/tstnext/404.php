@@ -32,7 +32,7 @@ get_header(); ?>
 	$r_query = new WP_Query(
 	array(
 		'post_type' => 'post',
-		'posts_per_page' => 4,		
+		'posts_per_page' => 3,		
 		'tax_query' => array(
 			array(
 				'taxonomy' => 'category',
@@ -48,11 +48,9 @@ get_header(); ?>
 		<h5>Почитайте наши новости</h5>
 		
 		<?php
-			while($r_query->have_posts()){
-				$r_query->the_post();			
-				tst_compact_post_item();			
-			}
-			wp_reset_postdata();	
+			foreach($r_query->posts as $rp){
+				tst_compact_post_item($rp);
+			}	
 		?>
 	</aside>	
 	</div>

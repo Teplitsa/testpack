@@ -16,3 +16,6 @@ wp-content/vendor/*
 */node_modules/*
 wp-config.php
 .komodotools
+debug.log
+_temp
+.htaccess

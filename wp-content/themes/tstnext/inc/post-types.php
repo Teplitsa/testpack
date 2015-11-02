@@ -1,4 +1,5 @@
 <?php
+
 add_action('init', 'tst_custom_content', 20);
 if( !function_exists('tst_custom_content') ) {
 function tst_custom_content(){
@@ -7,38 +8,107 @@ function tst_custom_content(){
     deregister_taxonomy_for_object_type('post_tag', 'post');
 	remove_post_type_support('page', 'thumbnail' );
 	
-	register_taxonomy('auctor', array('post',), array(
+	register_taxonomy('children_status', array('children',), array(
         'labels' => array(
-            'name'                       => 'Авторы',
-            'singular_name'              => 'Автор',
-            'menu_name'                  => 'Авторы',
-            'all_items'                  => 'Все авторы',
-            'edit_item'                  => 'Редактировать автора',
+            'name'                       => 'Статусы',
+            'singular_name'              => 'Статус',
+            'menu_name'                  => 'Статусы',
+            'all_items'                  => 'Все статусы',
+            'edit_item'                  => 'Редактировать статус',
             'view_item'                  => 'Просмотреть',
-            'update_item'                => 'Обновить автора',
-            'add_new_item'               => 'Добавить нового автора',
-            'new_item_name'              => 'Название нового автора',
-            'parent_item'                => 'Родительский автор',
-            'parent_item_colon'          => 'Родительская автор:',            
-            'search_items'               => 'Искать авторов',
+            'update_item'                => 'Обновить статус',
+            'add_new_item'               => 'Добавить новый статус',
+            'new_item_name'              => 'Название нового статуса',
+            'parent_item'                => 'Родительский статус',
+            'parent_item_colon'          => 'Родительская статус:',            
+            'search_items'               => 'Искать статусы',
             'popular_items'              => 'Часто используемые',
             'separate_items_with_commas' => 'Разделять запятыми',
-            'add_or_remove_items'        => 'Добавить или удалить авторов',
+            'add_or_remove_items'        => 'Добавить или удалить статусы',
             'choose_from_most_used'      => 'Выбрать из часто используемых',
             'not_found'                  => 'Не найдено'
         ),
-        'hierarchical'      => false,
+        'hierarchical'      => true,
         'show_ui'           => true,
-        'show_in_nav_menus' => false,
+        'show_in_nav_menus' => true,
         'show_tagcloud'     => false,
         'show_admin_column' => true,
         'query_var'         => true,
-        'rewrite'           => array('slug' => 'auctor', 'with_front' => false),
+        'rewrite'           => array('slug' => 'children-status', 'with_front' => false),
         //'update_count_callback' => '',        
     ));
 	
-	
     /** Post types: */
+	register_post_type('children', array(
+        'labels' => array(
+            'name'               => 'Дети',
+            'singular_name'      => 'Профиль',
+            'menu_name'          => 'Дети',
+            'name_admin_bar'     => 'Добавить профиль',
+            'add_new'            => 'Добавить новый',
+            'add_new_item'       => 'Добавить профиль',
+            'new_item'           => 'Новый профиль',
+            'edit_item'          => 'Редактировать профиль',
+            'view_item'          => 'Просмотр профиля',
+            'all_items'          => 'Все профили',
+            'search_items'       => 'Искать профиль',
+            'parent_item_colon'  => 'Родительский профиль:',
+            'not_found'          => 'Профили не найдены',
+            'not_found_in_trash' => 'В Корзине профили не найдены'
+       ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => true,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => false,
+        'rewrite'             => array('slug' => 'children', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-id',
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'taxonomies'          => array('children_status'),
+    ));
+	
+	register_post_type('project', array(
+        'labels' => array(
+            'name'               => 'Проекты',
+            'singular_name'      => 'Проект',
+            'menu_name'          => 'Проекты',
+            'name_admin_bar'     => 'Добавить проект',
+            'add_new'            => 'Добавить новый',
+            'add_new_item'       => 'Добавить проект',
+            'new_item'           => 'Новый проект',
+            'edit_item'          => 'Редактировать проект',
+            'view_item'          => 'Просмотр проекта',
+            'all_items'          => 'Все проекты',
+            'search_items'       => 'Искать проект',
+            'parent_item_colon'  => 'Родительский проект:',
+            'not_found'          => 'Проекты не найдены',
+            'not_found_in_trash' => 'В Корзине проекты не найдены'
+       ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => true,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => 'projects',
+        'rewrite'             => array('slug' => 'project', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-category',
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'taxonomies'          => array(),
+    ));
+	
     register_post_type('event', array(
         'labels' => array(
             'name'               => 'События',
@@ -74,22 +144,22 @@ function tst_custom_content(){
         'taxonomies'          => array(),
     ));
 
-	 register_post_type('product', array(
+	register_post_type('org', array(
         'labels' => array(
-            'name'               => 'Товары',
-            'singular_name'      => 'Товар',
-            'menu_name'          => 'Каталог',
-            'name_admin_bar'     => 'Добавить товар',
-            'add_new'            => 'Добавить новый',
-            'add_new_item'       => 'Добавить товар',
-            'new_item'           => 'Новый товар',
-            'edit_item'          => 'Редактировать товар',
-            'view_item'          => 'Просмотр товара',
-            'all_items'          => 'Все товары',
-            'search_items'       => 'Искать товары',
-            'parent_item_colon'  => 'Родительский товар:',
-            'not_found'          => 'Товары не найдены',
-            'not_found_in_trash' => 'В Корзине товары не найдены'
+            'name'               => 'Организации',
+            'singular_name'      => 'Организация',
+            'menu_name'          => 'Партнеры',
+            'name_admin_bar'     => 'Добавить организацию',
+            'add_new'            => 'Добавить новую',
+            'add_new_item'       => 'Добавить организацию',
+            'new_item'           => 'Новая организация',
+            'edit_item'          => 'Редактировать организацию',
+            'view_item'          => 'Просмотр организации',
+            'all_items'          => 'Все организации',
+            'search_items'       => 'Искать организации',
+            'parent_item_colon'  => 'Родительская организация:',
+            'not_found'          => 'Организации не найдены',
+            'not_found_in_trash' => 'В Корзине организации не найдены'
        ),
         'public'              => true,
         'exclude_from_search' => false,
@@ -100,14 +170,16 @@ function tst_custom_content(){
         'show_in_admin_bar'   => true,
         //'query_var'           => true,
         'capability_type'     => 'post',
-        'has_archive'         => 'catalogue',
-        'rewrite'             => array('slug' => 'product', 'with_front' => false),
+        'has_archive'         => false,
+        'rewrite'             => array('slug' => 'org', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-cart',
+		'menu_icon'           => 'dashicons-networking',
         'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
         'taxonomies'          => array(),
     ));
+	
+	
 }
 
 } // if tst_custom_content
@@ -188,20 +260,20 @@ function tst_custom_content(){
 //}
 //add_filter('post_updated_messages', 'tst_change_post_updated_labels');
 
-//add_action( 'p2p_init', 'apl_connection_types' );
-//function apl_connection_types() {
-//	p2p_register_connection_type( array(
-//		'name' => 'project_post',
-//		'from' => 'project',
-//		'to'   => 'post',
-//		'sortable'   => true,
-//		'reciprocal' => false,
-//		'prevent_duplicates' => true,
-//		'admin_box' => array(
-//			'show' => 'any',
-//			'context' => 'normal',
-//			'can_create_post' => true
-//		),
-//		'admin_column' => 'to'
-//	) );
-//}
+add_action( 'p2p_init', 'tst_connection_types' );
+function tst_connection_types() {
+	p2p_register_connection_type( array(
+		'name' => 'project_post',
+		'from' => 'project',
+		'to'   => 'post',
+		'sortable'   => true,
+		'reciprocal' => false,
+		'prevent_duplicates' => true,
+		'admin_box' => array(
+			'show' => 'any',
+			'context' => 'normal',
+			'can_create_post' => true
+		),
+		'admin_column' => 'to'
+	) );
+}

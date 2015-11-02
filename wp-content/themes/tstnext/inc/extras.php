@@ -122,7 +122,7 @@ function tst_body_classes( $classes ) {
 
 
 /** Support for social icons in menu **/
-//add_filter( 'pre_wp_nav_menu', 'tst_pre_wp_nav_menu_social', 10, 2 );
+add_filter( 'pre_wp_nav_menu', 'tst_pre_wp_nav_menu_social', 10, 2 );
 function tst_pre_wp_nav_menu_social( $output, $args ) {
 	if ( ! $args->theme_location || 'social' !== $args->theme_location ) {
 		return $output;
@@ -154,48 +154,14 @@ function tst_pre_wp_nav_menu_social( $output, $args ) {
 
 	// Supported social icons (filterable); [url pattern] => [css class]
 	$supported_icons = apply_filters( 'tst_supported_social_icons', array(
-		'app.net'            => 'fa-adn',
-		'behance.net'        => 'fa-behance',
-		'bitbucket.org'      => 'fa-bitbucket',
-		'codepen.io'         => 'fa-codepen',
-		'delicious.com'      => 'fa-delicious',
-		'deviantart.com'     => 'fa-deviantart',
-		'digg.com'           => 'fa-digg',
-		'dribbble.com'       => 'fa-dribbble',
-		'facebook.com'       => 'fa-facebook',
-		'flickr.com'         => 'fa-flickr',
-		'foursquare.com'     => 'fa-foursquare',
-		'github.com'         => 'fa-github',
-		'gittip.com'         => 'fa-gittip',
-		'plus.google.com'    => 'fa-google-plus-square',
-		'instagram.com'      => 'fa-instagram',
-		'jsfiddle.net'       => 'fa-jsfiddle',
-		'linkedin.com'       => 'fa-linkedin',
-		'pinterest.com'      => 'fa-pinterest',
-		'qzone.qq.com'       => 'fa-qq',
-		'reddit.com'         => 'fa-reddit',
-		'renren.com'         => 'fa-renren',
-		'soundcloud.com'     => 'fa-soundcloud',
-		'spotify.com'        => 'fa-spotify',
-		'stackexchange.com'  => 'fa-stack-exchange',
-		'stackoverflow.com'  => 'fa-stack-overflow',
-		'steamcommunity.com' => 'fa-steam',
-		'stumbleupon.com'    => 'fa-stumbleupon',
-		't.qq.com'           => 'fa-tencent-weibo',
-		'trello.com'         => 'fa-trello',
-		'tumblr.com'         => 'fa-tumblr',
-		'twitter.com'        => 'fa-twitter',
-		'vimeo.com'          => 'fa-vimeo-square',
-		'vine.co'            => 'fa-vine',
-		'vk.com'             => 'fa-vk',
-		'weibo.com'          => 'fa-weibo',
-		'weixin.qq.com'      => 'fa-weixin',
-		'wordpress.com'      => 'fa-wordpress',
-		'xing.com'           => 'fa-xing',
-		'yahoo.com'          => 'fa-yahoo',
-		'youtube.com'        => 'fa-youtube',
-		'feed'               => 'fa-rss',
-		'odnoklassniki.ru'   => 'icon-odnoklassniki'
+		'instagram.com'      => 'icon-instagram',	
+		'facebook.com'       => 'icon-facebook',		
+		'twitter.com'        => 'icon-twitter',
+		'vk.com'             => 'icon-vk',
+		//'youtube.com'        => 'icon-youtube',		
+		'odnoklassniki.ru'   => 'icon-ok',
+		'ok.ru'              => 'icon-ok',
+		'livejournal.com'    => 'icon-lj'
 	));
 
 	// Process each menu item
@@ -205,22 +171,25 @@ function tst_pre_wp_nav_menu_social( $output, $args ) {
 		// Look for matching icons
 		foreach ( $supported_icons as $pattern => $class ) {
 			if ( false !== strpos( $item->url, $pattern ) ) {
+				
+				$icon = '<svg class="sh-icon"><use xlink:href="#'.$class.'" /></svg>';
+				
 				$item_output .= '<li class="' . esc_attr( str_replace( array('fa-', 'icon-'), '', $class ) ) . '">';
 				$item_output .= '<a href="' . esc_url( $item->url ) . '">';				
-				$item_output .= '<i class="fa fa-fw ' .esc_attr($class). '">';
+				$item_output .= $icon;
 				$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
-				$item_output .= '</i></a></li>';
+				$item_output .= '</a></li>';
 				break;
 			}
 		}
 
 		// No matching icons
 		if ( '' === $item_output ) {
-			$item_output .= '<li class="external-link-square">';
-			$item_output .= '<a href="' . esc_url( $item->url ) . '">';
-			$item_output .= '<i class="fa fa-fw fa-external-link-square">';
-			$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
-			$item_output .= '</i></a></li>';
+			//$item_output .= '<li class="external-link-square">';
+			//$item_output .= '<a href="' . esc_url( $item->url ) . '">';
+			//$item_output .= '<i class="fa fa-fw fa-external-link-square">';
+			//$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
+			//$item_output .= '</i></a></li>';
 		}
 
 		// Add item to list
@@ -290,10 +259,10 @@ function tst_main_menu_link($atts, $item, $args, $depth){
 add_action('customize_register', 'tst_customize_register');
 function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
-    $wp_customize->add_section('tst_spec_settings', array(
-        'title'      => __('Website settings', 'tst'),
-        'priority'   => 30,
-    ));
+    //$wp_customize->add_section('tst_spec_settings', array(
+    //    'title'      => __('Website settings', 'tst'),
+    //    'priority'   => 30,
+    //));
    
 
     $wp_customize->add_setting('default_thumbnail', array(
@@ -303,7 +272,7 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 	
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'default_thumbnail', array(
         'label'    => __('Default thumbnail', 'tst'),
-        'section'  => 'tst_spec_settings',
+        'section'  => 'title_tagline',
         'settings' => 'default_thumbnail',
         'priority' => 1,
     )));
@@ -317,7 +286,7 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
     $wp_customize->add_control('footer_text', array(
         'type'     => 'textarea',		
         'label'    => __('Footer text', 'tst'),
-        'section'  => 'tst_spec_settings',
+        'section'  => 'title_tagline',
         'settings' => 'footer_text',
         'priority' => 30,
     ));
@@ -326,13 +295,17 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
 /** Facebook author tag **/
 add_action('wp_head', 'tst_facebook_author_tag');
-function tst_facebook_author_tag(){
+function tst_facebook_author_tag() {
+
 	global $post;
 	
-	if(!is_single())
+	if(!is_singular('post'))
+		return;
+		
+	$author = tst_get_post_author($post);
+	if(!$author || is_wp_error($author))
 		return;
 	
-	$author = tst_get_post_author();
 	$fb = (function_exists('get_field') && $author) ? get_field('auctor_facebook', 'auctor_'.$author->term_id) : '';
 	
 	if(!empty($fb)) {
@@ -341,3 +314,261 @@ function tst_facebook_author_tag(){
 <?php
 	}
 }
+
+add_action('plugins_loaded', function(){
+
+    if( !function_exists('get_field') ) {
+
+        function get_field($name, $id = false) {
+
+            if( !$id ) {
+
+                global $post;
+                if($post) {
+                    $id = $post->ID;
+                } else {
+                    return '';
+                }
+            }
+
+            return get_post_meta($id, $name, true);
+        }
+    }
+});
+
+
+/** Humans txt **/
+class TST_Humans_Txt {
+	
+	private static $_instance = null;		
+	
+	private function __construct() {	
+		
+		add_action('init', array( $this, 'rewrite'));
+		add_filter('redirect_canonical', array( $this, 'canonical'));
+		add_action('template_redirect', array( $this, 'template_redirect'));
+		add_action('wp_head', array($this, 'head_link'));
+	}
+	
+	public static function get_instance() {
+
+        // If the single instance hasn't been set, set it now.
+        if( !self::$_instance ) {
+            self::$_instance = new self;
+        }
+		
+        return self::$_instance;
+    }
+	
+	
+	public function rewrite() { //rewrite rules
+		global $wp_rewrite, $wp;
+		
+		add_rewrite_rule('humans\.txt$', $wp_rewrite->index.'?humans=1', 'top');
+		$wp->add_query_var('humans');
+	}
+
+
+	public function canonical($redirect) { //revome slash in link
+		
+		$humans = get_query_var( 'humans' );
+		if (!empty($humans))
+			return false;
+
+		return $redirect;
+	}
+	
+	public function head_link(){ // add link at header
+					
+		$url = esc_url(home_url('humans.txt'));
+		echo "<link rel='author' href='{$url}'>\n";
+	}
+
+	public function template_redirect(){ //show text
+	
+		if(1 != get_query_var('humans'))
+			return;
+			
+		//serve correct headers
+		header( 'Content-Type: text/plain; charset=utf-8' ); 
+	
+		//prepare default content
+		$content = "/* MADE BY */
+
+The Project by Teplitsa. Technologies for Social Good
+www: te-st.ru
+
+Idea & Project Lead
+Gleb Suvorov
+suvorov.gleb[at]gmail.com
+
+Design & Development:
+Anna Ladoshkina 
+webdev[at]foralien.com
+
+Contributors:
+
+Denis Cherniatev
+denis.cherniatev[at]gmail.com
+
+Lev Zvyagincev
+ahaenor[at]gmail.com
+
+Denis Kulandin
+kulandin[at]gmail.com
+
+Tools we use with admiration and love to make things real:
+WordPress, MDL Framework, Gulp, SASS, Leyka
+
+       _             _    _        _   
+      /\ \          /\ \ /\ \     /\_\ 
+     /  \ \____     \ \ \\ \ \   / / / 
+    / /\ \_____\    /\ \_\\ \ \_/ / /  
+   / / /\/___  /   / /\/_/ \ \___/ /   
+  / / /   / / /   / / /     \ \ \_/    
+ / / /   / / /   / / /       \ \ \     
+/ / /   / / /   / / /         \ \ \    
+\ \ \__/ / /___/ / /__         \ \ \   
+ \ \___\/ //\__\/_/___\         \ \_\  
+  \/_____/ \/_________/          \/_/  
+";
+
+		//make it filterable
+		$content = apply_filters('humans_txt', $content);
+		
+		//correct line ends
+		$content = str_replace("\r\n", "\n", $content);
+		$content = str_replace("\r", "\n", $content);
+		
+		//output
+		echo $content;		
+		die();		
+	}
+	
+} //class end
+
+$humans = TST_Humans_Txt::get_instance();
+
+/** == Social buttons == **/
+function tst_social_share_no_js() {
+	
+	$title = (class_exists('WPSEO_Frontend')) ? WPSEO_Frontend::get_instance()->title( '' ) : '';
+	$link = tst_current_url();
+	$text = $title.' '.$link;
+
+	$data = array(
+		'vkontakte' => array(
+			'label' => 'Поделиться во Вконтакте',
+			'url' => 'https://vk.com/share.php?url='.$link.'&title='.$title,
+			'txt' => 'Вконтакте',
+			'icon' => 'icon-vk',
+			'show_mobile' => false
+		),
+		'facebook' => array(
+			'label' => 'Поделиться на Фейсбуке',
+			'url' => 'https://www.facebook.com/sharer/sharer.php?u='.$link,
+			'txt' => 'Facebook',
+			'icon' => 'icon-facebook',
+			'show_mobile' => false
+		),		
+		'twitter' => array(
+			'label' => 'Поделиться ссылкой в Твиттере',
+			'url' => 'https://twitter.com/intent/tweet?url='.$link.'&text='.$title,
+			'txt' => 'Twitter',
+			'icon' => 'icon-twitter',
+			'show_mobile' => false		
+		),
+		'odnoklassniki' => array(
+			'label' => 'Поделиться ссылкой в Одноклассниках',
+			'url' => 'http://connect.ok.ru/dk?st.cmd=WidgetSharePreview&service=odnoklassniki&st.shareUrl='.$link,
+			'txt' => 'Одноклассники',
+			'icon' => 'icon-ok',
+			'show_mobile' => false
+			
+		),
+	);
+	
+?>
+<div class="social-likes-wrapper">
+<div class="social-likes social-likes_visible social-likes_ready">
+
+<?php
+foreach($data as $key => $obj){		
+	if((tst_is_mobile_user_agent() && $obj['show_mobile']) || !tst_is_mobile_user_agent()){
+?>
+	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
+		<a href="<?php echo $obj['url'];?>" class="social-likes__button social-likes__button_<?php echo $key;?>" target="_blank" onClick="window.open('<?php echo $obj['url'];?>','<?php echo $obj['label'];?>','top=320,left=325,width=650,height=430,status=no,scrollbars=no,menubar=no,tollbars=no');return false;">
+			<svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span>
+		</a>
+	</div>
+<?php 
+	}
+	
+} //foreach
+
+	$text = $title.' '.$link;
+	
+	$mobile = array(
+		'twitter' => array(
+			'label' => 'Поделиться ссылкой в Твиттере',
+			'url' => 'twitter://post?message='.$text,
+			'txt' => 'Twitter',
+			'icon' => 'icon-twitter',
+			'show_desktop' => false		
+		),
+		'whatsapp' => array(
+			'label' => 'Поделиться ссылкой в WhatsApp',
+			'url' => 'whatsapp://send?text='.$text,
+			'txt' => 'WhatsApp',
+			'icon' => 'icon-whatsup',
+			'show_desktop' => false
+		),
+		'telegram' => array(
+			'label' => 'Поделиться ссылкой в Telegram',
+			'url' => 'tg://msg?text='.$text,
+			'txt' => 'Telegram',
+			'icon' => 'icon-telegram',
+			'show_desktop' => false
+		),
+		'viber' => array(
+			'label' => 'Поделиться ссылкой в Viber',
+			'url' => 'viber://forward?text='.$text,
+			'txt' => 'Viber',
+			'icon' => 'icon-viber',
+			'show_desktop' => false
+		),
+	);
+		
+	foreach($mobile as $key => $obj) {
+		
+		if((!tst_is_mobile_user_agent() && $obj['show_desktop']) || tst_is_mobile_user_agent()) {
+?>
+	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
+	<a href="<?php echo $obj['url'];?>" target="_blank" class="social-likes__button social-likes__button_<?php echo $key;?>"><svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span></a>
+	</div>	
+<?php } } //endforeach ?>
+
+</div>
+</div>
+<?php
+}
+
+function tst_is_mobile_user_agent(){
+	//may be need some more sophisticated testing
+	$test = false;
+	
+	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+		$test = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+		$test = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
+		$test = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
+		$test = true;
+	}
+	
+	return $test;
+}
+
+
+

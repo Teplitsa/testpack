@@ -7,22 +7,23 @@ body {
 }
 
 p {
-	line-height: 20px;
+	
 }
 
 /**  Header **/ 
 $sh-base : $cell-elementary-2x;
-
+body > svg { display: none; }
 .site-logo {
 	display: block;
 	width: auto;	
 	position: absolute;
-	top: 7px;
+	top: 10px;
 	left: 50%;	
 	@include transform(translateX(-50%));
 	max-height: $layout-desktop-header-height - 16px;
 	@media screen and (max-width: $layout-screen-size-threshold) {
 		max-height: $layout-mobile-header-height - 14px;
+		top: 7px;
 	}
 	
 	@include upto(phone) {
@@ -38,18 +39,22 @@ $sh-base : $cell-elementary-2x;
 		}
 	}
 	
-	img {
-		width: auto;
-		vertical-align: middle;
-		max-height: $layout-desktop-header-height - 16px;
-		@media screen and (max-width: $layout-screen-size-threshold) {
-			max-height: $layout-mobile-header-height - 14px;
-		}
+	.logo {
+		display: inline-block;
+		width: 127px;
+		height: 42px;
 	}
 }
 
+.mdl-layout__header-row .search-icon {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	use { fill: #fff;}
+}
+
 .page-template-page-home .site-logo {
-	display: none;
+	opacity : 0;
 }
 
 .crumbs {
@@ -98,86 +103,76 @@ $sh-base : $cell-elementary-2x;
 	}
 	
 	.navigation-logo {
-		line-height: $layout-desktop-header-height;
-		img {
-			max-height: $layout-desktop-header-height - 16px;
-			width: auto;
-			vertical-align: middle;
+		display: block;
+				
+		.logo {
+			display: inline-block;
+			width: 127px;
+			height: 42px;
 		}
-		
-		@media screen and (max-width: $layout-screen-size-threshold) {
-			line-height: $layout-mobile-header-height;
-			img {
-				max-height: $layout-mobile-header-height - 8;
-			}
-		}		
+			
 	}
 	
 	.mdl-navigation__link {
 		color: unquote("rgba(#{$palette-grey-800}, 1)");		
 		font-weight: 400;
 		padding-right: 30px;
+	
+	}
+	
+	.sub-menu {
+		.mdl-navigation__link {
+			padding: $cell-elementary/2 30px $cell-elementary/2 40px;
+			
+			&:before {
+				content: '— ';				
+			}
+		}
+	}
+	
+	.social-menu {
+		padding-left: 40px;
+		margin-top: 16px;
+		padding-bottom: 32px;
 	}
 }
 
 .page-header {	
-	background-color: #333;
-	background-repeat: no-repeat;
-	background-position: top center;
-	background-size: cover;
-	//min-height: 200px;
+	background-color: #fff;	
 	color: $tst-color-white;
 	position: relative;
-		
-	&:before {
-		content: '';
-		display:block;
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top:0;
-		left: 0;		
-		z-index: 1;
-		
-		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&amp;0+0,0.5+63,0.35+100 */
-		background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 63%, rgba(0,0,0,0.15) 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(63%,rgba(0,0,0,0.35)), color-stop(100%,rgba(0,0,0,0.15))); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 63%,rgba(0,0,0,0.15) 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 63%,rgba(0,0,0,0.15) 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 63%,rgba(0,0,0,0.15) 100%); /* IE10+ */
-		background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.35) 63%,rgba(0,0,0,0.15) 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#59000000',GradientType=0 ); /* IE6-9 */
-	}
 		
 	.page-title {
 		position: relative;
 		margin: 0;
-		color: $tst-color-white;
+		color: $tst-color-text;
 		font-weight: 200;
 		z-index: 10;
-		padding: $sh-base*4 0 $sh-base*2.5;		
+		padding: $sh-base*2 0 $sh-base*2;		
 	}
 	
-	.home-logo {
-		position: relative;
-		z-index: 10;
-		padding: 8px 0 48px;
-	}
+	
 }
 
 .page-content {	
 	position: relative;
 	z-index: 100;
-	top: -3.5*$sh-base;	
+	top: -3.5*$sh-base;
+	min-height: 520px;
 }
 
 // context header modifications
 body.error404,
 body.single,
-body.page-template-default  {
+body.page-template-page-simple,
+body.page-template-default,
+body.page-template-page-sidebar {
 	
+	.page-header {
+		background-color: transparent;
+	}
 	.page-header .page-title {
-		padding: $sh-base*6 0 $sh-base*2;		
+		padding: $sh-base*2 0 $sh-base;		
 		line-height: 1.2;
 	}
 	
@@ -185,6 +180,23 @@ body.page-template-default  {
 		top: auto;		
 	}
 }
+
+body.single-children .page-header .page-title {
+	padding-bottom: $sh-base*2;	
+}
+
+body.cards-page-preface {
+	.page-header .page-title {
+		padding: $sh-base*2 0 $sh-base;				
+	}
+	.page-content {
+		top: auto;	
+		padding-top: $cell-elementary-2x;
+		padding-bottom: $cell-elementary-2x;
+	}
+}
+
+body.page-template-page-simple .entry-content { min-height: 300px;}
 
 body.search {
 	.page-content {			
@@ -197,9 +209,10 @@ body.search {
 	}
 }
 
+body.archive.category,
 body.tax-auctor {
 	.page-header .page-title {
-		padding: $sh-base*5 0 $sh-base/2;		
+				
 		line-height: 1.2;
 	}
 	.author-description {
@@ -207,6 +220,7 @@ body.tax-auctor {
 		padding-bottom: $sh-base*3;
 		z-index: 10;
 		color: rgba(255,255,255, 0.7);
+		max-width: 760px;
 	}
 }
 
@@ -255,9 +269,11 @@ body.tax-auctor {
 	.bottom-logo {
 		float: left;
 		height: 50px;
-		img {
-			height: 100%;
-			width: auto;
+		
+		.logo {
+			display: inline-block;
+			width: 100px;
+			height: 42px;
 		}
 	}
 	
@@ -266,11 +282,9 @@ body.tax-auctor {
 	}
 	
 	.copy {
-		margin-left: 92px;
-		padding-top: 5px;
-		a {
-			font-weight: normal;
-		}
+		margin-left: 132px;
+		
+		a { font-weight: normal; }
 		p {
 			margin: 0;
 			color: $tst-color-text;
@@ -278,6 +292,27 @@ body.tax-auctor {
 			&:last-child {
 				color: $tst-color-text-semi;
 				font-size: 12px;				
+			}
+		}
+		
+		.social-menu {
+			margin-bottom: 18px;
+			
+			li {				
+				a {
+					width: 24px;
+					height: 24px;
+					font-size: 14px;
+				}
+				
+				.sh-icon  {
+					width: 14px;
+					height: 14px;
+					display: inline-block;
+					fill: #ffffff;			
+					margin: 0 0 0;
+					vertical-align: middle;		
+				}
 			}
 		}
 	}
@@ -290,26 +325,42 @@ body.tax-auctor {
 	
 	a {
 		display: block;
-		width: 106px;
+		width: 110px;
+		height: 50px;
+		padding-top: 5px;
+		text-align: center;
+		box-sizing: border-box;
 		position: absolute;
 		top: 0;
 		right: 0;		
-		&:hover, &:focus, &:active {
-			
-		}
+		
+		border-radius: 5px;
+		box-shadow: 1px 1px 0px rgba(150,150,150, 0.5);
+		
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+1,e0e0e0+99 */
+background: #f9f9f9; /* Old browsers */
+background: -moz-linear-gradient(top,  #f9f9f9 1%, #e0e0e0 99%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f9f9f9), color-stop(99%,#e0e0e0)); 
+background: -webkit-linear-gradient(top,  #f9f9f9 1%,#e0e0e0 99%); 
+background: -o-linear-gradient(top,  #f9f9f9 1%,#e0e0e0 99%);
+background: -ms-linear-gradient(top,  #f9f9f9 1%,#e0e0e0 99%); 
+background: linear-gradient(to bottom,  #f9f9f9 1%,#e0e0e0 99%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#e0e0e0',GradientType=0 ); 
 	}
-	
-	img {
-		vertical-align: top;
-	}
-	
+		
 	span {
 		font-size: 12px;
 		line-height: 16px;
 		color: $tst-color-text-semi;
 		display: inline-block;
-		margin-right: 115px;
+		margin-right: 120px;
 		padding-top: 10px;
+	}
+	
+	.tst-icon {
+		display: inline-block;
+		width: 87px;
+		height: 40px;
 	}
 }
 
@@ -320,12 +371,23 @@ body.tax-auctor {
 		@include upto(tablet){
 			display: none;
 		}
+		
+		.mi {
+			display: inline-block;
+			width: 24px;
+			height: 24px;			
+			margin-top: 16px;
+			use { fill: #fff; }
+		}
 	}
 	
 	h4 {
 		display: none;
 		color: $tst-color-primary;
 		
+		a {
+			text-decoration: underline;
+		}
 		@include for(desktop) {
 			font-size: 22px;
 			display: block;
@@ -343,7 +405,7 @@ body.tax-auctor {
 	bottom: 36px;
 	right: 30px;
 	
-	@include for(tablet) {
+	@include for(desktop) {
 		display: none;
 	}
 }
@@ -353,19 +415,83 @@ body.tax-auctor {
 		height: 100%;
 	}
 	
-	.widget_featured_product {
-		height: 100%;
-		@include for(desktop) {
-			height: auto;
-			min-height: 368px;
+	.widget_socila_links {
+		display: none;
+		@include for(desktop) { display: block; }
+	}
+}
+
+.widget_nav_menu.mdl-card { //nav widget
+	
+	@include for(desktop) { height: 320px; }
+	
+	h5 {
+		padding: $cell-elementary-2x;
+		margin: 0;
+		background: $tst-color-primary;
+		color: $tst-color-white;
+	}
+	
+	div[class *="container"] {
+		padding: $cell-elementary-2x;
+		
+		li {
+			margin-bottom: $cell-elementary;
+		}
+		
+		li ul {
+			margin-top: $cell-elementary;
+			margin-left: $cell-elementary-2x;
+			
+			li {
+				margin-bottom: $cell-elementary/2;
+			}
+		}
+		
+		a {
+			@include transition(all 0.35s);
+			&:hover {
+				color: $tst-color-primary-dark;
+			}
 		}
 	}
 }
 
-.contact-widget {
-	padding-top: 28px;
+.widget_text.mdl-card  {
+	height: auto;
+	@include for(desktop) { min-height: 280px; }
+	
+	h5 {
+		padding: $cell-elementary-2x;
+		margin: 0;
+		background: $tst-color-primary;
+		color: $tst-color-white;
+	}
+	
+	.textwidget {
+		padding: $cell-elementary-2x;
+	}
 }
 
+
+.sidebar {		
+	
+	@include for(desktop) {		
+		margin-left: 72px;
+		
+		.donate-widget {
+			margin-left: -72px;
+		}
+	}
+}
+
+.page-template-default .sidebar,
+.single .sidebar {	
+	
+	@include for(desktop) {				
+		margin-top: -52px;				
+	}
+}
 
 
 /** Elements **/
@@ -394,60 +520,6 @@ section.error-404 {
 	margin: $margin-base 0;
 }
 
-// Parnters page
-.page-template-page-partners {
-	
-	.page-header .page-title {
-		padding: $sh-base*4 0 $sh-base*3;		
-		line-height: 1.2;
-	}
-	
-	.page-content {			
-		top: auto;		
-	}
-	
-	section.partners-gallery {
-		position: relative;
-		z-index: 100;
-		top: -3.5*$sh-base;	
-	}
-	
-	.page-content-grid {
-		padding: $margin-base*1.5 0;
-	}
-}
-
-.tpl-partner {
-	.mdl-card__media {
-		background: $tst-color-white;
-	}
-	
-	.mdl-card__title {
-		background: $tst-color-primary;
-	}
-	
-	.mdl-card__title-text {
-		color: $tst-color-white;
-		font-size: 16px;
-		font-weight: 500;
-	}
-	
-	.logo-link {
-		display: block;
-		width: 100%;
-		height: 150px;
-		text-align: center;
-		line-height: 150px;
-		img {
-			max-width: 200px;
-			max-height: 150px;
-			height: auto;
-			width: auto;
-			vertical-align: middle;
-		}
-	}
-	
-	.mdl-card__actions {
-		text-align: right;
-	}
+.page-template-default .entry-content {
+	min-height: 250px;
 }

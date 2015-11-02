@@ -6,7 +6,7 @@
 add_filter('manage_posts_columns', 'tst_common_columns_names', 50, 2);
 function tst_common_columns_names($columns, $post_type) {
 		
-	if(in_array($post_type, array('post', 'event', 'product', 'attachment'))){
+	if(in_array($post_type, array('post', 'event', 'project', 'org', 'attachment', 'children'))){
 		
 		
 		if(!in_array($post_type, array('attachment')))
@@ -61,7 +61,7 @@ function tst_pages_columns_names($columns) {
 		$columns['author'] = 'Создал';
 	}
 	
-	$columns['menu_order'] = 'Порядок';	
+	//$columns['menu_order'] = 'Порядок';	
 	$columns['id'] = 'ID';
 		
 	return $columns;
@@ -150,21 +150,28 @@ function tst_correct_metaboxes($post_type, $post ){
 	if(post_type_supports($post_type, 'excerpt')){
 		remove_meta_box('postexcerpt', null, 'normal');
 		
-		$label = 'Аннотация';
+		$label = ($post_type == 'org') ? __('Website', 'tst') : __('Excerpt', 'tst');
 		add_meta_box('tst_postexcerpt', $label, 'tst_excerpt_meta_box', null, 'normal', 'core');
 	}
-	//add_meta_box('postexcerpt', __('Excerpt'), 'post_excerpt_meta_box', null, 'normal', 'core');
+	
 }
 
 function tst_excerpt_meta_box($post){
 
-$label =  'Аннотация';
-$help =  'Аннотация для списков, на странице основного текста добавляется в начало.';
+	if($post->post_type == 'org'){
 ?>
-<label class="screen-reader-text" for="excerpt"><?php echo $label;?></label>
+<label class="screen-reader-text" for="excerpt"><?php _e('Website', 'tst'); ?></label>
+<input type="text" name="excerpt" id="url-excerpt" value="<?php echo $post->post_excerpt; // textarea_escaped ?>" class="widefat">
+
+<?php }	else { ?>
+
+<label class="screen-reader-text" for="excerpt"><?php _e('Excerpt', 'tst'); ?></label>
 <textarea rows="1" cols="40" name="excerpt" id="excerpt"><?php echo $post->post_excerpt; // textarea_escaped ?></textarea>
-<p><?php echo $help;?></p>
+<p><?php _e('Annotation for items lists (will be printed at the beginning of the single page)', 'tst'); ?></p>
+
 <?php	
+}
+	
 }
 
 
@@ -196,6 +203,27 @@ function tst_format_TinyMCE($in){
 	return $in;
 }
 
-
+/* Menu Labeles */
+add_action('admin_menu', 'tst_admin_menu_labels');
+function tst_admin_menu_labels(){ /* change adming menu labels */
+    global $menu, $submenu;
+	
+    //lightbox   
+    foreach($submenu['options-general.php'] as $order => $item){
+		
+        if(isset($item[2]) && $item[2] == 'responsive-lightbox'){
+			$submenu['options-general.php'][$order][0] = 'Lightbox';			
+		}        
+    }
+	
+	//custom fields
+	foreach($menu as $order => $item){
+         
+        if($item[2] == 'edit.php?post_type=acf-field-group'){
+            $menu[$order][0] = __('Custom fields', 'tst');            
+            break;
+        }
+    }   
+}
 
 
