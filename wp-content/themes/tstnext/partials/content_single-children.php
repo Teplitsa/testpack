@@ -31,6 +31,8 @@ $age = get_post_meta(get_the_ID(), 'child_age', true);
 				<div class="caption">Требуется помощь</div>
 				<div class="text"><?php the_excerpt();?></div>
 			</div>
+			
+			<div class="captioned-text help-btn"><a href="<?php echo home_url('/campaign/help-us/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Помочь сейчас</a></div>
 		</div>
 	</div>
 	

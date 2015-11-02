@@ -693,7 +693,7 @@ function tst_children_card($cpost){
 	<?php echo tst_card_summary($age.$e); ?>
 	<div class="mdl-card--expand"></div>
 	<div class="mdl-card__actions mdl-card--border">
-		<a href="<?php echo $pl;?>" class="mdl-button mdl-js-button"><?php _e('Details', 'tst');?></a>
+		<a href="<?php echo $pl;?>" class="mdl-button mdl-js-button">Помочь</a>
 	</div>
 </div>
 </article>

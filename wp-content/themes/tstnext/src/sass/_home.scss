@@ -7,12 +7,13 @@
 		
 		.logo {
 			display: inline-block;
-			width: 262px;
-			height: 180px;
+			width: 232px;
+			height: 160px;
 		}
 	}
 	
 	.home-desc {
+		margin-top: $cell-elementary;
 		font-size: 24px;
 		line-height: 1.2;
 		color: $tst-color-primary;
@@ -32,10 +33,7 @@
 	
 	.home-social {
 		float: right;
-		height: 70px;
-		@include for(tablet){
-			height: 90px;
-		}
+		height: 70px;		
 	}
 	
 }
