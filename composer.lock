@@ -420,15 +420,15 @@
         },
         {
             "name": "wpackagist-plugin/responsive-lightbox",
-            "version": "1.6.4",
+            "version": "1.6.5",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/responsive-lightbox/",
-                "reference": "tags/1.6.4"
+                "reference": "tags/1.6.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/responsive-lightbox.1.6.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/responsive-lightbox.1.6.5.zip",
                 "reference": null,
                 "shasum": null
             },
