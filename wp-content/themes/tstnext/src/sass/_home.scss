@@ -1,6 +1,63 @@
 /** Home **/
+//header
+.page-template-page-home {
+	.home-logo {
+		position: relative;
+		z-index: 10;	
+		
+		.logo {
+			display: inline-block;
+			width: 262px;
+			height: 180px;
+		}
+	}
+	
+	.home-desc {
+		font-size: 24px;
+		line-height: 1.2;
+		color: $tst-color-primary;
+		font-weight: 200;
+		text-align: right;
+		
+		@include for(desktop){
+			font-size: 32px;
+			line-height: 1.3;
+		}
+		
+		span {
+			display: inline-block;
+			max-width: 595px;
+		}
+	}
+	
+	.home-social {
+		float: right;
+		height: 70px;
+		@include for(tablet){
+			height: 90px;
+		}
+	}
+	
+}
 // top item
 
+.help-info {
+	display: none;
+	@include for(desktop){
+		display: block;
+		padding: $cell-elementary-2x;
+		
+		.fab {
+			width: 80px;
+		}
+		
+		.donate-widget h4 {
+			margin-top: -52px;
+			margin-bottom: 0;
+			margin-left: 92px;
+		}
+	}
+}
 .home-section.intro {
 	.featured_text {
 		padding: $cell-elementary-2x $cell-elementary-3x;
@@ -35,18 +92,14 @@
 
 //partners
 .home-partners-block {
-	margin: $margin-base 0;
-	padding: 16px 0 56px;
-	background-color: #333;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
+	margin: $margin-base 0;	
+
 		
 	.widget-title {
 		font-size: 12px;
 		font-weight: 400;
 		margin: 0 0 $margin-base;
-		color: $tst-color-white;
+		color: $tst-color-primary;
 	}
 	
 	.widget-content {
@@ -93,6 +146,7 @@
 		font-size: 16px;
 		font-weight: 400;
 		margin-bottom: $margin-base*1.5;
+		margin-top: 0;
 	}
 	
 	.widget-content {

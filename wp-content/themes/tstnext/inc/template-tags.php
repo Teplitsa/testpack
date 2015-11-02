@@ -351,7 +351,7 @@ function tst_breadcrumbs(){
 		
 	$links = array();
 	if(is_front_page()){
-		$links[] = "<span class='crumb-name'>".get_bloginfo('name')."</span>";
+		//$links[] = "<span class='crumb-name'>".get_bloginfo('name')."</span>";
 	}
 	elseif(is_singular('post')) {
 		

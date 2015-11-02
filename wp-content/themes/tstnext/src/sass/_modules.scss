@@ -327,6 +327,12 @@ $i: 1; //widths
 			background: darken(#2A5B83, 10%);
 		}
 	}
+	.lj a {
+		background: #00B0EA;
+		&:hover, &:focus, &:active {
+			background: darken(#00B0EA, 10%);
+		}
+	}
 	/*.youtube a {
 		background: #E83832;
 		&:hover, &:focus, &:active {

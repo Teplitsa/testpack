@@ -160,7 +160,8 @@ function tst_pre_wp_nav_menu_social( $output, $args ) {
 		'vk.com'             => 'icon-vk',
 		//'youtube.com'        => 'icon-youtube',		
 		'odnoklassniki.ru'   => 'icon-ok',
-		'ok.ru'              => 'icon-ok'
+		'ok.ru'              => 'icon-ok',
+		'livejournal.com'    => 'icon-lj'
 	));
 
 	// Process each menu item

@@ -54,7 +54,7 @@ body > svg { display: none; }
 }
 
 .page-template-page-home .site-logo {
-	display: none;
+	opacity : 0;
 }
 
 .crumbs {
@@ -149,17 +149,7 @@ body > svg { display: none; }
 		padding: $sh-base*2 0 $sh-base*2;		
 	}
 	
-	.home-logo {
-		position: relative;
-		z-index: 10;
-		padding: 8px 0 48px;
-		
-		.logo {
-			display: inline-block;
-			width: 280px;
-			height: 85px;
-		}
-	}
+	
 }
 
 .page-content {	
