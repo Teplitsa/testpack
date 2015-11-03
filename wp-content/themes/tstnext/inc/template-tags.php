@@ -691,12 +691,14 @@ function tst_children_card($cpost){
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
 	
+	$css = (is_front_page()) ? 'mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone masonry-item' : 'mdl-cell mdl-cell--4-col masonry-item';
+	
 	$pl = get_permalink($cpost);
 	$e = tst_get_post_excerpt($cpost, 30, true);
 	$age = get_post_meta($cpost->ID, 'child_age', true);
 	$age = (!empty($age)) ? '<b>'.$age.'</b> - ' : '';	
 ?>
-<article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
+<article <?php post_class($css); ?>>
 <div class="tpl-card-blank mdl-card mdl-shadow--2dp">
 	
 	<?php if(has_post_thumbnail($cpost->ID)){ ?>
