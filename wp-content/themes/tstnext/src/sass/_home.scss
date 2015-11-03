@@ -7,8 +7,8 @@
 		
 		.logo {
 			display: inline-block;
-			width: 232px;
-			height: 160px;
+			width: 280px;
+			height: 86px;
 		}
 	}
 	
@@ -21,7 +21,7 @@
 		text-align: right;
 		
 		@include for(desktop){
-			font-size: 32px;
+			font-size: 27px;
 			line-height: 1.3;
 		}
 		

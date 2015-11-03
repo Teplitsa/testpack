@@ -10,7 +10,7 @@ get_header();
 <div class="mdl-grid">
 		
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--6-col-phone">
-		<?php		
+		<?php	
 			while(have_posts()){
 				the_post();				
 				$post_id = get_the_ID();

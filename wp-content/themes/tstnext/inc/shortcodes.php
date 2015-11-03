@@ -60,6 +60,30 @@ function tst_fab_screen($atts){
 	return $out;
 }
 
+add_shortcode('tst_btn', 'tst_btn_screen');
+function tst_btn_screen($atts){
+	
+	extract(shortcode_atts(array(				
+		'url'  => '',
+		'txt'  => ''
+	), $atts));
+	
+	if(empty($url))
+		return '';
+	
+	$url = esc_url($url);
+	$txt = apply_filters('frl_the_title', $txt);
+	
+	ob_start();
+?>
+<span class="tst-btn"><a href="<?php echo $url;?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><?php echo $txt;?></a></span>
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}
+
 
 /** Partners gallery **/
 add_shortcode('tst_partners_gallery', 'tst_partners_gallery_screen');

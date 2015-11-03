@@ -97,7 +97,10 @@ if(is_front_page()) { ?>
 		}
 		elseif(is_post_type_archive('project')){
 			echo tst_get_post_type_archive_title('project');
-		}			
+		}
+		elseif(is_post_type_archive('children')){
+			echo tst_get_post_type_archive_title('children');
+		}
 	?>
 	</h1>
 	<?php if(is_tax('auctor') || is_category()) {

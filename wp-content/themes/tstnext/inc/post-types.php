@@ -8,23 +8,53 @@ function tst_custom_content(){
     deregister_taxonomy_for_object_type('post_tag', 'post');
 	remove_post_type_support('page', 'thumbnail' );
 	
-	register_taxonomy('children_status', array('children',), array(
+	register_taxonomy('auctor', array('post',), array(
         'labels' => array(
-            'name'                       => 'Статусы',
-            'singular_name'              => 'Статус',
-            'menu_name'                  => 'Статусы',
-            'all_items'                  => 'Все статусы',
-            'edit_item'                  => 'Редактировать статус',
+            'name'                       => 'Авторы',
+            'singular_name'              => 'Автор',
+            'menu_name'                  => 'Авторы',
+            'all_items'                  => 'Все авторы',
+            'edit_item'                  => 'Редактировать автора',
             'view_item'                  => 'Просмотреть',
-            'update_item'                => 'Обновить статус',
-            'add_new_item'               => 'Добавить новый статус',
-            'new_item_name'              => 'Название нового статуса',
-            'parent_item'                => 'Родительский статус',
-            'parent_item_colon'          => 'Родительская статус:',            
-            'search_items'               => 'Искать статусы',
+            'update_item'                => 'Обновить автора',
+            'add_new_item'               => 'Добавить нового автора',
+            'new_item_name'              => 'Название нового автора',
+            'parent_item'                => 'Родительский автор',
+            'parent_item_colon'          => 'Родительская автор:',            
+            'search_items'               => 'Искать авторов',
             'popular_items'              => 'Часто используемые',
             'separate_items_with_commas' => 'Разделять запятыми',
-            'add_or_remove_items'        => 'Добавить или удалить статусы',
+            'add_or_remove_items'        => 'Добавить или удалить авторов',
+            'choose_from_most_used'      => 'Выбрать из часто используемых',
+            'not_found'                  => 'Не найдено'
+        ),
+        'hierarchical'      => false,
+        'show_ui'           => true,
+        'show_in_nav_menus' => false,
+        'show_tagcloud'     => false,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'auctor', 'with_front' => false),
+        //'update_count_callback' => '',        
+    ));
+	
+	register_taxonomy('children_group', array('children',), array(
+        'labels' => array(
+            'name'                       => 'Группы',
+            'singular_name'              => 'Группа',
+            'menu_name'                  => 'Группы',
+            'all_items'                  => 'Все группы',
+            'edit_item'                  => 'Редактировать группу',
+            'view_item'                  => 'Просмотреть',
+            'update_item'                => 'Обновить группу',
+            'add_new_item'               => 'Добавить новую группу',
+            'new_item_name'              => 'Название новой группы',
+            'parent_item'                => 'Родительская группа',
+            'parent_item_colon'          => 'Родительская группа:',            
+            'search_items'               => 'Искать группы',
+            'popular_items'              => 'Часто используемые',
+            'separate_items_with_commas' => 'Разделять запятыми',
+            'add_or_remove_items'        => 'Добавить или удалить группы',
             'choose_from_most_used'      => 'Выбрать из часто используемых',
             'not_found'                  => 'Не найдено'
         ),
@@ -34,7 +64,7 @@ function tst_custom_content(){
         'show_tagcloud'     => false,
         'show_admin_column' => true,
         'query_var'         => true,
-        'rewrite'           => array('slug' => 'children-status', 'with_front' => false),
+        'rewrite'           => array('slug' => 'children-group', 'with_front' => false),
         //'update_count_callback' => '',        
     ));
 	
@@ -43,7 +73,7 @@ function tst_custom_content(){
         'labels' => array(
             'name'               => 'Дети',
             'singular_name'      => 'Профиль',
-            'menu_name'          => 'Дети',
+            'menu_name'          => 'Наши дети',
             'name_admin_bar'     => 'Добавить профиль',
             'add_new'            => 'Добавить новый',
             'add_new_item'       => 'Добавить профиль',
@@ -65,7 +95,7 @@ function tst_custom_content(){
         'show_in_admin_bar'   => true,
         //'query_var'           => true,
         'capability_type'     => 'post',
-        'has_archive'         => false,
+        'has_archive'         => 'all-children',
         'rewrite'             => array('slug' => 'children', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 5,

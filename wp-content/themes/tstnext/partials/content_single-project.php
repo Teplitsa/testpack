@@ -15,6 +15,18 @@
 	
 	<div class="entry-content">		
 		<?php the_content(); ?>
+		
+		<div class="support-block">
+			<h5>Поддержите проект</h5>
+			<div class="mdl-grid mdl-grid--no-spacing">
+				<div class="mdl-cell mdl-cell--8-col ">
+					<p>Ваше пожертвование сделает жизнь детей с ОВЗ лучше и полнее, поможет им лучше адаптироваться в мире и сохранить здоровье.</p>
+				</div>
+				<div class="mdl-cell mdl-cell--4-col">
+					<a href="<?php echo home_url('campaign/help-us');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Сделать пожертвование</a>
+				</div>
+			</div>
+		</div>
 	</div>		
 	
 </article><!-- #post-## -->

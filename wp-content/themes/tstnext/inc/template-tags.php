@@ -45,10 +45,7 @@ function is_about(){
 		
 	if(is_page_branch(2))
 		return true;
-	
-	if(is_post_type_archive('org'))
-		return true;
-	
+			
 	if(is_post_type_archive('org'))
 		return true;
 	
@@ -64,6 +61,28 @@ function is_reports(){
 	if($post->post_parent == 76) //report page
 		return true;
 		
+	return false;
+}
+
+function is_volunt(){
+	
+	if(is_page_branch(288))
+		return true;
+	
+	return false;
+}
+
+function is_children(){
+	
+	if(is_post_type_archive('children'))
+		return true;
+	
+	if(is_tax('children_group'))
+		return true;
+	
+	if(is_singular('children'))
+		return true;
+	
 	return false;
 }
 

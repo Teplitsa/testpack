@@ -53,14 +53,7 @@ get_header();
 				'post_type' => 'children',
 				'post__not_in' => array($post_id),
 				'posts_per_page' => 3,
-				'orderby' => 'rand',
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'children_status',
-						'field' => 'slug',
-						'terms' => 'need-help'
-					)
-				)
+				'orderby' => 'rand'				
 			));
 			
 			if($r_query->have_posts()){					

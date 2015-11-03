@@ -19,7 +19,7 @@ body > svg { display: none; }
 	position: absolute;
 	top: 10px;
 	left: 50%;	
-	@include transform(translateX(-50%));
+	@include transform(translateX(-55%));
 	max-height: $layout-desktop-header-height - 16px;
 	@media screen and (max-width: $layout-screen-size-threshold) {
 		max-height: $layout-mobile-header-height - 14px;
@@ -41,7 +41,7 @@ body > svg { display: none; }
 	
 	.logo {
 		display: inline-block;
-		width: 127px;
+		width: 39px;
 		height: 42px;
 	}
 }
@@ -99,16 +99,17 @@ body > svg { display: none; }
 #site_nav {
 	
 	.mdl-layout-title {
-		border-bottom: 1px solid $tst-color-border;		
+		border-bottom: 1px solid $tst-color-border;
+		padding-left: 0;
 	}
 	
 	.navigation-logo {
 		display: block;
-				
+		text-align: center;
 		.logo {
 			display: inline-block;
-			width: 127px;
-			height: 42px;
+			width: 39px;
+			height: 42px;			
 		}
 			
 	}
@@ -219,7 +220,7 @@ body.tax-auctor {
 		position: relative;
 		padding-bottom: $sh-base*3;
 		z-index: 10;
-		color: rgba(255,255,255, 0.7);
+		color: $tst-color-text;
 		max-width: 760px;
 	}
 }
@@ -252,6 +253,7 @@ body.tax-auctor {
 // Bottombar
 #bottombar { margin: 24px 0 80px; }
 
+
 .site-footer {	
 	background: $tst-color-white;
 	@include shadow-2dp();
@@ -272,7 +274,7 @@ body.tax-auctor {
 		
 		.logo {
 			display: inline-block;
-			width: 100px;
+			width: 39px;
 			height: 42px;
 		}
 	}
@@ -282,7 +284,7 @@ body.tax-auctor {
 	}
 	
 	.copy {
-		margin-left: 132px;
+		margin-left: 72px;
 		
 		a { font-weight: normal; }
 		p {

@@ -6,7 +6,8 @@
 $thumb_id = get_post_thumbnail_id(get_the_ID());
 $thumb = wp_get_attachment_url($thumb_id);
 $thumb = aq_resize($thumb, 300, 300, true, true, true);
-$age = get_post_meta(get_the_ID(), 'child_age', true);
+$age = get_the_term_list(get_the_ID(), 'children_group', '', ', ', '');
+
 ?>
 
 <article <?php post_class('tpl-children-full'); ?>>
@@ -21,18 +22,16 @@ $age = get_post_meta(get_the_ID(), 'child_age', true);
 		</div>
 		
 		<div class="mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet">
-		<?php if($age) { ?>	
-			<div class="captioned-text">
-				<div class="caption">Возраст</div>
-				<div class="text"><?php echo apply_filters('the_title', $age);?></div>
+		<?php if(!empty($age)) { ?>
+			<div class="profile-meta-tags">
+				<?php echo $age; ?>
 			</div>
 		<?php } ?>	
-			<div class="captioned-text">
-				<div class="caption">Требуется помощь</div>
-				<div class="text"><?php the_excerpt();?></div>
+			<div class="profile-meta-text">
+				<?php the_excerpt();?>
 			</div>
 			
-			<div class="captioned-text help-btn"><a href="<?php echo home_url('/campaign/help-us/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Помочь сейчас</a></div>
+			<div class="profile-meta-tags help-btn"><a href="<?php echo home_url('/campaign/help-us/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Помочь сейчас</a></div>
 		</div>
 	</div>
 	
