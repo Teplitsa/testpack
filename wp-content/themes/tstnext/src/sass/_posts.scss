@@ -204,6 +204,7 @@ $margin-base: 16px !default;
 	.entry-footer {
 		margin-top: $cell-elementary-3x;
 	}
+	
 	.entry-meta-bottom {
 		border-top: 1px solid $tst-color-border;		
 		padding: $margin-base 0 0;
@@ -214,6 +215,10 @@ $margin-base: 16px !default;
 				padding-top: 4px;
 				text-align: left;
 			}
+		}
+		
+		.author-role {
+			margin-bottom: $cell-elementary-2x;
 		}
 	}
 	
