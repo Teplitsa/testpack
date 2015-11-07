@@ -4,22 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "244c65b5966ec7c3ba30a2217c8e16aa",
-    "content-hash": "71c3a856339f6652ad282fa5bdd00c2b",
+    "hash": "e51abfc9f3da382fd4a30f092f0dd68e",
+    "content-hash": "9ab07de93c19740f0b0db0ec636fee66",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.0.21",
+            "version": "v1.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45"
+                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
-                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+                "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
                 "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "1.0.0"
             },
             "replace": {
                 "roundcube/plugin-installer": "*",
@@ -29,9 +32,9 @@
                 "composer/composer": "1.0.*@dev",
                 "phpunit/phpunit": "4.1.*"
             },
-            "type": "composer-installer",
+            "type": "composer-plugin",
             "extra": {
-                "class": "Composer\\Installers\\Installer",
+                "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
                     "dev-master": "1.0-dev"
                 }
@@ -100,7 +103,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2015-02-18 17:17:01"
+            "time": "2015-10-29 23:28:48"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -249,12 +252,12 @@
         },
         {
             "name": "tst/advanced-custom-fields-pro",
-            "version": "5.3.1",
+            "version": "5.3.2.1",
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-advanced-custom-fields-pro-5.3.1.zip",
+                "url": "artifacts/tst-advanced-custom-fields-pro-5.3.2.1.zip.zip",
                 "reference": null,
-                "shasum": "0e164735ab6a98c88c05dd7acac91dd35043b0d2"
+                "shasum": "e590390e5801c4780d5c75174aedfa354b49972d"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -396,16 +399,36 @@
             "homepage": "https://wordpress.org/plugins/media-search-enhanced/"
         },
         {
-            "name": "wpackagist-plugin/responsive-lightbox",
-            "version": "1.6.4",
+            "name": "wpackagist-plugin/posts-to-posts",
+            "version": "1.6.5",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/responsive-lightbox/",
-                "reference": "tags/1.6.4"
+                "url": "http://plugins.svn.wordpress.org/posts-to-posts/",
+                "reference": "tags/1.6.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/responsive-lightbox.1.6.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/posts-to-posts.1.6.5.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/posts-to-posts/"
+        },
+        {
+            "name": "wpackagist-plugin/responsive-lightbox",
+            "version": "1.6.5",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/responsive-lightbox/",
+                "reference": "tags/1.6.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/responsive-lightbox.1.6.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -649,7 +672,7 @@
         },
         {
             "name": "wpackagist-plugin/post-duplicator",
-            "version": "2.8",
+            "version": "2.10",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/post-duplicator/",
@@ -702,6 +725,7 @@
         "wpackagist-plugin/simple-css-for-widgets": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
+        "wpackagist-plugin/posts-to-posts": 0,
         "wpackagist-plugin/debug-bar": 0,
         "wpackagist-plugin/debug-objects": 0,
         "wp-sync-db/wp-sync-db": 20,
