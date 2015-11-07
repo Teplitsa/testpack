@@ -547,6 +547,10 @@ section.error-404 {
 }
 
 /** Menu on mobile **/
-@include upto(phone) {
-	
+@include upto(phone) {		
+	.mdl-layout__drawer-button {
+		top: auto;
+		bottom: -4px;
+	}
 }
+

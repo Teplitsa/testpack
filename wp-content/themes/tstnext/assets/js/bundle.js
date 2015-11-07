@@ -10700,5 +10700,25 @@ jQuery(document).ready(function($){
 		flex_equal_height();	
 	});
 	
+	/* Menu bottom on mobile */
+	function moveHeader() {
+		
+		var windowWidth = $('#top').width(),			
+			header = $('.mdl-layout__header');
+			
+			
+		if(windowWidth < 481) {			
+			header.insertAfter('.mdl-layout__content');			
+		}
+		else {						
+			header.insertBefore('.mdl-layout__content');		
+		}
+	}
+	
+	moveHeader();
+	$(window).resize(function(){
+		moveHeader();
+	});
+	
 	
 }); //jQuery

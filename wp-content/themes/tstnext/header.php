@@ -23,7 +23,7 @@
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'tst' ); ?></a>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--overlay-drawer-button">
 
-<header class="mdl-layout__header">
+<header class="mdl-layout__header ontop">
 	<div class="mdl-layout__header-row">
 		<noscript><a href="<?php echo home_url('sitemap');?>" class="nojs-menu"><?php echo tst_material_icon('menu'); ?></a></noscript>
 		<!-- Crumb -->
