@@ -37,8 +37,8 @@
 		
 		<!-- Search -->
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                    mdl-textfield--floating-label mdl-textfield--align-right">
-			<label class="mdl-button mdl-js-button mdl-button--icon"
+                    mdl-textfield--floating-label mdl-textfield--align-right search-item">
+			<label class="mdl-button mdl-js-button mdl-button--icon "
 				   for="fixed-header-drawer-exp"><svg class="search-icon"><use xlink:href="#pic-search" /></svg>
 			</label>
 			<div class="mdl-textfield__expandable-holder">
