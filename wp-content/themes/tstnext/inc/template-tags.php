@@ -118,7 +118,7 @@ function is_posts() {
 	if(is_home() || is_category())
 		return true;	
 	
-	if(tst_has_authors())
+	if(tst_has_authors() && is_tax('auctor'))
 		return true;
 	
 	if(is_singular('post'))
