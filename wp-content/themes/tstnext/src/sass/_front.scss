@@ -545,3 +545,8 @@ section.error-404 {
 .page-template-default .entry-content {
 	min-height: 250px;
 }
+
+/** Menu on mobile **/
+@include upto(phone) {
+	
+}

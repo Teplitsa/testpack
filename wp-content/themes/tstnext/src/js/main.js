@@ -36,13 +36,14 @@ jQuery(document).ready(function($){
 			D.body.clientHeight, D.documentElement.clientHeight );
 	}
 	
-	var floatPanel = $('#float-panel'),
+	var floatPanel = $('#float-panel'),		
 		docHeight =  $(document).height();
-		console.log(docHeight);
+		
 				
 	$('.mdl-layout__content').scroll(function() {
 		//console.log($('.mdl-layout__content').scrollTop() + $(window).height() +30);
 		//&& ($('.mdl-layout__content').scrollTop() + $(window).height() +50 <= docHeight)
+			
 		if($('.mdl-layout__content').scrollTop() >= 250 && ($('.mdl-layout__content').scrollTop() + $(window).height() +40 <= docHeight)){
 			floatPanel.slideDown(300);			
 		} else {

@@ -8,35 +8,37 @@ function tst_custom_content(){
     deregister_taxonomy_for_object_type('post_tag', 'post');
 	remove_post_type_support('page', 'thumbnail' );
 	
-	register_taxonomy('auctor', array('post',), array(
-        'labels' => array(
-            'name'                       => 'Авторы',
-            'singular_name'              => 'Автор',
-            'menu_name'                  => 'Авторы',
-            'all_items'                  => 'Все авторы',
-            'edit_item'                  => 'Редактировать автора',
-            'view_item'                  => 'Просмотреть',
-            'update_item'                => 'Обновить автора',
-            'add_new_item'               => 'Добавить нового автора',
-            'new_item_name'              => 'Название нового автора',
-            'parent_item'                => 'Родительский автор',
-            'parent_item_colon'          => 'Родительская автор:',            
-            'search_items'               => 'Искать авторов',
-            'popular_items'              => 'Часто используемые',
-            'separate_items_with_commas' => 'Разделять запятыми',
-            'add_or_remove_items'        => 'Добавить или удалить авторов',
-            'choose_from_most_used'      => 'Выбрать из часто используемых',
-            'not_found'                  => 'Не найдено'
-        ),
-        'hierarchical'      => false,
-        'show_ui'           => true,
-        'show_in_nav_menus' => false,
-        'show_tagcloud'     => false,
-        'show_admin_column' => true,
-        'query_var'         => true,
-        'rewrite'           => array('slug' => 'auctor', 'with_front' => false),
-        //'update_count_callback' => '',        
-    ));
+	if(defined('TST_HAS_AUTHORS') && TST_HAS_AUTHORS) {
+		register_taxonomy('auctor', array('post',), array(
+			'labels' => array(
+				'name'                       => 'Авторы',
+				'singular_name'              => 'Автор',
+				'menu_name'                  => 'Авторы',
+				'all_items'                  => 'Все авторы',
+				'edit_item'                  => 'Редактировать автора',
+				'view_item'                  => 'Просмотреть',
+				'update_item'                => 'Обновить автора',
+				'add_new_item'               => 'Добавить нового автора',
+				'new_item_name'              => 'Название нового автора',
+				'parent_item'                => 'Родительский автор',
+				'parent_item_colon'          => 'Родительская автор:',            
+				'search_items'               => 'Искать авторов',
+				'popular_items'              => 'Часто используемые',
+				'separate_items_with_commas' => 'Разделять запятыми',
+				'add_or_remove_items'        => 'Добавить или удалить авторов',
+				'choose_from_most_used'      => 'Выбрать из часто используемых',
+				'not_found'                  => 'Не найдено'
+			),
+			'hierarchical'      => false,
+			'show_ui'           => true,
+			'show_in_nav_menus' => false,
+			'show_tagcloud'     => false,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array('slug' => 'auctor', 'with_front' => false),
+			//'update_count_callback' => '',        
+		));
+	}
 	
     /** Post types: */
     register_post_type('event', array(

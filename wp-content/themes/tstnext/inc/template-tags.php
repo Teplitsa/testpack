@@ -28,6 +28,13 @@ function tst_request_corrected($query) {
 	
 } 
 
+function tst_has_authors(){
+	
+	if(defined('TST_HAS_AUTHORS') && TST_HAS_AUTHORS)
+		return true;
+	
+	return false;
+}
 
 function tst_get_post_id_from_posts($posts){
 		
@@ -108,9 +115,12 @@ function is_tax_branch($slug, $tax) {
 
 function is_posts() {
 	
-	if(is_home() || is_category() || is_tax('auctor'))
+	if(is_home() || is_category())
 		return true;	
-		
+	
+	if(tst_has_authors())
+		return true;
+	
 	if(is_singular('post'))
 		return true;
 	
@@ -469,7 +479,7 @@ function tst_post_card($cpost, $tax = 'auctor'){
 	
 	$name = $desc = $avatar = '';
 	
-	if($tax == 'auctor'){
+	if($tax == 'auctor' && tst_has_authors()){
 		$author = tst_get_post_author($cpost);
 		$name = ($author) ? $author->name : '';
 		$desc = ($author) ? wp_trim_words($author->description, 20) : '';
@@ -670,129 +680,6 @@ function tst_general_card($block, $link_label = null, $ext_link = true){
 }
 
 
-/** == Social buttons == **/
-function tst_social_share_no_js() {
-	
-	$title = (class_exists('WPSEO_Frontend')) ? WPSEO_Frontend::get_instance()->title( '' ) : '';
-	$link = tst_current_url();
-	$text = $title.' '.$link;
-
-	$data = array(
-		'vkontakte' => array(
-			'label' => 'Поделиться во Вконтакте',
-			'url' => 'https://vk.com/share.php?url='.$link.'&title='.$title,
-			'txt' => 'Вконтакте',
-			'icon' => 'icon-vk',
-			'show_mobile' => false
-		),
-		'facebook' => array(
-			'label' => 'Поделиться на Фейсбуке',
-			'url' => 'https://www.facebook.com/sharer/sharer.php?u='.$link,
-			'txt' => 'Facebook',
-			'icon' => 'icon-facebook',
-			'show_mobile' => false
-		),		
-		'twitter' => array(
-			'label' => 'Поделиться ссылкой в Твиттере',
-			'url' => 'https://twitter.com/intent/tweet?url='.$link.'&text='.$title,
-			'txt' => 'Twitter',
-			'icon' => 'icon-twitter',
-			'show_mobile' => false		
-		),
-		'odnoklassniki' => array(
-			'label' => 'Поделиться ссылкой в Одноклассниках',
-			'url' => 'http://connect.ok.ru/dk?st.cmd=WidgetSharePreview&service=odnoklassniki&st.shareUrl='.$link,
-			'txt' => 'Одноклассники',
-			'icon' => 'icon-ok',
-			'show_mobile' => false
-			
-		),
-	);
-	
-?>
-<div class="social-likes-wrapper">
-<div class="social-likes social-likes_visible social-likes_ready">
-
-<?php
-foreach($data as $key => $obj){		
-	if((tst_is_mobile_user_agent() && $obj['show_mobile']) || !tst_is_mobile_user_agent()){
-?>
-	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
-		<a href="<?php echo $obj['url'];?>" class="social-likes__button social-likes__button_<?php echo $key;?>" target="_blank" onClick="window.open('<?php echo $obj['url'];?>','<?php echo $obj['label'];?>','top=320,left=325,width=650,height=430,status=no,scrollbars=no,menubar=no,tollbars=no');return false;">
-			<svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span>
-		</a>
-	</div>
-<?php 
-	}
-	
-} //foreach
-
-	$text = $title.' '.$link;
-	
-	$mobile = array(
-		'twitter' => array(
-			'label' => 'Поделиться ссылкой в Твиттере',
-			'url' => 'twitter://post?message='.$text,
-			'txt' => 'Twitter',
-			'icon' => 'icon-twitter',
-			'show_desktop' => false		
-		),
-		'whatsapp' => array(
-			'label' => 'Поделиться ссылкой в WhatsApp',
-			'url' => 'whatsapp://send?text='.$text,
-			'txt' => 'WhatsApp',
-			'icon' => 'icon-whatsup',
-			'show_desktop' => false
-		),
-		'telegram' => array(
-			'label' => 'Поделиться ссылкой в Telegram',
-			'url' => 'tg://msg?text='.$text,
-			'txt' => 'Telegram',
-			'icon' => 'icon-telegram',
-			'show_desktop' => false
-		),
-		'viber' => array(
-			'label' => 'Поделиться ссылкой в Viber',
-			'url' => 'viber://forward?text='.$text,
-			'txt' => 'Viber',
-			'icon' => 'icon-viber',
-			'show_desktop' => false
-		),
-	);
-		
-	foreach($mobile as $key => $obj) {
-		
-		if((!tst_is_mobile_user_agent() && $obj['show_desktop']) || tst_is_mobile_user_agent()) {
-?>
-	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
-	<a href="<?php echo $obj['url'];?>" target="_blank" class="social-likes__button social-likes__button_<?php echo $key;?>"><svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span></a>
-	</div>	
-<?php } } //endforeach ?>
-
-</div>
-</div>
-<?php
-}
-
-function tst_is_mobile_user_agent(){
-	//may be need some more sophisticated testing
-	$test = false;
-	
-	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
-		$test = true;
-	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
-		$test = true;
-	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
-		$test = true;
-	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
-		$test = true;
-	}
-	
-	return $test;
-}
-
-
-
 /** == Summary helpers == **/
 
 /** Excerpt  **/
@@ -833,7 +720,10 @@ function tst_get_default_author_avatar(){
 
 /** Author **/
 function tst_get_post_author($cpost) {
-			
+	
+	if(!tst_has_authors())
+		return false;
+		
 	$author = get_the_terms($cpost->ID, 'auctor');
 	if(!empty($author) && !is_wp_error($author))
 		$author = $author[0];

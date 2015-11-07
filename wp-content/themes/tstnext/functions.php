@@ -4,7 +4,7 @@
  **/
 
 define('TST_VERSION', '1.1');
-
+define('TST_HAS_AUTHORS', true);
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 760; /* pixels */

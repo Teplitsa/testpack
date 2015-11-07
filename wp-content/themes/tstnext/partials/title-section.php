@@ -96,7 +96,7 @@ if(is_front_page()) { ?>
 		}			
 	?>
 	</h1>
-	<?php if(is_tax('auctor') || is_category()) {
+	<?php if((tst_has_authors() && is_tax('auctor')) || is_category()) {
 
 		$qo = get_queried_object();
 		echo "<div class='author-description'>"; //print event empty - we need it for layout

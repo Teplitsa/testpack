@@ -21,7 +21,8 @@ get_header(); ?>
 				
 				$pt = get_post_type();
 				if($pt == 'post'){
-					tst_post_card($post, 'category');
+					$tax = (tst_has_authors()) ? 'auctor' : 'category';
+					tst_post_card($post, $tax);
 				}
 				else {
 					$callback = "tst_".$pt."_card";

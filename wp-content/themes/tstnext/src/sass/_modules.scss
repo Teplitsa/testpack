@@ -157,10 +157,12 @@
 	}
 	
 	@include upto(phone) {
+		&[style] { display: none !important; }
 		.social-likes__widget_odnoklassniki,		
 		.social-likes__widget_vkontakte,
 		.social-likes__widget_facebook { display: none; }
 	}
+	
 }
 
 .admin-bar #float-panel {
