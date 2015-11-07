@@ -963,3 +963,27 @@ function tst_get_default_post_thumbnail($size){
 	
 	return $img;
 }
+
+
+function tst_general_inpage_card($cpost){
+	
+	$logo = get_the_post_thumbnail($cpost->ID, 'full');
+	$text = apply_filters('tst_the_content', $cpost->post_content);	
+?>
+<article <?php post_class('mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'); ?>>
+<div class="tpl-card-mix mdl-card mdl-shadow--2dp">
+	
+	<div class="mdl-card__media">
+		<a class="logo-link" href="#"><?php echo $logo; ?></a>
+	</div>
+			
+	<div class="mdl-card__title">
+		<h4 class="mdl-card__title-text"><?php echo get_the_title($cpost->ID);?></h4>
+	</div>
+			
+	<?php echo tst_card_summary($text); ?>
+	
+</div>	
+</article>
+<?php
+}

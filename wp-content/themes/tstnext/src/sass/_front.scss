@@ -189,14 +189,15 @@ body > svg { display: none; }
 .page-content {	
 	position: relative;
 	z-index: 100;
-	top: -3.5*$sh-base;	
+	top: -3.5*$sh-base;
+	min-height: 520px;
 }
 
 // context header modifications
 body.error404,
 body.single,
+body.page-template-page-simple,
 body.page-template-default,
-body.page-template-page-cards,
 body.page-template-page-sidebar {
 	
 	.page-header .page-title {
@@ -234,6 +235,19 @@ body.tax-auctor {
 		max-width: 760px;
 	}
 }
+
+body.cards-page-preface {
+	.page-header .page-title {
+		padding: $sh-base*2 0 $sh-base;				
+	}
+	.page-content {
+		top: auto;	
+		padding-top: $cell-elementary-2x;
+		padding-bottom: $cell-elementary-2x;
+	}
+}
+
+body.page-template-page-simple .entry-content { min-height: 300px; }
 
 
 /** Bottom **/
