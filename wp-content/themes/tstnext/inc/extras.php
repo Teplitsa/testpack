@@ -256,7 +256,7 @@ function tst_main_menu_link($atts, $item, $args, $depth){
 
 
 /** Options in customizer **/
-add_action('customize_register', 'tst_customize_register');
+add_action('customize_register', 'tst_customize_register', 20);
 function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
     //$wp_customize->add_section('tst_spec_settings', array(
@@ -290,6 +290,21 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'footer_text',
         'priority' => 30,
     ));
+	
+	$wp_customize->add_setting('newsletter_form_id', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('newsletter_form_id', array(
+        'type'     => 'text',		
+        'label'    => __('Newsletter form ID', 'tst'),
+        'section'  => 'title_tagline',
+        'settings' => 'newsletter_form_id',
+        'priority' => 40,
+    ));
+	
+	$wp_customize->remove_setting('site_icon'); //remove favicon
 }
 
 
@@ -571,4 +586,21 @@ function tst_is_mobile_user_agent(){
 }
 
 
+/** Admin bar **/
+add_action('wp_head', 'tst_adminbar_corrections');
+add_action('admin_head', 'tst_adminbar_corrections');
+function tst_adminbar_corrections(){
+	remove_action( 'admin_bar_menu', 'wp_admin_bar_wp_menu', 10 );
+	add_action( 'admin_bar_menu', 'tst_adminbar_logo', 10 );
+}
 
+
+function tst_adminbar_logo($wp_admin_bar){
+	
+	
+	$wp_admin_bar->add_menu( array(
+		'id'    => 'wp-logo',
+		'title' => '<span class="ab-icon"></span>',
+		'href'  => '',
+	) );
+}

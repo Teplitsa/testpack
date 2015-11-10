@@ -3,6 +3,8 @@
  * Shortcodes
  **/
 
+add_filter('widget_text', 'do_shortcode');
+ 
 add_shortcode('tst_sitemap', 'tst_sitemap_screen');
 function tst_sitemap_screen($atts){
 		
@@ -162,3 +164,105 @@ function tst_cards_from_posts($atts) {
     return $out;
 }
 
+/** Urgent help **/
+add_shortcode('tst_children_to_help', 'tst_children_to_help_screen');
+function tst_children_to_help_screen($atts) {
+	
+	 extract(shortcode_atts(array(
+        'num' => 6        
+    ), $atts));
+	
+	$query = new WP_Query(array(
+		'post_type' => 'children',	
+		'posts_per_page' => $num, 
+		'orderby' => 'rand',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'children_status',
+				'field' => 'slug',
+				'terms' => 'need-help'
+			)
+		)
+	));
+	
+	if(!$query->have_posts())
+		return '';
+	
+	ob_start();
+?>
+<div class="embed-children">
+<div class="mdl-grid">
+<?php foreach($query->get_posts() as $chp) {
+		tst_children_card($chp);
+}?>
+</div>
+</div>
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}
+
+
+/** Toggle **/
+if(!shortcode_exists( 'su_spoiler' ))
+	add_shortcode('su_spoiler', 'tst_su_spoiler_screen');
+
+function tst_su_spoiler_screen($atts, $content = null){
+	
+	extract(shortcode_atts(array(
+        'title' => 'Подробнее',
+        'open'  => 'no',
+		'class' => ''
+    ), $atts));
+	
+	if(empty($content))
+		return '';
+	
+	$title = apply_filters('tst_the_title', $title);
+	$class = (!empty($class)) ? ' '.esc_attr($class) : '';
+	if($open == 'yes')
+		$class .= ' toggled';
+	
+	ob_start();
+?>
+<div class="su-spoiler<?php echo $class;?>">
+	<div class="su-spoiler-title"><span class="su-spoiler-icon"></span><?php echo $title;?></div>
+	<div class="su-spoiler-content"><?php echo apply_filters('tst_the_content', $content);?></div>
+</div>
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}
+
+/** Quote **/
+add_shortcode('tst_quote', 'tst_quote_screen');
+function tst_quote_screen($atts, $content = null) {
+	
+	extract(shortcode_atts(array(
+        'name' => '',        
+		'class' => ''
+    ), $atts));
+	
+	if(empty($content))
+		return '';
+	
+	$name = apply_filters('tst_the_title', $name);
+	$class = (!empty($class)) ? ' '.esc_attr($class) : '';
+	ob_start();
+?>
+<div class="tst-quote <?php echo $class;?>">	
+	<div class="tst-quote-content"><?php echo apply_filters('tst_the_content', $content);?></div>
+	<?php if(!empty($name)) { ?>
+		<div class="tst-quote-cite"><?php echo $name;?></div>
+	<?php } ?>
+</div>
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}

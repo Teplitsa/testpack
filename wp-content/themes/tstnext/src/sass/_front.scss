@@ -525,3 +525,9 @@ section.error-404 {
 .page-template-default .entry-content {
 	min-height: 250px;
 }
+
+
+/** Adminbar **/
+#wpadminbar #wp-admin-bar-wp-logo .ab-icon::before {
+	color: #01E21A;
+}

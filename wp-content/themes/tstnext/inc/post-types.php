@@ -8,20 +8,20 @@ function tst_custom_content(){
     deregister_taxonomy_for_object_type('post_tag', 'post');
 	remove_post_type_support('page', 'thumbnail' );
 	
-	register_taxonomy('auctor', array('post',), array(
+	register_taxonomy('children_status', array('children',), array(
         'labels' => array(
-            'name'                       => 'Авторы',
-            'singular_name'              => 'Автор',
-            'menu_name'                  => 'Авторы',
-            'all_items'                  => 'Все авторы',
-            'edit_item'                  => 'Редактировать автора',
+            'name'                       => 'Статусы',
+            'singular_name'              => 'Статус',
+            'menu_name'                  => 'Статусы',
+            'all_items'                  => 'Все статусы',
+            'edit_item'                  => 'Редактировать статус',
             'view_item'                  => 'Просмотреть',
-            'update_item'                => 'Обновить автора',
-            'add_new_item'               => 'Добавить нового автора',
-            'new_item_name'              => 'Название нового автора',
-            'parent_item'                => 'Родительский автор',
-            'parent_item_colon'          => 'Родительская автор:',            
-            'search_items'               => 'Искать авторов',
+            'update_item'                => 'Обновить статус',
+            'add_new_item'               => 'Добавить новый статус',
+            'new_item_name'              => 'Название нового статуса',
+            'parent_item'                => 'Родительский статус',
+            'parent_item_colon'          => 'Родительская статус:',            
+            'search_items'               => 'Искать статусы',
             'popular_items'              => 'Часто используемые',
             'separate_items_with_commas' => 'Разделять запятыми',
             'add_or_remove_items'        => 'Добавить или удалить авторов',
@@ -64,7 +64,7 @@ function tst_custom_content(){
         'show_tagcloud'     => false,
         'show_admin_column' => true,
         'query_var'         => true,
-        'rewrite'           => array('slug' => 'children-group', 'with_front' => false),
+        'rewrite'           => array('slug' => 'children-status', 'with_front' => false),
         //'update_count_callback' => '',        
     ));
 	

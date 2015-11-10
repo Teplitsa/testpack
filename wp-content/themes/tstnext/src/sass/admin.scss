@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+//inits
+@import "bourbon";
+
+/* columns */
+.admin-tmb {
+	width: 90%;
+	max-width: 54px; }
+
+.admin-tmb img {
+	max-width: 100%;
+	height: auto; }
+
+.wp-list-table .column-author,
+.wp-list-table .column-id, 
+.wp-list-table .column-thumbnail,
+.wp-list-table .column-menu_order{
+	width: 6%;
+}
+
+.wp-list-table .column-attack_date,
+.wp-list-table .column-event_date {
+	width: 12%;
+}
+
+/*  dashboard */
+#itv-dashboard-card {
+	margin-bottom: 40px;
+	
+	.itv-logo {
+		width: 160px;		
+		height: 63px;
+		margin-left: 9px;
+		
+		img {
+			max-width: 100%;
+			height: auto; 
+		}
+	}
+}
+
+#tst-support-card {		
+	.tree-logo {
+		width: 150px;
+		height: 80px;
+		margin-left: 9px;		
+	}
+}
+
+.tst-dashboard {
+	
+	.cols {
+		@include clearfix;
+	}
+	
+	.col-logo {
+		float: left;
+		width: 50%;
+		
+		a { display: block; }
+		
+		img {
+			max-width: 100%;
+			height: auto; 
+		}
+	}
+	
+	.col-btn {
+		float: right;
+		width: 50%;
+		text-align: right;
+		padding-top: 5px;
+		a {
+			margin-right: 5px;
+		}
+	}
+}
+
+
+#wpadminbar #wp-admin-bar-wp-logo .ab-icon::before {
+	color: #01E21A;
+}

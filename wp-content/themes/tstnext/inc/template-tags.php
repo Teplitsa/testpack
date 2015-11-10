@@ -983,3 +983,16 @@ function tst_general_inpage_card($cpost){
 </article>
 <?php
 }
+
+/** newsletter modal **/
+add_action('tst_footer_position', 'tst_newsletter_modal');
+function tst_newsletter_modal(){
+	
+	$id = get_theme_mod('newsletter_form_id');
+	if(!$id)
+		return;
+?>
+	<div class="nl-modal mdl-shadow--6dp" id="modal-newsletter">
+	<?php echo FrmFormsController::get_form_shortcode( array( 'id' => $id, 'title' => true, 'description' => true ) ); ?></div>
+<?php
+}

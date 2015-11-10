@@ -48,6 +48,10 @@
 			</div>
         </div>
 		
+		<button id="newsletter" title="Подписка на новости" class="mdl-button mdl-js-button mdl-button--icon" data-emodal="#modal-newsletter"><i class="material-icons">email</i></button>
+		
+
+		
     </div><!-- .mdl-layout__header-row -->	
 </header>
 
