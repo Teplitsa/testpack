@@ -19,3 +19,4 @@ wp-config.php
 debug.log
 _temp
 .htaccess
+.sass-cache
