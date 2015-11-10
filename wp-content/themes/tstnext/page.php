@@ -29,7 +29,7 @@ get_header();
 </div>
 
 <div class="page-footer"><div class="mdl-grid">
-<?php
+<?php 
 	$embeds = (function_exists('get_field')) ? get_field('embed_posts', $post_id) : array();
 	if(!empty($embeds)){
 		$title = get_field('embed_posts_title', $post_id);

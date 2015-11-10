@@ -675,9 +675,11 @@ function tst_children_card($cpost){
 	$pl = get_permalink($cpost);
 	$e = tst_get_post_excerpt($cpost, 30, true);
 	$age = get_post_meta($cpost->ID, 'child_age', true);
-	$age = (!empty($age)) ? '<b>'.$age.'</b> - ' : '';	
+	$age = (!empty($age)) ? '<b>'.$age.'</b> - ' : '';
+	
+	$css = (is_front_page()) ? 'mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone masonry-item' : 'mdl-cell mdl-cell--4-col masonry-item';
 ?>
-<article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
+<article <?php post_class($css); ?>>
 <div class="tpl-card-blank mdl-card mdl-shadow--2dp">
 	
 	<?php if(has_post_thumbnail($cpost->ID)){ ?>
@@ -960,5 +962,18 @@ function tst_general_inpage_card($cpost){
 	
 </div>	
 </article>
+<?php
+}
+
+/** newsletter modal **/
+add_action('tst_footer_position', 'tst_newsletter_modal');
+function tst_newsletter_modal(){
+	
+	$id = get_theme_mod('newsletter_form_id');
+	if(!$id)
+		return;
+?>
+	<div class="nl-modal mdl-shadow--6dp" id="modal-newsletter">
+	<?php echo FrmFormsController::get_form_shortcode( array( 'id' => $id, 'title' => true, 'description' => true ) ); ?></div>
 <?php
 }

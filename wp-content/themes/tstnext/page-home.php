@@ -10,7 +10,7 @@ $more_link = home_url('about/contacts');
 //news
 $f_children =new WP_Query(array(
 	'post_type' => 'children',	
-	'posts_per_page' => 3,
+	'posts_per_page' => 8, //12
 	'orderby' => 'rand',
 	'tax_query' => array(
 		array(

@@ -54,5 +54,6 @@ $footer_text = get_theme_mod('footer_text');
 <?php }?>
 
 <?php do_action('tst_footer_position');?>
+
 </body>
 </html>

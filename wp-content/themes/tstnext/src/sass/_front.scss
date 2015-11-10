@@ -422,8 +422,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 }
 
 .widget_nav_menu.mdl-card { //nav widget
+	height: auto;
 	
-	@include for(desktop) { height: 320px; }
+	//@include for(desktop) { height: 320px; }
 	
 	h5 {
 		padding: $cell-elementary-2x;
@@ -522,4 +523,10 @@ section.error-404 {
 
 .page-template-default .entry-content {
 	min-height: 250px;
+}
+
+
+/** Adminbar **/
+#wpadminbar #wp-admin-bar-wp-logo .ab-icon::before {
+	color: #01E21A;
 }

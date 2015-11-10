@@ -476,3 +476,7 @@ $margin-base: 16px !default;
 		margin-bottom: $grid-desktop-gutter;
 	}
 }
+
+.embed-children {
+	margin: 0 -24px 24px;
+}
