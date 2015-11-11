@@ -444,8 +444,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 }
 
 .widget_nav_menu.mdl-card { //nav widget
-	
-	@include for(desktop) { height: 280px; }
+	height: auto;
 	
 	h5 {
 		padding: $cell-elementary-2x;
@@ -556,3 +555,7 @@ section.error-404 {
 	.search-item { display: none; }
 }
 
+/** Adminbar **/
+#wpadminbar #wp-admin-bar-wp-logo .ab-icon::before {
+	color: #01E21A;
+}

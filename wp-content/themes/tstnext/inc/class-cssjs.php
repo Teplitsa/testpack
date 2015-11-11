@@ -148,8 +148,56 @@ class TST_CssJs {
 	
 	?>
 		<style>
-			#login h1 {display: none !important;}
-			#nav {display: none !important;}
+			.login h1 a {
+				background-size: contain;
+				background-image: url('<?php echo get_template_directory_uri();?>/assets/images/tree.png');
+				background-image: url('<?php echo get_template_directory_uri();?>/assets/images/tree.svg');
+				width: 110px;
+				height: 110px;
+			}
+			.login input[type="text"]:focus,
+			.login input[type="password"]:focus {
+				border-color: #03E21C;
+				box-shadow: 0 0 2px rgba(3,226,28, 0.75);
+			}
+			#wp-submit {
+				background: #099724;
+				border-color: #099724;
+			}
+			#wp-submit:hover, #wp-submit:focus, #wp-submit:active {
+				background: #2BCC4A;
+				border-color: #2BCC4A;
+			}
+			
+			.login .message {
+				border-left-color: #03E21C;
+			}
+			
+			.login #backtoblog a:hover, .login h1 a:hover,
+			.login #backtoblog a:focus, .login h1 a:focus,
+			.login #backtoblog a:active, .login h1 a:active {
+				color: #2BCC4A;
+				box-shadow: 0 0 0 rgba(255,255,255, 0);
+				outline: none;
+			}
+			
+			.login #nav a {
+				display: inline-block;
+				padding: 2px 6px;
+				border-radius: 3px;
+				border: 1px solid #099724;
+				color: #099724;
+			}
+			
+			.login #nav a:hover, .login #nav a:focus, .login #nav a:active {
+				border-color: #2BCC4A;
+				color: #2BCC4A;
+				box-shadow: 0 0 0 rgba(255,255,255, 0);
+			}
+			
+			#login_error a {
+				color: #dd3d36;
+			}
 		</style>
 	<?php
 	}

@@ -3,6 +3,8 @@
  * Shortcodes
  **/
 
+add_filter('widget_text', 'do_shortcode');
+
 add_shortcode('tst_sitemap', 'tst_sitemap_screen');
 function tst_sitemap_screen($atts){
 		
@@ -29,7 +31,7 @@ function tst_lead_screen($atts, $content){
 	return '<div class="entry-summary">'.apply_filters('the_content', $content).'</div>';
 }
 
-/** lead **/
+/** Buttons **/
 add_shortcode('fab', 'tst_fab_screen');
 function tst_fab_screen($atts){
 	
@@ -50,6 +52,31 @@ function tst_fab_screen($atts){
 	return $out;
 }
 
+add_shortcode('tst_btn', 'tst_btn_screen');
+function tst_btn_screen($atts){
+	
+	extract(shortcode_atts(array(				
+		'url'  => '',
+		'txt'  => ''
+	), $atts));
+	
+	if(empty($url))
+		return '';
+	
+	$url = esc_url($url);
+	$txt = apply_filters('frl_the_title', $txt);
+	
+	ob_start();
+?>
+<span class="tst-btn"><a href="<?php echo $url;?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><?php echo $txt;?></a></span>
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}
+
+
 
 /** Partners gallery **/
 add_shortcode('tst_partners_gallery', 'tst_partners_gallery_screen');
@@ -61,43 +88,21 @@ function tst_partners_gallery_screen($atts){
 		
 	$size = 'full'; // logo size
 	
-	$partners = (function_exists('get_field')) ? get_field('partners_to_show') : false;
-	if(!$partners)
+	$partners = new WP_Query(array(
+		'post_type' => 'org',
+		'posts_per_page' => -1,
+		'orderby' => 'rand'
+	));
+		
+	if(!$partners->have_posts())
 		return '';
 	
-?>
-	<ul class="partners-logo-gallery frame <?php echo $css;?>">
-    <?php
-		foreach($partners as $item):
-        
-            $url = $item->post_excerpt ? esc_url($item->post_excerpt) : '';
-            $txt = esc_attr($item->post_title);					
-			//$cat = tst_get_partner_type($item);
-        ?>
-		<li class="bit mf-4 md-3 lg-2">
-			<div class="logo">
-				<div class='logo-frame'>			
-				<?php if(!empty($url)): ?>
-					<a href="<?php echo $url;?>" target="_blank" title="<?php echo $txt;?>" class="logo-link">
-				<?php else: ?>
-					<span class="logo-link" title="<?php echo $txt;?>">
-				<?php endif;?>
-
-				<?php echo get_the_post_thumbnail($item->ID, $size);?>
-
-				<?php if($url): ?>
-					</a>
-				<?php else: ?>
-					</span>
-				<?php endif;?>
-				</div>
-				
-			</div>
-			
-		</li>
-        <?php endforeach; ?>        
-    </ul>
-<?php	
+	ob_start();
+	
+	foreach($partners->posts as $p){
+		tst_org_card($p);
+	}
+	
 	$out = ob_get_contents();
 	ob_end_clean();
 	
@@ -150,3 +155,65 @@ function tst_cards_from_posts($atts) {
     return $out;
 }
 
+
+/** Toggle **/
+if(!shortcode_exists( 'su_spoiler' ))
+	add_shortcode('su_spoiler', 'tst_su_spoiler_screen');
+
+function tst_su_spoiler_screen($atts, $content = null){
+	
+	extract(shortcode_atts(array(
+        'title' => 'Подробнее',
+        'open'  => 'no',
+		'class' => ''
+    ), $atts));
+	
+	if(empty($content))
+		return '';
+	
+	$title = apply_filters('tst_the_title', $title);
+	$class = (!empty($class)) ? ' '.esc_attr($class) : '';
+	if($open == 'yes')
+		$class .= ' toggled';
+	
+	ob_start();
+?>
+<div class="su-spoiler<?php echo $class;?>">
+	<div class="su-spoiler-title"><span class="su-spoiler-icon"></span><?php echo $title;?></div>
+	<div class="su-spoiler-content"><?php echo apply_filters('tst_the_content', $content);?></div>
+</div>
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}
+
+/** Quote **/
+add_shortcode('tst_quote', 'tst_quote_screen');
+function tst_quote_screen($atts, $content = null) {
+	
+	extract(shortcode_atts(array(
+        'name' => '',        
+		'class' => ''
+    ), $atts));
+	
+	if(empty($content))
+		return '';
+	
+	$name = apply_filters('tst_the_title', $name);
+	$class = (!empty($class)) ? ' '.esc_attr($class) : '';
+	ob_start();
+?>
+<div class="tst-quote <?php echo $class;?>">	
+	<div class="tst-quote-content"><?php echo apply_filters('tst_the_content', $content);?></div>
+	<?php if(!empty($name)) { ?>
+		<div class="tst-quote-cite"><?php echo $name;?></div>
+	<?php } ?>
+</div>
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}

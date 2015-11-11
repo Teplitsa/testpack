@@ -203,7 +203,7 @@ function tst_format_TinyMCE($in){
 	return $in;
 }
 
-/* Menu Labeles */
+/* Menu Labels */
 add_action('admin_menu', 'tst_admin_menu_labels');
 function tst_admin_menu_labels(){ /* change adming menu labels */
     global $menu, $submenu;
@@ -227,3 +227,74 @@ function tst_admin_menu_labels(){ /* change adming menu labels */
 }
 
 
+/** Remove leyka metabox for embedable iframe */
+add_action( 'add_meta_boxes' , 'tst_remove_leyka_wrong_metaboxes', 20 );
+function tst_remove_leyka_wrong_metaboxes() {
+	
+	remove_meta_box('leyka_campaign_embed', 'leyka_campaign', 'normal');
+}
+
+/** Dashboards widgets **/
+add_action('wp_dashboard_setup', 'tst_remove_dashboard_widgets' );
+function tst_remove_dashboard_widgets() {
+	
+	//remove defaults 	
+	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );	
+	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+		
+	
+	//add ours
+	$locale = get_locale();
+    
+    if($locale == 'ru_RU') {
+        add_meta_box('custom_links', 'Полезные ссылки', 'tst_custom_links_dashboard_screen', 'dashboard', 'side', 'core');
+    }	
+} 
+
+
+
+function tst_custom_links_dashboard_screen(){
+	
+	tst_itv_info_widget();
+	tst_support_widget();	
+}
+
+function tst_itv_info_widget(){
+	    
+    $src = get_template_directory_uri().'/assets/images/logo-itv.png';
+    $domain = parse_url(home_url()); 
+    $itv_url = "https://itv.te-st.ru/?giger=".$domain['host'];
+?>
+<div id="itv-dashboard-card" class="tst-dashboard">
+	<div class="cols">
+		<div class="col-logo"><div class="itv-logo col-logo">
+			<a href="<?php echo esc_url($itv_url);?>" target="_blank"><img src="<?php echo esc_url($src);?>"></a>
+		</div></div>
+		<div class="col-btn"><a href="<?php echo esc_url($itv_url);?>" target="_blank" class="button">Опубликовать задачу</a></div>
+	</div>
+	
+	
+	<p>Вам нужна помощь в настройке или доработке сайта?<br>Опубликуйте задачу на платформе <a href="<?php echo esc_url($itv_url);?>" target="_blank">it-волонтер</a></p>                
+	
+</div>
+<?php
+}
+
+function tst_support_widget(){
+	
+	$src = get_template_directory_uri().'/assets/images/tst-logo';
+?>
+<div id="tst-support-card" class="tst-dashboard">
+	<div class="cols">
+		
+	<div class="col-logo"><div class="tree-logo">
+		<img src="<?php echo $src;?>.svg" onerror="this.onerror=null;this.src=<?php echo $src;?>.png">
+	</div></div>
+	<div class="col-btn"><a href="mailto:support@te-st.ru" target="_blank" class="button">Написать в поддержку</a></div>
+	</div>
+	
+	<p>Возникли проблемы с использованием сайта, нашли ошибку?<br>Обратитесь в поддержку Теплицы социальных технологий <a href="mailto:support@te-st.ru" target="_blank">support@te-st.ru</a></p>
+
+</div>
+<?php
+}

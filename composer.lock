@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e51abfc9f3da382fd4a30f092f0dd68e",
-    "content-hash": "9ab07de93c19740f0b0db0ec636fee66",
+    "hash": "f4bca1b574eaeae2c6c2a3ddb6750c2f",
+    "content-hash": "cece28d263ac07f95e415f644def92a1",
     "packages": [
         {
             "name": "composer/installers",
@@ -280,15 +280,15 @@
         },
         {
             "name": "wpackagist-plugin/crop-thumbnails",
-            "version": "0.10.1",
+            "version": "0.10.2",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/crop-thumbnails/",
-                "reference": "tags/0.10.1"
+                "reference": "tags/0.10.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/crop-thumbnails.0.10.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/crop-thumbnails.0.10.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -439,26 +439,6 @@
             "homepage": "https://wordpress.org/plugins/responsive-lightbox/"
         },
         {
-            "name": "wpackagist-plugin/shortcodes-ultimate",
-            "version": "4.9.8.1",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/shortcodes-ultimate/",
-                "reference": "tags/4.9.8.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/shortcodes-ultimate.4.9.8.1.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/shortcodes-ultimate/"
-        },
-        {
             "name": "wpackagist-plugin/simple-css-for-widgets",
             "version": "1.0",
             "source": {
@@ -477,6 +457,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/simple-css-for-widgets/"
+        },
+        {
+            "name": "wpackagist-plugin/simple-google-maps-short-code",
+            "version": "1.2",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/simple-google-maps-short-code/",
+                "reference": "tags/1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/simple-google-maps-short-code.1.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/simple-google-maps-short-code/"
         },
         {
             "name": "wpackagist-plugin/w3-total-cache",
@@ -721,8 +721,8 @@
         "wpackagist-plugin/leyka": 0,
         "wpackagist-plugin/media-search-enhanced": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
-        "wpackagist-plugin/shortcodes-ultimate": 0,
         "wpackagist-plugin/simple-css-for-widgets": 0,
+        "wpackagist-plugin/simple-google-maps-short-code": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/posts-to-posts": 0,

@@ -367,6 +367,41 @@ jQuery(document).ready(function($){
 		flex_equal_height();	
 	});
 	
+	
+	//toggle
+	$(document).on('click', '.su-spoiler-title', function(e){
+		
+		var toggle = $(this).parents('.su-spoiler');
+		
+		if (toggle.hasClass('toggled')) {
+			//close
+			toggle.find('.su-spoiler-content').slideUp();
+			toggle.removeClass('toggled');
+		}
+		else {
+			toggle.find('.su-spoiler-content').slideDown();
+			toggle.addClass('toggled');
+		}
+	});
+	
+	//newsletter modal
+	$('#modal-newsletter').easyModal({
+		//overlayParent :'.page-content',
+		hasVariableWidth : true,
+		top : topPad,
+		transitionIn: 'animated zoomIn',
+		transitionOut: 'animated zoomOut',
+		onClose : function(){  },
+		onOpen : function() {
+			
+				
+		}
+	});
+	$('#newsletter').on('click', function(e){
+		e.preventDefault();
+		$('#modal-newsletter').trigger('openModal');
+	});
+	
 	/* Menu bottom on mobile */
 	function moveHeader() {
 		
