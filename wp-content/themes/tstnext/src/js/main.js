@@ -423,4 +423,16 @@ jQuery(document).ready(function($){
 	});
 	
 	
+	/* headers in forms */
+	$('.frm_forms').each(function(){
+		
+		var form = $(this),
+			title = $(this).find('.frm_form_fields > h3');
+		
+		if (form.parents('#modal-newsletter').length <= 0 && title.length > 0) {
+			$(this).addClass('has-title');
+		}
+		
+	});
+	
 }); //jQuery

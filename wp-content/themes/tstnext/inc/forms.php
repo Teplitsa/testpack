@@ -104,3 +104,19 @@ function tst_formidable_input_options_html($opt, $opt_key, $field) {
 	
 	return $opt;
 }
+
+/* Move form title */
+add_filter( 'frm_filter_final_form', 'tst_formidable_customize_wrapper' );
+function tst_formidable_customize_wrapper($form){
+	
+	//it only works with default h3 title
+	preg_match ('/<h3[^>]*>(.*?)<\/h3>/si', $form, $m);
+	
+	if(isset($m[0]) && !empty($m[0])){
+		
+		$form = str_replace($m[0], '', $form);		
+		$form = str_replace('<fieldset>', $m[0].'<fieldset>', $form);
+	}
+	
+	return $form;
+}
