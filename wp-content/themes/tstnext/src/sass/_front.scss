@@ -99,11 +99,14 @@ body > svg { display: none; }
 #site_nav {
 	
 	.mdl-layout-title {
-		border-bottom: 1px solid $tst-color-border;		
+		border-bottom: 1px solid $tst-color-border;
+		padding-left: 0;
+		
 	}
 	
 	.navigation-logo {
 		display: block;
+		text-align: center;
 				
 		.logo {
 			display: inline-block;
@@ -307,7 +310,7 @@ body.page-template-page-simple .entry-content { min-height: 300px; }
 	}
 	
 	.copy {
-		margin-left: 72px;
+		margin-left: 60px;
 		
 		a { font-weight: normal; }
 		p {
