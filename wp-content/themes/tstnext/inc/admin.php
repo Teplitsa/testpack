@@ -256,7 +256,36 @@ function tst_remove_dashboard_widgets() {
 function tst_custom_links_dashboard_screen(){
 	
 	tst_itv_info_widget();
-	tst_support_widget();	
+	tst_support_widget();
+	
+	//test
+?>
+<script>	
+	jQuery(document).ready(function($){		
+		if ('speechSynthesis' in window) {
+			var speech_voices = window.speechSynthesis.getVoices(),
+				utterance  = new SpeechSynthesisUtterance();
+				
+			utterance.text = "I can't lie to you about your chances, but... you have my sympathies.";
+			utterance.lang = 'en-GB'; 
+			utterance.volume = 0.9;
+			utterance.rate = 0.9;
+			utterance.pitch = 0.8;
+				
+			window.speechSynthesis.onvoiceschanged = function() {
+				
+				speech_voices = window.speechSynthesis.getVoices();							
+				utterance.voice = speech_voices.filter(function(voice) { return voice.name == 'Google UK English Male'; })[0];			
+			};
+			
+			
+			$('#wp-admin-bar-wp-logo').on('click', function(e){
+				speechSynthesis.speak(utterance);
+			});
+		}			
+	});
+</script>
+<?php
 }
 
 function tst_itv_info_widget(){
