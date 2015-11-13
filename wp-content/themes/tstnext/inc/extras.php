@@ -610,3 +610,41 @@ function tst_adminbar_logo($wp_admin_bar){
 		'href'  => '',
 	) );
 }
+
+add_action('wp_footer', 'tst_adminbar_voices');
+add_action('admin_footer', 'tst_adminbar_voices');
+function tst_adminbar_voices() {
+	
+?>
+<script>	
+	jQuery(document).ready(function($){		
+		if ('speechSynthesis' in window) {
+			var speech_voices = window.speechSynthesis.getVoices(),
+				utterance  = new SpeechSynthesisUtterance();
+				
+				function set_speach_options() {
+					speech_voices = window.speechSynthesis.getVoices();
+					utterance.text = "I can't lie to you about your chances, but... you have my sympathies.";
+					utterance.lang = 'en-GB'; 
+					utterance.volume = 0.9;
+					utterance.rate = 0.9;
+					utterance.pitch = 0.8;
+					utterance.voice = speech_voices.filter(function(voice) { return voice.name == 'Google UK English Male'; })[0];
+				}
+								
+				window.speechSynthesis.onvoiceschanged = function() {				
+					set_speach_options();
+				};
+								
+				$('#wp-admin-bar-wp-logo').on('click', function(e){
+					
+					if (!utterance.voice || utterance.voice.name != 'Google UK English Male') {
+						set_speach_options();
+					}
+					speechSynthesis.speak(utterance);
+				});
+		}			
+	});
+</script>
+<?php
+}
