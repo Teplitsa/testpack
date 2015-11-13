@@ -150,81 +150,6 @@ function tst_custom_content(){
 } // if tst_custom_content
 
 
-/* Alter post labels */
-//function tst_change_post_labels($post_type, $args){ /* change assigned labels */
-//    global $wp_post_types;
-//
-//    if($post_type != 'post')
-//        return;
-
-//    $labels = new stdClass();
-//
-//    $labels->name               = "Статьи";
-//    $labels->singular_name      = "Статья";
-//    $labels->add_new            = "Добавить новую";
-//    $labels->add_new_item       = "Добавить новую";
-//    $labels->edit_item          = "Редактировать статью";
-//    $labels->new_item           = "Новая";
-//    $labels->view_item          = "Просмотреть";
-//    $labels->search_items       = "Поиск";
-//    $labels->not_found          = "Не найдено";
-//    $labels->not_found_in_trash = "В Корзине статьи не найдены";
-//    $labels->parent_item_colon  = NULL;
-//    $labels->all_items          = "Все статьи";
-//    $labels->menu_name          = "Статьи";
-//    $labels->name_admin_bar     = "Статья";
-//
-//    $wp_post_types[$post_type]->labels = $labels;
-//}
-//add_action('registered_post_type', 'tst_change_post_labels', 2, 2);
- 
-//function tst_change_post_menu_labels(){ /* change adming menu labels */
-//    global $menu, $submenu;
-//
-//    $post_type_object = get_post_type_object('post');
-//    $sub_label = $post_type_object->labels->all_items;
-//    $top_label = $post_type_object->labels->name;
-//
-//    /* find proper top menu item */
-//    $post_menu_order = 0;
-//    foreach($menu as $order => $item){
-//
-//        if($item[2] == 'edit.php'){
-//            $menu[$order][0] = $top_label;
-//            $post_menu_order = $order;
-//            break;
-//        }
-//    }
-//
-//    /* find proper submenu */
-//    $submenu['edit.php'][$post_menu_order][0] = $sub_label;
-//}
-//add_action('admin_menu', 'tst_change_post_menu_labels');
- 
-//function tst_change_post_updated_labels($messages){     /* change updated post labels */
-//    global $post;
-//
-//    $permalink = get_permalink($post->ID);
-//
-//    $messages['post'] = array(
-//
-//    0 => '',
-//    1 => sprintf( 'Статья обновлена. <a href="%s">Просмотреть</a>', esc_url($permalink)),
-//    2 => "Пользовательское поле обновлено",
-//    3 => "Пользовательское поле удалено",
-//    4 => "Статья обновлена",
-//    5 => isset($_GET['revision']) ? sprintf('Редакция статьи восстановлена из %s', wp_post_revision_title((int)$_GET['revision'], false)) : false,
-//    6 => sprintf('Статья опубликована. <a href="%s">Просмотреть</a>', esc_url($permalink)),
-//    7 => "Статья сохранена",
-//    8 => sprintf('Статья отправлена на рассмотрение. <a target="_blank" href="%s">Просмотреть</a>', esc_url(add_query_arg('preview','true', $permalink))),
-//    9 => sprintf('Статья запланирована. <a target="_blank" href="%s">Просмотреть</a>', esc_url(add_query_arg('preview','true', $permalink))),
-//    10 => sprintf('Черновик статьи обновлен. <a target="_blank" href="%s">Просмотреть</a>', esc_url(add_query_arg('preview', 'true', $permalink)))
-//    );
-//
-//    return $messages;
-//}
-//add_filter('post_updated_messages', 'tst_change_post_updated_labels');
-
 //add_action( 'p2p_init', 'apl_connection_types' );
 //function apl_connection_types() {
 //	p2p_register_connection_type( array(
@@ -242,3 +167,111 @@ function tst_custom_content(){
 //		'admin_column' => 'to'
 //	) );
 //}
+
+
+/** Metaboxes **/
+add_action( 'cmb2_admin_init', 'tst_sample_metaboxes' );
+function tst_sample_metaboxes() {
+
+    // Start with an underscore to hide fields from custom fields list
+    $prefix = '_tst_';
+
+    /** Page **/
+    $page_cmb = new_cmb2_box( array(
+        'id'            => 'page_settings_metabox',
+        'title'         => __( 'Page Settings', 'tst' ),
+        'object_types'  => array( 'page', ), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+		'show_on_cb'    => 'tst_show_on_general_pages',		
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ) );
+
+    // Image
+	$page_cmb->add_field( array(
+		'name'    => __('Header Image', 'tst'),
+		//'desc'    => 'Upload an image or enter an URL.',
+		'id'      => 'header_img',
+		'type'    => 'file',		
+		'options' => array(
+			'url' => false, // Hide the text input for the url
+			'add_upload_file_text' => __('Add Image', 'tst') // Change upload button text. Default: "Add or Upload File"
+		),
+	));
+	
+	
+	/** Events **/
+	$event_cmb = new_cmb2_box( array(
+        'id'            => 'event_settings_metabox',
+        'title'         => __( 'Event Settings', 'tst' ),
+        'object_types'  => array( 'event', ), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+		//'show_on_cb'    => 'tst_show_on_general_pages',		
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ) );
+	
+	
+	$event_cmb->add_field( array(
+		'name' => __('Event Date', 'tst'),
+		'id'   => 'event_date',
+		'type' => 'text_date_timestamp',
+		// 'timezone_meta_key' => 'wiki_test_timezone',
+		'date_format' => 'd.m.Y',
+	) );
+	
+	$event_cmb->add_field( array(
+		'name' => __('Event Time', 'tst'),
+		'id'   => 'event_time',
+		'type' => 'text',		
+		'desc' => __('Specify event time, ex. 16.30', 'tst')
+	) );
+	
+	$event_cmb->add_field( array(
+		'name' => __('Event Location', 'tst'),
+		'id'   => 'event_location',
+		'type' => 'text',		
+		'desc' => __('Specify city and place of event', 'tst')
+	) );
+	
+	$event_cmb->add_field( array(
+		'name' => __('Event Addres', 'tst'),
+		'id'   => 'event_address',
+		'type' => 'text',		
+		'desc' => __('Specify addres (without city)', 'tst')
+	) );
+	
+	$event_cmb->add_field( array(
+		'name'    => __('Header Image', 'tst'),
+		//'desc'    => 'Upload an image or enter an URL.',
+		'id'      => 'header_img',
+		'type'    => 'file',		
+		'options' => array(
+			'url' => false, // Hide the text input for the url
+			'add_upload_file_text' => __('Add Image', 'tst') // Change upload button text. Default: "Add or Upload File"
+		),
+	));
+	
+}
+
+/* callbacks */
+function tst_show_on_general_pages($meta_box){
+	global $post;
+	
+	$screen = get_current_screen();
+	
+	if($screen->post_type != 'page')
+		return false;
+	
+	if(!isset($post->ID))
+		return true;
+	
+	if($post->ID != get_option('page_on_front'))
+		return true;
+	
+	return false;
+}

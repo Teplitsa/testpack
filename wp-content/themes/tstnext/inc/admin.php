@@ -300,3 +300,25 @@ function tst_support_widget(){
 </div>
 <?php
 }
+
+
+add_filter('admin_post_thumbnail_html', 'tst_thumbnail_dimensions_check', 10, 2);
+function tst_thumbnail_dimensions_check($thumbnail_html, $post_id) {
+	global $_wp_additional_image_sizes;
+	
+    $meta = wp_get_attachment_metadata(get_post_thumbnail_id($post_id));
+    $needed_sizes = (isset($_wp_additional_image_sizes['post-thumbnail'])) ? $_wp_additional_image_sizes['post-thumbnail'] : false;
+	
+    if(
+        $meta && $needed_sizes &&
+        ($meta['width'] < $needed_sizes['width'] || $meta['height'] < $needed_sizes['height'])
+    ) {
+	
+	$size = "<b>".$needed_sizes['width'].'x'.$needed_sizes['height']."</b>";
+	$txt = sprintf(__('ATTENTION! You thumbnail image is too small. It should be at least %s px', 'tst'), $size);
+	
+    echo "<p class='tst-error'>{$txt}<p>";
+    }
+
+    return $thumbnail_html;
+}

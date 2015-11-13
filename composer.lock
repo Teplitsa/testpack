@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f4bca1b574eaeae2c6c2a3ddb6750c2f",
-    "content-hash": "cece28d263ac07f95e415f644def92a1",
+    "hash": "7a46fba176f17d7ccd3d2354aca30fb1",
+    "content-hash": "63a657a35d33f4a8f23fdf6703bc174f",
     "packages": [
         {
             "name": "composer/installers",
@@ -251,32 +251,24 @@
             "time": "2015-01-04 10:24:12"
         },
         {
-            "name": "tst/advanced-custom-fields-pro",
-            "version": "5.3.2.1",
+            "name": "wpackagist-plugin/cmb2",
+            "version": "2.1.2",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/cmb2/",
+                "reference": "trunk"
+            },
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-advanced-custom-fields-pro-5.3.2.1.zip.zip",
+                "url": "https://downloads.wordpress.org/plugin/cmb2.zip",
                 "reference": null,
-                "shasum": "e590390e5801c4780d5c75174aedfa354b49972d"
+                "shasum": null
             },
             "require": {
                 "composer/installers": "~1.0"
             },
-            "type": "wordpress-plugin"
-        },
-        {
-            "name": "tst/formidable",
-            "version": "2.0.15",
-            "dist": {
-                "type": "zip",
-                "url": "artifacts/tst-formidable-2.0.15.zip",
-                "reference": null,
-                "shasum": "5e664b368b5a11e344c6932d56aae7d3a45ea300"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin"
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/cmb2/"
         },
         {
             "name": "wpackagist-plugin/crop-thumbnails",
@@ -337,6 +329,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/disable-comments/"
+        },
+        {
+            "name": "wpackagist-plugin/formidable",
+            "version": "2.0.16",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/formidable/",
+                "reference": "tags/2.0.16"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.0.16.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/formidable/"
         },
         {
             "name": "wpackagist-plugin/imsanity",
@@ -726,6 +738,8 @@
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/posts-to-posts": 0,
+        "wpackagist-plugin/formidable": 0,
+        "wpackagist-plugin/cmb2": 0,
         "wpackagist-plugin/debug-bar": 0,
         "wpackagist-plugin/debug-objects": 0,
         "wp-sync-db/wp-sync-db": 20,

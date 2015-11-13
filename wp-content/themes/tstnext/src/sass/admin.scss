@@ -82,3 +82,21 @@
 #wpadminbar #wp-admin-bar-wp-logo .ab-icon::before {
 	color: #01E21A;
 }
+
+.tst-error {
+	border: 1px solid #DD3D36;
+	border-left-width: 5px;
+	padding: 8px;
+	color: #DD3D36;
+}
+
+.cmb-repeat-group-wrap .cmb2-wrap > .cmb-field-list > .cmb-row,
+.postbox-container .cmb2-wrap > .cmb-field-list > .cmb-row {
+	padding: 0.5em 0;
+	margin: 0;
+}
+
+
+input.regular-text {
+	width: 90%;
+}

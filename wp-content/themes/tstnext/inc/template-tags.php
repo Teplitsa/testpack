@@ -260,7 +260,7 @@ function tst_header_image_url(){
 	elseif(is_single() || is_page()){
 		$qo = get_queried_object();
 		$img = get_post_meta($qo->ID,'header_img', true);		
-		$img = wp_get_attachment_url($img);
+		//$img = wp_get_attachment_url($img);
 	}
 	
 	if(empty($img)){ // fallback
