@@ -47,6 +47,43 @@ get_header();
 			}
 			
 		}
+		elseif('person' == $pt){ //related posts
+			
+			$r_args = array(
+				'post_type' => 'person',
+				'post__not_in' => array($post_id),
+				'posts_per_page' => 3,
+				'orderby' => 'rand'	
+			);
+			$cats = get_the_terms($post_id, 'person_cat');
+			
+			if(!empty($cats)){
+				$r_args['tax_query'] = array(
+					array(
+						'taxonomy' => 'person_cat',
+						'field' => 'term_id',
+						'terms' => $cats[0]->term_id
+					)
+				);
+			}
+			
+			$r_query = new WP_Query($r_args);			
+			if($r_query->have_posts()){					
+	?>
+			<aside class="related-posts section">
+				<?php if(!empty($cats)) { ?>
+					<h5><?php echo apply_filters('single_term_title', $cats[0]->name); ?></h5>
+				<?php } ?>
+				<?php
+					foreach($r_query->posts as $rp){
+						tst_compact_person_item($rp);
+					}	
+				?>
+			</aside>
+	<?php
+			}
+			
+		}		
 		elseif('project' == $pt) {
 			$r_query = new WP_Query(array(
 				'post_type' => 'project',

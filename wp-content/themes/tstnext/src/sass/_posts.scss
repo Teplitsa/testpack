@@ -583,3 +583,31 @@ $margin-base: 16px !default;
 		@include calc(width, "100% - 40px");
 	}
 }
+
+//Person profile
+.tpl-person-full {
+	
+	.profile-meta {
+		margin-bottom: $grid-desktop-gutter;
+		
+		.profile-meta-tags,
+		.profile-meta-text {
+			margin: 0 0 $grid-desktop-gutter 0;
+			@include for(tablet) {
+				margin-left: $grid-desktop-gutter;
+			}
+		}
+		
+		.profile-meta-text, .profile-meta-text p {
+			@include typo-headline(); 
+		}
+		
+	}
+	
+	.profile-pic {
+		margin-top: -52px;
+		border-radius: 2px;
+		max-width: 300px;
+		margin-bottom: $grid-desktop-gutter;
+	}
+}

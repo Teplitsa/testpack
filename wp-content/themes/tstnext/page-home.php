@@ -5,89 +5,182 @@
  */
  
 $home_id = $post->ID;
-$more_link = home_url('about/contacts');
 
+//settings
+$profiles_order = get_post_meta($home_id, 'home_profiles_order', true);
+$profiles_filter = get_post_meta($home_id, 'home_profiles_cat', true);
+$profiles_per_page = ($profiles_order == 'first') ? 6 : 4;
+
+$news_order = get_post_meta($home_id, 'home_news_order', true);
+$news_filter = get_post_meta($home_id, 'home_news_cat', true);
+$news_per_page = ($news_order == 'first') ? 5 : 3;
+
+$projects_order = get_post_meta($home_id, 'home_projects_order', true);
+$projects_per_page = ($projects_order == 'first') ? 2 : 3;
+
+$sections = array();
+
+//profiles
+if($profiles_order != 'none'){
+	$profiles_args = array(
+		'post_type' => 'person',	
+		'posts_per_page' => $profiles_per_page,
+		'orderby' => 'rand',
+		'cache_results' => false
+	);
+	if(!empty($profiles_filter)){
+		$profiles_args['tax_query'] = array(
+			array(
+				'taxonomy' => 'person_cat',
+				'field' => 'term_id',
+				'terms' => intval($profiles_filter)
+			)
+		);
+	}
+
+	$profiles = new WP_Query($profiles_args);
+	
+	if($profiles->have_posts() && $profiles->found_posts > 1){
+		$cat = get_term(intval($profiles_filter), 'person_cat');		
+		$title = apply_filters('single_term_title', $cat->name)." <a href='".get_term_link($cat)."' title='".__('All', 'tst')."'>(".$profiles->found_posts.")</a>";		
+		$sections[$profiles_order] = array('posts' => $profiles->posts, 'title' => $title);
+	}
+}
 
 //news
-$f_post = new WP_Query(array(
-	'post_type' => 'post',
-	'posts_per_page' => 3,
-	'cache_results' => false
-));
+if($news_order != 'none'){
+	$news_args = array(
+		'post_type' => 'post',	
+		'posts_per_page' => $news_per_page,
+		'cache_results' => false
+	);
+	if(!empty($news_filter)){
+		$news_args['tax_query'] = array(
+			array(
+				'taxonomy' => 'category',
+				'field' => 'term_id',
+				'terms' => intval($news_filter)
+			)
+		);
+	}
+	
+	$news = new WP_Query($news_args);
+	
+	if($news->have_posts() && $news->found_posts > 1){
+		$cat = get_term(intval($news_filter), 'category');		
+		$title = __('Our news', 'tst')." <a href='".get_term_link($cat)."' title='".__('All', 'tst')."'>(".$news->found_posts.")</a>";		
+		$sections[$news_order] = array('posts' => $news->posts, 'title' => $title);
+	}
+}
 
 //progs
-$progs = new WP_Query(array(
-	'post_type' => 'project',
-	'posts_per_page' => 3,
-	'orderby' => 'radn',
-	'cache_results' => false
+if($projects_order != 'none') {
+	$projects_args = array(
+		'post_type' => 'project',
+		'posts_per_page' => $projects_per_page,
+		'orderby' => 'rand',
+		'cache_results' => false
+	);
 	
-));
+	$projects = new WP_Query($projects_args);
+	
+	if($projects->have_posts() && $projects->found_posts > 1){
+		$all = get_post_type_archive_link('project');
+		$title = __('Our projects', 'tst')." <a href='".$all."' title='".__('All', 'tst')."'>(".$projects->found_posts.")</a>";		
+		$sections[$projects_order] = array('posts' => $projects->posts, 'title' => $title);
+	}
+}
 
-//var_dump($progs->get('query_thumbnails'));
 get_header();
+//Att! no support for incorrect section order
+
+
+if(isset($sections['first']['posts'])) {
+	$num = count($sections['first']['posts']);
 ?>
-<section class="home-section intro">
+<section class="home-section first">
 	<div class="mdl-grid">
-		<div class="mdl-cell mdl-cell--8-col">
-			
-			<div class="mdl-card mdl-shadow--2dp">
-				<div class=" mdl-card--expand">
-					<div class="featured_text"><?php echo apply_filters('the_content', $post->post_content);?></div>
-				</div>
-				
-				<div class="mdl-card__actions mdl-card--border">
-					<?php tst_get_social_menu(); ?>
-					
-					<a class="mdl-button mdl-js-button mdl-button--colored" href="<?php echo $more_link;?>">Контакты</a>
-				</div>		
-				
-			</div><!-- .card -->
-				
-		</div>
-		
+	<?php
+		for($i = 0; $i < 2; $i++){
+			tst_print_post_card($sections['first']['posts'][$i]);
+		}
+	?>
 		<div class="mdl-cell mdl-cell--4-col mdl-cell--hide-phone mdl-cell--hide-tablet"><?php get_sidebar(); ?></div>
 	</div>
-</section>
-
-<?php if(!empty($progs->posts)) { ?>
-<section class="home-section programms">
-	
 	<div class="mdl-grid">
-		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Наши программы <a href="<?php echo home_url('projects');?>" title="Все программы">(<?php echo $progs->found_posts;?>) &gt;</a></h3>
-		</header>
-	<?php foreach($progs->get_posts() as $mp) {
-        tst_project_card($mp);
-    }?>
+	<?php
+		for($i = 2; $i < $num; $i++){
+			$cpost = $sections['first']['posts'][$i];
+			if($cpost->post_type == 'person'){
+				$cpost->grid_css = 'mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone';
+			}
+			
+			tst_print_post_card($cpost);
+		}
+	?>
 	</div>
 </section>
-<?php }?>
+<?php } ?>
 
-<?php if(!empty($f_post)) { ?>
-<section class="home-section posts">
-	
+<!-- second -->
+<?php if(isset($sections['second']['posts'])) {
+	$num = count($sections['second']['posts']);
+?>
+<section class="home-section second">
 	<div class="mdl-grid">
+		<?php if(isset($sections['second']['title']) && !empty($sections['second']['title'])) { ?>
 		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Наши новости <a href="<?php echo home_url('novosti');?>" title="Все новости">(<?php echo $f_post->found_posts;?>) &gt;</a></h3>
+			<h3 class="home-section-title"><?php echo $sections['second']['title'];?></h3>
 		</header>
-	<?php foreach($f_post->get_posts() as $fp) {
-        tst_post_card($fp);
-    }?>
-	</div>
+		<?php } ?>
+		<?php
+			for($i = 0; $i < $num; $i++){
+				$cpost = $sections['second']['posts'][$i];
+				if($cpost->post_type == 'person'){
+					$cpost->grid_css = 'mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone';
+				}
+				tst_print_post_card($cpost);
+			}
+		?>		
+	</div>	
 </section>
-<?php }?>
+<?php } ?>
 
-<?php $parnter_bg = get_post_meta($home_id, 'partners_bg', true);
+<!-- third -->
+<?php if(isset($sections['third']['posts'])) {
+	$num = count($sections['third']['posts']);
+?>
+<section class="home-section third">
+	<div class="mdl-grid">
+		<?php if(isset($sections['third']['title']) && !empty($sections['third']['title'])) { ?>
+		<header class="mdl-cell mdl-cell--12-col">
+			<h3 class="home-section-title"><?php echo $sections['third']['title'];?></h3>
+		</header>
+		<?php } ?>
+		<?php
+			for($i = 0; $i < $num; $i++){
+				$cpost = $sections['third']['posts'][$i];
+				if($cpost->post_type == 'person'){
+					$cpost->grid_css = 'mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone';
+				}
+				tst_print_post_card($cpost);				
+			}
+		?>		
+	</div>	
+</section>
+<?php } ?>
 
+
+<!-- partners -->
+<?php 
 	$part_ids = (get_post_meta($home_id, 'home_partners', true)); 
 	$partners = array();
 	if($part_ids) {
-		$partners  = get_posts(array('post_type' =>'org', 'post__in' => $part_ids, 'post_status' => 'publish', 'cache_results' => false, 'orderby' => 'post__in'));
+		$partners  = get_posts(array('post_type' =>'org', 'post__in' => $part_ids, 'post_status' => 'publish', 'cache_results' => false));
 	}
 
 	if($partners) { ?>
-<section class="home-partners-block"<?php if($parnter_bg) echo " style='background-image: url($parnter_bg);'";?>>
+<section class="home-partners-block">
 <div class="mdl-grid">
 <div class="mdl-cell mdl-cell--12-col">
 	<h5 class="widget-title">Нас поддерживают</h5>

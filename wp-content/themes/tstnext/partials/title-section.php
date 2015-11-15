@@ -5,11 +5,16 @@
 
 if(is_front_page()) { ?>
 <div class="mdl-grid">
-	<div class="mdl-cell mdl-cell--12-col">
+	<div class="mdl-cell mdl-cell--4-col">
 		<div class="home-logo"><?php tst_site_logo('regular');?></div>
 	</div>
+	<div class="mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet">
+		<h3 class="home-desc"><span><?php bloginfo('description');?></span></h3>
+		<div class="home-social"><?php tst_get_social_menu(); ?></div>
+	</div>
 </div>
-<?php } elseif(is_singular(array('post', 'event', 'project'))) { ?>
+
+<?php } elseif(is_singular(array('post', 'event', 'project', 'person', 'org'))) { ?>
 <div class="mdl-grid">
 	
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--6-col-phone">

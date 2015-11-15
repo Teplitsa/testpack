@@ -3,7 +3,23 @@
  * Cards and Listings' items templates
  **/
 
+/** General selection **/
+function tst_print_post_card($cpost) {
 
+	if($cpost->post_type == 'post'){
+		$tax = (tst_has_authors()) ? 'auctor' : 'category';
+		tst_post_card($cpost, $tax);
+	}
+	else {
+		$callback = "tst_".$cpost->post_type."_card";
+		if(is_callable($callback)) {
+			call_user_func($callback, $cpost);
+		}
+		else {
+			tst_post_card($cpost);
+		}	
+	}
+}
 
 /** == Cards in loop == **/
 
@@ -17,23 +33,13 @@ function tst_post_card($cpost, $tax = 'auctor'){
 	$e = tst_get_post_excerpt($cpost, 30, true);
 	$date = "<time>".get_the_date('d.m.Y.', $cpost->ID)."</time> - ";
 	
-	$name = $desc = $avatar = '';
 	
-	if($tax == 'auctor' && tst_has_authors()){
-		$author = tst_get_post_author($cpost);
-		$name = ($author) ? $author->name : '';
-		$desc = ($author) ? wp_trim_words($author->description, 20) : '';
-		$avatar = ($author) ? tst_get_author_avatar($author->term_id) : '';
-	}
-	elseif($tax != 'auctor') { //category
-		$cat = get_the_terms($cpost->ID, $tax); 
-		$name = (isset($cat[0])) ? $cat[0]->name : '';
-		$desc = (isset($cat[0])) ? wp_trim_words($cat[0]->description, 20) : '';
-		$avatar = (isset($cat[0])) ? tst_get_tax_avatar($cat[0]) : '';
-	}
-
+	$css = 'mdl-cell--4-col';
+	if(isset($cpost->grid_css))
+		$css = $cpost->grid_css;
+	
 ?>
-<article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
+<article <?php post_class('mdl-cell masonry-item '.$css); ?>>
 <div class="tpl-card-blank mdl-card mdl-shadow--2dp">
 	
 	<?php if(has_post_thumbnail($cpost->ID)){ ?>
@@ -42,7 +48,13 @@ function tst_post_card($cpost, $tax = 'auctor'){
 		</a></div>			
 	<?php } ?>
 	
-	<?php if(!empty($name)) { ?>
+	<?php
+		if($tax == 'auctor' && tst_has_authors()) {
+			$author = tst_get_post_author($cpost);
+			$name = ($author) ? $author->name : '';
+			$desc = ($author) ? wp_trim_words($author->description, 20) : '';
+			$avatar = ($author) ? tst_get_author_avatar($author->term_id) : '';
+	?>
 		<div class="entry-author mdl-card__supporting-text">		
 			<div class="pictured-card-item">
 				<div class="author-avatar round-image pci-img"><?php echo $avatar;?></div>
@@ -55,8 +67,11 @@ function tst_post_card($cpost, $tax = 'auctor'){
 				</div>
 			</div>
 		</div>
-	<?php } ?>
-	
+	<?php
+		} elseif($tax != 'auctor')  {			
+			echo get_the_term_list($cpost->ID, $tax, '<div class="entry-tax mdl-card__supporting-text">', ', ', '</div>');	
+		}
+	?>
 	<div class="mdl-card__title">
 		<h4 class="mdl-card__title-text"><a href="<?php echo $pl;?>"><?php echo get_the_title($cpost->ID);?></a></h4>
 	</div>
@@ -80,9 +95,11 @@ function tst_project_card($cpost){
 	$e = tst_get_post_excerpt($cpost, 30, true);	
 	$pl = get_permalink($cpost);
 	
-	
+	$css = 'mdl-cell--4-col';
+	if(isset($cpost->grid_css))
+		$css = $cpost->grid_css;
 ?>
-<article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
+<article <?php post_class('mdl-cell masonry-item '.$css); ?>>
 <div class="tpl-card-color mdl-card mdl-shadow--2dp">
 	
 	<?php if(has_post_thumbnail($cpost->ID)){ ?>
@@ -126,8 +143,11 @@ function tst_org_card($cpost, $ext_link = true){
 	$logo = get_the_post_thumbnail($cpost->ID, 'full');
 	$text = apply_filters('tst_the_content', $cpost->post_content);	
 	
+	$css = 'mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone';
+	if(isset($cpost->grid_css))
+		$css = $cpost->grid_css;
 ?>
-<article <?php post_class('mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'); ?>>
+<article <?php post_class('mdl-cell '.$css); ?>>
 <div class="tpl-card-mix mdl-card mdl-shadow--2dp">
 	
 	<div class="mdl-card__media">
@@ -159,9 +179,11 @@ function tst_person_card($cpost){
 	$e = tst_get_post_excerpt($cpost, 30, true);	
 	$pl = get_permalink($cpost);
 	
-	
+	$css = 'mdl-cell--4-col';
+	if(isset($cpost->grid_css))
+		$css = $cpost->grid_css;
 ?>
-<article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
+<article <?php post_class('mdl-cell masonry-item '.$css); ?>>
 <div class="tpl-card-color mdl-card mdl-shadow--2dp">
 	
 	<?php if(has_post_thumbnail($cpost->ID)){ ?>
@@ -205,16 +227,19 @@ function tst_person_short_card($cpost, $ext_link = true){
 	$logo = get_the_post_thumbnail($cpost->ID, 'full');
 	$text = apply_filters('tst_the_content', $cpost->post_content);	
 	
+	$css = 'mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone';
+	if(isset($cpost->grid_css))
+		$css = $cpost->grid_css;
 ?>
-<article <?php post_class('mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone'); ?>>
+<article <?php post_class('mdl-cell '.$css); ?>>
 <div class="tpl-card-mix mdl-card mdl-shadow--2dp">
 	
 	<div class="mdl-card__media">
-		<a class="logo-link" href="<?php echo $url;?>"<?php echo $target;?>><?php echo $logo; ?></a>
+		<span class="logo-link"><?php echo $logo; ?></span>
 	</div>
 			
 	<div class="mdl-card__title">
-		<h4 class="mdl-card__title-text"><a href="<?php echo $url;?>"><?php echo get_the_title($cpost->ID);?></a></h4>
+		<h4 class="mdl-card__title-text"><?php echo get_the_title($cpost->ID);?></h4>
 	</div>
 			
 	<?php echo tst_card_summary($text); ?>
@@ -240,8 +265,12 @@ function tst_page_card($cpost){
 	
 	$img = (function_exists('get_field')) ? get_field('header_img', $cpost->ID) : 0;
 	$img = wp_get_attachment_image($img, 'post-thumbnail', false, array('alt' => __('Thumbnail', 'tst')));
+	
+	$css = 'mdl-cell--4-col';
+	if(isset($cpost->grid_css))
+		$css = $cpost->grid_css;
 ?>
-<article <?php post_class('mdl-cell mdl-cell--4-col masonry-item'); ?>>
+<article <?php post_class('mdl-cell masonry-item '.$css); ?>>
 <div class="tpl-card-color mdl-card mdl-shadow--2dp">
 	
 	<?php if($img){ ?>
@@ -361,3 +390,37 @@ function tst_compact_project_item($cpost){
 <?php
 }
 
+/** Compact person item **/
+function tst_compact_person_item($cpost){
+	
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+	
+	$e = tst_get_post_excerpt($cpost, 30, true);	
+?>
+	<div class="tpl-related-project"><a href="<?php echo get_permalink($cpost);?>">
+	
+	<div class="mdl-grid mdl-grid--no-spacing">
+		<div class="mdl-cell mdl-cell--9-col mdl-cell--5-col-tablet mdl-cell--4-col-phone">
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+				
+			<!-- summary -->
+			<p class="entry-summary">
+				<?php echo apply_filters('tst_the_tite', $e); ?>
+			</p>
+		</div>
+		
+		<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-cell--hide-phone">
+		<?php
+			$thumb = get_the_post_thumbnail($cpost->ID, 'thumbnail-landscape', array('alt' => __('Thumbnail', 'tst')) ) ;
+			if(empty($thumb)){
+				$thumb = tst_get_default_post_thumbnail('thumbnail-landscape');
+			}
+			echo $thumb;
+		?>
+		</div>
+	</div>	
+	
+	</a></div>
+<?php
+}

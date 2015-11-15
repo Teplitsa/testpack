@@ -466,17 +466,82 @@ function tst_custom_metaboxes() {
 		),
 	));
 	
+	//sections	
 	$home_cmb->add_field( array(
-		'name'    => __('Partners Bg Image', 'tst'),
-		//'desc'    => 'Upload an image or enter an URL.',
-		'id'      => 'partners_bg',
-		'type'    => 'file',		
+		'name'    => __( 'Profiles - Order', 'cmb2' ),		
+		'id'      => 'home_profiles_order',
+		'type'    => 'select',		
+		'default' => 'first',		
 		'options' => array(
-			'url' => false, // Hide the text input for the url
-			'add_upload_file_text' => __('Add Image', 'tst') // Change upload button text. Default: "Add or Upload File"
-		),
+			'none' => __('Don\'t show', 'tst'),
+			'first' => __('First section', 'tst'),
+			'second' => __('Second section', 'tst'),
+			'third' => __('Third section', 'tst'),
+		)
 	));
 	
+	$cats = get_terms('person_cat', array('hide_empty' => 0));
+	$options = array();
+	
+	if(!empty($cats)){
+		foreach($cats as $c){
+			$options[$c->term_id] = esc_attr($c->name);
+		}
+		
+		$home_cmb->add_field( array(
+			'name'     => __('Profiles - Filter', 'tst'),		
+			'id'       => 'home_profiles_cat',		
+			'type'     => 'select',
+			'show_option_none' => true,
+			'options' => $options
+		));
+	}
+	
+	
+	$home_cmb->add_field( array(
+		'name'    => __( 'News - Order', 'cmb2' ),		
+		'id'      => 'home_news_order',
+		'type'    => 'select',		
+		'default' => 'second',		
+		'options' => array(
+			'none' => __('Don\'t show', 'tst'),
+			'first' => __('First section', 'tst'),
+			'second' => __('Second section', 'tst'),
+			'third' => __('Third section', 'tst'),
+		)
+	));
+	
+	$cats = get_terms('category', array('hide_empty' => 0));
+	$options = array();
+	
+	if(!empty($cats)){
+		foreach($cats as $c){
+			$options[$c->term_id] = esc_attr($c->name);
+		}
+		
+		$home_cmb->add_field( array(
+			'name'     => __('News - Filter', 'tst'),		
+			'id'       => 'home_news_cat',		
+			'type'     => 'select',
+			'show_option_none' => true,
+			'options' => $options
+		));
+	}
+		
+	$home_cmb->add_field( array(
+		'name'    => __( 'Projects section - Order', 'cmb2' ),		
+		'id'      => 'home_projects_order',
+		'type'    => 'select',		
+		'default' => 'third',		
+		'options' => array(
+			'none' => __('Don\'t show', 'tst'),
+			'first' => __('First section', 'tst'),
+			'second' => __('Second section', 'tst'),
+			'third' => __('Third section', 'tst'),
+		)
+	));
+	
+	//partners
 	$home_cmb->add_field( array(
 		'name'    => __( 'Partners', 'cmb2' ),		
 		'id'      => 'home_partners',

@@ -17,23 +17,8 @@ get_header(); ?>
 	<?php
 		if(have_posts()){
 			while(have_posts()){
-				the_post();
-				
-				$pt = get_post_type();
-				if($pt == 'post'){
-					$tax = (tst_has_authors()) ? 'auctor' : 'category';
-					tst_post_card($post, $tax);
-				}
-				else {
-					$callback = "tst_".$pt."_card";
-					if(is_callable($callback)) {
-						call_user_func($callback, $post);
-					}
-					else {
-						tst_post_card($post);
-					}	
-				}
-				
+				the_post();				
+				tst_print_post_card($post);				
 			}  		
 		}		
 	?>

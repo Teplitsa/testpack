@@ -14,7 +14,7 @@ jQuery(document).ready(function($){
 	
 	
 	/** smart crumbs **/
-	var crumb = $('.crumb-name');
+	var crumb = $('.crumb-name, .page-template-page-home .site-logo');
 	if (crumb.length) {
 		$('.mdl-layout__content').scroll(function(){
 			

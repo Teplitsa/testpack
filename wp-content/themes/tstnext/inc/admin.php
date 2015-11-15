@@ -157,7 +157,6 @@ function tst_correct_metaboxes($post_type, $post ){
 }
 
 function tst_excerpt_meta_box($post){
-
 	if($post->post_type == 'org'){
 ?>
 <label class="screen-reader-text" for="excerpt"><?php _e('Website', 'tst'); ?></label>
@@ -325,3 +324,4 @@ function tst_thumbnail_dimensions_check($thumbnail_html, $post_id) {
 
     return $thumbnail_html;
 }
+
