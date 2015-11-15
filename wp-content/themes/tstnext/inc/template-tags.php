@@ -530,7 +530,7 @@ function tst_get_post_author($cpost) {
 
 function tst_get_author_avatar($author_term_id) {
 
-	$avatar = get_field('auctor_photo', 'auctor_'.$author_term_id);
+	$avatar = ''; //get_field('auctor_photo', 'auctor_'.$author_term_id);
 
     return $avatar ? wp_get_attachment_image($avatar, 'avatar') : tst_get_default_author_avatar();
 }
