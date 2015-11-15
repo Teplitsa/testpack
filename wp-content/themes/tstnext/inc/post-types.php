@@ -468,7 +468,7 @@ function tst_custom_metaboxes() {
 	
 	//sections	
 	$home_cmb->add_field( array(
-		'name'    => __( 'Profiles - Order', 'cmb2' ),		
+		'name'    => __( 'Profiles - Order', 'tst' ),		
 		'id'      => 'home_profiles_order',
 		'type'    => 'select',		
 		'default' => 'first',		
@@ -499,7 +499,7 @@ function tst_custom_metaboxes() {
 	
 	
 	$home_cmb->add_field( array(
-		'name'    => __( 'News - Order', 'cmb2' ),		
+		'name'    => __( 'News - Order', 'tst' ),		
 		'id'      => 'home_news_order',
 		'type'    => 'select',		
 		'default' => 'second',		
@@ -529,7 +529,7 @@ function tst_custom_metaboxes() {
 	}
 		
 	$home_cmb->add_field( array(
-		'name'    => __( 'Projects section - Order', 'cmb2' ),		
+		'name'    => __( 'Projects section - Order', 'tst' ),		
 		'id'      => 'home_projects_order',
 		'type'    => 'select',		
 		'default' => 'third',		
@@ -543,7 +543,7 @@ function tst_custom_metaboxes() {
 	
 	//partners
 	$home_cmb->add_field( array(
-		'name'    => __( 'Partners', 'cmb2' ),		
+		'name'    => __( 'Partners', 'tst' ),		
 		'id'      => 'home_partners',
 		'type'    => 'custom_attached_posts',
 		'options' => array(
