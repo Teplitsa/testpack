@@ -45,10 +45,10 @@ function tst_common_columns_content($column_name, $post_id) {
 		
 	}
 	elseif($column_name == 'event_date') {
-		
-		$e_date = (function_exists('get_field')) ? get_field('event_date', $post_id) : '';
+				
+		$e_date = get_post_meta($post_id, 'event_date', true); 
 		if(!empty($e_date)){
-			echo date('d.m.Y', strtotime($e_date));
+			echo date('d.m.Y', $e_date);
 		}
 	}
 }
@@ -305,6 +305,9 @@ function tst_support_widget(){
 add_filter('admin_post_thumbnail_html', 'tst_thumbnail_dimensions_check', 10, 2);
 function tst_thumbnail_dimensions_check($thumbnail_html, $post_id) {
 	global $_wp_additional_image_sizes;
+	
+	if('org' == get_post_type($post_id))
+		return $thumbnail_html;
 	
     $meta = wp_get_attachment_metadata(get_post_thumbnail_id($post_id));
     $needed_sizes = (isset($_wp_additional_image_sizes['post-thumbnail'])) ? $_wp_additional_image_sizes['post-thumbnail'] : false;

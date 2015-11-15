@@ -4,7 +4,7 @@
  **/
 
 define('TST_VERSION', '1.1');
-define('TST_HAS_AUTHORS', true);
+define('TST_HAS_AUTHORS', false);
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 760; /* pixels */
@@ -126,6 +126,7 @@ require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/widgets.php';
 require get_template_directory().'/inc/related.php';
 
+require get_template_directory().'/inc/cards.php';
 require get_template_directory().'/inc/events.php';
 require get_template_directory().'/inc/calendar.php';
 

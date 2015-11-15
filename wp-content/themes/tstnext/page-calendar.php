@@ -68,7 +68,7 @@ get_header(); ?>
 					'meta_query' => array(
 						array(
 							'key' => 'event_date',
-							'value' => date('Y', $today).date('m', $today).date('d', $today),
+							'value' => strtotime(date('Y', $today).date('m', $today).date('d', $today)),
 							'compare' => '>=',
 						),
 					)
@@ -96,7 +96,7 @@ get_header(); ?>
 					'meta_query' => array(
 						array(
 							'key' => 'event_date',
-							'value' => date('Y', $today).date('m', $today).date('d', $today),
+							'value' => strtotime(date('Y', $today).date('m', $today).date('d', $today)),
 							'compare' => '<',
 						),
 					)

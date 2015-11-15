@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7a46fba176f17d7ccd3d2354aca30fb1",
-    "content-hash": "63a657a35d33f4a8f23fdf6703bc174f",
+    "hash": "1c57566348aae735745e0f989b04f732",
+    "content-hash": "080c10f5ac3f1fdcd3fd70cda835e65e",
     "packages": [
         {
             "name": "composer/installers",
@@ -251,6 +251,20 @@
             "time": "2015-01-04 10:24:12"
         },
         {
+            "name": "tst/cmb2-attached-posts",
+            "version": "1.2.2",
+            "dist": {
+                "type": "zip",
+                "url": "artifacts/tst-cmb2-attached-posts-1.2.2.zip",
+                "reference": null,
+                "shasum": "d4d69d33e6cca2d0c1837d2328f23d13733d8eb4"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
             "name": "wpackagist-plugin/cmb2",
             "version": "2.1.2",
             "source": {
@@ -332,15 +346,15 @@
         },
         {
             "name": "wpackagist-plugin/formidable",
-            "version": "2.0.16",
+            "version": "2.0.17",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/formidable/",
-                "reference": "tags/2.0.16"
+                "reference": "tags/2.0.17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/formidable.2.0.16.zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.0.17.zip",
                 "reference": null,
                 "shasum": null
             },

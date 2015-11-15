@@ -30,6 +30,7 @@
             "type": "vcs",
             "url": "https://github.com/wp-sync-db/wp-sync-db-media-files"
         }
+        
     ],
     "config"      : {
         "vendor-dir": "wp-content/vendor"
@@ -51,8 +52,9 @@
         "wpackagist-plugin/w3-total-cache": "@stable",
         "wpackagist-plugin/posts-to-posts": "@stable",
         "wpackagist-plugin/formidable": "@stable",
-        "wpackagist-plugin/cmb2": "@stable",
-        "koodimonni-language/core-ru_RU": "*"              
+        "wpackagist-plugin/cmb2": "@stable",        
+        "koodimonni-language/core-ru_RU": "*" ,
+        "tst/cmb2-attached-posts" : ">=1.2.2"
     },
     "require-dev" : {
         "wpackagist-plugin/debug-bar" : "@stable",

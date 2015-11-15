@@ -168,7 +168,7 @@ class TST_Calendar_Table {
 			'meta_query' => array(
 				array(
 					'key' => 'event_date',
-					'value' => $this->year.$this->month.zeroise($day, 2),
+					'value' => strtotime($this->year.'-'.$this->month.'-'.zeroise($day, 2)),
 					'compare' => '=',
 				),
 			)

@@ -8,16 +8,17 @@ function tst_event_meta($cpost = null) {
 		
 	if(!$cpost)
 		$cpost = $post; 
-		
-	$date = (function_exists('get_field')) ? get_field('event_date', $cpost->ID) : '' ;
-	$time = (function_exists('get_field')) ? get_field('event_time', $cpost->ID) : '';
-	$lacation = (function_exists('get_field')) ? get_field('event_location', $cpost->ID) : '';
-	$addr = (function_exists('get_field')) ? get_field('event_address', $cpost->ID) : '';
-
+	
+	
+	$date = get_post_meta($cpost->ID, 'event_date', true); 
+	$time = get_post_meta($cpost->ID, 'event_time', true);
+	$lacation = get_post_meta($cpost->ID, 'event_location', true);
+	$addr  = get_post_meta($cpost->ID, 'event_address', true);
+	
 	if(!empty($date)){
 		echo "<div class='em-field date-field'>";
 		echo "<div class='em-label mdl-typography--caption'>".__('Event date', 'tst').":</div>";
-		echo "<div class='em-date mdl-typography--body-1'>".date('d.m.Y', strtotime($date))."</div>";
+		echo "<div class='em-date mdl-typography--body-1'>".date('d.m.Y', $date)."</div>";
 		tst_add_to_calendar_link($cpost);
 		echo "</div>";
 	}
@@ -46,7 +47,7 @@ function tst_is_future_event($date) {
 	
 	$today_exact = strtotime(sprintf('now %s hours', get_option('gmt_offset')));
 	$today_mark = date('Y', $today_exact).'-'.date('m', $today_exact).'-'.date('d', $today_exact);
-	$stamp = date('Y-m-d', strtotime($date));
+	$stamp = date('Y-m-d', $date);
 		
 	
 	if((string)$stamp >= (string)$today_exact) {
@@ -61,11 +62,12 @@ function tst_event_card($event){
 	
 	$img_id = get_post_thumbnail_id($event->ID);
 	$img = wp_get_attachment_image_src($img_id, 'post-thumbnail');
+		
+	$date = get_post_meta($event->ID, 'event_date', true); 
+	$time = get_post_meta($event->ID, 'event_time', true);
+	$location = get_post_meta($event->ID, 'event_location', true);
+	$addr  = get_post_meta($event->ID, 'event_address', true);
 	
-	$date = (function_exists('get_field')) ? get_field('event_date', $event->ID) : $event->post_date;
-	$time = (function_exists('get_field')) ? get_field('event_time', $event->ID) : '';
-	$location = (function_exists('get_field')) ? get_field('event_location', $event->ID) : '';
-	$addr = (function_exists('get_field')) ? get_field('event_address', $event->ID) : '';
 	$pl = get_permalink($event);
 	
 	$e = (!empty($event->post_excerpt)) ? $event->post_excerpt : wp_trim_words(strip_shortcodes($event->post_content), 20);
@@ -84,7 +86,7 @@ function tst_event_card($event){
 			<div class="pictured-card-item event-date">
 				<div class="em-icon pci-img"><?php echo tst_material_icon('schedule'); ?></div>				
 				<div class="em-content pci-content">
-					<h5 class="mdl-typography--body-1"><?php echo date('d.m.Y', strtotime($date));?></h5>
+					<h5 class="mdl-typography--body-1"><?php echo date('d.m.Y', $date);?></h5>
 					<p class="mdl-typography--caption"><?php echo apply_filters('tst_the_title', $time); ?></p>
 					<?php
 						if(tst_is_future_event($date)){
@@ -118,8 +120,8 @@ function tst_event_card($event){
 
 function tst_compact_event_item($cpost){
 	
-	$pl = get_permalink($cpost);
-	$e_date = get_post_meta($cpost->ID, 'event_date', true);
+	$pl = get_permalink($cpost);	
+	$e_date = get_post_meta($cpost->ID, 'event_date', true); 
 	$thumb = get_the_post_thumbnail($cpost->ID, 'avatar');
 	if(empty($thumb))
 		$thumb = tst_get_default_post_thumbnail('avatar');
@@ -134,7 +136,7 @@ function tst_compact_event_item($cpost){
 			<h5 class="event-title mdl-typography--body-1"><a href="<?php echo $pl; ?>">
 				<?php echo get_the_title($cpost);?>
 			</a></h5>
-			<p class="event-date mdl-typography--caption"><time><?php echo date_i18n('d.m.Y', strtotime($e_date));?></time></p>
+			<p class="event-date mdl-typography--caption"><time><?php echo date_i18n('d.m.Y', $e_date);?></time></p>
 			<div class="add-to-calendar">
 				<?php tst_add_to_calendar_link($cpost);?>
 			</div>

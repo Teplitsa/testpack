@@ -69,7 +69,7 @@ get_header();
 	
 	<div class="mdl-grid">
 		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Последние новости <a href="<?php echo home_url('novosti');?>" title="Все новости">(<?php echo $f_post->found_posts;?>) &gt;</a></h3>
+			<h3 class="home-section-title">Наши новости <a href="<?php echo home_url('novosti');?>" title="Все новости">(<?php echo $f_post->found_posts;?>) &gt;</a></h3>
 		</header>
 	<?php foreach($f_post->get_posts() as $fp) {
         tst_post_card($fp);
@@ -78,12 +78,12 @@ get_header();
 </section>
 <?php }?>
 
-<?php $parnter_bg = wp_get_attachment_url(get_post_meta($home_id, 'partners_bg', true));
+<?php $parnter_bg = get_post_meta($home_id, 'partners_bg', true);
 
 	$part_ids = (get_post_meta($home_id, 'home_partners', true)); 
 	$partners = array();
 	if($part_ids) {
-		$partners  = get_posts(array('post_type' =>'org', 'post__in' => $part_ids, 'post_status' => 'publish', 'cache_results' => false));
+		$partners  = get_posts(array('post_type' =>'org', 'post__in' => $part_ids, 'post_status' => 'publish', 'cache_results' => false, 'orderby' => 'post__in'));
 	}
 
 	if($partners) { ?>

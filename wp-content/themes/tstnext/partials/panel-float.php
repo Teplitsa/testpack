@@ -11,18 +11,21 @@
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--hide-phone mdl-cell--hide-tablet">
 		<div class="event-meta-panel pictured-card-item">
 		<?php
-			$addr = array();
-			$date = (function_exists('get_field')) ? get_field('event_date', $post->ID) : $post->post_date;
-			$time = (function_exists('get_field')) ? get_field('event_time', $post->ID) : '';
-			$addr[] = (function_exists('get_field')) ? get_field('event_location', $post->ID) : '';
-			$addr[] = (function_exists('get_field')) ? get_field('event_address', $post->ID) : '';
-		
+			$addr = array();			
+			$time = get_post_meta($post->ID, 'event_time', true);
+			$addr[] = get_post_meta($post->ID, 'event_location', true);
+			$addr[] = get_post_meta($post->ID, 'event_address', true);
+			
+			$date = get_post_meta($post->ID, 'event_date', true);
+			if(!$date)
+				$date = $post->post_date;
+			
 		?>
 			<div class="ev-avatar round-image pci-img"><?php echo get_the_post_thumbnail(get_the_ID(), 'thumbnail')?></div>
 			
 			<div class="ev-content pci-content">
 				<h5 class="ev-date mdl-typography--body-1">
-					<?php echo date('d.m.Y', strtotime($date)).'&ndash;'.esc_attr($time); ?>
+					<?php echo date('d.m.Y', $date).'&ndash;'.esc_attr($time); ?>
 				</h5>
 				<p class="ev-addr mdl-typography--caption">
 					<?php echo apply_filters('tst_the_title', implode(', ', $addr)); ?>

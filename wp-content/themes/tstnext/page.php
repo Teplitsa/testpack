@@ -30,15 +30,16 @@ get_header();
 
 <div class="page-footer"><div class="mdl-grid">
 <?php
-	$embeds = (function_exists('get_field')) ? get_field('embed_posts', $post_id) : array();
+	$embeds = get_post_meta($post_id, 'embed_posts', true);
 	if(!empty($embeds)){
-		$title = get_field('embed_posts_title', $post_id);
+		$title = get_post_meta($post_id, 'embed_posts_title', true);
 		if(!empty($title)){
 	?>
 		<div class="mdl-cell mdl-cell--12-col"><h5><?php echo $title; ?></h5></div>
 	<?php
 		}
 		foreach($embeds as $ep) {
+			$ep = intval($ep);
 			$callback = "tst_".get_post_type($ep)."_card";
 			if(is_callable($callback)) {
 				call_user_func($callback, $ep);

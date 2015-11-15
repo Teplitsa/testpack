@@ -224,10 +224,12 @@ body.search {
 	}
 }
 
+body.archive.tax-person_cat,
+body.archive.tax-org_cat,
 body.archive.category,
 body.tax-auctor {
 	.page-header .page-title {
-		padding: $sh-base*5 0 $sh-base/2;		
+		padding: $sh-base*3 0 $sh-base/2;		
 		line-height: 1.2;
 	}
 	.author-description {
