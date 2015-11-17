@@ -50,9 +50,9 @@
         "wpackagist-plugin/wordpress-seo" : "@stable",
         "wpackagist-plugin/w3-total-cache": "@stable",
         "wpackagist-plugin/posts-to-posts": "@stable",
+        "wpackagist-plugin/formidable": "@stable",
         "koodimonni-language/core-ru_RU": "*",
-        "tst/advanced-custom-fields-pro" : ">=5.3.1",
-        "tst/formidable" : ">=2.0.14"
+        "tst/advanced-custom-fields-pro" : ">=5.3.1"        
     },
     "require-dev" : {
         "wpackagist-plugin/debug-bar" : "@stable",
