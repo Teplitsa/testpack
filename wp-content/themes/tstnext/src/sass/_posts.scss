@@ -451,23 +451,21 @@ $margin-base: 16px !default;
 
 
 //children profile
+.tpl-person-full,
 .tpl-children-full {
 	
-	.profile-meta {
-		margin-bottom: $grid-desktop-gutter;
-		
-		.captioned-text {
-			margin: 0 0 $grid-desktop-gutter 0;
-			
-			@include for(tablet) {
-				margin-left: $grid-desktop-gutter;
-			}
-		}
-		
-		.text, .text p {
-			@include typo-headline(); 
+	.profile-meta-tags,
+	.profile-meta-text {
+		margin: 0 0 $grid-desktop-gutter 0;
+		@include for(tablet) {
+			margin-left: $grid-desktop-gutter;
 		}
 	}
+	
+	.profile-meta-text, .profile-meta-text p {
+		@include typo-headline(); 
+	}
+
 	
 	.profile-pic {
 		margin-top: -52px;

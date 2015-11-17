@@ -468,6 +468,23 @@ function tst_next_fallback_link($cpost){
 
 
 /** == Cards in loop == **/
+function tst_print_post_card($cpost) {
+
+	if($cpost->post_type == 'post'){
+		$tax = 'category';
+		tst_post_card($cpost, $tax);
+	}
+	else {
+		$callback = "tst_".$cpost->post_type."_card";
+		if(is_callable($callback)) {
+			call_user_func($callback, $cpost);
+		}
+		else {
+			tst_post_card($cpost);
+		}	
+	}
+}
+
 
 /** Post card content **/
 function tst_post_card($cpost, $tax = 'category'){
@@ -677,9 +694,11 @@ function tst_children_card($cpost){
 	$age = get_post_meta($cpost->ID, 'child_age', true);
 	$age = (!empty($age)) ? '<b>'.$age.'</b> - ' : '';
 	
-	$css = (is_front_page()) ? 'mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone masonry-item' : 'mdl-cell mdl-cell--4-col masonry-item';
+	$css = 'mdl-cell--4-col';	
+	if(isset($cpost->grid_css))
+		$css = $cpost->grid_css;
 ?>
-<article <?php post_class($css); ?>>
+<article <?php post_class('mdl-cell masonry-item '.$css); ?>>
 <div class="tpl-card-blank mdl-card mdl-shadow--2dp">
 	
 	<?php if(has_post_thumbnail($cpost->ID)){ ?>
@@ -702,6 +721,41 @@ function tst_children_card($cpost){
 <?php
 }
 
+/** Person profile card content **/
+function tst_person_card($cpost){
+		
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+	
+	$e = tst_get_post_excerpt($cpost, 30, true);	
+	$pl = get_permalink($cpost);
+	
+	$css = 'mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone';
+	if(isset($cpost->grid_css))
+		$css = $cpost->grid_css;
+?>
+<article <?php post_class('mdl-cell masonry-item '.$css); ?>>
+<div class="tpl-card-mix mdl-card mdl-shadow--2dp">
+	
+	<?php if(has_post_thumbnail($cpost->ID)){ ?>
+	<div class="mdl-card__media">		
+		<a class="logo-link"  href="<?php echo $pl;?>"><?php echo get_the_post_thumbnail($cpost->ID, 'post-thumbnail', array('alt' => __('Thumbnail', 'tst'))); ?></a>
+	</div>			
+	<?php } ?>
+		
+	<div class="mdl-card__title">
+		<h4 class="mdl-card__title-text"><a href="<?php echo $pl;?>"><?php echo get_the_title($cpost->ID);?></a></h4>
+	</div>
+	
+	<?php echo tst_card_summary($e); ?>
+	
+	<div class="mdl-card__actions mdl-card--border">
+		<a href="<?php echo $pl;?>" class="mdl-button mdl-js-button"><?php _e('Details', 'tst');?></a>
+	</div>
+</div>	
+</article>
+<?php
+}
 
 
 /** == Summary helpers == **/
@@ -766,6 +820,7 @@ function tst_get_tax_avatar($term) {
 
     return $avatar ? wp_get_attachment_image($avatar, 'avatar') : tst_get_default_author_avatar();
 }
+
 
 
 /** == Compact Items for posts in widgets and related section == **/

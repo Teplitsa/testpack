@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-27 09:17+0300\n"
-"PO-Revision-Date: 2015-10-27 09:17+0300\n"
+"POT-Creation-Date: 2015-11-17 10:05+0300\n"
+"PO-Revision-Date: 2015-11-17 10:06+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -16,10 +16,11 @@ msgstr ""
 "X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
-"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
-"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
-"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
-"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;"
+"__ngettext_noop:1,2;_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;"
+"_nx_js:1,2,3c;esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;"
+"esc_attr_x:1,2c;esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;"
+"transChoice:1,2\n"
 "X-Loco-Target-Locale: ru_RU\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bower_components\n"
@@ -29,7 +30,7 @@ msgstr ""
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:28
+#: footer.php:45
 #, php-format
 msgid "All materials of the site are avaliabe under license %s."
 msgstr "Все материалы сайта доступны по лиценции %s."
@@ -38,7 +39,7 @@ msgstr "Все материалы сайта доступны по лиценц�
 msgid "Primary Menu"
 msgstr "﻿Главное меню"
 
-#: functions.php:36 inc/widgets.php:249
+#: functions.php:36 inc/widgets.php:38
 msgid "Social Buttons"
 msgstr "Социальные кнопки"
 
@@ -77,6 +78,13 @@ msgstr "Аннотация для списков (на странице запи
 msgid "Custom fields"
 msgstr "Мета-поля"
 
+#: inc/admin.php:319
+#, php-format
+msgid ""
+"ATTENTION! You thumbnail image is too small. It should be at least %s px"
+msgstr ""
+"ВНИМАНИЕ! Изображение слишком маленькое. Оно должно быть не меньше %s px"
+
 #: inc/events.php:19
 msgid "Event date"
 msgstr "Дата мероприятия"
@@ -101,89 +109,95 @@ msgstr "Принять участие"
 msgid "More"
 msgstr "Далее"
 
-#: inc/extras.php:273
+#: inc/extras.php:274
 msgid "Default thumbnail"
 msgstr "Миниатюра по умолчанию"
 
-#: inc/extras.php:287
+#: inc/extras.php:288
 msgid "Footer text"
 msgstr "Текст в футере"
 
-#: inc/template-tags.php:170
+#: inc/extras.php:301
+msgid "Newsletter form ID"
+msgstr "ID формы подписки"
+
+#: inc/template-tags.php:185
 msgid "in the category"
 msgstr "в рубрике"
 
-#: inc/template-tags.php:300
+#: inc/template-tags.php:315
 msgid "More entries"
 msgstr "Еще публикации"
 
-#: inc/template-tags.php:302
+#: inc/template-tags.php:317
 msgid "More results"
 msgstr "Еще результаты"
 
-#: inc/template-tags.php:307 single.php:39
+#: inc/template-tags.php:322 single.php:39
 msgid "More news"
 msgstr "Еще новости"
 
-#: inc/template-tags.php:310 single.php:60
+#: inc/template-tags.php:325
 msgid "More projects"
 msgstr "Еще программы"
 
-#: inc/template-tags.php:313
+#: inc/template-tags.php:328
 msgid "More orgs"
 msgstr "Еще организации"
 
-#: inc/template-tags.php:321
+#: inc/template-tags.php:336
 msgid "To the beginning"
 msgstr "К началу"
 
-#: inc/template-tags.php:418 inc/template-tags.php:423
-#: inc/template-tags.php:446
+#: inc/template-tags.php:433 inc/template-tags.php:438
+#: inc/template-tags.php:461
 msgid "Next item"
 msgstr "След."
 
-#: inc/template-tags.php:488 inc/template-tags.php:537
-#: inc/template-tags.php:608 inc/template-tags.php:903
-#: inc/template-tags.php:939 partials/content_single.php:39 single-event.php:24
+#: inc/template-tags.php:497 inc/template-tags.php:537
+#: inc/template-tags.php:608 inc/template-tags.php:687
+#: inc/template-tags.php:723 inc/template-tags.php:853
+#: inc/template-tags.php:889 inc/template-tags.php:926
+#: partials/content_single.php:47 single-event.php:24
 msgid "Thumbnail"
 msgstr "Миниатюра"
 
 #: inc/template-tags.php:514 inc/template-tags.php:548
 #: inc/template-tags.php:568 inc/template-tags.php:626
+#: inc/template-tags.php:734
 msgid "Details"
 msgstr "Подробнее"
 
-#: inc/template-tags.php:826 partials/content_single.php:19
+#: inc/template-tags.php:775 partials/content_single.php:27
 msgid "Author"
 msgstr "Автор"
 
-#: inc/widgets.php:251
+#: inc/widgets.php:40
 msgid "Social links menu with optional text"
 msgstr "Меню социальных кнопок с сопроводительным текстом"
 
-#: partials/content_single.php:26 partials/panel-float.php:75
+#: partials/content_single.php:34 partials/panel-float.php:91
 msgid "Published"
 msgstr "Опубликовано"
-
-#: partials/content_single.php:70
-msgid "All author's articles"
-msgstr "Все статьи автора"
 
 #: partials/payment-form.php:64
 msgid "Your name"
 msgstr "Ваше имя"
 
-#: partials/title-section.php:68
+#: partials/title-section.php:72
 msgid "Search results"
 msgstr "Результаты поиска"
 
-#: partials/title-section.php:71
+#: partials/title-section.php:75
 msgid "404: Page not found"
 msgstr "404: Страница не&nbsp;найдена"
 
 #: single-event.php:70
 msgid "More events"
 msgstr "Еще анонсы"
+
+#~ msgid "All author's articles"
+#~ msgstr "Все статьи автора"
 
 #~ msgid "Logo"
 #~ msgstr "Логотип"

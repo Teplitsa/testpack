@@ -13,7 +13,7 @@ if(is_front_page()) { ?>
 		<div class="home-social"><?php tst_get_social_menu(); ?></div>
 	</div>
 </div>
-<?php } elseif(is_singular(array('post', 'event', 'project', 'children'))) { ?>
+<?php } elseif(is_singular(array('post', 'event', 'project', 'children', 'person'))) { ?>
 <div class="mdl-grid">
 	
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--6-col-phone">
@@ -97,7 +97,10 @@ if(is_front_page()) { ?>
 		}
 		elseif(is_post_type_archive('project')){
 			echo tst_get_post_type_archive_title('project');
-		}			
+		}
+		elseif(is_post_type_archive('person')){
+			echo tst_get_post_type_archive_title('person');
+		}
 	?>
 	</h1>
 	<?php if(is_tax('auctor') || is_category()) {

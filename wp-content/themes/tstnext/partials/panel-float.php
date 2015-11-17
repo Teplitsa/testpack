@@ -64,6 +64,23 @@
 			</div>
 		</div>
 	</div>
+<?php } elseif(is_singular('person')) { ?>
+
+	<div class="mdl-cell mdl-cell--8-col mdl-cell--hide-phone mdl-cell--hide-tablet">
+		<div class="product-meta-panel pictured-card-item">
+		
+			<div class="pr-avatar round-image pci-img"><?php echo get_the_post_thumbnail(get_the_ID(), 'thumbnail')?></div>
+			
+			<div class="pr-content pci-content">
+				<h5 class="pr-title mdl-typography--body-1">
+					<?php the_title();?>
+				</h5>
+				<p class="pr-price mdl-typography--caption">
+					<?php echo tst_get_post_excerpt($post, 10, true);?>
+				</p>
+			</div>
+		</div>
+	</div>
 <?php } else { ?>	
 	<div class="mdl-cell mdl-cell--8-col mdl-cell--hide-phone mdl-cell--hide-tablet">
 		

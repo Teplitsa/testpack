@@ -10727,9 +10727,21 @@ jQuery(document).ready(function($){
 				
 		}
 	});
-	$('#newsletter').on('click', function(e){
+	$('#newsletter, #newsletter-btn').on('click', function(e){
 		e.preventDefault();
 		$('#modal-newsletter').trigger('openModal');
+	});
+	
+	/* headers in forms */
+	$('.frm_forms').each(function(){
+		
+		var form = $(this),
+			title = $(this).find('.frm_form_fields > h3');
+		
+		if (form.parents('#modal-newsletter').length <= 0 && title.length > 0) {
+			$(this).addClass('has-title');
+		}
+		
 	});
 	
 }); //jQuery

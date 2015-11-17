@@ -183,3 +183,35 @@ select[size] {
 
 .frm_radio .frm_other_input { margin-left: 5px;}
 
+//forms with title
+.frm_forms.has-title {
+	
+	.frm_form_fields  > h3 {
+		border-bottom: 1px solid $tst-color-border;
+		padding: $card-vertical-padding 0;		
+		cursor: pointer;
+		font-size: 16px;
+		font-weight: normal;
+		border-bottom: 2px solid $tst-color-primary;
+		color: $tst-color-primary;
+		margin: 0;
+	}
+	
+	h3 + fieldset {
+		@include shadow-2dp();
+		background: $tst-color-white;
+		padding: $cell-elementary-3x;
+	}
+	
+	.frm_description {
+		display: block;
+		p {
+			@include typo-caption();
+			color: $tst-color-text-semi;
+		}
+	}
+	
+	.frm_submit input {
+		box-shadow: 0 0 0 rgba(255,255,255, 0);
+	}
+}

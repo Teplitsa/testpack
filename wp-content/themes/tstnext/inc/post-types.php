@@ -179,7 +179,40 @@ function tst_custom_content(){
         'taxonomies'          => array(),
     ));
 	
-	
+	register_post_type('person', array(
+        'labels' => array(
+            'name'               => 'Профили людей',
+            'singular_name'      => 'Профиль',
+            'menu_name'          => 'Команда',
+            'name_admin_bar'     => 'Добавить профиль',
+            'add_new'            => 'Добавить новый',
+            'add_new_item'       => 'Добавить профиль',
+            'new_item'           => 'Новый профиль',
+            'edit_item'          => 'Редактировать профиль',
+            'view_item'          => 'Просмотр профиля',
+            'all_items'          => 'Все профили',
+            'search_items'       => 'Искать профили',
+            'parent_item_colon'  => 'Родительский профиль:',
+            'not_found'          => 'Профили не найдены',
+            'not_found_in_trash' => 'В Корзине профили не найдены'
+       ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => true,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => 'team',
+        'rewrite'             => array('slug' => 'profile', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-groups',
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'taxonomies'          => array('person_cat'),
+    ));
 }
 
 } // if tst_custom_content
