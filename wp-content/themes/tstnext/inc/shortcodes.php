@@ -266,3 +266,62 @@ function tst_quote_screen($atts, $content = null) {
 	
 	return $out;
 }
+
+
+/** Tabs */
+add_shortcode('tst_tabs', 'tst_tabs_screen');
+function tst_tabs_screen($atts, $content = null) {	
+	
+	$defaults = array('class' => 'default');
+
+	extract(shortcode_atts($defaults, $atts ));
+
+	$css = esc_attr("mdl-tabs mdl-js-tabs mdl-js-ripple-effect ".$class);
+
+	/* Extract the tab titles */
+	preg_match_all( '/tab title="([^\"]+)"/i', $content, $matches, PREG_OFFSET_CAPTURE );
+
+	$tab_titles = array();
+	$titles_html = '';
+	if(isset($matches[1]))
+		$tab_titles = $matches[1];
+	
+	/* Build tabs reference list */
+	if(!empty($tab_titles)){ 
+		
+		$list = array();
+		foreach($tab_titles as $i => $t){
+			$tab_id = sanitize_title($t[0]);
+			$active = ($i == 0) ? ' is-active' : '';
+			
+			$list[$i] = "<a href='#{$tab_id}' class='mdl-tabs__tab{$active}'>";
+			$list[$i] .= apply_filters('tst_the_title', $t[0])."</a>\n";
+		}
+		
+		$titles_html = "<div class='mdl-tabs__tab-bar'>".implode('', $list)."</div>";
+	}
+	
+
+	$out ="<div class='{$css}'>";
+	$out .= $titles_html;	
+	$out .= do_shortcode(shortcode_unautop(trim($content)));
+	$out .= "</div>";	
+	
+	$out = preg_replace('!<br />(\s*<?(?:p|li|div|dl|dd|dt|th|pre|td|ul|ol)[^>]*>)!', '$1', $out);
+	$out = preg_replace('!<br />(\s*</?(?:p|li|div|dl|dd|dt|th|pre|td|ul|ol)[^>]*>)!', '$1', $out);
+	
+	return  $out;
+} 
+
+add_shortcode('tab', 'tst_tab_screen');
+function tst_tab_screen($atts, $content = null) {
+		
+	$defaults = array('title' => 'Tab');
+	extract(shortcode_atts($defaults, $atts));
+	
+	$tab_id = esc_attr(sanitize_title($title));			
+	
+	$out = "<div class='mdl-tabs__panel' id='{$tab_id}'>".apply_filters('tst_the_content', $content)."</div>";
+	
+	return $out;
+}

@@ -44,7 +44,7 @@
    widely available.
 */
 $preferred_font: 'Roboto', 'Helvetica', 'Arial', sans-serif !default;
-$performance_font: 'Helvetica', 'Arial', sans-serif !default;
+$performance_font: 'Roboto', 'Helvetica', 'Arial', sans-serif !default;
 
 /* ==========  COLORS  ========== */
 
@@ -63,7 +63,7 @@ $performance_font: 'Helvetica', 'Arial', sans-serif !default;
 // your brand and provide good contrast between visual components
 $color-primary: "0,137,197";
 $color-primary-dark: $palette-light-blue-900 !default;
-$color-accent: $palette-light-blue-A100 !default;
+$color-accent: $palette-pink-A200 !default;
 
 // Our primary is dark, so use $color-dark-contrast for overlaid text.
 $color-primary-contrast: $color-dark-contrast !default;

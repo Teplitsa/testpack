@@ -87,6 +87,35 @@ gulp.task('build-css', function() {
         .on('error', console.log); //log
 });
 
+gulp.task('build-css-alt', function() {
+
+    //paths for mdl and bourbon
+    var paths = require('node-bourbon').includePaths,
+        mdl = path('./bower_components/material-design-lite/src');
+        paths.push(mdl);
+
+    var vendorFiles = gulp.src('bower_components/animate.css/animate.css'), //components
+        appFiles = gulp.src(basePaths.src+'sass/main_alt.scss') //our main file with @import-s
+        .pipe(!isProduction ? plugins.sourcemaps.init() : gutil.noop())  //process the original sources for sourcemap
+        .pipe(plugins.sass({
+                outputStyle: sassStyle, //SASS syntas
+                includePaths: paths //add bourbon + mdl
+            }).on('error', plugins.sass.logError))//sass own error log
+        .pipe(plugins.autoprefixer({ //autoprefixer
+                browsers: ['last 4 versions'],
+                cascade: false
+            }))
+        .pipe(!isProduction ? plugins.sourcemaps.write() : gutil.noop()) //add the map to modified source
+        .on('error', console.log); //log
+
+    return es.concat(appFiles, vendorFiles) //combine vendor CSS files and our files after-SASS
+        .pipe(plugins.concat('bundle_alt.css')) //combine into file
+        .pipe(isProduction ? plugins.cssmin() : gutil.noop()) //minification on production
+        .pipe(plugins.size()) //display size
+        .pipe(gulp.dest(basePaths.dest+'css')) //write file
+        .on('error', console.log); //log
+});
+
 gulp.task('build-admin-css', function() {
     
     var paths = require('node-bourbon').includePaths,
@@ -131,6 +160,7 @@ gulp.task('revision', function(){
 //builds
 gulp.task('full-build', function(callback) {
     runSequence('build-css',
+        'build-css-alt',
         'build-admin-css',
         'build-js',
         'revision-clean',
@@ -140,6 +170,7 @@ gulp.task('full-build', function(callback) {
 
 gulp.task('full-build-css', function(callback) {
     runSequence('build-css',
+        'build-css-alt',
         'build-admin-css',
         'revision-clean',
         'revision',

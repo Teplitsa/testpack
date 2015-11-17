@@ -173,9 +173,10 @@ function tst_pre_wp_nav_menu_social( $output, $args ) {
 			if ( false !== strpos( $item->url, $pattern ) ) {
 				
 				$icon = '<svg class="sh-icon"><use xlink:href="#'.$class.'" /></svg>';
+				$title = (!empty($item->attr_title)) ? " title='".esc_attr($item->attr_title)."'" : '';
 				
 				$item_output .= '<li class="' . esc_attr( str_replace( array('fa-', 'icon-'), '', $class ) ) . '">';
-				$item_output .= '<a href="' . esc_url( $item->url ) . '">';				
+				$item_output .= '<a href="' . esc_url( $item->url ) . '" target="_blank"'.$title.'>';			
 				$item_output .= $icon;
 				$item_output .= '<span>' . esc_html( $item->title ) . '</span>';
 				$item_output .= '</a></li>';
@@ -572,6 +573,9 @@ function tst_is_mobile_user_agent(){
 	//may be need some more sophisticated testing
 	$test = false;
 	
+	if(!isset($_SERVER['HTTP_USER_AGENT']))
+		return $test;
+	
 	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
 		$test = true;
 	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
@@ -603,4 +607,42 @@ function tst_adminbar_logo($wp_admin_bar){
 		'title' => '<span class="ab-icon"></span>',
 		'href'  => '',
 	) );
+}
+
+add_action('wp_footer', 'tst_adminbar_voices');
+add_action('admin_footer', 'tst_adminbar_voices');
+function tst_adminbar_voices() {
+	
+?>
+<script>	
+	jQuery(document).ready(function($){		
+		if ('speechSynthesis' in window) {
+			var speech_voices = window.speechSynthesis.getVoices(),
+				utterance  = new SpeechSynthesisUtterance();
+				
+				function set_speach_options() {
+					speech_voices = window.speechSynthesis.getVoices();
+					utterance.text = "I can't lie to you about your chances, but... you have my sympathies.";
+					utterance.lang = 'en-GB'; 
+					utterance.volume = 0.9;
+					utterance.rate = 0.9;
+					utterance.pitch = 0.8;
+					utterance.voice = speech_voices.filter(function(voice) { return voice.name == 'Google UK English Male'; })[0];
+				}
+								
+				window.speechSynthesis.onvoiceschanged = function() {				
+					set_speach_options();
+				};
+								
+				$('#wp-admin-bar-wp-logo').on('click', function(e){
+					
+					if (!utterance.voice || utterance.voice.name != 'Google UK English Male') {
+						set_speach_options();
+					}
+					speechSynthesis.speak(utterance);
+				});
+		}			
+	});
+</script>
+<?php
 }

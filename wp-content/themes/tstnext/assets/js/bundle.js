@@ -10727,9 +10727,17 @@ jQuery(document).ready(function($){
 				
 		}
 	});
-	$('#newsletter').on('click', function(e){
+	$('#newsletter, #newsletter-btn').on('click', function(e){
 		e.preventDefault();
 		$('#modal-newsletter').trigger('openModal');
+	});
+	
+	//tabs active
+	$('.mdl-tabs').each(function(){
+		var activeTab = $(this).find('.mdl-tabs__tab-bar').find('a.is-active').attr('href');
+			
+		$(this).find(activeTab).addClass('is-active');
+			
 	});
 	
 }); //jQuery

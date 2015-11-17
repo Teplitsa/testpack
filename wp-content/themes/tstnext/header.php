@@ -34,20 +34,7 @@
 		
 		<!-- Spacer -->
 		<div class="mdl-layout-spacer"> </div>
-		
-		<!-- Search -->
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                    mdl-textfield--floating-label mdl-textfield--align-right">
-			<label class="mdl-button mdl-js-button mdl-button--icon"
-				   for="fixed-header-drawer-exp"><svg class="search-icon"><use xlink:href="#pic-search" /></svg>
-			</label>
-			<div class="mdl-textfield__expandable-holder">
-				<form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<input class="mdl-textfield__input" type="text" name="s" id="fixed-header-drawer-exp" />
-				</form>
-			</div>
-        </div>
-		
+			
 		<button id="newsletter" title="Подписка на новости" class="mdl-button mdl-js-button mdl-button--icon" data-emodal="#modal-newsletter"><i class="material-icons">email</i></button>
 		
 

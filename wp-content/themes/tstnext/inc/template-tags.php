@@ -487,6 +487,22 @@ function tst_next_fallback_link($cpost){
 
 
 /** == Cards in loop == **/
+function tst_print_post_card($cpost) {
+
+	if($cpost->post_type == 'post'){
+		$tax = 'category';
+		tst_post_card($cpost, $tax);
+	}
+	else {
+		$callback = "tst_".$cpost->post_type."_card";
+		if(is_callable($callback)) {
+			call_user_func($callback, $cpost);
+		}
+		else {
+			tst_post_card($cpost);
+		}	
+	}
+}
 
 /** Post card content **/
 function tst_post_card($cpost, $tax = 'category'){

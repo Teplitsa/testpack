@@ -7,78 +7,153 @@
 $home_id = $post->ID;
 $more_link = home_url('about/contacts');
 
-//news
-$f_children =new WP_Query(array(
-	'post_type' => 'children',	
-	'posts_per_page' => 8,
-	'orderby' => 'rand'	
-));
+
+//settings
+$profiles_order = get_post_meta($home_id, 'home_profiles_order', true);
+$profiles_filter = get_post_meta($home_id, 'home_profiles_cat', true);
+$profiles_per_page = ($profiles_order == 'first') ? 6 : 4;
+
+$news_order = get_post_meta($home_id, 'home_news_order', true);
+//$news_filter = get_post_meta($home_id, 'home_news_cat', true);
+$news_per_page = ($news_order == 'first') ? 5 : 3;
+
+$projects_order = get_post_meta($home_id, 'home_projects_order', true);
+$projects_per_page = ($projects_order == 'first') ? 2 : 3;
+
+$sections = array();
+
+
+//profiles
+if($profiles_order != 'none'){
+	$profiles_args = array(
+		'post_type' => 'children',	
+		'posts_per_page' => $profiles_per_page,
+		'orderby' => 'rand'		
+	);
+
+	$profiles = new WP_Query($profiles_args);
+	
+	if($profiles->have_posts() && $profiles->found_posts > 1){
+				
+		$title = "Наши дети <a href='".home_url('all-children')."' title='Все'>(".$profiles->found_posts.")</a>";		
+		$sections[$profiles_order] = array('posts' => $profiles->posts, 'title' => $title);
+	}
+}
 
 //news
-$f_post = new WP_Query(array(
-	'post_type' => 'post',
-	'posts_per_page' => 3,
-	'cache_results' => false
-));
+if($news_order != 'none'){
+	$news_args = array(
+		'post_type' => 'post',	
+		'posts_per_page' => $news_per_page,
+		'cache_results' => false
+	);
+	
+	
+	$news = new WP_Query($news_args);
+	
+	if($news->have_posts() && $news->found_posts > 1){
+			
+		$title = "Наши новости <a href='".home_url('news')."' title='Все'>(".$news->found_posts.")</a>";		
+		$sections[$news_order] = array('posts' => $news->posts, 'title' => $title);
+	}
+}
 
 //progs
-$progs = new WP_Query(array(
-	'post_type' => 'project',
-	'posts_per_page' => 3,
-	'orderby' => 'radn',
-	'cache_results' => false
+if($projects_order != 'none') {
+	$projects_args = array(
+		'post_type' => 'project',
+		'posts_per_page' => $projects_per_page,
+		'orderby' => 'rand',
+		'cache_results' => false
+	);
 	
-));
+	$projects = new WP_Query($projects_args);
+	
+	if($projects->have_posts() && $projects->found_posts > 1){
+		$all = get_post_type_archive_link('project');
+		$title = "Наши проекты <a href='".$all."' title='Все'>(".$projects->found_posts.")</a>";		
+		$sections[$projects_order] = array('posts' => $projects->posts, 'title' => $title);
+	}
+}
 
-//var_dump($progs->get('query_thumbnails'));
 get_header();
+//Att! no support for incorrect section order
+
+
+if(isset($sections['first']['posts'])) {
+	$num = count($sections['first']['posts']);
 ?>
-<?php if(!empty($f_children->posts)) { ?>
-<section class="home-section children">
-	
-	<div class="mdl-grid">	
-		<?php foreach($f_children->get_posts() as $chp) {
-			tst_children_card($chp);
-		}?>
+<section class="home-section first">
+	<div class="mdl-grid">
+	<?php
+		for($i = 0; $i < 2; $i++){
+			tst_print_post_card($sections['first']['posts'][$i]);
+		}
+	?>
+		<div class="mdl-cell mdl-cell--4-col mdl-cell--hide-phone mdl-cell--hide-tablet"><?php get_sidebar(); ?></div>
+	</div>
+	<div class="mdl-grid">
+	<?php
+		for($i = 2; $i < $num; $i++){
+			$cpost = $sections['first']['posts'][$i];
+			if($cpost->post_type == 'children'){
+				$cpost->grid_css = 'mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone';
+			}
+			
+			tst_print_post_card($cpost);
+		}
+	?>
 	</div>
 </section>
-<?php }?>
+<?php } ?>
 
-<section class="home-section help-info">
+<!-- second -->
+<?php if(isset($sections['second']['posts'])) {
+	$num = count($sections['second']['posts']);
+?>
+<section class="home-section second">
 	<div class="mdl-grid">
-		<div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
-		<div class="mdl-cell mdl-cell--8-col"><?php get_sidebar();?></div>
-		<div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
-	</div>
-</section>
-
-<?php if(!empty($progs->posts)) { ?>
-<section class="home-section programms">
-	
-	<div class="mdl-grid">
+		<?php if(isset($sections['second']['title']) && !empty($sections['second']['title'])) { ?>
 		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Наши программы <a href="<?php echo home_url('projects');?>" title="Все программы">(<?php echo $progs->found_posts;?>) &gt;</a></h3>
+			<h3 class="home-section-title"><?php echo $sections['second']['title'];?></h3>
 		</header>
-	<?php foreach($progs->get_posts() as $mp) {
-        tst_project_card($mp);
-    }?>
-	</div>
+		<?php } ?>
+		<?php
+			for($i = 0; $i < $num; $i++){
+				$cpost = $sections['second']['posts'][$i];
+				if($cpost->post_type == 'children'){
+					$cpost->grid_css = 'mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone';
+				}
+				tst_print_post_card($cpost);
+			}
+		?>		
+	</div>	
 </section>
-<?php }?>
+<?php } ?>
 
-<?php if(!empty($f_post)) { ?>
-<section class="home-section posts">
-	
+<!-- third -->
+<?php if(isset($sections['third']['posts'])) {
+	$num = count($sections['third']['posts']);
+?>
+<section class="home-section third">
 	<div class="mdl-grid">
+		<?php if(isset($sections['third']['title']) && !empty($sections['third']['title'])) { ?>
 		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Наши новости <a href="<?php echo home_url('novosti');?>" title="Все новости">(<?php echo $f_post->found_posts;?>) &gt;</a></h3>
+			<h3 class="home-section-title"><?php echo $sections['third']['title'];?></h3>
 		</header>
-	<?php foreach($f_post->get_posts() as $fp) {
-        tst_post_card($fp);
-    }?>
-	</div>
+		<?php } ?>
+		<?php
+			for($i = 0; $i < $num; $i++){
+				$cpost = $sections['third']['posts'][$i];
+				if($cpost->post_type == 'children'){
+					$cpost->grid_css = 'mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone';
+				}
+				tst_print_post_card($cpost);				
+			}
+		?>		
+	</div>	
 </section>
-<?php }?>
+<?php } ?>
 
 <?php //$parnter_bg = wp_get_attachment_url(get_post_meta($home_id, 'partners_bg', true));
 

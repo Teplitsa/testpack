@@ -41,7 +41,7 @@ class TST_CssJs {
 			if (file_exists($manifest_path)) {
 				$this->manifest = json_decode(file_get_contents($manifest_path), TRUE);
 			} else {
-				$this->manifest = [];
+				$this->manifest = array();
 			}
 		}
 		
@@ -83,13 +83,26 @@ class TST_CssJs {
 		);	
 		$style_dependencies[] = 'tst-material-icons';
 	
-		// design
-		wp_enqueue_style(
-			'tst-design',
-			$url.'/assets/rev/'.$this->get_rev_filename('bundle.css'),
-			$style_dependencies,
-			null
-		);
+		// design		
+		$ua = (isset($_SERVER['HTTP_USER_AGENT'])) ? $_SERVER['HTTP_USER_AGENT'] : 'not_found';
+		if(false !== strpos($ua, 'Firefox') && false !== strpos($ua, 'Mac OS')){
+			wp_enqueue_style(//blue heart
+				'tst-design',
+				$url.'/assets/rev/'.$this->get_rev_filename('bundle_alt.css'),
+				$style_dependencies,
+				null
+			);
+		}
+		else {
+			wp_enqueue_style(
+				'tst-design',
+				$url.'/assets/rev/'.$this->get_rev_filename('bundle.css'),
+				$style_dependencies,
+				null
+			);
+		}
+		
+		
 		
 		//remove leyka default styles
 		if(!is_admin()){

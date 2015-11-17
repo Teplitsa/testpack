@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-27 09:17+0300\n"
-"PO-Revision-Date: 2015-10-27 09:17+0300\n"
+"POT-Creation-Date: 2015-11-17 21:34+0300\n"
+"PO-Revision-Date: 2015-11-17 21:35+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:28
+#: footer.php:45
 #, php-format
 msgid "All materials of the site are avaliabe under license %s."
 msgstr "Все материалы сайта доступны по лиценции %s."
@@ -38,7 +38,7 @@ msgstr "Все материалы сайта доступны по лиценц�
 msgid "Primary Menu"
 msgstr "﻿Главное меню"
 
-#: functions.php:36 inc/widgets.php:249
+#: functions.php:36 inc/widgets.php:38
 msgid "Social Buttons"
 msgstr "Социальные кнопки"
 
@@ -58,8 +58,8 @@ msgstr "Фиксированный"
 msgid "Skip to content"
 msgstr "Перейти к содержанию"
 
-#: inc/admin.php:153 inc/admin.php:163 inc/template-tags.php:563
-#: inc/template-tags.php:642
+#: inc/admin.php:153 inc/admin.php:163 inc/template-tags.php:582
+#: inc/template-tags.php:661
 msgid "Website"
 msgstr "Вебсайт"
 
@@ -76,6 +76,14 @@ msgstr "Аннотация для списков (на странице запи
 #: inc/admin.php:223
 msgid "Custom fields"
 msgstr "Мета-поля"
+
+#: inc/admin.php:319
+#, php-format
+msgid ""
+"ATTENTION! You thumbnail image is too small. It should be at least %s px"
+msgstr ""
+"ВНИМАНИЕ! Выбранное изображение слишком маленькое. Допустимый размер не "
+"менее %s px."
 
 #: inc/events.php:19
 msgid "Event date"
@@ -101,89 +109,93 @@ msgstr "Принять участие"
 msgid "More"
 msgstr "Далее"
 
-#: inc/extras.php:273
+#: inc/extras.php:275
 msgid "Default thumbnail"
 msgstr "Миниатюра по умолчанию"
 
-#: inc/extras.php:287
+#: inc/extras.php:289
 msgid "Footer text"
 msgstr "Текст в футере"
 
-#: inc/template-tags.php:170
+#: inc/extras.php:302
+msgid "Newsletter form ID"
+msgstr "ID формы подписки"
+
+#: inc/template-tags.php:204
 msgid "in the category"
 msgstr "в рубрике"
 
-#: inc/template-tags.php:300
+#: inc/template-tags.php:334
 msgid "More entries"
 msgstr "Еще публикации"
 
-#: inc/template-tags.php:302
+#: inc/template-tags.php:336
 msgid "More results"
 msgstr "Еще результаты"
 
-#: inc/template-tags.php:307 single.php:39
+#: inc/template-tags.php:341 single.php:39
 msgid "More news"
 msgstr "Еще новости"
 
-#: inc/template-tags.php:310 single.php:60
+#: inc/template-tags.php:344
 msgid "More projects"
 msgstr "Еще программы"
 
-#: inc/template-tags.php:313
+#: inc/template-tags.php:347
 msgid "More orgs"
 msgstr "Еще организации"
 
-#: inc/template-tags.php:321
+#: inc/template-tags.php:355
 msgid "To the beginning"
 msgstr "К началу"
 
-#: inc/template-tags.php:418 inc/template-tags.php:423
-#: inc/template-tags.php:446
+#: inc/template-tags.php:452 inc/template-tags.php:457
+#: inc/template-tags.php:480
 msgid "Next item"
 msgstr "След."
 
-#: inc/template-tags.php:488 inc/template-tags.php:537
-#: inc/template-tags.php:608 inc/template-tags.php:903
-#: inc/template-tags.php:939 partials/content_single.php:39 single-event.php:24
+#: inc/template-tags.php:516 inc/template-tags.php:556
+#: inc/template-tags.php:627 inc/template-tags.php:706
+#: inc/template-tags.php:836 inc/template-tags.php:872
+#: inc/template-tags.php:909 partials/content_single.php:47 single-event.php:24
 msgid "Thumbnail"
 msgstr "Миниатюра"
 
-#: inc/template-tags.php:514 inc/template-tags.php:548
-#: inc/template-tags.php:568 inc/template-tags.php:626
+#: inc/template-tags.php:533 inc/template-tags.php:567
+#: inc/template-tags.php:587 inc/template-tags.php:645
 msgid "Details"
 msgstr "Подробнее"
 
-#: inc/template-tags.php:826 partials/content_single.php:19
+#: inc/template-tags.php:759 partials/content_single.php:27
 msgid "Author"
 msgstr "Автор"
 
-#: inc/widgets.php:251
+#: inc/widgets.php:40
 msgid "Social links menu with optional text"
 msgstr "Меню социальных кнопок с сопроводительным текстом"
 
-#: partials/content_single.php:26 partials/panel-float.php:75
+#: partials/content_single.php:34 partials/panel-float.php:72
 msgid "Published"
 msgstr "Опубликовано"
-
-#: partials/content_single.php:70
-msgid "All author's articles"
-msgstr "Все статьи автора"
 
 #: partials/payment-form.php:64
 msgid "Your name"
 msgstr "Ваше имя"
 
-#: partials/title-section.php:68
+#: partials/title-section.php:72
 msgid "Search results"
 msgstr "Результаты поиска"
 
-#: partials/title-section.php:71
+#: partials/title-section.php:75
 msgid "404: Page not found"
 msgstr "404: Страница не&nbsp;найдена"
 
 #: single-event.php:70
 msgid "More events"
 msgstr "Еще анонсы"
+
+#~ msgid "All author's articles"
+#~ msgstr "Все статьи автора"
 
 #~ msgid "Logo"
 #~ msgstr "Логотип"
