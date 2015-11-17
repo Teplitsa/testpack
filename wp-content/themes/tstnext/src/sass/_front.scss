@@ -229,6 +229,12 @@ body.tax-auctor {
 	}
 }
 
+.page-template-page-cards,
+.page-template-page-post_cards {
+	.entry-content {
+		max-width: 760px;
+	}
+}
 
 /** Bottom **/
 
@@ -306,10 +312,14 @@ body.tax-auctor {
 
 .footer-buttons {
 	@include clearfix;
+	padding-top: 8px;
 	
+	form {
+		float: left;
+	}
 	.social-menu {
 		float: left;
-		margin: 8px 8px 8px 0;
+		margin: 0 8px 0 0;
 				
 		li {				
 			a {
@@ -331,15 +341,19 @@ body.tax-auctor {
 	}
 	
 	.mdl-textfield {
-		padding: 8px 0;
+		padding: 0;
+		height: 32px;
 		
 		.mdl-button--icon {
 			border-radius: 4px;
 			background: $tst-color-primary;
 			color: $tst-color-white;
-			bottom: 10px;
+			
 		}
 		
+		.mdl-button {
+			bottom: 0;	
+		}
 	}
 	
 	.mdl-textfield__expandable-holder {
