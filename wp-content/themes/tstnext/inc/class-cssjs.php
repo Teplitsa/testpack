@@ -161,9 +161,12 @@ class TST_CssJs {
 		
 		$leyka = leyka();
 		
-		if(!is_singular('leyka_campaign')){
-			remove_action('wp_enqueue_scripts', array($leyka, 'enqueue_styles'));
+		remove_action('wp_enqueue_scripts', array($leyka, 'enqueue_styles'));
+		remove_action('wp_footer', array($leyka, 'enqueue_styles'));
+		
+		if(!is_singular('leyka_campaign')){			
 			remove_action('wp_enqueue_scripts', array($leyka, 'enqueue_scripts'));
+			remove_action('wp_footer', array($leyka, 'enqueue_scripts'));
 		}
 		
 	}

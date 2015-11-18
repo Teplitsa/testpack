@@ -22,10 +22,10 @@ leyka_pf_submission_errors();?>
 	$counter++;
 ?>
 <div class="leyka-payment-option toggle <?php if($counter == 1) echo 'toggled';?> <?php echo esc_attr($pm->full_id);?>">
-<div class="toggle-trigger <?php echo count($active_pm) > 1 ? '' : 'toggle-inactive';?>">
+<div class="leyka-toggle-trigger <?php echo count($active_pm) > 1 ? '' : 'toggle-inactive';?>">
     <?php echo leyka_pf_get_pm_label();?>
 </div>
-<div class="toggle-area">
+<div class="leyka-toggle-area">
 <form class="leyka-pm-form" id="<?php echo leyka_pf_get_form_id();?>" action="<?php echo leyka_pf_get_form_action();?>" method="post">
 	
 	<div class="leyka-pm-fields">
