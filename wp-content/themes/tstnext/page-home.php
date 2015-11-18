@@ -69,7 +69,7 @@ get_header();
 	
 	<div class="mdl-grid">
 		<header class="mdl-cell mdl-cell--12-col">
-			<h3 class="home-section-title">Новости <a href="<?php echo get_permalink('blog');?>" title="Все новости">(<?php echo $f_post->found_posts;?>) &gt;</a></h3>
+			<h3 class="home-section-title">Новости <a href="<?php echo home_url('blog');?>" title="Все новости">(<?php echo $f_post->found_posts;?>) &gt;</a></h3>
 		</header>
 	<?php foreach($f_post->get_posts() as $fp) {
         tst_post_card($fp);
