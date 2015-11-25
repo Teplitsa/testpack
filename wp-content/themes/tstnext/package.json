@@ -11,7 +11,10 @@
   ],
   "author": "Teplitsa",
   "license": "GPL-3.0",
-  "repository": "",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Teplitsa/testpack.git"
+  },
   "devDependencies": {
     "del": "^2.0.2",
     "event-stream": "^3.3.1",
@@ -36,5 +39,10 @@
     "relative-path": "^1.0.0",
     "run-sequence": "^1.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "animate.css": "^3.4.0",
+    "imagesloaded": "^3.2.0",
+    "material-design-lite": "^1.0.6",
+    "easyModal": "https://github.com/flaviusmatis/easyModal.js"
+  }
 }

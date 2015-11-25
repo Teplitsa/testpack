@@ -286,15 +286,15 @@
         },
         {
             "name": "wpackagist-plugin/crop-thumbnails",
-            "version": "0.10.2",
+            "version": "0.10.3",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/crop-thumbnails/",
-                "reference": "tags/0.10.2"
+                "reference": "tags/0.10.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/crop-thumbnails.0.10.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/crop-thumbnails.0.10.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -366,7 +366,7 @@
         },
         {
             "name": "wpackagist-plugin/imsanity",
-            "version": "2.3.5",
+            "version": "2.3.6",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/imsanity/",
@@ -386,15 +386,15 @@
         },
         {
             "name": "wpackagist-plugin/leyka",
-            "version": "2.2.7.2",
+            "version": "2.2.8",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/leyka/",
-                "reference": "tags/2.2.7.2"
+                "reference": "tags/2.2.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.7.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.8.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -546,15 +546,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "2.3.5",
+            "version": "3.0.4",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/2.3.5"
+                "reference": "tags/3.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.2.3.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.0.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -698,7 +698,7 @@
         },
         {
             "name": "wpackagist-plugin/post-duplicator",
-            "version": "2.10",
+            "version": "2.12",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/post-duplicator/",
@@ -718,15 +718,15 @@
         },
         {
             "name": "wpackagist-plugin/query-monitor",
-            "version": "2.8.0",
+            "version": "2.8.1",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/query-monitor/",
-                "reference": "tags/2.8.0"
+                "reference": "tags/2.8.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/query-monitor.2.8.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/query-monitor.2.8.1.zip",
                 "reference": null,
                 "shasum": null
             },

@@ -2,19 +2,18 @@
 var basePaths = {
     src: 'src/',
     dest: 'assets/',
-    bower: 'bower_components/'
+    npm: 'node_modules/'
 };
 
 //require plugins
 var gulp = require('gulp');
 
-var es = require('event-stream'),
-    gutil = require('gulp-util'),
-    mainBowerFiles = require('main-bower-files'),
-    bourbon = require('node-bourbon'),
-    path = require('relative-path'),
+var es          = require('event-stream'),
+    gutil       = require('gulp-util'),    
+    bourbon     = require('node-bourbon'),
+    path        = require('relative-path'),
     runSequence = require('run-sequence'),
-    del = require('del');
+    del         = require('del');
 
 //plugins - load gulp-* plugins without direct calls
 var plugins = require("gulp-load-plugins")({
@@ -40,12 +39,8 @@ var changeEvent = function(evt) {
 
 //js
 gulp.task('build-js', function() {
-    var vendorFiles = mainBowerFiles({ //files from bower_components
-            paths: {
-                bowerDirectory: basePaths.bower,
-                bowerJson: 'bower.json'
-            }
-        }),
+    var vendorFiles = [basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js',
+                       basePaths.npm + 'material-design-lite/material.js'],
         appFiles = [basePaths.src+'js/*']; //our own JS files
 
     return gulp.src(vendorFiles.concat(appFiles)) //join them
@@ -62,10 +57,10 @@ gulp.task('build-css', function() {
 
     //paths for mdl and bourbon
     var paths = require('node-bourbon').includePaths,
-        mdl = path('./bower_components/material-design-lite/src');
+        mdl = path('./node_modules/material-design-lite/src');
         paths.push(mdl);
 
-    var vendorFiles = gulp.src('bower_components/animate.css/animate.css'), //components
+    var vendorFiles = gulp.src(basePaths.npm+'animate.css/animate.css'), //components
         appFiles = gulp.src(basePaths.src+'sass/main.scss') //our main file with @import-s
         .pipe(!isProduction ? plugins.sourcemaps.init() : gutil.noop())  //process the original sources for sourcemap
         .pipe(plugins.sass({
