@@ -284,6 +284,8 @@ function tst_itv_info_widget(){
 function tst_support_widget(){
 	
 	$src = get_template_directory_uri().'/assets/images/tst-logo';
+	
+	$doc = (defined('TST_DOC_URL') && !empty(TST_DOC_URL)) ? TST_DOC_URL : '';
 ?>
 <div id="tst-support-card" class="tst-dashboard">
 	<div class="cols">
@@ -295,12 +297,29 @@ function tst_support_widget(){
 	</div>
 	
 	<p>Возникли проблемы с использованием сайта, нашли ошибку?<br>Обратитесь в поддержку Теплицы социальных технологий <a href="mailto:support@te-st.ru" target="_blank">support@te-st.ru</a></p>
-
+	<?php if(!empty($doc)) { ?>
+		<p>Справочная информация по работе с сайтом находится по ссылке <?php echo make_clickable($doc);?></p>
+	<?php } ?>
 </div>
 <?php
 }
 
+/** Doc link in footer text **/
+add_filter( 'admin_footer_text', 'tst_admin_fotter_text' );
+function tst_admin_fotter_text($text) {
+		
+	$doc = (defined('TST_DOC_URL') && !empty(TST_DOC_URL)) ? TST_DOC_URL : '';
+	
+	if(empty($doc))
+		return $text;
+	
 
+	$text = '<span id="footer-thankyou">Краткое руководство по работе с сайтом - ' . make_clickable($doc) . '</span>';	
+	return $text;
+}
+
+
+/** Notification about wront thumbnail size **/
 add_filter('admin_post_thumbnail_html', 'tst_thumbnail_dimensions_check', 10, 2);
 function tst_thumbnail_dimensions_check($thumbnail_html, $post_id) {
 	global $_wp_additional_image_sizes;
