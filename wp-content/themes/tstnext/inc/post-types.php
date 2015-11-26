@@ -588,3 +588,8 @@ function tst_show_on_home_page($meta_box){
 	
 	return false;
 }
+
+
+//add_action('all_admin_notices', function(){
+//	var_dump(get_current_screen()->id);
+//});

@@ -308,22 +308,20 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
 
 /** Facebook author tag - till 4.4 **/
-//add_action('wp_head', 'tst_facebook_author_tag');
-function tst_facebook_author_tag() {
-
-	global $post;
+add_action('wp_head', 'tst_facebook_author_tag');
+function tst_facebook_author_tag() {	
 	
 	if(!is_singular('post'))
 		return;
 	
-	if(!defined('TST_HAS_AUTHORS') || !TST_HAS_AUTHORS)
+	if(!tst_has_authors())
 		return;
 		
-	$author = tst_get_post_author($post);
+	$author = tst_get_post_author(get_queried_object());
 	if(!$author || is_wp_error($author))
 		return;
-	
-	$fb = (function_exists('get_field') && $author) ? get_field('auctor_facebook', 'auctor_'.$author->term_id) : '';
+		
+	$fb = get_term_meta($author->term_id, 'auctor_facebook', true);	
 	
 	if(!empty($fb)) {
 ?>

@@ -286,6 +286,9 @@ function tst_support_widget(){
 	$src = get_template_directory_uri().'/assets/images/tst-logo';
 	
 	$doc = (defined('TST_DOC_URL') && !empty(TST_DOC_URL)) ? TST_DOC_URL : '';
+	if(!empty($doc))
+		$doc = str_replace('<a', '<a target="_blank" ', make_clickable($doc));
+	
 ?>
 <div id="tst-support-card" class="tst-dashboard">
 	<div class="cols">
@@ -298,7 +301,7 @@ function tst_support_widget(){
 	
 	<p>Возникли проблемы с использованием сайта, нашли ошибку?<br>Обратитесь в поддержку Теплицы социальных технологий <a href="mailto:support@te-st.ru" target="_blank">support@te-st.ru</a></p>
 	<?php if(!empty($doc)) { ?>
-		<p>Справочная информация по работе с сайтом находится по ссылке <?php echo make_clickable($doc);?></p>
+		<p>Справочная информация по работе с сайтом находится по ссылке <?php echo $doc; ?></p>
 	<?php } ?>
 </div>
 <?php
@@ -313,8 +316,10 @@ function tst_admin_fotter_text($text) {
 	if(empty($doc))
 		return $text;
 	
-
-	$text = '<span id="footer-thankyou">Краткое руководство по работе с сайтом - ' . make_clickable($doc) . '</span>';	
+	if(!empty($doc))
+		$doc = str_replace('<a', '<a target="_blank" ', make_clickable($doc));
+	
+	$text = '<span id="footer-thankyou">Краткое руководство по работе с сайтом - ' . $doc . '</span>';	
 	return $text;
 }
 
@@ -344,3 +349,117 @@ function tst_thumbnail_dimensions_check($thumbnail_html, $post_id) {
     return $thumbnail_html;
 }
 
+
+/** Auctor Meta UI - for WP 4.4 + only **/
+add_action( 'create_auctor', 'tst_save_auctor_meta');
+add_action( 'edited_auctor', 'tst_save_auctor_meta');
+function tst_save_auctor_meta($term_id){
+		
+	
+	if (
+		// nonce was submitted and is verified
+		isset( $_POST['taxonomy-term-image-save-form-nonce'] ) &&
+		wp_verify_nonce( $_POST['taxonomy-term-image-save-form-nonce'], 'taxonomy-term-image-form-save' ) &&
+
+		// taxonomy corect
+		isset( $_POST['taxonomy'] ) && $_POST['taxonomy'] == 'auctor'
+	)
+	{
+		$img_id = (!empty($_POST['auctor_photo'])) ? intval($_POST['auctor_photo']) : null;
+		update_term_meta($term_id, 'auctor_photo', $img_id);
+		
+		$fb = (!empty($_POST['auctor_facebook'])) ? esc_url_raw($_POST['auctor_facebook']) : '';
+		update_term_meta($term_id, 'auctor_facebook', $fb);
+	}
+}
+
+add_action( "auctor_edit_form_fields", 'tst_auctor_edit_term_fields');
+function tst_auctor_edit_term_fields($term){
+		
+	$fb = get_term_meta($term->term_id, 'auctor_facebook', true);		
+?>
+<tr class="form-field term-auctor_facebook-wrap">
+	<th scope="row"><label for="auctor_facebook"><?php _e( 'Facebook Profile', 'tst' ); ?></label></th>
+	<td><input name="auctor_facebook" id="auctor_facebook" type="text" value="<?php echo esc_attr($fb);?>">
+	<p class="description"><?php _e('Enter URL of author\'s Facebook profile'); ?></p></td>
+</tr>
+<tr class="form-field term-auctor_photo-wrap">
+	<th scope="row"><label for="auctor_photo"><?php _e( 'Avatar', 'tst' ); ?></label></th>
+	<td><?php tst_auctor_photo_field($term);?></td>
+</tr>
+<?php
+}
+
+add_action( "auctor_add_form_fields", 'tst_auctor_add_term_fields');
+function tst_auctor_add_term_fields($term){
+	
+?>
+<div class="form-field term-auctor_facebook-wrap">
+	<label for="auctor_facebook"><?php _e( 'Facebook Profile', 'tst' ); ?></label>
+	<input name="auctor_facebook" id="auctor_facebook" type="text" value="">
+	<p class="description"><?php _e('Enter URL of author\'s Facebook profile'); ?></p>
+</div>
+<div class="form-field term-auctor_photo-wrap">
+	<label for="auctor_photo"><?php _e( 'Avatar', 'tst' ); ?></label>
+	<td><?php tst_auctor_photo_field(null);?>
+</div>
+<?php
+}
+
+
+function tst_auctor_photo_field($term){
+	
+	tst_auctor_enqueue_scripts();
+	
+	$image_ID = ($term) ? get_term_meta($term->term_id, 'auctor_photo', true) : '';
+	$image_src = ($image_ID) ? wp_get_attachment_image_src($image_ID, 'thumbnail') : array();
+	$labels = tst_get_image_field_labels();
+
+	wp_nonce_field('taxonomy-term-image-form-save', 'taxonomy-term-image-save-form-nonce');
+?>
+<input type="button" class="taxonomy-term-image-attach button" value="<?php echo esc_attr( $labels['imageButton'] ); ?>" />
+<input type="button" class="taxonomy-term-image-remove button" value="<?php echo esc_attr( $labels['removeButton'] ); ?>" />
+<input type="hidden" id="taxonomy-term-image-id" name="auctor_photo" value="<?php echo esc_attr( $image_ID ); ?>" />
+<p id="taxonomy-term-image-container">
+	<?php if ( isset( $image_src[0] ) ) : ?>
+		<img class="taxonomy-term-image-attach" src="<?php print esc_attr( $image_src[0] ); ?>" />
+	<?php endif; ?>
+</p>
+<?php
+	
+}
+
+function tst_get_image_field_labels() {
+	
+	return array(
+		'fieldTitle'       => __( 'Taxonomy Term Image' ),
+		'fieldDescription' => __( 'Select which image should represent this term.' ),
+		'imageButton'      => __( 'Select Image' ),
+		'removeButton'     => __( 'Remove' ),
+		'modalTitle'       => __( 'Select or upload an image for this term' ),
+		'modalButton'      => __( 'Attach' ),
+	);
+}
+
+function tst_auctor_enqueue_scripts(){
+	
+	$screen = get_current_screen();
+	$labels = tst_get_image_field_labels();
+		
+	if ( $screen->id == 'edit-auctor' ){
+		// WP core stuff we need
+		wp_enqueue_media();
+		wp_enqueue_style( 'thickbox' );
+		$dependencies = array( 'jquery', 'thickbox', 'media-upload' );
+
+		// register our custom script
+		$url = get_template_directory_uri().'/assets/js';
+		wp_register_script( 'taxonomy-term-image-js', $url.'/taxonomy-term-image.js', $dependencies, '1.5.1', true );
+
+		// Localize the modal window text so that we can translate it
+		wp_localize_script( 'taxonomy-term-image-js', 'TaxonomyTermImageText', $labels );
+
+		// enqueue the registered and localized script
+		wp_enqueue_script( 'taxonomy-term-image-js' );
+	}
+}

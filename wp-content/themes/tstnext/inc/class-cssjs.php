@@ -139,8 +139,7 @@ class TST_CssJs {
 		
 		$url = get_template_directory_uri();
 			
-		wp_enqueue_style('tst-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);		
-				
+		wp_enqueue_style('tst-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);				
 	}
 	
 	/* login style - make it inline ? */

@@ -29,8 +29,8 @@ function tst_request_corrected($query) {
 } 
 
 function tst_has_authors(){
-	
-	if(defined('TST_HAS_AUTHORS') && TST_HAS_AUTHORS)
+		
+	if(defined('TST_HAS_AUTHORS') && TST_HAS_AUTHORS && function_exists('get_term_meta'))
 		return true;
 	
 	return false;
@@ -530,17 +530,11 @@ function tst_get_post_author($cpost) {
 
 function tst_get_author_avatar($author_term_id) {
 
-	$avatar = ''; //get_field('auctor_photo', 'auctor_'.$author_term_id);
+	$avatar = get_term_meta($author_term_id, 'auctor_photo', true);
 
     return $avatar ? wp_get_attachment_image($avatar, 'avatar') : tst_get_default_author_avatar();
 }
 
-function tst_get_tax_avatar($term) {
-
-	$avatar = (function_exists('get_field')) ? get_field('header_img', $term->taxonomy.'_'.$term->term_id) : '';
-
-    return $avatar ? wp_get_attachment_image($avatar, 'avatar') : tst_get_default_author_avatar();
-}
 
 
 /** Newsletter modal **/
