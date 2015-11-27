@@ -4,7 +4,7 @@
 .leyka-payment-option {
 	margin-bottom: 8px;
 		
-	.toggle-trigger {
+	.leyka-toggle-trigger {
 		border-bottom: 1px solid $tst-color-border;
 		padding: $card-vertical-padding 0;
 		margin-bottom: -1px;
@@ -12,9 +12,8 @@
 		font-size: 16px;
 	}
 	
-	.toggle-area {
-		display: none;
-	
+	.leyka-toggle-area {
+		display: none;	
 	}
 	
 	.leyka-pm-form {
@@ -37,7 +36,7 @@
 	}
 		
 	&.toggled {
-		.toggle-trigger {
+		.leyka-toggle-trigger {
 			border-bottom: 2px solid $tst-color-primary;
 			color: $tst-color-primary;
 			margin-bottom: 0;
