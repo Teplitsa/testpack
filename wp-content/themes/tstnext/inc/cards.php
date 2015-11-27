@@ -311,7 +311,7 @@ function tst_compact_post_item($cpost, $show_thumb = true, $tax = 'category'){
 	else { //category
 		$cat = get_the_terms($cpost->ID, $tax);
 		$name = (isset($cat[0])) ? $cat[0]->name : '';
-		$avatar = ($show_thumb && isset($cat[0])) ? tst_get_tax_avatar($cat[0]) : '';
+		$avatar = ($show_thumb) ? tst_get_default_author_avatar() : '';
 	}
 	
 ?>
