@@ -5,6 +5,8 @@
 
 $campaign_id = $post->ID;
 
+
+
 get_header(); ?>
 <div class="page-content-grid">
 <div class="mdl-grid">

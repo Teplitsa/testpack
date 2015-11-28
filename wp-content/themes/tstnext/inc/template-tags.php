@@ -1032,3 +1032,12 @@ function tst_newsletter_modal(){
 	<?php echo FrmFormsController::get_form_shortcode( array( 'id' => $id, 'title' => true, 'description' => true ) ); ?></div>
 <?php
 }
+
+add_filter('leyka_icons_text_text_box', 'tst_text_pm_icon');
+function tst_text_pm_icon($icons){
+	//size 155x80 px
+	
+	$icons = array(get_template_directory_uri().'/assets/images/text-box.png');
+	
+	return $icons;
+}

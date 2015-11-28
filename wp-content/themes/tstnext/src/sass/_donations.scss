@@ -1,5 +1,13 @@
 /** Donations **/
-
+body.single-leyka_campaign .page-header {
+	background: transparent url('../images/donate.jpg') no-repeat center center;
+	background-size: cover;
+	
+	h1.page-title {
+		padding: 84px 0 20px;
+		color: $tst-color-white;
+	}
+}
 
 .leyka-payment-option {
 	margin-bottom: 8px;
@@ -42,6 +50,10 @@
 			color: $tst-color-primary;
 			margin-bottom: 0;
 		}
+	}
+	
+	.box_details {
+		h6 { margin-top: 16px; }
 	}
 }
 
