@@ -29,9 +29,10 @@
 		padding: $margin-base $margin-base*1.5;
 		
 		p {
-			font-size: 12px;
+			font-size: 14px;
 			line-height: 1.4;
 			margin: 0 0 4px 0;
+			color: $tst-color-text-semi;
 		}
 	}
 		
@@ -211,14 +212,9 @@
 		}
 		
 		.purpose {
-			@include typo-body-1;
+			@include typo-body-2;
 			color: $tst-color-text;
-			a {
-				color: $tst-color-text;
-				&:hover, &:focus, &:active {
-					color: $tst-color-link;		
-				}
-			}
+			font-weight: 500;
 			
 			@include for(tablet) {
 				margin-left: 18%;
@@ -242,3 +238,4 @@
 	@extend .frm_message;
 	& > span { font-weight: 500; }
 }
+

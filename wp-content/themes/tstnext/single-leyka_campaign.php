@@ -42,7 +42,7 @@ get_header(); ?>
 			if(!empty($l)) {
 		?>
 			<h5>Спасибо за вашу помощь!</h5>
-			<?php echo leyka_get_donors_list($campaign_id, array('num' => 20));?>
+			<?php echo strip_tags(leyka_get_donors_list($campaign_id, array('num' => 20)), '<div><span><time>');?>
 			
 		<?php } ?>
 		</aside>

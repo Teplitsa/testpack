@@ -283,6 +283,9 @@ function tst_itv_info_widget(){
 function tst_support_widget(){
 	
 	$src = get_template_directory_uri().'/assets/images/tst-logo';
+	$doc = (defined('TST_DOC_URL') && !empty(TST_DOC_URL)) ? TST_DOC_URL : '';
+	if(!empty($doc))
+		$doc = str_replace('<a', '<a target="_blank" ', make_clickable($doc));
 ?>
 <div id="tst-support-card" class="tst-dashboard">
 	<div class="cols">
@@ -294,9 +297,28 @@ function tst_support_widget(){
 	</div>
 	
 	<p>Возникли проблемы с использованием сайта, нашли ошибку?<br>Обратитесь в поддержку Теплицы социальных технологий <a href="mailto:support@te-st.ru" target="_blank">support@te-st.ru</a></p>
-
+	
+	<?php if(!empty($doc)) { ?>
+		<p>Справочная информация по работе с сайтом находится по ссылке <?php echo $doc; ?></p>
+	<?php }?>
 </div>
 <?php
+}
+
+/** Doc link in footer text **/
+add_filter( 'admin_footer_text', 'tst_admin_fotter_text' );
+function tst_admin_fotter_text($text) {
+		
+	$doc = (defined('TST_DOC_URL') && !empty(TST_DOC_URL)) ? TST_DOC_URL : '';
+	
+	if(empty($doc))
+		return $text;
+	
+	if(!empty($doc))
+		$doc = str_replace('<a', '<a target="_blank" ', make_clickable($doc));
+	
+	$text = '<span id="footer-thankyou">Краткое руководство по работе с сайтом - ' . $doc . '</span>';	
+	return $text;
 }
 
 
