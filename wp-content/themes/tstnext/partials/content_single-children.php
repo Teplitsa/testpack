@@ -22,17 +22,17 @@ $age = get_post_meta(get_the_ID(), 'child_age', true);
 		
 		<div class="mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet">
 		<?php if($age) { ?>	
-			<div class="captioned-text">
+			<div class="captioned-text profile-meta-text">
 				<div class="caption">Возраст</div>
 				<div class="text"><?php echo apply_filters('the_title', $age);?></div>
 			</div>
 		<?php } ?>	
-			<div class="captioned-text">
+			<div class="captioned-text profile-meta-text">
 				<div class="caption">Требуется помощь</div>
 				<div class="text"><?php the_excerpt();?></div>
 			</div>
 			
-			<div class="captioned-text help-btn"><a href="<?php echo home_url('/campaign/help-us/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Помочь сейчас</a></div>
+			<div class="captioned-text profile-meta-text help-btn"><a href="<?php echo home_url('/campaign/help-us/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Помочь сейчас</a></div>
 		</div>
 	</div>
 	

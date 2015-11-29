@@ -457,6 +457,7 @@ $margin-base: 16px !default;
 	.profile-meta-tags,
 	.profile-meta-text {
 		margin: 0 0 $grid-desktop-gutter 0;
+		
 		@include for(tablet) {
 			margin-left: $grid-desktop-gutter;
 		}

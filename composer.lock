@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6f0d4e598232988bdbb56885f4504d2d",
-    "content-hash": "9bc9b088393ecfaa22862551a318fbb8",
+    "hash": "23285237ffc876fa28cf9cbb7cf82039",
+    "content-hash": "66acde12a64f7bfa07637ea33491acd6",
     "packages": [
         {
             "name": "composer/installers",
@@ -323,6 +323,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/disable-comments/"
+        },
+        {
+            "name": "wpackagist-plugin/easy-add-thumbnail",
+            "version": "1.1.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/easy-add-thumbnail/",
+                "reference": "tags/1.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/easy-add-thumbnail.1.1.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/easy-add-thumbnail/"
         },
         {
             "name": "wpackagist-plugin/formidable",
@@ -677,6 +697,26 @@
             "homepage": "https://wordpress.org/plugins/force-regenerate-thumbnails/"
         },
         {
+            "name": "wpackagist-plugin/import-html-pages",
+            "version": "2.5.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/import-html-pages/",
+                "reference": "tags/2.5.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/import-html-pages.2.5.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/import-html-pages/"
+        },
+        {
             "name": "wpackagist-plugin/post-duplicator",
             "version": "2.12",
             "source": {
@@ -695,6 +735,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/post-duplicator/"
+        },
+        {
+            "name": "wpackagist-plugin/post-type-converter",
+            "version": "0.6",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/post-type-converter/",
+                "reference": "tags/0.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/post-type-converter.0.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/post-type-converter/"
         },
         {
             "name": "wpackagist-plugin/query-monitor",
@@ -733,12 +793,15 @@
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/posts-to-posts": 0,
         "wpackagist-plugin/formidable": 0,
+        "wpackagist-plugin/easy-add-thumbnail": 0,
         "wpackagist-plugin/debug-bar": 0,
         "wpackagist-plugin/debug-objects": 0,
         "wp-sync-db/wp-sync-db": 20,
         "wp-sync-db/wp-sync-db-media-files": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
-        "wpackagist-plugin/post-duplicator": 0
+        "wpackagist-plugin/post-duplicator": 0,
+        "wpackagist-plugin/import-html-pages": 0,
+        "wpackagist-plugin/post-type-converter": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,

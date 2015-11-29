@@ -3,7 +3,7 @@
  * @package bb
  */
 
-$show_thumb = (function_exists('get_field')) ? (bool)get_field('show_thumb') : true;
+$show_thumb = (function_exists('get_field')) ? (bool)get_field('show_thumb') : false;
 $author = tst_get_post_author($post);
 $avatar = '';
 

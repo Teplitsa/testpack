@@ -51,6 +51,7 @@
         "wpackagist-plugin/w3-total-cache": "@stable",
         "wpackagist-plugin/posts-to-posts": "@stable",
         "wpackagist-plugin/formidable": "@stable",
+        "wpackagist-plugin/easy-add-thumbnail": "@stable",
         "koodimonni-language/core-ru_RU": "*",
         "tst/advanced-custom-fields-pro" : ">=5.3.1"        
     },
@@ -61,7 +62,9 @@
         "wp-sync-db/wp-sync-db" : "dev-master",
         "wp-sync-db/wp-sync-db-media-files" : "dev-master",
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
-        "wpackagist-plugin/post-duplicator" : "@stable"
+        "wpackagist-plugin/post-duplicator" : "@stable",        
+        "wpackagist-plugin/import-html-pages": "@stable",
+        "wpackagist-plugin/post-type-converter": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",
