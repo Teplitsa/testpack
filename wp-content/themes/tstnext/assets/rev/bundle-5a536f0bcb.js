@@ -5461,4 +5461,13 @@ jQuery(document).ready(function($){
 		
 	});
 	
+	
+	//tabs active
+	$('.mdl-tabs').each(function(){
+		var activeTab = $(this).find('.mdl-tabs__tab-bar').find('a.is-active').attr('href');
+			
+		$(this).find(activeTab).addClass('is-active');
+			
+	});
+	
 }); //jQuery
