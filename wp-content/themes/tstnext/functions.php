@@ -128,6 +128,7 @@ require get_template_directory().'/inc/related.php';
 
 require get_template_directory().'/inc/events.php';
 require get_template_directory().'/inc/calendar.php';
+require get_template_directory().'/inc/donations.php';
 
 
 if(is_admin()){

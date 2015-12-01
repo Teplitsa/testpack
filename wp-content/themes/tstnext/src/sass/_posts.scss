@@ -506,3 +506,8 @@ $margin-base: 16px !default;
 		}
 	}
 }
+
+/* Import fixes */
+.itemImageBlock, .itemIntroText {
+	margin-bottom: $cell-elementary-2x;
+}

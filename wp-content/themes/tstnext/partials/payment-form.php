@@ -22,10 +22,10 @@ leyka_pf_submission_errors();?>
 	$counter++;
 ?>
 <div class="leyka-payment-option toggle <?php if($counter == 1) echo 'toggled';?> <?php echo esc_attr($pm->full_id);?>">
-<div class="toggle-trigger <?php echo count($active_pm) > 1 ? '' : 'toggle-inactive';?>">
+<div class="leyka-toggle-trigger <?php echo count($active_pm) > 1 ? '' : 'toggle-inactive';?>">
     <?php echo leyka_pf_get_pm_label();?>
 </div>
-<div class="toggle-area">
+<div class="leyka-toggle-area">
 <form class="leyka-pm-form" id="<?php echo leyka_pf_get_form_id();?>" action="<?php echo leyka_pf_get_form_action();?>" method="post">
 	
 	<div class="leyka-pm-fields">
@@ -93,23 +93,25 @@ leyka_pf_submission_errors();?>
 	</div>	
 	<?php }?>
 	
-	<!-- submit -->
-	<?php if($leyka_current_pm->is_field_supported('submit') ) { ?>
+	<!-- submit -->	
 	<div class="leyka-field submit">
-		<input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="leyka_donation_submit" name="leyka_donation_submit" value="Пожертвовать" />	
-<?php
-	$icons = leyka_pf_get_pm_icons();	
-	if($icons) {
+	<?php if($leyka_current_pm->is_field_supported('submit') ) { ?>
+		<input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="leyka_donation_submit" name="leyka_donation_submit" value="Пожертвовать" />
+	<?php  }
 
-		$list = array();
-		foreach($icons as $i) {
-			$list[] = "<li>{$i}</li>";
+		$icons = leyka_pf_get_pm_icons(); 
+		if($icons) {
+	
+			$list = array();
+			foreach($icons as $i) {
+				$list[] = "<li>{$i}</li>";
+			}
+	
+			echo '<ul class="leyka-pm-icons cf">'.implode('', $list).'</ul>';
 		}
-
-		echo '<ul class="leyka-pm-icons cf">'.implode('', $list).'</ul>';
-	}?>
+	?>
 	</div>
-	<?php  }?>
+	
 	
 	</div> <!-- .leyka-pm-fields -->	
 	

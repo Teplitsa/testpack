@@ -682,13 +682,13 @@ function tst_general_card($block, $link_label = null, $ext_link = true){
 <div class="tpl-card-mix mdl-card mdl-shadow--2dp">
 	
 	<div class="mdl-card__media">
-		<a class="logo-link" href="<?php echo $url;?>"<?php echo $target;?>><?php echo $logo; ?></a>
+		<span class="logo-link"><?php echo $logo; ?></span>
 	</div>
 			
 	<div class="mdl-card__title">
-		<h4 class="mdl-card__title-text"><a href="<?php echo $url;?>"><?php echo $name;?></a></h4>
+		<h4 class="mdl-card__title-text"><?php echo $name;?></h4>
 	</div>
-			
+
 	<?php echo tst_card_summary($text); ?>
 	
 	<?php if(!empty($url)) { ?>

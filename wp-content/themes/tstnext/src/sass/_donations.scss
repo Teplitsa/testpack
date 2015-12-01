@@ -1,10 +1,18 @@
 /** Donations **/
-
+body.single-leyka_campaign .page-header {
+	background: transparent url('../images/donate.jpg') no-repeat center center;
+	background-size: cover;
+	
+	h1.page-title {
+		padding: 84px 0 20px;
+		color: $tst-color-white;
+	}
+}
 
 .leyka-payment-option {
 	margin-bottom: 8px;
 		
-	.toggle-trigger {
+	.leyka-toggle-trigger {
 		border-bottom: 1px solid $tst-color-border;
 		padding: $card-vertical-padding 0;
 		margin-bottom: -1px;
@@ -12,9 +20,8 @@
 		font-size: 16px;
 	}
 	
-	.toggle-area {
-		display: none;
-	
+	.leyka-toggle-area {
+		display: none;	
 	}
 	
 	.leyka-pm-form {
@@ -30,18 +37,30 @@
 		padding: $margin-base $margin-base*1.5;
 		
 		p {
-			font-size: 12px;
+			font-size: 14px;
 			line-height: 1.4;
 			margin: 0 0 4px 0;
+			color: $tst-color-text-semi;
 		}
 	}
 		
 	&.toggled {
-		.toggle-trigger {
+		.leyka-toggle-trigger {
 			border-bottom: 2px solid $tst-color-primary;
 			color: $tst-color-primary;
 			margin-bottom: 0;
 		}
+	}
+	
+	.box_details {
+		h6 { margin-top: 16px; }
+	}
+	
+	.recurring {
+		border: 1px solid $tst-color-border;
+		padding: $cell-elementary;
+		background: #f9f9f9;
+		margin-bottom: $cell-elementary-2x;
 	}
 }
 
@@ -212,14 +231,9 @@
 		}
 		
 		.purpose {
-			@include typo-body-1;
+			@include typo-body-2;
 			color: $tst-color-text;
-			a {
-				color: $tst-color-text;
-				&:hover, &:focus, &:active {
-					color: $tst-color-link;		
-				}
-			}
+			font-weight: 500;
 			
 			@include for(tablet) {
 				margin-left: 18%;
@@ -243,3 +257,4 @@
 	@extend .frm_message;
 	& > span { font-weight: 500; }
 }
+

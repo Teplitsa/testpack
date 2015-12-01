@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "61388cf4530d1e28d638541b3cdcc948",
-    "content-hash": "9bc9b088393ecfaa22862551a318fbb8",
+    "hash": "376247fabad9cd73f149f390ded51ae0",
+    "content-hash": "a3d175021991d5a7dfa2eff49ba74056",
     "packages": [
         {
             "name": "composer/installers",
@@ -325,6 +325,26 @@
             "homepage": "https://wordpress.org/plugins/disable-comments/"
         },
         {
+            "name": "wpackagist-plugin/easy-add-thumbnail",
+            "version": "1.1.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/easy-add-thumbnail/",
+                "reference": "tags/1.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/easy-add-thumbnail.1.1.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/easy-add-thumbnail/"
+        },
+        {
             "name": "wpackagist-plugin/formidable",
             "version": "2.0.17",
             "source": {
@@ -526,15 +546,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.0.4",
+            "version": "3.0.5",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.0.4"
+                "reference": "tags/3.0.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.0.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.0.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -677,6 +697,26 @@
             "homepage": "https://wordpress.org/plugins/force-regenerate-thumbnails/"
         },
         {
+            "name": "wpackagist-plugin/import-html-pages",
+            "version": "2.5.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/import-html-pages/",
+                "reference": "tags/2.5.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/import-html-pages.2.5.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/import-html-pages/"
+        },
+        {
             "name": "wpackagist-plugin/post-duplicator",
             "version": "2.12",
             "source": {
@@ -733,12 +773,14 @@
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/posts-to-posts": 0,
         "wpackagist-plugin/formidable": 0,
+        "wpackagist-plugin/easy-add-thumbnail": 0,
         "wpackagist-plugin/debug-bar": 0,
         "wpackagist-plugin/debug-objects": 0,
         "wp-sync-db/wp-sync-db": 20,
         "wp-sync-db/wp-sync-db-media-files": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
-        "wpackagist-plugin/post-duplicator": 0
+        "wpackagist-plugin/post-duplicator": 0,
+        "wpackagist-plugin/import-html-pages": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
