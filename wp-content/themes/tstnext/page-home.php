@@ -174,7 +174,7 @@ if(isset($sections['first']['posts'])) {
 <section class="home-partners-block">
 <div class="mdl-grid">
 <div class="mdl-cell mdl-cell--12-col">
-	<h5 class="widget-title">Нас поддерживают</h5>
+	<h5 class="widget-title"><a href="<?php echo home_url('about/partners');?>">Нас поддерживают</a></h5>
 	<div class="widget-content mdl-shadow--2dp">
 		
 		<!-- gallery -->

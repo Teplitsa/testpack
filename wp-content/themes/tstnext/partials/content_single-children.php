@@ -27,21 +27,27 @@ $age = get_post_meta(get_the_ID(), 'child_age', true);
 				<div class="text"><?php echo apply_filters('the_title', $age);?></div>
 			</div>
 		<?php } ?>	
-			<div class="captioned-text profile-meta-text">
-				<div class="caption">Требуется помощь</div>
+			<div class="captioned-text profile-meta-text">			
+				<div class="caption">
+				<?php if(has_term('need-help', 'children_status')) { ?>	
+					Требуется помощь
+				<?php } else { ?>
+					Спасибо!
+				<?php } ?>
+				</div>
 				<div class="text"><?php the_excerpt();?></div>
 			</div>
-			
-			<div class="captioned-text profile-meta-text help-btn"><a href="<?php echo home_url('/campaign/help-us/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Помочь сейчас</a></div>
+			<?php if(has_term('need-help', 'children_status')) { ?>
+				<div class="captioned-text profile-meta-text help-btn"><a href="<?php echo home_url('/campaign/help-us/');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Помочь сейчас</a></div>
+			<?php } ?>
 		</div>
 	</div>
 	
 	
-	<div class="entry-content">		
-		<?php the_content(); ?>
-	</div>
-	
-	<div class="sharing-on-bottom"><?php tst_social_share_no_js();?></div>
+	<div class="entry-content"><?php the_content(); ?></div>
+	<?php if(!has_term('lyubim-i-pomnim', 'children_status')) { ?>
+		<div class="sharing-on-bottom"><?php tst_social_share_no_js();?></div>
+	<?php } ?>
 	
 </article><!-- #post-## -->
 

@@ -28,6 +28,22 @@ function tst_request_corrected($query) {
 	
 } 
 
+//redirects of forbidden pages
+add_action('template_redirect', 'tst_custom_redirect');
+function tst_custom_redirect(){
+	
+	$redirect = '';
+	if(is_tax('children_status', 'my-vyzdoroveli')){
+		$redirect = home_url('nashi-deti/well');
+	}
+	elseif(is_tax('children_status', '	lyubim-i-pomnim')) {
+		$redirect = home_url('nashi-deti/pfmjat');
+	}
+	
+	if(!empty($redirect))
+		wp_redirect($redirect);
+}
+
 
 function tst_get_post_id_from_posts($posts){
 		
@@ -149,6 +165,17 @@ function is_projects() {
 		return true;
 		
 	return false;
+}
+
+function is_children_with_help(){
+	
+	if(is_singular('children')){
+		if(has_term('need-help', 'children_status')){
+			return true;
+		}
+		return false;
+	}
+		
 }
 
 

@@ -76,7 +76,7 @@ body > svg { display: none; }
 .crumb-link {
 	text-decoration: none;
 	letter-spacing: normal;
-	font-weight: 400;
+	font-weight: $card-title-text-font-weight;
 	color: rgba(255,255,255, 0.7);
 	&:hover, &:focus, &:active {
 		color: $tst-color-white;		
@@ -427,6 +427,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 	h4 {
 		display: none;
 		color: $tst-color-primary;
+		font-weight: $card-title-text-font-weight;
 		
 		a {
 			text-decoration: underline;
@@ -478,6 +479,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 		margin: 0;
 		background: $tst-color-primary;
 		color: $tst-color-white;
+		font-weight: $card-title-text-font-weight;
 	}
 	
 	div[class *="container"] {
