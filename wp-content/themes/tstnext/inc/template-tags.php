@@ -353,7 +353,10 @@ function tst_load_more_link($query = null, $echo = true) {
 				break;
 			case 'org':
 				$label = __('More orgs', 'tst');
-				break;	
+				break;
+			case 'children':
+				$label = 'Еще профили';
+				break;
 		}
 	}
 	
