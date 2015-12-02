@@ -10732,6 +10732,18 @@ jQuery(document).ready(function($){
 		$('#modal-newsletter').trigger('openModal');
 	});
 	
+	/* headers in forms */
+	$('.frm_forms').each(function(){
+		
+		var form = $(this),
+			title = $(this).find('.frm_form_fields > h3');
+		
+		if (form.parents('#modal-newsletter').length <= 0 && title.length > 0) {
+			$(this).addClass('has-title');
+		}
+		
+	});
+	
 	//tabs active
 	$('.mdl-tabs').each(function(){
 		var activeTab = $(this).find('.mdl-tabs__tab-bar').find('a.is-active').attr('href');

@@ -42,19 +42,37 @@ if($profiles_order != 'none'){
 
 //news
 if($news_order != 'none'){
-	$news_args = array(
+	
+	$news_featured = array(
 		'post_type' => 'post',	
-		'posts_per_page' => $news_per_page,
-		'cache_results' => false
+		'posts_per_page' => 2,
+		'cache_results' => false,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'category',
+				'field' => 'slug',
+				'terms' => 'project-help'
+			)
+		)
 	);
 	
+	$news_featured_query = new WP_Query($news_featured);
 	
-	$news = new WP_Query($news_args);
-	
-	if($news->have_posts() && $news->found_posts > 1){
-			
-		$title = "Наши новости <a href='".home_url('news')."' title='Все'>(".$news->found_posts.")</a>";		
-		$sections[$news_order] = array('posts' => $news->posts, 'title' => $title);
+	$dnd = ($news_featured_query->have_posts()) ? tst_get_post_id_from_posts($news_featured_query->posts): array();
+	$news_args = array(
+		'post_type' => 'post',	
+		'posts_per_page' => $news_per_page-2,
+		'cache_results' => false,
+		'post__not_in' => $dnd
+	);
+		
+	$news_query = new WP_Query($news_args);
+	$news = array_merge($news_featured_query->posts, $news_query->posts);
+		
+	if(!empty($news)){
+		$count = $news_query->found_posts + 2;
+		$title = "Наши новости <a href='".home_url('news')."' title='Все'>(".$count.")</a>";		
+		$sections[$news_order] = array('posts' => $news, 'title' => $title);
 	}
 }
 
@@ -167,7 +185,7 @@ if(isset($sections['first']['posts'])) {
 <section class="home-partners-block">
 <div class="mdl-grid">
 <div class="mdl-cell mdl-cell--12-col">
-	<h5 class="widget-title">Нас поддерживают</h5>
+	<h5 class="widget-title"><a href="<?php echo home_url('about/partners');?>">Нас поддерживают</a></h5>
 	<div class="widget-content mdl-shadow--2dp">
 		
 		<!-- gallery -->

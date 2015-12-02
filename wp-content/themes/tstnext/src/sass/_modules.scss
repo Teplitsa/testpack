@@ -264,7 +264,7 @@ $i: 1; //widths
 	margin: 0;
 	padding: 0;
 	@include clearfix;
-	
+		
 	li {
 		float: left;
 		margin-left: 8px;
@@ -295,6 +295,19 @@ $i: 1; //widths
 			fill: #ffffff;			
 			margin: 6px 0 0;
 			vertical-align: middle;		
+		}
+	}
+	
+	#site_nav & li  {
+		a {
+			width: 28px;
+			height: 28px;
+		}
+		
+		.sh-icon {
+			width: 15px;
+			height: 15px;
+			margin: 3px 0 0;
 		}
 	}
 	
@@ -336,12 +349,12 @@ $i: 1; //widths
 			background: darken(#00B0EA, 10%);
 		}
 	}
-	/*.youtube a {
+	.youtube a {
 		background: #E83832;
 		&:hover, &:focus, &:active {
 			background: darken(#E83832, 10%);
 		}
-	}*/
+	} 
 }
 
 

@@ -23,7 +23,7 @@
 					<p>Ваше пожертвование сделает жизнь детей с ОВЗ лучше и полнее, поможет им лучше адаптироваться в мире и сохранить здоровье.</p>
 				</div>
 				<div class="mdl-cell mdl-cell--4-col">
-					<a href="<?php echo home_url('campaign/help-us');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Сделать пожертвование</a>
+					<a href="<?php echo home_url('campaign/help-us');?>" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Помочь сейчас</a>
 				</div>
 			</div>
 		</div>

@@ -6,7 +6,7 @@ Redirect	http://shag-navstrechu.ru/news/help-projects/item/518-proekt-otdykh-na-
 
 
 # mass media
-Redirect    http://shag-navstrechu.ru/news/mass-media    http://shagnv.local/category/smi-o-nas/ [R=301,NC,L]
+Redirect    http://shag-navstrechu.ru/news/mass-media    http://shagnv.local/category/pressa-o-nas/ [R=301,NC,L]
 Redirect	http://shag-navstrechu.ru/17-pressinform-avgust-2012.html	http://shagnv.local/17-pressinform-avgust-2012/	[R=301,NC,L]
 Redirect	http://shag-navstrechu.ru/197-zavod-xudozhestvennyx-krasok-nevskaya-palitra-v-adres-zavoda-nevskaya-palitra-prishlo-pismo.html	http://shagnv.local/197-zavod-xudozhestvennyx-krasok-nevskaya-palitra-v-adres-zavoda-nevskaya-palitra-prishlo-pismo/	[R=301,NC,L]
 Redirect	http://shag-navstrechu.ru/198-nevskoe-vremya-yarkie-minuty-v-pavlovske.html	http://shagnv.local/198-nevskoe-vremya-yarkie-minuty-v-pavlovske/	[R=301,NC,L]

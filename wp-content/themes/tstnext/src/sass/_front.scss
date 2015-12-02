@@ -76,7 +76,7 @@ body > svg { display: none; }
 .crumb-link {
 	text-decoration: none;
 	letter-spacing: normal;
-	font-weight: 400;
+	font-weight: $card-title-text-font-weight;
 	color: rgba(255,255,255, 0.7);
 	&:hover, &:focus, &:active {
 		color: $tst-color-white;		
@@ -426,11 +426,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 	
 	h4 {
 		display: none;
-		color: $tst-color-primary;
+		color: $tst-color-accent;
+		font-weight: $card-title-text-font-weight;
 		
 		a {
 			text-decoration: underline;
 		}
+		
 		@include for(desktop) {
 			font-size: 22px;
 			display: block;
@@ -439,6 +441,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 			margin-bottom: 12px+ 56px/2 - 24px;
 		}
 	}
+}
+
+.color-alt .donate-widget h4 {
+	color: $tst-color-primary;
 }
 
 .widget + .widget {
@@ -476,6 +482,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
 		margin: 0;
 		background: $tst-color-primary;
 		color: $tst-color-white;
+		font-weight: $card-title-text-font-weight;
 	}
 	
 	div[class *="container"] {

@@ -6,6 +6,13 @@
  *
  * @package bb
  */
+
+$ua = (isset($_SERVER['HTTP_USER_AGENT'])) ? $_SERVER['HTTP_USER_AGENT'] : 'not_found';
+$color = '';
+if(false !== strpos($ua, 'Firefox') && false !== strpos($ua, 'Mac OS')){
+	$color="color-alt"; 
+}
+
 ?><!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
 <head>
@@ -17,7 +24,7 @@
 <?php wp_head();?>
 </head>
 
-<body id="top" <?php body_class(); ?>>
+<body id="top" <?php body_class($color); ?>>
 <?php include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
 
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'tst' ); ?></a>

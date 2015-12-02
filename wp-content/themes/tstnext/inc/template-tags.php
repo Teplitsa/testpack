@@ -330,7 +330,7 @@ function tst_load_more_link($query = null, $echo = true) {
 	
 	if(!$query)
 		$query = $wp_query;
-	
+		
 	$label = __('More entries', 'tst');
 	if(is_search()){
 		$label = __('More results', 'tst');
@@ -345,6 +345,9 @@ function tst_load_more_link($query = null, $echo = true) {
 				break;
 			case 'org':
 				$label = __('More orgs', 'tst');
+				break;
+			case 'children':
+				$label = 'Еще профили';
 				break;	
 		}
 	}
