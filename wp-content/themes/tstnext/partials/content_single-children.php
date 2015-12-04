@@ -4,9 +4,17 @@
  */
 
 $thumb_id = get_post_thumbnail_id(get_the_ID());
-$thumb = wp_get_attachment_url($thumb_id);
+$thumb = wp_get_attachment_url($thumb_id); 
+if(is_ssl()) 
+	$thumb = str_replace('https:', '', $thumb);	
+
+
 $thumb = aq_resize($thumb, 300, 300, true, true, true);
+
+
+
 $age = get_the_term_list(get_the_ID(), 'children_group', '', ', ', '');
+
 
 ?>
 
