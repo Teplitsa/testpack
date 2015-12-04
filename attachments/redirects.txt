@@ -1,649 +1,649 @@
 # help to projects
-RedirectMatch 301  /news/help-projects/?$    https://shag-navstrechu.ru/category/pomoshh-proektam/ [R=301,NC,L]
-RedirectMatch 301  /news/help-projects/item/348-diane-nuzhna-sidelka/?$    https://shag-navstrechu.ru/348-diane-nuzhna-sidelka/ [R=301,NC,L]
-RedirectMatch 301  /news/help-projects/item/492-proekt-my-poznaem-mir/?$   https://shag-navstrechu.ru/492-proekt-my-poznaem-mir/ [R=301,NC,L]
-RedirectMatch 301  /news/help-projects/item/518-proekt-otdykh-na-dache/?$  https://shag-navstrechu.ru/518-proekt-otdykh-na-dache/ [R=301,NC,L]
+RedirectMatch 301  /news/help-projects/?$    https://shag-navstrechu.ru/category/pomoshh-proektam/ 
+RedirectMatch 301  /news/help-projects/item/348-diane-nuzhna-sidelka/?$    https://shag-navstrechu.ru/348-diane-nuzhna-sidelka/ 
+RedirectMatch 301  /news/help-projects/item/492-proekt-my-poznaem-mir/?$   https://shag-navstrechu.ru/492-proekt-my-poznaem-mir/ 
+RedirectMatch 301  /news/help-projects/item/518-proekt-otdykh-na-dache/?$  https://shag-navstrechu.ru/518-proekt-otdykh-na-dache/ 
 
 
 # mass media
-Redirect    https://shag-navstrechu.ru/news/mass-media/?$    https://shag-navstrechu.ru/category/pressa-o-nas/ [R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/17-pressinform-avgust-2012/?$	https://shag-navstrechu.ru/17-pressinform-avgust-2012/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/197-zavod-xudozhestvennyx-krasok-nevskaya-palitra-v-adres-zavoda-nevskaya-palitra-prishlo-pismo/?$	https://shag-navstrechu.ru/197-zavod-xudozhestvennyx-krasok-nevskaya-palitra-v-adres-zavoda-nevskaya-palitra-prishlo-pismo/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/198-nevskoe-vremya-yarkie-minuty-v-pavlovske/?$	https://shag-navstrechu.ru/198-nevskoe-vremya-yarkie-minuty-v-pavlovske/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/199-sankt-peterburgskie-vedomosti-narisuem-etot-mir-dobrym/?$	https://shag-navstrechu.ru/199-sankt-peterburgskie-vedomosti-narisuem-etot-mir-dobrym/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/200-korporativnyj-otdyx-i-obuchenie-chudo-dlya-mnogix/?$	https://shag-navstrechu.ru/200-korporativnyj-otdyx-i-obuchenie-chudo-dlya-mnogix/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/201-novyj-meczenat-provody-zimy-v-pavlovske/?$	https://shag-navstrechu.ru/201-novyj-meczenat-provody-zimy-v-pavlovske/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/202-allnwru-szhech-chuchelo-zimy-pavlovskim-detdomovczam-pomogut-studenty/?$	https://shag-navstrechu.ru/202-allnwru-szhech-chuchelo-zimy-pavlovskim-detdomovczam-pomogut-studenty/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/203-moj-rajon-szhech-chuchelo-zimy-pavlovskim-detdomovczam-pomogut-studenty/?$	https://shag-navstrechu.ru/203-moj-rajon-szhech-chuchelo-zimy-pavlovskim-detdomovczam-pomogut-studenty/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/204-sankt-peterburgskij-biznes-zhurnal-ot-serdcza-k-serdczu/?$	https://shag-navstrechu.ru/204-sankt-peterburgskij-biznes-zhurnal-ot-serdcza-k-serdczu/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/205-itarr-tass-teatralizovannoe-maslenichnoe-predstavlenie-sostoitsya-v-detskom-dome-№4-g-pavlovsk/?$	https://shag-navstrechu.ru/205-itarr-tass-teatralizovannoe-maslenichnoe-predstavlenie-sostoitsya-v-detskom-dome-4-g-pavlovsk/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/206-muzykant-smilesss-podelis-ulybkoyu-svoej/?$	https://shag-navstrechu.ru/206-muzykant-smilesss-podelis-ulybkoyu-svoej/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/207-rossijskaya-obedinennaya-demokraticheskaya-partiya-yabloko-podderzhite-blagotvoritelnyj-proekt-smilesss/?$	https://shag-navstrechu.ru/207-rossijskaya-obedinennaya-demokraticheskaya-partiya-yabloko-podderzhite-blagotvoritelnyj-proekt-smilesss/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/208-sankt-peterburgskij-biznes-zhurnal-onlajn-budushhee-biznesa-v-detskix-ulybkax/?$	https://shag-navstrechu.ru/208-sankt-peterburgskij-biznes-zhurnal-onlajn-budushhee-biznesa-v-detskix-ulybkax/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/209-delovoj-peterburg-sdelav-pozhertvovanie-v-razmere-1-tysyachi-rublej-vy-poluchite-v-podarok-dizajnerskuyu-futbolku-s-risunkom-rebenka-iz-detskogo-doma-internata-№4-g-pavlovska/?$	https://shag-navstrechu.ru/209-delovoj-peterburg-sdelav-pozhertvovanie-v-razmere-1-tysyachi-rublej-vy-poluchite-v-podarok-dizajnerskuyu-futbolku-s-risunkom-rebenka-iz-detskogo-doma-internata-4-g-pavlovska/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/210-sankt-peterburgskij-biznes-zhurnal-budushhee-biznesa-v-detskix-ulybkax/?$	https://shag-navstrechu.ru/210-sankt-peterburgskij-biznes-zhurnal-budushhee-biznesa-v-detskix-ulybkax/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/211-glamurchikru-mumij-troll-pouchastvovali-v-blagotvoritelnoj-akczii-smilesss/?$	https://shag-navstrechu.ru/211-glamurchikru-mumij-troll-pouchastvovali-v-blagotvoritelnoj-akczii-smilesss/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/212-dailyshow-muzykanty-gruppy-mumij-troll-primerili-detskie-majki/?$	https://shag-navstrechu.ru/212-dailyshow-muzykanty-gruppy-mumij-troll-primerili-detskie-majki/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/213-a-one-gruppa-mumij-troll-podderzhala-blagotvoritelnyj-proekt-smilesss/?$	https://shag-navstrechu.ru/213-a-one-gruppa-mumij-troll-podderzhala-blagotvoritelnyj-proekt-smilesss/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/214-sankt-peterburgskij-biznes-zhurnal-v-chem-sxodstvo-blagotvoritelnosti-i-biznesa-/?$	https://shag-navstrechu.ru/214-sankt-peterburgskij-biznes-zhurnal-v-chem-sxodstvo-blagotvoritelnosti-i-biznesa/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/214-sankt-peterburgskij-biznes-zhurnal-v-chem-sxodstvo-blagotvoritelnosti-i-biznesa/?$	https://shag-navstrechu.ru/214-sankt-peterburgskij-biznes-zhurnal-v-chem-sxodstvo-blagotvoritelnosti-i-biznesa-2/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/215-delovoj-peterburg-proxodit-akcziya-po-sboru-sanitarno-gigienicheskix-sredstv-dlya-uxoda-za-detmi-s-ogranichennymi-vozmozhnostyami/?$	https://shag-navstrechu.ru/215-delovoj-peterburg-proxodit-akcziya-po-sboru-sanitarno-gigienicheskix-sredstv-dlya-uxoda-za-detmi-s-ogranichennymi-vozmozhnostyami/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/216-zhurnal-cloudwatcher-blagotvoritelnaya-akcziya-detskogo-mira-eshhe-odin-shag-navstrechu/?$	https://shag-navstrechu.ru/216-zhurnal-cloudwatcher-blagotvoritelnaya-akcziya-detskogo-mira-eshhe-odin-shag-navstrechu/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/218-peterburgsij-yurist-shag-navstrechu-detyam/?$	https://shag-navstrechu.ru/218-peterburgsij-yurist-shag-navstrechu-detyam/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/219-time-out-peterburg-prygaj/?$	https://shag-navstrechu.ru/219-time-out-peterburg-prygaj/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/220-czarskoselskaya-gazeta-blagotvoritelnyj-piknik/?$	https://shag-navstrechu.ru/220-czarskoselskaya-gazeta-blagotvoritelnyj-piknik/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/221-doroteya-biler-ulybka-mixaila/?$	https://shag-navstrechu.ru/221-doroteya-biler-ulybka-mixaila/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/222-timeout-peterburg-futbolki-smilesss/?$	https://shag-navstrechu.ru/222-timeout-peterburg-futbolki-smilesss/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/223-be-inru-sankt-peterburg-gorod-moda-veshhi-blagotvoritelnaya-yarmarka-shag-navstrechu/?$	https://shag-navstrechu.ru/223-be-inru-sankt-peterburg-gorod-moda-veshhi-blagotvoritelnaya-yarmarka-shag-navstrechu/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/224-look-at-me-sankt-peterburg-blagotvoritelnaya-yarmarka-shag-navstrechu/?$	https://shag-navstrechu.ru/224-look-at-me-sankt-peterburg-blagotvoritelnaya-yarmarka-shag-navstrechu/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/225-mezhdunarodnyj-klub-roditelej-shag-navstrechu/?$	https://shag-navstrechu.ru/225-mezhdunarodnyj-klub-roditelej-shag-navstrechu/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/226-v-detskom-dome-internate-№4-v-pavlovske-vstretili-masleniczu/?$	https://shag-navstrechu.ru/226-v-detskom-dome-internate-4-v-pavlovske-vstretili-masleniczu/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/227-obratnyj-otschet-ili-1000-dnej-do-olimpiady/?$	https://shag-navstrechu.ru/227-obratnyj-otschet-ili-1000-dnej-do-olimpiady/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/228-4-sentyabrya-na-ostrove-novaya-gollandiya-–-blagotvoritelnaya-akcziya-dobryj-dom/?$	https://shag-navstrechu.ru/228-4-sentyabrya-na-ostrove-novaya-gollandiya-blagotvoritelnaya-akcziya-dobryj-dom/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/229-dobryj-dom-blagotvoritelnaya-xudozhestvennaya-akcziya-v-podderzhku-detej-s-ogranichennymi-vozmozhnostyami/?$	https://shag-navstrechu.ru/229-dobryj-dom-blagotvoritelnaya-xudozhestvennaya-akcziya-v-podderzhku-detej-s-ogranichennymi-vozmozhnostyami/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/230-novaya-gollandiya/?$	https://shag-navstrechu.ru/230-novaya-gollandiya/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/231-igry-dobroj-voli/?$	https://shag-navstrechu.ru/231-igry-dobroj-voli/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/232-v-internate-zhdut-volonterov/?$	https://shag-navstrechu.ru/232-v-internate-zhdut-volonterov/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/233-obyknovennoe-chudo/?$	https://shag-navstrechu.ru/233-obyknovennoe-chudo/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/234-detdomovczy-ispekli-vkusnuyu-piczczu-v-vide-serdcza/?$	https://shag-navstrechu.ru/234-detdomovczy-ispekli-vkusnuyu-piczczu-v-vide-serdcza/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/235-piterstory-zhurnal-odnogo-goroda-shag-navstrechu/?$	https://shag-navstrechu.ru/235-piterstory-zhurnal-odnogo-goroda-shag-navstrechu/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/242-sankt-peterburg-v-pavlovskom-detskom-dome-internate-bolshe-ne-narushayut-konstitucziyu-rf/?$	https://shag-navstrechu.ru/242-sankt-peterburg-v-pavlovskom-detskom-dome-internate-bolshe-ne-narushayut-konstitucziyu-rf/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/243-obuchaemyj-pavlovskij-internat/?$	https://shag-navstrechu.ru/243-obuchaemyj-pavlovskij-internat/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/244-v-peterburge-nachalis-zanyatiya-s-neobuchaemymi-detmi/?$	https://shag-navstrechu.ru/244-v-peterburge-nachalis-zanyatiya-s-neobuchaemymi-detmi/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/251-vse-vmeste-v-dobrom-gorode/?$	https://shag-navstrechu.ru/251-vse-vmeste-v-dobrom-gorode/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/252-kto-oni-volontery-v-pavlovske-/?$	https://shag-navstrechu.ru/252-kto-oni-volontery-v-pavlovske/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/252-kto-oni-volontery-v-pavlovske/?$	https://shag-navstrechu.ru/252-kto-oni-volontery-v-pavlovske-2/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/277-pochemu-inostranczy-oxotnee-rossiyan-usynovlyayut-osobyx-detej-sirot/?$	https://shag-navstrechu.ru/277-pochemu-inostranczy-oxotnee-rossiyan-usynovlyayut-osobyx-detej-sirot/	[R=301,NC,L]
-RedirectMatch 301  /news/mass-media/item/341-lyudi-goda/?$	https://shag-navstrechu.ru/341-lyudi-goda/	[R=301,NC,L]
+Redirect    https://shag-navstrechu.ru/news/mass-media/?$    https://shag-navstrechu.ru/category/pressa-o-nas/ 
+RedirectMatch 301  /news/mass-media/item/17-pressinform-avgust-2012/?$	https://shag-navstrechu.ru/17-pressinform-avgust-2012/	
+RedirectMatch 301  /news/mass-media/item/197-zavod-xudozhestvennyx-krasok-nevskaya-palitra-v-adres-zavoda-nevskaya-palitra-prishlo-pismo/?$	https://shag-navstrechu.ru/197-zavod-xudozhestvennyx-krasok-nevskaya-palitra-v-adres-zavoda-nevskaya-palitra-prishlo-pismo/	
+RedirectMatch 301  /news/mass-media/item/198-nevskoe-vremya-yarkie-minuty-v-pavlovske/?$	https://shag-navstrechu.ru/198-nevskoe-vremya-yarkie-minuty-v-pavlovske/	
+RedirectMatch 301  /news/mass-media/item/199-sankt-peterburgskie-vedomosti-narisuem-etot-mir-dobrym/?$	https://shag-navstrechu.ru/199-sankt-peterburgskie-vedomosti-narisuem-etot-mir-dobrym/	
+RedirectMatch 301  /news/mass-media/item/200-korporativnyj-otdyx-i-obuchenie-chudo-dlya-mnogix/?$	https://shag-navstrechu.ru/200-korporativnyj-otdyx-i-obuchenie-chudo-dlya-mnogix/	
+RedirectMatch 301  /news/mass-media/item/201-novyj-meczenat-provody-zimy-v-pavlovske/?$	https://shag-navstrechu.ru/201-novyj-meczenat-provody-zimy-v-pavlovske/	
+RedirectMatch 301  /news/mass-media/item/202-allnwru-szhech-chuchelo-zimy-pavlovskim-detdomovczam-pomogut-studenty/?$	https://shag-navstrechu.ru/202-allnwru-szhech-chuchelo-zimy-pavlovskim-detdomovczam-pomogut-studenty/	
+RedirectMatch 301  /news/mass-media/item/203-moj-rajon-szhech-chuchelo-zimy-pavlovskim-detdomovczam-pomogut-studenty/?$	https://shag-navstrechu.ru/203-moj-rajon-szhech-chuchelo-zimy-pavlovskim-detdomovczam-pomogut-studenty/	
+RedirectMatch 301  /news/mass-media/item/204-sankt-peterburgskij-biznes-zhurnal-ot-serdcza-k-serdczu/?$	https://shag-navstrechu.ru/204-sankt-peterburgskij-biznes-zhurnal-ot-serdcza-k-serdczu/	
+RedirectMatch 301  /news/mass-media/item/205-itarr-tass-teatralizovannoe-maslenichnoe-predstavlenie-sostoitsya-v-detskom-dome-№4-g-pavlovsk/?$	https://shag-navstrechu.ru/205-itarr-tass-teatralizovannoe-maslenichnoe-predstavlenie-sostoitsya-v-detskom-dome-4-g-pavlovsk/	
+RedirectMatch 301  /news/mass-media/item/206-muzykant-smilesss-podelis-ulybkoyu-svoej/?$	https://shag-navstrechu.ru/206-muzykant-smilesss-podelis-ulybkoyu-svoej/	
+RedirectMatch 301  /news/mass-media/item/207-rossijskaya-obedinennaya-demokraticheskaya-partiya-yabloko-podderzhite-blagotvoritelnyj-proekt-smilesss/?$	https://shag-navstrechu.ru/207-rossijskaya-obedinennaya-demokraticheskaya-partiya-yabloko-podderzhite-blagotvoritelnyj-proekt-smilesss/	
+RedirectMatch 301  /news/mass-media/item/208-sankt-peterburgskij-biznes-zhurnal-onlajn-budushhee-biznesa-v-detskix-ulybkax/?$	https://shag-navstrechu.ru/208-sankt-peterburgskij-biznes-zhurnal-onlajn-budushhee-biznesa-v-detskix-ulybkax/	
+RedirectMatch 301  /news/mass-media/item/209-delovoj-peterburg-sdelav-pozhertvovanie-v-razmere-1-tysyachi-rublej-vy-poluchite-v-podarok-dizajnerskuyu-futbolku-s-risunkom-rebenka-iz-detskogo-doma-internata-№4-g-pavlovska/?$	https://shag-navstrechu.ru/209-delovoj-peterburg-sdelav-pozhertvovanie-v-razmere-1-tysyachi-rublej-vy-poluchite-v-podarok-dizajnerskuyu-futbolku-s-risunkom-rebenka-iz-detskogo-doma-internata-4-g-pavlovska/	
+RedirectMatch 301  /news/mass-media/item/210-sankt-peterburgskij-biznes-zhurnal-budushhee-biznesa-v-detskix-ulybkax/?$	https://shag-navstrechu.ru/210-sankt-peterburgskij-biznes-zhurnal-budushhee-biznesa-v-detskix-ulybkax/	
+RedirectMatch 301  /news/mass-media/item/211-glamurchikru-mumij-troll-pouchastvovali-v-blagotvoritelnoj-akczii-smilesss/?$	https://shag-navstrechu.ru/211-glamurchikru-mumij-troll-pouchastvovali-v-blagotvoritelnoj-akczii-smilesss/	
+RedirectMatch 301  /news/mass-media/item/212-dailyshow-muzykanty-gruppy-mumij-troll-primerili-detskie-majki/?$	https://shag-navstrechu.ru/212-dailyshow-muzykanty-gruppy-mumij-troll-primerili-detskie-majki/	
+RedirectMatch 301  /news/mass-media/item/213-a-one-gruppa-mumij-troll-podderzhala-blagotvoritelnyj-proekt-smilesss/?$	https://shag-navstrechu.ru/213-a-one-gruppa-mumij-troll-podderzhala-blagotvoritelnyj-proekt-smilesss/	
+RedirectMatch 301  /news/mass-media/item/214-sankt-peterburgskij-biznes-zhurnal-v-chem-sxodstvo-blagotvoritelnosti-i-biznesa-/?$	https://shag-navstrechu.ru/214-sankt-peterburgskij-biznes-zhurnal-v-chem-sxodstvo-blagotvoritelnosti-i-biznesa/	
+RedirectMatch 301  /news/mass-media/item/214-sankt-peterburgskij-biznes-zhurnal-v-chem-sxodstvo-blagotvoritelnosti-i-biznesa/?$	https://shag-navstrechu.ru/214-sankt-peterburgskij-biznes-zhurnal-v-chem-sxodstvo-blagotvoritelnosti-i-biznesa-2/	
+RedirectMatch 301  /news/mass-media/item/215-delovoj-peterburg-proxodit-akcziya-po-sboru-sanitarno-gigienicheskix-sredstv-dlya-uxoda-za-detmi-s-ogranichennymi-vozmozhnostyami/?$	https://shag-navstrechu.ru/215-delovoj-peterburg-proxodit-akcziya-po-sboru-sanitarno-gigienicheskix-sredstv-dlya-uxoda-za-detmi-s-ogranichennymi-vozmozhnostyami/	
+RedirectMatch 301  /news/mass-media/item/216-zhurnal-cloudwatcher-blagotvoritelnaya-akcziya-detskogo-mira-eshhe-odin-shag-navstrechu/?$	https://shag-navstrechu.ru/216-zhurnal-cloudwatcher-blagotvoritelnaya-akcziya-detskogo-mira-eshhe-odin-shag-navstrechu/	
+RedirectMatch 301  /news/mass-media/item/218-peterburgsij-yurist-shag-navstrechu-detyam/?$	https://shag-navstrechu.ru/218-peterburgsij-yurist-shag-navstrechu-detyam/	
+RedirectMatch 301  /news/mass-media/item/219-time-out-peterburg-prygaj/?$	https://shag-navstrechu.ru/219-time-out-peterburg-prygaj/	
+RedirectMatch 301  /news/mass-media/item/220-czarskoselskaya-gazeta-blagotvoritelnyj-piknik/?$	https://shag-navstrechu.ru/220-czarskoselskaya-gazeta-blagotvoritelnyj-piknik/	
+RedirectMatch 301  /news/mass-media/item/221-doroteya-biler-ulybka-mixaila/?$	https://shag-navstrechu.ru/221-doroteya-biler-ulybka-mixaila/	
+RedirectMatch 301  /news/mass-media/item/222-timeout-peterburg-futbolki-smilesss/?$	https://shag-navstrechu.ru/222-timeout-peterburg-futbolki-smilesss/	
+RedirectMatch 301  /news/mass-media/item/223-be-inru-sankt-peterburg-gorod-moda-veshhi-blagotvoritelnaya-yarmarka-shag-navstrechu/?$	https://shag-navstrechu.ru/223-be-inru-sankt-peterburg-gorod-moda-veshhi-blagotvoritelnaya-yarmarka-shag-navstrechu/	
+RedirectMatch 301  /news/mass-media/item/224-look-at-me-sankt-peterburg-blagotvoritelnaya-yarmarka-shag-navstrechu/?$	https://shag-navstrechu.ru/224-look-at-me-sankt-peterburg-blagotvoritelnaya-yarmarka-shag-navstrechu/	
+RedirectMatch 301  /news/mass-media/item/225-mezhdunarodnyj-klub-roditelej-shag-navstrechu/?$	https://shag-navstrechu.ru/225-mezhdunarodnyj-klub-roditelej-shag-navstrechu/	
+RedirectMatch 301  /news/mass-media/item/226-v-detskom-dome-internate-№4-v-pavlovske-vstretili-masleniczu/?$	https://shag-navstrechu.ru/226-v-detskom-dome-internate-4-v-pavlovske-vstretili-masleniczu/	
+RedirectMatch 301  /news/mass-media/item/227-obratnyj-otschet-ili-1000-dnej-do-olimpiady/?$	https://shag-navstrechu.ru/227-obratnyj-otschet-ili-1000-dnej-do-olimpiady/	
+RedirectMatch 301  /news/mass-media/item/228-4-sentyabrya-na-ostrove-novaya-gollandiya-–-blagotvoritelnaya-akcziya-dobryj-dom/?$	https://shag-navstrechu.ru/228-4-sentyabrya-na-ostrove-novaya-gollandiya-blagotvoritelnaya-akcziya-dobryj-dom/	
+RedirectMatch 301  /news/mass-media/item/229-dobryj-dom-blagotvoritelnaya-xudozhestvennaya-akcziya-v-podderzhku-detej-s-ogranichennymi-vozmozhnostyami/?$	https://shag-navstrechu.ru/229-dobryj-dom-blagotvoritelnaya-xudozhestvennaya-akcziya-v-podderzhku-detej-s-ogranichennymi-vozmozhnostyami/	
+RedirectMatch 301  /news/mass-media/item/230-novaya-gollandiya/?$	https://shag-navstrechu.ru/230-novaya-gollandiya/	
+RedirectMatch 301  /news/mass-media/item/231-igry-dobroj-voli/?$	https://shag-navstrechu.ru/231-igry-dobroj-voli/	
+RedirectMatch 301  /news/mass-media/item/232-v-internate-zhdut-volonterov/?$	https://shag-navstrechu.ru/232-v-internate-zhdut-volonterov/	
+RedirectMatch 301  /news/mass-media/item/233-obyknovennoe-chudo/?$	https://shag-navstrechu.ru/233-obyknovennoe-chudo/	
+RedirectMatch 301  /news/mass-media/item/234-detdomovczy-ispekli-vkusnuyu-piczczu-v-vide-serdcza/?$	https://shag-navstrechu.ru/234-detdomovczy-ispekli-vkusnuyu-piczczu-v-vide-serdcza/	
+RedirectMatch 301  /news/mass-media/item/235-piterstory-zhurnal-odnogo-goroda-shag-navstrechu/?$	https://shag-navstrechu.ru/235-piterstory-zhurnal-odnogo-goroda-shag-navstrechu/	
+RedirectMatch 301  /news/mass-media/item/242-sankt-peterburg-v-pavlovskom-detskom-dome-internate-bolshe-ne-narushayut-konstitucziyu-rf/?$	https://shag-navstrechu.ru/242-sankt-peterburg-v-pavlovskom-detskom-dome-internate-bolshe-ne-narushayut-konstitucziyu-rf/	
+RedirectMatch 301  /news/mass-media/item/243-obuchaemyj-pavlovskij-internat/?$	https://shag-navstrechu.ru/243-obuchaemyj-pavlovskij-internat/	
+RedirectMatch 301  /news/mass-media/item/244-v-peterburge-nachalis-zanyatiya-s-neobuchaemymi-detmi/?$	https://shag-navstrechu.ru/244-v-peterburge-nachalis-zanyatiya-s-neobuchaemymi-detmi/	
+RedirectMatch 301  /news/mass-media/item/251-vse-vmeste-v-dobrom-gorode/?$	https://shag-navstrechu.ru/251-vse-vmeste-v-dobrom-gorode/	
+RedirectMatch 301  /news/mass-media/item/252-kto-oni-volontery-v-pavlovske-/?$	https://shag-navstrechu.ru/252-kto-oni-volontery-v-pavlovske/	
+RedirectMatch 301  /news/mass-media/item/252-kto-oni-volontery-v-pavlovske/?$	https://shag-navstrechu.ru/252-kto-oni-volontery-v-pavlovske-2/	
+RedirectMatch 301  /news/mass-media/item/277-pochemu-inostranczy-oxotnee-rossiyan-usynovlyayut-osobyx-detej-sirot/?$	https://shag-navstrechu.ru/277-pochemu-inostranczy-oxotnee-rossiyan-usynovlyayut-osobyx-detej-sirot/	
+RedirectMatch 301  /news/mass-media/item/341-lyudi-goda/?$	https://shag-navstrechu.ru/341-lyudi-goda/	
 
 # news
-RedirectMatch 301  /news/our-news  https://shag-navstrechu.ru/category/nashi-novosti/ [R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/10-thanksgiving-day/?$	https://shag-navstrechu.ru/10-thanksgiving-day/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/100-novogodnyaya-blagotvoritelnaya-lotereya-v-spbgu/?$	https://shag-navstrechu.ru/100-novogodnyaya-blagotvoritelnaya-lotereya-v-spbgu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/101-ocherednoj-vizit-v-gosti-k-kuklam/?$	https://shag-navstrechu.ru/101-ocherednoj-vizit-v-gosti-k-kuklam/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/102-klounada-v-detskom-dome/?$	https://shag-navstrechu.ru/102-klounada-v-detskom-dome/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/103-itogi-blagotvoritelnoj-baraxolki/?$	https://shag-navstrechu.ru/103-itogi-blagotvoritelnoj-baraxolki/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/104-lblagotvoritelnyj-aukczionr-na-fakultete-socziologii/?$	https://shag-navstrechu.ru/104-lblagotvoritelnyj-aukczionr-na-fakultete-socziologii/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/105-mezhdunarodnyj-den-volontera/?$	https://shag-navstrechu.ru/105-mezhdunarodnyj-den-volontera/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/106-podvedenie-itogov-ldobrogo-piterar/?$	https://shag-navstrechu.ru/106-podvedenie-itogov-ldobrogo-piterar/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/107-mechty-sbyvayutsya-pod-novyj-god/?$	https://shag-navstrechu.ru/107-mechty-sbyvayutsya-pod-novyj-god/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/108-s-novym-godom/?$	https://shag-navstrechu.ru/108-s-novym-godom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/109-novogodnyaya-skazka-iz-chemodana/?$	https://shag-navstrechu.ru/109-novogodnyaya-skazka-iz-chemodana/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/11-dobry-piter-1/?$	https://shag-navstrechu.ru/11-dobry-piter-1/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/110-qprostye-veshhiq/?$	https://shag-navstrechu.ru/110-qprostye-veshhiq/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/111-galopom-po-sugrobam/?$	https://shag-navstrechu.ru/111-galopom-po-sugrobam/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/112-qprostye-veshhiq-uspeshno-sostoyalis/?$	https://shag-navstrechu.ru/112-qprostye-veshhiq-uspeshno-sostoyalis/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/113-den-vosmoj/?$	https://shag-navstrechu.ru/113-den-vosmoj/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/114-studiya-detskoj-animaczii-ldar/?$	https://shag-navstrechu.ru/114-studiya-detskoj-animaczii-ldar/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/115-ottepel-v-ddi-4/?$	https://shag-navstrechu.ru/115-ottepel-v-ddi-4/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/116-vesyolyj-subbotnik/?$	https://shag-navstrechu.ru/116-vesyolyj-subbotnik/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/117-2-rybnyx-dnya/?$	https://shag-navstrechu.ru/117-2-rybnyx-dnya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/118-art-terapiya-v-voskresnoj-shkole/?$	https://shag-navstrechu.ru/118-art-terapiya-v-voskresnoj-shkole/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/119-o-puteshestvii-na-mars/?$	https://shag-navstrechu.ru/119-o-puteshestvii-na-mars/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/12-vepsskij-les-2012/?$	https://shag-navstrechu.ru/12-vepsskij-les-2012/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/120-nazad-v-budushhee/?$	https://shag-navstrechu.ru/120-nazad-v-budushhee/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/121-mylnaya-subbota/?$	https://shag-navstrechu.ru/121-mylnaya-subbota/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/122-qdomostrojq-v-tretem-korpuse/?$	https://shag-navstrechu.ru/122-qdomostrojq-v-tretem-korpuse/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/123-bortprovodniki-ak-lrossiyar-snova-letyat-na-pomoshh/?$	https://shag-navstrechu.ru/123-bortprovodniki-ak-lrossiyar-snova-letyat-na-pomoshh/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/125-k-nam-priexal-nastoyashhij-orkestr/?$	https://shag-navstrechu.ru/125-k-nam-priexal-nastoyashhij-orkestr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/126-zvonkoe-voskresene/?$	https://shag-navstrechu.ru/126-zvonkoe-voskresene/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/127-ekspedicziya-v-supermarket/?$	https://shag-navstrechu.ru/127-ekspedicziya-v-supermarket/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/128-dva-volshebnyx-dnya-nashi-gosti-nemeczkie-shkolniki/?$	https://shag-navstrechu.ru/128-dva-volshebnyx-dnya-nashi-gosti-nemeczkie-shkolniki/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/129-1000-dnej-do-sochi/?$	https://shag-navstrechu.ru/129-1000-dnej-do-sochi/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/130-vsej-semej-v-zoopark/?$	https://shag-navstrechu.ru/130-vsej-semej-v-zoopark/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/131-mumi-trolli-v-detskom-dome/?$	https://shag-navstrechu.ru/131-mumi-trolli-v-detskom-dome/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/132-prazdnik-dvora-2/?$	https://shag-navstrechu.ru/132-prazdnik-dvora-2/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/133-karnaval-na-elaginom/?$	https://shag-navstrechu.ru/133-karnaval-na-elaginom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/134-1-iyunya-den-radosti/?$	https://shag-navstrechu.ru/134-1-iyunya-den-radosti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/135-lmy-vmeste-igraem-rokr-3/?$	https://shag-navstrechu.ru/135-lmy-vmeste-igraem-rokr-3/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/136-den-schastya-v-tavricheskom-sadu/?$	https://shag-navstrechu.ru/136-den-schastya-v-tavricheskom-sadu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/138-nad-rekoj-nevoj/?$	https://shag-navstrechu.ru/138-nad-rekoj-nevoj/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/139-znak-otlichiya/?$	https://shag-navstrechu.ru/139-znak-otlichiya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/14-with-hands/?$	https://shag-navstrechu.ru/14-with-hands/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/140-v-svobodnyx-vodax-finskogo-zaliva/?$	https://shag-navstrechu.ru/140-v-svobodnyx-vodax-finskogo-zaliva/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/141-muzej-teatr-lskazkin-domr/?$	https://shag-navstrechu.ru/141-muzej-teatr-lskazkin-domr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/142-pavlovskij-park/?$	https://shag-navstrechu.ru/142-pavlovskij-park/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/143-my-idem-na-plyazh/?$	https://shag-navstrechu.ru/143-my-idem-na-plyazh/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/144-muzej-zanimatelnoj-nauki-llabirintumr/?$	https://shag-navstrechu.ru/144-muzej-zanimatelnoj-nauki-llabirintumr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/145-i-snova-vepsskij-les/?$	https://shag-navstrechu.ru/145-i-snova-vepsskij-les/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/146-blagotvoritelnaya-xudozhestvennaya-akcziya-ldobryj-domr/?$	https://shag-navstrechu.ru/146-blagotvoritelnaya-xudozhestvennaya-akcziya-ldobryj-domr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/147-laxta-love/?$	https://shag-navstrechu.ru/147-laxta-love/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/148-pro-dzhinsy-spagetti-i-samostoyatelnuyu-zhizn/?$	https://shag-navstrechu.ru/148-pro-dzhinsy-spagetti-i-samostoyatelnuyu-zhizn/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/149-seminar-ot-blagotvoritelnogo-fonda-dom-ronalda-makdonalda/?$	https://shag-navstrechu.ru/149-seminar-ot-blagotvoritelnogo-fonda-dom-ronalda-makdonalda/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/150-czlp-v-pskove/?$	https://shag-navstrechu.ru/150-czlp-v-pskove/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/151-zakrytie-sezona-navigaczii/?$	https://shag-navstrechu.ru/151-zakrytie-sezona-navigaczii/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/152-syorfing-na-taiti/?$	https://shag-navstrechu.ru/152-syorfing-na-taiti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/153-poezdka-v-serbskij-teatr/?$	https://shag-navstrechu.ru/153-poezdka-v-serbskij-teatr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/154-krasivo-zhit-ne-zapretish/?$	https://shag-navstrechu.ru/154-krasivo-zhit-ne-zapretish/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/155-limovoyazh/?$	https://shag-navstrechu.ru/155-limovoyazh/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/157-sdelajte-pozhertvovanie-cherez-blagotvoritelnuyu-programmu-lblagorur/?$	https://shag-navstrechu.ru/157-sdelajte-pozhertvovanie-cherez-blagotvoritelnuyu-programmu-lblagorur/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/158-esli-verit-v-chudesa-oni-sluchayutsya/?$	https://shag-navstrechu.ru/158-esli-verit-v-chudesa-oni-sluchayutsya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/160-shag-navstrechu-prinimaet-uchastie-v-festivale-dobryj-piter/?$	https://shag-navstrechu.ru/160-shag-navstrechu-prinimaet-uchastie-v-festivale-dobryj-piter/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/162-blagotvoritelnaya-baraxolka-v-vegan-klube/?$	https://shag-navstrechu.ru/162-blagotvoritelnaya-baraxolka-v-vegan-klube/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/163-novye-kompyutery-i-novye-vozmozhnosti/?$	https://shag-navstrechu.ru/163-novye-kompyutery-i-novye-vozmozhnosti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/164-kak-ded-moroz-k-nam-v-gosti-prixodil/?$	https://shag-navstrechu.ru/164-kak-ded-moroz-k-nam-v-gosti-prixodil/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/165-novogodnyaya-skazka-v-detskom-dome/?$	https://shag-navstrechu.ru/165-novogodnyaya-skazka-v-detskom-dome/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/166-itogi-blagotvoritelnoj-baraxolki-2011/?$	https://shag-navstrechu.ru/166-itogi-blagotvoritelnoj-baraxolki-2011/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/167-o-druzyax/?$	https://shag-navstrechu.ru/167-o-druzyax/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/168-novogodnyaya-lotereya-na-yurfake/?$	https://shag-navstrechu.ru/168-novogodnyaya-lotereya-na-yurfake/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/169-chudo-sad/?$	https://shag-navstrechu.ru/169-chudo-sad/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/170-rozhdestvo-i-volshebstvo/?$	https://shag-navstrechu.ru/170-rozhdestvo-i-volshebstvo/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/171-udivitelnye-deti-i-podarki-ot-lash/?$	https://shag-navstrechu.ru/171-udivitelnye-deti-i-podarki-ot-lash/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/172-pni-9-krasnoe-selo/?$	https://shag-navstrechu.ru/172-pni-9-krasnoe-selo/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/173-poezdka-v-teatr-masterskaya/?$	https://shag-navstrechu.ru/173-poezdka-v-teatr-masterskaya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/174-slozhno-li-mne-rabotat-v-detskom-dome-dlya-detej-s-zaderzhkami-v-razvitii/?$	https://shag-navstrechu.ru/174-slozhno-li-mne-rabotat-v-detskom-dome-dlya-detej-s-zaderzhkami-v-razvitii/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/175-burnye-vyxodnye-v-detskom-dome/?$	https://shag-navstrechu.ru/175-burnye-vyxodnye-v-detskom-dome/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/177-kogda-slov-nedostatochno/?$	https://shag-navstrechu.ru/177-kogda-slov-nedostatochno/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/178-blagotvoritelnyj-art-market-dobryj-dom/?$	https://shag-navstrechu.ru/178-blagotvoritelnyj-art-market-dobryj-dom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/179-v-gostyax-u-teatra-pantomimy-so-tvorenie/?$	https://shag-navstrechu.ru/179-v-gostyax-u-teatra-pantomimy-so-tvorenie/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/180-dvorecz-dlya-princzess/?$	https://shag-navstrechu.ru/180-dvorecz-dlya-princzess/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/182-deti-pavlovska-pokoryayut-moskvu/?$	https://shag-navstrechu.ru/182-deti-pavlovska-pokoryayut-moskvu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/183-my-svobodny/?$	https://shag-navstrechu.ru/183-my-svobodny/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/184-pomogaem-vmeste/?$	https://shag-navstrechu.ru/184-pomogaem-vmeste/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/185-soxranim-nashi-serdcza/?$	https://shag-navstrechu.ru/185-soxranim-nashi-serdcza/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/186-seminar-moskovskogo-czentra-lechebnoj-pedagogiki/?$	https://shag-navstrechu.ru/186-seminar-moskovskogo-czentra-lechebnoj-pedagogiki/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/187-pochuvstvuj-sebya-s-pomoshhyu-krasok/?$	https://shag-navstrechu.ru/187-pochuvstvuj-sebya-s-pomoshhyu-krasok/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/188-pomogi-vmeste-s-binbankom/?$	https://shag-navstrechu.ru/188-pomogi-vmeste-s-binbankom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/189-dobryj-dom-v-tkachax/?$	https://shag-navstrechu.ru/189-dobryj-dom-v-tkachax/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/190-snova-dobryj-dom-na-novoj-gollandii/?$	https://shag-navstrechu.ru/190-snova-dobryj-dom-na-novoj-gollandii/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/191-ezhegodnyj-blagotvoritelnyj-festival-my-vmeste-igraem-rok-4/?$	https://shag-navstrechu.ru/191-ezhegodnyj-blagotvoritelnyj-festival-my-vmeste-igraem-rok-4/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/192-festival-zavtra/?$	https://shag-navstrechu.ru/192-festival-zavtra/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/193-v-gostyax-u-lavkalavka/?$	https://shag-navstrechu.ru/193-v-gostyax-u-lavkalavka/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/194-qnapolni-nebo-dobrotojq/?$	https://shag-navstrechu.ru/194-qnapolni-nebo-dobrotojq/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/239-a-mozhet-vse-taki-ne-pni--malchiki/?$	https://shag-navstrechu.ru/239-a-mozhet-vse-taki-ne-pni-malchiki/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/239-a-mozhet-vse-taki-ne-pni/?$	https://shag-navstrechu.ru/239-a-mozhet-vse-taki-ne-pni/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/24-pavlovskij-park/?$	https://shag-navstrechu.ru/24-pavlovskij-park/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/241-zdravstvuj-shkola/?$	https://shag-navstrechu.ru/241-zdravstvuj-shkola/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/245-pervyj-raz-v-shkolu/?$	https://shag-navstrechu.ru/245-pervyj-raz-v-shkolu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/249-kids-on-wheels/?$	https://shag-navstrechu.ru/249-kids-on-wheels/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/25-labirintum/?$	https://shag-navstrechu.ru/25-labirintum/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/250-prazdnik-kashtanov/?$	https://shag-navstrechu.ru/250-prazdnik-kashtanov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/253-charity-fest/?$	https://shag-navstrechu.ru/253-charity-fest/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/254-borya-stasov/?$	https://shag-navstrechu.ru/254-borya-stasov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/256-andrej-sotov/?$	https://shag-navstrechu.ru/256-andrej-sotov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/257-nastya-lesnaya/?$	https://shag-navstrechu.ru/257-nastya-lesnaya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/258-ruslan-marusin/?$	https://shag-navstrechu.ru/258-ruslan-marusin/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/259-serezha-moroz/?$	https://shag-navstrechu.ru/259-serezha-moroz/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/26-jeans-spagetti/?$	https://shag-navstrechu.ru/26-jeans-spagetti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/260-sasha-xromov/?$	https://shag-navstrechu.ru/260-sasha-xromov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/261-tanya-levneva/?$	https://shag-navstrechu.ru/261-tanya-levneva/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/262-olya-yakusheva/?$	https://shag-navstrechu.ru/262-olya-yakusheva/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/265-lesha-sarev/?$	https://shag-navstrechu.ru/265-lesha-sarev/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/266-vitalik-leonov/?$	https://shag-navstrechu.ru/266-vitalik-leonov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/267-vasya-chetov/?$	https://shag-navstrechu.ru/267-vasya-chetov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/268-vasya-makov/?$	https://shag-navstrechu.ru/268-vasya-makov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/269-ruzanna-karapetova/?$	https://shag-navstrechu.ru/269-ruzanna-karapetova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/27-a-mozhet-vse-taki-ne-pni--devochki/?$	https://shag-navstrechu.ru/27-a-mozhet-vse-taki-ne-pni-devochki/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/27-a-mozhet-vse-taki-ne-pni/?$	https://shag-navstrechu.ru/27-a-mozhet-vse-taki-ne-pni/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/270-prosha-bukin/?$	https://shag-navstrechu.ru/270-prosha-bukin/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/271-pasha-bespalov/?$	https://shag-navstrechu.ru/271-pasha-bespalov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/272-masha-porshueva/?$	https://shag-navstrechu.ru/272-masha-porshueva/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/273-marina-kudakina/?$	https://shag-navstrechu.ru/273-marina-kudakina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/274-kolya-gruz/?$	https://shag-navstrechu.ru/274-kolya-gruz/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/275-ilya-dubov/?$	https://shag-navstrechu.ru/275-ilya-dubov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/276-den-blagodareniya-v-shkole-alm/?$	https://shag-navstrechu.ru/276-den-blagodareniya-v-shkole-alm/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/278-shkola-nachalo/?$	https://shag-navstrechu.ru/278-shkola-nachalo/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/279-andrej-drugov/?$	https://shag-navstrechu.ru/279-andrej-drugov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/28-sunsay-v-gostyax-u-nashix-detej-v-detskom-dome/?$	https://shag-navstrechu.ru/28-sunsay-v-gostyax-u-nashix-detej-v-detskom-dome/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/280-tanya-shuvalova/?$	https://shag-navstrechu.ru/280-tanya-shuvalova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/281-dima-akiev/?$	https://shag-navstrechu.ru/281-dima-akiev/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/282-lyuba-devaeva/?$	https://shag-navstrechu.ru/282-lyuba-devaeva/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/283-oksana-sharova/?$	https://shag-navstrechu.ru/283-oksana-sharova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/285-nikita-klanov/?$	https://shag-navstrechu.ru/285-nikita-klanov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/286-diana-seregina/?$	https://shag-navstrechu.ru/286-diana-seregina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/287-natasha-bozhenova/?$	https://shag-navstrechu.ru/287-natasha-bozhenova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/288-masha-gusar/?$	https://shag-navstrechu.ru/288-masha-gusar/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/289-deti/?$	https://shag-navstrechu.ru/289-deti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/29-stereoleto/?$	https://shag-navstrechu.ru/29-stereoleto/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/290-bulochki-s-koriczej/?$	https://shag-navstrechu.ru/290-bulochki-s-koriczej/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/291-sveta-goshina/?$	https://shag-navstrechu.ru/291-sveta-goshina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/292-mashka-vladimirova/?$	https://shag-navstrechu.ru/292-mashka-vladimirova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/293-fedya-zubov/?$	https://shag-navstrechu.ru/293-fedya-zubov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/294-sasha-erofeev/?$	https://shag-navstrechu.ru/294-sasha-erofeev/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/295-ksyusha-kazak/?$	https://shag-navstrechu.ru/295-ksyusha-kazak/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/298-a-ya-tak-zhivu/?$	https://shag-navstrechu.ru/298-a-ya-tak-zhivu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/299-ksyusha-okorina/?$	https://shag-navstrechu.ru/299-ksyusha-okorina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/30-lekarstva-ili-flomastery-/?$	https://shag-navstrechu.ru/30-lekarstva-ili-flomastery/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/30-lekarstva-ili-flomastery/?$	https://shag-navstrechu.ru/30-lekarstva-ili-flomastery-2/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/300-dasha-korovina/?$	https://shag-navstrechu.ru/300-dasha-korovina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/301-elya-belaya/?$	https://shag-navstrechu.ru/301-elya-belaya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/302-ksyusha-bubnova/?$	https://shag-navstrechu.ru/302-ksyusha-bubnova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/303-oksana-ivkova/?$	https://shag-navstrechu.ru/303-oksana-ivkova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/304-yura-popkevich/?$	https://shag-navstrechu.ru/304-yura-popkevich/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/305-vanya-shivczov/?$	https://shag-navstrechu.ru/305-vanya-shivczov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/306-fatima-dzhamova/?$	https://shag-navstrechu.ru/306-fatima-dzhamova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/309-dasha-meleva/?$	https://shag-navstrechu.ru/309-dasha-meleva/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/31-impressionisty-glazami-detej/?$	https://shag-navstrechu.ru/31-impressionisty-glazami-detej/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/310-sasha-zadneprov/?$	https://shag-navstrechu.ru/310-sasha-zadneprov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/312-fedya-baklazhanov/?$	https://shag-navstrechu.ru/312-fedya-baklazhanov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/313-nikita-shmak/?$	https://shag-navstrechu.ru/313-nikita-shmak/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/314-rodion-pokrov/?$	https://shag-navstrechu.ru/314-rodion-pokrov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/315-sasha-rogov/?$	https://shag-navstrechu.ru/315-sasha-rogov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/317-nastya-rogova/?$	https://shag-navstrechu.ru/317-nastya-rogova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/318-ksyusha-bichok/?$	https://shag-navstrechu.ru/318-ksyusha-bichok/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/319-vera-danchuk/?$	https://shag-navstrechu.ru/319-vera-danchuk/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/320-nastya-onegina/?$	https://shag-navstrechu.ru/320-nastya-onegina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/321-valya-bolobolkina/?$	https://shag-navstrechu.ru/321-valya-bolobolkina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/323-katya-zhgon/?$	https://shag-navstrechu.ru/323-katya-zhgon/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/325-yarik-shatuev/?$	https://shag-navstrechu.ru/325-yarik-shatuev/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/326-nastya-kruglova/?$	https://shag-navstrechu.ru/326-nastya-kruglova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/328-darina-kurgina/?$	https://shag-navstrechu.ru/328-darina-kurgina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/329-alina-mishina/?$	https://shag-navstrechu.ru/329-alina-mishina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/331-vika-shmidt/?$	https://shag-navstrechu.ru/331-vika-shmidt/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/332-mishka-seryj/?$	https://shag-navstrechu.ru/332-mishka-seryj/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/333-tolik-panov/?$	https://shag-navstrechu.ru/333-tolik-panov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/336-lenya-lesnik/?$	https://shag-navstrechu.ru/336-lenya-lesnik/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/338-artem-bokupczev/?$	https://shag-navstrechu.ru/338-artem-bokupczev/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/339-serezha-silev/?$	https://shag-navstrechu.ru/339-serezha-silev/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/34-teleperedacha/?$	https://shag-navstrechu.ru/34-teleperedacha/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/340-nash-novyj-partner-lush-v-ramkax-proekta-chariti-pot/?$	https://shag-navstrechu.ru/340-nash-novyj-partner-lush-v-ramkax-proekta-chariti-pot/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/342-moj-istochnik-vdoxnoveniya/?$	https://shag-navstrechu.ru/342-moj-istochnik-vdoxnoveniya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/343-i-v-nash-dom-prishel-novyj-god/?$	https://shag-navstrechu.ru/343-i-v-nash-dom-prishel-novyj-god/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/346-grustno/?$	https://shag-navstrechu.ru/346-grustno/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/347-mechty/?$	https://shag-navstrechu.ru/347-mechty/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/349-day-of-magic/?$	https://shag-navstrechu.ru/349-day-of-magic/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/35-smiles-prixodyat-v-detskij-dom/?$	https://shag-navstrechu.ru/35-smiles-prixodyat-v-detskij-dom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/351-v-borbe-protiv-vsekh/?$	https://shag-navstrechu.ru/351-v-borbe-protiv-vsekh/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/352-globalgiving/?$	https://shag-navstrechu.ru/352-globalgiving/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/354-ratnik-aleksandra/?$	https://shag-navstrechu.ru/354-ratnik-aleksandra/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/355-goloviznina-yuliya/?$	https://shag-navstrechu.ru/355-goloviznina-yuliya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/356-budnik-aleksandr/?$	https://shag-navstrechu.ru/356-budnik-aleksandr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/357-chudinov-dmitrij/?$	https://shag-navstrechu.ru/357-chudinov-dmitrij/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/359-ostrovskaya-mariya/?$	https://shag-navstrechu.ru/359-ostrovskaya-mariya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/362-tokareva-evgeniya/?$	https://shag-navstrechu.ru/362-tokareva-evgeniya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/364-zaborov-aleksandr/?$	https://shag-navstrechu.ru/364-zaborov-aleksandr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/366-yagodin-valerij/?$	https://shag-navstrechu.ru/366-yagodin-valerij/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/367-zavyalova-elizaveta/?$	https://shag-navstrechu.ru/367-zavyalova-elizaveta/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/37-v-spbgu-sostoyalas-blagotvoritelnaya-lotereya/?$	https://shag-navstrechu.ru/37-v-spbgu-sostoyalas-blagotvoritelnaya-lotereya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/374-rezultaty-globalgiving/?$	https://shag-navstrechu.ru/374-rezultaty-globalgiving/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/375-saskevich-mariya/?$	https://shag-navstrechu.ru/375-saskevich-mariya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/377-komar-anastasiya/?$	https://shag-navstrechu.ru/377-komar-anastasiya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/379-pokhod-na-vystavku-v-etazhi/?$	https://shag-navstrechu.ru/379-pokhod-na-vystavku-v-etazhi/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/38-maslenicza-napolnila-solnczem-detskij-dom/?$	https://shag-navstrechu.ru/38-maslenicza-napolnila-solnczem-detskij-dom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/380-11-12-iyunya-dni-otkrytykh-dverej-v-nko/?$	https://shag-navstrechu.ru/380-11-12-iyunya-dni-otkrytykh-dverej-v-nko/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/381-shashlyki-na-finskom-zalive/?$	https://shag-navstrechu.ru/381-shashlyki-na-finskom-zalive/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/382-dom-gde-proshlo-detstvo/?$	https://shag-navstrechu.ru/382-dom-gde-proshlo-detstvo/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/383-v-gostyakh-kak-doma/?$	https://shag-navstrechu.ru/383-v-gostyakh-kak-doma/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/385-teper-v-kroksakh/?$	https://shag-navstrechu.ru/385-teper-v-kroksakh/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/386-stereokids/?$	https://shag-navstrechu.ru/386-stereokids/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/387-july-14/?$	https://shag-navstrechu.ru/387-july-14/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/388-ishchem-voinov-s-chistymi-serdtsami/?$	https://shag-navstrechu.ru/388-ishchem-voinov-s-chistymi-serdtsami/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/39-poseshhenie-zoologicheskogo-muzeya/?$	https://shag-navstrechu.ru/39-poseshhenie-zoologicheskogo-muzeya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/390-shkolnyj-proekt-na-globalgiving/?$	https://shag-navstrechu.ru/390-shkolnyj-proekt-na-globalgiving/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/391-leto-prodolzhaetsya/?$	https://shag-navstrechu.ru/391-leto-prodolzhaetsya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/392-konevets/?$	https://shag-navstrechu.ru/392-konevets/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/393-milkybar-2/?$	https://shag-navstrechu.ru/393-milkybar-2/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/395-sutoko-ryadok/?$	https://shag-navstrechu.ru/395-sutoko-ryadok/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/397-poslednij-den-leta/?$	https://shag-navstrechu.ru/397-poslednij-den-leta/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/398-letayushchie-deti/?$	https://shag-navstrechu.ru/398-letayushchie-deti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/399-bez-chuvstv/?$	https://shag-navstrechu.ru/399-bez-chuvstv/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/4-partners/?$	https://shag-navstrechu.ru/4-partners/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/40-ldetskoe-vremyar-v-loft-proekte-letazhir-zanyatie-po-sozdaniyu-obemnyx-figur/?$	https://shag-navstrechu.ru/40-ldetskoe-vremyar-v-loft-proekte-letazhir-zanyatie-po-sozdaniyu-obemnyx-figur/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/400-puteshestvie-v-skazku/?$	https://shag-navstrechu.ru/400-puteshestvie-v-skazku/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/400/?$	https://shag-navstrechu.ru/400-2/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/401-globalgiving-report/?$	https://shag-navstrechu.ru/401-globalgiving-report/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/402-rekonstruktsiya-shuma/?$	https://shag-navstrechu.ru/402-rekonstruktsiya-shuma/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/402/?$	https://shag-navstrechu.ru/402-2/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/403-lush-i-shag-navstrechu/?$	https://shag-navstrechu.ru/403-lush-i-shag-navstrechu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/404-nam-10-let/?$	https://shag-navstrechu.ru/404-nam-10-let/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/405-shirokaya-maslenitsa/?$	https://shag-navstrechu.ru/405-shirokaya-maslenitsa/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/406-den-krasoty-i-schastya/?$	https://shag-navstrechu.ru/406-den-krasoty-i-schastya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/407-krasochnyj-happylon/?$	https://shag-navstrechu.ru/407-krasochnyj-happylon/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/408-evgeniya-slav/?$	https://shag-navstrechu.ru/408-evgeniya-slav/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/409-ismailova-lejla/?$	https://shag-navstrechu.ru/409-ismailova-lejla/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/41-v-gosti-v-detskij-dom-priexala-teatr-studiya-ligrishher/?$	https://shag-navstrechu.ru/41-v-gosti-v-detskij-dom-priexala-teatr-studiya-ligrishher/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/412-kilin-vladimir/?$	https://shag-navstrechu.ru/412-kilin-vladimir/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/413-betekhtina-mariya/?$	https://shag-navstrechu.ru/413-betekhtina-mariya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/414-davydkina-liliya/?$	https://shag-navstrechu.ru/414-davydkina-liliya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/419-dudina-olga/?$	https://shag-navstrechu.ru/419-dudina-olga/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/42-vizit-gruppy-nemeczkix-shkolnikov/?$	https://shag-navstrechu.ru/42-vizit-gruppy-nemeczkix-shkolnikov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/420-samojlova-elena/?$	https://shag-navstrechu.ru/420-samojlova-elena/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/421-serebryanskaya-varvara/?$	https://shag-navstrechu.ru/421-serebryanskaya-varvara/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/425-kondereva-olga/?$	https://shag-navstrechu.ru/425-kondereva-olga/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/426-simkina-anna/?$	https://shag-navstrechu.ru/426-simkina-anna/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/43-ekskursiya-v-zoopark/?$	https://shag-navstrechu.ru/43-ekskursiya-v-zoopark/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/430-zvanye-gosti/?$	https://shag-navstrechu.ru/430-zvanye-gosti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/431-zhizn-stoit-togo-chtoby-zhit/?$	https://shag-navstrechu.ru/431-zhizn-stoit-togo-chtoby-zhit/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/432-zoologicheskij-muzej/?$	https://shag-navstrechu.ru/432-zoologicheskij-muzej/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/433-deti-i-zvuki/?$	https://shag-navstrechu.ru/433-deti-i-zvuki/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/434-kompleksnaya-reabilitatsiya/?$	https://shag-navstrechu.ru/434-kompleksnaya-reabilitatsiya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/435-dolgozhdannyj-den-rozhdeniya/?$	https://shag-navstrechu.ru/435-dolgozhdannyj-den-rozhdeniya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/436-razyskivaetsya-bukhgalter/?$	https://shag-navstrechu.ru/436-razyskivaetsya-bukhgalter/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/438-u-nashikh-detej-poyavilis-korsety-i-tutora/?$	https://shag-navstrechu.ru/438-u-nashikh-detej-poyavilis-korsety-i-tutora/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/439-lechebnaya-fizkultura/?$	https://shag-navstrechu.ru/439-lechebnaya-fizkultura/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/44-konczert-pod-otkrytym-nebom/?$	https://shag-navstrechu.ru/44-konczert-pod-otkrytym-nebom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/440-master-klass-po-lepke-iz-plastilina/?$	https://shag-navstrechu.ru/440-master-klass-po-lepke-iz-plastilina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/441-spasibo-vam-dorogie-nashi-volshebniki/?$	https://shag-navstrechu.ru/441-spasibo-vam-dorogie-nashi-volshebniki/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/445-zakonchennoe-detstvo/?$	https://shag-navstrechu.ru/445-zakonchennoe-detstvo/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/449-festival-solar-systo-2014/?$	https://shag-navstrechu.ru/449-festival-solar-systo-2014/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/45-deti-vpervye-uvideli-more/?$	https://shag-navstrechu.ru/45-deti-vpervye-uvideli-more/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/453-my-vesennim-teplym-dnem-v-zoopark-gulyat-idem/?$	https://shag-navstrechu.ru/453-my-vesennim-teplym-dnem-v-zoopark-gulyat-idem/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/457-utrennij-krug/?$	https://shag-navstrechu.ru/457-utrennij-krug/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/458-trening-soprovozhdenie-detej-na-kolyaskakh/?$	https://shag-navstrechu.ru/458-trening-soprovozhdenie-detej-na-kolyaskakh/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/46-graffiti-detyam/?$	https://shag-navstrechu.ru/46-graffiti-detyam/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/460-nakonets-poshla/?$	https://shag-navstrechu.ru/460-nakonets-poshla/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/462-zhiraf-klyaksy-i-doma/?$	https://shag-navstrechu.ru/462-zhiraf-klyaksy-i-doma/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/463-smena-bankovskikh-rekvizitov/?$	https://shag-navstrechu.ru/463-smena-bankovskikh-rekvizitov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/465-nalazhivanie-sotrudnichestva/?$	https://shag-navstrechu.ru/465-nalazhivanie-sotrudnichestva/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/466-proekt-blago-ru-ob-yavlyaet-konkurs/?$	https://shag-navstrechu.ru/466-proekt-blago-ru-ob-yavlyaet-konkurs/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/47-segodnya-my-ezdili-v-petrodvorecz/?$	https://shag-navstrechu.ru/47-segodnya-my-ezdili-v-petrodvorecz/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/470-zovu-vas-v-priklyuchenie-mumi-troll/?$	https://shag-navstrechu.ru/470-zovu-vas-v-priklyuchenie-mumi-troll/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/471-dni-otkrytykh-dverej-v-nko/?$	https://shag-navstrechu.ru/471-dni-otkrytykh-dverej-v-nko/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/473-dashe-melevoj-ispolnilos-15-let/?$	https://shag-navstrechu.ru/473-dashe-melevoj-ispolnilos-15-let/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/475-park-batuty-i-solntse/?$	https://shag-navstrechu.ru/475-park-batuty-i-solntse/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/479-leto-schaste-kanikuly/?$	https://shag-navstrechu.ru/479-leto-schaste-kanikuly/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/48-blagotvoritelnyj-konczert/?$	https://shag-navstrechu.ru/48-blagotvoritelnyj-konczert/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/480-specialyoga-v-gosti-k-nam-prikhodit/?$	https://shag-navstrechu.ru/480-specialyoga-v-gosti-k-nam-prikhodit/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/481-na-teplokhode-muzyka-igraet/?$	https://shag-navstrechu.ru/481-na-teplokhode-muzyka-igraet/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/482-ii-festival-vozdushnykh-zmeev-v-gorode-pushkin/?$	https://shag-navstrechu.ru/482-ii-festival-vozdushnykh-zmeev-v-gorode-pushkin/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/483-podarok-ot-diany/?$	https://shag-navstrechu.ru/483-podarok-ot-diany/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/485-o-sashke-pyshkine/?$	https://shag-navstrechu.ru/485-o-sashke-pyshkine/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/487-abasheva-sofya/?$	https://shag-navstrechu.ru/487-abasheva-sofya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/488-petrova-kristina/?$	https://shag-navstrechu.ru/488-petrova-kristina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/489-ermolinskaya-anastasiya/?$	https://shag-navstrechu.ru/489-ermolinskaya-anastasiya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/49-v-nashem-dvore-zvuchali-gitara-i-flejta/?$	https://shag-navstrechu.ru/49-v-nashem-dvore-zvuchali-gitara-i-flejta/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/490-dnevnik-letnego-lagerya-chast-1/?$	https://shag-navstrechu.ru/490-dnevnik-letnego-lagerya-chast-1/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/491-letnij-lager-chast-2/?$	https://shag-navstrechu.ru/491-letnij-lager-chast-2/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/493-muzykalnaya-progulka/?$	https://shag-navstrechu.ru/493-muzykalnaya-progulka/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/495-dnevnik-letnego-lagerya-chast-3/?$	https://shag-navstrechu.ru/495-dnevnik-letnego-lagerya-chast-3/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/496-dnevnik-letnego-lagerya-zaklyuchenie/?$	https://shag-navstrechu.ru/496-dnevnik-letnego-lagerya-zaklyuchenie/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/497-internatsionalnoe-leto/?$	https://shag-navstrechu.ru/497-internatsionalnoe-leto/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/499-roman-bykov/?$	https://shag-navstrechu.ru/499-roman-bykov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/5-address/?$	https://shag-navstrechu.ru/5-address/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/500-razvivaem-motoriku/?$	https://shag-navstrechu.ru/500-razvivaem-motoriku/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/502-sasha-pankratov/?$	https://shag-navstrechu.ru/502-sasha-pankratov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/505-vanya-zolotov/?$	https://shag-navstrechu.ru/505-vanya-zolotov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/506-vlad-efimov/?$	https://shag-navstrechu.ru/506-vlad-efimov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/507-vitya-gajkin/?$	https://shag-navstrechu.ru/507-vitya-gajkin/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/509-nezabyvaemye-vpechatleniya-o-volonterstve/?$	https://shag-navstrechu.ru/509-nezabyvaemye-vpechatleniya-o-volonterstve/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/51-na-ekskursiyu-v-pushkin/?$	https://shag-navstrechu.ru/51-na-ekskursiyu-v-pushkin/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/511-khudozhniki-na-plenere/?$	https://shag-navstrechu.ru/511-khudozhniki-na-plenere/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/512-otdykh-v-parke/?$	https://shag-navstrechu.ru/512-otdykh-v-parke/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/513-odnazhdy-zharkim-letnim-dnem/?$	https://shag-navstrechu.ru/513-odnazhdy-zharkim-letnim-dnem/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/515-puteshestvie-v-upsala-park/?$	https://shag-navstrechu.ru/515-puteshestvie-v-upsala-park/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/516-dzyn-dzyn/?$	https://shag-navstrechu.ru/516-dzyn-dzyn/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/517-peshaya-progulka-v-park/?$	https://shag-navstrechu.ru/517-peshaya-progulka-v-park/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/519-vam-navernyaka-interesno-uznat/?$	https://shag-navstrechu.ru/519-vam-navernyaka-interesno-uznat/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/52-vstrechaemsya-v-subbotu-vecherom/?$	https://shag-navstrechu.ru/52-vstrechaemsya-v-subbotu-vecherom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/520-poezdka-v-ushkovo/?$	https://shag-navstrechu.ru/520-poezdka-v-ushkovo/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/521-a-u-nas-novyj-yashchik-dlya-pozhertvovanij/?$	https://shag-navstrechu.ru/521-a-u-nas-novyj-yashchik-dlya-pozhertvovanij/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/522-blagotvoritelnyj-festival-anton-tut-ryadom/?$	https://shag-navstrechu.ru/522-blagotvoritelnyj-festival-anton-tut-ryadom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/523-dnevnik-dachnogo-otdykha/?$	https://shag-navstrechu.ru/523-dnevnik-dachnogo-otdykha/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/524-obychnyj-neobychnyj-den/?$	https://shag-navstrechu.ru/524-obychnyj-neobychnyj-den/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/525-puteshestvie-v-podvodnyj-mir/?$	https://shag-navstrechu.ru/525-puteshestvie-v-podvodnyj-mir/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/526-shag-navstrechu-idet-na-radio/?$	https://shag-navstrechu.ru/526-shag-navstrechu-idet-na-radio/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/527-muzykalnaya-progulka-s-biostar/?$	https://shag-navstrechu.ru/527-muzykalnaya-progulka-s-biostar/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/528-pokhod-v-teatr/?$	https://shag-navstrechu.ru/528-pokhod-v-teatr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/529-den-rozhdeniya/?$	https://shag-navstrechu.ru/529-den-rozhdeniya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/53-spasibo-vsem/?$	https://shag-navstrechu.ru/53-spasibo-vsem/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/530-kruzhatsya-listya-i-karuseli/?$	https://shag-navstrechu.ru/530-kruzhatsya-listya-i-karuseli/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/531-studiya-da/?$	https://shag-navstrechu.ru/531-studiya-da/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/532-rebenok-rastsvetaet/?$	https://shag-navstrechu.ru/532-rebenok-rastsvetaet/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/534-uspeshnaya-operatsiya/?$	https://shag-navstrechu.ru/534-uspeshnaya-operatsiya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/535-muzej-istorii-telefona/?$	https://shag-navstrechu.ru/535-muzej-istorii-telefona/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/536-poezdka-v-pni/?$	https://shag-navstrechu.ru/536-poezdka-v-pni/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/537-noyabrskie-kanikuly/?$	https://shag-navstrechu.ru/537-noyabrskie-kanikuly/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/538-lena-ivushina/?$	https://shag-navstrechu.ru/538-lena-ivushina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/539-kseniya-korneva/?$	https://shag-navstrechu.ru/539-kseniya-korneva/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/54-novogodnyaya-blagotvoritelnaya-lotereya/?$	https://shag-navstrechu.ru/54-novogodnyaya-blagotvoritelnaya-lotereya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/540-kirill-malets/?$	https://shag-navstrechu.ru/540-kirill-malets/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/541-korochkin-sasha/?$	https://shag-navstrechu.ru/541-korochkin-sasha/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/543-yasha-volk/?$	https://shag-navstrechu.ru/543-yasha-volk/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/545-sasha-larin/?$	https://shag-navstrechu.ru/545-sasha-larin/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/547-alina-guslina/?$	https://shag-navstrechu.ru/547-alina-guslina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/548-liza-gorkina/?$	https://shag-navstrechu.ru/548-liza-gorkina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/549-danilova-dasha/?$	https://shag-navstrechu.ru/549-danilova-dasha/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/55-prixodi-rabotat-volontyorom-v-detskij-dom/?$	https://shag-navstrechu.ru/55-prixodi-rabotat-volontyorom-v-detskij-dom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/550-nastya-tereshkova/?$	https://shag-navstrechu.ru/550-nastya-tereshkova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/551-anna-kalukina/?$	https://shag-navstrechu.ru/551-anna-kalukina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/552-kirill-danichev/?$	https://shag-navstrechu.ru/552-kirill-danichev/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/554-oleg-kotin/?$	https://shag-navstrechu.ru/554-oleg-kotin/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/556-igor-koshkin/?$	https://shag-navstrechu.ru/556-igor-koshkin/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/558-sasha-yufgin/?$	https://shag-navstrechu.ru/558-sasha-yufgin/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/559-dima-sitnik/?$	https://shag-navstrechu.ru/559-dima-sitnik/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/56-v-loft-proekte-etazhi/?$	https://shag-navstrechu.ru/56-v-loft-proekte-etazhi/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/560-olga-ladoga/?$	https://shag-navstrechu.ru/560-olga-ladoga/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/561-diana-sverova/?$	https://shag-navstrechu.ru/561-diana-sverova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/562-zhenya-tipina/?$	https://shag-navstrechu.ru/562-zhenya-tipina/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/563-agusha-kudakova/?$	https://shag-navstrechu.ru/563-agusha-kudakova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/564-volontjorskaya-subbota/?$	https://shag-navstrechu.ru/564-volontjorskaya-subbota/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/567-dni-rozhdeniya-noyabr/?$	https://shag-navstrechu.ru/567-dni-rozhdeniya-noyabr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/568-5-dekabrya-mezhdunarodnyj-den-volonterov/?$	https://shag-navstrechu.ru/568-5-dekabrya-mezhdunarodnyj-den-volonterov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/569-po-sledam-impressionistov/?$	https://shag-navstrechu.ru/569-po-sledam-impressionistov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/57-maslenicza-v-detckom-dome/?$	https://shag-navstrechu.ru/57-maslenicza-v-detckom-dome/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/570-vakansiya-rukovoditelya-meditsinskogo-otdela/?$	https://shag-navstrechu.ru/570-vakansiya-rukovoditelya-meditsinskogo-otdela/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/571-shag-navstrechu-10-let-delitsya-svoim-teplom/?$	https://shag-navstrechu.ru/571-shag-navstrechu-10-let-delitsya-svoim-teplom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/572-volontjorskij-den/?$	https://shag-navstrechu.ru/572-volontjorskij-den/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/573-vykhodnye-s-roditelyami/?$	https://shag-navstrechu.ru/573-vykhodnye-s-roditelyami/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/574-blagotvoritelnaya-victorina-yuf-spbgu/?$	https://shag-navstrechu.ru/574-blagotvoritelnaya-victorina-yuf-spbgu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/575-yarmarka-chudes/?$	https://shag-navstrechu.ru/575-yarmarka-chudes/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/576-shag-navstrechu-10-let-delitsya-svoim-teplom/?$	https://shag-navstrechu.ru/576-shag-navstrechu-10-let-delitsya-svoim-teplom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/577-rozhdestvenskie-kanikuly/?$	https://shag-navstrechu.ru/577-rozhdestvenskie-kanikuly/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/578-sad-rajskikh-ptits-i-babochek-mindo/?$	https://shag-navstrechu.ru/578-sad-rajskikh-ptits-i-babochek-mindo/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/579-dni-rozhdeniya-detej-yanvar/?$	https://shag-navstrechu.ru/579-dni-rozhdeniya-detej-yanvar/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/58-proshhanie-s-zimoj/?$	https://shag-navstrechu.ru/58-proshhanie-s-zimoj/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/580-fevral-dostat-chernil-i-plakat/?$	https://shag-navstrechu.ru/580-fevral-dostat-chernil-i-plakat/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/582-detskaya-biblioteka-g-pavlovska/?$	https://shag-navstrechu.ru/582-detskaya-biblioteka-g-pavlovska/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/583-sovmestnaya-aktsiya-s-ooo-bukvoed/?$	https://shag-navstrechu.ru/583-sovmestnaya-aktsiya-s-ooo-bukvoed/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/585-muzykalnoe-puteshestvie-v-pustote/?$	https://shag-navstrechu.ru/585-muzykalnoe-puteshestvie-v-pustote/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/586-dni-rozhdeniya-detej-fevral/?$	https://shag-navstrechu.ru/586-dni-rozhdeniya-detej-fevral/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/587-kulinarnyj-master-klass-dlya-oksany-v-restorane-italy/?$	https://shag-navstrechu.ru/587-kulinarnyj-master-klass-dlya-oksany-v-restorane-italy/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/588-muzykalnoe-vystuplenie-detskogo-kollektiva-iz-spb-gbou-litsej-iskusstv-sankt-peterburg/?$	https://shag-navstrechu.ru/588-muzykalnoe-vystuplenie-detskogo-kollektiva-iz-spb-gbou-litsej-iskusstv-sankt-peterburg/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/589-organizatsiya-shag-navstrechu-prazdnuet-svoe-odinadtsatiletie/?$	https://shag-navstrechu.ru/589-organizatsiya-shag-navstrechu-prazdnuet-svoe-odinadtsatiletie/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/59-festival-v-klube-place/?$	https://shag-navstrechu.ru/59-festival-v-klube-place/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/590-master-klass-po-izgotovleniyu-vesennikh-ptichek/?$	https://shag-navstrechu.ru/590-master-klass-po-izgotovleniyu-vesennikh-ptichek/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/592-den-rozhdeniya-spb-boo-shag-navstrechu/?$	https://shag-navstrechu.ru/592-den-rozhdeniya-spb-boo-shag-navstrechu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/593-blagotvoritelnyj-vesennij-gorodskoj-lager-shag-navstrechu-peterburgu/?$	https://shag-navstrechu.ru/593-blagotvoritelnyj-vesennij-gorodskoj-lager-shag-navstrechu-peterburgu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/594-osobaya-joga-dlya-osobykh-detej/?$	https://shag-navstrechu.ru/594-osobaya-joga-dlya-osobykh-detej/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/595-gorodskoj-lager-shag-navstrechu-peterburgu/?$	https://shag-navstrechu.ru/595-gorodskoj-lager-shag-navstrechu-peterburgu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/596-ustanovka-yashchika-dlya-sbora-pozhertvovanij-v-salone-krasoty-podsolnukh/?$	https://shag-navstrechu.ru/596-ustanovka-yashchika-dlya-sbora-pozhertvovanij-v-salone-krasoty-podsolnukh/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/597-pozhertvovaniya-cherez-formu-yandeks-vmeste/?$	https://shag-navstrechu.ru/597-pozhertvovaniya-cherez-formu-yandeks-vmeste/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/598-dni-rozhdeniya-detej-mart/?$	https://shag-navstrechu.ru/598-dni-rozhdeniya-detej-mart/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/599-spasibo-nashim-dobrym-druzyam/?$	https://shag-navstrechu.ru/599-spasibo-nashim-dobrym-druzyam/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/6-donors/?$	https://shag-navstrechu.ru/6-donors/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/60-lepka-glina-terapiya/?$	https://shag-navstrechu.ru/60-lepka-glina-terapiya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/600-teatralnoe-predstavlenie-ot-litsej-iskusstv-sankt-peterburg/?$	https://shag-navstrechu.ru/600-teatralnoe-predstavlenie-ot-litsej-iskusstv-sankt-peterburg/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/601-yashe-16-let/?$	https://shag-navstrechu.ru/601-yashe-16-let/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/604-tsybina-olga/?$	https://shag-navstrechu.ru/604-tsybina-olga/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/605-ozerova-evgeniya/?$	https://shag-navstrechu.ru/605-ozerova-evgeniya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/607-sebko-anna/?$	https://shag-navstrechu.ru/607-sebko-anna/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/608-tsirkovoe-vystuplenie/?$	https://shag-navstrechu.ru/608-tsirkovoe-vystuplenie/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/609-ustanovka-yashchika-dlya-pozhertvovanij-v-salone-anabel/?$	https://shag-navstrechu.ru/609-ustanovka-yashchika-dlya-pozhertvovanij-v-salone-anabel/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/61-21-marta-mezhdunarodnyj-den-lyudej-s-sindromom-dauna/?$	https://shag-navstrechu.ru/61-21-marta-mezhdunarodnyj-den-lyudej-s-sindromom-dauna/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/612-istoriya-o-bolshom-geparde-i-dobrykh-vrachakh/?$	https://shag-navstrechu.ru/612-istoriya-o-bolshom-geparde-i-dobrykh-vrachakh/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/613-chudesnye-suveniry-ot-mario-shop/?$	https://shag-navstrechu.ru/613-chudesnye-suveniry-ot-mario-shop/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/614-poezdka-v-muzej-varezhka/?$	https://shag-navstrechu.ru/614-poezdka-v-muzej-varezhka/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/615-priezd-nemetskikh-shkolnikov/?$	https://shag-navstrechu.ru/615-priezd-nemetskikh-shkolnikov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/616-poseshchenie-biblioteki/?$	https://shag-navstrechu.ru/616-poseshchenie-biblioteki/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/617-shvejtsarskij-stranstvuyushchij-tsirk-nikol-i-martin-v-lenekspo/?$	https://shag-navstrechu.ru/617-shvejtsarskij-stranstvuyushchij-tsirk-nikol-i-martin-v-lenekspo/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/618-dve-nedeli-khuliganstva-i-vostorga/?$	https://shag-navstrechu.ru/618-dve-nedeli-khuliganstva-i-vostorga/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/619-osobaya-joga-dlya-osobykh-detej/?$	https://shag-navstrechu.ru/619-osobaya-joga-dlya-osobykh-detej/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/62-v-mixajlovskij-teatr-na-balet/?$	https://shag-navstrechu.ru/62-v-mixajlovskij-teatr-na-balet/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/620-dni-rozhdeniya-detej-aprel/?$	https://shag-navstrechu.ru/620-dni-rozhdeniya-detej-aprel/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/621-respublika-koshek/?$	https://shag-navstrechu.ru/621-respublika-koshek/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/624-ustanovka-yashchika-dlya-sbora-pozhertvovanij-v-restorane-syrnaya-lavka/?$	https://shag-navstrechu.ru/624-ustanovka-yashchika-dlya-sbora-pozhertvovanij-v-restorane-syrnaya-lavka/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/625-nashi-sovmestnye-uspekhi/?$	https://shag-navstrechu.ru/625-nashi-sovmestnye-uspekhi/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/626-majskaya-progulka/?$	https://shag-navstrechu.ru/626-majskaya-progulka/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/627-balnye-tantsy-na-kolyaskakh/?$	https://shag-navstrechu.ru/627-balnye-tantsy-na-kolyaskakh/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/628-pomogaem-tvorya/?$	https://shag-navstrechu.ru/628-pomogaem-tvorya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/629-my-opyat-na-allee-zontikov/?$	https://shag-navstrechu.ru/629-my-opyat-na-allee-zontikov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/63-iz-germanii-k-nam-v-gosti/?$	https://shag-navstrechu.ru/63-iz-germanii-k-nam-v-gosti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/630-deti-leta-lager-v-derevne-avkolevo-ili-nedelya-druzhby-i-schastya/?$	https://shag-navstrechu.ru/630-deti-leta-lager-v-derevne-avkolevo-ili-nedelya-druzhby-i-schastya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/631-v-rukakh-derzhali-cherepakhu-gladili-khorka/?$	https://shag-navstrechu.ru/631-v-rukakh-derzhali-cherepakhu-gladili-khorka/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/632-geek-picnic-v-gorode/?$	https://shag-navstrechu.ru/632-geek-picnic-v-gorode/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/633-my-vmeste-igraem-rok-7/?$	https://shag-navstrechu.ru/633-my-vmeste-igraem-rok-7/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/634-proshchanie-s-paryashchimi-zontikami/?$	https://shag-navstrechu.ru/634-proshchanie-s-paryashchimi-zontikami/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/635-geek-picnic/?$	https://shag-navstrechu.ru/635-geek-picnic/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/636-tennisnyj-turnir-shag-navstrechu/?$	https://shag-navstrechu.ru/636-tennisnyj-turnir-shag-navstrechu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/637-aktsiya-po-sboru-produktov-v-seti-supermarketov-prisma/?$	https://shag-navstrechu.ru/637-aktsiya-po-sboru-produktov-v-seti-supermarketov-prisma/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/638-dni-rozhdeniya-detej-iyun/?$	https://shag-navstrechu.ru/638-dni-rozhdeniya-detej-iyun/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/639-kafe-bar-kakie-lyudi-ili-kak-my-vpervye-poprobovali-morozhenoe/?$	https://shag-navstrechu.ru/639-kafe-bar-kakie-lyudi-ili-kak-my-vpervye-poprobovali-morozhenoe/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/64-lmy-vmeste-igraem-rokr-2/?$	https://shag-navstrechu.ru/64-lmy-vmeste-igraem-rokr-2/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/640-minutka-blagodarnosti/?$	https://shag-navstrechu.ru/640-minutka-blagodarnosti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/641-aktsiya-v-supermarkete-prisma-ili-o-tom-kak-my-gotovilis-k-lageryu-v-g-luga/?$	https://shag-navstrechu.ru/641-aktsiya-v-supermarkete-prisma-ili-o-tom-kak-my-gotovilis-k-lageryu-v-g-luga/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/642-deti-leta-lager-v-luge/?$	https://shag-navstrechu.ru/642-deti-leta-lager-v-luge/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/643-dni-rozhdeniya-detej-iyul/?$	https://shag-navstrechu.ru/643-dni-rozhdeniya-detej-iyul/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/644-festival-anton-tut-ryadom/?$	https://shag-navstrechu.ru/644-festival-anton-tut-ryadom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/645-deti-leta-gorodskoj-lager/?$	https://shag-navstrechu.ru/645-deti-leta-gorodskoj-lager/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/647-dni-rozhdeniya-detej-avgust/?$	https://shag-navstrechu.ru/647-dni-rozhdeniya-detej-avgust/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/648-my-snova-v-gostyakh-u-varezhki/?$	https://shag-navstrechu.ru/648-my-snova-v-gostyakh-u-varezhki/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/649-khromenkov-ivan/?$	https://shag-navstrechu.ru/649-khromenkov-ivan/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/65-blagotvoritelnyj-piknik/?$	https://shag-navstrechu.ru/65-blagotvoritelnyj-piknik/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/650-osennij-zvezdolistopad/?$	https://shag-navstrechu.ru/650-osennij-zvezdolistopad/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/651-skazka-o-volshebnikakh/?$	https://shag-navstrechu.ru/651-skazka-o-volshebnikakh/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/652-minutka-radosti-i-pechali/?$	https://shag-navstrechu.ru/652-minutka-radosti-i-pechali/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/653-speshite-delat-dobro/?$	https://shag-navstrechu.ru/653-speshite-delat-dobro/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/654-dni-rozhdeniya-detej-oktyabr/?$	https://shag-navstrechu.ru/654-dni-rozhdeniya-detej-oktyabr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/657-vystavka-khudozhniki-osobye-deti/?$	https://shag-navstrechu.ru/657-vystavka-khudozhniki-osobye-deti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/658-kanikuly-v-gorode-lager-noyabr/?$	https://shag-navstrechu.ru/658-kanikuly-v-gorode-lager-noyabr/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/66-blagotvoritelnyj-rok-festival-v-pavlovske/?$	https://shag-navstrechu.ru/66-blagotvoritelnyj-rok-festival-v-pavlovske/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/660-vam-syuda/?$	https://shag-navstrechu.ru/660-vam-syuda/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/661-svechnye-masterskie/?$	https://shag-navstrechu.ru/661-svechnye-masterskie/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/67-akcziya-v-ashane/?$	https://shag-navstrechu.ru/67-akcziya-v-ashane/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/68-dobrie-pokupki/?$	https://shag-navstrechu.ru/68-dobrie-pokupki/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/69-26-iyunya-blagotvoritelnyj-piknik/?$	https://shag-navstrechu.ru/69-26-iyunya-blagotvoritelnyj-piknik/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/7-recomendations/?$	https://shag-navstrechu.ru/7-recomendations/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/70-poezdka-v-aleksandrijskij-park/?$	https://shag-navstrechu.ru/70-poezdka-v-aleksandrijskij-park/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/71-progulka-v-pavlovskom-parke/?$	https://shag-navstrechu.ru/71-progulka-v-pavlovskom-parke/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/72-petergof-ne-opyat-a-snova/?$	https://shag-navstrechu.ru/72-petergof-ne-opyat-a-snova/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/75-spasibo-xoroshop/?$	https://shag-navstrechu.ru/75-spasibo-xoroshop/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/77-proshel-trening-dlya-nashix-speczialistov/?$	https://shag-navstrechu.ru/77-proshel-trening-dlya-nashix-speczialistov/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/79-otmechaem-den-uchitelya/?$	https://shag-navstrechu.ru/79-otmechaem-den-uchitelya/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/8-rasxod-sredstv/?$	https://shag-navstrechu.ru/8-rasxod-sredstv/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/80-blagotvoritelnyj-dzhazovyj-mini-konczert/?$	https://shag-navstrechu.ru/80-blagotvoritelnyj-dzhazovyj-mini-konczert/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/81-osennij-dzhaz/?$	https://shag-navstrechu.ru/81-osennij-dzhaz/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/82-kartiny-nashix-podopechnyx-na-vystavke-qautsajderburgq/?$	https://shag-navstrechu.ru/82-kartiny-nashix-podopechnyx-na-vystavke-qautsajderburgq/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/83-poezdka-v-dzhazovuyu-filarmoniyu/?$	https://shag-navstrechu.ru/83-poezdka-v-dzhazovuyu-filarmoniyu/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/85-novye-texnologii-v-rabote-s-detmi-invalidami/?$	https://shag-navstrechu.ru/85-novye-texnologii-v-rabote-s-detmi-invalidami/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/87-ekskursiya-v-qdetskuyu-derevnyu-sosq/?$	https://shag-navstrechu.ru/87-ekskursiya-v-qdetskuyu-derevnyu-sosq/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/88-osennij-dzhaz-dlya-samyx-malenkix/?$	https://shag-navstrechu.ru/88-osennij-dzhaz-dlya-samyx-malenkix/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/89-stan-dedom-morozom/?$	https://shag-navstrechu.ru/89-stan-dedom-morozom/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/9-under-construction/?$	https://shag-navstrechu.ru/9-under-construction/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/90-vyxod-v-gorod/?$	https://shag-navstrechu.ru/90-vyxod-v-gorod/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/91-shag-navstrechu-uchastvujte/?$	https://shag-navstrechu.ru/91-shag-navstrechu-uchastvujte/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/92-yarmarka-lpeterburzhczy-peterburgur/?$	https://shag-navstrechu.ru/92-yarmarka-lpeterburzhczy-peterburgur/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/93-kapoejra-v-detskom-dome/?$	https://shag-navstrechu.ru/93-kapoejra-v-detskom-dome/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/94-den-blagodareniya-dlya-blagotvoritelnosti/?$	https://shag-navstrechu.ru/94-den-blagodareniya-dlya-blagotvoritelnosti/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/96-baraxolka-v-vegan-klube/?$	https://shag-navstrechu.ru/96-baraxolka-v-vegan-klube/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/97-poezdka-v-teatr-kukly/?$	https://shag-navstrechu.ru/97-poezdka-v-teatr-kukly/	[R=301,NC,L]
-RedirectMatch 301  /news/our-news/item/98-lshag-navstrechur-prinyal-uchastie-v-festivale-ldobryj-piterr/?$	https://shag-navstrechu.ru/98-lshag-navstrechur-prinyal-uchastie-v-festivale-ldobryj-piterr/	[R=301,NC,L]
+RedirectMatch 301  /news/our-news  https://shag-navstrechu.ru/category/nashi-novosti/ 
+RedirectMatch 301  /news/our-news/item/10-thanksgiving-day/?$	https://shag-navstrechu.ru/10-thanksgiving-day/	
+RedirectMatch 301  /news/our-news/item/100-novogodnyaya-blagotvoritelnaya-lotereya-v-spbgu/?$	https://shag-navstrechu.ru/100-novogodnyaya-blagotvoritelnaya-lotereya-v-spbgu/	
+RedirectMatch 301  /news/our-news/item/101-ocherednoj-vizit-v-gosti-k-kuklam/?$	https://shag-navstrechu.ru/101-ocherednoj-vizit-v-gosti-k-kuklam/	
+RedirectMatch 301  /news/our-news/item/102-klounada-v-detskom-dome/?$	https://shag-navstrechu.ru/102-klounada-v-detskom-dome/	
+RedirectMatch 301  /news/our-news/item/103-itogi-blagotvoritelnoj-baraxolki/?$	https://shag-navstrechu.ru/103-itogi-blagotvoritelnoj-baraxolki/	
+RedirectMatch 301  /news/our-news/item/104-lblagotvoritelnyj-aukczionr-na-fakultete-socziologii/?$	https://shag-navstrechu.ru/104-lblagotvoritelnyj-aukczionr-na-fakultete-socziologii/	
+RedirectMatch 301  /news/our-news/item/105-mezhdunarodnyj-den-volontera/?$	https://shag-navstrechu.ru/105-mezhdunarodnyj-den-volontera/	
+RedirectMatch 301  /news/our-news/item/106-podvedenie-itogov-ldobrogo-piterar/?$	https://shag-navstrechu.ru/106-podvedenie-itogov-ldobrogo-piterar/	
+RedirectMatch 301  /news/our-news/item/107-mechty-sbyvayutsya-pod-novyj-god/?$	https://shag-navstrechu.ru/107-mechty-sbyvayutsya-pod-novyj-god/	
+RedirectMatch 301  /news/our-news/item/108-s-novym-godom/?$	https://shag-navstrechu.ru/108-s-novym-godom/	
+RedirectMatch 301  /news/our-news/item/109-novogodnyaya-skazka-iz-chemodana/?$	https://shag-navstrechu.ru/109-novogodnyaya-skazka-iz-chemodana/	
+RedirectMatch 301  /news/our-news/item/11-dobry-piter-1/?$	https://shag-navstrechu.ru/11-dobry-piter-1/	
+RedirectMatch 301  /news/our-news/item/110-qprostye-veshhiq/?$	https://shag-navstrechu.ru/110-qprostye-veshhiq/	
+RedirectMatch 301  /news/our-news/item/111-galopom-po-sugrobam/?$	https://shag-navstrechu.ru/111-galopom-po-sugrobam/	
+RedirectMatch 301  /news/our-news/item/112-qprostye-veshhiq-uspeshno-sostoyalis/?$	https://shag-navstrechu.ru/112-qprostye-veshhiq-uspeshno-sostoyalis/	
+RedirectMatch 301  /news/our-news/item/113-den-vosmoj/?$	https://shag-navstrechu.ru/113-den-vosmoj/	
+RedirectMatch 301  /news/our-news/item/114-studiya-detskoj-animaczii-ldar/?$	https://shag-navstrechu.ru/114-studiya-detskoj-animaczii-ldar/	
+RedirectMatch 301  /news/our-news/item/115-ottepel-v-ddi-4/?$	https://shag-navstrechu.ru/115-ottepel-v-ddi-4/	
+RedirectMatch 301  /news/our-news/item/116-vesyolyj-subbotnik/?$	https://shag-navstrechu.ru/116-vesyolyj-subbotnik/	
+RedirectMatch 301  /news/our-news/item/117-2-rybnyx-dnya/?$	https://shag-navstrechu.ru/117-2-rybnyx-dnya/	
+RedirectMatch 301  /news/our-news/item/118-art-terapiya-v-voskresnoj-shkole/?$	https://shag-navstrechu.ru/118-art-terapiya-v-voskresnoj-shkole/	
+RedirectMatch 301  /news/our-news/item/119-o-puteshestvii-na-mars/?$	https://shag-navstrechu.ru/119-o-puteshestvii-na-mars/	
+RedirectMatch 301  /news/our-news/item/12-vepsskij-les-2012/?$	https://shag-navstrechu.ru/12-vepsskij-les-2012/	
+RedirectMatch 301  /news/our-news/item/120-nazad-v-budushhee/?$	https://shag-navstrechu.ru/120-nazad-v-budushhee/	
+RedirectMatch 301  /news/our-news/item/121-mylnaya-subbota/?$	https://shag-navstrechu.ru/121-mylnaya-subbota/	
+RedirectMatch 301  /news/our-news/item/122-qdomostrojq-v-tretem-korpuse/?$	https://shag-navstrechu.ru/122-qdomostrojq-v-tretem-korpuse/	
+RedirectMatch 301  /news/our-news/item/123-bortprovodniki-ak-lrossiyar-snova-letyat-na-pomoshh/?$	https://shag-navstrechu.ru/123-bortprovodniki-ak-lrossiyar-snova-letyat-na-pomoshh/	
+RedirectMatch 301  /news/our-news/item/125-k-nam-priexal-nastoyashhij-orkestr/?$	https://shag-navstrechu.ru/125-k-nam-priexal-nastoyashhij-orkestr/	
+RedirectMatch 301  /news/our-news/item/126-zvonkoe-voskresene/?$	https://shag-navstrechu.ru/126-zvonkoe-voskresene/	
+RedirectMatch 301  /news/our-news/item/127-ekspedicziya-v-supermarket/?$	https://shag-navstrechu.ru/127-ekspedicziya-v-supermarket/	
+RedirectMatch 301  /news/our-news/item/128-dva-volshebnyx-dnya-nashi-gosti-nemeczkie-shkolniki/?$	https://shag-navstrechu.ru/128-dva-volshebnyx-dnya-nashi-gosti-nemeczkie-shkolniki/	
+RedirectMatch 301  /news/our-news/item/129-1000-dnej-do-sochi/?$	https://shag-navstrechu.ru/129-1000-dnej-do-sochi/	
+RedirectMatch 301  /news/our-news/item/130-vsej-semej-v-zoopark/?$	https://shag-navstrechu.ru/130-vsej-semej-v-zoopark/	
+RedirectMatch 301  /news/our-news/item/131-mumi-trolli-v-detskom-dome/?$	https://shag-navstrechu.ru/131-mumi-trolli-v-detskom-dome/	
+RedirectMatch 301  /news/our-news/item/132-prazdnik-dvora-2/?$	https://shag-navstrechu.ru/132-prazdnik-dvora-2/	
+RedirectMatch 301  /news/our-news/item/133-karnaval-na-elaginom/?$	https://shag-navstrechu.ru/133-karnaval-na-elaginom/	
+RedirectMatch 301  /news/our-news/item/134-1-iyunya-den-radosti/?$	https://shag-navstrechu.ru/134-1-iyunya-den-radosti/	
+RedirectMatch 301  /news/our-news/item/135-lmy-vmeste-igraem-rokr-3/?$	https://shag-navstrechu.ru/135-lmy-vmeste-igraem-rokr-3/	
+RedirectMatch 301  /news/our-news/item/136-den-schastya-v-tavricheskom-sadu/?$	https://shag-navstrechu.ru/136-den-schastya-v-tavricheskom-sadu/	
+RedirectMatch 301  /news/our-news/item/138-nad-rekoj-nevoj/?$	https://shag-navstrechu.ru/138-nad-rekoj-nevoj/	
+RedirectMatch 301  /news/our-news/item/139-znak-otlichiya/?$	https://shag-navstrechu.ru/139-znak-otlichiya/	
+RedirectMatch 301  /news/our-news/item/14-with-hands/?$	https://shag-navstrechu.ru/14-with-hands/	
+RedirectMatch 301  /news/our-news/item/140-v-svobodnyx-vodax-finskogo-zaliva/?$	https://shag-navstrechu.ru/140-v-svobodnyx-vodax-finskogo-zaliva/	
+RedirectMatch 301  /news/our-news/item/141-muzej-teatr-lskazkin-domr/?$	https://shag-navstrechu.ru/141-muzej-teatr-lskazkin-domr/	
+RedirectMatch 301  /news/our-news/item/142-pavlovskij-park/?$	https://shag-navstrechu.ru/142-pavlovskij-park/	
+RedirectMatch 301  /news/our-news/item/143-my-idem-na-plyazh/?$	https://shag-navstrechu.ru/143-my-idem-na-plyazh/	
+RedirectMatch 301  /news/our-news/item/144-muzej-zanimatelnoj-nauki-llabirintumr/?$	https://shag-navstrechu.ru/144-muzej-zanimatelnoj-nauki-llabirintumr/	
+RedirectMatch 301  /news/our-news/item/145-i-snova-vepsskij-les/?$	https://shag-navstrechu.ru/145-i-snova-vepsskij-les/	
+RedirectMatch 301  /news/our-news/item/146-blagotvoritelnaya-xudozhestvennaya-akcziya-ldobryj-domr/?$	https://shag-navstrechu.ru/146-blagotvoritelnaya-xudozhestvennaya-akcziya-ldobryj-domr/	
+RedirectMatch 301  /news/our-news/item/147-laxta-love/?$	https://shag-navstrechu.ru/147-laxta-love/	
+RedirectMatch 301  /news/our-news/item/148-pro-dzhinsy-spagetti-i-samostoyatelnuyu-zhizn/?$	https://shag-navstrechu.ru/148-pro-dzhinsy-spagetti-i-samostoyatelnuyu-zhizn/	
+RedirectMatch 301  /news/our-news/item/149-seminar-ot-blagotvoritelnogo-fonda-dom-ronalda-makdonalda/?$	https://shag-navstrechu.ru/149-seminar-ot-blagotvoritelnogo-fonda-dom-ronalda-makdonalda/	
+RedirectMatch 301  /news/our-news/item/150-czlp-v-pskove/?$	https://shag-navstrechu.ru/150-czlp-v-pskove/	
+RedirectMatch 301  /news/our-news/item/151-zakrytie-sezona-navigaczii/?$	https://shag-navstrechu.ru/151-zakrytie-sezona-navigaczii/	
+RedirectMatch 301  /news/our-news/item/152-syorfing-na-taiti/?$	https://shag-navstrechu.ru/152-syorfing-na-taiti/	
+RedirectMatch 301  /news/our-news/item/153-poezdka-v-serbskij-teatr/?$	https://shag-navstrechu.ru/153-poezdka-v-serbskij-teatr/	
+RedirectMatch 301  /news/our-news/item/154-krasivo-zhit-ne-zapretish/?$	https://shag-navstrechu.ru/154-krasivo-zhit-ne-zapretish/	
+RedirectMatch 301  /news/our-news/item/155-limovoyazh/?$	https://shag-navstrechu.ru/155-limovoyazh/	
+RedirectMatch 301  /news/our-news/item/157-sdelajte-pozhertvovanie-cherez-blagotvoritelnuyu-programmu-lblagorur/?$	https://shag-navstrechu.ru/157-sdelajte-pozhertvovanie-cherez-blagotvoritelnuyu-programmu-lblagorur/	
+RedirectMatch 301  /news/our-news/item/158-esli-verit-v-chudesa-oni-sluchayutsya/?$	https://shag-navstrechu.ru/158-esli-verit-v-chudesa-oni-sluchayutsya/	
+RedirectMatch 301  /news/our-news/item/160-shag-navstrechu-prinimaet-uchastie-v-festivale-dobryj-piter/?$	https://shag-navstrechu.ru/160-shag-navstrechu-prinimaet-uchastie-v-festivale-dobryj-piter/	
+RedirectMatch 301  /news/our-news/item/162-blagotvoritelnaya-baraxolka-v-vegan-klube/?$	https://shag-navstrechu.ru/162-blagotvoritelnaya-baraxolka-v-vegan-klube/	
+RedirectMatch 301  /news/our-news/item/163-novye-kompyutery-i-novye-vozmozhnosti/?$	https://shag-navstrechu.ru/163-novye-kompyutery-i-novye-vozmozhnosti/	
+RedirectMatch 301  /news/our-news/item/164-kak-ded-moroz-k-nam-v-gosti-prixodil/?$	https://shag-navstrechu.ru/164-kak-ded-moroz-k-nam-v-gosti-prixodil/	
+RedirectMatch 301  /news/our-news/item/165-novogodnyaya-skazka-v-detskom-dome/?$	https://shag-navstrechu.ru/165-novogodnyaya-skazka-v-detskom-dome/	
+RedirectMatch 301  /news/our-news/item/166-itogi-blagotvoritelnoj-baraxolki-2011/?$	https://shag-navstrechu.ru/166-itogi-blagotvoritelnoj-baraxolki-2011/	
+RedirectMatch 301  /news/our-news/item/167-o-druzyax/?$	https://shag-navstrechu.ru/167-o-druzyax/	
+RedirectMatch 301  /news/our-news/item/168-novogodnyaya-lotereya-na-yurfake/?$	https://shag-navstrechu.ru/168-novogodnyaya-lotereya-na-yurfake/	
+RedirectMatch 301  /news/our-news/item/169-chudo-sad/?$	https://shag-navstrechu.ru/169-chudo-sad/	
+RedirectMatch 301  /news/our-news/item/170-rozhdestvo-i-volshebstvo/?$	https://shag-navstrechu.ru/170-rozhdestvo-i-volshebstvo/	
+RedirectMatch 301  /news/our-news/item/171-udivitelnye-deti-i-podarki-ot-lash/?$	https://shag-navstrechu.ru/171-udivitelnye-deti-i-podarki-ot-lash/	
+RedirectMatch 301  /news/our-news/item/172-pni-9-krasnoe-selo/?$	https://shag-navstrechu.ru/172-pni-9-krasnoe-selo/	
+RedirectMatch 301  /news/our-news/item/173-poezdka-v-teatr-masterskaya/?$	https://shag-navstrechu.ru/173-poezdka-v-teatr-masterskaya/	
+RedirectMatch 301  /news/our-news/item/174-slozhno-li-mne-rabotat-v-detskom-dome-dlya-detej-s-zaderzhkami-v-razvitii/?$	https://shag-navstrechu.ru/174-slozhno-li-mne-rabotat-v-detskom-dome-dlya-detej-s-zaderzhkami-v-razvitii/	
+RedirectMatch 301  /news/our-news/item/175-burnye-vyxodnye-v-detskom-dome/?$	https://shag-navstrechu.ru/175-burnye-vyxodnye-v-detskom-dome/	
+RedirectMatch 301  /news/our-news/item/177-kogda-slov-nedostatochno/?$	https://shag-navstrechu.ru/177-kogda-slov-nedostatochno/	
+RedirectMatch 301  /news/our-news/item/178-blagotvoritelnyj-art-market-dobryj-dom/?$	https://shag-navstrechu.ru/178-blagotvoritelnyj-art-market-dobryj-dom/	
+RedirectMatch 301  /news/our-news/item/179-v-gostyax-u-teatra-pantomimy-so-tvorenie/?$	https://shag-navstrechu.ru/179-v-gostyax-u-teatra-pantomimy-so-tvorenie/	
+RedirectMatch 301  /news/our-news/item/180-dvorecz-dlya-princzess/?$	https://shag-navstrechu.ru/180-dvorecz-dlya-princzess/	
+RedirectMatch 301  /news/our-news/item/182-deti-pavlovska-pokoryayut-moskvu/?$	https://shag-navstrechu.ru/182-deti-pavlovska-pokoryayut-moskvu/	
+RedirectMatch 301  /news/our-news/item/183-my-svobodny/?$	https://shag-navstrechu.ru/183-my-svobodny/	
+RedirectMatch 301  /news/our-news/item/184-pomogaem-vmeste/?$	https://shag-navstrechu.ru/184-pomogaem-vmeste/	
+RedirectMatch 301  /news/our-news/item/185-soxranim-nashi-serdcza/?$	https://shag-navstrechu.ru/185-soxranim-nashi-serdcza/	
+RedirectMatch 301  /news/our-news/item/186-seminar-moskovskogo-czentra-lechebnoj-pedagogiki/?$	https://shag-navstrechu.ru/186-seminar-moskovskogo-czentra-lechebnoj-pedagogiki/	
+RedirectMatch 301  /news/our-news/item/187-pochuvstvuj-sebya-s-pomoshhyu-krasok/?$	https://shag-navstrechu.ru/187-pochuvstvuj-sebya-s-pomoshhyu-krasok/	
+RedirectMatch 301  /news/our-news/item/188-pomogi-vmeste-s-binbankom/?$	https://shag-navstrechu.ru/188-pomogi-vmeste-s-binbankom/	
+RedirectMatch 301  /news/our-news/item/189-dobryj-dom-v-tkachax/?$	https://shag-navstrechu.ru/189-dobryj-dom-v-tkachax/	
+RedirectMatch 301  /news/our-news/item/190-snova-dobryj-dom-na-novoj-gollandii/?$	https://shag-navstrechu.ru/190-snova-dobryj-dom-na-novoj-gollandii/	
+RedirectMatch 301  /news/our-news/item/191-ezhegodnyj-blagotvoritelnyj-festival-my-vmeste-igraem-rok-4/?$	https://shag-navstrechu.ru/191-ezhegodnyj-blagotvoritelnyj-festival-my-vmeste-igraem-rok-4/	
+RedirectMatch 301  /news/our-news/item/192-festival-zavtra/?$	https://shag-navstrechu.ru/192-festival-zavtra/	
+RedirectMatch 301  /news/our-news/item/193-v-gostyax-u-lavkalavka/?$	https://shag-navstrechu.ru/193-v-gostyax-u-lavkalavka/	
+RedirectMatch 301  /news/our-news/item/194-qnapolni-nebo-dobrotojq/?$	https://shag-navstrechu.ru/194-qnapolni-nebo-dobrotojq/	
+RedirectMatch 301  /news/our-news/item/239-a-mozhet-vse-taki-ne-pni--malchiki/?$	https://shag-navstrechu.ru/239-a-mozhet-vse-taki-ne-pni-malchiki/	
+RedirectMatch 301  /news/our-news/item/239-a-mozhet-vse-taki-ne-pni/?$	https://shag-navstrechu.ru/239-a-mozhet-vse-taki-ne-pni/	
+RedirectMatch 301  /news/our-news/item/24-pavlovskij-park/?$	https://shag-navstrechu.ru/24-pavlovskij-park/	
+RedirectMatch 301  /news/our-news/item/241-zdravstvuj-shkola/?$	https://shag-navstrechu.ru/241-zdravstvuj-shkola/	
+RedirectMatch 301  /news/our-news/item/245-pervyj-raz-v-shkolu/?$	https://shag-navstrechu.ru/245-pervyj-raz-v-shkolu/	
+RedirectMatch 301  /news/our-news/item/249-kids-on-wheels/?$	https://shag-navstrechu.ru/249-kids-on-wheels/	
+RedirectMatch 301  /news/our-news/item/25-labirintum/?$	https://shag-navstrechu.ru/25-labirintum/	
+RedirectMatch 301  /news/our-news/item/250-prazdnik-kashtanov/?$	https://shag-navstrechu.ru/250-prazdnik-kashtanov/	
+RedirectMatch 301  /news/our-news/item/253-charity-fest/?$	https://shag-navstrechu.ru/253-charity-fest/	
+RedirectMatch 301  /news/our-news/item/254-borya-stasov/?$	https://shag-navstrechu.ru/254-borya-stasov/	
+RedirectMatch 301  /news/our-news/item/256-andrej-sotov/?$	https://shag-navstrechu.ru/256-andrej-sotov/	
+RedirectMatch 301  /news/our-news/item/257-nastya-lesnaya/?$	https://shag-navstrechu.ru/257-nastya-lesnaya/	
+RedirectMatch 301  /news/our-news/item/258-ruslan-marusin/?$	https://shag-navstrechu.ru/258-ruslan-marusin/	
+RedirectMatch 301  /news/our-news/item/259-serezha-moroz/?$	https://shag-navstrechu.ru/259-serezha-moroz/	
+RedirectMatch 301  /news/our-news/item/26-jeans-spagetti/?$	https://shag-navstrechu.ru/26-jeans-spagetti/	
+RedirectMatch 301  /news/our-news/item/260-sasha-xromov/?$	https://shag-navstrechu.ru/260-sasha-xromov/	
+RedirectMatch 301  /news/our-news/item/261-tanya-levneva/?$	https://shag-navstrechu.ru/261-tanya-levneva/	
+RedirectMatch 301  /news/our-news/item/262-olya-yakusheva/?$	https://shag-navstrechu.ru/262-olya-yakusheva/	
+RedirectMatch 301  /news/our-news/item/265-lesha-sarev/?$	https://shag-navstrechu.ru/265-lesha-sarev/	
+RedirectMatch 301  /news/our-news/item/266-vitalik-leonov/?$	https://shag-navstrechu.ru/266-vitalik-leonov/	
+RedirectMatch 301  /news/our-news/item/267-vasya-chetov/?$	https://shag-navstrechu.ru/267-vasya-chetov/	
+RedirectMatch 301  /news/our-news/item/268-vasya-makov/?$	https://shag-navstrechu.ru/268-vasya-makov/	
+RedirectMatch 301  /news/our-news/item/269-ruzanna-karapetova/?$	https://shag-navstrechu.ru/269-ruzanna-karapetova/	
+RedirectMatch 301  /news/our-news/item/27-a-mozhet-vse-taki-ne-pni--devochki/?$	https://shag-navstrechu.ru/27-a-mozhet-vse-taki-ne-pni-devochki/	
+RedirectMatch 301  /news/our-news/item/27-a-mozhet-vse-taki-ne-pni/?$	https://shag-navstrechu.ru/27-a-mozhet-vse-taki-ne-pni/	
+RedirectMatch 301  /news/our-news/item/270-prosha-bukin/?$	https://shag-navstrechu.ru/270-prosha-bukin/	
+RedirectMatch 301  /news/our-news/item/271-pasha-bespalov/?$	https://shag-navstrechu.ru/271-pasha-bespalov/	
+RedirectMatch 301  /news/our-news/item/272-masha-porshueva/?$	https://shag-navstrechu.ru/272-masha-porshueva/	
+RedirectMatch 301  /news/our-news/item/273-marina-kudakina/?$	https://shag-navstrechu.ru/273-marina-kudakina/	
+RedirectMatch 301  /news/our-news/item/274-kolya-gruz/?$	https://shag-navstrechu.ru/274-kolya-gruz/	
+RedirectMatch 301  /news/our-news/item/275-ilya-dubov/?$	https://shag-navstrechu.ru/275-ilya-dubov/	
+RedirectMatch 301  /news/our-news/item/276-den-blagodareniya-v-shkole-alm/?$	https://shag-navstrechu.ru/276-den-blagodareniya-v-shkole-alm/	
+RedirectMatch 301  /news/our-news/item/278-shkola-nachalo/?$	https://shag-navstrechu.ru/278-shkola-nachalo/	
+RedirectMatch 301  /news/our-news/item/279-andrej-drugov/?$	https://shag-navstrechu.ru/279-andrej-drugov/	
+RedirectMatch 301  /news/our-news/item/28-sunsay-v-gostyax-u-nashix-detej-v-detskom-dome/?$	https://shag-navstrechu.ru/28-sunsay-v-gostyax-u-nashix-detej-v-detskom-dome/	
+RedirectMatch 301  /news/our-news/item/280-tanya-shuvalova/?$	https://shag-navstrechu.ru/280-tanya-shuvalova/	
+RedirectMatch 301  /news/our-news/item/281-dima-akiev/?$	https://shag-navstrechu.ru/281-dima-akiev/	
+RedirectMatch 301  /news/our-news/item/282-lyuba-devaeva/?$	https://shag-navstrechu.ru/282-lyuba-devaeva/	
+RedirectMatch 301  /news/our-news/item/283-oksana-sharova/?$	https://shag-navstrechu.ru/283-oksana-sharova/	
+RedirectMatch 301  /news/our-news/item/285-nikita-klanov/?$	https://shag-navstrechu.ru/285-nikita-klanov/	
+RedirectMatch 301  /news/our-news/item/286-diana-seregina/?$	https://shag-navstrechu.ru/286-diana-seregina/	
+RedirectMatch 301  /news/our-news/item/287-natasha-bozhenova/?$	https://shag-navstrechu.ru/287-natasha-bozhenova/	
+RedirectMatch 301  /news/our-news/item/288-masha-gusar/?$	https://shag-navstrechu.ru/288-masha-gusar/	
+RedirectMatch 301  /news/our-news/item/289-deti/?$	https://shag-navstrechu.ru/289-deti/	
+RedirectMatch 301  /news/our-news/item/29-stereoleto/?$	https://shag-navstrechu.ru/29-stereoleto/	
+RedirectMatch 301  /news/our-news/item/290-bulochki-s-koriczej/?$	https://shag-navstrechu.ru/290-bulochki-s-koriczej/	
+RedirectMatch 301  /news/our-news/item/291-sveta-goshina/?$	https://shag-navstrechu.ru/291-sveta-goshina/	
+RedirectMatch 301  /news/our-news/item/292-mashka-vladimirova/?$	https://shag-navstrechu.ru/292-mashka-vladimirova/	
+RedirectMatch 301  /news/our-news/item/293-fedya-zubov/?$	https://shag-navstrechu.ru/293-fedya-zubov/	
+RedirectMatch 301  /news/our-news/item/294-sasha-erofeev/?$	https://shag-navstrechu.ru/294-sasha-erofeev/	
+RedirectMatch 301  /news/our-news/item/295-ksyusha-kazak/?$	https://shag-navstrechu.ru/295-ksyusha-kazak/	
+RedirectMatch 301  /news/our-news/item/298-a-ya-tak-zhivu/?$	https://shag-navstrechu.ru/298-a-ya-tak-zhivu/	
+RedirectMatch 301  /news/our-news/item/299-ksyusha-okorina/?$	https://shag-navstrechu.ru/299-ksyusha-okorina/	
+RedirectMatch 301  /news/our-news/item/30-lekarstva-ili-flomastery-/?$	https://shag-navstrechu.ru/30-lekarstva-ili-flomastery/	
+RedirectMatch 301  /news/our-news/item/30-lekarstva-ili-flomastery/?$	https://shag-navstrechu.ru/30-lekarstva-ili-flomastery-2/	
+RedirectMatch 301  /news/our-news/item/300-dasha-korovina/?$	https://shag-navstrechu.ru/300-dasha-korovina/	
+RedirectMatch 301  /news/our-news/item/301-elya-belaya/?$	https://shag-navstrechu.ru/301-elya-belaya/	
+RedirectMatch 301  /news/our-news/item/302-ksyusha-bubnova/?$	https://shag-navstrechu.ru/302-ksyusha-bubnova/	
+RedirectMatch 301  /news/our-news/item/303-oksana-ivkova/?$	https://shag-navstrechu.ru/303-oksana-ivkova/	
+RedirectMatch 301  /news/our-news/item/304-yura-popkevich/?$	https://shag-navstrechu.ru/304-yura-popkevich/	
+RedirectMatch 301  /news/our-news/item/305-vanya-shivczov/?$	https://shag-navstrechu.ru/305-vanya-shivczov/	
+RedirectMatch 301  /news/our-news/item/306-fatima-dzhamova/?$	https://shag-navstrechu.ru/306-fatima-dzhamova/	
+RedirectMatch 301  /news/our-news/item/309-dasha-meleva/?$	https://shag-navstrechu.ru/309-dasha-meleva/	
+RedirectMatch 301  /news/our-news/item/31-impressionisty-glazami-detej/?$	https://shag-navstrechu.ru/31-impressionisty-glazami-detej/	
+RedirectMatch 301  /news/our-news/item/310-sasha-zadneprov/?$	https://shag-navstrechu.ru/310-sasha-zadneprov/	
+RedirectMatch 301  /news/our-news/item/312-fedya-baklazhanov/?$	https://shag-navstrechu.ru/312-fedya-baklazhanov/	
+RedirectMatch 301  /news/our-news/item/313-nikita-shmak/?$	https://shag-navstrechu.ru/313-nikita-shmak/	
+RedirectMatch 301  /news/our-news/item/314-rodion-pokrov/?$	https://shag-navstrechu.ru/314-rodion-pokrov/	
+RedirectMatch 301  /news/our-news/item/315-sasha-rogov/?$	https://shag-navstrechu.ru/315-sasha-rogov/	
+RedirectMatch 301  /news/our-news/item/317-nastya-rogova/?$	https://shag-navstrechu.ru/317-nastya-rogova/	
+RedirectMatch 301  /news/our-news/item/318-ksyusha-bichok/?$	https://shag-navstrechu.ru/318-ksyusha-bichok/	
+RedirectMatch 301  /news/our-news/item/319-vera-danchuk/?$	https://shag-navstrechu.ru/319-vera-danchuk/	
+RedirectMatch 301  /news/our-news/item/320-nastya-onegina/?$	https://shag-navstrechu.ru/320-nastya-onegina/	
+RedirectMatch 301  /news/our-news/item/321-valya-bolobolkina/?$	https://shag-navstrechu.ru/321-valya-bolobolkina/	
+RedirectMatch 301  /news/our-news/item/323-katya-zhgon/?$	https://shag-navstrechu.ru/323-katya-zhgon/	
+RedirectMatch 301  /news/our-news/item/325-yarik-shatuev/?$	https://shag-navstrechu.ru/325-yarik-shatuev/	
+RedirectMatch 301  /news/our-news/item/326-nastya-kruglova/?$	https://shag-navstrechu.ru/326-nastya-kruglova/	
+RedirectMatch 301  /news/our-news/item/328-darina-kurgina/?$	https://shag-navstrechu.ru/328-darina-kurgina/	
+RedirectMatch 301  /news/our-news/item/329-alina-mishina/?$	https://shag-navstrechu.ru/329-alina-mishina/	
+RedirectMatch 301  /news/our-news/item/331-vika-shmidt/?$	https://shag-navstrechu.ru/331-vika-shmidt/	
+RedirectMatch 301  /news/our-news/item/332-mishka-seryj/?$	https://shag-navstrechu.ru/332-mishka-seryj/	
+RedirectMatch 301  /news/our-news/item/333-tolik-panov/?$	https://shag-navstrechu.ru/333-tolik-panov/	
+RedirectMatch 301  /news/our-news/item/336-lenya-lesnik/?$	https://shag-navstrechu.ru/336-lenya-lesnik/	
+RedirectMatch 301  /news/our-news/item/338-artem-bokupczev/?$	https://shag-navstrechu.ru/338-artem-bokupczev/	
+RedirectMatch 301  /news/our-news/item/339-serezha-silev/?$	https://shag-navstrechu.ru/339-serezha-silev/	
+RedirectMatch 301  /news/our-news/item/34-teleperedacha/?$	https://shag-navstrechu.ru/34-teleperedacha/	
+RedirectMatch 301  /news/our-news/item/340-nash-novyj-partner-lush-v-ramkax-proekta-chariti-pot/?$	https://shag-navstrechu.ru/340-nash-novyj-partner-lush-v-ramkax-proekta-chariti-pot/	
+RedirectMatch 301  /news/our-news/item/342-moj-istochnik-vdoxnoveniya/?$	https://shag-navstrechu.ru/342-moj-istochnik-vdoxnoveniya/	
+RedirectMatch 301  /news/our-news/item/343-i-v-nash-dom-prishel-novyj-god/?$	https://shag-navstrechu.ru/343-i-v-nash-dom-prishel-novyj-god/	
+RedirectMatch 301  /news/our-news/item/346-grustno/?$	https://shag-navstrechu.ru/346-grustno/	
+RedirectMatch 301  /news/our-news/item/347-mechty/?$	https://shag-navstrechu.ru/347-mechty/	
+RedirectMatch 301  /news/our-news/item/349-day-of-magic/?$	https://shag-navstrechu.ru/349-day-of-magic/	
+RedirectMatch 301  /news/our-news/item/35-smiles-prixodyat-v-detskij-dom/?$	https://shag-navstrechu.ru/35-smiles-prixodyat-v-detskij-dom/	
+RedirectMatch 301  /news/our-news/item/351-v-borbe-protiv-vsekh/?$	https://shag-navstrechu.ru/351-v-borbe-protiv-vsekh/	
+RedirectMatch 301  /news/our-news/item/352-globalgiving/?$	https://shag-navstrechu.ru/352-globalgiving/	
+RedirectMatch 301  /news/our-news/item/354-ratnik-aleksandra/?$	https://shag-navstrechu.ru/354-ratnik-aleksandra/	
+RedirectMatch 301  /news/our-news/item/355-goloviznina-yuliya/?$	https://shag-navstrechu.ru/355-goloviznina-yuliya/	
+RedirectMatch 301  /news/our-news/item/356-budnik-aleksandr/?$	https://shag-navstrechu.ru/356-budnik-aleksandr/	
+RedirectMatch 301  /news/our-news/item/357-chudinov-dmitrij/?$	https://shag-navstrechu.ru/357-chudinov-dmitrij/	
+RedirectMatch 301  /news/our-news/item/359-ostrovskaya-mariya/?$	https://shag-navstrechu.ru/359-ostrovskaya-mariya/	
+RedirectMatch 301  /news/our-news/item/362-tokareva-evgeniya/?$	https://shag-navstrechu.ru/362-tokareva-evgeniya/	
+RedirectMatch 301  /news/our-news/item/364-zaborov-aleksandr/?$	https://shag-navstrechu.ru/364-zaborov-aleksandr/	
+RedirectMatch 301  /news/our-news/item/366-yagodin-valerij/?$	https://shag-navstrechu.ru/366-yagodin-valerij/	
+RedirectMatch 301  /news/our-news/item/367-zavyalova-elizaveta/?$	https://shag-navstrechu.ru/367-zavyalova-elizaveta/	
+RedirectMatch 301  /news/our-news/item/37-v-spbgu-sostoyalas-blagotvoritelnaya-lotereya/?$	https://shag-navstrechu.ru/37-v-spbgu-sostoyalas-blagotvoritelnaya-lotereya/	
+RedirectMatch 301  /news/our-news/item/374-rezultaty-globalgiving/?$	https://shag-navstrechu.ru/374-rezultaty-globalgiving/	
+RedirectMatch 301  /news/our-news/item/375-saskevich-mariya/?$	https://shag-navstrechu.ru/375-saskevich-mariya/	
+RedirectMatch 301  /news/our-news/item/377-komar-anastasiya/?$	https://shag-navstrechu.ru/377-komar-anastasiya/	
+RedirectMatch 301  /news/our-news/item/379-pokhod-na-vystavku-v-etazhi/?$	https://shag-navstrechu.ru/379-pokhod-na-vystavku-v-etazhi/	
+RedirectMatch 301  /news/our-news/item/38-maslenicza-napolnila-solnczem-detskij-dom/?$	https://shag-navstrechu.ru/38-maslenicza-napolnila-solnczem-detskij-dom/	
+RedirectMatch 301  /news/our-news/item/380-11-12-iyunya-dni-otkrytykh-dverej-v-nko/?$	https://shag-navstrechu.ru/380-11-12-iyunya-dni-otkrytykh-dverej-v-nko/	
+RedirectMatch 301  /news/our-news/item/381-shashlyki-na-finskom-zalive/?$	https://shag-navstrechu.ru/381-shashlyki-na-finskom-zalive/	
+RedirectMatch 301  /news/our-news/item/382-dom-gde-proshlo-detstvo/?$	https://shag-navstrechu.ru/382-dom-gde-proshlo-detstvo/	
+RedirectMatch 301  /news/our-news/item/383-v-gostyakh-kak-doma/?$	https://shag-navstrechu.ru/383-v-gostyakh-kak-doma/	
+RedirectMatch 301  /news/our-news/item/385-teper-v-kroksakh/?$	https://shag-navstrechu.ru/385-teper-v-kroksakh/	
+RedirectMatch 301  /news/our-news/item/386-stereokids/?$	https://shag-navstrechu.ru/386-stereokids/	
+RedirectMatch 301  /news/our-news/item/387-july-14/?$	https://shag-navstrechu.ru/387-july-14/	
+RedirectMatch 301  /news/our-news/item/388-ishchem-voinov-s-chistymi-serdtsami/?$	https://shag-navstrechu.ru/388-ishchem-voinov-s-chistymi-serdtsami/	
+RedirectMatch 301  /news/our-news/item/39-poseshhenie-zoologicheskogo-muzeya/?$	https://shag-navstrechu.ru/39-poseshhenie-zoologicheskogo-muzeya/	
+RedirectMatch 301  /news/our-news/item/390-shkolnyj-proekt-na-globalgiving/?$	https://shag-navstrechu.ru/390-shkolnyj-proekt-na-globalgiving/	
+RedirectMatch 301  /news/our-news/item/391-leto-prodolzhaetsya/?$	https://shag-navstrechu.ru/391-leto-prodolzhaetsya/	
+RedirectMatch 301  /news/our-news/item/392-konevets/?$	https://shag-navstrechu.ru/392-konevets/	
+RedirectMatch 301  /news/our-news/item/393-milkybar-2/?$	https://shag-navstrechu.ru/393-milkybar-2/	
+RedirectMatch 301  /news/our-news/item/395-sutoko-ryadok/?$	https://shag-navstrechu.ru/395-sutoko-ryadok/	
+RedirectMatch 301  /news/our-news/item/397-poslednij-den-leta/?$	https://shag-navstrechu.ru/397-poslednij-den-leta/	
+RedirectMatch 301  /news/our-news/item/398-letayushchie-deti/?$	https://shag-navstrechu.ru/398-letayushchie-deti/	
+RedirectMatch 301  /news/our-news/item/399-bez-chuvstv/?$	https://shag-navstrechu.ru/399-bez-chuvstv/	
+RedirectMatch 301  /news/our-news/item/4-partners/?$	https://shag-navstrechu.ru/4-partners/	
+RedirectMatch 301  /news/our-news/item/40-ldetskoe-vremyar-v-loft-proekte-letazhir-zanyatie-po-sozdaniyu-obemnyx-figur/?$	https://shag-navstrechu.ru/40-ldetskoe-vremyar-v-loft-proekte-letazhir-zanyatie-po-sozdaniyu-obemnyx-figur/	
+RedirectMatch 301  /news/our-news/item/400-puteshestvie-v-skazku/?$	https://shag-navstrechu.ru/400-puteshestvie-v-skazku/	
+RedirectMatch 301  /news/our-news/item/400/?$	https://shag-navstrechu.ru/400-2/	
+RedirectMatch 301  /news/our-news/item/401-globalgiving-report/?$	https://shag-navstrechu.ru/401-globalgiving-report/	
+RedirectMatch 301  /news/our-news/item/402-rekonstruktsiya-shuma/?$	https://shag-navstrechu.ru/402-rekonstruktsiya-shuma/	
+RedirectMatch 301  /news/our-news/item/402/?$	https://shag-navstrechu.ru/402-2/	
+RedirectMatch 301  /news/our-news/item/403-lush-i-shag-navstrechu/?$	https://shag-navstrechu.ru/403-lush-i-shag-navstrechu/	
+RedirectMatch 301  /news/our-news/item/404-nam-10-let/?$	https://shag-navstrechu.ru/404-nam-10-let/	
+RedirectMatch 301  /news/our-news/item/405-shirokaya-maslenitsa/?$	https://shag-navstrechu.ru/405-shirokaya-maslenitsa/	
+RedirectMatch 301  /news/our-news/item/406-den-krasoty-i-schastya/?$	https://shag-navstrechu.ru/406-den-krasoty-i-schastya/	
+RedirectMatch 301  /news/our-news/item/407-krasochnyj-happylon/?$	https://shag-navstrechu.ru/407-krasochnyj-happylon/	
+RedirectMatch 301  /news/our-news/item/408-evgeniya-slav/?$	https://shag-navstrechu.ru/408-evgeniya-slav/	
+RedirectMatch 301  /news/our-news/item/409-ismailova-lejla/?$	https://shag-navstrechu.ru/409-ismailova-lejla/	
+RedirectMatch 301  /news/our-news/item/41-v-gosti-v-detskij-dom-priexala-teatr-studiya-ligrishher/?$	https://shag-navstrechu.ru/41-v-gosti-v-detskij-dom-priexala-teatr-studiya-ligrishher/	
+RedirectMatch 301  /news/our-news/item/412-kilin-vladimir/?$	https://shag-navstrechu.ru/412-kilin-vladimir/	
+RedirectMatch 301  /news/our-news/item/413-betekhtina-mariya/?$	https://shag-navstrechu.ru/413-betekhtina-mariya/	
+RedirectMatch 301  /news/our-news/item/414-davydkina-liliya/?$	https://shag-navstrechu.ru/414-davydkina-liliya/	
+RedirectMatch 301  /news/our-news/item/419-dudina-olga/?$	https://shag-navstrechu.ru/419-dudina-olga/	
+RedirectMatch 301  /news/our-news/item/42-vizit-gruppy-nemeczkix-shkolnikov/?$	https://shag-navstrechu.ru/42-vizit-gruppy-nemeczkix-shkolnikov/	
+RedirectMatch 301  /news/our-news/item/420-samojlova-elena/?$	https://shag-navstrechu.ru/420-samojlova-elena/	
+RedirectMatch 301  /news/our-news/item/421-serebryanskaya-varvara/?$	https://shag-navstrechu.ru/421-serebryanskaya-varvara/	
+RedirectMatch 301  /news/our-news/item/425-kondereva-olga/?$	https://shag-navstrechu.ru/425-kondereva-olga/	
+RedirectMatch 301  /news/our-news/item/426-simkina-anna/?$	https://shag-navstrechu.ru/426-simkina-anna/	
+RedirectMatch 301  /news/our-news/item/43-ekskursiya-v-zoopark/?$	https://shag-navstrechu.ru/43-ekskursiya-v-zoopark/	
+RedirectMatch 301  /news/our-news/item/430-zvanye-gosti/?$	https://shag-navstrechu.ru/430-zvanye-gosti/	
+RedirectMatch 301  /news/our-news/item/431-zhizn-stoit-togo-chtoby-zhit/?$	https://shag-navstrechu.ru/431-zhizn-stoit-togo-chtoby-zhit/	
+RedirectMatch 301  /news/our-news/item/432-zoologicheskij-muzej/?$	https://shag-navstrechu.ru/432-zoologicheskij-muzej/	
+RedirectMatch 301  /news/our-news/item/433-deti-i-zvuki/?$	https://shag-navstrechu.ru/433-deti-i-zvuki/	
+RedirectMatch 301  /news/our-news/item/434-kompleksnaya-reabilitatsiya/?$	https://shag-navstrechu.ru/434-kompleksnaya-reabilitatsiya/	
+RedirectMatch 301  /news/our-news/item/435-dolgozhdannyj-den-rozhdeniya/?$	https://shag-navstrechu.ru/435-dolgozhdannyj-den-rozhdeniya/	
+RedirectMatch 301  /news/our-news/item/436-razyskivaetsya-bukhgalter/?$	https://shag-navstrechu.ru/436-razyskivaetsya-bukhgalter/	
+RedirectMatch 301  /news/our-news/item/438-u-nashikh-detej-poyavilis-korsety-i-tutora/?$	https://shag-navstrechu.ru/438-u-nashikh-detej-poyavilis-korsety-i-tutora/	
+RedirectMatch 301  /news/our-news/item/439-lechebnaya-fizkultura/?$	https://shag-navstrechu.ru/439-lechebnaya-fizkultura/	
+RedirectMatch 301  /news/our-news/item/44-konczert-pod-otkrytym-nebom/?$	https://shag-navstrechu.ru/44-konczert-pod-otkrytym-nebom/	
+RedirectMatch 301  /news/our-news/item/440-master-klass-po-lepke-iz-plastilina/?$	https://shag-navstrechu.ru/440-master-klass-po-lepke-iz-plastilina/	
+RedirectMatch 301  /news/our-news/item/441-spasibo-vam-dorogie-nashi-volshebniki/?$	https://shag-navstrechu.ru/441-spasibo-vam-dorogie-nashi-volshebniki/	
+RedirectMatch 301  /news/our-news/item/445-zakonchennoe-detstvo/?$	https://shag-navstrechu.ru/445-zakonchennoe-detstvo/	
+RedirectMatch 301  /news/our-news/item/449-festival-solar-systo-2014/?$	https://shag-navstrechu.ru/449-festival-solar-systo-2014/	
+RedirectMatch 301  /news/our-news/item/45-deti-vpervye-uvideli-more/?$	https://shag-navstrechu.ru/45-deti-vpervye-uvideli-more/	
+RedirectMatch 301  /news/our-news/item/453-my-vesennim-teplym-dnem-v-zoopark-gulyat-idem/?$	https://shag-navstrechu.ru/453-my-vesennim-teplym-dnem-v-zoopark-gulyat-idem/	
+RedirectMatch 301  /news/our-news/item/457-utrennij-krug/?$	https://shag-navstrechu.ru/457-utrennij-krug/	
+RedirectMatch 301  /news/our-news/item/458-trening-soprovozhdenie-detej-na-kolyaskakh/?$	https://shag-navstrechu.ru/458-trening-soprovozhdenie-detej-na-kolyaskakh/	
+RedirectMatch 301  /news/our-news/item/46-graffiti-detyam/?$	https://shag-navstrechu.ru/46-graffiti-detyam/	
+RedirectMatch 301  /news/our-news/item/460-nakonets-poshla/?$	https://shag-navstrechu.ru/460-nakonets-poshla/	
+RedirectMatch 301  /news/our-news/item/462-zhiraf-klyaksy-i-doma/?$	https://shag-navstrechu.ru/462-zhiraf-klyaksy-i-doma/	
+RedirectMatch 301  /news/our-news/item/463-smena-bankovskikh-rekvizitov/?$	https://shag-navstrechu.ru/463-smena-bankovskikh-rekvizitov/	
+RedirectMatch 301  /news/our-news/item/465-nalazhivanie-sotrudnichestva/?$	https://shag-navstrechu.ru/465-nalazhivanie-sotrudnichestva/	
+RedirectMatch 301  /news/our-news/item/466-proekt-blago-ru-ob-yavlyaet-konkurs/?$	https://shag-navstrechu.ru/466-proekt-blago-ru-ob-yavlyaet-konkurs/	
+RedirectMatch 301  /news/our-news/item/47-segodnya-my-ezdili-v-petrodvorecz/?$	https://shag-navstrechu.ru/47-segodnya-my-ezdili-v-petrodvorecz/	
+RedirectMatch 301  /news/our-news/item/470-zovu-vas-v-priklyuchenie-mumi-troll/?$	https://shag-navstrechu.ru/470-zovu-vas-v-priklyuchenie-mumi-troll/	
+RedirectMatch 301  /news/our-news/item/471-dni-otkrytykh-dverej-v-nko/?$	https://shag-navstrechu.ru/471-dni-otkrytykh-dverej-v-nko/	
+RedirectMatch 301  /news/our-news/item/473-dashe-melevoj-ispolnilos-15-let/?$	https://shag-navstrechu.ru/473-dashe-melevoj-ispolnilos-15-let/	
+RedirectMatch 301  /news/our-news/item/475-park-batuty-i-solntse/?$	https://shag-navstrechu.ru/475-park-batuty-i-solntse/	
+RedirectMatch 301  /news/our-news/item/479-leto-schaste-kanikuly/?$	https://shag-navstrechu.ru/479-leto-schaste-kanikuly/	
+RedirectMatch 301  /news/our-news/item/48-blagotvoritelnyj-konczert/?$	https://shag-navstrechu.ru/48-blagotvoritelnyj-konczert/	
+RedirectMatch 301  /news/our-news/item/480-specialyoga-v-gosti-k-nam-prikhodit/?$	https://shag-navstrechu.ru/480-specialyoga-v-gosti-k-nam-prikhodit/	
+RedirectMatch 301  /news/our-news/item/481-na-teplokhode-muzyka-igraet/?$	https://shag-navstrechu.ru/481-na-teplokhode-muzyka-igraet/	
+RedirectMatch 301  /news/our-news/item/482-ii-festival-vozdushnykh-zmeev-v-gorode-pushkin/?$	https://shag-navstrechu.ru/482-ii-festival-vozdushnykh-zmeev-v-gorode-pushkin/	
+RedirectMatch 301  /news/our-news/item/483-podarok-ot-diany/?$	https://shag-navstrechu.ru/483-podarok-ot-diany/	
+RedirectMatch 301  /news/our-news/item/485-o-sashke-pyshkine/?$	https://shag-navstrechu.ru/485-o-sashke-pyshkine/	
+RedirectMatch 301  /news/our-news/item/487-abasheva-sofya/?$	https://shag-navstrechu.ru/487-abasheva-sofya/	
+RedirectMatch 301  /news/our-news/item/488-petrova-kristina/?$	https://shag-navstrechu.ru/488-petrova-kristina/	
+RedirectMatch 301  /news/our-news/item/489-ermolinskaya-anastasiya/?$	https://shag-navstrechu.ru/489-ermolinskaya-anastasiya/	
+RedirectMatch 301  /news/our-news/item/49-v-nashem-dvore-zvuchali-gitara-i-flejta/?$	https://shag-navstrechu.ru/49-v-nashem-dvore-zvuchali-gitara-i-flejta/	
+RedirectMatch 301  /news/our-news/item/490-dnevnik-letnego-lagerya-chast-1/?$	https://shag-navstrechu.ru/490-dnevnik-letnego-lagerya-chast-1/	
+RedirectMatch 301  /news/our-news/item/491-letnij-lager-chast-2/?$	https://shag-navstrechu.ru/491-letnij-lager-chast-2/	
+RedirectMatch 301  /news/our-news/item/493-muzykalnaya-progulka/?$	https://shag-navstrechu.ru/493-muzykalnaya-progulka/	
+RedirectMatch 301  /news/our-news/item/495-dnevnik-letnego-lagerya-chast-3/?$	https://shag-navstrechu.ru/495-dnevnik-letnego-lagerya-chast-3/	
+RedirectMatch 301  /news/our-news/item/496-dnevnik-letnego-lagerya-zaklyuchenie/?$	https://shag-navstrechu.ru/496-dnevnik-letnego-lagerya-zaklyuchenie/	
+RedirectMatch 301  /news/our-news/item/497-internatsionalnoe-leto/?$	https://shag-navstrechu.ru/497-internatsionalnoe-leto/	
+RedirectMatch 301  /news/our-news/item/499-roman-bykov/?$	https://shag-navstrechu.ru/499-roman-bykov/	
+RedirectMatch 301  /news/our-news/item/5-address/?$	https://shag-navstrechu.ru/5-address/	
+RedirectMatch 301  /news/our-news/item/500-razvivaem-motoriku/?$	https://shag-navstrechu.ru/500-razvivaem-motoriku/	
+RedirectMatch 301  /news/our-news/item/502-sasha-pankratov/?$	https://shag-navstrechu.ru/502-sasha-pankratov/	
+RedirectMatch 301  /news/our-news/item/505-vanya-zolotov/?$	https://shag-navstrechu.ru/505-vanya-zolotov/	
+RedirectMatch 301  /news/our-news/item/506-vlad-efimov/?$	https://shag-navstrechu.ru/506-vlad-efimov/	
+RedirectMatch 301  /news/our-news/item/507-vitya-gajkin/?$	https://shag-navstrechu.ru/507-vitya-gajkin/	
+RedirectMatch 301  /news/our-news/item/509-nezabyvaemye-vpechatleniya-o-volonterstve/?$	https://shag-navstrechu.ru/509-nezabyvaemye-vpechatleniya-o-volonterstve/	
+RedirectMatch 301  /news/our-news/item/51-na-ekskursiyu-v-pushkin/?$	https://shag-navstrechu.ru/51-na-ekskursiyu-v-pushkin/	
+RedirectMatch 301  /news/our-news/item/511-khudozhniki-na-plenere/?$	https://shag-navstrechu.ru/511-khudozhniki-na-plenere/	
+RedirectMatch 301  /news/our-news/item/512-otdykh-v-parke/?$	https://shag-navstrechu.ru/512-otdykh-v-parke/	
+RedirectMatch 301  /news/our-news/item/513-odnazhdy-zharkim-letnim-dnem/?$	https://shag-navstrechu.ru/513-odnazhdy-zharkim-letnim-dnem/	
+RedirectMatch 301  /news/our-news/item/515-puteshestvie-v-upsala-park/?$	https://shag-navstrechu.ru/515-puteshestvie-v-upsala-park/	
+RedirectMatch 301  /news/our-news/item/516-dzyn-dzyn/?$	https://shag-navstrechu.ru/516-dzyn-dzyn/	
+RedirectMatch 301  /news/our-news/item/517-peshaya-progulka-v-park/?$	https://shag-navstrechu.ru/517-peshaya-progulka-v-park/	
+RedirectMatch 301  /news/our-news/item/519-vam-navernyaka-interesno-uznat/?$	https://shag-navstrechu.ru/519-vam-navernyaka-interesno-uznat/	
+RedirectMatch 301  /news/our-news/item/52-vstrechaemsya-v-subbotu-vecherom/?$	https://shag-navstrechu.ru/52-vstrechaemsya-v-subbotu-vecherom/	
+RedirectMatch 301  /news/our-news/item/520-poezdka-v-ushkovo/?$	https://shag-navstrechu.ru/520-poezdka-v-ushkovo/	
+RedirectMatch 301  /news/our-news/item/521-a-u-nas-novyj-yashchik-dlya-pozhertvovanij/?$	https://shag-navstrechu.ru/521-a-u-nas-novyj-yashchik-dlya-pozhertvovanij/	
+RedirectMatch 301  /news/our-news/item/522-blagotvoritelnyj-festival-anton-tut-ryadom/?$	https://shag-navstrechu.ru/522-blagotvoritelnyj-festival-anton-tut-ryadom/	
+RedirectMatch 301  /news/our-news/item/523-dnevnik-dachnogo-otdykha/?$	https://shag-navstrechu.ru/523-dnevnik-dachnogo-otdykha/	
+RedirectMatch 301  /news/our-news/item/524-obychnyj-neobychnyj-den/?$	https://shag-navstrechu.ru/524-obychnyj-neobychnyj-den/	
+RedirectMatch 301  /news/our-news/item/525-puteshestvie-v-podvodnyj-mir/?$	https://shag-navstrechu.ru/525-puteshestvie-v-podvodnyj-mir/	
+RedirectMatch 301  /news/our-news/item/526-shag-navstrechu-idet-na-radio/?$	https://shag-navstrechu.ru/526-shag-navstrechu-idet-na-radio/	
+RedirectMatch 301  /news/our-news/item/527-muzykalnaya-progulka-s-biostar/?$	https://shag-navstrechu.ru/527-muzykalnaya-progulka-s-biostar/	
+RedirectMatch 301  /news/our-news/item/528-pokhod-v-teatr/?$	https://shag-navstrechu.ru/528-pokhod-v-teatr/	
+RedirectMatch 301  /news/our-news/item/529-den-rozhdeniya/?$	https://shag-navstrechu.ru/529-den-rozhdeniya/	
+RedirectMatch 301  /news/our-news/item/53-spasibo-vsem/?$	https://shag-navstrechu.ru/53-spasibo-vsem/	
+RedirectMatch 301  /news/our-news/item/530-kruzhatsya-listya-i-karuseli/?$	https://shag-navstrechu.ru/530-kruzhatsya-listya-i-karuseli/	
+RedirectMatch 301  /news/our-news/item/531-studiya-da/?$	https://shag-navstrechu.ru/531-studiya-da/	
+RedirectMatch 301  /news/our-news/item/532-rebenok-rastsvetaet/?$	https://shag-navstrechu.ru/532-rebenok-rastsvetaet/	
+RedirectMatch 301  /news/our-news/item/534-uspeshnaya-operatsiya/?$	https://shag-navstrechu.ru/534-uspeshnaya-operatsiya/	
+RedirectMatch 301  /news/our-news/item/535-muzej-istorii-telefona/?$	https://shag-navstrechu.ru/535-muzej-istorii-telefona/	
+RedirectMatch 301  /news/our-news/item/536-poezdka-v-pni/?$	https://shag-navstrechu.ru/536-poezdka-v-pni/	
+RedirectMatch 301  /news/our-news/item/537-noyabrskie-kanikuly/?$	https://shag-navstrechu.ru/537-noyabrskie-kanikuly/	
+RedirectMatch 301  /news/our-news/item/538-lena-ivushina/?$	https://shag-navstrechu.ru/538-lena-ivushina/	
+RedirectMatch 301  /news/our-news/item/539-kseniya-korneva/?$	https://shag-navstrechu.ru/539-kseniya-korneva/	
+RedirectMatch 301  /news/our-news/item/54-novogodnyaya-blagotvoritelnaya-lotereya/?$	https://shag-navstrechu.ru/54-novogodnyaya-blagotvoritelnaya-lotereya/	
+RedirectMatch 301  /news/our-news/item/540-kirill-malets/?$	https://shag-navstrechu.ru/540-kirill-malets/	
+RedirectMatch 301  /news/our-news/item/541-korochkin-sasha/?$	https://shag-navstrechu.ru/541-korochkin-sasha/	
+RedirectMatch 301  /news/our-news/item/543-yasha-volk/?$	https://shag-navstrechu.ru/543-yasha-volk/	
+RedirectMatch 301  /news/our-news/item/545-sasha-larin/?$	https://shag-navstrechu.ru/545-sasha-larin/	
+RedirectMatch 301  /news/our-news/item/547-alina-guslina/?$	https://shag-navstrechu.ru/547-alina-guslina/	
+RedirectMatch 301  /news/our-news/item/548-liza-gorkina/?$	https://shag-navstrechu.ru/548-liza-gorkina/	
+RedirectMatch 301  /news/our-news/item/549-danilova-dasha/?$	https://shag-navstrechu.ru/549-danilova-dasha/	
+RedirectMatch 301  /news/our-news/item/55-prixodi-rabotat-volontyorom-v-detskij-dom/?$	https://shag-navstrechu.ru/55-prixodi-rabotat-volontyorom-v-detskij-dom/	
+RedirectMatch 301  /news/our-news/item/550-nastya-tereshkova/?$	https://shag-navstrechu.ru/550-nastya-tereshkova/	
+RedirectMatch 301  /news/our-news/item/551-anna-kalukina/?$	https://shag-navstrechu.ru/551-anna-kalukina/	
+RedirectMatch 301  /news/our-news/item/552-kirill-danichev/?$	https://shag-navstrechu.ru/552-kirill-danichev/	
+RedirectMatch 301  /news/our-news/item/554-oleg-kotin/?$	https://shag-navstrechu.ru/554-oleg-kotin/	
+RedirectMatch 301  /news/our-news/item/556-igor-koshkin/?$	https://shag-navstrechu.ru/556-igor-koshkin/	
+RedirectMatch 301  /news/our-news/item/558-sasha-yufgin/?$	https://shag-navstrechu.ru/558-sasha-yufgin/	
+RedirectMatch 301  /news/our-news/item/559-dima-sitnik/?$	https://shag-navstrechu.ru/559-dima-sitnik/	
+RedirectMatch 301  /news/our-news/item/56-v-loft-proekte-etazhi/?$	https://shag-navstrechu.ru/56-v-loft-proekte-etazhi/	
+RedirectMatch 301  /news/our-news/item/560-olga-ladoga/?$	https://shag-navstrechu.ru/560-olga-ladoga/	
+RedirectMatch 301  /news/our-news/item/561-diana-sverova/?$	https://shag-navstrechu.ru/561-diana-sverova/	
+RedirectMatch 301  /news/our-news/item/562-zhenya-tipina/?$	https://shag-navstrechu.ru/562-zhenya-tipina/	
+RedirectMatch 301  /news/our-news/item/563-agusha-kudakova/?$	https://shag-navstrechu.ru/563-agusha-kudakova/	
+RedirectMatch 301  /news/our-news/item/564-volontjorskaya-subbota/?$	https://shag-navstrechu.ru/564-volontjorskaya-subbota/	
+RedirectMatch 301  /news/our-news/item/567-dni-rozhdeniya-noyabr/?$	https://shag-navstrechu.ru/567-dni-rozhdeniya-noyabr/	
+RedirectMatch 301  /news/our-news/item/568-5-dekabrya-mezhdunarodnyj-den-volonterov/?$	https://shag-navstrechu.ru/568-5-dekabrya-mezhdunarodnyj-den-volonterov/	
+RedirectMatch 301  /news/our-news/item/569-po-sledam-impressionistov/?$	https://shag-navstrechu.ru/569-po-sledam-impressionistov/	
+RedirectMatch 301  /news/our-news/item/57-maslenicza-v-detckom-dome/?$	https://shag-navstrechu.ru/57-maslenicza-v-detckom-dome/	
+RedirectMatch 301  /news/our-news/item/570-vakansiya-rukovoditelya-meditsinskogo-otdela/?$	https://shag-navstrechu.ru/570-vakansiya-rukovoditelya-meditsinskogo-otdela/	
+RedirectMatch 301  /news/our-news/item/571-shag-navstrechu-10-let-delitsya-svoim-teplom/?$	https://shag-navstrechu.ru/571-shag-navstrechu-10-let-delitsya-svoim-teplom/	
+RedirectMatch 301  /news/our-news/item/572-volontjorskij-den/?$	https://shag-navstrechu.ru/572-volontjorskij-den/	
+RedirectMatch 301  /news/our-news/item/573-vykhodnye-s-roditelyami/?$	https://shag-navstrechu.ru/573-vykhodnye-s-roditelyami/	
+RedirectMatch 301  /news/our-news/item/574-blagotvoritelnaya-victorina-yuf-spbgu/?$	https://shag-navstrechu.ru/574-blagotvoritelnaya-victorina-yuf-spbgu/	
+RedirectMatch 301  /news/our-news/item/575-yarmarka-chudes/?$	https://shag-navstrechu.ru/575-yarmarka-chudes/	
+RedirectMatch 301  /news/our-news/item/576-shag-navstrechu-10-let-delitsya-svoim-teplom/?$	https://shag-navstrechu.ru/576-shag-navstrechu-10-let-delitsya-svoim-teplom/	
+RedirectMatch 301  /news/our-news/item/577-rozhdestvenskie-kanikuly/?$	https://shag-navstrechu.ru/577-rozhdestvenskie-kanikuly/	
+RedirectMatch 301  /news/our-news/item/578-sad-rajskikh-ptits-i-babochek-mindo/?$	https://shag-navstrechu.ru/578-sad-rajskikh-ptits-i-babochek-mindo/	
+RedirectMatch 301  /news/our-news/item/579-dni-rozhdeniya-detej-yanvar/?$	https://shag-navstrechu.ru/579-dni-rozhdeniya-detej-yanvar/	
+RedirectMatch 301  /news/our-news/item/58-proshhanie-s-zimoj/?$	https://shag-navstrechu.ru/58-proshhanie-s-zimoj/	
+RedirectMatch 301  /news/our-news/item/580-fevral-dostat-chernil-i-plakat/?$	https://shag-navstrechu.ru/580-fevral-dostat-chernil-i-plakat/	
+RedirectMatch 301  /news/our-news/item/582-detskaya-biblioteka-g-pavlovska/?$	https://shag-navstrechu.ru/582-detskaya-biblioteka-g-pavlovska/	
+RedirectMatch 301  /news/our-news/item/583-sovmestnaya-aktsiya-s-ooo-bukvoed/?$	https://shag-navstrechu.ru/583-sovmestnaya-aktsiya-s-ooo-bukvoed/	
+RedirectMatch 301  /news/our-news/item/585-muzykalnoe-puteshestvie-v-pustote/?$	https://shag-navstrechu.ru/585-muzykalnoe-puteshestvie-v-pustote/	
+RedirectMatch 301  /news/our-news/item/586-dni-rozhdeniya-detej-fevral/?$	https://shag-navstrechu.ru/586-dni-rozhdeniya-detej-fevral/	
+RedirectMatch 301  /news/our-news/item/587-kulinarnyj-master-klass-dlya-oksany-v-restorane-italy/?$	https://shag-navstrechu.ru/587-kulinarnyj-master-klass-dlya-oksany-v-restorane-italy/	
+RedirectMatch 301  /news/our-news/item/588-muzykalnoe-vystuplenie-detskogo-kollektiva-iz-spb-gbou-litsej-iskusstv-sankt-peterburg/?$	https://shag-navstrechu.ru/588-muzykalnoe-vystuplenie-detskogo-kollektiva-iz-spb-gbou-litsej-iskusstv-sankt-peterburg/	
+RedirectMatch 301  /news/our-news/item/589-organizatsiya-shag-navstrechu-prazdnuet-svoe-odinadtsatiletie/?$	https://shag-navstrechu.ru/589-organizatsiya-shag-navstrechu-prazdnuet-svoe-odinadtsatiletie/	
+RedirectMatch 301  /news/our-news/item/59-festival-v-klube-place/?$	https://shag-navstrechu.ru/59-festival-v-klube-place/	
+RedirectMatch 301  /news/our-news/item/590-master-klass-po-izgotovleniyu-vesennikh-ptichek/?$	https://shag-navstrechu.ru/590-master-klass-po-izgotovleniyu-vesennikh-ptichek/	
+RedirectMatch 301  /news/our-news/item/592-den-rozhdeniya-spb-boo-shag-navstrechu/?$	https://shag-navstrechu.ru/592-den-rozhdeniya-spb-boo-shag-navstrechu/	
+RedirectMatch 301  /news/our-news/item/593-blagotvoritelnyj-vesennij-gorodskoj-lager-shag-navstrechu-peterburgu/?$	https://shag-navstrechu.ru/593-blagotvoritelnyj-vesennij-gorodskoj-lager-shag-navstrechu-peterburgu/	
+RedirectMatch 301  /news/our-news/item/594-osobaya-joga-dlya-osobykh-detej/?$	https://shag-navstrechu.ru/594-osobaya-joga-dlya-osobykh-detej/	
+RedirectMatch 301  /news/our-news/item/595-gorodskoj-lager-shag-navstrechu-peterburgu/?$	https://shag-navstrechu.ru/595-gorodskoj-lager-shag-navstrechu-peterburgu/	
+RedirectMatch 301  /news/our-news/item/596-ustanovka-yashchika-dlya-sbora-pozhertvovanij-v-salone-krasoty-podsolnukh/?$	https://shag-navstrechu.ru/596-ustanovka-yashchika-dlya-sbora-pozhertvovanij-v-salone-krasoty-podsolnukh/	
+RedirectMatch 301  /news/our-news/item/597-pozhertvovaniya-cherez-formu-yandeks-vmeste/?$	https://shag-navstrechu.ru/597-pozhertvovaniya-cherez-formu-yandeks-vmeste/	
+RedirectMatch 301  /news/our-news/item/598-dni-rozhdeniya-detej-mart/?$	https://shag-navstrechu.ru/598-dni-rozhdeniya-detej-mart/	
+RedirectMatch 301  /news/our-news/item/599-spasibo-nashim-dobrym-druzyam/?$	https://shag-navstrechu.ru/599-spasibo-nashim-dobrym-druzyam/	
+RedirectMatch 301  /news/our-news/item/6-donors/?$	https://shag-navstrechu.ru/6-donors/	
+RedirectMatch 301  /news/our-news/item/60-lepka-glina-terapiya/?$	https://shag-navstrechu.ru/60-lepka-glina-terapiya/	
+RedirectMatch 301  /news/our-news/item/600-teatralnoe-predstavlenie-ot-litsej-iskusstv-sankt-peterburg/?$	https://shag-navstrechu.ru/600-teatralnoe-predstavlenie-ot-litsej-iskusstv-sankt-peterburg/	
+RedirectMatch 301  /news/our-news/item/601-yashe-16-let/?$	https://shag-navstrechu.ru/601-yashe-16-let/	
+RedirectMatch 301  /news/our-news/item/604-tsybina-olga/?$	https://shag-navstrechu.ru/604-tsybina-olga/	
+RedirectMatch 301  /news/our-news/item/605-ozerova-evgeniya/?$	https://shag-navstrechu.ru/605-ozerova-evgeniya/	
+RedirectMatch 301  /news/our-news/item/607-sebko-anna/?$	https://shag-navstrechu.ru/607-sebko-anna/	
+RedirectMatch 301  /news/our-news/item/608-tsirkovoe-vystuplenie/?$	https://shag-navstrechu.ru/608-tsirkovoe-vystuplenie/	
+RedirectMatch 301  /news/our-news/item/609-ustanovka-yashchika-dlya-pozhertvovanij-v-salone-anabel/?$	https://shag-navstrechu.ru/609-ustanovka-yashchika-dlya-pozhertvovanij-v-salone-anabel/	
+RedirectMatch 301  /news/our-news/item/61-21-marta-mezhdunarodnyj-den-lyudej-s-sindromom-dauna/?$	https://shag-navstrechu.ru/61-21-marta-mezhdunarodnyj-den-lyudej-s-sindromom-dauna/	
+RedirectMatch 301  /news/our-news/item/612-istoriya-o-bolshom-geparde-i-dobrykh-vrachakh/?$	https://shag-navstrechu.ru/612-istoriya-o-bolshom-geparde-i-dobrykh-vrachakh/	
+RedirectMatch 301  /news/our-news/item/613-chudesnye-suveniry-ot-mario-shop/?$	https://shag-navstrechu.ru/613-chudesnye-suveniry-ot-mario-shop/	
+RedirectMatch 301  /news/our-news/item/614-poezdka-v-muzej-varezhka/?$	https://shag-navstrechu.ru/614-poezdka-v-muzej-varezhka/	
+RedirectMatch 301  /news/our-news/item/615-priezd-nemetskikh-shkolnikov/?$	https://shag-navstrechu.ru/615-priezd-nemetskikh-shkolnikov/	
+RedirectMatch 301  /news/our-news/item/616-poseshchenie-biblioteki/?$	https://shag-navstrechu.ru/616-poseshchenie-biblioteki/	
+RedirectMatch 301  /news/our-news/item/617-shvejtsarskij-stranstvuyushchij-tsirk-nikol-i-martin-v-lenekspo/?$	https://shag-navstrechu.ru/617-shvejtsarskij-stranstvuyushchij-tsirk-nikol-i-martin-v-lenekspo/	
+RedirectMatch 301  /news/our-news/item/618-dve-nedeli-khuliganstva-i-vostorga/?$	https://shag-navstrechu.ru/618-dve-nedeli-khuliganstva-i-vostorga/	
+RedirectMatch 301  /news/our-news/item/619-osobaya-joga-dlya-osobykh-detej/?$	https://shag-navstrechu.ru/619-osobaya-joga-dlya-osobykh-detej/	
+RedirectMatch 301  /news/our-news/item/62-v-mixajlovskij-teatr-na-balet/?$	https://shag-navstrechu.ru/62-v-mixajlovskij-teatr-na-balet/	
+RedirectMatch 301  /news/our-news/item/620-dni-rozhdeniya-detej-aprel/?$	https://shag-navstrechu.ru/620-dni-rozhdeniya-detej-aprel/	
+RedirectMatch 301  /news/our-news/item/621-respublika-koshek/?$	https://shag-navstrechu.ru/621-respublika-koshek/	
+RedirectMatch 301  /news/our-news/item/624-ustanovka-yashchika-dlya-sbora-pozhertvovanij-v-restorane-syrnaya-lavka/?$	https://shag-navstrechu.ru/624-ustanovka-yashchika-dlya-sbora-pozhertvovanij-v-restorane-syrnaya-lavka/	
+RedirectMatch 301  /news/our-news/item/625-nashi-sovmestnye-uspekhi/?$	https://shag-navstrechu.ru/625-nashi-sovmestnye-uspekhi/	
+RedirectMatch 301  /news/our-news/item/626-majskaya-progulka/?$	https://shag-navstrechu.ru/626-majskaya-progulka/	
+RedirectMatch 301  /news/our-news/item/627-balnye-tantsy-na-kolyaskakh/?$	https://shag-navstrechu.ru/627-balnye-tantsy-na-kolyaskakh/	
+RedirectMatch 301  /news/our-news/item/628-pomogaem-tvorya/?$	https://shag-navstrechu.ru/628-pomogaem-tvorya/	
+RedirectMatch 301  /news/our-news/item/629-my-opyat-na-allee-zontikov/?$	https://shag-navstrechu.ru/629-my-opyat-na-allee-zontikov/	
+RedirectMatch 301  /news/our-news/item/63-iz-germanii-k-nam-v-gosti/?$	https://shag-navstrechu.ru/63-iz-germanii-k-nam-v-gosti/	
+RedirectMatch 301  /news/our-news/item/630-deti-leta-lager-v-derevne-avkolevo-ili-nedelya-druzhby-i-schastya/?$	https://shag-navstrechu.ru/630-deti-leta-lager-v-derevne-avkolevo-ili-nedelya-druzhby-i-schastya/	
+RedirectMatch 301  /news/our-news/item/631-v-rukakh-derzhali-cherepakhu-gladili-khorka/?$	https://shag-navstrechu.ru/631-v-rukakh-derzhali-cherepakhu-gladili-khorka/	
+RedirectMatch 301  /news/our-news/item/632-geek-picnic-v-gorode/?$	https://shag-navstrechu.ru/632-geek-picnic-v-gorode/	
+RedirectMatch 301  /news/our-news/item/633-my-vmeste-igraem-rok-7/?$	https://shag-navstrechu.ru/633-my-vmeste-igraem-rok-7/	
+RedirectMatch 301  /news/our-news/item/634-proshchanie-s-paryashchimi-zontikami/?$	https://shag-navstrechu.ru/634-proshchanie-s-paryashchimi-zontikami/	
+RedirectMatch 301  /news/our-news/item/635-geek-picnic/?$	https://shag-navstrechu.ru/635-geek-picnic/	
+RedirectMatch 301  /news/our-news/item/636-tennisnyj-turnir-shag-navstrechu/?$	https://shag-navstrechu.ru/636-tennisnyj-turnir-shag-navstrechu/	
+RedirectMatch 301  /news/our-news/item/637-aktsiya-po-sboru-produktov-v-seti-supermarketov-prisma/?$	https://shag-navstrechu.ru/637-aktsiya-po-sboru-produktov-v-seti-supermarketov-prisma/	
+RedirectMatch 301  /news/our-news/item/638-dni-rozhdeniya-detej-iyun/?$	https://shag-navstrechu.ru/638-dni-rozhdeniya-detej-iyun/	
+RedirectMatch 301  /news/our-news/item/639-kafe-bar-kakie-lyudi-ili-kak-my-vpervye-poprobovali-morozhenoe/?$	https://shag-navstrechu.ru/639-kafe-bar-kakie-lyudi-ili-kak-my-vpervye-poprobovali-morozhenoe/	
+RedirectMatch 301  /news/our-news/item/64-lmy-vmeste-igraem-rokr-2/?$	https://shag-navstrechu.ru/64-lmy-vmeste-igraem-rokr-2/	
+RedirectMatch 301  /news/our-news/item/640-minutka-blagodarnosti/?$	https://shag-navstrechu.ru/640-minutka-blagodarnosti/	
+RedirectMatch 301  /news/our-news/item/641-aktsiya-v-supermarkete-prisma-ili-o-tom-kak-my-gotovilis-k-lageryu-v-g-luga/?$	https://shag-navstrechu.ru/641-aktsiya-v-supermarkete-prisma-ili-o-tom-kak-my-gotovilis-k-lageryu-v-g-luga/	
+RedirectMatch 301  /news/our-news/item/642-deti-leta-lager-v-luge/?$	https://shag-navstrechu.ru/642-deti-leta-lager-v-luge/	
+RedirectMatch 301  /news/our-news/item/643-dni-rozhdeniya-detej-iyul/?$	https://shag-navstrechu.ru/643-dni-rozhdeniya-detej-iyul/	
+RedirectMatch 301  /news/our-news/item/644-festival-anton-tut-ryadom/?$	https://shag-navstrechu.ru/644-festival-anton-tut-ryadom/	
+RedirectMatch 301  /news/our-news/item/645-deti-leta-gorodskoj-lager/?$	https://shag-navstrechu.ru/645-deti-leta-gorodskoj-lager/	
+RedirectMatch 301  /news/our-news/item/647-dni-rozhdeniya-detej-avgust/?$	https://shag-navstrechu.ru/647-dni-rozhdeniya-detej-avgust/	
+RedirectMatch 301  /news/our-news/item/648-my-snova-v-gostyakh-u-varezhki/?$	https://shag-navstrechu.ru/648-my-snova-v-gostyakh-u-varezhki/	
+RedirectMatch 301  /news/our-news/item/649-khromenkov-ivan/?$	https://shag-navstrechu.ru/649-khromenkov-ivan/	
+RedirectMatch 301  /news/our-news/item/65-blagotvoritelnyj-piknik/?$	https://shag-navstrechu.ru/65-blagotvoritelnyj-piknik/	
+RedirectMatch 301  /news/our-news/item/650-osennij-zvezdolistopad/?$	https://shag-navstrechu.ru/650-osennij-zvezdolistopad/	
+RedirectMatch 301  /news/our-news/item/651-skazka-o-volshebnikakh/?$	https://shag-navstrechu.ru/651-skazka-o-volshebnikakh/	
+RedirectMatch 301  /news/our-news/item/652-minutka-radosti-i-pechali/?$	https://shag-navstrechu.ru/652-minutka-radosti-i-pechali/	
+RedirectMatch 301  /news/our-news/item/653-speshite-delat-dobro/?$	https://shag-navstrechu.ru/653-speshite-delat-dobro/	
+RedirectMatch 301  /news/our-news/item/654-dni-rozhdeniya-detej-oktyabr/?$	https://shag-navstrechu.ru/654-dni-rozhdeniya-detej-oktyabr/	
+RedirectMatch 301  /news/our-news/item/657-vystavka-khudozhniki-osobye-deti/?$	https://shag-navstrechu.ru/657-vystavka-khudozhniki-osobye-deti/	
+RedirectMatch 301  /news/our-news/item/658-kanikuly-v-gorode-lager-noyabr/?$	https://shag-navstrechu.ru/658-kanikuly-v-gorode-lager-noyabr/	
+RedirectMatch 301  /news/our-news/item/66-blagotvoritelnyj-rok-festival-v-pavlovske/?$	https://shag-navstrechu.ru/66-blagotvoritelnyj-rok-festival-v-pavlovske/	
+RedirectMatch 301  /news/our-news/item/660-vam-syuda/?$	https://shag-navstrechu.ru/660-vam-syuda/	
+RedirectMatch 301  /news/our-news/item/661-svechnye-masterskie/?$	https://shag-navstrechu.ru/661-svechnye-masterskie/	
+RedirectMatch 301  /news/our-news/item/67-akcziya-v-ashane/?$	https://shag-navstrechu.ru/67-akcziya-v-ashane/	
+RedirectMatch 301  /news/our-news/item/68-dobrie-pokupki/?$	https://shag-navstrechu.ru/68-dobrie-pokupki/	
+RedirectMatch 301  /news/our-news/item/69-26-iyunya-blagotvoritelnyj-piknik/?$	https://shag-navstrechu.ru/69-26-iyunya-blagotvoritelnyj-piknik/	
+RedirectMatch 301  /news/our-news/item/7-recomendations/?$	https://shag-navstrechu.ru/7-recomendations/	
+RedirectMatch 301  /news/our-news/item/70-poezdka-v-aleksandrijskij-park/?$	https://shag-navstrechu.ru/70-poezdka-v-aleksandrijskij-park/	
+RedirectMatch 301  /news/our-news/item/71-progulka-v-pavlovskom-parke/?$	https://shag-navstrechu.ru/71-progulka-v-pavlovskom-parke/	
+RedirectMatch 301  /news/our-news/item/72-petergof-ne-opyat-a-snova/?$	https://shag-navstrechu.ru/72-petergof-ne-opyat-a-snova/	
+RedirectMatch 301  /news/our-news/item/75-spasibo-xoroshop/?$	https://shag-navstrechu.ru/75-spasibo-xoroshop/	
+RedirectMatch 301  /news/our-news/item/77-proshel-trening-dlya-nashix-speczialistov/?$	https://shag-navstrechu.ru/77-proshel-trening-dlya-nashix-speczialistov/	
+RedirectMatch 301  /news/our-news/item/79-otmechaem-den-uchitelya/?$	https://shag-navstrechu.ru/79-otmechaem-den-uchitelya/	
+RedirectMatch 301  /news/our-news/item/8-rasxod-sredstv/?$	https://shag-navstrechu.ru/8-rasxod-sredstv/	
+RedirectMatch 301  /news/our-news/item/80-blagotvoritelnyj-dzhazovyj-mini-konczert/?$	https://shag-navstrechu.ru/80-blagotvoritelnyj-dzhazovyj-mini-konczert/	
+RedirectMatch 301  /news/our-news/item/81-osennij-dzhaz/?$	https://shag-navstrechu.ru/81-osennij-dzhaz/	
+RedirectMatch 301  /news/our-news/item/82-kartiny-nashix-podopechnyx-na-vystavke-qautsajderburgq/?$	https://shag-navstrechu.ru/82-kartiny-nashix-podopechnyx-na-vystavke-qautsajderburgq/	
+RedirectMatch 301  /news/our-news/item/83-poezdka-v-dzhazovuyu-filarmoniyu/?$	https://shag-navstrechu.ru/83-poezdka-v-dzhazovuyu-filarmoniyu/	
+RedirectMatch 301  /news/our-news/item/85-novye-texnologii-v-rabote-s-detmi-invalidami/?$	https://shag-navstrechu.ru/85-novye-texnologii-v-rabote-s-detmi-invalidami/	
+RedirectMatch 301  /news/our-news/item/87-ekskursiya-v-qdetskuyu-derevnyu-sosq/?$	https://shag-navstrechu.ru/87-ekskursiya-v-qdetskuyu-derevnyu-sosq/	
+RedirectMatch 301  /news/our-news/item/88-osennij-dzhaz-dlya-samyx-malenkix/?$	https://shag-navstrechu.ru/88-osennij-dzhaz-dlya-samyx-malenkix/	
+RedirectMatch 301  /news/our-news/item/89-stan-dedom-morozom/?$	https://shag-navstrechu.ru/89-stan-dedom-morozom/	
+RedirectMatch 301  /news/our-news/item/9-under-construction/?$	https://shag-navstrechu.ru/9-under-construction/	
+RedirectMatch 301  /news/our-news/item/90-vyxod-v-gorod/?$	https://shag-navstrechu.ru/90-vyxod-v-gorod/	
+RedirectMatch 301  /news/our-news/item/91-shag-navstrechu-uchastvujte/?$	https://shag-navstrechu.ru/91-shag-navstrechu-uchastvujte/	
+RedirectMatch 301  /news/our-news/item/92-yarmarka-lpeterburzhczy-peterburgur/?$	https://shag-navstrechu.ru/92-yarmarka-lpeterburzhczy-peterburgur/	
+RedirectMatch 301  /news/our-news/item/93-kapoejra-v-detskom-dome/?$	https://shag-navstrechu.ru/93-kapoejra-v-detskom-dome/	
+RedirectMatch 301  /news/our-news/item/94-den-blagodareniya-dlya-blagotvoritelnosti/?$	https://shag-navstrechu.ru/94-den-blagodareniya-dlya-blagotvoritelnosti/	
+RedirectMatch 301  /news/our-news/item/96-baraxolka-v-vegan-klube/?$	https://shag-navstrechu.ru/96-baraxolka-v-vegan-klube/	
+RedirectMatch 301  /news/our-news/item/97-poezdka-v-teatr-kukly/?$	https://shag-navstrechu.ru/97-poezdka-v-teatr-kukly/	
+RedirectMatch 301  /news/our-news/item/98-lshag-navstrechur-prinyal-uchastie-v-festivale-ldobryj-piterr/?$	https://shag-navstrechu.ru/98-lshag-navstrechur-prinyal-uchastie-v-festivale-ldobryj-piterr/	
 
 # static
-Redirect   https://shag-navstrechu.ru/want-to-help/?$ https://shag-navstrechu.ru/campaign/help-us/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/want-to-help/volunteer/?$ https://shag-navstrechu.ru/volonteram/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/want-to-help/money-donate/?$ https://shag-navstrechu.ru/campaign/help-us/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/want-to-help/goods-donate/?$ https://shag-navstrechu.ru/volonteram/pomoch-delom/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/reports/donations/?$ https://shag-navstrechu.ru/campaign/help-us/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/thanks/org/?$ https://shag-navstrechu.ru/about/partners/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/contacts/?$ https://shag-navstrechu.ru/about/contacts/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/projects/?$ https://shag-navstrechu.ru/projects/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/management/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/421-serebryanskaya-varvara/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/contacts/?$ https://shag-navstrechu.ru/about/contacts/ 	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/reports/financial/?$ https://shag-navstrechu.ru/about/otchety/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/reports/narrative/?$ https://shag-navstrechu.ru/about/otchety/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/thanks/ppl/?$ https://shag-navstrechu.ru/volonteram/my-blagodarim/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/projects/item/443-reabilitatsiya-tvorchestvom/?$ https://shag-navstrechu.ru/project/art-terapiya/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/projects/item/444-kuratory-po-detyam/?$ https://shag-navstrechu.ru/project/volonterskaya-podderzhka/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/projects/item/446-volonterskaya-podderzhka/?$ https://shag-navstrechu.ru/project/volonterskaya-podderzhka/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/projects/item/447-meditsinskaya-reabilitatsiya/?$ https://shag-navstrechu.ru/project/meditsinskaya-reabilitatsiya/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/projects/item/448-podderzhka-roditelej/?$ https://shag-navstrechu.ru/project/podderzhka-roditelej/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/projects/item/217-school-project/?$ https://shag-navstrechu.ru/project/sotsialnaya-integratsiya/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/projects/item/19-adult-support/?$ https://shag-navstrechu.ru/project/podderzhka-roditelej/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/607-sebko-anna/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/605-ozerova-evgeniya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/604-tsybina-olga/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/488-petrova-kristina/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/487-abasheva-sofya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/426-simkina-anna/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/425-kondereva-olga/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/420-samojlova-elena/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/419-dudina-olga/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/management/item/489-ermolinskaya-anastasiya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/management/item/408-evgeniya-slav/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/management/item/359-ostrovskaya-mariya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/management/item/357-chudinov-dmitrij/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/management/item/356-budnik-aleksandr/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/management/item/355-goloviznina-yuliya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/management/item/354-ratnik-aleksandra/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/413-betekhtina-mariya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/414-davydkina-liliya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/364-zaborov-aleksandr/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/367-zavyalova-elizaveta/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/409-ismailova-lejla/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/412-kilin-vladimir/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/377-komar-anastasiya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/375-saskevich-mariya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/421-serebryanskaya-varvara/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/362-tokareva-evgeniya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/reports/financial/item/469-finansovyj-otchet-2013-g/?$ https://shag-navstrechu.ru/about/otchety/ 	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/reports/financial/item/468-finansovyj-otchet-2012g/?$ https://shag-navstrechu.ru/about/otchety/ 	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/reports/financial/item/467-rasxod-sredstv/?$ https://shag-navstrechu.ru/about/otchety/ 	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/reports/narrative/item/452-soderzhatelnyj-otchet-za-2013-god/?$ https://shag-navstrechu.ru/about/otchety/ 	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/reports/narrative/item/451-soderzhatelnyj-otchet-za-2012-god/?$ https://shag-navstrechu.ru/about/otchety/ 	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/reports/narrative/item/450-soderzhatelnyj-otchet-za-2011-god/?$ https://shag-navstrechu.ru/about/otchety/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/426-simkina-anna/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/425-kondereva-olga/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/420-samojlova-elena/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/649-khromenkov-ivan/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/548-liza-gorkina/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/547-alina-guslina/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/323-katya-zhgon/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/302-ksyusha-bubnova/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/301-elya-belaya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/300-dasha-korovina/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/291-sveta-goshina/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/272-masha-porshueva/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/262-olya-yakusheva/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/545-sasha-larin/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/543-yasha-volk/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/541-korochkin-sasha/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/305-vanya-shivczov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/279-andrej-drugov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/270-prosha-bukin/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/259-serezha-moroz/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/254-borya-stasov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/419-dudina-olga/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/545-sasha-larin/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/543-yasha-volk/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/541-korochkin-sasha/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/305-vanya-shivczov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/279-andrej-drugov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/270-prosha-bukin/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/259-serezha-moroz/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/254-borya-stasov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/507-vitya-gajkin/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/506-vlad-efimov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/505-vanya-zolotov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/502-sasha-pankratov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/607-sebko-anna/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/605-ozerova-evgeniya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/604-tsybina-olga/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/488-petrova-kristina/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/487-abasheva-sofya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/366-yagodin-valerij/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/408-evgeniya-slav/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/359-ostrovskaya-mariya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/357-chudinov-dmitrij/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/356-budnik-aleksandr/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/355-goloviznina-yuliya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/354-ratnik-aleksandra/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/315-sasha-rogov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/310-sasha-zadneprov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/271-pasha-bespalov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/266-vitalik-leonov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/260-sasha-xromov/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/289-deti/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/want-to-help/money-donate/error/?$ https://shag-navstrechu.ru/campaign/help-us/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/want-to-help/money-donate/success/?$ https://shag-navstrechu.ru/campaign/help-us/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/9-under-construction/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/8-rasxod-sredstv/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/7-recomendations/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/6-donors/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/5-address/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/4-partners/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
-Redirect   https://shag-navstrechu.ru/about/staff/item/489-ermolinskaya-anastasiya/?$ https://shag-navstrechu.ru/about/team/	[R=301,NC,L]
+Redirect   https://shag-navstrechu.ru/want-to-help/?$ https://shag-navstrechu.ru/campaign/help-us/	
+Redirect   https://shag-navstrechu.ru/want-to-help/volunteer/?$ https://shag-navstrechu.ru/volonteram/	
+Redirect   https://shag-navstrechu.ru/want-to-help/money-donate/?$ https://shag-navstrechu.ru/campaign/help-us/	
+Redirect   https://shag-navstrechu.ru/want-to-help/goods-donate/?$ https://shag-navstrechu.ru/volonteram/pomoch-delom/	
+Redirect   https://shag-navstrechu.ru/reports/donations/?$ https://shag-navstrechu.ru/campaign/help-us/	
+Redirect   https://shag-navstrechu.ru/thanks/org/?$ https://shag-navstrechu.ru/about/partners/	
+Redirect   https://shag-navstrechu.ru/contacts/?$ https://shag-navstrechu.ru/about/contacts/	
+Redirect   https://shag-navstrechu.ru/about/projects/?$ https://shag-navstrechu.ru/projects/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/management/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/item/421-serebryanskaya-varvara/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/contacts/?$ https://shag-navstrechu.ru/about/contacts/ 	
+Redirect   https://shag-navstrechu.ru/reports/financial/?$ https://shag-navstrechu.ru/about/otchety/	
+Redirect   https://shag-navstrechu.ru/reports/narrative/?$ https://shag-navstrechu.ru/about/otchety/	
+Redirect   https://shag-navstrechu.ru/thanks/ppl/?$ https://shag-navstrechu.ru/volonteram/my-blagodarim/	
+Redirect   https://shag-navstrechu.ru/about/projects/item/443-reabilitatsiya-tvorchestvom/?$ https://shag-navstrechu.ru/project/art-terapiya/	
+Redirect   https://shag-navstrechu.ru/about/projects/item/444-kuratory-po-detyam/?$ https://shag-navstrechu.ru/project/volonterskaya-podderzhka/	
+Redirect   https://shag-navstrechu.ru/about/projects/item/446-volonterskaya-podderzhka/?$ https://shag-navstrechu.ru/project/volonterskaya-podderzhka/	
+Redirect   https://shag-navstrechu.ru/about/projects/item/447-meditsinskaya-reabilitatsiya/?$ https://shag-navstrechu.ru/project/meditsinskaya-reabilitatsiya/	
+Redirect   https://shag-navstrechu.ru/about/projects/item/448-podderzhka-roditelej/?$ https://shag-navstrechu.ru/project/podderzhka-roditelej/	
+Redirect   https://shag-navstrechu.ru/about/projects/item/217-school-project/?$ https://shag-navstrechu.ru/project/sotsialnaya-integratsiya/	
+Redirect   https://shag-navstrechu.ru/about/projects/item/19-adult-support/?$ https://shag-navstrechu.ru/project/podderzhka-roditelej/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/item/607-sebko-anna/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/item/605-ozerova-evgeniya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/item/604-tsybina-olga/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/item/488-petrova-kristina/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/item/487-abasheva-sofya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/item/426-simkina-anna/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/item/425-kondereva-olga/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/item/420-samojlova-elena/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/item/419-dudina-olga/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/management/item/489-ermolinskaya-anastasiya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/management/item/408-evgeniya-slav/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/management/item/359-ostrovskaya-mariya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/management/item/357-chudinov-dmitrij/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/management/item/356-budnik-aleksandr/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/management/item/355-goloviznina-yuliya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/management/item/354-ratnik-aleksandra/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/413-betekhtina-mariya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/414-davydkina-liliya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/364-zaborov-aleksandr/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/367-zavyalova-elizaveta/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/409-ismailova-lejla/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/412-kilin-vladimir/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/377-komar-anastasiya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/375-saskevich-mariya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/421-serebryanskaya-varvara/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/362-tokareva-evgeniya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/reports/financial/item/469-finansovyj-otchet-2013-g/?$ https://shag-navstrechu.ru/about/otchety/ 	
+Redirect   https://shag-navstrechu.ru/reports/financial/item/468-finansovyj-otchet-2012g/?$ https://shag-navstrechu.ru/about/otchety/ 	
+Redirect   https://shag-navstrechu.ru/reports/financial/item/467-rasxod-sredstv/?$ https://shag-navstrechu.ru/about/otchety/ 	
+Redirect   https://shag-navstrechu.ru/reports/narrative/item/452-soderzhatelnyj-otchet-za-2013-god/?$ https://shag-navstrechu.ru/about/otchety/ 	
+Redirect   https://shag-navstrechu.ru/reports/narrative/item/451-soderzhatelnyj-otchet-za-2012-god/?$ https://shag-navstrechu.ru/about/otchety/ 	
+Redirect   https://shag-navstrechu.ru/reports/narrative/item/450-soderzhatelnyj-otchet-za-2011-god/?$ https://shag-navstrechu.ru/about/otchety/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/426-simkina-anna/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/425-kondereva-olga/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/420-samojlova-elena/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/649-khromenkov-ivan/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/548-liza-gorkina/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/547-alina-guslina/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/323-katya-zhgon/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/302-ksyusha-bubnova/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/301-elya-belaya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/300-dasha-korovina/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/291-sveta-goshina/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/272-masha-porshueva/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/262-olya-yakusheva/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/545-sasha-larin/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/543-yasha-volk/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/541-korochkin-sasha/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/305-vanya-shivczov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/279-andrej-drugov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/270-prosha-bukin/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/259-serezha-moroz/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/254-borya-stasov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/419-dudina-olga/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/545-sasha-larin/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/543-yasha-volk/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/541-korochkin-sasha/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/305-vanya-shivczov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/279-andrej-drugov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/270-prosha-bukin/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/259-serezha-moroz/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/254-borya-stasov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/507-vitya-gajkin/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/506-vlad-efimov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/505-vanya-zolotov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/502-sasha-pankratov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/607-sebko-anna/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/605-ozerova-evgeniya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/604-tsybina-olga/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/488-petrova-kristina/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/487-abasheva-sofya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/366-yagodin-valerij/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/408-evgeniya-slav/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/359-ostrovskaya-mariya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/357-chudinov-dmitrij/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/356-budnik-aleksandr/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/355-goloviznina-yuliya/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/354-ratnik-aleksandra/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/315-sasha-rogov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/310-sasha-zadneprov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/271-pasha-bespalov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/266-vitalik-leonov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/260-sasha-xromov/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/289-deti/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/want-to-help/money-donate/error/?$ https://shag-navstrechu.ru/campaign/help-us/	
+Redirect   https://shag-navstrechu.ru/want-to-help/money-donate/success/?$ https://shag-navstrechu.ru/campaign/help-us/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/9-under-construction/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/8-rasxod-sredstv/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/7-recomendations/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/6-donors/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/5-address/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/4-partners/?$ https://shag-navstrechu.ru/about/team/	
+Redirect   https://shag-navstrechu.ru/about/staff/item/489-ermolinskaya-anastasiya/?$ https://shag-navstrechu.ru/about/team/	
