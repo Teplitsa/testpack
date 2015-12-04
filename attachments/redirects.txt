@@ -6,7 +6,7 @@ RedirectMatch 301  /news/help-projects/item/518-proekt-otdykh-na-dache/?$  https
 
 
 # mass media
-Redirect    https://shag-navstrechu.ru/news/mass-media/?$    https://shag-navstrechu.ru/category/pressa-o-nas/ 
+RedirectMatch 301  /news/mass-media/?$    https://shag-navstrechu.ru/category/pressa-o-nas/ 
 RedirectMatch 301  /news/mass-media/item/17-pressinform-avgust-2012/?$	https://shag-navstrechu.ru/17-pressinform-avgust-2012/	
 RedirectMatch 301  /news/mass-media/item/197-zavod-xudozhestvennyx-krasok-nevskaya-palitra-v-adres-zavoda-nevskaya-palitra-prishlo-pismo/?$	https://shag-navstrechu.ru/197-zavod-xudozhestvennyx-krasok-nevskaya-palitra-v-adres-zavoda-nevskaya-palitra-prishlo-pismo/	
 RedirectMatch 301  /news/mass-media/item/198-nevskoe-vremya-yarkie-minuty-v-pavlovske/?$	https://shag-navstrechu.ru/198-nevskoe-vremya-yarkie-minuty-v-pavlovske/	
@@ -529,121 +529,121 @@ RedirectMatch 301  /news/our-news/item/97-poezdka-v-teatr-kukly/?$	https://shag-
 RedirectMatch 301  /news/our-news/item/98-lshag-navstrechur-prinyal-uchastie-v-festivale-ldobryj-piterr/?$	https://shag-navstrechu.ru/98-lshag-navstrechur-prinyal-uchastie-v-festivale-ldobryj-piterr/	
 
 # static
-Redirect   https://shag-navstrechu.ru/want-to-help/?$ https://shag-navstrechu.ru/campaign/help-us/	
-Redirect   https://shag-navstrechu.ru/want-to-help/volunteer/?$ https://shag-navstrechu.ru/volonteram/	
-Redirect   https://shag-navstrechu.ru/want-to-help/money-donate/?$ https://shag-navstrechu.ru/campaign/help-us/	
-Redirect   https://shag-navstrechu.ru/want-to-help/goods-donate/?$ https://shag-navstrechu.ru/volonteram/pomoch-delom/	
-Redirect   https://shag-navstrechu.ru/reports/donations/?$ https://shag-navstrechu.ru/campaign/help-us/	
-Redirect   https://shag-navstrechu.ru/thanks/org/?$ https://shag-navstrechu.ru/about/partners/	
-Redirect   https://shag-navstrechu.ru/contacts/?$ https://shag-navstrechu.ru/about/contacts/	
-Redirect   https://shag-navstrechu.ru/about/projects/?$ https://shag-navstrechu.ru/projects/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/management/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/421-serebryanskaya-varvara/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/contacts/?$ https://shag-navstrechu.ru/about/contacts/ 	
-Redirect   https://shag-navstrechu.ru/reports/financial/?$ https://shag-navstrechu.ru/about/otchety/	
-Redirect   https://shag-navstrechu.ru/reports/narrative/?$ https://shag-navstrechu.ru/about/otchety/	
-Redirect   https://shag-navstrechu.ru/thanks/ppl/?$ https://shag-navstrechu.ru/volonteram/my-blagodarim/	
-Redirect   https://shag-navstrechu.ru/about/projects/item/443-reabilitatsiya-tvorchestvom/?$ https://shag-navstrechu.ru/project/art-terapiya/	
-Redirect   https://shag-navstrechu.ru/about/projects/item/444-kuratory-po-detyam/?$ https://shag-navstrechu.ru/project/volonterskaya-podderzhka/	
-Redirect   https://shag-navstrechu.ru/about/projects/item/446-volonterskaya-podderzhka/?$ https://shag-navstrechu.ru/project/volonterskaya-podderzhka/	
-Redirect   https://shag-navstrechu.ru/about/projects/item/447-meditsinskaya-reabilitatsiya/?$ https://shag-navstrechu.ru/project/meditsinskaya-reabilitatsiya/	
-Redirect   https://shag-navstrechu.ru/about/projects/item/448-podderzhka-roditelej/?$ https://shag-navstrechu.ru/project/podderzhka-roditelej/	
-Redirect   https://shag-navstrechu.ru/about/projects/item/217-school-project/?$ https://shag-navstrechu.ru/project/sotsialnaya-integratsiya/	
-Redirect   https://shag-navstrechu.ru/about/projects/item/19-adult-support/?$ https://shag-navstrechu.ru/project/podderzhka-roditelej/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/607-sebko-anna/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/605-ozerova-evgeniya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/604-tsybina-olga/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/488-petrova-kristina/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/487-abasheva-sofya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/426-simkina-anna/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/425-kondereva-olga/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/420-samojlova-elena/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/item/419-dudina-olga/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/management/item/489-ermolinskaya-anastasiya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/management/item/408-evgeniya-slav/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/management/item/359-ostrovskaya-mariya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/management/item/357-chudinov-dmitrij/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/management/item/356-budnik-aleksandr/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/management/item/355-goloviznina-yuliya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/management/item/354-ratnik-aleksandra/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/413-betekhtina-mariya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/414-davydkina-liliya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/364-zaborov-aleksandr/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/367-zavyalova-elizaveta/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/409-ismailova-lejla/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/412-kilin-vladimir/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/377-komar-anastasiya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/375-saskevich-mariya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/421-serebryanskaya-varvara/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/362-tokareva-evgeniya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/reports/financial/item/469-finansovyj-otchet-2013-g/?$ https://shag-navstrechu.ru/about/otchety/ 	
-Redirect   https://shag-navstrechu.ru/reports/financial/item/468-finansovyj-otchet-2012g/?$ https://shag-navstrechu.ru/about/otchety/ 	
-Redirect   https://shag-navstrechu.ru/reports/financial/item/467-rasxod-sredstv/?$ https://shag-navstrechu.ru/about/otchety/ 	
-Redirect   https://shag-navstrechu.ru/reports/narrative/item/452-soderzhatelnyj-otchet-za-2013-god/?$ https://shag-navstrechu.ru/about/otchety/ 	
-Redirect   https://shag-navstrechu.ru/reports/narrative/item/451-soderzhatelnyj-otchet-za-2012-god/?$ https://shag-navstrechu.ru/about/otchety/ 	
-Redirect   https://shag-navstrechu.ru/reports/narrative/item/450-soderzhatelnyj-otchet-za-2011-god/?$ https://shag-navstrechu.ru/about/otchety/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/426-simkina-anna/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/425-kondereva-olga/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/420-samojlova-elena/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/649-khromenkov-ivan/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/548-liza-gorkina/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/547-alina-guslina/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/323-katya-zhgon/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/302-ksyusha-bubnova/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/301-elya-belaya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/300-dasha-korovina/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/291-sveta-goshina/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/272-masha-porshueva/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/yuliya-bolkhovitina/item/262-olya-yakusheva/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/545-sasha-larin/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/543-yasha-volk/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/541-korochkin-sasha/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/305-vanya-shivczov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/279-andrej-drugov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/270-prosha-bukin/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/259-serezha-moroz/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/volunteers/mariya-saskevich/item/254-borya-stasov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/419-dudina-olga/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/545-sasha-larin/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/543-yasha-volk/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/541-korochkin-sasha/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/305-vanya-shivczov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/279-andrej-drugov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/270-prosha-bukin/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/259-serezha-moroz/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/254-borya-stasov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/507-vitya-gajkin/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/506-vlad-efimov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/505-vanya-zolotov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/502-sasha-pankratov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/607-sebko-anna/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/605-ozerova-evgeniya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/604-tsybina-olga/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/488-petrova-kristina/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/487-abasheva-sofya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/366-yagodin-valerij/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/408-evgeniya-slav/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/359-ostrovskaya-mariya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/357-chudinov-dmitrij/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/356-budnik-aleksandr/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/355-goloviznina-yuliya/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/354-ratnik-aleksandra/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/315-sasha-rogov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/310-sasha-zadneprov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/271-pasha-bespalov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/266-vitalik-leonov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/260-sasha-xromov/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/289-deti/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/want-to-help/money-donate/error/?$ https://shag-navstrechu.ru/campaign/help-us/	
-Redirect   https://shag-navstrechu.ru/want-to-help/money-donate/success/?$ https://shag-navstrechu.ru/campaign/help-us/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/9-under-construction/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/8-rasxod-sredstv/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/7-recomendations/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/6-donors/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/5-address/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/4-partners/?$ https://shag-navstrechu.ru/about/team/	
-Redirect   https://shag-navstrechu.ru/about/staff/item/489-ermolinskaya-anastasiya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /want-to-help/?$ https://shag-navstrechu.ru/campaign/help-us/	
+RedirectMatch 301   /want-to-help/volunteer/?$ https://shag-navstrechu.ru/volonteram/	
+RedirectMatch 301   /want-to-help/money-donate/?$ https://shag-navstrechu.ru/campaign/help-us/	
+RedirectMatch 301   /want-to-help/goods-donate/?$ https://shag-navstrechu.ru/volonteram/pomoch-delom/	
+RedirectMatch 301   /reports/donations/?$ https://shag-navstrechu.ru/campaign/help-us/	
+RedirectMatch 301   /thanks/org/?$ https://shag-navstrechu.ru/about/partners/	
+RedirectMatch 301   /contacts/?$ https://shag-navstrechu.ru/about/contacts/	
+RedirectMatch 301   /about/projects/?$ https://shag-navstrechu.ru/projects/	
+RedirectMatch 301   /about/volunteers/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/management/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/item/421-serebryanskaya-varvara/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /contacts/?$ https://shag-navstrechu.ru/about/contacts/ 	
+RedirectMatch 301   /reports/financial/?$ https://shag-navstrechu.ru/about/otchety/	
+RedirectMatch 301   /reports/narrative/?$ https://shag-navstrechu.ru/about/otchety/	
+RedirectMatch 301   /thanks/ppl/?$ https://shag-navstrechu.ru/volonteram/my-blagodarim/	
+RedirectMatch 301   /about/projects/item/443-reabilitatsiya-tvorchestvom/?$ https://shag-navstrechu.ru/project/art-terapiya/	
+RedirectMatch 301   /about/projects/item/444-kuratory-po-detyam/?$ https://shag-navstrechu.ru/project/volonterskaya-podderzhka/	
+RedirectMatch 301   /about/projects/item/446-volonterskaya-podderzhka/?$ https://shag-navstrechu.ru/project/volonterskaya-podderzhka/	
+RedirectMatch 301   /about/projects/item/447-meditsinskaya-reabilitatsiya/?$ https://shag-navstrechu.ru/project/meditsinskaya-reabilitatsiya/	
+RedirectMatch 301   /about/projects/item/448-podderzhka-roditelej/?$ https://shag-navstrechu.ru/project/podderzhka-roditelej/	
+RedirectMatch 301   /about/projects/item/217-school-project/?$ https://shag-navstrechu.ru/project/sotsialnaya-integratsiya/	
+RedirectMatch 301   /about/projects/item/19-adult-support/?$ https://shag-navstrechu.ru/project/podderzhka-roditelej/	
+RedirectMatch 301   /about/volunteers/item/607-sebko-anna/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/item/605-ozerova-evgeniya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/item/604-tsybina-olga/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/item/488-petrova-kristina/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/item/487-abasheva-sofya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/item/426-simkina-anna/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/item/425-kondereva-olga/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/item/420-samojlova-elena/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/item/419-dudina-olga/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/yuliya-bolkhovitina/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/mariya-saskevich/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/management/item/489-ermolinskaya-anastasiya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/management/item/408-evgeniya-slav/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/management/item/359-ostrovskaya-mariya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/management/item/357-chudinov-dmitrij/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/management/item/356-budnik-aleksandr/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/management/item/355-goloviznina-yuliya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/management/item/354-ratnik-aleksandra/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/413-betekhtina-mariya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/414-davydkina-liliya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/364-zaborov-aleksandr/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/367-zavyalova-elizaveta/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/409-ismailova-lejla/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/412-kilin-vladimir/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/377-komar-anastasiya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/375-saskevich-mariya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/421-serebryanskaya-varvara/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/362-tokareva-evgeniya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /reports/financial/item/469-finansovyj-otchet-2013-g/?$ https://shag-navstrechu.ru/about/otchety/ 	
+RedirectMatch 301   /reports/financial/item/468-finansovyj-otchet-2012g/?$ https://shag-navstrechu.ru/about/otchety/ 	
+RedirectMatch 301   /reports/financial/item/467-rasxod-sredstv/?$ https://shag-navstrechu.ru/about/otchety/ 	
+RedirectMatch 301   /reports/narrative/item/452-soderzhatelnyj-otchet-za-2013-god/?$ https://shag-navstrechu.ru/about/otchety/ 	
+RedirectMatch 301   /reports/narrative/item/451-soderzhatelnyj-otchet-za-2012-god/?$ https://shag-navstrechu.ru/about/otchety/ 	
+RedirectMatch 301   /reports/narrative/item/450-soderzhatelnyj-otchet-za-2011-god/?$ https://shag-navstrechu.ru/about/otchety/	
+RedirectMatch 301   /about/staff/item/426-simkina-anna/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/425-kondereva-olga/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/420-samojlova-elena/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/649-khromenkov-ivan/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/yuliya-bolkhovitina/item/548-liza-gorkina/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/yuliya-bolkhovitina/item/547-alina-guslina/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/yuliya-bolkhovitina/item/323-katya-zhgon/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/yuliya-bolkhovitina/item/302-ksyusha-bubnova/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/yuliya-bolkhovitina/item/301-elya-belaya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/yuliya-bolkhovitina/item/300-dasha-korovina/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/yuliya-bolkhovitina/item/291-sveta-goshina/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/yuliya-bolkhovitina/item/272-masha-porshueva/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/yuliya-bolkhovitina/item/262-olya-yakusheva/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/mariya-saskevich/item/545-sasha-larin/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/mariya-saskevich/item/543-yasha-volk/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/mariya-saskevich/item/541-korochkin-sasha/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/mariya-saskevich/item/305-vanya-shivczov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/mariya-saskevich/item/279-andrej-drugov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/mariya-saskevich/item/270-prosha-bukin/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/mariya-saskevich/item/259-serezha-moroz/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/volunteers/mariya-saskevich/item/254-borya-stasov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/419-dudina-olga/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/545-sasha-larin/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/543-yasha-volk/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/541-korochkin-sasha/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/305-vanya-shivczov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/279-andrej-drugov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/270-prosha-bukin/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/259-serezha-moroz/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/254-borya-stasov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/507-vitya-gajkin/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/506-vlad-efimov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/505-vanya-zolotov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/502-sasha-pankratov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/607-sebko-anna/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/605-ozerova-evgeniya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/604-tsybina-olga/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/488-petrova-kristina/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/487-abasheva-sofya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/366-yagodin-valerij/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/408-evgeniya-slav/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/359-ostrovskaya-mariya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/357-chudinov-dmitrij/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/356-budnik-aleksandr/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/355-goloviznina-yuliya/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/354-ratnik-aleksandra/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/315-sasha-rogov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/310-sasha-zadneprov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/271-pasha-bespalov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/266-vitalik-leonov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/260-sasha-xromov/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/289-deti/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /want-to-help/money-donate/error/?$ https://shag-navstrechu.ru/campaign/help-us/	
+RedirectMatch 301   /want-to-help/money-donate/success/?$ https://shag-navstrechu.ru/campaign/help-us/	
+RedirectMatch 301   /about/staff/item/9-under-construction/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/8-rasxod-sredstv/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/7-recomendations/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/6-donors/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/5-address/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/4-partners/?$ https://shag-navstrechu.ru/about/team/	
+RedirectMatch 301   /about/staff/item/489-ermolinskaya-anastasiya/?$ https://shag-navstrechu.ru/about/team/

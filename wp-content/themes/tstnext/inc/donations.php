@@ -70,11 +70,6 @@ class Leyka_Sms_Box extends Leyka_Payment_Method {
 }
 
 
-//add_action('init', 'tst_add_leyka_pm');
-function tst_add_leyka_pm(){
-	
-	
-}
 
 add_action('leyka_init_pm_list', 'tst_add_sms_pm');
 function tst_add_sms_pm($gateway){
