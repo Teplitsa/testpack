@@ -28,23 +28,6 @@ function tst_request_corrected($query) {
 	
 } 
 
-//redirects of forbidden pages
-add_action('template_redirect', 'tst_custom_redirect');
-function tst_custom_redirect(){
-	
-	$redirect = '';
-	if(is_tax('children_status', 'my-vyzdoroveli')){
-		$redirect = home_url('nashi-deti/well');
-	}
-	elseif(is_tax('children_status', '	lyubim-i-pomnim')) {
-		$redirect = home_url('nashi-deti/pfmjat');
-	}
-	
-	if(!empty($redirect))
-		wp_redirect($redirect);
-}
-
-
 function tst_get_post_id_from_posts($posts){
 		
 	$ids = array();
@@ -719,6 +702,11 @@ function tst_children_card($cpost){
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
 	
+	if(has_term(array('remember', 'health'), 'children_status', $cpost)){
+		tst_general_inpage_card($cpost);
+		return;
+	}
+	
 	$pl = get_permalink($cpost);
 	$e = tst_get_post_excerpt($cpost, 30, true);
 	$age = get_post_meta($cpost->ID, 'child_age', true);
@@ -1036,7 +1024,7 @@ function tst_general_inpage_card($cpost){
 <div class="tpl-card-mix mdl-card mdl-shadow--2dp">
 	
 	<div class="mdl-card__media">
-		<a class="logo-link" href="#"><?php echo $logo; ?></a>
+		<span class="logo-link"><?php echo $logo; ?></span>
 	</div>
 			
 	<div class="mdl-card__title">

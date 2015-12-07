@@ -41,7 +41,7 @@ function tst_formidable_default_html($html, $field, $params) {
 		$html = str_replace('frm_primary_label', 'mdl-textfield__label frm_primary_label', $html);
 		$html = str_replace('frm_error', 'mdl-textfield__error frm_error', $html);
 		
-		if((int)$field['read_only'] == 1){			
+		if(isset($field['read_only']) && (int)$field['read_only'] == 1){			
 			$html = str_replace('<input', '<input disabled="disabled" ', $html);
 		}		
 	}

@@ -488,3 +488,10 @@ $margin-base: 16px !default;
 .embed-children {
 	margin: 0 -24px 24px;
 }
+
+.tax-preface-top .entry-content > p  {
+	b {
+		font-size: 21px;
+		font-weight: 500;
+	}
+}
