@@ -104,6 +104,7 @@ leyka_pf_submission_errors();?>
 	
 			$list = array();
 			foreach($icons as $i) {
+				$i = (is_ssl()) ? str_replace('http:', 'https:', $i) : $i;
 				$list[] = "<li>{$i}</li>";
 			}
 	
