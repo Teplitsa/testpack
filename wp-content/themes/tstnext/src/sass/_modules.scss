@@ -480,3 +480,24 @@ $i: 1; //widths
 		p { margin: $base 0 0; }
 	}
 }
+
+/** fix */
+.entry-content .sigProContainer {
+	list-style-type: none;
+	@include clearfix;
+	margin-left: 0 !important;
+	
+	li.sigProThumb {
+		list-style-type: none;
+		margin: 0 !important;
+		float: left;
+		.sigProLinkOuterWrapper {
+			padding: 3px;
+		}
+		span, a {
+			display: block;
+			width: 130px;
+			height: 130px;			
+		}
+	}
+}
