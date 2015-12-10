@@ -2,27 +2,30 @@
 /** NINJA FORMS **/
 add_action('after_setup_theme', function(){
 	
-	//notices in admin from incorrect post message filterng - remove it
-	$nf = Ninja_Forms::instance();
-	remove_filter( 'post_updated_messages', array( $nf->subs_cpt, 'post_updated_messages' ) );
+	if(class_exists('Ninja_Forms')) {
+		//notices in admin from incorrect post message filterng - remove it
+		$nf = Ninja_Forms::instance();
+		remove_filter( 'post_updated_messages', array( $nf->subs_cpt, 'post_updated_messages' ) );
+		
+		//remove CSS
+		remove_action( 'ninja_forms_display_css', 'ninja_forms_display_css', 10, 2 );
+		
+		//remove unsupported fields
+		remove_action( 'init', 'ninja_forms_register_field_calc' );	
+		remove_action( 'init', 'ninja_forms_register_field_credit_card' );
+		remove_action( 'init', 'ninja_forms_register_field_number' );
+		remove_action( 'init', 'ninja_forms_register_field_hr' );
+		remove_action( 'init', 'ninja_forms_register_field_profile_pass' );
+		remove_action( 'init', 'ninja_forms_register_field_rating' );
+		remove_action( 'init', 'ninja_forms_register_field_tax' );
+		remove_action( 'init', 'ninja_forms_register_field_timed_submit' );
+		remove_action( 'init', 'ninja_forms_register_field_spam');
+		
+		remove_action('admin_init', 'ninja_forms_register_sidebar_payment_fields');
+		remove_action('admin_init', 'ninja_forms_register_sidebar_user_info_fields');
+		   add_action('admin_init', 'tst_nf_register_sidebar_user_info_fields');
+	}
 	
-	//remove CSS
-	remove_action( 'ninja_forms_display_css', 'ninja_forms_display_css', 10, 2 );
-	
-	//remove unsupported fields
-	remove_action( 'init', 'ninja_forms_register_field_calc' );	
-	remove_action( 'init', 'ninja_forms_register_field_credit_card' );
-	remove_action( 'init', 'ninja_forms_register_field_number' );
-	remove_action( 'init', 'ninja_forms_register_field_hr' );
-	remove_action( 'init', 'ninja_forms_register_field_profile_pass' );
-	remove_action( 'init', 'ninja_forms_register_field_rating' );
-	remove_action( 'init', 'ninja_forms_register_field_tax' );
-	remove_action( 'init', 'ninja_forms_register_field_timed_submit' );
-	remove_action( 'init', 'ninja_forms_register_field_spam');
-	
-	remove_action('admin_init', 'ninja_forms_register_sidebar_payment_fields');
-	remove_action('admin_init', 'ninja_forms_register_sidebar_user_info_fields');
-	   add_action('admin_init', 'tst_nf_register_sidebar_user_info_fields');
 });
 
 //to-do deregister unused fields

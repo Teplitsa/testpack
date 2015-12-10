@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-10 14:57+0300\n"
-"PO-Revision-Date: 2015-12-10 14:59+0300\n"
+"POT-Creation-Date: 2015-12-11 00:02+0300\n"
+"PO-Revision-Date: 2015-12-11 00:03+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -38,7 +38,7 @@ msgstr "Все материалы сайта доступны по лиценц�
 msgid "Primary Menu"
 msgstr "﻿Главное меню"
 
-#: functions.php:39 inc/widgets.php:249
+#: functions.php:39 inc/widgets.php:250
 msgid "Social Buttons"
 msgstr "Социальные кнопки"
 
@@ -73,8 +73,8 @@ msgid ""
 msgstr "Аннотация для списков (на странице записи добавляется в начало)"
 
 #: inc/admin.php:222
-msgid "Custom fields"
-msgstr "Мета-поля"
+msgid "Forms"
+msgstr "Формы"
 
 #: inc/admin.php:344
 #, php-format
@@ -174,6 +174,10 @@ msgstr "Текст в футере"
 #: inc/extras.php:300
 msgid "Newsletter form ID"
 msgstr "ID формы подписки"
+
+#: inc/forms.php:491
+msgid "User Information"
+msgstr "Пользователь"
 
 #: inc/post-types.php:281
 msgid "Page Settings"
@@ -330,7 +334,7 @@ msgstr "След."
 msgid "Author"
 msgstr "Автор"
 
-#: inc/widgets.php:251
+#: inc/widgets.php:252
 msgid "Social links menu with optional text"
 msgstr "Меню социальных кнопок с сопроводительным текстом"
 
@@ -369,6 +373,9 @@ msgstr "404: Страница не&nbsp;найдена"
 #: single-event.php:70
 msgid "More events"
 msgstr "Еще анонсы"
+
+#~ msgid "Custom fields"
+#~ msgstr "Мета-поля"
 
 #~ msgid "Logo"
 #~ msgstr "Логотип"

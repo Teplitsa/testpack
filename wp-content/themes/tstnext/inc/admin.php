@@ -217,9 +217,9 @@ function tst_admin_menu_labels(){ /* change adming menu labels */
 	
 	//custom fields
 	foreach($menu as $order => $item){
-         
-        if($item[2] == 'edit.php?post_type=acf-field-group'){
-            $menu[$order][0] = __('Custom fields', 'tst');            
+        
+        if($item[2] == 'ninja-forms'){ 
+            $menu[$order][0] = __('Forms', 'tst');            
             break;
         }
     }   
