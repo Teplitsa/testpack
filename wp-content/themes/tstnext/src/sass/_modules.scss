@@ -435,16 +435,24 @@ $i: 1; //widths
 	background: $tst-color-white;
 	border-radius: 2px;
 	
-	.frm_forms {
+	.ninja-forms-cont {
 		margin: 0;
-		padding: $cell-elementary-2x;
+	}
+	.ninja-forms-form-wrap {
+		padding: $cell-elementary $cell-elementary-3x;
+		
+		form.ninja-forms-form {
+			margin: 0;
+			padding: 0;
+			border: none;			
+		}
+		
+		.ninja-forms-form-title {
+			margin-top: 0;
+		}
 	}
 	
-	h3 {
-		margin-top: 0;
-	}
-	
-	.frm_description  {
+	.nf-desc  {
 		display: block;
 		p {
 			@include typo-caption();

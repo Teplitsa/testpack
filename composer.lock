@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1c57566348aae735745e0f989b04f732",
-    "content-hash": "080c10f5ac3f1fdcd3fd70cda835e65e",
+    "hash": "8a37aa0cebaf394e644617c9e6545b84",
+    "content-hash": "b58b976f592b36d42e4d87ee8239715b",
     "packages": [
         {
             "name": "composer/installers",
@@ -345,26 +345,6 @@
             "homepage": "https://wordpress.org/plugins/disable-comments/"
         },
         {
-            "name": "wpackagist-plugin/formidable",
-            "version": "2.0.18",
-            "source": {
-                "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/formidable/",
-                "reference": "tags/2.0.18"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/formidable.2.0.18.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/formidable/"
-        },
-        {
             "name": "wpackagist-plugin/imsanity",
             "version": "2.3.6",
             "source": {
@@ -423,6 +403,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/media-search-enhanced/"
+        },
+        {
+            "name": "wpackagist-plugin/ninja-forms",
+            "version": "2.9.29",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/ninja-forms/",
+                "reference": "tags/2.9.29"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/ninja-forms.2.9.29.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/ninja-forms/"
         },
         {
             "name": "wpackagist-plugin/posts-to-posts",
@@ -752,7 +752,7 @@
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/posts-to-posts": 0,
-        "wpackagist-plugin/formidable": 0,
+        "wpackagist-plugin/ninja-forms": 0,
         "wpackagist-plugin/cmb2": 0,
         "wpackagist-plugin/debug-bar": 0,
         "wpackagist-plugin/debug-objects": 0,

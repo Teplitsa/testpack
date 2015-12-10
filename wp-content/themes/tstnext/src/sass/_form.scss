@@ -1,12 +1,35 @@
-/**  Formidable forms **/
+/**  Ninjia forms **/
 
-.frm_forms  {
+.ninja-forms-cont  {
 	margin: $margin-base*1.5 0;
 	
-	h3 {
-		@include typo-title();
+	.ninja-forms-form-title {				
+		padding: $card-vertical-padding 0;		
+		cursor: pointer;
+		font-size: 16px;
+		line-height: 1.2;
+		font-weight: normal;		
+		color: $tst-color-primary;
+		margin: 0;
 	}
 	
+	form.ninja-forms-form {		
+		background: $tst-color-white;		
+		margin: 0;
+	}
+	
+	.hp-wrap, .ninja-forms-required-items, .hidden-wrap {
+		display: none;
+	}
+}
+
+.entry-content {
+	
+	form.ninja-forms-form {
+		border-top: 2px solid $tst-color-primary;
+		@include shadow-2dp();		
+		padding: $cell-elementary-3x;		
+	}
 }
 
 // text field
@@ -65,43 +88,25 @@
 	}
 }
 
-.mdl-textfield--floating-label {
+
+//checkbox
+.field-wrap, .nf-desc {
+	padding: $input-text-vertical-spacing 0;
 	
-}
-
-.frm_description {
-	display: none;
-}
-
-.frm_error {
-	@extend .mdl-textfield__error;
-	visibility: visible;
-}
-
-.frm_message {
-	@include shadow-2dp();
-	padding: 8px 16px;
-	background-color: unquote("rgba(#{$palette-grey-100}, 1)");
-	border-left: 4px solid $tst-color-primary;
-	p {
-		margin: 0;
+	p:last-child {
+		margin-bottom: 0;
+	}
+	
+	ul {
+		list-style-type: none;
+		margin-left: 0;
 	}
 }
 
-.frm_ajax_loading {
-	display: none;
-}
-
-.frm_hidden {
-	display: none;
-}
-
-
-//chekboxes and radious
-.tst-inputfix {
-	box-sizing: border-box;
-	//position: relative;
-	padding: $input-text-vertical-spacing 0;
+.mdl-checkbox__tick-outline { //tick field fix
+	mask: url("../images/tick-mask.svg?embed");
+	.mdl-checkbox.is-checked & { background: $checkbox-color url("../images/tick.svg?embed"); }
+	.mdl-checkbox.is-checked.is-disabled & { background: $checkbox-disabled-color url("../images/tick.svg?embed"); }
 }
 
 .tst-inputfix__label {
@@ -115,14 +120,7 @@
 	padding-bottom: 4px;
 }
 
-.mdl-checkbox__tick-outline { //tick field fix
-	mask: url("../images/tick-mask.svg?embed");
-	.mdl-checkbox.is-checked & { background: $checkbox-color url("../images/tick.svg?embed"); }
-	.mdl-checkbox.is-checked.is-disabled & { background: $checkbox-disabled-color url("../images/tick.svg?embed"); }
-}
-
-
-
+// select
 
 //select
 select[multiple],
@@ -130,7 +128,6 @@ select[size] {
   // Make multiple select elements height not fixed
   height: auto;
 }
-
 
 .tst-select {
 	box-sizing: border-box;
@@ -181,37 +178,37 @@ select[size] {
 	}
 }
 
-.frm_radio .frm_other_input { margin-left: 5px;}
 
-//forms with title
-.frm_forms.has-title {
+//submit
+.submit-wrap input {
+	box-shadow: 0 0 0 rgba(255,255,255, 0);
+}
+
+
+//messages
+.ninja-forms-field-error {
+	@extend .mdl-textfield__error;
+	visibility: visible;
+}
+
+
+.ninja-forms-response-msg {
 	
-	.frm_form_fields  > h3 {
-		border-bottom: 1px solid $tst-color-border;
-		padding: $card-vertical-padding 0;		
-		cursor: pointer;
-		font-size: 16px;
-		font-weight: normal;
-		border-bottom: 2px solid $tst-color-primary;
-		color: $tst-color-primary;
+	@include shadow-2dp();
+		padding: 8px 16px;
+		background-color: unquote("rgba(#{$palette-grey-100}, 1)");
+		border-left: 4px solid $tst-color-primary;
+		margin-bottom: $cell-elementary;
+		
+	p {
 		margin: 0;
 	}
 	
-	h3 + fieldset {
-		@include shadow-2dp();
-		background: $tst-color-white;
-		padding: $cell-elementary-3x;
+	&.ninja-forms-error-msg  {
+		border-color: $input-text-error-color;
 	}
 	
-	.frm_description {
-		display: block;
-		p {
-			@include typo-caption();
-			color: $tst-color-text-semi;
-		}
-	}
-	
-	.frm_submit input {
-		box-shadow: 0 0 0 rgba(255,255,255, 0);
+	&.empty {
+		display: none;
 	}
 }

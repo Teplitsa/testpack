@@ -24,6 +24,7 @@ function tst_custom_widgets(){
 	unregister_widget('Leyka_Campaign_Card_Widget');
 	unregister_widget('Leyka_Campaigns_List_Widget');
 	unregister_widget('Su_Widget');
+	unregister_widget('Ninja_Forms_Widget');	
 	
 	//register_widget('BB_RSS_Widget');
 	//register_widget('BB_Recent_Posts_Widget');

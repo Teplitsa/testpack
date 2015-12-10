@@ -280,6 +280,7 @@ jQuery(document).ready(function($){
 			
 		});
 	});
+		
 	
 	/** Leyka custom modal **/
 	var leykaTopPad = (windowWidth > 940) ? 120 : 65;
@@ -397,11 +398,13 @@ jQuery(document).ready(function($){
 				
 		}
 	});
+	
 	$('#newsletter').on('click', function(e){
 		e.preventDefault();
 		$('#modal-newsletter').trigger('openModal');
 	});
 	
+		
 	/* Menu bottom on mobile */
 	//function moveHeader() {
 	//	

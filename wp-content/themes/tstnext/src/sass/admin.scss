@@ -108,3 +108,28 @@ input.regular-text {
 .cmb2-wrap .cmb-td textarea {
 	width: 100%;
 }
+
+
+/* NF */
+#post-body-content .nf-field-settings {
+	span.description {
+		display: block;
+		font-size: 12px;
+		margin-bottom: 0;
+	}
+	.description-thin {
+		width: 100%;
+	}
+}
+
+#post-body-content .ninja-forms-field-list div[id *="show_desc"],
+#post-body-content .ninja-forms-field-list div[id *="label_pos"] {
+	display: none;
+}
+
+div [id *="ninja_forms_metabox"] .item-edit.metabox-item-edit {	
+	color: rgba(255,255,255, 0);
+	&:before {
+		color: #a0a5aa;
+	}
+}
