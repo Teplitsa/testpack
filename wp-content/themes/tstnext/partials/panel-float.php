@@ -102,7 +102,7 @@
 	
 	<div class="mdl-cell mdl-cell--8-col-tablet mdl-cell--4-col">
 		<div class="mdl-grid mdl-grid--no-spacing">
-			<div class="mdl-cell mdl-cell--9-col mdl-cell--2-col-phone mdl-cell--5-col-tablet">
+			<div class="mdl-cell mdl-cell--9-col mdl-cell--hide-phone mdl-cell--5-col-tablet">
 				<div class="sharing-on-panel"><?php tst_social_share_no_js();?></div>
 			</div>
 			<div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--3-col-tablet">

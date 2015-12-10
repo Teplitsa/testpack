@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-15 14:07+0300\n"
-"PO-Revision-Date: 2015-11-15 14:10+0300\n"
+"POT-Creation-Date: 2015-12-10 14:57+0300\n"
+"PO-Revision-Date: 2015-12-10 14:59+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -16,11 +16,10 @@ msgstr ""
 "X-Generator: Poedit 1.8.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
-"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;"
-"__ngettext_noop:1,2;_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;"
-"_nx_js:1,2,3c;esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;"
-"esc_attr_x:1,2c;esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;"
-"transChoice:1,2\n"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Loco-Target-Locale: ru_RU\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bower_components\n"
@@ -30,28 +29,28 @@ msgstr ""
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:28
+#: footer.php:45
 #, php-format
 msgid "All materials of the site are avaliabe under license %s."
 msgstr "Все материалы сайта доступны по лиценции %s."
 
-#: functions.php:35
+#: functions.php:38
 msgid "Primary Menu"
 msgstr "﻿Главное меню"
 
-#: functions.php:36 inc/widgets.php:249
+#: functions.php:39 inc/widgets.php:249
 msgid "Social Buttons"
 msgstr "Социальные кнопки"
 
-#: functions.php:37
+#: functions.php:40
 msgid "Sitemap"
 msgstr "Карта сайта"
 
-#: functions.php:52
+#: functions.php:55
 msgid "Landscape mini"
 msgstr "Горизонтальная миниатюра"
 
-#: functions.php:53
+#: functions.php:56
 msgid "Fixed"
 msgstr "Фиксированный"
 
@@ -77,13 +76,49 @@ msgstr "Аннотация для списков (на странице запи
 msgid "Custom fields"
 msgstr "Мета-поля"
 
-#: inc/admin.php:320
+#: inc/admin.php:344
 #, php-format
 msgid ""
 "ATTENTION! You thumbnail image is too small. It should be at least %s px"
 msgstr ""
 "ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
 "менее %s px."
+
+#: inc/admin.php:382 inc/admin.php:398
+msgid "Facebook Profile"
+msgstr "Профиль на Facebook"
+
+#: inc/admin.php:384 inc/admin.php:400
+msgid "Enter URL of author's Facebook profile"
+msgstr "Укажите ссылку на профиль автора"
+
+#: inc/admin.php:387 inc/admin.php:403
+msgid "Avatar"
+msgstr "Аватарка"
+
+#: inc/admin.php:435
+msgid "Taxonomy Term Image"
+msgstr "Заставка"
+
+#: inc/admin.php:436
+msgid "Select which image should represent this term."
+msgstr "Выберите изображение заставки"
+
+#: inc/admin.php:437
+msgid "Select Image"
+msgstr "Выбрать изображение"
+
+#: inc/admin.php:438
+msgid "Remove"
+msgstr "Удалить"
+
+#: inc/admin.php:439
+msgid "Select or upload an image for this term"
+msgstr "Выбрать или загрузить изображение"
+
+#: inc/admin.php:440
+msgid "Attach"
+msgstr "Присоединить"
 
 #: inc/cards.php:47 inc/cards.php:107 inc/cards.php:191 inc/cards.php:267
 #: inc/cards.php:344 inc/cards.php:380 inc/cards.php:415
@@ -95,6 +130,14 @@ msgstr "Миниатюра"
 #: inc/cards.php:222 inc/cards.php:289
 msgid "Details"
 msgstr "Подробнее"
+
+#: inc/donations.php:59
+msgid "Please, set a text of comment to describe an additional ways to donate."
+msgstr ""
+
+#: inc/donations.php:67
+msgid "Please, set a text to describe an additional ways to donate."
+msgstr ""
 
 #: inc/events.php:20
 msgid "Event date"
@@ -137,12 +180,12 @@ msgid "Page Settings"
 msgstr "Настройки страницы"
 
 #: inc/post-types.php:293 inc/post-types.php:352 inc/post-types.php:378
-#: inc/post-types.php:432 inc/post-types.php:459
+#: inc/post-types.php:440 inc/post-types.php:467
 msgid "Header Image"
 msgstr "Заставка"
 
 #: inc/post-types.php:299 inc/post-types.php:358 inc/post-types.php:384
-#: inc/post-types.php:438 inc/post-types.php:465
+#: inc/post-types.php:446 inc/post-types.php:473
 msgid "Add Image"
 msgstr "Добавить изображение"
 
@@ -166,79 +209,87 @@ msgstr "Настройки записи"
 msgid "Project Settings"
 msgstr "Настройки проекта"
 
+#: inc/post-types.php:389
+msgid "Text for support block"
+msgstr "Текст для блока «поддержать» "
+
 #: inc/post-types.php:392
+msgid "This will overrride default text"
+msgstr "Указанный текст заменит текст по умолчанию"
+
+#: inc/post-types.php:400
 msgid "Event Settings"
 msgstr "Настройки анонса"
 
-#: inc/post-types.php:403
+#: inc/post-types.php:411
 msgid "Event Date"
 msgstr "Дата события"
 
-#: inc/post-types.php:411
+#: inc/post-types.php:419
 msgid "Event Time"
 msgstr "Время"
 
-#: inc/post-types.php:414
+#: inc/post-types.php:422
 msgid "Specify event time, ex. 16.30"
 msgstr "Укажите время мероприятия, например, 16.30"
 
-#: inc/post-types.php:418
+#: inc/post-types.php:426
 msgid "Event Location"
 msgstr "Место"
 
-#: inc/post-types.php:421
+#: inc/post-types.php:429
 msgid "Specify city and place of event"
 msgstr "Укажите город и место мероприятия"
 
-#: inc/post-types.php:425
+#: inc/post-types.php:433
 msgid "Event Addres"
 msgstr "Адрес"
 
-#: inc/post-types.php:428
+#: inc/post-types.php:436
 msgid "Specify addres (without city)"
 msgstr "Укажите адрес (уже без города)"
 
-#: inc/post-types.php:447
+#: inc/post-types.php:455
 msgid "Homepage Settings"
 msgstr "Настройки главной страницы"
 
-#: inc/post-types.php:471
+#: inc/post-types.php:479
 msgid "Profiles - Order"
 msgstr "Профили - Порядок"
 
-#: inc/post-types.php:476 inc/post-types.php:507 inc/post-types.php:537
+#: inc/post-types.php:484 inc/post-types.php:515 inc/post-types.php:545
 msgid "Don't show"
 msgstr "Не показывать"
 
-#: inc/post-types.php:477 inc/post-types.php:508 inc/post-types.php:538
+#: inc/post-types.php:485 inc/post-types.php:516 inc/post-types.php:546
 msgid "First section"
 msgstr "Первая секция"
 
-#: inc/post-types.php:478 inc/post-types.php:509 inc/post-types.php:539
+#: inc/post-types.php:486 inc/post-types.php:517 inc/post-types.php:547
 msgid "Second section"
 msgstr "Вторая секция"
 
-#: inc/post-types.php:479 inc/post-types.php:510 inc/post-types.php:540
+#: inc/post-types.php:487 inc/post-types.php:518 inc/post-types.php:548
 msgid "Third section"
 msgstr "Третья секция"
 
-#: inc/post-types.php:492
+#: inc/post-types.php:500
 msgid "Profiles - Filter"
 msgstr "Профили - Фильтр"
 
-#: inc/post-types.php:502
+#: inc/post-types.php:510
 msgid "News - Order"
 msgstr "Новости - Порядок"
 
-#: inc/post-types.php:523
+#: inc/post-types.php:531
 msgid "News - Filter"
 msgstr "Новости - Фильтр"
 
-#: inc/post-types.php:532
+#: inc/post-types.php:540
 msgid "Projects section - Order"
 msgstr "Проекты - Порядок"
 
-#: inc/post-types.php:546
+#: inc/post-types.php:554
 msgid "Partners"
 msgstr "Партнеры"
 

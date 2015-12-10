@@ -107,16 +107,16 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.3.1",
+            "version": "4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "cfcf25eb42baeb7316a61c7a64e9a1ab3e291f2f"
+                "reference": "ad70e5cf518b697eed94f558ca6c88e5cc87e65b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/cfcf25eb42baeb7316a61c7a64e9a1ab3e291f2f",
-                "reference": "cfcf25eb42baeb7316a61c7a64e9a1ab3e291f2f",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/ad70e5cf518b697eed94f558ca6c88e5cc87e65b",
+                "reference": "ad70e5cf518b697eed94f558ca6c88e5cc87e65b",
                 "shasum": ""
             },
             "require": {
@@ -140,7 +140,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2015-09-15 15:01:23"
+            "time": "2015-12-08 23:46:14"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -192,10 +192,10 @@
         },
         {
             "name": "koodimonni-language/core-ru_ru",
-            "version": "4.3.1",
+            "version": "4.4",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/core/4.3.1/ru_RU.zip",
+                "url": "https://downloads.wordpress.org/translation/core/4.4/ru_RU.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -346,15 +346,15 @@
         },
         {
             "name": "wpackagist-plugin/formidable",
-            "version": "2.0.17",
+            "version": "2.0.18",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/formidable/",
-                "reference": "tags/2.0.17"
+                "reference": "tags/2.0.18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/formidable.2.0.17.zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.0.18.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -546,15 +546,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.0.4",
+            "version": "3.0.6",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.0.4"
+                "reference": "tags/3.0.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.0.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.0.6.zip",
                 "reference": null,
                 "shasum": null
             },

@@ -158,7 +158,7 @@ function tst_pre_wp_nav_menu_social( $output, $args ) {
 		'facebook.com'       => 'icon-facebook',		
 		'twitter.com'        => 'icon-twitter',
 		'vk.com'             => 'icon-vk',
-		//'youtube.com'        => 'icon-youtube',		
+		'youtube.com'        => 'icon-youtube',		
 		'odnoklassniki.ru'   => 'icon-ok',
 		'ok.ru'              => 'icon-ok'
 	));

@@ -6,6 +6,8 @@
 define('TST_VERSION', '1.1');
 define('TST_HAS_AUTHORS', true);
 define('TST_DOC_URL', 'https://kms.te-st.ru/site-help/');
+define('TST_DONORS_LIST_NUM', 20);
+define('TST_PROJECT_SUPPORT_TEXT', 'Ваше пожертвование сделает жизнь детей с ОВЗ лучше и полнее, поможет им лучше адаптироваться в мире и сохранить здоровье.');
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 760; /* pixels */

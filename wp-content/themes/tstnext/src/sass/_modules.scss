@@ -144,7 +144,10 @@
 	
 	.next-link {
 		display: block;
-		text-align: right;
+		text-align: left;
+		@include for(tablet) {
+			text-align: right;
+		}
 		
 		a {
 			display: inline-block;
@@ -330,12 +333,12 @@ $i: 1; //widths
 			background: darken(#00B0EA, 10%);
 		}
 	}
-	/*.youtube a {
+	.youtube a {
 		background: #E83832;
 		&:hover, &:focus, &:active {
 			background: darken(#E83832, 10%);
 		}
-	}*/
+	}
 }
 
 

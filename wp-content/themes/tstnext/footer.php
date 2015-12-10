@@ -22,9 +22,26 @@ $footer_text = get_theme_mod('footer_text');
 	<div class="mdl-grid full-width">
 		<div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet">
 			<div class="credits">
-			<div class="bottom-logo"><?php tst_site_logo('context');?></div>
+			<!--<div class="bottom-logo"><?php tst_site_logo('context');?></div>-->
 			<div class="copy">
 				<?php echo apply_filters('tst_the_content', $footer_text); ?>
+				
+				<div class="footer-buttons">
+					<?php tst_get_social_menu(); ?>
+					<!-- Search -->					
+					<form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+					  <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+						<label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+						  <i class="material-icons">search</i>
+						</label>
+						<div class="mdl-textfield__expandable-holder">
+						  <input class="mdl-textfield__input" type="text" id="sample6" name="s">
+						  <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+						</div>
+					  </div>
+					</form>					
+				</div>
+				
 				<p><?php printf(__('All materials of the site are avaliabe under license %s.', 'tst'), $cc_link);?></p>
 			</div>
 			</div>

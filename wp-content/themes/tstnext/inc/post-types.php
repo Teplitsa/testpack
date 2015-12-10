@@ -140,20 +140,20 @@ function tst_custom_content(){
 	
 	register_post_type('project', array(
         'labels' => array(
-            'name'               => 'Программы',
-            'singular_name'      => 'Программа',
-            'menu_name'          => 'Программы',
-            'name_admin_bar'     => 'Добавить программу',
-            'add_new'            => 'Добавить новую',
-            'add_new_item'       => 'Добавить программу',
-            'new_item'           => 'Новая программа',
-            'edit_item'          => 'Редактировать программу',
-            'view_item'          => 'Просмотр программы',
-            'all_items'          => 'Все программы',
-            'search_items'       => 'Искать программу',
-            'parent_item_colon'  => 'Родительская программа:',
-            'not_found'          => 'Программы не найдены',
-            'not_found_in_trash' => 'В Корзине программы не найдены'
+            'name'               => 'Проекты',
+            'singular_name'      => 'Проект',
+            'menu_name'          => 'Проекты',
+            'name_admin_bar'     => 'Добавить проект',
+            'add_new'            => 'Добавить новый',
+            'add_new_item'       => 'Добавить проект',
+            'new_item'           => 'Новый проект',
+            'edit_item'          => 'Редактировать проект',
+            'view_item'          => 'Просмотр проекта',
+            'all_items'          => 'Все проекты',
+            'search_items'       => 'Искать проект',
+            'parent_item_colon'  => 'Родительский проект:',
+            'not_found'          => 'Проекты не найдены',
+            'not_found_in_trash' => 'В Корзине проекты не найдены'
        ),
         'public'              => true,
         'exclude_from_search' => false,
@@ -384,6 +384,14 @@ function tst_custom_metaboxes() {
 			'add_upload_file_text' => __('Add Image', 'tst') // Change upload button text. Default: "Add or Upload File"
 		),
 	));
+	
+	$project_cmb->add_field( array(
+		'name'    => __( 'Text for support block', 'tst' ),		
+		'id'      => 'support_block_text',
+		'type'    => 'textarea_small',
+		'desc'    => __( 'This will overrride default text', 'tst' ),
+		'default' => TST_PROJECT_SUPPORT_TEXT,
+	) );
 	
 	
 	/** Events **/

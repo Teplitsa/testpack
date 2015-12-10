@@ -65,10 +65,11 @@
 	
 	.mdl-card__title-text {
 		color: $tst-color-white;
-		font-weight: 400;
+		font-weight: $card-title-text-font-weight;
 		
 		a, a:hover, a:focus, a:active {
 			color: inherit;
+			font-weight: inherit;
 		}
 	}
 	
@@ -86,6 +87,15 @@
 	}
 }
 
+.support-block {
+	margin: $cell-elementary-2x*2 0;
+	
+	@include for(desktop) {
+		.mdl-cell--8-col p {  }
+		.mdl-cell--4-col { text-align: right; }
+	}
+}
+
 //post
 .tpl-card-blank {
 	
@@ -96,7 +106,7 @@
 	time { font-weight: 700; }
 	
 	.mdl-card__title-text {		
-		font-weight: 400;				
+		font-weight: $card-title-text-font-weight;	
 	}
 }
 
@@ -110,7 +120,7 @@
 	
 	.mdl-card__title-text {
 		color: $tst-color-white;		
-		font-weight: 400;
+		font-weight: $card-title-text-font-weight;
 	}
 	
 	a, a:visited { color: $tst-color-link; }
