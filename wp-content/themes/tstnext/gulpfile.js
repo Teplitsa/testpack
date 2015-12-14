@@ -2,14 +2,15 @@
 var basePaths = {
     src: 'src/',
     dest: 'assets/',
-    npm: 'node_modules/'
+    bower: 'bower_components/'
 };
 
 //require plugins
 var gulp = require('gulp');
 
 var es          = require('event-stream'),
-    gutil       = require('gulp-util'),    
+    gutil       = require('gulp-util'),
+    mainBower   = require('main-bower-files'),
     bourbon     = require('node-bourbon'),
     path        = require('relative-path'),
     runSequence = require('run-sequence'),
@@ -38,9 +39,14 @@ var changeEvent = function(evt) {
 };
 
 //js
+//js
 gulp.task('build-js', function() {
-    var vendorFiles = [basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js',
-                       basePaths.npm + 'material-design-lite/material.js'],
+    var vendorFiles = mainBower({ //files from bower_components
+            paths: {
+                bowerDirectory: basePaths.bower,
+                bowerJson: 'bower.json'
+            }
+        }),
         appFiles = [basePaths.src+'js/*']; //our own JS files
 
     return gulp.src(vendorFiles.concat(appFiles)) //join them
@@ -57,10 +63,10 @@ gulp.task('build-css', function() {
 
     //paths for mdl and bourbon
     var paths = require('node-bourbon').includePaths,
-        mdl = path('./node_modules/material-design-lite/src');
+        mdl = path('./bower_components/material-design-lite/src');
         paths.push(mdl);
 
-    var vendorFiles = gulp.src(basePaths.npm+'animate.css/animate.css'), //components
+    var vendorFiles = gulp.src('bower_components/animate.css/animate.css'), //components
         appFiles = gulp.src(basePaths.src+'sass/main.scss') //our main file with @import-s
         .pipe(!isProduction ? plugins.sourcemaps.init() : gutil.noop())  //process the original sources for sourcemap
         .pipe(plugins.sass({
