@@ -18,7 +18,7 @@
 </head>
 
 <body id="top" <?php body_class(); ?>>
-<?php include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
+<?php include_once(get_template_directory()."/assets/svg/svg.svg");  //all svgs ?>
 
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'tst' ); ?></a>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--overlay-drawer-button">

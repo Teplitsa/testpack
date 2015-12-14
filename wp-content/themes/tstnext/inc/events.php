@@ -146,47 +146,8 @@ function tst_compact_event_item($cpost){
 <?php
 }
 
-function tst_add_to_calendar_url($event){
 
-	$date = get_post_meta($event->ID, 'event_date', true);
-	$time = get_post_meta($event->ID, 'event_time', true);
-	$loct = get_post_meta($event->ID, 'event_location', true);
-	$addr = get_post_meta($event->ID, 'event_address', true);
-	
-	if(empty($time))
-		$time = '12.00';
-	
-	$start = date('d.m.Y', $date).' '.$time;		
-	$start_mark = date_i18n('YmdHi00', $start);
-	$end_mark = date_i18n('YmdHi00', strtotime('+2 hours '.$start));
-	$e = (!empty($event->post_excerpt)) ? wp_trim_words($event->post_excerpt, 20) : wp_trim_words(strip_shortcodes($event->post_content), 20);
-	
-	$tst = "https://www.google.com/calendar/event?";
-	$tst .= "action=TEMPLATE";
-	$tst .= "&text=".urlencode($event->post_title);
-	$tst .= "&dates={$start_mark}/{$end_mark}&czt=Europe/Moscow";
-	$tst .= "&location=".urlencode($loct.' '.$addr);
-	$tst .= "&details=".urlencode($e);
-	
-	return $tst;
-
-}
-
-
-function tst_add_to_calendar_scripts(){
-	
-?>
-<script type="text/javascript">(function () {
-	if (window.addtocalendar)if(typeof window.addtocalendar.start == "function")return;
-	if (window.ifaddtocalendar == undefined) { window.ifaddtocalendar = 1;
-		var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-		s.type = 'text/javascript';s.charset = 'UTF-8';s.async = true;
-		s.src = ('https:' == window.location.protocol ? 'https' : 'http')+'://addtocalendar.com/atc/1.5/atc.min.js';
-		var h = d[g]('body')[0];h.appendChild(s); }})();
-</script>
-<?php	
-}
-
+//Details at http://addtocalendar.com/
 function tst_add_to_calendar_link($event, $echo = true, $container_class = 'tst-add-calendar') {	
 	
 	$date = get_post_meta($event->ID, 'event_date', true);
@@ -200,7 +161,13 @@ function tst_add_to_calendar_link($event, $echo = true, $container_class = 'tst-
 	if(empty($date))
 		return;
 	
-	add_action('tst_footer_position', 'tst_add_to_calendar_scripts', 100);
+	wp_enqueue_script(
+		'atc',
+		get_template_directory_uri().'/assets/js/atc.min.js',
+		array(),
+		null,
+		true
+	);
 		
 	$start = date('d.m.Y', $date).' '.$time;	
 	$start_mark = date_i18n('Y-m-d H:i:00', strtotime($start));
@@ -225,7 +192,6 @@ function tst_add_to_calendar_link($event, $echo = true, $container_class = 'tst-
 }
 
 
-
 function tst_add_to_calendar_link_in_modal($event, $echo = true, $container_class = 'in-modal-add-tip') {
 	
 	$date = get_post_meta($event->ID, 'event_date', true);
@@ -237,7 +203,7 @@ function tst_add_to_calendar_link_in_modal($event, $echo = true, $container_clas
 		$time = '12.00';
 	
 	$start = date('d.m.Y', $date).' '.$time;	
-	$start_mark = date_i18n('Y-m-d H:i:00', $start);
+	$start_mark = date_i18n('Y-m-d H:i:00', strtotime($start));
 	$end_mark = date_i18n('Y-m-d H:i:00', strtotime('+2 hours '.$start));
 	$e = (!empty($event->post_excerpt)) ? wp_trim_words($event->post_excerpt, 20) : wp_trim_words(strip_shortcodes($event->post_content), 20);
 	$id = 'tst-'.uniqid();
