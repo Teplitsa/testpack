@@ -14,7 +14,8 @@ var es          = require('event-stream'),
     bourbon     = require('node-bourbon'),
     path        = require('relative-path'),
     runSequence = require('run-sequence'),
-    del         = require('del');
+    del         = require('del'),
+    async       = require('async');
 
 //plugins - load gulp-* plugins without direct calls
 var plugins = require("gulp-load-plugins")({
@@ -59,33 +60,49 @@ gulp.task('build-js', function() {
 });
 
 //sass
-gulp.task('build-css', function() {
+gulp.task('build-css', function(done) {
 
     //paths for mdl and bourbon
     var paths = require('node-bourbon').includePaths,
-        mdl = path('./bower_components/material-design-lite/src');
+        mdl = path('./bower_components/material-design-lite/src'),
+        vendorFiles = gulp.src('bower_components/animate.css/animate.css'),
+        keys = ['default', 'pink'], //prefixes for color schemes
+        cssTasks = new Array();
+        
         paths.push(mdl);
+    
+    for(var i = 0; i < keys.length; i++ ){ //build array of tasks
+        
+        cssTasks.push(function(){ //run SASS compilation for each -main.scss file separately
+            var srcFile  = keys[i]+'-main.scss',
+                destFile = keys[i]+'-bundle.css';
+            
+            return function (callback){
+                var appFiles = gulp.src(basePaths.src+'sass/'+ srcFile) //our main file with @import-s
+                        .pipe(!isProduction ? plugins.sourcemaps.init() : gutil.noop())  //process the original sources for sourcemap
+                        .pipe(plugins.sass({
+                                outputStyle: sassStyle, //SASS syntas
+                                includePaths: paths //add bourbon + mdl
+                            }).on('error', plugins.sass.logError))//sass own error log
+                        .pipe(plugins.autoprefixer({ //autoprefixer
+                                browsers: ['last 4 versions'],
+                                cascade: false
+                            }))
+                        .pipe(!isProduction ? plugins.sourcemaps.write() : gutil.noop()) //add the map to modified source
+                        .on('error', console.log);
+                        
+                es.concat(appFiles, vendorFiles) //combine vendor CSS files and our files after-SASS
+                    .pipe(plugins.concat(destFile)) //combine into file
+                    .pipe(isProduction ? plugins.cssmin() : gutil.noop()) //minification on production
+                    .pipe(plugins.size()) //display size
+                    .pipe(gulp.dest(basePaths.dest+'css')) //write file
+                    .on('error', console.log)
+                    .on("end", callback);
+            }
+        }());
+    }
 
-    var vendorFiles = gulp.src('bower_components/animate.css/animate.css'), //components
-        appFiles = gulp.src(basePaths.src+'sass/main.scss') //our main file with @import-s
-        .pipe(!isProduction ? plugins.sourcemaps.init() : gutil.noop())  //process the original sources for sourcemap
-        .pipe(plugins.sass({
-                outputStyle: sassStyle, //SASS syntas
-                includePaths: paths //add bourbon + mdl
-            }).on('error', plugins.sass.logError))//sass own error log
-        .pipe(plugins.autoprefixer({ //autoprefixer
-                browsers: ['last 4 versions'],
-                cascade: false
-            }))
-        .pipe(!isProduction ? plugins.sourcemaps.write() : gutil.noop()) //add the map to modified source
-        .on('error', console.log); //log
-
-    return es.concat(appFiles, vendorFiles) //combine vendor CSS files and our files after-SASS
-        .pipe(plugins.concat('bundle.css')) //combine into file
-        .pipe(isProduction ? plugins.cssmin() : gutil.noop()) //minification on production
-        .pipe(plugins.size()) //display size
-        .pipe(gulp.dest(basePaths.dest+'css')) //write file
-        .on('error', console.log); //log
+    async.parallel(cssTasks, done);
 });
 
 gulp.task('build-admin-css', function() {
@@ -120,7 +137,7 @@ gulp.task('revision-clean', function(){
 
 gulp.task('revision', function(){    
     
-    return gulp.src([basePaths.dest+'css/*.css', basePaths.dest+'js/*.js'])
+    return gulp.src([basePaths.dest+'css/*.css', basePaths.dest+'js/*bundle.js'])
         .pipe(plugins.rev())
         .pipe(gulp.dest( basePaths.dest+'rev' ))
         .pipe(plugins.rev.manifest())        

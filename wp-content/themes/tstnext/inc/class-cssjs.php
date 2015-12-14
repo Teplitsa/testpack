@@ -84,9 +84,10 @@ class TST_CssJs {
 		$style_dependencies[] = 'tst-material-icons';
 	
 		// design
+		$prefix = get_theme_mod('color_scheme', 'default');
 		wp_enqueue_style(
 			'tst-design',
-			$url.'/assets/rev/'.$this->get_rev_filename('bundle.css'),
+			$url.'/assets/rev/'.$this->get_rev_filename($prefix.'-bundle.css'),
 			$style_dependencies,
 			null
 		);

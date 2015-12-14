@@ -303,6 +303,23 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 40,
     ));
 	
+	$wp_customize->add_setting('color_scheme', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('color_scheme', array(
+        'type'     => 'select',		
+        'label'    => __('Color schemes', 'tst'),
+        'section'  => 'title_tagline',
+        'settings' => 'color_scheme',
+        'priority' => 50,
+		'choices'  => array(
+			'default'  => __('Default', 'tst'),
+			'pink'     => __('Pink', 'tst'),
+		),
+    ));
+	
 	$wp_customize->remove_setting('site_icon'); //remove favicon
 }
 
