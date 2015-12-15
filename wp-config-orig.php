@@ -89,7 +89,7 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Move wp-content **/
-$host = 'starter.local'; //define your host rules here
+$host = 'giger.local'; //define your host rules here
 define( 'WP_CONTENT_DIR', dirname(__FILE__) . '/wp-content' );
 define( 'WP_CONTENT_URL', '//'.$host.'/wp-content' );
 
