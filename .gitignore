@@ -20,3 +20,5 @@ debug.log
 _temp
 .htaccess
 .sass-cache
+bower_components
+node_modules
