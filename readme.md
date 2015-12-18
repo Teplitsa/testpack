@@ -83,13 +83,17 @@
 
 3. `composer install` - в результате будет установлен WordPress последней версии и необходимые плагины.
 
-4. Импортировать в БД дамп с демо-данными - `attachments/startertest.sql.zip`. Если установка осуществляется для домена отличного от `giger.local` выполнить замену домена в базе с использованием соответствующих утилит, поддерживающих сериализованные данные - рекомендуем [Search and Replace скрипт от interconnect/it](https://interconnectit.com/products/search-and-replace-for-wordpress-databases/).
+4. Импортировать в БД дамп с демо-данными: `unzip -p ./attachments/startertest.sql.zip | mysql -u username -p dbname`. Для домена, отличного от `giger.local`, выполнить замену домена в базе с использованием соответствующих утилит, поддерживающих сериализованные данные - рекомендуем [Search and Replace скрипт от interconnect/it](https://interconnectit.com/products/search-and-replace-for-wordpress-databases/).
 
-5. Распаковать содержимое папки `attachments/uploads.zip` в `wp-content/uploads`.
+5. Создать файл .htaccess и настроить права доступа:
+	- `touch .htaccess`
+	- `hmod -v 666 .htaccess`
+	
+6. Распаковать содержимое папки изображений: `unzip ./attachments/uploads.zip -d ./wp-content/`.
 
-6. Сайт отвечает по адресу _http://giger.local_ (или вашему домену). Вход в административную часть _http://giger.local/core/wp-login.php_ с логином _giger_ и паролем _121121_. Необходимо создать нового пользователя, используя стандартный диалог WordPress _http://giger.local/core/wp-admin/user-new.php_, а аккаунт _giger_ удалить.
+7. Сайт отвечает по адресу _http://giger.local_ (или вашему домену). Вход в административную часть _http://giger.local/core/wp-login.php_ с логином _giger_ и паролем _121121_. Необходимо создать нового пользователя, используя стандартный диалог WordPress _http://giger.local/core/wp-admin/user-new.php_, а аккаунт _giger_ удалить.
 
-7. Сгенерировать заново правила ЧПУ: на странице _http://giger.local/core/wp-admin/options-permalink.php_ сохранить настройки без изменений.
+8. Сгенерировать заново правила ЧПУ: на странице _http://giger.local/core/wp-admin/options-permalink.php_ сохранить настройки без изменений.
 
 Сайт работает и можно вносить свои материалы. Если вы хотите корректировать код темы, потребуются дополнительные настройки рабочего окружения для использования таск-менеджера [gulp](http://gulpjs.com/).
 
