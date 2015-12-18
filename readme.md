@@ -77,15 +77,7 @@
 `git clone https://github.com/Teplitsa/giger.git .` 
 
 2. Скопировать `wp-config-orig.php` в `wp-config.php`: `cp wp-config-orig.php  wp-config.php`.
-В полученном файле заполнить информацию о доступе к БД.
-```define('DB_NAME', 'dev_delme');
-define('DB_USER', 'dev_delme');
-define('DB_PASSWORD', 'pHS6aMhF4k');
-define('DB_HOST', 'localhost');```
-
-Сгенерируйте ключи аутентификации по ссылке [https://api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/) и замените соответствующий блок в файле.
-
-Если устанавливаем на домен, отличный от `giger.local` укажите его в выражении `$host = 'giger.local'`;
+	В полученном файле заполнить информацию о доступе к БД. Сгенерировать ключи аутентификации по ссылке [https://api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/) и заменить соответствующий блок в файле. Домен, отличный от `giger.local` указать его в выражении `$host = 'giger.local'`;
 
 3. `composer install` - в результате будет установлен WordPress последней версии и необходимые плагины.
 
