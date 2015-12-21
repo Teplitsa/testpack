@@ -4,7 +4,7 @@
  */
 
 $show_thumb = (function_exists('get_field')) ? (bool)get_field('show_thumb') : false;
-$author = tst_get_post_author($post);
+//$author = tst_get_post_author($post);
 $avatar = '';
 
 $connected_projects = new WP_Query(array(
@@ -21,15 +21,8 @@ $connected_projects = new WP_Query(array(
 
 	<div class="entry-meta">
 		<div class="mdl-grid mdl-grid--no-spacing">
-			<?php if($author && !is_wp_error($author)) { ?>
-			<div class="mdl-cell mdl-cell--4-col">
-				<div class="captioned-text">
-					<div class="caption"><?php _e('Author', 'tst');?></div>
-					<div class="text"><?php echo get_the_term_list(get_the_ID(), 'auctor', '', ', ', '');?></div>
-				</div>
-			</div>
-			<?php } ?>
-			<div class="mdl-cell <?php echo ($author) ? 'mdl-cell--8-col' : 'mdl-cell--12-col';?>">
+			
+			<div class="mdl-cell mdl-cell--12-col">
 				<div class="captioned-text">
 					<div class="caption"><?php _e('Published', 'tst');?></div>
 					<div class="text"><?php echo tst_posted_on($post);?></div>

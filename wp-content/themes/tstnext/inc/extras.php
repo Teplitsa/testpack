@@ -310,7 +310,7 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
 
 /** Facebook author tag **/
-add_action('wp_head', 'tst_facebook_author_tag');
+//add_action('wp_head', 'tst_facebook_author_tag');
 function tst_facebook_author_tag() {
 
 	global $post;

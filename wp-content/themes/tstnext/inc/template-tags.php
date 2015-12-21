@@ -816,7 +816,10 @@ function tst_get_default_author_avatar(){
 
 /** Author **/
 function tst_get_post_author($cpost) {
-			
+	
+	if(!taxonomy_exists('auctor'))
+		return false;
+	
 	$author = get_the_terms($cpost->ID, 'auctor');
 	if(!is_wp_error($author) && isset($author[0]))
 		$author = $author[0];
