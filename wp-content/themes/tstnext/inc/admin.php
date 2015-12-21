@@ -280,10 +280,15 @@ function tst_itv_info_widget(){
 <?php
 }
 
+function tst_doc_url(){
+	
+	return (defined('TST_DOC_URL') && TST_DOC_URL) ? TST_DOC_URL : '';
+}
+
 function tst_support_widget(){
 	
 	$src = get_template_directory_uri().'/assets/images/tst-logo';
-	$doc = (defined('TST_DOC_URL') && !empty(TST_DOC_URL)) ? TST_DOC_URL : '';
+	$doc = tst_doc_url();
 	if(!empty($doc))
 		$doc = str_replace('<a', '<a target="_blank" ', make_clickable($doc));
 ?>
@@ -309,7 +314,7 @@ function tst_support_widget(){
 add_filter( 'admin_footer_text', 'tst_admin_fotter_text' );
 function tst_admin_fotter_text($text) {
 		
-	$doc = (defined('TST_DOC_URL') && !empty(TST_DOC_URL)) ? TST_DOC_URL : '';
+	$doc = tst_doc_url();
 	
 	if(empty($doc))
 		return $text;
