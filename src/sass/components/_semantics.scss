@@ -1,0 +1,61 @@
+/*---------------------------------------------------------
+ Elements (_semantics.scss)
+-------------------------------------------------------- */
+$color-dark:   #212121 !default;
+$color-ins:    #fffde7 !default; 
+$color-code:   #607d8b !default;
+$color-pre-bg: #333333 !default;
+
+b,
+strong {
+	font-weight: 700;
+}
+dfn,
+i,
+em,
+cite {
+	font-style: italic;
+}
+small {
+	font-size: 85%;
+}
+big {
+	font-size: 125%;
+}
+
+	
+hr {
+	border: 0; //reset
+	border-top: 1px solid $tst-color-border;
+	height: 1px;
+	margin-bottom: $base;
+	&.hr-line-dashed {
+		border-top: 1px dashed $tst-color-border;
+	}
+	&.hr-line-double {
+		border-top: 6px double $tst-color-border;
+	}
+}
+
+figure {
+	margin: 0;
+}
+	
+embed,
+iframe,
+object {
+//	max-width: 100%;
+}
+
+
+ul,
+ol {
+	list-style-type: none;
+	list-style-image: none;
+	margin: 0;
+	padding: 0; }
+
+li {
+	margin: 0;
+	padding: 0; }
+
