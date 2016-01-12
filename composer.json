@@ -54,16 +54,16 @@
         "wpackagist-plugin/ninja-forms": "@stable",
         "wpackagist-plugin/cmb2": "@stable",        
         "koodimonni-language/core-ru_RU": "*" ,
-        "tst/cmb2-attached-posts" : ">=1.2.2"
+        "tst/cmb2-attached-posts" : ">=1.2.2"        
     },
     "require-dev" : {
         "wpackagist-plugin/debug-bar" : "@stable",
         "wpackagist-plugin/query-monitor" : ">=2.7.4",        
         "wpackagist-plugin/debug-objects" : "@stable",
-        "wp-sync-db/wp-sync-db" : "dev-master",
-        "wp-sync-db/wp-sync-db-media-files" : "dev-master",
+        "wp-sync-db/wp-sync-db" : "dev-master",        
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
-        "wpackagist-plugin/post-duplicator" : "@stable"
+        "wpackagist-plugin/post-duplicator" : "@stable",
+        "interconnectit/search-replace-db": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",
@@ -72,4 +72,3 @@
         }
     }
 }
-
