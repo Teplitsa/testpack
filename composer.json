@@ -21,43 +21,39 @@
         {
             "type": "artifact",
             "url": "artifacts/"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/wp-sync-db/wp-sync-db"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/wp-sync-db/wp-sync-db-media-files"
-        }
+        }        
     ],
     "config"      : {
         "vendor-dir": "wp-content/vendor"
     },
-    "require"     : {
+   "require"     : {
         "composer/installers": "~1.0",  
         "johnpbloch/wordpress" : ">=4.3",
         "wpackagist-plugin/cyr3lat" : "@stable",
-        "wpackagist-plugin/disable-comments" : "@stable",
+        "wpackagist-plugin/crop-thumbnails": "@stable",
+        "wpackagist-plugin/disable-comments" : "@stable",        
         "wpackagist-plugin/imsanity" : "@stable",
         "wpackagist-plugin/leyka" : "@stable",
-        "wpackagist-plugin/responsive-lightbox" : "@stable",  
+        "wpackagist-plugin/media-search-enhanced": "@stable",
+        "wpackagist-plugin/responsive-lightbox" : "@stable",        
         "wpackagist-plugin/simple-css-for-widgets" : "@stable",
-        "wpackagist-plugin/simple-google-maps-short-code" : "@stable",
+        "wpackagist-plugin/simple-google-maps-short-code": "@stable",
         "wpackagist-plugin/widget-logic" : ">=0.57",
         "wpackagist-plugin/wordpress-seo" : "@stable",
-        "koodimonni-language/core-ru_RU": "*",
-        "tst/advanced-custom-fields-pro" : ">=5.3.0",
-        "tst/formidable" : ">=2.0.12"
+        "wpackagist-plugin/w3-total-cache": "@stable",
+        "wpackagist-plugin/posts-to-posts": "@stable",
+        "wpackagist-plugin/ninja-forms": "@stable",
+        "wpackagist-plugin/cmb2": "@stable",        
+        "koodimonni-language/core-ru_RU": "*" ,
+        "tst/cmb2-attached-posts" : ">=1.2.2"
     },
     "require-dev" : {
         "wpackagist-plugin/debug-bar" : "@stable",
         "wpackagist-plugin/query-monitor" : ">=2.7.4",        
-        "wpackagist-plugin/debug-objects" : "@stable",
-        "wp-sync-db/wp-sync-db" : "dev-master",
-        "wp-sync-db/wp-sync-db-media-files" : "dev-master",
+        "wpackagist-plugin/debug-objects" : "@stable",            
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
-        "wpackagist-plugin/post-duplicator" : "@stable"
+        "wpackagist-plugin/post-duplicator" : "@stable",
+        "interconnectit/search-replace-db": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",

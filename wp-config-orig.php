@@ -20,13 +20,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'dev_delme');
+define('DB_NAME', 'dev_db');
 
 /** MySQL database username */
-define('DB_USER', 'dev_delme');
+define('DB_USER', 'dev_user');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'pHS6aMhF4k');
+define('DB_PASSWORD', 'dev_password');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -79,6 +79,8 @@ $table_prefix  = 'str_';
  */
 define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', true);
+define('WP_POST_REVISIONS', 6);
+define('DISALLOW_FILE_EDIT', true);
 
 /* That's all, stop editing! Happy blogging. */
 
@@ -87,7 +89,7 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Move wp-content **/
-$host = 'starter.local'; //define your host rules here
+$host = 'giger.local'; //define your host rules here
 define( 'WP_CONTENT_DIR', dirname(__FILE__) . '/wp-content' );
 define( 'WP_CONTENT_URL', '//'.$host.'/wp-content' );
 

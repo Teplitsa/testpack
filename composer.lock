@@ -4,21 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e67d82f4d34df15b252c1b88e61c6a1a",
+    "hash": "0f3c701aee13b316de31976462a5fd7f",
+    "content-hash": "a573eb6df770f533d4caee4730003f92",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.0.21",
+            "version": "v1.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45"
+                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
-                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+                "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
                 "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "1.0.0"
             },
             "replace": {
                 "roundcube/plugin-installer": "*",
@@ -28,9 +32,9 @@
                 "composer/composer": "1.0.*@dev",
                 "phpunit/phpunit": "4.1.*"
             },
-            "type": "composer-installer",
+            "type": "composer-plugin",
             "extra": {
-                "class": "Composer\\Installers\\Installer",
+                "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
                     "dev-master": "1.0-dev"
                 }
@@ -99,20 +103,20 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2015-02-18 17:17:01"
+            "time": "2015-10-29 23:28:48"
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.3.1",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "cfcf25eb42baeb7316a61c7a64e9a1ab3e291f2f"
+                "reference": "85d6a8c16c7e8bb369e7530d3676d16618f68e24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/cfcf25eb42baeb7316a61c7a64e9a1ab3e291f2f",
-                "reference": "cfcf25eb42baeb7316a61c7a64e9a1ab3e291f2f",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/85d6a8c16c7e8bb369e7530d3676d16618f68e24",
+                "reference": "85d6a8c16c7e8bb369e7530d3676d16618f68e24",
                 "shasum": ""
             },
             "require": {
@@ -136,7 +140,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2015-09-15 15:01:23"
+            "time": "2016-01-06 18:46:15"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -188,10 +192,10 @@
         },
         {
             "name": "koodimonni-language/core-ru_ru",
-            "version": "4.3.1",
+            "version": "4.4.1",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/core/4.3.1/ru_RU.zip",
+                "url": "https://downloads.wordpress.org/translation/core/4.4.1/ru_RU.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -247,26 +251,58 @@
             "time": "2015-01-04 10:24:12"
         },
         {
-            "name": "tst/advanced-custom-fields-pro",
-            "version": "5.3.0",
+            "name": "tst/cmb2-attached-posts",
+            "version": "1.2.2",
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-advanced-custom-fields-pro-5.3.0.zip",
+                "url": "artifacts/tst-cmb2-attached-posts-1.2.2.zip",
                 "reference": null,
-                "shasum": "de319611f0181c925508e909e3620e0e1b0efd6b"
+                "shasum": "d4d69d33e6cca2d0c1837d2328f23d13733d8eb4"
+            },
+            "require": {
+                "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin"
         },
         {
-            "name": "tst/formidable",
-            "version": "2.0.12",
+            "name": "wpackagist-plugin/cmb2",
+            "version": "2.1.2",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/cmb2/",
+                "reference": "trunk"
+            },
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-formidable-2.0.12.zip",
+                "url": "https://downloads.wordpress.org/plugin/cmb2.zip",
                 "reference": null,
-                "shasum": "f3c3a391ecfdc818fbacce3a607074bf5a2c292f"
+                "shasum": null
             },
-            "type": "wordpress-plugin"
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/cmb2/"
+        },
+        {
+            "name": "wpackagist-plugin/crop-thumbnails",
+            "version": "0.10.6",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/crop-thumbnails/",
+                "reference": "tags/0.10.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/crop-thumbnails.0.10.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/crop-thumbnails/"
         },
         {
             "name": "wpackagist-plugin/cyr3lat",
@@ -290,15 +326,15 @@
         },
         {
             "name": "wpackagist-plugin/disable-comments",
-            "version": "1.3.2",
+            "version": "1.4",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/disable-comments/",
-                "reference": "tags/1.3.2"
+                "reference": "tags/1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/disable-comments.1.3.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/disable-comments.1.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -310,7 +346,7 @@
         },
         {
             "name": "wpackagist-plugin/imsanity",
-            "version": "2.3.5",
+            "version": "2.3.6",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/imsanity/",
@@ -330,15 +366,15 @@
         },
         {
             "name": "wpackagist-plugin/leyka",
-            "version": "2.2.7.2",
+            "version": "2.2.8",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/leyka/",
-                "reference": "tags/2.2.7.2"
+                "reference": "tags/2.2.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.7.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.8.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -349,16 +385,76 @@
             "homepage": "https://wordpress.org/plugins/leyka/"
         },
         {
-            "name": "wpackagist-plugin/responsive-lightbox",
-            "version": "1.6.2",
+            "name": "wpackagist-plugin/media-search-enhanced",
+            "version": "0.7.2",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/responsive-lightbox/",
-                "reference": "tags/1.6.2"
+                "url": "http://plugins.svn.wordpress.org/media-search-enhanced/",
+                "reference": "tags/0.7.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/responsive-lightbox.1.6.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/media-search-enhanced.0.7.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/media-search-enhanced/"
+        },
+        {
+            "name": "wpackagist-plugin/ninja-forms",
+            "version": "2.9.33",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/ninja-forms/",
+                "reference": "tags/2.9.33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/ninja-forms.2.9.33.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/ninja-forms/"
+        },
+        {
+            "name": "wpackagist-plugin/posts-to-posts",
+            "version": "1.6.5",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/posts-to-posts/",
+                "reference": "tags/1.6.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/posts-to-posts.1.6.5.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/posts-to-posts/"
+        },
+        {
+            "name": "wpackagist-plugin/responsive-lightbox",
+            "version": "1.6.6",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/responsive-lightbox/",
+                "reference": "tags/1.6.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/responsive-lightbox.1.6.6.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -390,15 +486,15 @@
         },
         {
             "name": "wpackagist-plugin/simple-google-maps-short-code",
-            "version": "1.1.2",
+            "version": "1.2",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/simple-google-maps-short-code/",
-                "reference": "tags/1.1.2"
+                "reference": "tags/1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/simple-google-maps-short-code.1.1.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/simple-google-maps-short-code.1.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -407,6 +503,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/simple-google-maps-short-code/"
+        },
+        {
+            "name": "wpackagist-plugin/w3-total-cache",
+            "version": "0.9.4.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/w3-total-cache/",
+                "reference": "tags/0.9.4.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.0.9.4.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/w3-total-cache/"
         },
         {
             "name": "wpackagist-plugin/widget-logic",
@@ -430,15 +546,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "2.3.5",
+            "version": "3.0.7",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/2.3.5"
+                "reference": "tags/3.0.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.2.3.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.0.7.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -451,74 +567,38 @@
     ],
     "packages-dev": [
         {
-            "name": "wp-sync-db/wp-sync-db",
-            "version": "dev-master",
+            "name": "interconnectit/search-replace-db",
+            "version": "3.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/wp-sync-db/wp-sync-db.git",
-                "reference": "d331c825cec8550e1f3fa573a513215ede95452f"
+                "url": "https://github.com/interconnectit/Search-Replace-DB.git",
+                "reference": "28a1f059e4739bca618056dcf3c550a634cf1035"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-sync-db/wp-sync-db/zipball/d331c825cec8550e1f3fa573a513215ede95452f",
-                "reference": "d331c825cec8550e1f3fa573a513215ede95452f",
+                "url": "https://api.github.com/repos/interconnectit/Search-Replace-DB/zipball/28a1f059e4739bca618056dcf3c550a634cf1035",
+                "reference": "28a1f059e4739bca618056dcf3c550a634cf1035",
                 "shasum": ""
             },
             "require": {
-                "composer/installers": "~1.0.6"
+                "php": ">=5.3.0"
             },
-            "type": "wordpress-plugin",
+            "bin": [
+                "srdb.cli.php"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "srdb.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPLv2"
+                "GPL-3.0"
             ],
-            "description": "WP Sync DB eliminates the manual work of migrating a WP database.",
-            "homepage": "https://github.com/wp-sync-db/wp-sync-db",
-            "keywords": [
-                "db",
-                "plugin",
-                "wordpress",
-                "wp-sync-db"
-            ],
-            "support": {
-                "source": "https://github.com/wp-sync-db/wp-sync-db/tree/master",
-                "issues": "https://github.com/wp-sync-db/wp-sync-db/issues"
-            },
-            "time": "2015-05-02 21:48:19"
-        },
-        {
-            "name": "wp-sync-db/wp-sync-db-media-files",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wp-sync-db/wp-sync-db-media-files.git",
-                "reference": "be6dc51678ee7e44c158d9bd38169aba4ac8964c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wp-sync-db/wp-sync-db-media-files/zipball/be6dc51678ee7e44c158d9bd38169aba4ac8964c",
-                "reference": "be6dc51678ee7e44c158d9bd38169aba4ac8964c",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0.6"
-            },
-            "type": "wordpress-plugin",
-            "license": [
-                "GPLv2"
-            ],
-            "description": "WP Sync DB Media File Addon for WP Sync DB",
-            "homepage": "https://github.com/wp-sync-db/wp-sync-db-media-files",
-            "keywords": [
-                "media",
-                "plugin",
-                "wordpress",
-                "wp-sync-db"
-            ],
-            "support": {
-                "source": "https://github.com/wp-sync-db/wp-sync-db-media-files/tree/1.1.5",
-                "issues": "https://github.com/wp-sync-db/wp-sync-db-media-files/issues"
-            },
-            "time": "2015-01-17 02:23:40"
+            "description": "A PHP search replace tool for quickly modifying a string throughout a database. Useful for changing the base URL when migrating a WordPress site from development to production.",
+            "homepage": "https://github.com/interconnectit/Search-Replace-DB",
+            "time": "2015-07-07 15:44:12"
         },
         {
             "name": "wpackagist-plugin/debug-bar",
@@ -582,7 +662,7 @@
         },
         {
             "name": "wpackagist-plugin/post-duplicator",
-            "version": "2.8",
+            "version": "2.14",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/post-duplicator/",
@@ -602,15 +682,15 @@
         },
         {
             "name": "wpackagist-plugin/query-monitor",
-            "version": "2.7.4",
+            "version": "2.8.1",
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/query-monitor/",
-                "reference": "tags/2.7.4"
+                "reference": "tags/2.8.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/query-monitor.2.7.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/query-monitor.2.8.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -625,19 +705,24 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "wpackagist-plugin/cyr3lat": 0,
+        "wpackagist-plugin/crop-thumbnails": 0,
         "wpackagist-plugin/disable-comments": 0,
         "wpackagist-plugin/imsanity": 0,
         "wpackagist-plugin/leyka": 0,
+        "wpackagist-plugin/media-search-enhanced": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
         "wpackagist-plugin/simple-css-for-widgets": 0,
         "wpackagist-plugin/simple-google-maps-short-code": 0,
         "wpackagist-plugin/wordpress-seo": 0,
+        "wpackagist-plugin/w3-total-cache": 0,
+        "wpackagist-plugin/posts-to-posts": 0,
+        "wpackagist-plugin/ninja-forms": 0,
+        "wpackagist-plugin/cmb2": 0,
         "wpackagist-plugin/debug-bar": 0,
         "wpackagist-plugin/debug-objects": 0,
-        "wp-sync-db/wp-sync-db": 20,
-        "wp-sync-db/wp-sync-db-media-files": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
-        "wpackagist-plugin/post-duplicator": 0
+        "wpackagist-plugin/post-duplicator": 0,
+        "interconnectit/search-replace-db": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
