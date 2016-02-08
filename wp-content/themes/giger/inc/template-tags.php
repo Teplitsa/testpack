@@ -208,7 +208,7 @@ function tst_site_logo($size = 'regular') {
 			break;	
 	}
 	
-	$file = esc_attr($file);	
+	$file = esc_attr($file);
 ?>
 <svg class="logo <?php echo $file;?>">
 	<use xlink:href="#<?php echo $file;?>" />

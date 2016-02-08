@@ -161,16 +161,16 @@ if(!shortcode_exists( 'su_spoiler' ))
 	add_shortcode('su_spoiler', 'tst_su_spoiler_screen');
 
 function tst_su_spoiler_screen($atts, $content = null){
-	
+
 	extract(shortcode_atts(array(
         'title' => 'Подробнее',
         'open'  => 'no',
 		'class' => ''
     ), $atts));
-	
+
 	if(empty($content))
 		return '';
-	
+
 	$title = apply_filters('tst_the_title', $title);
 	$class = (!empty($class)) ? ' '.esc_attr($class) : '';
 	if($open == 'yes')

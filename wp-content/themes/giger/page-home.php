@@ -67,13 +67,19 @@ if($news_order != 'none'){
 	$news = new WP_Query($news_args);
 	
 	if($news->have_posts() && $news->found_posts > 1){
-		$cat = get_term(intval($news_filter), 'category');		
-		$title = __('Our news', 'tst')." <a href='".get_term_link($cat)."' title='".__('All', 'tst')."'>(".$news->found_posts.")</a>";		
-		$sections[$news_order] = array('posts' => $news->posts, 'title' => $title);
+
+		$cat = get_term(intval($news_filter), 'category');
+        if( !is_wp_error($cat)) {
+
+            $sections[$news_order] = array(
+                'posts' => $news->posts,
+                'title' => __('Our news', 'tst')." <a href='".get_term_link($cat)."' title='".__('All', 'tst')."'>(".$news->found_posts.")</a>",
+            );
+        }
 	}
 }
 
-//progs
+// progs
 if($projects_order != 'none') {
 	$projects_args = array(
 		'post_type' => 'project',
@@ -176,7 +182,7 @@ if(isset($sections['first']['posts'])) {
 	$part_ids = (get_post_meta($home_id, 'home_partners', true)); 
 	$partners = array();
 	if($part_ids) {
-		$partners  = get_posts(array('post_type' =>'org', 'post__in' => $part_ids, 'post_status' => 'publish', 'cache_results' => false));
+		$partners  = get_posts(array('post_type' =>'org', 'post__in' => $part_ids, 'post_status' => 'publish', 'cache_results' => false, 'nopaging' => true,));
 	}
 
 	if($partners) { ?>
