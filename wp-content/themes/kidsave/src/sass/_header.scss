@@ -25,23 +25,16 @@
 	
 	a {
 		display: inline-block;
-		padding: 5px 15px;
+		padding: 9px 15px;
 		@include nav-text();
-		border-top: 1px solid $color-link-one;		
-		background: $color-link-one;
-		color: $color-white;
+		color: $color-text;
+		border-top: 3px solid $color-border-normal;				
 		margin-top: -1px;
 		
 		&:hover, &:focus, &:active {
-			border-top-color: $color-link-two;
-			background: $color-link-two;
+			border-top-color: $color-link-one;
+			color: $color-link-one;
 		}
 	}
 	
-	li:nth-of-type(even) a {
-		&:hover, &:focus, &:active {
-			border-top-color: $color-link-three;
-			background: $color-link-three;
-		}
-	}
 }

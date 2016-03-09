@@ -322,29 +322,35 @@ function kds_post_nav() {
 
 
 /** Breadcrumbs  **/
-function kds_breadcrumbs($cpost){
+function kds_breadcrumbs(WP_Post $cpost){
 			
 	$links = array();
 	if(is_singular('post')) {
-		
-		$cat = kds_get_post_top_genre($cpost);
-		if(!empty($cat)){
-			$links[] = "<a href='".get_term_link($cat)."' class='crumb-link'>".apply_filters('kds_the_title', $cat->name)."</a>";
-		}			
-	}
-	elseif(is_singular('event')) {
-			
-		$links[] = "<a href='".get_post_type_archive_link('event')."' class='crumb-link'>".kds_get_post_type_archive_title('event')."</a>";		
-	}
-	elseif(is_singular('wpt_test')) {
-		
-		$p = get_page_by_path('tests');
+		$links[] = "<a href='".home_url()."' class='crumb-link'>".__('Homepage', 'kds')."</a>";
+				
+		$p = get_post(get_option('page_for_posts'));
 		if($p){
-			$links[] = "<a href='".get_permalink($p)."' class='crumb-link'>".get_the_title($p)."</a>";	
+			$links[] = "<a href='".get_permalink($p)."' class='crumb-link'>".get_the_title($p)."</a>";
+		}
+		
+		$cat = get_the_terms($cpost->ID, 'category');
+		if(!empty($cat)){
+			$links[] = "<a href='".get_term_link($cat[0])."' class='crumb-link'>".apply_filters('kds_the_title', $cat[0]->name)."</a>";
 		}			
+	}
+	elseif(is_singular('programm')) {
+		
+		$links[] = "<a href='".home_url()."' class='crumb-link'>".__('Homepage', 'kds')."</a>";
+				
+		$p = get_page_by_path('programms');
+		if($p){
+			$links[] = "<a href='".get_permalink($p)."' class='crumb-link'>".get_the_title($p)."</a>";
+		}
+
 	}
 	
-	$sep = '';
+	
+	$sep = kds_get_sep('&gt;');
 	
 	return "<div class='crumbs'>".implode($sep, $links)."</div>";	
 }
@@ -388,15 +394,17 @@ function kds_featured_post_card(WP_Post $cpost){
 	$pl = get_permalink($cpost);
 	$ex = apply_filters('kds_the_title', kds_get_post_excerpt($cpost, 40, true));
 ?>
-<article class="tpl-featured" style="background-image: url(<?php echo $thumbnail;?>);">
+<article class="tpl-featured">
+	<div class="bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
+	<a href="<?php echo $pl; ?>">
 	<div class="container for-message">
-		<div class="featured-content"><a href="<?php echo $pl; ?>">
+		<div class="featured-content">
 			<div class="entry-meta"><?php echo kds_posted_on($cpost);?></div>
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 			<div class="entry-summary"><?php echo $ex;?></div>
-		</a></div>
+		</div>
 	</div>	
-</article>
+</a></article>
 <?php
 }
 
@@ -452,7 +460,39 @@ function kds_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 
 /** More section **/
 function kds_more_section($posts, $title = '', $type = 'news'){
+		
+	$all_link = '';
 	
+	if($type == 'programms'){
+		$all_link = "<a href='".home_url('programms')."'>".__('All programms', 'kds')."</a>";
+		$title = (empty($title)) ? __('Our programms', 'kds') : $title;
+	}
+	else {
+		$all_link = "<a href='".home_url('news')."'>".__('All news', 'kds')."</a>";
+		$title = (empty($title)) ? __('Latest news', 'kds') : $title;
+	}
+
+?>
+	<div class="related-section">
+		<h3 class="ms-title"><?php echo $title;?> <?php echo $all_link;?></h3>
+		<div class="frame">
+		<?php foreach($posts as $p) { ?>
+			<div class="bit sm-6 md-3"><?php kds_related_post_card($p);?></div>
+		<?php } ?>
+		</div>
+	</div>
+<?php
+}
+
+function kds_related_post_card(WP_Post $cpost) {
 	
-	
+	$pl = get_permalink($cpost);	
+?>
+<article class="tpl-related-post <?php echo $cpost->post_type;?>">
+	<a href="<?php echo $pl; ?>" class="thumbnail-link">
+		<?php echo kds_post_thumbnail($cpost->ID, 'post-thumbnail');?>
+		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+	</a>
+</article>
+<?php
 }

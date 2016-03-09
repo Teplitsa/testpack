@@ -1,13 +1,13 @@
 /** Forms **/
 
 @mixin material-animation-default($duration:0.2s) {
-  transition-duration: $duration;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: $duration;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 //variables
-$input-top-gut: 28px;
-$input-color-active: $color-link-one;
+$input-top-gut: 24px;
+$input-color-active: $color-link-three;
 $input-color-error: $color-form-invalid;
 $input-border-color: lighten($color-border-normal, 3%);
 $label-text-color: $color-text;	
@@ -56,9 +56,7 @@ $label-text-color: $color-text;
 
 .entry-content .frm_forms,
 .regular-form .frm_forms {
-	margin: $gut 0;
-	@include card-border();
-	border-top-color: section_color(teplitsa);
+	margin: $gut 0;	
 	padding: $gut $gut/2 $gut/2;
 }
 
@@ -129,12 +127,12 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 
 
 /* text input */
-.tst-textfield {
+.kds-textfield {
 	width: 100%;
 	padding: $input-top-gut 0;
 	position: relative;
 	
-	.tst-textfield__input {
+	.kds-textfield__input {
 		@include input-text();
 		
 		display: block;
@@ -183,7 +181,7 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 		}
 	}
 	
-	.tst-textfield__input:focus {
+	.kds-textfield__input:focus {
 		//border-color: $input-color-active;		
 		& ~ label { color: $input-color-active;	}
 		& ~ label:after {
@@ -199,12 +197,12 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 
 
 /** chackbox **/
-.tst-inputfix {
+.kds-inputfix {
 	width: 100%;
 	padding: $input-top-gut 0;
 	position: relative;
 	
-	.tst-inputfix__label {
+	.kds-inputfix__label {
 		display: inline-block;
 		@include checkbox-text();
 		color: $color-text;
@@ -215,13 +213,13 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 	}
 }
 
-.tst-checkbox {
+.kds-checkbox {
 	display: block;
 	width: 100%;
 	position: relative;
 	padding-left: 26px;		
 	
-	.tst-checkbox__input {
+	.kds-checkbox__input {
 		margin: 0;
 		padding: 0;
 		top: 4px;
@@ -231,7 +229,7 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 		opacity: 0;
 	}
 	
-	.tst-checkbox__label {
+	.kds-checkbox__label {
 		@include checkbox-text(14px);
 		display: inline-block;
 		position: relative;
@@ -252,7 +250,7 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 		}
 	}
 	
-	.tst-checkbox__input:checked + .tst-checkbox__label {
+	.kds-checkbox__input:checked + .kds-checkbox__label {
 		&:before {
 			background-color: $input-color-active;
 			border-color: $input-color-active;
@@ -264,14 +262,14 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 	}
 }
 
-.tst-radio {
+.kds-radio {
 	display: block;
 	width: 100%;
 	position: relative;
 	padding-left: 26px;		
 	
 	
-	.tst-radio__button {
+	.kds-radio__button {
 		margin: 0;
 		padding: 0;
 		top: 4px;
@@ -281,7 +279,7 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 		opacity: 0;
 	}
 	
-	.tst-radio__label {
+	.kds-radio__label {
 		@include checkbox-text(14px);
 		display: inline-block;
 		position: relative;
@@ -302,7 +300,7 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 		}
 	}
 	
-	.tst-radio__button:checked + .tst-radio__label {
+	.kds-radio__button:checked + .kds-radio__label {
 		&:before {
 			background-color: $input-color-active;
 			border-color: $input-color-active;			
@@ -317,18 +315,18 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 
 
 /** Select **/
-.tst-select {
+.kds-select {
 	width: 100%;
 	padding: $input-top-gut 0;
 	position: relative;
 	
-	.tst-inputfix__label {
+	.kds-inputfix__label {
 		display: block;
 		@include checkbox-text();
 		color: $color-text;
 	}
 	
-	.tst-select-wrap {
+	.kds-select-wrap {
 		display: block;
 		margin-top: $gut/2;
 		position: realtive;
@@ -379,9 +377,7 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 
 /* submit **/
 .frm_submit {
-	
-	
-	.tst-submit-wrap {
+	.kds-submit-wrap {
 		display: inline-block;
 		position: relative;		
 		@include transition(all 0.35s);
@@ -395,21 +391,13 @@ aD4KICAgIDwvZz4KPC9zdmc+");
 		border: none;		
 		outline: none;
 		@include nav-text();
-		line-height: 30px;
+		line-height: 24px;
 		background: $input-color-active;
-		padding: 8px 26px 8px 56px;
+		padding: 6px 20px;
 		color: $color-white;
 		@include transition(background 0.2s);
 	}
-	
-	
-	.svg-icon  {
-		@include subscribe-link-icon();
-		position: absolute;
-		top: 8px;
-		left: 16px;
-		fill: #fff;
-	}
+		
 	
 	.frm_ajax_loading { display: none; }
 }

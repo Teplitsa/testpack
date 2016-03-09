@@ -34,7 +34,7 @@ get_header();
 		</aside>
 	</div>
 	
-	<div class="bit lg-9">
+	<div class="bit lg-9 bit-no-margin">
 		<main class="loop">
 		<?php
 			if(have_posts()){
@@ -61,8 +61,13 @@ get_header();
 
 </div></section>
 
+<?php
+	$pquery = new WP_Query(array('post_type'=> 'programm', 'posts_per_page' => 4, 'orderby' => 'rand'));
+	if($pquery->have_posts()){
+?>
 <section class="addon"><div class="container">
-	Programms block	
+	<?php kds_more_section($pquery->posts, __('More about our programms', 'kds'), 'programms'); ?>
 </div></section>
+<?php }
 
-<?php get_footer(); ?>
+get_footer();

@@ -16,7 +16,7 @@ $footer_text = get_theme_mod('footer_text');
 
 <div id="bottom_bar" class="bottom-bar"><div class="container">	
 	<div class="frame">
-		<div class="bit md-7">
+		<div class="bit md-8">
 			<?php if(!is_page('subscribe'))	{ ?>
 				<h5><?php _e('Subscribe to our newsletter', 'kds');?></h5>
 				<div class="nl-form in-footer">
@@ -27,7 +27,7 @@ $footer_text = get_theme_mod('footer_text');
 			<?php  }?>
 		</div>
 
-		<div class="bit md-5 lg-4 lg-offset-1">
+		<div class="bit md-4 lg-3 lg-offset-1">
 			<h5><?php _e('Our social profiles', 'kds');?></h5>
 			<?php echo kds_get_social_menu(); ?>
 		</div>
@@ -40,16 +40,16 @@ $footer_text = get_theme_mod('footer_text');
 		<div class="bit md-8">		
 				
 			<div class="copy">
-				<?php echo apply_filters('tst_the_content', $footer_text); ?>
+				<?php echo apply_filters('kds_the_content', $footer_text); ?>
 								
 				<p><?php printf(__('All materials of the site are avaliabe under license %s.', 'kds'), $cc_link);?></p>
 			</div>
 			
 		</div>
 		
-		<div class="bit md-4">
+		<div class="bit md-4 lg-3 lg-offset-1">
 			<div class="te-st-bn">
-				<span class="support"><?php _e('Made by', 'kds');?></span><br>
+				<p class="support"><?php _e('Made by', 'kds');?></p>
 				<a title="<?php echo $tst;?>" href="http://te-st.ru/" class="tst-banner">
 					<!-- <img alt="<?php echo $tst;?>" src="<?php echo $banner;?>.svg" onerror="this.onerror=null;this.src=<?php echo $banner;?>.png;">-->
 					<svg class="tst-icon"><use xlink:href="#pic-te-st" /></svg>

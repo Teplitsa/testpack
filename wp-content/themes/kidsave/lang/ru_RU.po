@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-07 11:27+0300\n"
-"PO-Revision-Date: 2016-03-07 11:29+0300\n"
+"POT-Creation-Date: 2016-03-09 19:08+0300\n"
+"PO-Revision-Date: 2016-03-09 19:08+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
 "%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
 "__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;"
@@ -30,12 +30,20 @@ msgstr ""
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:36
+#: footer.php:21
+msgid "Subscribe to our newsletter"
+msgstr "Подпишитесь на рассылку"
+
+#: footer.php:31
+msgid "Our social profiles"
+msgstr "Мы в социальных сетях"
+
+#: footer.php:45
 #, php-format
 msgid "All materials of the site are avaliabe under license %s."
 msgstr "Все материалы сайта доступны по лиценции %s."
 
-#: footer.php:43
+#: footer.php:52
 msgid "Made by"
 msgstr "Разработка сайта"
 
@@ -43,25 +51,25 @@ msgstr "Разработка сайта"
 msgid "Skip to content"
 msgstr "Перейти к содержанию"
 
-#: inc/admin.php:143 inc/admin.php:152
+#: inc/admin.php:132 inc/admin.php:141
 msgid "Website"
 msgstr "Вебсайт"
 
-#: inc/admin.php:143 inc/admin.php:157
+#: inc/admin.php:132 inc/admin.php:146
 msgid "Excerpt"
 msgstr "Аннотация"
 
-#: inc/admin.php:159
+#: inc/admin.php:148
 msgid ""
 "Annotation for items lists (will be printed at the beginning of the single "
 "page)"
 msgstr "Аннотация для списков (на странице записи добавляется в начало)"
 
-#: inc/admin.php:212
-msgid "Custom fields"
-msgstr "Мета-поля"
+#: inc/admin.php:201
+msgid "Forms"
+msgstr "Формы"
 
-#: inc/admin.php:294
+#: inc/admin.php:324
 #, php-format
 msgid ""
 "ATTENTION! You thumbnail image is too small. It should be at least %s px"
@@ -73,37 +81,56 @@ msgstr ""
 msgid "More"
 msgstr "Далее"
 
-#: inc/template-tags.php:310
+#: inc/template-tags.php:217
+msgid "Search results"
+msgstr "Результаты поиска"
+
+#: inc/template-tags.php:221
+msgid "404: Page not found"
+msgstr "404: Страница не&nbsp;найдена"
+
+#: inc/template-tags.php:314
 msgid "Post navigation"
 msgstr "Навигация по записям"
 
-#: inc/widgets.php:40
+#: inc/template-tags.php:329 inc/template-tags.php:343
+msgid "Homepage"
+msgstr "Главная"
+
+#: inc/template-tags.php:467
+msgid "All programms"
+msgstr "Все программы"
+
+#: inc/template-tags.php:468
+msgid "Our programms"
+msgstr "Наши программы"
+
+#: inc/template-tags.php:471
+msgid "All news"
+msgstr "Все новости"
+
+#: inc/template-tags.php:472
+msgid "Latest news"
+msgstr "Последние новости"
+
+#: inc/widgets.php:39
 msgid "Social Buttons"
 msgstr "Социальные кнопки"
 
-#: inc/widgets.php:42
+#: inc/widgets.php:41
 msgid "Social links menu with optional text"
 msgstr "Меню социальных кнопок с сопроводительным текстом"
 
-#: assets/js/leaflet.js:8 assets/rev/leaflet-591bc0cd60.js:8
-msgid "MultiLineString"
-msgstr ""
+#: index.php:69
+msgid "More about our programms"
+msgstr "Подробнее о программах фонда"
 
-#: assets/js/leaflet.js:8 assets/rev/leaflet-591bc0cd60.js:8
-msgid "MultiPolygon"
-msgstr ""
+#: single.php:61
+msgid "More news"
+msgstr "Еще новости"
 
-#: assets/js/leaflet.js:8 assets/rev/leaflet-591bc0cd60.js:8
-msgid "MultiPoint"
-msgstr ""
-
-#: assets/js/leaflet.js:9 assets/rev/leaflet-591bc0cd60.js:9
-msgid "top"
-msgstr ""
-
-#: assets/js/leaflet.js:9 assets/rev/leaflet-591bc0cd60.js:9
-msgid "bottom"
-msgstr ""
+#~ msgid "Custom fields"
+#~ msgstr "Мета-поля"
 
 #~ msgid "Primary Menu"
 #~ msgstr "﻿Главное меню"
@@ -116,9 +143,6 @@ msgstr ""
 
 #~ msgid "Fixed"
 #~ msgstr "Фиксированный"
-
-#~ msgid "Forms"
-#~ msgstr "Формы"
 
 #~ msgid "Facebook Profile"
 #~ msgstr "Профиль на Facebook"
@@ -285,9 +309,6 @@ msgstr ""
 #~ msgid "More results"
 #~ msgstr "Еще результаты"
 
-#~ msgid "More news"
-#~ msgstr "Еще новости"
-
 #~ msgid "More projects"
 #~ msgstr "Еще программы"
 
@@ -320,12 +341,6 @@ msgstr ""
 
 #~ msgid "Your name"
 #~ msgstr "Ваше имя"
-
-#~ msgid "Search results"
-#~ msgstr "Результаты поиска"
-
-#~ msgid "404: Page not found"
-#~ msgstr "404: Страница не&nbsp;найдена"
 
 #~ msgid "More events"
 #~ msgstr "Еще анонсы"

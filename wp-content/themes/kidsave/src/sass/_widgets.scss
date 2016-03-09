@@ -1,14 +1,11 @@
 /** Widgets **/
 
 .widget {	
+	margin-bottom: $base*2;
 	
 	.widget-title {
-		margin-bottom: 1em;
-		
-		h3 {
-			
-		}
-		
+		margin-bottom: $base;		
+		@include header-title(widget);		
 	}
 	
 	.textwidget {		
@@ -19,3 +16,17 @@
 		margin-bottom: $gut/2;
 	}
 }
+
+.widget_nav_menu {
+	@include nav-text();	
+	li { margin-bottom: $base/2; }
+	
+	.hide-on-large & {
+		margin-bottom: 0;
+		li {
+			display: inline-block;
+			margin: 0 18px 9px 0;
+		}
+	}
+}
+

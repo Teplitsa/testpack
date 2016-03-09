@@ -2,52 +2,52 @@
 /** Formidable filters **/
 
 // @to_do (no correction for repeatable section)
-add_filter('frm_submit_button_class', 'tst_formidable_submit_classes', 2, 2);
-function tst_formidable_submit_classes($class, $form){
+add_filter('frm_submit_button_class', 'kds_formidable_submit_classes', 2, 2);
+function kds_formidable_submit_classes($class, $form){
 	
 	
-	$class[] = 'tst-submit-button';
+	$class[] = 'kds-submit-button';
 	
 	return $class;
 }
 
-add_filter('frm_field_classes', 'tst_formidable_field_classes', 2, 2);
-function tst_formidable_field_classes($class, $field){
+add_filter('frm_field_classes', 'kds_formidable_field_classes', 2, 2);
+function kds_formidable_field_classes($class, $field){
 		
 	if(in_array($field['type'], array('text', 'email', 'textarea', 'url', 'number'))) { 
-		$class = 'tst-textfield__input';
+		$class = 'kds-textfield__input';
 	}
 	elseif($field['type'] == 'checkbox'){
 		
 		if(isset($field['classes']) && false !== strpos($field['classes'], 'switch')){			
-			$class .= " tst-checkbox__input";
+			$class .= " kds-checkbox__input";
 		}
 		else {
-			$class = "tst-checkbox__input";
+			$class = "kds-checkbox__input";
 		}
 	}
 	elseif($field['type'] == 'radio'){
-		$class = "tst-radio__button";
+		$class = "kds-radio__button";
 	}
 	elseif($field['type'] == 'file'){
-		$class = "tst-file__input";
+		$class = "kds-file__input";
 	}
 	
 	if($field['invalid'])
-		$class .= " tst-has-error";
+		$class .= " kds-has-error";
 		
 	return $class;
 }
 
-add_filter('frm_replace_shortcodes', 'tst_formidable_default_html', 2, 3);
-function tst_formidable_default_html($html, $field, $params) {
+add_filter('frm_replace_shortcodes', 'kds_formidable_default_html', 2, 3);
+function kds_formidable_default_html($html, $field, $params) {
 		
 	if(in_array($field['type'], array('text', 'email', 'number', 'url', 'textarea')))  {
 			
-		$html = str_replace(array('frm_form_field', 'form-field'), 'tst-textfield frm_form_field', $html);
+		$html = str_replace(array('frm_form_field', 'form-field'), 'kds-textfield frm_form_field', $html);
 		
-		$html = str_replace('frm_primary_label', 'tst-textfield__label frm_primary_label', $html);
-		$html = str_replace('frm_error', 'tst-textfield__error frm_error', $html);
+		$html = str_replace('frm_primary_label', 'kds-textfield__label frm_primary_label', $html);
+		$html = str_replace('frm_error', 'kds-textfield__error frm_error', $html);
 		
 		if((int)$field['read_only'] == 1){			
 			$html = str_replace('<input', '<input disabled="disabled" ', $html);
@@ -62,30 +62,30 @@ function tst_formidable_default_html($html, $field, $params) {
 	}	
 	elseif($field['type'] == 'checkbox'){
 		if(isset($field['classes']) && false !== strpos($field['classes'], 'switch')){			
-			$html = str_replace('<label for=', '<label class="tst-checkbox" for=', $html);
+			$html = str_replace('<label for=', '<label class="kds-checkbox" for=', $html);
 		}
 		else {
-			$html = str_replace('<label for=', '<label class="tst-checkbox" for=', $html);
+			$html = str_replace('<label for=', '<label class="kds-checkbox" for=', $html);
 		}
 		
-		$html = str_replace('frm_form_field', 'tst-inputfix frm_form_field', $html);
-		$html = str_replace('frm_primary_label', 'tst-inputfix__label frm_primary_label', $html);
+		$html = str_replace('frm_form_field', 'kds-inputfix frm_form_field', $html);
+		$html = str_replace('frm_primary_label', 'kds-inputfix__label frm_primary_label', $html);
 		
 	}
 	elseif($field['type'] == 'radio'){
 		
-		$html = str_replace('<label for=', '<label class="tst-radio" for=', $html);
-		$html = str_replace('frm_primary_label', 'tst-inputfix__label frm_primary_label', $html);
-		$html = str_replace('frm_form_field', 'tst-inputfix frm_form_field', $html);
+		$html = str_replace('<label for=', '<label class="kds-radio" for=', $html);
+		$html = str_replace('frm_primary_label', 'kds-inputfix__label frm_primary_label', $html);
+		$html = str_replace('frm_form_field', 'kds-inputfix frm_form_field', $html);
 	}
 	elseif($field['type'] == 'select'){
 		
-		$html = str_replace('frm_form_field', 'tst-select frm_form_field', $html);
-		$html = str_replace('frm_primary_label', 'tst-inputfix__label frm_primary_label', $html);
+		$html = str_replace('frm_form_field', 'kds-select frm_form_field', $html);
+		$html = str_replace('frm_primary_label', 'kds-inputfix__label frm_primary_label', $html);
 		
 		preg_match("#<\s*?select\b[^>]*>(.*?)</select\b[^>]*>#s", $html, $l);
 		if(!empty($l)){
-			$html = str_replace($l[0], '<label class="tst-select-wrap">'.$l[0].'</label>', $html); //delete label
+			$html = str_replace($l[0], '<label class="kds-select-wrap">'.$l[0].'</label>', $html); //delete label
 		}
 	}	
 	elseif($field['type'] == 'file'){ //not ready
@@ -112,39 +112,39 @@ function tst_formidable_default_html($html, $field, $params) {
 }
 
 
-add_filter('frm_field_label_seen', 'tst_formidable_input_options_html', 2, 3);
-function tst_formidable_input_options_html($opt, $opt_key, $field) {
+add_filter('frm_field_label_seen', 'kds_formidable_input_options_html', 2, 3);
+function kds_formidable_input_options_html($opt, $opt_key, $field) {
 	
 	if(is_admin())
 		return $opt;
 	
 	if($field['type'] == 'checkbox') {
 		if(isset($field['classes']) && false !== strpos($field['classes'], 'switch')){
-			$opt = "<span class='tst-checkbox__label'>{$opt}</span>";
+			$opt = "<span class='kds-checkbox__label'>{$opt}</span>";
 		}
 		else {
-			$opt = "<span class='tst-checkbox__label'>{$opt}</span>";
+			$opt = "<span class='kds-checkbox__label'>{$opt}</span>";
 		}
 		
 	}
 	elseif($field['type'] == 'radio') {
-		$opt = "<span class='tst-radio__label'>{$opt}</span>";
+		$opt = "<span class='kds-radio__label'>{$opt}</span>";
 	}
 	
 	return $opt;
 }
 
 
-add_filter('frm_filter_final_form', 'tst_formidable_submit_button_html', 50);
-function tst_formidable_submit_button_html($html){
+add_filter('frm_filter_final_form', 'kds_formidable_submit_button_html', 50);
+function kds_formidable_submit_button_html($html){
 	
-	// /<p .*?class="(.*?someClass.*?)">(.*?)<\/p>/
-	preg_match("/<[^>]*type=\"submit\"[^>]*>/", $html, $l);
-	
-	if(!empty($l)){
-		$icon = tst_svg_icon('icon-subscribe-button', false);
-		$html = str_replace($l[0], '<span class="tst-submit-wrap">'.$icon.$l[0].'</span>', $html);
-	}
+	//// /<p .*?class="(.*?someClass.*?)">(.*?)<\/p>/
+	//preg_match("/<[^>]*type=\"submit\"[^>]*>/", $html, $l);
+	//
+	//if(!empty($l)){
+	//	$icon = kds_svg_icon('icon-subscribe-button', false);
+	//	$html = str_replace($l[0], '<span class="kds-submit-wrap">'.$icon.$l[0].'</span>', $html);
+	//}
 	
 	$html = str_replace('frm-show-form', 'frm-show-form novalidate', $html);
 	
@@ -153,7 +153,7 @@ function tst_formidable_submit_button_html($html){
 
 
 /** Functions to interact with Formidable **/
-function tst_frm_get_form_id_from_key ( $form_key ) {
+function kds_frm_get_form_id_from_key ( $form_key ) {
 	global $wpdb;
 	
 	$table_name = $wpdb->prefix.'frm_forms'; //more reliable than $frmdb->forms

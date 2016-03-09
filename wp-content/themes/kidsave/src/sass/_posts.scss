@@ -2,6 +2,13 @@
 
 /** News **/
 .thumbnail-link { display: block; }
+.sep { padding: 0 4px; }
+
+// structure
+main.loop {
+	@include for(large-screens) { margin-right: $col; }
+}
+
 
 .tpl-post {
 	margin-bottom: $base*1.5;
@@ -10,7 +17,8 @@
 	
 	.entry-meta {
 		@include nav-text(meta);
-		color: $color-text-light;		
+		color: $color-text-light;
+		@include transition(all 0.3s);
 	}
 	
 	.entry-title {
@@ -25,44 +33,136 @@
 		color: $color-text;
 	}
 	
-	.sep {
-		padding: 0 4px;		
-	}
-	
 	a:hover {
 		.entry-title { color: $color-link-one; }
+		.entry-meta { color: lighten($color-link-one, 20%); }
 	}
 }
 
 .tpl-featured {	
-	background-repeat: no-repeat;
-	background-size: cover;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	@include transition(all 0.8s);
+	
+	&:before {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;		
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		background: rgba(0,0,0, 0.5);
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+75&0+0,0.5+75 */
+		background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 75%);
+		background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 75%);
+		background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 75%);
+	}
+	
+	.container { z-index: 100;	}
+	
+	.bg {
+		display: block;
+		width: 120%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		@include transition(all 0.8s ease-in);
+		z-index: 5;
+	}
+	
+	a {
+		display: block;
+	}
 	
 	.featured-content {
-		a { display: block; }
+		padding: $base*1.5 0;
+		max-width: 640px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		
 		
 		.entry-meta {
-		
+			@include nav-text(meta);
+			color: transparentize($color-white, 0.15);
+			@include transition(all 0.3s);
 		}
 		
 		.entry-title {
-			
+			@include post-title(featured);
+			color: $color-white;
+			margin-bottom: $base;
+			margin-top: 2px;
 		}
 		
 		.entry-summary {
-			
-		}
-		
-		
+			@include body-text();
+			color: transparentize($color-white, 0.12);
+			@include transition(all 0.3s);
+		}		
+	}
+	
+	&:hover {
+		.bg { left: -20%; }
+		.entry-meta,
+		.entry-title, 
+		.entry-summary { color: $color-white; }
 	}
 }
 
 
 //paging
-.paging-navigation {
-	margin-bottom: $base*1.5;
-	
+.paging-navigation {		
 	.page-numbers {
 		padding: 2px 3px;
+	}
+}
+
+
+/* Related section */
+.related-section {
+	border-top: 4px solid $color-border-light;
+	padding: $base - 4px 0 $base;
+	
+	.ms-title {
+		@include header-title(widget);
+		margin-bottom: $base;
+		position: relative;
+		padding-right: 120px;
+		
+		a {
+			display: inline-block;
+			@include body-text(summary);
+			text-transform: none;
+			line-height: 1;
+			position: absolute;
+			right: 0;
+			top: 5px;
+			&:hover, &:focus, &:active {
+				color: $color-link-one;		
+			}
+		}
+	}
+}
+
+.tpl-related-post {
+	
+	.entry-title {
+		@include post-title(small_title);
+		line-height: 18px;
+		max-height: 2*18px;
+		overflow: hidden;
+		margin-top: 8px;
+	}
+	
+	&.post .entry-title {
+		line-height: 21px;
+		max-height: 3*21px;
 	}
 }

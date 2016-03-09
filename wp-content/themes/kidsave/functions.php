@@ -26,7 +26,7 @@ function kds_setup() {
 
 	// Thumbnails
 	add_theme_support('post-thumbnails');
-	set_post_thumbnail_size(640, 340, true ); // regular thumbnails	
+	set_post_thumbnail_size(640, 400, true ); // regular thumbnails	
 	//add_image_size('mini', 222, 167, true ); // logo thumbnail 
 	//add_image_size('poster', 220, 295, true ); // poster in widget	
 	//add_image_size('embed', 735, 430, true ); // fixed size for embedding
@@ -105,6 +105,7 @@ require get_template_directory().'/inc/class-cssjs.php';
 
 require get_template_directory().'/inc/aq_resizer.php';
 require get_template_directory().'/inc/extras.php';
+require get_template_directory().'/inc/forms.php';
 require get_template_directory().'/inc/post-types.php';
 require get_template_directory().'/inc/request.php';
 require get_template_directory().'/inc/shortcodes.php';

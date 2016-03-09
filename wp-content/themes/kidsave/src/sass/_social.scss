@@ -7,7 +7,7 @@ $social_color: (
 	twitter:   #68ACD2,
 	instagram: #527FA3,
 	pinterest: #DE2127,
-	youtube:   #E72C2E,
+	youtube:   #E21D17,
 	telegram:  #2CA5E0,
 	whatsapp:  #69BD35,
 	viber:     #774C98
@@ -74,9 +74,17 @@ $social_color: (
 	}	
 }
 
-
-
-
+.bottom-bar {
+	
+	@each $item in vk, facebook, youtube {		
+		.social-menu .#{$item} a {
+			background: $color-text-black;
+			&:hover, &:focus, &:active {
+				background: social_color($item);
+			}
+		}
+	}	
+}
 
 
 /** == Sharing == **/
@@ -119,4 +127,50 @@ $social_color: (
 	}
 }
 
+
+/** == Newsletter form == **/
+.nl-form  {
+	
+	.frm_forms { margin: 0; }
+	
+	fieldset {
+		position: relative;
+		margin-top: -2px;
+		padding-right: 130px;
+		height: 44px;
+		border: 2px solid rgba(255,255,255, 0.85);
+		&.focus {
+			background: $color-white;
+		}
+	}
+	
+	.kds-textfield {
+		padding: 0;
+		
+		input {
+			color: $color-text-black;
+			border: none;
+			font-size: 16px;
+			padding: 11px 8px 4px 12px;
+			
+			@include placeholder { color: $color-text; }
+		}
+		
+		.kds-textfield__label { display: none; }
+	}
+	
+	.frm_submit {
+		position: absolute;
+		top: 2px;
+		right: 2px;
+		
+		input {
+			background: $color-text-black;
+		}
+	}
+	
+	.frm_message {
+		background: $color-white;
+	}
+}
 
