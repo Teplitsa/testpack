@@ -1,0 +1,21 @@
+/** Widgets **/
+
+.widget {	
+	
+	.widget-title {
+		margin-bottom: 1em;
+		
+		h3 {
+			
+		}
+		
+	}
+	
+	.textwidget {		
+		p:last-child { margin-bottom: 0; }
+	}
+	
+	p { //temp		
+		margin-bottom: $gut/2;
+	}
+}

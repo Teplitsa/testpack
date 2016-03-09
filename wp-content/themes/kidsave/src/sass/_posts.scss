@@ -1,0 +1,68 @@
+/** Main styles for content objects **/
+
+/** News **/
+.thumbnail-link { display: block; }
+
+.tpl-post {
+	margin-bottom: $base*1.5;
+	
+	a { display: block; }
+	
+	.entry-meta {
+		@include nav-text(meta);
+		color: $color-text-light;		
+	}
+	
+	.entry-title {
+		@include post-title();
+		margin-bottom: $base*0.75;
+		margin-top: 2px;
+		@include transition(all 0.3s);
+	}
+	
+	.entry-summary {
+		@include body-text(summary);
+		color: $color-text;
+	}
+	
+	.sep {
+		padding: 0 4px;		
+	}
+	
+	a:hover {
+		.entry-title { color: $color-link-one; }
+	}
+}
+
+.tpl-featured {	
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+	.featured-content {
+		a { display: block; }
+		
+		.entry-meta {
+		
+		}
+		
+		.entry-title {
+			
+		}
+		
+		.entry-summary {
+			
+		}
+		
+		
+	}
+}
+
+
+//paging
+.paging-navigation {
+	margin-bottom: $base*1.5;
+	
+	.page-numbers {
+		padding: 2px 3px;
+	}
+}

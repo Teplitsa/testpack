@@ -1,0 +1,118 @@
+/*---------------------------------------------------------
+ Global Layout (_front.scss)
+-------------------------------------------------------- */
+html {
+	//font-size: 62.5%; //10px
+	background-color: $color-white;	
+}
+body {
+	background-color: $color-white;
+	text-rendering: optimizeLegibility;	
+	@include body-text();
+	
+	& > svg { display: none; }	
+}
+
+a {
+	text-decoration: none;
+	color: $color-link-one;
+	@include transition(all 0.3s);
+	&:visited { color: $color-link-one; }
+	&:hover, &:focus, &:active {
+		color: $color-link-two;
+	}
+}
+
+p {
+	-webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+	&:last-child { margin-bottom: 0; }	
+}
+
+p,ul,ol,dl,blockquote {
+	@extend .break;
+}
+
+.svg-icon, .svg-pic {
+	display: inline-block;
+}
+
+//title with normal weights
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
+// Structure
+.container {
+	width: 90%;
+	max-width: $page_cont;
+	margin: 0 auto;	
+}
+
+.for-title { height: 20vh; }
+.for-message { height: 45vh; }
+
+// section title
+.intro {
+	background: $color-secondary-dark;
+	margin-bottom: $base*1.5;
+	.section-title {
+		@include header-title(section);
+		color: $color-white;
+		padding-top: $base*1.2;
+	}
+}
+
+
+
+/** Footer **/
+.site-footer {	
+	padding: $base 0;
+	background: $color-secondary;
+	font-size: 12px;
+	
+	
+}
+
+
+.te-st-bn {
+	text-align: right;
+			
+	a {
+		display: inline-block;
+		width: 110px;
+		height: 50px;
+		padding-top: 5px;
+		text-align: center;
+		box-sizing: border-box;
+		
+		border-radius: 5px;
+		box-shadow: 1px 1px 0px rgba(150,150,150, 0.5);
+		
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+1,e0e0e0+99 */
+background: #f9f9f9; /* Old browsers */
+background: -moz-linear-gradient(top,  #f9f9f9 1%, #e0e0e0 99%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f9f9f9), color-stop(99%,#e0e0e0)); 
+background: -webkit-linear-gradient(top,  #f9f9f9 1%,#e0e0e0 99%); 
+background: -o-linear-gradient(top,  #f9f9f9 1%,#e0e0e0 99%);
+background: -ms-linear-gradient(top,  #f9f9f9 1%,#e0e0e0 99%); 
+background: linear-gradient(to bottom,  #f9f9f9 1%,#e0e0e0 99%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#e0e0e0',GradientType=0 ); 
+	}
+		
+	.support {
+		font-size: 10px;
+		color: $color-text-semi;
+		display: inline-block;
+		width: 110px;
+		text-align: center;
+		margin-bottom: 3px;
+	}
+	
+	.tst-icon {
+		display: inline-block;
+		width: 87px;
+		height: 40px;
+	}
+}
