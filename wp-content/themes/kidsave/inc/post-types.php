@@ -83,7 +83,7 @@ function kds_custom_content(){
             'not_found_in_trash' => 'В Корзине программы не найдены'
        ),
         'public'              => true,
-        'exclude_from_search' => true,
+        'exclude_from_search' => false,
         'publicly_queryable'  => true,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
@@ -170,20 +170,21 @@ function kds_custom_content(){
         'taxonomies'          => array('person_cat'),
     ));
 	
-	
+	//pages
+	add_post_type_support('page', 'excerpt');
+	add_post_type_support('page', 'thumbnail');
 }
 
 /** Metaboxes **/
-//add_action( 'cmb2_admin_init', 'tst_custom_metaboxes' );
+add_action( 'cmb2_admin_init', 'tst_custom_metaboxes' );
 function tst_custom_metaboxes() {
-		
-	// Start with an underscore to hide fields from custom fields list
-    $prefix = '_kds_';
-		
-	$marker_cmb = new_cmb2_box( array(
-        'id'            => 'marker_settings_metabox',
-        'title'         => 'Настройки маркера',
-        'object_types'  => array( 'marker' ), // Post type
+	
+	
+	/** Post **/
+    $format_cmb = new_cmb2_box( array(
+        'id'            => 'post_format_metabox',
+        'title'         => 'Настройки формата',
+        'object_types'  => array( 'post'), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
@@ -192,11 +193,54 @@ function tst_custom_metaboxes() {
         // 'closed'     => true, // Keep the metabox closed by default
     ));
 	
-	$marker_cmb->add_field( array(
-		'name'    => 'Полное наименование',		
+	
+	//format
+	$format_cmb->add_field( array(
+		'name'             => 'Формат',
+		'desc'             => 'Укажите формат записи',
+		'id'               => 'post_format',
+		'type'             => 'select',
+		'show_option_none' => false,
+		'default'          => 'standard',
+		'options'          => array(
+			'standard' => 'Стандартный',
+			'megahead' => 'Мега-заставка',
+			'video'    => 'Видео'
+		),
+	));
+	
+	$format_cmb->add_field( array(
+		'name' => 'Видео',		
 		'default' => '',
-		'id'      => 'marker_fullname',
-		'type'    => 'textarea_small'
+		'id' => 'post_video',
+		'type' => 'textarea_small'
+	));
+	
+	
+	/** Page **/
+	$page_cmb = new_cmb2_box( array(
+        'id'            => 'page_data_metabox',
+        'title'         => 'Настройки страницы',
+        'object_types'  => array( 'page'), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+		//'show_on'       => array( 'key' => 'page-template', 'value' => 'default' ),	
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
+	
+	$page_cmb->add_field( array(
+		'name' => 'Ссылка для кнопки CTA',
+		'id'   => 'cta_link',
+		'type' => 'text_url',
+		// 'protocols' => array( 'http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet' ), // Array of allowed protocols
 	) );
 	
+	$page_cmb->add_field( array(
+		'name' => 'Текст для кнопки CTA',
+		'id'   => 'cta_text',
+		'type' => 'text',
+		// 'protocols' => array( 'http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet' ), // Array of allowed protocols
+	) );
 }

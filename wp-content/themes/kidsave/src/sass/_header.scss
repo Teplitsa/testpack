@@ -6,6 +6,7 @@
 		
 	h1 {
 		@include header-title(head_title);
+		color: $color-text-semi;
 	}
 	
 	p {

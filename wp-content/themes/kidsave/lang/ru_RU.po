@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-09 19:08+0300\n"
-"PO-Revision-Date: 2016-03-09 19:08+0300\n"
+"POT-Creation-Date: 2016-03-11 00:20+0300\n"
+"PO-Revision-Date: 2016-03-11 00:21+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:21
+#: footer.php:21 page-activity.php:58
 msgid "Subscribe to our newsletter"
 msgstr "Подпишитесь на рассылку"
 
@@ -81,37 +81,45 @@ msgstr ""
 msgid "More"
 msgstr "Далее"
 
-#: inc/template-tags.php:217
+#: inc/template-tags.php:219
 msgid "Search results"
 msgstr "Результаты поиска"
 
-#: inc/template-tags.php:221
+#: inc/template-tags.php:223
 msgid "404: Page not found"
-msgstr "404: Страница не&nbsp;найдена"
+msgstr "Ошибка 404: Страница не найдена"
 
-#: inc/template-tags.php:314
+#: inc/template-tags.php:316
 msgid "Post navigation"
 msgstr "Навигация по записям"
 
-#: inc/template-tags.php:329 inc/template-tags.php:343
+#: inc/template-tags.php:331 inc/template-tags.php:341
 msgid "Homepage"
 msgstr "Главная"
 
-#: inc/template-tags.php:467
+#: inc/template-tags.php:478
 msgid "All programms"
 msgstr "Все программы"
 
-#: inc/template-tags.php:468
+#: inc/template-tags.php:479 page-activity.php:40
 msgid "Our programms"
 msgstr "Наши программы"
 
-#: inc/template-tags.php:471
+#: inc/template-tags.php:482
 msgid "All news"
 msgstr "Все новости"
 
-#: inc/template-tags.php:472
+#: inc/template-tags.php:483
 msgid "Latest news"
 msgstr "Последние новости"
+
+#: inc/template-tags.php:519
+msgid "Related project"
+msgstr "Программа по теме"
+
+#: inc/template-tags.php:538
+msgid "Help now"
+msgstr "Помочь сейчас"
 
 #: inc/widgets.php:39
 msgid "Social Buttons"
@@ -125,7 +133,35 @@ msgstr "Меню социальных кнопок с сопроводитель
 msgid "More about our programms"
 msgstr "Подробнее о программах фонда"
 
-#: single.php:61
+#: page-about.php:23 page-activity.php:23 page.php:23
+msgid "Support us"
+msgstr "Поддержите нас"
+
+#: page-about.php:41
+msgid "Team"
+msgstr "Команда"
+
+#: page-about.php:46
+msgid "Board of Trustees"
+msgstr "Совет фонда"
+
+#: page-about.php:50
+msgid "Partners"
+msgstr "Партнеры"
+
+#: page-about.php:54
+msgid "Reports"
+msgstr "Отчеты"
+
+#: page-activity.php:59
+msgid "Stay connected and be informed"
+msgstr "Будьте в курсе наших новостей"
+
+#: page-activity.php:71
+msgid "News of programms"
+msgstr "Новости программ"
+
+#: single.php:66
 msgid "More news"
 msgstr "Еще новости"
 
@@ -296,9 +332,6 @@ msgstr "Еще новости"
 
 #~ msgid "Projects section - Order"
 #~ msgstr "Проекты - Порядок"
-
-#~ msgid "Partners"
-#~ msgstr "Партнеры"
 
 #~ msgid "in the category"
 #~ msgstr "в рубрике"

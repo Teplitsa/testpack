@@ -11,30 +11,35 @@ get_header();
 
 ?>
 <section class="intro"><div class="container">
+<header class="entry-header-full">
 	<?php echo kds_breadcrumbs($cpost);?>
 	<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>
 	<div class="entry-meta"><?php echo kds_posted_on($cpost);?></div>
-	
+</header>
 </div></section>
 
-<section class="media">
-<div class="regular-sharing"><?php echo kds_social_share_no_js();?></div>
+<section class="main-content single-post-section">
+<div id="kds_sharing" class="regular-sharing hide-upto-medium"><?php echo kds_social_share_no_js();?></div>
 
 <div class="container">
-	<div class="entry-preview"><?php echo kds_post_thumbnail($cpost->ID, 'post-thumbnail');?></div >
-</div>
-</section>
-
-<section class="main-content"><div class="container">
+	<div class="the-post-cols">
 	
-	<div class="frame">
+		<main class="pc-main">			
+			<div class="entry-preview">
+				<?php echo kds_post_thumbnail($cpost->ID, 'post-thumbnail');?>
+				<div class="mobile-sharing hide-on-medium"><?php echo kds_social_share_no_js();?></div>
+			</div>		
 	
-		<div class="bit md-8">
-			<main class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></main>
-		</div>
+			<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
+		</main>
 		
-		<div class="sidebar bit md-4 lg-3 lg-offset-1">
-			Related project
+		<div id="kds_sidebar" class="pc-sidebar">
+		<?php
+			$rquery = kds_get_related_query($cpost, 'post_tag', 1); 
+			if($rquery->have_posts()){
+				kds_related_project($rquery->posts[0]);
+			}
+		?>
 		</div>
 	
 	</div>

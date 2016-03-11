@@ -67,7 +67,7 @@ class FRL_CssJs {
 		// fonts
 		wp_enqueue_style(
 			'kds-fonts',
-			'//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Sans:400,400italic,700&subset=latin,cyrillic',
+			'//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|Arimo:400,400italic,700&subset=latin,cyrillic',
 			$style_dependencies,
 			null
 		);

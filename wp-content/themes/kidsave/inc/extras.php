@@ -184,6 +184,19 @@ function kds_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 40,
     ));
 	
+	$wp_customize->add_setting('help_campaign_id', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('help_campaign_id', array(
+        'type'     => 'text',		
+        'label'    => 'ID основной кампании помощи',
+        'section'  => 'title_tagline',
+        'settings' => 'help_campaign_id',
+        'priority' => 45,
+    ));
+	
 	//Images
 	$wp_customize->add_setting('default_thumbnail', array(
         'default'   => false,

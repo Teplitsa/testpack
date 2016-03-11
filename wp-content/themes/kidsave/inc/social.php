@@ -103,20 +103,13 @@ function kds_social_share_no_js() {
 	$text = $title.' '.$link;
 
 	$data = array(
-		'vkontakte' => array(
+		'vk' => array(
 			'label' => 'Поделиться во Вконтакте',
 			'url' => 'https://vk.com/share.php?url='.$link.'&title='.$title,
 			'txt' => 'Вконтакте',
 			'icon' => 'icon-vk',
 			'show_mobile' => false
-		),
-		'facebook' => array(
-			'label' => 'Поделиться на Фейсбуке',
-			'url' => 'https://www.facebook.com/sharer/sharer.php?u='.$link,
-			'txt' => 'Facebook',
-			'icon' => 'icon-facebook',
-			'show_mobile' => false
-		),		
+		),			
 		'twitter' => array(
 			'label' => 'Поделиться ссылкой в Твиттере',
 			'url' => 'https://twitter.com/intent/tweet?url='.$link.'&text='.$title,
@@ -124,7 +117,7 @@ function kds_social_share_no_js() {
 			'icon' => 'icon-twitter',
 			'show_mobile' => false		
 		),
-		'odnoklassniki' => array(
+		'ok' => array(
 			'label' => 'Поделиться ссылкой в Одноклассниках',
 			'url' => 'http://connect.ok.ru/dk?st.cmd=WidgetSharePreview&service=odnoklassniki&st.shareUrl='.$link,
 			'txt' => 'Одноклассники',
@@ -132,6 +125,13 @@ function kds_social_share_no_js() {
 			'show_mobile' => false
 			
 		),
+		'facebook' => array(
+			'label' => 'Поделиться на Фейсбуке',
+			'url' => 'https://www.facebook.com/sharer/sharer.php?u='.$link,
+			'txt' => 'Facebook',
+			'icon' => 'icon-facebook',
+			'show_mobile' => false
+		),	
 	);
 	
 ?>
@@ -144,7 +144,7 @@ foreach($data as $key => $obj){
 ?>
 	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
 		<a href="<?php echo $obj['url'];?>" class="social-likes__button social-likes__button_<?php echo $key;?>" target="_blank" onClick="window.open('<?php echo $obj['url'];?>','<?php echo $obj['label'];?>','top=320,left=325,width=650,height=430,status=no,scrollbars=no,menubar=no,tollbars=no');return false;">
-			<svg class="sh-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span>
+			<svg class="svg-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span>
 		</a>
 	</div>
 <?php 

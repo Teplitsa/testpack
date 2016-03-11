@@ -3,7 +3,7 @@
 .widget {	
 	margin-bottom: $base*2;
 	
-	.widget-title {
+	& > h3, .widget-title {
 		margin-bottom: $base;		
 		@include header-title(widget);		
 	}
@@ -30,3 +30,26 @@
 	}
 }
 
+.related-widget {
+	
+	.entry-link {
+		display: block;
+	}
+	
+	.entry-title {
+		@include post-title(small_title);
+		margin: 8px 0 12px;
+	}
+	
+	p, .entry-summary {
+		@include body-text(small);
+		color: $color-text;
+	}
+	
+	.help-cta {
+		margin-top: $base;
+		a {
+			@include button();
+		}
+	}
+}

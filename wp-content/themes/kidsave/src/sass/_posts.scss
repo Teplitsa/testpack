@@ -4,6 +4,17 @@
 .thumbnail-link { display: block; }
 .sep { padding: 0 4px; }
 
+.fixed-top {
+	position: fixed;
+	top: 86px;
+}
+
+.fixed-bottom {
+	position: absolute;
+	bottom: 0;				
+}
+
+
 // structure
 main.loop {
 	@include for(large-screens) { margin-right: $col; }
@@ -79,41 +90,41 @@ main.loop {
 	a {
 		display: block;
 	}
+}
+
+.featured-content {
+	padding: $base*1.5 0;
+	max-width: 640px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
 	
-	.featured-content {
-		padding: $base*1.5 0;
-		max-width: 640px;
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		
-		
-		.entry-meta {
-			@include nav-text(meta);
-			color: transparentize($color-white, 0.15);
-			@include transition(all 0.3s);
-		}
-		
-		.entry-title {
-			@include post-title(featured);
-			color: $color-white;
-			margin-bottom: $base;
-			margin-top: 2px;
-		}
-		
-		.entry-summary {
-			@include body-text();
-			color: transparentize($color-white, 0.12);
-			@include transition(all 0.3s);
-		}		
+	
+	.entry-meta {
+		@include nav-text(meta);
+		color: transparentize($color-white, 0.15);
+		@include transition(all 0.3s);
 	}
 	
-	&:hover {
-		.bg { left: -20%; }
-		.entry-meta,
-		.entry-title, 
-		.entry-summary { color: $color-white; }
+	.entry-title {
+		@include post-title(featured);
+		color: $color-white;
+		margin-bottom: $base;
+		margin-top: 2px;
 	}
+	
+	.entry-summary {
+		@include body-text();
+		color: transparentize($color-white, 0.12);
+		@include transition(all 0.3s);
+	}		
+}
+
+.tpl-featured:hover {
+	bg { left: -20%; }
+	.entry-meta,
+	.entry-title, 
+	.entry-summary { color: $color-white; }
 }
 
 
@@ -164,5 +175,216 @@ main.loop {
 	&.post .entry-title {
 		line-height: 21px;
 		max-height: 3*21px;
+	}
+}
+
+
+
+/** Single **/
+.crumbs {
+	@include body-text(small);
+	margin-bottom: $base/4;
+	color: $color-text-light;
+	
+	a {
+		color: $color-text;
+		&:hover, &:focus, &:active {
+			color: $color-link-one;
+		}
+	}
+}
+
+.entry-header-full {
+	padding: $base*1.5 0 $base*2;
+	
+	.entry-title {
+		@include header-title(section);
+		margin-bottom: $base;
+	}
+	
+	.entry-meta {
+		@include nav-text(meta);
+		a {
+			color: $color-text;
+			&:hover, &:focus, &:active {
+				color: $color-link-one;
+			}
+		}
+	}
+}
+
+.single-post-section {
+	position: relative;
+		
+	.entry-preview {
+		position: relative;
+		top: -1.5*$base;
+	}	
+}
+
+//cols for sticky sidebar
+.the-post-cols {
+	position: relative;
+	
+	.pc-main {
+		position: relative;
+		margin-bottom: $base/2;
+		
+		@include for(medium-screens){
+			margin-right: 222px+30px;
+			margin-bottom: $base*1.5;
+		}
+		
+		@include for(large-screens){
+			margin-right: 34.3558%;		
+		}
+	}
+	
+	.pc-sidebar {
+		margin-bottom: $base*1.5;
+		
+		@include for(medium-screens){
+			position: absolute;
+			width: 222px;
+			height: 100%;
+			top: 0;
+			right: 0;
+			margin: 0;
+		}
+		
+	}
+	
+	.related-widget {
+		padding-top: $base;
+		margin: 0;
+		
+		@include for(medium-screens){
+			width: 222px;
+		}
+	}
+}
+
+.regular-sharing {
+	position: absolute;
+	width: 45px;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	
+	.single & .social-likes { padding-top: $base; }
+}
+	
+.mobile-sharing {	
+	.social-likes {
+		@include clearfix;
+		padding: 8px 0;
+	}
+	
+	.social-likes__widget {
+		float: left;
+		margin: 0 8px 0 0;
+	}
+}
+
+
+/** Programms **/
+.tpl-programm {
+	margin-bottom: $gut;
+	
+	.entry-title {
+		@include post-title(featured);
+		margin: 18px 0 4px;
+	}
+	
+	.entry-summary {
+		@include body-text(summary);
+	}
+}
+
+/** People **/
+.tpl-person {
+	margin-bottom: $gut;
+	@include clearfix;
+	position: relative;	
+	
+	.avatar {
+			width: 120px;
+			float: left;
+			border-radius: 50%;
+			img { border-radius: 50%;}
+		}
+		
+	.entry-title {
+		margin-left: 150px;
+		@include post-title(small_title);		
+	}
+	
+	.entry-meta {
+		margin-left: 150px;
+		@include sub-title(italic_small);		
+		margin-bottom: 12px;				
+	}
+	
+	.entry-summary {
+		margin-left: 150px;
+		@include body-text(small);
+		
+		blockquote {
+			opacity: 0;
+			visibility: hidden;
+			@include calc(width, '100% - 130px');
+			background: rgba(255,255,255, 0.95);
+			padding: 18px;
+			border-radius: 2px;
+			position: absolute;
+			top: 44px;
+			left: 130px;
+			z-index: 100;
+			box-shadow: 1px 1px 2px rgba(0,0,0, 0.38);
+			@include transition(all 0.35s);
+		}
+	}
+	
+	&:hover {
+		blockquote  {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+
+/** Partners **/
+.tpl-org {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 60%;
+	
+	.logo-link {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		
+		
+		span {
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+			vertical-align: middle;
+			line-height: 130px;
+		}
+	}
+	
+	img {
+		max-width: 100%;
+		max-height: 100%;
+		vertical-aling: middle;
+		width: auto;
+		height: auto;
 	}
 }

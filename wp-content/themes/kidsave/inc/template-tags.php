@@ -132,7 +132,9 @@ function kds_posted_on(WP_Post $cpost) {
 	if('post' == $cpost->post_type){		
 		
 		$meta[] = "<span class='date'>".get_the_date('d.m.Y', $cpost)."</span>";
-		$meta[] = strip_tags(get_the_term_list($cpost->ID, 'category', '<span class="category">', ', ', '</span>'), '<span>');
+		
+		$cat = get_the_term_list($cpost->ID, 'category', '<span class="category">', ', ', '</span>');
+		$meta[] = (!is_singular()) ? strip_tags($cat, '<span>') : $cat;
 		$meta = array_filter($meta);
 		
 		$sep = kds_get_sep('&middot;');		
@@ -332,11 +334,7 @@ function kds_breadcrumbs(WP_Post $cpost){
 		if($p){
 			$links[] = "<a href='".get_permalink($p)."' class='crumb-link'>".get_the_title($p)."</a>";
 		}
-		
-		$cat = get_the_terms($cpost->ID, 'category');
-		if(!empty($cat)){
-			$links[] = "<a href='".get_term_link($cat[0])."' class='crumb-link'>".apply_filters('kds_the_title', $cat[0]->name)."</a>";
-		}			
+				
 	}
 	elseif(is_singular('programm')) {
 		
@@ -408,6 +406,19 @@ function kds_featured_post_card(WP_Post $cpost){
 <?php
 }
 
+function kds_programm_card(WP_Post $cpost){
+	
+	$pl = get_permalink($cpost);
+	$ex = apply_filters('kds_the_title', kds_get_post_excerpt($cpost, 25, true));
+?>
+<article class="tpl-programm"><a href="<?php echo $pl; ?>" class="entry-link">	
+	<?php echo kds_post_thumbnail($cpost->ID, 'post-thumbnail');?>
+	<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+	<div class="entry-summary"><?php echo $ex;?></div>
+</a></article>
+<?php
+}
+
 /** Excerpt  **/
 function kds_get_post_excerpt($cpost, $l = 30, $force_l = false){
 	
@@ -449,7 +460,7 @@ function kds_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 	
 	$src = get_the_post_thumbnail_url($post_id, $size);
 	if(!$src){
-		$default_thumb_id = attachment_url_to_postid(get_theme_mod($type));
+		$default_thumb_id = attachment_url_to_postid(get_theme_mod('default_thumbnail'));
 		if($default_thumb_id){
 			$src = get_the_post_thumbnail_url($default_thumb_id, $size);
 		}
@@ -492,6 +503,150 @@ function kds_related_post_card(WP_Post $cpost) {
 	<a href="<?php echo $pl; ?>" class="thumbnail-link">
 		<?php echo kds_post_thumbnail($cpost->ID, 'post-thumbnail');?>
 		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+	</a>
+</article>
+<?php
+}
+
+
+/** Related project on single page **/
+function kds_related_project(WP_Post $cpost){
+	
+	$pl = get_permalink($cpost);
+	$ex = apply_filters('kds_the_title', kds_get_post_excerpt($cpost, 25, true));
+?>
+<div class="related-widget widget">
+	<h3 class="widget-title"><?php _e('Related project', 'kds');?></h3>
+	<a href="<?php echo $pl;?>" class="entry-link">
+		<div class="rw-preview">
+			<?php echo kds_post_thumbnail($cpost->ID, 'post-thumbnail');?>
+		</div>
+		<div class="rw-content">
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+			<div class="entry-summary"><?php echo $ex;?></div>
+		</div>
+	</a>
+	<div class="help-cta">
+		<?php echo kds_get_help_now_cta();?>
+	</div>
+</div>
+<?php	
+}
+
+function kds_get_help_now_cta($cpost = null, $label = ''){
+	
+	$label = (empty($label)) ? __('Help now', 'kds') : $label;
+	$cta = '';
+	
+	if(!$cpost){
+		
+		$help_id = get_theme_mod('help_campaign_id');
+		if(!$help_id)
+			return '';
+		
+		$cta = "<a href='".get_permalink($help_id)."' class='help-button'>{$label}</a>";
+	}
+	else {
+		$url = get_post_meta($cpost->ID, 'cta_link', true);
+		$txt = get_post_meta($cpost->ID, 'cta_text', true);
+		
+		if(empty($url))
+			return '';
+		
+		if(empty($txt))
+			$txt = $label;
+		
+		$css = (false !== strpos($url, '#')) ? 'help-button local-scroll' : 'help-button'; 
+		$cta = "<a href='{$url}' class='{$css}'>{$txt}</a>";
+	}
+	
+	return $cta;
+}
+
+
+/** == People fuctions == **/
+function kds_people_gallery($type = 'all'){
+	
+	$args = array(
+		'post_type'=> 'person',
+		'posts_per_page' => -1
+	);
+	
+	if($type != 'all'){
+		$args['tax_query'] = array(
+			array(
+				'taxonomy'=> 'person_cat',
+				'field'   => 'slug',
+				'terms'   => $type  
+			)
+		);
+	}
+	
+	$query = new WP_Query($args);
+	if(!$query->have_posts())
+		return '';
+	
+?>
+	<div class="people-gallery eqh-container frame">
+	<?php foreach($query->posts as $p){ ?>
+		<div class="bit md-6 eqh-el"><?php kds_person_card($p);?></div>
+	<?php }	?>
+	</div>
+<?php
+}
+
+function kds_person_card(WP_Post $cpost){
+		
+?>
+<article class="tpl-person">
+	
+	<div class="avatar"><?php echo kds_post_thumbnail($cpost->ID, 'thumbnail');?></div>
+	<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+	<div class="entry-meta"><?php echo apply_filters('kds_the_title', $cpost->post_excerpt);?></div>
+	<div class="entry-summary"><?php echo apply_filters('kds_the_content', $cpost->post_content);?></div>		
+	
+</article>
+<?php
+}
+
+/** == Orgs functions == **/
+function kds_orgs_gallery($type = 'all') {
+	
+$args = array(
+		'post_type'=> 'org',
+		'posts_per_page' => -1
+	);
+	
+	if($type != 'all'){
+		$args['tax_query'] = array(
+			array(
+				'taxonomy'=> 'org_cat',
+				'field'   => 'slug',
+				'terms'   => $type  
+			)
+		);
+	}
+	
+	$query = new WP_Query($args);
+	if(!$query->have_posts())
+		return '';
+	
+?>
+	<div class="orgs-gallery  frame">
+	<?php foreach($query->posts as $p){ ?>
+		<div class="bit mf-6 sm-4 md-3 "><?php kds_org_card($p);?></div>
+	<?php }	?>
+	</div>
+<?php	
+}
+
+function kds_org_card(WP_Post $cpost){
+	
+	$pl = get_permalink($cpost);
+?>
+<article class="tpl-org logo">
+	<a href="<?php echo $pl;?>" class="logo-link logo-frame" target="_blank" title="<?php echo esc_attr($cpost->post_title);?>">
+		<span><?php echo get_the_post_thumbnail($cpost->ID, 'full'); ?></span>
 	</a>
 </article>
 <?php

@@ -36,7 +36,8 @@ function kds_setup() {
 	$menus = array(
 		'primary'   => 'Главное',		
 		'social'    => 'Социальные кнопки',
-		'secondary' => 'В подвале'
+		'secondary' => 'В подвале',
+		'about'     => 'О нас'
 	);
 		
 	register_nav_menus($menus);
@@ -107,6 +108,7 @@ require get_template_directory().'/inc/aq_resizer.php';
 require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/forms.php';
 require get_template_directory().'/inc/post-types.php';
+require get_template_directory().'/inc/related.php';
 require get_template_directory().'/inc/request.php';
 require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/social.php';
