@@ -20,7 +20,7 @@ get_header();
 		<?php if(!empty($ex)) { ?>
 			<div class="entry-summary">
 				<?php echo $ex;?>
-				<div class="entry-cta"><?php echo kds_get_help_now_cta(__('Support us', 'kds'));?></div>			
+				<div class="entry-cta"><?php echo kds_get_help_now_cta(null, __('Support us', 'kds'));?></div>			
 			</div>
 		<?php } ?>				
 		
@@ -64,7 +64,7 @@ get_header();
 		</div>
 	</div></div>
 		
-	<div class="news-block roll"><div class="container">
+	<div class="news-roll"><div class="container">
 	<?php
 		$nquery = new WP_Query(array('post_type'=> 'post', 'posts_per_page' => 4));
 		if($nquery->have_posts()){

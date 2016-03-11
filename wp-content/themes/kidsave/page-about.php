@@ -20,7 +20,7 @@ get_header();
 		<?php if(!empty($ex)) { ?>
 			<div class="entry-summary">
 				<?php echo $ex;?>
-				<div class="entry-cta"><?php echo kds_get_help_now_cta($cpost, __('Support us', 'kds'));?></div>			
+				<div class="entry-cta"><?php echo kds_get_help_now_cta(null, __('Support us', 'kds'));?></div>			
 			</div>
 		<?php } ?>				
 		

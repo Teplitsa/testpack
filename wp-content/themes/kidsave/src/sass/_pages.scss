@@ -66,8 +66,6 @@
 	
 }
 
-
-
 .custom-page {
 	.narrow {
 		@include for(medium-screens){
@@ -102,10 +100,6 @@
 	&:first-child { margin-top: 0; }
 }
 
-.programm-block {
-	margin-bottom: $base/2;
-}
-
 .newsletter-block  {	
 	background: $color-link-three;
 	padding: $gut;
@@ -118,10 +112,21 @@
 	
 	p {
 		@include body-text(summary);
-	}	
+	}
+	
+	.onhome & {
+		margin-bottom: $base*2;
+	}
 }
 
-.news-block.roll {
+
+/** Activity **/
+.programm-block {
+	margin-bottom: $base/2;
+}
+
+
+.news-roll {
 	background: $color-secondary;
 	margin-bottom: $base*2;
 	margin-top: 2px;
@@ -165,3 +170,43 @@
 		margin-right: 18px;
 	}
 }
+
+
+/** Homepage **/
+.home-news-roll {
+	background: $color-secondary;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: $base 0;
+	
+	.related-section {
+		border: none;		
+	}
+}
+
+.hb-item {
+	background: $color-secondary;
+	padding: $base;
+	height: 100%;
+	
+	.cta {
+		margin-top: $base*2;
+		text-align: center;
+	}
+	
+	&.donate {
+		background: $color-link-three;
+		color: rgba(255,255,255, 0.95);
+		
+		.cta a {
+			@include ghost-button(15px, $color-white, $color-link-three);
+		}
+	}
+	
+	&.mentor {
+		.cta a {
+			@include ghost-button(15px, $color-link-three, $color-white);
+		}
+	}
+}
+

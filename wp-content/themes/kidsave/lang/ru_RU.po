@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 00:20+0300\n"
-"PO-Revision-Date: 2016-03-11 00:21+0300\n"
+"POT-Creation-Date: 2016-03-11 15:08+0300\n"
+"PO-Revision-Date: 2016-03-11 15:08+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:21 page-activity.php:58
+#: footer.php:21 page-activity.php:58 page-homepage.php:44
 msgid "Subscribe to our newsletter"
 msgstr "Подпишитесь на рассылку"
 
@@ -129,31 +129,27 @@ msgstr "Социальные кнопки"
 msgid "Social links menu with optional text"
 msgstr "Меню социальных кнопок с сопроводительным текстом"
 
-#: index.php:69
+#: index.php:69 page-homepage.php:62
 msgid "More about our programms"
 msgstr "Подробнее о программах фонда"
 
-#: page-about.php:23 page-activity.php:23 page.php:23
+#: page-about.php:23 page-activity.php:23 page-homepage.php:23 page.php:23
 msgid "Support us"
 msgstr "Поддержите нас"
 
-#: page-about.php:41
+#: page-about.php:44
 msgid "Team"
 msgstr "Команда"
 
-#: page-about.php:46
+#: page-about.php:49
 msgid "Board of Trustees"
 msgstr "Совет фонда"
 
-#: page-about.php:50
+#: page-about.php:55
 msgid "Partners"
 msgstr "Партнеры"
 
-#: page-about.php:54
-msgid "Reports"
-msgstr "Отчеты"
-
-#: page-activity.php:59
+#: page-activity.php:59 page-homepage.php:45
 msgid "Stay connected and be informed"
 msgstr "Будьте в курсе наших новостей"
 
@@ -161,9 +157,28 @@ msgstr "Будьте в курсе наших новостей"
 msgid "News of programms"
 msgstr "Новости программ"
 
+#: page-homepage.php:36
+msgid "Our news"
+msgstr "Наши новости"
+
+#: page-homepage.php:68
+msgid "Would you like to help? Support our work"
+msgstr "Хотите помочь? Поддержите нашу работу"
+
+#: page-homepage.php:79
+msgid "Become mentor"
+msgstr "Стать наставником"
+
+#: page-homepage.php:85
+msgid "Donate"
+msgstr "Сделать пожертвование"
+
 #: single.php:66
 msgid "More news"
 msgstr "Еще новости"
+
+#~ msgid "Reports"
+#~ msgstr "Отчеты"
 
 #~ msgid "Custom fields"
 #~ msgstr "Мета-поля"
@@ -359,9 +374,6 @@ msgstr "Еще новости"
 
 #~ msgid "All"
 #~ msgstr "Все"
-
-#~ msgid "Our news"
-#~ msgstr "Наши новости"
 
 #~ msgid "Our projects"
 #~ msgstr "Наши программы"

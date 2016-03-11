@@ -231,6 +231,13 @@ function tst_custom_metaboxes() {
     ));
 	
 	$page_cmb->add_field( array(
+		'name' => 'Дополнительный блок',
+		'id'   => 'page_side',
+		'type' => 'textarea'
+		
+	) );
+	
+	$page_cmb->add_field( array(
 		'name' => 'Ссылка для кнопки CTA',
 		'id'   => 'cta_link',
 		'type' => 'text_url',
@@ -241,6 +248,43 @@ function tst_custom_metaboxes() {
 		'name' => 'Текст для кнопки CTA',
 		'id'   => 'cta_text',
 		'type' => 'text',
-		// 'protocols' => array( 'http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet' ), // Array of allowed protocols
 	) );
+	
+	
+	/** Homepage **/
+	$homepage_cmb = new_cmb2_box( array(
+        'id'            => 'homepage_data_metabox',
+        'title'         => 'Настройки главной',
+        'object_types'  => array( 'page'), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+		'show_on'       => array( 'key' => 'page-template', 'value' => 'page-homepage.php' ),	
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
+	
+	$homepage_cmb->add_field( array(
+		'name' => 'Текст блока "Стать наставником"',
+		'id'   => 'mentor_text',
+		'type' => 'textarea_small'		
+	) );
+	
+	$homepage_cmb->add_field( array(
+		'name' => 'Ссылка блока "Стать наставником"',
+		'id'   => 'mentor_link',
+		'type' => 'text_url',
+	));
+	
+	$homepage_cmb->add_field( array(
+		'name' => 'Текст блока "Пожертвование"',
+		'id'   => 'donation_text',
+		'type' => 'textarea_small'		
+	) );
+	
+	$homepage_cmb->add_field( array(
+		'name' => 'Ссылка блока "Пожертвование"',
+		'id'   => 'donation_link',
+		'type' => 'text_url',
+	));
 }
