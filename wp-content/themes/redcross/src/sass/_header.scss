@@ -1,0 +1,42 @@
+/** Header **/
+
+/** Temp header **/
+.site-branding {
+	padding: $base*1.5 0 $base*0.5;
+		
+	h1 {
+		@include header-title(head_title);
+		color: $color-text-semi;
+	}
+	
+	p {
+		@include sub-title(italic);
+		margin-top: 4px;
+	}
+}
+
+/** Temp menu **/
+.site-nav {
+	border-top: 1px solid $color-border-light;
+	
+	li {
+		display: inline-block;
+		margin-right: 2px;
+	}
+	
+	a {
+		display: inline-block;
+		padding: 9px 15px;
+		@include nav-text();
+		color: $color-text;
+		border-top: 3px solid $color-border-normal;				
+		margin-top: -1px;
+		
+		&:hover, &:focus, &:active {
+			border-top-color: $color-link-one;
+			color: $color-link-one;
+		}
+	}
+	
+	ul ul { display: none; }
+}

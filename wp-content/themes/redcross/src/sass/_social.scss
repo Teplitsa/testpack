@@ -1,0 +1,177 @@
+/** Social buttons and subscribtions **/
+
+/** == Common settings == **/
+$social_color: (
+	vk:        #3C6792,
+	facebook:  #3C589A,
+	twitter:   #2CAAE1,
+	instagram: #527FA3,
+	pinterest: #DE2127,
+	youtube:   #E21D17,
+	telegram:  #2CA5E0,
+	whatsapp:  #69BD35,
+	viber:     #774C98,
+	ok:        #F58220
+);
+
+@function social_color($key) {
+	@if map-has-key($social_color, $key) {
+		@return map-get($social_color, $key);
+	}
+
+	@warn "Unknown '#{$key}' in $social_color.";
+	@return null;
+}
+
+
+@mixin social-button-link($button-size, $icon-size) {
+	display: inline-block;			
+	text-align: center;
+	vertical-align: middle;	
+	@include transition(all 0.2s);
+	text-decoration: none;
+				
+	background: #262832;
+	color: #fff;
+	width: $button-size;
+	height: $button-size;
+	padding: ($button-size - $icon-size)/2 0;			
+}
+
+
+/** == Menu == **/
+.social-menu {	
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	@include clearfix;
+	
+	li {
+		float: left;
+		margin-right: 8px;
+		
+		a {
+			@include social-button-link(40px, 20px);			
+			span { display: none; }
+		}
+		
+		.svg-icon {
+			display: inline-block;			
+			fill: #ffffff;					
+			vertical-align: middle;
+			width: 20px;
+			height: 20px;
+		}
+	}
+	
+	@each $item in vk, facebook, youtube {
+		
+		.#{$item} a {
+			background: social_color($item);
+			&:hover, &:focus, &:active {
+				background: darken(social_color($item), 5%);
+			}
+		}
+	}	
+}
+
+.bottom-bar {
+	
+	@each $item in vk, facebook, youtube {		
+		.social-menu .#{$item} a {
+			background: $color-text-black;
+			&:hover, &:focus, &:active {
+				background: social_color($item);
+			}
+		}
+	}	
+}
+
+
+/** == Sharing == **/
+.social-likes {
+	@include clearfix;	
+}
+
+.social-likes__widget  {			
+	cursor: pointer;
+		
+	a {
+		@include social-button-link(44px, 22px);
+		padding: 9px 0;
+	}
+	
+	.sh-text { display: none; }
+	
+	.svg-icon {
+		display: inline-block;
+		vertical-align: moddle;
+		fill: #ffffff;					
+		vertical-align: middle;
+		width: 22px;
+		height: 22px;
+	}
+}
+
+@each $item in vk, facebook, twitter, telegram, whatsapp, viber, ok  {
+		
+	.social-likes__widget_#{$item} a {
+		background: social_color($item);
+		
+		&:hover, &:focus, &:active {
+			background: transparentize(call(social_color, $item), 0.2);
+		}
+		
+		&:last-of-type {
+			border: none;
+		}		
+	}
+}
+
+
+/** == Newsletter form == **/
+.nl-form  {
+	
+	.frm_forms { margin: 0; }
+	
+	fieldset {
+		position: relative;
+		margin-top: -2px;
+		padding-right: 130px;
+		height: 44px;
+		border: 2px solid rgba(255,255,255, 0.85);
+		&.focus {
+			background: $color-white;
+		}
+	}
+	
+	.rdc-textfield {
+		padding: 0;
+		
+		input {
+			color: $color-text-black;
+			border: none;
+			font-size: 16px;
+			padding: 11px 8px 4px 12px;
+			
+			@include placeholder { color: $color-text; }
+		}
+		
+		.rdc-textfield__label { display: none; }
+	}
+	
+	.frm_submit {
+		position: absolute;
+		top: 2px;
+		right: 2px;
+		
+		input {
+			background: $color-text-black;
+		}
+	}
+	
+	.frm_message {
+		background: $color-white;
+	}
+}
+
