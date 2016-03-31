@@ -23,7 +23,7 @@ function rdc_project_card(WP_Post $cpost){
 	$pl = get_permalink($cpost);
 ?>
 <article class="tpl-programm card"><a href="<?php echo $pl; ?>" class="entry-link">	
-	<?php echo rdc_post_thumbnail($cpost->ID, 'square');?>
+	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
 	<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 </a></article>
 <?php
@@ -40,7 +40,7 @@ function rdc_featured_post_card(WP_Post $cpost){
 	
 	<div class="container featured-body">
 		<a href="<?php echo $pl; ?>" class="featured-content">
-			<div class="entry-meta"><?php echo rdc_posted_on($cpost);?></div>
+			<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>'); ?></div>
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 			<div class="entry-summary"><?php echo $ex;?></div>
 		</a>
@@ -49,6 +49,39 @@ function rdc_featured_post_card(WP_Post $cpost){
 <?php
 }
 
+function rdc_featured_action_card(WP_Post $cpost, $cta = ''){
+	
+	$thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full');
+	$pl = get_permalink($cpost);
+	$cta = (!empty($cta)) ? $cta : __('View', 'rdc');
+	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
+?>
+<article class="tpl-featured-action">
+	<div class="bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
+	
+	<div class="container featured-body">
+		<div class="featured-content">			
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+			<div class="entry-summary"><?php echo $ex;?></div>
+			<div class="cta"><a href="<?php echo $pl; ?>" class="cta-button"><?php echo $cta;?></a></div>
+		</div>
+	</div>	
+</article>
+<?php
+}
+
+
+function rdc_person_card(WP_Post $cpost){
+	$pl = get_permalink($cpost);	
+?>
+<article class="tpl-person card"><a href="<?php echo $pl; ?>" class="entry-link">	
+	
+	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
+	<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+	<div class="entry-meta"><?php echo apply_filters('rdc_the_title', $cpost->post_excerpt);?></div>	
+</a></article>
+<?php
+}
 
 
 /** Excerpt  **/
@@ -114,19 +147,7 @@ function rdc_related_post_card(WP_Post $cpost) {
 <?php
 }
 
-function rdc_person_card(WP_Post $cpost){
-		
-?>
-<article class="tpl-person">
-	
-	<div class="avatar"><?php echo rdc_post_thumbnail($cpost->ID, 'thumbnail');?></div>
-	<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-	<div class="entry-meta"><?php echo apply_filters('rdc_the_title', $cpost->post_excerpt);?></div>
-	<div class="entry-summary"><?php echo apply_filters('rdc_the_content', $cpost->post_content);?></div>		
-	
-</article>
-<?php
-}
+
 
 function rdc_org_card(WP_Post $cpost){
 	

@@ -78,9 +78,7 @@
 /** News **/
 .tpl-post {
 	background: $color-white;
-	
-	a { display: block; }
-	
+		
 	.entry-data {
 		padding: $base/2 $base $base;
 	}
@@ -111,6 +109,7 @@
 	
 }
 
+.tpl-featured-action,
 .tpl-featured {	
 	position: relative;
 	width: 100%;
@@ -156,7 +155,7 @@
 	display: flex;
 	flex-flow: row nowrap;
 	
-	a {
+	.featured-content {
 		display: block;
 		padding: $base*1.5 0;
 		max-width: 640px;
@@ -167,7 +166,7 @@
 	.entry-meta {
 		@include nav-text(meta);
 		color: transparentize($color-white, 0.15);
-		@include transition(all 0.3s);
+		@include transition(all 0.3s);		
 	}
 	
 	.entry-title {
@@ -297,7 +296,7 @@
 		
 	.entry-preview {
 		position: relative;
-		top: -1.5*$base;
+		
 	}	
 }
 
@@ -400,53 +399,15 @@
 /** People **/
 .tpl-person {
 	margin-bottom: $gut;
-	@include clearfix;
-	position: relative;	
-	
-	.avatar {
-			width: 120px;
-			float: left;
-			border-radius: 50%;
-			img { border-radius: 50%;}
-		}
-		
-	.entry-title {
-		margin-left: 150px;
+				
+	.entry-title {		
 		@include post-title(small_title);		
 	}
 	
-	.entry-meta {
-		margin-left: 150px;
-		@include sub-title(italic_small);		
-		margin-bottom: 12px;				
+	.entry-meta {		
+		@include sub-title();						
 	}
 	
-	.entry-summary {
-		margin-left: 150px;
-		@include body-text(small);
-		
-		blockquote {
-			opacity: 0;
-			visibility: hidden;
-			@include calc(width, '100% - 130px');
-			background: rgba(255,255,255, 0.95);
-			padding: 18px;
-			border-radius: 2px;
-			position: absolute;
-			top: 44px;
-			left: 130px;
-			z-index: 100;
-			box-shadow: 1px 1px 2px rgba(0,0,0, 0.38);
-			@include transition(all 0.35s);
-		}
-	}
-	
-	&:hover {
-		blockquote  {
-			opacity: 1;
-			visibility: visible;
-		}
-	}
 }
 
 

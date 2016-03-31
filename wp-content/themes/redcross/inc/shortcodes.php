@@ -5,6 +5,86 @@
 
 add_filter('widget_text', 'do_shortcode');
 
+/** Featured page in intro block **/
+add_shortcode('featured_action', 'rdc_featured_action_screen');
+function rdc_featured_action_screen($atts){
+	
+	extract(shortcode_atts(array(				
+		'id'  => 0,
+		'cta' => ''
+	), $atts));
+		
+	$cpost = get_post($id);
+	if(!$cpost)
+		return '';
+	
+	$out = '';
+	
+	ob_start();
+	rdc_featured_action_card($cpost, $cta);
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}
+
+
+add_shortcode('page_section', 'rdc_page_section_screen');
+function rdc_page_section_screen($atts, $content){
+	
+	extract(shortcode_atts(array(				
+		'type'  => 'genral',
+		'pic'   => 0,
+		'title' => ''
+	), $atts));
+	
+	$src = '';
+	$out = '';
+	if($pic > 0)
+		$src = wp_get_attachment_url($pic);
+		
+	
+	if(!empty($src)){
+		$out  = "<div class='page-section picture' style='background-image: url({$src});'>";
+		if(!empty($title))
+			$out .= "<h2 class='page-section-title'>{$title}</h2>";
+		$out .= "<div class='frame'><div class='bit md-6'>{$content}</div>";
+		$out .= "</div></div>";
+	}
+	elseif($type == '2col'){
+		$out = "<div class='page-section 2col'>";
+		if(!empty($title))
+			$out .= "<h2 class='page-section-title'>{$title}</h2>";
+		$out .= "<div class='frame'>";
+		$out .= do_shortcode($content);
+		$out .= "</div></div>";
+	}
+	else {
+		$out = "<div class='page-section {$type}'>";
+		if(!empty($title))
+			$out .= "<h2 class='page-section-title'>{$title}</h2>";
+		$out .= do_shortcode($content);
+		$out .= "</div>";
+	}
+	
+	return $out;
+}
+
+add_shortcode('col', 'rdc_col_screen');
+function rdc_col_screen($atts, $content){
+	
+	return "<div class='bit md-6'>".do_shortcode($content)."</div>";
+}
+
+
+
+
+
+
+
+
+
+
 /** Clear **/
 add_shortcode('clear', 'rdc_clear_screen');
 function rdc_clear_screen($atts){
@@ -29,6 +109,7 @@ function rdc_yt_caption_screen($atts, $content = null){
 	
 	return '<div class="yt-caption">'.apply_filters('rdc_the_content', $content).'</div>';
 }
+
 
 
 

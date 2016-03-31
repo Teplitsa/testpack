@@ -453,3 +453,4 @@ function rdc_auctor_enqueue_scripts(){
 		wp_enqueue_script( 'taxonomy-term-image-js' );
 	}
 }
+

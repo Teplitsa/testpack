@@ -7,7 +7,7 @@
 $cpost = get_queried_object();
 $ex = (!empty($cpost->post_excerpt)) ? apply_filters('rdc_the_content', $cpost->post_excerpt) : '';
 $thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full');
-$bottom = apply_filters('rdc_the_content', $cpost->post_content);
+$bottom = apply_filters('rdc_entry_the_content', $cpost->post_content);
 
 $query = new WP_Query(array('post_type' => 'project', 'posts_per_page' => -1));
 

@@ -35,7 +35,7 @@ $color-white:  #ffffff;
 
 $color-link-one:   #33a3ce;
 $color-link-two:   #18627E;
-$color-link-three: #f7ab00; 
+$color-link-three: #DE2920; 
 
 $color-text-black:			#191411;
 $color-text-semi:			rgba(0,0,0, 0.6);
@@ -123,11 +123,11 @@ $fixed_side: 222px;
 	//hyphens: auto;
 	
 	@if $mod == small_title {
-		font-size: 0.7777*$post-title-size;
+		font-size: 16px;
 		letter-spacing: normal;
 	}
 	@if $mod == featured {
-		font-size: 1.1428*$post-title-size;
+		font-size: 24px;
 		letter-spacing: normal;		
 	}
 	@if $mod == multiline {		

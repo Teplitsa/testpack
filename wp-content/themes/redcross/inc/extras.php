@@ -21,8 +21,33 @@ add_filter( 'rdc_the_title', 'wptexturize'   );
 add_filter( 'rdc_the_title', 'convert_chars' );
 add_filter( 'rdc_the_title', 'trim'          );
 
+global $wp_embed;
+add_filter( 'rdc_entry_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
+add_filter( 'rdc_entry_the_content', array( $wp_embed, 'autoembed' ), 8 );
+add_filter( 'rdc_entry_the_content', 'wptexturize'                       );
+add_filter( 'rdc_entry_the_content', 'convert_smilies'                   );
+add_filter( 'rdc_entry_the_content', 'convert_chars'                     );
+add_filter( 'rdc_entry_the_content', 'rdc_entry_wpautop'                 );
+add_filter( 'rdc_entry_the_content', 'shortcode_unautop'                 );
+add_filter( 'rdc_entry_the_content', 'prepend_attachment'                );
+add_filter( 'rdc_entry_the_content', 'rdc_force_https'                   );
+add_filter( 'rdc_entry_the_content', 'wp_make_content_images_responsive' );
+add_filter( 'rdc_entry_the_content', 'do_shortcode', 11                  ); 
+
+
 /* jpeg compression */
-add_filter( 'jpeg_quality', create_function('', 'return 95;' ));
+add_filter( 'jpeg_quality', create_function( '', 'return 95;' ) );
+
+
+/* temp fix for wpautop in posts */
+function rdc_entry_wpautop($content){
+	
+	if(false === strpos($content, '[page_section')){
+		$content = wpautop($content);
+	}
+	
+	return $content;
+}
 
  
 /** Custom excerpts  **/
@@ -381,4 +406,48 @@ function rdc_adminbar_voices() {
 	});
 </script>
 <?php
+}
+
+/** == Filter to ensure https for local URLs in content == **/
+function rdc_force_https($content){
+	
+	if(!is_ssl())
+		return $content;
+	
+	//protocol relative internal links
+	$https_home = home_url('', 'https');
+	$http_home = home_url('', 'http');
+	$rel_home = str_replace('http:', '', $http_home);
+	
+	$content = str_replace($http_home, $rel_home, $content);
+	$content = str_replace($https_home, $rel_home, $content);
+	
+	//protocol relative url in src (for external links)
+	preg_match_all( '@src="([^"]+)"@' , $content, $match );
+	
+	if(!empty($match) && isset($match[1])){
+		foreach($match[1] as $i => $test_url){
+			if(false !== strpos($test_url, 'http:')){
+				$replace_url = str_replace('http:', '', $test_url);
+				$content = str_replace($test_url, $replace_url, $content);
+			}
+		}
+	}
+	
+	return $content;
+}
+
+
+/** filter search request **/
+function rdc_filter_search_query($s){
+	
+	$s = preg_replace("/&#?[a-z0-9]{2,8};/i","",$s);
+	$s = preg_replace('/[^a-zA-ZА-Яа-я0-9-\s]/u','',$s);
+	$s = mb_strcut($s, 0, 140, 'utf-8');
+	
+	if(4 > mb_strlen($s, 'utf-8')){
+		$s = '';
+	}
+	
+	return $s;
 }

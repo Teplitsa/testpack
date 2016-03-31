@@ -240,6 +240,9 @@ function rdc_custom_content(){
 	//pages
 	add_post_type_support('page', 'excerpt');
 	add_post_type_support('page', 'thumbnail');
+	
+	//remove post tags
+	unregister_taxonomy_for_object_type('post_tag', 'post');
 }
 
 /** Metaboxes **/
@@ -255,7 +258,7 @@ function rdc_custom_metaboxes() {
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
-		//'show_on_cb'    => 'rdc_show_on_general_pages',		
+		//'show_on_cb'    => 'tst_show_on_general_pages',		
         //'cmb_styles'    => false, // false to disable the CMB stylesheet
         // 'closed'     => true, // Keep the metabox closed by default
     ));
@@ -270,19 +273,108 @@ function rdc_custom_metaboxes() {
 		'show_option_none' => false,
 		'default'          => 'standard',
 		'options'          => array(
-			'standard' => 'Стандартный',
-			'megahead' => 'Мега-заставка',
-			'video'    => 'Видео'
+			'standard' => 'Стандартный',			
+			'introimg' => 'Заставка',
+			'introvid' => 'Видео-заставка'
 		),
 	));
 	
+	//$format_cmb->add_field( array(
+	//	'name'    => 'Изображение заставки',
+	//	'desc'    => 'Загрузить изображение для заставки',
+	//	'id'      => 'megahead_image',
+	//	'type'    => 'file',
+	//	'options' => array(
+	//		'url' => false, // Hide the text input for the url
+	//		'add_upload_file_text' => 'Добавить изображение' 
+	//	)
+	//));
+	
 	$format_cmb->add_field( array(
-		'name' => 'Видео',		
+		'name'    => 'Видео',		
 		'default' => '',
-		'id' => 'post_video',
-		'type' => 'textarea_small'
+		'id'      => 'post_video',
+		'desc'    => 'Ссылка на видео (YouTube, Vimeo) или код для вставки',
+		'type'    => 'textarea_small',
 	));
 	
+	
+	
+	/** Events **/
+    $event_cmb = new_cmb2_box( array(
+        'id'            => 'event_settings_metabox',
+        'title'         => 'Настройки мероприятия',
+        'object_types'  => array( 'event', ), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+		//'show_on_cb'    => 'tst_show_on_general_pages',		
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
+	
+
+	$event_cmb->add_field( array(
+		'name' => 'Дата начала',
+		'id'   => 'event_date_start',
+		'type' => 'text_date_timestamp',		
+		'date_format' => 'd.m.Y',
+	));
+	
+	$event_cmb->add_field( array(
+		'name' => 'Время начала',
+		'id' => 'event_time_start',
+		'type' => 'text_time',
+		'time_format' => 'H.i',
+	));
+	
+	$event_cmb->add_field( array(
+		'name' => 'Дата окончания',
+		'id'   => 'event_date_end',
+		'type' => 'text_date_timestamp',		
+		'date_format' => 'd.m.Y',
+	));
+	
+	$event_cmb->add_field( array(
+		'name' => 'Время окончания',
+		'id' => 'event_time_end',
+		'type' => 'text_time',
+		'time_format' => 'H.i',
+	));
+	
+	$event_cmb->add_field( array(
+		'name'    => 'Местро проведения',		
+		'default' => '',
+		'id'      => 'event_location',
+		'type'    => 'text',
+	));
+	
+	$event_cmb->add_field( array(
+		'name'    => 'Адрес',		
+		'default' => '',
+		'id'      => 'event_address',
+		'type'    => 'text',
+	));
+	
+	$event_cmb->add_field( array(
+		'name'    => 'Участники (спикеры)',		
+		'default' => '',
+		'id'      => 'event_participants',
+		'type'    => 'text'		
+	));
+	
+	$event_cmb->add_field( array(
+		'name'    => 'Участники (организации)',		
+		'default' => '',
+		'id'      => 'event_orgs',
+		'type'    => 'text'		
+	));
+	
+	$event_cmb->add_field( array(
+        'name' => 'Отчет(ы)',
+        'id'   => 'related_report',
+        'type' => 'info_html'        
+    ) );
 	
 	/** Page **/
 //	$page_cmb = new_cmb2_box( array(

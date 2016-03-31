@@ -142,7 +142,7 @@ function rdc_posted_on(WP_Post $cpost) {
 		$meta[] = "<span class='date'>".get_the_date('d.m.Y', $cpost)."</span>";
 		
 		$cat = get_the_term_list($cpost->ID, 'category', '<span class="category">', ', ', '</span>');
-		$meta[] = (!is_singular()) ? strip_tags($cat, '<span>') : $cat;
+		$meta[] = $cat;
 		$meta = array_filter($meta);
 		
 		$sep = rdc_get_sep('&middot;');		
@@ -214,7 +214,15 @@ function rdc_section_title() {
 	$title = '';
 	$css = '';
 	
-	if(is_category() || is_tag()){
+	if(is_category()){
+		
+		$p = get_post(get_option('page_for_posts'));
+		$title = get_the_title($p);
+		$title .= rdc_get_sep('&mdash;');
+		$title .= single_term_title('', false);
+		$css = 'archive';
+	}
+	elseif(is_tag() || is_tax()){
 		$title = single_term_title('', false);
 		$css = 'archive';
 	}
@@ -360,6 +368,18 @@ function rdc_breadcrumbs(WP_Post $cpost){
 	
 	return "<div class='crumbs'>".implode($sep, $links)."</div>";	
 }
+
+
+/** post format **/
+function rdc_get_post_format($cpost){
+	
+	$format = get_post_meta($cpost->ID, 'post_format', true);
+	if(empty($format))
+		$format = 'standard';
+		
+	return $format;
+}
+
 
 
 /** == Newsletter == */
@@ -520,4 +540,5 @@ $args = array(
 	</div>
 <?php	
 }
+
 

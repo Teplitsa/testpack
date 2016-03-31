@@ -28,7 +28,7 @@ function rdc_setup() {
 	add_theme_support('post-thumbnails');
 	set_post_thumbnail_size(640, 395, true ); // regular thumbnails	
 	add_image_size('square', 450, 450, true ); // square thumbnail 
-	//add_image_size('poster', 220, 295, true ); // poster in widget	
+	add_image_size('medium-thumbnail', 790, 488, true ); // poster in widget	
 	//add_image_size('embed', 735, 430, true ); // fixed size for embedding
 	//add_image_size('cover', 400, 567, true ); // long thumbnail for pages
 
@@ -73,6 +73,10 @@ function rdc_widgets_init() {
 		'right_bottom' => array(
 						'name' => 'Правая колонка - Низ',
 						'description' => 'Общая боковая колонка справа (верхняя часть, на мобильных - после контента)'
+					),
+		'right_single' => array(
+						'name' => 'Правая колонка - Записи',
+						'description' => 'Боковая колонка справа на страницах новостей'
 					),
 	);
 		
