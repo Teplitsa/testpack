@@ -34,8 +34,8 @@ $color-text:   rgba(0,0,0, 0.8);
 $color-white:  #ffffff;
 
 $color-link-one:   #33a3ce;
-$color-link-two:   #18627E;
-$color-link-three: #DE2920; 
+$color-link-two:   #B51825;
+$color-link-three: #D82332; 
 
 $color-text-black:			#191411;
 $color-text-semi:			rgba(0,0,0, 0.6);
@@ -79,16 +79,16 @@ $fixed_side: 222px;
 	@if $mod == summary {
 		font-size: $body-text-size*0.928;
 	}
-	@if $mod == larger {
+	@else if $mod == larger {
 		font-size: $body-text-size*1.14285;
 	}
-	@if $mod == small {
+	@else if $mod == small {
 		font-size: $body-text-size*0.85714;
 	}
 }
 
 @mixin nav-text($mod: default) {
-	$nav-text-size: 16px;
+	$nav-text-size: 14px;
 	
 	font-family: $nav;
 	text-transform: uppercase;
@@ -100,7 +100,7 @@ $fixed_side: 222px;
 	@if $mod == multiline {
 		line-height: 1.5;
 	}
-	@if $mod == meta {
+	@else if $mod == meta {
 		font-size: $nav-text-size*0.8125;
 		letter-spacing: 0.5px;
 	}
@@ -126,11 +126,11 @@ $fixed_side: 222px;
 		font-size: 16px;
 		letter-spacing: normal;
 	}
-	@if $mod == featured {
+	@else if $mod == featured {
 		font-size: 24px;
 		letter-spacing: normal;		
 	}
-	@if $mod == multiline {		
+	@else if $mod == multiline {		
 		
 	}
 	
@@ -151,9 +151,12 @@ $fixed_side: 222px;
 	@if $mod == italic {
 		font-style:italic; 
 	}
-	@if $mod == italic_small {		
+	@else if $mod == italic_small {		
 		font-style:italic;
 		font-size: 13px;
+	}
+	@else if $mod == extended {				
+		font-size: 16px;		
 	}	
 }
 

@@ -183,6 +183,19 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 30,
     ));
 	
+	$wp_customize->add_setting('header_text', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('header_text', array(
+        'type'     => 'textarea',		
+        'label'    => 'Текст в шапке',
+        'section'  => 'title_tagline',
+        'settings' => 'header_text',
+        'priority' => 20,
+    ));
+	
 	$wp_customize->add_setting('newsletter_form_id', array(
         'default'   => '',
         'transport' => 'refresh',

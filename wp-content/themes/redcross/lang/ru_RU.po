@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 15:08+0300\n"
-"PO-Revision-Date: 2016-03-11 15:08+0300\n"
+"POT-Creation-Date: 2016-04-01 08:38+0300\n"
+"PO-Revision-Date: 2016-04-01 08:39+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -16,11 +16,10 @@ msgstr ""
 "X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
-"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;"
-"__ngettext_noop:1,2;_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;"
-"_nx_js:1,2,3c;esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;"
-"esc_attr_x:1,2c;esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;"
-"transChoice:1,2\n"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Loco-Target-Locale: ru_RU\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bower_components\n"
@@ -30,7 +29,7 @@ msgstr ""
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:21 page-activity.php:58 page-homepage.php:44
+#: footer.php:21 page-homepage.php:44
 msgid "Subscribe to our newsletter"
 msgstr "Подпишитесь на рассылку"
 
@@ -50,6 +49,10 @@ msgstr "Разработка сайта"
 #: header.php:18
 msgid "Skip to content"
 msgstr "Перейти к содержанию"
+
+#: header.php:37
+msgid "Subscribe"
+msgstr "Подпишись"
 
 #: inc/admin.php:132 inc/admin.php:141
 msgid "Website"
@@ -77,89 +80,129 @@ msgstr ""
 "ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
 "менее %s px."
 
-#: inc/extras.php:38
+#: inc/admin.php:372 inc/admin.php:388
+msgid "Facebook Profile"
+msgstr "Профиль на Facebook"
+
+#: inc/admin.php:374 inc/admin.php:390
+msgid "Enter URL of author's Facebook profile"
+msgstr "Укажите ссылку на профиль автора"
+
+#: inc/admin.php:377 inc/admin.php:393
+msgid "Avatar"
+msgstr "Аватарка"
+
+#: inc/admin.php:425
+msgid "Taxonomy Term Image"
+msgstr "Заставка"
+
+#: inc/admin.php:426
+msgid "Select which image should represent this term."
+msgstr "Выберите изображение заставки"
+
+#: inc/admin.php:427
+msgid "Select Image"
+msgstr "Выбрать изображение"
+
+#: inc/admin.php:428
+msgid "Remove"
+msgstr "Удалить"
+
+#: inc/admin.php:429
+msgid "Select or upload an image for this term"
+msgstr "Выбрать или загрузить изображение"
+
+#: inc/admin.php:430
+msgid "Attach"
+msgstr "Присоединить"
+
+#: inc/author.php:29
+msgid "Author"
+msgstr "Автор"
+
+#: inc/cards.php:56
+msgid "View"
+msgstr "Просмотреть"
+
+#: inc/donations.php:59
+msgid "Please, set a text of comment to describe an additional ways to donate."
+msgstr ""
+
+#: inc/donations.php:67
+msgid "Please, set a text to describe an additional ways to donate."
+msgstr ""
+
+#: inc/extras.php:63
 msgid "More"
 msgstr "Далее"
 
-#: inc/template-tags.php:219
+#: inc/extras.php:245
+msgid "Default Avatar"
+msgstr "Аватарка по-умолчанию"
+
+#: inc/template-tags.php:235
 msgid "Search results"
 msgstr "Результаты поиска"
 
-#: inc/template-tags.php:223
+#: inc/template-tags.php:239
 msgid "404: Page not found"
 msgstr "Ошибка 404: Страница не найдена"
 
-#: inc/template-tags.php:316
+#: inc/template-tags.php:332
 msgid "Post navigation"
 msgstr "Навигация по записям"
 
-#: inc/template-tags.php:331 inc/template-tags.php:341
+#: inc/template-tags.php:347 inc/template-tags.php:357
 msgid "Homepage"
 msgstr "Главная"
 
-#: inc/template-tags.php:478
+#: inc/template-tags.php:405
 msgid "All programms"
 msgstr "Все программы"
 
-#: inc/template-tags.php:479 page-activity.php:40
+#: inc/template-tags.php:406
 msgid "Our programms"
 msgstr "Наши программы"
 
-#: inc/template-tags.php:482
+#: inc/template-tags.php:409
 msgid "All news"
 msgstr "Все новости"
 
-#: inc/template-tags.php:483
+#: inc/template-tags.php:410
 msgid "Latest news"
 msgstr "Последние новости"
 
-#: inc/template-tags.php:519
+#: inc/template-tags.php:434
 msgid "Related project"
 msgstr "Программа по теме"
 
-#: inc/template-tags.php:538
+#: inc/template-tags.php:453
 msgid "Help now"
 msgstr "Помочь сейчас"
 
-#: inc/widgets.php:39
+#: inc/widgets.php:38
 msgid "Social Buttons"
 msgstr "Социальные кнопки"
 
-#: inc/widgets.php:41
+#: inc/widgets.php:40
 msgid "Social links menu with optional text"
 msgstr "Меню социальных кнопок с сопроводительным текстом"
 
-#: index.php:69 page-homepage.php:62
-msgid "More about our programms"
-msgstr "Подробнее о программах фонда"
-
-#: page-about.php:23 page-activity.php:23 page-homepage.php:23 page.php:23
+#: page-homepage.php:23
 msgid "Support us"
 msgstr "Поддержите нас"
-
-#: page-about.php:44
-msgid "Team"
-msgstr "Команда"
-
-#: page-about.php:49
-msgid "Board of Trustees"
-msgstr "Совет фонда"
-
-#: page-about.php:55
-msgid "Partners"
-msgstr "Партнеры"
-
-#: page-activity.php:59 page-homepage.php:45
-msgid "Stay connected and be informed"
-msgstr "Будьте в курсе наших новостей"
-
-#: page-activity.php:71
-msgid "News of programms"
-msgstr "Новости программ"
 
 #: page-homepage.php:36
 msgid "Our news"
 msgstr "Наши новости"
+
+#: page-homepage.php:45
+msgid "Stay connected and be informed"
+msgstr "Будьте в курсе наших новостей"
+
+#: page-homepage.php:62
+msgid "More about our programms"
+msgstr "Подробнее о программах фонда"
 
 #: page-homepage.php:68
 msgid "Would you like to help? Support our work"
@@ -173,9 +216,21 @@ msgstr "Стать наставником"
 msgid "Donate"
 msgstr "Сделать пожертвование"
 
-#: single.php:66
+#: single.php:89
 msgid "More news"
 msgstr "Еще новости"
+
+#~ msgid "Team"
+#~ msgstr "Команда"
+
+#~ msgid "Board of Trustees"
+#~ msgstr "Совет фонда"
+
+#~ msgid "Partners"
+#~ msgstr "Партнеры"
+
+#~ msgid "News of programms"
+#~ msgstr "Новости программ"
 
 #~ msgid "Reports"
 #~ msgstr "Отчеты"
@@ -194,33 +249,6 @@ msgstr "Еще новости"
 
 #~ msgid "Fixed"
 #~ msgstr "Фиксированный"
-
-#~ msgid "Facebook Profile"
-#~ msgstr "Профиль на Facebook"
-
-#~ msgid "Enter URL of author's Facebook profile"
-#~ msgstr "Укажите ссылку на профиль автора"
-
-#~ msgid "Avatar"
-#~ msgstr "Аватарка"
-
-#~ msgid "Taxonomy Term Image"
-#~ msgstr "Заставка"
-
-#~ msgid "Select which image should represent this term."
-#~ msgstr "Выберите изображение заставки"
-
-#~ msgid "Select Image"
-#~ msgstr "Выбрать изображение"
-
-#~ msgid "Remove"
-#~ msgstr "Удалить"
-
-#~ msgid "Select or upload an image for this term"
-#~ msgstr "Выбрать или загрузить изображение"
-
-#~ msgid "Attach"
-#~ msgstr "Присоединить"
 
 #~ msgid "Thumbnail"
 #~ msgstr "Миниатюра"
@@ -257,9 +285,6 @@ msgstr "Еще новости"
 
 #~ msgid "Default Header"
 #~ msgstr "Заставка по-умолчанию"
-
-#~ msgid "Default Avatar"
-#~ msgstr "Аватарка по-умолчанию"
 
 #~ msgid "User Information"
 #~ msgstr "Пользователь"
@@ -368,9 +393,6 @@ msgstr "Еще новости"
 
 #~ msgid "Next item"
 #~ msgstr "След."
-
-#~ msgid "Author"
-#~ msgstr "Автор"
 
 #~ msgid "All"
 #~ msgstr "Все"

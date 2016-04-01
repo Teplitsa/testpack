@@ -386,9 +386,11 @@ function rdc_get_post_format($cpost){
 function rdc_get_newsletter_form(){
 	
 	$form_id = get_theme_mod('newsletter_form_id', 0);
-	if($form_id && class_exists('FrmFormsController'))
-
-	return FrmFormsController::get_form_shortcode(array('id' => $form_id, 'title' => false, 'description' => false));
+	if(empty($form_id))
+		return '';
+	
+	$code = "[contact-form-7 id='{$form_id}']";
+	return do_shortcode($code);
 }
 
 
