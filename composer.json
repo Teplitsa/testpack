@@ -47,7 +47,7 @@
         "wpackagist-plugin/widget-logic" : ">=0.57",
         "wpackagist-plugin/wordpress-seo" : "@stable",
         "wpackagist-plugin/w3-total-cache": "@stable",
-        "wpackagist-plugin/ninja-forms": "@stable",
+        "wpackagist-plugin/contact-form-7": "@stable",
         "wpackagist-plugin/cmb2": "@stable",        
         "koodimonni-language/core-ru_ru": "*",
         "tst/cmb2-attached-posts" : ">=1.2.2"

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4ff97e23624bfd84167fd320319b4edb",
-    "content-hash": "e8313779f97153f0d998c2784fc84e38",
+    "hash": "79dbc1038a87a4694f597a3ddba062dc",
+    "content-hash": "a884985a226c443265c0166d7999d605",
     "packages": [
         {
             "name": "composer/installers",
@@ -288,6 +288,26 @@
             "homepage": "https://wordpress.org/plugins/cmb2/"
         },
         {
+            "name": "wpackagist-plugin/contact-form-7",
+            "version": "4.4.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/contact-form-7/",
+                "reference": "tags/4.4.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/contact-form-7.4.4.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/contact-form-7/"
+        },
+        {
             "name": "wpackagist-plugin/crop-thumbnails",
             "version": "0.10.6",
             "source": {
@@ -406,26 +426,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/media-search-enhanced/"
-        },
-        {
-            "name": "wpackagist-plugin/ninja-forms",
-            "version": "2.9.38",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/ninja-forms/",
-                "reference": "tags/2.9.38"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/ninja-forms.2.9.38.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/ninja-forms/"
         },
         {
             "name": "wpackagist-plugin/responsive-lightbox",
@@ -644,7 +644,7 @@
         "wpackagist-plugin/simple-google-maps-short-code": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
-        "wpackagist-plugin/ninja-forms": 0,
+        "wpackagist-plugin/contact-form-7": 0,
         "wpackagist-plugin/cmb2": 0,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
