@@ -32,7 +32,7 @@
 			</div>
 			
 			<?php $header_text = get_theme_mod('header_text'); ?>
-			<div class="site-details site-panel-cell"><span><?php echo apply_filters('rdc_the_content', $header_text); ?></span></div>
+			<div class="site-details site-panel-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>
 				
 										
 			<div id="trigger_newsletter" class="trigger-button newsletter site-panel-cell"><a href="<?php echo home_url('subscribe');?>"><?php _e( 'Subscribe', 'rdc' ); ?></a></div>
