@@ -96,20 +96,25 @@ $red_cross  : 42px;
 	
 	h1 {
 		font-family: $heading;		
-		font-size: 19px;
-		padding-top: 8px;
+		font-size: 18px;
+		padding-top: 10px;
 		letter-spacing: -0.3px;
 		
 		@include for(medium-screens) {
+			font-size: 19px;
 			padding-top: 13px;
 		}
 	}
 	
 	h2 {
-		padding-top: 6px;
+		padding-top: 4px;
 		font-size: 12px;
 		font-family: $body;		
-		letter-spacing: 0.5px;		
+		letter-spacing: 0.5px;
+		
+		@include for(medium-screens) {
+			padding-top: 6px;
+		}
 	}
 }
 
@@ -129,6 +134,8 @@ $red_cross  : 42px;
 			color: $color-text-light;
 			@include nav-text(multiline);
 			text-transform: none;
+			
+			
 			a {
 				color: inherit;
 				display: inline-block;
@@ -141,6 +148,8 @@ $red_cross  : 42px;
 //buttons
 .trigger-button {
 	height: $mobile_height;
+	cursor: pointer;
+	@include transition(all 0.3s);
 	
 	&:hover {
 		background: $color-secondary;
@@ -148,16 +157,20 @@ $red_cross  : 42px;
 	
 	&.newsletter {
 		@include  nav-text();
-		font-size: 13px;
-		border-left: 1px solid $color-border-light;
-		border-right: 1px solid $color-border-light;
-		color: $color-text-black;
+		font-size: 13px;		
+		color: $color-white;
+		background: $color-link-three;
 				
 		a {
 			display: block;
 			color: inherit;
 			padding: 0 18px;
+			height: 100%;
 			padding-top: ($mobile_height - 14px) /2;
+		}
+		
+		&:hover {
+			background: $color-link-two;
 		}
 	}
 	
