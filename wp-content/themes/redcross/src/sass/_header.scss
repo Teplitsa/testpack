@@ -97,11 +97,11 @@ $red_cross  : 42px;
 	h1 {
 		font-family: $heading;		
 		font-size: 19px;
-		padding-top: 13px;
+		padding-top: 8px;
 		letter-spacing: -0.3px;
 		
 		@include for(medium-screens) {
-			padding-top: 12px;
+			padding-top: 13px;
 		}
 	}
 	
@@ -109,8 +109,7 @@ $red_cross  : 42px;
 		padding-top: 6px;
 		font-size: 12px;
 		font-family: $body;		
-		letter-spacing: 0.5px;
-		
+		letter-spacing: 0.5px;		
 	}
 }
 
@@ -123,12 +122,18 @@ $red_cross  : 42px;
 		text-align: right;
 		
 		p {
-			display: inline-block;			
-			color: $color-text-light;
-			border-left: 1px solid $color-border-normal;
+			display: inline-block;
 			height: 100%;
-			padding: 12px 18px 0 18px;
-			font-size: 12px;
+			border-left: 1px solid $color-border-normal;			
+			padding: 13px 18px 0 18px;
+			color: $color-text-light;
+			@include nav-text(multiline);
+			text-transform: none;
+			a {
+				color: inherit;
+				display: inline-block;
+				border-bottom: 1px solid;
+			}
 		}
 	}
 }

@@ -98,7 +98,7 @@ $fixed_side: 222px;
 	line-height: 1;	
 	
 	@if $mod == multiline {
-		line-height: 1.5;
+		line-height: 19px;
 	}
 	@else if $mod == meta {
 		font-size: $nav-text-size*0.8125;
