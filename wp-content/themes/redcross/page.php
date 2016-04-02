@@ -11,7 +11,7 @@ $thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full');
 get_header(); 
 ?>
 <section class="featured-head">
-	<div class="tpl-featured-bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
+	<div class="tpl-featured-bg container-wide" style="background-image: url(<?php echo $thumbnail;?>);"></div>
 </section>
 
 <section class="featured-heading"><div class="container for-title">

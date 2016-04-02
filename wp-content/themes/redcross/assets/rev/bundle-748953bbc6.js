@@ -973,6 +973,40 @@ jQuery(document).ready(function($){
 		$(this).parents('fieldset').removeClass('focus');
 	});
 	
+	var $site_header = $('#site_header');
+	
+	
+	/** Menu **/
+	//drawer
+	$site_header.on('click', '#trigger_menu', function(e){
+		e.preventDefault();
+		
+		$site_header.addClass('menu-open');
+	});
+	$site_header.on('click', '#trigger_menu_close', function(e){
+		e.preventDefault();
+		
+		$site_header.removeClass('menu-open');
+	});
+	
+	//submenu toggle
+	$site_header.on('click', '.submenu-trigger', function(e){
+		
+		var li = $(this).parents('.menu-item-has-children');
+		if (li.hasClass('open')) {
+			li.find('.sub-menu').slideUp(300, function(){				
+				li.removeClass('open');
+				$(this).removeAttr('style');
+			});
+		}
+		else{
+			li.find('.sub-menu').slideDown(300, function(){				
+				li.addClass('open');
+				$(this).removeAttr('style');
+			});
+		}
+	});
+	
 	
 	/** Sticky elements **/
 	var position = $(window).scrollTop(), //store intitial scroll position
@@ -985,11 +1019,26 @@ jQuery(document).ready(function($){
 		var scroll = $(window).scrollTop(),
 			winW = $('#top').width();
 		
+		//no scroll when menu is open
+		if ($site_header.hasClass('menu-open')) {
+			$(window).scrollTop(position);			
+			return;
+		}		
+		
 		//scroll tolerance 3px and ignore out of boundaries scroll
 		if((Math.abs(scroll-position) < 3) || rdc_scroll_outOfBounds(scroll))
 			return true;
 		
-		//stick header - to do
+		//stick header
+		if (scroll < position) { //upword
+			$site_header.removeClass('invisible').addClass('fixed-header');
+		}
+		else if(scroll > scrollTopLimit) {
+			$site_header.removeClass('fixed-header').addClass('invisible');
+		}
+		else {
+			$site_header.removeClass('fixed-header').removeClass('invisible');
+		}
 		
 		//sticky sharing
 		if (winW >= breakPointMedium && $('#rdc_sharing').length > 0) {

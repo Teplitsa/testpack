@@ -9,7 +9,25 @@ $red_cross  : 42px;
 .site-header {
 	background: $color-white;
 	border-bottom: 1px solid $color-border-normal;
-	box-shadow: 0 1px 2px rgba(0,0,0, 0.2);
+	@include transition(opacity 0.3s);
+	
+	&.fixed-header {
+		position: fixed;
+		width: 100%;
+		top: 0;
+		left: 0;
+		z-index: 500;
+		opacity: 1;
+	}
+	
+	.admin-bar &.fixed-header {
+		@media screen and (min-width: 600px) { top: $adminbar_small_screen; }
+		@media screen and (min-width: 783px) { top: $adminbar_large_screen; }		
+	}
+	
+	&.invisible {
+		opacity: 0;
+	}
 }
 
 .site-panel-row {
@@ -48,6 +66,35 @@ $red_cross  : 42px;
 
 
 // branding part
+//brand titles - general part
+.logo-name {
+	text-transform: uppercase;		
+	line-height: 1;
+	color: $color-link-three;
+}
+
+h1.logo-name {
+	font-family: $heading;		
+	font-size: 18px;		
+	letter-spacing: -0.3px;
+	
+	@include for(medium-screens) {
+		font-size: 19px;			
+	}
+}
+
+h2.logo-name {
+	font-size: 12px;
+	font-family: $body;		
+	letter-spacing: 0.5px;
+	padding-top: 4px;
+	
+	@include for(medium-screens) {
+		padding-top: 6px;
+	}
+}
+
+
 .site-branding {
 	
 	.site-logo {
@@ -84,39 +131,23 @@ $red_cross  : 42px;
 	
 	.logo-name {
 		display: none;
-		text-transform: uppercase;		
-		line-height: 1;			
-		
+			
 		@include for(small-screens) {
 			display: block;
 			margin-left: $mobile_height*2 - $red_cross;
-		}
-		
+		}	
 	}
 	
-	h1 {
-		font-family: $heading;		
-		font-size: 18px;
-		padding-top: 10px;
-		letter-spacing: -0.3px;
+	h1.logo-name {		
+		padding-top: 10px;		
 		
-		@include for(medium-screens) {
-			font-size: 19px;
+		@include for(medium-screens) {			
 			padding-top: 13px;
 		}
 	}
-	
-	h2 {
-		padding-top: 4px;
-		font-size: 12px;
-		font-family: $body;		
-		letter-spacing: 0.5px;
-		
-		@include for(medium-screens) {
-			padding-top: 6px;
-		}
-	}
 }
+
+
 
 //contacts
 .site-details {
@@ -159,14 +190,19 @@ $red_cross  : 42px;
 		@include  nav-text();
 		font-size: 13px;		
 		color: $color-white;
-		background: $color-link-three;
+		position: relative;
 				
 		a {
 			display: block;
 			color: inherit;
 			padding: 0 18px;
-			height: 100%;
+			@include calc(height, '100% + 1px');			
 			padding-top: ($mobile_height - 14px) /2;
+			background: $color-link-three;
+			position: relative;
+			bottom: -1px;
+			top: 0;
+			z-index: 100;
 		}
 		
 		&:hover {
@@ -202,12 +238,187 @@ $red_cross  : 42px;
 }
 
 
-/** Temp menu **/
+/** Main menu **/
 .nav-overlay {
-	display: none;		
+	display: none;
+	background: rgba(0,0,0, 0.4);
+	
+	.menu-open & {
+		display: block;
+		z-index: 1000;
+		position: fixed;
+		top:0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
 }
+
+.searchform {
+	width: 100%;
+		
+	input {
+		@include nav-text();
+		padding: $gut/2;
+		color: $color-text;
+		border: none;
+		width: 100%;
+		
+		@include placeholder {
+			color: $color-text-light;
+		}
+	}
+}
+
 .site-nav {
-	display: none;		
+	display: block;
+	z-index: 1020;
+	position: fixed;
+	top:0;
+	right: -300px;
+	width: 300px;
+	height: 100%;
+	background: $color-white;
+	@include transition(all 0.4s);
 	
+	.admin-bar & {
+		@media screen and (min-width: 600px) { top: $adminbar_small_screen; }
+		@media screen and (min-width: 783px) { top: $adminbar_large_screen; }		
+	}
 	
+	.menu-open & {
+		right: 0;
+	}
+	
+	.search-holder {
+		.svg-icon { display: none; }
+		border-bottom: 1px solid $color-border-light;
+	}
+	
+	.social-menu {
+		padding: $gut/2;
+	}
+}
+
+.site-nav-title {
+	border-bottom: 1px solid $color-border-light;
+	position: realtive;
+	height: $mobile_height;
+	@include for(medium-screens) { height: $full_height; }
+	
+	.site-logo {
+		display: block;		
+		padding: $gut/2;
+		padding-right: $full_height;
+		padding-top: $gut/2 - 1px;
+	}
+	
+	h1.logo-name {
+		font-size: 16px;
+	}
+	
+	.close {
+		background: $color-text;
+		width: $mobile_height;
+		height: $mobile_height;
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: ($mobile_height - 18px)/2;
+		text-align: center;
+		cursor: pointer;
+		
+		@include for(medium-screens) {
+			width: $full_height;
+			height: $full_height;
+			padding: ($mobile_height - 18px)/2;
+		}
+		
+		.svg-icon {
+			width: 18px;
+			height: 18px;
+			fill: $color-white;
+		}
+		
+		&:hover {
+			background: $color-border-light;
+		}
+	}
+}
+
+.main-menu {
+	
+	li {
+		border-bottom: 1px solid $color-border-light;
+		position: relative;
+		
+		& > a {
+			display: block;			
+			padding: $gut/2;
+			@include nav-text();
+			color: $color-text-black;
+			@include transition(all 0.3s);
+			margin-right: 44px;
+			
+			&:hover, &:focus, &:active {
+				background: $color-border-light;		
+			}
+		}
+				
+		.submenu-trigger { display: none; }		
+	}
+	
+	.menu-item-has-children {
+		.submenu-trigger {
+			display: block;
+			width: 44px;
+			height: 44px;
+			padding: 15px 0 0 15px;
+			border-left: 1px solid $color-border-light;
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 100;
+			cursor: pointer;
+			
+			.svg-icon {
+				width: 14px;
+				height: 14px;
+				fill: $color-text-black;
+			}
+			.icon-up { display: none; }
+		}
+		
+		ul.sub-menu .submenu-trigger { display: none; }
+	}
+	
+	ul.sub-menu {
+		display: none;
+		background: $color-text;
+		color: $color-white;
+		
+		li { border: none; }
+		
+		a {
+			color: $color-white;
+			margin-right: 0;
+			
+			&:hover, &:focus, &:active {
+				background: $color-text-black;		
+			}
+		}
+	}
+	
+	li.open {
+		.submenu-trigger {
+			background: $color-text;
+			.icon-down { display: none; }
+			.icon-up {
+				display: inline-block;
+				fill: $color-white;
+			}
+		}
+		
+		ul.sub-menu { display: block; }
+	}
 }

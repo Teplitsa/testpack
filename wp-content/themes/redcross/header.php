@@ -45,8 +45,20 @@
 		<?php echo rdc_get_newsletter_form(); ?>
 	</div>
 	<div class="nav-overlay"></div>
-	<nav class="site-nav">			
-		<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'main-menu')); ?>
+	<nav class="site-nav">
+		<div class="site-nav-title">
+			<div class="snt-cell">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
+					<h1 class="logo-name"><?php echo get_bloginfo('name');?></h1>
+					<h2 class="logo-name"><?php echo get_bloginfo('description');?></h2>
+				</a>
+			</div>
+			<div id="trigger_menu_close" class="trigger-button close"><?php rdc_svg_icon('icon-close');?></div>
+		</div>
+		<?php
+			$after = '<span class="submenu-trigger">'.rdc_svg_icon('icon-up', false).rdc_svg_icon('icon-down', false).'</span>';
+			wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'main-menu', 'after' => $after));
+		?>
 		<div class="search-holder"><?php get_search_form();?></div>
 		<?php wp_nav_menu(array('theme_location' => 'social', 'container' => false, 'menu_class' => 'social-menu')); ?>
 	</nav>		
