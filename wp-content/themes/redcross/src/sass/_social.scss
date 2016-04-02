@@ -130,48 +130,114 @@ $social_color: (
 
 
 /** == Newsletter form == **/
-.nl-form  {
+@mixin response-block {
+	@include body-text();	
+	line-height: 18px;
+	padding: 9px;
+}
+
+.newsletter-form {
+	max-width: 640px;
 	
-	.frm_forms { margin: 0; }
+	.screen-reader-response {
+		@extend .screen-reader-text;
+	}
 	
-	fieldset {
-		position: relative;
-		margin-top: -2px;
-		padding-right: 130px;
-		height: 44px;
-		border: 2px solid rgba(255,255,255, 0.85);
-		&.focus {
+	.nl-field {
+		input {
+			@include body-text();
+			line-height: 18px;
+			border: 1px solid $color-border-normal;
 			background: $color-white;
+			box-shadow: none !important;
+			padding: 11px;
+			width: 100%;
+		}
+		
+		.wpcf7-not-valid-tip {
+			display: inline-block;
+			padding: 2px;
+			font-size: 11px;
+			color: $color-link-three;
 		}
 	}
 	
-	.rdc-textfield {
-		padding: 0;
-		
+	.nl-submit {
+		margin-top: 8px;
 		input {
-			color: $color-text-black;
-			border: none;
-			font-size: 16px;
-			padding: 11px 8px 4px 12px;
+			@include button();
+		}
+	}
+	
+	@include for(medium-screens) {
+		.wpcf7-form {
+			display: flex;
+			flex-flow: row wrap;
+		}
+		
+		.nl-field {
+			flex: 1 1 auto;
+			@include calc(width, '100% - 153px');
+		}
+		
+		.nl-submit {
+			width: 145px;
+			margin: 0 0 0 8px;
+			flex: 0 0 auto;
+			text-align: right;
+		}
+	}
+	
+	.wpcf7-validation-errors {
+		width: 100%;
+		@include response-block();
+		border: 2px solid $color-link-three;
+		color: $color-text-black;
+		margin-top: 15px;
+	}
+	
+	.wpcf7-mail-sent-ok {
+		width: 100%;
+		@include response-block();
+		border: 2px solid $color-border-light;
+		color: $color-text-black;		
+	}
+	
+	.wpcf7-form.sent {
+		.nl-submit,
+		.nl-field { display: none; }
+	}
+	
+	&.in-footer {
+		
+		.nl-field {
+			input {
+				border: none;
+			}
 			
-			@include placeholder { color: $color-text; }
+			.wpcf7-not-valid-tip {
+				color: rgba(255,255,255, 0.95);
+			}
 		}
 		
-		.rdc-textfield__label { display: none; }
-	}
-	
-	.frm_submit {
-		position: absolute;
-		top: 2px;
-		right: 2px;
-		
-		input {
-			background: $color-text-black;
+		.nl-submit {			
+			input {
+				background: $color-text-black;
+				border-color: $color-text-black;
+				
+				&:hover, &:focus, &:active {
+					background: $color-border-light;
+					border-color: $color-border-light;
+				}
+			}
 		}
-	}
-	
-	.frm_message {
-		background: $color-white;
+		
+		.wpcf7-mail-sent-ok ,
+		.wpcf7-validation-errors {
+			border-color: $color-white;
+			color: $color-white;			
+		}
 	}
 }
+
 

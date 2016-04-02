@@ -76,7 +76,11 @@ function rdc_col_screen($atts, $content){
 	return "<div class='bit md-6'>".do_shortcode($content)."</div>";
 }
 
-
+add_shortcode('newsletter_form', 'rdc_newsletter_form_screen');
+function rdc_newsletter_form_screen($atts){
+	
+	return "<div class='newsletter-form'>".rdc_get_newsletter_form()."</div>";
+}
 
 
 

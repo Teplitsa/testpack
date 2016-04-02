@@ -7,6 +7,7 @@ $red_cross  : 42px;
 
 //layout
 .site-header {
+	position: relative;
 	background: $color-white;
 	border-bottom: 1px solid $color-border-normal;
 	@include transition(opacity 0.3s);
@@ -203,19 +204,50 @@ h2.logo-name {
 			bottom: -1px;
 			top: 0;
 			z-index: 100;
+			
+			&:hover {
+				background: $color-link-two;
+			}
 		}
+				
+		.svg-icon {
+			width: 13px;
+			height: 13px;
+			fill: $color-white;
+			margin-left: 8px;
+		}
+	
+		.icon-close {
+			display: none; 
+		}
+	}
+	
+	.newsletter-open &.newsletter {
 		
-		&:hover {
-			background: $color-link-two;
+		a {
+			background: $color-text-black;
+			
+			&:hover {
+				background: $color-border-normal;
+			}
+		}
+		.icon-mail {
+			display: none; 
+		}
+		.icon-close {
+			display: inline-block; 
 		}
 	}
 	
 	&.menu {
-		text-align: center;
-		padding: ($mobile_height - 18px)/2;
+		text-align: center;		
 		border-right: 1px solid $color-border-light;		
 		cursor: pointer;
 		
+		a {
+			display: block;
+			padding: ($mobile_height - 18px)/2;
+		}
 		.svg-icon {
 			width: 18px;
 			height: 18px;
@@ -227,15 +259,10 @@ h2.logo-name {
 		height: $full_height;
 		
 		&.newsletter a { padding-top: ($full_height - 14px) /2; }
-		&.menu { padding: ($full_height - 18px)/2; }
+		&.menu a { padding: ($full_height - 18px)/2; }
 	}
 }
 
-
-
-.newsletter-panel {
-	display: none;		
-}
 
 
 /** Main menu **/
@@ -420,5 +447,32 @@ h2.logo-name {
 		}
 		
 		ul.sub-menu { display: block; }
+	}
+}
+
+
+/** Newsletter **/
+.newsletter-panel {
+	display: none;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	margin-top: 1px;
+	background: $color-white;	
+	border-bottom: 1px solid $color-border-normal;
+	padding: $gut $gut 7px $gut;
+	z-index: 1000;
+	
+	.newsletter-form {
+		margin: 0 auto;
+	}
+	
+	.wpcf7-mail-sent-ok ,
+	.wpcf7-validation-errors {
+		margin-bottom: 23px;
+	}
+	
+	.newsletter-open & {
+		display: block;		
 	}
 }

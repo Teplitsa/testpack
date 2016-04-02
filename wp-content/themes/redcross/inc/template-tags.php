@@ -389,7 +389,10 @@ function rdc_get_newsletter_form(){
 	if(empty($form_id))
 		return '';
 	
+//[wpforms id="366"]
+	
 	$code = "[contact-form-7 id='{$form_id}']";
+	
 	return do_shortcode($code);
 }
 

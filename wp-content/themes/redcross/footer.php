@@ -19,7 +19,7 @@ $footer_text = get_theme_mod('footer_text');
 		<div class="bit md-8">
 			<?php if(!is_page('subscribe'))	{ ?>
 				<h5><?php _e('Subscribe to our newsletter', 'rdc');?></h5>
-				<div class="nl-form in-footer">
+				<div class="newsletter-form in-footer">
 					<?php echo rdc_get_newsletter_form();?>
 				</div>
 			<?php } else { ?>
@@ -40,8 +40,7 @@ $footer_text = get_theme_mod('footer_text');
 		<div class="bit md-8">		
 				
 			<div class="copy">
-				<?php echo apply_filters('rdc_the_content', $footer_text); ?>
-								
+				<?php echo apply_filters('rdc_the_content', $footer_text); ?>	
 				<p><?php printf(__('All materials of the site are avaliabe under license %s.', 'rdc'), $cc_link);?></p>
 			</div>
 			

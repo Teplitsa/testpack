@@ -32,20 +32,23 @@
 			</div>
 			
 			<?php $header_text = get_theme_mod('header_text'); ?>
-			<div class="site-details site-panel-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>
-				
-										
-			<div id="trigger_newsletter" class="trigger-button newsletter site-panel-cell"><a href="<?php echo home_url('subscribe');?>"><?php _e( 'Subscribe', 'rdc' ); ?></a></div>
-			<div id="trigger_menu" class="trigger-button menu site-panel-cell"><?php rdc_svg_icon('icon-menu');?></div>
+			<div class="site-details site-panel-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>									
+			<div id="trigger_newsletter" class="trigger-button newsletter site-panel-cell">
+				<a href="<?php echo home_url('subscribe');?>"><?php _e( 'Subscribe', 'rdc' ); ?><?php rdc_svg_icon('icon-mail');?><?php rdc_svg_icon('icon-close');?></a>
+			</div>
+			<div id="trigger_menu" class="trigger-button menu site-panel-cell">
+				<a href="<?php echo home_url('subscribe');?>"><?php rdc_svg_icon('icon-menu');?></a>
+			</div>
+			
 		</div>	
 		</div>
 	</div>
 	
 	<div id="newsletter_panel" class="newsletter-panel">
-		<?php echo rdc_get_newsletter_form(); ?>
+		<div class="newsletter-form"><?php echo rdc_get_newsletter_form(); ?></div>
 	</div>
 	<div class="nav-overlay"></div>
-	<nav class="site-nav">
+	<nav id="site_nav" class="site-nav">
 		<div class="site-nav-title">
 			<div class="snt-cell">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">

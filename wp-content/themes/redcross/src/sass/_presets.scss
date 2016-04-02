@@ -190,22 +190,27 @@ $fixed_side: 222px;
 	}
 }
 
-@mixin button($size: 16px){
-	font-family: $nav;
-	font-size: $size;
+@mixin button($mod: default){
+	display: inline-block;
+	font-family: $nav;	
 	text-transform: uppercase;
 	color: $color-white;
 	background: $color-link-three;
-	display: inline-block;
-	padding: 0.4em 1.3em;
+	border: 1px solid $color-link-three;	
 	@include transition(all 0.3s);
+	
+	padding: 11px 18px;
+	font-size: 16px;
+	line-height: 18px;
 	
 	&:visited {
 		color: $color-white;
 	}
 	&:hover, &:focus, &:active {
-		background: darken($color-link-three, 10%);
+		//background: darken($color-link-three, 10%);
+		background: $color-link-two;
 		color: $color-white;
+		border-color: $color-link-two;
 	}
 }
 

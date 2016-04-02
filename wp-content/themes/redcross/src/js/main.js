@@ -6,38 +6,43 @@ jQuery(document).ready(function($){
 	$('html').removeClass('no-js').addClass('js');
 	
     /** Window width **/
-	var windowWidth = $('#top').width();
+	var windowWidth = $('#top').width(),
+		$site_header = $('#site_header'),
+		breakPointSmall = 480, //small screens break point
+		breakPointMedium = 767; //medium screen break point
 	
-	/** Newsletter **/
-	$('.novalidate').attr('novalidate', 'novalidate').find('.frm_form_field input').attr('autocomplete', 'off');
 	
-	var nlEmail = $('.nl-form').find('.rdc-textfield__input');
-	
-	nlEmail
-	.on('focus', function(e){
-		$(this).parents('fieldset').addClass('focus');
-	})
-	.on('blur', function(e){
-		$(this).parents('fieldset').removeClass('focus');
+	/** Resize event **/
+	$(window).resize(function(){
+		var winW = $('#top').width();
+		
+		if (winW < breakPointMedium && $site_header.hasClass('newsletter-open')) {
+			$site_header.removeClass('newsletter-open');
+		}
 	});
+		
 	
-	var $site_header = $('#site_header');
 	
 	
-	/** Menu **/
-	//drawer
+	/** == Header states == **/
+	
+	/** Drawer **/
 	$site_header.on('click', '#trigger_menu', function(e){
 		e.preventDefault();
 		
+		if ($site_header.hasClass('newsletter-open')) { //close newsletter if any
+			$site_header.removeClass('newsletter-open');
+		}
 		$site_header.addClass('menu-open');
 	});
+	
 	$site_header.on('click', '#trigger_menu_close', function(e){
 		e.preventDefault();
 		
 		$site_header.removeClass('menu-open');
 	});
 	
-	//submenu toggle
+	/** Submenu toggle **/
 	$site_header.on('click', '.submenu-trigger', function(e){
 		
 		var li = $(this).parents('.menu-item-has-children');
@@ -47,7 +52,8 @@ jQuery(document).ready(function($){
 				$(this).removeAttr('style');
 			});
 		}
-		else{
+		else {		
+			
 			li.find('.sub-menu').slideDown(300, function(){				
 				li.addClass('open');
 				$(this).removeAttr('style');
@@ -55,13 +61,78 @@ jQuery(document).ready(function($){
 		}
 	});
 	
+	/** Newsletter **/
+	$site_header.on('click', '#trigger_newsletter', function(e){
+		
+		var winW = $('#top').width();
+		
+		if (winW > breakPointMedium && !$site_header.hasClass('newsletter-open')) {
+			e.preventDefault();			
+			$site_header.find('#newsletter_panel').slideDown(150, function(){				
+				$site_header.addClass('newsletter-open');
+				$(this).removeAttr('style');
+			});
+		}
+		else if($site_header.hasClass('newsletter-open')) {
+			e.preventDefault();
+			$site_header.find('#newsletter_panel').slideUp(150, function(){				
+				$site_header.removeClass('newsletter-open');
+				$(this).removeAttr('style');
+			});
+		}
+		
+	});
+	
+	//no autocomplete
+	$('.nl-field').find('input').attr('autocomplete', 'off');
+	
+	
+	/** Close by key and click **/
+	$(document).on('click', function(e){
+		
+		var $etarget = $(e.target);
+		
+		console.log($site_header.hasClass('menu-open'));
+				
+		if ($site_header.hasClass('menu-open')) {
+			if(!$etarget.is('#site_nav, #trigger_menu') && !$etarget.closest('#site_nav, #trigger_menu').length)
+				$site_header.removeClass('menu-open');
+		}
+		else if ($site_header.hasClass('newsletter-open')) {
+			if(!$etarget.is('#newsletter_panel, #trigger_newsletter') && !$etarget.closest('#newsletter_panel, #trigger_newsletter').length)
+				$site_header.removeClass('newsletter-open');
+		}
+		
+	})
+	.on('keyup', function(e){ //close search on by ESC
+		if(e.keyCode == 27){
+			//hide menu on newsletter
+			if ($site_header.hasClass('menu-open')) {
+				$site_header.removeClass('menu-open');
+			}
+			else if ($site_header.hasClass('newsletter-open')) {
+				$site_header.removeClass('newsletter-open');
+			}
+		}
+	}).on('keydown', function(e){ //close search on by ESC
+		if(e.keyCode == 27){
+			//hide menu on newsletter
+			if ($site_header.hasClass('menu-open')) {
+				$site_header.removeClass('menu-open');
+			}
+			else if ($site_header.hasClass('newsletter-open')) {
+				$site_header.removeClass('newsletter-open');
+			}
+		}
+	});
+	
+	
 	
 	/** Sticky elements **/
 	var position = $(window).scrollTop(), //store intitial scroll position
 		scrollTopLimit = ($('body').hasClass('adminbar')) ? 65+32 : 65,
-		fixedTopPosition = ($('body').hasClass('adminbar')) ? 86+32 : 86,
-		breakPointSmall = 480, //small screens break point
-		breakPointMedium = 767; //medium screen break point
+		fixedTopPosition = ($('body').hasClass('adminbar')) ? 86+32 : 86;
+		
 	
 	$(window).scroll(function () {
 		var scroll = $(window).scrollTop(),
