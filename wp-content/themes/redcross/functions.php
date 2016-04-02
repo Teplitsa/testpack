@@ -35,9 +35,7 @@ function rdc_setup() {
 	// Menus
 	$menus = array(
 		'primary'   => 'Главное',		
-		'social'    => 'Социальные кнопки',
-		'secondary' => 'В подвале',
-		'about'     => 'О нас'
+		'social'    => 'Социальные кнопки'		
 	);
 		
 	register_nav_menus($menus);
@@ -77,6 +75,10 @@ function rdc_widgets_init() {
 		'right_single' => array(
 						'name' => 'Правая колонка - Записи',
 						'description' => 'Боковая колонка справа на страницах новостей'
+					),
+		'footer' => array(
+						'name' => 'Подвал - 4 виджета',
+						'description' => 'Динамическая область в подвале: 4 виджета'
 					),
 	);
 		

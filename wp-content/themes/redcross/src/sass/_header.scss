@@ -228,7 +228,7 @@ h2.logo-name {
 			background: $color-text-black;
 			
 			&:hover {
-				background: $color-border-normal;
+				background: $color-text-semi;
 			}
 		}
 		.icon-mail {
@@ -368,7 +368,7 @@ h2.logo-name {
 		}
 		
 		&:hover {
-			background: $color-border-light;
+			background: $color-text-semi;
 		}
 	}
 }
@@ -460,7 +460,7 @@ h2.logo-name {
 	margin-top: 1px;
 	background: $color-white;	
 	border-bottom: 1px solid $color-border-normal;
-	padding: $gut $gut 7px $gut;
+	padding: $gut;
 	z-index: 1000;
 	
 	.newsletter-form {
@@ -469,7 +469,7 @@ h2.logo-name {
 	
 	.wpcf7-mail-sent-ok ,
 	.wpcf7-validation-errors {
-		margin-bottom: 23px;
+		
 	}
 	
 	.newsletter-open & {

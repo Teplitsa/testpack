@@ -14,9 +14,9 @@ $footer_text = get_theme_mod('footer_text');
 ?>
 </div><!--  #site_content -->
 
-<div id="bottom_bar" class="bottom-bar"><div class="container">	
-	<div class="frame">
-		<div class="bit md-8">
+<div id="bottom_bar" class="bottom-bar"><div class="container-wide">	
+	<div class="frame frame-wide">
+		<div class="bit md-9 lg-8">
 			<?php if(!is_page('subscribe'))	{ ?>
 				<h5><?php _e('Subscribe to our newsletter', 'rdc');?></h5>
 				<div class="newsletter-form in-footer">
@@ -27,17 +27,20 @@ $footer_text = get_theme_mod('footer_text');
 			<?php  }?>
 		</div>
 
-		<div class="bit md-4 lg-3 lg-offset-1">
-			<h5><?php _e('Our social profiles', 'rdc');?></h5>
+		<div class="bit md-3 lg-3 lg-offset-1">
+			<h5><span class="icons-label"><?php _e('Our social profiles', 'rdc');?></span>&nbsp;</h5>
 			<?php echo rdc_get_social_menu(); ?>
 		</div>
 	</div>
 </div></div>
 
-<footer class="site-footer"><div class="container">		
+<footer class="site-footer"><div class="container-wide">		
 	
-	<div class="frame">
-		<div class="bit md-8">		
+	<div class="widget-area"><?php dynamic_sidebar( 'footer-sidebar' );?></div>
+	
+	<div class="frame frame-wide">
+		<div class="bit sm-12"><hr></div>
+		<div class="bit sm-6 lg-8">		
 				
 			<div class="copy">
 				<?php echo apply_filters('rdc_the_content', $footer_text); ?>	
@@ -46,14 +49,13 @@ $footer_text = get_theme_mod('footer_text');
 			
 		</div>
 		
-		<div class="bit md-4 lg-3 lg-offset-1">
+		<div class="bit sm-6 lg-3 lg-offset-1">
 			<div class="te-st-bn">
-				<p class="support"><?php _e('Made by', 'rdc');?></p>
-				<a title="<?php echo $tst;?>" href="http://te-st.ru/" class="rdc-banner">
-					<!-- <img alt="<?php echo $tst;?>" src="<?php echo $banner;?>.svg" onerror="this.onerror=null;this.src=<?php echo $banner;?>.png;">-->
+				<p class="support">Сайт сделан <br>при поддержке</p>
+				<a title="<?php echo $tst;?>" href="http://te-st.ru/" class="rdc-banner">					
 					<svg class="rdc-icon"><use xlink:href="#pic-te-st" /></svg>
 				</a>
-			</div>		
+			</div>			
 		</div>
 	</div>
 	

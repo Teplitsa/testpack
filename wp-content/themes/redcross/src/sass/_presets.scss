@@ -19,6 +19,7 @@ $three:	       984px; //large
 $four:         1200px; //exlarge
 
 //Page layout
+$full_cont:    1400px;
 $page_cont:    1200px;
 $col:		   54px;
 $gut:	       30px;
@@ -219,7 +220,7 @@ $fixed_side: 222px;
 	font-size: $size;
 	text-transform: uppercase;	
 	display: inline-block;
-	padding: 0.4em 1.3em;
+	padding: 0.5em 1.3em;
 	color: $color;
 	border: 2px solid $color;	
 	@include transition(all 0.3s);
