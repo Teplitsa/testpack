@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "79dbc1038a87a4694f597a3ddba062dc",
-    "content-hash": "a884985a226c443265c0166d7999d605",
+    "hash": "54fc84ba4076100fc160587661ce7087",
+    "content-hash": "4bc3a05f0f329d3d1e0f7a8780428401",
     "packages": [
         {
             "name": "composer/installers",
@@ -306,6 +306,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/contact-form-7/"
+        },
+        {
+            "name": "wpackagist-plugin/contact-form-advanced-database",
+            "version": "1.0.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/contact-form-advanced-database/",
+                "reference": "tags/1.0.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/contact-form-advanced-database.1.0.7.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/contact-form-advanced-database/"
         },
         {
             "name": "wpackagist-plugin/crop-thumbnails",
@@ -645,6 +665,7 @@
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/contact-form-7": 0,
+        "wpackagist-plugin/contact-form-advanced-database": 0,
         "wpackagist-plugin/cmb2": 0,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
