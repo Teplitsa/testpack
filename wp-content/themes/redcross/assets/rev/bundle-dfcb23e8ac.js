@@ -1026,7 +1026,7 @@ jQuery(document).ready(function($){
 			});
 		}
 		else if($site_header.hasClass('newsletter-open')) {
-			e.preventDefault();
+			
 			$site_header.find('#newsletter_panel').slideUp(150, function(){				
 				$site_header.removeClass('newsletter-open');
 				$(this).removeAttr('style');
@@ -1044,7 +1044,6 @@ jQuery(document).ready(function($){
 		
 		var $etarget = $(e.target);
 		
-		console.log($site_header.hasClass('menu-open'));
 				
 		if ($site_header.hasClass('menu-open')) {
 			if(!$etarget.is('#site_nav, #trigger_menu') && !$etarget.closest('#site_nav, #trigger_menu').length)
