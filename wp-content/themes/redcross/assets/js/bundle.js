@@ -982,6 +982,7 @@ jQuery(document).ready(function($){
 	$('#trigger_menu').on('click', function(e){
 		e.preventDefault();
 		e.stopPropagation();
+		e.event.stopImmediatePropagation();
 		
 		if ($site_header.hasClass('newsletter-open')) { //close newsletter if any
 			$site_header.removeClass('newsletter-open');
@@ -992,6 +993,7 @@ jQuery(document).ready(function($){
 	$('#trigger_menu_close').on('click', function(e){
 		e.preventDefault();
 		e.stopPropagation();
+		e.event.stopImmediatePropagation();
 		
 		$site_header.removeClass('menu-open');
 	});
