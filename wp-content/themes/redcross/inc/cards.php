@@ -35,7 +35,7 @@ function rdc_featured_post_card(WP_Post $cpost){
 	$pl = get_permalink($cpost);
 	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
 ?>
-<article class="tpl-featured">
+<article class="tpl-featured container-wide">
 	<div class="bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
 	
 	<div class="container featured-body">

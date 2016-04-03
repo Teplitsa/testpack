@@ -21,8 +21,8 @@ get_header();
 	<div class="container"><?php rdc_section_title(); ?></div>
 </section>
 
-<section class="main-content cards-holder"><div class="container">
-<div class="cards-loop sm-cols-1 md-cols-2 lg-cols-3">
+<section class="main-content cards-holder"><div class="container-wide">
+<div class="cards-loop sm-cols-1 md-cols-2 lg-cols-4">
 	<?php
 		if(have_posts()){
 			foreach($posts as $p){

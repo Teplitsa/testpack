@@ -184,7 +184,7 @@ $fixed_side: 222px;
 		text-transform: uppercase;
 	}
 	@else if $mod == head_title {
-		font-size: 27px;
+		font-size: 40px;
 		text-transform: uppercase;
 	}
 	@else if $mod == head_title_small {
