@@ -25,8 +25,11 @@
         {
             "type": "vcs",
             "url": "https://github.com/wp-sync-db/wp-sync-db"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/webdevstudios/cmb2-post-search-field"
         }
-        
     ],
     "config"      : {
         "vendor-dir": "wp-content/vendor",
@@ -49,7 +52,8 @@
         "wpackagist-plugin/w3-total-cache": "@stable",
         "wpackagist-plugin/contact-form-7": "@stable",
         "wpackagist-plugin/contact-form-advanced-database": "@stable",
-        "wpackagist-plugin/cmb2": "@stable",        
+        "wpackagist-plugin/cmb2": "@stable",
+        "webdevstudios/cmb2-post-search-field" : "dev-master",
         "koodimonni-language/core-ru_ru": "*",
         "tst/cmb2-attached-posts" : ">=1.2.2"
     },

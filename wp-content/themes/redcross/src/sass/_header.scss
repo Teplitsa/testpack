@@ -7,7 +7,10 @@ $red_cross  : 42px;
 
 //layout
 .site-header {
-	position: relative;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
 	background: $color-white;
 	border-bottom: 1px solid $color-border-normal;
 	@include transition(opacity 0.3s);
@@ -21,13 +24,21 @@ $red_cross  : 42px;
 		opacity: 1;
 	}
 	
-	.admin-bar &.fixed-header {
+	.admin-bar & {
 		@media screen and (min-width: 600px) { top: $adminbar_small_screen; }
 		@media screen and (min-width: 783px) { top: $adminbar_large_screen; }		
 	}
 	
 	&.invisible {
 		opacity: 0;
+	}
+}
+
+.site-content {
+	padding-top: $mobile_height + 1px;
+	
+	@include for(medium-screens) {
+		padding-top: $full_height + 1px;
 	}
 }
 

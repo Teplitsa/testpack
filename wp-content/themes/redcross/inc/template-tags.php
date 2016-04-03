@@ -147,6 +147,13 @@ function rdc_posted_on(WP_Post $cpost) {
 		
 		$sep = rdc_get_sep('&middot;');		
 	}
+	elseif('event' == $cpost->post_type ) {
+		
+		$event = new TST_Event($cpost);
+		$meta[] = "<span class='date'>".$event->date_mark_for_context('card')."</span>";
+		$meta[] = "<span class='category'>".__('Events', 'rdc')."</span>";
+		$sep = rdc_get_sep('&middot;');	
+	}
 	
 		
 	return implode($sep, $meta);		
@@ -400,28 +407,35 @@ function rdc_get_newsletter_form(){
 
 
 /** More section **/
-function rdc_more_section($posts, $title = '', $type = 'news'){
-		
+function rdc_more_section($posts, $title = '', $type = 'news', $css= ''){
+	
+	if(empty($posts))
+		return;
+	
 	$all_link = '';
 	
-	if($type == 'programms'){
-		$all_link = "<a href='".home_url('programms')."'>".__('All programms', 'kds')."</a>";
-		$title = (empty($title)) ? __('Our programms', 'kds') : $title;
+	if($type == 'projects'){
+		$all_link = "<a href='".home_url('activity')."'>".__('More', 'rdc')."</a>";
+		$title = (empty($title)) ? __('Our projects', 'rdc') : $title;
 	}
 	else {
-		$all_link = "<a href='".home_url('news')."'>".__('All news', 'kds')."</a>";
-		$title = (empty($title)) ? __('Latest news', 'kds') : $title;
+		$all_link = "<a href='".home_url('news')."'>".__('More', 'rdc')."</a>";
+		$title = (empty($title)) ? __('Latest news', 'rdc') : $title;
 	}
 
+	$css .= ' related-card-holder';
 ?>
-	<div class="related-section">
-		<h3 class="ms-title"><?php echo $title;?> <?php echo $all_link;?></h3>
-		<div class="frame">
-		<?php foreach($posts as $p) { ?>
-			<div class="bit sm-6 md-3"><?php rdc_related_post_card($p);?></div>
-		<?php } ?>
-		</div>
-	</div>
+<section class="<?php echo esc_attr($css);?>"><div class="container-wide">
+<h3 class="related-title"><?php echo $title; ?></h3>
+<div class="related-cards-loop">
+	<?php
+		foreach($posts as $p){
+			rdc_related_post_card($p);
+		}		
+	?>
+</div>
+<div class="related-all-link"><?php echo $all_link;?></div>
+</div></section>
 <?php
 }
 
@@ -546,4 +560,124 @@ $args = array(
 <?php	
 }
 
+
+/** == Events functions == **/
+
+/** always populate end-date **/
+add_action('wp_insert_post', 'rdc_save_post_event_actions', 50, 2);
+function rdc_save_post_event_actions($post_ID, $post){
+	
+	//populate end date
+	if($post->post_type == 'event'){
+		$event = new TST_Event($post_ID);		
+		$event->populate_end_date();
+		
+	}	
+}
+
+/* remove forms from expired events */
+function rdc_remove_unused_form($the_content){
+	
+	$msg = "<div class='tst-notice'>Регистрация закрыта</div>";
+	$the_content = preg_replace('/\[formidable(.+)\]/', $msg, $the_content);
+	
+	return $the_content;
+}
+
+
+
+/** Single template helpers **/
+function rdc_related_reports(TST_Event $event, $css=''){	
+
+	$related = $event->get_related_post_id();
+	if(!empty($related)) {
+?>
+	<div class="expired-notice <?php echo esc_attr($css);?>">
+		<h6>Читать отчет</h6>
+	<?php
+		foreach($related as $r){
+			$report = get_post($r);
+	?>
+		<p><a href="<?php echo get_permalink($r);?>"><?php echo get_the_title($r);?></a></p>
+	<?php }	?>
+	</div>
+<?php }
+
+}
+
+/** Add to calendar links - details at http://addtocalendar.com/ **/
+function rdc_add_to_calendar_link(TST_Event $event, $echo = true, $container_class = 'tst-add-calendar', $txt = "", $icon = false) {	
+	
+	if($event->is_expired())
+		return '';
+	
+	$default_label = "Добавить в календарь";
+	
+	$start_date  = $event->date_start;
+	$start_titme = $event->time_start; 
+	$end_date    = $event->date_end;
+	$end_time    = $event->time_end;
+	
+	if(empty($start_date))
+		return '';
+	
+	if(empty($start_titme))
+		$start_titme = '12.00 PM';
+	
+	$start = date('d.m.Y', $start_date).' '.$start_titme;	
+	$start_mark = date_i18n('Y-m-d H:i:00', strtotime($start));
+		
+	
+	if(empty($end_date) && empty($end_time)){ //no data about ends
+		$end_mark = date_i18n('Y-m-d H:i:00', strtotime('+2 hours '.$start));		
+	}
+	elseif(empty($end_date) && !empty($end_time)) {
+		$end = date('d.m.Y', $start_date).' '.$end_time;	
+		$end_mark = date_i18n('Y-m-d H:i:00', strtotime($end));
+	}
+	else {
+		$end = date('d.m.Y', $end_date).' '.$end_time;	
+		$end_mark = date_i18n('Y-m-d H:i:00', strtotime($end));
+	}
+	
+	if(empty($txt))
+		$txt = $default_label;
+		
+	if($icon)
+		$icon = rdc_svg_icon('icon-add-cal', false);
+	
+	$location = $event->get_full_address_mark();
+	$e = (!empty($event->post_excerpt)) ? wp_trim_words($event->post_excerpt, 20) : wp_trim_words(strip_shortcodes($event->post_content), 20);
+	$id = 'tst-'.uniqid();
+			
+	wp_enqueue_script(
+		'atc',
+		get_template_directory_uri().'/assets/js/atc.min.js',
+		array(),
+		null,
+		true
+	);
+?>
+	<span id="<?php echo esc_attr($id);?>"  class="<?php echo esc_attr($container_class);?>">
+		
+		<?php if($icon) { echo $icon; } ?>
+		
+		<span class="addtocalendar">
+			<a class="atcb-link"><?php echo $txt;?></a>
+			<var class="atc_event">
+				<var class="atc_date_start"><?php echo $start_mark;?></var>
+				<var class="atc_date_end"><?php echo $end_mark;?></var>
+				<var class="atc_timezone">Europe/Moscow</var>
+				<var class="atc_title"><?php echo esc_attr($event->post_title);?></var>
+				<var class="atc_description"><?php echo apply_filters('rdc_the_title', $e);?></var>
+				<var class="atc_location"><?php echo esc_attr($location);?></var>          
+			</var>		
+		</span>
+		<?php if($txt != $default_label) { ?>
+			<span class="tst-tooltip" for="<?php echo esc_attr($id);?>"><?php echo $default_label;?></span>
+		<?php } ?>
+	</span>
+	
+<?php	
+}
 

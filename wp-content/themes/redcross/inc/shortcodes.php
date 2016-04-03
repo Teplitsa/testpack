@@ -83,9 +83,37 @@ function rdc_newsletter_form_screen($atts){
 }
 
 
+/** 3 col block **/
+add_shortcode('3col_section', 'rdc_3col_section_screen');
+function rdc_3col_section_screen($atts, $content){
+	
+	extract(shortcode_atts(array(				
+		'css'   => '',		
+	), $atts));
+	
+	$out  = "<div class='col3-section {$css}'>".do_shortcode($content)."</div>";
+	
+	return $out;
+}
 
-
-
+add_shortcode('3col', 'rdc_3col_screen');
+function rdc_3col_screen($atts, $content){
+	
+	extract(shortcode_atts(array(				
+		'title'     => '',
+		'link_url'  => '',
+		'link_txt'  => '',
+	), $atts));
+	
+	$target = (false !== strpos($link_url, home_url())) ? '' : ' target="_blank"'; //test this
+	
+	$out = "<div class='col3'><div class='col3-content'>";
+	$out .= "<h4 class='col3-title'>{$title}</h4>";
+	$out .= "<div class='col3-text'>".apply_filters('rdc_the_content', $content)."</div>";
+	$out .= "<div class='col3-link'><a href='{$link_url}'{$target}>{$link_txt}</a></div></div></div>";
+	
+	return $out;
+}
 
 
 

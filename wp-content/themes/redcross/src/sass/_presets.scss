@@ -17,6 +17,7 @@ $one: 	       480px; //small
 $two:          767px; //medium
 $three:	       984px; //large
 $four:         1200px; //exlarge
+$five:         1430px; //xxlarge
 
 //Page layout
 $full_cont:    1400px;
@@ -102,20 +103,19 @@ $fixed_side: 222px;
 		line-height: 19px;
 	}
 	@else if $mod == meta {
-		font-size: $nav-text-size*0.8125;
-		letter-spacing: 0.5px;
+		font-size: 16px;		
 	}
 }
 
 @mixin post-title($mod: default) {
-	$post-title-size: 21px;
+	$post-title-size: 24px;
 	
 	font-family: $title;
 	color: $color-text-black;
 	
 	font-size: $post-title-size;
 	font-weight: normal;
-	line-height: 1.3;	
+	line-height: 32px;	
 	text-transform: none;
 	//text-overflow: ellipsis;
 	//-ms-hyphens: auto; 
@@ -124,11 +124,13 @@ $fixed_side: 222px;
 	//hyphens: auto;
 	
 	@if $mod == small_title {
-		font-size: 16px;
+		font-size: 18px;
+		line-height: 24px;	
 		letter-spacing: normal;
 	}
 	@else if $mod == featured {
-		font-size: 24px;
+		font-size: 36px;
+		line-height: 1.15;	
 		letter-spacing: normal;		
 	}
 	@else if $mod == multiline {		
@@ -174,7 +176,7 @@ $fixed_side: 222px;
 	
 	
 	@if $mod == section {
-		font-size: 40px;
+		font-size: 56px;
 		text-transform: uppercase;
 	}
 	@else if $mod == widget {

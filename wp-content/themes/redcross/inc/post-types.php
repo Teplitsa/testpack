@@ -423,11 +423,23 @@ function rdc_custom_metaboxes() {
         // 'closed'     => true, // Keep the metabox closed by default
     ));
 	
-	//$homepage_cmb->add_field( array(
-	//	'name' => 'Текст блока "Стать наставником"',
-	//	'id'   => 'mentor_text',
-	//	'type' => 'textarea_small'		
-	//) );
+	$homepage_cmb->add_field( array(
+		'name'        => 'Стартовый блок',
+		'id'          => 'home_featured_item',
+		'type'        => 'post_search_text', // This field type
+		// post type also as array
+		'post_type'   => array('post', 'page', 'leyka_campaign'),
+		// Default is 'checkbox', used in the modal view to select the post type
+		'select_type' => 'radio',
+		// Will replace any selection with selection from modal. Default is 'add'
+		'select_behavior' => 'replace'		
+	));
+	
+	$homepage_cmb->add_field( array(
+		'name' => 'Текст кнопки в стартовом блоке',
+		'id'   => 'home_featured_text',
+		'type' => 'text'		
+	) );
 	//
 	//$homepage_cmb->add_field( array(
 	//	'name' => 'Ссылка блока "Стать наставником"',

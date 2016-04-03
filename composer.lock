@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "54fc84ba4076100fc160587661ce7087",
-    "content-hash": "4bc3a05f0f329d3d1e0f7a8780428401",
+    "hash": "9d7d7bb4c99239936bbafe899c7eb6fc",
+    "content-hash": "0cdc1c8d16fb3aa9317bb99721480980",
     "packages": [
         {
             "name": "composer/installers",
@@ -266,6 +266,53 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin"
+        },
+        {
+            "name": "webdevstudios/cmb2-post-search-field",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WebDevStudios/CMB2-Post-Search-field.git",
+                "reference": "50413ef784a4d1cd23e10a54bb036ea473443324"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WebDevStudios/CMB2-Post-Search-field/zipball/50413ef784a4d1cd23e10a54bb036ea473443324",
+                "reference": "50413ef784a4d1cd23e10a54bb036ea473443324",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">5.2.4"
+            },
+            "suggest": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "WebDevStudios",
+                    "email": "contact@webdevstudios.com",
+                    "homepage": "https://github.com/WebDevStudios",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Custom field for CMB2 which adds a post-search dialog for searching/attaching other post IDs.",
+            "homepage": "https://github.com/WebDevStudios/CMB2",
+            "keywords": [
+                "field",
+                "metabox",
+                "plugin",
+                "search",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/WebDevStudios/CMB2-Post-Search-field/issues",
+                "source": "https://github.com/WebDevStudios/CMB2-Post-Search-field"
+            },
+            "time": "2016-03-28 02:50:41"
         },
         {
             "name": "wpackagist-plugin/cmb2",
@@ -667,6 +714,7 @@
         "wpackagist-plugin/contact-form-7": 0,
         "wpackagist-plugin/contact-form-advanced-database": 0,
         "wpackagist-plugin/cmb2": 0,
+        "webdevstudios/cmb2-post-search-field": 20,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
         "wpackagist-plugin/post-duplicator": 0

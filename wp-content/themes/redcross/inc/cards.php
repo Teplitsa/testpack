@@ -41,7 +41,7 @@ function rdc_featured_post_card(WP_Post $cpost){
 	<div class="container featured-body">
 		<a href="<?php echo $pl; ?>" class="featured-content">
 			<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>'); ?></div>
-			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+			<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
 			<div class="entry-summary"><?php echo $ex;?></div>
 		</a>
 	</div>	
@@ -56,12 +56,12 @@ function rdc_featured_action_card(WP_Post $cpost, $cta = ''){
 	$cta = (!empty($cta)) ? $cta : __('View', 'rdc');
 	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
 ?>
-<article class="tpl-featured-action">
+<article class="tpl-featured-action container-wide">
 	<div class="bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
 	
 	<div class="container featured-body">
 		<div class="featured-content">			
-			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+			<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
 			<div class="entry-summary"><?php echo $ex;?></div>
 			<div class="cta"><a href="<?php echo $pl; ?>" class="cta-button"><?php echo $cta;?></a></div>
 		</div>
@@ -70,6 +70,57 @@ function rdc_featured_action_card(WP_Post $cpost, $cta = ''){
 <?php
 }
 
+function rdc_related_post_card(WP_Post $cpost) {
+
+	$pl = get_permalink($cpost);
+?>
+<article class="tpl-related-post card"><a href="<?php echo $pl; ?>" class="entry-link">	
+	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
+	<div class="entry-data">
+		<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>');?></div>
+		<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
+	</div>
+</a></article>	
+<?php
+}
+
+function rdc_event_card(WP_Post $cpost){
+		
+	//162	
+	$event = new TST_Event($cpost);
+	
+	$pl = get_permalink($event->post_object);
+	$col_css = (has_post_thumbnail($event->ID)) ? 'md-8' : 'md-12';
+	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($event, 40, true));
+	$icons = $event->get_icons();
+?>
+	<article class="tpl-event section-events" <?php echo $event->get_event_schema_prop();?>>
+		<a href="<?php echo $pl;?>" class="post-link" <?php echo $event->get_event_url_prop();?>>
+			<div class="s-frame">
+			<?php if(has_post_thumbnail($event->ID)) { ?>
+				<div class="s-bit md-4">
+					<?php echo tst_post_thumbnail($event->ID, 'post-thumbnail'); ?>
+				</div>
+			<?php } ?>
+				<div class="s-bit <?php echo $col_css;?> event-content">
+					<div class="entry-meta"><?php echo $event->posted_on_card();?></div>
+					<h2 class="entry-title" <?php echo $event->get_event_name_prop();?>><?php echo get_the_title($event->post_object);?></h4>
+					<div class="entry-summary">
+						<p><?php echo apply_filters('tst_the_title', $event->get_participants_mark());?></p>
+						<p><?php echo apply_filters('tst_the_title', $event->get_what_where_mark());?></p>
+						<?php echo $event->get_event_offer_field();?>
+					</div>
+					<?php echo tst_get_taglist_for_card($cpost);?>
+				</div>
+				<?php if($icons) { ?>
+					<div class="entry-format-icons"><?php echo $icons;?></div>
+				<?php } ?>
+				
+			</div><!-- .s-frame -->
+		</a>		
+	</article>
+<?php
+}
 
 function rdc_person_card(WP_Post $cpost){
 	$pl = get_permalink($cpost);	
@@ -83,8 +134,23 @@ function rdc_person_card(WP_Post $cpost){
 <?php
 }
 
+function rdc_org_card(WP_Post $cpost){
+	
+	$pl = get_permalink($cpost);
+?>
+<article class="tpl-org logo">
+	<a href="<?php echo $pl;?>" class="logo-link logo-frame" target="_blank" title="<?php echo esc_attr($cpost->post_title);?>">
+		<span><?php echo get_the_post_thumbnail($cpost->ID, 'full'); ?></span>
+	</a>
+</article>
+<?php
+}
 
-/** Excerpt  **/
+
+
+/** == Helpers == **/
+
+/** Excerpt **/
 function rdc_get_post_excerpt($cpost, $l = 30, $force_l = false){
 	
 	if(is_int($cpost))
@@ -134,29 +200,7 @@ function rdc_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 	return $src;
 }
 
-function rdc_related_post_card(WP_Post $cpost) {
-	
-	$pl = get_permalink($cpost);	
-?>
-<article class="tpl-related-post <?php echo $cpost->post_type;?>">
-	<a href="<?php echo $pl; ?>" class="thumbnail-link">
-		<?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?>
-		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-	</a>
-</article>
-<?php
-}
 
 
 
-function rdc_org_card(WP_Post $cpost){
-	
-	$pl = get_permalink($cpost);
-?>
-<article class="tpl-org logo">
-	<a href="<?php echo $pl;?>" class="logo-link logo-frame" target="_blank" title="<?php echo esc_attr($cpost->post_title);?>">
-		<span><?php echo get_the_post_thumbnail($cpost->ID, 'full'); ?></span>
-	</a>
-</article>
-<?php
-}
+

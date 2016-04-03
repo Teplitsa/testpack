@@ -76,6 +76,15 @@
 
 
 /** News **/
+@mixin post-meta() {
+	@include nav-text(meta);
+	display: inline-block;
+	background: $color-text-black;
+	color: $color-white;
+	padding: 4px 8px;
+}
+
+
 .tpl-post {
 	background: $color-white;
 		
@@ -136,7 +145,7 @@
 	
 	.bg {
 		display: block;
-		width: 120%;
+		width: 100%;
 		height: 100%;
 		position: absolute;
 		top: 0;
@@ -150,7 +159,7 @@
 }
 
 .featured-body {
-	min-height: 45vh;
+	min-height: 60vh;
 	height: 100%;
 	display: flex;
 	flex-flow: row nowrap;
@@ -164,23 +173,42 @@
 	}
 	
 	.entry-meta {
-		@include nav-text(meta);
-		color: transparentize($color-white, 0.15);
-		@include transition(all 0.3s);		
+		@include post-meta();
 	}
 	
 	.entry-title {
-		@include post-title(featured);
-		color: $color-white;
-		margin-bottom: $base;
+		@include header-title(section);		
+		margin-bottom: $base*1.5;
 		margin-top: 2px;
+		
+		span {
+			margin-left: 8px;
+			background: $color-white;
+			color: $color-text-black;
+			display: inline;
+			box-shadow: 8px 0 0 $color-white, -8px 0 0 $color-white;
+			box-decoration-break: clone;			
+		}
 	}
 	
 	.entry-summary {
 		@include body-text();
 		color: transparentize($color-white, 0.12);
 		@include transition(all 0.3s);
-	}		
+	}
+	
+	.cta {
+		margin-top: $base;
+		a {
+			@include button();
+		}
+	}
+}
+
+.tpl-featured {
+	.featured-body  .featured-content {
+		max-width: 760px;					
+	}
 }
 
 
@@ -215,45 +243,134 @@
 
 
 /* Related section */
-.related-section {
-	border-top: 4px solid $color-border-light;
-	padding: $base - 4px 0 $base;
+.related-card-holder {
 	
-	.ms-title {
-		@include header-title(widget);
+	
+	.related-title {
+		@include header-title(head_title);
 		margin-bottom: $base;
-		position: relative;
-		padding-right: 120px;
+		text-align: center;		
+	}
+	
+	.related-all-link {
+		text-align: center;
+		padding-bottom: $gut;
 		
 		a {
-			display: inline-block;
-			@include body-text(summary);
-			text-transform: none;
-			line-height: 1;
-			position: absolute;
-			right: 0;
-			top: 5px;
-			&:hover, &:focus, &:active {
-				color: $color-link-one;		
-			}
+			@include ghost-button(16px, $color-text-black, $color-white);
+			min-width: 120px;
+			text-align: center;
 		}
 	}
 }
 
+.related-cards-loop {
+	
+	.card {
+		margin: 0;
+	}
+	
+	@include for(medium-screens) {
+		margin: 0 $gut/2;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		
+		.card {
+			margin: 0 $gut/2 $gut;
+			@include calc(width, '50% - 30px');
+		
+			&:first-of-type {
+				@include calc(width, '100% - 30px');
+			}
+		}
+	}
+	
+	@include for(large-screens) {
+		.card {
+			margin: 0 $gut/2 $gut;
+			@include calc(width, '33.3% - 30px');
+		
+			&:nth-of-type(1),
+			&:nth-of-type(2) {
+				@include calc(width, '50% - 30px');
+			}
+		}
+	}
+	
+	@include for(xxlarge-screens) {
+		margin: 0 -1*$gut/2;
+	}
+}
+
 .tpl-related-post {
+		
+	.entry-link {
+		display: block;
+		width: 100%;
+		position: relative;
+		
+		&:hover .entry-preview:after { background: rgba(0,0,0, 0.3); }
+	}
+	
+	.entry-preview {
+		width: 100%;
+		position: relative;
+		z-index: 1;
+		
+		img {
+			position: relative;
+			width: 100%;
+			z-index: 2;
+		}
+		
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0, 0);
+			z-index: 10;
+			@include transition(all 0.35s);
+		}
+	}
 	
 	.entry-title {
-		@include post-title(small_title);
-		line-height: 18px;
-		max-height: 2*18px;
-		overflow: hidden;
-		margin-top: 8px;
+		@include post-title();
+		margin: 2px 0 0;
+		
+		span {
+			margin-left: 4px;
+			background: $color-white;
+			color: $color-text-black;
+			display: inline;
+			box-shadow: 4px 0 0 $color-white, -4px 0 0 $color-white;
+			box-decoration-break: clone;
+			
+			line-height: 24px;
+		}
 	}
 	
-	&.post .entry-title {
-		line-height: 21px;
-		max-height: 3*21px;
+	.entry-meta {
+		display: inline-block;
+		@include nav-text(meta);
+		background: $color-text-black;
+		color: $color-white;
+		padding: 4px 8px;
 	}
+	
+	.entry-data {
+		z-index: 50;
+		position: absolute;
+		padding: $gut;
+		position: left;
+		bottom: 0;
+	}
+	
+	
 }
 
 

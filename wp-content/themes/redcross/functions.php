@@ -109,6 +109,7 @@ add_action( 'init', 'rdc_widgets_init', 25 );
  */
 
 require get_template_directory().'/inc/class-cssjs.php';
+require get_template_directory().'/inc/class-event.php';
 
 require get_template_directory().'/inc/aq_resizer.php';
 require get_template_directory().'/inc/author.php';

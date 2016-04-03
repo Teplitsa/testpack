@@ -28,7 +28,7 @@
 	
 	&.frame-wide {
 		margin: 0 $gut/2;
-		@media screen and (min-width: 1430px)  {
+		@include for(xxlarge-screens){
 			margin: 0 -1*$gut/2;
 		}
 	}

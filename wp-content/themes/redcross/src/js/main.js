@@ -130,7 +130,7 @@ jQuery(document).ready(function($){
 	
 	/** Sticky elements **/
 	var position = $(window).scrollTop(), //store intitial scroll position
-		scrollTopLimit = ($('body').hasClass('adminbar')) ? 65+32 : 65,
+		scrollTopLimit = ($('body').hasClass('adminbar')) ? 62+32 : 62,
 		fixedTopPosition = ($('body').hasClass('adminbar')) ? 86+32 : 86;
 		
 	
@@ -152,7 +152,7 @@ jQuery(document).ready(function($){
 		if (scroll < position) { //upword
 			$site_header.removeClass('invisible').addClass('fixed-header');
 		}
-		else if(scroll > scrollTopLimit) {
+		else if(scroll => scrollTopLimit) {
 			$site_header.removeClass('fixed-header').addClass('invisible');
 		}
 		else {

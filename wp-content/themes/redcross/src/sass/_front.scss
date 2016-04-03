@@ -59,6 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
 // index
 .heading {
 	background: $color-white;
@@ -86,22 +87,28 @@ h1, h2, h3, h4, h5, h6 {
 		background-color: $color-secondary;
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-position: center top;
+		background-position: center center;
 	}
 }
 
 .featured-heading {
 	background: $color-white;
-	padding-bottom: $gut;
-	
+		
 	.featured-title {
 		display: inline-block;
 		background: #111;
 		@include header-title(section);
+		line-height: 1;
 		color: $color-white;
-		padding: 4px 12px;
+		padding: 10px 20px;
+		margin-bottom: $base;
+	}
+	
+	.for-title {
 		position: relative;
-		top: -0.75em;
+		top: -40px;
+		border-bottom: 1px solid $color-border-normal;
+		padding-bottom: $base;
 	}
 }
 
@@ -190,7 +197,7 @@ h1, h2, h3, h4, h5, h6 {
 		flex-flow: row wrap;
 		justify-content: space-between;
 		margin: 0 $gut/2;
-		@media screen and (min-width: 1430px)  {
+		@include for(xxlarge-screens){
 			margin: 0 -1*$gut/2;
 		}
 	}

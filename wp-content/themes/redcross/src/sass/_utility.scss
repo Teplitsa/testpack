@@ -42,6 +42,9 @@
 	@else if $media == exlarge-screens {
 		@media screen and (min-width: $four) { @content; }
 	}
+	@else if $media == xxlarge-screens {
+		@media screen and (min-width: $five) { @content; }
+	}
 }
 
 

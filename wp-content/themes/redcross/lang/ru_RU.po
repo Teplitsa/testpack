@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-01 08:38+0300\n"
-"PO-Revision-Date: 2016-04-02 21:09+0300\n"
+"POT-Creation-Date: 2016-04-03 08:54+0300\n"
+"PO-Revision-Date: 2016-04-03 09:01+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:21 page-homepage.php:44
+#: footer.php:21
 msgid "Subscribe to our newsletter"
 msgstr "Подпишитесь на рассылку"
 
@@ -37,14 +37,10 @@ msgstr "Подпишитесь на рассылку"
 msgid "Our social profiles"
 msgstr "Мы в социальных сетях"
 
-#: footer.php:45
+#: footer.php:47
 #, php-format
 msgid "All materials of the site are avaliabe under license %s."
 msgstr "Все материалы сайта доступны по лиценции %s."
-
-#: footer.php:52
-msgid "Made by"
-msgstr "Разработка сайта"
 
 #: header.php:18
 msgid "Skip to content"
@@ -124,6 +120,10 @@ msgstr "Автор"
 msgid "View"
 msgstr "Просмотреть"
 
+#: inc/class-event.php:453 inc/template-tags.php:154
+msgid "Events"
+msgstr "Анонсы"
+
 #: inc/donations.php:59
 msgid "Please, set a text of comment to describe an additional ways to donate."
 msgstr ""
@@ -132,7 +132,7 @@ msgstr ""
 msgid "Please, set a text to describe an additional ways to donate."
 msgstr ""
 
-#: inc/extras.php:63
+#: inc/extras.php:63 inc/template-tags.php:418 inc/template-tags.php:422
 msgid "More"
 msgstr "Далее"
 
@@ -140,43 +140,35 @@ msgstr "Далее"
 msgid "Default Avatar"
 msgstr "Аватарка по-умолчанию"
 
-#: inc/template-tags.php:235
+#: inc/template-tags.php:242
 msgid "Search results"
 msgstr "Результаты поиска"
 
-#: inc/template-tags.php:239
+#: inc/template-tags.php:246
 msgid "404: Page not found"
 msgstr "Ошибка 404: Страница не найдена"
 
-#: inc/template-tags.php:332
+#: inc/template-tags.php:339
 msgid "Post navigation"
 msgstr "Навигация по записям"
 
-#: inc/template-tags.php:347 inc/template-tags.php:357
+#: inc/template-tags.php:354 inc/template-tags.php:364
 msgid "Homepage"
 msgstr "Главная"
 
-#: inc/template-tags.php:405
-msgid "All programms"
-msgstr "Все программы"
-
-#: inc/template-tags.php:406
-msgid "Our programms"
+#: inc/template-tags.php:419
+msgid "Our projects"
 msgstr "Наши программы"
 
-#: inc/template-tags.php:409
-msgid "All news"
-msgstr "Все новости"
-
-#: inc/template-tags.php:410
+#: inc/template-tags.php:423
 msgid "Latest news"
 msgstr "Последние новости"
 
-#: inc/template-tags.php:434
+#: inc/template-tags.php:451
 msgid "Related project"
 msgstr "Программа по теме"
 
-#: inc/template-tags.php:453
+#: inc/template-tags.php:470
 msgid "Help now"
 msgstr "Помочь сейчас"
 
@@ -188,37 +180,42 @@ msgstr "Социальные кнопки"
 msgid "Social links menu with optional text"
 msgstr "Меню социальных кнопок с сопроводительным текстом"
 
-#: page-homepage.php:23
-msgid "Support us"
-msgstr "Поддержите нас"
-
-#: page-homepage.php:36
-msgid "Our news"
-msgstr "Наши новости"
-
-#: page-homepage.php:45
-msgid "Stay connected and be informed"
-msgstr "Будьте в курсе наших новостей"
-
-#: page-homepage.php:62
-msgid "More about our programms"
-msgstr "Подробнее о программах фонда"
-
-#: page-homepage.php:68
-msgid "Would you like to help? Support our work"
-msgstr "Хотите помочь? Поддержите нашу работу"
-
-#: page-homepage.php:79
-msgid "Become mentor"
-msgstr "Стать наставником"
-
-#: page-homepage.php:85
-msgid "Donate"
-msgstr "Сделать пожертвование"
-
 #: single.php:89
 msgid "More news"
 msgstr "Еще новости"
+
+#~ msgid "Made by"
+#~ msgstr "Разработка сайта"
+
+#~ msgid "All programms"
+#~ msgstr "Все программы"
+
+#~ msgid "Our programms"
+#~ msgstr "Наши программы"
+
+#~ msgid "All news"
+#~ msgstr "Все новости"
+
+#~ msgid "Support us"
+#~ msgstr "Поддержите нас"
+
+#~ msgid "Our news"
+#~ msgstr "Наши новости"
+
+#~ msgid "Stay connected and be informed"
+#~ msgstr "Будьте в курсе наших новостей"
+
+#~ msgid "More about our programms"
+#~ msgstr "Подробнее о программах фонда"
+
+#~ msgid "Would you like to help? Support our work"
+#~ msgstr "Хотите помочь? Поддержите нашу работу"
+
+#~ msgid "Become mentor"
+#~ msgstr "Стать наставником"
+
+#~ msgid "Donate"
+#~ msgstr "Сделать пожертвование"
 
 #~ msgid "Team"
 #~ msgstr "Команда"
@@ -397,9 +394,6 @@ msgstr "Еще новости"
 #~ msgid "All"
 #~ msgstr "Все"
 
-#~ msgid "Our projects"
-#~ msgstr "Наши программы"
-
 #~ msgid "Published"
 #~ msgstr "Опубликовано"
 
@@ -564,9 +558,6 @@ msgstr "Еще новости"
 
 #~ msgid "No stories found in Trash"
 #~ msgstr "Историй в корзине не найдено"
-
-#~ msgid "Events"
-#~ msgstr "Анонсы"
 
 #~ msgid "Event"
 #~ msgstr "Анонс"
