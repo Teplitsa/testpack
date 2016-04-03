@@ -256,7 +256,7 @@ h2.logo-name {
 		border-right: 1px solid $color-border-light;		
 		cursor: pointer;
 		
-		a {
+		#trigger_menu {
 			display: block;
 			padding: ($mobile_height - 18px)/2;
 		}
