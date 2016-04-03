@@ -152,6 +152,7 @@ $social_color: (
 			box-shadow: none !important;
 			padding: 11px;
 			width: 100%;
+			border-radius: 0;
 		}
 		
 		.wpcf7-not-valid-tip {
@@ -166,6 +167,7 @@ $social_color: (
 		margin-top: 8px;
 		input {
 			@include button();
+			border-radius: 0;
 		}
 	}
 	
