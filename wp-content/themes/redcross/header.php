@@ -33,11 +33,11 @@
 			
 			<?php $header_text = get_theme_mod('header_text'); ?>
 			<div class="site-details site-panel-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>									
-			<div id="trigger_newsletter" class="trigger-button newsletter site-panel-cell">
-				<a href="<?php echo home_url('subscribe');?>"><?php _e( 'Subscribe', 'rdc' ); ?><?php rdc_svg_icon('icon-mail');?><?php rdc_svg_icon('icon-close');?></a>
+			<div class="trigger-button newsletter site-panel-cell">
+				<a id="trigger_newsletter"  href="<?php echo home_url('subscribe');?>"><?php _e( 'Subscribe', 'rdc' ); ?><?php rdc_svg_icon('icon-mail');?><?php rdc_svg_icon('icon-close');?></a>
 			</div>
-			<div id="trigger_menu" class="trigger-button menu site-panel-cell">
-				<a href="<?php echo home_url('subscribe');?>"><?php rdc_svg_icon('icon-menu');?></a>
+			<div class="trigger-button menu site-panel-cell">
+				<a id="trigger_menu" href="<?php echo home_url('subscribe');?>"><?php rdc_svg_icon('icon-menu');?></a>
 			</div>
 			
 		</div>	
