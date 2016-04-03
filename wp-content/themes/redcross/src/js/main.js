@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
 	/** == Header states == **/
 	
 	/** Drawer **/
-	$('#trigger_menu').on('click', function(e){
+	$('#trigger_menu').on('click touchstart', function(e){
 				
 		if ($site_header.hasClass('newsletter-open')) { //close newsletter if any
 			$site_header.removeClass('newsletter-open');
@@ -39,7 +39,7 @@ jQuery(document).ready(function($){
 		return false;
 	});
 	
-	$('#trigger_menu_close').on('click', function(e){
+	$('#trigger_menu_close').on('click touchstart', function(e){
 		
 		$site_header.removeClass('menu-open');
 		
