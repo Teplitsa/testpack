@@ -984,15 +984,18 @@ jQuery(document).ready(function($){
 		if ($site_header.hasClass('newsletter-open')) { //close newsletter if any
 			$site_header.removeClass('newsletter-open');
 		}
+		
 		$site_header.addClass('menu-open');
 		
+		e.stopImmediatePropagation();
 		return false;
 	});
 	
 	$('#trigger_menu_close').on('click', function(e){
-				
+		
 		$site_header.removeClass('menu-open');
 		
+		e.stopImmediatePropagation();
 		return false;
 	});
 	
