@@ -160,7 +160,7 @@ jQuery(document).ready(function($){
 		if (scroll < position) { //upword
 			$site_header.removeClass('invisible').addClass('fixed-header');
 		}
-		else if(scroll => scrollTopLimit) {
+		else if(scroll >= scrollTopLimit) {
 			$site_header.removeClass('fixed-header').addClass('invisible');
 		}
 		else {
