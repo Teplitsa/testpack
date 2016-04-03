@@ -1017,7 +1017,7 @@ jQuery(document).ready(function($){
 	$site_header.on('click', '#trigger_newsletter', function(e){
 		
 		var winW = $('#top').width();
-		
+		e.preventDefault();		
 		if (winW > breakPointMedium && !$site_header.hasClass('newsletter-open')) {
 			e.preventDefault();			
 			$site_header.find('#newsletter_panel').slideDown(150, function(){				
@@ -1032,6 +1032,7 @@ jQuery(document).ready(function($){
 				$(this).removeAttr('style');
 			});
 		}
+		
 		
 	});
 	
