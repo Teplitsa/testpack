@@ -206,12 +206,17 @@
 	
 	.featured-content {
 		display: block;
-		padding: $base*1.55 0;
+		margin: $base -1*$gut/2;
+		padding: $gut/2;
 		max-width: 640px;
 		color: $color-white;
 		align-self: flex-end;
+		@include transition(all 0.3s);
 	}
 	
+	a.featured-content:hover {
+		background: rgba(0,0,0, 0.25);
+	}
 	.entry-meta {
 		@include post-meta();
 	}
@@ -248,7 +253,7 @@
 
 .tpl-featured {
 	.featured-body .entry-title { 
-		@include post-title(featured);
+		@include post-title();
 	}
 	.featured-body  .featured-content {
 		max-width: 760px;					
@@ -276,7 +281,7 @@
 		
 		&:hover, &:focus, &:active {
 			color: $color-white;
-			background: $color-link-one;
+			background: $color-link-two;
 		}
 		&.current {
 			color: $color-white;
@@ -401,33 +406,21 @@
 
 
 /** Single **/
-.crumbs {
-	@include body-text(small);
-	margin-bottom: $base/4;
-	color: $color-text-light;
-	
-	a {
-		color: $color-text;
-		&:hover, &:focus, &:active {
-			color: $color-link-one;
-		}
-	}
-}
-
 .entry-header-full {
-	padding: $base*1.5 0 $base*2;
+	padding: $gut 0 20px;
 	
 	.entry-title {
 		@include header-title(section);
-		margin-bottom: $base;
+		@include hypens();
 	}
 	
 	.entry-meta {
 		@include nav-text(meta);
+		color: $color-text-light;
 		a {
-			color: $color-text;
+			color: inherit;
 			&:hover, &:focus, &:active {
-				color: $color-link-one;
+				color: $color-link-two;
 			}
 		}
 	}
@@ -442,46 +435,8 @@
 	}	
 }
 
-//cols for sticky sidebar
-.the-post-cols {
-	position: relative;
-	
-	.pc-main {
-		position: relative;
-		margin-bottom: $base/2;
-		
-		@include for(medium-screens){
-			margin-right: 222px+30px;
-			margin-bottom: $base*1.5;
-		}
-		
-		@include for(large-screens){
-			margin-right: 34.3558%;		
-		}
-	}
-	
-	.pc-sidebar {
-		margin-bottom: $base*1.5;
-		
-		@include for(medium-screens){
-			position: absolute;
-			width: 222px;
-			height: 100%;
-			top: 0;
-			right: 0;
-			margin: 0;
-		}
-		
-	}
-	
-	.related-widget {
-		padding-top: $base;
-		margin: 0;
-		
-		@include for(medium-screens){
-			width: 222px;
-		}
-	}
+.format-standard .entry-preview {
+	margin-bottom: $gut;
 }
 
 .regular-sharing {
@@ -492,7 +447,7 @@
 	left: 0;
 	z-index: 100;
 	
-	.single & .social-likes { padding-top: $base; }
+	.single & .social-likes { padding-top: $gut; }
 }
 	
 .mobile-sharing {	
@@ -507,7 +462,17 @@
 	}
 }
 
-
+.addon {
+	margin-top: $gut*1.5;
+	
+	.related-title {
+		border-top: 1px solid $color-border-normal;
+		padding-top: $gut;
+		@include for(medium-screens) {
+			margin: 0 $gut $base;
+		}
+	}
+}
 
 
 

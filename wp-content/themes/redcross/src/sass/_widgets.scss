@@ -1,7 +1,8 @@
 /** Widgets **/
 
 .widget {	
-	margin-bottom: $base*2;
+	margin-bottom: $gut;
+	&:last-of-type { margin-bottom: 0; }
 	
 	& > h3, .widget-title {
 		margin-bottom: $base;		
@@ -10,10 +11,38 @@
 	
 	.textwidget {		
 		p:last-child { margin-bottom: 0; }
+		
+		h5 {
+			@include post-title(small_title);
+			margin-bottom: $base;
+			&:last-child { margin-bottom :0;}
+		}
+		
 	}
 	
+	.ghost-button {
+		@include ghost-button(14px, $color-link-three, $color-white);
+	}
+		
 	p { //temp		
 		margin-bottom: $gut/2;
+	}
+	
+	&.red {
+		background: $color-link-three;
+		padding: $gut/2;
+		color: rgba(255,255,255, 0.98);
+		h3, .widget-title, h5 { color: inherit; }
+		
+		a { color: $color-white; }
+		
+		.ghost-button {
+			@include ghost-button(14px, $color-white, $color-link-three);
+		}
+	}
+	
+	&.text-center {
+		text-align: center;
 	}
 }
 
@@ -26,30 +55,6 @@
 		li {
 			display: inline-block;
 			margin: 0 18px 9px 0;
-		}
-	}
-}
-
-.related-widget {
-	
-	.entry-link {
-		display: block;
-	}
-	
-	.entry-title {
-		@include post-title(small_title);
-		margin: 8px 0 12px;
-	}
-	
-	p, .entry-summary {
-		@include body-text(small);
-		color: $color-text;
-	}
-	
-	.help-cta {
-		margin-top: $base;
-		a {
-			@include button();
 		}
 	}
 }

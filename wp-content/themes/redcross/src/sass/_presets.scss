@@ -163,7 +163,7 @@ $fixed_side: 222px;
 
 
 @mixin header-title($mod: default){
-	$header-title-size: 21px; 
+	$header-title-size: 24px; 
 	
 	font-family: $heading;
 	color: $color-text-black;
@@ -175,11 +175,11 @@ $fixed_side: 222px;
 	
 	@if $mod == section {
 		font-size: 42px;
-		@include for(small-screens) { font-size: 56px; }		
+		@include for(small-screens) { font-size: 54px; }		
 		text-transform: uppercase;
 	}
 	@else if $mod == widget {
-		font-size: 18px;
+		font-size: 27px;
 		text-transform: uppercase;
 	}
 	@else if $mod == head_title {
@@ -190,6 +190,7 @@ $fixed_side: 222px;
 		font-size: 16px;
 		text-transform: uppercase;
 	}
+	
 }
 
 @mixin button($mod: default){

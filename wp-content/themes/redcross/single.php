@@ -23,39 +23,37 @@ get_header(); ?>
 
 <?php if($format == 'introimg'){ ?>
 <section class="featured-head introimg">
-	<div class="tpl-featured-bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
-	<div class="crumb"><?php echo rdc_breadcrumbs($cpost);?></div>
+	<div class="tpl-featured-bg container-wide" style="background-image: url(<?php echo $thumbnail;?>);" ></div>	
 </section>
 <?php } elseif($format == 'introvid') { ?>
 <section class="featured-head introvid">
-	<div class="player"><?php echo apply_filters('the_content', $video);?></div>
-	<div class="crumb"><?php echo rdc_breadcrumbs($cpost);?></div>
+	<div class="player container-wide"><?php echo apply_filters('the_content', $video);?></div>	
 </section>
 <?php } ?>
 
-<section class="main-content single-post-section">
+<section class="main-content single-post-section container-wide format-<?php echo $format;?>">
 <div id="rdc_sharing" class="regular-sharing hide-upto-medium"><?php echo rdc_social_share_no_js();?></div>
 
 <div class="container">
-	<div class="the-post-cols">
+	<header class="entry-header-full">
+		<div class="entry-meta"><?php echo rdc_posted_on($cpost);?></div>
+		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>				
+		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
+	</header>
 	
-		<main class="pc-main">
+	<div class="frame">
+		<main class="bit md-8">		
+			
 		<?php if($format == 'standard') { ?>
 			<div class="entry-preview">
-				<?php echo rdc_post_thumbnail($cpost->ID, 'medium-thumbnail');?>
-				<div class="crumb"><?php echo rdc_breadcrumbs($cpost);?></div>				
+				<?php echo rdc_post_thumbnail($cpost->ID, 'medium-thumbnail');?>						
 			</div>		
-		<?php } ?>	
-			<header class="entry-header-full">				
-				<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>
-				<div class="entry-meta"><?php echo rdc_posted_on($cpost);?></div>
-				<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
-			</header>
+		<?php } ?>				
 			
 			<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
 		</main>
 		
-		<div id="rdc_sidebar" class="pc-sidebar">
+		<div id="rdc_sidebar" class="bit md-4">
 		<?php
 			//$rquery = rdc_get_related_query($cpost, 'post_tag', 1); 
 			//if($rquery->have_posts()){
@@ -73,7 +71,7 @@ get_header(); ?>
 	$cat = get_the_terms($post->ID, 'category');
 	$pquery = new WP_Query(array(
 				'post_type'=> 'post',
-				'posts_per_page' => 4,
+				'posts_per_page' => 5,
 				'tax_query' => array(
 					array(
 						'taxonomy' => 'category',
@@ -84,10 +82,7 @@ get_header(); ?>
 			));
 	
 	if($pquery->have_posts()){
-?>
-<section class="addon"><div class="container">
-	<?php rdc_more_section($pquery->posts, __('More news', 'rdc'), 'news'); ?>
-</div></section>
-<?php }
+		rdc_more_section($pquery->posts, __('More news', 'rdc'), 'news', 'addon'); 
+	}
 
 get_footer();
