@@ -147,7 +147,7 @@ jQuery(document).ready(function($){
 			winW = $('#top').width();
 		
 		//no scroll when menu is open
-		if ($site_header.hasClass('menu-open')) {
+		if ($site_header.hasClass('menu-open') && winW > breakPointMedium ) {
 			$(window).scrollTop(position);			
 			return;
 		}		

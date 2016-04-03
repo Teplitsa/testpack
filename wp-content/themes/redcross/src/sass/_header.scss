@@ -257,8 +257,7 @@ h2.logo-name {
 		cursor: pointer;
 		
 		#trigger_menu {
-			display: block;
-			border: none;
+			display: block;			
 			width: $mobile_height;
 			height: $mobile_height;
 			padding: ($mobile_height - 18px)/2;
