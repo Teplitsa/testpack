@@ -16,59 +16,56 @@
 
 
 /**  Cards Structure **/
+
+
 .cards-loop {
 	display: flex;
 	flex-flow: row wrap;
 	margin: 0 auto 0 auto;
 	align-items: stretch;
+	margin: 0 $gut/2;
+	
+	@include for(xxlarge-screens) {
+		margin: 0 -1*$gut/2;
+	}
 	
 	.card {
-		margin-bottom: $gut;
-		width: 100%;
+		margin: 0 $gut/2 $gut;
+		@include calc(width, '100% - 30px');	
 	}
 	
 	@include for(small-screens) {
-		&.sm-cols-2 {
-			margin: 0 -0.5*$gut;
+		&.sm-cols-2 {			
 			.card {
-				@include calc(width, '50% - 30px');
-				margin: 0 $gut/2 $gut;
+				@include calc(width, '50% - 30px');				
 			}
 		}
 	}
 	
 	@include for(medium-screens) {
-		&.md-cols-2 {
-			margin: 0 -0.5*$gut;
+		&.md-cols-2 {			
 			.card {
-				@include calc(width, '50% - 30px');
-				margin: 0 $gut/2 $gut;
+				@include calc(width, '50% - 30px');				
 			}
 		}
 	}
 	
 	@include for(large-screens) {
-		&.lg-cols-2 {
-			margin: 0 -0.5*$gut;
+		&.lg-cols-2 {			
 			.card {
-				@include calc(width, '50% - 30px');
-				margin: 0 $gut/2 $gut;
+				@include calc(width, '50% - 30px');				
 			}
 		}
 		
-		&.lg-cols-3 {
-			margin: 0 -0.5*$gut;
+		&.lg-cols-3 {			
 			.card {
-				@include calc(width, '33.3% - 30px');
-				margin: 0 $gut/2 $gut;
+				@include calc(width, '33.3% - 30px');				
 			}
 		}
 		
-		&.lg-cols-4 {
-			margin: 0 -0.5*$gut;
+		&.lg-cols-4 {			
 			.card {
-				@include calc(width, '25% - 30px');
-				margin: 0 $gut/2 $gut;
+				@include calc(width, '25% - 30px');				
 			}
 		}
 	}
@@ -82,33 +79,76 @@
 	background: $color-text-black;
 	color: $color-white;
 	padding: 4px 8px;
+	
+	a {
+		color: inherit;
+		&:hover { text-decoration: underline; }
+	}
+}
+
+@mixin shadowed-preview {
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	
+	img {
+		position: relative;
+		width: 100%;
+		z-index: 2;
+	}
+	
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0, 0);
+		z-index: 10;
+		@include transition(all 0.35s);
+	}	
 }
 
 
 .tpl-post {
 	background: $color-white;
+	@include transition(all 0.3s);
 		
+	&:hover {
+		background: $color-secondary-alt;
+		.entry-preview:after { background: rgba(0,0,0, 0.3); }
+	}	
+	
+	a {
+		display: block;
+		height: 100%;
+	}
+	
 	.entry-data {
-		padding: $base/2 $base $base;
+		padding: 0 $base $base;
+		position: relative;
+	}
+	
+	.entry-preview {
+		@include shadowed-preview();
 	}
 	
 	.entry-meta {
-		@include nav-text(meta);
-		color: $color-text-light;
-		@include transition(all 0.3s);
-		margin-top: $base/4;
+		@include post-meta();
+		font-size: 14px;
+		position: absolute;
+		top: 0;
+		@include transform(translateY(-110%));
+		z-index: 100;
 	}
 	
 	.entry-title {
 		@include post-title();
-		margin-bottom: $base*0.75;
-		margin-top: 2px;
-		@include transition(all 0.3s);
-		
-		a {
-			color: inherit;
-			&:hover { color: $color-link-one; }
-		}
+		margin-bottom: $base*0.75;				
+		padding-top: $base;
+		@include hypens();
 	}
 	
 	.entry-summary {
@@ -180,7 +220,8 @@
 		@include header-title(section);		
 		margin-bottom: $base*1.5;
 		margin-top: 4px;
-		
+		@include hypens();
+	
 		span {
 			margin-left: 8px;
 			background: $color-white;
@@ -247,8 +288,6 @@
 
 /* Related section */
 .related-card-holder {
-	
-	
 	.related-title {
 		@include header-title(head_title);
 		margin-bottom: $base;
@@ -273,7 +312,6 @@
 }
 
 .related-cards-loop {
-	
 	.card {
 		margin: 0;
 	}
@@ -322,28 +360,7 @@
 	}
 	
 	.entry-preview {
-		width: 100%;
-		position: relative;
-		z-index: 1;
-		
-		img {
-			position: relative;
-			width: 100%;
-			z-index: 2;
-		}
-		
-		&:after {
-			content: '';
-			display: block;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(0,0,0, 0);
-			z-index: 10;
-			@include transition(all 0.35s);
-		}
+		@include shadowed-preview();
 	}
 	
 	.entry-title {

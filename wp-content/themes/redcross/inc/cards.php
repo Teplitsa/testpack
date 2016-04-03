@@ -7,13 +7,14 @@ function rdc_post_card(WP_Post $cpost){
 	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 25, true));
 ?>
 <article class="tpl-post card">
-	
-	<a href="<?php echo $pl; ?>" class="thumbnail-link"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></a>
+	<a href="<?php echo $pl; ?>" class="thumbnail-link">
+	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
 	<div class="entry-data">
-		<div class="entry-meta"><?php echo rdc_posted_on($cpost);?></div>
-		<h4 class="entry-title"><a href="<?php echo $pl; ?>"><?php echo get_the_title($cpost);?></a></h4>
+		<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>');?></div>
+		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 		<div class="entry-summary"><?php echo $ex;?></div>
 	</div>
+	</a>
 </article>
 <?php
 }

@@ -171,7 +171,7 @@ h2.logo-name {
 		
 		p {
 			display: inline-block;
-			height: 100%;
+			height: $full_height;
 			border-left: 1px solid $color-border-normal;			
 			padding: 13px 18px 0 18px;
 			color: $color-text-light;
@@ -307,15 +307,15 @@ h2.logo-name {
 	width: 100%;
 		
 	input {
-		@include nav-text();
-		padding: $gut/2;
+		@include nav-text(meta);
+		padding: 18px $gut/2;
 		color: $color-text;
 		border: none;
 		width: 100%;
 		
 		@include placeholder {
 			color: $color-text-light;
-		}
+		}		
 	}
 }
 
@@ -324,11 +324,17 @@ h2.logo-name {
 	z-index: 1020;
 	position: fixed;
 	top:0;
-	right: -300px;
-	width: 300px;
+	right: -290px;
+	width: 290px;
 	height: 100%;
 	background: $color-white;
+	overflow-y: scroll;
 	@include transition(all 0.4s);
+	
+	@include for(medium-screens){
+		right: -310px;
+		width: 310px;
+	}
 	
 	.admin-bar & {
 		@media screen and (min-width: 600px) { top: $adminbar_small_screen; }
@@ -357,13 +363,12 @@ h2.logo-name {
 	
 	.site-logo {
 		display: block;		
-		padding: $gut/2;
-		padding-right: $full_height;
-		padding-top: $gut/2 - 1px;
+		padding: 10px $full_height 10px $gut/2;		
+		@include for(medium-screens) { padding: 14px $full_height 15px $gut/2;	 }
 	}
 	
 	h1.logo-name {
-		font-size: 16px;
+		font-size: 15px;
 	}
 	
 	.close {
@@ -380,7 +385,7 @@ h2.logo-name {
 		@include for(medium-screens) {
 			width: $full_height;
 			height: $full_height;
-			padding: ($mobile_height - 18px)/2;
+			padding: ($full_height - 18px)/2;
 		}
 		
 		.svg-icon {
@@ -402,12 +407,17 @@ h2.logo-name {
 		position: relative;
 		
 		& > a {
-			display: block;			
-			padding: $gut/2;
-			@include nav-text();
+			display: block;
+			@include nav-text(meta);
 			color: $color-text-black;
 			@include transition(all 0.3s);
-			margin-right: 44px;
+			
+			padding: 19px $gut/2;
+			margin-right: $mobile_height;
+			
+			@include for(medium-screens) {
+				margin-right: $full_height;				
+			}
 			
 			&:hover, &:focus, &:active {
 				background: $color-border-light;		
@@ -420,21 +430,28 @@ h2.logo-name {
 	.menu-item-has-children {
 		.submenu-trigger {
 			display: block;
-			width: 44px;
-			height: 44px;
-			padding: 15px 0 0 15px;
 			border-left: 1px solid $color-border-light;
 			position: absolute;
 			top: 0;
 			right: 0;
 			z-index: 100;
 			cursor: pointer;
+			text-align: center;
+			
+			width: $mobile_height;
+			height: $mobile_height;
+			padding: ($mobile_height - 14px)/2;
+			
+			@include for(medium-screens) {				
+				width: $full_height;				
+			}
 			
 			.svg-icon {
 				width: 14px;
 				height: 14px;
 				fill: $color-text-black;
 			}
+			
 			.icon-up { display: none; }
 		}
 		

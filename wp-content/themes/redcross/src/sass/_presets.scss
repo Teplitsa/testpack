@@ -43,7 +43,8 @@ $color-text-black:			#191411;
 $color-text-semi:			rgba(0,0,0, 0.6);
 $color-text-light:			rgba(0,0,0, 0.45);
 $color-secondary:			#f5f5f5;
-$color-secondary-dark:		#F2F0EE;
+$color-secondary-dark:		#e5e5e5;
+$color-secondary-alt:		#d3d3d3;
 $color-secondary-black:		#191411;
 
 
@@ -108,21 +109,19 @@ $fixed_side: 222px;
 }
 
 @mixin post-title($mod: default) {
-	$post-title-size: 24px;
-	
 	font-family: $title;
 	color: $color-text-black;
-	
-	font-size: $post-title-size;
 	font-weight: normal;
-	line-height: 32px;	
 	text-transform: none;
-	//text-overflow: ellipsis;
-	//-ms-hyphens: auto; 
-	//-moz-hyphens: auto; 
-	//-webkit-hyphens: auto; 
-	//hyphens: auto;
 	
+	font-size: 21px;
+	line-height: 26px;
+	
+	@include for(medium-screens){
+		font-size: 24px;
+		line-height: 30px;	
+	}
+		
 	@if $mod == small_title {
 		font-size: 18px;
 		line-height: 24px;	
@@ -135,8 +134,7 @@ $fixed_side: 222px;
 	}
 	@else if $mod == multiline {		
 		
-	}
-	
+	}	
 }
 
 @mixin sub-title($mod: default) {

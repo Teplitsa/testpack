@@ -63,6 +63,13 @@
 	}
 }
 
+@mixin hypens(){
+	-ms-hyphens: auto; 
+	-moz-hyphens: auto; 
+	-webkit-hyphens: auto; 
+	hyphens: auto;
+}
+
 @mixin pseudo-shape($h : 1px) {
 	content:  '';
 	display: block;

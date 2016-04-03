@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cards-holder {
-	background: $color-secondary;
+	background: $color-secondary-dark;
 	padding-top: $gut;
 }
 
@@ -206,6 +206,8 @@ h1, h2, h3, h4, h5, h6 {
 		flex: 0 0 auto;
 		width: 100%;
 		margin: 0 $gut/2 $gut;
+		
+		@include calc(width, '100% - 30px');
 		
 		@include for(small-screens){
 			@include calc(width, '50% - 30px');
