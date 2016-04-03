@@ -979,7 +979,7 @@ jQuery(document).ready(function($){
 	/** == Header states == **/
 	
 	/** Drawer **/
-	$site_header.on('click', '#trigger_menu', function(e){
+	$('#trigger_menu').on('click', function(e){
 		e.preventDefault();
 		
 		if ($site_header.hasClass('newsletter-open')) { //close newsletter if any
@@ -988,7 +988,7 @@ jQuery(document).ready(function($){
 		$site_header.addClass('menu-open');
 	});
 	
-	$site_header.on('click', '#trigger_menu_close', function(e){
+	$('#trigger_menu_close').on('click', function(e){
 		e.preventDefault();
 		
 		$site_header.removeClass('menu-open');
@@ -1014,10 +1014,11 @@ jQuery(document).ready(function($){
 	});
 	
 	/** Newsletter **/
-	$site_header.on('click', '#trigger_newsletter', function(e){
+	$('#trigger_newsletter').on('click', function(e){
 		
 		var winW = $('#top').width();
-		e.preventDefault();		
+		e.preventDefault();
+		
 		if (winW > breakPointMedium && !$site_header.hasClass('newsletter-open')) {
 			e.preventDefault();			
 			$site_header.find('#newsletter_panel').slideDown(150, function(){				
@@ -1032,8 +1033,6 @@ jQuery(document).ready(function($){
 				$(this).removeAttr('style');
 			});
 		}
-		
-		
 	});
 	
 	//no autocomplete
