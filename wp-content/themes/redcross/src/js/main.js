@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
 	/** == Header states == **/
 	
 	/** Drawer **/
-	$('#trigger_menu').bind('click', function(e){
+	$('#trigger_menu').on('click', function(e){
 				
 		if ($site_header.hasClass('newsletter-open')) { //close newsletter if any
 			$site_header.removeClass('newsletter-open');
@@ -39,22 +39,15 @@ jQuery(document).ready(function($){
 		e.stopPropagation();
 		e.preventDefault();
 		
-		if(!e.isDefaultPrevented()){
-			$(this).removeAttr('href');
-		}
 	});
 	
-	$('#trigger_menu_close').bind('click', function(e){
+	$('#trigger_menu_close').on('click', function(e){
 		
 		$site_header.removeClass('menu-open');
 		
 		e.stopImmediatePropagation();
 		e.stopPropagation();
-		e.preventDefault();
-		
-		if(!e.isDefaultPrevented()){
-			$(this).removeAttr('href');
-		}
+		e.preventDefault();		
 	});
 	
 	/** Submenu toggle **/

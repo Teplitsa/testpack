@@ -258,8 +258,14 @@ h2.logo-name {
 		
 		#trigger_menu {
 			display: block;
+			border: none;
+			width: $mobile_height;
+			height: $mobile_height;
 			padding: ($mobile_height - 18px)/2;
+			text-align: center;
+			background: transparent;
 		}
+		
 		.svg-icon {
 			width: 18px;
 			height: 18px;
@@ -272,7 +278,11 @@ h2.logo-name {
 		height: $full_height;
 		
 		&.newsletter a { padding-top: ($full_height - 14px) /2; }
-		&.menu a { padding: ($full_height - 18px)/2; }
+		&.menu #trigger_menu {
+			padding: ($full_height - 18px)/2;
+			width: $full_height;
+			height: $full_height;
+		}
 	}
 }
 
