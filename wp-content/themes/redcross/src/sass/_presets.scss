@@ -176,7 +176,8 @@ $fixed_side: 222px;
 	
 	
 	@if $mod == section {
-		font-size: 56px;
+		font-size: 42px;
+		@include for(small-screens) { font-size: 56px; }		
 		text-transform: uppercase;
 	}
 	@else if $mod == widget {

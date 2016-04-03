@@ -264,6 +264,11 @@
 			min-width: 120px;
 			text-align: center;
 		}
+		
+		margin-top: $gut;
+		@include for(medium-screens) {
+			margin-top: 0;
+		}
 	}
 }
 
