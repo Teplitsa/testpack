@@ -37,7 +37,7 @@
 				<a id="trigger_newsletter"  href="<?php echo home_url('subscribe');?>"><?php _e( 'Subscribe', 'rdc' ); ?><?php rdc_svg_icon('icon-mail');?><?php rdc_svg_icon('icon-close');?></a>
 			</div>
 			<div class="trigger-button menu site-panel-cell">
-				<a id="trigger_menu" href="<?php echo home_url('subscribe');?>"><?php rdc_svg_icon('icon-menu');?></a>
+				<a id="trigger_menu" href="<?php echo home_url('sitemap');?>"><?php rdc_svg_icon('icon-menu');?></a>
 			</div>
 			
 		</div>	

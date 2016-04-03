@@ -29,6 +29,7 @@ jQuery(document).ready(function($){
 	/** Drawer **/
 	$('#trigger_menu').on('click', function(e){
 		e.preventDefault();
+		e.stopPropagation();
 		
 		if ($site_header.hasClass('newsletter-open')) { //close newsletter if any
 			$site_header.removeClass('newsletter-open');
@@ -38,6 +39,7 @@ jQuery(document).ready(function($){
 	
 	$('#trigger_menu_close').on('click', function(e){
 		e.preventDefault();
+		e.stopPropagation();
 		
 		$site_header.removeClass('menu-open');
 	});
@@ -65,10 +67,11 @@ jQuery(document).ready(function($){
 	$('#trigger_newsletter').on('click', function(e){
 		
 		var winW = $('#top').width();
-		e.preventDefault();
-		
+				
 		if (winW > breakPointMedium && !$site_header.hasClass('newsletter-open')) {
-			e.preventDefault();			
+			e.preventDefault();
+			e.stopPropagation();
+			
 			$site_header.find('#newsletter_panel').slideDown(150, function(){				
 				$site_header.addClass('newsletter-open');
 				$(this).removeAttr('style');
