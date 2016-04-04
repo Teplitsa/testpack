@@ -14,7 +14,7 @@ $query = new WP_Query(array('post_type' => 'project', 'posts_per_page' => -1));
 get_header(); 
 ?>
 <section class="featured-head">
-	<div class="tpl-featured-bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
+	<div class="tpl-featured-bg container-wide" style="background-image: url(<?php echo $thumbnail;?>);"></div>
 </section>
 
 <section class="featured-heading"><div class="container for-title">
