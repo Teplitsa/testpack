@@ -154,7 +154,13 @@ function rdc_posted_on(WP_Post $cpost) {
 		$meta[] = "<span class='category'>".__('Events', 'rdc')."</span>";
 		$sep = rdc_get_sep('&middot;');	
 	}
-	
+	elseif('project' == $cpost->post_type) {
+		
+		$p = get_page_by_path('activity');
+		if($p) {
+			$meta[] = "<span class='category'><a href='".get_permalink($p)."'>".get_the_title($p)."</a></span>";
+		}
+	}
 		
 	return implode($sep, $meta);		
 }

@@ -68,21 +68,38 @@ get_header(); ?>
 </section>
 
 <?php
-	$cat = get_the_terms($post->ID, 'category');
-	$pquery = new WP_Query(array(
-				'post_type'=> 'post',
-				'posts_per_page' => 5,
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'category',
-						'field' => 'id',
-						'terms' => (isset($cat[0])) ? $cat[0]->term_id : array()
-					)
+	if($cpost->post_type == 'post') {
+		$cat = get_the_terms($post->ID, 'category');
+		$pquery = new WP_Query(array(
+			'post_type'=> 'post',
+			'posts_per_page' => 5,
+			'post__not_in' => array($cpost->ID),
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'category',
+					'field' => 'id',
+					'terms' => (isset($cat[0])) ? $cat[0]->term_id : array()
 				)
-			));
-	
-	if($pquery->have_posts()){
-		rdc_more_section($pquery->posts, __('More news', 'rdc'), 'news', 'addon'); 
+			)
+		));
+		
+		if($pquery->have_posts()){
+			rdc_more_section($pquery->posts, __('More news', 'rdc'), 'news', 'addon'); 
+		}
 	}
+	elseif($cpost->post_type == 'project') {
+		$pquery = new WP_Query(array(
+			'post_type'=> 'project',
+			'posts_per_page' => 5,
+			'post__not_in' => array($cpost->ID),
+			'orderby' => 'rand'
+		));
+		
+		if($pquery->have_posts()){
+			rdc_more_section($pquery->posts, __('More projects', 'rdc'), 'projects', 'addon'); 
+		}
+	}
+	
+	
 
 get_footer();

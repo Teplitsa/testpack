@@ -254,7 +254,7 @@ function rdc_custom_metaboxes() {
     $format_cmb = new_cmb2_box( array(
         'id'            => 'post_format_metabox',
         'title'         => 'Настройки формата',
-        'object_types'  => array( 'post'), // Post type
+        'object_types'  => array( 'post', 'project'), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
@@ -267,7 +267,7 @@ function rdc_custom_metaboxes() {
 	//format
 	$format_cmb->add_field( array(
 		'name'             => 'Формат',
-		'desc'             => 'Укажите формат записи',
+		'desc'             => 'Укажите формат публикации',
 		'id'               => 'post_format',
 		'type'             => 'select',
 		'show_option_none' => false,

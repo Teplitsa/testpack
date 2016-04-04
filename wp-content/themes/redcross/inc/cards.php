@@ -78,7 +78,9 @@ function rdc_related_post_card(WP_Post $cpost) {
 <article class="tpl-related-post card"><a href="<?php echo $pl; ?>" class="entry-link">	
 	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
 	<div class="entry-data">
+		<?php if('project' != $cpost->post_type) { ?>
 		<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>');?></div>
+		<?php } ?>
 		<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
 	</div>
 </a></article>	

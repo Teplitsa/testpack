@@ -372,7 +372,7 @@ h2.logo-name {
 	}
 	
 	.close {
-		background: $color-text;
+		background: $color-link-three;
 		width: $mobile_height;
 		height: $mobile_height;
 		position: absolute;
@@ -395,7 +395,7 @@ h2.logo-name {
 		}
 		
 		&:hover {
-			background: $color-text-semi;
+			background: $color-link-two;
 		}
 	}
 }
