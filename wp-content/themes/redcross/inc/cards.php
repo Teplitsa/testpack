@@ -25,7 +25,7 @@ function rdc_project_card(WP_Post $cpost){
 ?>
 <article class="tpl-programm card"><a href="<?php echo $pl; ?>" class="entry-link">	
 	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
-	<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+	<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
 </a></article>
 <?php
 }

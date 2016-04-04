@@ -37,7 +37,8 @@
 		a { color: $color-white; }
 		
 		.ghost-button {
-			@include ghost-button(14px, $color-white, $color-link-three);
+			margin-top: $base;
+			@include ghost-button(16px, $color-white, $color-link-three);
 		}
 	}
 	

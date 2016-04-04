@@ -20,8 +20,7 @@
 
 .cards-loop {
 	display: flex;
-	flex-flow: row wrap;
-	margin: 0 auto 0 auto;
+	flex-flow: row wrap;	
 	align-items: stretch;
 	margin: 0 $gut/2;
 	
@@ -68,6 +67,10 @@
 				@include calc(width, '25% - 30px');				
 			}
 		}
+	}
+	
+	.squared & {
+		margin: 0 -1*$gut/2;
 	}
 }
 
@@ -148,7 +151,7 @@
 		@include post-title();
 		margin-bottom: $base*0.75;				
 		padding-top: $base;
-		@include hypens();
+		@include hyphens(auto);
 	}
 	
 	.entry-summary {
@@ -225,7 +228,7 @@
 		@include header-title(section);		
 		margin-bottom: $base*1.5;
 		margin-top: 4px;
-		@include hypens();
+		@include hyphens(auto);
 	
 		span {
 			margin-left: 8px;
@@ -411,7 +414,7 @@
 	
 	.entry-title {
 		@include header-title(section);
-		@include hypens();
+		@include hyphens(auto);
 	}
 	
 	.entry-meta {
@@ -478,16 +481,37 @@
 
 /** Programms **/
 .tpl-programm {
+	border: 2px solid $color-text;
+	padding: $gut/2;
 	margin-bottom: $gut;
 	
-	.entry-title {
-		@include post-title(featured);
-		margin: 18px 0 4px;
+	.entry-link {
+		display: block;
+		position: relative;
 	}
 	
-	.entry-summary {
-		@include body-text(summary);
+	.entry-title {
+		@include post-title();
+		position: absolute;
+		left: $gut/2;
+		bottom: $gut/2;
+		z-index: 100;
+		
+		span {
+			margin-left: 4px;
+			background: $color-white;
+			color: $color-text-black;
+			display: inline;
+			box-shadow: 4px 0 0 $color-white, -4px 0 0 $color-white;
+			box-decoration-break: clone;
+		}
 	}
+	
+	.entry-preview {
+		@include shadowed-preview();
+	}
+	
+	&:hover .entry-preview:after { background: rgba(0,0,0, 0.3); }
 }
 
 

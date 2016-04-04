@@ -22,7 +22,7 @@ get_header();
 	<?php echo $ex; ?>
 </div></section>
 
-<section class="main-content cards-holder"><div class="container">
+<section class="main-content cards-holder squared"><div class="container">
 <div class="cards-loop sm-cols-2 md-cols-2 lg-cols-3">
 	<?php
 		if($query->have_posts()){
@@ -37,8 +37,8 @@ get_header();
 </div>
 </div></section>
 
-<section class="bottom-content"><div class="container">
+<section class="bottom-content"><div class="container-wide"><div class="container">
 	<div class="entry-content"><?php echo $bottom; ?></div>
-</div></section>
+</div></div></section>
 
 <?php get_footer(); ?>

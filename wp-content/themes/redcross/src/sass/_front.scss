@@ -75,6 +75,11 @@ h1, h2, h3, h4, h5, h6 {
 .cards-holder {
 	background: $color-secondary-dark;
 	padding-top: $gut;
+	
+	&.squared {
+		background: transparent;
+		padding-top: 0;
+	}
 }
 
 
@@ -114,18 +119,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bottom-content {
-	padding: $gut 0;
+	margin-bottom: $gut*2;
 	
-	@include for(large-screens) {
-		.entry-content {
-			columns: 2;
-			column-gap: $gut;
-		}
+	.container-wide {
+		background: $color-secondary;
+		padding-top: $gut;
+		padding-bottom: $gut;
 	}
 	
-	li {
-		break-inside: avoid;
-	}
+	.page-section:last-of-type { margin-bottom: 0; }
 }
 
 
