@@ -421,11 +421,11 @@ function rdc_more_section($posts, $title = '', $type = 'news', $css= ''){
 	$all_link = '';
 	
 	if($type == 'projects'){
-		$all_link = "<a href='".home_url('activity')."'>".__('More', 'rdc')."</a>";
+		$all_link = "<a href='".home_url('activity')."'>".__('More projects', 'rdc')."&nbsp;&rarr;</a>";
 		$title = (empty($title)) ? __('Our projects', 'rdc') : $title;
 	}
 	else {
-		$all_link = "<a href='".home_url('news')."'>".__('More', 'rdc')."</a>";
+		$all_link = "<a href='".home_url('news')."'>".__('More news', 'rdc')."&nbsp;&rarr;</a>";
 		$title = (empty($title)) ? __('Latest news', 'rdc') : $title;
 	}
 

@@ -82,7 +82,7 @@ $red_cross  : 42px;
 .logo-name {
 	text-transform: uppercase;		
 	line-height: 1;
-	color: $color-link-three;
+	color: $color-text-black;
 }
 
 h1.logo-name {
@@ -174,7 +174,7 @@ h2.logo-name {
 			height: $full_height;
 			border-left: 1px solid $color-border-normal;			
 			padding: 13px 18px 0 18px;
-			color: $color-text-light;
+			color: $color-text;
 			@include nav-text(multiline);
 			text-transform: none;
 			
@@ -308,14 +308,22 @@ h2.logo-name {
 		
 	input {
 		@include nav-text(meta);
+		text-transform: none;
 		padding: 18px $gut/2;
-		color: $color-text;
+		color: $color-text-black;
 		border: none;
 		width: 100%;
+		border-bottom: 1px solid $color-border-light;
 		
 		@include placeholder {
-			color: $color-text-light;
-		}		
+			color: $color-text-semi;
+		}
+		
+		&:focus {
+			box-shadow: inset 0px 1px 2px rgba(50,50,50, 0.08);			
+			border-color: #bebebe;
+			//border-bottom: 2px solid $color-text-black;
+		}
 	}
 }
 
@@ -347,7 +355,7 @@ h2.logo-name {
 	
 	.search-holder {
 		.svg-icon { display: none; }
-		border-bottom: 1px solid $color-border-light;
+		//border-bottom: 1px solid $color-border-light;
 	}
 	
 	.social-menu {
@@ -408,7 +416,7 @@ h2.logo-name {
 		
 		& > a {
 			display: block;
-			@include nav-text(meta);
+			@include nav-text(menu);
 			color: $color-text-black;
 			@include transition(all 0.3s);
 			
@@ -441,6 +449,7 @@ h2.logo-name {
 			width: $mobile_height;
 			height: $mobile_height;
 			padding: ($mobile_height - 14px)/2;
+					
 			
 			@include for(medium-screens) {				
 				width: $full_height;				
@@ -450,6 +459,11 @@ h2.logo-name {
 				width: 14px;
 				height: 14px;
 				fill: $color-text-black;
+			}
+			
+			&:hover {
+				background: $color-text-black;
+				.svg-icon  { fill: $color-white; }
 			}
 			
 			.icon-up { display: none; }

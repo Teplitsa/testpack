@@ -1170,15 +1170,38 @@ jQuery(document).ready(function($){
 		return false;
 	}
 	
-	/** Equal height **/
-	imagesLoaded('.eqh-container', function(){
-		$('.eqh-el').responsiveEqualHeightGrid();
-		
-	});
+	
+	/** == Responsive media == **/
+    var resize_embed_media = function(){
 
-	$(window).resize(function(){
-		$('.eqh-container .eqh-el').responsiveEqualHeightGrid();
-	});
+        $('iframe, embed, object').each(function(){
+
+            var $iframe = $(this),
+                $parent = $iframe.parent(),
+                do_resize = false;
+				
+            if($parent.hasClass('embed-content')){
+                do_resize = true;            
+            }			
+            else {                
+                
+                $parent = $iframe.parents('.entry-content, .player');
+                if($parent.length)
+                    do_resize = true;				
+            }
+			
+            if(do_resize) {
+                var change_ratio = $parent.width()/$iframe.attr('width');
+                $iframe.width(change_ratio*$iframe.attr('width'));
+                $iframe.height(change_ratio*$iframe.attr('height'));
+            }
+        });
+    };
+	
+    resize_embed_media(); // Initial page rendering
+    $(window).resize(function(){		
+		resize_embed_media();	
+	});	
 	
 	
 	/* Center logos  */

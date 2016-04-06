@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-04 18:03+0300\n"
-"PO-Revision-Date: 2016-04-04 18:03+0300\n"
+"POT-Creation-Date: 2016-04-06 10:10+0300\n"
+"PO-Revision-Date: 2016-04-06 10:12+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -39,8 +39,8 @@ msgstr "Мы в социальных сетях"
 
 #: footer.php:47
 #, php-format
-msgid "All materials of the site are avaliabe under license %s."
-msgstr "Все материалы сайта доступны по лиценции %s."
+msgid "All materials of the site are avaliabe under license %s"
+msgstr "Все материалы сайта доступны по лицензии %s"
 
 #: header.php:18
 msgid "Skip to content"
@@ -132,7 +132,7 @@ msgstr ""
 msgid "Please, set a text to describe an additional ways to donate."
 msgstr ""
 
-#: inc/extras.php:63 inc/template-tags.php:424 inc/template-tags.php:428
+#: inc/extras.php:63
 msgid "More"
 msgstr "Ещё"
 
@@ -156,9 +156,17 @@ msgstr "Навигация по записям"
 msgid "Homepage"
 msgstr "Главная"
 
+#: inc/template-tags.php:424
+msgid "More projects"
+msgstr "Еще проекты"
+
 #: inc/template-tags.php:425
 msgid "Our projects"
 msgstr "Наши программы"
+
+#: inc/template-tags.php:428
+msgid "More news"
+msgstr "Еще новости"
 
 #: inc/template-tags.php:429
 msgid "Latest news"
@@ -180,13 +188,16 @@ msgstr "Социальные кнопки"
 msgid "Social links menu with optional text"
 msgstr "Меню социальных кнопок с сопроводительным текстом"
 
-#: single.php:87
-msgid "More news"
-msgstr "Еще новости"
+#: single.php:97
+msgid "Related news"
+msgstr "Новости по теме"
 
-#: single.php:99
-msgid "More projects"
-msgstr "Еще проекты"
+#: single.php:109
+msgid "Related projects"
+msgstr "Познакомьтесь с другими проектами"
+
+#~ msgid "All materials of the site are avaliabe under license %s."
+#~ msgstr "Все материалы сайта доступны по лиценции %s."
 
 #~ msgid "Made by"
 #~ msgstr "Разработка сайта"

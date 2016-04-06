@@ -168,21 +168,6 @@
 	overflow: hidden;
 	@include transition(all 0.8s);
 	
-	&:before {
-		content: '';
-		display: block;
-		width: 100%;
-		height: 100%;		
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 10;
-		background: rgba(0,0,0, 0.5);
-		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+75&0+0,0.5+75 */
-		background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 75%);
-		background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 75%);
-		background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 75%);
-	}
 	
 	.container { z-index: 100;	}
 	
@@ -214,12 +199,10 @@
 		max-width: 640px;
 		color: $color-white;
 		align-self: flex-end;
-		@include transition(all 0.3s);
+		@include transition(all 0.3s);	
+		
 	}
-	
-	a.featured-content:hover {
-		background: rgba(0,0,0, 0.25);
-	}
+		
 	.entry-meta {
 		@include post-meta();
 	}
@@ -230,13 +213,19 @@
 		margin-top: 4px;
 		@include hyphens(auto);
 	
-		span {
+		span, a {
 			margin-left: 8px;
 			background: $color-white;
 			color: $color-text-black;
 			display: inline;
 			box-shadow: 8px 0 0 $color-white, -8px 0 0 $color-white;
-			box-decoration-break: clone;			
+			box-decoration-break: clone;
+			
+			&:hover {
+				background: $color-link-two;
+				color:$color-white;
+				box-shadow: 8px 0 0 $color-link-two, -8px 0 0 $color-link-two;
+			}
 		}
 	}
 	
@@ -244,6 +233,8 @@
 		@include body-text();
 		color: transparentize($color-white, 0.12);
 		@include transition(all 0.3s);
+		padding: $gut/2;
+		background: rgba(0,0,0, 0.6);
 	}
 	
 	.cta {
@@ -252,11 +243,28 @@
 			@include button();
 		}
 	}
+	
+	a.featured-content:hover {
+		background: rgba(0,0,0, 0.65);
+		
+		.entry-title span, .entry-title span:hover,
+		.entry-title a, .entry-title a:hover {
+			background: transparent;
+			color: $color-white;
+			box-shadow:none;
+		}
+		
+		.entry-summary {
+			background: transparent;
+		}
+		
+		.entry-meta { background: transparent; }
+	}
 }
 
 .tpl-featured {
 	.featured-body .entry-title { 
-		@include post-title();
+		@include post-title(featured);
 	}
 	.featured-body  .featured-content {
 		max-width: 760px;					
@@ -305,11 +313,20 @@
 	.related-all-link {
 		text-align: center;
 		padding-bottom: $gut;
+		color: $color-link-three;
 		
 		a {
-			@include ghost-button(16px, $color-text-black, $color-white);
-			min-width: 120px;
+			@include nav-text(meta);
+			padding: 14px 24px;
+			font-size: 16px;
+			line-height: 18px;
+			color: $color-text-black;			
 			text-align: center;
+			
+			&:hover, &:focus, &:active {
+				color: $color-white;
+				background: $color-text-black;	
+			}
 		}
 		
 		margin-top: $gut;
@@ -419,11 +436,13 @@
 	
 	.entry-meta {
 		@include nav-text(meta);
-		color: $color-text-light;
+		color: $color-link-three;
 		a {
 			color: inherit;
 			&:hover, &:focus, &:active {
-				color: $color-link-two;
+				background: $color-link-two;
+				color: $color-white;
+				box-shadow: 3px 0 0 $color-link-two, -3px 0 0 $color-link-two;
 			}
 		}
 	}
@@ -435,9 +454,14 @@
 	.entry-preview {
 		position: relative;
 		
-	}	
+	}
+	
+	.lead {
+		margin-bottom: $base;
+	}
 }
 
+.format-introvid .entry-preview,
 .format-standard .entry-preview {
 	margin-bottom: $gut;
 }
@@ -481,8 +505,6 @@
 
 /** Programms **/
 .tpl-programm {
-	border: 2px solid $color-text;
-	padding: $gut/2;
 	margin-bottom: $gut;
 	
 	.entry-link {
@@ -496,6 +518,7 @@
 		left: $gut/2;
 		bottom: $gut/2;
 		z-index: 100;
+		@include calc(width, '100% - 30px');
 		
 		span {
 			margin-left: 4px;

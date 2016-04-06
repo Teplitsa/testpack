@@ -11,7 +11,7 @@ $video = $thumbnail = '';
 
 
 if($format == 'introvid'){
-	$video = get_post_meta($qo->ID, 'post_video', true);
+	$video = get_post_meta($cpost->ID, 'post_video', true);
 	if(empty($video))
 		$video = 'standard';
 }
@@ -24,10 +24,6 @@ get_header(); ?>
 <?php if($format == 'introimg'){ ?>
 <section class="featured-head introimg">
 	<div class="tpl-featured-bg container-wide" style="background-image: url(<?php echo $thumbnail;?>);" ></div>	
-</section>
-<?php } elseif($format == 'introvid') { ?>
-<section class="featured-head introvid">
-	<div class="player container-wide"><?php echo apply_filters('the_content', $video);?></div>	
 </section>
 <?php } ?>
 
@@ -47,10 +43,17 @@ get_header(); ?>
 		<?php if($format == 'standard') { ?>
 			<div class="entry-preview">
 				<?php echo rdc_post_thumbnail($cpost->ID, 'medium-thumbnail');?>						
-			</div>		
+			</div>
+		<?php } elseif($format == 'introvid') { ?>
+			<div class="entry-preview introvid player">
+				<?php echo apply_filters('the_content', $video);?>
+			</div>
 		<?php } ?>				
 			
-			<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
+			<div class="entry-content">
+				<div class="lead"><?php echo apply_filters('the_content', $cpost->post_excerpt); ?></div>
+				<?php echo apply_filters('the_content', $cpost->post_content); ?>
+			</div>
 		</main>
 		
 		<div id="rdc_sidebar" class="bit md-4">
@@ -83,9 +86,16 @@ get_header(); ?>
 			)
 		));
 		
-		if($pquery->have_posts()){
-			rdc_more_section($pquery->posts, __('More news', 'rdc'), 'news', 'addon'); 
+		if(!$pquery->have_posts()) {
+			$pquery = new WP_Query(array(
+				'post_type'=> 'post',
+				'posts_per_page' => 5,
+				'post__not_in' => array($cpost->ID),			
+			));
 		}
+		
+		rdc_more_section($pquery->posts, __('Related news', 'rdc'), 'news', 'addon'); 
+		
 	}
 	elseif($cpost->post_type == 'project') {
 		$pquery = new WP_Query(array(
@@ -96,7 +106,7 @@ get_header(); ?>
 		));
 		
 		if($pquery->have_posts()){
-			rdc_more_section($pquery->posts, __('More projects', 'rdc'), 'projects', 'addon'); 
+			rdc_more_section($pquery->posts, __('Related projects', 'rdc'), 'projects', 'addon'); 
 		}
 	}
 	

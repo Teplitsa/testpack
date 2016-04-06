@@ -36,10 +36,10 @@ $color-text:   rgba(0,0,0, 0.8);
 $color-white:  #ffffff;
 
 $color-link-one:   #33a3ce;
-$color-link-two:   #EF2737;
+$color-link-two:   #ff1744; // #EF2737;
 $color-link-three: #D82332; 
 
-$color-text-black:			#191411;
+$color-text-black:			#000000;
 $color-text-semi:			rgba(0,0,0, 0.6);
 $color-text-light:			rgba(0,0,0, 0.45);
 $color-secondary:			#f5f5f5;
@@ -70,14 +70,14 @@ $fixed_side: 222px;
 
 // Typo
 @mixin body-text($mod: default) {
-	$body-text-size: 14px;
+	$body-text-size: 16px;
 	
 	font-family: $body;
 	color: $color-text;
 	
 	font-size: $body-text-size;
 	font-weight: normal;
-	line-height: 1.5;
+	line-height: 1.45;
 	
 	@if $mod == summary {
 		font-size: $body-text-size*0.928;
@@ -91,11 +91,10 @@ $fixed_side: 222px;
 }
 
 @mixin nav-text($mod: default) {
-	$nav-text-size: 14px;
-	
+	$nav-text-size: 16px;	
 	font-family: $nav;
 	text-transform: uppercase;
-	font-stretch:condensed;	
+	//font-stretch:condensed;	
 	font-size: $nav-text-size;
 	font-weight: normal;
 	line-height: 1;	
@@ -104,7 +103,13 @@ $fixed_side: 222px;
 		line-height: 19px;
 	}
 	@else if $mod == meta {
-		font-size: 16px;		
+		font-size: 16px;
+		font-weight: normal;
+	}
+	@else if $mod == menu {
+		font-size: 16px;
+		letter-spacing: 0.5px;
+		font-weight: 700;
 	}
 }
 
@@ -130,7 +135,8 @@ $fixed_side: 222px;
 	@else if $mod == featured {
 		font-size: 36px;
 		line-height: 1.15;	
-		letter-spacing: normal;		
+		letter-spacing: 0.5px;
+		font-weight: 700;
 	}
 	@else if $mod == multiline {		
 		
@@ -202,7 +208,7 @@ $fixed_side: 222px;
 	border: 1px solid $color-link-three;	
 	@include transition(all 0.3s);
 	
-	padding: 11px 18px;
+	padding: 14px 24px;
 	font-size: 16px;
 	line-height: 18px;
 	

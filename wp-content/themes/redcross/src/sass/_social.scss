@@ -51,7 +51,7 @@ $social_color: (
 		margin-right: 8px;
 		
 		a {
-			@include social-button-link(40px, 20px);			
+			@include social-button-link(46px, 20px);			
 			span { display: none; }
 		}
 		
@@ -64,7 +64,7 @@ $social_color: (
 		}
 	}
 	
-	@each $item in vk, facebook, youtube {
+	@each $item in vk, facebook, youtube, twitter {
 		
 		.#{$item} a {
 			background: social_color($item);
@@ -77,11 +77,13 @@ $social_color: (
 
 .bottom-bar {
 	
-	@each $item in vk, facebook, youtube {		
+	@each $item in vk, facebook, youtube, twitter {		
 		.social-menu .#{$item} a {
 			background: $color-text-black;
 			&:hover, &:focus, &:active {
-				background: social_color($item);
+				//background: social_color($item);
+				background: $color-white;
+				.svg-icon { fill: $color-text-black;}
 			}
 		}
 	}	
@@ -137,7 +139,7 @@ $social_color: (
 }
 
 .newsletter-form {
-	max-width: 640px;
+	max-width: 680px;
 	
 	.screen-reader-response {
 		@extend .screen-reader-text;
@@ -145,14 +147,23 @@ $social_color: (
 	
 	.nl-field {
 		input {
-			@include body-text();
+			@include nav-text(meta);
+			text-transform: none;
 			line-height: 18px;
-			border: 1px solid $color-border-normal;
+			border: 1px solid $color-text-light;
 			background: $color-white;
-			box-shadow: none !important;
-			padding: 11px;
+			box-shadow: none;
+			padding: 14px;
 			width: 100%;
 			border-radius: 0;
+			
+			@include placeholder {
+				color: $color-text;
+			}
+			
+			&:focus {
+				box-shadow: inset 0px 1px 2px rgba(50,50,50, 0.1);		
+			}
 		}
 		
 		.wpcf7-not-valid-tip {
@@ -167,7 +178,7 @@ $social_color: (
 		margin-top: 8px;
 		input {
 			@include button();
-			border-radius: 0;
+			border-radius: 0;			
 		}
 	}
 	
@@ -179,11 +190,11 @@ $social_color: (
 		
 		.nl-field {
 			flex: 1 1 auto;
-			@include calc(width, '100% - 170px');
+			@include calc(width, '100% - 180px');
 		}
 		
 		.nl-submit {
-			width: 145px + 16px;
+			width: 155px + 16px;
 			margin: 0 0 0 8px;
 			flex: 0 0 auto;			
 		}
@@ -214,6 +225,9 @@ $social_color: (
 		.nl-field {
 			input {
 				border: none;
+				&:focus {
+					box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.35);		
+				}
 			}
 			
 			.wpcf7-not-valid-tip {
@@ -225,10 +239,11 @@ $social_color: (
 			input {
 				background: $color-text-black;
 				border-color: $color-text-black;
-				
+							
 				&:hover, &:focus, &:active {
-					background: $color-text-semi;
-					border-color: $color-text-semi;
+					background: $color-white;
+					border-color: $color-white;
+					color: $color-text-black;
 				}
 			}
 		}

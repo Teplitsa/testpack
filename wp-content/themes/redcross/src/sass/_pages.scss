@@ -109,6 +109,7 @@
 	justify-content: space-between;	
 	
 	.col3-title {
+		@include post-title(featured);
 		margin-bottom: $base*1.2;
 		height: 32px;
 		flex: 0 0 auto;

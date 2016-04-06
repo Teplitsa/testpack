@@ -62,7 +62,7 @@ function rdc_featured_action_card(WP_Post $cpost, $cta = ''){
 	
 	<div class="container featured-body">
 		<div class="featured-content">			
-			<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
+			<h4 class="entry-title"><a href="<?php echo $pl; ?>"><?php echo get_the_title($cpost);?></a></h4>
 			<div class="entry-summary"><?php echo $ex;?></div>
 			<div class="cta"><a href="<?php echo $pl; ?>" class="cta-button"><?php echo $cta;?></a></div>
 		</div>
