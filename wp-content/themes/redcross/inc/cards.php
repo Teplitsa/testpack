@@ -125,15 +125,18 @@ function rdc_event_card(WP_Post $cpost){
 <?php
 }
 
-function rdc_person_card(WP_Post $cpost){
+function rdc_person_card(WP_Post $cpost, $linked = true){
 	$pl = get_permalink($cpost);	
 ?>
-<article class="tpl-person card"><a href="<?php echo $pl; ?>" class="entry-link">	
+<article class="tpl-person card">
+<?php if($linked) {?> <a href="<?php echo $pl; ?>" class="entry-link"><?php } ?>
 	
 	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
 	<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-	<div class="entry-meta"><?php echo apply_filters('rdc_the_title', $cpost->post_excerpt);?></div>	
-</a></article>
+	<div class="entry-meta"><?php echo apply_filters('rdc_the_title', $cpost->post_excerpt);?></div>
+	
+<?php if($linked) {?></a><?php } ?>
+</article>
 <?php
 }
 

@@ -162,4 +162,47 @@ function rdc_frm_get_form_id_from_key ( $form_key ) {
 }
 
 
+/** == Contact Form 7 == **/
 
+//text field - remove span around input
+remove_action( 'wpcf7_init', 'wpcf7_add_shortcode_text' );
+add_action( 'wpcf7_init', 'rdc_wpcf7_add_shortcode_text' );
+
+function rdc_wpcf7_add_shortcode_text() {
+	
+	wpcf7_add_shortcode(
+		array( 'text', 'text*', 'email', 'email*', 'url', 'url*', 'tel', 'tel*' ),
+		'rdc_wpcf7_text_shortcode_handler', true );
+}
+
+function rdc_wpcf7_text_shortcode_handler($tag) {
+	
+	$html = wpcf7_text_shortcode_handler( $tag );
+	
+	preg_match("#<\s*?span\b[^>]*>(.*?)</span\b[^>]*>#s", $html, $l);
+	if(isset($l[1]) && !empty($l[1]))
+		$html = $l[1];
+	
+	return $html;
+}
+
+
+//textarea
+remove_action( 'wpcf7_init', 'wpcf7_add_shortcode_textarea' );
+add_action( 'wpcf7_init', 'rdc_wpcf7_add_shortcode_textarea' );
+
+function rdc_wpcf7_add_shortcode_textarea() {
+	wpcf7_add_shortcode( array( 'textarea', 'textarea*' ),
+		'rdc_wpcf7_textarea_shortcode_handler', true );
+}
+
+function rdc_wpcf7_textarea_shortcode_handler($tag) {
+	
+	$html = wpcf7_textarea_shortcode_handler( $tag );
+	
+	preg_match("#<\s*?span\b[^>]*>(.*?)</span\b[^>]*>#s", $html, $l);
+	if(isset($l[1]) && !empty($l[1]))
+		$html = $l[1];
+	
+	return $html;
+}

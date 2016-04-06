@@ -83,7 +83,8 @@ $social_color: (
 			&:hover, &:focus, &:active {
 				//background: social_color($item);
 				background: $color-white;
-				.svg-icon { fill: $color-text-black;}
+				
+				.svg-icon { fill: social_color($item);}
 			}
 		}
 	}	

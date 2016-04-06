@@ -117,7 +117,7 @@ require get_template_directory().'/inc/cards.php';
 require get_template_directory().'/inc/donations.php';
 require get_template_directory().'/inc/events.php';
 require get_template_directory().'/inc/extras.php';
-//require get_template_directory().'/inc/forms.php';
+require get_template_directory().'/inc/forms.php';
 require get_template_directory().'/inc/post-types.php';
 require get_template_directory().'/inc/related.php';
 require get_template_directory().'/inc/request.php';

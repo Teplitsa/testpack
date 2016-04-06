@@ -1,1 +1,38 @@
 /** == Modules == **/
+
+/** Map **/
+.mymap-icon {
+	width: 36px;
+	height: 36px;
+	
+	.icon-marker{
+		display: inline-block;
+		width: 36px;
+		height: 36px;
+		fill: $color-link-three;
+	}
+}
+
+.leaflet-container .leaflet-control-attribution a {
+	color: $color-link-three;
+	text-decoration: none;
+	
+	&:hover, &:focus, &:active {
+		color: $color-link-two;
+	}
+}
+
+.no-js .pw_map-wrap {
+	background: $color-secondary;
+	position: relative;
+	
+	&:before {
+		content: 'Включите JavaScript для просмотра карты';		
+		display: inline-block;
+		@include nav-text();
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+	}
+}

@@ -47,6 +47,12 @@
 				@include calc(width, '50% - 30px');				
 			}
 		}
+		
+		&.md-cols-3 {			
+			.card {
+				@include calc(width, '33.3% - 30px');				
+			}
+		}
 	}
 	
 	@include for(large-screens) {
@@ -63,6 +69,20 @@
 		}
 		
 		&.lg-cols-4 {			
+			.card {
+				@include calc(width, '25% - 30px');				
+			}
+		}
+	}
+	
+	@include for(exlarge-screens) {
+		&.exlg-cols-5 {			
+			.card {
+				@include calc(width, '20% - 30px');				
+			}
+		}
+				
+		&.exlg-cols-4 {			
 			.card {
 				@include calc(width, '25% - 30px');				
 			}
@@ -555,7 +575,8 @@
 	margin-bottom: $gut;
 				
 	.entry-title {		
-		@include post-title(small_title);		
+		@include post-title(small_title);
+		margin: $base/2 0 4px;
 	}
 	
 	.entry-meta {		

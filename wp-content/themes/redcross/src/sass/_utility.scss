@@ -146,7 +146,7 @@ img.wp-smiley {
 	text-align: right; }
 
 .text-center {
-	text-align: left; }
+	text-align: center; }
 
 
 /* utilities */
@@ -203,12 +203,12 @@ $margin-base: 16px;
 	//titles
 	h2, h3 {
 		@include post-title(featured);
-		margin: 1.8em 0 $margin-base/2;		
+		margin: 1.5em 0 $margin-base;		
 	}
 	
 	h4 { 
 		@include post-title(multiline);
-		margin: 1.8em 0 $margin-base/2;		
+		margin: 1.5em 0 $margin-base;		
 	}
 	
 	h5 {
@@ -217,14 +217,14 @@ $margin-base: 16px;
 		font-weight: bold;
 	}
 	
-	h6 {
-		
+	h6 {		
 		margin: $margin-base 0 $margin-base/2;
 	}
 	
 	h2, h3, h4, h5, h6 {
 		&:first-child { margin-top: 0; }
 	}
+	
 	
 	p, li, h4, h3, h5, h6 {
 		@include hyphens(auto);
@@ -238,7 +238,7 @@ $margin-base: 16px;
 		margin-bottom: $margin-base;			
 	}
 	
-	figure, .pw_map_canvas {
+	figure, .pw_map-wrap {
 		margin: $margin-base*2 0;
 		&:last-child { margin-bottom: 0; }
 		&:first-child { margin-top: 0; }
@@ -312,7 +312,53 @@ $margin-base: 16px;
 		padding-left: $gut/2;
 		margin: $gut 0;
 		
+		&:first-child { margin-top: 0;}
+		&:lash-child { margin-bottom: 0;}
+		
+		&.center {
+			border-left: none;
+			text-align: center;
+			position: relative;
+			padding: $gut 0;
+			
+			h5 {
+				text-align: center;
+				margin-top: 0;
+			}
+			
+			h3 {
+				@include header-title(quote_title);
+				text-align: center;
+				&:last-child { margin-bottom: 0; }
+			}
+			
+			&:before {
+				content: '';
+				displya: block;
+				width: 150px;
+				height: 6px;
+				background: $color-text-black;
+				position: absolute;
+				top: -3px;
+				left: 50%;
+				margin-left: -75px;
+			}
+			
+			&:after {
+				content: '';
+				displya: block;
+				width: 150px;
+				height: 6px;
+				background: $color-text-black;
+				position: absolute;
+				bottom: -3px;
+				left: 50%;
+				margin-left: -75px;
+			}
+		}
 	}
+	
+	h5 + h3 { margin-top: 0; }
 	
 	hr {
 		border: none;

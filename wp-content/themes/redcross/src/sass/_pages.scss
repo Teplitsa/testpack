@@ -1,8 +1,7 @@
 /** Pages **/
 
-.page-section {
-	
-	margin-bottom: $gut;
+.page-section {	
+	margin-bottom: $gut*2;
 	
 	.page-section-title {
 		@include header-title(head_title);
@@ -10,16 +9,21 @@
 		margin: 0 0 $base;
 	}
 	
-	&.picture {
-		min-height: 40vh;
-		margin: 0 -5% $base;
-		padding: $gut 5%;
+	&.picture {		
+		margin: 0 -100px $gut*2;
+		padding: 0 100px;
 		background-color: #333;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center top;
-				
-		.bit {
+		
+		.rdc-col-row {
+			min-height: 55vh;
+			padding-top: $gut;
+			padding-bottom: $gut;
+		}
+		
+		.rdc-col {
 			color: $color-white;
 			h2, h3, h4, h5, h6 {
 				color: $color-white;
@@ -28,14 +32,83 @@
 	}
 	
 	&.cta {
-		border-top: 6px solid $color-link-three;
-		border-bottom: 6px solid $color-link-three;
+		border-top: 6px solid $color-text-black;
+		border-bottom: 6px solid $color-text-black;
 		padding: $base 0;
+		text-align: center;
+		margin-bottom: $gut*2;
 		
 		h4 { margin: $base 0; }
-		text-align: center;
 		
-		margin-bottom: $gut*2;
+		.button {
+			@include button();
+		}		
+	}
+	
+	&.team-section {
+		margin-bottom: $gut*2 - $gut;
+	}
+	
+	&.grey-section {
+		background: $color-secondary;
+		margin: 0 -100px $gut*2;
+		padding: $gut 100px;
+		
+		a {
+			color: $color-text-black;
+			text-decoration: underline;
+			&:hover, &:focus, &:active {
+				color: $color-link-three;				
+			}
+		}
+		
+	}
+	
+	&.col1_center {
+		max-width: 760px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+//columns
+.rdc-col-row {
+	display: flex;
+	flex-flow: row wrap;	
+	align-items: center;
+	
+	.items-top & {
+		align-items: flex-start;
+	}
+	
+	@include for(medium-screens) {
+		margin: 0 -25px;
+	}
+	
+	@include for(large-screens) {
+		margin: 0 -40px;
+	}
+	
+	.rdc-col + .rdc-col {
+		margin-top: $gut*2;
+		
+		@include for(medium-screens){
+			margin-top: 0;
+		}
+	}
+	
+	.rdc-col {		
+		width: 100%;
+		
+		@include for(medium-screens) {
+			@include calc(width, '50% - 50px');
+			margin: 0 25px;
+		}
+		
+		@include for(large-screens) {
+			@include calc(width, '50% - 80px');
+			margin: 0 40px;
+		}
 	}
 }
 
