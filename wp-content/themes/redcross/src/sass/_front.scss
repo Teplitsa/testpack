@@ -187,6 +187,9 @@ h1, h2, h3, h4, h5, h6 {
 	
 	.copy {
 		max-width: 560px;
+		@include for(medium-screens) {
+			padding-top: 16px;
+		}
 	}
 	
 	.lg-offset-1 {
