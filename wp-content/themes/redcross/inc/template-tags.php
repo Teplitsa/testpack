@@ -161,6 +161,13 @@ function rdc_posted_on(WP_Post $cpost) {
 			$meta[] = "<span class='category'><a href='".get_permalink($p)."'>".get_the_title($p)."</a></span>";
 		}
 	}
+	elseif('person' == $cpost->post_type) {
+		
+		$cat = get_the_term_list($cpost->ID, 'person_cat', '<span class="category">', ', ', '</span>');
+		if(!empty($cat)) {
+			$meta[] = $cat;
+		}
+	}
 		
 	return implode($sep, $meta);		
 }
@@ -424,6 +431,11 @@ function rdc_more_section($posts, $title = '', $type = 'news', $css= ''){
 		$all_link = "<a href='".home_url('activity')."'>".__('More projects', 'rdc')."&nbsp;&rarr;</a>";
 		$title = (empty($title)) ? __('Our projects', 'rdc') : $title;
 	}
+	elseif($type == 'people') {
+		$cat = get_term_by('slug', 'volunteers', 'person_cat');
+		$all_link = "<a href='".get_term_link($cat)."'>".__('More volunteers', 'rdc')."&nbsp;&rarr;</a>";
+		$title = (empty($title)) ? __('Our volunteers', 'rdc') : $title;
+	}
 	else {
 		$all_link = "<a href='".home_url('news')."'>".__('More news', 'rdc')."&nbsp;&rarr;</a>";
 		$title = (empty($title)) ? __('Latest news', 'rdc') : $title;
@@ -433,13 +445,25 @@ function rdc_more_section($posts, $title = '', $type = 'news', $css= ''){
 ?>
 <section class="<?php echo esc_attr($css);?>"><div class="container-wide">
 <h3 class="related-title"><?php echo $title; ?></h3>
-<div class="related-cards-loop">
+
+<?php if(is_singular('person')) { ?>
+<div class="cards-loop sm-cols-2 md-cols-2 lg-cols-4 related-people-loop">
 	<?php
 		foreach($posts as $p){
+			rdc_person_card($p, true);
+		}
+	?>
+</div>
+<?php } else { ?>
+<div class="related-cards-loop">
+	<?php
+		foreach($posts as $p){			
 			rdc_related_post_card($p);
 		}		
 	?>
 </div>
+<?php } ?>
+
 <div class="related-all-link"><?php echo $all_link;?></div>
 </div></section>
 <?php

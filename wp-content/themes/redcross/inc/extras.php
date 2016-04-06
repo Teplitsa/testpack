@@ -131,6 +131,16 @@ function rdc_get_post_id_from_posts($posts){
 	return $ids;
 }
 
+function rdc_get_term_id_from_terms($terms){
+		
+	$ids = array();
+	if(!empty($terms)){ foreach($terms as $t) {
+		$ids[] = $t->term_id;
+	}}
+	
+	return $ids;
+}
+
 
 /** Favicon **/
 function rdc_favicon(){

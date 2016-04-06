@@ -231,7 +231,22 @@ $fixed_side: 222px;
 		color: $color-white;
 		border-color: $color-link-two;
 	}
+	
+	@if $mod == white {
+		background: $color-white;
+		border: 1px solid $color-white;
+		color: $color-link-three;
+		&:visited { color: $color-link-three; }
+		
+		&:hover, &:focus, &:active {			
+			background: $color-link-two;
+			color: $color-white;
+			border-color: $color-link-two;
+		}
+	}
 }
+
+
 
 @mixin ghost-button($size: 16px, $color: #fff, $hover_text: #000) {
 	font-family: $nav;

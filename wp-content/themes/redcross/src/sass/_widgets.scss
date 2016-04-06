@@ -40,6 +40,10 @@
 			margin-top: $base;
 			@include ghost-button(16px, $color-white, $color-link-three);
 		}
+		
+		.button  {
+			@include button(white);
+		}
 	}
 	
 	&.text-center {

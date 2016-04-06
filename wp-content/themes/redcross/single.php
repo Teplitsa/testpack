@@ -109,7 +109,27 @@ get_header(); ?>
 			rdc_more_section($pquery->posts, __('Related projects', 'rdc'), 'projects', 'addon'); 
 		}
 	}
-	
+	elseif($cpost->post_type == 'person') {
+		$cat = get_the_terms ($cpost, 'person_cat');
+		
+		$pquery = new WP_Query(array(
+			'post_type'=> 'person',
+			'posts_per_page' => 4,
+			'post__not_in' => array($cpost->ID),
+			'orderby' => 'rand',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'person_cat',
+					'field' => 'id',
+					'terms' => (!empty($cat)) ? rdc_get_term_id_from_terms($cat): array()
+				)
+			)
+		));
+		
+		if($pquery->have_posts()){
+			rdc_more_section($pquery->posts, __('Our volunteers', 'rdc'), 'people', 'addon'); 
+		}
+	}
 	
 
 get_footer();
