@@ -32,7 +32,7 @@ $base: 24px;
 
 
 //Colors
-$color-text:   rgba(0,0,0, 0.8);
+$color-text:   rgba(0,0,0, 0.9);
 $color-white:  #ffffff;
 
 $color-link-one:   #33a3ce;
@@ -70,7 +70,7 @@ $fixed_side: 222px;
 
 // Typo
 @mixin body-text($mod: default) {
-	$body-text-size: 16px;
+	$body-text-size: 18px;
 	
 	font-family: $body;
 	color: $color-text;
