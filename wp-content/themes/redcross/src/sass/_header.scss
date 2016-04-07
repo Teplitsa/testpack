@@ -97,8 +97,8 @@ h1.logo-name {
 
 h2.logo-name {
 	font-size: 12px;
-	font-family: $body;		
-	letter-spacing: 0.5px;
+	font-family: $sans;		
+	letter-spacing: 1px;
 	padding-top: 4px;
 	
 	@include for(medium-screens) {

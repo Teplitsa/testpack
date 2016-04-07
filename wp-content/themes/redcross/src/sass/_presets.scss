@@ -8,7 +8,7 @@ $heading:    'Roboto Condensed', "HelveticaNeue-CondensedBold", "Helvetica Neue"
 $title:      'Roboto Condensed', "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $nav:        'Roboto Condensed', "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
-$sans:       Verdana,Geneva,sans-serif;
+$sans:       'Roboto',Arial, sans-serif;
 $mono: 	     "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 
@@ -152,12 +152,12 @@ $fixed_side: 222px;
 @mixin sub-title($mod: default) {
 	$sub-title-size: 14px;
 	
-	font-family: $title;
+	font-family: $sans;
 	color: $color-text-light;
 		
 	font-size: $sub-title-size;
 	font-weight: normal;
-	line-height: 1.3;
+	line-height: 1.5;
 	text-transform: none;
 	letter-spacing: normal;
 		
@@ -168,8 +168,8 @@ $fixed_side: 222px;
 		font-style:italic;
 		font-size: 13px;
 	}
-	@else if $mod == extended {				
-		font-size: 16px;		
+	@else if $mod == small {				
+		font-size: 12px;		
 	}	
 }
 

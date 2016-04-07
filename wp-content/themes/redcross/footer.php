@@ -37,10 +37,10 @@ $footer_text = get_theme_mod('footer_text');
 <footer class="site-footer"><div class="container-wide">		
 	
 	<div class="widget-area"><?php dynamic_sidebar( 'footer-sidebar' );?></div>
-	
-	<div class="frame frame-wide">
-		<div class="bit sm-12"><div class="hr"></div></div>
-		<div class="bit sm-6 lg-8">		
+	<div class="hr"></div>
+	<div class="sf-cols">
+		
+		<div class="sf-cols-8">		
 				
 			<div class="copy">
 				<?php echo apply_filters('rdc_the_content', $footer_text); ?>	
@@ -49,7 +49,7 @@ $footer_text = get_theme_mod('footer_text');
 			
 		</div>
 		
-		<div class="bit sm-6 lg-3 lg-offset-1">
+		<div class="sf-cols-4">
 			<div class="te-st-bn">
 				<p class="support">Сайт сделан <br>при поддержке</p>
 				<a title="<?php echo $tst;?>" href="http://te-st.ru/" class="rdc-banner">					

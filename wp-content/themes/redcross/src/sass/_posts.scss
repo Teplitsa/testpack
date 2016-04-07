@@ -250,7 +250,7 @@
 	}
 	
 	.entry-summary {
-		@include body-text();
+		@include sub-title();
 		color: transparentize($color-white, 0.12);
 		@include transition(all 0.3s);
 		padding: $gut/2;
