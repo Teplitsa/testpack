@@ -3,6 +3,9 @@
  * Text PM Customisation Example
  **/
 
+ if(!class_exists('Leyka_Payment_Method'))
+	return;
+
 /** Custom donation functions */
 
 add_filter('leyka_icons_text_text_box', 'rdc_text_pm_icon');

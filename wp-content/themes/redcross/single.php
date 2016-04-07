@@ -51,7 +51,7 @@ get_header(); ?>
 		<?php } ?>				
 			
 			<div class="entry-content">
-				<div class="lead"><?php echo apply_filters('the_content', $cpost->post_excerpt); ?></div>
+				<div class="lead"><?php echo apply_filters('rdc_the_content', $cpost->post_excerpt); ?></div>
 				<?php echo apply_filters('the_content', $cpost->post_content); ?>
 			</div>
 		</main>

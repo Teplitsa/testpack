@@ -180,19 +180,7 @@ function rdc_body_classes( $classes ) {
 add_action('customize_register', 'rdc_customize_register');
 function rdc_customize_register(WP_Customize_Manager $wp_customize) {
       
-    $wp_customize->add_setting('footer_text', array(
-        'default'   => '',
-        'transport' => 'refresh',
-    ));
-    
-    $wp_customize->add_control('footer_text', array(
-        'type'     => 'textarea',		
-        'label'    => 'Текст в футере',
-        'section'  => 'title_tagline',
-        'settings' => 'footer_text',
-        'priority' => 30,
-    ));
-	
+    	
 	$wp_customize->add_setting('header_text', array(
         'default'   => '',
         'transport' => 'refresh',
@@ -204,6 +192,19 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'section'  => 'title_tagline',
         'settings' => 'header_text',
         'priority' => 20,
+    ));
+	
+	$wp_customize->add_setting('er_text', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('er_text', array(
+        'type'     => 'textarea',		
+        'label'    => 'Текст страницы 404',
+        'section'  => 'title_tagline',
+        'settings' => 'er_text',
+        'priority' => 30,
     ));
 	
 	$wp_customize->add_setting('newsletter_form_id', array(

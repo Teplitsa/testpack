@@ -252,11 +252,11 @@ function rdc_section_title() {
 		$css = 'archive';
 	}
 	elseif(is_search()){
-		$title = __('Search results', 'kds');
+		$title = __('Search results', 'rdc');
 		$css = 'archive search';
 	}
 	elseif(is_404()){
-		$title = __('404: Page not found', 'kds');
+		$title = __('404: Page not found', 'rdc');
 		$css = 'archive e404';
 	}
 	
