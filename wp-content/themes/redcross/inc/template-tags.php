@@ -166,6 +166,11 @@ function rdc_posted_on(WP_Post $cpost) {
 			$meta[] = $cat;
 		}
 	}
+	elseif('page' == $cpost->post_type && is_search()) {
+		
+		$meta[] = "<span class='category'>".__('Page', 'rdc')."</span>";
+		
+	}
 		
 	return implode($sep, $meta);		
 }
