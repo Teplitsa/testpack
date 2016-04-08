@@ -50,6 +50,8 @@ function rdc_featured_post_card(WP_Post $cpost){
 <?php
 }
 
+
+
 function rdc_featured_action_card(WP_Post $cpost, $cta = ''){
 	
 	$thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full');
@@ -92,36 +94,23 @@ function rdc_event_card(WP_Post $cpost){
 	//162	
 	$event = new TST_Event($cpost);
 	
-	$pl = get_permalink($event->post_object);
-	$col_css = (has_post_thumbnail($event->ID)) ? 'md-8' : 'md-12';
-	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($event, 40, true));
-	$icons = $event->get_icons();
+	$pl = get_permalink($event->post_object);	
+	
 ?>
-	<article class="tpl-event section-events" <?php echo $event->get_event_schema_prop();?>>
-		<a href="<?php echo $pl;?>" class="post-link" <?php echo $event->get_event_url_prop();?>>
-			<div class="s-frame">
-			<?php if(has_post_thumbnail($event->ID)) { ?>
-				<div class="s-bit md-4">
-					<?php echo tst_post_thumbnail($event->ID, 'post-thumbnail'); ?>
-				</div>
-			<?php } ?>
-				<div class="s-bit <?php echo $col_css;?> event-content">
-					<div class="entry-meta"><?php echo $event->posted_on_card();?></div>
-					<h2 class="entry-title" <?php echo $event->get_event_name_prop();?>><?php echo get_the_title($event->post_object);?></h4>
-					<div class="entry-summary">
-						<p><?php echo apply_filters('tst_the_title', $event->get_participants_mark());?></p>
-						<p><?php echo apply_filters('tst_the_title', $event->get_what_where_mark());?></p>
-						<?php echo $event->get_event_offer_field();?>
-					</div>
-					<?php echo tst_get_taglist_for_card($cpost);?>
-				</div>
-				<?php if($icons) { ?>
-					<div class="entry-format-icons"><?php echo $icons;?></div>
-				<?php } ?>
-				
-			</div><!-- .s-frame -->
-		</a>		
-	</article>
+<article class="tpl-event card" <?php echo $event->get_event_schema_prop();?>">
+	<a href="<?php echo $pl; ?>" class="thumbnail-link" <?php echo $event->get_event_url_prop();?>>
+	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
+	<div class="entry-data">
+		<div class="entry-meta"><?php echo $event->posted_on_card();?></div>
+		<h4 class="entry-title" <?php echo $event->get_event_name_prop();?>><?php echo get_the_title($cpost);?></h4>
+		<div class="entry-summary">
+			<p><?php echo apply_filters('tst_the_title', $event->get_participants_mark());?></p>
+			<p><?php echo apply_filters('tst_the_title', $event->get_full_address_mark());?></p>
+			<?php echo $event->get_event_offer_field();?>
+		</div>
+	</div>
+	</a>
+</article>
 <?php
 }
 

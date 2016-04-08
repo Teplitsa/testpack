@@ -79,7 +79,7 @@ jQuery(document).ready(function($){
 			e.stopPropagation();
 			
 			$site_header.find('#newsletter_panel').slideDown(150, function(){				
-				$site_header.addClass('newsletter-open');
+				$site_header.addClass('newsletter-open').find('.wpcf7-email').focus();
 				$(this).removeAttr('style');
 			});
 		}

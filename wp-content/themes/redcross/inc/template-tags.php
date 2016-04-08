@@ -150,9 +150,7 @@ function rdc_posted_on(WP_Post $cpost) {
 	elseif('event' == $cpost->post_type ) {
 		
 		$event = new TST_Event($cpost);
-		$meta[] = "<span class='date'>".$event->date_mark_for_context('card')."</span>";
-		$meta[] = "<span class='category'>".__('Events', 'rdc')."</span>";
-		$sep = rdc_get_sep('&middot;');	
+		return $event->posted_on_card();		
 	}
 	elseif('project' == $cpost->post_type) {
 		
@@ -435,6 +433,13 @@ function rdc_more_section($posts, $title = '', $type = 'news', $css= ''){
 		$cat = get_term_by('slug', 'volunteers', 'person_cat');
 		$all_link = "<a href='".get_term_link($cat)."'>".__('More volunteers', 'rdc')."&nbsp;&rarr;</a>";
 		$title = (empty($title)) ? __('Our volunteers', 'rdc') : $title;
+	}
+	elseif($type == 'events') {
+		$p = get_page_by_path('events');
+		if($p) {
+			$all_link = "<a href='".get_permalink($p)."'>".__('More events', 'rdc')."&nbsp;&rarr;</a>";
+			$title = (empty($title)) ? get_the_title($p) : $title;
+		}
 	}
 	else {
 		$all_link = "<a href='".home_url('news')."'>".__('More news', 'rdc')."&nbsp;&rarr;</a>";

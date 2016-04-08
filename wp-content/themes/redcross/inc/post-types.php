@@ -163,7 +163,7 @@ function rdc_custom_content(){
         'hierarchical'        => false,
         'menu_position'       => 5,
 		'menu_icon'           => 'dashicons-calendar',
-        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail', 'page-attributes'),
         'taxonomies'          => array(),
     ));
 	
@@ -239,7 +239,7 @@ function rdc_custom_content(){
 	
 	//pages
 	add_post_type_support('page', 'excerpt');
-	add_post_type_support('page', 'thumbnail');
+	add_post_type_support('page', 'thumbnail');	
 	
 	//remove post tags
 	unregister_taxonomy_for_object_type('post_tag', 'post');
@@ -254,7 +254,7 @@ function rdc_custom_metaboxes() {
     $format_cmb = new_cmb2_box( array(
         'id'            => 'post_format_metabox',
         'title'         => 'Настройки формата',
-        'object_types'  => array( 'post', 'project'), // Post type
+        'object_types'  => array( 'post', 'project', 'event'), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
@@ -343,10 +343,11 @@ function rdc_custom_metaboxes() {
 	));
 	
 	$event_cmb->add_field( array(
-		'name'    => 'Местро проведения',		
+		'name'    => 'Город',		
 		'default' => '',
-		'id'      => 'event_location',
+		'id'      => 'event_city',
 		'type'    => 'text',
+		'default' => 'Великий Новгород'
 	));
 	
 	$event_cmb->add_field( array(
@@ -357,24 +358,19 @@ function rdc_custom_metaboxes() {
 	));
 	
 	$event_cmb->add_field( array(
+		'name'    => 'Местро проведения',		
+		'default' => '',
+		'id'      => 'event_location',
+		'type'    => 'text',
+	));
+	
+	$event_cmb->add_field( array(
 		'name'    => 'Участники (спикеры)',		
 		'default' => '',
 		'id'      => 'event_participants',
 		'type'    => 'text'		
 	));
 	
-	$event_cmb->add_field( array(
-		'name'    => 'Участники (организации)',		
-		'default' => '',
-		'id'      => 'event_orgs',
-		'type'    => 'text'		
-	));
-	
-	$event_cmb->add_field( array(
-        'name' => 'Отчет(ы)',
-        'id'   => 'related_report',
-        'type' => 'info_html'        
-    ) );
 	
 	/** Page **/
 //	$page_cmb = new_cmb2_box( array(

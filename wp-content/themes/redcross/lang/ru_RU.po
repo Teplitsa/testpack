@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-06 23:58+0300\n"
-"PO-Revision-Date: 2016-04-06 23:59+0300\n"
+"POT-Creation-Date: 2016-04-08 10:56+0300\n"
+"PO-Revision-Date: 2016-04-08 10:57+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -24,6 +24,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bower_components\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
+"X-Poedit-SearchPathExcluded-2: assets\n"
 
 #: footer.php:11
 msgid "Teplitsa of social technologies"
@@ -50,25 +51,25 @@ msgstr "Перейти к содержанию"
 msgid "Subscribe"
 msgstr "Подпишись"
 
-#: inc/admin.php:132 inc/admin.php:141
+#: inc/admin.php:139 inc/admin.php:148
 msgid "Website"
 msgstr "Вебсайт"
 
-#: inc/admin.php:132 inc/admin.php:146
+#: inc/admin.php:139 inc/admin.php:153
 msgid "Excerpt"
 msgstr "Аннотация"
 
-#: inc/admin.php:148
+#: inc/admin.php:155
 msgid ""
 "Annotation for items lists (will be printed at the beginning of the single "
 "page)"
 msgstr "Аннотация для списков (на странице записи добавляется в начало)"
 
-#: inc/admin.php:201
+#: inc/admin.php:208
 msgid "Forms"
 msgstr "Формы"
 
-#: inc/admin.php:324
+#: inc/admin.php:331
 #, php-format
 msgid ""
 "ATTENTION! You thumbnail image is too small. It should be at least %s px"
@@ -76,39 +77,39 @@ msgstr ""
 "ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
 "менее %s px."
 
-#: inc/admin.php:372 inc/admin.php:388
+#: inc/admin.php:379 inc/admin.php:395
 msgid "Facebook Profile"
 msgstr "Профиль на Facebook"
 
-#: inc/admin.php:374 inc/admin.php:390
+#: inc/admin.php:381 inc/admin.php:397
 msgid "Enter URL of author's Facebook profile"
 msgstr "Укажите ссылку на профиль автора"
 
-#: inc/admin.php:377 inc/admin.php:393
+#: inc/admin.php:384 inc/admin.php:400
 msgid "Avatar"
 msgstr "Аватарка"
 
-#: inc/admin.php:425
+#: inc/admin.php:432
 msgid "Taxonomy Term Image"
 msgstr "Заставка"
 
-#: inc/admin.php:426
+#: inc/admin.php:433
 msgid "Select which image should represent this term."
 msgstr "Выберите изображение заставки"
 
-#: inc/admin.php:427
+#: inc/admin.php:434
 msgid "Select Image"
 msgstr "Выбрать изображение"
 
-#: inc/admin.php:428
+#: inc/admin.php:435
 msgid "Remove"
 msgstr "Удалить"
 
-#: inc/admin.php:429
+#: inc/admin.php:436
 msgid "Select or upload an image for this term"
 msgstr "Выбрать или загрузить изображение"
 
-#: inc/admin.php:430
+#: inc/admin.php:437
 msgid "Attach"
 msgstr "Присоединить"
 
@@ -116,19 +117,15 @@ msgstr "Присоединить"
 msgid "Author"
 msgstr "Автор"
 
-#: inc/cards.php:57
+#: inc/cards.php:59
 msgid "View"
 msgstr "Просмотреть"
 
-#: inc/class-event.php:453 inc/template-tags.php:154
-msgid "Events"
-msgstr "Анонсы"
-
-#: inc/donations.php:59
+#: inc/donations.php:62
 msgid "Please, set a text of comment to describe an additional ways to donate."
 msgstr ""
 
-#: inc/donations.php:67
+#: inc/donations.php:70
 msgid "Please, set a text to describe an additional ways to donate."
 msgstr ""
 
@@ -136,55 +133,59 @@ msgstr ""
 msgid "More"
 msgstr "Ещё"
 
-#: inc/extras.php:255
+#: inc/extras.php:256
 msgid "Default Avatar"
 msgstr "Аватарка по-умолчанию"
 
-#: inc/template-tags.php:255
+#: inc/template-tags.php:253
 msgid "Search results"
 msgstr "Результаты поиска"
 
-#: inc/template-tags.php:259
+#: inc/template-tags.php:257
 msgid "404: Page not found"
 msgstr "Ошибка 404: Страница не найдена"
 
-#: inc/template-tags.php:352
+#: inc/template-tags.php:350
 msgid "Post navigation"
 msgstr "Навигация по записям"
 
-#: inc/template-tags.php:367 inc/template-tags.php:377
+#: inc/template-tags.php:365 inc/template-tags.php:375
 msgid "Homepage"
 msgstr "Главная"
 
-#: inc/template-tags.php:431
+#: inc/template-tags.php:429
 msgid "More projects"
 msgstr "Еще проекты"
 
-#: inc/template-tags.php:432
+#: inc/template-tags.php:430
 msgid "Our projects"
 msgstr "Наши программы"
 
-#: inc/template-tags.php:436
+#: inc/template-tags.php:434
 msgid "More volunteers"
 msgstr "Еще волонтеры"
 
-#: inc/template-tags.php:437 single.php:130
+#: inc/template-tags.php:435 single.php:130
 msgid "Our volunteers"
 msgstr "Наши волонтеры"
 
 #: inc/template-tags.php:440
+msgid "More events"
+msgstr "Еще анонсы"
+
+#: inc/template-tags.php:445
 msgid "More news"
 msgstr "Еще новости"
 
-#: inc/template-tags.php:441
+#: inc/template-tags.php:446
 msgid "Latest news"
 msgstr "Последние новости"
 
-#: inc/template-tags.php:481
+#: inc/template-tags.php:486
 msgid "Related project"
 msgstr "Программа по теме"
 
-#: inc/template-tags.php:500
+#: inc/template-tags.php:505
 msgid "Help now"
 msgstr "Помочь сейчас"
 
@@ -196,6 +197,18 @@ msgstr "Социальные кнопки"
 msgid "Social links menu with optional text"
 msgstr "Меню социальных кнопок с сопроводительным текстом"
 
+#: page-events.php:64
+msgid "Future events"
+msgstr "Анонсы"
+
+#: page-events.php:79
+msgid "Past events"
+msgstr "Прошедшие мероприятия"
+
+#: single-event.php:84
+msgid "Visit or events"
+msgstr "Приглашаем на мероприятия"
+
 #: single.php:97
 msgid "Related news"
 msgstr "Новости по теме"
@@ -204,25 +217,8 @@ msgstr "Новости по теме"
 msgid "Related projects"
 msgstr "Познакомьтесь с другими проектами"
 
-#: assets/js/bundle.js:8 assets/rev/bundle-31df3c0aa2.js:8
-msgid "MultiLineString"
-msgstr ""
-
-#: assets/js/bundle.js:8 assets/rev/bundle-31df3c0aa2.js:8
-msgid "MultiPolygon"
-msgstr ""
-
-#: assets/js/bundle.js:8 assets/rev/bundle-31df3c0aa2.js:8
-msgid "MultiPoint"
-msgstr ""
-
-#: assets/js/bundle.js:9 assets/rev/bundle-31df3c0aa2.js:9
-msgid "top"
-msgstr ""
-
-#: assets/js/bundle.js:9 assets/rev/bundle-31df3c0aa2.js:9
-msgid "bottom"
-msgstr ""
+#~ msgid "Events"
+#~ msgstr "Анонсы"
 
 #~ msgid "All materials of the site are avaliabe under license %s."
 #~ msgstr "Все материалы сайта доступны по лиценции %s."
@@ -442,9 +438,6 @@ msgstr ""
 
 #~ msgid "Your name"
 #~ msgstr "Ваше имя"
-
-#~ msgid "More events"
-#~ msgstr "Еще анонсы"
 
 #~ msgid "Logo"
 #~ msgstr "Логотип"

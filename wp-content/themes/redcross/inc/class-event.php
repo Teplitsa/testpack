@@ -7,8 +7,7 @@
 class TST_Event {
 	
 	public $post_object;
-	public $type_taxonomy = 'event_type';
-	
+		
 	private $filters = null;
 	private $related_post_id = null;
 	
@@ -54,13 +53,13 @@ class TST_Event {
 				return get_post_meta($this->post_object->ID, 'event_address', true);
 				break;
 			
-			case 'participants':
-				return get_post_meta($this->post_object->ID, 'event_participants', true);
+			case 'city':
+				return get_post_meta($this->post_object->ID, 'event_city', true);
 				break;
 			
-			case 'orgs':
-				return get_post_meta($this->post_object->ID, 'event_orgs', true);
-				break;
+			case 'participants':
+				return get_post_meta($this->post_object->ID, 'event_participants', true);
+				break;			
 		}
 	}
 		
@@ -226,52 +225,7 @@ class TST_Event {
 	
 	
 	/** == Other metas == **/
-	protected function _get_filters(){
-		
-		if(null === $this->filters){
-			$this->filters = get_the_terms($this->post_object, $this->type_taxonomy);
-		}
-		
-		return $this->filters;
-	}
 	
-	protected function _get_city_term(){
-		
-		$terms = $this->_get_filters();
-		if(empty($terms))
-			return '';
-		
-		$city = get_term_by('slug', 'city', $this->type_taxonomy);
-		$city_term = null;
-		
-		foreach($terms as $t){ 
-			if($t->parent == $city->term_id){				
-				$city_term = $t;
-				break;
-			}
-		}
-		
-		return $city_term;
-	}
-	
-	protected function _get_format_term(){
-		
-		$terms = $this->_get_filters();
-		if(empty($terms))
-			return '';
-		
-		$format = get_term_by('slug', 'format', $this->type_taxonomy);
-		$format_term = null;
-		
-		foreach($terms as $t){ 
-			if($t->parent == $format->term_id){				
-				$format_term = $t;
-				break;
-			}
-		}
-		
-		return $format_term;
-	}
 	
 	/** metas text */
 	public function get_participants_mark(){
@@ -282,163 +236,33 @@ class TST_Event {
 			$out .= '<span itemprop="performer" itemscope itemtype="http://schema.org/Person">';
 			$out .= '<span itemprop="name">'.$part.'</span></span>';
 		}
-		
-		if($orgs = $this->orgs){
-			$out .= (!empty($out)) ? ', ' : '';
-			$out .= '<span itemprop="performer" itemscope itemtype="http://schema.org/Organization">';
-			$out .= '<span itemprop="name">'.$orgs.'</span></span>';
-		}
-		
+				
 		return $out;
 	}
 	
-	public function get_format_mark($alt_name = false, $empty_others = false){
-		
-		$format = $this->_get_format_term();
-		$f_name = '';
-		
-		if($alt_name)
-			$f_name = get_term_meta($format->term_id, 'alt_name', true);
-		
-		if(empty($f_name))
-			$f_name = $format->name;
-		
-		if($empty_others && $format->slug == 'others')
-			$f_name = '';
-		
-		$f_name = sanitize_term_field('name', $f_name, $format->term_id, $format->taxonomy, 'display');
-		
-		return $f_name;
-	}
-		
-	public function get_city_mark(){
-		
-		$mark = '';
-		$term = $this->_get_city_term();
-		
-		if(empty($term))
-			return $mark;
-		
-		if($term->slug != 'all-cities'){
-			$mark = $term->name;
-		}
-		elseif(has_term('online', $this->type_taxonomy, $this->post_object)) {
-			$mark = "Онлайн";
-		}
-		
-		return $mark;
-	}
 	
-	
+		
 	/** prebuild metas **/
-	public function get_what_where_mark(){
-		
-		$city = $this->get_city_mark();
-		
-		if($city == 'Онлайн'){			
-			$out  = '<span itemprop="location" itemscope itemtype="http://schema.org/Place">';
-			$out .= '<span itemprop="name">'.$city.'</span></span>';
-		}
-		else {
-			$out  = '<span itemprop="location" itemscope itemtype="http://schema.org/Place">';
-			$out .= '<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';		
-			$out .= '<span itemprop="addressCountry" class="hidden">Россия</span>'; //option for country?
-			
-			if($city)
-				$out .= '<span itemprop="addressLocality">'.$city.'</span>';
-			
-			if($this->address)
-				$out .= '<span itemprop="streetAddress" class="hidden">'.$this->address.'</span>';
-				
-			$out .= '</span>';
-			
-			if($this->location)
-				$out .= '<span itemprop="name">'.$this->location.'</span>';
-			
-			$out .= "</span></span>";
-		}
-		
-		
-		return $out;
-	}
-	
-	public function get_where_city_mark(){
-		
-		$city = $this->get_city_mark();
-		
-		if($city == 'Онлайн'){			
-			$out  = '<span itemprop="location" itemscope itemtype="http://schema.org/Place">';
-			$out .= '<span itemprop="name">'.$city.'</span></span>';
-		}
-		else {
-			$out  = '<span itemprop="location" itemscope itemtype="http://schema.org/Place">';
-			$out .= '<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';		
-			$out .= '<span itemprop="addressCountry" class="hidden">Россия</span>'; //option for country?
-			
-			if($city)
-				$out .= '<span itemprop="addressLocality">'.$city.'</span>';
-			
-			if($this->address)
-				$out .= '<span itemprop="streetAddress" class="hidden">'.$this->address.'</span>';
-				
-			$out .= '</span>';
-			
-			if($this->location)
-				$out .= '<span itemprop="name" class="hidden">'.$this->location.'</span>';
-			
-			$out .= "</span></span>";
-		}
-		
-		
-		return $out;
-	}
-	
 	public function get_full_address_mark(){
-
-		$city = $this->get_city_mark();
-		if($city == 'Онлайн'){
-			$out  = '<span itemprop="location" itemscope itemtype="http://schema.org/Place">';
-			$out .= '<span itemprop="name">'.$city.'</span></span>';
-		}
-		else {
-			$out  = '<span itemprop="location" itemscope itemtype="http://schema.org/Place">';
-			$out .= '<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';		
-			$out .= '<span itemprop="addressCountry" class="hidden">Россия</span>'; //option for country?
-			
-			if($city)
-				$out .= '<span itemprop="addressLocality">'.$city.'</span>';
 				
-			if($this->address)
-				$out .= '<span itemprop="streetAddress">'.$this->address.'</span>';
-			
-			$out .= '</span>';
-			
-			if($this->location)
-				$out .= '<span itemprop="name">'.$this->location.'</span>';
-			
-			$out .= "</span></span>";
-		}
-			
+		$out  = '<span itemprop="location" itemscope itemtype="http://schema.org/Place">';
+		$out .= '<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';		
+		$out .= '<span itemprop="addressCountry" class="hidden">Россия</span>'; //option for country?
+		
+		if($this->city)
+			$out .= '<span itemprop="addressLocality">'.$this->city.'</span>';
+		
+		if($this->address)
+			$out .= '<span itemprop="streetAddress">'.$this->address.'</span>';
+				
+		if($this->location)
+			$out .= '<span itemprop="name">'.$this->location.'</span>';
+		
+		$out .= "</span></span>";
+		
+		
+		
 		return $out;
-	}
-	
-	
-	
-	
-	/** Related report **/
-	public function get_related_post_id(){
-		global $wpdb;
-		
-		if($this->related_post_id === null){
-			
-			$results = $wpdb->get_results("SELECT * FROM $wpdb->postmeta WHERE meta_value = '{$this->ID}' AND meta_key = 'related_event'");			
-			if(!empty($results)){ foreach($results as $r) {
-				
-				$this->related_post_id[] = (int)$r->post_id;
-			}}
-		}
-		
-		return $this->related_post_id;
 	}
 	
 	
@@ -450,7 +274,8 @@ class TST_Event {
 		
 		$meta = array();
 		$meta[] = "<span class='date'>".$this->date_mark_for_context('card')."</span>";
-		$meta[] = "<span class='category'>".__('Events', 'rdc')."</span>";	
+		$meta[] = ($this->city) ? "<span class='city'>".$this->city."</span>" : '';	
+		$meta = array_filter($meta);
 		
 		return implode(rdc_get_sep('&middot;'), $meta);
 		
@@ -467,17 +292,15 @@ class TST_Event {
 		else {
 			$meta[] = rdc_add_to_calendar_link($this, false, 'date tst-add-calendar', $this->date_mark_for_context('single_top'));
 		}
-				
-		$f_name = $this->get_format_mark();		
-		$meta[] = "<span class='format'>".$f_name."</span>";
-		$meta[] = "<span class='city'>".$this->get_city_mark()."</span>";
+		
+		$meta[] = ($this->city) ? rdc_get_sep('&middot;')."<span class='city'>".$this->city."</span>" : '';	
 		
 		$meta = array_filter($meta);
 		
 		return implode('', $meta);
 	}
 	
-	//wrapper for story board content
+	//contextual date
 	public function date_mark_for_context($context = 'card'){
 		
 		$date = '';
@@ -505,12 +328,6 @@ class TST_Event {
 		return $date;
 	}
 	
-	
-	//used in cards
-	public function get_icons(){
-		
-		return "<span class='r-icon'>".rdc_svg_icon('icon-events', false)."</span>";
-	}
 	
 } //class
 

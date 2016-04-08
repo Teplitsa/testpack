@@ -319,6 +319,8 @@
 			background: $color-text;
 		}
 	}
+	
+	&:empty { display: none; }
 }
 
 
@@ -559,17 +561,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 /** People **/
 .tpl-person {
 	margin-bottom: $gut;
@@ -610,6 +601,35 @@
 		padding-bottom: 0;
 	}
 }
+
+/** Events **/
+.tpl-event {
+	@extend .tpl-post;
+	
+	span[itemprop="address"]{
+		span[itemprop="streetAddress"] { display: none; }
+		span[itemprop="name"]:before {
+			content: ', ';
+		}
+	}
+}
+
+.full-event-metas {
+	margin-bottom: $gut*1.5;
+	@include sub-title(extend);
+	color: $color-text-black;
+	
+	p:last-of-type { margin-top: 8px;}
+	
+	span[itemprop="addressLocality"] + span[itemprop="name"],
+	span[itemprop="addressLocality"] + span[itemprop="streetAddress"],
+	span[itemprop="streetAddress"] + span[itemprop="name"] {
+		&:before { content: ', '; }
+	}
+}
+
+
+
 
 
 /** Partners **/

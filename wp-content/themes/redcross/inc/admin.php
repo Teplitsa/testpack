@@ -6,10 +6,13 @@
 add_filter('manage_posts_columns', 'rdc_common_columns_names', 50, 2);
 function rdc_common_columns_names($columns, $post_type) {
 		
-	if(in_array($post_type, array('post', 'project', 'org', 'person'))){
+	if(in_array($post_type, array('post', 'project', 'org', 'person', 'event'))){
 		
-		if($post_type == 'programm')
+		if(in_array($post_type, array('event', 'programm')))
 			$columns['menu_order'] = 'Порядок';
+		
+		if(in_array($post_type, array('event')))
+			$columns['event_start'] = 'Начало';
 		
 		if(!in_array($post_type, array('attachment')))
 			$columns['thumbnail'] = 'Миниат.';
@@ -40,6 +43,10 @@ function rdc_common_columns_content($column_name, $post_id) {
 		else
 			echo "<div class='admin-tmb'>{$img}</div>";			
 		
+	}
+	elseif($column_name == 'event_start') {
+		$event = new TST_Event($post_id);
+		echo $event->get_date_mark('formal');
 	}
 	elseif($column_name == 'menu_order') {
 			

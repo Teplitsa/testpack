@@ -111,6 +111,10 @@ $fixed_side: 222px;
 		letter-spacing: 0.5px;
 		font-weight: 700;
 	}
+	@else if $mod == lowercase {
+		
+		text-transform: none;
+	}
 }
 
 @mixin post-title($mod: default) {
@@ -170,7 +174,10 @@ $fixed_side: 222px;
 	}
 	@else if $mod == small {				
 		font-size: 12px;		
-	}	
+	}
+	@else if $mod == extend {
+		font-size: 18px;
+	}
 }
 
 
