@@ -10,6 +10,7 @@ $paged = (get_query_var('paged', 0)) ? get_query_var('paged', 0) : 1;
 $featured = array_slice($posts, 0, 1); 
 array_splice($posts, 0, 1);
 
+
 get_header();
 ?>
 

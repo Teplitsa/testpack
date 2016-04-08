@@ -131,6 +131,21 @@ function rdc_person_card(WP_Post $cpost, $linked = true){
 <?php
 }
 
+function rdc_search_card(WP_Post $cpost) {
+	
+	$pl = get_permalink($cpost);
+	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
+	
+	
+?>
+<article class="tpl-search"><a href="<?php echo $pl; ?>" class="entry-link">
+	<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>');?></div>
+	<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+	<div class="entry-summary"><?php echo $ex;?></div>
+</a></article>
+<?php
+}
+
 function rdc_org_card(WP_Post $cpost){
 	
 	$pl = get_permalink($cpost);

@@ -185,7 +185,7 @@ function rdc_custom_content(){
             'not_found_in_trash' => 'В Корзине организации не найдены'
        ),
         'public'              => true,
-        'exclude_from_search' => false,
+        'exclude_from_search' => true,
         'publicly_queryable'  => true,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,

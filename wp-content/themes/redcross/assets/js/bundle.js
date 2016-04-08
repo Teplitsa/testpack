@@ -1095,6 +1095,17 @@ jQuery(document).ready(function($){
 		}
 	});
 	
+	// Search forcus on search page 
+	function rdc_search_focus_position(SearchInput) {
+		if (SearchInput.length > 0) {
+			var strLength= SearchInput.val().length * 2;
+		
+			SearchInput.focus();
+			SearchInput[0].setSelectionRange(strLength, strLength); //this put cursor in last position
+		}
+	}
+	
+	rdc_search_focus_position($('#sr_form').find('.search-field'));
 	
 	
 	/** Sticky elements **/
