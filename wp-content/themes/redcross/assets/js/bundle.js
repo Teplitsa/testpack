@@ -1207,7 +1207,7 @@ jQuery(document).ready(function($){
 		e.preventDefault();		
 	});
 	
-	/** Submenu toggle **/
+	/** Submenu toggle  **/
 	$('.submenu-trigger').on('click', function(e){
 		
 		var li = $(this).parents('.menu-item-has-children');
