@@ -6,17 +6,6 @@
 if(!class_exists('Leyka_Payment_Method'))
 	return;
 
-/** Custom donation functions */
-
-add_filter('leyka_icons_text_text_box', 'rdc_text_pm_icon');
-function rdc_text_pm_icon($icons){
-	//size 155x80 px
-	
-	$icons = array(get_template_directory_uri().'/assets/images/text-box.png');
-		
-	return $icons;
-}
-
 /** Additionsl text PM */
 class Leyka_Sms_Box extends Leyka_Payment_Method {
 
@@ -34,7 +23,7 @@ class Leyka_Sms_Box extends Leyka_Payment_Method {
 
         $this->_support_global_fields = false;
 
-        $this->_icons = array(get_template_directory_uri().'/assets/images/sms-box.png');
+        $this->_icons = array();
 
         $this->_supported_currencies[] = 'rur';
 
@@ -44,7 +33,7 @@ class Leyka_Sms_Box extends Leyka_Payment_Method {
     protected function _set_dynamic_attributes() {
 
         $this->_custom_fields = array(
-            'sms_details' => apply_filters('leyka_the_content', leyka_options()->opt_safe('sms_box_details')),
+            'box_details' => apply_filters('leyka_the_content', leyka_options()->opt_safe('sms_box_details')),
         );
     }
 

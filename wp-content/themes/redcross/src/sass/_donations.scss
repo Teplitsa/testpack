@@ -52,7 +52,10 @@
 		
 		&.agree { margin: 18px 0 18px 8px; }
 		&.amount { margin-bottom: 36px; }
-		&.rdc-textfield { padding: 18px 0; }
+		&.rdc-textfield {
+			padding: 18px 0;
+			label::after { bottom: 18px; }
+		}
 		
 		&.box_details {
 			@include form-text(semi);			

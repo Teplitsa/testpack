@@ -51,7 +51,7 @@ jQuery(document).ready(function($){
 	});
 	
 	/** Submenu toggle **/
-	$site_header.on('click', '.submenu-trigger', function(e){
+	$('.submenu-trigger').on('click', function(e){
 		
 		var li = $(this).parents('.menu-item-has-children');
 		if (li.hasClass('open')) {
