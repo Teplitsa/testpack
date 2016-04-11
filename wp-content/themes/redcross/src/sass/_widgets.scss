@@ -49,6 +49,7 @@
 	&.text-center {
 		text-align: center;
 	}
+	
 }
 
 .widget_nav_menu {
@@ -62,4 +63,18 @@
 			margin: 0 18px 9px 0;
 		}
 	}
+}
+
+.donation_cta {
+	text-align: center;
+	
+	h3, .widget-title, h5 { color: inherit; }
+	
+	h5 {
+		@include post-title(small_title);
+		margin-bottom: $base;
+		&:last-child { margin-bottom :0;}
+	}
+	
+	
 }

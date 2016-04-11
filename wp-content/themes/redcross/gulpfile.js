@@ -42,6 +42,7 @@ var changeEvent = function(evt) {
 gulp.task('build-js', function() {
     var vendorFiles = [
         basePaths.bower + 'leaflet/dist/leaflet.js',
+        basePaths.bower + 'easyModal.js/jquery.easyModal.js',
         basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js'       
         ],
         appFiles = [basePaths.src+'js/*']; //our own JS files

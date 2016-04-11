@@ -54,6 +54,7 @@ $color-border-link:   #eeeeee;
 
 $color-form-invalid: #ED1C24;
 
+$leyka_green : #1DB318;
 
 //Layout Settings
 $adminbar_large_screen: 32px;
@@ -80,7 +81,10 @@ $fixed_side: 222px;
 	line-height: 1.45;
 	
 	@if $mod == summary {
-		font-size: $body-text-size*0.928;
+		font-size: 14px;
+	}
+	@else if $mod == semi {
+		font-size: 16px;
 	}
 	@else if $mod == larger {
 		font-size: $body-text-size*1.14285;
@@ -180,6 +184,21 @@ $fixed_side: 222px;
 	}
 }
 
+@mixin form-text($mod: default) {
+	
+	font-family: $sans;
+	color: $color-text;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.5;
+	text-transform: none;
+	letter-spacing: normal;
+	
+	@if $mod == small {
+		font-size: 12px;
+	}
+}
+
 
 @mixin header-title($mod: default){
 	$header-title-size: 24px; 
@@ -249,6 +268,15 @@ $fixed_side: 222px;
 			background: $color-link-two;
 			color: $color-white;
 			border-color: $color-link-two;
+		}
+	}
+	@else if $mod == leyka {
+		background: $leyka_green;
+		border: 1px solid $leyka_green;
+		
+		&:hover, &:focus, &:active {			
+			background: darken($leyka_green, 10%);
+			border-color: darken($leyka_green, 10%);			
 		}
 	}
 }

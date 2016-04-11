@@ -258,7 +258,7 @@ $label-text-color: $color-text;
 	}
 	
 	.rdc-radio__label {
-		@include checkbox-text(14px);
+		@include checkbox-text(18px);
 		display: inline-block;
 		position: relative;
 		line-height: 18px;		

@@ -81,7 +81,9 @@ class FRL_CssJs {
 			$style_dependencies,
 			null
 		);
-				
+		
+		
+		wp_dequeue_style('leyka-plugin-styles');
 	}
 	
 	
