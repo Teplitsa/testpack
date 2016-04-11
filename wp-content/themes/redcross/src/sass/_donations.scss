@@ -306,3 +306,18 @@
 		color: $color-text-semi;
 	}
 }
+
+/** Donation history template **/
+.main-content.donations-history-results {
+	background: $color-secondary-dark;
+	padding: $gut 0;
+	min-height: 50vh;
+	
+	.donation_history {
+		background: $color-white;
+		margin-bottom: $base;
+		padding: $gut/2; 
+	}
+}
+
+
