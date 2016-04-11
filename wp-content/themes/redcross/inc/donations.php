@@ -3,7 +3,7 @@
  * Text PM Customisation Example
  **/
 
- if(!class_exists('Leyka_Payment_Method'))
+if(!class_exists('Leyka_Payment_Method'))
 	return;
 
 /** Custom donation functions */
@@ -80,12 +80,16 @@ class Leyka_Sms_Box extends Leyka_Payment_Method {
 add_action('leyka_init_pm_list', 'rdc_add_sms_pm');
 function rdc_add_sms_pm($gateway){
 	
-	if($gateway->id == 'text'){
-		var_dump($gateway);
+	if($gateway->id == 'text'){		
 		$gateway->add_payment_method(Leyka_Sms_Box::get_instance());
 	}
 }
 
+//no icon for text gateway
+add_filter('leyka_icons_text_text_box', 'rdc_empty_icons');	
+function rdc_empty_icons($icons){
+	return array();
+}
 
 
 /** Form template **/

@@ -197,6 +197,9 @@ $fixed_side: 222px;
 	@if $mod == small {
 		font-size: 12px;
 	}
+	@if $mod == semi {
+		font-size: 16px;
+	}
 }
 
 

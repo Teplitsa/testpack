@@ -12,8 +12,7 @@ get_header();
 <div class="container">
 	<header class="entry-header-full">
 		<div class="entry-meta"><?php echo rdc_posted_on($cpost); //for event ?></div>
-		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>				
-		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
+		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>						
 	</header>
 	
 	<div class="frame">
@@ -28,9 +27,9 @@ get_header();
 			<div class="widget donation_cta red"><?php echo apply_filters('rdc_the_content', $cpost->post_content); ?></div>
 			<div class="widget donation_history">
 				<h3><?php _e('Our supporters', 'rdc');?></h3>
-				<?php echo leyka_get_donors_list($cpost->ID, array('num' => 5, 'show_purpose' => 0));?>
+				<?php echo leyka_get_donors_list($cpost->ID, array('num' => 10, 'show_purpose' => 0));?>
 				
-				<div class="all-link"><a href="<?php echo get_permalink($cpost);?>donations"><?php _e('Full list', 'rdc');?></a></div>
+				<div class="all-link"><a href="<?php echo get_permalink($cpost);?>donations"><?php _e('Full list', 'rdc');?>&nbsp;&rarr;</a></div>
 			</div>
 		</div>
 	</div>
