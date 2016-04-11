@@ -254,6 +254,10 @@ function rdc_section_title() {
 		$title = get_the_title($p);
 		$css = 'archive';
 	}
+	elseif(is_post_type_archive('leyka_donation')){		
+		$title = __('Donations history', 'rdc');
+		$css = 'archive';
+	}
 	elseif(is_search()){
 		$title = __('Search results', 'rdc');
 		$css = 'archive search';

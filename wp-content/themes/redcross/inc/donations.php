@@ -143,6 +143,7 @@ function rdc_donation_form($campaign_id = null){
 	$active_pm = apply_filters('leyka_form_pm_order', leyka_get_pm_list(true));
 	$agree_link = home_url('oferta'); //oferta page
 
+	
 	leyka_pf_submission_errors();
 ?>
 <div id="leyka-payment-form" class="leyka-custom-template">
