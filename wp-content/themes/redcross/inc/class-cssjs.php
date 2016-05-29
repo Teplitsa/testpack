@@ -181,16 +181,16 @@ class FRL_CssJs {
 				border-left-color: #03E21C;
 			}
 			
-			.login #backtoblog a:hover, .login h1 a:hover,
-			.login #backtoblog a:focus, .login h1 a:focus,
-			.login #backtoblog a:active, .login h1 a:active {
+			#login #backtoblog a:hover, .login h1 a:hover,
+			#login #backtoblog a:focus, .login h1 a:focus,
+			#login #backtoblog a:active, .login h1 a:active {
 				outline: none;
 				color: #2BCC4A;
 				-webkit-box-shadow: 0 0 0 rgba(255,255,255, 0);
 				box-shadow: 0 0 0 rgba(255,255,255, 0);				
 			}
 			
-			.login #nav a {
+			#login #nav a {
 				display: inline-block;
 				color: #444;
 				border-bottom: 1px solid #2BCC4A;
