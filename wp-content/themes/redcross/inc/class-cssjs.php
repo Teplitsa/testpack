@@ -18,8 +18,6 @@ class FRL_CssJs {
 		add_action('admin_enqueue_scripts',  array($this, 'load_admin_scripts'), 30);
 		add_action('login_enqueue_scripts',  array($this, 'load_login_scripts'), 30);
 		
-		// Remove CF7 CSS 
-		add_action( 'wpcf7_enqueue_styles', array( $this, 'dequeue_wpcf7_styles' ), 12 );	
 	}
 	
 	public static function get_instance() {
@@ -153,7 +151,7 @@ class FRL_CssJs {
 	
 	?>
 		<style>
-			.login h1 a {
+			#login h1 a {
 				background-size: contain;
 				background-image: url('<?php echo get_template_directory_uri();?>/assets/img/tree.png');
 				background-image: url('<?php echo get_template_directory_uri();?>/assets/img/tree.svg');
@@ -179,7 +177,7 @@ class FRL_CssJs {
 				text-shadow: 0 0 0 transparent;
 			}
 			
-			.login .message {
+			#login .message {
 				border-left-color: #03E21C;
 			}
 			
