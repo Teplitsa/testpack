@@ -78,3 +78,91 @@
 	
 	
 }
+
+
+
+/** Page builder widgets **/
+.tpl-page-fullwidth {
+	margin-bottom: $gut*1.5;	
+}
+
+.panel-grid {
+	&.container-extended  {
+		@include container-extended();		
+	}
+}
+
+.no-bottom-margin.panel-cell-style .so-panel.widget {
+	margin-bottom: 0 !important;
+}
+
+.colored-row {
+	padding: $gut;
+	background: $color-secondary;
+}
+
+
+//colored bg
+.container-extended-colored {
+	@include container-extended(padded);
+	background: $color-secondary;
+		
+	a {
+		color: $color-text-black;
+		text-decoration: underline;
+		&:hover, &:focus, &:active {
+			color: $color-link-three;				
+		}
+	}
+	
+}
+
+//pictured bg
+.container-extended-pictured {
+	@include container-extended(padded);
+	min-height: 60vh;
+		
+	.text-white {
+		padding: $gut 0;
+		
+		h2 { color: $color-white; }
+		color: $color-white;
+		
+		a {
+			color: $color-white;
+			text-decoration: underline;
+			
+			&:hover, &:focus, &:active {
+				background: $color-link-one;				
+			}
+		}
+	}
+}
+
+//section title
+.pb-section-title {
+	
+	&.align-left {
+		text-align: left;
+	}
+	
+	&.align-right {
+		text-align: right;
+	}
+	
+	&.align-center {
+		text-align: center;
+	}
+	
+	h3 {
+		@include header-title(head_title);
+		margin: 0;		
+	}
+	
+	h4 {
+		@include post-title();
+		margin: 0;
+	}
+	
+	h3 + h4 { margin-top: 1em; }	
+}

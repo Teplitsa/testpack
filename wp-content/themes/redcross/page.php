@@ -10,11 +10,11 @@ $thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full');
 
 get_header(); 
 ?>
-<section class="featured-head">
+<section class="featured-head-image">
 	<div class="tpl-featured-bg container-wide" style="background-image: url(<?php echo $thumbnail;?>);"></div>
 </section>
 
-<section class="featured-heading"><div class="container for-title">
+<section class="featured-head-text"><div class="container for-title">
 	<h1 class="featured-title"><?php echo get_the_title($cpost);?></h1>
 	<?php echo $ex; ?>
 	<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>

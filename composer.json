@@ -54,7 +54,10 @@
         "wpackagist-plugin/contact-form-advanced-database": "@stable",
         "wpackagist-plugin/cmb2": "@stable",
         "webdevstudios/cmb2-post-search-field" : "dev-master",
-        "koodimonni-language/core-ru_ru": "*",
+        "wpackagist-plugin/visual-form-builder": "@stable",
+        "wpackagist-plugin/siteorigin-panels": "@stable",
+        "wpackagist-plugin/so-widgets-bundle": "@stable",
+        "koodimonni-language/core-ru_ru": "*" ,
         "tst/cmb2-attached-posts" : ">=1.2.2"
     },
     "require-dev" : {

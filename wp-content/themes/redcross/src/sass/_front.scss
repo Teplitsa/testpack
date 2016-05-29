@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /** Layout structure **/
 .container {
-	width: 88%;
+	width: 92%;
 	max-width: $page_cont;
 	margin: 0 auto;
 	position: relative;
@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 //page with cards
-.featured-head {
+.featured-head-image {
 	height: 50vh;
 	
 	.tpl-featured-bg {
@@ -94,11 +94,16 @@ h1, h2, h3, h4, h5, h6 {
 		background-color: $color-secondary;
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-position: center center;
+		background-position: center top;
+	}
+	
+	&.container-extended {
+		@include container-extended();
 	}
 }
 
-.featured-heading {
+
+.featured-head-text {
 	background: $color-white;
 		
 	.featured-title {
@@ -111,7 +116,8 @@ h1, h2, h3, h4, h5, h6 {
 		margin-bottom: $base;
 	}
 	
-	.for-title {
+	.for-title,
+	.fht-content {
 		position: relative;
 		top: -40px;
 		border-bottom: 1px solid $color-border-normal;
@@ -122,6 +128,9 @@ h1, h2, h3, h4, h5, h6 {
 		margin-top: $base;
 	}
 }
+
+
+
 
 .bottom-content {
 	margin-bottom: $gut*2;

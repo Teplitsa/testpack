@@ -364,4 +364,20 @@ $fixed_side: 222px;
 	}
 }
 
+@mixin container-extended($mod: default) {
+	margin: 0 -4%;
+	position: relative;
+	width: auto;
+	
+	@include for(xxlarge-screens){
+		margin: 0 -1 * ($full_cont - $page_cont) / 2;		
+	}
+	
+	@if $mod == padded {
+		padding: $gut*1.5 4%;
+		@include for(xxlarge-screens){			
+			padding: $gut*1.5 ($full_cont - $page_cont) / 2;
+		}
+	}	
+}
 	

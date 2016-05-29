@@ -131,6 +131,13 @@ function rdc_person_card(WP_Post $cpost, $linked = true){
 <?php
 }
 
+function tst_person_card_group(WP_Post $cpost){
+	
+	$linked = ($cpost->widget_class == 'linked-card') ? true : false;
+	
+	rdc_person_card($cpost, $linked);	
+}
+
 function rdc_search_card(WP_Post $cpost) {
 	
 	$pl = get_permalink($cpost);

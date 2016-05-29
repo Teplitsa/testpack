@@ -285,6 +285,8 @@ jQuery(document).ready(function($){
 		$('#leyka-agree-text').trigger('closeModal');
 	});
 	
+	
+	
 	/* Center logos  */
 	function logo_vertical_center() {
 		

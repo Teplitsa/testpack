@@ -83,7 +83,7 @@ class FRL_CssJs {
 		);
 		
 		
-		wp_dequeue_style('leyka-plugin-styles');
+		wp_dequeue_style('leyka-plugin-styles');		
 	}
 	
 	
@@ -95,6 +95,21 @@ class FRL_CssJs {
 		// jQuery
 		$script_dependencies[] = 'jquery'; //adjust gulp if we want it in footer	
 		
+		if(defined('LEYKA_VERSION') && wp_script_is('leyka-public', 'enqueued' )) {
+			wp_dequeue_script('leyka-cp');		
+			wp_dequeue_script('leyka-public');
+			wp_dequeue_script('leyka-modal');
+			
+			wp_deregister_script('leyka-public');
+			wp_enqueue_script(
+			   'leyka-public',
+				LEYKA_PLUGIN_BASE_URL.'js/public.js', array('jquery'),
+				LEYKA_VERSION,
+				true
+			);
+			
+			wp_enqueue_script('leyka-cp');
+		}
 		
 		
 		// front

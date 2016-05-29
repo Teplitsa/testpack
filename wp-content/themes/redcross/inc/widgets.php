@@ -29,6 +29,27 @@ function rdc_custom_widgets(){
 	
 }
 
+//pb widgets folder
+function rdc_pb_widgets_collection($folders){
+    $folders[] = get_template_directory().'/inc/pb-widgets/';
+	
+    return $folders;
+}
+add_filter('siteorigin_widgets_widget_folders', 'rdc_pb_widgets_collection');
+
+
+/** function to test if widget regitered **/
+function rdc_is_widget_registered($widget_class){
+	global $wp_widget_factory;
+	
+	if(!isset($wp_widget_factory->widgets[$widget_class]))
+		return false;
+	
+	if(!($wp_widget_factory->widgets[$widget_class] instanceof WP_Widget))
+		return false;
+	
+	return true;
+}
 
 
 /** Social Links Widget **/
