@@ -228,7 +228,7 @@ function rdc_get_newsletter_form($type = ''){
 	if(empty($form_id))
 		return '';
 	
-	$code = "[formidable id='{$form_id}']";
+	$code = "[formidable title=false description=false id='{$form_id}']";
 	
 	return do_shortcode($code);
 }
