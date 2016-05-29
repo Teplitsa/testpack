@@ -1,18 +1,18 @@
 <?php
 /*
-Widget Name: [TST] Блок-карточка
-Description: Вывод единочного элемента как карточки
+Widget Name: [TST] Элемент-заставка
+Description: Стартовая заставка с кнопкой ведет на выбранный элемент
 */
 
-class TST_SingleBlock_Widget extends SiteOrigin_Widget {
+class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 	
 	function __construct() {
 		
 		parent::__construct(
-			'tst-singleblock',
-			'[TST] Блок-карточка',
+			'tst-featureditem',
+			'[TST] Элемент-заставка',
 			array(
-				'description' => 'Вывод единочного элемента как карточки (напр., люди или организации)'				
+				'description' => 'Стартовая заставка с кнопкой ведет на выбранный элемент'		
 			),
 			array(
 				
@@ -38,15 +38,22 @@ class TST_SingleBlock_Widget extends SiteOrigin_Widget {
 		return array(						
 			'post_id' => array(
 				'type' => 'text',
-				'label' => 'ID записи'				
-			)			
+				'label' => 'ID элемента',
+				'description' => 'Может быть запись, проект, страница, мероприятие'
+			),
+			'button_label' => array(
+				'type' => 'text',
+				'label' => 'Текст на кнопке',
+				'description' => 'По умолчанию - просмотреть'
+			),
 		);
 	}
 	
 	/** prepare data for template **/	
 	public function get_template_variables( $instance, $args ) {
 		return array(
-			'post_id' 	=> (int)($instance['post_id'])			
+			'post_id' 	=> (int)($instance['post_id']),
+			'button_label' 	=> $instance['button_label']			
 		);
 	}
 	
@@ -78,16 +85,12 @@ class TST_SingleBlock_Widget extends SiteOrigin_Widget {
 		
 		$post = get_post($instance['post_id']);
         
-        if($post && is_callable('tst_'.$post->post_type.'_card_single')) {		
+        if($post) {		
 			echo $args['before_widget'];
 			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
 		?>
-			<div class="frl-pb-block">
-			<?php 
-				$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
-				$$post->widget_class = ($class) ? $class : 'default'; 
-				call_user_func('tst_'.$post->post_type.'_card_single', $post);
-				?>
+			<div class="featured-action">
+			<?php rdc_featured_action_card($post, $instance['button_label']);	?>
 			</div>
 		<?php	
 			echo '</div>';
@@ -98,5 +101,5 @@ class TST_SingleBlock_Widget extends SiteOrigin_Widget {
 } //class
 
 //register
-siteorigin_widget_register('tst-singleblock', __FILE__, 'TST_SingleBlock_Widget');
+siteorigin_widget_register('tst-featureditem', __FILE__, 'TST_FeaturedItem_Widget');
 

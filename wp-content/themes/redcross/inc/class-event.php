@@ -142,7 +142,7 @@ class TST_Event {
 			$weekday = (isset($week[(int)$weekday])) ? $week[(int)$weekday] : '';
 			
 			if(!empty($start_time = $this->time_start)){
-				$label = sprintf('%s, %s, %s', $weekday, date_i18n('d.m.Y', $start_date), date_i18n('H:i', strtotime($start_time)));
+				$label = sprintf('%s. %s, %s', $weekday, date_i18n('d.m.Y', $start_date), date_i18n('H:i', strtotime($start_time)));
 				$date_text = date('Y-m-d', $start_date).'T'.date('H:i', strtotime($start_time));
 			}
 			else {
@@ -217,7 +217,7 @@ class TST_Event {
 		if(empty($weekday) || empty($month))
 			$date = date_i18n('d.m.Y', $stamp); //incorrect stamp
 		else
-			$date = date_i18n($weekday.' j '.$month, $stamp);
+			$date = date_i18n($weekday.'. j '.$month, $stamp);
 			
 		return $date;
 	}

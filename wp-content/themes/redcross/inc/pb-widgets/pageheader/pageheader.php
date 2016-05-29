@@ -1,7 +1,7 @@
 <?php
 /*
-Widget Name: [PB] PageHeader
-Description: Заставка для страниц
+Widget Name: [TST] Заставка страницы
+Description: Заставка для страниц с изображением и заголовком
 */
 
 class IST_PB_PageHeader_Widget extends SiteOrigin_Widget {
@@ -10,9 +10,9 @@ class IST_PB_PageHeader_Widget extends SiteOrigin_Widget {
 		
 		parent::__construct(
 			'ist-pageheader',
-			__('Page Header', 'ist'),
+			'[TST] Заставка страницы',
 			array(
-				'description' => 'Заставка для страниц с конструктором'				
+				'description' => 'Заставка для страниц с изображением и заголовком'				
 			),
 			array(
 				

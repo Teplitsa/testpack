@@ -301,14 +301,17 @@ jQuery(document).ready(function($){
 	
 	/* Center logos  */
 	function logo_vertical_center() {
-		
-		var logos = $('.logo-frame'),
-			logoH = logos.eq(0).parents('.logo').height() - 3;
+				
+		$('.logo-gallery').each(function(){
 			
-		logos.find('span').css({'line-height' : logoH + 'px'});
+			var logoH = $(this).find('.logo').eq(0).parents('.bit').height() - 3;
+			console.log(logoH);
+			
+			$(this).find('.logo-frame').find('span').css({'line-height' : logoH + 'px'})
+		});		
 	}
 
-	imagesLoaded('.orgs-gallery', function(){
+	imagesLoaded('#site_content', function(){
 		logo_vertical_center();
 	});
 

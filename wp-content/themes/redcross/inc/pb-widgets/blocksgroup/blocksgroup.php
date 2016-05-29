@@ -1,7 +1,7 @@
 <?php
 /*
-Widget Name: [PB] Blocks Group
-Description: Вывод группы блоков-карточек 
+Widget Name: [TST] Группа блоков-карточек
+Description: Вывод группы элементов в виде карточек
 */
 
 class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
@@ -10,7 +10,7 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 		
 		parent::__construct(
 			'tst-blocksgroup',
-			'Группа блоков',
+			'[TST] Группа блоков-карточек',
 			array(
 				'description' => 'Вывод группы блоков-карточек (напр., люди или организации)'				
 			),
@@ -134,7 +134,7 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 		}
 		
 		if($instance['post_type'] == 'org'){
-			$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-5";
+			$loop_css = "frame logo-gallery";
 		}
 
         if($posts && is_callable('tst_'.$instance['post_type'].'_card_group')) {		

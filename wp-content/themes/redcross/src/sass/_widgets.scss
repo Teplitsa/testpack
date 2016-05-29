@@ -86,25 +86,37 @@
 	margin-bottom: $gut*1.5;	
 }
 
+//rows and widgets modifiers
 .panel-grid {
-	.container-extended  {
+	.container-extended  { //for string
 		@include container-extended();		
 	}
 	
-	.container-narrowed {
+	.container-narrowed { // for widget in the center
 		max-width: 900px;
+		margin: 0 auto;
+	}
+	
+	.no-bottom-margin.panel-cell-style .so-panel.widget { //no margin after widget
+		margin-bottom: 0 !important;
+	}
+	
+	.content-center { //center widget text
+		text-align: center;
+	}
+	
+	.colored-row { //grey row  of normal width
+		padding: $gut;
+		background: $color-secondary;
+	}
+	
+	.back-to-container div[class *= "so-widget-"]{ //widget limited to container width
+		max-width: $page_cont;
 		margin: 0 auto;
 	}
 }
 
-.no-bottom-margin.panel-cell-style .so-panel.widget {
-	margin-bottom: 0 !important;
-}
 
-.colored-row {
-	padding: $gut;
-	background: $color-secondary;
-}
 
 
 //colored bg
@@ -118,8 +130,7 @@
 		&:hover, &:focus, &:active {
 			color: $color-link-three;				
 		}
-	}
-	
+	}	
 }
 
 //pictured bg
@@ -198,4 +209,5 @@
 	}
 	
 }
+
 

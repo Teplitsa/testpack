@@ -53,8 +53,8 @@
 		&.agree { margin: 18px 0 18px 8px; }
 		&.amount { margin-bottom: 36px; }
 		&.rdc-textfield {
-			padding: 18px 0;
-			label::after { bottom: 18px; }
+			padding: 20px 0;
+			label::after { bottom: 20px; }
 		}
 		
 		&.box_details {
@@ -133,7 +133,7 @@
 	span.figure { color: $leyka_green; }
 	
 	.donate_amount_flex {
-		margin-right: 6px;
+		margin-right: 10px;
 		flex: 1 1 auto;
 		border: 2px solid $leyka_green;
 		border-radius: 2px;
@@ -156,7 +156,7 @@
 		height: 27px;
 		position: absolute;
 		right: 0;
-		bottom: 0;
+		top: 5px;
 		span {
 			display: inline-block;
 			line-height: 27px;
@@ -323,4 +323,25 @@
 	}
 }
 
+/** Errors **/
+.leyka-submit-errors {
+	@include response-block(error);		
+	margin-bottom: $gut/2;
+	
+	span { text-transform: uppercase; }
+	ul {
+		margin-top: $gut/4;		
+	}
+}
 
+.field-error {
+	@include form-text(small);
+	display: inline-block;
+	padding: 0 2px ;
+	font-size: 11px;
+	color: $color-link-two;	
+	
+	&.rdc-textfield__error {
+		bottom: 3px;
+	}
+}

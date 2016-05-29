@@ -221,7 +221,7 @@ function rdc_donation_form($campaign_id = null){
 			<input type="checkbox" name="leyka_agree" id="<?php echo $agree_check_id;?>" class="leyka_agree required rdc-checkbox__input" value="1" />
 			<span class="rdc-checkbox__label">Согласен с <a class="leyka-custom-confirmation-trigger" href="<?php echo $agree_link;?>" data-lmodal="#leyka-agree-text">условиями сбора пожертвований</a></span>           
 		</label>		
-		<p class="field-error mdl-textfield__error" id="<?php echo $agree_check_id;?>-error"></p>
+		<p class="field-error rdc-checkbox__error" id="<?php echo $agree_check_id;?>-error"></p>
 	</div>	
 	<?php }?>
 	

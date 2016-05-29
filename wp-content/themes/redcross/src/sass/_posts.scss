@@ -330,31 +330,31 @@
 		@include header-title(head_title);
 		margin-bottom: $base;
 		text-align: center;		
+	}	
+}
+
+.related-all-link {
+	text-align: center;
+	padding-bottom: $gut;
+	color: $color-link-three;
+	
+	a {
+		@include nav-text(meta);
+		padding: 14px 24px;
+		font-size: 16px;
+		line-height: 18px;
+		color: $color-text-black;			
+		text-align: center;
+		
+		&:hover, &:focus, &:active {
+			color: $color-white;
+			background: $color-text-black;	
+		}
 	}
 	
-	.related-all-link {
-		text-align: center;
-		padding-bottom: $gut;
-		color: $color-link-three;
-		
-		a {
-			@include nav-text(meta);
-			padding: 14px 24px;
-			font-size: 16px;
-			line-height: 18px;
-			color: $color-text-black;			
-			text-align: center;
-			
-			&:hover, &:focus, &:active {
-				color: $color-white;
-				background: $color-text-black;	
-			}
-		}
-		
-		margin-top: $gut;
-		@include for(medium-screens) {
-			margin-top: 0;
-		}
+	margin-top: $gut;
+	@include for(medium-screens) {
+		margin-top: 0;
 	}
 }
 
@@ -637,22 +637,29 @@
 /** Partners **/
 .tpl-org {
 	position: relative;
-			
-	.logo-link {
-		display: block;		
-		width: 100%;
-		height: 0;
+	width: 100%;
+	height: 0;
+	padding-bottom: 40%;
+	margin-bottom: $gut;
+	text-align: center;
+	
+	@include for(small-screens) {
 		padding-bottom: 60%;
-		position: relative;
+	}
+	
+	.logo-link {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
 		
 		
 		span {
-			display: block;	
+			display: inline-block;
 			width: 100%;
 			height: 100%;
-			position: absolute;
-			top: 0;
-			left: 0;
 			vertical-align: middle;
 			line-height: 130px;
 		}

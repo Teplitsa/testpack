@@ -57,7 +57,10 @@ function rdc_formidable_default_html($html, $field, $params) {
 		
 		if(!empty($l)){ 
 			$html = str_replace($l[0], '', $html); //delete label
-			$html = str_replace("</div>", $l[0].'</div>', $html); //move it on top
+			$pos = strrpos($html, "</div>");
+			if($pos){
+				$html = substr_replace($html, $l[0].'</div>', $pos, 6); //move it on top
+			}
 		}
 	}	
 	elseif($field['type'] == 'checkbox'){

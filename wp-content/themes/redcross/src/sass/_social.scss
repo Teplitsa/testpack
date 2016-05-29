@@ -133,32 +133,6 @@ $social_color: (
 
 
 /** == Newsletter form == **/
-@mixin response-block($mod : default) {
-	@include form-text();	
-	padding: 4px 10px;
-	border: 1px solid $color-border-normal;
-	position: relative;
-	color: $color-text-black;
-	
-	&:before {
-		content: '';
-		width: 3px;
-		height: 100%;
-		background: $color-border-normal;
-		position: absolute;
-		top: 0;
-		left: -1px;
-		z-index: 10;
-	}
-	
-	@if $mod == error {
-		&:before { background: $color-link-two; }
-	}
-	@else if $mod == ok {		
-		&:before { background: $leyka_green; }
-	}
-}
-
 .newsletter-form {
 	max-width: 680px;
 		

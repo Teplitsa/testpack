@@ -159,7 +159,7 @@ function rdc_org_card(WP_Post $cpost){
 	
 	$pl = get_permalink($cpost);
 ?>
-<article class="tpl-org logo card">
+<article class="tpl-org logo">
 	<a href="<?php echo $pl;?>" class="logo-link logo-frame" target="_blank" title="<?php echo esc_attr($cpost->post_title);?>">
 		<span><?php echo get_the_post_thumbnail($cpost->ID, 'full'); ?></span>
 	</a>
@@ -168,8 +168,10 @@ function rdc_org_card(WP_Post $cpost){
 }
 
 function tst_org_card_group(WP_Post $cpost){
-	
-	rdc_org_card($cpost);	
+
+?>
+<div class="bit bit-no-margin sm-6 md-3 lg-col-5"><?php rdc_org_card($cpost); ?></div>
+<?php
 }
 
 function tst_org_card_single(WP_Post $cpost){
