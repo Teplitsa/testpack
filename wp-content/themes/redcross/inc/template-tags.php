@@ -409,23 +409,6 @@ function rdc_get_post_format($cpost){
 
 
 
-/** == Newsletter == */
-function rdc_get_newsletter_form(){
-	
-	$form_id = get_theme_mod('newsletter_form_id', 0);
-	if(empty($form_id))
-		return '';
-	
-//[wpforms id="366"]
-	
-	$code = "[contact-form-7 id='{$form_id}']";
-	
-	return do_shortcode($code);
-}
-
-
-
-
 /** More section **/
 function rdc_more_section($posts, $title = '', $type = 'news', $css= ''){
 	

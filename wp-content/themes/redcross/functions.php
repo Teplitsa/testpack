@@ -35,7 +35,8 @@ function rdc_setup() {
 	// Menus
 	$menus = array(
 		'primary'   => 'Главное',		
-		'social'    => 'Социальные кнопки'		
+		'social'    => 'Социальные кнопки',
+		'sitemap'   => 'Карта сайта'
 	);
 		
 	register_nav_menus($menus);

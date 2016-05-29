@@ -126,12 +126,22 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
         }
 
         $posts = get_posts($params);
+		
+		$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4 exlg-cols-5";
+		
+		if($instance['post_type'] == 'project'){
+			$loop_css = "cards-loop sm-cols-2 md-cols-2 lg-cols-3";
+		}
+		
+		if($instance['post_type'] == 'org'){
+			$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-5";
+		}
 
         if($posts && is_callable('tst_'.$instance['post_type'].'_card_group')) {		
 			echo $args['before_widget'];
 			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
 		?>
-			<div class="frl-pb-blocks"><div class="cards-loop sm-cols-2 md-cols-3 lg-cols-4 exlg-cols-5">
+			<div class="frl-pb-blocks"><div class="<?php echo $loop_css;?>">
 				<?php foreach ($posts as $p) {
 					$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
 					$p->widget_class = ($class) ? $class : 'default'; 

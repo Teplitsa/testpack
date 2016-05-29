@@ -50,8 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 92%;
 	max-width: $page_cont;
 	margin: 0 auto;
-	position: relative;
-	.search & { max-width: 900px;}
+	position: relative;	
 }
 
 .container-wide {
@@ -60,7 +59,12 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 
+.container-narrow {
+	@extend .container;
+	max-width: 900px;
+}
 
+.search .site-content .container { max-width: 900px;}
 
 // index
 .heading {

@@ -1228,7 +1228,11 @@ jQuery(document).ready(function($){
 	
 	/** Newsletter **/
 	$('#trigger_newsletter').on('click', function(e){
-		
+				
+		if ($('body').hasClass('slug-subscribe')){			
+			return false;
+		}
+				
 		var winW = $('#top').width();
 				
 		if (winW > breakPointMedium && !$site_header.hasClass('newsletter-open')) {
@@ -1236,11 +1240,13 @@ jQuery(document).ready(function($){
 			e.stopPropagation();
 			
 			$site_header.find('#newsletter_panel').slideDown(150, function(){				
-				$site_header.addClass('newsletter-open').find('.wpcf7-email').focus();
+				$site_header.addClass('newsletter-open').find('.rdc-textfield__input').focus();
 				$(this).removeAttr('style');
-			});
+			});			
 		}
 		else if($site_header.hasClass('newsletter-open')) {
+			e.preventDefault();
+			e.stopPropagation();
 			
 			$site_header.find('#newsletter_panel').slideUp(150, function(){				
 				$site_header.removeClass('newsletter-open');
@@ -1249,8 +1255,14 @@ jQuery(document).ready(function($){
 		}
 	});
 	
-	//no autocomplete
-	$('.nl-field').find('input').attr('autocomplete', 'off');
+	//no validate no autocomplete
+	$('.novalidate').attr('novalidate', 'novalidate').find('.frm_form_field input').attr('autocomplete', 'off');
+	
+	//open panel after submit
+	if (!$('body').hasClass('slug-subscribe') && $site_header.find('#newsletter_panel').find('.frm_message, .frm_error_style').length > 0) {
+		$site_header.addClass('newsletter-open');
+	}
+	
 	
 	
 	/** Close by key and click **/

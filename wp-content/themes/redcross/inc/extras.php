@@ -166,10 +166,13 @@ function rdc_feed_link(){
 
 
 /** Adds custom classes to the array of body classes **/
-//add_filter( 'body_class', 'rdc_body_classes' );
+add_filter( 'body_class', 'rdc_body_classes' );
 function rdc_body_classes( $classes ) {
 	
-
+	if(is_page()){
+		$qo = get_queried_object();
+		$classes[] = 'slug-'.$qo->post_name;
+	}
 	return $classes;
 }
 
@@ -220,16 +223,16 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 40,
     ));
 	
-	$wp_customize->add_setting('help_campaign_id', array(
+	$wp_customize->add_setting('newsletter_bottom_form_id', array(
         'default'   => '',
         'transport' => 'refresh',
     ));
     
-    $wp_customize->add_control('help_campaign_id', array(
+    $wp_customize->add_control('newsletter_bottom_form_id', array(
         'type'     => 'text',		
-        'label'    => 'ID основной кампании помощи',
+        'label'    => 'ID формы подписки (подвал)',
         'section'  => 'title_tagline',
-        'settings' => 'help_campaign_id',
+        'settings' => 'newsletter_bottom_form_id',
         'priority' => 45,
     ));
 	

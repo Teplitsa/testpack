@@ -218,3 +218,23 @@ function rdc_is_mobile_user_agent(){
 	
 	return $test;
 }
+
+
+/** == Newsletter == */
+function rdc_get_newsletter_form($type = ''){
+	
+	$key = ($type == 'bottom') ? 'newsletter_bottom_form_id' : 'newsletter_form_id';
+	$form_id = get_theme_mod($key, 0);
+	if(empty($form_id))
+		return '';
+	
+	$code = "[formidable id='{$form_id}']";
+	
+	return do_shortcode($code);
+}
+
+add_shortcode('newsletter_form', 'rdc_newsletter_form_screen');
+function rdc_newsletter_form_screen($atts){
+	
+	return "<div class='newsletter-form'>".rdc_get_newsletter_form()."</div>";
+}

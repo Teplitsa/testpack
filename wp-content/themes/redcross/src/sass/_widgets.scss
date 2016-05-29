@@ -87,8 +87,13 @@
 }
 
 .panel-grid {
-	&.container-extended  {
+	.container-extended  {
 		@include container-extended();		
+	}
+	
+	.container-narrowed {
+		max-width: 900px;
+		margin: 0 auto;
 	}
 }
 
@@ -139,6 +144,24 @@
 	}
 }
 
+//cta
+.container-cta {
+	border-top: 6px solid $color-text-black;
+	border-bottom: 6px solid $color-text-black;
+	padding: $base 0;
+	text-align: center;
+	
+	h4 { margin: 0; }
+	h4 + p {
+		margin-top: $base;
+	}
+}
+
+.rdc-button,
+.button {
+	@include button();
+}	
+
 //section title
 .pb-section-title {
 	
@@ -164,5 +187,15 @@
 		margin: 0;
 	}
 	
-	h3 + h4 { margin-top: 1em; }	
+	h3 + h4 { margin-top: 1em; }
+	
+	&.page-header {
+		padding-top: $gut;
+		
+		h3 {
+			@include header-title(section);
+		}
+	}
+	
 }
+

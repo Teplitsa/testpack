@@ -91,4 +91,3 @@ class RDC_Social_Links extends WP_Widget {
 	
 } // class end
 
-

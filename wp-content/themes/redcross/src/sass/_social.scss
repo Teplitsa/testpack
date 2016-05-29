@@ -133,20 +133,39 @@ $social_color: (
 
 
 /** == Newsletter form == **/
-@mixin response-block {
-	@include body-text();	
-	line-height: 18px;
-	padding: 9px;
+@mixin response-block($mod : default) {
+	@include form-text();	
+	padding: 4px 10px;
+	border: 1px solid $color-border-normal;
+	position: relative;
+	color: $color-text-black;
+	
+	&:before {
+		content: '';
+		width: 3px;
+		height: 100%;
+		background: $color-border-normal;
+		position: absolute;
+		top: 0;
+		left: -1px;
+		z-index: 10;
+	}
+	
+	@if $mod == error {
+		&:before { background: $color-link-two; }
+	}
+	@else if $mod == ok {		
+		&:before { background: $leyka_green; }
+	}
 }
 
 .newsletter-form {
 	max-width: 680px;
-	
-	.screen-reader-response {
-		@extend .screen-reader-text;
-	}
-	
-	.nl-field {
+		
+	.rdc-textfield  {
+		padding: 0;
+		label { display: none; }
+		
 		input {
 			@include nav-text(meta);
 			text-transform: none;
@@ -167,63 +186,56 @@ $social_color: (
 			}
 		}
 		
-		.wpcf7-not-valid-tip {
+		.rdc-textfield__error {
+			@include form-text(small);
 			display: inline-block;
-			padding: 2px;
+			padding: 1px 2px ;
 			font-size: 11px;
-			color: $color-link-three;
+			color: $color-link-two;
 		}
 	}
 	
-	.nl-submit {
+	.frm_submit {
 		margin-top: 8px;
+		
 		input {
 			@include button();
 			border-radius: 0;			
 		}
 	}
 	
+	.frm_error_style {
+		@include response-block(error);		
+		margin: 15px 0;
+	}
+	
+	.frm_message {		
+		@include response-block(ok);
+		margin: 15px 0;
+	}
+	
 	@include for(medium-screens) {
-		.wpcf7-form {
+		fieldset {
 			display: flex;
 			flex-flow: row wrap;
 		}
 		
-		.nl-field {
+		.rdc-textfield {
 			flex: 1 1 auto;
 			@include calc(width, '100% - 180px');
 		}
 		
-		.nl-submit {
+		.frm_submit {
 			width: 155px + 16px;
 			margin: 0 0 0 8px;
-			flex: 0 0 auto;			
+			flex: 0 0 auto;
+			input { width: 100%; }
 		}
-	}
-	
-	.wpcf7-validation-errors {
-		width: 100%;
-		@include response-block();
-		border: 2px solid $color-link-three;
-		color: $color-text-black;
-		margin-top: 15px;
-	}
-	
-	.wpcf7-mail-sent-ok {
-		width: 100%;
-		@include response-block();
-		border: 2px solid $color-border-light;
-		color: $color-text-black;		
-	}
-	
-	.wpcf7-form.sent {
-		.nl-submit,
-		.nl-field { display: none; }
 	}
 	
 	&.in-footer {
 		
-		.nl-field {
+		.rdc-textfield {
 			input {
 				border: none;
 				&:focus {
@@ -231,12 +243,12 @@ $social_color: (
 				}
 			}
 			
-			.wpcf7-not-valid-tip {
+			.rdc-textfield__error {
 				color: rgba(255,255,255, 0.95);
 			}
 		}
 		
-		.nl-submit {			
+		.frm_submit {			
 			input {
 				background: $color-text-black;
 				border-color: $color-text-black;
@@ -249,10 +261,13 @@ $social_color: (
 			}
 		}
 		
-		.wpcf7-mail-sent-ok ,
-		.wpcf7-validation-errors {
+		.frm_message ,
+		.frm_error_style {
 			border-color: $color-white;
-			color: $color-white;			
+			color: $color-white;
+			&:before {
+				background: $color-white;
+			}
 		}
 	}
 }

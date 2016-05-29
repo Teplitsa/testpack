@@ -19,20 +19,9 @@ function rdc_post_card(WP_Post $cpost){
 <?php
 }
 
-function rdc_project_card(WP_Post $cpost){
-	
-	$pl = get_permalink($cpost);
-?>
-<article class="tpl-programm card"><a href="<?php echo $pl; ?>" class="entry-link">	
-	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
-	<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
-</a></article>
-<?php
-}
-
 function rdc_featured_post_card(WP_Post $cpost){
 	
-	$thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full');
+	$thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full'); 
 	$pl = get_permalink($cpost);
 	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
 ?>
@@ -49,8 +38,6 @@ function rdc_featured_post_card(WP_Post $cpost){
 </article>
 <?php
 }
-
-
 
 function rdc_featured_action_card(WP_Post $cpost, $cta = ''){
 	
@@ -114,10 +101,32 @@ function rdc_event_card(WP_Post $cpost){
 <?php
 }
 
+/** Projects */
+function rdc_project_card(WP_Post $cpost){
+	
+	$pl = get_permalink($cpost);
+?>
+<article class="tpl-programm card"><a href="<?php echo $pl; ?>" class="entry-link">	
+	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
+	<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
+</a></article>
+<?php
+}
+
+function tst_project_card_group(WP_Post $cpost){
+	rdc_project_card($cpost);	
+}
+
+function tst_project_card_single(WP_Post $cpost){
+	rdc_project_card($cpost);	
+}
+
+
+/* People and orgs */
 function rdc_person_card(WP_Post $cpost, $linked = true){
 	$pl = get_permalink($cpost);	
 ?>
-<article class="tpl-person card">
+<article class="tpl-person card <?php if($linked) { echo 'linked'; }?>">
 <?php if($linked) {?> <a href="<?php echo $pl; ?>" class="entry-link"><?php } ?>
 	
 	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
@@ -138,6 +147,38 @@ function tst_person_card_group(WP_Post $cpost){
 	rdc_person_card($cpost, $linked);	
 }
 
+function tst_person_card_single(WP_Post $cpost){
+	
+	$linked = ($cpost->widget_class == 'linked-card') ? true : false;
+	
+	rdc_person_card($cpost, $linked);	
+}
+
+
+function rdc_org_card(WP_Post $cpost){
+	
+	$pl = get_permalink($cpost);
+?>
+<article class="tpl-org logo card">
+	<a href="<?php echo $pl;?>" class="logo-link logo-frame" target="_blank" title="<?php echo esc_attr($cpost->post_title);?>">
+		<span><?php echo get_the_post_thumbnail($cpost->ID, 'full'); ?></span>
+	</a>
+</article>
+<?php
+}
+
+function tst_org_card_group(WP_Post $cpost){
+	
+	rdc_org_card($cpost);	
+}
+
+function tst_org_card_single(WP_Post $cpost){
+		
+	rdc_org_card($cpost);	
+}
+
+
+/** search **/
 function rdc_search_card(WP_Post $cpost) {
 	
 	$pl = get_permalink($cpost);
@@ -153,17 +194,7 @@ function rdc_search_card(WP_Post $cpost) {
 <?php
 }
 
-function rdc_org_card(WP_Post $cpost){
-	
-	$pl = get_permalink($cpost);
-?>
-<article class="tpl-org logo">
-	<a href="<?php echo $pl;?>" class="logo-link logo-frame" target="_blank" title="<?php echo esc_attr($cpost->post_title);?>">
-		<span><?php echo get_the_post_thumbnail($cpost->ID, 'full'); ?></span>
-	</a>
-</article>
-<?php
-}
+
 
 
 
@@ -212,7 +243,8 @@ function rdc_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 	if(!$src){
 		$default_thumb_id = attachment_url_to_postid(get_theme_mod('default_thumbnail'));
 		if($default_thumb_id){
-			$src = get_the_post_thumbnail_url($default_thumb_id, $size);
+			$src = wp_get_attachment_image_src($default_thumb_id, $size);
+			$src = ($src) ? $src[0] : '';
 		}
 	}
 	

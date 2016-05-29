@@ -454,4 +454,26 @@ function rdc_custom_metaboxes() {
 	//	'id'   => 'donation_link',
 	//	'type' => 'text_url',
 	//));
+	
+	/* People tax */
+	$person_cat_term = new_cmb2_box( array(
+		'id'               => 'person_cat_data',
+		'title'            => 'Опции шаблона',
+		'object_types'     => array( 'term' ), 
+		'taxonomies'       => array( 'person_cat' )		
+	));
+	
+	$person_cat_term->add_field( array(
+		'name'     => 'ID объекта заставки',
+		'desc'     => 'Заставка страницы категории представлена этим объектом',
+		'id'       => 'featured_action_id',
+		'type'     => 'text'		
+	));
+	
+	$person_cat_term->add_field( array(
+		'name'     => 'Напись на кнопке',
+		'desc'     => 'Заставка страницы категории содержит кнопку с этой надписью',
+		'id'       => 'featured_action_сta',
+		'type'     => 'text'		
+	));
 }

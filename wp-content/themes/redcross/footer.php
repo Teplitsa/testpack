@@ -20,7 +20,7 @@ $footer_text = get_theme_mod('footer_text');
 			<?php if(!is_page('subscribe'))	{ ?>
 				<h5><?php _e('Subscribe to our newsletter', 'rdc');?></h5>
 				<div class="newsletter-form in-footer">
-					<?php echo rdc_get_newsletter_form();?>
+					<?php echo rdc_get_newsletter_form('bottom');?>
 				</div>
 			<?php } else { ?>
 				&nbsp;

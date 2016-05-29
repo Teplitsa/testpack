@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "909026e08b614b74a1fbeebac4299171",
-    "content-hash": "531ae0a29936767450f33efe806f5cd0",
+    "hash": "448dfb65d111eba79d926a5cbd9e1c48",
+    "content-hash": "38fde35b0d96f7ac5e52baf5aa99633f",
     "packages": [
         {
             "name": "composer/installers",
@@ -337,46 +337,6 @@
             "homepage": "https://wordpress.org/plugins/cmb2/"
         },
         {
-            "name": "wpackagist-plugin/contact-form-7",
-            "version": "4.4.2",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/contact-form-7/",
-                "reference": "tags/4.4.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/contact-form-7.4.4.2.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/contact-form-7/"
-        },
-        {
-            "name": "wpackagist-plugin/contact-form-advanced-database",
-            "version": "1.0.8",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/contact-form-advanced-database/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/contact-form-advanced-database.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/contact-form-advanced-database/"
-        },
-        {
             "name": "wpackagist-plugin/crop-thumbnails",
             "version": "0.10.8",
             "source": {
@@ -435,6 +395,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/disable-comments/"
+        },
+        {
+            "name": "wpackagist-plugin/formidable",
+            "version": "2.01.03",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/formidable/",
+                "reference": "tags/2.01.03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.01.03.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/formidable/"
         },
         {
             "name": "wpackagist-plugin/imsanity",
@@ -597,26 +577,6 @@
             "homepage": "https://wordpress.org/plugins/so-widgets-bundle/"
         },
         {
-            "name": "wpackagist-plugin/visual-form-builder",
-            "version": "2.8.8",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/visual-form-builder/",
-                "reference": "tags/2.8.8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/visual-form-builder.2.8.8.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/visual-form-builder/"
-        },
-        {
             "name": "wpackagist-plugin/w3-total-cache",
             "version": "0.9.4.1",
             "source": {
@@ -773,11 +733,9 @@
         "wpackagist-plugin/simple-google-maps-short-code": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
-        "wpackagist-plugin/contact-form-7": 0,
-        "wpackagist-plugin/contact-form-advanced-database": 0,
         "wpackagist-plugin/cmb2": 0,
         "webdevstudios/cmb2-post-search-field": 20,
-        "wpackagist-plugin/visual-form-builder": 0,
+        "wpackagist-plugin/formidable": 0,
         "wpackagist-plugin/siteorigin-panels": 0,
         "wpackagist-plugin/so-widgets-bundle": 0,
         "wp-sync-db/wp-sync-db": 20,

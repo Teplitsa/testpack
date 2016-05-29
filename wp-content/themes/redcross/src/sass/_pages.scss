@@ -1,78 +1,20 @@
 /** Pages **/
 
-.page-section {	
-	margin-bottom: $gut*2;
+.page-header-simple {
+	padding: $gut 0 20px;
 	
-	.page-section-title {
-		@include header-title(head_title);
-		text-align: center;
-		margin: 0 0 $base;
-	}
-	
-	&.picture {		
-		margin: 0 -100px $gut*2;
-		padding: 0 100px;
-		background-color: #333;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center top;
-		
-		.rdc-col-row {
-			min-height: 55vh;
-			padding-top: $gut;
-			padding-bottom: $gut;
-		}
-		
-		.rdc-col {
-			color: $color-white;
-			h2, h3, h4, h5, h6 {
-				color: $color-white;
-			}
-		}
-	}
-	
-	&.cta {
-		border-top: 6px solid $color-text-black;
-		border-bottom: 6px solid $color-text-black;
-		padding: $base 0;
-		text-align: center;
-		margin-bottom: $gut*2;
-		
-		h4 { margin: $base 0; }
-		
-		.button {
-			@include button();
-		}		
-	}
-	
-	&.team-section {
-		margin-bottom: $gut*2 - $gut;
-	}
-	
-	&.grey-section {
-		background: $color-secondary;
-		margin: 0 -100px $gut*2;
-		padding: $gut 100px;
-		
-		a {
-			color: $color-text-black;
-			text-decoration: underline;
-			&:hover, &:focus, &:active {
-				color: $color-link-three;				
-			}
-		}
-		
-	}
-	
-	&.col1_center {
-		max-width: 760px;
-		margin-left: auto;
-		margin-right: auto;
+	.page-title {
+		@include header-title(section);		
 	}
 }
 
+.page-content-simple {
+	margin-bottom: $gut*2;
+	min-height: 50vh;
+}
+
 //columns
-.rdc-col-row {
+/*.rdc-col-row {
 	display: flex;
 	flex-flow: row wrap;	
 	align-items: center;
@@ -110,7 +52,7 @@
 			margin: 0 40px;
 		}
 	}
-}
+}*/
 
 
 /** Homepage **/

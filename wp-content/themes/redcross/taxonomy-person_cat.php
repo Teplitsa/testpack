@@ -10,9 +10,14 @@ $paged = (get_query_var('paged', 0)) ? get_query_var('paged', 0) : 1;
 get_header();
 
 if($paged == 1) { //featured post
+	$fpost = get_term_meta($qo->term_id, 'featured_action_id', true);
+	$fpost = get_post((int)$fpost);
+	$cta = get_term_meta($qo->term_id, 'featured_action_сta', true);
+	
+	if($fpost) {
 ?>
-<section class="featured-action"><?php echo apply_filters('rdc_the_content', $qo->description);?></section>
-<?php } ?>
+<section class="featured-action"><?php rdc_featured_action_card($fpost, $cta);?></section>
+<?php }} ?>
 
 <section class="heading">
 	<div class="container"><?php rdc_section_title(); ?></div>
