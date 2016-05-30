@@ -6,7 +6,7 @@
  */
 
 define('FRL_VERSION', '1.0');
-//define('FRL_NL_FORM', 2);
+define('TST_DOC_URL', 'https://kms.te-st.ru/site-help/');
  
  
 if ( ! isset( $content_width ) ) {
