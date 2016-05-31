@@ -200,6 +200,7 @@ function krbl_customize_register(WP_Customize_Manager $wp_customize) {
 	$wp_customize->add_setting('er_text', array(
         'default'   => '',
         'transport' => 'refresh',
+		'type' => 'option'
     ));
     
     $wp_customize->add_control('er_text', array(
@@ -213,6 +214,7 @@ function krbl_customize_register(WP_Customize_Manager $wp_customize) {
 	$wp_customize->add_setting('newsletter_form_id', array(
         'default'   => '',
         'transport' => 'refresh',
+		'type' => 'option'
     ));
     
     $wp_customize->add_control('newsletter_form_id', array(
@@ -226,6 +228,7 @@ function krbl_customize_register(WP_Customize_Manager $wp_customize) {
 	$wp_customize->add_setting('newsletter_bottom_form_id', array(
         'default'   => '',
         'transport' => 'refresh',
+		'type' => 'option'
     ));
     
     $wp_customize->add_control('newsletter_bottom_form_id', array(
