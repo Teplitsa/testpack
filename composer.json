@@ -53,6 +53,7 @@
         "wpackagist-plugin/cmb2": "@stable",
         "webdevstudios/cmb2-post-search-field" : "dev-master",
         "wpackagist-plugin/formidable": "@stable",
+        "wpackagist-plugin/post-type-converter": "@stable",
         "wpackagist-plugin/siteorigin-panels": "@stable",
         "wpackagist-plugin/so-widgets-bundle": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
