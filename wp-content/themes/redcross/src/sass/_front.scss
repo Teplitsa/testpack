@@ -184,7 +184,7 @@ h1, h2, h3, h4, h5, h6 {
 .site-footer {
 	@include sub-title(small);
 	padding: $gut 0;
-	background: $color-link-two;	
+	background: $color-secondary;	
 	color: $color-text-black;
 	
 	a {
