@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "448dfb65d111eba79d926a5cbd9e1c48",
-    "content-hash": "38fde35b0d96f7ac5e52baf5aa99633f",
+    "hash": "e49a3b187956400f1cf144e5047ca5eb",
+    "content-hash": "21351a13089aa331afa70a379af58b5a",
     "packages": [
         {
             "name": "composer/installers",
@@ -275,12 +275,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebDevStudios/CMB2-Post-Search-field.git",
-                "reference": "50413ef784a4d1cd23e10a54bb036ea473443324"
+                "reference": "f1c0422a3de6e95f5b5597fe734f86ae51990ce8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebDevStudios/CMB2-Post-Search-field/zipball/50413ef784a4d1cd23e10a54bb036ea473443324",
-                "reference": "50413ef784a4d1cd23e10a54bb036ea473443324",
+                "url": "https://api.github.com/repos/WebDevStudios/CMB2-Post-Search-field/zipball/f1c0422a3de6e95f5b5597fe734f86ae51990ce8",
+                "reference": "f1c0422a3de6e95f5b5597fe734f86ae51990ce8",
                 "shasum": ""
             },
             "require": {
@@ -314,7 +314,7 @@
                 "issues": "https://github.com/WebDevStudios/CMB2-Post-Search-field/issues",
                 "source": "https://github.com/WebDevStudios/CMB2-Post-Search-field"
             },
-            "time": "2016-03-28 02:50:41"
+            "time": "2016-05-30 06:58:49"
         },
         {
             "name": "wpackagist-plugin/cmb2",
@@ -475,6 +475,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/media-search-enhanced/"
+        },
+        {
+            "name": "wpackagist-plugin/post-type-converter",
+            "version": "0.6",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/post-type-converter/",
+                "reference": "tags/0.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/post-type-converter.0.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/post-type-converter/"
         },
         {
             "name": "wpackagist-plugin/responsive-lightbox",
@@ -736,6 +756,7 @@
         "wpackagist-plugin/cmb2": 0,
         "webdevstudios/cmb2-post-search-field": 20,
         "wpackagist-plugin/formidable": 0,
+        "wpackagist-plugin/post-type-converter": 0,
         "wpackagist-plugin/siteorigin-panels": 0,
         "wpackagist-plugin/so-widgets-bundle": 0,
         "wp-sync-db/wp-sync-db": 20,
