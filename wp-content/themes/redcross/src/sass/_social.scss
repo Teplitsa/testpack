@@ -79,7 +79,7 @@ $social_color: (
 	
 	@each $item in vk, facebook, youtube, twitter {		
 		.social-menu .#{$item} a {
-			background: $color-text-black;
+			background: $color-link-one;;
 			&:hover, &:focus, &:active {
 				//background: social_color($item);
 				background: $color-white;
@@ -190,19 +190,19 @@ $social_color: (
 	
 	@include for(medium-screens) {
 		fieldset {
-			display: flex;
-			flex-flow: row wrap;
+			width: 100%;
+			@include clearfix();
 		}
 		
 		.rdc-textfield {
-			flex: 1 1 auto;
+			float: left;
 			@include calc(width, '100% - 180px');
 		}
 		
 		.frm_submit {
 			width: 155px + 16px;
 			margin: 0 0 0 8px;
-			flex: 0 0 auto;
+			float: left;
 			input { width: 100%; }
 		}
 	}
@@ -224,13 +224,13 @@ $social_color: (
 		
 		.frm_submit {			
 			input {
-				background: $color-text-black;
-				border-color: $color-text-black;
+				background: $color-link-one;
+				border-color: $color-link-one;
 							
 				&:hover, &:focus, &:active {
 					background: $color-white;
 					border-color: $color-white;
-					color: $color-text-black;
+					color: $color-link-one;
 				}
 			}
 		}

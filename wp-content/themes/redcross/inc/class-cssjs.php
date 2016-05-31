@@ -63,10 +63,11 @@ class FRL_CssJs {
 		$url = get_template_directory_uri();
 		$style_dependencies = array();
 		
+		
 		// fonts
 		wp_enqueue_style(
 			'rdc-fonts',
-			'//fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:400,700|Tinos:400,400italic,700&subset=latin,cyrillic',
+			'https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,700italic&subset=latin,cyrillic',
 			$style_dependencies,
 			null
 		);

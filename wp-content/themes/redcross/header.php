@@ -31,7 +31,7 @@
 				</a>					
 			</div>
 			
-			<?php $header_text = get_theme_mod('header_text'); ?>
+			<?php $header_text = get_option('header_adr_text'); ?>
 			<div class="site-details site-panel-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>									
 			<div class="trigger-button newsletter site-panel-cell">
 				<a id="trigger_newsletter"  href="<?php echo home_url('subscribe');?>"><?php _e( 'Subscribe', 'rdc' ); ?><?php rdc_svg_icon('icon-mail');?><?php rdc_svg_icon('icon-close');?></a>
