@@ -96,10 +96,10 @@ h1.logo-name {
 }
 
 h2.logo-name {
-	font-size: 12px;
-	font-family: $sans;		
-	letter-spacing: 1px;
-	padding-top: 4px;
+	font-size: 11px;
+	font-family: $sans;	
+	font-weight: 300;
+	padding-top: 6px;
 	
 	@include for(medium-screens) {
 		padding-top: 6px;
@@ -403,7 +403,7 @@ h2.logo-name {
 		}
 		
 		&:hover {
-			background: $color-link-two;
+			background: $color-link-one;
 		}
 	}
 }

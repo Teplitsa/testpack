@@ -224,7 +224,7 @@ function krbl_is_mobile_user_agent(){
 function krbl_get_newsletter_form($type = ''){
 	
 	$key = ($type == 'bottom') ? 'newsletter_bottom_form_id' : 'newsletter_form_id';
-	$form_id = get_theme_mod($key, 0);
+	$form_id = get_option($key, 0);
 	if(empty($form_id))
 		return '';
 	
