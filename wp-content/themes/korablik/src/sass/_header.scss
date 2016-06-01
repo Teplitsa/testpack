@@ -462,7 +462,7 @@ h2.logo-name {
 			}
 			
 			&:hover {
-				background: $color-text-black;
+				background: $color-link-three;
 				.svg-icon  { fill: $color-white; }
 			}
 			
@@ -474,7 +474,7 @@ h2.logo-name {
 	
 	ul.sub-menu {
 		display: none;
-		background: $color-text;
+		background: $color-link-three;		
 		color: $color-white;
 		
 		li { border: none; }
@@ -484,14 +484,14 @@ h2.logo-name {
 			margin-right: 0;
 			
 			&:hover, &:focus, &:active {
-				background: $color-text-black;		
+				background: $color-link-one;		
 			}
 		}
 	}
 	
 	li.open {
 		.submenu-trigger {
-			background: $color-text;
+			background: $color-link-three;
 			.icon-down { display: none; }
 			.icon-up {
 				display: inline-block;
