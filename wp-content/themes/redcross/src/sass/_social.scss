@@ -2,10 +2,10 @@
 
 /** == Common settings == **/
 $social_color: (
-	vk:        #3C6792,
-	facebook:  #3C589A,
-	twitter:   #2CAAE1,
-	instagram: #527FA3,
+	vk:        #517397,
+	facebook:  #3B5998,
+	twitter:   #1DA1F2,
+	instagram: #B7308C,
 	pinterest: #DE2127,
 	youtube:   #E21D17,
 	telegram:  #2CA5E0,
@@ -64,7 +64,7 @@ $social_color: (
 		}
 	}
 	
-	@each $item in vk, facebook, youtube, twitter {
+	@each $item in vk, facebook, youtube, twitter, instagram {
 		
 		.#{$item} a {
 			background: social_color($item);
@@ -77,7 +77,7 @@ $social_color: (
 
 .bottom-bar {
 	
-	@each $item in vk, facebook, youtube, twitter {		
+	@each $item in vk, facebook, youtube, twitter, instagram {		
 		.social-menu .#{$item} a {
 			background: $color-text-black;
 			&:hover, &:focus, &:active {

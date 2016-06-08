@@ -45,8 +45,7 @@
         "wpackagist-plugin/leyka" : "@stable",
         "wpackagist-plugin/media-search-enhanced": "@stable",
         "wpackagist-plugin/responsive-lightbox" : "@stable",        
-        "wpackagist-plugin/simple-css-for-widgets" : "@stable",
-        "wpackagist-plugin/simple-google-maps-short-code": "@stable",
+        "wpackagist-plugin/simple-css-for-widgets" : "@stable",        
         "wpackagist-plugin/widget-logic" : ">=0.57",
         "wpackagist-plugin/wordpress-seo" : "@stable",
         "wpackagist-plugin/w3-total-cache": "@stable",        
@@ -61,7 +60,8 @@
     "require-dev" : {
         "wp-sync-db/wp-sync-db" : "dev-master",
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
-        "wpackagist-plugin/post-duplicator" : "@stable"
+        "wpackagist-plugin/post-duplicator" : "@stable",
+        "wpackagist-plugin/disable-wordpress-updates": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",

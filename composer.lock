@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "448dfb65d111eba79d926a5cbd9e1c48",
-    "content-hash": "38fde35b0d96f7ac5e52baf5aa99633f",
+    "hash": "0f08246a28d674211c833ba84919ba65",
+    "content-hash": "93b6eb06e0e061906798f5744bd95bfa",
     "packages": [
         {
             "name": "composer/installers",
@@ -275,12 +275,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WebDevStudios/CMB2-Post-Search-field.git",
-                "reference": "50413ef784a4d1cd23e10a54bb036ea473443324"
+                "reference": "f1c0422a3de6e95f5b5597fe734f86ae51990ce8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WebDevStudios/CMB2-Post-Search-field/zipball/50413ef784a4d1cd23e10a54bb036ea473443324",
-                "reference": "50413ef784a4d1cd23e10a54bb036ea473443324",
+                "url": "https://api.github.com/repos/WebDevStudios/CMB2-Post-Search-field/zipball/f1c0422a3de6e95f5b5597fe734f86ae51990ce8",
+                "reference": "f1c0422a3de6e95f5b5597fe734f86ae51990ce8",
                 "shasum": ""
             },
             "require": {
@@ -314,7 +314,7 @@
                 "issues": "https://github.com/WebDevStudios/CMB2-Post-Search-field/issues",
                 "source": "https://github.com/WebDevStudios/CMB2-Post-Search-field"
             },
-            "time": "2016-03-28 02:50:41"
+            "time": "2016-05-30 06:58:49"
         },
         {
             "name": "wpackagist-plugin/cmb2",
@@ -398,15 +398,15 @@
         },
         {
             "name": "wpackagist-plugin/formidable",
-            "version": "2.01.03",
+            "version": "2.02.01",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/formidable/",
-                "reference": "tags/2.01.03"
+                "reference": "tags/2.02.01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/formidable.2.01.03.zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.01.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -515,26 +515,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/simple-css-for-widgets/"
-        },
-        {
-            "name": "wpackagist-plugin/simple-google-maps-short-code",
-            "version": "1.2",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/simple-google-maps-short-code/",
-                "reference": "tags/1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/simple-google-maps-short-code.1.2.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/simple-google-maps-short-code/"
         },
         {
             "name": "wpackagist-plugin/siteorigin-panels",
@@ -679,6 +659,26 @@
             "time": "2016-04-24 08:56:12"
         },
         {
+            "name": "wpackagist-plugin/disable-wordpress-updates",
+            "version": "1.4.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/disable-wordpress-updates/",
+                "reference": "tags/1.4.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/disable-wordpress-updates.1.4.7.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/disable-wordpress-updates/"
+        },
+        {
             "name": "wpackagist-plugin/force-regenerate-thumbnails",
             "version": "2.0.5",
             "source": {
@@ -730,7 +730,6 @@
         "wpackagist-plugin/media-search-enhanced": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
         "wpackagist-plugin/simple-css-for-widgets": 0,
-        "wpackagist-plugin/simple-google-maps-short-code": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/cmb2": 0,
@@ -740,7 +739,8 @@
         "wpackagist-plugin/so-widgets-bundle": 0,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
-        "wpackagist-plugin/post-duplicator": 0
+        "wpackagist-plugin/post-duplicator": 0,
+        "wpackagist-plugin/disable-wordpress-updates": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,

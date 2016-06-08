@@ -108,7 +108,7 @@ function rdc_social_share_no_js() {
 			'url' => 'https://vk.com/share.php?url='.$link.'&title='.$title,
 			'txt' => 'Вконтакте',
 			'icon' => 'icon-vk',
-			'show_mobile' => false
+			'show_mobile' => true
 		),			
 		'twitter' => array(
 			'label' => 'Поделиться ссылкой в Твиттере',
@@ -130,7 +130,7 @@ function rdc_social_share_no_js() {
 			'url' => 'https://www.facebook.com/sharer/sharer.php?u='.$link,
 			'txt' => 'Facebook',
 			'icon' => 'icon-facebook',
-			'show_mobile' => false
+			'show_mobile' => true
 		),	
 	);
 	

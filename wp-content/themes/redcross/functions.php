@@ -64,18 +64,14 @@ function rdc_medialib_custom_image_sizes($sizes) {
  */
 function rdc_widgets_init() {
 		
-	$config = array(
-		'right_top' => array(
-						'name' => 'Правая колонка - Верх',
-						'description' => 'Общая боковая колонка справа (верхняя часть, на мобильных - перед контентом)'
-					),
-		'right_bottom' => array(
-						'name' => 'Правая колонка - Низ',
-						'description' => 'Общая боковая колонка справа (верхняя часть, на мобильных - после контента)'
-					),
+	$config = array(		
 		'right_single' => array(
 						'name' => 'Правая колонка - Записи',
 						'description' => 'Боковая колонка справа на страницах новостей'
+					),
+		'right_event' => array(
+						'name' => 'Правая колонка - Анонсы',
+						'description' => 'Боковая колонка справа на страницах анонсов'
 					),
 		'footer' => array(
 						'name' => 'Подвал - 4 виджета',
