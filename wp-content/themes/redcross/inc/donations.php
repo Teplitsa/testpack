@@ -114,9 +114,9 @@ function rdc_amount_filed($form){
 	$variants = explode(',', $data['amount_settings']['fixed']);?>
 
 	<span class="<?php echo $currency;?> amount-variants-container" <?php echo $currency == $current_curr ? '' : 'style="display:none;"';?>>
-		<?php foreach($variants as $amount) {?>
+		<?php foreach($variants as $i => $amount) { ?>
 			<label class="figure rdc-radio" title="<?php _e('Please, specify your donation amount', 'leyka');?>">
-				<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button">
+				<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button" <?php checked($i, 0);?>>
 				<span class="rdc-radio__label"><?php echo (int)$amount;?></span>
 			</label>
 		<?php } ?>

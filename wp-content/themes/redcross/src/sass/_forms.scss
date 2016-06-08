@@ -302,7 +302,7 @@ $label-text-color: $color-text;
 			cursor: pointer;
 		}
 	}
-	
+		
 	.rdc-radio__button:checked + .rdc-radio__label {
 		&:before {
 			background-color: $input-color-active;
