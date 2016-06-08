@@ -163,9 +163,12 @@ $social_color: (
 		.rdc-textfield__error {
 			@include form-text(small);
 			display: inline-block;
-			padding: 1px 2px ;
+			padding: 2px 2px ;
 			font-size: 11px;
 			color: $color-link-two;
+			position: relative;
+			bottom: auto;
+			
 		}
 	}
 	
