@@ -41,11 +41,11 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 				'label' => 'ID элемента',
 				'description' => 'Может быть запись, проект, страница, мероприятие'
 			),
-			'button_label' => array(
-				'type' => 'text',
-				'label' => 'Текст на кнопке',
-				'description' => 'По умолчанию - просмотреть'
-			),
+			//'button_label' => array(
+			//	'type' => 'text',
+			//	'label' => 'Текст на кнопке',
+			//	'description' => 'По умолчанию - просмотреть'
+			//),
 		);
 	}
 	
@@ -53,7 +53,7 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 	public function get_template_variables( $instance, $args ) {
 		return array(
 			'post_id' 	=> (int)($instance['post_id']),
-			'button_label' 	=> $instance['button_label']			
+			//'button_label' 	=> $instance['button_label']			
 		);
 	}
 	
@@ -90,7 +90,7 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
 		?>
 			<div class="featured-action">
-			<?php rdc_featured_action_card($post, $instance['button_label']);	?>
+			<?php rdc_featured_action_card($post);	?>
 			</div>
 		<?php	
 			echo '</div>';

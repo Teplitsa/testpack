@@ -48,11 +48,11 @@ function rdc_featured_action_card(WP_Post $cpost, $cta = ''){
 	<div class="bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
 	
 	<div class="container featured-body">
-		<div class="featured-content">			
-			<h4 class="entry-title"><a href="<?php echo $pl; ?>"><?php echo get_the_title($cpost);?></a></h4>
-			<div class="entry-summary"><?php echo $ex;?></div>
-			<div class="cta"><a href="<?php echo $pl; ?>" class="cta-button"><?php echo $cta;?></a></div>
-		</div>
+		<a href="<?php echo $pl; ?>" class="featured-content">	
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+			<div class="entry-summary"><?php echo $ex;?></div>		
+			<!--<div class="cta"><a href="<?php echo $pl; ?>" class="cta-button"><?php echo $cta;?></a></div>-->
+		</a>	
 	</div>	
 </article>
 <?php
@@ -68,7 +68,7 @@ function rdc_related_post_card(WP_Post $cpost) {
 		<?php if('project' != $cpost->post_type) { ?>
 		<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>');?></div>
 		<?php } ?>
-		<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
+		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 	</div>
 </a></article>	
 <?php

@@ -37,10 +37,7 @@
 	@return null;
 }
 
-@mixin property-for-loop($property, $values){
-	
-	
-}
+
 
 @mixin for($media) {
 	@if $media == small-screens {
@@ -224,7 +221,7 @@ $margin-base: 16px;
 	}
 	
 	h5 {
-		@include header-title(head_title_small);
+		@include header-title();
 		margin: $margin-base 0 $margin-base/2;
 		font-weight: bold;
 	}

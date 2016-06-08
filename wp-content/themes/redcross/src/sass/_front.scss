@@ -160,7 +160,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: $color-text-black;
 		
 	h5 {
-		@include header-title(head_title_small);
+		@include header-title();
 		margin-bottom: $base/2;
 	}
 	

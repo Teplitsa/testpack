@@ -268,7 +268,7 @@
 		}
 		
 		p:first-child {
-			@include post-title(multiline);
+			@include post-title();
 		}
 	}
 }

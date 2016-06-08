@@ -13,7 +13,7 @@ get_header();
 	<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
 </div></section>
 
-<section class="main-content single-post-section page-content-simple">
+<section class="main-content page-content-simple">
 <div id="rdc_sharing" class="regular-sharing hide-upto-medium"><?php echo rdc_social_share_no_js();?></div>
 
 <div class="container-narrow">	
