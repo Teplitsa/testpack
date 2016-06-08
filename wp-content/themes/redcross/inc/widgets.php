@@ -25,6 +25,7 @@ function rdc_custom_widgets(){
 	unregister_widget('Leyka_Campaigns_List_Widget');
 		
 	register_widget('RDC_Home_News');
+	register_widget('RDC_Social_Links');
 	
 }
 
@@ -67,7 +68,7 @@ class RDC_Social_Links extends WP_Widget {
 		
         echo $before_widget;
        
-		rdc_get_social_menu();
+		echo rdc_get_social_menu();
 				
 		echo $after_widget;
     }

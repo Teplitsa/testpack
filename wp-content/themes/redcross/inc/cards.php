@@ -23,16 +23,14 @@ function rdc_featured_post_card(WP_Post $cpost){
 	
 	$thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full'); 
 	$pl = get_permalink($cpost);
-	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
 ?>
-<article class="tpl-featured container-wide">
+<article class="tpl-featured card">
 	<div class="bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
 	
 	<div class="container featured-body">
 		<a href="<?php echo $pl; ?>" class="featured-content">
 			<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>'); ?></div>
-			<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
-			<div class="entry-summary"><?php echo $ex;?></div>
+			<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>			
 		</a>
 	</div>	
 </article>

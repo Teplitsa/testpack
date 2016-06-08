@@ -110,6 +110,15 @@ function is_projects() {
 	return false;
 }
 
+function is_expired_event(){
+	
+	if(!is_single())
+		return false;
+	
+	$event = new TST_Event(get_queried_object());
+	return $event->is_expired();
+}
+
 
 
 /** Menu filter sceleton **/

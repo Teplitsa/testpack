@@ -13,20 +13,13 @@ $video = $thumbnail = '';
 if($format == 'introvid'){
 	$video = get_post_meta($cpost->ID, 'post_video', true);
 	if(empty($video))
-		$video = 'standard';
+		$format = 'standard';
 }
 elseif($format == 'introimg') {
 	$thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full');
 }
 
 get_header(); ?>
-
-<?php if($format == 'introimg'){ ?>
-<section class="featured-head introimg">
-	<div class="tpl-featured-bg container-wide" style="background-image: url(<?php echo $thumbnail;?>);" ></div>	
-</section>
-<?php } ?>
-
 <section class="main-content single-post-section container-wide format-<?php echo $format;?>">
 <div id="rdc_sharing" class="regular-sharing hide-upto-medium"><?php echo rdc_social_share_no_js();?></div>
 
@@ -35,36 +28,33 @@ get_header(); ?>
 		<div class="entry-meta"><?php echo rdc_posted_on($cpost); //for event ?></div>
 		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>				
 		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
+		
+		<div class="lead"><?php echo apply_filters('rdc_the_content', $cpost->post_excerpt); ?></div>
 	</header>
 	
+	<?php if($format == 'introimg' && $cpost->post_type != 'project'){ ?>
+	<section class="entry-preview introimg">		
+		<div class="tpl-featured-bg" style="background-image: url(<?php echo $thumbnail;?>);" ></div>		
+	</section>
+	<?php } ?>
+		
 	<div class="frame">
 		<main class="bit md-8">		
 			
-		<?php if($format == 'standard') { ?>
+		<?php if($format == 'standard' && $cpost->post_type != 'project') { ?>
 			<div class="entry-preview">
 				<?php echo rdc_post_thumbnail($cpost->ID, 'medium-thumbnail');?>						
 			</div>
-		<?php } elseif($format == 'introvid') { ?>
+		<?php } elseif($format == 'introvid' && $cpost->post_type != 'project') { ?>
 			<div class="entry-preview introvid player">
 				<?php echo apply_filters('the_content', $video);?>
 			</div>
 		<?php } ?>				
 			
-			<div class="entry-content">
-				<div class="lead"><?php echo apply_filters('rdc_the_content', $cpost->post_excerpt); ?></div>
-				<?php echo apply_filters('the_content', $cpost->post_content); ?>
-			</div>
+			<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
 		</main>
 		
-		<div id="rdc_sidebar" class="bit md-4">
-		<?php
-			//$rquery = rdc_get_related_query($cpost, 'post_tag', 1); 
-			//if($rquery->have_posts()){
-			//	rdc_related_project($rquery->posts[0]);
-			//}
-			dynamic_sidebar( 'right_single-sidebar' );
-		?>			
-		</div>
+		<div id="rdc_sidebar" class="bit md-4"><?php dynamic_sidebar( 'right_single-sidebar' ); ?> </div>
 	
 	</div>
 </div>

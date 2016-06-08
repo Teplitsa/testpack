@@ -91,8 +91,12 @@ h1, h2, h3, h4, h5, h6 {
 //page with cards
 .featured-head-image {
 	height: 50vh;
-	
-	.tpl-featured-bg {
+	&.container-extended {
+		@include container-extended();
+	}
+}
+
+.tpl-featured-bg {
 		width: 100%;
 		height: 100%;
 		background-color: $color-secondary;
@@ -100,11 +104,6 @@ h1, h2, h3, h4, h5, h6 {
 		background-size: cover;
 		background-position: center top;
 	}
-	
-	&.container-extended {
-		@include container-extended();
-	}
-}
 
 
 .featured-head-text {
@@ -183,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
 .site-footer {
 	@include sub-title(small);
 	padding: $gut 0;
-	background: #fff; //$color-secondary-alt;	
+	background: $color-secondary;
 	color: $color-text;
 	
 	a {

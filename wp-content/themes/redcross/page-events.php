@@ -27,8 +27,8 @@ $future_events = new WP_Query(array(
 ));
 
 $future = $future_events->posts;
-$featured = array_slice($future, 0, 1); 
-array_splice($future, 0, 1);
+$featured = array_slice($future, 0, 2); 
+array_splice($future, 0, 2);
 }
 
 //past
@@ -56,7 +56,15 @@ $past_events = new WP_Query($past_agrs);
 get_header();
 ?>
 <?php if(!empty($featured)) { //featured post ?>
-<section class="featured-post"><?php rdc_featured_post_card($featured[0]);?></section>
+<section class="featured-post"><div class="container-wide">
+<div class="cards-loop sm-cols-1 md-cols-2">
+	<?php
+		foreach($featured as $f){
+			rdc_featured_post_card($f);
+		}
+	?>
+</div>
+</div></section>
 <?php } ?>
 
 <?php if(!empty($future)) { ?>

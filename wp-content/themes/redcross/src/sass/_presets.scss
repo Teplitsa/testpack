@@ -3,12 +3,12 @@
 -------------------------------------------------------- */
 
 //Fonts
-$body:	     'Tinos', Georgia, serif; //Verdana,Geneva,sans-serif;
+$body:	     'Open Sans',Arial, sans-serif; 
 $heading:    'Roboto Condensed', "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $title:      'Roboto Condensed', "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $nav:        'Roboto Condensed', "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
-$sans:       'Roboto',Arial, sans-serif;
+$sans:       'Open Sans',Arial, sans-serif;
 $mono: 	     "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 
@@ -71,26 +71,44 @@ $fixed_side: 222px;
 
 // Typo
 @mixin body-text($mod: default) {
-	$body-text-size: 18px;
-	
 	font-family: $body;
 	color: $color-text;
-	
-	font-size: $body-text-size;
 	font-weight: normal;
-	line-height: 1.45;
 	
-	@if $mod == summary {
-		font-size: 14px;
+	font-size: 14px;	
+	line-height: 1.5;
+	
+	@include for(medium-screens) {
+		font-size: 18px;	
+		line-height: 1.45;
 	}
-	@else if $mod == semi {
-		font-size: 16px;
+		
+	@if $mod == summary {		
+		font-size: 12px;	
+		line-height: 1.5;
+		
+		@include for(medium-screens) {
+			font-size: 14px;	
+			line-height: 1.5;
+		}		
+	}
+	@else if $mod == semi {		
+		font-size: 16px;	
+		line-height: 1.45;
+		
+		@include for(medium-screens) {
+			font-size: 18px;	
+			line-height: 1.5;
+		}	
 	}
 	@else if $mod == larger {
-		font-size: $body-text-size*1.14285;
-	}
-	@else if $mod == small {
-		font-size: $body-text-size*0.85714;
+		font-size: 18px;	
+		line-height: 1.45;
+		
+		@include for(medium-screens) {
+			font-size: 21px;	
+			line-height: 1.45;
+		}	
 	}
 }
 
@@ -128,11 +146,11 @@ $fixed_side: 222px;
 	text-transform: none;
 	
 	font-size: 21px;
-	line-height: 26px;
+	line-height: 24px;
 	
 	@include for(medium-screens){
-		font-size: 24px;
-		line-height: 30px;	
+		font-size: 21px;
+		line-height: 24px;	
 	}
 		
 	@if $mod == small_title {
@@ -142,13 +160,11 @@ $fixed_side: 222px;
 		letter-spacing: 0.5px;
 	}
 	@else if $mod == featured {
-		font-size: 32px;
+		font-size: 28px;
 		line-height: 1.1;	
-		letter-spacing: 0.5px;
-		font-weight: 700;
-		
+			
 		@include for(medium-screens){
-			font-size: 36px;
+			font-size: 32px;
 			line-height: 1.1;	
 		}
 	}

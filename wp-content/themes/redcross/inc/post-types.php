@@ -254,7 +254,7 @@ function rdc_custom_metaboxes() {
     $format_cmb = new_cmb2_box( array(
         'id'            => 'post_format_metabox',
         'title'         => 'Настройки формата',
-        'object_types'  => array( 'post', 'project', 'event'), // Post type
+        'object_types'  => array( 'post', 'event'), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
@@ -275,7 +275,8 @@ function rdc_custom_metaboxes() {
 		'options'          => array(
 			'standard' => 'Стандартный',			
 			'introimg' => 'Заставка',
-			'introvid' => 'Видео-заставка'
+			'introvid' => 'Видео-заставка',
+			'nointro'  => 'Без заставки',
 		),
 	));
 	
