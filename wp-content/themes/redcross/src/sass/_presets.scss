@@ -110,6 +110,15 @@ $fixed_side: 222px;
 			line-height: 1.45;
 		}	
 	}
+	@if $mod == small {		
+		font-size: 11px;	
+		line-height: 1.45;
+		
+		@include for(medium-screens) {
+			font-size: 12px;	
+			line-height: 1.5;
+		}		
+	}
 }
 
 @mixin nav-text($mod: default) {
@@ -126,6 +135,10 @@ $fixed_side: 222px;
 	}
 	@else if $mod == meta {
 		font-size: 16px;
+		line-height: 16px;
+	}
+	@else if $mod == meta_small {
+		font-size: 14px;
 		line-height: 16px;
 	}
 	@else if $mod == menu {
@@ -158,7 +171,7 @@ $fixed_side: 222px;
 		line-height: 1.1;	
 			
 		@include for(medium-screens){
-			font-size: 32px;
+			font-size: 28px;
 			line-height: 1.1;	
 		}
 	}	
@@ -377,5 +390,22 @@ $fixed_side: 222px;
 			padding: $gut*1.5 ($full_cont - $page_cont) / 2;
 		}
 	}	
+}
+
+@mixin vertical-image-header-fixed(){
+	//60vh;
+	height: 360px;
+	
+	@include for(small-screens) {
+		height: 400px;
+	}
+	
+	@include for(medium-screens) {
+		height: 460px;
+	}
+	
+	@include for(large-screens) {
+		height: 480px;
+	}
 }
 	

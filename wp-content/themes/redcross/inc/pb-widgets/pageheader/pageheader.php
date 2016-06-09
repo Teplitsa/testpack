@@ -38,26 +38,26 @@ class IST_PB_PageHeader_Widget extends SiteOrigin_Widget {
 		return array(
 			'image' => array(
 				'type' => 'media',
-				'label' => __('Image file', 'ist'),
+				'label' => __('Image file', 'rdc'),
 				'library' => 'image',
 				'fallback' => true,
 			),		
 
 			'title' => array(
 				'type' => 'text',
-				'label' => __('Title text', 'ist'),
+				'label' => __('Title text', 'rdc'),
 			),
 			
 			'subtitle' => array(
 				'type' => 'textarea',
-				'label' => __('Sub title text', 'ist'),
+				'label' => __('Sub title text', 'rdc'),
 				'rows' => 4
 			),
 			
 			'extend_width' => array(
 				'type' => 'checkbox',
 				'default' => false,
-				'label' => __('Extend Width', 'ist'),
+				'label' => __('Extend Width', 'rdc'),
 				'description' => 'Макет шире основной колонки',
 			),
 			

@@ -97,7 +97,7 @@
 
 /** News **/
 @mixin post-meta() {
-	@include nav-text(meta);
+	@include nav-text(meta_small);
 	display: inline-block;
 	background: $color-text-black;
 	color: $color-white;
@@ -159,11 +159,10 @@
 	}
 	
 	.entry-meta {
-		@include post-meta();
-		font-size: 14px;
+		@include post-meta();		
 		position: absolute;
 		top: 0;
-		@include transform(translateY(-110%));
+		@include transform(translateY(-100%));
 		z-index: 100;
 	}
 	
@@ -203,9 +202,10 @@
 	}
 }
 
-.featured-body {
-	min-height: 60vh;
-	height: 100%;
+
+
+.featured-body {	
+	@include vertical-image-header-fixed();
 	display: flex;
 	flex-flow: row nowrap;
 	
@@ -234,24 +234,21 @@
 		@include header-title(single);				
 		@include hyphens(auto);
 		color: $color-white;
-		margin: 4px 0 8px;
+		margin: 8px 0 0;
 	}
 	
 	.entry-summary {
 		@include body-text(semi);
 		color: transparentize($color-white, 0.05);
+		margin: 8px 0 0;
 	}
 	
-	.cta {
+	/*.cta {
 		margin-top: $base;
 		a {
 			@include button();
 		}
-	}
-	
-	a.featured-content:hover {
-		
-	}
+	}*/
 }
 
 .tpl-featured {
@@ -387,7 +384,8 @@
 	
 	.entry-title {
 		@include post-title();
-		margin: 0;		
+		margin: 0;
+		padding-top: $base;
 	}
 	
 	.entry-meta {
@@ -399,13 +397,14 @@
 		margin: 0;
 		position: absolute;
 		lefT: 16px;
-		top: -24px;
+		top: 0;
+		@include transform(translateY(-100%));
 	}
 	
 	.entry-data {
 		z-index: 50;		
-		padding: 10px 16px 20px;
-		position: relative;		
+		padding: 0 $base $base;
+		position: relative;
 	}
 	
 	&:hover {
@@ -460,7 +459,7 @@
 	}
 	
 	.introimg  {
-		height: 50vh;
+		@include vertical-image-header-fixed();
 	}
 }
 

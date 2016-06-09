@@ -373,88 +373,6 @@ function rdc_custom_metaboxes() {
 	));
 	
 	
-	/** Page **/
-//	$page_cmb = new_cmb2_box( array(
-//        'id'            => 'page_data_metabox',
-//        'title'         => 'Настройки страницы',
-//        'object_types'  => array( 'page'), // Post type
-//        'context'       => 'normal',
-//        'priority'      => 'high',
-//        'show_names'    => true, // Show field names on the left
-//		//'show_on'       => array( 'key' => 'page-template', 'value' => 'default' ),	
-//        //'cmb_styles'    => false, // false to disable the CMB stylesheet
-//        // 'closed'     => true, // Keep the metabox closed by default
-//    ));
-//	
-//	$page_cmb->add_field( array(
-//		'name' => 'Дополнительный блок',
-//		'id'   => 'page_side',
-//		'type' => 'textarea'
-//		
-//	) );
-//	
-//	$page_cmb->add_field( array(
-//		'name' => 'Ссылка для кнопки CTA',
-//		'id'   => 'cta_link',
-//		'type' => 'text_url',
-//		// 'protocols' => array( 'http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet' ), // Array of allowed protocols
-//	) );
-//	
-//	$page_cmb->add_field( array(
-//		'name' => 'Текст для кнопки CTA',
-//		'id'   => 'cta_text',
-//		'type' => 'text',
-//	) );
-	
-	
-	/** Homepage **/
-	$homepage_cmb = new_cmb2_box( array(
-        'id'            => 'homepage_data_metabox',
-        'title'         => 'Настройки главной',
-        'object_types'  => array( 'page'), // Post type
-        'context'       => 'normal',
-        'priority'      => 'high',
-        'show_names'    => true, // Show field names on the left
-		'show_on'       => array( 'key' => 'page-template', 'value' => 'page-homepage.php' ),	
-        //'cmb_styles'    => false, // false to disable the CMB stylesheet
-        // 'closed'     => true, // Keep the metabox closed by default
-    ));
-	
-	$homepage_cmb->add_field( array(
-		'name'        => 'Стартовый блок',
-		'id'          => 'home_featured_item',
-		'type'        => 'post_search_text', // This field type
-		// post type also as array
-		'post_type'   => array('post', 'page', 'leyka_campaign'),
-		// Default is 'checkbox', used in the modal view to select the post type
-		'select_type' => 'radio',
-		// Will replace any selection with selection from modal. Default is 'add'
-		'select_behavior' => 'replace'		
-	));
-	
-	$homepage_cmb->add_field( array(
-		'name' => 'Текст кнопки в стартовом блоке',
-		'id'   => 'home_featured_text',
-		'type' => 'text'		
-	) );
-	//
-	//$homepage_cmb->add_field( array(
-	//	'name' => 'Ссылка блока "Стать наставником"',
-	//	'id'   => 'mentor_link',
-	//	'type' => 'text_url',
-	//));
-	//
-	//$homepage_cmb->add_field( array(
-	//	'name' => 'Текст блока "Пожертвование"',
-	//	'id'   => 'donation_text',
-	//	'type' => 'textarea_small'		
-	//) );
-	//
-	//$homepage_cmb->add_field( array(
-	//	'name' => 'Ссылка блока "Пожертвование"',
-	//	'id'   => 'donation_link',
-	//	'type' => 'text_url',
-	//));
 	
 	/* People tax */
 	$person_cat_term = new_cmb2_box( array(
@@ -465,16 +383,36 @@ function rdc_custom_metaboxes() {
 	));
 	
 	$person_cat_term->add_field( array(
-		'name'     => 'ID объекта заставки',
-		'desc'     => 'Заставка страницы категории представлена этим объектом',
-		'id'       => 'featured_action_id',
+		'name'    => 'Изображение заставки',		
+		'id'      => 'featured_action_image',
+		'type'    => 'file',
+		// Optional:
+		'options' => array(
+			'url' => false, // Hide the text input for the url
+		),
+		'text'    => array(
+			'add_upload_file_text' => 'Добавить изображение' // Change upload button text. Default: "Add or Upload File"
+		),
+	) );
+	
+	$person_cat_term->add_field( array(
+		'name'     => 'Заголовок',
+		'desc'     => 'Текст заголовка на заставке',
+		'id'       => 'featured_action_title',
 		'type'     => 'text'		
 	));
 	
 	$person_cat_term->add_field( array(
-		'name'     => 'Напись на кнопке',
-		'desc'     => 'Заставка страницы категории содержит кнопку с этой надписью',
-		'id'       => 'featured_action_сta',
-		'type'     => 'text'		
+		'name'     => 'Подзаголовок / описание',
+		'desc'     => 'Текст подзаголовка на заставке',
+		'id'       => 'featured_action_subtitle',
+		'type'     => 'textarea_small'		
+	));
+	
+	$person_cat_term->add_field( array(
+		'name'     => 'Ссылка',
+		'desc'     => 'Адрес, куда ссылается заставка',
+		'id'       => 'featured_action_link',
+		'type'     => 'text_url'		
 	));
 }

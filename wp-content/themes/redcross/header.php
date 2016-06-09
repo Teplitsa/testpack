@@ -33,8 +33,8 @@
 			
 			<?php $header_text = get_theme_mod('header_text'); ?>
 			<div class="site-details site-panel-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>									
-			<div class="trigger-button newsletter site-panel-cell">
-				<a id="trigger_newsletter"  href="<?php echo home_url('subscribe');?>"><?php _e( 'Subscribe', 'rdc' ); ?><?php rdc_svg_icon('icon-mail');?><?php rdc_svg_icon('icon-close');?></a>
+			<div class="trigger-button donate site-panel-cell">
+				<a id="trigger_donate"  href="<?php echo home_url('campaign/help-us');?>"><?php rdc_svg_icon('icon-logo');?><?php _e( 'Donate', 'rdc' ); ?></a>
 			</div>
 			<div class="trigger-button menu site-panel-cell">
 				<a id="trigger_menu" href="<?php echo home_url('sitemap');?>">
@@ -46,9 +46,9 @@
 		</div>
 	</div>
 	
-	<div id="newsletter_panel" class="newsletter-panel">
+	<!--<div id="newsletter_panel" class="newsletter-panel">
 		<div class="newsletter-form"><?php echo rdc_get_newsletter_form(); ?></div>
-	</div>
+	</div>-->
 	<div class="nav-overlay"></div>
 	<nav id="site_nav" class="site-nav">
 		<div class="site-nav-title">
@@ -69,4 +69,4 @@
 	</nav>		
 </header>
 
-<div id="site_content" class="site-content">
+<div id="site_content" class="site-content"><a name="#content"></a>

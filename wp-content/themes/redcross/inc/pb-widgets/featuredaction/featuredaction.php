@@ -10,9 +10,9 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 		
 		parent::__construct(
 			'tst-featureditem',
-			'[TST] Элемент-заставка',
+			'[TST] Заставка-ссылка',
 			array(
-				'description' => 'Стартовая заставка с кнопкой ведет на выбранный элемент'		
+				'description' => 'Стартовая заставка со ссылкой, ведет на выбранный элемент / адрес'		
 			),
 			array(
 				
@@ -35,17 +35,35 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 	/** admin form **/
 	function initialize_form(){
 
-		return array(						
+		return array(		
 			'post_id' => array(
 				'type' => 'text',
-				'label' => 'ID элемента',
-				'description' => 'Может быть запись, проект, страница, мероприятие'
+				'label' => __('ID of linked post', 'rdc'),
+				'description' => __('Could be post, project, event - provide fallback for empty fields', 'rdc')
 			),
-			//'button_label' => array(
-			//	'type' => 'text',
-			//	'label' => 'Текст на кнопке',
-			//	'description' => 'По умолчанию - просмотреть'
-			//),
+			
+			'image' => array(
+				'type' => 'media',
+				'label' => __('Image file', 'rdc'),
+				'library' => 'image',
+				'fallback' => true,
+			),		
+
+			'title' => array(
+				'type' => 'text',
+				'label' => __('Title text', 'rdc'),
+			),
+			
+			'subtitle' => array(
+				'type' => 'textarea',
+				'label' => __('Sub title text', 'rdc'),
+				'rows' => 4
+			),
+			
+			'link' => array(
+				'type' => 'text',
+				'label' => __('Item link', 'rdc'),
+			),
 		);
 	}
 	
@@ -53,7 +71,10 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 	public function get_template_variables( $instance, $args ) {
 		return array(
 			'post_id' 	=> (int)($instance['post_id']),
-			//'button_label' 	=> $instance['button_label']			
+			'title'    => $instance['title'],
+			'subtitle' => $instance['subtitle'],			
+			'image'    => (int)$instance['image'],
+			'link'     => $instance['link']
 		);
 	}
 	
@@ -84,19 +105,27 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 		$css_name = $this->generate_and_enqueue_instance_styles( $instance );
 		
 		$post = get_post($instance['post_id']);
-        
-        if($post) {		
-			echo $args['before_widget'];
-			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
+		
+		if($post) {
+			$title = (!$title) ? get_the_title($post) : $title;
+			$subtitle = (!$subtitle) ? $post->post_excerpt : $subtitle;
+			$link = (!$link) ? get_permalink($post) : $link;
+			$image = (!$image) ? get_post_thumbnail_id($post) : $image;
+		}
+          
+		echo $args['before_widget'];
+		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
 		?>
 			<div class="featured-action">
-			<?php rdc_featured_action_card($post);	?>
+			<?php rdc_featured_action_card_markup($link, $title, $subtitle, $image); ?>
 			</div>
 		<?php	
-			echo '</div>';
-			echo $args['after_widget'];
-		}
+		echo '</div>';
+		echo $args['after_widget'];
+		
 	}
+	
+	
 	
 } //class
 

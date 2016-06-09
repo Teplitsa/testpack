@@ -14,7 +14,7 @@
 .leyka-payment-option {
 			
 	.leyka-toggle-trigger {
-		@include header-title(head_title_small);
+		@include header-title();
 		padding: $gut/2 $gut;		
 		cursor: pointer;		
 		border-top: 1px solid $color-border-normal;		
@@ -160,7 +160,7 @@
 			line-height: 27px;
 		}
 	}
-		
+	
 	.rdc-radio__button:checked + .rdc-radio__label {
 		&:before {
 			background-color: $leyka_green;
@@ -232,8 +232,8 @@
 	.leyka-modal-close {
 		background: $leyka_green;
 		color: $color-white;
-		width: 32px;
-		height: 32px;
+		width: 28px;
+		height: 28px;
 		border-radius: 50%;
 		
 		position: absolute;
@@ -243,10 +243,11 @@
 		cursor: pointer;
 				
 		.svg-icon {
-			width: 16px;
-			height: 16px;
+			width: 12px;
+			height: 12px;
 			fill: $color-white;
 			pointer-events: none;
+			margin-top: -1px;
 		}
 	}
 	
@@ -312,6 +313,7 @@
 .main-content.donations-history-results {
 	background: $color-secondary-dark;
 	padding: $gut 0;
+	min-height: 400px;
 	min-height: 50vh;
 	
 	.donation_history {

@@ -198,9 +198,8 @@ h2.logo-name {
 		background: $color-secondary;
 	}
 	
-	&.newsletter {
+	&.donate {
 		@include  nav-text();
-		font-size: 13px;		
 		color: $color-white;
 		position: relative;
 		margin-right: 1px;
@@ -223,18 +222,15 @@ h2.logo-name {
 		}
 				
 		.svg-icon {
-			width: 13px;
-			height: 13px;
+			width: 15px;
+			height: 15px;
 			fill: $color-white;
-			margin-left: 8px;
+			margin-right: 8px;
 		}
 	
-		.icon-close {
-			display: none; 
-		}
 	}
 	
-	.newsletter-open &.newsletter {
+	/*.newsletter-open &.newsletter {
 		
 		a {
 			background: $color-text-black;
@@ -249,7 +245,7 @@ h2.logo-name {
 		.icon-close {
 			display: inline-block; 
 		}
-	}
+	}*/
 	
 	&.menu {
 		text-align: center;		

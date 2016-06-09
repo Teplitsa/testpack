@@ -23,13 +23,41 @@ function rdc_custom_widgets(){
 	unregister_widget('Leyka_Donations_List_Widget');
 	unregister_widget('Leyka_Campaign_Card_Widget');
 	unregister_widget('Leyka_Campaigns_List_Widget');
-		
+	
+	//Some siteOrign stranges
+	unregister_widget('SiteOrigin_Widget_Features_Widget');
+	unregister_widget('SiteOrigin_Widget_PostCarousel_Widget');
+	unregister_widget('SiteOrigin_Widget_Button_Widget');
+	unregister_widget('SiteOrigin_Panels_Widgets_PostLoop');
+	
+	
 	register_widget('RDC_Home_News');
 	register_widget('RDC_Social_Links');
 	
 }
 
-//pb widgets folder
+/* Remove some unused PB widget **/
+add_filter( 'siteorigin_panels_widgets', 'rdc_bp_panels_widgets', 11);
+function rdc_bp_panels_widgets( $widgets ){
+	
+	if(isset($widgets['SiteOrigin_Widget_Features_Widget']))
+		unset($widgets['SiteOrigin_Widget_Features_Widget']);
+		
+	if(isset($widgets['SiteOrigin_Widget_PostCarousel_Widget']))
+		unset($widgets['SiteOrigin_Widget_PostCarousel_Widget']);
+		
+	if(isset($widgets['SiteOrigin_Widget_Button_Widget']))
+		unset($widgets['SiteOrigin_Widget_Button_Widget']);
+		
+	if(isset($widgets['SiteOrigin_Panels_Widgets_PostLoop']))
+		unset($widgets['SiteOrigin_Panels_Widgets_PostLoop']);
+	
+	//var_dump($widgets);
+	
+	return $widgets;
+}
+
+/* PB Custom widget folder */
 function rdc_pb_widgets_collection($folders){
     $folders[] = get_template_directory().'/inc/pb-widgets/';
 	
@@ -38,7 +66,7 @@ function rdc_pb_widgets_collection($folders){
 add_filter('siteorigin_widgets_widget_folders', 'rdc_pb_widgets_collection');
 
 
-/** function to test if widget regitered **/
+/** Test if widget registered **/
 function rdc_is_widget_registered($widget_class){
 	global $wp_widget_factory;
 	
@@ -51,14 +79,13 @@ function rdc_is_widget_registered($widget_class){
 	return true;
 }
 
-
 /** Social Links Widget **/
-class RDC_Social_Links extends WP_Widget {
+class RDC_Social_Links extends SiteOrigin_Widget {
 		
     function __construct() {
-        WP_Widget::__construct('widget_socila_links', __('Social Buttons', 'kds'), array(
+        WP_Widget::__construct('widget_socila_links', '[TST] Социальные кнопки', array(
             'classname' => 'widget_socila_links',
-            'description' => __('Social links menu with optional text', 'kds'),
+            'description' => 'Меню социальных кнопок',
         ));
     }
 
@@ -77,7 +104,7 @@ class RDC_Social_Links extends WP_Widget {
 	
     function form($instance) {
 	?>
-        <p>Виджет не имеет настроек</p>
+        <p><?php _e('Widget doesn\'t have any settings', 'rdc');?></p>
     <?php
     }
 
@@ -91,13 +118,13 @@ class RDC_Social_Links extends WP_Widget {
 	
 } // class end
 
-/** Social Links Widget **/
+/** Home news **/
 class RDC_Home_News extends WP_Widget {
 		
     function __construct() {
-        WP_Widget::__construct('widget_home_news', 'Секция новостей на главной', array(
+        WP_Widget::__construct('widget_home_news', '[TST] Новости на главной', array(
             'classname' => 'widget_home_news',
-            'description' => 'Секция последних новостей на главной странице',
+            'description' => 'Секция новостей на главной странице',
         ));
     }
 
@@ -123,7 +150,7 @@ class RDC_Home_News extends WP_Widget {
 				}		
 			?>
 		</div>
-		<div class="related-all-link"><?php echo $all_link;?></div>
+		<!--<div class="related-all-link"><?php echo $all_link;?></div>-->
 		<?php		
 		echo $after_widget;
     }

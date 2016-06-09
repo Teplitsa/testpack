@@ -91,7 +91,7 @@ class FRL_CssJs {
 		// jQuery
 		$script_dependencies[] = 'jquery'; //adjust gulp if we want it in footer	
 
-		if(defined('LEYKA_VERSION') && wp_script_is('leyka-public', 'enqueued' )) {
+		/*if(defined('LEYKA_VERSION') && wp_script_is('leyka-public', 'enqueued' )) {
 
 			wp_dequeue_script('leyka-cp');		
 			wp_dequeue_script('leyka-public');
@@ -105,9 +105,10 @@ class FRL_CssJs {
 				true
 			);
 			wp_enqueue_script('leyka-cp');
-
+			
+			
             leyka()->localize_scripts(); // localize leyka scripts anew
-		}
+		}*/
 
 		// front
 		wp_enqueue_script(

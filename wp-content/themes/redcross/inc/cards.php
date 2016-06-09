@@ -30,7 +30,7 @@ function rdc_featured_post_card(WP_Post $cpost){
 	<div class="container featured-body">
 		<a href="<?php echo $pl; ?>" class="featured-content">
 			<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>'); ?></div>
-			<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>			
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>			
 		</a>
 	</div>	
 </article>
@@ -56,6 +56,25 @@ function rdc_featured_action_card(WP_Post $cpost, $cta = ''){
 	</div>	
 </article>
 <?php
+}
+
+function rdc_featured_action_card_markup($link, $title, $subtitle, $img_id){
+		
+	$thumbnail = wp_get_attachment_url($img_id);
+?>
+	<article class="tpl-featured-action container-wide">
+		<div class="bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
+		
+		<div class="container featured-body">
+			<a href="<?php echo $link; ?>" class="featured-content">	
+				<h4 class="entry-title"><?php echo apply_filters('rdc_the_title', $title);?></h4>
+				<?php if(!empty($subtitle)) { ?>
+					<div class="entry-summary"><?php echo apply_filters('rdc_the_title', $subtitle);?></div>
+				<?php } ?>
+			</a>	
+		</div>	
+	</article>
+<?php	
 }
 
 function rdc_related_post_card(WP_Post $cpost) {
@@ -155,7 +174,7 @@ function tst_person_card_single(WP_Post $cpost){
 
 function rdc_org_card(WP_Post $cpost){
 	
-	$pl = get_permalink($cpost);
+	$pl = esc_url($cpost->post_excerpt);
 ?>
 <article class="tpl-org logo">
 	<a href="<?php echo $pl;?>" class="logo-link logo-frame" target="_blank" title="<?php echo esc_attr($cpost->post_title);?>">

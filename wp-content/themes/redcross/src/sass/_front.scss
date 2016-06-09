@@ -90,20 +90,20 @@ h1, h2, h3, h4, h5, h6 {
 
 //page with cards
 .featured-head-image {
-	height: 50vh;
+	@include vertical-image-header-fixed();
 	&.container-extended {
 		@include container-extended();
 	}
 }
 
 .tpl-featured-bg {
-		width: 100%;
-		height: 100%;
-		background-color: $color-secondary;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center top;
-	}
+	width: 100%;
+	height: 100%;
+	background-color: $color-secondary;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center top;
+}
 
 
 .featured-head-text {
@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /** Footer **/
 .site-footer {
-	@include sub-title(small);
+	@include body-text(small);
 	padding: $gut 0;
 	background: $color-secondary;
 	color: $color-text;
