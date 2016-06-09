@@ -383,36 +383,47 @@ h2.logo-name {
 .site-nav-title {
 	border-bottom: 1px solid $color-border-light;
 	position: realtive;
-	height: $mobile_height;
-	@include for(medium-screens) { height: $full_height; }
+	height: $logo_small_h + $height_gap;
+	
+	@include for(medium-screens) { height: $logo_full_h + $height_gap;}
 	
 	.site-logo {
 		display: block;		
-		padding: 10px $full_height 10px $gut/2;		
-		@include for(medium-screens) { padding: 14px $full_height 15px $gut/2;	 }
+		padding: 0 ($logo_small_h + $height_gap) 0 $gut/2;			
+	}
+	
+	.snt-cell {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;				
+		height: $logo_small_h + $height_gap;
+		
+		@include for(medium-screens){
+			height: $logo_full_h + $height_gap;
+		}
 	}
 	
 	h1.logo-name {
-		font-size: 15px;
+		font-size: 14px;
+		line-height: 15px;
+	}
+	h2.logo-name {
+		font-size: 11px;
+		line-height: 12px;
 	}
 	
 	.close {
 		background: $color-link-three;
-		width: $mobile_height;
-		height: $mobile_height;
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: ($mobile_height - 18px)/2;
+		width: $logo_small_h + $height_gap;
+		height: $logo_small_h + $height_gap;
 		text-align: center;
 		cursor: pointer;
 		
-		@include for(medium-screens) {
-			width: $full_height;
-			height: $full_height;
-			padding: ($full_height - 18px)/2;
-		}
-		
+		position: absolute;
+		top: 0;
+		right: 0;		
+		padding: ( $logo_small_h + $height_gap - 18px)/2;
+				
 		.svg-icon {
 			width: 18px;
 			height: 18px;
@@ -422,11 +433,14 @@ h2.logo-name {
 		&:hover {
 			background: $color-link-two;
 		}
+		
+		@include for(medium-screens){
+			margin-top: ($logo_full_h - $logo_small_h)/2;
+		}
 	}
 }
 
-.main-menu {
-	
+.main-menu {	
 	li {
 		border-bottom: 1px solid $color-border-light;
 		position: relative;
@@ -438,12 +452,8 @@ h2.logo-name {
 			@include transition(all 0.3s);
 			
 			padding: 19px $gut/2;
-			margin-right: $mobile_height;
-			
-			@include for(medium-screens) {
-				margin-right: $full_height;				
-			}
-			
+			margin-right: $logo_small_h + $height_gap;
+						
 			&:hover, &:focus, &:active {
 				background: $color-border-light;		
 			}
@@ -463,14 +473,10 @@ h2.logo-name {
 			cursor: pointer;
 			text-align: center;
 			
-			width: $mobile_height;
-			height: $mobile_height;
-			padding: ($mobile_height - 14px)/2;
-					
+			width: $logo_small_h + $height_gap;
+			height: $logo_small_h + $height_gap;
+			padding: ($logo_small_h + $height_gap - 14px)/2;
 			
-			@include for(medium-screens) {				
-				width: $full_height;				
-			}
 			
 			.svg-icon {
 				width: 14px;
