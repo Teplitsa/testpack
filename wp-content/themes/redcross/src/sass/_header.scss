@@ -246,13 +246,17 @@ h2.logo-name {
 			color: inherit;			
 			line-height: 16px;
 			background: $color-link-three;
-			margin: $height_gap/2 $height_gap/2 0 $height_gap;			
+			margin: $height_gap/2 0 0 $height_gap;			
 			padding: ($logo_small_h - 16px) / 2;
 			@include transition(background 0.35s);
 			
 			@include for(medium-screens) {
 				padding: 16px;
-				margin-top: ($logo_full_h + $height_gap - 16*3px)/2
+				margin-top: ($logo_full_h + $height_gap - 16*3px)/2;
+			}
+			
+			@include for(medium-screens) {
+				margin-right: $height_gap/2;
 			}
 			
 			&:hover {
