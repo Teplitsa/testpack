@@ -25,17 +25,24 @@
 		<div class="site-panel-row">
 			<div class="site-branding site-panel-cell">				
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
-					<div id="logo"><?php rdc_site_logo('regular');?></div>
-					<h1 class="logo-name"><?php echo get_bloginfo('name');?></h1>
-					<h2 class="logo-name"><?php echo get_bloginfo('description');?></h2>
+					<div id="logo-full" ><?php rdc_site_logo('regular');?></div>
+					<div id="logo-small" ><?php rdc_site_logo('small');?></div>
+					<div class="logo-name-cell">
+						<h1 class="logo-name"><?php echo get_bloginfo('name');?></h1>
+						<h2 class="logo-name"><?php echo get_bloginfo('description');?></h2>
+					</div>
 				</a>					
 			</div>
 			
 			<?php $header_text = get_theme_mod('header_text'); ?>
-			<div class="site-details site-panel-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>									
+			<div class="site-details site-panel-cell">
+				<div class="site-details-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>
+			</div>									
+			
 			<div class="trigger-button donate site-panel-cell">
 				<a id="trigger_donate"  href="<?php echo home_url('campaign/help-us');?>"><?php rdc_svg_icon('icon-logo');?><?php _e( 'Donate', 'rdc' ); ?></a>
 			</div>
+			
 			<div class="trigger-button menu site-panel-cell">
 				<a id="trigger_menu" href="<?php echo home_url('sitemap');?>">
 					<?php rdc_svg_icon('icon-menu');?>					

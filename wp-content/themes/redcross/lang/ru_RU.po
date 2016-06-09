@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-09 09:00+0300\n"
-"PO-Revision-Date: 2016-06-09 09:01+0300\n"
+"POT-Creation-Date: 2016-06-09 09:12+0300\n"
+"PO-Revision-Date: 2016-06-09 16:27+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -283,7 +283,7 @@ msgstr "Наши волонтеры"
 msgid "More events"
 msgstr "Еще анонсы"
 
-#: inc/template-tags.php:446 inc/widgets.php:115
+#: inc/template-tags.php:446 inc/widgets.php:142
 msgid "More news"
 msgstr "Еще новости"
 
@@ -299,23 +299,23 @@ msgstr "Программа по теме"
 msgid "Help now"
 msgstr "Помочь сейчас"
 
-#: inc/widgets.php:59
+#: inc/widgets.php:86
 msgid "[TST] Social Buttons"
 msgstr "[TST] Социальные кнопки"
 
-#: inc/widgets.php:61
+#: inc/widgets.php:88
 msgid "Social links menu with optional text"
 msgstr "Меню социальных кнопок с сопроводительным текстом"
 
-#: inc/widgets.php:80
+#: inc/widgets.php:107
 msgid "Widget doesn't have any settings"
 msgstr "Виджет не имеет настроек"
 
-#: inc/widgets.php:98
+#: inc/widgets.php:125
 msgid "[TST] Home News"
 msgstr "[TST] Новости на главной"
 
-#: inc/widgets.php:100
+#: inc/widgets.php:127
 msgid "Section or recent news for homepage"
 msgstr "Раздел последних новостей на главной странице"
 

@@ -17,7 +17,7 @@ $one: 	       480px; //small
 $two:          767px; //medium
 $three:	       984px; //large
 $four:         1200px; //exlarge
-$five:         1430px; //xxlarge
+$five:         1400px; //xxlarge
 
 //Page layout
 $full_cont:    1400px;
@@ -379,14 +379,15 @@ $fixed_side: 222px;
 	margin: 0 -4%;
 	position: relative;
 	width: auto;
-	
-	@include for(xxlarge-screens){
+		
+	@include for(exlarge-screens){
 		margin: 0 -1 * ($full_cont - $page_cont) / 2;		
 	}
 	
 	@if $mod == padded {
 		padding: $gut*1.5 4%;
-		@include for(xxlarge-screens){			
+		
+		@include for(exlarge-screens){			
 			padding: $gut*1.5 ($full_cont - $page_cont) / 2;
 		}
 	}	
