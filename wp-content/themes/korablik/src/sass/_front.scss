@@ -90,20 +90,19 @@ h1, h2, h3, h4, h5, h6 {
 
 //page with cards
 .featured-head-image {
-	height: 50vh;
-	
-	.tpl-featured-bg {
-		width: 100%;
-		height: 100%;
-		background-color: $color-secondary;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center top;
-	}
-	
+	@include vertical-image-header-fixed();
 	&.container-extended {
 		@include container-extended();
 	}
+}
+
+.tpl-featured-bg {
+	width: 100%;
+	height: 100%;
+	background-color: $color-secondary;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center top;
 }
 
 
@@ -156,14 +155,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /** Social panel **/
 .bottom-bar {
-	background: $color-link-three;
+	background: $color-link-two;
 	padding: $base*1.3 0 $base*1.8;
-	color: $color-white;
+	color: $color-text-black;
 		
 	h5 {
-		@include header-title(head_title_small);
+		@include header-title();
 		margin-bottom: $base/2;
-		color: $color-white;
 	}
 	
 	.icons-label {
@@ -182,16 +180,16 @@ h1, h2, h3, h4, h5, h6 {
 
 /** Footer **/
 .site-footer {
-	@include sub-title(small);
+	@include body-text(small);
 	padding: $gut 0;
-	background: $color-secondary;	
-	color: $color-text-black;
+	background: $color-secondary;
+	color: $color-text;
 	
 	a {
 		color: $color-link-three;
 		&:hover, &:focus, &:active {
 			text-decoration: underline;
-			//color: $color-link-one;
+			color: $color-link-two;
 		}
 	}
 	
@@ -207,8 +205,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	
 	.widget-title {
-		@include header-title(widget);
-		color: $color-text-black;
+		@include header-title(widget);		
 		margin-bottom: $base;
 	}
 	
@@ -258,7 +255,7 @@ h1, h2, h3, h4, h5, h6 {
 		margin: 0 $gut $gut;
 		color: transparent;
 		display: block;
-		border-bottom: 1px solid transparentize($color-link-three, 0.5);
+		border-bottom: 1px solid rgba(0,0,0, 0.24);
 		@include for(xxlarge-screens) {
 			margin-left: 0;
 			margin-right: 0;
@@ -275,8 +272,12 @@ h1, h2, h3, h4, h5, h6 {
 	
 	.button {
 		@include button();
+		background: $color-link-one;
+		border: 1px solid $color-link-one;
 		&:hover, &:focus, &:active {
 			text-decoration: none;
+			background: darken($color-link-one, 10%);
+			border: 1px solid darken($color-link-one, 10%);
 		}
 		
 		span {
@@ -338,11 +339,11 @@ h1, h2, h3, h4, h5, h6 {
 		margin-top: 0;
 	}
 	
-	.krbl-icon {
+	.rdc-icon {
 		display: inline-block;
-		width: 87px;
+		width: 86px;
 		height: 40px;
-		fill: $color-link-three;
+		fill: rgba(0,0,0, 0.7);
 	}
 	
 	a {
@@ -353,11 +354,13 @@ h1, h2, h3, h4, h5, h6 {
 		text-align: center;
 		box-sizing: border-box;		
 		border-radius: 5px;
-		border: 1px solid transparentize($color-link-three, 0.2);
+		border: 1px solid rgba(0,0,0, 0.3);
 		@include transition(all 0.35s);
 		
 		&:hover, &:focus, &:active {
-			background: rgba(255,255,255, 0.9);			
+			background: rgba(255,255,255, 0.9);
+			border-color: $color-white;
+			.rdc-icon { fill:rgba(0,0,0, 1); }
 		}
 		
 		position: absolute;
@@ -371,7 +374,7 @@ h1, h2, h3, h4, h5, h6 {
 		line-height: 14px;
 		margin-right: 110px;
 		padding-top: 8px;
-		color: transparentize($color-link-three, 0.2);
+		color: rgba(0,0,0, 0.5);
 	}
 }
 

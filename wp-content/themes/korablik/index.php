@@ -6,28 +6,34 @@
 $posts = $wp_query->posts;
 $paged = (get_query_var('paged', 0)) ? get_query_var('paged', 0) : 1;
 
-//number one for featured as for now
-$featured = array_slice($posts, 0, 1); 
-array_splice($posts, 0, 1);
-
-
 get_header();
-?>
 
-<?php if(is_home() && $paged == 1) { //featured post ?>
-<section class="featured-post"><?php krbl_featured_post_card($featured[0]);?></section>
+if(is_home() && $paged == 1) { //featured posts
+	//2 for featured 
+	$featured = array_slice($posts, 0, 2); 
+	array_splice($posts, 0, 2);
+?>
+<section class="featured-post"><div class="container-wide">
+<div class="cards-loop sm-cols-1 md-cols-2">
+	<?php
+		foreach($featured as $f){
+			rdc_featured_post_card($f);
+		}
+	?>
+</div>
+</div></section>
 <?php } ?>
 
 <section class="heading">
-	<div class="container"><?php krbl_section_title(); ?></div>
+	<div class="container"><?php rdc_section_title(); ?></div>
 </section>
 
 <section class="main-content cards-holder"><div class="container-wide">
 <div class="cards-loop sm-cols-1 md-cols-2 lg-cols-4">
 	<?php
-		if(have_posts()){
+		if(!empty($posts)){
 			foreach($posts as $p){
-				krbl_post_card($p);
+				rdc_post_card($p);
 			}
 		}
 		else {
@@ -37,6 +43,6 @@ get_header();
 </div>
 </div></section>
 
-<section class="paging"><?php krbl_paging_nav($wp_query); ?></section>
+<section class="paging"><?php rdc_paging_nav($wp_query); ?></section>
 
 <?php get_footer();

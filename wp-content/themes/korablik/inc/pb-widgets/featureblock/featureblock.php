@@ -10,9 +10,9 @@ class TST_FeatureBlock_Widget extends SiteOrigin_Widget {
 		
 		parent::__construct(
 			'tst-featureblock',
-			'[TST] 3 Блока-опции',
+			'[TST] 3 Блока',
 			array(
-				'description' => 'Стандартизированный блок с заголовком текстом и кнопкой'		
+				'description' => 'Ряд из 3 блоков с заголовком, текстом, кнопкой, выровненных по высоте'
 			),
 			array(
 				
@@ -38,40 +38,40 @@ class TST_FeatureBlock_Widget extends SiteOrigin_Widget {
 		$fields = array(
 			'title' => array(
 				'type' => 'text',
-				'label' => 'Заголовок'				
+				'label' => __('Title', 'rdc')
 			),
 			'text' => array(
 				'type' => 'textarea',
-				'label' => 'Описание',
+				'label' => __('Description', 'rdc'),
 				'rows' => 2
 			),
 			'button_url' => array(
 				'type' => 'link',
-				'label' => 'Ссылка кнопки',
+				'label' => __('Link', 'rdc'),
 				'default' => ''
 			),
 			'button_label' => array(
 				'type' => 'text',
-				'label' => 'Текст на кнопке'				
+				'label' => __('Button label', 'rdc')				
 			)
 		);
 	
 		return array(
 			'col1' => array(
 				'type' => 'section',
-				'label' => 'Колонка 1',
+				'label' => __('Column 1', 'rdc'),
 				'hide' => false,
 				'fields' => $fields
 			),
 			'col2' => array(
 				'type' => 'section',
-				'label' => 'Колонка 2',
+				'label' => __('Column 2', 'rdc'),
 				'hide' => true,
 				'fields' => $fields
 			),
 			'col3' => array(
 				'type' => 'section',
-				'label' => 'Колонка 3',
+				'label' => __('Column 3', 'rdc'),
 				'hide' => true,
 				'fields' => $fields
 			)
@@ -139,10 +139,10 @@ class TST_FeatureBlock_Widget extends SiteOrigin_Widget {
 			$out .= "<div class='col3'><div class='col3-content'>";
 			
 			if(!empty($template_vars[$sec.'_title'])){
-				$out .= "<h4 class='col3-title'>".apply_filters('krbl_the_title', $template_vars[$sec.'_title'])."</h4>";
+				$out .= "<h4 class='col3-title'>".apply_filters('rdc_the_title', $template_vars[$sec.'_title'])."</h4>";
 			}
 			if(!empty($template_vars[$sec.'_text'])){
-				$out .= "<div class='col3-text'>".apply_filters('krbl_the_content', $template_vars[$sec.'_text'])."</div>";
+				$out .= "<div class='col3-text'>".apply_filters('rdc_the_content', $template_vars[$sec.'_text'])."</div>";
 			}
 			if(!empty($template_vars[$sec.'_button_url']) && !empty($template_vars[$sec.'_button_label'])){
 				$target = (false !== strpos($template_vars[$sec.'_button_url'], home_url())) ? '' : ' target="_blank"'; //test this

@@ -1,9 +1,16 @@
 /** Header **/
 
 //sizes 
-$mobile_height : 54px;
-$full_height   : 62px;
-$red_cross  : 42px;
+$height_gap : 14px;
+
+$logo_small_h : 42px;
+$logo_small_w : 42px;
+
+$logo_full_w : 86px;
+$logo_full_h : 80px;
+
+$mobile_height : $logo_small_h + $height_gap;
+$full_height   : $logo_full_h + $height_gap;
 
 //layout
 .site-header {
@@ -35,22 +42,27 @@ $red_cross  : 42px;
 }
 
 .site-content {
-	padding-top: $mobile_height + 1px;
+	padding-top: $logo_small_h + $height_gap + 1px;
 	
 	@include for(medium-screens) {
-		padding-top: $full_height + 1px;
+		padding-top: $logo_full_h + $height_gap + 1px;
 	}
 }
 
+//flexbox for header
 .site-panel-row {
 	display: flex;
 	flex-flow: row nowrap;	
 }
 
 .site-panel-cell {
+	height: $logo_small_h + $height_gap;
 	
-	&.site-branding {
-		width: $mobile_height;
+	@include for(medium-screens){
+		height: $logo_full_h + $height_gap;
+	}
+	
+	&.site-branding {		
 		flex: 0 0 auto;
 		
 		@include for(small-screens) {
@@ -62,23 +74,65 @@ $red_cross  : 42px;
 		flex: 1 1 auto;
 	}
 	
-	&.newsletter {
+	&.donate {
 		flex: 0 0 auto;		
 	}
 	
 	&.menu {
-		width: $mobile_height;		
+		width: $logo_small_h + $height_gap;		
 		flex: 0 0 auto;
 		
 		@include for(medium-screens) {
-			width: $full_height;
+			//width: $full_height;
+		}
+	}
+}
+
+//titles in vertical
+.logo-name-cell {
+	display: none;
+	
+	@include for(small-screens) {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;		
+		margin-left: $logo_small_w + $height_gap * 2;
+		height: $logo_small_h + $height_gap;	
+	}
+	
+	@include for(medium-screens) {			
+		margin-left: $logo_full_w + $height_gap * 2;
+		height: $logo_full_h + $height_gap;
+	}	
+	
+	.logo-name {
+		flex: 0 0 auto;
+	}
+}
+
+//address in vertical
+.site-details-cell {
+	min-width: 1px;
+	min-height: 1px;
+	
+	p { display: none; }
+		
+	@include for(large-screens) {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		height: $logo_full_h + $height_gap;
+		margin-right: $height_gap;
+		
+		p {
+			display: block;
 		}
 	}
 }
 
 
-// branding part
-//brand titles - general part
+/* Styling parts */
+//title
 .logo-name {
 	text-transform: uppercase;		
 	line-height: 1;
@@ -91,40 +145,40 @@ h1.logo-name {
 	letter-spacing: -0.3px;
 	
 	@include for(medium-screens) {
-		font-size: 19px;			
+		font-size: 21px;			
 	}
 }
 
 h2.logo-name {
-	font-size: 11px;
-	font-family: $sans;	
-	font-weight: 300;
-	padding-top: 6px;
+	font-size: 12px;
+	font-family: $sans;		
+	letter-spacing: 1px;
+	padding-top: 4px;
 	
 	@include for(medium-screens) {
+		font-size: 13px;
 		padding-top: 6px;
 	}
 }
 
-
+//logos
 .site-branding {
 	
 	.site-logo {
 		display: block;
 		position: relative;
-		color: $color-link-three;
-		
+		color: $color-link-three;		
 	}
 	
-	#logo {
-		width: $mobile_height;
-		height: $mobile_height;
+	#logo-small {
+		width: $logo_small_w + $height_gap;
+		height: $logo_small_h + $height_gap;
 		text-align: center;
 				
-		.pic-logo {
-			width: 42px;
-			height: 42px;
-			margin-top: ($mobile_height - $red_cross)/2;
+		.pic-logo-small {
+			width: $logo_small_w;
+			height: $logo_small_h;
+			margin-top: $height_gap/2;
 		}
 		
 		position: absolute;
@@ -132,135 +186,101 @@ h2.logo-name {
 		top: 0;
 		
 		@include for(medium-screens) {
-			width: $full_height;
-			height: $full_height;
+			display: none;
+		}
+	}
+	
+	#logo-full {
+		display: none;
+		
+		@include for(medium-screens) {
+			display: block;
+			width: $logo_full_w + $height_gap;
+			height: $logo_full_h + $height_gap;
+			text-align: center;
+			
+			position: absolute;
+			left: 0;
+			top: 0;
 			
 			.pic-logo {
-				margin-top: ($full_height - $red_cross)/2;
+				margin-top: $height_gap/2;
+				width: $logo_full_w;
+				height: $logo_full_h;
 			}
 		}
 	}
-	
-	.logo-name {
-		display: none;
-			
-		@include for(small-screens) {
-			display: block;
-			margin-left: $mobile_height*2 - $red_cross;
-		}	
-	}
-	
-	h1.logo-name {		
-		padding-top: 10px;		
-		
-		@include for(medium-screens) {			
-			padding-top: 13px;
-		}
-	}
 }
-
 
 
 //contacts
 .site-details {
-	min-width: 1px;
-	p { display: none; }
-	
-	@include for(medium-screens){
-		text-align: right;
+	text-align: right;		
+	p {		
+		color: $color-text;
+		@include nav-text(multiline);
+		text-transform: none;
+		margin: 0;
 		
-		p {
+		a {
+			color: inherit;
 			display: inline-block;
-			height: $full_height;
-			border-left: 1px solid $color-border-normal;			
-			padding: 13px 18px 0 18px;
-			color: $color-text;
-			@include nav-text(multiline);
-			text-transform: none;
-			
-			
-			a {
-				color: inherit;
-				display: inline-block;
-				border-bottom: 1px solid;
-			}
-		}
+			border-bottom: 1px solid;
+		}		
 	}
 }
 
 //buttons
-.trigger-button {
-	height: $mobile_height;
+.trigger-button {	
 	cursor: pointer;
-	@include transition(all 0.3s);
 	
-	&:hover {
-		background: $color-secondary;
-	}
-	
-	&.newsletter {
+	&.donate {
 		@include  nav-text();
-		font-size: 13px;		
 		color: $color-white;
 		position: relative;
-		margin-right: 1px;
-				
+		margin-right: 1px;		
+		z-index: 10;
+					
 		a {
 			display: block;
-			color: inherit;
-			padding: 0 18px;
-			@include calc(height, '100% + 1px');			
-			padding-top: ($mobile_height - 14px) /2;
-			background: $color-link-three;
-			position: relative;
-			bottom: -1px;
-			top: 0;
-			z-index: 100;
+			color: inherit;			
+			line-height: 16px;
+			background: $color-link-two;
+			margin: $height_gap/2 0 0 $height_gap;			
+			padding: ($logo_small_h - 16px) / 2;
+			@include transition(background 0.35s);
+			
+			@include for(medium-screens) {
+				padding: 16px;
+				margin-top: ($logo_full_h + $height_gap - 16*3px)/2;
+			}
+			
+			@include for(medium-screens) {
+				margin-right: $height_gap/2;
+			}
 			
 			&:hover {
-				background: $color-link-one;
+				background: darken($color-link-two, 10%);
 			}
 		}
 				
 		.svg-icon {
-			width: 13px;
-			height: 13px;
+			width: 15px;
+			height: 15px;
 			fill: $color-white;
-			margin-left: 8px;
-		}
-	
-		.icon-close {
-			display: none; 
-		}
+			margin-right: 8px;
+		}		
 	}
-	
-	.newsletter-open &.newsletter {
 		
-		a {
-			background: $color-text-black;
-			
-			&:hover {
-				background: $color-text-semi;
-			}
-		}
-		.icon-mail {
-			display: none; 
-		}
-		.icon-close {
-			display: inline-block; 
-		}
-	}
-	
 	&.menu {
-		text-align: center;		
-		border-right: 1px solid $color-border-light;		
+		text-align: center;				
 		cursor: pointer;
 		
 		#trigger_menu {
 			display: block;			
-			width: $mobile_height;
-			height: $mobile_height;
-			padding: ($mobile_height - 18px)/2;
+			width: $logo_small_h + $height_gap;
+			height: $logo_small_h + $height_gap;
+			padding: ($logo_small_h + $height_gap - 18px)/2;
 			text-align: center;
 			background: transparent;
 		}
@@ -271,18 +291,15 @@ h2.logo-name {
 			fill: $color-text-black;
 			pointer-events: none;
 		}
-	}
-	
-	@include for(medium-screens){
-		height: $full_height;
 		
-		&.newsletter a { padding-top: ($full_height - 14px) /2; }
-		&.menu #trigger_menu {
-			padding: ($full_height - 18px)/2;
-			width: $full_height;
-			height: $full_height;
+		&:hover .svg-icon {
+			fill: $color-link-two;
 		}
-	}
+		
+		@include for(medium-screens) {
+			#trigger_menu { margin-top: ($logo_full_h - $logo_small_h) /2; }
+		}
+	}	
 }
 
 
@@ -366,36 +383,47 @@ h2.logo-name {
 .site-nav-title {
 	border-bottom: 1px solid $color-border-light;
 	position: realtive;
-	height: $mobile_height;
-	@include for(medium-screens) { height: $full_height; }
+	height: $logo_small_h + $height_gap;
+	
+	@include for(medium-screens) { height: $logo_full_h + $height_gap;}
 	
 	.site-logo {
 		display: block;		
-		padding: 10px $full_height 10px $gut/2;		
-		@include for(medium-screens) { padding: 14px $full_height 15px $gut/2;	 }
+		padding: 0 ($logo_small_h + $height_gap) 0 $gut/2;			
+	}
+	
+	.snt-cell {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;				
+		height: $logo_small_h + $height_gap;
+		
+		@include for(medium-screens){
+			height: $logo_full_h + $height_gap;
+		}
 	}
 	
 	h1.logo-name {
-		font-size: 15px;
+		font-size: 14px;
+		line-height: 15px;
+	}
+	h2.logo-name {
+		font-size: 11px;
+		line-height: 12px;
 	}
 	
 	.close {
-		background: $color-link-three;
-		width: $mobile_height;
-		height: $mobile_height;
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: ($mobile_height - 18px)/2;
+		background: $color-link-two;
+		width: $logo_small_h + $height_gap;
+		height: $logo_small_h + $height_gap;
 		text-align: center;
 		cursor: pointer;
 		
-		@include for(medium-screens) {
-			width: $full_height;
-			height: $full_height;
-			padding: ($full_height - 18px)/2;
-		}
-		
+		position: absolute;
+		top: 0;
+		right: 0;		
+		padding: ( $logo_small_h + $height_gap - 18px)/2;
+				
 		.svg-icon {
 			width: 18px;
 			height: 18px;
@@ -403,13 +431,16 @@ h2.logo-name {
 		}
 		
 		&:hover {
-			background: $color-link-one;
+			background: darken($color-link-two, 10%);
+		}
+		
+		@include for(medium-screens){
+			margin-top: ($logo_full_h - $logo_small_h)/2;
 		}
 	}
 }
 
-.main-menu {
-	
+.main-menu {	
 	li {
 		border-bottom: 1px solid $color-border-light;
 		position: relative;
@@ -421,12 +452,8 @@ h2.logo-name {
 			@include transition(all 0.3s);
 			
 			padding: 19px $gut/2;
-			margin-right: $mobile_height;
-			
-			@include for(medium-screens) {
-				margin-right: $full_height;				
-			}
-			
+			margin-right: $logo_small_h + $height_gap;
+						
 			&:hover, &:focus, &:active {
 				background: $color-border-light;		
 			}
@@ -446,14 +473,10 @@ h2.logo-name {
 			cursor: pointer;
 			text-align: center;
 			
-			width: $mobile_height;
-			height: $mobile_height;
-			padding: ($mobile_height - 14px)/2;
-					
+			width: $logo_small_h + $height_gap;
+			height: $logo_small_h + $height_gap;
+			padding: ($logo_small_h + $height_gap - 14px)/2;
 			
-			@include for(medium-screens) {				
-				width: $full_height;				
-			}
 			
 			.svg-icon {
 				width: 14px;
@@ -462,7 +485,7 @@ h2.logo-name {
 			}
 			
 			&:hover {
-				background: $color-link-three;
+				background: $color-link-two;
 				.svg-icon  { fill: $color-white; }
 			}
 			
@@ -474,7 +497,7 @@ h2.logo-name {
 	
 	ul.sub-menu {
 		display: none;
-		background: $color-link-three;		
+		background: $color-link-two;
 		color: $color-white;
 		
 		li { border: none; }
@@ -484,14 +507,14 @@ h2.logo-name {
 			margin-right: 0;
 			
 			&:hover, &:focus, &:active {
-				background: $color-link-one;		
+				background:  $color-link-two;
 			}
 		}
 	}
 	
 	li.open {
 		.submenu-trigger {
-			background: $color-link-three;
+			background: $color-link-two;
 			.icon-down { display: none; }
 			.icon-up {
 				display: inline-block;

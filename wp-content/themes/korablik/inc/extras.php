@@ -10,29 +10,29 @@
 
 
 /** Default filters **/
-add_filter( 'krbl_the_content', 'wptexturize'        );
-add_filter( 'krbl_the_content', 'convert_smilies'    );
-add_filter( 'krbl_the_content', 'convert_chars'      );
-add_filter( 'krbl_the_content', 'wpautop'            );
-add_filter( 'krbl_the_content', 'shortcode_unautop'  );
-add_filter( 'krbl_the_content', 'do_shortcode' );
+add_filter( 'rdc_the_content', 'wptexturize'        );
+add_filter( 'rdc_the_content', 'convert_smilies'    );
+add_filter( 'rdc_the_content', 'convert_chars'      );
+add_filter( 'rdc_the_content', 'wpautop'            );
+add_filter( 'rdc_the_content', 'shortcode_unautop'  );
+add_filter( 'rdc_the_content', 'do_shortcode' );
 
-add_filter( 'krbl_the_title', 'wptexturize'   );
-add_filter( 'krbl_the_title', 'convert_chars' );
-add_filter( 'krbl_the_title', 'trim'          );
+add_filter( 'rdc_the_title', 'wptexturize'   );
+add_filter( 'rdc_the_title', 'convert_chars' );
+add_filter( 'rdc_the_title', 'trim'          );
 
 global $wp_embed;
-add_filter( 'krbl_entry_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
-add_filter( 'krbl_entry_the_content', array( $wp_embed, 'autoembed' ), 8 );
-add_filter( 'krbl_entry_the_content', 'wptexturize'                       );
-add_filter( 'krbl_entry_the_content', 'convert_smilies'                   );
-add_filter( 'krbl_entry_the_content', 'convert_chars'                     );
-add_filter( 'krbl_entry_the_content', 'krbl_entry_wpautop'                 );
-add_filter( 'krbl_entry_the_content', 'shortcode_unautop'                 );
-add_filter( 'krbl_entry_the_content', 'prepend_attachment'                );
-add_filter( 'krbl_entry_the_content', 'krbl_force_https'                   );
-add_filter( 'krbl_entry_the_content', 'wp_make_content_images_responsive' );
-add_filter( 'krbl_entry_the_content', 'do_shortcode', 11                  ); 
+add_filter( 'rdc_entry_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
+add_filter( 'rdc_entry_the_content', array( $wp_embed, 'autoembed' ), 8 );
+add_filter( 'rdc_entry_the_content', 'wptexturize'                       );
+add_filter( 'rdc_entry_the_content', 'convert_smilies'                   );
+add_filter( 'rdc_entry_the_content', 'convert_chars'                     );
+add_filter( 'rdc_entry_the_content', 'rdc_entry_wpautop'                 );
+add_filter( 'rdc_entry_the_content', 'shortcode_unautop'                 );
+add_filter( 'rdc_entry_the_content', 'prepend_attachment'                );
+add_filter( 'rdc_entry_the_content', 'rdc_force_https'                   );
+add_filter( 'rdc_entry_the_content', 'wp_make_content_images_responsive' );
+add_filter( 'rdc_entry_the_content', 'do_shortcode', 11                  ); 
 
 
 /* jpeg compression */
@@ -40,7 +40,7 @@ add_filter( 'jpeg_quality', create_function( '', 'return 95;' ) );
 
 
 /* temp fix for wpautop in posts */
-function krbl_entry_wpautop($content){
+function rdc_entry_wpautop($content){
 	
 	if(false === strpos($content, '[page_section')){
 		$content = wpautop($content);
@@ -53,43 +53,43 @@ function krbl_entry_wpautop($content){
 /** Custom excerpts  **/
 
 /** more link */
-function krbl_continue_reading_link() {
-	$more = krbl_get_more_text();
+function rdc_continue_reading_link() {
+	$more = rdc_get_more_text();
 	return '&nbsp;<a href="'. esc_url( get_permalink() ) . '"><span class="meta-nav">'.$more.'</span></a>';
 }
 
-function krbl_get_more_text(){
+function rdc_get_more_text(){
 	
 	return __('More', 'kds')."&nbsp;&raquo;";
 }
 
 /** excerpt filters  */
-add_filter( 'excerpt_more', 'krbl_auto_excerpt_more' );
-function krbl_auto_excerpt_more( $more ) {
+add_filter( 'excerpt_more', 'rdc_auto_excerpt_more' );
+function rdc_auto_excerpt_more( $more ) {
 	return '&hellip;';
 }
 
-add_filter( 'excerpt_length', 'krbl_custom_excerpt_length' );
-function krbl_custom_excerpt_length( $l ) {
+add_filter( 'excerpt_length', 'rdc_custom_excerpt_length' );
+function rdc_custom_excerpt_length( $l ) {
 	return 30;
 }
 
 /** inject */
-add_filter( 'get_the_excerpt', 'krbl_custom_excerpt_more' );
-function krbl_custom_excerpt_more( $output ) {
+add_filter( 'get_the_excerpt', 'rdc_custom_excerpt_more' );
+function rdc_custom_excerpt_more( $output ) {
 	global $post;
 	
 	if(is_singular() || is_search())
 		return $output;
 	
-	$output .= krbl_continue_reading_link();
+	$output .= rdc_continue_reading_link();
 	return $output;
 }
 
 
 /** Current URL  **/
-if(!function_exists('krbl_current_url')){
-function krbl_current_url() {
+if(!function_exists('rdc_current_url')){
+function rdc_current_url() {
    
     $pageURL = 'http';
    
@@ -108,7 +108,7 @@ function krbl_current_url() {
 
 
 /** Extract posts IDs from query **/
-function krbl_get_posts_ids_from_query($query){
+function rdc_get_posts_ids_from_query($query){
 	
 	$ids = array();
 	if(!$query->have_posts())
@@ -121,7 +121,7 @@ function krbl_get_posts_ids_from_query($query){
 	return $ids;
 }
 
-function krbl_get_post_id_from_posts($posts){
+function rdc_get_post_id_from_posts($posts){
 		
 	$ids = array();
 	if(!empty($posts)){ foreach($posts as $p) {
@@ -131,7 +131,7 @@ function krbl_get_post_id_from_posts($posts){
 	return $ids;
 }
 
-function krbl_get_term_id_from_terms($terms){
+function rdc_get_term_id_from_terms($terms){
 		
 	$ids = array();
 	if(!empty($terms)){ foreach($terms as $t) {
@@ -143,7 +143,7 @@ function krbl_get_term_id_from_terms($terms){
 
 
 /** Favicon **/
-function krbl_favicon(){
+function rdc_favicon(){
 	
 	$favicon_test = WP_CONTENT_DIR. '/favicon.ico'; //in the root not working don't know why
     if(!file_exists($favicon_test))
@@ -152,13 +152,13 @@ function krbl_favicon(){
     $favicon = content_url('favicon.ico');
 	echo "<link href='{$favicon}' rel='shortcut icon' type='image/x-icon' >";
 }
-add_action('wp_head', 'krbl_favicon', 1);
-add_action('admin_head', 'krbl_favicon', 1);
-add_action('login_head', 'krbl_favicon', 1);
+add_action('wp_head', 'rdc_favicon', 1);
+add_action('admin_head', 'rdc_favicon', 1);
+add_action('login_head', 'rdc_favicon', 1);
 
 /** Add feed link **/
-add_action('wp_head', 'krbl_feed_link');
-function krbl_feed_link(){
+add_action('wp_head', 'rdc_feed_link');
+function rdc_feed_link(){
 	
 	$name = get_bloginfo('name');
 	echo '<link rel="alternate" type="'.feed_content_type().'" title="'.esc_attr($name).'" href="'.esc_url( get_feed_link() )."\" />\n";
@@ -166,8 +166,8 @@ function krbl_feed_link(){
 
 
 /** Adds custom classes to the array of body classes **/
-add_filter( 'body_class', 'krbl_body_classes' );
-function krbl_body_classes( $classes ) {
+add_filter( 'body_class', 'rdc_body_classes' );
+function rdc_body_classes( $classes ) {
 	
 	if(is_page()){
 		$qo = get_queried_object();
@@ -180,27 +180,26 @@ function krbl_body_classes( $classes ) {
 
 
 /** Options in customizer **/
-add_action('customize_register', 'krbl_customize_register');
-function krbl_customize_register(WP_Customize_Manager $wp_customize) {
+add_action('customize_register', 'rdc_customize_register');
+function rdc_customize_register(WP_Customize_Manager $wp_customize) {
       
     	
-	$wp_customize->add_setting('header_adr_text', array(
-        'default'   => '',       
-		'type' => 'option'
+	$wp_customize->add_setting('header_text_content', array(
+        'default'   => '',
+        'transport' => 'refresh',
     ));
     
-    $wp_customize->add_control('header_adr_text', array(
+    $wp_customize->add_control('header_text_content', array(
         'type'     => 'textarea',		
         'label'    => 'Текст в шапке',
         'section'  => 'title_tagline',
-        'settings' => 'header_adr_text',
-        'priority' => 21,
+        'settings' => 'header_text_content',
+        'priority' => 20,
     ));
 	
 	$wp_customize->add_setting('er_text', array(
         'default'   => '',
         'transport' => 'refresh',
-		'type' => 'option'
     ));
     
     $wp_customize->add_control('er_text', array(
@@ -214,7 +213,6 @@ function krbl_customize_register(WP_Customize_Manager $wp_customize) {
 	$wp_customize->add_setting('newsletter_form_id', array(
         'default'   => '',
         'transport' => 'refresh',
-		'type' => 'option'
     ));
     
     $wp_customize->add_control('newsletter_form_id', array(
@@ -228,7 +226,6 @@ function krbl_customize_register(WP_Customize_Manager $wp_customize) {
 	$wp_customize->add_setting('newsletter_bottom_form_id', array(
         'default'   => '',
         'transport' => 'refresh',
-		'type' => 'option'
     ));
     
     $wp_customize->add_control('newsletter_bottom_form_id', array(
@@ -252,7 +249,7 @@ function krbl_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 60,
     )));
 	
-	if(krbl_has_authors()){
+	if(rdc_has_authors()){
 		$wp_customize->add_setting('default_avatar', array(
 			'default'   => false,
 			'transport' => 'refresh', // postMessage
@@ -383,15 +380,15 @@ $humans = TST_Humans_Txt::get_instance();
 
 
 /** Admin bar **/
-add_action('wp_head', 'krbl_adminbar_corrections');
-add_action('admin_head', 'krbl_adminbar_corrections');
-function krbl_adminbar_corrections(){
+add_action('wp_head', 'rdc_adminbar_corrections');
+add_action('admin_head', 'rdc_adminbar_corrections');
+function rdc_adminbar_corrections(){
 	remove_action( 'admin_bar_menu', 'wp_admin_bar_wp_menu', 10 );
-	add_action( 'admin_bar_menu', 'krbl_adminbar_logo', 10 );
+	add_action( 'admin_bar_menu', 'rdc_adminbar_logo', 10 );
 }
 
 
-function krbl_adminbar_logo($wp_admin_bar){	
+function rdc_adminbar_logo($wp_admin_bar){	
 	
 	$wp_admin_bar->add_menu( array(
 		'id'    => 'wp-logo',
@@ -400,9 +397,9 @@ function krbl_adminbar_logo($wp_admin_bar){
 	) );
 }
 
-add_action('wp_footer', 'krbl_adminbar_voices');
-add_action('admin_footer', 'krbl_adminbar_voices');
-function krbl_adminbar_voices() {
+add_action('wp_footer', 'rdc_adminbar_voices');
+add_action('admin_footer', 'rdc_adminbar_voices');
+function rdc_adminbar_voices() {
 	
 ?>
 <script>	
@@ -439,7 +436,7 @@ function krbl_adminbar_voices() {
 }
 
 /** == Filter to ensure https for local URLs in content == **/
-function krbl_force_https($content){
+function rdc_force_https($content){
 	
 	if(!is_ssl())
 		return $content;
@@ -469,7 +466,7 @@ function krbl_force_https($content){
 
 
 /** filter search request **/
-function krbl_filter_search_query($s){
+function rdc_filter_search_query($s){
 	
 	$s = preg_replace("/&#?[a-z0-9]{2,8};/i","",$s);
 	$s = preg_replace('/[^a-zA-ZА-Яа-я0-9-\s]/u','',$s);

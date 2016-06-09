@@ -14,7 +14,7 @@
 .leyka-payment-option {
 			
 	.leyka-toggle-trigger {
-		@include header-title(head_title_small);
+		@include header-title();
 		padding: $gut/2 $gut;		
 		cursor: pointer;		
 		border-top: 1px solid $color-border-normal;		
@@ -50,7 +50,7 @@
 		
 		&.agree { margin: 18px 0 18px 8px; }
 		&.amount { margin-bottom: 36px; }
-		&.krbl-textfield {
+		&.rdc-textfield {
 			padding: 20px 0;
 			label::after { bottom: 20px; }
 		}
@@ -69,17 +69,17 @@
 		}
 	}
 		
-	.krbl-checkbox__input:checked + .krbl-checkbox__label {
+	.rdc-checkbox__input:checked + .rdc-checkbox__label {
 		&:before {
 			background-color: $leyka_green;
 			border-color: $leyka_green;
 		}
 	}
 	
-	.krbl-textfield__label:after { background-color: $leyka_green; }	
-	.krbl-textfield__input:focus ~ .krbl-textfield__label { color: $leyka_green; }
+	.rdc-textfield__label:after { background-color: $leyka_green; }	
+	.rdc-textfield__input:focus ~ .rdc-textfield__label { color: $leyka_green; }
 	
-	.krbl-submit-button { 
+	.rdc-submit-button { 
 		@include button(leyka);
 	}
 	
@@ -160,8 +160,8 @@
 			line-height: 27px;
 		}
 	}
-		
-	.krbl-radio__button:checked + .krbl-radio__label {
+	
+	.rdc-radio__button:checked + .rdc-radio__label {
 		&:before {
 			background-color: $leyka_green;
 			border-color: $leyka_green;
@@ -232,8 +232,8 @@
 	.leyka-modal-close {
 		background: $leyka_green;
 		color: $color-white;
-		width: 32px;
-		height: 32px;
+		width: 28px;
+		height: 28px;
 		border-radius: 50%;
 		
 		position: absolute;
@@ -243,10 +243,11 @@
 		cursor: pointer;
 				
 		.svg-icon {
-			width: 16px;
-			height: 16px;
+			width: 12px;
+			height: 12px;
 			fill: $color-white;
 			pointer-events: none;
+			margin-top: -1px;
 		}
 	}
 	
@@ -268,7 +269,7 @@
 		}
 		
 		p:first-child {
-			@include post-title(multiline);
+			@include post-title();
 		}
 	}
 }
@@ -312,6 +313,7 @@
 .main-content.donations-history-results {
 	background: $color-secondary-dark;
 	padding: $gut 0;
+	min-height: 400px;
 	min-height: 50vh;
 	
 	.donation_history {
@@ -339,7 +341,7 @@
 	font-size: 11px;
 	color: $color-link-two;	
 	
-	&.krbl-textfield__error {
+	&.rdc-textfield__error {
 		bottom: 3px;
 	}
 }

@@ -8,7 +8,7 @@
  */
 
 
-function krbl_has_authors(){
+function rdc_has_authors(){
 		
 	if(defined('TST_HAS_AUTHORS') && TST_HAS_AUTHORS && function_exists('get_term_meta'))
 		return true;
@@ -110,11 +110,20 @@ function is_projects() {
 	return false;
 }
 
+function is_expired_event(){
+	
+	if(!is_single())
+		return false;
+	
+	$event = new TST_Event(get_queried_object());
+	return $event->is_expired();
+}
+
 
 
 /** Menu filter sceleton **/
-//add_filter('wp_nav_menu_objects', 'krbl_custom_menu_items', 2, 2);
-function krbl_custom_menu_items($items, $args){			
+//add_filter('wp_nav_menu_objects', 'rdc_custom_menu_items', 2, 2);
+function rdc_custom_menu_items($items, $args){			
 	
 	if(empty($items))
 		return;	
@@ -132,7 +141,7 @@ function krbl_custom_menu_items($items, $args){
 }
  
 /** HTML with meta information for the current post-date/time and author **/
-function krbl_posted_on(WP_Post $cpost) {
+function rdc_posted_on(WP_Post $cpost) {
 	
 	$meta = array();
 	$sep = '';
@@ -145,7 +154,7 @@ function krbl_posted_on(WP_Post $cpost) {
 		$meta[] = $cat;
 		$meta = array_filter($meta);
 		
-		$sep = krbl_get_sep('&middot;');		
+		$sep = rdc_get_sep('&middot;');		
 	}
 	elseif('event' == $cpost->post_type ) {
 		
@@ -168,7 +177,7 @@ function krbl_posted_on(WP_Post $cpost) {
 	}
 	elseif('page' == $cpost->post_type && is_search()) {
 		
-		$meta[] = "<span class='category'>".__('Page', 'krbl')."</span>";
+		$meta[] = "<span class='category'>".__('Page', 'rdc')."</span>";
 		
 	}
 		
@@ -177,7 +186,7 @@ function krbl_posted_on(WP_Post $cpost) {
 
 
 /** Logo **/
-function krbl_site_logo($size = 'regular') {
+function rdc_site_logo($size = 'regular') {
 
 	switch($size) {
 		case 'regular':
@@ -199,7 +208,7 @@ function krbl_site_logo($size = 'regular') {
 <?php
 }
 
-function krbl_svg_icon($id, $echo = true) {
+function rdc_svg_icon($id, $echo = true) {
 	
 	ob_start();
 ?>
@@ -216,14 +225,14 @@ function krbl_svg_icon($id, $echo = true) {
 
 
 /** Separator **/
-function krbl_get_sep($mark = '//') {
+function rdc_get_sep($mark = '//') {
 	
 	return "<span class='sep'>".$mark."</span>";
 }
 
 /** == Titles == **/
 /** CPT archive title **/
-function krbl_get_post_type_archive_title($post_type) {
+function rdc_get_post_type_archive_title($post_type) {
 	
 	$pt_obj = get_post_type_object( $post_type );	
 	$name = $pt_obj->labels->menu_name;
@@ -232,7 +241,7 @@ function krbl_get_post_type_archive_title($post_type) {
 	return $name;
 }
 
-function krbl_section_title() {
+function rdc_section_title() {
 	
 	$title = '';
 	$css = '';
@@ -241,7 +250,7 @@ function krbl_section_title() {
 		
 		$p = get_post(get_option('page_for_posts'));
 		$title = get_the_title($p);
-		$title .= krbl_get_sep('&mdash;');
+		$title .= rdc_get_sep('&mdash;');
 		$title .= single_term_title('', false);
 		$css = 'archive';
 	}
@@ -255,15 +264,15 @@ function krbl_section_title() {
 		$css = 'archive';
 	}
 	elseif(is_post_type_archive('leyka_donation')){		
-		$title = __('Donations history', 'krbl');
+		$title = __('Donations history', 'rdc');
 		$css = 'archive';
 	}
 	elseif(is_search()){
-		$title = __('Search results', 'krbl');
+		$title = __('Search results', 'rdc');
 		$css = 'archive search';
 	}
 	elseif(is_404()){
-		$title = __('404: Page not found', 'krbl');
+		$title = __('404: Page not found', 'rdc');
 		$css = 'archive e404';
 	}
 	
@@ -272,7 +281,7 @@ function krbl_section_title() {
 
 
 /** == NAVs == **/
-function krbl_paging_nav(WP_Query $query = null) {
+function rdc_paging_nav(WP_Query $query = null) {
 
 	if( !$query ) {
 
@@ -284,7 +293,7 @@ function krbl_paging_nav(WP_Query $query = null) {
 		return;
 	}
 
-	$p = krbl_paginate_links($query, false);
+	$p = rdc_paginate_links($query, false);
 	if($p) {
 ?>
 	<nav class="paging-navigation" role="navigation"><div class="container"><?php echo $p; ?></div></nav>
@@ -293,7 +302,7 @@ function krbl_paging_nav(WP_Query $query = null) {
 }
 
 
-function krbl_paginate_links(WP_Query $query = null, $echo = true) {
+function rdc_paginate_links(WP_Query $query = null, $echo = true) {
 
 	if( !$query ) {
 
@@ -347,7 +356,7 @@ function krbl_paginate_links(WP_Query $query = null, $echo = true) {
 
 
 /** next/previous post when applicabl */
-function krbl_post_nav() {
+function rdc_post_nav() {
 
 	$previous = is_attachment() ? get_post(get_post()->post_parent) : get_adjacent_post(false, '', true);
 
@@ -367,7 +376,7 @@ function krbl_post_nav() {
 
 
 /** Breadcrumbs  **/
-function krbl_breadcrumbs(WP_Post $cpost){
+function rdc_breadcrumbs(WP_Post $cpost){
 			
 	$links = array();
 	if(is_singular('post')) {
@@ -391,14 +400,14 @@ function krbl_breadcrumbs(WP_Post $cpost){
 	}
 	
 	
-	$sep = krbl_get_sep('&gt;');
+	$sep = rdc_get_sep('&gt;');
 	
 	return "<div class='crumbs'>".implode($sep, $links)."</div>";	
 }
 
 
 /** post format **/
-function krbl_get_post_format($cpost){
+function rdc_get_post_format($cpost){
 	
 	$format = get_post_meta($cpost->ID, 'post_format', true);
 	if(empty($format))
@@ -410,7 +419,7 @@ function krbl_get_post_format($cpost){
 
 
 /** More section **/
-function krbl_more_section($posts, $title = '', $type = 'news', $css= ''){
+function rdc_more_section($posts, $title = '', $type = 'news', $css= ''){
 	
 	if(empty($posts))
 		return;
@@ -418,24 +427,24 @@ function krbl_more_section($posts, $title = '', $type = 'news', $css= ''){
 	$all_link = '';
 	
 	if($type == 'projects'){
-		$all_link = "<a href='".home_url('activity')."'>".__('More projects', 'krbl')."&nbsp;&rarr;</a>";
-		$title = (empty($title)) ? __('Our projects', 'krbl') : $title;
+		$all_link = "<a href='".home_url('activity')."'>".__('More projects', 'rdc')."&nbsp;&rarr;</a>";
+		$title = (empty($title)) ? __('Our projects', 'rdc') : $title;
 	}
 	elseif($type == 'people') {
 		$cat = get_term_by('slug', 'volunteers', 'person_cat');
-		$all_link = "<a href='".get_term_link($cat)."'>".__('More volunteers', 'krbl')."&nbsp;&rarr;</a>";
-		$title = (empty($title)) ? __('Our volunteers', 'krbl') : $title;
+		$all_link = "<a href='".get_term_link($cat)."'>".__('More volunteers', 'rdc')."&nbsp;&rarr;</a>";
+		$title = (empty($title)) ? __('Our volunteers', 'rdc') : $title;
 	}
 	elseif($type == 'events') {
 		$p = get_page_by_path('events');
 		if($p) {
-			$all_link = "<a href='".get_permalink($p)."'>".__('More events', 'krbl')."&nbsp;&rarr;</a>";
+			$all_link = "<a href='".get_permalink($p)."'>".__('More events', 'rdc')."&nbsp;&rarr;</a>";
 			$title = (empty($title)) ? get_the_title($p) : $title;
 		}
 	}
 	else {
-		$all_link = "<a href='".home_url('news')."'>".__('More news', 'krbl')."&nbsp;&rarr;</a>";
-		$title = (empty($title)) ? __('Latest news', 'krbl') : $title;
+		$all_link = "<a href='".home_url('news')."'>".__('More news', 'rdc')."&nbsp;&rarr;</a>";
+		$title = (empty($title)) ? __('Latest news', 'rdc') : $title;
 	}
 
 	$css .= ' related-card-holder';
@@ -447,7 +456,7 @@ function krbl_more_section($posts, $title = '', $type = 'news', $css= ''){
 <div class="cards-loop sm-cols-2 md-cols-2 lg-cols-4 related-people-loop">
 	<?php
 		foreach($posts as $p){
-			krbl_person_card($p, true);
+			rdc_person_card($p, true);
 		}
 	?>
 </div>
@@ -455,7 +464,7 @@ function krbl_more_section($posts, $title = '', $type = 'news', $css= ''){
 <div class="related-cards-loop">
 	<?php
 		foreach($posts as $p){			
-			krbl_related_post_card($p);
+			rdc_related_post_card($p);
 		}		
 	?>
 </div>
@@ -469,16 +478,16 @@ function krbl_more_section($posts, $title = '', $type = 'news', $css= ''){
 
 
 /** Related project on single page **/
-function krbl_related_project(WP_Post $cpost){
+function rdc_related_project(WP_Post $cpost){
 	
 	$pl = get_permalink($cpost);
-	$ex = apply_filters('krbl_the_title', krbl_get_post_excerpt($cpost, 25, true));
+	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 25, true));
 ?>
 <div class="related-widget widget">
 	<h3 class="widget-title"><?php _e('Related project', 'kds');?></h3>
 	<a href="<?php echo $pl;?>" class="entry-link">
 		<div class="rw-preview">
-			<?php echo krbl_post_thumbnail($cpost->ID, 'post-thumbnail');?>
+			<?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?>
 		</div>
 		<div class="rw-content">
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
@@ -486,13 +495,13 @@ function krbl_related_project(WP_Post $cpost){
 		</div>
 	</a>
 	<div class="help-cta">
-		<?php echo krbl_get_help_now_cta();?>
+		<?php echo rdc_get_help_now_cta();?>
 	</div>
 </div>
 <?php	
 }
 
-function krbl_get_help_now_cta($cpost = null, $label = ''){
+function rdc_get_help_now_cta($cpost = null, $label = ''){
 	
 	$label = (empty($label)) ? __('Help now', 'kds') : $label;
 	$cta = '';
@@ -524,7 +533,7 @@ function krbl_get_help_now_cta($cpost = null, $label = ''){
 
 
 /** == People fuctions == **/
-function krbl_people_gallery($type = 'all'){
+function rdc_people_gallery($type = 'all'){
 	
 	$args = array(
 		'post_type'=> 'person',
@@ -548,7 +557,7 @@ function krbl_people_gallery($type = 'all'){
 ?>
 	<div class="people-gallery eqh-container frame">
 	<?php foreach($query->posts as $p){ ?>
-		<div class="bit md-6 eqh-el"><?php krbl_person_card($p);?></div>
+		<div class="bit md-6 eqh-el"><?php rdc_person_card($p);?></div>
 	<?php }	?>
 	</div>
 <?php
@@ -557,7 +566,7 @@ function krbl_people_gallery($type = 'all'){
 
 
 /** == Orgs functions == **/
-function krbl_orgs_gallery($type = 'all') {
+function rdc_orgs_gallery($type = 'all') {
 	
 $args = array(
 		'post_type'=> 'org',
@@ -581,7 +590,7 @@ $args = array(
 ?>
 	<div class="orgs-gallery  frame">
 	<?php foreach($query->posts as $p){ ?>
-		<div class="bit mf-6 sm-4 md-3 "><?php krbl_org_card($p);?></div>
+		<div class="bit mf-6 sm-4 md-3 "><?php rdc_org_card($p);?></div>
 	<?php }	?>
 	</div>
 <?php	
@@ -591,8 +600,8 @@ $args = array(
 /** == Events functions == **/
 
 /** always populate end-date **/
-add_action('wp_insert_post', 'krbl_save_post_event_actions', 50, 2);
-function krbl_save_post_event_actions($post_ID, $post){
+add_action('wp_insert_post', 'rdc_save_post_event_actions', 50, 2);
+function rdc_save_post_event_actions($post_ID, $post){
 	
 	//populate end date
 	if($post->post_type == 'event'){
@@ -603,7 +612,7 @@ function krbl_save_post_event_actions($post_ID, $post){
 }
 
 /* remove forms from expired events */
-function krbl_remove_unused_form($the_content){
+function rdc_remove_unused_form($the_content){
 	
 	$msg = "<div class='tst-notice'>Регистрация закрыта</div>";
 	$the_content = preg_replace('/\[formidable(.+)\]/', $msg, $the_content);
@@ -614,7 +623,7 @@ function krbl_remove_unused_form($the_content){
 
 
 /** Single template helpers **/
-function krbl_related_reports(TST_Event $event, $css=''){	
+function rdc_related_reports(TST_Event $event, $css=''){	
 
 	$related = $event->get_related_post_id();
 	if(!empty($related)) {
@@ -633,7 +642,7 @@ function krbl_related_reports(TST_Event $event, $css=''){
 }
 
 /** Add to calendar links - details at http://addtocalendar.com/ **/
-function krbl_add_to_calendar_link(TST_Event $event, $echo = true, $container_class = 'tst-add-calendar', $txt = "", $icon = false) {	
+function rdc_add_to_calendar_link(TST_Event $event, $echo = true, $container_class = 'tst-add-calendar', $txt = "", $icon = false) {	
 	
 	if($event->is_expired())
 		return '';
@@ -671,7 +680,7 @@ function krbl_add_to_calendar_link(TST_Event $event, $echo = true, $container_cl
 		$txt = $default_label;
 		
 	if($icon)
-		$icon = krbl_svg_icon('icon-add-cal', false);
+		$icon = rdc_svg_icon('icon-add-cal', false);
 	
 	$location = $event->get_full_address_mark();
 	$e = (!empty($event->post_excerpt)) ? wp_trim_words($event->post_excerpt, 20) : wp_trim_words(strip_shortcodes($event->post_content), 20);
@@ -696,7 +705,7 @@ function krbl_add_to_calendar_link(TST_Event $event, $echo = true, $container_cl
 				<var class="atc_date_end"><?php echo $end_mark;?></var>
 				<var class="atc_timezone">Europe/Moscow</var>
 				<var class="atc_title"><?php echo esc_attr($event->post_title);?></var>
-				<var class="atc_description"><?php echo apply_filters('krbl_the_title', $e);?></var>
+				<var class="atc_description"><?php echo apply_filters('rdc_the_title', $e);?></var>
 				<var class="atc_location"><?php echo esc_attr($location);?></var>          
 			</var>		
 		</span>

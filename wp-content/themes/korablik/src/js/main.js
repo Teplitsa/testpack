@@ -83,7 +83,7 @@ jQuery(document).ready(function($){
 			e.stopPropagation();
 			
 			$site_header.find('#newsletter_panel').slideDown(150, function(){				
-				$site_header.addClass('newsletter-open').find('.krbl-textfield__input').focus();
+				$site_header.addClass('newsletter-open').find('.rdc-textfield__input').focus();
 				$(this).removeAttr('style');
 			});			
 		}
@@ -147,7 +147,7 @@ jQuery(document).ready(function($){
 	});
 	
 	// Search forcus on search page 
-	function krbl_search_focus_position(SearchInput) {
+	function rdc_search_focus_position(SearchInput) {
 		if (SearchInput.length > 0) {
 			var strLength= SearchInput.val().length * 2;
 		
@@ -156,7 +156,7 @@ jQuery(document).ready(function($){
 		}
 	}
 	
-	krbl_search_focus_position($('#sr_form').find('.search-field'));
+	rdc_search_focus_position($('#sr_form').find('.search-field'));
 	
 	
 	/** Sticky elements **/
@@ -176,7 +176,7 @@ jQuery(document).ready(function($){
 		}		
 		
 		//scroll tolerance 3px and ignore out of boundaries scroll
-		if((Math.abs(scroll-position) < 3) || krbl_scroll_outOfBounds(scroll))
+		if((Math.abs(scroll-position) < 3) || rdc_scroll_outOfBounds(scroll))
 			return true;
 		
 		//stick header
@@ -191,13 +191,13 @@ jQuery(document).ready(function($){
 		}
 		
 		//sticky sharing
-		if (winW >= breakPointMedium && $('#krbl_sharing').length > 0) {
-			stickInParent('#krbl_sharing .social-likes-wrapper', '#krbl_sharing', position, fixedTopPosition);
+		if (winW >= breakPointMedium && $('#rdc_sharing').length > 0) {
+			stickInParent('#rdc_sharing .social-likes-wrapper', '#rdc_sharing', position, fixedTopPosition);
 		}
 		
 		//sticky sidebar
-		if (winW >= breakPointMedium && $('#krbl_sidebar').length > 0) {
-			stickInParent('#krbl_sidebar .related-widget', '#krbl_sidebar', position, fixedTopPosition);
+		if (winW >= breakPointMedium && $('#rdc_sidebar').length > 0) {
+			stickInParent('#rdc_sidebar .related-widget', '#rdc_sidebar', position, fixedTopPosition);
 		}
 		
 		position = scroll; //upd scroll position
@@ -231,7 +231,7 @@ jQuery(document).ready(function($){
 	
 	
 	//determines if the scroll position is outside of document boundaries
-	function krbl_scroll_outOfBounds(scroll) { 
+	function rdc_scroll_outOfBounds(scroll) { 
 		var	documentH = $(document).height(),
 			winH = $(window).height();		
 		

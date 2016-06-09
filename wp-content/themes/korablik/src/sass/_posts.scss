@@ -97,7 +97,7 @@
 
 /** News **/
 @mixin post-meta() {
-	@include nav-text(meta);
+	@include nav-text(meta_small);
 	display: inline-block;
 	background: $color-text-black;
 	color: $color-white;
@@ -159,11 +159,10 @@
 	}
 	
 	.entry-meta {
-		@include post-meta();
-		font-size: 14px;
+		@include post-meta();		
 		position: absolute;
 		top: 0;
-		@include transform(translateY(-110%));
+		@include transform(translateY(-100%));
 		z-index: 100;
 	}
 	
@@ -186,9 +185,7 @@
 	position: relative;
 	width: 100%;
 	overflow: hidden;
-	@include transition(all 0.8s);
-	
-	
+		
 	.container { z-index: 100;	}
 	
 	.bg {
@@ -200,94 +197,67 @@
 		left: 0;
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-position: center top;
-		@include transition(all 0.8s ease-in);
+		background-position: center top;		
 		z-index: 5;
 	}
 }
 
-.featured-body {
-	min-height: 60vh;
-	height: 100%;
+
+
+.featured-body {	
+	@include vertical-image-header-fixed();
 	display: flex;
 	flex-flow: row nowrap;
 	
 	.featured-content {
-		display: block;
-		margin: $base -1*$gut/2;
-		padding: $gut/2;
-		max-width: 640px;
+		display: block;		
+		padding: $gut/2;		
 		color: $color-white;
-		align-self: flex-end;
-		@include transition(all 0.3s);	
+		align-self: flex-end;		
+		background: transparentize($color-link-three, 0.2);
+		@include transition(all 0.3s);
 		
+		@include for(large-screens) {
+			max-width: 75%;
+		}
+		
+		&:hover, &:focus, &:active {
+			background: transparentize($color-link-three, 0.02);
+		}
 	}
 		
 	.entry-meta {
 		@include post-meta();
 	}
 	
-	.entry-title {
-		@include header-title(section);		
-		margin-bottom: $base*1.5;
-		margin-top: 4px;
+	.entry-title {		
+		@include header-title(single);				
 		@include hyphens(auto);
-	
-		span, a {
-			margin-left: 8px;
-			background: $color-white;
-			color: $color-text-black;
-			display: inline;
-			box-shadow: 8px 0 0 $color-white, -8px 0 0 $color-white;
-			box-decoration-break: clone;
-			
-			&:hover {
-				background: $color-link-two;
-				color:$color-white;
-				box-shadow: 8px 0 0 $color-link-two, -8px 0 0 $color-link-two;
-			}
-		}
+		color: $color-white;
+		margin: 8px 0 0;
 	}
 	
 	.entry-summary {
-		@include sub-title();
-		color: transparentize($color-white, 0.12);
-		@include transition(all 0.3s);
-		padding: $gut/2;
-		background: rgba(0,0,0, 0.6);
+		@include body-text(semi);
+		color: transparentize($color-white, 0.05);
+		margin: 8px 0 0;
 	}
 	
-	.cta {
+	/*.cta {
 		margin-top: $base;
 		a {
 			@include button();
 		}
-	}
-	
-	a.featured-content:hover {
-		background: rgba(0,0,0, 0.65);
-		
-		.entry-title span, .entry-title span:hover,
-		.entry-title a, .entry-title a:hover {
-			background: transparent;
-			color: $color-white;
-			box-shadow:none;
-		}
-		
-		.entry-summary {
-			background: transparent;
-		}
-		
-		.entry-meta { background: transparent; }
-	}
+	}*/
 }
 
 .tpl-featured {
 	.featured-body .entry-title { 
 		@include post-title(featured);
+		color: $color-white;
 	}
 	.featured-body  .featured-content {
-		max-width: 760px;					
+						
 	}
 }
 
@@ -397,33 +367,25 @@
 }
 
 .tpl-related-post {
-		
+	margin-bottom: 0;
+	background: $color-secondary;
+	@include transition(background 0.35s);
+	
 	.entry-link {
 		display: block;
 		width: 100%;
 		position: relative;
-		
-		&:hover .entry-preview:after { background: rgba(0,0,0, 0.3); }
 	}
 	
 	.entry-preview {
 		@include shadowed-preview();
+		margin-bottom: 0;
 	}
 	
 	.entry-title {
 		@include post-title();
-		margin: 4px 0 0;
-		
-		span {
-			margin-left: 4px;
-			background: $color-white;
-			color: $color-text-black;
-			display: inline;
-			box-shadow: 4px 0 0 $color-white, -4px 0 0 $color-white;
-			box-decoration-break: clone;
-			
-			line-height: 24px;
-		}
+		margin: 0;
+		padding-top: $base;
 	}
 	
 	.entry-meta {
@@ -432,32 +394,38 @@
 		background: $color-text-black;
 		color: $color-white;
 		padding: 4px 8px;
+		margin: 0;
+		position: absolute;
+		lefT: 16px;
+		top: 0;
+		@include transform(translateY(-100%));
 	}
 	
 	.entry-data {
-		z-index: 50;
-		position: absolute;
-		padding: $gut;
-		position: left;
-		bottom: 0;
+		z-index: 50;		
+		padding: 0 $base $base;
+		position: relative;
 	}
 	
-	
+	&:hover {
+		background: darken($color-secondary, 2%);
+		.entry-preview:after { background: rgba(0,0,0, 0.3); }		
+	}
 }
 
 
 
 /** Single **/
 .entry-header-full {
-	padding: $gut 0 20px;
+	padding: $gut 0 $gut;
 	
 	.entry-title {
-		@include header-title(section);
+		@include header-title(single);
 		@include hyphens(auto);
 	}
 	
 	.entry-meta {
-		@include nav-text(meta);
+		@include nav-text(multiline);
 		color: $color-link-three;
 		a {
 			color: inherit;
@@ -468,6 +436,18 @@
 			}
 		}
 	}
+	
+		
+	.full-event-metas,
+	.lead {
+		margin-top: $gut/4;
+		
+		@include for(medium-screens) {
+			@include calc(width, '66.66% - 16px');
+			font-size: 1.2em;
+			font-weight: 300;
+		}
+	}
 }
 
 .single-post-section {
@@ -475,17 +455,12 @@
 		
 	.entry-preview {
 		position: relative;
-		
+		margin-bottom: $gut;
 	}
 	
-	.lead {
-		margin-bottom: $base;
+	.introimg  {
+		@include vertical-image-header-fixed();
 	}
-}
-
-.format-introvid .entry-preview,
-.format-standard .entry-preview {
-	margin-bottom: $gut;
 }
 
 .regular-sharing {
@@ -617,9 +592,7 @@
 	}
 }
 
-.full-event-metas {
-	margin-bottom: $gut*1.5;
-	@include sub-title(extend);
+.full-event-metas {		
 	color: $color-text-black;
 	
 	p:last-of-type { margin-top: 8px;}
@@ -631,6 +604,9 @@
 	}
 }
 
+.entry-content .lead {
+	margin-bottom: $margin-base;	
+}
 
 
 

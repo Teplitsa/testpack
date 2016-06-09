@@ -27,8 +27,8 @@ $future_events = new WP_Query(array(
 ));
 
 $future = $future_events->posts;
-$featured = array_slice($future, 0, 1); 
-array_splice($future, 0, 1);
+$featured = array_slice($future, 0, 2); 
+array_splice($future, 0, 2);
 }
 
 //past
@@ -56,19 +56,27 @@ $past_events = new WP_Query($past_agrs);
 get_header();
 ?>
 <?php if(!empty($featured)) { //featured post ?>
-<section class="featured-post"><?php krbl_featured_post_card($featured[0]);?></section>
+<section class="featured-post"><div class="container-wide">
+<div class="cards-loop sm-cols-1 md-cols-2">
+	<?php
+		foreach($featured as $f){
+			rdc_featured_post_card($f);
+		}
+	?>
+</div>
+</div></section>
 <?php } ?>
 
 <?php if(!empty($future)) { ?>
 <section class="heading">
-	<div class="container"><h1 class="section-title archive"><?php _e('Future events', 'krbl'); ?></h1></div>
+	<div class="container"><h1 class="section-title archive"><?php _e('Future events', 'rdc'); ?></h1></div>
 </section>
 
 <section class="main-content cards-holder"><div class="container-wide">
 <div class="cards-loop sm-cols-1 md-cols-2 lg-cols-4">
 	<?php
 		foreach($future as $p){
-			krbl_event_card($p);
+			rdc_event_card($p);
 		}		
 	?>
 </div>
@@ -76,7 +84,7 @@ get_header();
 <?php } ?>
 
 <section class="heading">
-	<div class="container"><h1 class="section-title archive"><?php _e('Past events', 'krbl'); ?></h1></div>
+	<div class="container"><h1 class="section-title archive"><?php _e('Past events', 'rdc'); ?></h1></div>
 </section>
 
 <section class="main-content cards-holder"><div class="container-wide">
@@ -84,7 +92,7 @@ get_header();
 	<?php
 		if($past_events->have_posts()){
 			foreach($past_events->posts as $p){
-				krbl_event_card($p);
+				rdc_event_card($p);
 			}
 		}
 		else {
@@ -94,6 +102,6 @@ get_header();
 </div>
 </div></section>
 
-<section class="paging"><?php krbl_paging_nav($past_events); ?></section>
+<section class="paging"><?php rdc_paging_nav($past_events); ?></section>
 
 <?php get_footer();

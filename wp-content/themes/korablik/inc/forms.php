@@ -2,52 +2,52 @@
 /** Formidable filters **/
 
 // @to_do (no correction for repeatable section)
-add_filter('frm_submit_button_class', 'krbl_formidable_submit_classes', 2, 2);
-function krbl_formidable_submit_classes($class, $form){
+add_filter('frm_submit_button_class', 'rdc_formidable_submit_classes', 2, 2);
+function rdc_formidable_submit_classes($class, $form){
 	
 	
-	$class[] = 'krbl-submit-button';
+	$class[] = 'rdc-submit-button';
 	
 	return $class;
 }
 
-add_filter('frm_field_classes', 'krbl_formidable_field_classes', 2, 2);
-function krbl_formidable_field_classes($class, $field){
+add_filter('frm_field_classes', 'rdc_formidable_field_classes', 2, 2);
+function rdc_formidable_field_classes($class, $field){
 		
 	if(in_array($field['type'], array('text', 'email', 'textarea', 'url', 'number'))) { 
-		$class = 'krbl-textfield__input';
+		$class = 'rdc-textfield__input';
 	}
 	elseif($field['type'] == 'checkbox'){
 		
 		if(isset($field['classes']) && false !== strpos($field['classes'], 'switch')){			
-			$class .= " krbl-checkbox__input";
+			$class .= " rdc-checkbox__input";
 		}
 		else {
-			$class = "krbl-checkbox__input";
+			$class = "rdc-checkbox__input";
 		}
 	}
 	elseif($field['type'] == 'radio'){
-		$class = "krbl-radio__button";
+		$class = "rdc-radio__button";
 	}
 	elseif($field['type'] == 'file'){
-		$class = "krbl-file__input";
+		$class = "rdc-file__input";
 	}
 	
 	if($field['invalid'])
-		$class .= " krbl-has-error";
+		$class .= " rdc-has-error";
 		
 	return $class;
 }
 
-add_filter('frm_replace_shortcodes', 'krbl_formidable_default_html', 2, 3);
-function krbl_formidable_default_html($html, $field, $params) {
+add_filter('frm_replace_shortcodes', 'rdc_formidable_default_html', 2, 3);
+function rdc_formidable_default_html($html, $field, $params) {
 		
 	if(in_array($field['type'], array('text', 'email', 'number', 'url', 'textarea')))  {
 			
-		$html = str_replace(array('frm_form_field', 'form-field'), 'krbl-textfield frm_form_field', $html);
+		$html = str_replace(array('frm_form_field', 'form-field'), 'rdc-textfield frm_form_field', $html);
 		
-		$html = str_replace('frm_primary_label', 'krbl-textfield__label frm_primary_label', $html);
-		$html = str_replace('frm_error', 'krbl-textfield__error frm_error', $html);
+		$html = str_replace('frm_primary_label', 'rdc-textfield__label frm_primary_label', $html);
+		$html = str_replace('frm_error', 'rdc-textfield__error frm_error', $html);
 		
 		if(isset($field['read_only']) && (int)$field['read_only'] == 1){			
 			$html = str_replace('<input', '<input disabled="disabled" ', $html);
@@ -65,30 +65,30 @@ function krbl_formidable_default_html($html, $field, $params) {
 	}	
 	elseif($field['type'] == 'checkbox'){
 		if(isset($field['classes']) && false !== strpos($field['classes'], 'switch')){			
-			$html = str_replace('<label for=', '<label class="krbl-checkbox" for=', $html);
+			$html = str_replace('<label for=', '<label class="rdc-checkbox" for=', $html);
 		}
 		else {
-			$html = str_replace('<label for=', '<label class="krbl-checkbox" for=', $html);
+			$html = str_replace('<label for=', '<label class="rdc-checkbox" for=', $html);
 		}
 		
-		$html = str_replace('frm_form_field', 'krbl-inputfix frm_form_field', $html);
-		$html = str_replace('frm_primary_label', 'krbl-inputfix__label frm_primary_label', $html);
+		$html = str_replace('frm_form_field', 'rdc-inputfix frm_form_field', $html);
+		$html = str_replace('frm_primary_label', 'rdc-inputfix__label frm_primary_label', $html);
 		
 	}
 	elseif($field['type'] == 'radio'){
 		
-		$html = str_replace('<label for=', '<label class="krbl-radio" for=', $html);
-		$html = str_replace('frm_primary_label', 'krbl-inputfix__label frm_primary_label', $html);
-		$html = str_replace('frm_form_field', 'krbl-inputfix frm_form_field', $html);
+		$html = str_replace('<label for=', '<label class="rdc-radio" for=', $html);
+		$html = str_replace('frm_primary_label', 'rdc-inputfix__label frm_primary_label', $html);
+		$html = str_replace('frm_form_field', 'rdc-inputfix frm_form_field', $html);
 	}
 	elseif($field['type'] == 'select'){
 		
-		$html = str_replace('frm_form_field', 'krbl-select frm_form_field', $html);
-		$html = str_replace('frm_primary_label', 'krbl-inputfix__label frm_primary_label', $html);
+		$html = str_replace('frm_form_field', 'rdc-select frm_form_field', $html);
+		$html = str_replace('frm_primary_label', 'rdc-inputfix__label frm_primary_label', $html);
 		
 		preg_match("#<\s*?select\b[^>]*>(.*?)</select\b[^>]*>#s", $html, $l);
 		if(!empty($l)){
-			$html = str_replace($l[0], '<label class="krbl-select-wrap">'.$l[0].'</label>', $html); //delete label
+			$html = str_replace($l[0], '<label class="rdc-select-wrap">'.$l[0].'</label>', $html); //delete label
 		}
 	}	
 	elseif($field['type'] == 'file'){ //not ready
@@ -115,38 +115,38 @@ function krbl_formidable_default_html($html, $field, $params) {
 }
 
 
-add_filter('frm_field_label_seen', 'krbl_formidable_input_options_html', 2, 3);
-function krbl_formidable_input_options_html($opt, $opt_key, $field) {
+add_filter('frm_field_label_seen', 'rdc_formidable_input_options_html', 2, 3);
+function rdc_formidable_input_options_html($opt, $opt_key, $field) {
 	
 	if(is_admin())
 		return $opt;
 	
 	if($field['type'] == 'checkbox') {
 		if(isset($field['classes']) && false !== strpos($field['classes'], 'switch')){
-			$opt = "<span class='krbl-checkbox__label'>{$opt}</span>";
+			$opt = "<span class='rdc-checkbox__label'>{$opt}</span>";
 		}
 		else {
-			$opt = "<span class='krbl-checkbox__label'>{$opt}</span>";
+			$opt = "<span class='rdc-checkbox__label'>{$opt}</span>";
 		}
 		
 	}
 	elseif($field['type'] == 'radio') {
-		$opt = "<span class='krbl-radio__label'>{$opt}</span>";
+		$opt = "<span class='rdc-radio__label'>{$opt}</span>";
 	}
 	
 	return $opt;
 }
 
 
-add_filter('frm_filter_final_form', 'krbl_formidable_submit_button_html', 50);
-function krbl_formidable_submit_button_html($html){
+add_filter('frm_filter_final_form', 'rdc_formidable_submit_button_html', 50);
+function rdc_formidable_submit_button_html($html){
 	
 	//// /<p .*?class="(.*?someClass.*?)">(.*?)<\/p>/
 	//preg_match("/<[^>]*type=\"submit\"[^>]*>/", $html, $l);
 	//
 	//if(!empty($l)){
-	//	$icon = krbl_svg_icon('icon-subscribe-button', false);
-	//	$html = str_replace($l[0], '<span class="krbl-submit-wrap">'.$icon.$l[0].'</span>', $html);
+	//	$icon = rdc_svg_icon('icon-subscribe-button', false);
+	//	$html = str_replace($l[0], '<span class="rdc-submit-wrap">'.$icon.$l[0].'</span>', $html);
 	//}
 	
 	$html = str_replace('frm-show-form', 'frm-show-form novalidate', $html);
@@ -156,7 +156,7 @@ function krbl_formidable_submit_button_html($html){
 
 
 /** Functions to interact with Formidable **/
-function krbl_frm_get_form_id_from_key ( $form_key ) {
+function rdc_frm_get_form_id_from_key ( $form_key ) {
 	global $wpdb;
 	
 	$table_name = $wpdb->prefix.'frm_forms'; //more reliable than $frmdb->forms

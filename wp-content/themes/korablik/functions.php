@@ -14,10 +14,10 @@ if ( ! isset( $content_width ) ) {
 }
 
 
-function krbl_setup() {
+function rdc_setup() {
 
 	// Inits
-	load_theme_textdomain( 'krbl', get_template_directory() . '/lang' );
+	load_theme_textdomain( 'rdc', get_template_directory() . '/lang' );
 	//add_theme_support( 'automatic-feed-links' );	
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'html5', array(
@@ -44,15 +44,15 @@ function krbl_setup() {
 	// Editor style
 	//add_editor_style(array('css/editor-style.css'));
 }
-add_action( 'init', 'krbl_setup', 30 );
+add_action( 'init', 'rdc_setup', 30 );
 
 
 /** Custom image size for medialib **/
-//add_filter('image_size_names_choose', 'krbl_medialib_custom_image_sizes');
-function krbl_medialib_custom_image_sizes($sizes) {
+//add_filter('image_size_names_choose', 'rdc_medialib_custom_image_sizes');
+function rdc_medialib_custom_image_sizes($sizes) {
 	
-	$addsizes = apply_filters('krbl_medialib_custom_image_sizes', array(
-		//"thumbnail-landscape" => __("Landscape mini", 'krbl'),
+	$addsizes = apply_filters('rdc_medialib_custom_image_sizes', array(
+		//"thumbnail-landscape" => __("Landscape mini", 'rdc'),
 		"embed" => 'Фиксированный'
 	));
 		
@@ -62,20 +62,16 @@ function krbl_medialib_custom_image_sizes($sizes) {
 /**
  * Register widget area.
  */
-function krbl_widgets_init() {
+function rdc_widgets_init() {
 		
-	$config = array(
-		'right_top' => array(
-						'name' => 'Правая колонка - Верх',
-						'description' => 'Общая боковая колонка справа (верхняя часть, на мобильных - перед контентом)'
-					),
-		'right_bottom' => array(
-						'name' => 'Правая колонка - Низ',
-						'description' => 'Общая боковая колонка справа (верхняя часть, на мобильных - после контента)'
-					),
+	$config = array(		
 		'right_single' => array(
 						'name' => 'Правая колонка - Записи',
 						'description' => 'Боковая колонка справа на страницах новостей'
+					),
+		'right_event' => array(
+						'name' => 'Правая колонка - Анонсы',
+						'description' => 'Боковая колонка справа на страницах анонсов'
 					),
 		'footer' => array(
 						'name' => 'Подвал - 4 виджета',
@@ -102,7 +98,7 @@ function krbl_widgets_init() {
 		));
 	}
 }
-add_action( 'init', 'krbl_widgets_init', 25 );
+add_action( 'init', 'rdc_widgets_init', 25 );
 
 
 /**

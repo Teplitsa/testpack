@@ -136,7 +136,7 @@
 //pictured bg
 .container-extended-pictured {
 	@include container-extended(padded);
-	min-height: 60vh;
+	//min-height: 60vh;
 		
 	.text-white {
 		padding: $gut 0;
@@ -168,7 +168,7 @@
 	}
 }
 
-.krbl-button,
+.rdc-button,
 .button {
 	@include button();
 }	

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e49a3b187956400f1cf144e5047ca5eb",
-    "content-hash": "21351a13089aa331afa70a379af58b5a",
+    "hash": "0f08246a28d674211c833ba84919ba65",
+    "content-hash": "93b6eb06e0e061906798f5744bd95bfa",
     "packages": [
         {
             "name": "composer/installers",
@@ -398,15 +398,15 @@
         },
         {
             "name": "wpackagist-plugin/formidable",
-            "version": "2.01.03",
+            "version": "2.02.01",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/formidable/",
-                "reference": "tags/2.01.03"
+                "reference": "tags/2.02.01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/formidable.2.01.03.zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.01.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -477,26 +477,6 @@
             "homepage": "https://wordpress.org/plugins/media-search-enhanced/"
         },
         {
-            "name": "wpackagist-plugin/post-type-converter",
-            "version": "0.6",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/post-type-converter/",
-                "reference": "tags/0.6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/post-type-converter.0.6.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/post-type-converter/"
-        },
-        {
             "name": "wpackagist-plugin/responsive-lightbox",
             "version": "1.6.7",
             "source": {
@@ -535,26 +515,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/simple-css-for-widgets/"
-        },
-        {
-            "name": "wpackagist-plugin/simple-google-maps-short-code",
-            "version": "1.2",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/simple-google-maps-short-code/",
-                "reference": "tags/1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/simple-google-maps-short-code.1.2.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/simple-google-maps-short-code/"
         },
         {
             "name": "wpackagist-plugin/siteorigin-panels",
@@ -699,6 +659,26 @@
             "time": "2016-04-24 08:56:12"
         },
         {
+            "name": "wpackagist-plugin/disable-wordpress-updates",
+            "version": "1.4.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/disable-wordpress-updates/",
+                "reference": "tags/1.4.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/disable-wordpress-updates.1.4.7.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/disable-wordpress-updates/"
+        },
+        {
             "name": "wpackagist-plugin/force-regenerate-thumbnails",
             "version": "2.0.5",
             "source": {
@@ -750,18 +730,17 @@
         "wpackagist-plugin/media-search-enhanced": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
         "wpackagist-plugin/simple-css-for-widgets": 0,
-        "wpackagist-plugin/simple-google-maps-short-code": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/cmb2": 0,
         "webdevstudios/cmb2-post-search-field": 20,
         "wpackagist-plugin/formidable": 0,
-        "wpackagist-plugin/post-type-converter": 0,
         "wpackagist-plugin/siteorigin-panels": 0,
         "wpackagist-plugin/so-widgets-bundle": 0,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
-        "wpackagist-plugin/post-duplicator": 0
+        "wpackagist-plugin/post-duplicator": 0,
+        "wpackagist-plugin/disable-wordpress-updates": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -38,26 +38,26 @@ class IST_PB_PageHeader_Widget extends SiteOrigin_Widget {
 		return array(
 			'image' => array(
 				'type' => 'media',
-				'label' => __('Image file', 'ist'),
+				'label' => __('Image file', 'rdc'),
 				'library' => 'image',
 				'fallback' => true,
 			),		
 
 			'title' => array(
 				'type' => 'text',
-				'label' => __('Title text', 'ist'),
+				'label' => __('Title text', 'rdc'),
 			),
 			
 			'subtitle' => array(
 				'type' => 'textarea',
-				'label' => __('Sub title text', 'ist'),
+				'label' => __('Sub title text', 'rdc'),
 				'rows' => 4
 			),
 			
 			'extend_width' => array(
 				'type' => 'checkbox',
 				'default' => false,
-				'label' => __('Extend Width', 'ist'),
+				'label' => __('Extend Width', 'rdc'),
 				'description' => 'Макет шире основной колонки',
 			),
 			
@@ -108,12 +108,12 @@ class IST_PB_PageHeader_Widget extends SiteOrigin_Widget {
 		<div class="tpl-featured-bg" style="background-image: url(<?php echo wp_get_attachment_url( $image );?>)"></div>
 	</section>
 	<section class="featured-head-text"><div class="fht-content">
-		<h1 class="featured-title"><?php echo apply_filters('krbl_the_title', $title);?></h1>
+		<h1 class="featured-title"><?php echo apply_filters('rdc_the_title', $title);?></h1>
 		<?php if($subtitle) { ?>
-			<div class="desc"><?php echo apply_filters('krbl_the_title', $subtitle); ?></div>
+			<div class="desc"><?php echo apply_filters('rdc_the_title', $subtitle); ?></div>
 		<?php } ?>
 		
-		<div class="mobile-sharing hide-on-medium"><?php echo krbl_social_share_no_js();?></div>
+		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
 	</div></section>
 	
 	<?php	

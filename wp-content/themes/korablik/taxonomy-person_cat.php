@@ -10,17 +10,20 @@ $paged = (get_query_var('paged', 0)) ? get_query_var('paged', 0) : 1;
 get_header();
 
 if($paged == 1) { //featured post
-	$fpost = get_term_meta($qo->term_id, 'featured_action_id', true);
-	$fpost = get_post((int)$fpost);
-	$cta = get_term_meta($qo->term_id, 'featured_action_сta', true);
+	$fa_title = get_term_meta($qo->term_id, 'featured_action_title', true);
+	$fa_subtitle = get_term_meta($qo->term_id, 'featured_action_subtitle', true);
+	$fa_image = (int)get_term_meta($qo->term_id, 'featured_action_image_id', true);
+	$fa_link = esc_url(get_term_meta($qo->term_id, 'featured_action_link', true));
 	
-	if($fpost) {
+	if($fa_image) {
 ?>
-<section class="featured-action"><?php krbl_featured_action_card($fpost, $cta);?></section>
+<section class="featured-action">
+<?php rdc_featured_action_card_markup($fa_link, $fa_title, $fa_subtitle, $fa_image);?>
+</section>
 <?php }} ?>
 
 <section class="heading">
-	<div class="container"><?php krbl_section_title(); ?></div>
+	<div class="container"><?php rdc_section_title(); ?></div>
 </section>
 
 <section class="main-content cards-holder"><div class="container">
@@ -28,7 +31,7 @@ if($paged == 1) { //featured post
 	<?php
 		if(have_posts()){
 			foreach($posts as $p){
-				krbl_person_card($p);
+				rdc_person_card($p);
 			}
 		}
 		else {
@@ -39,7 +42,7 @@ if($paged == 1) { //featured post
 </div></section>
 
 <section class="paging">
-<?php krbl_paging_nav($wp_query); ?>
+<?php rdc_paging_nav($wp_query); ?>
 </section>
 
 <?php get_footer();

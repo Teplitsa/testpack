@@ -15,9 +15,9 @@ get_header();
 ?>
 <section class="heading">
 	<div class="container">
-		<?php krbl_section_title(); ?>
+		<?php rdc_section_title(); ?>
 		<?php if($campaign){ ?>
-		<h4><?php _e('Campaign', 'krbl');?>: <a href="<?php echo get_permalink($campaign);?>"><?php echo get_the_title($campaign);?></a></h4>
+		<h4><?php _e('Campaign', 'rdc');?>: <a href="<?php echo get_permalink($campaign);?>"><?php echo get_the_title($campaign);?></a></h4>
 		<?php } ?>
 	</div>
 </section>
@@ -51,6 +51,6 @@ get_header();
 	?>
 	</div>
 </div></section>
-<section class="paging"><?php krbl_paging_nav($wp_query); ?></section>
+<section class="paging"><?php rdc_paging_nav($wp_query); ?></section>
 
 <?php get_footer();

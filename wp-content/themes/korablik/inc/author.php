@@ -1,15 +1,15 @@
 <?php
 /** Facebook author tag - till 4.4 **/
-add_action('wp_head', 'krbl_facebook_author_tag');
-function krbl_facebook_author_tag() {	
+add_action('wp_head', 'rdc_facebook_author_tag');
+function rdc_facebook_author_tag() {	
 	
 	if(!is_singular('post'))
 		return;
 	
-	if(!krbl_has_authors())
+	if(!rdc_has_authors())
 		return;
 		
-	$author = krbl_get_post_author(get_queried_object());
+	$author = rdc_get_post_author(get_queried_object());
 	if(!$author || is_wp_error($author))
 		return;
 		
@@ -24,7 +24,7 @@ function krbl_facebook_author_tag() {
 
 
 /** Default author avatar **/
-function krbl_get_default_author_avatar(){
+function rdc_get_default_author_avatar(){
 	
 	$alt = __('Author', 'tst');
 	$img = '';
@@ -41,9 +41,9 @@ function krbl_get_default_author_avatar(){
 }
 
 
-function krbl_get_post_author($cpost) {
+function rdc_get_post_author($cpost) {
 	
-	if(!krbl_has_authors())
+	if(!rdc_has_authors())
 		return false;
 		
 	$author = get_the_terms($cpost->ID, 'auctor');
@@ -53,9 +53,9 @@ function krbl_get_post_author($cpost) {
 	return $author;
 }
 
-function krbl_get_author_avatar($author_term_id) {
+function rdc_get_author_avatar($author_term_id) {
 
 	$avatar = get_term_meta($author_term_id, 'auctor_photo', true);
 
-    return $avatar ? wp_get_attachment_image($avatar, 'avatar') : krbl_get_default_author_avatar();
+    return $avatar ? wp_get_attachment_image($avatar, 'avatar') : rdc_get_default_author_avatar();
 }

@@ -15,7 +15,7 @@
 
 <body id="top" <?php body_class(); ?>>
 <?php include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
-<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'krbl' ); ?></a>
+<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'rdc' ); ?></a>
 
 <header id="site_header" class="site-header">
 	
@@ -25,20 +25,27 @@
 		<div class="site-panel-row">
 			<div class="site-branding site-panel-cell">				
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
-					<div id="logo"><?php krbl_site_logo('regular');?></div>
-					<h1 class="logo-name"><?php echo get_bloginfo('name');?></h1>
-					<h2 class="logo-name"><?php echo get_bloginfo('description');?></h2>
+					<div id="logo-full" ><?php rdc_site_logo('regular');?></div>
+					<div id="logo-small" ><?php rdc_site_logo('small');?></div>
+					<div class="logo-name-cell">
+						<h1 class="logo-name"><?php echo get_bloginfo('name');?></h1>
+						<h2 class="logo-name"><?php echo get_bloginfo('description');?></h2>
+					</div>
 				</a>					
 			</div>
 			
-			<?php $header_text = get_option('header_adr_text'); ?>
-			<div class="site-details site-panel-cell"><?php echo apply_filters('krbl_the_content', $header_text); ?></div>									
-			<div class="trigger-button newsletter site-panel-cell">
-				<a id="trigger_newsletter"  href="<?php echo home_url('subscribe');?>"><?php _e( 'Subscribe', 'krbl' ); ?><?php krbl_svg_icon('icon-mail');?><?php krbl_svg_icon('icon-close');?></a>
+			<?php $header_text = get_theme_mod('header_text_content'); ?>
+			<div class="site-details site-panel-cell">
+				<div class="site-details-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>
+			</div>									
+			
+			<div class="trigger-button donate site-panel-cell">
+				<a id="trigger_donate"  href="<?php echo home_url('campaign/help-us');?>"><?php rdc_svg_icon('icon-logo');?><?php _e( 'Donate', 'rdc' ); ?></a>
 			</div>
+			
 			<div class="trigger-button menu site-panel-cell">
 				<a id="trigger_menu" href="<?php echo home_url('sitemap');?>">
-					<?php krbl_svg_icon('icon-menu');?>					
+					<?php rdc_svg_icon('icon-menu');?>					
 				</a>				
 			</div>
 			
@@ -46,9 +53,9 @@
 		</div>
 	</div>
 	
-	<div id="newsletter_panel" class="newsletter-panel">
-		<div class="newsletter-form"><?php echo krbl_get_newsletter_form(); ?></div>
-	</div>
+	<!--<div id="newsletter_panel" class="newsletter-panel">
+		<div class="newsletter-form"><?php echo rdc_get_newsletter_form(); ?></div>
+	</div>-->
 	<div class="nav-overlay"></div>
 	<nav id="site_nav" class="site-nav">
 		<div class="site-nav-title">
@@ -58,10 +65,10 @@
 					<h2 class="logo-name"><?php echo get_bloginfo('description');?></h2>
 				</a>
 			</div>
-			<div id="trigger_menu_close" class="trigger-button close"><?php krbl_svg_icon('icon-close');?></div>
+			<div id="trigger_menu_close" class="trigger-button close"><?php rdc_svg_icon('icon-close');?></div>
 		</div>
 		<?php
-			$after = '<span class="submenu-trigger">'.krbl_svg_icon('icon-up', false).krbl_svg_icon('icon-down', false).'</span>';
+			$after = '<span class="submenu-trigger">'.rdc_svg_icon('icon-up', false).rdc_svg_icon('icon-down', false).'</span>';
 			wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'main-menu', 'after' => $after));
 		?>
 		<div class="search-holder"><?php get_search_form();?></div>
@@ -69,4 +76,4 @@
 	</nav>		
 </header>
 
-<div id="site_content" class="site-content">
+<div id="site_content" class="site-content"><a name="#content"></a>

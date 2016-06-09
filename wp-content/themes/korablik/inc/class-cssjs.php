@@ -56,22 +56,22 @@ class FRL_CssJs {
 	
 		return $filename;
 	}
-	
+
 	/* load css */
 	function load_styles() {
-		
+
 		$url = get_template_directory_uri();
 		$style_dependencies = array();
-		
+
 		// fonts
 		wp_enqueue_style(
-			'krbl-fonts',
+			'rdc-fonts',
 			'//fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:400,700|Tinos:400,400italic,700&subset=latin,cyrillic',
 			$style_dependencies,
 			null
 		);
-		$style_dependencies[] = 'krbl-fonts';
-	
+		$style_dependencies[] = 'rdc-fonts';
+
 		// design
 		wp_enqueue_style(
 			'frl-design',
@@ -79,25 +79,24 @@ class FRL_CssJs {
 			$style_dependencies,
 			null
 		);
-		
-		
+
 		wp_dequeue_style('leyka-plugin-styles');		
 	}
-	
-	
+
 	/* front */
 	public function load_scripts() {		
-		
+
 		$url = get_template_directory_uri();
-				
+
 		// jQuery
 		$script_dependencies[] = 'jquery'; //adjust gulp if we want it in footer	
-		
-		if(defined('LEYKA_VERSION') && wp_script_is('leyka-public', 'enqueued' )) {
+
+		/*if(defined('LEYKA_VERSION') && wp_script_is('leyka-public', 'enqueued' )) {
+
 			wp_dequeue_script('leyka-cp');		
 			wp_dequeue_script('leyka-public');
 			wp_dequeue_script('leyka-modal');
-			
+
 			wp_deregister_script('leyka-public');
 			wp_enqueue_script(
 			   'leyka-public',
@@ -105,11 +104,12 @@ class FRL_CssJs {
 				LEYKA_VERSION,
 				true
 			);
-			
 			wp_enqueue_script('leyka-cp');
-		}
-		
-		
+			
+			
+            leyka()->localize_scripts(); // localize leyka scripts anew
+		}*/
+
 		// front
 		wp_enqueue_script(
 			'frl-front',
@@ -118,7 +118,7 @@ class FRL_CssJs {
 			null,
 			true
 		);
-				
+
 		wp_localize_script('frl-front', 'frontend', array(
 			'ajaxurl' => admin_url('admin-ajax.php')			
 		));
@@ -143,7 +143,7 @@ class FRL_CssJs {
 		
 		$url = get_template_directory_uri();
 			
-		wp_enqueue_style('krbl-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);				
+		wp_enqueue_style('rdc-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);				
 	}
 	
 	/* login style - make it inline ? */

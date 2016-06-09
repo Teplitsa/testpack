@@ -28,6 +28,16 @@
 	   		user-select: none;
 }
 
+@function value_from_map($key, $map) {
+	@if map-has-key($map, $key) {
+		@return map-get($map, $key);
+	}
+
+	@warn "Unknown '#{$key}' in $map.";
+	@return null;
+}
+
+
 
 @mixin for($media) {
 	@if $media == small-screens {
@@ -46,7 +56,6 @@
 		@media screen and (min-width: $five) { @content; }
 	}
 }
-
 
 @mixin upto($media) {
 	@if $media == small-screens {
@@ -212,7 +221,7 @@ $margin-base: 16px;
 	}
 	
 	h5 {
-		@include header-title(head_title_small);
+		@include header-title();
 		margin: $margin-base 0 $margin-base/2;
 		font-weight: bold;
 	}

@@ -38,27 +38,27 @@ class IST_PB_SectionHeader_Widget extends SiteOrigin_Widget {
 		return array(
 			'title' => array(
 				'type' => 'text',
-				'label' => __('Title text', 'krbl'),
+				'label' => __('Title text', 'rdc'),
 			),
 			
 			'subtitle' => array(
 				'type' => 'text',
-				'label' => __('Sub title text', 'krbl'),				
+				'label' => __('Sub title text', 'rdc'),				
 			),
 			
 			'align' => array(
 				'type' => 'select',
-				'label' => __( 'Align', 'krbl' ),
+				'label' => __( 'Align', 'rdc' ),
 				'default' => 'left',
 				'options' => array(
-					'center' => __( 'Center', 'krbl' ),
-					'left'   => __( 'Left', 'krbl' ),
-					'right'  => __( 'Right', 'krbl' )					
+					'center' => __( 'Center', 'rdc' ),
+					'left'   => __( 'Left', 'rdc' ),
+					'right'  => __( 'Right', 'rdc' )					
 				)
 			),
 			'page_header' => array(
 				'type' => 'checkbox',
-				'label' => __( 'Style as page title', 'krbl' ),
+				'label' => __( 'Style as page title', 'rdc' ),
 				'default' => false
 			)
 		);
@@ -111,9 +111,9 @@ class IST_PB_SectionHeader_Widget extends SiteOrigin_Widget {
 		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
 	?>	
 	<div class="pb-section-title <?php echo esc_attr($css_title); ?>">	
-		<h3><?php echo apply_filters('krbl_the_title', $title);?></h3>
+		<h3><?php echo apply_filters('rdc_the_title', $title);?></h3>
 		<?php if($subtitle) { ?>
-			<h4><?php echo apply_filters('krbl_the_title', $subtitle); ?></h4>
+			<h4><?php echo apply_filters('rdc_the_title', $subtitle); ?></h4>
 		<?php } ?>		
 	</div>
 	<?php	

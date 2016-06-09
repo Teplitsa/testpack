@@ -45,15 +45,13 @@
         "wpackagist-plugin/leyka" : "@stable",
         "wpackagist-plugin/media-search-enhanced": "@stable",
         "wpackagist-plugin/responsive-lightbox" : "@stable",        
-        "wpackagist-plugin/simple-css-for-widgets" : "@stable",
-        "wpackagist-plugin/simple-google-maps-short-code": "@stable",
+        "wpackagist-plugin/simple-css-for-widgets" : "@stable",        
         "wpackagist-plugin/widget-logic" : ">=0.57",
         "wpackagist-plugin/wordpress-seo" : "@stable",
         "wpackagist-plugin/w3-total-cache": "@stable",        
         "wpackagist-plugin/cmb2": "@stable",
         "webdevstudios/cmb2-post-search-field" : "dev-master",
         "wpackagist-plugin/formidable": "@stable",
-        "wpackagist-plugin/post-type-converter": "@stable",
         "wpackagist-plugin/siteorigin-panels": "@stable",
         "wpackagist-plugin/so-widgets-bundle": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
@@ -62,7 +60,8 @@
     "require-dev" : {
         "wp-sync-db/wp-sync-db" : "dev-master",
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
-        "wpackagist-plugin/post-duplicator" : "@stable"
+        "wpackagist-plugin/post-duplicator" : "@stable",
+        "wpackagist-plugin/disable-wordpress-updates": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",

@@ -5,8 +5,8 @@
  **/
 
 /* CPT Filters */
-add_action('parse_query', 'krbl_request_corrected');
-function krbl_request_corrected(WP_Query $query) {
+add_action('parse_query', 'rdc_request_corrected');
+function rdc_request_corrected(WP_Query $query) {
 
 	if(is_admin()) {
 		return;

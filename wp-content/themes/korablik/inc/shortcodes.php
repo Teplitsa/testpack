@@ -6,8 +6,8 @@
 add_filter('widget_text', 'do_shortcode');
 
 /** sitemap **/
-add_shortcode('krbl_sitemap', 'krbl_sitemap_screen');
-function krbl_sitemap_screen($atts){
+add_shortcode('rdc_sitemap', 'rdc_sitemap_screen');
+function rdc_sitemap_screen($atts){
 	
 	$out =  wp_nav_menu(array('theme_location' => 'sitemap', 'container' => false, 'menu_class' => 'sitemap', 'echo'=> false));
 	
@@ -17,8 +17,8 @@ function krbl_sitemap_screen($atts){
 
 
 /** Map **/
-add_shortcode('pw_map', 'krbl_pw_map_screen');
-function krbl_pw_map_screen($atts){
+add_shortcode('pw_map', 'rdc_pw_map_screen');
+function rdc_pw_map_screen($atts){
 	
 	extract(shortcode_atts(
 		array(
@@ -34,7 +34,7 @@ function krbl_pw_map_screen($atts){
 		$atts
 	));
 		
-	$coord = krbl_map_get_coordinates($address);	
+	$coord = rdc_map_get_coordinates($address);	
 	
 	if( !is_array( $coord ) )
 		return '';
@@ -107,7 +107,7 @@ add_action('wp_footer', function(){
 <?php
 }, 100);
 
-function krbl_map_get_coordinates( $address, $force_refresh = false ) {
+function rdc_map_get_coordinates( $address, $force_refresh = false ) {
 
     $address_hash = md5( $address );
     $coordinates = get_transient( $address_hash );
@@ -167,16 +167,16 @@ function krbl_map_get_coordinates( $address, $force_refresh = false ) {
 
 
 /** Youtube video caption **/
-add_shortcode('yt_caption', 'krbl_yt_caption_screen');
-function krbl_yt_caption_screen($atts, $content = null){	
+add_shortcode('yt_caption', 'rdc_yt_caption_screen');
+function rdc_yt_caption_screen($atts, $content = null){	
 	
-	return '<div class="yt-caption">'.apply_filters('krbl_the_content', $content).'</div>';
+	return '<div class="yt-caption">'.apply_filters('rdc_the_content', $content).'</div>';
 }
 
 
 /** Buttons **/
-add_shortcode('krbl_btn', 'krbl_btn_screen');
-function krbl_btn_screen($atts){
+add_shortcode('rdc_btn', 'rdc_btn_screen');
+function rdc_btn_screen($atts){
 	
 	extract(shortcode_atts(array(				
 		'url'  => '',
@@ -187,11 +187,11 @@ function krbl_btn_screen($atts){
 		return '';
 	
 	$url = esc_url($url);
-	$txt = apply_filters('krbl_the_title', $txt);
+	$txt = apply_filters('rdc_the_title', $txt);
 	
 	ob_start();
 ?>
-<span class="krbl-btn"><a href="<?php echo $url;?>" class="krbl-button"><?php echo $txt;?></a></span>
+<span class="rdc-btn"><a href="<?php echo $url;?>" class="rdc-button"><?php echo $txt;?></a></span>
 <?php
 	$out = ob_get_contents();
 	ob_end_clean();
@@ -203,9 +203,9 @@ function krbl_btn_screen($atts){
 
 /** Toggle **/
 if(!shortcode_exists( 'su_spoiler' ))
-	add_shortcode('su_spoiler', 'krbl_su_spoiler_screen');
+	add_shortcode('su_spoiler', 'rdc_su_spoiler_screen');
 
-function krbl_su_spoiler_screen($atts, $content = null){
+function rdc_su_spoiler_screen($atts, $content = null){
 	
 	extract(shortcode_atts(array(
         'title' => 'Подробнее',
@@ -216,7 +216,7 @@ function krbl_su_spoiler_screen($atts, $content = null){
 	if(empty($content))
 		return '';
 	
-	$title = apply_filters('krbl_the_title', $title);
+	$title = apply_filters('rdc_the_title', $title);
 	$class = (!empty($class)) ? ' '.esc_attr($class) : '';
 	if($open == 'yes')
 		$class .= ' toggled';
@@ -225,7 +225,7 @@ function krbl_su_spoiler_screen($atts, $content = null){
 ?>
 <div class="su-spoiler<?php echo $class;?>">
 	<div class="su-spoiler-title"><span class="su-spoiler-icon"></span><?php echo $title;?></div>
-	<div class="su-spoiler-content"><?php echo apply_filters('krbl_the_content', $content);?></div>
+	<div class="su-spoiler-content"><?php echo apply_filters('rdc_the_content', $content);?></div>
 </div>
 <?php
 	$out = ob_get_contents();
@@ -235,8 +235,8 @@ function krbl_su_spoiler_screen($atts, $content = null){
 }
 
 /** Quote **/
-add_shortcode('krbl_quote', 'krbl_quote_screen');
-function krbl_quote_screen($atts, $content = null) {
+add_shortcode('rdc_quote', 'rdc_quote_screen');
+function rdc_quote_screen($atts, $content = null) {
 	
 	extract(shortcode_atts(array(
         'name' => '',        
@@ -246,14 +246,14 @@ function krbl_quote_screen($atts, $content = null) {
 	if(empty($content))
 		return '';
 	
-	$name = apply_filters('krbl_the_title', $name);
+	$name = apply_filters('rdc_the_title', $name);
 	$class = (!empty($class)) ? ' '.esc_attr($class) : '';
 	ob_start();
 ?>
-<div class="krbl-quote <?php echo $class;?>">	
-	<div class="krbl-quote-content"><?php echo apply_filters('krbl_the_content', $content);?></div>
+<div class="rdc-quote <?php echo $class;?>">	
+	<div class="rdc-quote-content"><?php echo apply_filters('rdc_the_content', $content);?></div>
 	<?php if(!empty($name)) { ?>
-		<div class="krbl-quote-cite"><?php echo $name;?></div>
+		<div class="rdc-quote-cite"><?php echo $name;?></div>
 	<?php } ?>
 </div>
 <?php

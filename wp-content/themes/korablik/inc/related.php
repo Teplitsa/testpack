@@ -5,7 +5,7 @@
  **/
 
 /* connection configuration */
-function krbl_related_posts_rules(){
+function rdc_related_posts_rules(){
 	
 	return array(
 		'post'     => array('post'),
@@ -15,15 +15,15 @@ function krbl_related_posts_rules(){
 }
 
 /* get relalted ids */
-function krbl_get_related_ids($cpost, $tax = 'post_tag', $limit = 5){
+function rdc_get_related_ids($cpost, $tax = 'post_tag', $limit = 5){
 	global $wpdb, $related_pt_rules;
 		
 	$related_ids = array();
 	
 	//params
-	$related_pt_rules = krbl_related_posts_rules();
+	$related_pt_rules = rdc_related_posts_rules();
 	$post_type = (isset($related_pt_rules[$cpost->post_type])) ? $related_pt_rules[$cpost->post_type] : '';
-	$post_type = apply_filters('krbl_related_post_types', $post_type, $cpost, $tax); //sometimes we need to alter it outside
+	$post_type = apply_filters('rdc_related_post_types', $post_type, $cpost, $tax); //sometimes we need to alter it outside
 	
 	if(empty($post_type))
 		return $related_ids;
@@ -68,19 +68,19 @@ LIMIT $limit ";
 
 
 /* build related query */
-function krbl_get_related_query($cpost, $tax = 'post_tag', $limit = 5) {
+function rdc_get_related_query($cpost, $tax = 'post_tag', $limit = 5) {
 	
 	if(empty($cpost))
 		$cpost = get_post();
 	
 	
-	$r_ids = krbl_get_related_ids($cpost, $tax, $limit); 
+	$r_ids = rdc_get_related_ids($cpost, $tax, $limit); 
 	
 	if(!empty($r_ids)){
 		$q = new WP_Query(array('post__in' => $r_ids, 'post_type' => 'any', 'posts_per_page' => $limit)); 
 	}
 	else {
-		$related_pt_rules = krbl_related_posts_rules();
+		$related_pt_rules = rdc_related_posts_rules();
 		$post_type = (isset($related_pt_rules[$cpost->post_type])) ? $related_pt_rules[$cpost->post_type] : $cpost->post_type;
 		$q = new WP_Query(array('post_type' => $post_type, 'posts_per_page' => $limit, 'post__not_in' => array($cpost->ID)));
 	}
