@@ -66,8 +66,12 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 			'posts_per_page' => array(
 				'type' => 'text',
 				'label' => 'Количество (по умолчанию - все)'
-			)
-						
+			),
+			'nolinks' => array(
+				'type' => 'checkbox',
+				'label' => 'Карточки не-кликабельные',
+				'default' => false
+			)			
 		);
 	}
 	
@@ -77,7 +81,8 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 			'exclude_ids' 	=> sanitize_text_field($instance['exclude_ids']),
 			'post_type'   	=> sanitize_text_field($instance['post_type']),
 			'taxonomy'    	=> sanitize_text_field($instance['taxonomy']),
-			'tax_terms'  	=> sanitize_text_field($instance['tax_terms']),	
+			'tax_terms'  	=> sanitize_text_field($instance['tax_terms']),
+			'nolinks'  		=> (bool)($instance['nolinks']),	
 			'posts_per_page'=> (int)$instance['posts_per_page']
 		);
 	}
@@ -144,8 +149,9 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 			<div class="frl-pb-blocks"><div class="<?php echo $loop_css;?>">
 				<?php foreach ($posts as $p) {
 					$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
-					$p->widget_class = ($class) ? $class : 'default'; 
-					call_user_func('tst_'.$instance['post_type'].'_card_group', $p);
+					$p->widget_class = ($class) ? $class : 'default';
+					$linked = (!$nolinks) ? false : true;
+					call_user_func_array('tst_'.$instance['post_type'].'_card_group', array($p, $linked));
 				}?>
 			</div></div>
 		<?php	
