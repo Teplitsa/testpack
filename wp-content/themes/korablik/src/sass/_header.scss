@@ -6,7 +6,7 @@ $height_gap : 14px;
 $logo_small_h : 42px;
 $logo_small_w : 42px;
 
-$logo_full_w : 86px;
+$logo_full_w : 62px;
 $logo_full_h : 80px;
 
 $mobile_height : $logo_small_h + $height_gap;
@@ -136,7 +136,7 @@ $full_height   : $logo_full_h + $height_gap;
 .logo-name {
 	text-transform: uppercase;		
 	line-height: 1;
-	color: $color-text-black;
+	color: $color-link-three;
 }
 
 h1.logo-name {
@@ -217,7 +217,7 @@ h2.logo-name {
 .site-details {
 	text-align: right;		
 	p {		
-		color: $color-text;
+		color: $color-link-three;
 		@include nav-text(multiline);
 		text-transform: none;
 		margin: 0;
@@ -288,7 +288,7 @@ h2.logo-name {
 		.svg-icon {
 			width: 18px;
 			height: 18px;
-			fill: $color-text-black;
+			fill: $color-link-three;
 			pointer-events: none;
 		}
 		
@@ -486,6 +486,7 @@ h2.logo-name {
 			
 			&:hover {
 				background: $color-link-two;
+				border-left: none;
 				.svg-icon  { fill: $color-white; }
 			}
 			
@@ -515,6 +516,7 @@ h2.logo-name {
 	li.open {
 		.submenu-trigger {
 			background: $color-link-two;
+			border-left: none;
 			.icon-down { display: none; }
 			.icon-up {
 				display: inline-block;
