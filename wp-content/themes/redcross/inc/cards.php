@@ -80,6 +80,7 @@ function rdc_featured_action_card_markup($link, $title, $subtitle, $img_id){
 function rdc_related_post_card(WP_Post $cpost) {
 
 	$pl = get_permalink($cpost);
+	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
 ?>
 <article class="tpl-related-post card"><a href="<?php echo $pl; ?>" class="entry-link">	
 	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
@@ -88,6 +89,7 @@ function rdc_related_post_card(WP_Post $cpost) {
 		<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>');?></div>
 		<?php } ?>
 		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+		<div class="entry-summary"><?php echo $ex;?></div>		
 	</div>
 </a></article>	
 <?php

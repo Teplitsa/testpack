@@ -486,6 +486,7 @@ h2.logo-name {
 			
 			&:hover {
 				background: $color-text-black;
+				border-left: none;
 				.svg-icon  { fill: $color-white; }
 			}
 			
@@ -515,6 +516,7 @@ h2.logo-name {
 	li.open {
 		.submenu-trigger {
 			background: $color-text;
+			border-left: none;
 			.icon-down { display: none; }
 			.icon-up {
 				display: inline-block;

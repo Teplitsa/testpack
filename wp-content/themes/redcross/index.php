@@ -17,7 +17,7 @@ if(is_home() && $paged == 1) { //featured posts
 <div class="cards-loop sm-cols-1 md-cols-2">
 	<?php
 		foreach($featured as $f){
-			rdc_featured_post_card($f);
+			rdc_related_post_card($f);
 		}
 	?>
 </div>
