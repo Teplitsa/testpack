@@ -20,7 +20,7 @@ if($paged == 1) { //featured post
 	$fa_link_text = (empty($fa_link_text)) ? __('More', 'rdc') : $fa_link_text;
 	
 	if($fa_image) { ?>
-	<div class="taxonomy-intro container-wide">
+	<div class="taxonomy-intro container">
 	<?php rdc_intro_card_markup_below($fa_title, $fa_subtitle, $fa_image, $fa_link, $fa_link_text); ?>
 	</div>
  <?php }} ?>
