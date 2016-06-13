@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0f08246a28d674211c833ba84919ba65",
-    "content-hash": "93b6eb06e0e061906798f5744bd95bfa",
+    "hash": "6d3b44608c25ee11f7eae908813d3c5d",
+    "content-hash": "80f58f21c972576301010e2abd34865c",
     "packages": [
         {
             "name": "composer/installers",
@@ -398,15 +398,15 @@
         },
         {
             "name": "wpackagist-plugin/formidable",
-            "version": "2.02.01",
+            "version": "2.02.02",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/formidable/",
-                "reference": "tags/2.02.01"
+                "reference": "tags/2.02.02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.01.zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.02.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -415,26 +415,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/formidable/"
-        },
-        {
-            "name": "wpackagist-plugin/imsanity",
-            "version": "2.3.6",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/imsanity/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/imsanity.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/imsanity/"
         },
         {
             "name": "wpackagist-plugin/leyka",
@@ -555,6 +535,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/so-widgets-bundle/"
+        },
+        {
+            "name": "wpackagist-plugin/tiny-compress-images",
+            "version": "1.7.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/tiny-compress-images/",
+                "reference": "tags/1.7.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/tiny-compress-images.1.7.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/tiny-compress-images/"
         },
         {
             "name": "wpackagist-plugin/w3-total-cache",
@@ -725,7 +725,6 @@
         "wpackagist-plugin/cyr3lat": 0,
         "wpackagist-plugin/crop-thumbnails": 0,
         "wpackagist-plugin/disable-comments": 0,
-        "wpackagist-plugin/imsanity": 0,
         "wpackagist-plugin/leyka": 0,
         "wpackagist-plugin/media-search-enhanced": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
@@ -737,6 +736,7 @@
         "wpackagist-plugin/formidable": 0,
         "wpackagist-plugin/siteorigin-panels": 0,
         "wpackagist-plugin/so-widgets-bundle": 0,
+        "wpackagist-plugin/tiny-compress-images": 0,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
         "wpackagist-plugin/post-duplicator": 0,
