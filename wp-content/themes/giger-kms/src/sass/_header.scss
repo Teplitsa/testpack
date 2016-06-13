@@ -163,7 +163,8 @@ h2.logo-name {
 
 //logos
 .site-branding {
-	@include for(exlarge-screens){
+	
+	@include for(xxlarge-screens){
 		margin-left: -1*$height_gap;	
 	}
 	.site-logo {

@@ -34,7 +34,7 @@
 				</a>					
 			</div>
 			
-			<?php $header_text = get_theme_mod('header_text'); ?>
+			<?php $header_text = get_theme_mod('header_text_top'); ?>
 			<div class="site-details site-panel-cell">
 				<div class="site-details-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>
 			</div>									
