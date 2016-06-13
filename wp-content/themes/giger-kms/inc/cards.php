@@ -77,15 +77,18 @@ function rdc_featured_action_card_markup($link, $title, $subtitle, $img_id){
 <?php	
 }
 
-function rdc_intro_card_markup($title, $subtitle, $img_id, $link = '', $button_text = '', $has_sharing = false, $extend_width = false) {
+function rdc_intro_card_markup($title, $subtitle, $img_id, $link = '', $button_text = '', $has_sharing = false) {
 	
 	$button_text = (!empty($button_text)) ? $button_text : __('More', 'rdc');
 ?>
-	<section class="intro-head-image <?php if($extend_width) { echo 'container-extended'; } ?>">
+	<section class="intro-head-image">
 		<div class="tpl-pictured-bg" style="background-image: url(<?php echo wp_get_attachment_url( $img_id );?>)"></div>
 	</section>
 	<section class="intro-head-content<?php if(!empty($link)) { echo '  has-button'; }?>"><div class="ihc-content">
-		<h1 class="ihc-title"><?php echo apply_filters('rdc_the_title', $title);?></h1>
+		<h1 class="ihc-title"><?php if(!empty($link)) { ?><a href="<?php echo esc_url($link);?>"><?php } ?>
+			<?php echo apply_filters('rdc_the_title', $title);?>
+			<?php if(!empty($link)) { ?></a><?php } ?>
+		</h1>
 		<?php if($subtitle){ ?>
 			<div class="frame">
 				<div class="bit <?php if(!empty($link)){ echo 'md-8 exlg-9'; }?> ihc-desc"><?php echo apply_filters('rdc_the_content', $subtitle); ?></div>

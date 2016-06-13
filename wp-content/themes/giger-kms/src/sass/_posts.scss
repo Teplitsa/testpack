@@ -6,7 +6,7 @@
 
 .fixed-top {
 	position: fixed;
-	top: 86px;
+	top: 95px;
 }
 
 .fixed-bottom {
@@ -305,12 +305,7 @@
 	}
 	
 	.featured-post & {
-		background: transparentize($color-link-three, 0.05);
-		.entry-meta, .entry-title, .entry-summary { color: $color-white; }
-		
-		&:hover {
-			background: darken($color-link-three, 2%);
-		}
+		.entry-meta { background: $color-link-three;}
 	}
 }
 

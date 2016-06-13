@@ -1,5 +1,6 @@
 /** Widgets **/
 
+
 .widget {	
 	margin-bottom: $gut;
 	&:last-of-type { margin-bottom: 0; }
@@ -82,8 +83,29 @@
 
 
 /** Page builder widgets **/
+@mixin container-extended() {
+	margin: 0 -4.35%;
+	position: relative;
+	width: auto;
+	
+	& > div[id *="pl-"],
+	& > div[class *="so-widget"] {
+		max-width: $page_cont;
+		width: 92%;
+		margin: 0 auto;
+	}
+	
+	$ex_cont_width_mq: $page_cont / 0.92 + 1px;
+	@media screen and (min-width: $ex_cont_width_mq ) { 
+		margin: 0 -1 * ($full_cont - $page_cont) / 2;	
+	}
+	
+}
+
 .tpl-page-fullwidth {
-	margin-bottom: $gut*1.5;	
+	margin-bottom: $gut*1.5;
+	overflow-x: hidden;
+	position: relative;
 }
 
 //rows and widgets modifiers
@@ -130,8 +152,10 @@
 
 //colored bg
 .container-extended-colored {
-	@include container-extended(padded);
+	@include container-extended();
 	background: $color-secondary;
+	padding-top: $gut*1.5;
+	padding-bottom: $gut*1.5;
 		
 	a {
 		color: $color-text-black;
@@ -144,8 +168,9 @@
 
 //pictured bg
 .container-extended-pictured {
-	@include container-extended(padded);
-	//min-height: 60vh;
+	@include container-extended();
+	padding-top: $gut*1.5;
+	padding-bottom: $gut*1.5;
 		
 	.text-white {
 		padding: $gut 0;
@@ -225,10 +250,8 @@
 //page with cards
 .intro-head-image {
 	@include vertical-image-header-fixed();
+	@include container-extended();
 	
-	&.container-extended {
-		@include container-extended();
-	}
 }
 
 .tpl-pictured-bg {
@@ -242,15 +265,14 @@
 
 
 .intro-head-content {
-	@extend .container;
-		
+			
 	.ihc-title {
 		display: inline-block;
 		background: #111;
 		@include header-title(section);		
 		color: $color-white;
 		padding: 10px 20px;
-		margin-bottom: $base;
+		margin-bottom: $base;		
 	}
 	
 	.ihc-content {
@@ -270,7 +292,17 @@
 	}
 	
 	&.has-button {
-		.ihc-title { background: $color-link-three; }
+		.ihc-title {
+			background: $color-link-three;
+			@include transition(background 0.35s);
+			a {
+				color: $color-white;
+			}
+			
+			&:hover {
+				background: $color-link-two;
+			}
+		}
 		.ihc-desc {
 			color: $color-text-black;
 			font-size: 1.2em;

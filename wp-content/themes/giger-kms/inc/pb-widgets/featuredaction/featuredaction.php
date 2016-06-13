@@ -60,12 +60,12 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 				'rows' => 4
 			),
 			
-			'extend_width' => array(
+			/*'extend_width' => array(
 				'type' => 'checkbox',
 				'default' => false,
 				'label' => __('Extend Width', 'rdc'),
 				'description' => 'Макет шире основной колонки',
-			),
+			),*/
 			
 			'link_section' => array(
 				'type' => 'section',
@@ -94,12 +94,12 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 			'post_id' 	=> (int)$instance['post_id'],
 			'link'  	=> (isset($instance['link_section']['link'])) ? $instance['link_section']['link'] : '',
 			'link_text' => (isset($instance['link_section']['link_text'])) ? $instance['link_section']['link_text'] : '',
-			'extend_width' => (bool)$instance['extend_width']
+			//'extend_width' => (bool)$instance['extend_width']
 		);
 	}
 	
 	public function widget( $args, $instance ) {
-		
+	
 		if( empty( $this->form_options ) ) {
 			$this->form_options = $this->initialize_form();
 		}
@@ -122,6 +122,7 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 		$template_vars = $this->get_template_variables($instance, $args);
 		extract( $template_vars );
 		
+		
 		$css_name = $this->generate_and_enqueue_instance_styles( $instance );
 		
 		$сpost = (!empty($post_id)) ? get_post($post_id) : '';
@@ -139,7 +140,7 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 		echo $args['before_widget'];
 		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
 		
-		rdc_intro_card_markup($title, $subtitle, $image, $link, $link_text, $sharing, $extend_width);
+		rdc_intro_card_markup($title, $subtitle, $image, $link, $link_text, $sharing);
 		
 		echo '</div>';
 		echo $args['after_widget'];		

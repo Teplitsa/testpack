@@ -375,28 +375,7 @@ $fixed_side: 222px;
 	}
 }
 
-@mixin container-extended($mod: default) {
-	margin: 0 -4%;
-	position: relative;
-	width: auto;
-	
-	
-	@include for(exlarge-screens){
-		margin: 0 -1 * ($full_cont - $page_cont) / 2;		
-	}
-	
-	@if $mod == padded {
-		padding: $gut*1.5 4%;
-				
-		@include for(exlarge-screens){			
-			padding: $gut*1.5 ($full_cont - $page_cont) / 2;
-		}
-	}	
-}
 
-.tpl-page-fullwidth {
-	overflow-x: hidden;
-}
 
 
 @mixin vertical-image-header-fixed(){
