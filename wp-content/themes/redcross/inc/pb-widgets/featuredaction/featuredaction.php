@@ -1,7 +1,7 @@
 <?php
 /*
-Widget Name: [TST] Элемент-заставка
-Description: Стартовая заставка с кнопкой ведет на выбранный элемент
+Widget Name: [TST] Заставка
+Description: Стартовая заставка с изображением, текстом и кнопкой (опционально)
 */
 
 class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
@@ -10,9 +10,9 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 		
 		parent::__construct(
 			'tst-featureditem',
-			'[TST] Заставка-ссылка',
+			'[TST] Заставка',
 			array(
-				'description' => 'Стартовая заставка со ссылкой, ведет на выбранный элемент / адрес'		
+				'description' => 'Стартовая заставка с изображением, текстом и кнопкой (опционально)'		
 			),
 			array(
 				
@@ -35,13 +35,13 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 	/** admin form **/
 	function initialize_form(){
 
-		return array(		
+		return array(
 			'post_id' => array(
 				'type' => 'text',
 				'label' => __('ID of linked post', 'rdc'),
 				'description' => __('Could be post, project, event - provide fallback for empty fields', 'rdc')
-			),
-			
+			),		 
+					
 			'image' => array(
 				'type' => 'media',
 				'label' => __('Image file', 'rdc'),
@@ -60,21 +60,41 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 				'rows' => 4
 			),
 			
-			'link' => array(
-				'type' => 'text',
-				'label' => __('Item link', 'rdc'),
+			'extend_width' => array(
+				'type' => 'checkbox',
+				'default' => false,
+				'label' => __('Extend Width', 'rdc'),
+				'description' => 'Макет шире основной колонки',
 			),
+			
+			'link_section' => array(
+				'type' => 'section',
+				'label' => __('Link settings', 'rdc'),
+				'hide' => true,
+				'fields' => array(					
+					'link' => array(
+						'type' => 'link',
+						'label' => __('Button link', 'rdc'),
+					),
+					'link_text' => array(
+						'type' => 'text',
+						'label' => __('Button text', 'rdc'),
+					),
+				)
+			)
 		);
 	}
 	
 	/** prepare data for template **/	
 	public function get_template_variables( $instance, $args ) {
-		return array(
-			'post_id' 	=> (int)($instance['post_id']),
-			'title'    => $instance['title'],
-			'subtitle' => $instance['subtitle'],			
-			'image'    => (int)$instance['image'],
-			'link'     => $instance['link']
+		return array(			
+			'title'		=> $instance['title'],
+			'subtitle'	=> $instance['subtitle'],			
+			'image'		=> (int)$instance['image'],
+			'post_id' 	=> (int)$instance['post_id'],
+			'link'  	=> (isset($instance['link_section']['link'])) ? $instance['link_section']['link'] : '',
+			'link_text' => (isset($instance['link_section']['link_text'])) ? $instance['link_section']['link_text'] : '',
+			'extend_width' => (bool)$instance['extend_width']
 		);
 	}
 	
@@ -104,25 +124,25 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 		
 		$css_name = $this->generate_and_enqueue_instance_styles( $instance );
 		
-		$post = get_post($instance['post_id']);
+		$сpost = (!empty($post_id)) ? get_post($post_id) : '';
 		
-		if($post) {
-			$title = (!$title) ? get_the_title($post) : $title;
-			$subtitle = (!$subtitle) ? $post->post_excerpt : $subtitle;
-			$link = (!$link) ? get_permalink($post) : $link;
-			$image = (!$image) ? get_post_thumbnail_id($post) : $image;
+		if($сpost) {
+			$title = (!$title && $сpost) ? get_the_title($сpost) : $title;
+			$subtitle = (!$subtitle) ? $сpost->post_excerpt : $subtitle;
+			$image = (!$image) ? get_post_thumbnail_id($сpost) : $image;
+			$link = (!$link) ? get_permalink($сpost) : $link;
+			$link_text = (!$link_text) ? __('More', 'rdc') : $link_text;
 		}
-          
+        
+		$sharing = (empty($link)) ? true : false;
+		
 		echo $args['before_widget'];
 		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
-		?>
-			<div class="featured-action">
-			<?php rdc_featured_action_card_markup($link, $title, $subtitle, $image); ?>
-			</div>
-		<?php	
-		echo '</div>';
-		echo $args['after_widget'];
 		
+		rdc_intro_card_markup($title, $subtitle, $image, $link, $link_text, $sharing, $extend_width);
+		
+		echo '</div>';
+		echo $args['after_widget'];		
 	}
 	
 	

@@ -103,20 +103,10 @@ class IST_PB_PageHeader_Widget extends SiteOrigin_Widget {
 		
 		echo $args['before_widget'];
 		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
-	?>		
-	<section class="featured-head-image <?php if($extend_width) { echo 'container-extended'; } ?>">
-		<div class="tpl-featured-bg" style="background-image: url(<?php echo wp_get_attachment_url( $image );?>)"></div>
-	</section>
-	<section class="featured-head-text"><div class="fht-content">
-		<h1 class="featured-title"><?php echo apply_filters('rdc_the_title', $title);?></h1>
-		<?php if($subtitle) { ?>
-			<div class="desc"><?php echo apply_filters('rdc_the_title', $subtitle); ?></div>
-		<?php } ?>
 		
-		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
-	</div></section>
+		//card
+		rdc_intro_card_markup($title, $subtitle, $image, '', '', true, $extend_width);
 	
-	<?php	
 		echo '</div>';
 		echo $args['after_widget'];
 	}

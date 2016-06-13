@@ -14,13 +14,16 @@ if($paged == 1) { //featured post
 	$fa_subtitle = get_term_meta($qo->term_id, 'featured_action_subtitle', true);
 	$fa_image = (int)get_term_meta($qo->term_id, 'featured_action_image_id', true);
 	$fa_link = esc_url(get_term_meta($qo->term_id, 'featured_action_link', true));
+	$fa_link_text = get_term_meta($qo->term_id, 'featured_action_link_text', true);
 	
-	if($fa_image) {
-?>
-<section class="featured-action">
-<?php rdc_featured_action_card_markup($fa_link, $fa_title, $fa_subtitle, $fa_image);?>
-</section>
-<?php }} ?>
+	$sharing = (empty($fa_link)) ? true : false;
+	$fa_link_text = (empty($fa_link_text)) ? __('More', 'rdc') : $fa_link_text;
+	
+	if($fa_image) { ?>
+	<div class="taxonomy-intro container-wide">
+	<?php rdc_intro_card_markup($fa_title, $fa_subtitle, $fa_image, $fa_link, $fa_link_text, $sharing, true); ?>
+	</div>
+ <?php }} ?>
 
 <section class="heading">
 	<div class="container"><?php rdc_section_title(); ?></div>

@@ -411,8 +411,15 @@ function rdc_custom_metaboxes() {
 	
 	$person_cat_term->add_field( array(
 		'name'     => 'Ссылка',
-		'desc'     => 'Адрес, куда ссылается заставка',
+		'desc'     => 'Адрес, куда ссылается кнопка на заставке',
 		'id'       => 'featured_action_link',
 		'type'     => 'text_url'		
+	));
+	
+	$person_cat_term->add_field( array(
+		'name'     => 'Тексты ссылки',
+		'desc'     => 'Текст на кнопке',
+		'id'       => 'featured_action_link_text',
+		'type'     => 'text'		
 	));
 }

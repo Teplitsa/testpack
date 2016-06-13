@@ -163,7 +163,9 @@ h2.logo-name {
 
 //logos
 .site-branding {
-	
+	@include for(exlarge-screens){
+		margin-left: -1*$height_gap;	
+	}
 	.site-logo {
 		display: block;
 		position: relative;
@@ -208,7 +210,8 @@ h2.logo-name {
 				width: $logo_full_w;
 				height: $logo_full_h;
 			}
-		}
+		}		
+		
 	}
 }
 

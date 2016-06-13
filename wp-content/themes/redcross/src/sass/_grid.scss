@@ -110,6 +110,25 @@
 	}
 }
 
+//the largest screen
+@include for(exlarge-screens) {
+	@for $i from 1 through 12 {
+		.exlg-#{$i} {
+			width: percentage($i/12);
+			margin-bottom: 0;
+		}
+	}
+	
+	@for $i from 0 through 11 {
+		.exlg-offset-#{$i} { margin-left: percentage($i/12) !important; }
+	}
+	
+	.exlg-col-5 {
+		width: 20%;
+		margin-bottom: 0;
+	}
+}
+
 
 //hide
 .hide-upto-small {
