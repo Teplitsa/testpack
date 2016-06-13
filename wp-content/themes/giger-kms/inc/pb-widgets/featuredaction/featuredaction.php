@@ -79,6 +79,15 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 					'link_text' => array(
 						'type' => 'text',
 						'label' => __('Button text', 'rdc'),
+					),					
+					'link_style' => array(
+						'type' => 'select',
+						'label' => __( 'Style', 'rdc' ),
+						'default' => 'below',
+						'options' => array(
+							'below' => __( 'Text below image', 'rdc' ),
+							'over'   => __( 'Text over image', 'rdc' )										
+						)
 					),
 				)
 			)
@@ -94,6 +103,7 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 			'post_id' 	=> (int)$instance['post_id'],
 			'link'  	=> (isset($instance['link_section']['link'])) ? $instance['link_section']['link'] : '',
 			'link_text' => (isset($instance['link_section']['link_text'])) ? $instance['link_section']['link_text'] : '',
+			'link_style'=> (isset($instance['link_section']['link_style'])) ? $instance['link_section']['link_style'] : ''
 			//'extend_width' => (bool)$instance['extend_width']
 		);
 	}
@@ -134,16 +144,18 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 			$link = (!$link) ? get_permalink($сpost) : $link;
 			$link_text = (!$link_text) ? __('More', 'rdc') : $link_text;
 		}
-        
-		$sharing = (empty($link)) ? true : false;
 		
-		echo $args['before_widget'];
-		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
+        $card_callback = "rdc_intro_card_markup_".$link_style;
 		
-		rdc_intro_card_markup($title, $subtitle, $image, $link, $link_text, $sharing);
-		
-		echo '</div>';
-		echo $args['after_widget'];		
+		if(is_callable($card_callback)) {
+			echo $args['before_widget'];
+			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
+			
+			call_user_func_array($card_callback, array($title, $subtitle, $image, $link, $link_text));		
+			
+			echo '</div>';
+			echo $args['after_widget'];
+		}
 	}
 	
 	

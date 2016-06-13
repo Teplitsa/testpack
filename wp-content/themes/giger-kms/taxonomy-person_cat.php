@@ -21,7 +21,7 @@ if($paged == 1) { //featured post
 	
 	if($fa_image) { ?>
 	<div class="taxonomy-intro container-wide">
-	<?php rdc_intro_card_markup($fa_title, $fa_subtitle, $fa_image, $fa_link, $fa_link_text, $sharing, true); ?>
+	<?php rdc_intro_card_markup_below($fa_title, $fa_subtitle, $fa_image, $fa_link, $fa_link_text); ?>
 	</div>
  <?php }} ?>
 

@@ -378,6 +378,25 @@ $fixed_side: 222px;
 
 
 
+@mixin container-extended() {
+	margin: 0 -4.35%;
+	position: relative;
+	width: auto;
+	
+	& > div[id *="pl-"],
+	& > div[class *="so-widget"] {
+		max-width: $page_cont;
+		width: 92%;
+		margin: 0 auto;
+	}
+	
+	$ex_cont_width_mq: $page_cont / 0.92 + 1px;
+	@media screen and (min-width: $ex_cont_width_mq ) { 
+		margin: 0 -1 * ($full_cont - $page_cont) / 2;	
+	}
+	
+}
+
 @mixin vertical-image-header-fixed(){
 	//60vh;
 	height: 360px;
