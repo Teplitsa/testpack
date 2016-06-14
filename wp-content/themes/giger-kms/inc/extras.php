@@ -180,9 +180,37 @@ function rdc_body_classes( $classes ) {
 
 
 /** Options in customizer **/
-add_action('customize_register', 'rdc_customize_register');
+add_action('customize_register', 'rdc_customize_register', 15);
 function rdc_customize_register(WP_Customize_Manager $wp_customize) {
-      
+    
+	$wp_customize->add_setting('header_title_one', array(
+        'default'   => '',
+        'transport' => 'refresh',
+		'option' => 'option'
+    ));
+    
+    $wp_customize->add_control('header_title_one', array(
+        'type'     => 'text',		
+        'label'    => 'Заголовок в шапке - 1 строка',
+        'section'  => 'title_tagline',
+        'settings' => 'header_title_one',
+        'priority' => 20,
+    ));
+	
+	$wp_customize->add_setting('header_title_two', array(
+        'default'   => '',
+        'transport' => 'refresh',
+		'option' => 'option'
+    ));
+    
+    $wp_customize->add_control('header_title_two', array(
+        'type'     => 'text',		
+        'label'    => 'Заголовок в шапке - 2 строка',
+        'section'  => 'title_tagline',
+        'settings' => 'header_title_two',
+        'priority' => 21,
+    ));
+	
     	
 	$wp_customize->add_setting('header_text_top', array(
         'default'   => '',
@@ -195,7 +223,7 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'label'    => 'Текст в шапке',
         'section'  => 'title_tagline',
         'settings' => 'header_text_top',
-        'priority' => 21,
+        'priority' => 25,
     ));
 	
 	$wp_customize->add_setting('er_text', array(
@@ -265,7 +293,9 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
 		)));
 	}
 	
+	
 	$wp_customize->remove_setting('site_icon'); //remove favicon
+	$wp_customize->remove_control('blogdescription'); //remove favicon
 }
 
 /** Humans txt **/
