@@ -63,8 +63,8 @@
 		<div class="site-nav-title">
 			<div class="snt-cell">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
-					<h1 class="logo-name"><?php echo get_bloginfo('name');?></h1>
-					<h2 class="logo-name"><?php echo get_bloginfo('description');?></h2>
+					<h1 class="logo-name"><?php echo apply_filters('rdc_the_title', $header_title_1); ?></h1>
+					<h2 class="logo-name"><?php echo apply_filters('rdc_the_title', $header_title_2); ?></h2>
 				</a>
 			</div>
 			<div id="trigger_menu_close" class="trigger-button close"><?php rdc_svg_icon('icon-close');?></div>
