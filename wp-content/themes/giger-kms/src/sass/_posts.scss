@@ -99,7 +99,7 @@
 @mixin post-meta() {
 	@include nav-text(meta_small);
 	display: inline-block;
-	background: $color-text-black;
+	background: $color-link-three;
 	color: $color-white;
 	padding: 4px 8px;
 	
@@ -168,6 +168,7 @@
 	
 	.entry-title {
 		@include post-title();
+		color: $color-link-three;
 		margin-bottom: $base*0.75;				
 		padding-top: $base;
 		@include hyphens(auto);
@@ -288,12 +289,7 @@
 .tpl-related-post {
 	@extend .tpl-post;
 	
-	background: $color-secondary;
-	
-	&:hover {
-		background: $color-secondary-alt;		
-	}
-	
+	background: $color-secondary;	
 	.entry-meta {
 		font-size: 0.9em;
 	}
@@ -305,7 +301,14 @@
 	}
 	
 	.featured-post & {
-		.entry-meta { background: $color-link-three;}
+		.entry-meta { background: $color-link-one;}
+	}
+	
+	
+	&:hover {		
+		background: $color-link-two;
+		.entry-title { color: $color-link-three; }
+		.entry-summary { color: $color-link-three; }
 	}
 }
 
@@ -435,19 +438,13 @@
 /** People **/
 .tpl-person {
 	margin-bottom: $gut;
-	background: $color-white;
-	
-	@include transition(background 0.3s);
-		
-	&.linked:hover {
-		background: $color-secondary-alt;
-		.entry-preview:after { background: rgba(0,0,0, 0.08); }
-	}
-	
+	background: $color-secondary;	
+	@include transition(background 0.35s);
 	
 	.entry-title {		
 		@include post-title(small_title);
 		margin-bottom: 4px;
+		color: $color-link-three;
 	}
 	
 	.entry-preview {
@@ -455,7 +452,8 @@
 	}
 	
 	.entry-meta {		
-		@include sub-title();						
+		@include sub-title();
+		color: $color-text;
 	}
 	
 	.entry-data {
@@ -473,6 +471,14 @@
 	.people-cards-shortcode & .entry-data {
 		padding-bottom: 0;
 	}
+	
+	&.linked:hover {		
+		background: $color-link-two;
+		.entry-meta { color: $color-link-three; }
+		.entry-title { color: $color-link-three; }
+		.entry-preview:after { background: rgba(0,0,0, 0.08); }
+	}
+	
 }
 
 
