@@ -226,10 +226,13 @@
 
 //cta
 .container-cta {
-	border-top: 6px solid $color-link-three;
-	border-bottom: 6px solid $color-link-three;
-	padding: $base 0;
+	//border-top: 6px solid $color-link-three;
+	//border-bottom: 6px solid $color-link-three;
+	padding: $base*3 0 0;
 	text-align: center;
+	background: url(../img/wave-l-l.png) repeat-x left top;
+	background: url(../img/wave-l-l.svg) repeat-x left top;
+	
 	
 	h4 { margin: 0; }
 	h4 + p {
