@@ -99,11 +99,11 @@
 	.col3-link {
 		flex: 0 0 auto;		
 		margin-top: $base;
-		height: 40px;
+		height: 44px;
 		overflow: hidden;
 		
 		a {
-			@include ghost-button(14px, $color-text-black, $color-white);
+			@include ghost-button(16px, $color-link-one, $color-white);
 		}
 	}
 	

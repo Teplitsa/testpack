@@ -141,12 +141,17 @@
 //colored bg
 .container-extended-colored {
 	@include container-extended();
-	background: $color-secondary;
+	background: $colored-block-bg;
 	padding-top: $gut*1.5;
 	padding-bottom: $gut*1.5;
-		
+	color: $colored-block-text;
+	
+	h1, h2, h3, h4, h5, h6, li {
+		color: $colored-block-text;
+	}
+	
 	a {
-		color: $color-text-black;
+		color: $colored-block-text;
 		text-decoration: underline;
 		&:hover, &:focus, &:active {
 			color: $color-link-three;				

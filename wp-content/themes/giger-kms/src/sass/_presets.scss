@@ -56,9 +56,16 @@ $color-form-invalid: #ED1C24;
 
 $leyka_green : #1DB318;
 
+//Colors for widget elements
+$colored-block-bg: 		$color-link-two;
+$colored-block-text:	$color-white;
+
+
 //Layout Settings
 $adminbar_large_screen: 32px;
 $adminbar_small_screen: 46px;
+
+
 
 //Element
 $indent: 1.55em;
@@ -226,8 +233,8 @@ $fixed_side: 222px;
 	
 	@if $mod == section {
 		font-size: 42px;
-		@include for(medium-screens) { font-size: 54px; }
-		line-height: 1.05;
+		@include for(large-screens) { font-size: 54px; }
+		line-height: 1.1;
 	}
 	@if $mod == single {
 		font-size: 36px;
@@ -254,8 +261,8 @@ $fixed_side: 222px;
 	font-family: $nav;	
 	text-transform: uppercase;
 	color: $color-white;
-	background: $color-link-three;
-	border: 1px solid $color-link-three;	
+	background: $color-link-two;
+	border: 1px solid $color-link-two;	
 	@include transition(all 0.3s);
 	
 	padding: 14px 24px;
@@ -266,10 +273,9 @@ $fixed_side: 222px;
 		color: $color-white;
 	}
 	&:hover, &:focus, &:active {
-		//background: darken($color-link-three, 10%);
-		background: $color-link-two;
+		background: darken($color-link-two, 10%);
+		border-color: darken($color-link-two, 10%);
 		color: $color-white;
-		border-color: $color-link-two;
 	}
 	
 	@if $mod == white {
@@ -375,22 +381,26 @@ $fixed_side: 222px;
 	}
 }
 
-@mixin container-extended($mod: default) {
-	margin: 0 -4%;
+
+
+
+@mixin container-extended() {
+	margin: 0 -4.35%;
 	position: relative;
 	width: auto;
-		
-	@include for(exlarge-screens){
-		margin: 0 -1 * ($full_cont - $page_cont) / 2;		
+	
+	& > div[id *="pl-"],
+	& > div[class *="so-widget"] {
+		max-width: $page_cont;
+		width: 92%;
+		margin: 0 auto;
 	}
 	
-	@if $mod == padded {
-		padding: $gut*1.5 4%;
-		
-		@include for(exlarge-screens){			
-			padding: $gut*1.5 ($full_cont - $page_cont) / 2;
-		}
-	}	
+	$ex_cont_width_mq: $page_cont / 0.92 + 1px;
+	@media screen and (min-width: $ex_cont_width_mq ) { 
+		margin: 0 -1 * ($full_cont - $page_cont) / 2;	
+	}
+	
 }
 
 @mixin vertical-image-header-fixed(){

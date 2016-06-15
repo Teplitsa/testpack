@@ -129,3 +129,4 @@ if(is_admin()){
 	require get_template_directory() . '/inc/admin.php';
 	
 }
+

@@ -6,7 +6,7 @@ $height_gap : 14px;
 $logo_small_h : 42px;
 $logo_small_w : 42px;
 
-$logo_full_w : 62px;
+$logo_full_w : 58px;
 $logo_full_h : 80px;
 
 $mobile_height : $logo_small_h + $height_gap;
@@ -204,9 +204,9 @@ h2.logo-name {
 			top: 0;
 			
 			.pic-logo {
-				margin-top: $height_gap/2;
+				margin-top: $height_gap/2 - 2px;
 				width: $logo_full_w;
-				height: $logo_full_h;
+				height: $logo_full_h - 10px;
 			}
 		}
 	}
