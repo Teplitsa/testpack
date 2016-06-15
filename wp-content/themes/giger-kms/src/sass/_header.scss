@@ -404,12 +404,13 @@ h2.logo-name {
 	}
 	
 	h1.logo-name {
-		font-size: 14px;
-		line-height: 15px;
+		font-size: 18px;
+		line-height: 18px;
 	}
 	h2.logo-name {
-		font-size: 11px;
+		font-size: 10px;
 		line-height: 12px;
+		letter-spacing: -0.5px;
 	}
 	
 	.close {
@@ -448,7 +449,7 @@ h2.logo-name {
 		& > a {
 			display: block;
 			@include nav-text(menu);
-			color: $color-text-black;
+			color: $color-link-three;
 			@include transition(all 0.3s);
 			
 			padding: 19px $gut/2;
@@ -481,7 +482,7 @@ h2.logo-name {
 			.svg-icon {
 				width: 14px;
 				height: 14px;
-				fill: $color-text-black;
+				fill: $color-link-three;
 			}
 			
 			&:hover {
@@ -508,7 +509,7 @@ h2.logo-name {
 			margin-right: 0;
 			
 			&:hover, &:focus, &:active {
-				background:  $color-link-two;
+				background:  darken($color-link-two, 10%);
 			}
 		}
 	}
