@@ -117,7 +117,7 @@ get_header(); ?>
 		));
 		
 		if($pquery->have_posts()){
-			rdc_more_section($pquery->posts, __('Our volunteers', 'rdc'), 'people', 'addon'); 
+			rdc_more_section($pquery->posts, $cat[0]->name, 'children', 'addon'); 
 		}
 	}
 	

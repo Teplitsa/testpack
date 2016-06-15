@@ -430,10 +430,10 @@ function rdc_more_section($posts, $title = '', $type = 'news', $css= ''){
 		$all_link = "<a href='".home_url('activity')."'>".__('More projects', 'rdc')."&nbsp;&rarr;</a>";
 		$title = (empty($title)) ? __('Our projects', 'rdc') : $title;
 	}
-	elseif($type == 'people') {
-		$cat = get_term_by('slug', 'volunteers', 'person_cat');
-		$all_link = "<a href='".get_term_link($cat)."'>".__('More volunteers', 'rdc')."&nbsp;&rarr;</a>";
-		$title = (empty($title)) ? __('Our volunteers', 'rdc') : $title;
+	elseif($type == 'children') {
+		
+		$all_link = "<a href='".home_url('our-children')."'>".__('Our children', 'rdc')."&nbsp;&rarr;</a>";
+		$title = (empty($title)) ? __('Our children', 'rdc') : $title;
 	}
 	elseif($type == 'events') {
 		$p = get_page_by_path('events');
