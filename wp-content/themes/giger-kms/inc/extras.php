@@ -180,26 +180,56 @@ function rdc_body_classes( $classes ) {
 
 
 /** Options in customizer **/
-add_action('customize_register', 'rdc_customize_register');
+add_action('customize_register', 'rdc_customize_register', 15);
 function rdc_customize_register(WP_Customize_Manager $wp_customize) {
-      
-    	
-	$wp_customize->add_setting('header_text_content', array(
+    
+	$wp_customize->add_setting('header_title_one', array(
         'default'   => '',
         'transport' => 'refresh',
+		'option' => 'option'
     ));
     
-    $wp_customize->add_control('header_text_content', array(
+    $wp_customize->add_control('header_title_one', array(
+        'type'     => 'text',		
+        'label'    => 'Заголовок в шапке - 1 строка',
+        'section'  => 'title_tagline',
+        'settings' => 'header_title_one',
+        'priority' => 20,
+    ));
+	
+	$wp_customize->add_setting('header_title_two', array(
+        'default'   => '',
+        'transport' => 'refresh',
+		'option' => 'option'
+    ));
+    
+    $wp_customize->add_control('header_title_two', array(
+        'type'     => 'text',		
+        'label'    => 'Заголовок в шапке - 2 строка',
+        'section'  => 'title_tagline',
+        'settings' => 'header_title_two',
+        'priority' => 21,
+    ));
+	
+    	
+	$wp_customize->add_setting('header_text_top', array(
+        'default'   => '',
+        'transport' => 'refresh',
+		'option' => 'option'
+    ));
+    
+    $wp_customize->add_control('header_text_top', array(
         'type'     => 'textarea',		
         'label'    => 'Текст в шапке',
         'section'  => 'title_tagline',
-        'settings' => 'header_text_content',
-        'priority' => 20,
+        'settings' => 'header_text_top',
+        'priority' => 25,
     ));
 	
 	$wp_customize->add_setting('er_text', array(
         'default'   => '',
         'transport' => 'refresh',
+		'option' => 'option'
     ));
     
     $wp_customize->add_control('er_text', array(
@@ -210,7 +240,7 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 30,
     ));
 	
-	$wp_customize->add_setting('newsletter_form_id', array(
+	/*$wp_customize->add_setting('newsletter_form_id', array(
         'default'   => '',
         'transport' => 'refresh',
     ));
@@ -221,7 +251,7 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'section'  => 'title_tagline',
         'settings' => 'newsletter_form_id',
         'priority' => 40,
-    ));
+    ));*/
 	
 	$wp_customize->add_setting('newsletter_bottom_form_id', array(
         'default'   => '',
@@ -263,7 +293,9 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
 		)));
 	}
 	
+	
 	$wp_customize->remove_setting('site_icon'); //remove favicon
+	$wp_customize->remove_control('blogdescription'); //remove favicon
 }
 
 /** Humans txt **/

@@ -55,7 +55,7 @@ get_header(); ?>
 	
 	<?php if($format == 'introimg'){ ?>
 	<section class="entry-preview introimg">		
-		<div class="tpl-featured-bg" style="background-image: url(<?php echo $thumbnail;?>);" ></div>		
+		<div class="tpl-pictured-bg" style="background-image: url(<?php echo $thumbnail;?>);" ></div>		
 	</section>
 	<?php } ?>
 	

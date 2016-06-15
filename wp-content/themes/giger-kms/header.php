@@ -28,13 +28,15 @@
 					<div id="logo-full" ><?php rdc_site_logo('regular');?></div>
 					<div id="logo-small" ><?php rdc_site_logo('small');?></div>
 					<div class="logo-name-cell">
-						<h1 class="logo-name"><?php echo get_bloginfo('name');?></h1>
-						<h2 class="logo-name"><?php echo get_bloginfo('description');?></h2>
+						<?php $header_title_1 = get_theme_mod('header_title_one'); ?>
+						<h1 class="logo-name"><?php echo apply_filters('rdc_the_title', $header_title_1); ?></h1>
+						<?php $header_title_2 = get_theme_mod('header_title_two'); ?>
+						<h2 class="logo-name"><?php echo apply_filters('rdc_the_title', $header_title_2); ?></h2>
 					</div>
 				</a>					
 			</div>
 			
-			<?php $header_text = get_theme_mod('header_text_content'); ?>
+			<?php $header_text = get_theme_mod('header_text_top'); ?>
 			<div class="site-details site-panel-cell">
 				<div class="site-details-cell"><?php echo apply_filters('rdc_the_content', $header_text); ?></div>
 			</div>									
@@ -61,8 +63,8 @@
 		<div class="site-nav-title">
 			<div class="snt-cell">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
-					<h1 class="logo-name"><?php echo get_bloginfo('name');?></h1>
-					<h2 class="logo-name"><?php echo get_bloginfo('description');?></h2>
+					<h1 class="logo-name"><?php echo apply_filters('rdc_the_title', $header_title_1); ?></h1>
+					<h2 class="logo-name"><?php echo apply_filters('rdc_the_title', $header_title_2); ?></h2>
 				</a>
 			</div>
 			<div id="trigger_menu_close" class="trigger-button close"><?php rdc_svg_icon('icon-close');?></div>

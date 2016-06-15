@@ -99,20 +99,20 @@ function rdc_custom_content(){
 	/** Post types **/
 	register_post_type('project', array(
         'labels' => array(
-            'name'               => 'Проекты',
-            'singular_name'      => 'Проект',
-            'menu_name'          => 'Проекты',
-            'name_admin_bar'     => 'Добавить проект',
-            'add_new'            => 'Добавить новый',
-            'add_new_item'       => 'Добавить проект',
-            'new_item'           => 'Новый проект',
-            'edit_item'          => 'Редактировать проект',
-            'view_item'          => 'Просмотр проекта',
-            'all_items'          => 'Все проекты',
-            'search_items'       => 'Искать проект',
-            'parent_item_colon'  => 'Родительский проект:',
-            'not_found'          => 'Проекты не найдены',
-            'not_found_in_trash' => 'В Корзине проекты не найдены'
+            'name'               => 'Программы',
+            'singular_name'      => 'Программа',
+            'menu_name'          => 'Программы',
+            'name_admin_bar'     => 'Добавить программу',
+            'add_new'            => 'Добавить новую',
+            'add_new_item'       => 'Добавить программу',
+            'new_item'           => 'Новая программа',
+            'edit_item'          => 'Редактировать программу',
+            'view_item'          => 'Просмотр программ',
+            'all_items'          => 'Все программы',
+            'search_items'       => 'Искать программы',
+            'parent_item_colon'  => 'Родительская программа:',
+            'not_found'          => 'Программы не найдены',
+            'not_found_in_trash' => 'В Корзине программы не найдены'
        ),
         'public'              => true,
         'exclude_from_search' => false,
@@ -411,8 +411,15 @@ function rdc_custom_metaboxes() {
 	
 	$person_cat_term->add_field( array(
 		'name'     => 'Ссылка',
-		'desc'     => 'Адрес, куда ссылается заставка',
+		'desc'     => 'Адрес, куда ссылается кнопка на заставке',
 		'id'       => 'featured_action_link',
 		'type'     => 'text_url'		
+	));
+	
+	$person_cat_term->add_field( array(
+		'name'     => 'Тексты ссылки',
+		'desc'     => 'Текст на кнопке',
+		'id'       => 'featured_action_link_text',
+		'type'     => 'text'		
 	));
 }

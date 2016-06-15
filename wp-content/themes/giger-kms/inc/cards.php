@@ -19,63 +19,62 @@ function rdc_post_card(WP_Post $cpost){
 <?php
 }
 
-function rdc_featured_post_card(WP_Post $cpost){
+function rdc_intro_card_markup_below($title, $subtitle, $img_id, $link = '', $button_text = '') {
 	
-	$thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full'); 
-	$pl = get_permalink($cpost);
+	$button_text = (!empty($button_text)) ? $button_text : __('More', 'rdc');
+	$has_sharing = (!empty($link)) ? false : true;
 ?>
-<article class="tpl-featured card">
-	<div class="bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
-	
-	<div class="container featured-body">
-		<a href="<?php echo $pl; ?>" class="featured-content">
-			<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>'); ?></div>
-			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>			
-		</a>
-	</div>	
-</article>
-<?php
-}
-
-function rdc_featured_action_card(WP_Post $cpost, $cta = ''){
-	
-	$thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full');
-	$pl = get_permalink($cpost);
-	$cta = (!empty($cta)) ? $cta : __('View', 'rdc');
-	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
-?>
-<article class="tpl-featured-action container-wide">
-	<div class="bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
-	
-	<div class="container featured-body">
-		<a href="<?php echo $pl; ?>" class="featured-content">	
-			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-			<div class="entry-summary"><?php echo $ex;?></div>		
-			<!--<div class="cta"><a href="<?php echo $pl; ?>" class="cta-button"><?php echo $cta;?></a></div>-->
-		</a>	
-	</div>	
-</article>
-<?php
-}
-
-function rdc_featured_action_card_markup($link, $title, $subtitle, $img_id){
-		
-	$thumbnail = wp_get_attachment_url($img_id);
-?>
-	<article class="tpl-featured-action container-wide">
-		<div class="bg" style="background-image: url(<?php echo $thumbnail;?>);"></div>
-		
-		<div class="container featured-body">
-			<a href="<?php echo $link; ?>" class="featured-content">	
-				<h4 class="entry-title"><?php echo apply_filters('rdc_the_title', $title);?></h4>
-				<?php if(!empty($subtitle)) { ?>
-					<div class="entry-summary"><?php echo apply_filters('rdc_the_title', $subtitle);?></div>
+	<section class="intro-head-image">
+		<div class="tpl-pictured-bg" style="background-image: url(<?php echo wp_get_attachment_url( $img_id );?>)"></div>
+	</section>
+	<section class="intro-head-content<?php if(!empty($link)) { echo '  has-button'; }?>"><div class="ihc-content">
+		<h1 class="ihc-title"><?php if(!empty($link)) { ?><a href="<?php echo esc_url($link);?>"><?php } ?>
+			<?php echo apply_filters('rdc_the_title', $title);?>
+			<?php if(!empty($link)) { ?></a><?php } ?>
+		</h1>
+		<?php if($subtitle){ ?>
+			<div class="frame">
+				<div class="bit <?php if(!empty($link)){ echo 'md-8 exlg-9'; }?> ihc-desc"><?php echo apply_filters('rdc_the_content', $subtitle); ?></div>
+				<?php if(!empty($link)) { ?>
+				<div class="bit md-4 exlg-3"><a href="<?php echo esc_url($link);?>"><?php echo $button_text;?></a></div>
 				<?php } ?>
-			</a>	
-		</div>	
-	</article>
-<?php	
+			</div>
+		<?php } ?>	
+	</div></section>
+	<?php if($has_sharing) { ?>	
+		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
+	<?php }?>
+<?php
 }
+
+function rdc_intro_card_markup_over($title, $subtitle, $img_id, $link = '', $button_text = '', $style = 'below') {
+	
+	$button_text = (!empty($button_text)) ? $button_text : __('More', 'rdc');
+	$has_sharing = (!empty($link)) ? false : true;
+	
+?>
+	<section class="intro-head-image text-over-image">
+		<div class="tpl-pictured-bg" style="background-image: url(<?php echo wp_get_attachment_url( $img_id );?>)"></div>
+	</section>
+	<section class="intro-head-content text-over-image<?php if(!empty($link)) { echo '  has-button'; }?>"><div class="ihc-content">
+	<?php if(!empty($link)) { ?><a href="<?php echo esc_url($link);?>"><?php } ?>
+	
+		<h1 class="ihc-title"><span><?php echo apply_filters('rdc_the_title', $title);?></span></h1>
+		<?php if($subtitle){ ?>
+			<div class="ihc-desc"><?php echo apply_filters('rdc_the_content', $subtitle); ?></div>
+		<?php } ?>
+		<?php if(!empty($link)) { ?>
+			<div class="cta"><?php echo $button_text;?></div>
+		<?php } ?>		
+		
+	<?php if(!empty($link)) { ?></a><?php } ?>
+	</div></section>
+	<?php if($has_sharing) { ?>	
+		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
+	<?php }
+
+}
+
 
 function rdc_related_post_card(WP_Post $cpost) {
 

@@ -40,8 +40,7 @@
         "johnpbloch/wordpress" : ">=4.3",
         "wpackagist-plugin/cyr3lat" : "@stable",
         "wpackagist-plugin/crop-thumbnails": "@stable",
-        "wpackagist-plugin/disable-comments" : "@stable",        
-        "wpackagist-plugin/imsanity" : "@stable",
+        "wpackagist-plugin/disable-comments" : "@stable",                
         "wpackagist-plugin/leyka" : "@stable",
         "wpackagist-plugin/media-search-enhanced": "@stable",
         "wpackagist-plugin/responsive-lightbox" : "@stable",        
@@ -54,6 +53,7 @@
         "wpackagist-plugin/formidable": "@stable",
         "wpackagist-plugin/siteorigin-panels": "@stable",
         "wpackagist-plugin/so-widgets-bundle": "@stable",
+        "wpackagist-plugin/tiny-compress-images": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
         "tst/cmb2-attached-posts" : ">=1.2.2"
     },
