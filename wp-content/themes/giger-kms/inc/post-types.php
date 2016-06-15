@@ -132,7 +132,7 @@ function rdc_custom_content(){
         'taxonomies'          => array(),
     ));
 	
-	register_post_type('event', array(
+	/*register_post_type('event', array(
         'labels' => array(
             'name'               => 'События',
             'singular_name'      => 'Событие',
@@ -165,7 +165,7 @@ function rdc_custom_content(){
 		'menu_icon'           => 'dashicons-calendar',
         'supports'            => array('title', 'excerpt', 'editor', 'thumbnail', 'page-attributes'),
         'taxonomies'          => array(),
-    ));
+    ));*/
 	
 	register_post_type('org', array(
         'labels' => array(
