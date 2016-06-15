@@ -145,7 +145,8 @@ h1.logo-name {
 	letter-spacing: -0.3px;
 	
 	@include for(medium-screens) {
-		font-size: 21px;			
+		font-size: 21px;
+		padding-top: 4px;
 	}
 }
 

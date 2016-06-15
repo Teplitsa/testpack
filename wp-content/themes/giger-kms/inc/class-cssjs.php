@@ -66,7 +66,7 @@ class FRL_CssJs {
 		// fonts
 		wp_enqueue_style(
 			'rdc-fonts',
-			'//fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:400,700|Cuprum:400,700&subset=latin,cyrillic',
+			'//fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700|Cuprum:400,700&subset=latin,cyrillic',
 			$style_dependencies,
 			null
 		);
