@@ -103,7 +103,7 @@
 		overflow: hidden;
 		
 		a {
-			@include ghost-button(16px, $color-link-one, $color-white);
+			@include ghost-button(16px, $color-link-three, $color-white);
 		}
 	}
 	
