@@ -140,8 +140,9 @@
 	@include transition(all 0.3s);
 		
 	&:hover {
-		background: $color-secondary-alt;
+		background: $color-link-two;
 		.entry-preview:after { background: rgba(0,0,0, 0.3); }
+		.entry-summary { color: $color-link-three; }
 	}	
 	
 	a {
@@ -171,7 +172,7 @@
 		color: $color-link-three;
 		margin-bottom: $base*0.75;				
 		padding-top: $base;
-		@include hyphens(auto);
+		@include hyphens(auto);		
 	}
 	
 	.entry-summary {
@@ -206,7 +207,7 @@
 		}
 		&.current {
 			color: $color-white;
-			background: $color-text;
+			background: $color-link-three;
 		}
 	}
 	

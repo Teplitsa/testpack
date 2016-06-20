@@ -142,7 +142,7 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 			$subtitle = (!$subtitle) ? $сpost->post_excerpt : $subtitle;
 			$image = (!$image) ? get_post_thumbnail_id($сpost) : $image;
 			$link = (!$link) ? get_permalink($сpost) : $link;
-			$link_text = (!$link_text) ? __('More', 'rdc') : $link_text;
+			$link_text = (!$link_text) ? __('More details', 'rdc') : $link_text;
 		}
 		
         $card_callback = "rdc_intro_card_markup_".$link_style;

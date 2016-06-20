@@ -1410,7 +1410,11 @@ jQuery(document).ready(function($){
 				
             if($parent.hasClass('embed-content')){
                 do_resize = true;            
-            }			
+            }
+			else if($iframe.parents('.so-panel').length) {
+				$parent = $iframe.parents('.so-panel');
+                do_resize = true;	
+			}
             else {                
                 
                 $parent = $iframe.parents('.entry-content, .player');

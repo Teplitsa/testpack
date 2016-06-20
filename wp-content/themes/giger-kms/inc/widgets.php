@@ -3,7 +3,11 @@
  * Widgets
  **/
 
- 
+global $wp_embed;
+add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
+add_filter( 'widget_text', array( $wp_embed, 'autoembed' ), 8 );
+add_filter( 'widget_text', 'do_shortcode');
+
 add_action('widgets_init', 'rdc_custom_widgets', 20);
 function rdc_custom_widgets(){
 

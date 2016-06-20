@@ -96,12 +96,12 @@ $full_height   : $logo_full_h + $height_gap;
 		display: flex;
 		flex-flow: column nowrap;
 		justify-content: center;		
-		margin-left: $logo_small_w + $height_gap * 2;
+		margin-left: $logo_small_w + $height_gap;
 		height: $logo_small_h + $height_gap;	
 	}
 	
 	@include for(medium-screens) {			
-		margin-left: $logo_full_w + $height_gap * 2;
+		margin-left: $logo_full_w;
 		height: $logo_full_h + $height_gap;
 	}	
 	
@@ -209,6 +209,11 @@ h2.logo-name {
 				width: $logo_full_w;
 				height: $logo_full_h - 10px;
 			}
+		}
+		
+		@include for(exlarge-screens){
+			width: $logo_full_w ;
+			text-align: left;
 		}
 	}
 }

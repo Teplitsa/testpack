@@ -2,7 +2,7 @@
 /** Error **/
 
 
-$er_text = get_theme_mod('er_text');
+$er_text = get_theme_mod('er_text'); 
 $src = get_template_directory_uri().'/assets/img/er404.jpg';
 get_header();
 ?>

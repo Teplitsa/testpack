@@ -3,7 +3,6 @@
  * Shortcodes
  **/
 
-add_filter('widget_text', 'do_shortcode');
 
 /** sitemap **/
 add_shortcode('rdc_sitemap', 'rdc_sitemap_screen');
