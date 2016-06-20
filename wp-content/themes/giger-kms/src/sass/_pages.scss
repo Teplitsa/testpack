@@ -133,8 +133,8 @@
 		}
 	}
 	
-	@include for(large-scrrens) {
-		col3-title {
+	@include for(large-screens) {
+		.col3-title:before {
 			left: 50%;
 			margin-left: -50px;
 		}
