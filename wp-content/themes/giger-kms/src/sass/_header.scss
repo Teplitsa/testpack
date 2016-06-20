@@ -101,7 +101,7 @@ $full_height   : $logo_full_h + $height_gap;
 	}
 	
 	@include for(medium-screens) {			
-		margin-left: $logo_full_w;
+		margin-left: $logo_full_w + 5px;
 		height: $logo_full_h + $height_gap;
 	}	
 	
@@ -214,6 +214,7 @@ h2.logo-name {
 		@include for(exlarge-screens){
 			width: $logo_full_w ;
 			text-align: left;
+			left: -6px;
 		}
 	}
 }
