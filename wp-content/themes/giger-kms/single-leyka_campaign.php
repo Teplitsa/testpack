@@ -40,11 +40,15 @@ if(has_term('programms', 'campaign_cat', $cpost)){
 				<?php krb_child_meta($cpost); ?>				
 				<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
 			</div>
-		</div>		
+		</div>
 	</header>
 	
 	<div class="frame">
 		<div class="bit md-8">
+		<?php if(function_exists('leyka_get_scale') && !has_term('rosemary', 'campaign_cat', $cpost)) {?>
+			<?php echo leyka_get_scale($cpost, array('show_button' => 1));?>
+		<?php }?>
+				
 		<?php
 			$thanks = get_post_meta($cpost->ID, 'campaign_child_thanks', true);
 			if(!empty($thanks)){
