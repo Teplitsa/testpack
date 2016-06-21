@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-21 22:59+0300\n"
-"PO-Revision-Date: 2016-06-21 22:59+0300\n"
+"POT-Creation-Date: 2016-06-22 01:01+0300\n"
+"PO-Revision-Date: 2016-06-22 01:01+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -33,6 +33,10 @@ msgstr "Кампания"
 #: archive-leyka_donation.php:39
 msgid "Anonymous"
 msgstr "Анонимно"
+
+#: archive-leyka_donation.php:49
+msgid "No donations yet"
+msgstr "Пожертвований пока нет"
 
 #: footer.php:11
 msgid "Teplitsa of social technologies"
@@ -150,23 +154,23 @@ msgstr "Пожалуйста, укажите текст комментария"
 msgid "Please, set a text to describe an additional ways to donate."
 msgstr "Пожалуйста, укажите текст комментария"
 
-#: inc/donations.php:118
+#: inc/donations.php:118 inc/donations.php:155
 msgid "Please, specify your donation amount"
 msgstr "Пожалуйста, укажите сумму пожертвования"
 
-#: inc/donations.php:123
+#: inc/donations.php:123 inc/donations.php:160
 msgid "or"
 msgstr "или"
 
-#: inc/donations.php:124
+#: inc/donations.php:124 inc/donations.php:161
 msgid "Specify the amount of your donation"
 msgstr "Пожалуйста, укажите сумму пожертвования"
 
-#: inc/donations.php:185
+#: inc/donations.php:222
 msgid "Your name"
 msgstr "Ваше имя"
 
-#: inc/donations.php:212
+#: inc/donations.php:249
 msgid "Monthly donation"
 msgstr "Перечислять ежемесячно"
 
@@ -180,7 +184,7 @@ msgid "Title"
 msgstr "Заголовок"
 
 #: inc/pb-widgets/donationhystory/donationhystory.php:107
-#: single-leyka_campaign.php:61 single-leyka_campaign.php:91
+#: single-leyka_campaign.php:64
 msgid "Full list"
 msgstr "Полный список"
 
@@ -358,11 +362,11 @@ msgstr "По вашему запросу ничего не найдено."
 msgid "Visit or events"
 msgstr "Приглашаем на мероприятия"
 
-#: single-leyka_campaign.php:50
+#: single-leyka_campaign.php:53
 msgid "From archive"
 msgstr "Из архива"
 
-#: single-leyka_campaign.php:58 single-leyka_campaign.php:88
+#: single-leyka_campaign.php:61
 msgid "Our supporters"
 msgstr "Нас поддержали"
 
