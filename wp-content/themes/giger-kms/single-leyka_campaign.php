@@ -86,7 +86,7 @@ if(has_term('programms', 'campaign_cat', $cpost)){
 		</main>
 	
 		<div id="rdc_sidebar" class="bit md-4 lg-offset-2">
-			<div class="widget donation_cta red"><?php echo apply_filters('rdc_the_content', $cpost->post_content); ?></div>
+			<div class="widget donation_cta red"><?php echo apply_filters('rdc_entry_the_content', $cpost->post_content); ?></div>
 			<div class="widget donation_history">
 				<h3><?php _e('Our supporters', 'rdc');?></h3>
 				<?php echo leyka_get_donors_list($cpost->ID, array('num' => 10, 'show_purpose' => 0));?>
