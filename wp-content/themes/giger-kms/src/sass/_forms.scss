@@ -234,7 +234,7 @@ $label-text-color: $color-text;
 	}
 	
 	.rdc-checkbox__label {
-		@include checkbox-text(14px);
+		@include checkbox-text(15px);
 		display: inline-block;
 		position: relative;
 		line-height: 18px;

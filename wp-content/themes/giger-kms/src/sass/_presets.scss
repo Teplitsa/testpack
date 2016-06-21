@@ -50,7 +50,7 @@ $color-secondary-black:		#191411;
 
 $color-border-normal: #dfdfdf;
 $color-border-light:  #eeeeee;
-$color-border-link:   #eeeeee;
+$color-border-link:   #d1d1d1;
 
 $color-form-invalid: #ED1C24;
 
@@ -291,12 +291,12 @@ $fixed_side: 222px;
 		}
 	}
 	@else if $mod == leyka {
-		background: $leyka_green;
-		border: 1px solid $leyka_green;
+		background: $color-link-two;
+		border: 1px solid $color-link-two;
 		
 		&:hover, &:focus, &:active {			
-			background: darken($leyka_green, 10%);
-			border-color: darken($leyka_green, 10%);			
+			background: darken($color-link-two, 10%);
+			border-color: darken($color-link-two, 10%);			
 		}
 	}
 }

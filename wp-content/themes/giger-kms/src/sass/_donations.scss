@@ -4,10 +4,10 @@
 }
 
 .leyka-custom-template {
-	border: 1px solid $color-border-light;
+	border: 1px solid $color-border-link;
 	background: $color-white;
 	box-shadow: 1px 2px 2px rgba(0,0,0, 0.08);
-	
+	border-top: none;
 		
 }
 
@@ -17,7 +17,7 @@
 		@include header-title();
 		padding: $gut/2 $gut;		
 		cursor: pointer;		
-		border-top: 1px solid $color-border-normal;		
+		border-top: 1px solid $color-border-link;		
 	}
 		
 	.leyka-toggle-area {
@@ -33,7 +33,7 @@
 			display: block;
 			width: 100%;
 			height: 2px;
-			background: $leyka_green;
+			background: $color-link-two;
 			position: absolute;
 			top:0;
 			left: 0;
@@ -61,8 +61,8 @@
 		}
 		
 		a {
-			color: $leyka_green;
-			&:visited { color: $leyka_green; }
+			color: $color-link-two;
+			&:visited { color: $color-link-two; }
 			&:hover, &:focus, &:active {
 				text-decoration: underline;		
 			}
@@ -71,13 +71,13 @@
 		
 	.rdc-checkbox__input:checked + .rdc-checkbox__label {
 		&:before {
-			background-color: $leyka_green;
-			border-color: $leyka_green;
+			background-color: $color-link-two;
+			border-color: $color-link-two;
 		}
 	}
 	
-	.rdc-textfield__label:after { background-color: $leyka_green; }	
-	.rdc-textfield__input:focus ~ .rdc-textfield__label { color: $leyka_green; }
+	.rdc-textfield__label:after { background-color: $color-link-two; }	
+	.rdc-textfield__input:focus ~ .rdc-textfield__label { color: $color-link-two; }
 	
 	.rdc-submit-button { 
 		@include button(leyka);
@@ -98,8 +98,8 @@
 		}
 		
 		.leyka-toggle-trigger {
-			color: $leyka_green;			
-			&:before { background: $leyka_green; }
+			color: $color-link-two;			
+			&:before { background: $color-link-two; }
 		}
 	}	
 }
@@ -128,12 +128,12 @@
 		padding-bottom: 5px;		
 	}
 	
-	span.figure { color: $leyka_green; }
+	span.figure { color: $color-link-two; }
 	
 	.donate_amount_flex {
 		margin-right: 10px;
 		flex: 1 1 auto;
-		border: 2px solid $leyka_green;
+		border: 2px solid $color-link-two;
 		border-radius: 2px;
 		@include checkbox-text(18px);
 		text-align: right;		
@@ -163,19 +163,26 @@
 	
 	.rdc-radio__button:checked + .rdc-radio__label {
 		&:before {
-			background-color: $leyka_green;
-			border-color: $leyka_green;
+			background-color: $color-link-two;
+			border-color: $color-link-two;
 		}
 	}
 }
 
+.entry-content .leyka-pm-icons,
 .leyka-pm-icons {
 	@include clearfix;
+	margin: 0;
+		
 	li {
+		list-style-type: none;
 		float: left;
 		width: 52px;
 		height: 36px;
-		margin-left: 4px;
+		margin: 0 0 0 4px;
+		padding: 0;
+		
+		&:before { display: none; }
 		img {
 			max-width: 100%;
 			height: auto;
@@ -187,8 +194,8 @@
 	@include form-text(small);
 	margin-top: $gut;
 	a {
-		color: $leyka_green;
-		&:visited { color: $leyka_green; }
+		color: $color-link-two;
+		&:visited { color: $color-link-two; }
 		&:hover, &:focus, &:active {
 			text-decoration: underline;		
 		}
@@ -200,8 +207,8 @@
 	text-align: right;
 	
 	a {
-		color: $leyka_green;
-		&:visited { color: $leyka_green; }
+		color: $color-link-two;
+		&:visited { color: $color-link-two; }
 		&:hover, &:focus, &:active {
 			text-decoration: underline;		
 		}
@@ -230,7 +237,7 @@
 	background-color: $color-white;
 	
 	.leyka-modal-close {
-		background: $leyka_green;
+		background: $color-link-two;
 		color: $color-white;
 		width: 28px;
 		height: 28px;
