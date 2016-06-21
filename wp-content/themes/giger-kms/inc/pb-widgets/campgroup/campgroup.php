@@ -136,6 +136,7 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
 			$callback = 'krb_project_campaign_card';
 		}
 		elseif($format == 'child') {
+			$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4";
 			$callback = 'krb_child_campaign_card';	
 		}
 

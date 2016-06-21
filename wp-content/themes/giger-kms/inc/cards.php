@@ -286,18 +286,20 @@ function krb_project_campaign_card($cpost) {
 function krb_child_campaign_card($cpost) {
 	
 	$pl = get_permalink($cpost);
-	
+	$src = rdc_post_thumbnail_src($cpost, 'post-thumbnail');
 ?>
-<article class="tpl-child card">
+<article class="tpl-child card"><div class="child-card-content">
 	<a href="<?php echo $pl; ?>" class="thumbnail-link">
-		<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
+		<div class="entry-preview"><div class="tpl-pictured-bg" style="background-image: url(<?php echo $src;?>);" ></div></div>
 		<div class="entry-data">		
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 			<?php krb_child_meta($cpost); ?>		
 		</div>
 	</a>
-	<?php echo leyka_get_scale($cpost, array('show_button' => 1));?>
-</article>
+	<?php if(function_exists('leyka_get_scale') && !has_term('rosemary', 'campaign_cat', $cpost)) {?>
+		<?php echo leyka_get_scale($cpost, array('show_button' => 1));?>
+	<?php }?>
+</div></article>
 <?php
 }
 
@@ -306,8 +308,13 @@ function krb_child_meta($cpost){
 	$age  = get_post_meta($cpost->ID, 'campaign_child_age', true);
 	$city = get_post_meta($cpost->ID, 'campaign_child_city', true);
 	$diag = get_post_meta($cpost->ID, 'campaign_child_diagnosis', true);
+	$summary = '';
+	
+	if(empty($age) && empty($city) && empty($diag)){
+		$summary = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
+	}
 ?>
-	<div class="child-meta">
+	<div class="child-meta">	
 	<?php if(!empty($age)) { ?>	
 		<p><span class="label"><?php _e('Age', 'rdc');?>:</span> <?php echo apply_filters('rdc_the_title', $age);?></p>
 	<?php } ?>
@@ -317,6 +324,9 @@ function krb_child_meta($cpost){
 	<?php if(!empty($diag)) { ?>	
 		<p><span class="label"><?php _e('Diagnosis', 'rdc');?>:</span> <?php echo apply_filters('rdc_the_title', $diag);?></p>
 	<?php } ?>
+	<?php if(!empty($summary)) { ?>	
+		<p><?php echo $summary;?></p>
+	<?php } ?>
 	</div>
 <?php
 }
@@ -325,6 +335,7 @@ function krb_default_campaign_card($cpost) {
 
 	$pl = get_permalink($cpost);
 	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 25, true));
+	
 ?>
 <article class="tpl-campaign default card">
 	<a href="<?php echo $pl; ?>" class="thumbnail-link">

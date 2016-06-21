@@ -558,3 +558,148 @@
 	margin-top: $margin-base;
 	font-size: 0.8em;
 }
+
+//cards
+@mixin child-photo() {
+	width: 100%;
+	height: 0;
+	padding-bottom: 65%;
+	position: relative;
+	@include shadowed-preview();
+	
+	.tpl-pictured-bg {
+		position: absolute;
+		z-index: 2;
+	}
+}
+
+.tpl-child {
+	background: $color-white;
+	//@include transition(all 0.3s);
+		
+	a {
+		display: block;
+		flex: 1 0 auto;
+	}
+	a:hover {
+		.entry-preview:after { background: rgba(0,0,0, 0.3); }
+	}
+	
+	.child-card-content {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+	}
+		
+	.entry-data {
+		padding: 0 $base $base;
+		position: relative;
+	}
+	
+	.entry-preview {
+		@include child-photo();
+	}
+		
+	.entry-title {
+		@include post-title();
+		color: $color-link-three;
+		margin-bottom: $base*0.75;				
+		padding-top: $base;		
+	}
+	
+	.leyka-scale {
+		flex: 0 0 auto;
+	}
+	.leyka-scale-button {
+		padding: $base/2 $base $base;
+		text-align: center;
+		
+		a {
+			@include button();
+			padding: 10px 24px;
+			font-size: 14px;
+			line-height: 16px;
+		}
+	}
+	
+	.leyka-scale-scale {
+		width: 100%;
+		height: 8px;
+		
+		.target  {
+			width: 100%;
+			height: 100%;
+			background: $color-border-light;
+		}
+		
+		.collected {
+			height: 100%;
+			background: $color-link-two;
+		}
+	}
+	
+	.leyka-scale-label {
+		padding: $base/2 $base;
+		font-size: 0.75em;
+	}
+}
+
+.child-meta {
+	@include body-text(summary);
+	
+	.label {
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		color: $color-text-light;
+		font-size: 0.9em;
+	}
+}
+
+//inpage case
+.frl-pb-blocks {
+	.tpl-child {
+		background: $color-secondary;
+	}
+	
+	.child-meta p {
+		margin: 0;
+	}
+	
+	.leyka-scale-scale .target {
+		background: $color-white;
+	}
+}
+
+//single
+.tpl-child-profile {
+	.entry-title {
+		margin-bottom: $gut/2;
+	}
+	
+	.child-meta {
+		@include for(medium-screens) {
+			padding-top: $gut/2;
+		}
+	}
+	.entry-preview {
+		@include child-photo();
+	}
+	
+	.entry-summary {
+		margin-bottom: $gut;
+	}
+	.campaign-form {		
+		margin-top: $gut;
+	}
+	
+	.mobile-sharing {
+		margin-top: $gut/2;
+	}
+	
+	.archive-subtitle {
+		@include post-title(multiline);
+		margin-bottom: 0.75em;
+	}
+}

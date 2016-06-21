@@ -488,7 +488,12 @@ function rdc_custom_metaboxes() {
             //'cmb_styles'    => false, // false to disable the CMB stylesheet
             // 'closed'     => true, // Keep the metabox closed by default
         ));
-
+		$campaign_cmb->add_field(array(
+            'name'    => 'Возраст',
+            'id'      => 'campaign_child_age',
+            'type'    => 'text',
+            'default' => ''
+        ));
         $campaign_cmb->add_field(array(
             'name'    => 'Город',
             'id'      => 'campaign_child_city',
@@ -501,10 +506,10 @@ function rdc_custom_metaboxes() {
             'type'    => 'text',
             'default' => ''
         ));
-        $campaign_cmb->add_field(array(
-            'name'    => 'Возраст',
-            'id'      => 'campaign_child_age',
-            'type'    => 'text',
+		$campaign_cmb->add_field(array(
+            'name'    => 'Благодарность',			
+            'id'      => 'campaign_child_thanks',
+            'type'    => 'textarea',
             'default' => ''
         ));
 //    }

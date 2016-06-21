@@ -18,7 +18,7 @@ get_header();
 		<div class="category-description"><?php echo apply_filters('rdc_the_content', $qo->description);?></div>
 	<?php } ?>
 	<?php if(!empty($back_url) && !empty($back_text)) { ?>
-		<div class="category-backlink"><a href="<?php echo esc_url($back_url);?>"><?php echo apply_filters('rdc_the_title', $back_text);?></a></div>
+		<div class="category-backlink"><a href="<?php echo esc_url($back_url);?>"><?php echo apply_filters('rdc_the_title', $back_text);?>&nbsp;&rarr;</a></div>
 	<?php } ?>
 </section>
 

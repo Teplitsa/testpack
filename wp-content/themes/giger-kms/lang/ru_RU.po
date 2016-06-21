@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 23:23+0300\n"
-"PO-Revision-Date: 2016-06-21 13:42+0300\n"
+"POT-Creation-Date: 2016-06-21 22:59+0300\n"
+"PO-Revision-Date: 2016-06-21 22:59+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -26,11 +26,11 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 "X-Poedit-SearchPathExcluded-2: assets\n"
 
-#: archive-leyka_donation.php:20
+#: archive-leyka_donation.php:21
 msgid "Campaign"
 msgstr "Кампания"
 
-#: archive-leyka_donation.php:38
+#: archive-leyka_donation.php:39
 msgid "Anonymous"
 msgstr "Анонимно"
 
@@ -55,7 +55,7 @@ msgstr "Все материалы сайта доступны по лиценз�
 msgid "Skip to content"
 msgstr "Перейти к содержанию"
 
-#: header.php:45
+#: header.php:45 inc/cards.php:346
 msgid "Donate"
 msgstr "Помочь сейчас"
 
@@ -73,11 +73,11 @@ msgid ""
 "page)"
 msgstr "Аннотация для списков (на странице записи добавляется в начало)"
 
-#: inc/admin.php:208
+#: inc/admin.php:216
 msgid "Forms"
 msgstr "Формы"
 
-#: inc/admin.php:331
+#: inc/admin.php:339
 #, php-format
 msgid ""
 "ATTENTION! You thumbnail image is too small. It should be at least %s px"
@@ -85,39 +85,39 @@ msgstr ""
 "ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
 "менее %s px."
 
-#: inc/admin.php:379 inc/admin.php:395
+#: inc/admin.php:387 inc/admin.php:403
 msgid "Facebook Profile"
 msgstr "Профиль на Facebook"
 
-#: inc/admin.php:381 inc/admin.php:397
+#: inc/admin.php:389 inc/admin.php:405
 msgid "Enter URL of author's Facebook profile"
 msgstr "Укажите ссылку на профиль автора"
 
-#: inc/admin.php:384 inc/admin.php:400
+#: inc/admin.php:392 inc/admin.php:408
 msgid "Avatar"
 msgstr "Аватарка"
 
-#: inc/admin.php:432
+#: inc/admin.php:440
 msgid "Taxonomy Term Image"
 msgstr "Заставка"
 
-#: inc/admin.php:433
+#: inc/admin.php:441
 msgid "Select which image should represent this term."
 msgstr "Выберите изображение заставки"
 
-#: inc/admin.php:434
+#: inc/admin.php:442
 msgid "Select Image"
 msgstr "Выбрать изображение"
 
-#: inc/admin.php:435
+#: inc/admin.php:443
 msgid "Remove"
 msgstr "Удалить"
 
-#: inc/admin.php:436
+#: inc/admin.php:444
 msgid "Select or upload an image for this term"
 msgstr "Выбрать или загрузить изображение"
 
-#: inc/admin.php:437
+#: inc/admin.php:445
 msgid "Attach"
 msgstr "Присоединить"
 
@@ -129,6 +129,18 @@ msgstr "Автор"
 #: taxonomy-person_cat.php:20
 msgid "More"
 msgstr "Ещё"
+
+#: inc/cards.php:319
+msgid "Age"
+msgstr "Возраст"
+
+#: inc/cards.php:322
+msgid "City"
+msgstr "Город"
+
+#: inc/cards.php:325
+msgid "Diagnosis"
+msgstr "Диагноз"
 
 #: inc/donations.php:62
 msgid "Please, set a text of comment to describe an additional ways to donate."
@@ -162,9 +174,15 @@ msgstr "Перечислять ежемесячно"
 msgid "Default Avatar"
 msgstr "Аватарка по-умолчанию"
 
+#: inc/pb-widgets/donationhystory/donationhystory.php:41
 #: inc/pb-widgets/featureblock/featureblock.php:41
 msgid "Title"
 msgstr "Заголовок"
+
+#: inc/pb-widgets/donationhystory/donationhystory.php:107
+#: single-leyka_campaign.php:61 single-leyka_campaign.php:91
+msgid "Full list"
+msgstr "Полный список"
 
 #: inc/pb-widgets/featureblock/featureblock.php:45
 msgid "Description"
@@ -199,18 +217,15 @@ msgid "Could be post, project, event - provide fallback for empty fields"
 msgstr "Может быть запись, программа - значения по умолчанию для пустых полей"
 
 #: inc/pb-widgets/featuredaction/featuredaction.php:47
-#: inc/pb-widgets/pageheader/pageheader.php:41
 msgid "Image file"
 msgstr "Изображение"
 
 #: inc/pb-widgets/featuredaction/featuredaction.php:54
-#: inc/pb-widgets/pageheader/pageheader.php:48
 #: inc/pb-widgets/sectionheader/sectionheader.php:41
 msgid "Title text"
 msgstr "Заголовок"
 
 #: inc/pb-widgets/featuredaction/featuredaction.php:59
-#: inc/pb-widgets/pageheader/pageheader.php:53
 #: inc/pb-widgets/sectionheader/sectionheader.php:46
 msgid "Sub title text"
 msgstr "Подзаголовок"
@@ -242,10 +257,6 @@ msgstr "Текст поверх картинки"
 #: inc/pb-widgets/featuredaction/featuredaction.php:145
 msgid "More details"
 msgstr "Подробнее"
-
-#: inc/pb-widgets/pageheader/pageheader.php:60
-msgid "Extend Width"
-msgstr "Растянуть"
 
 #: inc/pb-widgets/sectionheader/sectionheader.php:51
 msgid "Align"
@@ -307,7 +318,7 @@ msgstr "Наши дети"
 msgid "More events"
 msgstr "Еще анонсы"
 
-#: inc/template-tags.php:446 inc/widgets.php:142
+#: inc/template-tags.php:446 inc/widgets.php:146
 msgid "More news"
 msgstr "Еще новости"
 
@@ -323,7 +334,7 @@ msgstr "Программа по теме"
 msgid "Help now"
 msgstr "Помочь сейчас"
 
-#: inc/widgets.php:107
+#: inc/widgets.php:111
 msgid "Widget doesn't have any settings"
 msgstr "Виджет не имеет настроек"
 
@@ -347,13 +358,13 @@ msgstr "По вашему запросу ничего не найдено."
 msgid "Visit or events"
 msgstr "Приглашаем на мероприятия"
 
-#: single-leyka_campaign.php:29
+#: single-leyka_campaign.php:50
+msgid "From archive"
+msgstr "Из архива"
+
+#: single-leyka_campaign.php:58 single-leyka_campaign.php:88
 msgid "Our supporters"
 msgstr "Нас поддержали"
-
-#: single-leyka_campaign.php:32
-msgid "Full list"
-msgstr "Полный список"
 
 #: single.php:87
 msgid "Related news"
@@ -362,6 +373,9 @@ msgstr "Новости по теме"
 #: single.php:99
 msgid "Related projects"
 msgstr "Познакомьтесь с другими проектами"
+
+#~ msgid "Extend Width"
+#~ msgstr "Растянуть"
 
 #~ msgid "View"
 #~ msgstr "Просмотреть"
