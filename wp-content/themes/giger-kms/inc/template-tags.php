@@ -159,7 +159,10 @@ function rdc_posted_on(WP_Post $cpost) {
 	elseif('leyka_campaign' == $cpost->post_type ) {
 		
 		$cat = get_the_term_list($cpost->ID, 'campaign_cat', '<span class="category">', ', ', '</span>');
-		$meta[] = $cat;
+		if(!empty($cat)){
+			$meta[] = $cat;
+		}
+		
 		$sep = rdc_get_sep('&middot;');	
 	}
 	elseif('project' == $cpost->post_type) {
