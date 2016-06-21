@@ -5,9 +5,21 @@
  **/
 
 $cpost = get_queried_object(); 
- 
+
+
 get_header();
+
+if(has_term('programms', 'campaign_cat', $cpost)){
 ?>
+<article id="single-page" class="main-content tpl-page-fullwidth project-page">
+	<div id="rdc_sharing" class="regular-sharing hide-upto-medium"><?php echo rdc_social_share_no_js();?></div>
+		
+	<div class="container">
+		<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
+	</div>
+</article>
+
+<?php } else { ?>
 <article class="main-content leyka-campaign">
 <div class="container">
 	<header class="entry-header-full">
@@ -36,4 +48,6 @@ get_header();
 </div>
 </article>
 <?php
+} //has terms
+
 get_footer();

@@ -271,7 +271,18 @@ function rdc_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 	return $src;
 }
 
+/** Cards for campaigns **/
+function tst_leyka_campaign_card($cpost) {
 
-
+?>
+<article class="tpl-campaign card"><a href="<?php echo $pl; ?>" class="entry-link">	
+	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
+	<div class="entry-data">
+		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+		<div class="entry-meta"><?php //echo apply_filters('rdc_the_title', $cpost->post_excerpt);?></div>
+	</div>
+</a></article>
+<?php
+}
 
 

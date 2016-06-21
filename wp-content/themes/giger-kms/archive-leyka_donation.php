@@ -4,11 +4,12 @@
  **/
 
 $campaign_slug = get_query_var('leyka_campaign_filter');
-$campaign = null;
+$campaign = null; var_dump($campaign_slug);
 
-if($campaign_slug) {	
-	if($campaign = get_posts(array('post_type' => 'leyka_campaign', 'post_name' => $campaign_slug)))
+if($campaign_slug) {
+	if($campaign = get_posts(array('post_type' => 'leyka_campaign', 'name' => $campaign_slug))){		
 		$campaign = reset($campaign);		
+	}
 }
 
 get_header();
