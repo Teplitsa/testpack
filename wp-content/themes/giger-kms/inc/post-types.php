@@ -127,7 +127,7 @@ function rdc_custom_content(){
 	));
 	
 	/** Post types **/
-	register_post_type('project', array(
+	/*register_post_type('project', array(
         'labels' => array(
             'name'               => 'Программы',
             'singular_name'      => 'Программа',
@@ -162,7 +162,7 @@ function rdc_custom_content(){
         'taxonomies'          => array(),
     ));
 	
-	/*register_post_type('event', array(
+	register_post_type('event', array(
         'labels' => array(
             'name'               => 'События',
             'singular_name'      => 'Событие',
