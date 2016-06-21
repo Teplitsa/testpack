@@ -374,11 +374,10 @@ function rdc_custom_metaboxes() {
 	));
 	
 	$event_cmb->add_field( array(
-		'name'    => 'Город',		
-		'default' => '',
+		'name'    => 'Город',
 		'id'      => 'event_city',
 		'type'    => 'text',
-		'default' => 'Великий Новгород'
+		'default' => ''
 	));
 	
 	$event_cmb->add_field( array(
@@ -401,9 +400,7 @@ function rdc_custom_metaboxes() {
 		'id'      => 'event_participants',
 		'type'    => 'text'		
 	));
-	
-	
-	
+
 	/* People tax */
 	$person_cat_term = new_cmb2_box( array(
 		'id'               => 'person_cat_data',
@@ -411,7 +408,7 @@ function rdc_custom_metaboxes() {
 		'object_types'     => array( 'term' ), 
 		'taxonomies'       => array( 'person_cat' )		
 	));
-	
+
 	$person_cat_term->add_field( array(
 		'name'    => 'Изображение заставки',		
 		'id'      => 'featured_action_image',
@@ -424,7 +421,7 @@ function rdc_custom_metaboxes() {
 			'add_upload_file_text' => 'Добавить изображение' // Change upload button text. Default: "Add or Upload File"
 		),
 	) );
-	
+
 	$person_cat_term->add_field( array(
 		'name'     => 'Заголовок',
 		'desc'     => 'Текст заголовка на заставке',
@@ -452,4 +449,39 @@ function rdc_custom_metaboxes() {
 		'id'       => 'featured_action_link_text',
 		'type'     => 'text'		
 	));
+
+//    if(defined(LEYKA_VERSION)) {
+//        echo '<pre>' . print_r(Leyka_Campaign_Management::$post_type, 1) . '</pre>';
+        /** Campaigns **/
+        $campaign_cmb = new_cmb2_box( array(
+            'id'            => 'campaign_settings_metabox',
+            'title'         => 'Дополнительные параметры кампании',
+            'object_types'  => array('leyka_campaign',), // Post type
+            'context'       => 'normal',
+            'priority'      => 'high',
+            'show_names'    => true, // Show field names on the left
+            //'show_on_cb'    => 'tst_show_on_general_pages',
+            //'cmb_styles'    => false, // false to disable the CMB stylesheet
+            // 'closed'     => true, // Keep the metabox closed by default
+        ));
+
+        $campaign_cmb->add_field(array(
+            'name'    => 'Город',
+            'id'      => 'campaign_child_city',
+            'type'    => 'text',
+            'default' => ''
+        ));
+        $campaign_cmb->add_field(array(
+            'name'    => 'Диагноз',
+            'id'      => 'campaign_child_diagnosis',
+            'type'    => 'text',
+            'default' => ''
+        ));
+        $campaign_cmb->add_field(array(
+            'name'    => 'Возраст',
+            'id'      => 'campaign_child_age',
+            'type'    => 'text',
+            'default' => ''
+        ));
+//    }
 }
