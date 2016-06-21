@@ -51,8 +51,18 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
 			'posts_per_page' => array(
 				'type' => 'text',
 				'label' => 'Количество (по умолчанию - все)'
-			)
+			),
 			
+			'format' => array(
+				'type' => 'select',
+				'label' => 'Формат',
+				'default' => 'default',
+				'options' => array(
+					'project' => 'Карточка программы',
+					'child'   => 'Карточка ребенка',
+					'default'  => 'Карточка помощи'					
+				)
+			),
 			/*'prog_bar' => array(
 				'type' => 'checkbox',
 				'label' => 'Выводить градусник',
@@ -68,7 +78,8 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
 			'exclude_ids' 	=> sanitize_text_field($instance['exclude_ids']),			
 			'tax_terms'  	=> sanitize_text_field($instance['tax_terms']),
 			//'nolinks'  		=> (bool)($instance['nolinks']),	
-			'posts_per_page'=> (int)$instance['posts_per_page']
+			'posts_per_page'=> (int)$instance['posts_per_page'],
+			'format'    	=> $instance['format']		
 		);
 	}
 	
@@ -118,13 +129,15 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
         $posts = get_posts($params);
 		
 		$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4 exlg-cols-5";
-		$callback = 'tst_leyka_campaign_card';
+		$callback = 'krb_default_campaign_card';
 		
-		if(false !== strpos($tax_terms, 'programms')){
+		if($format == 'project') {
 			$loop_css = "cards-loop sm-cols-2 md-cols-2 lg-cols-3";
-			$callback = 'rdc_project_card';
+			$callback = 'krb_project_campaign_card';
 		}
-				
+		elseif($format == 'child') {
+			$callback = 'krb_child_campaign_card';	
+		}
 
         if($posts && is_callable($callback)) {		
 			echo $args['before_widget'];

@@ -269,8 +269,8 @@ function rdc_custom_content(){
 	
 	//pages
 	add_post_type_support('page', 'excerpt');
-	add_post_type_support('page', 'thumbnail');	
-	
+	add_post_type_support('page', 'thumbnail');
+		
 	//remove post tags
 	unregister_taxonomy_for_object_type('post_tag', 'post');
 }
@@ -444,11 +444,35 @@ function rdc_custom_metaboxes() {
 	));
 	
 	$person_cat_term->add_field( array(
-		'name'     => 'Тексты ссылки',
+		'name'     => 'Текст ссылки',
 		'desc'     => 'Текст на кнопке',
 		'id'       => 'featured_action_link_text',
 		'type'     => 'text'		
 	));
+	
+	/* Campaign tax */
+	$campaign_cat_term = new_cmb2_box( array(
+		'id'               => 'campaign_cat_data',
+		'title'            => 'Опции шаблона',
+		'object_types'     => array( 'term' ), 
+		'taxonomies'       => array( 'campaign_cat' )		
+	));
+	
+	$campaign_cat_term->add_field( array(
+		'name'     => 'Обратная ссылка',
+		'desc'     => 'Адрес ссылки, позволяющей вернуться в раздел',
+		'id'       => 'term_back_url',
+		'type'     => 'text_url'		
+	));
+	
+	$campaign_cat_term->add_field( array(
+		'name'     => 'Текст обратной ссылки',
+		'desc'     => 'Текст ссылки, позволяющей вернуться в раздел',
+		'id'       => 'term_back_text',
+		'type'     => 'text'		
+	));
+	
+	
 
 //    if(defined(LEYKA_VERSION)) {
 //        echo '<pre>' . print_r(Leyka_Campaign_Management::$post_type, 1) . '</pre>';
