@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6d3b44608c25ee11f7eae908813d3c5d",
-    "content-hash": "80f58f21c972576301010e2abd34865c",
+    "hash": "a46b280ad0637bd6be4000d6c66e83aa",
+    "content-hash": "f24a9940a66bbed8cb7c6adf31114b2d",
     "packages": [
         {
             "name": "composer/installers",
@@ -398,15 +398,15 @@
         },
         {
             "name": "wpackagist-plugin/formidable",
-            "version": "2.02.02",
+            "version": "2.02.03",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/formidable/",
-                "reference": "tags/2.02.02"
+                "reference": "tags/2.02.03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.02.zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.03.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -598,15 +598,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.3.0",
+            "version": "3.3.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.3.0"
+                "reference": "tags/3.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.0.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -717,6 +717,46 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/post-duplicator/"
+        },
+        {
+            "name": "wpackagist-plugin/post-type-converter",
+            "version": "0.6",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/post-type-converter/",
+                "reference": "tags/0.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/post-type-converter.0.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/post-type-converter/"
+        },
+        {
+            "name": "wpackagist-plugin/term-management-tools",
+            "version": "1.1.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/term-management-tools/",
+                "reference": "tags/1.1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/term-management-tools.1.1.4.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/term-management-tools/"
         }
     ],
     "aliases": [],
@@ -740,7 +780,9 @@
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
         "wpackagist-plugin/post-duplicator": 0,
-        "wpackagist-plugin/disable-wordpress-updates": 0
+        "wpackagist-plugin/disable-wordpress-updates": 0,
+        "wpackagist-plugin/term-management-tools": 0,
+        "wpackagist-plugin/post-type-converter": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,

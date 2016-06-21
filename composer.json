@@ -61,7 +61,9 @@
         "wp-sync-db/wp-sync-db" : "dev-master",
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
         "wpackagist-plugin/post-duplicator" : "@stable",
-        "wpackagist-plugin/disable-wordpress-updates": "@stable"
+        "wpackagist-plugin/disable-wordpress-updates": "@stable",
+        "wpackagist-plugin/term-management-tools": "@stable",
+        "wpackagist-plugin/post-type-converter": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",

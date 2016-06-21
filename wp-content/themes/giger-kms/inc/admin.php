@@ -171,8 +171,16 @@ function rdc_add_menu_items(){
                     'Настройки главной',
                     'edit_pages',
                     'post.php?post='.$id.'&action=edit'                    
+    );
+	
+	add_submenu_page('leyka',
+                    'Категории',
+                    'Категории',
+                    'leyka_manage_donations',
+                    'edit-tags.php?taxonomy=campaign_cat&post_type=leyka_campaign'       
     );   
 }
+
 
 
 /** Visual editor **/
