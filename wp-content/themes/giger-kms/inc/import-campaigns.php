@@ -17,6 +17,9 @@
                 $old_campaign = get_posts(array('meta_key' => '_old_site_id', 'meta_value' => $line[0],));
                 if( !$old_campaign ) {
 
+                    echo '<pre>' . print_r($line, 1) . '</pre>';
+                    continue;
+
                     echo '<pre>' . print_r('Campaign #'.$line[0].' not found, inserting...', 1) . '</pre>';
                     $campaign_id = wp_insert_post(array(
                         'post_date' => $line[1],
@@ -30,10 +33,13 @@
                         'post_name' => $line[8],
                         'post_modified' => $line[2],
                         'meta_input' => array(
-//                            '' => $line[],
-//                            '' => $line[],
-//                            '' => $line[],
-//                            '' => $line[],
+                            'target_state' => $line[67],
+                            'is_finished' => !!$line[68],
+                            'campaign_target' => $line[69],
+                            'campaign_template' => $line[70],
+                            'payment_title' => $line[71],
+                            'count_views' => $line[77],
+                            'count_submits' => $line[78],
 //                            '' => $line[],
 //                            '' => $line[],
 //                            '' => $line[],
