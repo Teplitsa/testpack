@@ -162,6 +162,9 @@ function rdc_posted_on(WP_Post $cpost) {
 		if(!empty($cat)){
 			$meta[] = $cat;
 		}
+		else {
+			$meta[] = "<span class='category'>".__('Campaign', 'rdc')."</span>";
+		}
 		
 		$sep = rdc_get_sep('&middot;');	
 	}
