@@ -155,11 +155,12 @@ function rdc_posted_on(WP_Post $cpost) {
 		$meta = array_filter($meta);
 		
 		$sep = rdc_get_sep('&middot;');		
-	}
-	elseif('event' == $cpost->post_type ) {
+	}	
+	elseif('leyka_campaign' == $cpost->post_type ) {
 		
-		$event = new TST_Event($cpost);
-		return $event->posted_on_card();		
+		$cat = get_the_term_list($cpost->ID, 'campaign_cat', '<span class="category">', ', ', '</span>');
+		$meta[] = $cat;
+		$sep = rdc_get_sep('&middot;');	
 	}
 	elseif('project' == $cpost->post_type) {
 		
