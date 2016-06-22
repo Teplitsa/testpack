@@ -70,9 +70,9 @@
 
                 if($campaign_found) { // Update campaign's metadata
 
-                update_post_meta($new_site_campaign->ID, '', $line[]);
-                update_post_meta($new_site_campaign->ID, '', $line[]);
-                update_post_meta($new_site_campaign->ID, '', $line[]);
+                    update_post_meta($new_site_campaign->ID, 'campaign_child_age', $line[49]);
+                    update_post_meta($new_site_campaign->ID, 'campaign_child_city', $line[50]);
+                    update_post_meta($new_site_campaign->ID, 'campaign_child_diagnosis', $line[51]);
 //                update_post_meta($new_site_campaign->ID, '', $line[]);
 
                 } else { // Insert new post
@@ -128,6 +128,10 @@
                         echo '<pre>' . print_r($old_post, 1) . '</pre>';
 
                     }
+                }
+
+                if($campaign_found) {
+                    $campaigns_found++;
                 }
             }
 
