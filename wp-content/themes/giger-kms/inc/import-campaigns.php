@@ -8,10 +8,6 @@
     if($fp) {
 
         $line_number = 1;
-        $children_cat = get_term_by('slug', 'children', 'campaign_cat');
-        $you_helped_cat = get_term_by('slug', 'you-helped', 'campaign_cat');
-        $need_help_cat = get_term_by('slug', 'need-help', 'campaign_cat');
-
         while(($line = fgetcsv($fp, 0, '|', '"')) !== false) {
 
             if($line_number == 1) { // fields and indexes
