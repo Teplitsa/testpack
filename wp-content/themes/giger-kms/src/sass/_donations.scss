@@ -105,33 +105,39 @@
 }
 
 .leyka-field.amount-selector {
-	position: relative;
-	padding-right: 30px;
+	
+	.amount-mixed-wrap {
+		position: relative;
+		padding-right: 38px;
+	}
 	
 	.amount-variants-container {
 		@include form-text();
 		display: flex;
 		flex-flow: row wrap;
-		justify-content: space-between ;
+		justify-content: space-between;
+		
+		
 		@include placeholder {
 			color: red;
 		}
 		
-		
+		@include for(large-screens) {
+			flex-flow: row nowrap;
+		}
 	}
 		
 	.figure {
 		flex: 1 1 auto;
 		width: 25%;
 		min-width: 77px;
-		padding-top: 5px;
-		padding-bottom: 5px;		
+		padding-top: 7px;
+		padding-bottom: 7px;		
 	}
 	
 	span.figure { color: $color-link-two; }
 	
-	.donate_amount_flex {
-		margin-right: 10px;
+	.donate_amount_flex {		
 		flex: 1 1 auto;
 		border: 2px solid $color-link-two;
 		border-radius: 2px;
@@ -146,21 +152,20 @@
 		.donate_amount_flex { margin-top: 0; }
 	}
 	
-	.currency {
-		@include form-text(small);
-		text-transform: uppercase;
-		display: inline-block;
+	.currency {		
+		display: block;
 		width: 30px;
 		height: 27px;
 		position: absolute;
 		right: 0;
-		top: 5px;
+		bottom: 2px;
+		
 		span {
-			display: inline-block;
-			line-height: 27px;
+			@include form-text(small);
+			text-transform: uppercase;
 		}
 	}
-	
+		
 	.rdc-radio__button:checked + .rdc-radio__label {
 		&:before {
 			background-color: $color-link-two;
@@ -168,6 +173,8 @@
 		}
 	}
 }
+
+
 
 .entry-content .leyka-pm-icons,
 .leyka-pm-icons {

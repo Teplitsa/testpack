@@ -55,7 +55,8 @@
         "wpackagist-plugin/so-widgets-bundle": "@stable",
         "wpackagist-plugin/tiny-compress-images": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
-        "tst/cmb2-attached-posts" : ">=1.2.2"
+        "tst/cmb2-attached-posts" : ">=1.2.2",
+		"tst/leaflet-maps-marker-pro" : ">=2.7.2"
     },
     "require-dev" : {
         "wp-sync-db/wp-sync-db" : "dev-master",

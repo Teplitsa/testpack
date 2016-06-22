@@ -119,26 +119,6 @@ function rdc_event_card(WP_Post $cpost){
 <?php
 }
 
-/** Projects */
-function rdc_project_card(WP_Post $cpost){
-	
-	$pl = get_permalink($cpost);
-?>
-<article class="tpl-programm card"><a href="<?php echo $pl; ?>" class="entry-link">	
-	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
-	<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
-</a></article>
-<?php
-}
-
-function tst_project_card_group(WP_Post $cpost){
-	rdc_project_card($cpost);	
-}
-
-function tst_project_card_single(WP_Post $cpost){
-	rdc_project_card($cpost);	
-}
-
 
 /* People and orgs */
 function rdc_person_card(WP_Post $cpost, $linked = true){
@@ -274,15 +254,98 @@ function rdc_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 /** Cards for campaigns **/
 function tst_leyka_campaign_card($cpost) {
 
+	$callback = 'krb_default_campaign_card';
+	
+	if(has_term('programms', 'campaign_cat', $cpost)){
+		$callback = 'krb_project_campaign_card';
+	}
+	elseif(has_term('children', 'campaign_cat', $cpost)){
+		$callback = 'krb_child_campaign_card';
+	}
+	else {
+		//test for child term
+	}
+	
+	if(is_callable($callback)){
+		call_user_func_array($callback, array($cpost));
+	}
+}
+
+
+function krb_project_campaign_card($cpost) {
+	
+	$pl = get_permalink($cpost);
 ?>
-<article class="tpl-campaign card"><a href="<?php echo $pl; ?>" class="entry-link">	
+<article class="tpl-programm card"><a href="<?php echo $pl; ?>" class="entry-link">	
 	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
-	<div class="entry-data">
-		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-		<div class="entry-meta"><?php //echo apply_filters('rdc_the_title', $cpost->post_excerpt);?></div>
-	</div>
+	<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
 </a></article>
 <?php
 }
 
+function krb_child_campaign_card($cpost) {
+	
+	$pl = get_permalink($cpost);
+	$src = rdc_post_thumbnail_src($cpost, 'post-thumbnail');
+?>
+<article class="tpl-child card"><div class="child-card-content">
+	<a href="<?php echo $pl; ?>" class="thumbnail-link">
+		<div class="entry-preview"><div class="tpl-pictured-bg" style="background-image: url(<?php echo $src;?>);" ></div></div>
+		<div class="entry-data">		
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+			<?php krb_child_meta($cpost); ?>		
+		</div>
+	</a>
+	<?php if(function_exists('leyka_get_scale') && !has_term('rosemary', 'campaign_cat', $cpost)) {?>
+		<?php echo leyka_get_scale($cpost, array('show_button' => 1));?>
+	<?php }?>
+</div></article>
+<?php
+}
 
+function krb_child_meta($cpost){
+	
+	$age  = get_post_meta($cpost->ID, 'campaign_child_age', true);
+	$city = get_post_meta($cpost->ID, 'campaign_child_city', true);
+	$diag = get_post_meta($cpost->ID, 'campaign_child_diagnosis', true);
+	$summary = '';
+	
+	if(empty($age) && empty($city) && empty($diag)){
+		$summary = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
+	}
+?>
+	<div class="child-meta">	
+	<?php if(!empty($age)) { ?>	
+		<p><span class="label"><?php _e('Age', 'rdc');?>:</span> <?php echo apply_filters('rdc_the_title', $age);?></p>
+	<?php } ?>
+	<?php if(!empty($city)) { ?>	
+		<p><span class="label"><?php _e('City', 'rdc');?>:</span> <?php echo apply_filters('rdc_the_title', $city);?></p>
+	<?php } ?>
+	<?php if(!empty($diag)) { ?>	
+		<p><span class="label"><?php _e('Diagnosis', 'rdc');?>:</span> <?php echo apply_filters('rdc_the_title', $diag);?></p>
+	<?php } ?>
+	<?php if(!empty($summary)) { ?>	
+		<p><?php echo $summary;?></p>
+	<?php } ?>
+	</div>
+<?php
+}
+
+function krb_default_campaign_card($cpost) {
+
+	$pl = get_permalink($cpost);
+	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 25, true));
+	
+?>
+<article class="tpl-campaign default card">
+	<a href="<?php echo $pl; ?>" class="thumbnail-link">
+	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
+	<div class="entry-data">		
+		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+		<div class="entry-summary"><?php echo $ex;?></div>
+		<div class="entry-help"><span><?php _e('Donate', 'rdc');?></span></div>
+	</div>
+	</a>
+</article>
+<?php
+}

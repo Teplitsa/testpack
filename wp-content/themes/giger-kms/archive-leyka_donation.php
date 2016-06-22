@@ -46,7 +46,7 @@ get_header();
 		}
 		else {
 			echo "<p>";
-			_e();
+			_e('No donations yet', 'rdc');
 			echo "</p>";
 		}
 	?>
