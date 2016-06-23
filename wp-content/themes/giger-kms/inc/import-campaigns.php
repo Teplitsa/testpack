@@ -75,11 +75,11 @@
 
                     echo '<pre>' . print_r($line[0].' - campaign found: '.$old_campaign->ID, 1) . '</pre>';
 
-                    $new_site_file = str_replace('/', '\\', $uploads_dir['basedir'].'/'.$line[20]);
-                    $new_site_dirname = dirname($new_site_file);
-                    $new_site_filename = ctl_sanitize_title(basename($new_site_file));
-
                     if($line[20]) {
+
+                        $new_site_file = str_replace('/', '\\', $uploads_dir['basedir'].'/'.$line[20]);
+                        $new_site_dirname = dirname($new_site_file);
+                        $new_site_filename = ctl_sanitize_title(basename($new_site_file));
 
                         $file_uploads_subdir = str_replace('/'.basename($line[20]), '', $line[20]);
                         if( !file_exists($new_site_dirname.'\\'.$new_site_filename) ) { // Thumbnail URL on the old site
