@@ -16,14 +16,14 @@ get_header();
 	</header>
 	
 	<div class="frame">
-		<main class="bit md-8 lg-6">
+		<main class="bit md-8 lg-7">
 		<div class="campaign-form">
 				<?php //echo apply_filters('the_content', ''); ?>
 				<?php rdc_donation_form(); ?>
 			</div>
 		</main>
 	
-		<div id="rdc_sidebar" class="bit md-4 lg-offset-2">
+		<div id="rdc_sidebar" class="bit md-4 lg-offset-1">
 			<div class="widget donation_cta red"><?php echo apply_filters('rdc_the_content', $cpost->post_content); ?></div>
 			<div class="widget donation_history">
 				<h3><?php _e('Our supporters', 'rdc');?></h3>

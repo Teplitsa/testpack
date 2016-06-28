@@ -32,7 +32,7 @@ get_header(); ?>
 		<div class="lead"><?php echo apply_filters('rdc_the_content', $cpost->post_excerpt); ?></div>
 	</header>
 	
-	<?php if($format == 'introimg' && $cpost->post_type != 'project'){ ?>
+	<?php if($format == 'introimg'){ ?>
 	<section class="entry-preview introimg">		
 		<div class="tpl-pictured-bg" style="background-image: url(<?php echo $thumbnail;?>);" ></div>		
 	</section>
@@ -41,13 +41,13 @@ get_header(); ?>
 	<div class="frame">
 		<main class="bit md-8">		
 			
-		<?php if($format == 'standard' && $cpost->post_type != 'project') {
+		<?php if($format == 'standard') {
 			$thumb = rdc_post_thumbnail($cpost->ID, 'medium-thumbnail', false);
 			if($thumb) {
 		?>
 			<div class="entry-preview"><?php echo $thumb;?></div>
 		<?php } ?>
-		<?php } elseif($format == 'introvid' && $cpost->post_type != 'project') { ?>
+		<?php } elseif($format == 'introvid') { ?>
 			<div class="entry-preview introvid player">
 				<?php echo apply_filters('the_content', $video);?>
 			</div>

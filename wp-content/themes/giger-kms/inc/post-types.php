@@ -299,7 +299,33 @@ function rdc_custom_metaboxes() {
 		'type'    => 'textarea_small',
 	));
 	
+	/** Project **/
+    $format_cmb = new_cmb2_box( array(
+        'id'            => 'project_format_metabox',
+        'title'         => 'Настройки формата',
+        'object_types'  => array( 'project'), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+		//'show_on_cb'    => 'tst_show_on_general_pages',		
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
 	
+	
+	//format
+	$format_cmb->add_field( array(
+		'name'             => 'Шаблон',
+		'desc'             => 'Укажите тип шаблона',
+		'id'               => 'template_format',
+		'type'             => 'select',
+		'show_option_none' => false,
+		'default'          => 'general',
+		'options'          => array(
+			'general' => 'Стандартный',			
+			'builder' => 'Конструктор'
+		),
+	));
 	
 	/** Events **/
     $event_cmb = new_cmb2_box( array(

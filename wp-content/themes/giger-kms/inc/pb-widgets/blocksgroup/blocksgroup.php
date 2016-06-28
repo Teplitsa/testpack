@@ -130,7 +130,7 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 		$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4 exlg-cols-5";
 		
 		if($instance['post_type'] == 'project'){
-			$loop_css = "cards-loop sm-cols-2 md-cols-2 lg-cols-3";
+			$loop_css = "cards-loop sm-cols-2 md-cols-2 lg-cols-4";
 		}
 		
 		if($instance['post_type'] == 'org'){
