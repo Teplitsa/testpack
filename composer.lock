@@ -109,16 +109,16 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.5.2",
+            "version": "4.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "e992d00a34ea84d55c80023d27d5bcb839069add"
+                "reference": "f5c6f4dd899e6365ddf2752d2705ed1de7e10715"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/e992d00a34ea84d55c80023d27d5bcb839069add",
-                "reference": "e992d00a34ea84d55c80023d27d5bcb839069add",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/f5c6f4dd899e6365ddf2752d2705ed1de7e10715",
+                "reference": "f5c6f4dd899e6365ddf2752d2705ed1de7e10715",
                 "shasum": ""
             },
             "require": {
@@ -142,7 +142,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2016-05-06 18:16:20"
+            "time": "2016-06-21 16:31:21"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -318,7 +318,7 @@
         },
         {
             "name": "wpackagist-plugin/cmb2",
-            "version": "2.2.1",
+            "version": "2.2.2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/cmb2/",
@@ -398,15 +398,15 @@
         },
         {
             "name": "wpackagist-plugin/formidable",
-            "version": "2.02.02",
+            "version": "2.02.03",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/formidable/",
-                "reference": "tags/2.02.02"
+                "reference": "tags/2.02.03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.02.zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.03.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -418,15 +418,15 @@
         },
         {
             "name": "wpackagist-plugin/leyka",
-            "version": "2.2.9.3",
+            "version": "2.2.10",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/leyka/",
-                "reference": "tags/2.2.9.3"
+                "reference": "tags/2.2.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.9.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.10.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -518,15 +518,15 @@
         },
         {
             "name": "wpackagist-plugin/so-widgets-bundle",
-            "version": "1.5.11",
+            "version": "1.6.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/so-widgets-bundle/",
-                "reference": "tags/1.5.11"
+                "reference": "tags/1.6.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.5.11.zip",
+                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.6.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -598,15 +598,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.2.5",
+            "version": "3.3.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.2.5"
+                "reference": "tags/3.3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.2.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.2.zip",
                 "reference": null,
                 "shasum": null
             },
