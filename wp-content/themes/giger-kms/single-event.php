@@ -62,10 +62,12 @@ get_header(); ?>
 	<div class="frame">
 		<main class="bit md-8">		
 			
-		<?php if($format == 'standard') { ?>
-			<div class="entry-preview">
-				<?php echo rdc_post_thumbnail($event->ID, 'medium-thumbnail');?>						
-			</div>
+		<?php if($format == 'standard') {
+			$thumb = rdc_post_thumbnail($event->ID, 'medium-thumbnail', false);
+			if($thumb) {
+		?>
+			<div class="entry-preview"><?php echo $thumb;?></div>
+		<?php } ?>
 		<?php } elseif($format == 'introvid') { ?>
 			<div class="entry-preview introvid player">
 				<?php echo apply_filters('the_content', $video);?>

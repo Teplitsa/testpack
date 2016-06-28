@@ -359,3 +359,47 @@
 .intro-head-content + .mobile-sharing {
 	margin-top: $base - 8px;
 }
+
+.so-panel.widget_nav_menu {
+	
+	ul {
+		margin: 0;
+	}
+	
+	li {
+		list-style-type: none;
+		&:before { display: none; }
+	}
+	
+	a {
+		display: inline-block;
+		font-size: 1.2em;
+		padding: 5px 12px;
+		white-space: nowrap; 
+	}
+	
+	.current-menu-item {
+		a {
+			background: $color-link-three;
+			color: $color-white;
+		}
+	}
+	
+	.inpage-h-menu { 
+		ul { margin-left: -12px; }
+		
+		li {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			
+			&.current-menu-item:first-child {
+				margin-left: 12px;
+			}
+			
+			a {
+				padding: 5px 12px;
+			}
+		}		
+	}
+}

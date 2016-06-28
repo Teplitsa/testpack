@@ -41,10 +41,12 @@ get_header(); ?>
 	<div class="frame">
 		<main class="bit md-8">		
 			
-		<?php if($format == 'standard' && $cpost->post_type != 'project') { ?>
-			<div class="entry-preview">
-				<?php echo rdc_post_thumbnail($cpost->ID, 'medium-thumbnail');?>						
-			</div>
+		<?php if($format == 'standard' && $cpost->post_type != 'project') {
+			$thumb = rdc_post_thumbnail($cpost->ID, 'medium-thumbnail', false);
+			if($thumb) {
+		?>
+			<div class="entry-preview"><?php echo $thumb;?></div>
+		<?php } ?>
 		<?php } elseif($format == 'introvid' && $cpost->post_type != 'project') { ?>
 			<div class="entry-preview introvid player">
 				<?php echo apply_filters('the_content', $video);?>

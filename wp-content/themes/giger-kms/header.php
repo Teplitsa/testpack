@@ -20,7 +20,7 @@
 <header id="site_header" class="site-header">
 	
 	<div class="site-header-panel">
-		<div class="container">
+		<div class="container-wide">
 			
 		<div class="site-panel-row">
 			<div class="site-branding site-panel-cell">				

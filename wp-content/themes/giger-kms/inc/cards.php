@@ -246,11 +246,11 @@ function rdc_get_default_post_thumbnail($type = 'default_thumbnail', $size){
 	return $img;
 }
 
-function rdc_post_thumbnail($post_id, $size = 'post-thumbnail'){
+function rdc_post_thumbnail($post_id, $size = 'post-thumbnail', $default = true){
 	
 	$thumb = get_the_post_thumbnail($post_id, $size);
 	
-	if(!$thumb){
+	if(!$thumb && $default){
 		$thumb = rdc_get_default_post_thumbnail('default_thumbnail', $size);
 	}
 			
