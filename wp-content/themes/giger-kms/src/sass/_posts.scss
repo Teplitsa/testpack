@@ -548,3 +548,45 @@
 		height: auto;
 	}
 }
+
+/** Store **/
+.tpl-storeitem {
+	
+	.entry-preview {
+		width: 100%;
+		height: 0;
+		padding-bottom: 65%;
+		position: relative;
+			
+		.tpl-pictured-bg {
+			position: absolute;
+			z-index: 2;
+		}
+	}
+	
+	.entry-data {
+		position: relative;
+	}
+	
+	.entry-price {
+		@include post-meta();
+		background: $color-link-two;
+		position: absolute;
+		top: 0;
+		@include transform(translateY(-100%));
+		z-index: 100;
+	}
+	
+	.entry-title {
+		@include post-title();
+		margin: 0;				
+		padding-top: $base/2;		
+	}
+	
+	.entry-summary { 
+		@include body-text(small);
+		color: $color-text;
+		margin-top: $base;
+	}
+}
+	

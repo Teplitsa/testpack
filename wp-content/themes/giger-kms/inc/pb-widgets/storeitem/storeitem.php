@@ -1,18 +1,18 @@
 <?php
 /*
-Widget Name: [TST] Заставка страницы
-Description: Заставка для страниц с изображением и заголовком
+Widget Name: [TST] Товар в магазине
+Description: Вывод карточки товара
 */
 
-class IST_PB_PageHeader_Widget extends SiteOrigin_Widget {
+class TST_StoreItem_Widget extends SiteOrigin_Widget {
 	
 	function __construct() {
 		
 		parent::__construct(
-			'ist-pageheader',
-			'[TST] Заставка страницы',
+			'tst-storeitem',
+			'[TST] Товар в магазине',
 			array(
-				'description' => 'Заставка для страниц с изображением и заголовком'				
+				'description' => 'Вывод карточки товара'				
 			),
 			array(
 				
@@ -48,30 +48,26 @@ class IST_PB_PageHeader_Widget extends SiteOrigin_Widget {
 				'label' => __('Title text', 'rdc'),
 			),
 			
-			'subtitle' => array(
+			'description' => array(
 				'type' => 'textarea',
-				'label' => __('Sub title text', 'rdc'),
+				'label' => __('Description', 'rdc'),
 				'rows' => 4
 			),
 			
-			'extend_width' => array(
-				'type' => 'checkbox',
-				'default' => false,
-				'label' => __('Extend Width', 'rdc'),
-				'description' => 'Макет шире основной колонки',
+			'price' => array(
+				'type' => 'text',
+				'label' => __('Price (in RUR)', 'rdc'),
 			),
-			
-						
 		);
 	}
 	
 	/** prepare data for template **/	
 	public function get_template_variables( $instance, $args ) {
 		return array(
-			'title'    => $instance['title'],
-			'subtitle' => $instance['subtitle'],			
-			'image'    => (int)$instance['image'],			
-			'extend_width' => $instance['extend_width'],
+			'title'			=> $instance['title'],
+			'description'	=> $instance['description'],			
+			'image'			=> (int)$instance['image'],
+			'price'			=> (int)$instance['price']
 		);
 	}
 	
@@ -101,18 +97,28 @@ class IST_PB_PageHeader_Widget extends SiteOrigin_Widget {
 		
 		$css_name = $this->generate_and_enqueue_instance_styles( $instance );
 		
-		echo $args['before_widget'];
-		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
+			echo $args['before_widget'];
+			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
+			
+			$src = wp_get_attachment_image_src($image, 'post-thumbnail');
+			$src = ($src) ? $src[0] : '';
+		?>
+			<article class="tpl-storeitem">
+				<div class="entry-preview"><div class="tpl-pictured-bg" style="background-image: url(<?php echo $src;?>);" ></div></div>
+				<div class="entry-data">
+					<div class="entry-price"><?php printf('%s руб.', $price);?></div>
+					<h4 class="entry-title"><?php echo apply_filters('rdc_the_title', $title);?></h4>
+					<div class="entry-summary"><?php echo apply_filters('rdc_the_content', $description);?></div>		
+				</div>
+			</article>
+		<?php	
+			echo '</div>';
+			echo $args['after_widget'];
 		
-		//card
-		rdc_intro_card_markup($title, $subtitle, $image, '', '', true, $extend_width);
-	
-		echo '</div>';
-		echo $args['after_widget'];
 	}
 	
 } //class
 
 //register
-siteorigin_widget_register('ist-pageheader', __FILE__, 'IST_PB_PageHeader_Widget');
+siteorigin_widget_register('tst-storeitem', __FILE__, 'TST_StoreItem_Widget');
 
