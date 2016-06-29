@@ -6,7 +6,7 @@
 
 .fixed-top {
 	position: fixed;
-	top: 95px;
+	top: $logo_full_h + $height_gap + 10px;
 }
 
 .fixed-bottom {
@@ -681,6 +681,8 @@
 
 //single
 .tpl-child-profile {
+	position: relative;
+	
 	.profile-meta {
 		margin-bottom: $gut/2;
 	}
