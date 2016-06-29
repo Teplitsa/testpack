@@ -160,7 +160,7 @@ $fixed_side: 222px;
 
 @mixin post-title($mod: default) {
 	font-family: $title;
-	color: $color-text-black;
+	color: $color-link-three;
 	font-weight: normal;
 	text-transform: none;
 	
@@ -223,7 +223,7 @@ $fixed_side: 222px;
 
 @mixin header-title($mod: default){
 	font-family: $heading;
-	color: $color-text-black;
+	color: $color-link-three;
 	font-weight: normal;
 	text-transform: uppercase;
 	
@@ -297,6 +297,15 @@ $fixed_side: 222px;
 		&:hover, &:focus, &:active {			
 			background: darken($color-link-two, 10%);
 			border-color: darken($color-link-two, 10%);			
+		}
+	}
+	@else if $mod == red {
+		background: $color-link-one;
+		border: 1px solid $color-link-one;
+		
+		&:hover, &:focus, &:active {			
+			background: darken($color-link-one, 10%);
+			border-color: darken($color-link-one, 10%);			
 		}
 	}
 }

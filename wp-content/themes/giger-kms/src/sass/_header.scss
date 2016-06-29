@@ -4,7 +4,7 @@
 $height_gap : 14px;
 
 $logo_small_h : 42px;
-$logo_small_w : 42px;
+$logo_small_w : 28px;
 
 $logo_full_w : 58px;
 $logo_full_h : 80px;
@@ -42,10 +42,10 @@ $full_height   : $logo_full_h + $height_gap;
 }
 
 .site-content {
-	padding-top: $logo_small_h + $height_gap + 1px;
+	padding-top: $logo_small_h + $height_gap;
 	
 	@include for(medium-screens) {
-		padding-top: $logo_full_h + $height_gap + 1px;
+		padding-top: $logo_full_h + $height_gap;
 	}
 }
 
@@ -92,24 +92,14 @@ $full_height   : $logo_full_h + $height_gap;
 .logo-name-cell {
 	display: none;
 	
-	@include for(small-screens) {
+	@include for(medium-screens) {
 		display: flex;
 		flex-flow: column nowrap;
 		justify-content: center;		
-		margin-left: $logo_small_w + $height_gap;
-		height: $logo_small_h + $height_gap;	
-	}
-	
-	@include for(medium-screens) {			
-		margin-left: $logo_full_w + $height_gap;
+		margin-left: $logo_full_w + 4px;
 		height: $logo_full_h + $height_gap;
 	}
-	
-	@include for(xxlarge-screens) {			
-		margin-left: $logo_full_w + 5px;
-		height: $logo_full_h + $height_gap;
-	}	
-	
+		
 	.logo-name {
 		flex: 0 0 auto;
 	}
@@ -177,9 +167,9 @@ h2.logo-name {
 	}
 	
 	#logo-small {
-		width: $logo_small_w + $height_gap;
+		width: $logo_small_w;
 		height: $logo_small_h + $height_gap;
-		text-align: center;
+		text-align: left;
 				
 		.pic-logo-small {
 			width: $logo_small_w;
@@ -201,9 +191,9 @@ h2.logo-name {
 		
 		@include for(medium-screens) {
 			display: block;
-			width: $logo_full_w + $height_gap;
+			width: $logo_full_w;
 			height: $logo_full_h + $height_gap;
-			text-align: center;
+			text-align: left;
 			
 			position: absolute;
 			left: 0;
@@ -211,7 +201,8 @@ h2.logo-name {
 			
 			.pic-logo {
 				margin-top: $height_gap/2 - 2px;
-				width: $logo_full_w;
+				//magic numbers to allow logo be correctly positioned with text
+				width: $logo_full_w - 8px;
 				height: $logo_full_h - 10px;
 			}
 		}
@@ -258,8 +249,8 @@ h2.logo-name {
 			color: inherit;			
 			line-height: 16px;
 			background: $color-link-two;
-			margin: $height_gap/2 0 0 $height_gap;			
-			padding: ($logo_small_h - 16px) / 2;
+			margin: $height_gap/2 +1px 0 0 $height_gap;			
+			padding: ($logo_small_h - 18px) / 2;
 			@include transition(background 0.35s);
 			
 			@include for(medium-screens) {

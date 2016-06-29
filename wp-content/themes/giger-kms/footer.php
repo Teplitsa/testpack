@@ -14,7 +14,7 @@ $footer_text = get_theme_mod('footer_text');
 ?>
 </div><!--  #site_content -->
 
-<div id="bottom_bar" class="bottom-bar"><div class="container-wide">	
+<div id="bottom_bar" class="bottom-bar"><div class="container">	
 	<div class="frame frame-wide">
 		<div class="bit md-9 lg-8">
 			<?php if(!is_page('subscribe'))	{ ?>
@@ -34,7 +34,7 @@ $footer_text = get_theme_mod('footer_text');
 	</div>
 </div></div>
 
-<footer class="site-footer"><div class="container-wide">		
+<footer class="site-footer"><div class="container">		
 	
 	<div class="widget-area"><?php dynamic_sidebar( 'footer-sidebar' );?></div>
 	<div class="hr"></div>

@@ -418,11 +418,11 @@
 		@include calc(width, '100% - 30px');
 		
 		span {
-			margin-left: 4px;
+			margin-left: 5px;
 			background: $color-white;
-			color: $color-text-black;
+			color: $color-link-three;
 			display: inline;
-			box-shadow: 4px 0 0 $color-white, -4px 0 0 $color-white;
+			box-shadow: 5px 0 0 $color-white, -5px 0 0 $color-white;
 			box-decoration-break: clone;
 		}
 	}
@@ -575,14 +575,16 @@
 
 .tpl-child {
 	background: $color-white;
-	//@include transition(all 0.3s);
+	@include transition(all 0.3s);
 		
 	a {
 		display: block;
 		flex: 1 0 auto;
 	}
-	a:hover {
+	
+	&:hover {
 		.entry-preview:after { background: rgba(0,0,0, 0.3); }
+		background: $color-link-two;
 	}
 	
 	.child-card-content {
@@ -621,7 +623,7 @@
 	text-align: center;
 	
 	a {
-		@include button();
+		@include button(red);
 		padding: 10px 24px;
 		font-size: 14px;
 		line-height: 16px;
@@ -640,7 +642,7 @@
 	
 	.collected {
 		height: 100%;
-		background: $color-link-two;
+		background: $color-link-one;
 	}
 }
 
@@ -679,7 +681,7 @@
 
 //single
 .tpl-child-profile {
-	.entry-title {
+	.profile-meta {
 		margin-bottom: $gut/2;
 	}
 	
@@ -704,7 +706,7 @@
 	}
 	
 	.leyka-scale-button {
-		text-align: right;
+		text-align: left;
 		padding: 0;
 	}
 	
@@ -714,5 +716,9 @@
 	
 	.leyka-scale-label {
 		padding: $base/2 0;	
+	}
+	
+	.widget_child_help {
+		margin-bottom: $gut*1.5;
 	}
 }
