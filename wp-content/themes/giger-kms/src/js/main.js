@@ -161,8 +161,8 @@ jQuery(document).ready(function($){
 	
 	/** Sticky elements **/
 	var position = $(window).scrollTop(), //store intitial scroll position
-		scrollTopLimit = ($('body').hasClass('adminbar')) ? 62+32 : 62,
-		fixedTopPosition = ($('body').hasClass('adminbar')) ? 86+32 : 86;
+		scrollTopLimit = ($('body').hasClass('adminbar')) ? 62+32 + 280 : 62 + 280,
+		fixedTopPosition = ($('body').hasClass('adminbar')) ? 95 + 32 + 280 : 95 + 280;
 		
 	
 	$(window).scroll(function () {
