@@ -212,3 +212,28 @@
 	}
 }
 
+/** Thnak you page **/
+.thank-you-leyka {
+	text-align: center;
+}
+
+.logo-inpage {
+	width: 100%;
+	text-align: center;
+	margin: $gut*1.5 0;
+	
+	.pic-logo {
+		
+		width: 200px;
+		height: 200px;
+		
+		@include for(small-screens) {
+			width: 300px;
+			height: 300px;
+		}
+		@include for(medium-screens) {
+			width: 500px;
+			height: 500px;
+		}
+	}
+}
