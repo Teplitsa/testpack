@@ -252,4 +252,22 @@ $i: 1; //widths
    $i: $i + 1;
 }
 
+.gallery_box_single {
+	margin: $base 0;
+}
 
+.gllr_image_row {
+	@include clearfix;
+	margin: 0 -1*$gut/2;
+	
+	.gllr_image_block {
+		float: left;
+		width: 25%;
+		padding: 0 $gut/2;
+		
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}

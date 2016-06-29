@@ -6,7 +6,7 @@
 
 .fixed-top {
 	position: fixed;
-	top: $logo_full_h + $height_gap + 10px;
+	top: $logo_full_h + $height_gap + 280px;
 }
 
 
@@ -368,12 +368,12 @@
 .regular-sharing {
 	position: absolute;
 	width: 45px;
-	height: 100%;
-	top: 0;
+	@include calc(height, '100% - 280px');
+	top: 280px;
 	left: 0;
 	z-index: 100;
 	
-	.single & .social-likes { padding-top: $gut; }
+	//.single & .social-likes { padding-top: $gut; }
 }
 	
 .mobile-sharing {	
