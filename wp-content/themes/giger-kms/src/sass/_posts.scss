@@ -9,6 +9,8 @@
 	top: $logo_full_h + $height_gap + 10px;
 }
 
+
+
 .fixed-bottom {
 	position: absolute;
 	bottom: 0;				
@@ -684,7 +686,7 @@
 	position: relative;
 	
 	.profile-meta {
-		margin-bottom: $gut/2;
+		margin-bottom: $gut;
 	}
 	
 	.entry-preview {
