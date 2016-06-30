@@ -148,7 +148,7 @@ $figure_line-height: 40px;
 	}
 	
 	.donate_amount_flex {		
-		border: 2px solid $color-link-three;
+		border: 2px solid $color-border-normal;
 		border-radius: 2px;
 		@include checkbox-text($figure_font_size);
 		line-height: $figure_line-height - 10px;

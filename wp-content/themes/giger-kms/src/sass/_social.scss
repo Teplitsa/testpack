@@ -49,7 +49,7 @@ $social_color: (
 	li {
 		float: left;
 		margin-right: 8px;
-		
+		margin-bottom: 8px; 
 		a {
 			@include social-button-link(46px, 20px);			
 			span { display: none; }
