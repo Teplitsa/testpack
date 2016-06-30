@@ -6,9 +6,7 @@
 .leyka-custom-template {
 	border: 1px solid $color-border-light;
 	background: $color-white;
-	box-shadow: 1px 2px 2px rgba(0,0,0, 0.08);
-	max-width: 640px;
-		
+	box-shadow: 1px 2px 2px rgba(0,0,0, 0.08);	
 }
 
 .leyka-payment-option {
@@ -104,59 +102,59 @@
 	}	
 }
 
+$figure_font_size: 28px;
+$figure_line-height: 40px;
+
 .leyka-field.amount-selector {
-	position: relative;
-	padding-right: 30px;
+	line-height: $figure_line-height;
 	
-	.amount-variants-container {
-		@include form-text();
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between ;		
+	.figure,
+	.figure-flex {
+		display: inline-block;
+		height: $figure_line-height;
+		margin-bottom: 8px;
+		
+		span {
+			height: $figure_line-height;
+		}
 	}
 		
 	.figure {
-		flex: 1 1 auto;
-		width: 25%;
-		min-width: 77px;
-		padding-top: 13px;
-		padding-bottom: 5px;
-		padding-left: 32px;
-		.rdc-radio__label { font-size: 28px;}
+		display: inline-block;
+		line-height: inherit;		
+		padding-left: 30px;	
+		
+		.rdc-radio__label {
+			@include checkbox-text($figure_font_size);
+			line-height: inherit;
+			
+			&:before {
+				width: 20px;
+				height: 20px;
+				top: 50%;
+				@include transform(translateY(-50%));
+				left: -30px;
+			}
+		}
+	}
+		
+	.figure-sep {		
+		@include form-text();
+		font-size: 18px;
+		line-height: inherit;
+		text-transform: uppercase;
+		color: $leyka_green;
+		margin-right: 8px;
 	}
 	
-	span.figure { color: $leyka_green; }
-	
-	.donate_amount_flex {
-		margin-right: 10px;
-		flex: 1 1 auto;
+	.donate_amount_flex {		
 		border: 2px solid $leyka_green;
 		border-radius: 2px;
-		@include checkbox-text(28px);
-		text-align: right;		
+		@include checkbox-text($figure_font_size);
+		line-height: $figure_line-height - 10px;
+		text-align: right;
 	}
 	
-	@include for(small-screens) {
-		.figure  {
-			width: 17%;					
-		}
-		.donate_amount_flex { margin-top: 0; }
-	}
-	
-	.currency {
-		@include form-text(small);
-		text-transform: uppercase;
-		display: inline-block;
-		width: 30px;
-		height: 27px;
-		position: absolute;
-		right: 0;
-		top: 5px;
-		span {
-			display: inline-block;
-			line-height: 27px;
-		}
-	}
 	
 	.rdc-radio__button:checked + .rdc-radio__label {
 		&:before {
@@ -164,7 +162,95 @@
 			border-color: $leyka_green;
 		}
 	}
+	
+	.currency {
+		@include form-text();
+		font-size: 18px;
+		line-height: inherit;
+		text-transform: uppercase;		
+		width: 70px;
+		margin-bottom: 8px;
+		
+		.leyka-screen-reader-text {
+			display: none;
+		}
+	}
+	
+	.currency-frame {
+		display: block;
+		line-height: inherit;		
+		width: 100%;
+		height: $figure_line-height;
+		text-align: left;
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+		
+		&:after {
+			content: '▾';
+			display: inline-block;
+			color: black;
+			font-size: 18px;
+			position: absolute;
+			top: -2px;
+			right: 0;
+			z-index: -1;
+		}
+		
+		span {				
+			background: $color-white;
+			width: 100%;
+			line-height: inherit;			
+			z-index: 10;
+		}
+		
+		select {
+			border: none;
+			width: 90px;
+			background: transparent;
+		}
+	}
+	
+	
 }
+
+//position with flexbox
+.currency-selector-row {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	
+	.currency-variants {
+		flex: 1 1 auto;
+	}
+	
+	.currency {
+		flex: 0 0 auto;
+		align-self: flex-end;
+	}
+}
+
+@include for(small-screens) {
+	.amount-variants-row {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: flex-start;
+		
+		.figure {
+			flex: 0 0 auto;
+			width: 20%;
+		}
+		
+		.figure-flex {
+			flex: 1 1 auto;
+			padding: 0 8px;
+			text-align: right;		
+		}
+	}
+}
+
 
 .leyka-pm-icons {
 	@include clearfix;
