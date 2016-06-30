@@ -94,8 +94,7 @@ function rdc_empty_icons($icons){
 
 /** Form template **/
 //custom amount field
-function rdc_amount_filed($form){
-	
+function rdc_amount_field($form){
 	
 	if(!defined('LEYKA_VERSION'))
 		return;
@@ -107,66 +106,39 @@ function rdc_amount_filed($form){
 		return; // Current currency isn't supported
 	}
 ?>
+
 <div class="leyka-field amount-selector amount mixed">
+	
+<div class="currency-selector-row" >
+	<div class="currency-variants">
 <?php
 	foreach($supported_curr as $currency => $data) {
 
 	$variants = explode(',', $data['amount_settings']['fixed']);?>
-	
-	<span class="<?php echo $currency;?> amount-variants-container" <?php echo $currency == $current_curr ? '' : 'style="display:none;"';?>>
-		<?php foreach($variants as $i => $amount) { ?>
-			<label class="figure rdc-radio" title="<?php _e('Please, specify your donation amount', 'leyka');?>">
-				<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button" <?php checked($i, 0);?>>
-				<span class="rdc-radio__label"><?php echo (int)$amount;?></span>
-			</label>
-		<?php } ?>
-		<span class="figure"><?php _e('or', 'rdc');?></span>
-		<input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6">
-	</span>	
+		<div class="<?php echo $currency;?> amount-variants-container" <?php echo $currency == $current_curr ? '' : 'style="display:none;"';?> >
+			<div class="amount-variants-row">
+				<?php foreach($variants as $i => $amount) { ?>
+					<label class="figure rdc-radio" title="<?php _e('Please, specify your donation amount', 'leyka');?>">
+						<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button" <?php checked($i, 0);?>>
+						<span class="rdc-radio__label"><?php echo (int)$amount;?></span>
+					</label>
+				<?php } ?>
+				
+				<label class="figure-flex"><span class="figure-sep"><?php _e('or', 'rdc');?></span><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6"></label>
+			</div>
+		</div>	
 	<?php } ?>
-	<span class="currency"><?php echo $form->get_currency_field();?></span>
-    <div class="leyka_donation_amount-error field-error"></div>
+	</div>
+	<div class="currency"><span class="currency-frame"><?php echo $form->get_currency_field();?></span></div>
+</div>
+
+<div class="leyka_donation_amount-error field-error"></div>
 	
 </div>
 <?php
 }
 
-function frl_amount_field(Leyka_Payment_Form $form) {
 
-    if( !defined('LEYKA_VERSION') ) {
-        return;
-    }
-
-    $supported_curr = leyka_get_active_currencies();
-    $current_curr = $form->get_current_currency();
-
-    if(empty($supported_curr[$current_curr])) {
-        return; // Current currency isn't supported
-    }?>
-
-    <div class="leyka-field amount-selector amount mixed">
-		
-		<div class="amount-mixed-wrap">
-        <?php foreach($supported_curr as $currency => $data) {
-			$variants = explode(',', $data['amount_settings']['fixed']);?>
-	
-			<span class="<?php echo $currency;?> amount-variants-container" <?php echo $currency == $current_curr ? '' : 'style="display:none;"';?>>
-				<?php foreach($variants as $amount) {?>
-					<label class="figure rdc-radio" title="<?php _e('Please, specify your donation amount', 'leyka');?>">
-						<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button">
-						<span class="rdc-radio__label"><?php echo (int)$amount;?></span>
-					</label>
-				<?php }?>
-				<span class="figure"><?php _e('or', 'leyka');?></span>
-				<input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6">
-			</span>
-			<?php } ?>
-			<span class="currency"><?php echo $form->get_currency_field();?></span>
-		</div>
-		
-        <div class="leyka_donation_amount-error field-error"></div>
-    </div>
-<?php }
 
 function rdc_donation_form($campaign_id = null){
 	global $leyka_current_pm;	
@@ -207,7 +179,7 @@ function rdc_donation_form($campaign_id = null){
 		if($leyka_current_pm->is_field_supported('amount') ) {
 			
 			//echo leyka_pf_get_amount_field();
-			frl_amount_field($leyka_current_pm);
+			rdc_amount_field($leyka_current_pm);
 		} //if amount
 		
 		echo leyka_pf_get_hidden_fields();	

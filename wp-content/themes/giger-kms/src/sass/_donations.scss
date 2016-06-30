@@ -17,7 +17,7 @@
 		@include header-title();
 		padding: $gut/2 $gut;		
 		cursor: pointer;		
-		border-top: 1px solid $color-border-link;		
+		border-top: 1px solid $color-border-link;
 	}
 		
 	.leyka-toggle-area {
@@ -33,7 +33,7 @@
 			display: block;
 			width: 100%;
 			height: 2px;
-			background: $color-link-two;
+			background: $color-link-one;
 			position: absolute;
 			top:0;
 			left: 0;
@@ -61,8 +61,8 @@
 		}
 		
 		a {
-			color: $color-link-two;
-			&:visited { color: $color-link-two; }
+			color: $color-link-three;
+			&:visited { color: $color-link-three; }
 			&:hover, &:focus, &:active {
 				text-decoration: underline;		
 			}
@@ -71,16 +71,16 @@
 		
 	.rdc-checkbox__input:checked + .rdc-checkbox__label {
 		&:before {
-			background-color: $color-link-two;
-			border-color: $color-link-two;
+			background-color: $color-link-one;
+			border-color: $color-link-one;
 		}
 	}
 	
-	.rdc-textfield__label:after { background-color: $color-link-two; }	
-	.rdc-textfield__input:focus ~ .rdc-textfield__label { color: $color-link-two; }
+	.rdc-textfield__label:after { background-color: $color-link-one; }	
+	.rdc-textfield__input:focus ~ .rdc-textfield__label { color: $color-link-one; }
 	
 	.rdc-submit-button { 
-		@include button(leyka);
+		@include button(red);
 	}
 	
 	.submit { position: relative; }
@@ -98,78 +98,162 @@
 		}
 		
 		.leyka-toggle-trigger {
-			color: $color-link-two;			
-			&:before { background: $color-link-two; }
+			color: $color-link-one;			
+			&:before { background: $color-link-one; }
 		}
 	}	
 }
 
+$figure_font_size: 28px;
+$figure_line-height: 40px;
+
 .leyka-field.amount-selector {
+	line-height: $figure_line-height;
 	
-	.amount-mixed-wrap {
-		position: relative;
-		padding-right: 38px;
-	}
-	
-	.amount-variants-container {
-		@include form-text();
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between;
+	.figure,
+	.figure-flex {
+		display: inline-block;
+		height: $figure_line-height;
+		margin-bottom: 8px;
 		
-		
-		@include placeholder {
-			color: red;
-		}
-		
-		@include for(large-screens) {
-			flex-flow: row nowrap;
+		span {
+			height: $figure_line-height;
 		}
 	}
 		
 	.figure {
-		flex: 1 1 auto;
-		width: 25%;
-		min-width: 77px;
-		padding-top: 7px;
-		padding-bottom: 7px;		
+		display: inline-block;
+		line-height: inherit;		
+		padding-left: 30px;	
+		
+		.rdc-radio__label {
+			@include checkbox-text($figure_font_size);
+			line-height: inherit;
+			
+			&:before {
+				width: 20px;
+				height: 20px;
+				top: 50%;
+				@include transform(translateY(-50%));
+				left: -30px;
+			}
+		}
 	}
-	
-	span.figure { color: $color-link-two; }
+		
+	.figure-sep {		
+		@include form-text();
+		font-size: 18px;
+		line-height: inherit;
+		text-transform: uppercase;
+		color: $color-link-three;
+		margin-right: 8px;
+	}
 	
 	.donate_amount_flex {		
-		flex: 1 1 auto;
-		border: 2px solid $color-link-two;
+		border: 2px solid $color-border-normal;
 		border-radius: 2px;
-		@include checkbox-text(18px);
-		text-align: right;		
+		@include checkbox-text($figure_font_size);
+		line-height: $figure_line-height - 10px;
+		text-align: right;
 	}
 	
-	@include for(small-screens) {
-		.figure  {
-			width: 17%;					
+	
+	.currency {
+		@include form-text();
+		font-size: 18px;
+		line-height: inherit;
+		text-transform: uppercase;		
+		width: 70px;
+		margin-bottom: 8px;
+		
+		.leyka-screen-reader-text {
+			display: none;
 		}
-		.donate_amount_flex { margin-top: 0; }
 	}
 	
-	.currency {		
+	.currency-frame {
 		display: block;
-		width: 30px;
-		height: 27px;
-		position: absolute;
-		right: 0;
-		bottom: 2px;
+		line-height: inherit;		
+		width: 100%;
+		height: $figure_line-height;
+		text-align: left;
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+		
+		&:after {
+			content: '▾';
+			display: inline-block;
+			color: black;
+			font-size: 18px;
+			position: absolute;
+			top: -2px;
+			right: 0;
+			z-index: -1;
+		}
 		
 		span {
-			@include form-text(small);
-			text-transform: uppercase;
+			display: inline-block;
+			background: $color-white;
+			width: 100%;
+			line-height: inherit;
+			height: $figure_line-height;
+			z-index: 10;
 		}
-	}
 		
+		select {
+			border: none;
+			width: 90px;
+			background: transparent;
+			@include form-text();
+			font-size: 18px;
+			line-height: inherit;
+			text-transform: uppercase;	
+		}
+		
+	}
+	
 	.rdc-radio__button:checked + .rdc-radio__label {
 		&:before {
-			background-color: $color-link-two;
-			border-color: $color-link-two;
+			background-color: $color-link-one;
+			border-color: $color-link-one;
+		}
+	}
+}
+
+//position with flexbox
+.currency-selector-row {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	
+	.currency-variants {
+		flex: 1 1 auto;
+	}
+	
+	.currency {
+		flex: 0 0 auto;
+		align-self: flex-end;
+	}
+}
+
+@include for(small-screens) {
+	.amount-variants-row {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: flex-start;
+		
+		.figure {
+			flex: 0 0 auto;
+			width: 20%;
+		}
+		
+		.figure-flex {
+			flex: 1 1 auto;
+			padding: 0 8px;
+			text-align: right;		
 		}
 	}
 }
@@ -197,12 +281,19 @@
 	}
 }
 
+#leyka-form-yandex_money {
+	.leyka-pm-icons li {
+		width: 100px;
+		img { margin-top: -10px;}
+	}
+}
+
 .leyka-pm-desc {
 	@include form-text(small);
 	margin-top: $gut;
 	a {
-		color: $color-link-two;
-		&:visited { color: $color-link-two; }
+		color: $color-link-three;
+		&:visited { color: $color-link-three; }
 		&:hover, &:focus, &:active {
 			text-decoration: underline;		
 		}
@@ -214,8 +305,8 @@
 	text-align: right;
 	
 	a {
-		color: $color-link-two;
-		&:visited { color: $color-link-two; }
+		color: $color-link-three;
+		&:visited { color: $color-link-three; }
 		&:hover, &:focus, &:active {
 			text-decoration: underline;		
 		}
@@ -244,7 +335,7 @@
 	background-color: $color-white;
 	
 	.leyka-modal-close {
-		background: $color-link-two;
+		background: $color-link-three;
 		color: $color-white;
 		width: 28px;
 		height: 28px;
@@ -353,7 +444,7 @@
 	display: inline-block;
 	padding: 0 2px ;
 	font-size: 11px;
-	color: $color-link-two;	
+	color: $color-link-one;	
 	
 	&.rdc-textfield__error {
 		bottom: 3px;
