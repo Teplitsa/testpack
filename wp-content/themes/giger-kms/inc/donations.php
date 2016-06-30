@@ -319,3 +319,26 @@ function rdc_donation_form($campaign_id = null){
 </div>
 <?php
 }
+
+
+/** save actions **/
+add_action('save_post_leyka_campaign', 'rdc_donations_actions', 2, 3);
+function rdc_donations_actions($post_ID, $post, $update){
+	
+	if(!class_exists('Leyka_Campaign'))
+		return;
+	
+	$camp = new Leyka_Campaign($post);
+	
+	if(!$camp->is_closed && !has_term('need-help', 'campaign_cat', $post)) {
+		$category = get_term_by('slug', 'need-help', 'campaign_cat');
+		if($category)
+			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);		
+	}
+	
+	if($camp->is_closed && !has_term(array('you-helped', 'rosemary'), 'campaign_cat', $post)){
+		$category = get_term_by('slug', 'you-helped', 'campaign_cat');
+		if($category)
+			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
+	}
+}

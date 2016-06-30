@@ -57,23 +57,39 @@ if(has_term('programms', 'campaign_cat', $cpost)){
 			<div class="entry-summary thnak-you"><?php echo apply_filters('rdc_entry_the_content', $thanks); ?></div>
 			<h4 class="archive-subtitle"><?php _e('From archive', 'rdc');?></h4>
 		<?php } ?>
-			<div class="entry-content"><?php echo apply_filters('rdc_entry_the_content', $cpost->post_content); ?></div>			
-			<div class="campaign-form"><?php rdc_donation_form(); ?></div>
+		
+			<div class="entry-content"><?php echo apply_filters('rdc_entry_the_content', $cpost->post_content); ?></div>
+			
+			<?php if(has_term(array('need-help'), 'campaign_cat', $cpost)) {?>
+				<div class="campaign-form"><?php rdc_donation_form(); ?></div>
+			<?php } ?>
 		</div>
 		
 		<div class="bit md-4 exlg-3 exlg-offset-1">			
-			<?php if(function_exists('leyka_get_scale') && !has_term('rosemary', 'campaign_cat', $cpost)) {?>
-				<div class="widget hide-upto-medium widget_child_help">
-					<h3><?php _e('Help now', 'rdc');?></h3>
+			<?php
+				if(function_exists('leyka_get_scale') && !has_term('rosemary', 'campaign_cat', $cpost)) {
+					
+					$c_campaign = new Leyka_Campaign($cpost);
+					$title = (has_term(array('need-help'), 'campaign_cat', $cpost)) ? __('Help now', 'rdc') : __(' Thank you!', 'rdc');
+									
+					if($c_campaign->target && $c_campaign->target > 0) {
+				?>
+				<div class="widget hide-upto-medium widget_child_help">				
+					<h3><?php echo $title;?></h3>
 					<?php echo leyka_get_scale($cpost, array('show_button' => 1));?>
 				</div>
-			<?php }?>
-			<div class="widget donation_history">
-				<h3><?php _e('Already helped', 'rdc');?></h3>
-				<?php echo leyka_get_donors_list($cpost->ID, array('num' => 10, 'show_purpose' => 0));?>
-				
-				<div class="all-link"><a href="<?php echo get_permalink($cpost);?>donations"><?php _e('Full list', 'rdc');?>&nbsp;&rarr;</a></div>
-			</div>
+			<?php }} ?>
+			<?php
+				if(function_exists('leyka_get_donors_list')) {
+					$dlist = leyka_get_donors_list($cpost->ID, array('num' => 10, 'show_purpose' => 0));
+				if(!empty($dlist)) {
+			?>
+				<div class="widget donation_history">					
+					<h3><?php _e('Already helped', 'rdc');?></h3>
+					<?php echo $dlist; ?>					
+					<div class="all-link"><a href="<?php echo get_permalink($cpost);?>donations"><?php _e('Full list', 'rdc');?>&nbsp;&rarr;</a></div>
+				</div>
+			<?php }} ?>
 		</div>	
 	</div>
 		
