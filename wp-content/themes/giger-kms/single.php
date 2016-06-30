@@ -7,7 +7,7 @@
 
 $cpost = get_queried_object(); 
 $format = rdc_get_post_format($cpost);
-$video = $thumbnail = '';
+$video = '';
 
 
 if($format == 'introvid'){
@@ -33,24 +33,18 @@ get_header(); ?>
 	</header>
 	
 	<?php if($format == 'introimg'){ ?>
-	<section class="entry-preview introimg">		
-		<div class="tpl-pictured-bg" style="background-image: url(<?php echo $thumbnail;?>);" ></div>		
-	</section>
+		<section class="entry-preview"><?php rdc_single_post_thumbnail($cpost->ID, 'full', 'introimg'); ?></section>
 	<?php } ?>
 		
 	<div class="frame">
 		<main class="bit md-8">		
 			
-		<?php if($format == 'standard') {
-			$thumb = rdc_post_thumbnail($cpost->ID, 'medium-thumbnail', false);
-			if($thumb) {
-		?>
-			<div class="entry-preview"><?php echo $thumb;?></div>
-		<?php } ?>
+		<?php if($format == 'standard') { ?>
+			<div class="entry-preview"><?php rdc_single_post_thumbnail($cpost->ID, 'medium-thumbnail'); ?></div>
+			
 		<?php } elseif($format == 'introvid') { ?>
-			<div class="entry-preview introvid player">
-				<?php echo apply_filters('the_content', $video);?>
-			</div>
+			<div class="entry-preview introvid player"><?php echo apply_filters('the_content', $video);?></div>
+			
 		<?php } ?>				
 			
 			<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>

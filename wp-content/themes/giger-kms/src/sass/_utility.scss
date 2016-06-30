@@ -402,7 +402,11 @@ $margin-base: 16px;
 	margin-bottom: $margin-base*2;
 	&:last-child { margin-bottom: 0; }
 	
-	
+	.wp-caption-text {
+		margin-top: $gut/4;
+		padding-left: 2px;
+		@include sub-title(small);
+	}
 }
 
 

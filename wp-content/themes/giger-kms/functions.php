@@ -10,7 +10,7 @@ define('TST_DOC_URL', 'https://kms.te-st.ru/site-help/');
  
  
 if ( ! isset( $content_width ) ) {
-	$content_width = 640; /* pixels */
+	$content_width = 800; /* pixels */
 }
 
 
@@ -29,7 +29,7 @@ function rdc_setup() {
 	set_post_thumbnail_size(640, 395, true ); // regular thumbnails	
 	add_image_size('square', 450, 450, true ); // square thumbnail 
 	add_image_size('medium-thumbnail', 790, 488, true ); // poster in widget	
-	//add_image_size('embed', 735, 430, true ); // fixed size for embedding
+	add_image_size('landscape-mini', 300, 185, true ); // fixed size for embedding
 	//add_image_size('cover', 400, 567, true ); // long thumbnail for pages
 
 	// Menus
@@ -48,12 +48,13 @@ add_action( 'init', 'rdc_setup', 30 );
 
 
 /** Custom image size for medialib **/
-//add_filter('image_size_names_choose', 'rdc_medialib_custom_image_sizes');
+add_filter('image_size_names_choose', 'rdc_medialib_custom_image_sizes');
 function rdc_medialib_custom_image_sizes($sizes) {
 	
 	$addsizes = apply_filters('rdc_medialib_custom_image_sizes', array(
-		//"thumbnail-landscape" => __("Landscape mini", 'rdc'),
-		"embed" => 'Фиксированный'
+		"landscape-mini" 	=> 'Горизонтальная миниатюра', 
+		"post-thumbnail" 	=> 'Стандартный', 
+		"medium-thumbnail" 	=> 'Фиксированный'
 	));
 		
 	return array_merge($sizes, $addsizes);

@@ -271,7 +271,42 @@ function rdc_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 	return $src;
 }
 
-
+function rdc_single_post_thumbnail($post_id, $size = 'post-thumbnail', $post_format = 'standard'){
+	
+	$thumb_id = get_post_thumbnail_id($post_id);
+	if(!$thumb_id)
+		return;
+	
+	$thumb = get_post($thumb_id);
+	$cap = (!empty($thumb->post_excerpt)) ? $thumb->post_excerpt : get_post_meta($thumb_id , '_wp_attachment_image_alt', true); //to_do make this real
+	
+	
+	if($post_format == 'standard'){
+?>
+	<figure class="wp-caption alignnone">
+		<?php echo wp_get_attachment_image($thumb_id, $size);?>
+		<?php if(!empty($cap)) { ?>
+			<figcaption class="wp-caption-text"><?php echo apply_filters('rdc_the_title', $cap);?></figcaption>
+		<?php } ?>
+	</figure>	
+<?php
+	
+	}
+	elseif($post_format == 'introimg'){		
+?>
+	<figure class="introimg-figure">
+		<div class="introimg">
+			<div class="tpl-pictured-bg" style="background-image: url(<?php echo get_the_post_thumbnail_url($post_id, $size);?>);" ></div>
+		</div>
+		<?php if(!empty($cap)) { ?>
+			<figcaption class="wp-caption-text"><?php echo apply_filters('rdc_the_title', $cap);?></figcaption>
+		<?php } ?>
+	</figure>
+<?php
+	}
+		
+	return $out;
+}
 
 
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6d3b44608c25ee11f7eae908813d3c5d",
-    "content-hash": "80f58f21c972576301010e2abd34865c",
+    "hash": "b27192c585ec1efb2bced40de24dfb44",
+    "content-hash": "aff8f264efde99b6d9c3ae9bb939877c",
     "packages": [
         {
             "name": "composer/installers",
@@ -598,15 +598,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.3.2",
+            "version": "3.3.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.3.2"
+                "reference": "tags/3.3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -699,6 +699,26 @@
             "homepage": "https://wordpress.org/plugins/force-regenerate-thumbnails/"
         },
         {
+            "name": "wpackagist-plugin/import-html-pages",
+            "version": "2.5.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/import-html-pages/",
+                "reference": "tags/2.5.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/import-html-pages.2.5.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/import-html-pages/"
+        },
+        {
             "name": "wpackagist-plugin/post-duplicator",
             "version": "2.17",
             "source": {
@@ -740,7 +760,8 @@
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
         "wpackagist-plugin/post-duplicator": 0,
-        "wpackagist-plugin/disable-wordpress-updates": 0
+        "wpackagist-plugin/disable-wordpress-updates": 0,
+        "wpackagist-plugin/import-html-pages": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,

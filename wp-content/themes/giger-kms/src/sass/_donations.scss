@@ -7,7 +7,7 @@
 	border: 1px solid $color-border-light;
 	background: $color-white;
 	box-shadow: 1px 2px 2px rgba(0,0,0, 0.08);
-	
+	max-width: 640px;
 		
 }
 
@@ -112,12 +112,7 @@
 		@include form-text();
 		display: flex;
 		flex-flow: row wrap;
-		justify-content: space-between ;
-		@include placeholder {
-			color: red;
-		}
-		
-		
+		justify-content: space-between ;		
 	}
 		
 	.figure {
@@ -125,7 +120,9 @@
 		width: 25%;
 		min-width: 77px;
 		padding-top: 5px;
-		padding-bottom: 5px;		
+		padding-bottom: 5px;
+		padding-left: 32px;
+		.rdc-radio__label { font-size: 28px;}
 	}
 	
 	span.figure { color: $leyka_green; }

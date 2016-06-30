@@ -53,7 +53,7 @@
         "wpackagist-plugin/formidable": "@stable",
         "wpackagist-plugin/siteorigin-panels": "@stable",
         "wpackagist-plugin/so-widgets-bundle": "@stable",
-        "wpackagist-plugin/tiny-compress-images": "@stable",
+        "wpackagist-plugin/tiny-compress-images": "@stable",        
         "koodimonni-language/core-ru_ru": "*" ,
         "tst/cmb2-attached-posts" : ">=1.2.2"
     },
@@ -61,7 +61,8 @@
         "wp-sync-db/wp-sync-db" : "dev-master",
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
         "wpackagist-plugin/post-duplicator" : "@stable",
-        "wpackagist-plugin/disable-wordpress-updates": "@stable"
+        "wpackagist-plugin/disable-wordpress-updates": "@stable",
+        "wpackagist-plugin/import-html-pages": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",

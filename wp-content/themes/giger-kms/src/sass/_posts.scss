@@ -339,7 +339,8 @@
 		margin-top: $gut/4;
 		
 		@include for(medium-screens) {
-			@include calc(width, '66.66% - 16px');
+			margin-top: $gut/2;
+			//@include calc(width, '66.66% - 16px');
 			font-size: 1.2em;
 			font-weight: 300;
 		}
