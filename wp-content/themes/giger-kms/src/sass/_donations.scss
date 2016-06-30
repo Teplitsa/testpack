@@ -155,13 +155,6 @@ $figure_line-height: 40px;
 		text-align: right;
 	}
 	
-	/*
-	.rdc-radio__button:checked + .rdc-radio__label {
-		&:before {
-			background-color: $color-link-three;
-			border-color: $color-link-three;
-		}
-	}*/
 	
 	.currency {
 		@include form-text();
@@ -210,7 +203,12 @@ $figure_line-height: 40px;
 			border: none;
 			width: 90px;
 			background: transparent;
+			@include form-text();
+			font-size: 18px;
+			line-height: inherit;
+			text-transform: uppercase;	
 		}
+		
 	}
 	
 	
@@ -265,6 +263,13 @@ $figure_line-height: 40px;
 			max-width: 100%;
 			height: auto;
 		}
+	}
+}
+
+#leyka-form-yandex_money {
+	.leyka-pm-icons li {
+		width: 100px;
+		img { margin-top: -10px;}
 	}
 }
 
