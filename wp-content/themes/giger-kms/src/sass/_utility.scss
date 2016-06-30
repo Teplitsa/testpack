@@ -392,8 +392,7 @@ $margin-base: 16px;
 		
 } //mixin
 
-.entry-content {
-	
+.entry-content {	
 	@include content-elements();	
 }
 
@@ -404,8 +403,8 @@ $margin-base: 16px;
 }
 
 .wp-caption-text {
-		margin-top: $gut/4;
-		padding-left: 2px;
-		@include sub-title(small);
-	}
+	margin-top: $gut/4;
+	padding-left: 2px;
+	@include sub-title(small);
+}
 
