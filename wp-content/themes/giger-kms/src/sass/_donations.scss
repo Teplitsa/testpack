@@ -197,10 +197,12 @@ $figure_line-height: 40px;
 			z-index: -1;
 		}
 		
-		span {				
+		span {
+			display: inline-block;
 			background: $color-white;
 			width: 100%;
-			line-height: inherit;			
+			line-height: inherit;
+			height: $figure_line-height;
 			z-index: 10;
 		}
 		
