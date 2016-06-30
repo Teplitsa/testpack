@@ -304,8 +304,7 @@ function rdc_single_post_thumbnail($post_id, $size = 'post-thumbnail', $post_for
 	</figure>
 <?php
 	}
-		
-	return $out;
+
 }
 
 
