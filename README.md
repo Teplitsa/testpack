@@ -1,4 +1,4 @@
-# testpack
+# Red Cross site
 SWC winners websites
 
 **Установка на хостинг**
