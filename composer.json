@@ -62,7 +62,7 @@
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
         "wpackagist-plugin/post-duplicator" : "@stable",
         "wpackagist-plugin/disable-wordpress-updates": "@stable",
-        "wpackagist-plugin/import-html-pages": "@stable"
+        "wpackagist-plugin/wp-ultimate-csv-importer": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",

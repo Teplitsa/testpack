@@ -452,7 +452,8 @@
 	
 	.entry-title {		
 		@include post-title(small_title);
-		margin-bottom: 4px;
+		line-height: 1.2;
+		margin-bottom: 12px;
 	}
 	
 	.entry-preview {
@@ -460,7 +461,15 @@
 	}
 	
 	.entry-meta {		
-		@include sub-title();						
+		@include sub-title();
+		line-height: 1.4;
+		text-transform: none;
+		
+		a[href *= "tel"] {
+			color: $color-text-black;
+			cursor: default;
+			&:hover {  color: $color-text-black; }
+		}
 	}
 	
 	.entry-data {

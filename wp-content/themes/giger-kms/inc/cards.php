@@ -150,7 +150,7 @@ function rdc_person_card(WP_Post $cpost, $linked = true){
 	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
 	<div class="entry-data">
 		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-		<div class="entry-meta"><?php echo apply_filters('rdc_the_title', $cpost->post_excerpt);?></div>
+		<div class="entry-meta"><?php echo apply_filters('rdc_the_content', $cpost->post_excerpt);?></div>
 	</div>
 	
 <?php if($linked) {?></a><?php } ?>

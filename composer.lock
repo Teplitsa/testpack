@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b27192c585ec1efb2bced40de24dfb44",
-    "content-hash": "aff8f264efde99b6d9c3ae9bb939877c",
+    "hash": "cbc9b40589c1b25e3bbdb117169ad779",
+    "content-hash": "b0d8e28fb7d48a9dda85b23e5dafcb47",
     "packages": [
         {
             "name": "composer/installers",
@@ -699,26 +699,6 @@
             "homepage": "https://wordpress.org/plugins/force-regenerate-thumbnails/"
         },
         {
-            "name": "wpackagist-plugin/import-html-pages",
-            "version": "2.5.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/import-html-pages/",
-                "reference": "tags/2.5.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/import-html-pages.2.5.1.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/import-html-pages/"
-        },
-        {
             "name": "wpackagist-plugin/post-duplicator",
             "version": "2.17",
             "source": {
@@ -737,6 +717,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/post-duplicator/"
+        },
+        {
+            "name": "wpackagist-plugin/wp-ultimate-csv-importer",
+            "version": "3.11.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wp-ultimate-csv-importer/",
+                "reference": "tags/3.11.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-ultimate-csv-importer.3.11.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wp-ultimate-csv-importer/"
         }
     ],
     "aliases": [],
@@ -761,7 +761,7 @@
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
         "wpackagist-plugin/post-duplicator": 0,
         "wpackagist-plugin/disable-wordpress-updates": 0,
-        "wpackagist-plugin/import-html-pages": 0
+        "wpackagist-plugin/wp-ultimate-csv-importer": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
