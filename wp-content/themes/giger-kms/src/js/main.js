@@ -19,10 +19,7 @@ jQuery(document).ready(function($){
 		if (winW < breakPointMedium && $site_header.hasClass('newsletter-open')) {
 			$site_header.removeClass('newsletter-open');
 		}
-	});
-		
-	
-	
+	});	
 	
 	/** == Header states == **/
 	
@@ -332,6 +329,24 @@ jQuery(document).ready(function($){
 			$('html, body').animate({scrollTop:target.top - 50}, 900);
 		}
 		
+	});
+	
+	/** Store **/
+	$(document).on('click', '.tpl-storeitem', function(e){
+		
+		var $_item = $(this),
+			$_target_data = $_item.parents('.panel-widget-style').attr('class'),
+			$_target_raw = $_target_data.split(' ');
+			scroll_target = $('.frm_form_widget').eq(0).offset();
+			
+		if ($_target_raw[0] && $_target_raw[0].length > 0) {
+			//find and check checkbox
+			$('#'+ $_target_raw[0]).prop( "checked", true );
+			
+			//scroll
+			$('html, body').animate({scrollTop:scroll_target.top - 50}, 900);
+		}
+		console.log($_target_raw[0]);
 	});
 	
 }); //jQuery
