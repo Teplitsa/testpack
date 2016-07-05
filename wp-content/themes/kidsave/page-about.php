@@ -29,7 +29,7 @@ get_header();
 </section>
 
 <section class="main-content single-post-section">
-<div id="kds_sharing" class="regular-sharing hide-upto-medium"><?php echo kds_social_share_no_js();?></div>
+<div id="kds_sharing" class="regular-sharing hide-upto-medium"><?php echo tst_social_share_no_js();?></div>
 
 <div class="container">
 	<main class="custom-page">		

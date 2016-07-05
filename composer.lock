@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4b5a8c2acd7e9a61b754ad90b47cf56b",
-    "content-hash": "36c3eac76ee056e90b525c1cf07351e7",
+    "hash": "55d9960054008ff864b9019931e71681",
+    "content-hash": "c0b38df29548a0d5205232433d472252",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.0.23",
+            "version": "v1.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e"
+                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/6213d900e92647831f7a406d5c530ea1f3d4360e",
-                "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e",
+                "url": "https://api.github.com/repos/composer/installers/zipball/36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
+                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
                 "shasum": ""
             },
             "require": {
@@ -40,8 +40,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Composer\\Installers\\": "src/"
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -56,12 +56,14 @@
                 }
             ],
             "description": "A multi-framework Composer library installer",
-            "homepage": "http://composer.github.com/installers/",
+            "homepage": "https://composer.github.io/installers/",
             "keywords": [
                 "Craft",
                 "Dolibarr",
                 "Hurad",
+                "ImageCMS",
                 "MODX Evo",
+                "Mautic",
                 "OXID",
                 "SMF",
                 "Thelia",
@@ -103,20 +105,20 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-01-27 12:54:22"
+            "time": "2016-04-13 19:46:30"
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.4.2",
+            "version": "4.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "fe9320de0793602084c600e22c0c5e0bb601a264"
+                "reference": "f5c6f4dd899e6365ddf2752d2705ed1de7e10715"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/fe9320de0793602084c600e22c0c5e0bb601a264",
-                "reference": "fe9320de0793602084c600e22c0c5e0bb601a264",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/f5c6f4dd899e6365ddf2752d2705ed1de7e10715",
+                "reference": "f5c6f4dd899e6365ddf2752d2705ed1de7e10715",
                 "shasum": ""
             },
             "require": {
@@ -140,7 +142,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2016-02-02 17:16:14"
+            "time": "2016-06-21 16:31:21"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -192,10 +194,10 @@
         },
         {
             "name": "koodimonni-language/core-ru_ru",
-            "version": "4.4.2",
+            "version": "4.5.3",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/core/4.4.2/ru_RU.zip",
+                "url": "https://downloads.wordpress.org/translation/core/4.5.3/ru_RU.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -255,12 +257,12 @@
         },
         {
             "name": "tst/formidable",
-            "version": "2.0.22",
+            "version": "2.01.03",
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-formidable-2.0.22.zip",
+                "url": "artifacts/tst-formidable-2.01.03.zip",
                 "reference": null,
-                "shasum": "4a4833a724ad91887bc39c09d15837f6c9688ab1"
+                "shasum": "23f5b1c27c544aa978f01139e8f2b870a79e0e3f"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -269,10 +271,10 @@
         },
         {
             "name": "wpackagist-plugin/cmb2",
-            "version": "2.2.1",
+            "version": "2.2.2.1",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/cmb2/",
+                "url": "https://plugins.svn.wordpress.org/cmb2/",
                 "reference": "trunk"
             },
             "dist": {
@@ -289,15 +291,15 @@
         },
         {
             "name": "wpackagist-plugin/crop-thumbnails",
-            "version": "0.10.6",
+            "version": "0.10.8",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/crop-thumbnails/",
-                "reference": "tags/0.10.6"
+                "url": "https://plugins.svn.wordpress.org/crop-thumbnails/",
+                "reference": "tags/0.10.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/crop-thumbnails.0.10.6.zip",
+                "url": "https://downloads.wordpress.org/plugin/crop-thumbnails.0.10.8.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -312,7 +314,7 @@
             "version": "3.5",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/cyr3lat/",
+                "url": "https://plugins.svn.wordpress.org/cyr3lat/",
                 "reference": "tags/3.5"
             },
             "dist": {
@@ -329,15 +331,15 @@
         },
         {
             "name": "wpackagist-plugin/disable-comments",
-            "version": "1.4",
+            "version": "1.5",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/disable-comments/",
-                "reference": "tags/1.4"
+                "url": "https://plugins.svn.wordpress.org/disable-comments/",
+                "reference": "tags/1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/disable-comments.1.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/disable-comments.1.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -352,7 +354,7 @@
             "version": "2.3.6",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/imsanity/",
+                "url": "https://plugins.svn.wordpress.org/imsanity/",
                 "reference": "trunk"
             },
             "dist": {
@@ -369,15 +371,15 @@
         },
         {
             "name": "wpackagist-plugin/leyka",
-            "version": "2.2.8",
+            "version": "2.2.10",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/leyka/",
-                "reference": "tags/2.2.8"
+                "url": "https://plugins.svn.wordpress.org/leyka/",
+                "reference": "tags/2.2.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.8.zip",
+                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.10.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -392,7 +394,7 @@
             "version": "0.8.0",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/media-search-enhanced/",
+                "url": "https://plugins.svn.wordpress.org/media-search-enhanced/",
                 "reference": "tags/0.8.0"
             },
             "dist": {
@@ -412,7 +414,7 @@
             "version": "1.6.7",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/responsive-lightbox/",
+                "url": "https://plugins.svn.wordpress.org/responsive-lightbox/",
                 "reference": "tags/1.6.7"
             },
             "dist": {
@@ -432,7 +434,7 @@
             "version": "1.0",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/simple-css-for-widgets/",
+                "url": "https://plugins.svn.wordpress.org/simple-css-for-widgets/",
                 "reference": "trunk"
             },
             "dist": {
@@ -448,16 +450,16 @@
             "homepage": "https://wordpress.org/plugins/simple-css-for-widgets/"
         },
         {
-            "name": "wpackagist-plugin/simple-google-maps-short-code",
-            "version": "1.2",
+            "name": "wpackagist-plugin/siteorigin-panels",
+            "version": "2.4.9",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/simple-google-maps-short-code/",
-                "reference": "tags/1.2"
+                "url": "https://plugins.svn.wordpress.org/siteorigin-panels/",
+                "reference": "tags/2.4.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/simple-google-maps-short-code.1.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/siteorigin-panels.2.4.9.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -465,14 +467,34 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/simple-google-maps-short-code/"
+            "homepage": "https://wordpress.org/plugins/siteorigin-panels/"
+        },
+        {
+            "name": "wpackagist-plugin/so-widgets-bundle",
+            "version": "1.6.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/so-widgets-bundle/",
+                "reference": "tags/1.6.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.6.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/so-widgets-bundle/"
         },
         {
             "name": "wpackagist-plugin/w3-total-cache",
             "version": "0.9.4.1",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/w3-total-cache/",
+                "url": "https://plugins.svn.wordpress.org/w3-total-cache/",
                 "reference": "tags/0.9.4.1"
             },
             "dist": {
@@ -492,7 +514,7 @@
             "version": "0.57",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/widget-logic/",
+                "url": "https://plugins.svn.wordpress.org/widget-logic/",
                 "reference": "tags/0.57"
             },
             "dist": {
@@ -509,15 +531,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.1.1",
+            "version": "3.3.4",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.1.1"
+                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
+                "reference": "tags/3.3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.1.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -532,7 +554,7 @@
             "version": "1.4.1",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wp-help/",
+                "url": "https://plugins.svn.wordpress.org/wp-help/",
                 "reference": "tags/1.4.1"
             },
             "dist": {
@@ -555,12 +577,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-sync-db/wp-sync-db.git",
-                "reference": "b7dfaf61d23ee6ce72500049c1e55c5377771d46"
+                "reference": "8f18390a83374089acfac202491e78d4938616fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-sync-db/wp-sync-db/zipball/b7dfaf61d23ee6ce72500049c1e55c5377771d46",
-                "reference": "b7dfaf61d23ee6ce72500049c1e55c5377771d46",
+                "url": "https://api.github.com/repos/wp-sync-db/wp-sync-db/zipball/8f18390a83374089acfac202491e78d4938616fd",
+                "reference": "8f18390a83374089acfac202491e78d4938616fd",
                 "shasum": ""
             },
             "require": {
@@ -587,14 +609,34 @@
                 "source": "https://github.com/wp-sync-db/wp-sync-db/tree/master",
                 "issues": "https://github.com/wp-sync-db/wp-sync-db/issues"
             },
-            "time": "2016-03-07 07:30:30"
+            "time": "2016-04-24 08:56:12"
+        },
+        {
+            "name": "wpackagist-plugin/disable-wordpress-updates",
+            "version": "1.4.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/disable-wordpress-updates/",
+                "reference": "tags/1.4.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/disable-wordpress-updates.1.4.7.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/disable-wordpress-updates/"
         },
         {
             "name": "wpackagist-plugin/force-regenerate-thumbnails",
             "version": "2.0.5",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/force-regenerate-thumbnails/",
+                "url": "https://plugins.svn.wordpress.org/force-regenerate-thumbnails/",
                 "reference": "tags/2.0.5"
             },
             "dist": {
@@ -611,10 +653,10 @@
         },
         {
             "name": "wpackagist-plugin/post-duplicator",
-            "version": "2.14",
+            "version": "2.17",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/post-duplicator/",
+                "url": "https://plugins.svn.wordpress.org/post-duplicator/",
                 "reference": "trunk"
             },
             "dist": {
@@ -628,6 +670,46 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/post-duplicator/"
+        },
+        {
+            "name": "wpackagist-plugin/post-type-converter",
+            "version": "0.6",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/post-type-converter/",
+                "reference": "tags/0.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/post-type-converter.0.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/post-type-converter/"
+        },
+        {
+            "name": "wpackagist-plugin/term-management-tools",
+            "version": "1.1.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/term-management-tools/",
+                "reference": "tags/1.1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/term-management-tools.1.1.4.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/term-management-tools/"
         }
     ],
     "aliases": [],
@@ -641,14 +723,18 @@
         "wpackagist-plugin/media-search-enhanced": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
         "wpackagist-plugin/simple-css-for-widgets": 0,
-        "wpackagist-plugin/simple-google-maps-short-code": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/wp-help": 0,
         "wpackagist-plugin/cmb2": 0,
+        "wpackagist-plugin/siteorigin-panels": 0,
+        "wpackagist-plugin/so-widgets-bundle": 0,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
-        "wpackagist-plugin/post-duplicator": 0
+        "wpackagist-plugin/post-duplicator": 0,
+        "wpackagist-plugin/disable-wordpress-updates": 0,
+        "wpackagist-plugin/term-management-tools": 0,
+        "wpackagist-plugin/post-type-converter": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,

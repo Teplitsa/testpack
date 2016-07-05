@@ -1,0 +1,259 @@
+/** Pages **/
+
+.page-header-simple {
+	padding: $gut 0 20px;
+	
+	.page-title {
+		@include header-title(section);		
+	}
+}
+
+.page-content-simple {
+	margin-bottom: $gut*2;
+	min-height: 400px;
+	min-height: 50vh;
+}
+
+
+/** Homepage **/
+.home-news {
+	.related-title { display: none; }
+}
+
+.home-intro {
+	.container-wide {
+		background: $color-secondary;
+	}
+	
+	.intro-text {
+		@include body-text(larger);
+		padding: $gut;
+		max-width: $page_cont;
+		margin: 0 auto;
+		text-align: center;
+	}
+}
+
+.home-content-section {
+	margin: $gut*1.5 0;
+}
+
+//3col module
+.col3-section  {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: stretch;
+		
+	.col3 {
+		width: 100%;
+		margin-bottom: $gut;
+		flex: 1 0 auto;		
+	}
+		
+	@include for(medium-screens){
+		margin: 0 -1*$gut/2;
+		
+		.col3 {
+			margin: 0 $gut/2 $gut;
+			@include calc(width, '50% - 30px');
+			
+			&:last-of-type {
+				@include calc(width, '100% - 30px');
+			}
+		}
+	}
+	
+	@include for(large-screens){
+		margin: 0 -1*$gut/2;
+		
+		.col3, .col3:last-of-type {
+			flex: 0 0 auto;	
+			@include calc(width, '30% - 30px');
+			text-align: center;
+		}
+	}	
+}
+
+//feature block
+.col3-content {
+	width: 100%;
+	height: 100%;
+	
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;	
+	
+	.col3-title {
+		@include post-title(featured);
+		margin-bottom: $base*1.2;
+		height: 40px;
+		flex: 0 0 auto;
+		overflow: hidden;
+		color: $color-link-three;
+	}
+	
+	.col3-text {
+		flex: 1 0 auto;
+	}
+	
+	.col3-link {
+		flex: 0 0 auto;		
+		margin-top: $base;
+		height: 44px;
+		overflow: hidden;
+		
+		a {
+			@include ghost-button(16px, $color-link-three, $color-white);
+		}
+	}
+	
+}
+
+.siteorigin-panels-home .col3 {
+	@include for(medium-screens) {
+		.col3-title {
+			position: relative;
+			padding-top: 120px;
+			height: 40px + 120px;
+			
+			&:before {
+				content: '';
+				display: block;
+				width: 100px;
+				height: 100px;
+				background-image: url(../img/feature-icon-1.png);
+				background-image: url(../img/feature-icon-1.svg);
+				background-repeat: none;
+				background-position: center top;
+				background-size: contain;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+		
+		&:nth-of-type(2) .col3-title:before {
+			background-image: url(../img/feature-icon-2.png);
+			background-image: url(../img/feature-icon-2.svg);
+		}
+		
+		&:nth-of-type(3) .col3-title:before {
+			background-image: url(../img/feature-icon-3.png);
+			background-image: url(../img/feature-icon-3.svg);
+		}
+	}
+	
+	@include for(large-screens) {
+		.col3-title:before {
+			left: 50%;
+			margin-left: -50px;
+		}
+	}
+}
+
+
+
+/** Error 404 **/
+.err-text {
+	max-width: 800px;
+	margin: 0 auto $gut;
+	text-align: center;
+}
+
+.er-picture {
+	@include for(xxlarge-screens) {
+		margin-bottom: $gut*2;
+	}
+}
+
+.err-bg { 
+	width: 100%;
+	@include vertical-image-header-fixed();
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+
+/** Search **/
+.main-content.search-results {
+	background: $color-secondary;
+	padding: $gut 0;
+	min-height: 400px;
+	min-height: 50vh;
+}
+
+.sr-form {
+	.svg-icon {
+		width: 30px;
+		height: 30px;
+		fill: $color-text-black;
+	}
+	
+	.searchform  {
+		position: relative;
+		margin: $base/2 0 $base/4;
+		
+		.icon-search {
+			position: absolute;
+			left: 6px;
+			top: 10px;
+			z-index: 100;
+		}
+		
+		input {
+			padding-left: 60px;
+			border-bottom-width: 2px;
+			
+			&:focus {
+				box-shadow: none;
+				border-bottom-color: $color-text-black;
+			}
+		}
+	}
+}
+
+.sr-num {
+	@include sub-title(small);
+	text-align: right;
+}
+
+.tpl-search {
+	background: $color-white;
+	margin-bottom: $base;
+	padding: $gut/2;
+	
+	@include transition(all 0.3s);
+		
+	&:hover {
+		background: $color-link-two;
+		.entry-preview:after { background: rgba(0,0,0, 0.3); }
+		.entry-summary { color: $color-link-three; }
+	}	
+	
+	a {
+		display: block;
+		height: 100%;
+	}
+	
+	.entry-meta {
+		@include post-meta();
+		font-size: 14px;
+		display: inline-block;
+		margin-bottom: 4px;
+	}
+	
+	.entry-title {
+		@include post-title();
+		margin-bottom: $base*0.75;						
+		@include hyphens(auto);
+		color: $color-link-three;
+	}
+	
+	.entry-summary {
+		@include body-text(summary);
+		color: $color-text;
+	}
+}
+

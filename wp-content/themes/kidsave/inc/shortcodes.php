@@ -3,7 +3,7 @@
  * Shortcodes
  **/
 
-add_filter('widget_text', 'do_shortcode');
+
 
 /** Clear **/
 add_shortcode('clear', 'kds_clear_screen');

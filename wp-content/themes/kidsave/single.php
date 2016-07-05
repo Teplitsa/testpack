@@ -19,7 +19,7 @@ get_header();
 </div></section>
 
 <section class="main-content single-post-section">
-<div id="kds_sharing" class="regular-sharing hide-upto-medium"><?php echo kds_social_share_no_js();?></div>
+<div id="kds_sharing" class="regular-sharing hide-upto-medium"><?php echo tst_social_share_no_js();?></div>
 
 <div class="container">
 	<div class="the-post-cols">
@@ -27,7 +27,7 @@ get_header();
 		<main class="pc-main">			
 			<div class="entry-preview">
 				<?php echo kds_post_thumbnail($cpost->ID, 'post-thumbnail');?>
-				<div class="mobile-sharing hide-on-medium"><?php echo kds_social_share_no_js();?></div>
+				<div class="mobile-sharing hide-on-medium"><?php echo tst_social_share_no_js();?></div>
 			</div>		
 	
 			<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
