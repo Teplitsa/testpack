@@ -1086,7 +1086,7 @@ jQuery(document).ready(function($){
 		}
 	});*/
 	
-	// Search forcus on search page 
+	// Search focus on search page 
 	function tst_search_focus_position(SearchInput) {
 		if (SearchInput.length > 0) {
 			var strLength= SearchInput.val().length * 2;
