@@ -17,7 +17,7 @@
 <?php include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'tst' ); ?></a>
 
-<header id="site_header" class="site-header">
+<!--<header id="site_header" class="site-header">
 	
 	<div class="site-header-panel">
 		<div class="container">
@@ -55,9 +55,7 @@
 		</div>
 	</div>
 	
-	<!--<div id="newsletter_panel" class="newsletter-panel">
-		<div class="newsletter-form"><?php echo tst_get_newsletter_form(); ?></div>
-	</div>-->
+	
 	<div class="nav-overlay"></div>
 	<nav id="site_nav" class="site-nav">
 		<div class="site-nav-title">
@@ -76,6 +74,6 @@
 		<div class="search-holder"><?php get_search_form();?></div>
 		<?php wp_nav_menu(array('theme_location' => 'social', 'container' => false, 'menu_class' => 'social-menu')); ?>
 	</nav>		
-</header>
+</header>-->
 
 <div id="site_content" class="site-content"><a name="#content"></a>

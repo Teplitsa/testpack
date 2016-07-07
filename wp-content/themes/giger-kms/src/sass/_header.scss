@@ -42,10 +42,10 @@ $full_height   : $logo_full_h + $height_gap;
 }
 
 .site-content {
-	padding-top: $logo_small_h + $height_gap;
+	//padding-top: $logo_small_h + $height_gap;
 	
 	@include for(medium-screens) {
-		padding-top: $logo_full_h + $height_gap;
+	//	padding-top: $logo_full_h + $height_gap;
 	}
 }
 
