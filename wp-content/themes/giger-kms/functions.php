@@ -14,10 +14,10 @@ if ( ! isset( $content_width ) ) {
 }
 
 
-function rdc_setup() {
+function tst_setup() {
 
 	// Inits
-	load_theme_textdomain( 'rdc', get_template_directory() . '/lang' );
+	load_theme_textdomain( 'tst', get_template_directory() . '/lang' );
 	//add_theme_support( 'automatic-feed-links' );	
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'html5', array(
@@ -44,15 +44,15 @@ function rdc_setup() {
 	// Editor style
 	//add_editor_style(array('css/editor-style.css'));
 }
-add_action( 'init', 'rdc_setup', 30 );
+add_action( 'init', 'tst_setup', 30 );
 
 
 /** Custom image size for medialib **/
-//add_filter('image_size_names_choose', 'rdc_medialib_custom_image_sizes');
-function rdc_medialib_custom_image_sizes($sizes) {
+//add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
+function tst_medialib_custom_image_sizes($sizes) {
 	
-	$addsizes = apply_filters('rdc_medialib_custom_image_sizes', array(
-		//"thumbnail-landscape" => __("Landscape mini", 'rdc'),
+	$addsizes = apply_filters('tst_medialib_custom_image_sizes', array(
+		//"thumbnail-landscape" => __("Landscape mini", 'tst'),
 		"embed" => 'Фиксированный'
 	));
 		
@@ -62,7 +62,7 @@ function rdc_medialib_custom_image_sizes($sizes) {
 /**
  * Register widget area.
  */
-function rdc_widgets_init() {
+function tst_widgets_init() {
 		
 	$config = array(		
 		'right_single' => array(
@@ -98,7 +98,7 @@ function rdc_widgets_init() {
 		));
 	}
 }
-add_action( 'init', 'rdc_widgets_init', 25 );
+add_action( 'init', 'tst_widgets_init', 25 );
 
 
 /**
@@ -122,11 +122,6 @@ require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/social.php';
 require get_template_directory().'/inc/template-tags.php';
 require get_template_directory().'/inc/widgets.php';
-
-require get_template_directory().'/inc/import-campaigns.php';
-require get_template_directory().'/inc/import-posts.php';
-require get_template_directory().'/inc/import-donations.php';
-
 
 
 if(is_admin()){

@@ -8,8 +8,8 @@ if(!class_exists('Leyka_Payment_Method'))
 
 /** Custom donation functions */
 
-add_filter('leyka_icons_text_text_box', 'rdc_text_pm_icon');
-function rdc_text_pm_icon($icons){
+add_filter('leyka_icons_text_text_box', 'tst_text_pm_icon');
+function tst_text_pm_icon($icons){
 	//size 155x80 px
 	
 	$icons = array(get_template_directory_uri().'/assets/images/text-box.png');
@@ -77,8 +77,8 @@ class Leyka_Sms_Box extends Leyka_Text_Box {
 
 
 
-add_action('leyka_init_pm_list', 'rdc_add_sms_pm');
-function rdc_add_sms_pm(Leyka_Gateway $gateway){
+add_action('leyka_init_pm_list', 'tst_add_sms_pm');
+function tst_add_sms_pm(Leyka_Gateway $gateway){
 
 	if($gateway->id == 'text'){		
 		$gateway->add_payment_method(Leyka_Sms_Box::get_instance());
@@ -86,15 +86,15 @@ function rdc_add_sms_pm(Leyka_Gateway $gateway){
 }
 
 //no icon for text gateway
-add_filter('leyka_icons_text_text_box', 'rdc_empty_icons');	
-function rdc_empty_icons($icons){
+add_filter('leyka_icons_text_text_box', 'tst_empty_icons');	
+function tst_empty_icons($icons){
 	return array();
 }
 
 
 /** Form template **/
 //custom amount field
-function rdc_amount_field($form){
+function tst_amount_field($form){
 	
 	if(!defined('LEYKA_VERSION'))
 		return;
@@ -118,13 +118,13 @@ function rdc_amount_field($form){
 		<div class="<?php echo $currency;?> amount-variants-container" <?php echo $currency == $current_curr ? '' : 'style="display:none;"';?> >
 			<div class="amount-variants-row">
 				<?php foreach($variants as $i => $amount) { ?>
-					<label class="figure rdc-radio" title="<?php _e('Please, specify your donation amount', 'leyka');?>">
-						<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button" <?php checked($i, 0);?>>
-						<span class="rdc-radio__label"><?php echo (int)$amount;?></span>
+					<label class="figure tst-radio" title="<?php _e('Please, specify your donation amount', 'leyka');?>">
+						<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="tst-radio__button" <?php checked($i, 0);?>>
+						<span class="tst-radio__label"><?php echo (int)$amount;?></span>
 					</label>
 				<?php } ?>
 				
-				<label class="figure-flex"><span class="figure-sep"><?php _e('or', 'rdc');?></span><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6"></label>
+				<label class="figure-flex"><span class="figure-sep"><?php _e('or', 'tst');?></span><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6"></label>
 			</div>
 		</div>	
 	<?php } ?>
@@ -140,7 +140,7 @@ function rdc_amount_field($form){
 
 
 
-function rdc_donation_form($campaign_id = null){
+function tst_donation_form($campaign_id = null){
 	global $leyka_current_pm;	
 		
 	if(!defined('LEYKA_VERSION'))
@@ -179,7 +179,7 @@ function rdc_donation_form($campaign_id = null){
 		if($leyka_current_pm->is_field_supported('amount') ) {
 			
 			//echo leyka_pf_get_amount_field();
-			rdc_amount_field($leyka_current_pm);
+			tst_amount_field($leyka_current_pm);
 		} //if amount
 		
 		echo leyka_pf_get_hidden_fields();	
@@ -189,19 +189,19 @@ function rdc_donation_form($campaign_id = null){
 			
 	<!-- name -->
 	<?php if($leyka_current_pm->is_field_supported('name') ) { ?>
-	<div class="rdc-textfield leyka-field name">
-		<input type="text" class="required rdc-textfield__input" name="leyka_donor_name" id="leyka_donor_name" value="">
-		<label for="leyka_donor_name" class="leyka-screen-reader-text rdc-textfield__label"><?php _e('Your name', 'leyka');?></label>		
-		<span id="leyka_donor_name-error" class="leyka_donor_name-error field-error rdc-textfield__error"></span>
+	<div class="tst-textfield leyka-field name">
+		<input type="text" class="required tst-textfield__input" name="leyka_donor_name" id="leyka_donor_name" value="">
+		<label for="leyka_donor_name" class="leyka-screen-reader-text tst-textfield__label"><?php _e('Your name', 'leyka');?></label>		
+		<span id="leyka_donor_name-error" class="leyka_donor_name-error field-error tst-textfield__error"></span>
 	</div>
 	<?php  }?>
 	
 	<!-- email -->
 	<?php if($leyka_current_pm->is_field_supported('email') ) { ?>
-	<div class="rdc-textfield leyka-field email">
-		<input type="text" value="" id="leyka_donor_email" name="leyka_donor_email" class="required email rdc-textfield__input">
-		<label class="leyka-screen-reader-text rdc-textfield__label" for="leyka_donor_email">Ваш email</label>
-		<span class="leyka_donor_email-error field-error rdc-textfield__error" id="leyka_donor_email-error"></span>
+	<div class="tst-textfield leyka-field email">
+		<input type="text" value="" id="leyka_donor_email" name="leyka_donor_email" class="required email tst-textfield__input">
+		<label class="leyka-screen-reader-text tst-textfield__label" for="leyka_donor_email">Ваш email</label>
+		<span class="leyka_donor_email-error field-error tst-textfield__error" id="leyka_donor_email-error"></span>
 	</div>
 	<?php  }?>
 	
@@ -213,12 +213,12 @@ function rdc_donation_form($campaign_id = null){
 			$f_html = $leyka_current_pm->get_pm_fields();
 			preg_match("#<\s*?span\b[^>]*>(.*?)</span\b[^>]*>#s", $f_html, $l); 
 			if(isset($l[1]) && !empty($l[1])){
-				$f_html = str_replace('input', 'input class="rdc-checkbox__input"', $l[1]);
+				$f_html = str_replace('input', 'input class="tst-checkbox__input"', $l[1]);
 	?>
 		<div class="leyka-field recurring">
-			<label class="rdc-checkbox checkbox" for="leyka_cp-card_recurring">
+			<label class="tst-checkbox checkbox" for="leyka_cp-card_recurring">
 				<?php echo $f_html; ?>
-				<span class="rdc-checkbox__label"><?php _e('Monthly donation', 'rdc');?></span>           
+				<span class="tst-checkbox__label"><?php _e('Monthly donation', 'tst');?></span>           
 			</label>
 		</div>
 	<?php
@@ -237,18 +237,18 @@ function rdc_donation_form($campaign_id = null){
 		if($leyka_current_pm->is_field_supported('agree') ) { 
 		$agree_check_id = 'leyka_agree-'.$i; ?>
 	<div class="leyka-field agree">
-		<label class="rdc-checkbox checkbox" for="<?php echo $agree_check_id;?>">
-			<input type="checkbox" name="leyka_agree" id="<?php echo $agree_check_id;?>" class="leyka_agree required rdc-checkbox__input" value="1" />
-			<span class="rdc-checkbox__label">Согласен с <a class="leyka-custom-confirmation-trigger" href="<?php echo $agree_link;?>" data-lmodal="#leyka-agree-text">условиями сбора пожертвований</a></span>           
+		<label class="tst-checkbox checkbox" for="<?php echo $agree_check_id;?>">
+			<input type="checkbox" name="leyka_agree" id="<?php echo $agree_check_id;?>" class="leyka_agree required tst-checkbox__input" value="1" />
+			<span class="tst-checkbox__label">Согласен с <a class="leyka-custom-confirmation-trigger" href="<?php echo $agree_link;?>" data-lmodal="#leyka-agree-text">условиями сбора пожертвований</a></span>           
 		</label>
-		<p class="leyka_agree-error field-error rdc-checkbox__error" id="<?php echo $agree_check_id;?>-error"></p>
+		<p class="leyka_agree-error field-error tst-checkbox__error" id="<?php echo $agree_check_id;?>-error"></p>
 	</div>	
 	<?php }?>
 	
 	<!-- submit -->	
 	<div class="leyka-field submit">
 	<?php if($leyka_current_pm->is_field_supported('submit') ) { ?>
-		<input type="submit" class="rdc-submit-button" id="leyka_donation_submit" name="leyka_donation_submit" value="Пожертвовать" />
+		<input type="submit" class="tst-submit-button" id="leyka_donation_submit" name="leyka_donation_submit" value="Пожертвовать" />
 	<?php  }
 
 		$icons = leyka_pf_get_pm_icons(); 
@@ -282,7 +282,7 @@ function rdc_donation_form($campaign_id = null){
 
 <!-- agreement modal -->
 <div id="leyka-agree-text" class="leyka-oferta-text leyka-custom-modal">
-	<div class="leyka-modal-close"><?php rdc_svg_icon('icon-close');?></div>
+	<div class="leyka-modal-close"><?php tst_svg_icon('icon-close');?></div>
 	<div class="leyka-oferta-text-frame">
 		<div class="leyka-oferta-text-flow">
 			<?php echo apply_filters('leyka_terms_of_service_text', leyka_options()->opt('terms_of_service_text'));?>
@@ -294,8 +294,8 @@ function rdc_donation_form($campaign_id = null){
 
 
 /** save actions **/
-add_action('save_post_leyka_campaign', 'rdc_donations_actions', 2, 3);
-function rdc_donations_actions($post_ID, $post, $update){
+add_action('save_post_leyka_campaign', 'tst_donations_actions', 2, 3);
+function tst_donations_actions($post_ID, $post, $update){
 	
 	if(!class_exists('Leyka_Campaign'))
 		return;

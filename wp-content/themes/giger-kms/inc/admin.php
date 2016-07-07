@@ -3,8 +3,8 @@
  * Admin customization
  **/
 
-add_filter('manage_posts_columns', 'rdc_common_columns_names', 50, 2);
-function rdc_common_columns_names($columns, $post_type) {
+add_filter('manage_posts_columns', 'tst_common_columns_names', 50, 2);
+function tst_common_columns_names($columns, $post_type) {
 		
 	if(in_array($post_type, array('post', 'project', 'org', 'person', 'event'))){
 		
@@ -27,9 +27,9 @@ function rdc_common_columns_names($columns, $post_type) {
 	return $columns;
 }
 
-add_action('manage_pages_custom_column', 'rdc_common_columns_content', 2, 2);
-add_action('manage_posts_custom_column', 'rdc_common_columns_content', 2, 2);
-function rdc_common_columns_content($column_name, $post_id) {
+add_action('manage_pages_custom_column', 'tst_common_columns_content', 2, 2);
+add_action('manage_posts_custom_column', 'tst_common_columns_content', 2, 2);
+function tst_common_columns_content($column_name, $post_id) {
 	
 	$cpost = get_post($post_id);
 	if($column_name == 'id'){
@@ -55,8 +55,8 @@ function rdc_common_columns_content($column_name, $post_id) {
 }
 
 
-add_filter('manage_pages_columns', 'rdc_pages_columns_names', 50);
-function rdc_pages_columns_names($columns) {		
+add_filter('manage_pages_columns', 'tst_pages_columns_names', 50);
+function tst_pages_columns_names($columns) {		
 		
 	if(isset($columns['author'])){
 		$columns['author'] = 'Создал';
@@ -72,18 +72,18 @@ function rdc_pages_columns_names($columns) {
 
 
 //manage_edit-topics_columns
-add_filter( "manage_edit-category_columns", 'rdc_common_tax_columns_names', 10);
-add_filter( "manage_edit-post_tag_columns", 'rdc_common_tax_columns_names', 10);
-function rdc_common_tax_columns_names($columns){
+add_filter( "manage_edit-category_columns", 'tst_common_tax_columns_names', 10);
+add_filter( "manage_edit-post_tag_columns", 'tst_common_tax_columns_names', 10);
+function tst_common_tax_columns_names($columns){
 	
 	$columns['id'] = 'ID';
 	
 	return $columns;	
 }
 
-add_filter( "manage_category_custom_column", 'rdc_common_tax_columns_content', 10, 3);
-add_filter( "manage_post_tag_custom_column", 'rdc_common_tax_columns_content', 10, 3);
-function rdc_common_tax_columns_content($content, $column_name, $term_id){
+add_filter( "manage_category_custom_column", 'tst_common_tax_columns_content', 10, 3);
+add_filter( "manage_post_tag_custom_column", 'tst_common_tax_columns_content', 10, 3);
+function tst_common_tax_columns_content($content, $column_name, $term_id){
 	
 	if($column_name == 'id')
 		return intval($term_id);
@@ -105,11 +105,11 @@ function rdc_common_tax_columns_content($content, $column_name, $term_id){
 **/
 add_action('admin_init', function(){
 	foreach(get_post_types(array('public' => true), 'names') as $pt) {
-		add_filter('manage_' . $pt . '_posts_columns', 'rdc_clear_seo_columns', 100);
+		add_filter('manage_' . $pt . '_posts_columns', 'tst_clear_seo_columns', 100);
 	}	
 }, 100);
 
-function rdc_clear_seo_columns($columns){
+function tst_clear_seo_columns($columns){
 
 	if(isset($columns['wpseo-score']))
 		unset($columns['wpseo-score']);
@@ -130,19 +130,19 @@ add_filter('wpseo_use_page_analysis', '__return_false');
 
 
 /* Excerpt metabox */
-add_action('add_meta_boxes', 'rdc_correct_metaboxes', 2, 2);
-function rdc_correct_metaboxes($post_type, $post ){
+add_action('add_meta_boxes', 'tst_correct_metaboxes', 2, 2);
+function tst_correct_metaboxes($post_type, $post ){
 	
 	if(post_type_supports($post_type, 'excerpt')){
 		remove_meta_box('postexcerpt', null, 'normal');
 		
 		$label = ($post_type == 'org') ? __('Website', 'kds') : __('Excerpt', 'kds');
-		add_meta_box('rdc_postexcerpt', $label, 'rdc_excerpt_meta_box', null, 'normal', 'core');
+		add_meta_box('tst_postexcerpt', $label, 'tst_excerpt_meta_box', null, 'normal', 'core');
 	}
 	
 }
 
-function rdc_excerpt_meta_box($post){
+function tst_excerpt_meta_box($post){
 	if($post->post_type == 'org'){
 ?>
 <label class="screen-reader-text" for="excerpt"><?php _e('Website', 'kds'); ?></label>
@@ -161,8 +161,8 @@ function rdc_excerpt_meta_box($post){
 
 
 /**  Home page settings in admin menu */
-add_action('admin_menu', 'rdc_add_menu_items', 25);
-function rdc_add_menu_items(){
+add_action('admin_menu', 'tst_add_menu_items', 25);
+function tst_add_menu_items(){
     
 	$id = (int)get_option('page_on_front', 0);
 	
@@ -184,8 +184,8 @@ function rdc_add_menu_items(){
 
 
 /** Visual editor **/
-add_filter('tiny_mce_before_init', 'rdc_format_TinyMCE');
-function rdc_format_TinyMCE($in){
+add_filter('tiny_mce_before_init', 'tst_format_TinyMCE');
+function tst_format_TinyMCE($in){
 
     $in['block_formats'] = "Абзац=p; Выделенный=pre; Заголовок 3=h3; Заголовок 4=h4; Заголовок 5=h5; Заголовок 6=h6";
 	$in['toolbar1'] = 'bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,wp_fullscreen,wp_adv ';
@@ -197,8 +197,8 @@ function rdc_format_TinyMCE($in){
 }
 
 /* Menu Labels */
-add_action('admin_menu', 'rdc_admin_menu_labels');
-function rdc_admin_menu_labels(){ /* change adming menu labels */
+add_action('admin_menu', 'tst_admin_menu_labels');
+function tst_admin_menu_labels(){ /* change adming menu labels */
     global $menu, $submenu;
 	
     //lightbox   
@@ -220,16 +220,16 @@ function rdc_admin_menu_labels(){ /* change adming menu labels */
 }
 
 /** Remove leyka metabox for embedable iframe */
-add_action( 'add_meta_boxes' , 'rdc_remove_leyka_wrong_metaboxes', 20 );
-function rdc_remove_leyka_wrong_metaboxes() {
+add_action( 'add_meta_boxes' , 'tst_remove_leyka_wrong_metaboxes', 20 );
+function tst_remove_leyka_wrong_metaboxes() {
 	
 	remove_meta_box('leyka_campaign_embed', 'leyka_campaign', 'normal');
 }
 
 
 /** Dashboards widgets **/
-add_action('wp_dashboard_setup', 'rdc_remove_dashboard_widgets' );
-function rdc_remove_dashboard_widgets() {
+add_action('wp_dashboard_setup', 'tst_remove_dashboard_widgets' );
+function tst_remove_dashboard_widgets() {
 	
 	//remove defaults 	
 	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );	
@@ -240,27 +240,27 @@ function rdc_remove_dashboard_widgets() {
 	$locale = get_locale();
     
     if($locale == 'ru_RU') {
-        add_meta_box('custom_links', 'Полезные ссылки', 'rdc_custom_links_dashboard_screen', 'dashboard', 'side', 'core');
+        add_meta_box('custom_links', 'Полезные ссылки', 'tst_custom_links_dashboard_screen', 'dashboard', 'side', 'core');
     }	
 } 
 
 
 
-function rdc_custom_links_dashboard_screen(){
+function tst_custom_links_dashboard_screen(){
 	
-	rdc_itv_info_widget();
-	rdc_support_widget();
+	tst_itv_info_widget();
+	tst_support_widget();
 
 
 }
 
-function rdc_itv_info_widget(){
+function tst_itv_info_widget(){
 	    
     $src = get_template_directory_uri().'/assets/img/logo-itv.png';
     $domain = parse_url(home_url()); 
     $itv_url = "https://itv.te-st.ru/?giger=".$domain['host'];
 ?>
-<div id="itv-dashboard-card" class="rdc-dashboard">
+<div id="itv-dashboard-card" class="tst-dashboard">
 	<div class="cols">
 		<div class="col-logo"><div class="itv-logo col-logo">
 			<a href="<?php echo esc_url($itv_url);?>" target="_blank"><img src="<?php echo esc_url($src);?>"></a>
@@ -275,7 +275,7 @@ function rdc_itv_info_widget(){
 <?php
 }
 
-function rdc_support_widget(){
+function tst_support_widget(){
 	
 	$src = get_template_directory_uri().'/assets/img/tst-logo';
 	
@@ -284,7 +284,7 @@ function rdc_support_widget(){
 		$doc = str_replace('<a', '<a target="_blank" ', make_clickable($doc));
 	
 ?>
-<div id="rdc-support-card" class="rdc-dashboard">
+<div id="tst-support-card" class="tst-dashboard">
 	<div class="cols">
 		
 	<div class="col-logo"><div class="tree-logo">
@@ -302,8 +302,8 @@ function rdc_support_widget(){
 }
 
 /** Doc link in footer text **/
-add_filter( 'admin_footer_text', 'rdc_admin_fotter_text' );
-function rdc_admin_fotter_text($text) {
+add_filter( 'admin_footer_text', 'tst_admin_fotter_text' );
+function tst_admin_fotter_text($text) {
 		
 	$doc = (defined('TST_DOC_URL') && !empty(TST_DOC_URL)) ? TST_DOC_URL : '';
 	
@@ -320,8 +320,8 @@ function rdc_admin_fotter_text($text) {
 
 
 /** Notification about wront thumbnail size **/
-add_filter('admin_post_thumbnail_html', 'rdc_thumbnail_dimensions_check', 10, 2);
-function rdc_thumbnail_dimensions_check($thumbnail_html, $post_id) {
+add_filter('admin_post_thumbnail_html', 'tst_thumbnail_dimensions_check', 10, 2);
+function tst_thumbnail_dimensions_check($thumbnail_html, $post_id) {
 	global $_wp_additional_image_sizes;
 	
 	if('org' == get_post_type($post_id))
@@ -338,7 +338,7 @@ function rdc_thumbnail_dimensions_check($thumbnail_html, $post_id) {
 	$size = "<b>".$needed_sizes['width'].'x'.$needed_sizes['height']."</b>";
 	$txt = sprintf(__('ATTENTION! You thumbnail image is too small. It should be at least %s px', 'kds'), $size);
 	
-    echo "<p class='rdc-error'>{$txt}<p>";
+    echo "<p class='tst-error'>{$txt}<p>";
     }
 
     return $thumbnail_html;
@@ -346,8 +346,8 @@ function rdc_thumbnail_dimensions_check($thumbnail_html, $post_id) {
 
 
 /** == Revome unused metabox == **/
-//add_action( 'add_meta_boxes' , 'rdc_remove_wrong_metaboxes', 20 );
-function rdc_remove_wrong_metaboxes() {
+//add_action( 'add_meta_boxes' , 'tst_remove_wrong_metaboxes', 20 );
+function tst_remove_wrong_metaboxes() {
 	
 	//hide section default metabox
 	remove_meta_box('tagsdiv-auctor', 'post', 'side');
@@ -356,9 +356,9 @@ function rdc_remove_wrong_metaboxes() {
 
 
 /** ==  Auctor Meta UI - for WP 4.4 + only == **/
-add_action( 'create_auctor', 'rdc_save_auctor_meta');
-add_action( 'edited_auctor', 'rdc_save_auctor_meta');
-function rdc_save_auctor_meta($term_id){
+add_action( 'create_auctor', 'tst_save_auctor_meta');
+add_action( 'edited_auctor', 'tst_save_auctor_meta');
+function tst_save_auctor_meta($term_id){
 		
 	
 	if (
@@ -378,8 +378,8 @@ function rdc_save_auctor_meta($term_id){
 	}
 }
 
-add_action( "auctor_edit_form_fields", 'rdc_auctor_edit_term_fields');
-function rdc_auctor_edit_term_fields($term){
+add_action( "auctor_edit_form_fields", 'tst_auctor_edit_term_fields');
+function tst_auctor_edit_term_fields($term){
 		
 	$fb = get_term_meta($term->term_id, 'auctor_facebook', true);		
 ?>
@@ -390,13 +390,13 @@ function rdc_auctor_edit_term_fields($term){
 </tr>
 <tr class="form-field term-auctor_photo-wrap">
 	<th scope="row"><label for="auctor_photo"><?php _e( 'Avatar', 'tst' ); ?></label></th>
-	<td><?php rdc_auctor_photo_field($term);?></td>
+	<td><?php tst_auctor_photo_field($term);?></td>
 </tr>
 <?php
 }
 
-add_action( "auctor_add_form_fields", 'rdc_auctor_add_term_fields');
-function rdc_auctor_add_term_fields($term){
+add_action( "auctor_add_form_fields", 'tst_auctor_add_term_fields');
+function tst_auctor_add_term_fields($term){
 	
 ?>
 <div class="form-field term-auctor_facebook-wrap">
@@ -406,19 +406,19 @@ function rdc_auctor_add_term_fields($term){
 </div>
 <div class="form-field term-auctor_photo-wrap">
 	<label for="auctor_photo"><?php _e( 'Avatar', 'tst' ); ?></label>
-	<td><?php rdc_auctor_photo_field(null);?>
+	<td><?php tst_auctor_photo_field(null);?>
 </div>
 <?php
 }
 
 
-function rdc_auctor_photo_field($term){
+function tst_auctor_photo_field($term){
 	
-	rdc_auctor_enqueue_scripts();
+	tst_auctor_enqueue_scripts();
 	
 	$image_ID = ($term) ? get_term_meta($term->term_id, 'auctor_photo', true) : '';
 	$image_src = ($image_ID) ? wp_get_attachment_image_src($image_ID, 'thumbnail') : array();
-	$labels = rdc_get_image_field_labels();
+	$labels = tst_get_image_field_labels();
 
 	wp_nonce_field('taxonomy-term-image-form-save', 'taxonomy-term-image-save-form-nonce');
 ?>
@@ -434,7 +434,7 @@ function rdc_auctor_photo_field($term){
 	
 }
 
-function rdc_get_image_field_labels() {
+function tst_get_image_field_labels() {
 	
 	return array(
 		'fieldTitle'       => __( 'Taxonomy Term Image' ),
@@ -446,10 +446,10 @@ function rdc_get_image_field_labels() {
 	);
 }
 
-function rdc_auctor_enqueue_scripts(){
+function tst_auctor_enqueue_scripts(){
 	
 	$screen = get_current_screen();
-	$labels = rdc_get_image_field_labels();
+	$labels = tst_get_image_field_labels();
 		
 	if ( $screen->id == 'edit-auctor' ){
 		// WP core stuff we need

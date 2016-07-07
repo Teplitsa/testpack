@@ -127,13 +127,13 @@ $label-text-color: $color-text;
 
 
 /* text input */
-.rdc-textfield {
+.tst-textfield {
 	display: block;
 	width: 100%;
 	padding: $input-top-gut 0;
 	position: relative;
 	
-	.rdc-textfield__input {
+	.tst-textfield__input {
 		@include input-text();
 		
 		display: block;
@@ -182,7 +182,7 @@ $label-text-color: $color-text;
 		}
 	}
 	
-	.rdc-textfield__input:focus {
+	.tst-textfield__input:focus {
 		//border-color: $input-color-active;		
 		& ~ label { color: $input-color-active;	}
 		& ~ label:after {
@@ -192,7 +192,7 @@ $label-text-color: $color-text;
 		}
 	}
 	
-	.rdc-textfield__error {
+	.tst-textfield__error {
 		position: absolute;
 		bottom: 6px;
 	}
@@ -201,12 +201,12 @@ $label-text-color: $color-text;
 
 
 /** chackbox **/
-.rdc-inputfix {
+.tst-inputfix {
 	width: 100%;
 	padding: $input-top-gut 0;
 	position: relative;
 	
-	.rdc-inputfix__label {
+	.tst-inputfix__label {
 		display: inline-block;
 		@include checkbox-text();
 		color: $color-text;
@@ -217,13 +217,13 @@ $label-text-color: $color-text;
 	}
 }
 
-.rdc-checkbox {
+.tst-checkbox {
 	display: block;
 	width: 100%;
 	position: relative;
 	padding-left: 26px;		
 	
-	.rdc-checkbox__input {
+	.tst-checkbox__input {
 		margin: 0;
 		padding: 0;
 		top: 4px;
@@ -233,7 +233,7 @@ $label-text-color: $color-text;
 		opacity: 0;
 	}
 	
-	.rdc-checkbox__label {
+	.tst-checkbox__label {
 		@include checkbox-text(15px);
 		display: inline-block;
 		position: relative;
@@ -254,7 +254,7 @@ $label-text-color: $color-text;
 		}
 	}
 	
-	.rdc-checkbox__input:checked + .rdc-checkbox__label {
+	.tst-checkbox__input:checked + .tst-checkbox__label {
 		&:before {
 			background-color: $input-color-active;
 			border-color: $input-color-active;
@@ -266,14 +266,14 @@ $label-text-color: $color-text;
 	}
 }
 
-.rdc-radio {
+.tst-radio {
 	display: block;
 	width: 100%;
 	position: relative;
 	padding-left: 26px;		
 	
 	
-	.rdc-radio__button {
+	.tst-radio__button {
 		margin: 0;
 		padding: 0;
 		top: 4px;
@@ -283,7 +283,7 @@ $label-text-color: $color-text;
 		opacity: 0;
 	}
 	
-	.rdc-radio__label {
+	.tst-radio__label {
 		@include checkbox-text(18px);
 		display: inline-block;
 		position: relative;
@@ -304,7 +304,7 @@ $label-text-color: $color-text;
 		}
 	}
 		
-	.rdc-radio__button:checked + .rdc-radio__label {
+	.tst-radio__button:checked + .tst-radio__label {
 		&:before {
 			background-color: $input-color-active;
 			border-color: $input-color-active;			
@@ -319,18 +319,18 @@ $label-text-color: $color-text;
 
 
 /** Select **/
-.rdc-select {
+.tst-select {
 	width: 100%;
 	padding: $input-top-gut 0;
 	position: relative;
 	
-	.rdc-inputfix__label {
+	.tst-inputfix__label {
 		display: block;
 		@include checkbox-text();
 		color: $color-text;
 	}
 	
-	.rdc-select-wrap {
+	.tst-select-wrap {
 		display: block;
 		margin-top: $gut/2;
 		position: realtive;

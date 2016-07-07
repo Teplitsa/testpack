@@ -65,16 +65,16 @@ class FRL_CssJs {
 
 		// fonts
 		wp_enqueue_style(
-			'rdc-fonts',
+			'tst-fonts',
 			'//fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700|Cuprum:400,700&subset=latin,cyrillic',
 			$style_dependencies,
 			null
 		);
-		$style_dependencies[] = 'rdc-fonts';
+		$style_dependencies[] = 'tst-fonts';
 
 		// design
 		wp_enqueue_style(
-			'frl-design',
+			'tst-design',
 			$url.'/assets/rev/'.$this->get_rev_filename('bundle.css'),
 			$style_dependencies,
 			null
@@ -112,14 +112,14 @@ class FRL_CssJs {
 
 		// front
 		wp_enqueue_script(
-			'frl-front',
+			'tst-front',
 			$url.'/assets/rev/'.$this->get_rev_filename('bundle.js'),
 			$script_dependencies,
 			null,
 			true
 		);
 
-		wp_localize_script('frl-front', 'frontend', array(
+		wp_localize_script('tst-front', 'frontend', array(
 			'ajaxurl' => admin_url('admin-ajax.php')			
 		));
 	}
@@ -143,7 +143,7 @@ class FRL_CssJs {
 		
 		$url = get_template_directory_uri();
 			
-		wp_enqueue_style('rdc-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);				
+		wp_enqueue_style('tst-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);				
 	}
 	
 	/* login style - make it inline ? */
@@ -216,9 +216,6 @@ class FRL_CssJs {
 	}
 	
 	
-	function dequeue_wpcf7_styles(){
-		wp_dequeue_style( 'contact-form-7' );
-	}
 } //class
 
 FRL_CssJs::get_instance();

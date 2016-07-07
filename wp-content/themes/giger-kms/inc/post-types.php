@@ -1,7 +1,7 @@
 <?php
 
-add_action('init', 'rdc_custom_content', 20);
-function rdc_custom_content(){
+add_action('init', 'tst_custom_content', 20);
+function tst_custom_content(){
 	
 	if(defined('TST_HAS_AUTHORS') && TST_HAS_AUTHORS) {
 		register_taxonomy('auctor', array('post',), array(
@@ -276,8 +276,8 @@ function rdc_custom_content(){
 }
 
 /** Metaboxes **/
-add_action( 'cmb2_admin_init', 'rdc_custom_metaboxes' );
-function rdc_custom_metaboxes() {
+add_action( 'cmb2_admin_init', 'tst_custom_metaboxes' );
+function tst_custom_metaboxes() {
 	
 	
 	/** Post **/

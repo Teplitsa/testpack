@@ -129,15 +129,15 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
         $posts = get_posts($params);
 		
 		$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4 exlg-cols-5";
-		$callback = 'krb_default_campaign_card';
+		$callback = 'tst_default_campaign_card';
 		
 		if($format == 'project') {
 			$loop_css = "cards-loop sm-cols-2 md-cols-2 lg-cols-3";
-			$callback = 'krb_project_campaign_card';
+			$callback = 'tst_project_campaign_card';
 		}
 		elseif($format == 'child') {
 			$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4";
-			$callback = 'krb_child_campaign_card';	
+			$callback = 'tst_child_campaign_card';	
 		}
 
         if($posts && is_callable($callback)) {		

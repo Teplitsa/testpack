@@ -16,9 +16,9 @@ get_header();
 ?>
 <section class="heading">
 	<div class="container">
-		<?php rdc_section_title(); ?>
+		<?php tst_section_title(); ?>
 		<?php if($campaign){ ?>
-		<h4><?php _e('Campaign', 'rdc');?>: <a href="<?php echo get_permalink($campaign);?>"><?php echo get_the_title($campaign);?></a></h4>
+		<h4><?php _e('Campaign', 'tst');?>: <a href="<?php echo get_permalink($campaign);?>"><?php echo get_the_title($campaign);?></a></h4>
 		<?php } ?>
 	</div>
 </section>
@@ -46,12 +46,12 @@ get_header();
 		}
 		else {
 			echo "<p>";
-			_e('No donations yet', 'rdc');
+			_e('No donations yet', 'tst');
 			echo "</p>";
 		}
 	?>
 	</div>
 </div></section>
-<section class="paging"><?php rdc_paging_nav($wp_query); ?></section>
+<section class="paging"><?php tst_paging_nav($wp_query); ?></section>
 
 <?php get_footer();

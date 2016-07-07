@@ -368,7 +368,7 @@ h1, h2, h3, h4, h5, h6 {
 		margin-top: 0;
 	}
 	
-	.rdc-icon {
+	.tst-icon {
 		display: inline-block;
 		width: 86px;
 		height: 40px;
@@ -389,7 +389,7 @@ h1, h2, h3, h4, h5, h6 {
 		&:hover, &:focus, &:active {
 			background: rgba(255,255,255, 0.95);
 			border-color: $color-white;
-			.rdc-icon { fill:rgba(0,0,0, 1); }
+			.tst-icon { fill:rgba(0,0,0, 1); }
 		}
 		
 		position: absolute;

@@ -136,7 +136,7 @@ $social_color: (
 .newsletter-form {
 	max-width: 680px;
 		
-	.rdc-textfield  {
+	.tst-textfield  {
 		padding: 0;
 		label { display: none; }
 		
@@ -160,7 +160,7 @@ $social_color: (
 			}
 		}
 		
-		.rdc-textfield__error {
+		.tst-textfield__error {
 			@include form-text(small);
 			display: inline-block;
 			padding: 2px 2px ;
@@ -197,7 +197,7 @@ $social_color: (
 			@include clearfix();
 		}
 		
-		.rdc-textfield {
+		.tst-textfield {
 			float: left;
 			@include calc(width, '100% - 180px');
 		}
@@ -212,7 +212,7 @@ $social_color: (
 	
 	&.in-footer {
 		
-		.rdc-textfield {
+		.tst-textfield {
 			input {
 				border-color: $color-white;
 				&:focus {
@@ -220,7 +220,7 @@ $social_color: (
 				}
 			}
 			
-			.rdc-textfield__error {
+			.tst-textfield__error {
 				color: rgba(255,255,255, 0.95);
 			}
 		}

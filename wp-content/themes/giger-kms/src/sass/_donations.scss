@@ -50,7 +50,7 @@
 		
 		&.agree { margin: 18px 0 18px 8px; }
 		&.amount { margin-bottom: 36px; }
-		&.rdc-textfield {
+		&.tst-textfield {
 			padding: 20px 0;
 			label::after { bottom: 20px; }
 		}
@@ -69,17 +69,17 @@
 		}
 	}
 		
-	.rdc-checkbox__input:checked + .rdc-checkbox__label {
+	.tst-checkbox__input:checked + .tst-checkbox__label {
 		&:before {
 			background-color: $color-link-one;
 			border-color: $color-link-one;
 		}
 	}
 	
-	.rdc-textfield__label:after { background-color: $color-link-one; }	
-	.rdc-textfield__input:focus ~ .rdc-textfield__label { color: $color-link-one; }
+	.tst-textfield__label:after { background-color: $color-link-one; }	
+	.tst-textfield__input:focus ~ .tst-textfield__label { color: $color-link-one; }
 	
-	.rdc-submit-button { 
+	.tst-submit-button { 
 		@include button(red);
 	}
 	
@@ -126,7 +126,7 @@ $figure_line-height: 40px;
 		line-height: inherit;		
 		padding-left: 30px;	
 		
-		.rdc-radio__label {
+		.tst-radio__label {
 			@include checkbox-text($figure_font_size);
 			line-height: inherit;
 			
@@ -213,7 +213,7 @@ $figure_line-height: 40px;
 		
 	}
 	
-	.rdc-radio__button:checked + .rdc-radio__label {
+	.tst-radio__button:checked + .tst-radio__label {
 		&:before {
 			background-color: $color-link-one;
 			border-color: $color-link-one;
@@ -446,7 +446,7 @@ $figure_line-height: 40px;
 	font-size: 11px;
 	color: $color-link-one;	
 	
-	&.rdc-textfield__error {
+	&.tst-textfield__error {
 		bottom: 3px;
 	}
 }

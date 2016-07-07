@@ -17,7 +17,7 @@ if(is_home() && $paged == 1) { //featured posts
 <div class="cards-loop sm-cols-1 md-cols-2">
 	<?php
 		foreach($featured as $f){
-			rdc_related_post_card($f);
+			tst_related_post_card($f);
 		}
 	?>
 </div>
@@ -25,7 +25,7 @@ if(is_home() && $paged == 1) { //featured posts
 <?php } ?>
 
 <section class="heading">
-	<div class="container"><?php rdc_section_title(); ?></div>
+	<div class="container"><?php tst_section_title(); ?></div>
 </section>
 
 <section class="main-content cards-holder"><div class="container-wide">
@@ -33,7 +33,7 @@ if(is_home() && $paged == 1) { //featured posts
 	<?php
 		if(!empty($posts)){
 			foreach($posts as $p){
-				rdc_post_card($p);
+				tst_post_card($p);
 			}
 		}
 		else {
@@ -43,6 +43,6 @@ if(is_home() && $paged == 1) { //featured posts
 </div>
 </div></section>
 
-<section class="paging"><?php rdc_paging_nav($wp_query); ?></section>
+<section class="paging"><?php tst_paging_nav($wp_query); ?></section>
 
 <?php get_footer();

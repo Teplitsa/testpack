@@ -1,6 +1,6 @@
 <?php
 /** Social menu and sharing **/
-function rdc_get_social_menu(){
+function tst_get_social_menu(){
 	return wp_nav_menu(array(
 			'theme_location' => 'social',
 			'container' => false,
@@ -12,8 +12,8 @@ function rdc_get_social_menu(){
 
 
 /** Support for social icons in menu **/
-add_filter( 'pre_wp_nav_menu', 'rdc_pre_wp_nav_menu_social', 10, 2 );
-function rdc_pre_wp_nav_menu_social( $output, $args ) {
+add_filter( 'pre_wp_nav_menu', 'tst_pre_wp_nav_menu_social', 10, 2 );
+function tst_pre_wp_nav_menu_social( $output, $args ) {
 	if ( ! $args->theme_location || 'social' !== $args->theme_location ) {
 		return $output;
 	}
@@ -43,7 +43,7 @@ function rdc_pre_wp_nav_menu_social( $output, $args ) {
 	unset( $menu_items, $menu_item );
 
 	// Supported social icons (filterable); [url pattern] => [css class]
-	$supported_icons = apply_filters( 'rdc_supported_social_icons', array(
+	$supported_icons = apply_filters( 'tst_supported_social_icons', array(
 		'instagram.com'      => 'icon-instagram',	
 		'facebook.com'       => 'icon-facebook',		
 		'twitter.com'        => 'icon-twitter',
@@ -96,10 +96,10 @@ function rdc_pre_wp_nav_menu_social( $output, $args ) {
 
 
 /** == Social buttons == **/
-function rdc_social_share_no_js() {
+function tst_social_share_no_js() {
 	
 	$title = (class_exists('WPSEO_Frontend')) ? WPSEO_Frontend::get_instance()->title( '' ) : '';
-	$link = rdc_current_url();
+	$link = tst_current_url();
 	$text = $title.' '.$link;
 
 	$data = array(
@@ -140,7 +140,7 @@ function rdc_social_share_no_js() {
 
 <?php
 foreach($data as $key => $obj){		
-	if((rdc_is_mobile_user_agent() && $obj['show_mobile']) || !rdc_is_mobile_user_agent()){
+	if((tst_is_mobile_user_agent() && $obj['show_mobile']) || !tst_is_mobile_user_agent()){
 ?>
 	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
 		<a href="<?php echo $obj['url'];?>" class="social-likes__button social-likes__button_<?php echo $key;?>" target="_blank" onClick="window.open('<?php echo $obj['url'];?>','<?php echo $obj['label'];?>','top=320,left=325,width=650,height=430,status=no,scrollbars=no,menubar=no,tollbars=no');return false;">
@@ -187,7 +187,7 @@ foreach($data as $key => $obj){
 		
 	foreach($mobile as $key => $obj) {
 		
-		if((!rdc_is_mobile_user_agent() && $obj['show_desktop']) || rdc_is_mobile_user_agent()) {
+		if((!tst_is_mobile_user_agent() && $obj['show_desktop']) || tst_is_mobile_user_agent()) {
 ?>
 	<div title="<?php echo esc_attr($obj['label']);?>" class="social-likes__widget social-likes__widget_<?php echo $key;?>">
 	<a href="<?php echo $obj['url'];?>" target="_blank" class="social-likes__button social-likes__button_<?php echo $key;?>"><svg class="svg-icon"><use xlink:href="#<?php echo $obj['icon'];?>" /></svg><span class="sh-text"><?php echo $obj['txt'];?></span></a>
@@ -199,7 +199,7 @@ foreach($data as $key => $obj){
 <?php
 }
 
-function rdc_is_mobile_user_agent(){
+function tst_is_mobile_user_agent(){
 	//may be need some more sophisticated testing
 	$test = false;
 	
@@ -221,7 +221,7 @@ function rdc_is_mobile_user_agent(){
 
 
 /** == Newsletter == */
-function rdc_get_newsletter_form($type = ''){
+function tst_get_newsletter_form($type = ''){
 	
 	$key = ($type == 'bottom') ? 'newsletter_bottom_form_id' : 'newsletter_form_id';
 	$form_id = get_theme_mod($key, 0);
@@ -233,8 +233,8 @@ function rdc_get_newsletter_form($type = ''){
 	return do_shortcode($code);
 }
 
-add_shortcode('newsletter_form', 'rdc_newsletter_form_screen');
-function rdc_newsletter_form_screen($atts){
+add_shortcode('newsletter_form', 'tst_newsletter_form_screen');
+function tst_newsletter_form_screen($atts){
 	
-	return "<div class='newsletter-form'>".rdc_get_newsletter_form()."</div>";
+	return "<div class='newsletter-form'>".tst_get_newsletter_form()."</div>";
 }

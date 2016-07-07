@@ -40,9 +40,7 @@ var changeEvent = function(evt) {
 
 //js
 gulp.task('build-js', function() {
-    var vendorFiles = [
-        basePaths.bower + 'leaflet/dist/leaflet.js',
-        basePaths.bower + 'easyModal.js/jquery.easyModal.js',
+    var vendorFiles = [        
         basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js'       
         ],
         appFiles = [basePaths.src+'js/*']; //our own JS files
@@ -64,7 +62,7 @@ gulp.task('build-css', function() {
        //mdl = path('./node_modules/material-design-lite/src');
        //paths.push(mdl);
 
-    var vendorFiles = gulp.src([basePaths.bower + 'leaflet/dist/leaflet.css']), //components
+    var vendorFiles = gulp.src([]), //components
         appFiles = gulp.src(basePaths.src+'sass/main.scss') //our main file with @import-s
         .pipe(!isProduction ? plugins.sourcemaps.init() : gutil.noop())  //process the original sources for sourcemap
         .pipe(plugins.sass({
