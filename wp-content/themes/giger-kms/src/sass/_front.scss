@@ -25,9 +25,7 @@ a {
 }
 
 p {
-	-webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto;
+	
 	&:last-child { margin-bottom: 0; }	
 }
 
@@ -200,15 +198,13 @@ h1, h2, h3, h4, h5, h6 {
 .site-footer {
 	@include body-text(small);
 	padding: $gut 0 $gut*1.5 + 58px 0;
-	background-color: $color-link-two;
-	background-image: url('../img/wave-d.png');
-	background-image: url('../img/wave-d.svg');
+	background-color: $color-link-three;	
 	background-repeat: repeat-x;
 	background-position: left bottom;
 	color: $color-white;
 	
 	a {
-		color: $color-link-three;
+		color: $color-link-two;
 		&:hover, &:focus, &:active {
 			text-decoration: underline;			
 		}
@@ -228,7 +224,7 @@ h1, h2, h3, h4, h5, h6 {
 	.widget-title {
 		@include header-title(widget);		
 		margin-bottom: $base;
-		color: $color-link-three;
+		color: $color-white;
 	}
 	
 	//layout

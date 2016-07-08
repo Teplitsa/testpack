@@ -3,12 +3,12 @@
 -------------------------------------------------------- */
 
 //Fonts
-$body:	     'Roboto', Helvetica, sans-serif; 
-$heading:    'Cuprum', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$title:      'Cuprum', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$body:	     'Anonymous Pro', "Helvetica Neue", Helvetica Neue, Helvetica, sans-serif; 
+$heading:    'Roboto Condensed', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$title:      'Exo 2', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $nav:        'Roboto Condensed', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
-$sans:       'Roboto', Helvetica, sans-serif; 
+$sans:       'Anonymous Pro', Helvetica, sans-serif; 
 $mono: 	     "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 
@@ -35,9 +35,9 @@ $base: 24px;
 $color-text:   rgba(0,0,0, 0.9);
 $color-white:  #ffffff;
 
-$color-link-one:   #ff4824; //red
-$color-link-two:   #6FD4E0; //blue
-$color-link-three: #224883; //dark blue
+$color-link-one:   #ff3d00; //red
+$color-link-two:   #00e5ff; //blue
+$color-link-three: #216188; //dark blue
 
 $color-text-black:			#000000;
 $color-text-semi:			rgba(0,0,0, 0.6);
@@ -82,11 +82,11 @@ $fixed_side: 222px;
 	color: $color-text;
 	font-weight: normal;
 	
-	font-size: 14px;	
+	font-size: 16px;	
 	line-height: 1.5;
 	
 	@include for(medium-screens) {
-		font-size: 18px;	
+		font-size: 20px;	
 		line-height: 1.45;
 	}
 		
@@ -128,6 +128,83 @@ $fixed_side: 222px;
 	}
 }
 
+@mixin post-title($mod: default) {
+	font-family: $title;
+	color: $color-text-black;
+	font-weight: 600;
+	text-transform: none;
+	
+	font-size: 28px;
+	line-height: 1.2;
+	
+	@include for(medium-screens) {
+		font-size: 32px;
+		line-height: 1.2;
+	}
+			
+	@if $mod == small_title {
+		font-size: 18px;
+		line-height: 1.2;		
+		@include for(medium-screens){ font-size: 21px; }
+	}
+	@else if $mod == featured {
+		font-size: 32px;
+		line-height: 1.2;
+			
+		@include for(medium-screens){
+			font-size: 36px;
+			line-height: 1.2;
+		}
+	}
+	@else if $mod == phone {
+		font-size: 54px;
+		line-height: 1.1;
+		font-weight: 800;
+		letter-spacing: -0.5px;
+		
+		@include for(medium-screens){ font-size: 64px; } 
+	}
+}
+
+@mixin header-title($mod: default){
+	font-family: $heading;
+	color: $color-text-black;
+	font-weight: 700;
+	text-transform: uppercase;
+	
+	font-size: 16px;	
+	line-height: 1.5;
+	
+	
+	@if $mod == section {
+		font-size: 50px;
+		@include for(large-screens) { font-size: 64px; }
+		line-height: 1.1;
+		font-weight: 700;
+		letter-spacing: -0.5px;
+	}
+	@if $mod == single {
+		font-size: 36px;
+		@include for(medium-screens) { font-size: 42px; }
+		@include for(large-screens) { font-size: 54px; }
+		line-height: 1.05;
+	}
+	@else if $mod == widget {
+		font-size: 36px;
+		line-height: 1.2;
+	}
+	@else if $mod == head_title {
+		line-height: 1.1;
+		font-size: 46px;
+		@include for(medium-screens) { font-size: 52px; }
+		
+	}
+	@else if $mod == quote_title {
+		font-size: 36px;		
+		line-height: 1.2;
+	}
+}
+
 @mixin nav-text($mod: default) {
 	
 	font-family: $nav;
@@ -158,31 +235,7 @@ $fixed_side: 222px;
 	}
 }
 
-@mixin post-title($mod: default) {
-	font-family: $title;
-	color: $color-link-three;
-	font-weight: normal;
-	text-transform: none;
-	
-	font-size: 21px;
-	line-height: 24px;
-			
-	@if $mod == small_title {
-		font-size: 18px;
-		line-height: 24px;
-		font-weight: 700;
-		letter-spacing: 0.5px;
-	}
-	@else if $mod == featured {
-		font-size: 26px;
-		line-height: 1.1;	
-			
-		@include for(medium-screens){
-			font-size: 28px;
-			line-height: 1.1;	
-		}
-	}	
-}
+
 
 @mixin sub-title($mod: default) {		
 	font-family: $sans;
@@ -221,40 +274,6 @@ $fixed_side: 222px;
 }
 
 
-@mixin header-title($mod: default){
-	font-family: $heading;
-	color: $color-link-three;
-	font-weight: normal;
-	text-transform: uppercase;
-	
-	font-size: 16px;	
-	line-height: 1.5;
-	
-	
-	@if $mod == section {
-		font-size: 42px;
-		@include for(large-screens) { font-size: 54px; }
-		line-height: 1.1;
-	}
-	@if $mod == single {
-		font-size: 36px;
-		@include for(medium-screens) { font-size: 42px; }
-		@include for(large-screens) { font-size: 54px; }
-		line-height: 1.05;
-	}
-	@else if $mod == widget {
-		font-size: 27px;
-		line-height: 1.2;
-	}
-	@else if $mod == head_title {
-		font-size: 40px;
-		line-height: 1.2;
-	}
-	@else if $mod == quote_title {
-		font-size: 36px;		
-		line-height: 1.2;
-	}
-}
 
 @mixin button($mod: default){
 	display: inline-block;

@@ -7,8 +7,7 @@
 	
 	& > h3, .widget-title {
 		margin-bottom: $base;		
-		@include header-title(widget);
-		color: $color-link-three;
+		@include header-title(widget);		
 	}
 	
 	.textwidget {		
@@ -176,9 +175,40 @@
 		max-width: $page_cont;
 		margin: 0 auto;
 	}
+	
+	.phone {		
+		@include post-title(phone);		
+		color: $color-link-two;		
+		text-align: center;
+	}
 }
 
 
+//square block
+.square-block {
+	background: rgba(255,255,255, 0.9);
+	padding: 30px;
+	
+	.so-widget-sow-editor {
+		padding: 50px;
+		text-align: center;
+	
+	}
+	
+	h3 {
+		@include header-title(widget);
+		color: $color-link-one;
+		margin: 0;
+	}
+	
+	h4 {
+		@include post-title(small_title);
+		color: $color-link-one;
+		margin: 10px 0 $gut;
+	}
+	
+	
+}
 
 
 //colored bg
@@ -263,17 +293,15 @@
 	
 	h3 {
 		@include header-title(head_title);
-		margin: 0;
-		color: $color-link-three;
+		margin: 0;		
 	}
 	
 	h4 {
 		@include post-title();
 		margin: 0;
-		color: $color-link-three;
 	}
 	
-	h3 + h4 { margin-top: 1em; }
+	h3 + h4 { margin-top: $gut/2; }
 	
 	&.page-header {
 		padding-top: $gut;
