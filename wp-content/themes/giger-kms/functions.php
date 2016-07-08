@@ -48,12 +48,11 @@ add_action( 'init', 'tst_setup', 30 );
 
 
 /** Custom image size for medialib **/
-//add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
+add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
 function tst_medialib_custom_image_sizes($sizes) {
 	
 	$addsizes = apply_filters('tst_medialib_custom_image_sizes', array(
-		//"thumbnail-landscape" => __("Landscape mini", 'tst'),
-		"embed" => 'Фиксированный'
+		"post-thumbnail" => 'Горизонтальная заставка',		
 	));
 		
 	return array_merge($sizes, $addsizes);
@@ -68,14 +67,18 @@ function tst_widgets_init() {
 		'right_single' => array(
 						'name' => 'Правая колонка - Записи',
 						'description' => 'Боковая колонка справа на страницах новостей'
+					),		
+		'footer_1' => array(
+						'name' => 'Подвал, 1 кол.',
+						'description' => 'Динамическая область в подвале - 1 виджет'
 					),
-		'right_event' => array(
-						'name' => 'Правая колонка - Анонсы',
-						'description' => 'Боковая колонка справа на страницах анонсов'
+		'footer_2' => array(
+						'name' => 'Подвал, 2 кол.',
+						'description' => 'Динамическая область в подвале - 1 виджет'
 					),
-		'footer' => array(
-						'name' => 'Подвал - 4 виджета',
-						'description' => 'Динамическая область в подвале: 4 виджета'
+		'footer_3' => array(
+						'name' => 'Подвал, 3 кол.',
+						'description' => 'Динамическая область в подвале - 1 виджет'
 					),
 	);
 		

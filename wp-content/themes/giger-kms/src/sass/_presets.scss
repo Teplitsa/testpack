@@ -36,7 +36,7 @@ $color-text:   rgba(0,0,0, 0.9);
 $color-white:  #ffffff;
 
 $color-link-one:   #ff3d00; //red
-$color-link-two:   #00e5ff; //blue
+$color-link-two:   #45C6F0; //blue
 $color-link-three: #216188; //dark blue
 
 $color-text-black:			#000000;
@@ -172,13 +172,13 @@ $fixed_side: 222px;
 	font-weight: 700;
 	text-transform: uppercase;
 	
-	font-size: 16px;	
+	font-size: 30px;	
 	line-height: 1.5;
 	
 	
 	@if $mod == section {
 		font-size: 50px;
-		@include for(large-screens) { font-size: 64px; }
+		@include for(medium-screens) { font-size: 64px; }
 		line-height: 1.1;
 		font-weight: 700;
 		letter-spacing: -0.5px;
@@ -426,7 +426,11 @@ $fixed_side: 222px;
 	
 	$ex_cont_width_mq: $page_cont / 0.92 + 1px;
 	@media screen and (min-width: $ex_cont_width_mq ) { 
-		margin: 0 -1 * ($full_cont - $page_cont) / 2;	
+		//margin: 0 -1 * ($full_cont - $page_cont) / 2;
+		//@include calc('margin-left', '600px - 50%');
+		//@include calc('margin-right', '600px - 50%');
+		margin: 0 -400px;
+		
 	}
 	
 }

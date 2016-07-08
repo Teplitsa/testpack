@@ -222,7 +222,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	
 	.widget-title {
-		@include header-title(widget);		
+		@include header-title();		
 		margin-bottom: $base;
 		color: $color-white;
 	}
@@ -238,42 +238,26 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 	
+	.bit { @include clearfix; }
 	.widget-bottom {
-		flex: 0 0 auto;
-		width: 100%;
-		margin: 0 $gut/2 $gut;
-		
-		@include calc(width, '100% - 30px');
-		
-		@include for(small-screens){
-			@include calc(width, '50% - 30px');
-		}
-		
-		@include for(medium-screens){
-			&:nth-of-type(2),
-			&:nth-of-type(3) {
-				@include calc(width, '25% - 30px');
-			}			
-		}
-		
-		@include for(large-screens){
-			@include calc(width, '25% - 30px');
-			
-			&.widget_nav_menu {
-				@include calc(width, '17% - 30px');				
-			}
-		}
-		
-		&.help .textwidget {
-			max-width: 245px;
+		margin-bottom: $gut;
+	}
+	
+	.vk .widget-bottom {
+		float: left;
+		width: 277px;
+		@media screen and (min-width: 610px) { 
+			&:nth-of-type(2) { margin-left: 30px;}
 		}
 	}
 	
+	
 	.hr {
-		margin: 0 $gut $gut;
+		margin: 0 0 $gut;
 		color: transparent;
 		display: block;
 		border-bottom: 1px solid rgba(255,255,255, 0.5);
+		
 		@include for(xxlarge-screens) {
 			margin-left: 0;
 			margin-right: 0;
@@ -320,7 +304,7 @@ h1, h2, h3, h4, h5, h6 {
 	flex-flow: row wrap;
 	justify-content: space-between;
 	align-items: center;
-	margin: 0 $gut/2;
+	margin: 0 -1*$gut/2;
 	
 	@include for(small-screens) {
 		flex-flow: row nowrap;

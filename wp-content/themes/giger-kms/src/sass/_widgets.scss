@@ -51,6 +51,7 @@
 		text-align: center;
 	}
 	
+	
 }
 
 .widget_nav_menu {
@@ -180,13 +181,19 @@
 		@include post-title(phone);		
 		color: $color-link-two;		
 		text-align: center;
+		a {
+			color: inherit;
+			cursor: default;
+		}
 	}
+	
+	ul { margin-left: 0; }
 }
 
 
 //square block
 .square-block {
-	background: rgba(255,255,255, 0.9);
+	background: rgba(255,255,255, 0.95);
 	padding: 30px;
 	
 	.so-widget-sow-editor {
@@ -236,13 +243,20 @@
 .container-extended-pictured {
 	@include container-extended();
 	padding-top: $gut*1.5;
-	padding-bottom: $gut*1.5;
-		
-	.text-white {
+	padding-bottom: $gut*1.5;	
+}
+
+.entry-content .text-white,
+.text-white {
 		padding: $gut 0;
 		
 		h2, h3, h4, h5, h6 { color: $color-white; }
 		color: $color-white;
+		
+		li {
+			color: $color-white;
+			&:before { color: $color-white; }
+		}
 		
 		a {
 			color: $color-white;
@@ -253,7 +267,6 @@
 			}
 		}
 	}
-}
 
 //cta
 .container-cta {

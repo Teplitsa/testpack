@@ -36,7 +36,12 @@ $footer_text = get_theme_mod('footer_text');
 
 <footer class="site-footer"><div class="container">		
 	
-	<div class="widget-area"><?php dynamic_sidebar( 'footer-sidebar' );?></div>
+	<div class="frame">
+		<div class="bit lg-8 bit-no-margin vk"><?php dynamic_sidebar( 'footer_1-sidebar' );?></div>		
+		<div class="bit lg-3 lg-offset-1 bit-no-margin"><?php dynamic_sidebar('footer_2-sidebar' );?></div>
+		
+	</div>
+	
 	<div class="hr"></div>
 	<div class="sf-cols">
 		

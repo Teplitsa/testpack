@@ -279,28 +279,6 @@ jQuery(document).ready(function($){
 	});	
 	
 	
-	/** Leyka custom modal **/
-	var leykaTopPad = (windowWidth > 940) ? 120 : 66;
-	
-	$('#leyka-agree-text').easyModal({		
-		hasVariableWidth : true,
-		top : leykaTopPad,
-		//transitionIn: 'animated zoomIn',
-		//transitionOut: 'animated zoomOut',
-		onClose : function(){  }
-	});
-	
-	$('body').on('click','.leyka-custom-confirmation-trigger', function(e){
-
-		$('#leyka-agree-text').trigger('openModal');			
-		e.preventDefault();
-	});
-	
-	$('body').on('click', '.leyka-modal-close', function(e){
-		
-		$('#leyka-agree-text').trigger('closeModal');
-	});
-	
 	
 	
 	/* Center logos  */
