@@ -182,8 +182,7 @@
 		color: $color-link-two;		
 		text-align: center;
 		a {
-			color: inherit;
-			cursor: default;
+			color: inherit;			
 		}
 	}
 	
@@ -241,9 +240,62 @@
 
 //pictured bg
 .container-extended-pictured {
-	@include container-extended();
+	background-color: $color-link-three;
+	@include container-extended();	
 	padding-top: $gut*1.5;
-	padding-bottom: $gut*1.5;	
+	padding-bottom: $gut*1.5;
+	
+	&.shaded {
+		position: relative;
+		z-index: 1;
+		
+		&:before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 2;
+			background: rgba(0,0,0, 0.5);
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.5+0,0+100 */
+			background: -moz-linear-gradient(top,  rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+			background: -webkit-linear-gradient(top,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%); 
+			background: linear-gradient(to bottom,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%); 
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80000000', endColorstr='#00000000',GradientType=0 );
+		}
+		
+		div[id *="pl-"] {
+			z-index: 10;
+			position: relative;
+		}
+	}
+}
+
+//site intro
+.intro-head {
+	position: relative;
+	padding: 10% 0;
+	
+	.sitephone {
+		color: $color-white;
+		text-align: right;
+		font-size: 1.1em;
+		font-weight: bold;
+		position: absolute;
+		right: 0;
+		top: -1*$gut;
+		
+		a { color: inherit; }
+	}
+	
+	.sitename {
+		@include post-title(sitename);
+		color: $color-white;
+		text-align: center;
+		margin: 0;
+	}
 }
 
 .entry-content .text-white,

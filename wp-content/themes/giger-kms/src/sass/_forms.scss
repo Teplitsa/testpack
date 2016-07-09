@@ -97,8 +97,9 @@ $label-text-color: $color-text;
 .frm_required {
 	margin-right: 4px;
 	vertical-align: super;
-	font-size: 0.8em;
-	color: $input-color-active;
+	font-size: 0.9em;
+	//color: $input-color-active;
+	color: $color-link-one;
 }
 
 .frm_hidden {

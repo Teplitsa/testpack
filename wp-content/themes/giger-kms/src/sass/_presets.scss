@@ -35,16 +35,16 @@ $base: 24px;
 $color-text:   rgba(0,0,0, 0.9);
 $color-white:  #ffffff;
 
-$color-link-one:   #ff3d00; //red
-$color-link-two:   #45C6F0; //blue
-$color-link-three: #216188; //dark blue
+$color-link-one:   #FF2201; //red
+$color-link-two:   #2962ff; //blue
+$color-link-three: #01357B; //dark blue
 
 $color-text-black:			#000000;
 $color-text-semi:			rgba(0,0,0, 0.6);
 $color-text-light:			rgba(0,0,0, 0.45);
 $color-secondary:			#f5f5f5;
 $color-secondary-dark:		#e5e5e5;
-$color-secondary-alt:		#d3d3d3;
+$color-secondary-alt:		#82B1FF; //light light blue
 $color-secondary-black:		#191411;
 
 
@@ -147,22 +147,24 @@ $fixed_side: 222px;
 		line-height: 1.2;		
 		@include for(medium-screens){ font-size: 21px; }
 	}
+	@else if $mod == sitename {
+		font-size: 32px;					
+		@include for(small-screens){ font-size: 44px; }
+		@include for(medium-screens){ font-size: 54px; }
+		@include for(large-screens){ font-size: 60px; }
+	}
 	@else if $mod == featured {
-		font-size: 32px;
-		line-height: 1.2;
-			
-		@include for(medium-screens){
-			font-size: 36px;
-			line-height: 1.2;
-		}
+		font-size: 32px;					
+		@include for(medium-screens){ font-size: 36px; }
 	}
 	@else if $mod == phone {
-		font-size: 54px;
+		font-size: 40px;
 		line-height: 1.1;
 		font-weight: 800;
 		letter-spacing: -0.5px;
 		
-		@include for(medium-screens){ font-size: 64px; } 
+		@include for(small-screens){ font-size: 54px; } 
+		@include for(medium-screens){ font-size: 75px; } 
 	}
 }
 
