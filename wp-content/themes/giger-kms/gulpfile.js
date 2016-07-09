@@ -41,7 +41,8 @@ var changeEvent = function(evt) {
 //js
 gulp.task('build-js', function() {
     var vendorFiles = [        
-        basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js'       
+        basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js' ,
+        basePaths.bower + 'javascript-equal-height-responsive-rows/grids.js'
         ],
         appFiles = [basePaths.src+'js/*']; //our own JS files
 

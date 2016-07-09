@@ -3,6 +3,14 @@
  * Shortcodes
  **/
 
+ /** phone icon **/
+add_shortcode('phone_icon', 'tst_phone_icon_screen');
+function tst_phone_icon_screen($atts) {
+	
+	return "<i class='link-icon'>".tst_svg_icon('icon-phone', false)."</i>";
+}
+ 
+ 
 
 /** sitemap **/
 add_shortcode('tst_sitemap', 'tst_sitemap_screen');
@@ -12,14 +20,6 @@ function tst_sitemap_screen($atts){
 	
 	return $out;
 }
-
-
-
-
-
-
-
-
 
 
 /** Youtube video caption **/

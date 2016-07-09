@@ -193,12 +193,12 @@
 //square block
 .square-block {
 	background: rgba(255,255,255, 0.95);
-	padding: 30px;
+	padding: 20px;
+	margin: 40px 0;
 	
 	.so-widget-sow-editor {
-		padding: 50px;
-		text-align: center;
-	
+		padding: 40px;
+		text-align: center;	
 	}
 	
 	h3 {
@@ -213,7 +213,9 @@
 		margin: 10px 0 $gut;
 	}
 	
-	
+	p {
+		
+	}
 }
 
 
@@ -288,6 +290,7 @@
 		top: -1*$gut;
 		
 		a { color: inherit; }
+		.svg-icon { vertical-align: baseline; }
 	}
 	
 	.sitename {

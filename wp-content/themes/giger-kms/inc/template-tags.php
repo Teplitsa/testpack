@@ -218,11 +218,7 @@ function tst_site_logo($size = 'regular') {
 function tst_svg_icon($id, $echo = true) {
 	
 	ob_start();
-?>
-<svg class="svg-icon <?php echo $id;?>">
-	<use xlink:href="#<?php echo $id;?>" />
-</svg>
-<?php
+?><svg class="svg-icon <?php echo $id;?>"><use xlink:href="#<?php echo $id;?>" /></svg><?php
 	$out = ob_get_contents();
 	ob_end_clean();
 	if($echo)
