@@ -4,17 +4,19 @@
 function tst_post_card(WP_Post $cpost){
 	
 	$pl = get_permalink($cpost);
-	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
+	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 40, true));
+	$src = tst_post_thumbnail_src($cpost, 'post-thumbnail');
 ?>
 <article class="tpl-post card">
 	<a href="<?php echo $pl; ?>" class="thumbnail-link">
-	<div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
-	<div class="entry-data">
+		<div class="entry-preview"><div class="tpl-pictured-bg" style="background-image: url(<?php echo $src;?>);" ></div></div>
+	</a>	
+	<div class="entry-data">		
+		<h4 class="entry-title"><a href="<?php echo $pl; ?>"><?php echo get_the_title($cpost);?></a></h4>
 		<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost), '<span>');?></div>
-		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 		<div class="entry-summary"><?php echo $ex;?></div>
-	</div>
-	</a>
+		<div class="read-more"><a href="<?php echo $pl; ?>" class="ghost-button">Читать дальше</a></div>
+	</div>	
 </article>
 <?php
 }

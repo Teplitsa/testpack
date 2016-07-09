@@ -6,7 +6,7 @@
 
 .fixed-top {
 	position: fixed;
-	top: $logo_full_h + $height_gap + 280px;
+	//top: $logo_full_h + $height_gap + 280px;
 }
 
 
@@ -138,67 +138,60 @@
 
 
 .tpl-post {
-	background: $color-white;
-	@include transition(all 0.3s);
+	margin-bottom: $gut*1.5;
 		
-	&:hover {
-		background: $color-link-two;
-		.entry-preview:after { background: rgba(0,0,0, 0.3); }
-		.entry-summary { color: $color-link-three; }
-	}	
-	
-	a {
-		display: block;
-		height: 100%;
-	}
-	
 	.entry-data {
-		padding: 0 $base $base;
+		padding: $gut;
+		text-align: center;
+		
+		@include for(medium-screens) {
+			padding: $gut $gut*1.5;
+		}
+		
 		position: relative;
 	}
 	
 	.entry-preview {
 		@include shadowed-preview();
+		width: 100%;
+		height: 300px;
 	}
+	
+	.thumbnail-link:hover .entry-preview:after { background: rgba(0,0,0, 0.3); }
 	
 	.entry-meta {
 		@include post-meta();		
-		position: absolute;
-		top: 0;
-		@include transform(translateY(-100%));
-		z-index: 100;
+		
 	}
 	
 	.entry-title {
 		@include post-title();
-		color: $color-link-three;
-		margin-bottom: $base*0.75;				
-		padding-top: $base;		
+		line-height: 1.1;
+		margin-bottom: 10px;
 	}
 	
 	.entry-summary {
-		@include body-text(summary);
+		@include body-text();
 		color: $color-text;
+		text-align: left;
+		margin: $gut 0 $gut/2;
 	}
 	
+	.ghost-button {
+		@include ghost-button(16px, $color-link-three, $color-white);
+	}
 }
 
 
 /** paging **/
-.paging {
-	padding: $base/2 0;
-	background: $color-white;
+.paging {	
 	text-align: center;
+	margin: $gut 0 $gut*2;
 	
-	nav {
-		border-top: 1px solid $color-border-normal;
-		border-bottom: 1px solid $color-border-normal;
-		padding: $base/2;
-	}
 	.page-numbers {
 		@include nav-text();
 		display: inline-block;
-		color: $color-text-light;
+		color: $color-text;		
 		padding: 8px 12px;
 		@include transition(all 0.3s);
 		

@@ -27,8 +27,8 @@ function tst_setup() {
 	// Thumbnails
 	add_theme_support('post-thumbnails');
 	set_post_thumbnail_size(640, 395, true ); // regular thumbnails	
-	add_image_size('square', 450, 450, true ); // square thumbnail 
-	add_image_size('medium-thumbnail', 790, 488, true ); // poster in widget	
+	//add_image_size('square', 450, 450, true ); // square thumbnail 
+	add_image_size('medium-thumbnail', 900, 300, true ); // poster in widget	
 	//add_image_size('embed', 735, 430, true ); // fixed size for embedding
 	//add_image_size('cover', 400, 567, true ); // long thumbnail for pages
 
