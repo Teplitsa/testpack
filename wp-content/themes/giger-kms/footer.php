@@ -68,5 +68,9 @@ $footer_text = get_theme_mod('footer_text');
 </div></footer>
 
 <?php wp_footer(); ?>
+<?php
+	$code = get_theme_mod('jivo_code');
+	echo $code;
+?>
 </body>
 </html>

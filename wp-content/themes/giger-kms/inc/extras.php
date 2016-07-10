@@ -182,47 +182,19 @@ function tst_body_classes( $classes ) {
 /** Options in customizer **/
 add_action('customize_register', 'tst_customize_register', 15);
 function tst_customize_register(WP_Customize_Manager $wp_customize) {
-    
-	$wp_customize->add_setting('header_title_one', array(
-        'default'   => '',
-        'transport' => 'refresh',
-		'option' => 'option'
-    ));
-    
-    $wp_customize->add_control('header_title_one', array(
-        'type'     => 'text',		
-        'label'    => 'Заголовок в шапке - 1 строка',
-        'section'  => 'title_tagline',
-        'settings' => 'header_title_one',
-        'priority' => 20,
-    ));
-	
-	$wp_customize->add_setting('header_title_two', array(
-        'default'   => '',
-        'transport' => 'refresh',
-		'option' => 'option'
-    ));
-    
-    $wp_customize->add_control('header_title_two', array(
-        'type'     => 'text',		
-        'label'    => 'Заголовок в шапке - 2 строка',
-        'section'  => 'title_tagline',
-        'settings' => 'header_title_two',
-        'priority' => 21,
-    ));
-	
+   
     	
-	$wp_customize->add_setting('header_text_top', array(
+	$wp_customize->add_setting('jivo_code', array(
         'default'   => '',
         'transport' => 'refresh',
 		'option' => 'option'
     ));
     
-    $wp_customize->add_control('header_text_top', array(
+    $wp_customize->add_control('jivo_code', array(
         'type'     => 'textarea',		
-        'label'    => 'Текст в шапке',
+        'label'    => 'Jivosite код',
         'section'  => 'title_tagline',
-        'settings' => 'header_text_top',
+        'settings' => 'jivo_code',
         'priority' => 25,
     ));
 	
@@ -239,33 +211,7 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'er_text',
         'priority' => 30,
     ));
-	
-	/*$wp_customize->add_setting('newsletter_form_id', array(
-        'default'   => '',
-        'transport' => 'refresh',
-    ));
-    
-    $wp_customize->add_control('newsletter_form_id', array(
-        'type'     => 'text',		
-        'label'    => 'ID формы подписки',
-        'section'  => 'title_tagline',
-        'settings' => 'newsletter_form_id',
-        'priority' => 40,
-    ));*/
-	
-	$wp_customize->add_setting('newsletter_bottom_form_id', array(
-        'default'   => '',
-        'transport' => 'refresh',
-    ));
-    
-    $wp_customize->add_control('newsletter_bottom_form_id', array(
-        'type'     => 'text',		
-        'label'    => 'ID формы подписки (подвал)',
-        'section'  => 'title_tagline',
-        'settings' => 'newsletter_bottom_form_id',
-        'priority' => 45,
-    ));
-	
+		
 	//Images
 	$wp_customize->add_setting('default_thumbnail', array(
         'default'   => false,
@@ -279,24 +225,12 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 60,
     )));
 	
-	if(tst_has_authors()){
-		$wp_customize->add_setting('default_avatar', array(
-			'default'   => false,
-			'transport' => 'refresh', // postMessage
-		));
-		
-		$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'default_avatar', array(
-			'label'    => __('Default Avatar', 'tst'),
-			'section'  => 'title_tagline',
-			'settings' => 'default_avatar',
-			'priority' => 70,
-		)));
-	}
-	
 	
 	$wp_customize->remove_setting('site_icon'); //remove favicon
 	$wp_customize->remove_control('blogdescription'); //remove favicon
 }
+
+
 
 /** Humans txt **/
 class TST_Humans_Txt {
