@@ -192,8 +192,9 @@ $fixed_side: 222px;
 		line-height: 1.05;
 	}
 	@else if $mod == widget {
-		font-size: 36px;
+		font-size: 34px;
 		line-height: 1.2;
+		letter-spacing: 0.5px;
 	}
 	@else if $mod == head_title {
 		line-height: 1.1;
@@ -453,4 +454,29 @@ $fixed_side: 222px;
 		height: 480px;
 	}
 }
+
+@mixin inpage-menu {
+	@include nav-text();
 	
+	ul { margin-left: -12px; }
+	
+	li {
+		display: inline-block;
+		margin: 0 0 5px 0;
+		padding: 0;
+		
+		&.current-menu-item:first-child {
+			margin-left: 12px;
+		}
+		
+		a {
+			display: inline-block;
+			padding: 5px 12px;
+		}
+		
+		&.current-menu-item a {
+			background: $color-link-three;
+			color: $color-white;
+		}
+	}		
+}

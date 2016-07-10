@@ -208,6 +208,11 @@
 	&:empty { display: none; }
 }
 
+.blog-menu {
+	@include inpage-menu();
+	margin: $gut/2 0 $gut;
+}
+
 
 /* Related section */
 .related-card-holder {
@@ -305,6 +310,7 @@
 		.entry-title { color: $color-link-three; }
 		.entry-summary { color: $color-link-three; }
 	}
+	
 }
 
 
@@ -312,15 +318,19 @@
 /** Single **/
 .entry-header-full {
 	padding: $gut 0 $gut;
+	text-align: center;
 	
 	.entry-title {
 		@include header-title(single);
-		
+		margin-bottom: $gut/2;		
 	}
 	
 	.entry-meta {
 		@include nav-text(multiline);
-		color: $color-link-three;
+		color: $color-link-three;		
+		margin-bottom: 8px;
+		text-align: center;
+		
 		a {
 			color: inherit;
 			&:hover, &:focus, &:active {
@@ -331,16 +341,10 @@
 		}
 	}
 	
-		
-	.full-event-metas,
 	.lead {
-		margin-top: $gut/4;
-		
-		@include for(medium-screens) {
-			@include calc(width, '66.66% - 16px');
-			font-size: 1.2em;
-			font-weight: 300;
-		}
+		font-size: 1.3em;
+		line-height: 1.35;
+		@include for(medium-screens) { font-size: 1.5em; }
 	}
 }
 
@@ -350,10 +354,37 @@
 	.entry-preview {
 		position: relative;
 		margin-bottom: $gut;
+		width: 100%;
+		
+		&.standard {
+			@include shadowed-preview();
+			height: 300px;
+		}		
 	}
 	
-	.introimg  {
-		@include vertical-image-header-fixed();
+	.nav-links	{
+		margin: $gut 0 $gut*2;
+		
+		.nav-next ,
+		.nav-previous {
+			margin: 5px;
+			text-align: center;
+		}
+		
+		@include for(small-screens) {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			
+			.nav-next {
+				text-align: right;
+				width: 50%;
+			}
+			.nav-previous {
+				text-align: left;
+				width: 50%;
+			}
+		}
 	}
 }
 
@@ -368,15 +399,25 @@
 	//.single & .social-likes { padding-top: $gut; }
 }
 	
-.mobile-sharing {	
+.mobile-sharing {
+	.social-likes-wrapper {
+		width: 100%;
+		position: relative;
+		height: 60px;
+	}
+	
 	.social-likes {
 		@include clearfix;
 		padding: 8px 0;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		@include transform(translateX(-50%));
 	}
 	
 	.social-likes__widget {
 		float: left;
-		margin: 0 8px 0 0;
+		margin: 0 4px;
 	}
 }
 

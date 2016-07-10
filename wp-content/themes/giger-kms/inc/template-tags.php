@@ -191,6 +191,27 @@ function tst_posted_on(WP_Post $cpost) {
 	return implode($sep, $meta);		
 }
 
+function tst_posted_on_single(WP_Post $cpost) {
+	
+	$meta = array();
+	$sep = '';
+	
+	if('post' == $cpost->post_type){		
+		
+		$meta[] = "<span class='date'>".get_the_date('d.m.Y', $cpost)."</span>";
+		
+		$cat = get_the_term_list($cpost->ID, 'category', '<span class="category">', ', ', '</span>');
+		$meta[] = $cat;	
+		
+		$sep = tst_get_sep('&middot;');
+		
+		$p = get_post(get_option('page_for_posts'));
+		$meta[] = "<a href='".get_permalink($p)."'>".get_the_title($p)."</a>";
+		
+	}
+	
+	return implode($sep, $meta);	
+}
 
 /** Logo **/
 function tst_site_logo($size = 'regular') {
@@ -253,8 +274,8 @@ function tst_section_title() {
 		
 		$p = get_post(get_option('page_for_posts'));
 		$title = get_the_title($p);
-		$title .= tst_get_sep('&mdash;');
-		$title .= single_term_title('', false);
+		//$title .= tst_get_sep('&mdash;');
+		//$title .= single_term_title('', false);
 		$css = 'archive';
 	}
 	elseif(is_tag() || is_tax()){
@@ -367,11 +388,12 @@ function tst_post_nav() {
 		return;
 	}?>
 
-	<nav class="navigation post-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e('Post navigation', 'kds'); ?></h1>
+	<nav class="navigation post-navigation" role="navigation">		
 		<div class="nav-links">
-			<?php previous_post_link('<div class="nav-previous">%link</div>', '<span class="meta-nav">&larr;</span>');
-			next_post_link('<div class="nav-next">%link</div>', '<span class="meta-nav">&rarr;</span>');?>
+		<?php
+			previous_post_link('<div class="nav-previous">%link</div>', '<span class="meta-nav">&larr;&nbsp;Предыдущая запись</span>');
+			next_post_link('<div class="nav-next">%link</div>', '<span class="meta-nav">Следующая запись&nbsp;&rarr; </span>');
+		?>
 		</div>
 	</nav>
 	<?php

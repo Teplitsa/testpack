@@ -13,7 +13,7 @@ function tst_post_card(WP_Post $cpost){
 	</a>	
 	<div class="entry-data">		
 		<h4 class="entry-title"><a href="<?php echo $pl; ?>"><?php echo get_the_title($cpost);?></a></h4>
-		<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost), '<span>');?></div>
+		<div class="entry-meta"><?php echo tst_posted_on($cpost);?></div>
 		<div class="entry-summary"><?php echo $ex;?></div>
 		<div class="read-more"><a href="<?php echo $pl; ?>" class="ghost-button">Читать дальше</a></div>
 	</div>	

@@ -35,18 +35,29 @@ class TST_RecentPosts_Widget extends SiteOrigin_Widget {
 	/** admin form **/
 	function initialize_form(){
 
-		return array(						
-			'posts_per_page' => array(
+		return array(
+			'title' => array(
 				'type' => 'text',
-				'label' => 'Количество'				
-			)			
+				'label' => __('Title', 'tst'),
+			),
+			'posts_per_page' => array(
+				'type' => 'number',
+				'label' => 'Количество',
+				'default' => 1
+			),
+			'title_url' => array(
+				'type' => 'link',
+				'label' => __('All posts link', 'tst'),
+			),
 		);
 	}
 	
 	/** prepare data for template **/	
 	public function get_template_variables( $instance, $args ) {
 		return array(
-			'posts_per_page' 	=> (int)($instance['posts_per_page'])			
+			'posts_per_page'	=> (int)($instance['posts_per_page']),
+			'title_url'			=> esc_url($instance['title_url']),
+			'title'				=> $instance['title']
 		);
 	}
 	
@@ -82,8 +93,14 @@ class TST_RecentPosts_Widget extends SiteOrigin_Widget {
         if($posts) {		
 			echo $args['before_widget'];
 			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
+			
+			if(!empty($title)){
+				$title = apply_filters('widget_title', $title);
+				$title = (!empty($title_url)) ? "<a href='{$title_url}' title='Все записи'>{$title}</a>" : $title;
+				echo $args['before_title'] . $title . $args['after_title'];
+			}
 		?>
-			<div class="frl-pb-block">
+			<div class="recent-posts">
 			<?php
 				foreach($posts as $p) {
 					tst_post_card($p);
