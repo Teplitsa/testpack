@@ -189,7 +189,7 @@
 		position: relative;
 		.bottom-decor-el {
 			text-align: center;
-			padding: 20px 0;
+			padding: 40px 0 20px;
 			
 			.svg-icon {
 				width: 70px;
@@ -272,7 +272,7 @@
 	}
 	
 	a {
-		font-size: 0.8em;		
+		
 	}
 	
 	p { margin: 0; }
@@ -613,5 +613,5 @@
 }
 
 .form-aligned {
-	@include for(medium-screens) { padding-top: 40px;}
+	@include for(medium-screens) { padding-top: 66px;}
 }
