@@ -290,13 +290,18 @@
 		color: $colored-block-text;
 	}
 	
-	a {
-		color: $colored-block-text;
-		text-decoration: underline;
+	/*a {
+		color: $color-link-three;		
 		&:hover, &:focus, &:active {
-			color: $color-link-three;				
+			color: $color-link-two;				
 		}
-	}	
+		
+		&[href *= "tel"] {
+			color: inherit;
+			&:visited { color: inherit; }
+			&:hover, &:focus, &:active { color: inherit; }
+		}
+	}	*/
 }
 
 //pictured bg
