@@ -214,13 +214,13 @@
 	
 	h3 {
 		@include header-title(widget);
-		color: $color-link-two;
+		color: $color-link-three;
 		margin: 0;
 	}
 	
 	h4 {
 		@include post-title(small_title);
-		color: $color-link-two;
+		color: $color-link-three;
 		margin: 10px 0 $gut;
 	}
 	
