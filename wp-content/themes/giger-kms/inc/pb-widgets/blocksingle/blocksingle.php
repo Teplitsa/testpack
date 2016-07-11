@@ -85,7 +85,7 @@ class TST_SingleBlock_Widget extends SiteOrigin_Widget {
 			<div class="frl-pb-block">
 			<?php 
 				$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
-				$$post->widget_class = ($class) ? $class : 'default'; 
+				$post->widget_class = ($class) ? $class : 'default'; 
 				call_user_func('tst_'.$post->post_type.'_card_single', $post);
 				?>
 			</div>

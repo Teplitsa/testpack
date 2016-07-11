@@ -139,6 +139,11 @@
 		margin: 0 auto;
 	}
 	
+	.container-narrowed-1000 {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+	
 	.no-bottom-margin.panel-cell-style .so-panel.widget { //no margin after widget
 		margin-bottom: 0 !important;
 	}
@@ -179,6 +184,20 @@
 	}
 	
 	ul { margin-left: 0; }
+	
+	.bottom-decor {
+		position: relative;
+		.bottom-decor-el {
+			text-align: center;
+			padding: 20px 0;
+			
+			.svg-icon {
+				width: 70px;
+				height: 59px;
+				fill: $color-link-two; 
+			}
+		}
+	}
 }
 
 
@@ -195,13 +214,13 @@
 	
 	h3 {
 		@include header-title(widget);
-		color: $color-link-one;
+		color: $color-link-two;
 		margin: 0;
 	}
 	
 	h4 {
 		@include post-title(small_title);
-		color: $color-link-one;
+		color: $color-link-two;
 		margin: 10px 0 $gut;
 	}
 	
@@ -210,6 +229,54 @@
 	}
 }
 
+
+
+/** map picture **/
+.map-block {
+	text-align: center;
+	margin: $gut auto;
+	max-width: 900px;
+	
+	.map-frame {
+		margin-bottom: $gut/2;
+		display: block;
+		position: relative;
+		width: 100%;
+		max-width: 900px;
+		height: 0;
+		padding-bottom: 90%;
+		
+		@include for(medium-screens) {
+			padding-bottom: 52%;
+		}
+	}
+	
+	.map-pic {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: $color-link-three;
+		background-image: url(../img/map-mobile.png);
+		background-image: url(../img/map-mobile.svg);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center center;
+		
+		@include for(medium-screens) {
+			background-image: url(../img/map.png);
+			background-image: url(../img/map.svg);
+		}
+	}
+	
+	a {
+		font-size: 0.8em;		
+	}
+	
+	p { margin: 0; }
+}
 
 //colored bg
 .container-extended-colored {
@@ -268,9 +335,9 @@
 }
 
 //site intro
-.intro-head {
+.intro-headind-sec{
 	position: relative;
-	padding: 10% 0;
+	padding: 6% 0;
 	
 	.sitephone {
 		color: $color-white;
@@ -285,14 +352,20 @@
 		.svg-icon { vertical-align: baseline; }
 	}
 	
-	.sitename {
-		@include post-title(sitename);
-		color: $color-white;
+	.sitename {		
 		text-align: center;		
-		background: $color-secondary-black;
-		padding: 15px 0 25px;
-		max-width: 700px;
-		margin: 0 auto;
+			
+		span {
+			display: inline-block;
+			@include post-title(sitename);			
+			color: $color-white;
+			background: $color-link-two;
+			padding: 8px 18px 18px;
+			line-height: 1;
+			@include for(small-screens) { line-height: 1; }
+			@include for(medium-screens) { line-height: 1; }
+			@include for(large-screens) { line-height: 1; }
+		}
 	}
 }
 
@@ -518,4 +591,27 @@
 		margin-top: $base;
 		font-size: 0.8em;
 	}
+}
+
+/** forms **/
+.entry-content .frm_form_widget,
+.frm_form_widget {
+	.widget-title {
+		display: none;
+		margin: 0;
+	}
+		
+	.frm_forms {
+		margin: 0;
+		box-shadow: none;
+		border: 20px solid $color-link-three;
+		
+		@include for(medium-screens) {
+			border: 36px solid $color-link-three;
+		}
+	}	
+}
+
+.form-aligned {
+	@include for(medium-screens) { padding-top: 40px;}
 }

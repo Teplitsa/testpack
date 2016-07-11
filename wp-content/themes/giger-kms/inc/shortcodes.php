@@ -10,6 +10,28 @@ function tst_phone_icon_screen($atts) {
 	return "<i class='link-icon'>".tst_svg_icon('icon-phone', false)."</i>";
 }
  
+add_shortcode('mobile_icon', 'tst_mobile_icon_screen');
+function tst_mobile_icon_screen($atts) {
+	
+	return "<i class='link-icon'>".tst_svg_icon('icon-phone', false)."</i>";
+}
+
+/** map **/
+add_shortcode('map_block', 'tst_map_block_screen');
+function tst_map_block_screen($atts) {
+	
+	extract(shortcode_atts(array(				
+		'url'  => ''
+	), $atts));
+	
+	$url = esc_url($url);
+	
+	$out = "<div class='map-block'>";
+	$out .= "<div class='map-frame'><div class='map-pic'></div></div>";	
+	$out .= "<a href='{$url}' target='_blank'>Посмотреть на Google карте</a></div>";
+	
+	return $out;
+}
  
 
 /** sitemap **/

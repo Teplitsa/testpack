@@ -116,7 +116,13 @@ class IST_PB_SectionHeader_Widget extends SiteOrigin_Widget {
 			<h4><?php echo apply_filters('tst_the_title', $subtitle); ?></h4>
 		<?php } ?>		
 	</div>
-	<?php	
+	<?php
+		$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
+		if(false !== strpos($class, 'bottom-decor')) {
+			echo "<div class='bottom-decor-el'>";
+			tst_svg_icon('icon-koi');
+			echo "</div>";
+		}
 		echo '</div>';
 		echo $args['after_widget'];
 	}
