@@ -311,7 +311,7 @@
 .container-extended-pictured {
 	background-color: $color-link-three;
 	@include container-extended();	
-	padding-top: $gut*1.5;
+	padding-top: $gut*2.5;
 	padding-bottom: $gut*1.5;
 	
 	&.shaded {
@@ -339,6 +339,11 @@
 			z-index: 10;
 			position: relative;
 		}
+	}
+	
+	@include transform(translateY(-30px) skewY(1deg));
+	&.transform-back {
+		@include transform(translateY(-15px) skewY(-1deg));
 	}
 }
 
