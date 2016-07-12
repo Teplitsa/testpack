@@ -341,14 +341,14 @@
 		}
 	}
 	
-	@include transform(translateY(-30px) skewY(1deg));
+	@include transform(translateY(-30px) skewY(1deg));	
 	& > div[id *= "pl-"] {
 		@include transform(skewY(-1deg));
 	}
 	
 	
 	&.transform-back {
-		@include transform(translateY(-15px) skewY(-1deg));
+		@include transform(translateY(0) skewY(-1deg));
 		& > div[id *= "pl-"] {
 			@include transform(skewY(1deg));
 		}
