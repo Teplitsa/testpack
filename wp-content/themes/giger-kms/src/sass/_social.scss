@@ -249,4 +249,62 @@ $social_color: (
 	}
 }
 
+/** phones links **/
+a[href *= "tel"] {
+	color: inherit;
+	display: inline-block;
+	padding: 4px 0;
+	&:visited { color: inherit; }
+	&:hover, &:focus, &:active { color: inherit; }
+}
 
+.link-icon {
+	margin-right: 12px;
+	display: inline-block;
+	line-height: inherit;	
+	vertical-align: middle;
+	
+	.svg-icon {
+		width: 12px;
+		height: 19px;
+		fill: currentColor;
+		vertical-align: baseline;
+	}
+}
+
+.ml-links {
+	i {
+		display: inline-block;
+		line-height: inherit;	
+		vertical-align: middle;
+		margin-right: 12px;
+	}
+	
+	.svg-icon {
+		width: 15px;
+		height: 15px;
+		fill: #000;
+		vertical-align: baseline;
+	}
+	
+	@each $item in telegram, whatsapp, viber {		
+		.icon-#{$item}  {
+			fill: social_color($item);			
+		}
+	}	
+}
+
+a.iconic {
+	position: relative;
+	padding-left: 81px;
+	
+	.ml-links {
+		position: absolute;
+		left: 0;
+	}
+	
+	.link-icon {
+		position: absolute;
+		left: 54px;
+	}
+}

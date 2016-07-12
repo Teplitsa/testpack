@@ -36,6 +36,12 @@
 	}
 }
 
+.gallery-clips {
+	height: 0;
+	margin: 0;
+	p { margin: 0;} 
+}
+
 $i: 1; //widths
 @while $i < 10 {
   
@@ -62,4 +68,6 @@ $i: 1; //widths
 		}
 	}
 }
+
+
 

@@ -3,7 +3,7 @@
  * The header for our theme.
  */
 ?><!DOCTYPE html>
-<html class="no-js" <?php language_attributes(); ?> xmlns:svg="http://www.w3.org/2000/svg">
+<html class="no-js" <?php language_attributes(); ?> >
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +15,7 @@
 
 <body id="top" <?php body_class(); ?>>
 <?php include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
+<?php do_action('tst_body_start');?>
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'tst' ); ?></a>
 
 <?php if(!is_front_page()) { ?>

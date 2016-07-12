@@ -24,27 +24,10 @@ a {
 	}
 }
 
-a[href *= "tel"] {
-	color: inherit;
-	&:visited { color: inherit; }
-	&:hover, &:focus, &:active { color: inherit; }
-}
 
-.link-icon {
-	margin-right: 12px;
-	display: inline-block;
-	line-height: inherit;
-	vertical-align: middle;
-	
-	.svg-icon {
-		width: 11px;
-		height: 19px;
-		fill: currentColor;
-		vertical-align: baseline;
-	}
-}
-	
-	
+
+
+
 
 p { 	
 	&:last-child { margin-bottom: 0; }	

@@ -13,7 +13,14 @@ function tst_phone_icon_screen($atts) {
 add_shortcode('mobile_icon', 'tst_mobile_icon_screen');
 function tst_mobile_icon_screen($atts) {
 	
-	return "<i class='link-icon'>".tst_svg_icon('icon-phone', false)."</i>";
+	$icons = array('icon-whatsapp', 'icon-telegram', 'icon-viber');
+	$out = '';
+	
+	foreach($icons as $id) {
+		$out .= "<i class='ml-icon'>".tst_svg_icon($id, false)."</i>";
+	}
+	
+	return "<span class='ml-links'>{$out}</span>";
 }
 
 /** map **/
@@ -32,7 +39,35 @@ function tst_map_block_screen($atts) {
 	
 	return $out;
 }
- 
+
+
+/** gallery **/
+remove_shortcode('gallery');
+add_shortcode('gallery', 'tst_gallery_screen');
+function tst_gallery_screen($atts){
+	
+	$out = gallery_shortcode($atts);
+	$polygons = array(
+		'<polygon points="0 0, 0.9 0.1, 1 1, 0.12 1" />',
+		'<polygon points="0 0, 0.85 0.15, 1 1, 0.07 0.95" />',		
+		'<polygon points="0 0.05, 0.9 0.05, 1 1, 0.1 0.88" />',
+		'<polygon points="0.09 0, 0.95 0.05, 0.9 1, 0.05 0.9" />',
+		'<polygon points="0.1 0.05, 1 0, 0.8 0.85, 0 0.9" />',
+	);
+	
+	$clips = '';
+	foreach($polygons as $i => $poly) {
+		$count = $i+1;
+	
+$clips .= '<svg width="0" height="0" xmlns="http://www.w3.org/2000/svg"><clipPath id="polshape-'.$count.'" clipPathUnits="objectBoundingBox">'.$poly.'</clipPath></svg><style>.gallery .gallery-item:nth-of-type(5n+'.$count.')  a { -webkit-clip-path: url("#polshape-'.$count.'"); clip-path: url("#polshape-'.$count.'"); }</style>';
+	
+	}
+	
+	$clips = "<div class='gallery-clips'>{$clips}</div>";
+	return $out.$clips;
+}
+
+
 
 /** sitemap **/
 add_shortcode('tst_sitemap', 'tst_sitemap_screen');

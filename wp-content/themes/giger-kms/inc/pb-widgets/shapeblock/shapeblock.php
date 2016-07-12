@@ -93,13 +93,7 @@ class TST_ShapeBlock_Widget extends SiteOrigin_Widget {
 		#tst_block-<?php echo $count;?>{
 			-webkit-clip-path: url("#clip-shape-<?php echo $count;?>"); 
 			clip-path: url("#clip-shape-<?php echo $count;?>");
-		}
-		<?php if($count == 1) { ?>
-		.gallery .gallery-icon  a	{
-			-webkit-clip-path: url("#clip-shape-<?php echo $count;?>"); 
-			clip-path: url("#clip-shape-<?php echo $count;?>");
-		}
-		<?php }?>
+		}		
 	</style>
 	<?php		
 		echo '</div>';
@@ -109,10 +103,10 @@ class TST_ShapeBlock_Widget extends SiteOrigin_Widget {
 	protected function _get_polygon(){
 		
 		$polygons = array(
-			'<polygon points="0 0, 0.9 0.1, 1 1, 0.1 1" />',
-			'<polygon points="0.15 0, 1 0.05, 0.87 0.95, 0.05 1" />',			
-			'<polygon points="0.1 0.05, 1 0, 0.9 0.9, 0 1" />',
-			'<polygon points="0.09 0, 0.95 0.05, 0.95 1, 0.01 0.9" />',
+			'<polygon points="0 0, 0.9 0.1, 1 1, 0.12 1" />',
+			'<polygon points="0.15 0, 1 0.05, 0.87 0.95, 0.07 1" />',			
+			'<polygon points="0.1 0.07, 1 0, 0.85 0.9, 0 1" />',
+			'<polygon points="0.09 0, 0.95 0.05, 0.9 1, 0.05 0.9" />',
 		);
 		
 		$i = rand(0, count($polygons) - 1);
