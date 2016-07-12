@@ -202,10 +202,13 @@
 
 
 //square block
-.square-block {
+.tst-shape-block {
 	background: rgba(255,255,255, 0.95);
-	padding: 20px;
 	margin: 40px 0;
+}
+.tst-block-content {	
+	padding: 30px 15%;	
+	text-align: center;
 	
 	.so-widget-sow-editor {
 		padding: 40px;
@@ -224,11 +227,11 @@
 		margin: 10px 0 $gut;
 	}
 	
-	p {
-		
+	p:last-child {
+		margin-bottom: 0;
 	}
+	
 }
-
 
 
 /** map picture **/
@@ -258,10 +261,10 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: $color-link-three;
+		background-color: $color-secondary-black;
 		background-image: url(../img/map-mobile.png);
 		background-image: url(../img/map-mobile.svg);
-		background-size: contain;
+		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center center;
 		
@@ -618,5 +621,5 @@
 }
 
 .form-aligned {
-	@include for(medium-screens) { padding-top: 66px;}
+	@include for(medium-screens) { padding-top: 36px;}
 }

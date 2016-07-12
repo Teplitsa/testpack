@@ -75,11 +75,7 @@ function tst_widgets_init() {
 		'footer_2' => array(
 						'name' => 'Подвал, 2 кол.',
 						'description' => 'Динамическая область в подвале - 1 виджет'
-					),
-		'footer_3' => array(
-						'name' => 'Подвал, 3 кол.',
-						'description' => 'Динамическая область в подвале - 1 виджет'
-					),
+					)
 	);
 		
 	foreach($config as $id => $sb) {

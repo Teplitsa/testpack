@@ -252,26 +252,31 @@ h1, h2, h3, h4, h5, h6 {
 	.widget-area {
 		display: flex;
 		flex-flow: row wrap;
-		justify-content: space-between;
-		margin: 0 $gut/2;
-		@include for(xxlarge-screens){
-			margin: 0 -1*$gut/2;
+		margin: 0 -1*$gut/2;
+		justify-content: flex-start;
+		
+		@include for(large-screens) {
+			&.text { justify-content: flex-end;	}
 		}
 	}
-	
-	.bit { @include clearfix; }
+		
 	.widget-bottom {
 		margin-bottom: $gut;
+		padding: 0 $gut/2;
+		
 	}
 	
-	.vk .widget-bottom {
-		float: left;
-		width: 277px;
-		@media screen and (min-width: 610px) { 
-			&:nth-of-type(2) { margin-left: 30px;}
+	.widget_nav_menu {
+		margin-right: $gut;
+		li { 
+			display: block;
+			margin-bottom: 15px;
+		}
+		a {
+			display: inline-block;
+			color: $color-white;
 		}
 	}
-	
 	
 	.hr {
 		margin: 0 0 $gut;

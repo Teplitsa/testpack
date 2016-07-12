@@ -3,7 +3,7 @@
  * The header for our theme.
  */
 ?><!DOCTYPE html>
-<html class="no-js" <?php language_attributes(); ?>>
+<html class="no-js" <?php language_attributes(); ?> xmlns:svg="http://www.w3.org/2000/svg">
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">

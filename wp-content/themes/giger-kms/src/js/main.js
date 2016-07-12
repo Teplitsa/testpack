@@ -101,6 +101,6 @@ jQuery(document).ready(function($){
 		
 	});
 	
-	$('.square-block').responsiveEqualHeightGrid();
+	$('.tst-shape-block').responsiveEqualHeightGrid();
 	
 }); //jQuery
