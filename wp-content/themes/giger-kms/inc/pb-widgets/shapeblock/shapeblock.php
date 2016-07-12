@@ -94,6 +94,12 @@ class TST_ShapeBlock_Widget extends SiteOrigin_Widget {
 			-webkit-clip-path: url("#clip-shape-<?php echo $count;?>"); 
 			clip-path: url("#clip-shape-<?php echo $count;?>");
 		}
+		<?php if($count == 1) { ?>
+		.gallery .gallery-icon  a	{
+			-webkit-clip-path: url("#clip-shape-<?php echo $count;?>"); 
+			clip-path: url("#clip-shape-<?php echo $count;?>");
+		}
+		<?php }?>
 	</style>
 	<?php		
 		echo '</div>';

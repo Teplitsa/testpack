@@ -26,11 +26,7 @@
 		
 		a {
 			display: block;			
-			@include transition(all 0.35s);
-			
-			&:hover {
-				
-			}
+			@include transition(all 0.35s);				
 		}
 		
 		img {
