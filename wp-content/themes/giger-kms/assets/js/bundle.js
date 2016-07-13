@@ -1225,13 +1225,16 @@ jQuery(document).ready(function($){
 	/** Leyka custom modal **/
 	var leykaTopPad = (windowWidth > 940) ? 120 : 66;
 	
-	$('#leyka-agree-text').easyModal({		
-		hasVariableWidth : true,
-		top : leykaTopPad,
-		//transitionIn: 'animated zoomIn',
-		//transitionOut: 'animated zoomOut',
-		onClose : function(){  }
-	});
+	try {
+	    $('#leyka-agree-text').easyModal({      
+	        hasVariableWidth : true,
+	        top : leykaTopPad,
+	        //transitionIn: 'animated zoomIn',
+	        //transitionOut: 'animated zoomOut',
+	        onClose : function(){  }
+	    });
+	}
+	catch(ex) {}
 	
 	$('body').on('click','.leyka-custom-confirmation-trigger', function(e){
 
