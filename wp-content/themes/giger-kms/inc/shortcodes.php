@@ -48,11 +48,11 @@ function tst_gallery_screen($atts){
 	
 	$out = gallery_shortcode($atts);
 	$polygons = array(
-		'<polygon points="0 0, 0.9 0.1, 1 1, 0.12 1" />',
-		'<polygon points="0 0, 0.85 0.15, 1 1, 0.07 0.95" />',		
-		'<polygon points="0 0.05, 0.9 0.05, 1 1, 0.1 0.88" />',
-		'<polygon points="0.09 0, 0.95 0.05, 0.9 1, 0.05 0.9" />',
-		'<polygon points="0.1 0.05, 1 0, 0.8 0.85, 0 0.9" />',
+		'<polygon points="0.07 0.06, 0.91 0, 1 0.88, 0.06 1" />',
+		'<polygon points="0 0.09, 0.94 0, 1 0.89, 0.12 1" />',		
+		'<polygon points="0 0, 0.88 0, 1 0.92, 0.06 1" />',
+		'<polygon points="0.06 0.03, 0.95 0, 1 0.85, 0.05 0.99" />',
+		'<polygon points="0 0, 0.85 0, 1 0.95, 0.09 0.98" />',
 	);
 	
 	$clips = '';
