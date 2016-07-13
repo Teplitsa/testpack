@@ -125,6 +125,15 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
                 ),
             );
         }
+        
+        // post2post relations patch
+        $current_post = get_post();
+        $compaign_type = get_leyka_compaign_type($current_post);
+        if($current_post->post_type == 'leyka_campaign' && $compaign_type == 'program') {
+            $params['connected_type'] = 'children-projects';
+            $params['connected_items'] = $current_post->ID;
+        }
+        // end patch
 
         $posts = get_posts($params);
 		

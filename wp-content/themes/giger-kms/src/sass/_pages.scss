@@ -257,3 +257,26 @@
 	}
 }
 
+/* circle person images */
+.fund-creators {
+    article.tpl-person.card {
+        background: none;
+        
+        .entry-preview {
+            @border-radius(100%);
+      
+            img {
+                display: block; 
+                max-width: 100%; 
+                border-radius: 50%;
+                border: solid 5px #ff4824;
+            }
+            
+        }
+        
+        h4.entry-title {
+            hyphens: none;
+            text-align:center;
+        }
+    }
+}

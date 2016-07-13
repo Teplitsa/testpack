@@ -338,4 +338,25 @@ jQuery(document).ready(function($){
 		
 	});
 	
+	$('.rdc-request-call-link').click(function(){
+	    $('#requestt-call-modal').show();
+	    return false;
+	});
+	
+	$('#rdc-request-call-modal-close').click(function(){
+        $('#requestt-call-modal').hide();
+        return false;
+	});
+
+	var modal = document.getElementById('requestt-call-modal');
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
+	
+	$('.social-menu a').each(function(){
+	    $(this).attr("target", "_blank");
+	});
+	
 }); //jQuery

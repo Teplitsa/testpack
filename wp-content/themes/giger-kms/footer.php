@@ -52,7 +52,7 @@ $footer_text = get_theme_mod('footer_text');
 		<div class="sf-cols-4">
 			<div class="te-st-bn">
 				<p class="support">Сайт сделан <br>при поддержке</p>
-				<a title="<?php echo $tst;?>" href="http://te-st.ru/" class="rdc-banner">					
+				<a title="<?php echo $tst;?>" href="http://te-st.ru/" class="rdc-banner" target="_blank">					
 					<svg class="rdc-icon"><use xlink:href="#icon-te-st" /></svg>
 				</a>
 			</div>			
@@ -63,5 +63,15 @@ $footer_text = get_theme_mod('footer_text');
 </div></footer>
 
 <?php wp_footer(); ?>
+
+<div id="requestt-call-modal" class="rdc-modal" style="<?php if(isset($_POST['form_key']) && $_POST['form_key'] == 'call_request_form'):?>display:block;"<?php else:?>display:none;<?php endif?>">
+  <div class="rdc-modal-content">
+    <span class="rdc-close" id="rdc-request-call-modal-close">x</span>
+    <p>
+        <?php echo rdc_get_call_request_form();?>
+    </p>
+  </div>
+</div>
+
 </body>
 </html>

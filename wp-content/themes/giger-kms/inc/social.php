@@ -238,3 +238,15 @@ function rdc_newsletter_form_screen($atts){
 	
 	return "<div class='newsletter-form'>".rdc_get_newsletter_form()."</div>";
 }
+
+/** == Call request == */
+function rdc_get_call_request_form(){
+    $code = "[formidable title=false description=false id='call_request_form']";
+    return do_shortcode($code);
+}
+
+add_shortcode('call_request_form', 'rdc_call_request_form_screen');
+function rdc_call_request_form_screen($atts){
+
+    return "<div class='call-request-form'>".rdc_get_call_request_form()."</div>";
+}

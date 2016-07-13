@@ -384,7 +384,7 @@ $label-text-color: $color-text;
 	display: block;
 	margin-top: $base/2;
 	
-	input, input:focus {				
+	input, input:focus {
 		border: none;		
 		outline: none;
 		@include nav-text();

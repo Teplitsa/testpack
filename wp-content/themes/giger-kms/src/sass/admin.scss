@@ -135,3 +135,7 @@ div [id *="ninja_forms_metabox"] .item-edit.metabox-item-edit {
 		color: #a0a5aa;
 	}
 }
+
+#p2p-to-children-projects .p2p-create-connections-tabs ul li:last-of-type {
+    display:none;
+}

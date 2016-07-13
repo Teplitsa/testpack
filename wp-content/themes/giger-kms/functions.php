@@ -97,9 +97,106 @@ function rdc_widgets_init() {
 			'after_title' => '</h3>',
 		));
 	}
+	
+	if ( function_exists('p2p_register_connection_type') ) {
+        p2p_register_connection_type ( array (
+            'name' => 'children-projects',
+            'from' => 'leyka_campaign',
+            'to' => 'leyka_campaign',
+            'cardinality' => 'many-to-many',
+            'admin_dropdown' => 'any',
+//             'title' => array (
+//                 'from' => __ ( 'Child', 'rdc' ),
+//                 'to' => __ ( 'Project', 'rdc' ) 
+//             ),
+//             'from_labels' => array (
+//                 'singular_name' => __ ( 'Project', 'rdc' ),
+//                 'search_items' => __ ( 'Search project', 'rdc' ),
+//                 'not_found' => __ ( 'No projects found.', 'rdc' ),
+//                 'create' => __ ( 'Choose project', 'rdc' ) 
+//             ),
+//             'to_labels' => array (
+//                 'singular_name' => __ ( 'Children', 'rdc' ),
+//                 'search_items' => __ ( 'Search children', 'rdc' ),
+//                 'not_found' => __ ( 'No children found.', 'rdc' ),
+//                 'create' => __ ( 'Choose children', 'rdc' ) 
+//             ),
+            'title' => array (
+                'from' => 'Дети',
+                'to' => 'Проект или программа'
+            ),
+            'from_labels' => array (
+                    'singular_name' => 'Проект или программа',
+                    'search_items' => 'Искать',
+                    'not_found' => 'Ничего не найдено.',
+                    'create' => 'Выбрать',
+                ),
+                'to_labels' => array (
+                    'singular_name' => 'Дети',
+                    'search_items' => 'Искать детей',
+                    'not_found' => 'Дети не найдены.',
+                    'create' => 'Выбрать детей',
+                ),
+                'admin_column' => true 
+            ) );
+	}
 }
 add_action( 'init', 'rdc_widgets_init', 25 );
 
+function get_leyka_compaign_type($compaign) {
+    $terms = wp_get_post_terms( $compaign->ID, 'campaign_cat' );
+    
+    $type = '';
+    if(!is_wp_error($terms)) {
+        foreach($terms as $term) {
+            if(in_array($term->slug, array('children', 'you-helped', 'need-help', 'rosemary'))) {
+                $type = 'child';
+            }
+            elseif(in_array($term->slug, array('projects'))) {
+                $type = 'project';
+            }
+            elseif(in_array($term->slug, array('programms'))) {
+                $type = 'program';
+            }
+        
+        }
+    }
+    
+    return $type;
+}
+
+function restrict_p2p_box_display( $show, $ctype, $post ) {
+    if ( 'children-projects' == $ctype->name ) {
+        $show = false;
+        if ( 'to' == $ctype->get_direction() ) {
+            $compaign_type = get_leyka_compaign_type($post);
+            if($compaign_type == 'child') {
+                $show = true;
+            }
+        }
+    }
+    
+    return $show;
+}
+add_filter( 'p2p_admin_box_show', 'restrict_p2p_box_display', 10, 3 );
+
+function order_pages_by_title( $args, $ctype, $post_id ) {
+
+    if ( 'children-projects' == $ctype->name ) {
+        $term_list = wp_get_post_terms($post_id, 'wpsc_product_category', array("fields" => "ids"));
+        $args['p2p:per_page'] = '20';
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'campaign_cat',
+                'field'    => 'slug',
+                'terms'    => array('projects', 'programms'),
+            )
+        );
+    }
+
+    return $args;
+}
+add_filter( 'p2p_connectable_args', 'order_pages_by_title', 10, 3 );
 
 /**
  * Includes
