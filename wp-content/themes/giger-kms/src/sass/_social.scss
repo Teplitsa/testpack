@@ -259,7 +259,6 @@ a[href *= "tel"] {
 }
 
 .link-icon {
-	margin-right: 12px;
 	display: inline-block;
 	line-height: inherit;	
 	vertical-align: middle;
@@ -277,12 +276,12 @@ a[href *= "tel"] {
 		display: inline-block;
 		line-height: inherit;	
 		vertical-align: middle;
-		margin-right: 12px;
+		margin-right: 5px;
 	}
 	
 	.svg-icon {
-		width: 15px;
-		height: 15px;
+		width: 18px;
+		height: 18px;
 		fill: #000;
 		vertical-align: baseline;
 	}
@@ -296,15 +295,15 @@ a[href *= "tel"] {
 
 a.iconic {
 	position: relative;
-	padding-left: 81px;
+	padding-right: 90px;
 	
 	.ml-links {
 		position: absolute;
-		left: 0;
+		right: 0;
 	}
 	
 	.link-icon {
 		position: absolute;
-		left: 54px;
+		right: 63px;
 	}
 }
