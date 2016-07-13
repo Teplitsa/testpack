@@ -5,6 +5,8 @@
 
 .campaign-form {
 	border: 36px solid $color-link-two;
+	border-bottom-width: 12px;
+	background: $color-link-two;
 }
 
 .leyka-custom-template {
@@ -307,17 +309,17 @@ $figure_line-height: 30px;
 .leyka-form-footer {
 	padding: 8px $gut 0;
 	text-align: right;
+	color: $color-white;
 	
 	a {
-		color: $color-link-three;
-		&:visited { color: $color-link-three; }
-		&:hover, &:focus, &:active {
-			text-decoration: underline;		
-		}
+		color: $color-white;
+		text-decoration: underline;	
 	}
 	
 	p {
 		@include form-text(small);
+		color: $color-white;
+		margin: 0;
 	}
 }
 
