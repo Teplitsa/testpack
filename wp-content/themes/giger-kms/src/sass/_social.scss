@@ -277,7 +277,7 @@ a[href *= "tel"] {
 		display: inline-block;
 		line-height: inherit;	
 		vertical-align: middle;
-		margin-right: 5px;
+		margin-left: 5px;
 	}
 	
 	.svg-icon {
@@ -296,7 +296,7 @@ a[href *= "tel"] {
 
 a.iconic {
 	position: relative;
-	padding-right: 90px;
+	padding-right: 75px;
 	
 	.ml-links {
 		position: absolute;
@@ -305,7 +305,7 @@ a.iconic {
 	
 	.link-icon {
 		position: absolute;
-		right: 63px;
+		right: 40px;
 		top: 6px;
 	}
 }

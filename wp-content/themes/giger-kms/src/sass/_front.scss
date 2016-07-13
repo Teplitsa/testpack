@@ -201,7 +201,7 @@ h1, h2, h3, h4, h5, h6 {
 /** Footer **/
 .site-footer {
 	@include body-text(small);
-	padding: $gut 0 $gut*1.5 + 58px 0;
+	padding: $gut 0 $gut*1.5 0;
 	background-color: $color-link-three;	
 	background-repeat: repeat-x;
 	background-position: left bottom;

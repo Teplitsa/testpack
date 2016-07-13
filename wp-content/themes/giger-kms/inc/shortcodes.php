@@ -34,7 +34,7 @@ function tst_map_block_screen($atts) {
 	$url = esc_url($url);
 	
 	$out = "<div class='map-block'>";
-	$out .= "<div class='map-frame'><div class='map-pic'></div></div>";	
+	$out .= "<div class='map-frame'><div class='map-mobile map-pic'>".tst_svg_icon('pic-mapmobile', false)."</div><div class='map-full map-pic'>".tst_svg_icon('pic-map', false)."</div></div>";	
 	$out .= "<a href='{$url}' target='_blank'>Посмотреть на Google карте</a></div>";
 	
 	return $out;

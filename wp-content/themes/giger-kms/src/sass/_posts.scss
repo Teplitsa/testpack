@@ -151,13 +151,14 @@
 		position: relative;
 	}
 	
-	.entry-preview {
-		@include shadowed-preview();
+	.entry-preview {		
 		width: 100%;
 		height: 300px;
 	}
 	
-	.thumbnail-link:hover .entry-preview:after { background: rgba(0,0,0, 0.3); }
+	.thumbnail-link:hover .entry-preview .tpl-pictured-bg {
+		filter: contrast(180%);
+	}
 	
 	.entry-meta {
 		@include post-meta();		

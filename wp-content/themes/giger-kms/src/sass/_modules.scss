@@ -32,6 +32,11 @@
 		img {
 			width: 100%;
 			height: auto;
+			@include transition(all 0.35s);
+		}
+		
+		a:hover img {
+			filter: contrast(180%);
 		}
 	}
 }
