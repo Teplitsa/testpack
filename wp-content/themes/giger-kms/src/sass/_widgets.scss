@@ -389,25 +389,14 @@
 			color: $color-white;
 			padding: 3% 8% 4%;
 			//@include transform(rotate(-10deg));
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2962ff+0,2962ff+100&1+0,1+31,0.48+59,0+69 */
-background: -moz-radial-gradient(center, ellipse cover,  rgba(41,98,255,1) 0%, rgba(41,98,255,1) 31%, rgba(41,98,255,0.48) 59%, rgba(41,98,255,0) 69%, rgba(41,98,255,0) 100%); /* FF3.6-15 */
-background: -webkit-radial-gradient(center, ellipse cover,  rgba(41,98,255,1) 0%,rgba(41,98,255,1) 31%,rgba(41,98,255,0.48) 59%,rgba(41,98,255,0) 69%,rgba(41,98,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
-background: radial-gradient(ellipse at center,  rgba(41,98,255,1) 0%,rgba(41,98,255,1) 31%,rgba(41,98,255,0.48) 59%,rgba(41,98,255,0) 69%,rgba(41,98,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2962ff', endColorstr='#002962ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2962ff+0,2962ff+100&0.95+0,0.88+31,0.48+50,0+69 */
+background: -moz-radial-gradient(center, ellipse cover,  rgba(41,98,255,0.95) 0%, rgba(41,98,255,0.88) 31%, rgba(41,98,255,0.48) 50%, rgba(41,98,255,0) 69%, rgba(41,98,255,0) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover,  rgba(41,98,255,0.95) 0%,rgba(41,98,255,0.88) 31%,rgba(41,98,255,0.48) 50%,rgba(41,98,255,0) 69%,rgba(41,98,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center,  rgba(41,98,255,0.95) 0%,rgba(41,98,255,0.88) 31%,rgba(41,98,255,0.48) 50%,rgba(41,98,255,0) 69%,rgba(41,98,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f22962ff', endColorstr='#002962ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 
 
-
-
-
-	
-			/*background: transparentize ($color-link-two);
-			
-			line-height: 1;
-			@include for(small-screens) { line-height: 1; }
-			@include for(medium-screens) { line-height: 1; }
-			@include for(large-screens) { line-height: 1; }*/			
-		}
 	}
 }
 
