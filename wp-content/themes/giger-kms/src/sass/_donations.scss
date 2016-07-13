@@ -1,10 +1,14 @@
 /** Donations **/
 .single .leyka-campaign {
-	margin-bottom: $gut*2;
+	//margin-bottom: $gut*2;
+}
+
+.campaign-form {
+	border: 36px solid $color-link-two;
 }
 
 .leyka-custom-template {
-	border: 1px solid $color-border-link;
+	//border: 1px solid $color-border-link;
 	background: $color-white;
 	box-shadow: 1px 2px 2px rgba(0,0,0, 0.08);
 	border-top: none;
@@ -17,7 +21,7 @@
 		@include header-title();
 		padding: $gut/2 $gut;		
 		cursor: pointer;		
-		border-top: 1px solid $color-border-link;
+		//border-top: 1px solid $color-border-link;
 	}
 		
 	.leyka-toggle-area {
@@ -33,7 +37,7 @@
 			display: block;
 			width: 100%;
 			height: 2px;
-			background: $color-link-one;
+			background: $color-link-two;
 			position: absolute;
 			top:0;
 			left: 0;
@@ -49,7 +53,7 @@
 		}
 		
 		&.agree { margin: 18px 0 18px 8px; }
-		&.amount { margin-bottom: 36px; }
+		&.amount { margin-bottom: 24px; }
 		&.tst-textfield {
 			padding: 20px 0;
 			label::after { bottom: 20px; }
@@ -61,8 +65,8 @@
 		}
 		
 		a {
-			color: $color-link-three;
-			&:visited { color: $color-link-three; }
+			color: $color-link-two;
+			&:visited { color: $color-link-two; }
 			&:hover, &:focus, &:active {
 				text-decoration: underline;		
 			}
@@ -71,16 +75,16 @@
 		
 	.tst-checkbox__input:checked + .tst-checkbox__label {
 		&:before {
-			background-color: $color-link-one;
-			border-color: $color-link-one;
+			background-color: $color-link-two;
+			border-color: $color-link-two;
 		}
 	}
 	
-	.tst-textfield__label:after { background-color: $color-link-one; }	
-	.tst-textfield__input:focus ~ .tst-textfield__label { color: $color-link-one; }
+	.tst-textfield__label:after { background-color: $color-link-two; }	
+	.tst-textfield__input:focus ~ .tst-textfield__label { color: $color-link-two; }
 	
 	.tst-submit-button { 
-		@include button(red);
+		@include button();
 	}
 	
 	.submit { position: relative; }
@@ -98,14 +102,14 @@
 		}
 		
 		.leyka-toggle-trigger {
-			color: $color-link-one;			
-			&:before { background: $color-link-one; }
+			color: $color-link-two;			
+			&:before { background: $color-link-two; }
 		}
 	}	
 }
 
-$figure_font_size: 28px;
-$figure_line-height: 40px;
+$figure_font_size: 20px;
+$figure_line-height: 30px;
 
 .leyka-field.amount-selector {
 	line-height: $figure_line-height;
@@ -145,7 +149,7 @@ $figure_line-height: 40px;
 		font-size: 18px;
 		line-height: inherit;
 		text-transform: uppercase;
-		color: $color-link-three;
+		color: $color-link-two;
 		margin-right: 8px;
 	}
 	
@@ -215,8 +219,8 @@ $figure_line-height: 40px;
 	
 	.tst-radio__button:checked + .tst-radio__label {
 		&:before {
-			background-color: $color-link-one;
-			border-color: $color-link-one;
+			background-color: $color-link-two;
+			border-color: $color-link-two;
 		}
 	}
 }
@@ -430,6 +434,7 @@ $figure_line-height: 40px;
 
 /** Errors **/
 .leyka-submit-errors {
+	margin: 10px;
 	@include response-block(error);		
 	margin-bottom: $gut/2;
 	

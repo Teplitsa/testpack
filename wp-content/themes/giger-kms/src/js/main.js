@@ -103,4 +103,28 @@ jQuery(document).ready(function($){
 	
 	$('.tst-shape-block').responsiveEqualHeightGrid();
 	
+	/** Leyka custom modal **/
+	var leykaTopPad = (windowWidth > 940) ? 120 : 66;
+	
+	$('#leyka-agree-text').easyModal({		
+		hasVariableWidth : true,
+		top : leykaTopPad,
+		updateZIndexOnOpen: false,
+		//transitionIn: 'animated zoomIn',
+		//transitionOut: 'animated zoomOut',
+		onClose : function(){  $('#leyka-agree-text').css('z-index', '0');},
+		onOpen : function() { $('#leyka-agree-text').css('z-index', '3007483647'); }
+	});
+	
+	$('body').on('click','.leyka-custom-confirmation-trigger', function(e){
+
+		$('#leyka-agree-text').trigger('openModal');			
+		e.preventDefault();
+	});
+	
+	$('body').on('click', '.leyka-modal-close', function(e){
+		
+		$('#leyka-agree-text').trigger('closeModal');
+	});
+	
 }); //jQuery

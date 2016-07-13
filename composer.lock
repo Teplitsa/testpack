@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ecb816409914ade3327bfe8b59213b0e",
-    "content-hash": "ead3844679775ef62a8fd98e10689f9b",
+    "hash": "f219715dd8c46cd6fa723e2d532cf346",
+    "content-hash": "fe0a6a643714f85ef2934be45648f6b8",
     "packages": [
         {
             "name": "composer/installers",
@@ -215,16 +215,16 @@
         },
         {
             "name": "koodimonni/composer-dropin-installer",
-            "version": "1.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Koodimonni/Composer-Dropin-Installer.git",
-                "reference": "717d992bccb9e5b1fded44136333704d4e61a4ae"
+                "reference": "1903a3a1e981a783618aad9e322a12ad39ad1760"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/717d992bccb9e5b1fded44136333704d4e61a4ae",
-                "reference": "717d992bccb9e5b1fded44136333704d4e61a4ae",
+                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/1903a3a1e981a783618aad9e322a12ad39ad1760",
+                "reference": "1903a3a1e981a783618aad9e322a12ad39ad1760",
                 "shasum": ""
             },
             "require": {
@@ -253,82 +253,7 @@
                 }
             ],
             "description": "Do what the fuck you want with your composer packages aka. Composer Dropin installer. Install packages or part of packages into custom paths without overwriting existing stuff.",
-            "time": "2015-06-11 14:15:20"
-        },
-        {
-            "name": "tst/cmb2-attached-posts",
-            "version": "1.2.2",
-            "dist": {
-                "type": "zip",
-                "url": "artifacts/tst-cmb2-attached-posts-1.2.2.zip",
-                "reference": null,
-                "shasum": "d4d69d33e6cca2d0c1837d2328f23d13733d8eb4"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin"
-        },
-        {
-            "name": "tst/leaflet-maps-marker-pro",
-            "version": "2.7.2",
-            "dist": {
-                "type": "zip",
-                "url": "artifacts/tst-leaflet-maps-marker-pro-2.7.2.zip",
-                "reference": null,
-                "shasum": "b6ada76ae6934d58d1447f1ccc910b0172b4d630"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin"
-        },
-        {
-            "name": "webdevstudios/cmb2-post-search-field",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WebDevStudios/CMB2-Post-Search-field.git",
-                "reference": "f1c0422a3de6e95f5b5597fe734f86ae51990ce8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WebDevStudios/CMB2-Post-Search-field/zipball/f1c0422a3de6e95f5b5597fe734f86ae51990ce8",
-                "reference": "f1c0422a3de6e95f5b5597fe734f86ae51990ce8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">5.2.4"
-            },
-            "suggest": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "WebDevStudios",
-                    "email": "contact@webdevstudios.com",
-                    "homepage": "https://github.com/WebDevStudios",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Custom field for CMB2 which adds a post-search dialog for searching/attaching other post IDs.",
-            "homepage": "https://github.com/WebDevStudios/CMB2",
-            "keywords": [
-                "field",
-                "metabox",
-                "plugin",
-                "search",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/WebDevStudios/CMB2-Post-Search-field/issues",
-                "source": "https://github.com/WebDevStudios/CMB2-Post-Search-field"
-            },
-            "time": "2016-05-30 06:58:49"
+            "time": "2016-07-11 09:21:59"
         },
         {
             "name": "wpackagist-plugin/cmb2",
@@ -412,15 +337,15 @@
         },
         {
             "name": "wpackagist-plugin/formidable",
-            "version": "2.02.03",
+            "version": "2.02.04",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/formidable/",
-                "reference": "tags/2.02.03"
+                "reference": "tags/2.02.04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.03.zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.04.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -491,26 +416,6 @@
             "homepage": "https://wordpress.org/plugins/responsive-lightbox/"
         },
         {
-            "name": "wpackagist-plugin/simple-css-for-widgets",
-            "version": "1.0",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/simple-css-for-widgets/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/simple-css-for-widgets.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/simple-css-for-widgets/"
-        },
-        {
             "name": "wpackagist-plugin/siteorigin-panels",
             "version": "2.4.10",
             "source": {
@@ -532,15 +437,15 @@
         },
         {
             "name": "wpackagist-plugin/so-widgets-bundle",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/so-widgets-bundle/",
-                "reference": "tags/1.6.1"
+                "reference": "tags/1.6.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.6.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.6.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -589,26 +494,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/w3-total-cache/"
-        },
-        {
-            "name": "wpackagist-plugin/widget-logic",
-            "version": "0.57",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/widget-logic/",
-                "reference": "tags/0.57"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/widget-logic.0.57.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/widget-logic/"
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
@@ -782,11 +667,9 @@
         "wpackagist-plugin/leyka": 0,
         "wpackagist-plugin/media-search-enhanced": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
-        "wpackagist-plugin/simple-css-for-widgets": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/cmb2": 0,
-        "webdevstudios/cmb2-post-search-field": 20,
         "wpackagist-plugin/formidable": 0,
         "wpackagist-plugin/siteorigin-panels": 0,
         "wpackagist-plugin/so-widgets-bundle": 0,

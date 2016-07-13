@@ -57,11 +57,11 @@ $label-text-color: $color-text;
 	}
 	
 	@if $mod == error {
-		&:before { background: $color-link-two; }
+		&:before { background: $color-link-one; }
 	}
 	@else if $mod == ok {		
-		&:before { background: $leyka_green; }
-		color: $leyka_green;
+		&:before { background: $color-link-two; }
+		//color: $leyka_green;
 	}
 }
 

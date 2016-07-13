@@ -281,7 +281,7 @@ function tst_donation_form($campaign_id = null){
 
 
 <!-- agreement modal -->
-<div id="leyka-agree-text" class="leyka-oferta-text leyka-custom-modal">
+<div id="leyka-agree-text" class="tst-leyka-oferta-text leyka-custom-modal">
 	<div class="leyka-modal-close"><?php tst_svg_icon('icon-close');?></div>
 	<div class="leyka-oferta-text-frame">
 		<div class="leyka-oferta-text-flow">
