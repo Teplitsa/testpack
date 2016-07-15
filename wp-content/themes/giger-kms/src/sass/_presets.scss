@@ -35,13 +35,15 @@ $base: 24px;
 $color-text:   rgba(0,0,0, 0.9);
 $color-white:  #ffffff;
 
-$yellow: #FFE400;
-$orange: #FFA000;
-$red:    #F26222;
+$yellow: 		#FFE300;
+$yellow_light: 	#fff9b2;
+$orange: 		#F16521;
+$red:			#EA5222;
+$orange_light : #FF782F;
 
 $color-link-one:   $orange; //base orange
-$color-link-two:   $red; //dark orange
-$color-link-three: $yellow; //base orange again
+$color-link-two:   $orange_light; //darker orange
+$color-link-three: $yellow; //yellow
 
 $color-text-black:			#000000;
 $color-text-semi:			rgba(0,0,0, 0.6);
@@ -279,7 +281,7 @@ $rule: 	 1px solid $color-border-normal;
 	color: $color-white;
 	background: $color-link-one;
 	border: 1px solid $color-link-one;
-	border-radius: 2px;
+	border-radius: 3px;
 	@include transition(all 0.35s);
 	
 	padding: 14px 24px;
@@ -290,9 +292,10 @@ $rule: 	 1px solid $color-border-normal;
 		color: $color-white;
 	}
 	&:hover, &:focus, &:active {
-		background: mix($color-link-one, $color-link-two, 60%);
-		border-color: mix($color-link-one, $color-link-two, 60%);
+		background: $color-link-two;
+		border-color: darken($color-link-two, 5%);
 		color: $color-white;
+		box-shadow: 1px 1px 2px rgba(100,100,100, 0.2);
 	}
 	
 	@if $mod == white {
@@ -317,13 +320,7 @@ $rule: 	 1px solid $color-border-normal;
 		}
 	}
 	@else if $mod == red {
-		background: $color-link-one;
-		border: 1px solid $color-link-one;
 		
-		&:hover, &:focus, &:active {			
-			background: darken($color-link-one, 10%);
-			border-color: darken($color-link-one, 10%);			
-		}
 	}
 	@else if $mod == featured {
 		font-weight: bold;

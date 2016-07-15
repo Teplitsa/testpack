@@ -19,50 +19,50 @@
 
 <header id="site_header" class="site-header">
 	
-	<nav id="site_nav_full" class="site-nav-full hide-upto-medium"><div class="container ">
-	<div class="site-nav-row">
-		<div class="site-nav-cell main-menu"><?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'main-menu ontop')); ?></div>
-		<div class="site-nav-cell search">
-			<a id="trigger_search" href="<?php echo add_query_arg('s', '', home_url());?>"><?php tst_svg_icon('icon-search');?></a>		
-		</div>
-		<div class="site-nav-cell social hide-upto-exlarge"><?php echo tst_get_social_menu('top'); ?></div>
-	</div>
-	</div></nav>
-	
 	<div class="container">
 	<div class="site-header-row">
 		<div class="site-header-cell branding">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
-				<img src="<?php echo get_template_directory_uri();?>/assets/img/logo-temp.png" id="logo">
+				<?php tst_site_logo('regular')?>
 			</a>
 		</div>
-		<div class="site-header-cell details hide-upto-large">
-		<?php
-			$header_text_one = get_theme_mod('header_text_one');
-			$header_text_two = get_theme_mod('header_text_two');
-		?>
-			<div class="details-row">
-				<div class="details-cell hide-upto-exlarge"><?php echo apply_filters('tst_the_content', $header_text_one);?></div>
-				<div class="details-cell"><?php echo apply_filters('tst_the_content', $header_text_two);?></div>
-			</div>
+		<div class="site-header-cell mainmenu hide-upto-large">
+			<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'main-menu ontop')); ?>
 		</div>
 		<div class="site-header-cell donation hide-upto-small">
 			<?php $now_id = get_theme_mod('now_campaign_id');?>
 			<a href="<?php echo get_permalink((int)$now_id);?>" class="donation-button">Помочь сейчас</a>
 		</div>
-		<div class="site-header-cell menu-trigger hide-on-medium">
+		<div class="site-header-cell menu-trigger hide-on-large">
 			<a id="trigger_menu" href="<?php echo home_url('sitemap');?>" class="trigger-button open-menu"><?php tst_svg_icon('icon-menu');?></a>	
 		</div>
 	</div>
 	</div><!-- .container -->
 	
+	<nav id="site_nav_full" class="site-nav-full hide-upto-large"><div class="container ">
+	<div class="site-nav-row">
+		<?php
+			$head_text = (is_front_page() || is_search() || is_404()) ? get_option('header_feature_text') : '&nbsp;';			
+		?>
+		<div class="site-nav-cell submenu"><div id="site_subnav"><?php echo apply_filters('tst_the_title', $head_text);?></div></div>
+		<div class="site-nav-cell search">
+			<a id="trigger_search" href="<?php echo add_query_arg('s', '', home_url());?>"><?php tst_svg_icon('icon-search');?></a>		
+		</div>
+		<!--<div class="site-nav-cell social hide-upto-exlarge"><?php echo tst_get_social_menu('top'); ?></div>-->
+	</div>
+	</div></nav>
+	
 	<!-- drawer -->
 	<div class="nav-overlay"></div>
-	<nav id="site_nav_mobile" class="site-nav-mobile hide-on-medium">
+	<nav id="site_nav_mobile" class="site-nav-mobile hide-on-large">
 		<div class="site-nav-title">			
 			<div id="trigger_menu_close" class="trigger-button close-menu"><?php tst_svg_icon('icon-close');?></div>
 		</div>
-		<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'main-menu')); ?>
+		<?php
+			$after = '<span class="submenu-trigger">'.tst_svg_icon('icon-up', false).tst_svg_icon('icon-down', false).'</span>';
+			wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'main-menu', 'after' => $after));
+		?>
+		
 		
 		<div class="search-holder"><?php get_search_form();?></div>
 		

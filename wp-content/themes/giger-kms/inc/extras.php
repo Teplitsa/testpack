@@ -183,33 +183,21 @@ function tst_body_classes( $classes ) {
 add_action('customize_register', 'tst_customize_register', 15);
 function tst_customize_register(WP_Customize_Manager $wp_customize) {
     
-	$wp_customize->add_setting('header_text_one', array(
+	$wp_customize->add_setting('header_feature_text', array(
         'default'   => '',
         'transport' => 'refresh',
-		'option' => 'option'
+		'type' => 'option'
     ));
     
-    $wp_customize->add_control('header_text_one', array(
+    $wp_customize->add_control('header_feature_text', array(
         'type'     => 'textarea',		
-        'label'    => 'Текст в шапке - 1 блок',
+        'label'    => 'Текст в шапке',
         'section'  => 'title_tagline',
-        'settings' => 'header_text_one',
+        'settings' => 'header_feature_text',
         'priority' => 20,
     ));
 	
-	$wp_customize->add_setting('header_text_two', array(
-        'default'   => '',
-        'transport' => 'refresh',
-		'option' => 'option'
-    ));
-    
-    $wp_customize->add_control('header_text_two', array(
-        'type'     => 'textarea',		
-        'label'    => 'Текст в шапке - 2 блок',
-        'section'  => 'title_tagline',
-        'settings' => 'header_text_two',
-        'priority' => 25,
-    ));
+	
 	
 	$wp_customize->add_setting('footer_text', array(
         'default'   => '',

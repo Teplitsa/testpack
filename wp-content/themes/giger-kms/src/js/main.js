@@ -30,7 +30,9 @@ jQuery(document).ready(function($){
 	$('#trigger_menu').on('click', function(e){
 				
 		
+		$('#site_nav_mobile').find('.current-menu-item.menu-item-has-children').addClass('open');
 		$site_header.addClass('menu-open');
+		
 		
 		e.stopImmediatePropagation();
 		e.stopPropagation();
