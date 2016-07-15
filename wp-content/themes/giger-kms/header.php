@@ -27,7 +27,7 @@
 			</a>
 		</div>
 		<div class="site-header-cell mainmenu hide-upto-large">
-			<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'main-menu ontop')); ?>
+			<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_id' => 'full_main_menu', 'menu_class' => 'main-menu ontop')); ?>
 		</div>
 		<div class="site-header-cell donation hide-upto-small">
 			<?php $now_id = get_theme_mod('now_campaign_id');?>
