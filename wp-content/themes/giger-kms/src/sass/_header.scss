@@ -88,7 +88,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 		
 		&.menu-trigger {
 			flex: 0 1 auto;
-			width: 	$header_height_base + $header_height_gap;
+			width: 	$header_height_base;
 			padding: $header_height_gap/2 0;
 		}
 		
@@ -379,12 +379,12 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	}
 }
 
+//search basic styles
 .searchform {
 	background: $color-secondary;
 	border-radius: 3px;
 	position: relative;	
 	z-index: 1;
-	
 	
 	.search-field {
 		background: transparent;
