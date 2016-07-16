@@ -46,7 +46,10 @@
 		?>
 		<div class="site-nav-cell submenu"><div id="site_subnav"><?php echo apply_filters('tst_the_title', $head_text);?></div></div>
 		<div class="site-nav-cell search">
-			<a id="trigger_search" href="<?php echo add_query_arg('s', '', home_url());?>"><?php tst_svg_icon('icon-search');?></a>		
+			<div id="search_toggle" class="search-toggle">
+				<div class="search-toggle-area"><?php get_search_form();?></div>
+				<a id="trigger_search" href="<?php echo add_query_arg('s', '', home_url());?>"><?php tst_svg_icon('icon-search');?></a>
+			</div>
 		</div>
 		<!--<div class="site-nav-cell social hide-upto-exlarge"><?php echo tst_get_social_menu('top'); ?></div>-->
 	</div>

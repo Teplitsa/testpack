@@ -4,6 +4,7 @@
  */
 ?>
 	<form method="get" class="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-		<?php tst_svg_icon('icon-search');?>
-		<input type="search" class="search-field" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" id="s" placeholder="Найти" autocomplete="off">		
+		<input type="search" class="search-field" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="Найти" autocomplete="off">
+		<input type="submit" value="OK" class="search-submit">
+		<?php tst_svg_icon('icon-search');?>		
 	</form>

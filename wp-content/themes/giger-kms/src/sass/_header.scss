@@ -66,7 +66,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 		
 		&.branding {
 			flex: 0 1 auto;
-			width: 210px;
+			width: 195px;
 			padding: $header_height_gap/2 0;
 		}
 		
@@ -76,14 +76,18 @@ $mobile_navlink_height : 20px + 4px + 20px;
 		
 		&.donation {
 			flex: 1 0 auto;
-			text-align: right;			
-			@include for(large-screens) { padding-right: 0; }
-			@include for(large-screens) { flex: 0 0 auto; }
-			padding: $header_height_gap/2 $header_height_gap/2 $header_height_gap/2 0;
+			text-align: right;
+			padding: $header_height_gap/2 $header_height_gap/3 $header_height_gap/2 0;
+			
+			@include for(large-screens) {
+				flex: 0 0 auto;
+				padding-right: 0;
+			}
+			
 		}
 		
 		&.menu-trigger {
-			flex: 0 0 auto;
+			flex: 0 1 auto;
 			width: 	$header_height_base + $header_height_gap;
 			padding: $header_height_gap/2 0;
 		}
@@ -275,43 +279,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 .site-nav-full {
 	background: $color-text-black;
 	border-bottom: 1px solid #2B2B2C;
-	
-	z-index: 1;
-	
-	#trigger_search {
-		display: block;
-		width: $nav_panel_height + 2px;
-		height: $nav_panel_height;
-		text-align: center;
-		padding-top: ($nav_panel_height - 20px) /2;
-		
-		.svg-icon {
-			width: 20px;
-			height: 20px;
-			fill: $color-white;
-		}
-		
-		&:hover {
-			background: rgba(255,255,255, 0.15);
-		}
-	}
-}
-
-#site_subnav {
-	display: none;
-	@include nav-text(lowercase);
-	color: $color-white;	
-	line-height: 20px;
-	padding-top: ($nav_panel_height - 20px) /2;
-	
-	.search &,
-	.error404 &, 
-	.home.page & { display: block; }
-	p { margin: 0; }
-	a, a:visited {
-		color: $color-white;		
-		&:hover { text-decoration: underline; }
-	}
+	z-index: 1;	
 }
 
 .site-nav-row {
@@ -345,6 +313,123 @@ $mobile_navlink_height : 20px + 4px + 20px;
 				.svg-icon { fill: #fff; }
 			}
 		}
+	}
+}
+
+#site_subnav {
+	display: none;	
+	@include nav-text(lowercase);	
+	color: $color-white;	
+	line-height: 20px;
+	padding-top: ($nav_panel_height - 20px) /2;
+	padding-left: 20px;
+		
+	.search &,
+	.error404 &, 
+	.home.page & { display: block; }
+	
+	p { margin: 0; }
+	a, a:visited {
+		color: transparentize($color-white, 0.05);		
+		&:hover { text-decoration: underline; }
+	}
+}
+
+.search-toggle {
+	width: 260px;
+	margin: 3px 0;
+	position: relative;
+	z-index: 60;
+	
+	#trigger_search {
+		display: block;
+		width: $nav_panel_height - 6px;
+		height: $nav_panel_height - 6px;
+		text-align: center;
+		padding-top: ($nav_panel_height - 26px) /2;
+		border: 1px solid transparentize($color-white, 0.35);
+		border-radius: 3px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 20;
+		@include transition(all 0.35s);
+		
+		&:hover {
+			border-color: transparentize($color-white, 0.1);
+		}
+	}
+	
+	.svg-icon {
+		width: 20px;
+		height: 20px;
+		fill: $color-white;
+	}
+	
+	.searchform  {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 0;
+	}
+	
+	&.toggled {
+		#trigger_search { display: none; }
+		.searchform { width: 100%; }
+	}
+}
+
+.searchform {
+	background: $color-secondary;
+	border-radius: 3px;
+	position: relative;	
+	z-index: 1;
+	
+	
+	.search-field {
+		background: transparent;
+		border: none;
+		position: relative;
+		width: 100%;
+		@include form-text();
+		line-height: 20px;
+		height: $nav_panel_height - 6px;
+		padding: ($nav_panel_height - 26px) / 2 $nav_panel_height ($nav_panel_height - 26px) / 2 6px;
+		left: 0;
+		top: 0;
+		z-index: 2;
+	}
+	
+	.search-submit {
+		position: absolute;
+		width: $nav_panel_height - 6px;
+		height: $nav_panel_height - 6px;
+		padding: ($nav_panel_height - 26px) / 2;
+		position: absolute;
+		top: 0;
+		right: 0;
+		color: transparent;
+		border: none;
+		background: transparent;
+		z-index: 5;
+	}
+	
+	.svg-icon {
+		width: 20px;
+		height: 20px;
+		fill: $color-text-black;
+		position: absolute;
+		top: ($nav_panel_height - 26px) / 2;
+		right: ($nav_panel_height - 26px) / 2;
+		z-index: 3;
+		pointer-events: none;
+	}
+	
+	.search-submit:hover + .svg-icon,
+	.svg-icon:hover { fill: $color-link-one; }
+	
+	&.focus {
+		background: $color-white;
 	}
 }
 
@@ -488,14 +573,10 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	.icon-search { display: none; }
 	
 	.search-field {
-		background: transparent;
-		border: none;
-		width: 100%;
 		border-bottom: 1px solid  $color-border-normal;
-		border-top: 1px solid $color-border-normal;
-		padding: 12px 22px;
-		line-height: 20px;
+		border-top: 1px solid $color-border-normal;		
 		color: $color-text-black;
+		
 		&:focus {
 			border-color: $color-border-link;
 			box-shadow: inset 1px 1px 2px rgba(200, 200, 200, 0.5);
