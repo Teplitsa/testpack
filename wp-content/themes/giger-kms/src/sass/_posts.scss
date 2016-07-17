@@ -174,7 +174,8 @@
 	
 	.entry-title {
 		@include post-title();
-		margin-bottom: $base*0.75;						
+		margin-bottom: $base*0.75;
+		margin-top: 4px;
 	}
 	
 	.entry-summary {
@@ -311,7 +312,16 @@
 	
 	.widget-title {
 		margin-bottom: $base;
-		@include header-title(head_title);		
+		@include header-title(head_title);
+		
+		a {
+			@include body-text(summary);
+			line-height: inherit;
+			color: $color-link-one;
+			&:hover, &:focus, &:active {
+				color: $color-link-two;
+			}
+		}
 	}
 	
 	.md-cols-3 .card:nth-of-type(4) {
@@ -330,6 +340,10 @@
 	
 	.entry-meta {
 		.sep, .category { display: none; }
+	}
+	
+	.entry-link:hover {
+		.entry-title { color: $color-link-one; }
 	}
 }
 
@@ -378,24 +392,23 @@
 				color: $color-white;
 				box-shadow: 3px 0 0 $color-link-one, -3px 0 0 $color-link-one;
 			}
-		}
-		
-		.crumb-link {
-			@include nav-text(meta_small);
-			display: inline-block;
-			background: $color-link-one;
-			color: $color-white;
-			padding: 3px 8px;
-			margin-bottom: 4px;
-			&:hover, &:focus, &:active {
-				box-shadow: none;
-				background:  mix($color-link-one, $color-link-two, 60%);
-			}
-		}	
+		}		
 	}
 	
-	.lead {
-		margin-top: 8px;
+	.crumb-link {
+		@include nav-text(meta_small);
+		display: inline-block;
+		background: $color-link-one;
+		color: $color-white;
+		padding: 3px 8px;
+		margin-bottom: 4px;
+		
+		&:hover, &:focus, &:active {			
+			background:  $red;
+		}
+	}	
+	
+	.lead {		
 		font-size: 1.2em;
 		font-weight: 300;
 		
@@ -438,7 +451,9 @@
 	//.single & .social-likes { padding-top: $gut; }
 }
 	
-.mobile-sharing {	
+.mobile-sharing {
+	margin-top: 16px;
+	
 	.social-likes {
 		@include clearfix;
 		padding: 8px 0;

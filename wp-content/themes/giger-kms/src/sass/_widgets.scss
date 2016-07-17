@@ -175,6 +175,26 @@
 		p,h1, h2, h3, h4, h5, h6, li, a {
 			color: $color-white;
 		}
+		
+		.button-white  {
+			color: $color-link-one;
+			&:visited, &:hover { color: $color-link-one; }
+		}
+	}
+	
+	.colored-black {
+		padding: $gut;
+		background: rgba(0,0,0, 0.7);
+		color: $color-white;
+		p,h1, h2, h3, h4, h5, h6, li, a {
+			color: $color-white;
+		}
+		
+		.button-white  {
+			color: $color-text-black;
+			&:visited { color: $color-text-black; }
+			&:hover { color: $color-text-black; }
+		}
 	}
 	
 	.back-to-container div[class *= "so-widget-"]{ //widget limited to container width
@@ -247,7 +267,11 @@
 .tst-button,
 .button {
 	@include button();
-}	
+}
+
+.button-white {
+	@include button(white);	
+}
 
 //section title
 .pb-section-title {

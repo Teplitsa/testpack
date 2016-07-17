@@ -181,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
 /** Footer **/
 .site-footer {
 	@include body-text(small);
-	padding: $gut 0 $gut*1.5 + 58px 0;
+	padding: $gut 0 $gut*1.5 0;
 	background-color: $color-text-black;	
 	color: rgba(255,255,255, 0.9);
 	

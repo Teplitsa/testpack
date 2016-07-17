@@ -1210,7 +1210,7 @@ jQuery(document).ready(function($){
 			return true;
 		
 		//stick header
-		/*if (scroll < position) { //upword
+		if (scroll < position) { //upword
 			$site_header.removeClass('invisible').addClass('fixed-header');
 		}
 		else if(scroll >= scrollTopLimit) {
@@ -1218,7 +1218,7 @@ jQuery(document).ready(function($){
 		}
 		else {
 			$site_header.removeClass('fixed-header').removeClass('invisible');
-		}*/
+		}
 		
 		//sticky sharing
 		if (winW >= breakPointMedium && $('#tst_sharing').length > 0) {

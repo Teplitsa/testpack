@@ -28,9 +28,8 @@ get_header(); ?>
 	<header class="entry-header-full">
 		<div class="entry-meta"><?php echo tst_posted_on($cpost); //for event ?></div>
 		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>				
-		<div class="mobile-sharing hide-on-medium"><?php echo tst_social_share_no_js();?></div>
-		
 		<div class="lead"><?php echo apply_filters('tst_the_content', $cpost->post_excerpt); ?></div>
+		<div class="mobile-sharing hide-on-medium"><?php echo tst_social_share_no_js();?></div>
 	</header>
 	
 	<?php if($format == 'introimg' && $cpost->post_type != 'project'){ ?>

@@ -6,14 +6,11 @@
 add_filter('manage_posts_columns', 'tst_common_columns_names', 50, 2);
 function tst_common_columns_names($columns, $post_type) {
 		
-	if(in_array($post_type, array('post', 'project', 'org', 'person', 'event'))){
+	if(in_array($post_type, array('post', 'programm', 'org', 'person',))){
 		
-		if(in_array($post_type, array('event', 'programm')))
-			$columns['menu_order'] = 'Порядок';
-		
-		if(in_array($post_type, array('event')))
-			$columns['event_start'] = 'Начало';
-		
+		//if(in_array($post_type, array('programm')))
+		//	$columns['menu_order'] = 'Порядок';
+				
 		if(!in_array($post_type, array('attachment')))
 			$columns['thumbnail'] = 'Миниат.';
 		
