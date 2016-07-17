@@ -127,6 +127,8 @@ $label-text-color: $color-text;
 }
 
 
+
+
 /* text input */
 .tst-textfield {
 	display: block;
@@ -151,6 +153,11 @@ $label-text-color: $color-text;
 		&[type="number"]::-webkit-outer-spin-button {
 			-webkit-appearance: none;
 			margin: 0;
+		}
+		
+		@include placeholder {
+			color: $color-text-light;
+			font-size: 0.8em;
 		}
 	}
 	
@@ -193,9 +200,10 @@ $label-text-color: $color-text;
 		}
 	}
 	
+	.frm_error,
 	.tst-textfield__error {
 		position: absolute;
-		bottom: 6px;
+		bottom: 0;
 	}
 }
 

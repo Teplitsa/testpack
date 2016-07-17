@@ -60,7 +60,7 @@ function tst_continue_reading_link() {
 
 function tst_get_more_text(){
 	
-	return __('More', 'kds')."&nbsp;&raquo;";
+	return __('More', 'tst')."&nbsp;&raquo;";
 }
 
 /** excerpt filters  */
@@ -226,19 +226,7 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'er_text',
         'priority' => 30,
     ));
-	
-	$wp_customize->add_setting('newsletter_form_id', array(
-        'default'   => '',
-        'transport' => 'refresh',
-    ));
-    
-    $wp_customize->add_control('newsletter_form_id', array(
-        'type'     => 'text',		
-        'label'    => 'ID формы подписки',
-        'section'  => 'title_tagline',
-        'settings' => 'newsletter_form_id',
-        'priority' => 40,
-    ));
+		
 	
 	$wp_customize->add_setting('now_campaign_id', array(
         'default'   => '',

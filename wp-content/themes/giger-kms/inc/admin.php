@@ -136,7 +136,7 @@ function tst_correct_metaboxes($post_type, $post ){
 	if(post_type_supports($post_type, 'excerpt')){
 		remove_meta_box('postexcerpt', null, 'normal');
 		
-		$label = ($post_type == 'org') ? __('Website', 'kds') : __('Excerpt', 'kds');
+		$label = ($post_type == 'org') ? __('Website', 'tst') : __('Excerpt', 'tst');
 		add_meta_box('tst_postexcerpt', $label, 'tst_excerpt_meta_box', null, 'normal', 'core');
 	}
 	
@@ -145,14 +145,14 @@ function tst_correct_metaboxes($post_type, $post ){
 function tst_excerpt_meta_box($post){
 	if($post->post_type == 'org'){
 ?>
-<label class="screen-reader-text" for="excerpt"><?php _e('Website', 'kds'); ?></label>
+<label class="screen-reader-text" for="excerpt"><?php _e('Website', 'tst'); ?></label>
 <input type="text" name="excerpt" id="url-excerpt" value="<?php echo $post->post_excerpt; // textarea_escaped ?>" class="widefat">
 
 <?php }	else { ?>
 
-<label class="screen-reader-text" for="excerpt"><?php _e('Excerpt', 'kds'); ?></label>
+<label class="screen-reader-text" for="excerpt"><?php _e('Excerpt', 'tst'); ?></label>
 <textarea rows="1" cols="40" name="excerpt" id="excerpt"><?php echo $post->post_excerpt; // textarea_escaped ?></textarea>
-<p><?php _e('Annotation for items lists (will be printed at the beginning of the single page)', 'kds'); ?></p>
+<p><?php _e('Annotation for items lists (will be printed at the beginning of the single page)', 'tst'); ?></p>
 
 <?php	
 }
@@ -336,7 +336,7 @@ function tst_thumbnail_dimensions_check($thumbnail_html, $post_id) {
     ) {
 	
 	$size = "<b>".$needed_sizes['width'].'x'.$needed_sizes['height']."</b>";
-	$txt = sprintf(__('ATTENTION! You thumbnail image is too small. It should be at least %s px', 'kds'), $size);
+	$txt = sprintf(__('ATTENTION! You thumbnail image is too small. It should be at least %s px', 'tst'), $size);
 	
     echo "<p class='tst-error'>{$txt}<p>";
     }

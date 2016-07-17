@@ -25,9 +25,7 @@ a {
 }
 
 p {
-	-webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto;
+	
 	&:last-child { margin-bottom: 0; }	
 }
 
@@ -78,7 +76,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cards-holder {	
-	padding-top: $gut;
+	//padding-top: $gut;
 	
 	&.squared {		
 		padding-top: 0;

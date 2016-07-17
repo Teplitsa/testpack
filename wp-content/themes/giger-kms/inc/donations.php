@@ -236,13 +236,13 @@ function tst_donation_form($campaign_id = null){
 	<?php
 		if($leyka_current_pm->is_field_supported('agree') ) { 
 		$agree_check_id = 'leyka_agree-'.$i; ?>
-	<div class="leyka-field agree">
-		<label class="tst-checkbox checkbox" for="<?php echo $agree_check_id;?>">
-			<input type="checkbox" name="leyka_agree" id="<?php echo $agree_check_id;?>" class="leyka_agree required tst-checkbox__input" value="1" />
-			<span class="tst-checkbox__label">Согласен с <a class="leyka-custom-confirmation-trigger" href="<?php echo $agree_link;?>" data-lmodal="#leyka-agree-text">условиями сбора пожертвований</a></span>           
-		</label>
-		<p class="leyka_agree-error field-error tst-checkbox__error" id="<?php echo $agree_check_id;?>-error"></p>
-	</div>	
+		<div class="leyka-field agree">
+			<label class="tst-checkbox checkbox" for="<?php echo $agree_check_id;?>">
+				<input type="checkbox" name="leyka_agree" id="<?php echo $agree_check_id;?>" class="leyka_agree required tst-checkbox__input" value="1" />
+				<span class="tst-checkbox__label">Согласен с <a class="leyka-custom-confirmation-trigger" href="<?php echo $agree_link;?>" data-lmodal="#leyka-agree-text">условиями сбора пожертвований</a></span>           
+			</label>
+			<p class="leyka_agree-error field-error tst-checkbox__error" id="<?php echo $agree_check_id;?>-error"></p>
+		</div>	
 	<?php }?>
 	
 	<!-- submit -->	
@@ -281,7 +281,7 @@ function tst_donation_form($campaign_id = null){
 
 
 <!-- agreement modal -->
-<div id="leyka-agree-text" class="leyka-oferta-text leyka-custom-modal">
+<div id="leyka-agree-text" class="tst-leyka-oferta-text leyka-custom-modal">
 	<div class="leyka-modal-close"><?php tst_svg_icon('icon-close');?></div>
 	<div class="leyka-oferta-text-frame">
 		<div class="leyka-oferta-text-flow">

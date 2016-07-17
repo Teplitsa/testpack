@@ -234,14 +234,12 @@ function tst_search_card(WP_Post $cpost) {
 	
 	$pl = get_permalink($cpost);
 	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 40, true));
-	
-	
-?>
-<article class="tpl-search"><a href="<?php echo $pl; ?>" class="entry-link">
-	<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost), '<span>');?></div>
-	<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+	?>
+<article class="tpl-search">
+	<h4 class="entry-title"><a href="<?php echo $pl; ?>" class="entry-link"><?php echo get_the_title($cpost);?></a></h4>
+	<div class="entry-meta"><?php echo esc_url($pl);?></div>
 	<div class="entry-summary"><?php echo $ex;?></div>
-</a></article>
+</article>
 <?php
 }
 
@@ -309,12 +307,9 @@ function tst_leyka_campaign_card($cpost) {
 	
 	if(has_term('programms', 'campaign_cat', $cpost)){
 		$callback = 'tst_project_campaign_card';
-	}
-	elseif(has_term('children', 'campaign_cat', $cpost)){
-		$callback = 'tst_child_campaign_card';
-	}
+	}	
 	else {
-		//test for child term
+		
 	}
 	
 	if(is_callable($callback)){
@@ -334,53 +329,6 @@ function tst_project_campaign_card($cpost) {
 <?php
 }
 
-function tst_child_campaign_card($cpost) {
-	
-	$pl = get_permalink($cpost);
-	$src = tst_post_thumbnail_src($cpost, 'post-thumbnail');
-?>
-<article class="tpl-child card"><div class="child-card-content">
-	<a href="<?php echo $pl; ?>" class="thumbnail-link">
-		<div class="entry-preview"><div class="tpl-pictured-bg" style="background-image: url(<?php echo $src;?>);" ></div></div>
-		<div class="entry-data">		
-			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-			<?php tst_child_meta($cpost); ?>		
-		</div>
-	</a>
-	<?php if(function_exists('leyka_get_scale') && !has_term('rosemary', 'campaign_cat', $cpost)) {?>
-		<?php echo leyka_get_scale($cpost, array('show_button' => 1));?>
-	<?php }?>
-</div></article>
-<?php
-}
-
-function tst_child_meta($cpost){
-	
-	$age  = get_post_meta($cpost->ID, 'campaign_child_age', true);
-	$city = get_post_meta($cpost->ID, 'campaign_child_city', true);
-	$diag = get_post_meta($cpost->ID, 'campaign_child_diagnosis', true);
-	$summary = '';
-	
-	if(empty($age) && empty($city) && empty($diag)){
-		$summary = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 40, true));
-	}
-?>
-	<div class="child-meta">	
-	<?php if(!empty($age)) { ?>	
-		<p><span class="label"><?php _e('Age', 'tst');?>:</span> <?php echo apply_filters('tst_the_title', $age);?></p>
-	<?php } ?>
-	<?php if(!empty($city)) { ?>	
-		<p><span class="label"><?php _e('City', 'tst');?>:</span> <?php echo apply_filters('tst_the_title', $city);?></p>
-	<?php } ?>
-	<?php if(!empty($diag)) { ?>	
-		<p><span class="label"><?php _e('Diagnosis', 'tst');?>:</span> <?php echo apply_filters('tst_the_title', $diag);?></p>
-	<?php } ?>
-	<?php if(!empty($summary)) { ?>	
-		<p><?php echo $summary;?></p>
-	<?php } ?>
-	</div>
-<?php
-}
 
 function tst_default_campaign_card($cpost) {
 

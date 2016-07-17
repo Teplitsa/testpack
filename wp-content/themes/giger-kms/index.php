@@ -27,17 +27,7 @@ if(is_home() && $paged == 1) { //featured posts
 <section class="heading">
 	<div class="container">
 		<?php tst_section_title(); ?>
-		<nav class="news-menu-wrap hide-upto-medium">
-		<?php
-			wp_nav_menu(array(
-			'theme_location' => 'news_menu',
-			'container' => false,
-			'menu_class' => 'news-menu',
-			'fallback_cb' => '',
-			'echo' => true
-		));
-		?>
-		</nav>
+		
 	</div>
 </section>
 

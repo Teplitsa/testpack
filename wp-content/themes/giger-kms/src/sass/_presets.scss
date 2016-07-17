@@ -298,16 +298,17 @@ $rule: 	 1px solid $color-border-normal;
 		box-shadow: 1px 1px 2px rgba(100,100,100, 0.2);
 	}
 	
-	@if $mod == white {
-		background: $color-white;
+	@if $mod == white {		
+		background: transparentize($color-white, 0.06);
 		border: 1px solid $color-white;
 		color: $color-link-one;
 		&:visited { color: $color-link-one; }
 		
 		&:hover, &:focus, &:active {			
-			background: $color-link-two;
-			color: $color-white;
-			border-color: $color-link-two;
+			background: $color-white;
+			color: $color-link-one;;
+			border-color: $color-white;
+			box-shadow: 1px 1px 2px rgba(50,50,50, 0.4);
 		}
 	}
 	@else if $mod == leyka {

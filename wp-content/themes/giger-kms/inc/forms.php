@@ -62,6 +62,13 @@ function tst_formidable_default_html($html, $field, $params) {
 				$html = substr_replace($html, $l[0].'</div>', $pos, 6); //move it on top
 			}
 		}
+		
+		preg_match('/<div class=\"frm_description\">(.*?)<\/div>/s',$html, $m);
+		
+		if(isset($m[1]) && !empty($m[1])){
+			$html = str_replace('<div class="frm_description">'.$m[1].'</div>', '', $html);
+		}
+		
 	}	
 	elseif($field['type'] == 'checkbox'){
 		if(isset($field['classes']) && false !== strpos($field['classes'], 'switch')){			

@@ -104,8 +104,8 @@
 	}	
 }
 
-$figure_font_size: 24px;
-$figure_line-height: 40px;
+$figure_font_size: 20px;
+$figure_line-height: 36px;
 
 .leyka-field.amount-selector {
 	line-height: $figure_line-height;
@@ -247,7 +247,7 @@ $figure_line-height: 40px;
 		
 		.figure {
 			flex: 0 0 auto;
-			width: 20%;
+			width: 18%;
 		}
 		
 		.figure-flex {

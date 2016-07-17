@@ -11,10 +11,10 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	width: 100%;
 	top: 0;
 	left: 0;
-	background: $color-white;
-	
+	background: $color-white;	
 	@include transition(opacity 0.3s);
 	z-index: 5;
+	border-bottom: 1px solid $color-border-normal;
 	
 	&.fixed-header {
 		position: fixed;
@@ -33,11 +33,10 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	&.invisible {
 		opacity: 0;
 	}
-	
-	border-bottom: 1px solid $color-border-normal;
-	
+		
 	@include for(large-screens) {
-		border-bottom: none;
+		border-bottom-color: #4f4f4f;
+		box-shadow: 1px 1px 3px rgba(0,0,0, 0.5);
 	}
 }
 
@@ -50,7 +49,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	
 	@include for(large-screens) {
 		//add panel height to padding
-		padding-top: $header_height_base + $header_height_gap + $nav_panel_height;
+		padding-top: $header_height_base + $header_height_gap + $nav_panel_height + 1px;
 	}
 }
 
@@ -220,24 +219,25 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	
 	a {
 		padding: ($header_height_base - 20px - 4px)/4 4px;			
-		margin: ($header_height_base - 20px - 4px)/4 0;
-		
+		margin: ($header_height_base - 20px - 4px)/4 0;		
 	}
 	
+	.current-menu-parent,
 	.current-menu-item {
 		&:hover a, 
 		a { border-bottom-color: $color-link-one; }
 		
 		.sub-menu {
-			opacity: 1;
+			opacity: 1;			
 			z-index: 50;
+			//pointer-events: auto;
 		}
 	}
 	
 	.sub-menu {		
 		background: transparent;
 		position: absolute;
-		bottom: -1 * ($header_height_gap/2 + $nav_panel_height);
+		bottom: -1 * ($nav_panel_height) +1px;
 		left: -8px;
 				
 		a {
@@ -245,15 +245,18 @@ $mobile_navlink_height : 20px + 4px + 20px;
 			padding: ($nav_panel_height - 20px) / 2;
 			margin: 0;
 		}
+			
 		
 		display: flex;
 		flex-flow: row nowrap;
 		justify-content: center;
 		opacity: 0;
 		z-index: 10;
+		//pointer-events: none;
 		
 		li {
 			flex: 0 0 auto;
+			padding: 0;
 		}
 		
 	}
@@ -489,6 +492,8 @@ $mobile_navlink_height : 20px + 4px + 20px;
 			}
 		}
 		
+		.current-menu-parent > a,
+		.current-menu-parent.open a,
 		.current-menu-item.open a,
 		.current-menu-item > a {
 			border-bottom-color: $color-link-one;
