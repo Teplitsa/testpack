@@ -121,8 +121,8 @@ function is_expired_event(){
 
 
 
-/** Menu filter sceleton **/
-//add_filter('wp_nav_menu_objects', 'tst_custom_menu_items', 2, 2);
+/** Menu filters **/
+add_filter('wp_nav_menu_objects', 'tst_custom_menu_items', 2, 2);
 function tst_custom_menu_items($items, $args){			
 	
 	if(empty($items))
@@ -131,10 +131,28 @@ function tst_custom_menu_items($items, $args){
 	//var_dump($args);
 	if($args->theme_location =='primary'){
 		
-		foreach($items as $index => $menu_item){
-			if(in_array('current-menu-item', $menu_item->classes))
-				$items[$index]->classes[] = 'active';
+		if(is_singular('post')){
+			foreach($items as $index => $menu_item){
+				//if(in_array('current-menu-item', $menu_item->classes))
+				//	$items[$index]->classes[] = 'active';
+				$p = get_option('page_for_posts');
+				if(isset($menu_item->object_id) && $menu_item->object_id == $p && in_array('menu-item-has-children', $menu_item->classes)){
+					$items[$index]->classes[] = 'current-menu-parent';
+				}
+			}
 		}
+		elseif(is_singular('programm')){
+			foreach($items as $index => $menu_item){
+				//if(in_array('current-menu-item', $menu_item->classes))
+				//	$items[$index]->classes[] = 'active';
+				$p = get_page_by_path('programms');
+				if(isset($menu_item->object_id) && $menu_item->object_id == $p && in_array('menu-item-has-children', $menu_item->classes)){
+					if(!in_array('current-menu-parent', $menu_item->classes))
+						$items[$index]->classes[] = 'current-menu-parent';
+				}
+			}
+		}
+		
 	}
 	
 	return $items;

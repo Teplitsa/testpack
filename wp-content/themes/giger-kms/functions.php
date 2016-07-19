@@ -50,12 +50,12 @@ add_action( 'init', 'tst_setup', 30 );
 
 
 /** Custom image size for medialib **/
-//add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
+add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
 function tst_medialib_custom_image_sizes($sizes) {
 	
 	$addsizes = apply_filters('tst_medialib_custom_image_sizes', array(
-		//"thumbnail-landscape" => __("Landscape mini", 'tst'),
-		"embed" => 'Фиксированный'
+		"post-thumbnails" => 'Миниатюра поста (горизонтальная)',
+		"medium-thumbnail" => 'Фиксированный'
 	));
 		
 	return array_merge($sizes, $addsizes);

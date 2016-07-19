@@ -201,6 +201,10 @@ $mobile_navlink_height : 20px + 4px + 20px;
 			}
 			
 		}
+		
+		.current-menu-item a {
+			text-decoration: underline;
+		}
 	}
 }
 
