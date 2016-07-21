@@ -335,8 +335,11 @@ $menu_anchor_padding: ($header_height_base + $header_height_gap - $header_link_h
 		}
 		a {
 			color: $color-text-light;
-			text-decoration: underline;
-			&:hover { color: $color-text-semi;}
+			border-bottom: 1px solid $color-border-light;
+			&:hover {
+				color: $color-text;
+				border-bottom-color: $color-border-normal;
+			}
 		}
 	}
 }
