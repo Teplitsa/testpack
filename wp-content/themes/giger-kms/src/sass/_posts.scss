@@ -121,9 +121,13 @@
 		position: relative;
 		width: 100%;
 		z-index: 2;
+		@include transition(all 0.35s);
 	}
 	
-	&:after {
+	.tpl-pictured-bg {
+		@include transition(all 0.35s);
+	}
+	/*&:after {
 		content: '';
 		display: block;
 		position: absolute;
@@ -134,6 +138,10 @@
 		background: rgba(0,0,0, 0);		
 		z-index: 10;
 		@include transition(all 0.35s);
+	}	*/
+	
+	&:hover img, &:hover .tpl-pictured-bg {
+		filter: contrast(150%) brightness(0.99);
 	}	
 }
 
