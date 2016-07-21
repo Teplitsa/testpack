@@ -1,8 +1,9 @@
 /** header **/
 
-$header_height_base : 48px;
-$header_height_gap : 52px;
-$nav_panel_height : 44px;
+$header_height_base : 38px;
+$header_height_gap : 40px;
+$nav_panel_height : 40px;
+$header_link_height_base: 20px;
 $mobile_navlink_height : 20px + 4px + 20px;
 
 /** Header **/
@@ -14,7 +15,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	background: $color-white;	
 	@include transition(opacity 0.3s);
 	z-index: 5;
-	border-bottom: 1px solid $color-border-normal;
+	border-bottom: 1px solid $color-border-light;
 	
 	&.fixed-header {
 		position: fixed;
@@ -32,11 +33,6 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	
 	&.invisible {
 		opacity: 0;
-	}
-		
-	@include for(large-screens) {
-		border-bottom-color: #4f4f4f;
-		box-shadow: 1px 1px 3px rgba(0,0,0, 0.5);
 	}
 }
 
@@ -65,7 +61,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 		
 		&.branding {
 			flex: 0 1 auto;
-			width: 195px;
+			width: 205px;
 			padding: $header_height_gap/2 0;
 		}
 		
@@ -104,19 +100,19 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	z-index: 1;
 	
 	.pic-logo {
-		width: 175px;
-		height: 72px;
+		width: 203px;
+		height: 78px;
 		position: absolute;
 		left: 0;
-		top: -10px;
+		top: -15px;
 	}
 }
 
 .donation-button {
 	@include button(featured);
-	line-height: 18px;
-	padding-top: ($header_height_base - 18px - 2px)/2;
-	padding-bottom: ($header_height_base - 18px - 2px)/2;	
+	line-height: $header_link_height_base;
+	padding-top: ($header_height_base - $header_link_height_base )/2;
+	padding-bottom: ($header_height_base - $header_link_height_base )/2;	
 }
 
 .trigger-button {
@@ -167,86 +163,82 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	a {
 		display: inline-block;
 		@include nav-text(menu);
-		color: $color-text-black;
-		line-height: 20px;
+		line-height: $header_link_height_base;
+		color: $color-text-black;		
 		white-space: nowrap;
-		border-bottom: 4px solid transparent;
-		
+			
 		@include transition(all 0.45s);
 		
-	}
-	
-	@include for(large-screens) {
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-around;
-		
-		li {
-			
+		&:hover {
+			color: $color-link-one;
 		}
 	}
 	
-	
-	.sub-menu {
-		background: $color-text-black;
-		
+	.current-menu-parent,	
+	.current-menu-item a {
+		color: $color-link-one;
+	}	
+			
+	.sub-menu {				
 		a {
-			text-transform: none;
-			color: $color-white;
-			border: none;
+			@include nav-text(submenu);
+			line-height: $header_link_height_base;
 			margin: 0;
-			padding: ($nav_panel_height - 20px)/2  12px;
+			padding: ($nav_panel_height - $header_link_height_base)/2  18px;
+			color: $color-text-light;
+			
 			&:hover {
 				color: $color-link-one;
 			}
-			
-		}
-		
-		.current-menu-item a {
-			text-decoration: underline;
 		}
 	}
 }
 
 //full variant
+$menu_anchor_padding: ($header_height_base + $header_height_gap - $header_link_height_base) /2;
+
 .mainmenu .main-menu {
 	z-index: 2;
 	
-	li {
-		position: relative;
-		padding: $header_height_gap/2 0;
-		
-		&:hover a {
-			border-bottom-color: $color-text-black;
-		}
+	@include for(large-screens) {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
+		padding: 0 15px;
 	}
 	
+	li {
+		position: relative;		
+	}
+		
 	a {
-		padding: ($header_height_base - 20px - 4px)/4 4px;			
-		margin: ($header_height_base - 20px - 4px)/4 0;		
+		padding: $menu_anchor_padding 15px $menu_anchor_padding - 3px;
+		border-bottom: 4px solid transparent;
+		margin-bottom: -1px;
+		
+		&:hover {
+			border-bottom-color: $color-link-one;
+		}
 	}
 	
 	.current-menu-parent,
 	.current-menu-item {
-		&:hover a, 
 		a { border-bottom-color: $color-link-one; }
-		
 		.sub-menu {
 			opacity: 1;			
 			z-index: 50;
-			//pointer-events: auto;
 		}
 	}
 	
 	.sub-menu {		
 		background: transparent;
 		position: absolute;
-		bottom: -1 * ($nav_panel_height) +1px;
-		left: -8px;
+		bottom: -1 * ($nav_panel_height);
+		left: 0;
 				
 		a {
 			border: none !important;
-			padding: ($nav_panel_height - 20px) / 2;
+			padding: ($nav_panel_height - $header_link_height_base) / 2 15px;
 			margin: 0;
 		}
 			
@@ -284,8 +276,8 @@ $mobile_navlink_height : 20px + 4px + 20px;
 
 /** NAV panel **/
 .site-nav-full {
-	background: $color-text-black;
-	border-bottom: 1px solid #2B2B2C;
+	background: $color-white;	
+	border-top: 1px solid $color-border-light;
 	z-index: 1;	
 }
 
@@ -324,53 +316,60 @@ $mobile_navlink_height : 20px + 4px + 20px;
 }
 
 #site_subnav {
-	display: none;	
-	@include nav-text(lowercase);	
-	color: $color-white;	
-	line-height: 20px;
-	padding-top: ($nav_panel_height - 20px) /2;
-	padding-left: 20px;
-		
-	.search &,
-	.error404 &, 
-	.home.page & { display: block; }
+	display: none;
 	
-	p { margin: 0; }
-	a, a:visited {
-		color: transparentize($color-white, 0.05);		
-		&:hover { text-decoration: underline; }
+	@include for(large-screens) {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: flex-start;
+		align-items: center;
+		
+		font-size: 12px;
+		line-height: 16px;
+		height: $nav_panel_height;
+		color: $color-text-light;
+		padding-left: 10px;
+		
+		p {
+			margin: 0;
+		}
+		a {
+			color: $color-text-light;
+			text-decoration: underline;
+			&:hover { color: $color-text-semi;}
+		}
 	}
 }
 
 .search-toggle {
 	width: 260px;
-	margin: 3px 0;
+	margin: 0;
 	position: relative;
 	z-index: 60;
 	
 	#trigger_search {
 		display: block;
-		width: $nav_panel_height - 6px;
-		height: $nav_panel_height - 6px;
+		width: $nav_panel_height;
+		height: $nav_panel_height;
 		text-align: center;
-		padding-top: ($nav_panel_height - 26px) /2;
-		border: 1px solid transparentize($color-white, 0.35);
-		border-radius: 3px;
+		padding-top: ($nav_panel_height - $header_link_height_base) /2;
+		background: $color-white;
+		//border: 1px solid transparentize($color-white, 0.35);		
 		position: absolute;
 		right: 0;
 		top: 0;
 		z-index: 20;
 		@include transition(all 0.35s);
 		
-		&:hover {
-			border-color: transparentize($color-white, 0.1);
+		&:hover .svg-icon {
+			fill: $color-link-one;
 		}
 	}
 	
 	.svg-icon {
 		width: 20px;
 		height: 20px;
-		fill: $color-white;
+		fill: $color-text-black;
 	}
 	
 	.searchform  {
@@ -388,8 +387,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 
 //search basic styles
 .searchform {
-	background: $color-secondary;
-	border-radius: 3px;
+	background: $color-secondary;	
 	position: relative;	
 	z-index: 1;
 	
@@ -399,9 +397,9 @@ $mobile_navlink_height : 20px + 4px + 20px;
 		position: relative;
 		width: 100%;
 		@include form-text();
-		line-height: 20px;
-		height: $nav_panel_height - 6px;
-		padding: ($nav_panel_height - 26px) / 2 $nav_panel_height ($nav_panel_height - 26px) / 2 6px;
+		line-height: $header_link_height_base;
+		height: $nav_panel_height;
+		padding: ($nav_panel_height - $header_link_height_base) / 2 $nav_panel_height ($nav_panel_height - $header_link_height_base) / 2 8px;
 		left: 0;
 		top: 0;
 		z-index: 2;
@@ -409,9 +407,9 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	
 	.search-submit {
 		position: absolute;
-		width: $nav_panel_height - 6px;
-		height: $nav_panel_height - 6px;
-		padding: ($nav_panel_height - 26px) / 2;
+		width: $nav_panel_height;
+		height: $nav_panel_height;
+		padding: ($nav_panel_height - $header_link_height_base) / 2;
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -426,8 +424,8 @@ $mobile_navlink_height : 20px + 4px + 20px;
 		height: 20px;
 		fill: $color-text-black;
 		position: absolute;
-		top: ($nav_panel_height - 26px) / 2;
-		right: ($nav_panel_height - 26px) / 2;
+		top: ($nav_panel_height - $header_link_height_base) / 2;
+		right: ($nav_panel_height - $header_link_height_base) / 2;
 		z-index: 3;
 		pointer-events: none;
 	}
@@ -436,7 +434,8 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	.svg-icon:hover { fill: $color-link-one; }
 	
 	&.focus {
-		background: $color-white;
+		background: lighten($color-secondary, 1%);
+		box-shadow: inset 1px 1px 2px rgba(200, 200, 200, 0.25);
 	}
 }
 
@@ -485,7 +484,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 			border-bottom: 4px solid $color-border-light;
 			
 			&:hover {
-				border-bottom-color: $color-text-black;
+				border-bottom-color: $color-link-one;
 			}
 		}
 		
@@ -502,6 +501,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 		.current-menu-item > a {
 			border-bottom-color: $color-link-one;
 			&:hover { border-bottom-color: $color-link-one; }
+			
 			.sub-menu a {
 				border-bottom-color: none;
 			}
@@ -559,15 +559,14 @@ $mobile_navlink_height : 20px + 4px + 20px;
 		
 		li.open {
 			a {
-				border-bottom-color: $color-text-black;
+				//border-bottom-color: $color-text-black;
 			}
 			
-			.submenu-trigger {
-				background: $color-text-black;
+			.submenu-trigger {				
 				.icon-down { display: none; }
 				.icon-up {
 					display: inline-block;
-					fill: $color-white;
+					fill: $color-link-one;
 				}
 				
 				&:hover {
@@ -582,12 +581,14 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	.icon-search { display: none; }
 	
 	.search-field {
-		border-bottom: 1px solid  $color-border-normal;
-		border-top: 1px solid $color-border-normal;		
-		color: $color-text-black;
+		border-bottom: 1px solid  $color-border-light;
+		border-top: 1px solid $color-border-light;		
+		color: $color-text-black;		
+		height: $mobile_navlink_height;
+		padding: ($mobile_navlink_height - $header_link_height_base)/2  15px;
 		
 		&:focus {
-			border-color: $color-border-link;
+			border-color: darken($color-border-normal, 5%);
 			box-shadow: inset 1px 1px 2px rgba(200, 200, 200, 0.5);
 		}
 	}
@@ -597,7 +598,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	}
 	
 	.social-menu {
-		padding-left: 18px;
+		padding-left: 15px;
 	}
 }
 

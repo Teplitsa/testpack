@@ -58,6 +58,8 @@ get_header();
 		}
 	?>
 </section>
+<?php if($num > 0) { ?>
 <section class="paging"><?php tst_paging_nav($wp_query); ?></section>
+<?php } ?>
 
 <?php get_footer();

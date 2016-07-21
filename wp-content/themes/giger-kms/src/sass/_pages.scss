@@ -177,7 +177,9 @@
 
 
 /** Search **/
-
+.main-content.search-results {
+	min-height: 50vh;
+}
 
 .sr-form {
 	margin: $gut 0 4px;

@@ -42,9 +42,9 @@
 	<nav id="site_nav_full" class="site-nav-full hide-upto-large"><div class="container ">
 	<div class="site-nav-row">
 		<?php
-			$head_text = (is_front_page() || is_search() || is_404()) ? get_option('header_feature_text') : '&nbsp;';			
+			$head_text = (!tst_has_current_section()) ? get_option('header_feature_text') : '&nbsp;';			
 		?>
-		<div class="site-nav-cell submenu"><div id="site_subnav"><?php echo apply_filters('tst_the_title', $head_text);?></div></div>
+		<div class="site-nav-cell submenu"><div id="site_subnav"><p><?php echo apply_filters('tst_the_title', $head_text);?></p></div></div>
 		<div class="site-nav-cell search">
 			<div id="search_toggle" class="search-toggle">
 				<div class="search-toggle-area"><?php get_search_form();?></div>

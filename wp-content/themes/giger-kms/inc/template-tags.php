@@ -88,10 +88,7 @@ function is_posts() {
 	
 	if(is_home() || is_category())
 		return true;	
-	
-	if(is_tax('auctor'))
-		return true;
-	
+		
 	if(is_singular('post'))
 		return true;
 	
@@ -110,13 +107,33 @@ function is_projects() {
 	return false;
 }
 
-function is_expired_event(){
+
+
+function tst_has_current_section(){
 	
-	if(!is_single())
-		return false;
+	$has_current = false;
 	
-	$event = new TST_Event(get_queried_object());
-	return $event->is_expired();
+	//get main menu items	
+	$locations = get_nav_menu_locations(); 
+	$menu_id = (isset($locations['primary'])) ? $locations['primary'] : 0; 
+	$items = array();
+	if($menu_id)
+		$items = wp_get_nav_menu_items($menu_id);
+	
+	
+	if(empty($items))
+		return $has_current;
+	
+	_wp_menu_item_classes_by_context( $items );
+	foreach($items as $index => $menu_item){
+		//var_dump($menu_item->classes);
+		if(in_array('current-menu-item', $menu_item->classes) || in_array('current-menu-parent', $menu_item->classes)){
+			$has_current =  true;
+			break;
+		}
+	}
+	
+	return $has_current;
 }
 
 
@@ -157,6 +174,7 @@ function tst_custom_menu_items($items, $args){
 	
 	return $items;
 }
+
  
 /** HTML with meta information for the current post-date/time and author **/
 function tst_posted_on(WP_Post $cpost) {
