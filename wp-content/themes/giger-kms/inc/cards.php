@@ -99,10 +99,11 @@ function tst_intro_card_markup_over($title, $subtitle, $img_id, $link = '', $but
 			<div class="ihc-desc"><?php echo apply_filters('tst_the_content', $subtitle); ?></div>
 		<?php } ?>
 		<?php if(!empty($link)) { ?>
-			<div class="cta"><?php echo $button_text;?></div>
+		</a>
+			<div class="cta"><a href="<?php echo esc_url($link);?>"><?php echo $button_text;?></a></div>
 		<?php } ?>		
 		
-	<?php if(!empty($link)) { ?></a><?php } ?>
+	
 	</div></section>
 	<?php if($has_sharing) { ?>	
 		<div class="mobile-sharing hide-on-medium"><?php echo tst_social_share_no_js();?></div>

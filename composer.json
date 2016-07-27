@@ -42,8 +42,6 @@
         "wpackagist-plugin/leyka" : "@stable",
         "wpackagist-plugin/media-search-enhanced": "@stable",
         "wpackagist-plugin/responsive-lightbox" : "@stable",        
-        "wpackagist-plugin/simple-css-for-widgets" : "@stable",        
-        "wpackagist-plugin/widget-logic" : ">=0.57",
         "wpackagist-plugin/wordpress-seo" : "@stable",
         "wpackagist-plugin/w3-total-cache": "@stable",        
         "wpackagist-plugin/wp-help": "@stable",
@@ -55,11 +53,9 @@
     },
     "require-dev" : {        
         "wp-sync-db/wp-sync-db" : "dev-master",        
-        "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
-        "wpackagist-plugin/post-duplicator" : "@stable",
+        "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",        
         "wpackagist-plugin/disable-wordpress-updates": "@stable",
-        "wpackagist-plugin/term-management-tools": "@stable",
-        "wpackagist-plugin/post-type-converter": "@stable"
+        "wpackagist-plugin/term-management-tools": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",

@@ -16,6 +16,7 @@ $mobile_navlink_height : 20px + 4px + 20px;
 	@include transition(opacity 0.3s);
 	z-index: 5;
 	border-bottom: 1px solid $color-border-light;
+	box-shadow: 1px 1px 3px rgba(0,0,0, 0.3);
 	
 	&.fixed-header {
 		position: fixed;
@@ -167,29 +168,37 @@ $mobile_navlink_height : 20px + 4px + 20px;
 		color: $color-text-black;		
 		white-space: nowrap;
 			
-		@include transition(all 0.45s);
-		
-		&:hover {
-			color: $color-link-one;
-		}
+		@include transition(all 0.45s);		
 	}
 	
-	.current-menu-parent,	
-	.current-menu-item a {
+	li:hover a {
 		color: $color-link-one;
+		border-color: $color-link-one;
+	}
+	
+	.current-menu-parent a,	
+	.current-menu-item a {
+		color: $color-link-one;		
 	}	
+	
+	li:hover .sub-menu,
+	.sub-menu {
 			
-	.sub-menu {				
 		a {
 			@include nav-text(submenu);
 			line-height: $header_link_height_base;
 			margin: 0;
 			padding: ($nav_panel_height - $header_link_height_base)/2  18px;
-			color: $color-text-light;
-			
-			&:hover {
-				color: $color-link-one;
-			}
+			color: $color-link-three;
+		}
+		
+		li:hover a {
+			color: lighten( $color-link-three, 20%);
+		}
+		
+		li.current-menu-item a,
+		li.current-menu-item:hover a  {
+			color: $color-link-one;
 		}
 	}
 }
@@ -212,21 +221,25 @@ $menu_anchor_padding: ($header_height_base + $header_height_gap - $header_link_h
 	}
 		
 	a {
-		padding: $menu_anchor_padding 15px $menu_anchor_padding - 3px;
+		padding: $menu_anchor_padding 18px $menu_anchor_padding - 3px;
 		border-bottom: 4px solid transparent;
 		margin-bottom: -1px;
 		
-		&:hover {
+		li:hover & {
+			color: $color-link-one;
 			border-bottom-color: $color-link-one;
 		}
 	}
 	
 	.current-menu-parent,
 	.current-menu-item {
-		a { border-bottom-color: $color-link-one; }
+		a {			
+			border-bottom-color: $color-link-one;
+		}
 		.sub-menu {
 			opacity: 1;			
 			z-index: 50;
+			
 		}
 	}
 	
@@ -238,7 +251,7 @@ $menu_anchor_padding: ($header_height_base + $header_height_gap - $header_link_h
 				
 		a {
 			border: none !important;
-			padding: ($nav_panel_height - $header_link_height_base) / 2 15px;
+			padding: ($nav_panel_height - $header_link_height_base) / 2 18px;
 			margin: 0;
 		}
 			
@@ -327,18 +340,18 @@ $menu_anchor_padding: ($header_height_base + $header_height_gap - $header_link_h
 		font-size: 12px;
 		line-height: 16px;
 		height: $nav_panel_height;
-		color: $color-text-light;
+		color: $color-link-three;
 		padding-left: 10px;
 		
 		p {
 			margin: 0;
 		}
 		a {
-			color: $color-text-light;
-			border-bottom: 1px solid $color-border-light;
+			color: $color-link-three;
+			
 			&:hover {
-				color: $color-text;
-				border-bottom-color: $color-border-normal;
+				color: lighten($color-link-three, 10%);
+				
 			}
 		}
 	}
@@ -365,7 +378,7 @@ $menu_anchor_padding: ($header_height_base + $header_height_gap - $header_link_h
 		@include transition(all 0.35s);
 		
 		&:hover .svg-icon {
-			fill: $color-link-one;
+			fill: $color-link-three;
 		}
 	}
 	
@@ -390,7 +403,9 @@ $menu_anchor_padding: ($header_height_base + $header_height_gap - $header_link_h
 
 //search basic styles
 .searchform {
-	background: $color-secondary;	
+	background: $color-secondary-alt;
+	border-left: 1px solid $color-secondary;
+	border-right: 1px solid $color-secondary;
 	position: relative;	
 	z-index: 1;
 	
@@ -434,11 +449,12 @@ $menu_anchor_padding: ($header_height_base + $header_height_gap - $header_link_h
 	}
 	
 	.search-submit:hover + .svg-icon,
-	.svg-icon:hover { fill: $color-link-one; }
+	.svg-icon:hover { fill: $color-link-three; }
 	
 	&.focus {
-		background: lighten($color-secondary, 1%);
-		box-shadow: inset 1px 1px 2px rgba(200, 200, 200, 0.25);
+		background: lighten($color-secondary-alt, 1%);
+		border-color: $color-border-light;
+		box-shadow: inset 1px 1px 2px transparentize($color-border-light, 0.7);
 	}
 }
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "55d9960054008ff864b9019931e71681",
-    "content-hash": "c0b38df29548a0d5205232433d472252",
+    "hash": "39425ffd272fdb0cd78bbf677c18b6e6",
+    "content-hash": "9d6340980fdae0e95ea5c7eddfe9a299",
     "packages": [
         {
             "name": "composer/installers",
@@ -257,12 +257,12 @@
         },
         {
             "name": "tst/formidable",
-            "version": "2.01.03",
+            "version": "2.02.04",
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-formidable-2.01.03.zip",
+                "url": "artifacts/tst-formidable-2.02.04.zip",
                 "reference": null,
-                "shasum": "23f5b1c27c544aa978f01139e8f2b870a79e0e3f"
+                "shasum": "6f2202f462d6ff3be915ce1e7fb127e527b4cd24"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -430,26 +430,6 @@
             "homepage": "https://wordpress.org/plugins/responsive-lightbox/"
         },
         {
-            "name": "wpackagist-plugin/simple-css-for-widgets",
-            "version": "1.0",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/simple-css-for-widgets/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/simple-css-for-widgets.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/simple-css-for-widgets/"
-        },
-        {
             "name": "wpackagist-plugin/siteorigin-panels",
             "version": "2.4.10",
             "source": {
@@ -471,15 +451,15 @@
         },
         {
             "name": "wpackagist-plugin/so-widgets-bundle",
-            "version": "1.6.2",
+            "version": "1.6.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/so-widgets-bundle/",
-                "reference": "tags/1.6.2"
+                "reference": "tags/1.6.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.6.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.6.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -510,36 +490,16 @@
             "homepage": "https://wordpress.org/plugins/w3-total-cache/"
         },
         {
-            "name": "wpackagist-plugin/widget-logic",
-            "version": "0.57",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/widget-logic/",
-                "reference": "tags/0.57"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/widget-logic.0.57.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/widget-logic/"
-        },
-        {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.3.4",
+            "version": "3.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.3.4"
+                "reference": "tags/3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.3.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.4.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -652,46 +612,6 @@
             "homepage": "https://wordpress.org/plugins/force-regenerate-thumbnails/"
         },
         {
-            "name": "wpackagist-plugin/post-duplicator",
-            "version": "2.17",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/post-duplicator/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/post-duplicator.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/post-duplicator/"
-        },
-        {
-            "name": "wpackagist-plugin/post-type-converter",
-            "version": "0.6",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/post-type-converter/",
-                "reference": "tags/0.6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/post-type-converter.0.6.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/post-type-converter/"
-        },
-        {
             "name": "wpackagist-plugin/term-management-tools",
             "version": "1.1.4",
             "source": {
@@ -722,7 +642,6 @@
         "wpackagist-plugin/leyka": 0,
         "wpackagist-plugin/media-search-enhanced": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
-        "wpackagist-plugin/simple-css-for-widgets": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/wp-help": 0,
@@ -731,10 +650,8 @@
         "wpackagist-plugin/so-widgets-bundle": 0,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
-        "wpackagist-plugin/post-duplicator": 0,
         "wpackagist-plugin/disable-wordpress-updates": 0,
-        "wpackagist-plugin/term-management-tools": 0,
-        "wpackagist-plugin/post-type-converter": 0
+        "wpackagist-plugin/term-management-tools": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -395,15 +395,16 @@ $label-text-color: $color-text;
 	
 	input, input:focus {				
 		border: none;		
-		outline: none;
+		outline: none;		
 		@include nav-text();
 		line-height: 24px;
 		background: $input-color-active;
+		border-radius: 3px;
 		padding: 6px 20px;
 		color: $color-white;
 		@include transition(background 0.2s);
 		&:hover {
-			background: $color-link-one;		
+			background: $red;		
 		}
 	}
 }

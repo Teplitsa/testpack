@@ -151,9 +151,9 @@
 	@include transition(all 0.3s);
 		
 	&:hover {
-		//background: $color-link-two;
+		.entry-title  { color: $color-link-one;}
 		.entry-preview:after { background: rgba(0,0,0, 0.3); }
-		//.entry-summary { color: $color-link-three; }
+		.entry-summary { color: $color-text-light; }
 	}	
 	
 	a {
@@ -184,11 +184,13 @@
 		@include post-title();
 		margin-bottom: $base*0.75;
 		margin-top: 4px;
+		@include transition(color 0.35s);
 	}
 	
 	.entry-summary {
 		@include body-text(summary);
 		color: $color-text;
+		@include transition(color 0.35s);
 	}
 	
 }
@@ -362,13 +364,20 @@
 		margin-bottom: 8px;
 		@include post-title(small_title);
 		font-weight: 600;
+		@include transition(color 0.35s);
 	}
 	
 	.entry-meta {
 		@include nav-text(meta_small);
-		color: $color-link-one;
-		
-		a { color: inherit; }
+		color: $color-link-three;
+		@include transition(color 0.35s);
+	}
+	
+	a:hover {
+		.entry-title { color: $color-link-three; }
+		.entry-meta {
+			 color: lighten($color-link-three, 10%);
+		}
 	}
 }
 
@@ -539,6 +548,7 @@
 	
 	.entry-title {		
 		@include post-title(small_title);
+		color: $color-link-three;
 		margin-bottom: 4px;		
 	}
 	
