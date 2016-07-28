@@ -569,12 +569,17 @@ h2.logo-name {
         background: $color-link-three;
         padding: 3px 10px;
         color: $color-white;
-        @include transition(background 0.2s);
-        &:hover {
-            background: $color-link-two;
-        }
-        font-size:0.6em;
+		
+		font-size:0.6em;
         margin-left:20px;
+		
+        @include transition(background 0.2s);
+		
+        &:hover {
+            background: darken($color-link-three, 5%);
+			text-decoration: none;
+        }
+       
         
     }
 }
@@ -635,11 +640,11 @@ h2.logo-name {
 }
 
 /* join us  menu link */
-#menu-item-359 a {
+.as-button a {
     background: $color-link-one;
     border: 1px solid $color-link-one;
     color: $color-white;
-    padding: 2px 3px 2px 3px;
+    padding: 2px 5px;
     &:hover, &:focus, &:active {
         text-decoration: none;
         background: darken($color-link-one, 10%);
