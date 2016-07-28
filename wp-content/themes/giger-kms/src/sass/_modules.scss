@@ -41,6 +41,14 @@
 			font-size: 13px;
 			line-height: 16px;
 			text-decoration: none;
+			&.closed {
+				background: $color-link-two;
+				border: $color-link-two;
+				&:hover, &:focus, &:active {
+					background: darken($color-link-two, 10%);
+					border-color: darken($color-link-two, 10%);					
+				}
+			}
 		}
 		
 		p {
