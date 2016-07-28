@@ -1,42 +1,53 @@
 /** == Modules == **/
 
 /** Map **/
-.mymap-icon {
-	width: 36px;
-	height: 36px;
-	
-	.icon-marker{
-		display: inline-block;
-		width: 36px;
-		height: 36px;
-		fill: $color-link-three;
-	}
+#single-page .leaflet-container.leaflet-fade-anim {
+	opacity: 1 !important;
 }
 
-.leaflet-container .leaflet-control-attribution a {
-	color: $color-link-three;
-	text-decoration: none;
+.leaflet-popup {
+	.leaflet-popup-content-wrapper {
+		border-radius: 3px;
+	}
 	
-	&:hover, &:focus, &:active {
-		color: $color-link-two;
+	.leaflet-popup-content {
+		max-width: 150px;
+		text-align: center;
+		
+		.popup-markername {
+			border: none !important;
+			margin-bottom: 10px;
+			@include post-title(small_title);
+			font-size: 16px;
+			line-height: 18px;
+		}
+		
+		img {
+			max-width: 150px !important;
+			max-height: 150px !important;
+			height: auto;
+			width: auto;
+		}
+		
+		a[href *= "wp-content"] {
+			display: block;
+			text-align: center;			
+		}
+		
+		a[href *= "campaign"] {
+			@include button(red);
+			margin: 10px auto 0;
+			padding: 7px 16px;
+			font-size: 13px;
+			line-height: 16px;
+			text-decoration: none;
+		}
+		
+		p {
+			margin: 5px 0 0;
+		}
 	}
 }
-
-.no-js .pw_map-wrap {
-	background: $color-secondary;
-	position: relative;
-	
-	&:before {
-		content: 'Включите JavaScript для просмотра карты';		
-		display: inline-block;
-		@include nav-text();
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		@include transform(translate(-50%, -50%));
-	}
-}
-
 
 
 /** add to calnedar **/
