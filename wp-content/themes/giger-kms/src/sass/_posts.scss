@@ -173,8 +173,7 @@
 		@include post-title();
 		color: $color-link-three;
 		margin-bottom: $base*0.75;				
-		padding-top: $base;
-		@include hyphens(auto);		
+		padding-top: $base;		
 	}
 	
 	.entry-summary {
@@ -322,8 +321,7 @@
 	padding: $gut 0 $gut;
 	
 	.entry-title {
-		@include header-title(single);
-		@include hyphens(auto);
+		@include header-title(single);		
 	}
 	
 	.entry-meta {
@@ -440,23 +438,24 @@
 
 /** People **/
 .tpl-person {
-	margin-bottom: $gut;
-	background: $color-secondary;	
-	@include transition(background 0.35s);
+	margin-bottom: $gut;		
+	text-align: center;
 	
 	.entry-title {		
 		@include post-title(small_title);
-		margin-bottom: 4px;
-		color: $color-link-three;
+		margin-bottom: 4px;		
 	}
 	
 	.entry-preview {
-		@include shadowed-preview();
+		border-radius: 50%;			
+		img { border-radius: 50%; }
 	}
 	
+	
+	
 	.entry-meta {		
-		@include sub-title();
-		color: $color-text;
+		@include sub-title(lower);		
+		color: $color-text-light;
 	}
 	
 	.entry-data {
@@ -482,6 +481,83 @@
 		.entry-preview:after { background: rgba(0,0,0, 0.08); }
 	}
 	
+}
+
+.people-founders {
+	.cards-loop {
+		justify-content: center;
+	}
+	
+	.tpl-person {		
+		text-align: center;				
+		padding-top: 40px;
+		
+		.entry-preview {
+			width: 180px;			
+			position: relative;
+			z-index: 1;		
+			margin: 0 auto 46px;
+			
+			&:before {
+				content: '';
+				display: block;
+				background: url(../img/circle.svg) no-repeat center center;
+				background-size: contain;
+				width: 140%;
+				height: 140%;
+				position: absolute;
+				left: -20%;
+				top: -20%;
+				z-index: 10;
+			}
+		}
+		
+		.entry-title {		
+			@include post-title();
+			margin-bottom: 0;		
+		}
+		
+		.entry-meta { display:none; }
+	}
+}
+
+.people-board {
+	.cards-loop {
+		justify-content: center;
+	}
+	
+	.tpl-person {		
+		text-align: center;				
+		padding-top: 40px;
+		
+		.entry-preview {
+			width: 180px;
+			position: relative;
+			z-index: 1;		
+			margin: 0 auto 46px;
+			
+			&:before {
+				content: '';
+				display: block;
+				background: url(../img/dashed-circle.svg) no-repeat center center;
+				background-size: contain;
+				width: 220px;
+				height: 220px;				
+				position: absolute;
+				left: -20px;
+				top: -20px;
+				z-index: 10;
+			}
+		}
+		
+			
+		.entry-title {		
+			@include post-title();
+			margin-bottom: 0;		
+		}
+		
+		.entry-meta { display:none; }
+	}
 }
 
 

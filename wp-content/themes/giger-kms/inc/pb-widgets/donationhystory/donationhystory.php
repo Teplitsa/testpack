@@ -100,7 +100,7 @@ class TST_DonationHystory_Widget extends SiteOrigin_Widget {
 			}
 			
 			$post_id = ($post_id) ? $post_id : get_queried_object_id();
-			$posts_per_page = (!$posts_per_page) ? 5 : $posts_per_page;
+			$posts_per_page = ($posts_per_page) ? $posts_per_page : 5; 
 			
 			echo leyka_get_donors_list($post_id, array('num' => $posts_per_page, 'show_purpose' => 0));
 		?>

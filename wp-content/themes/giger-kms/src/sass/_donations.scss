@@ -15,6 +15,7 @@
 			
 	.leyka-toggle-trigger {
 		@include header-title();
+		font-size: 18px;
 		padding: $gut/2 $gut;		
 		cursor: pointer;		
 		border-top: 1px solid $color-border-link;

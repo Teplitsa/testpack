@@ -200,6 +200,9 @@ $fixed_side: 222px;
 	@else if $mod == extend {
 		font-size: 14px;
 	}
+	@else if $mod == lower {
+		text-transform: none;
+	}
 }
 
 @mixin form-text($mod: default) {	

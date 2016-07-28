@@ -25,9 +25,7 @@ a {
 }
 
 p {
-	-webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto;
+	
 	&:last-child { margin-bottom: 0; }	
 }
 

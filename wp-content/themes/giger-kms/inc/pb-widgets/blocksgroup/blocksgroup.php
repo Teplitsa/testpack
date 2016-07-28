@@ -141,6 +141,14 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 		if($instance['post_type'] == 'org'){
 			$loop_css = "frame logo-gallery";
 		}
+		
+		$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
+		if(false !== strpos($class, 'people-founders')){
+			$loop_css = "cards-loop sm-cols-2 md-cols-3 ";
+		}
+		elseif(false !== strpos($class, 'people-board')){
+			$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4";
+		}
 
         if($posts && is_callable('tst_'.$instance['post_type'].'_card_group')) {		
 			echo $args['before_widget'];
@@ -148,7 +156,7 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 		?>
 			<div class="frl-pb-blocks"><div class="<?php echo $loop_css;?>">
 				<?php foreach ($posts as $p) {
-					$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
+					
 					$p->widget_class = ($class) ? $class : 'default';
 					$linked = (!$nolinks) ? false : true;
 					call_user_func_array('tst_'.$instance['post_type'].'_card_group', array($p, $linked));

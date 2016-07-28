@@ -48,13 +48,13 @@ add_action( 'init', 'rdc_setup', 30 );
 
 
 /** Custom image size for medialib **/
-//add_filter('image_size_names_choose', 'rdc_medialib_custom_image_sizes');
-function rdc_medialib_custom_image_sizes($sizes) {
+add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
+function tst_medialib_custom_image_sizes($sizes) {
 	
-	$addsizes = apply_filters('rdc_medialib_custom_image_sizes', array(
-		//"thumbnail-landscape" => __("Landscape mini", 'rdc'),
-		"embed" => 'Фиксированный'
-	));
+	$addsizes = array(
+		"medium-thumbnail" => 'Горизонтальный',
+		"square" => 'Квадратный'
+	);
 		
 	return array_merge($sizes, $addsizes);
 }

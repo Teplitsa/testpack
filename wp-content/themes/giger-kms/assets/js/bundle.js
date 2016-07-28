@@ -1271,7 +1271,7 @@ jQuery(document).ready(function($){
 	
 	
 	/* Scroll */
-	$('.local-scroll, .inpage-menu a').on('click', function(e){
+	$('.local-scroll, .menu-scroll a').on('click', function(e){
 		e.preventDefault();
 		
 		var full_url = $(this).attr('href'),

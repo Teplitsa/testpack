@@ -246,9 +246,7 @@
 	
 	.entry-title {
 		@include post-title();
-		margin-bottom: $base*0.75;						
-		@include hyphens(auto);
-		color: $color-link-three;
+		margin-bottom: $base*0.75;										
 	}
 	
 	.entry-summary {
