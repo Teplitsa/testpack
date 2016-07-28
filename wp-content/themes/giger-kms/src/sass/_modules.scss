@@ -57,6 +57,10 @@
 	}
 }
 
+.leaflet-bottom, .leaflet-top {
+	z-index: 200;
+}
+
 
 /** add to calnedar **/
 //commons
