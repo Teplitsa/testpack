@@ -24,11 +24,8 @@
 	display: flex;
 	flex-flow: row wrap;	
 	align-items: stretch;
-	margin: 0 $gut/2;
+	margin: 0 -1*$gut/2;
 	
-	@include for(xxlarge-screens) {
-		margin: 0 -1*$gut/2;
-	}
 	
 	.card {
 		margin: 0 $gut/2 $gut;
@@ -401,6 +398,25 @@
 
 
 /** Programms **/
+//cards
+.centered-cards  {
+	.cards-loop {
+		justify-content: center;
+	}
+}
+@mixin program-photo() {
+	width: 100%;
+	height: 0;
+	padding-bottom: 100%;
+	position: relative;
+	@include shadowed-preview();
+	
+	.tpl-pictured-bg {
+		position: absolute;
+		z-index: 2;
+	}
+}
+
 .tpl-programm {
 	margin-bottom: $gut;
 	
@@ -410,7 +426,7 @@
 	}
 	
 	.entry-title {
-		@include post-title();
+		@include post-title(featured);
 		position: absolute;
 		left: $gut/2;
 		bottom: $gut/2;
@@ -428,7 +444,7 @@
 	}
 	
 	.entry-preview {
-		@include shadowed-preview();
+		@include program-photo();		
 	}
 	
 	&:hover .entry-preview:after { background: rgba(0,0,0, 0.3); }
@@ -558,35 +574,6 @@
 		
 		.entry-meta { display:none; }
 	}
-}
-
-
-/** Events **/
-.tpl-event {
-	@extend .tpl-post;
-	
-	span[itemprop="address"]{
-		span[itemprop="streetAddress"] { display: none; }
-		span[itemprop="name"]:before {
-			content: ', ';
-		}
-	}
-}
-
-.full-event-metas {		
-	color: $color-text-black;
-	
-	p:last-of-type { margin-top: 8px;}
-	
-	span[itemprop="addressLocality"] + span[itemprop="name"],
-	span[itemprop="addressLocality"] + span[itemprop="streetAddress"],
-	span[itemprop="streetAddress"] + span[itemprop="name"] {
-		&:before { content: ', '; }
-	}
-}
-
-.entry-content .lead {
-	margin-bottom: $margin-base;	
 }
 
 

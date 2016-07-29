@@ -1,6 +1,13 @@
 /** == Modules == **/
 
 /** Map **/
+.mymap-icon {
+	width: 32px;
+	height: 32px;
+	background: green;
+}
+
+
 #single-page .leaflet-container.leaflet-fade-anim {
 	opacity: 1 !important;
 }

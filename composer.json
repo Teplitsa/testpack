@@ -29,6 +29,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/webdevstudios/cmb2-post-search-field"
+        },
+		{
+            "type": "vcs",
+            "url": "https://github.com/mustardBees/cmb_field_map"
         }
     ],
     "config"      : {
@@ -57,7 +61,8 @@
         "wpackagist-plugin/tiny-compress-images": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
         "tst/cmb2-attached-posts" : ">=1.2.2",
-		"tst/leaflet-maps-marker-pro" : ">=2.7.2"
+		"tst/leaflet-maps-marker-pro" : ">=2.7.2",
+		"mustardbees/cmb_field_map" : "dev-master"
     },
     "require-dev" : {
         "wp-sync-db/wp-sync-db" : "dev-master",
@@ -65,7 +70,8 @@
         "wpackagist-plugin/post-duplicator" : "@stable",
         "wpackagist-plugin/disable-wordpress-updates": "@stable",
         "wpackagist-plugin/term-management-tools": "@stable",
-        "wpackagist-plugin/post-type-converter": "@stable"
+        "wpackagist-plugin/post-type-converter": "@stable",
+		"wpackagist-plugin/wp-ultimate-csv-importer": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",

@@ -52,7 +52,6 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
 				'type' => 'text',
 				'label' => 'Количество (по умолчанию - все)'
 			),
-			
 			'format' => array(
 				'type' => 'select',
 				'label' => 'Формат',
@@ -63,12 +62,12 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
 					'default'  => 'Карточка помощи'					
 				)
 			),
-			/*'prog_bar' => array(
+			'connected' => array(
 				'type' => 'checkbox',
-				'label' => 'Выводить градусник',
+				'label' => 'Учитывать привязку к текущей кампании',
 				'default' => false
 			)
-			*/
+			
 		);
 	}
 	
@@ -77,7 +76,7 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
 		return array(
 			'exclude_ids' 	=> sanitize_text_field($instance['exclude_ids']),			
 			'tax_terms'  	=> sanitize_text_field($instance['tax_terms']),
-			//'nolinks'  		=> (bool)($instance['nolinks']),	
+			'connected'  	=> (bool)($instance['connected']),	
 			'posts_per_page'=> (int)$instance['posts_per_page'],
 			'format'    	=> $instance['format']		
 		);
@@ -126,26 +125,27 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
             );
         }
         
-        // post2post relations patch
-        $current_post = get_post();
-        $compaign_type = get_leyka_compaign_type($current_post);
-        if($current_post->post_type == 'leyka_campaign' && $compaign_type == 'program') {
-            $params['connected_type'] = 'children-projects';
-            $params['connected_items'] = $current_post->ID;
-        }
-        // end patch
-
-        $posts = get_posts($params);
+        // post2post relations patch - fix logic
+		if($connected && is_singular('leyka_campaign')) {
+			$current_post = get_post();
+			
+			$params['connected_type'] = 'children-projects';
+			$params['connected_items'] = $current_post->ID;        
+		}
 		
+        // end patch
+		$posts = get_posts($params);
+		
+		$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
 		$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4 exlg-cols-5";
 		$callback = 'krb_default_campaign_card';
 		
 		if($format == 'project') {
-			$loop_css = "cards-loop sm-cols-2 md-cols-2 lg-cols-3";
+			$loop_css = (false !== strpos($class, 'half-row')) ? "cards-loop sm-cols-2" : "cards-loop sm-cols-2 md-cols-2 lg-cols-4";
 			$callback = 'krb_project_campaign_card';
-		}
+		}		
 		elseif($format == 'child') {
-			$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4";
+			$loop_css = (false !== strpos($class, 'half-row')) ? "cards-loop sm-cols-2" : "cards-loop sm-cols-2 md-cols-3 lg-cols-4";
 			$callback = 'krb_child_campaign_card';	
 		}
 
@@ -155,7 +155,7 @@ class TST_CampGroup_Widget extends SiteOrigin_Widget {
 		?>
 			<div class="frl-pb-blocks"><div class="<?php echo $loop_css;?>">
 				<?php foreach ($posts as $p) {
-					$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
+					
 					$p->widget_class = ($class) ? $class : 'default';
 					
 					call_user_func_array($callback, array($p));

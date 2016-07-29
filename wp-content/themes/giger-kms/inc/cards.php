@@ -256,14 +256,11 @@ function tst_leyka_campaign_card($cpost) {
 
 	$callback = 'krb_default_campaign_card';
 	
-	if(has_term('programms', 'campaign_cat', $cpost)){
-		$callback = 'krb_project_campaign_card';
-	}
-	elseif(has_term('children', 'campaign_cat', $cpost)){
+	if(has_term('children', 'campaign_cat', $cpost)){
 		$callback = 'krb_child_campaign_card';
 	}
 	else {
-		//test for child term
+		$callback = 'krb_project_campaign_card';
 	}
 	
 	if(is_callable($callback)){
@@ -275,9 +272,10 @@ function tst_leyka_campaign_card($cpost) {
 function krb_project_campaign_card($cpost) {
 	
 	$pl = get_permalink($cpost);
+	$src = rdc_post_thumbnail_src($cpost, 'square');
 ?>
-<article class="tpl-programm card"><a href="<?php echo $pl; ?>" class="entry-link">	
-	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
+<article class="tpl-programm card"><a href="<?php echo $pl; ?>" class="entry-link">		
+	<div class="entry-preview"><div class="tpl-pictured-bg" style="background-image: url(<?php echo $src;?>);" ></div></div>
 	<h4 class="entry-title"><span><?php echo get_the_title($cpost);?></span></h4>
 </a></article>
 <?php

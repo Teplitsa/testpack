@@ -240,18 +240,18 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 30,
     ));
 	
-	/*$wp_customize->add_setting('newsletter_form_id', array(
+	$wp_customize->add_setting('google_maps_api_key', array(
         'default'   => '',
         'transport' => 'refresh',
     ));
     
-    $wp_customize->add_control('newsletter_form_id', array(
+    $wp_customize->add_control('google_maps_api_key', array(
         'type'     => 'text',		
-        'label'    => 'ID формы подписки',
+        'label'    => 'Google Maps API Key',
         'section'  => 'title_tagline',
-        'settings' => 'newsletter_form_id',
+        'settings' => 'google_maps_api_key',
         'priority' => 40,
-    ));*/
+    ));
 	
 	$wp_customize->add_setting('newsletter_bottom_form_id', array(
         'default'   => '',
