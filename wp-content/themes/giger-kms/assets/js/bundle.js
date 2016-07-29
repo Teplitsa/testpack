@@ -1012,6 +1012,22 @@ jQuery(document).ready(function($){
 		}
 	});
 	
+	//submenu on about page
+	$('.about-local').on('click', 'a', function(e){
+		e.preventDefault();
+		
+		var full_url = $(this).attr('href'),
+			trgt = full_url.split("#")[1],
+			target = $("#"+trgt).offset();
+		
+		$site_header.removeClass('menu-open');
+			
+		if (target.top) {			
+			$('html, body').animate({scrollTop:target.top - 50}, 900);
+		}
+		
+	});
+	
 	/** Newsletter **/
 	$('#trigger_newsletter').on('click', function(e){
 				
@@ -1112,8 +1128,8 @@ jQuery(document).ready(function($){
 		var scroll = $(window).scrollTop(),
 			winW = $('#top').width();
 		
-		//no scroll when menu is open
-		if ($site_header.hasClass('menu-open')) {
+		//no scroll when menu is open - but not at about page
+		if ($site_header.hasClass('menu-open') && !('body').hasClass('slug-about')) {
 			$(window).scrollTop(position);			
 			return;
 		}		
