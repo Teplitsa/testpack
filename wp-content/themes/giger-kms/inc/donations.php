@@ -316,3 +316,56 @@ function rdc_donations_actions($post_ID, $post, $update){
 	
 	
 }
+
+add_action('leyka_admin_menu_setup', function(){
+    add_submenu_page('leyka', 'Комиссии за платежи', 'Комиссии', 'leyka_manage_donations', 'leyka_donation_fees', 'kor_donation_fees_settings');
+});
+
+/** Donation fees settings page */
+function kor_donation_fees_settings() {?>
+
+    <form method="post">
+    <?php foreach(leyka()->get_gateways() as $gateway) { /** @var Leyka_Gateway $gateway */
+
+        $pm_list = $gateway->get_payment_methods(true, false);
+
+        if( !$pm_list ) {
+            continue;
+        }?>
+
+        <h3><?php echo $gateway->title;?></h3>
+        <div class="pm-fees">
+        <?php foreach($pm_list as $pm) {
+
+            $fee = (float)get_option('leyka_pm_fee_'.$pm->full_id);
+            $fee = $fee < 0.0 ? -$fee : $fee;?>
+
+            <div>
+                <label for="<?php echo $pm->full_id;?>"><?php echo $pm->title;?></label>
+                <input type="text" id="<?php echo $pm->full_id;?>" name="leyka_pm_fee_<?php echo $pm->full_id;?>" value="<?php echo $fee == 0 ? '' : $fee;?>" placeholder="От 0.0 до 100.0" size="15" maxlength="5"> %
+            </div>
+
+        <?php }?>
+        </div>
+    <?php }?>
+        <input type="submit" name="leyka-pm-fees" value="Отправить">
+    </form>
+<?php }
+
+add_action('admin_init', function(){
+
+    if(empty($_POST['leyka-pm-fees'])) {
+        return;
+    }
+
+    foreach($_POST as $name => $value) {
+
+        if(stristr($name, 'leyka_pm_fee_') === false) {
+            continue;
+        }
+
+        if($value >= 0.0 && $value <= 100.0) {
+            update_option($name, $value);
+        }
+    }
+});
