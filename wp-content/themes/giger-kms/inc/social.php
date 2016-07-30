@@ -241,7 +241,7 @@ function rdc_newsletter_form_screen($atts){
 
 /** == Call request == */
 function rdc_get_call_request_form(){
-    $code = "[formidable title=false description=false id='call_request_form']";
+    $code = "[formidable title=false description=true id='call_request_form']";
     return do_shortcode($code);
 }
 
