@@ -293,30 +293,7 @@ function tst_donation_form($campaign_id = null){
 }
 
 
-/** save actions **/
-add_action('save_post_leyka_campaign', 'tst_donations_actions', 2, 3);
-function tst_donations_actions($post_ID, $post, $update){
-	
-	if(!class_exists('Leyka_Campaign'))
-		return;
-	
-	$camp = new Leyka_Campaign($post);
-	
-	if($camp->is_closed && has_term('need-help', 'campaign_cat', $post)) {
-		$category = get_term_by('slug', 'you-helped', 'campaign_cat');
-		if($category)
-			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
-	}
-	
-	if(!$camp->is_closed && has_term('you-helped', 'campaign_cat', $post)) {
-		$category = get_term_by('slug', 'need-help', 'campaign_cat');
-		if($category)
-			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
-	}
-	
-	
-}
-
+/** Comissions **/
 add_action('leyka_admin_menu_setup', function(){
     add_submenu_page('leyka', 'Комиссии за платежи', 'Комиссии', 'leyka_manage_donations', 'leyka_donation_fees', 'kor_donation_fees_settings');
 });

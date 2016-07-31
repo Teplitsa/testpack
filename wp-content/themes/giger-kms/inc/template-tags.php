@@ -110,14 +110,7 @@ function is_projects() {
 	return false;
 }
 
-function is_expired_event(){
-	
-	if(!is_single())
-		return false;
-	
-	$event = new TST_Event(get_queried_object());
-	return $event->is_expired();
-}
+
 
 
 
@@ -604,123 +597,34 @@ $args = array(
 }
 
 
-/** == Events functions == **/
 
-/** always populate end-date **/
-add_action('wp_insert_post', 'tst_save_post_event_actions', 50, 2);
-function tst_save_post_event_actions($post_ID, $post){
+/** == Children profile related logic == **/
+add_action('save_post_leyka_campaign', 'tst_donations_actions', 2, 3);
+function tst_donations_actions($post_ID, $post, $update){
 	
-	//populate end date
-	if($post->post_type == 'event'){
-		$event = new TST_Event($post_ID);		
-		$event->populate_end_date();
-		
+	if(!class_exists('Leyka_Campaign'))
+		return;
+	
+	$camp = new Leyka_Campaign($post);
+	
+	if($camp->is_closed && has_term('need-help', 'campaign_cat', $post)) {
+		$category = get_term_by('slug', 'you-helped', 'campaign_cat');
+		if($category)
+			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
+	}
+	
+	if(!$camp->is_closed && has_term('you-helped', 'campaign_cat', $post)) {
+		$category = get_term_by('slug', 'need-help', 'campaign_cat');
+		if($category)
+			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
 	}	
 }
 
-/* remove forms from expired events */
-function tst_remove_unused_form($the_content){
+function tst_is_children_campaign($post_id){
 	
-	$msg = "<div class='tst-notice'>Регистрация закрыта</div>";
-	$the_content = preg_replace('/\[formidable(.+)\]/', $msg, $the_content);
+	if(has_term(array('you-helped', 'need-help', 'rosemary', 'children'), 'campaign_cat', $post_id))
+		return true;
 	
-	return $the_content;
-}
-
-
-
-/** Single template helpers **/
-function tst_related_reports(TST_Event $event, $css=''){	
-
-	$related = $event->get_related_post_id();
-	if(!empty($related)) {
-?>
-	<div class="expired-notice <?php echo esc_attr($css);?>">
-		<h6>Читать отчет</h6>
-	<?php
-		foreach($related as $r){
-			$report = get_post($r);
-	?>
-		<p><a href="<?php echo get_permalink($r);?>"><?php echo get_the_title($r);?></a></p>
-	<?php }	?>
-	</div>
-<?php }
-
-}
-
-/** Add to calendar links - details at http://addtocalendar.com/ **/
-function tst_add_to_calendar_link(TST_Event $event, $echo = true, $container_class = 'tst-add-calendar', $txt = "", $icon = false) {	
-	
-	if($event->is_expired())
-		return '';
-	
-	$default_label = "Добавить в календарь";
-	
-	$start_date  = $event->date_start;
-	$start_titme = $event->time_start; 
-	$end_date    = $event->date_end;
-	$end_time    = $event->time_end;
-	
-	if(empty($start_date))
-		return '';
-	
-	if(empty($start_titme))
-		$start_titme = '12.00 PM';
-	
-	$start = date('d.m.Y', $start_date).' '.$start_titme;	
-	$start_mark = date_i18n('Y-m-d H:i:00', strtotime($start));
-		
-	
-	if(empty($end_date) && empty($end_time)){ //no data about ends
-		$end_mark = date_i18n('Y-m-d H:i:00', strtotime('+2 hours '.$start));		
-	}
-	elseif(empty($end_date) && !empty($end_time)) {
-		$end = date('d.m.Y', $start_date).' '.$end_time;	
-		$end_mark = date_i18n('Y-m-d H:i:00', strtotime($end));
-	}
-	else {
-		$end = date('d.m.Y', $end_date).' '.$end_time;	
-		$end_mark = date_i18n('Y-m-d H:i:00', strtotime($end));
-	}
-	
-	if(empty($txt))
-		$txt = $default_label;
-		
-	if($icon)
-		$icon = tst_svg_icon('icon-add-cal', false);
-	
-	$location = $event->get_full_address_mark();
-	$e = (!empty($event->post_excerpt)) ? wp_trim_words($event->post_excerpt, 20) : wp_trim_words(strip_shortcodes($event->post_content), 20);
-	$id = 'tst-'.uniqid();
-			
-	wp_enqueue_script(
-		'atc',
-		get_template_directory_uri().'/assets/js/atc.min.js',
-		array(),
-		null,
-		true
-	);
-?>
-	<span id="<?php echo esc_attr($id);?>"  class="<?php echo esc_attr($container_class);?>">
-		
-		<?php if($icon) { echo $icon; } ?>
-		
-		<span class="addtocalendar">
-			<a class="atcb-link"><?php echo $txt;?></a>
-			<var class="atc_event">
-				<var class="atc_date_start"><?php echo $start_mark;?></var>
-				<var class="atc_date_end"><?php echo $end_mark;?></var>
-				<var class="atc_timezone">Europe/Moscow</var>
-				<var class="atc_title"><?php echo esc_attr($event->post_title);?></var>
-				<var class="atc_description"><?php echo apply_filters('tst_the_title', $e);?></var>
-				<var class="atc_location"><?php echo esc_attr($location);?></var>          
-			</var>		
-		</span>
-		<?php if($txt != $default_label) { ?>
-			<span class="tst-tooltip" for="<?php echo esc_attr($id);?>"><?php echo $default_label;?></span>
-		<?php } ?>
-	</span>
-	
-<?php	
+	return false;
 }
 

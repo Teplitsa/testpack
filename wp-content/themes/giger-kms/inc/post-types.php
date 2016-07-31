@@ -635,6 +635,18 @@ function tst_custom_metaboxes() {
 		'split_values' => true, // Save latitude and longitude as two separate fields
 	));
 	
+	$marker_cmb->add_field( array(
+		'name'        => 'Связанная кампания',
+		'id'          => 'marker_related_campaign',
+		'type'        => 'post_search_text', // This field type
+		// post type also as array
+		'post_type'   => 'leyka_campaign',
+		// Default is 'checkbox', used in the modal view to select the post type
+		'select_type' => 'radio',
+		// Will replace any selection with selection from modal. Default is 'add'
+		'select_behavior' => 'replace',
+	));
+	
 	// marker groups 
 	$markern_cat_term = new_cmb2_box( array(
 		'id'               => 'marker_cat_data',

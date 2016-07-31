@@ -107,13 +107,12 @@ add_action( 'init', 'tst_widgets_init', 25 );
  */
 
 require get_template_directory().'/inc/class-cssjs.php';
-//require get_template_directory().'/inc/class-event.php';
+
 
 require get_template_directory().'/inc/aq_resizer.php';
 require get_template_directory().'/inc/author.php';
 require get_template_directory().'/inc/cards.php';
 require get_template_directory().'/inc/donations.php';
-//require get_template_directory().'/inc/events.php';
 require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/forms.php';
 require get_template_directory().'/inc/post-types.php';
@@ -135,3 +134,11 @@ if(is_admin()){
 	
 }
 
+/** Cron **/
+//add_action( 'wp', 'tst_cron_job' );
+function tst_cron_job() {
+	
+	if (!wp_next_scheduled( 'tst_daily_events')) {
+		wp_schedule_event( strtotime('today midnight'), 'daily', 'tst_daily_events' );
+	}
+}

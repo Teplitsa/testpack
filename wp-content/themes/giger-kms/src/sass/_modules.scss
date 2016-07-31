@@ -82,13 +82,29 @@
 			}
 		}
 		
-		.mc-content {			
-					
+		.mc-content {					
 			p {
 				margin: 4px 0 0;
 			}
+			
+			.c-btn {			
+				text-align: center;
+				margin-top: 10px; 
+			}		
 		}
 		
+		.button-red {
+			@include button(red);
+			font-size: 13px;
+			padding: 5px 14px;			
+			text-align: center;
+		}
+		
+		.button {			
+			font-size: 13px;
+			padding: 5px 14px;			
+			text-align: center;
+		}
 		
 	}
 }

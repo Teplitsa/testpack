@@ -284,6 +284,19 @@ function tst_get_marker_popup($marker, $layers_id = array()){
 	$content = apply_filters('tst_the_content', $marker->post_content);
 	$thumbnail = get_the_post_thumbnail($marker->ID, 'small-thumbnail'); 
 	
+	//get info from connected campaign if any
+	$rel_campaign = get_post_meta($marker->ID, 'marker_related_campaign', true); 
+	if($rel_campaign) {
+		$campaign_data = tst_get_data_from_connected_campaign($marker, $rel_campaign); 
+		if(empty($thumbnail))
+			$thumbnail = $campaign_data['thumbnail'];
+		
+		if(empty($content))
+			$content = apply_filters('tst_the_content', $campaign_data['content']);
+		
+		$content .= "<p class='c-btn'>".$campaign_data['button']."</p>";
+	}
+	
 	if(!empty($layers_id)){
 		$layer = tst_get_marker_layer_match($marker, $layers_id);
 		if($layer && !empty($layer->description)){
@@ -308,6 +321,32 @@ function tst_get_marker_popup($marker, $layers_id = array()){
 	$popup .= "</div>";
 	
 	return $popup;
+}
+
+function tst_get_data_from_connected_campaign($marker, $rel_campaign) {
+		
+	$data = array('thumbnail' => '', 'content' => '', 'button' => '');
+	if(!class_exists('Leyka_Campaign'))
+		return $data;
+		
+	$camp = new Leyka_Campaign($rel_campaign);
+	$data['thumbnail'] = get_the_post_thumbnail($camp->ID, 'small-thumbnail');
+	
+	$label = ($camp->is_closed) ? 'Подробности' : 'Поддержать';
+	$css = ($camp->is_closed) ? 'button' : 'button-red';
+	$data['button'] = "<a href='".get_permalink($camp->ID)."' class='{$css}'>{$label}</a>";
+	
+	if(tst_is_children_campaign($camp->ID)){
+		
+		$m = array();
+		$m[]  = get_post_meta($camp->ID, 'campaign_child_age', true);
+		$m[] = get_post_meta($camp->ID, 'campaign_child_diagnosis', true);
+		array_filter($m);
+		
+		$data['content'] = implode(', ', $m); 
+	}
+	
+	return $data;
 }
 
 function tst_get_marker_icon_class($marker, $layers_id = array()){
