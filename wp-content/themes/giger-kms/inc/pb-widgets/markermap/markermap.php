@@ -282,7 +282,7 @@ function tst_get_marker_popup($marker, $layers_id = array()){
 	$name = get_the_title($marker);
 	$addr = get_post_meta($marker->ID, 'marker_address', true);
 	$content = apply_filters('tst_the_content', $marker->post_content);
-	$thumbnail = tst_post_thumbnail($marker->ID, 'small-thumbnail');
+	$thumbnail = get_the_post_thumbnail($marker->ID, 'small-thumbnail'); 
 	
 	if(!empty($layers_id)){
 		$layer = tst_get_marker_layer_match($marker, $layers_id);
