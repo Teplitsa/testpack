@@ -1,7 +1,7 @@
 <?php
 
-add_action('init', 'rdc_custom_content', 20);
-function rdc_custom_content(){
+add_action('init', 'tst_custom_content', 20);
+function tst_custom_content(){
 	
 	if(defined('TST_HAS_AUTHORS') && TST_HAS_AUTHORS) {
 		register_taxonomy('auctor', array('post',), array(
@@ -313,21 +313,21 @@ function rdc_custom_content(){
 	
 	register_taxonomy('marker_cat', array('marker',), array(
 		'labels' => array(
-			'name'                       => 'Категории маркеров',
-			'singular_name'              => 'Категория',
-			'menu_name'                  => 'Категории',
-			'all_items'                  => 'Все категории',
-			'edit_item'                  => 'Редактировать категорию',
+			'name'                       => 'Группы маркеров',
+			'singular_name'              => 'Группа',
+			'menu_name'                  => 'Группы',
+			'all_items'                  => 'Все группы',
+			'edit_item'                  => 'Редактировать группу',
 			'view_item'                  => 'Просмотреть',
-			'update_item'                => 'Обновить категорию',
-			'add_new_item'               => 'Добавить новую категорию',
-			'new_item_name'              => 'Название новой категории',
-			'parent_item'                => 'Родительская категория',
-			'parent_item_colon'          => 'Родительская категория:',            
-			'search_items'               => 'Искать категории',
+			'update_item'                => 'Обновить группу',
+			'add_new_item'               => 'Добавить новую группу',
+			'new_item_name'              => 'Название новой группы',
+			'parent_item'                => 'Родительская группа',
+			'parent_item_colon'          => 'Родительская группа:',            
+			'search_items'               => 'Искать группы',
 			'popular_items'              => 'Часто используемые',
 			'separate_items_with_commas' => 'Разделять запятыми',
-			'add_or_remove_items'        => 'Добавить или удалить категории',
+			'add_or_remove_items'        => 'Добавить или удалить группы',
 			'choose_from_most_used'      => 'Выбрать из часто используемых',
 			'not_found'                  => 'Не найдено'
 		),
@@ -416,17 +416,17 @@ function tst_restrict_p2p_box_display( $show, $ctype, $post ) {
     return $show;
 }
 
-//add_filter( 'p2p_connectable_args', 'tst_order_pages_by_title', 10, 3 );
+add_filter( 'p2p_connectable_args', 'tst_order_pages_by_title', 10, 3 );
 function tst_order_pages_by_title( $args, $ctype, $post_id ) {
 
-    if ( 'children-projects' == $ctype->name ) {
-        $term_list = wp_get_post_terms($post_id, 'wpsc_product_category', array("fields" => "ids"));
+    if ( 'children-projects' == $ctype->name ) {       
         $args['p2p:per_page'] = '20';
         $args['tax_query'] = array(
             array(
                 'taxonomy' => 'campaign_cat',
                 'field'    => 'slug',
-                'terms'    => array('projects', 'programms'),
+                'terms'    => array('children', 'you-helped', 'need-help', 'rosemary'),
+				'operator' => 'NOT IN'
             )
         );
     }
@@ -438,8 +438,8 @@ function tst_order_pages_by_title( $args, $ctype, $post_id ) {
 
 
 /** Metaboxes **/
-add_action( 'cmb2_admin_init', 'rdc_custom_metaboxes' );
-function rdc_custom_metaboxes() {
+add_action( 'cmb2_admin_init', 'tst_custom_metaboxes' );
+function tst_custom_metaboxes() {
 	
 	
 	/** Post **/
@@ -607,7 +607,7 @@ function rdc_custom_metaboxes() {
         ));
 //    }
 
-
+	//markers
 	$marker_cmb = new_cmb2_box( array(
         'id'            => 'marker_settings_metabox',
         'title'         => 'Настройки маркера',
@@ -635,5 +635,33 @@ function rdc_custom_metaboxes() {
 		'split_values' => true, // Save latitude and longitude as two separate fields
 	));
 	
+	// marker groups 
+	$markern_cat_term = new_cmb2_box( array(
+		'id'               => 'marker_cat_data',
+		'title'            => 'Настройки маркеров ',
+		'object_types'     => array( 'term' ), 
+		'taxonomies'       => array( 'marker_cat' )		
+	));
+
+	$markern_cat_term->add_field( array(
+		'name'             => 'Цвет маркера',		
+		'id'               => 'layer_marker_colors',
+		'type'             => 'select',
+		'show_option_none' => false,
+		'default'          => 'navi',
+		'options'          => array(
+			'navi' 	=> 'Синий',
+			'red'   => 'Красный',
+			'blue'  => 'Голубой',
+		)
+	));
+
+	$markern_cat_term->add_field(array(
+		'name'    => 'Класс иконки',
+		'desc' 	  => 'Справочник по классам иконок WP - <a href="https://developer.wordpress.org/resource/dashicons/" target="_blank">Найдите нужную и скопируйте класс</a>',
+		'id'      => 'layer_marker_icon',
+		'type'    => 'text',
+		'default' => ''
+	));
 }
 

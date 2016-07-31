@@ -8,12 +8,12 @@ get_header();
 ?>
 
 <section class="heading">
-	<div class="container"><?php rdc_section_title(); ?></div>
+	<div class="container"><?php tst_section_title(); ?></div>
 </section>
 
 <section class="main-content single-post-section">
 	<div class="entry-content err-text">
-		<?php echo apply_filters('rdc_the_content', $er_text); ?>	
+		<?php echo apply_filters('tst_the_content', $er_text); ?>	
 	</div>
 </section>
 

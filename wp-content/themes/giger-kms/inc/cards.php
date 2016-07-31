@@ -1,16 +1,16 @@
 <?php
 
 /** == Posts elements == **/
-function rdc_post_card(WP_Post $cpost){
+function tst_post_card(WP_Post $cpost){
 	
 	$pl = get_permalink($cpost);
-	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 25, true));
+	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
 ?>
 <article class="tpl-post card">
 	<a href="<?php echo $pl; ?>" class="thumbnail-link">
-	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
+	<div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
 	<div class="entry-data">
-		<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>');?></div>
+		<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost), '<span>');?></div>
 		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 		<div class="entry-summary"><?php echo $ex;?></div>
 	</div>
@@ -19,9 +19,9 @@ function rdc_post_card(WP_Post $cpost){
 <?php
 }
 
-function rdc_intro_card_markup_below($title, $subtitle, $img_id, $link = '', $button_text = '') {
+function tst_intro_card_markup_below($title, $subtitle, $img_id, $link = '', $button_text = '') {
 	
-	$button_text = (!empty($button_text)) ? $button_text : __('More', 'rdc');
+	$button_text = (!empty($button_text)) ? $button_text : __('More', 'tst');
 	$has_sharing = (!empty($link)) ? false : true;
 ?>
 	<section class="intro-head-image">
@@ -29,12 +29,12 @@ function rdc_intro_card_markup_below($title, $subtitle, $img_id, $link = '', $bu
 	</section>
 	<section class="intro-head-content<?php if(!empty($link)) { echo '  has-button'; }?>"><div class="ihc-content">
 		<h1 class="ihc-title"><?php if(!empty($link)) { ?><a href="<?php echo esc_url($link);?>"><?php } ?>
-			<?php echo apply_filters('rdc_the_title', $title);?>
+			<?php echo apply_filters('tst_the_title', $title);?>
 			<?php if(!empty($link)) { ?></a><?php } ?>
 		</h1>
 		<?php if($subtitle){ ?>
 			<div class="frame">
-				<div class="bit <?php if(!empty($link)){ echo 'md-8 exlg-9'; }?> ihc-desc"><?php echo apply_filters('rdc_the_content', $subtitle); ?></div>
+				<div class="bit <?php if(!empty($link)){ echo 'md-8 exlg-9'; }?> ihc-desc"><?php echo apply_filters('tst_the_content', $subtitle); ?></div>
 				<?php if(!empty($link)) { ?>
 				<div class="bit md-4 exlg-3"><a href="<?php echo esc_url($link);?>"><?php echo $button_text;?></a></div>
 				<?php } ?>
@@ -42,14 +42,14 @@ function rdc_intro_card_markup_below($title, $subtitle, $img_id, $link = '', $bu
 		<?php } ?>	
 	</div></section>
 	<?php if($has_sharing) { ?>	
-		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
+		<div class="mobile-sharing hide-on-medium"><?php echo tst_social_share_no_js();?></div>
 	<?php }?>
 <?php
 }
 
-function rdc_intro_card_markup_over($title, $subtitle, $img_id, $link = '', $button_text = '', $style = 'below') {
+function tst_intro_card_markup_over($title, $subtitle, $img_id, $link = '', $button_text = '', $style = 'below') {
 	
-	$button_text = (!empty($button_text)) ? $button_text : __('More', 'rdc');
+	$button_text = (!empty($button_text)) ? $button_text : __('More', 'tst');
 	$has_sharing = (!empty($link)) ? false : true;
 	
 ?>
@@ -59,9 +59,9 @@ function rdc_intro_card_markup_over($title, $subtitle, $img_id, $link = '', $but
 	<section class="intro-head-content text-over-image<?php if(!empty($link)) { echo '  has-button'; }?>"><div class="ihc-content">
 	<?php if(!empty($link)) { ?><a href="<?php echo esc_url($link);?>"><?php } ?>
 	
-		<h1 class="ihc-title"><span><?php echo apply_filters('rdc_the_title', $title);?></span></h1>
+		<h1 class="ihc-title"><span><?php echo apply_filters('tst_the_title', $title);?></span></h1>
 		<?php if($subtitle){ ?>
-			<div class="ihc-desc"><?php echo apply_filters('rdc_the_content', $subtitle); ?></div>
+			<div class="ihc-desc"><?php echo apply_filters('tst_the_content', $subtitle); ?></div>
 		<?php } ?>
 		<?php if(!empty($link)) { ?>
 			<div class="cta"><?php echo $button_text;?></div>
@@ -70,22 +70,22 @@ function rdc_intro_card_markup_over($title, $subtitle, $img_id, $link = '', $but
 	<?php if(!empty($link)) { ?></a><?php } ?>
 	</div></section>
 	<?php if($has_sharing) { ?>	
-		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
+		<div class="mobile-sharing hide-on-medium"><?php echo tst_social_share_no_js();?></div>
 	<?php }
 
 }
 
 
-function rdc_related_post_card(WP_Post $cpost) {
+function tst_related_post_card(WP_Post $cpost) {
 
 	$pl = get_permalink($cpost);
-	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
+	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 40, true));
 ?>
 <article class="tpl-related-post card"><a href="<?php echo $pl; ?>" class="entry-link">	
-	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
+	<div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
 	<div class="entry-data">
 		<?php if('project' != $cpost->post_type) { ?>
-		<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>');?></div>
+		<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost), '<span>');?></div>
 		<?php } ?>
 		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 		<div class="entry-summary"><?php echo $ex;?></div>		
@@ -94,7 +94,7 @@ function rdc_related_post_card(WP_Post $cpost) {
 <?php
 }
 
-function rdc_event_card(WP_Post $cpost){
+function tst_event_card(WP_Post $cpost){
 		
 	//162	
 	$event = new TST_Event($cpost);
@@ -104,7 +104,7 @@ function rdc_event_card(WP_Post $cpost){
 ?>
 <article class="tpl-event card" <?php echo $event->get_event_schema_prop();?>">
 	<a href="<?php echo $pl; ?>" class="thumbnail-link" <?php echo $event->get_event_url_prop();?>>
-	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
+	<div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
 	<div class="entry-data">
 		<div class="entry-meta"><?php echo $event->posted_on_card();?></div>
 		<h4 class="entry-title" <?php echo $event->get_event_name_prop();?>><?php echo get_the_title($cpost);?></h4>
@@ -121,16 +121,16 @@ function rdc_event_card(WP_Post $cpost){
 
 
 /* People and orgs */
-function rdc_person_card(WP_Post $cpost, $linked = true){
+function tst_person_card(WP_Post $cpost, $linked = true){
 	$pl = get_permalink($cpost);	
 ?>
 <article class="tpl-person card <?php if($linked) { echo 'linked'; }?>">
 <?php if($linked) {?> <a href="<?php echo $pl; ?>" class="entry-link"><?php } ?>
 	
-	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'square');?></div>
+	<div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'square');?></div>
 	<div class="entry-data">
 		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-		<div class="entry-meta"><?php echo apply_filters('rdc_the_title', $cpost->post_excerpt);?></div>
+		<div class="entry-meta"><?php echo apply_filters('tst_the_title', $cpost->post_excerpt);?></div>
 	</div>
 	
 <?php if($linked) {?></a><?php } ?>
@@ -142,18 +142,18 @@ function tst_person_card_group(WP_Post $cpost){
 	
 	$linked = ($cpost->widget_class == 'linked-card') ? true : false;
 	
-	rdc_person_card($cpost, $linked);	
+	tst_person_card($cpost, $linked);	
 }
 
 function tst_person_card_single(WP_Post $cpost){
 	
 	$linked = ($cpost->widget_class == 'linked-card') ? true : false;
 	
-	rdc_person_card($cpost, $linked);	
+	tst_person_card($cpost, $linked);	
 }
 
 
-function rdc_org_card(WP_Post $cpost){
+function tst_org_card(WP_Post $cpost){
 	
 	$pl = esc_url($cpost->post_excerpt);
 ?>
@@ -168,26 +168,26 @@ function rdc_org_card(WP_Post $cpost){
 function tst_org_card_group(WP_Post $cpost){
 
 ?>
-<div class="bit bit-no-margin sm-6 md-3 lg-col-5"><?php rdc_org_card($cpost); ?></div>
+<div class="bit bit-no-margin sm-6 md-3 lg-col-5"><?php tst_org_card($cpost); ?></div>
 <?php
 }
 
 function tst_org_card_single(WP_Post $cpost){
 		
-	rdc_org_card($cpost);	
+	tst_org_card($cpost);	
 }
 
 
 /** search **/
-function rdc_search_card(WP_Post $cpost) {
+function tst_search_card(WP_Post $cpost) {
 	
 	$pl = get_permalink($cpost);
-	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
+	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 40, true));
 	
 	
 ?>
 <article class="tpl-search"><a href="<?php echo $pl; ?>" class="entry-link">
-	<div class="entry-meta"><?php echo strip_tags(rdc_posted_on($cpost), '<span>');?></div>
+	<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost), '<span>');?></div>
 	<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 	<div class="entry-summary"><?php echo $ex;?></div>
 </a></article>
@@ -201,7 +201,7 @@ function rdc_search_card(WP_Post $cpost) {
 /** == Helpers == **/
 
 /** Excerpt **/
-function rdc_get_post_excerpt($cpost, $l = 30, $force_l = false){
+function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 	
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
@@ -215,7 +215,7 @@ function rdc_get_post_excerpt($cpost, $l = 30, $force_l = false){
 
 
 /** Deafult thumbnail for posts **/
-function rdc_get_default_post_thumbnail($type = 'default_thumbnail', $size){
+function tst_get_default_post_thumbnail($type = 'default_thumbnail', $size){
 		
 	$default_thumb_id = attachment_url_to_postid(get_theme_mod($type));
 	$img = '';
@@ -226,18 +226,18 @@ function rdc_get_default_post_thumbnail($type = 'default_thumbnail', $size){
 	return $img;
 }
 
-function rdc_post_thumbnail($post_id, $size = 'post-thumbnail'){
+function tst_post_thumbnail($post_id, $size = 'post-thumbnail'){
 	
 	$thumb = get_the_post_thumbnail($post_id, $size);
 	
 	if(!$thumb){
-		$thumb = rdc_get_default_post_thumbnail('default_thumbnail', $size);
+		$thumb = tst_get_default_post_thumbnail('default_thumbnail', $size);
 	}
 			
 	return $thumb;
 }
 
-function rdc_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
+function tst_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 	
 	$src = get_the_post_thumbnail_url($post_id, $size);
 	if(!$src){
@@ -254,13 +254,13 @@ function rdc_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 /** Cards for campaigns **/
 function tst_leyka_campaign_card($cpost) {
 
-	$callback = 'krb_default_campaign_card';
+	$callback = 'tst_default_campaign_card';
 	
 	if(has_term('children', 'campaign_cat', $cpost)){
-		$callback = 'krb_child_campaign_card';
+		$callback = 'tst_child_campaign_card';
 	}
 	else {
-		$callback = 'krb_project_campaign_card';
+		$callback = 'tst_project_campaign_card';
 	}
 	
 	if(is_callable($callback)){
@@ -269,10 +269,10 @@ function tst_leyka_campaign_card($cpost) {
 }
 
 
-function krb_project_campaign_card($cpost) {
+function tst_project_campaign_card($cpost) {
 	
 	$pl = get_permalink($cpost);
-	$src = rdc_post_thumbnail_src($cpost, 'square');
+	$src = tst_post_thumbnail_src($cpost, 'square');
 ?>
 <article class="tpl-programm card"><a href="<?php echo $pl; ?>" class="entry-link">		
 	<div class="entry-preview"><div class="tpl-pictured-bg" style="background-image: url(<?php echo $src;?>);" ></div></div>
@@ -281,17 +281,17 @@ function krb_project_campaign_card($cpost) {
 <?php
 }
 
-function krb_child_campaign_card($cpost) {
+function tst_child_campaign_card($cpost) {
 	
 	$pl = get_permalink($cpost);
-	$src = rdc_post_thumbnail_src($cpost, 'post-thumbnail');
+	$src = tst_post_thumbnail_src($cpost, 'post-thumbnail');
 ?>
 <article class="tpl-child card"><div class="child-card-content">
 	<a href="<?php echo $pl; ?>" class="thumbnail-link">
 		<div class="entry-preview"><div class="tpl-pictured-bg" style="background-image: url(<?php echo $src;?>);" ></div></div>
 		<div class="entry-data">		
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-			<?php krb_child_meta($cpost); ?>		
+			<?php tst_child_meta($cpost); ?>		
 		</div>
 	</a>
 	<?php if(function_exists('leyka_get_scale') && !has_term('rosemary', 'campaign_cat', $cpost)) {?>
@@ -301,7 +301,7 @@ function krb_child_campaign_card($cpost) {
 <?php
 }
 
-function krb_child_meta($cpost){
+function tst_child_meta($cpost){
 	
 	$age  = get_post_meta($cpost->ID, 'campaign_child_age', true);
 	$city = get_post_meta($cpost->ID, 'campaign_child_city', true);
@@ -309,18 +309,18 @@ function krb_child_meta($cpost){
 	$summary = '';
 	
 	if(empty($age) && empty($city) && empty($diag)){
-		$summary = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 40, true));
+		$summary = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 40, true));
 	}
 ?>
 	<div class="child-meta">	
 	<?php if(!empty($age)) { ?>	
-		<p><span class="label"><?php _e('Age', 'rdc');?>:</span> <?php echo apply_filters('rdc_the_title', $age);?></p>
+		<p><span class="label"><?php _e('Age', 'tst');?>:</span> <?php echo apply_filters('tst_the_title', $age);?></p>
 	<?php } ?>
 	<?php if(!empty($city)) { ?>	
-		<p><span class="label"><?php _e('City', 'rdc');?>:</span> <?php echo apply_filters('rdc_the_title', $city);?></p>
+		<p><span class="label"><?php _e('City', 'tst');?>:</span> <?php echo apply_filters('tst_the_title', $city);?></p>
 	<?php } ?>
 	<?php if(!empty($diag)) { ?>	
-		<p><span class="label"><?php _e('Diagnosis', 'rdc');?>:</span> <?php echo apply_filters('rdc_the_title', $diag);?></p>
+		<p><span class="label"><?php _e('Diagnosis', 'tst');?>:</span> <?php echo apply_filters('tst_the_title', $diag);?></p>
 	<?php } ?>
 	<?php if(!empty($summary)) { ?>	
 		<p><?php echo $summary;?></p>
@@ -329,19 +329,19 @@ function krb_child_meta($cpost){
 <?php
 }
 
-function krb_default_campaign_card($cpost) {
+function tst_default_campaign_card($cpost) {
 
 	$pl = get_permalink($cpost);
-	$ex = apply_filters('rdc_the_title', rdc_get_post_excerpt($cpost, 25, true));
+	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
 	
 ?>
 <article class="tpl-campaign default card">
 	<a href="<?php echo $pl; ?>" class="thumbnail-link">
-	<div class="entry-preview"><?php echo rdc_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
+	<div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
 	<div class="entry-data">		
 		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
 		<div class="entry-summary"><?php echo $ex;?></div>
-		<div class="entry-help"><span><?php _e('Donate', 'rdc');?></span></div>
+		<div class="entry-help"><span><?php _e('Donate', 'tst');?></span></div>
 	</div>
 	</a>
 </article>

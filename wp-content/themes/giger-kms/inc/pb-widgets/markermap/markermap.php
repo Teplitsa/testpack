@@ -42,7 +42,8 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			'zoom'              => 15,
 			'disablecontrols'   => 'false',
 			'lat_center'		=> '55.7257532',
-			'lng_center' 		=> '37.6156754'
+			'lng_center' 		=> '37.6156754',
+			'show_legend'		=> false
 		);
 	}
 	
@@ -81,6 +82,12 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			'lng_center' => array(
 				'type' => 'text',
 				'label' => 'Координаты центра - долгота'
+			),
+			
+			'show_legend' => array(
+				'type' => 'checkbox',
+				'label' => 'Отображать легенду (для нескольких групп маркеров)',
+				'default' => false
 			)
 		);
 	}
@@ -95,6 +102,7 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			'layers_ids' => sanitize_text_field($instance['layers_ids']),
 			'height'   	 => ($instance['height']) ? (int)($instance['height']) : $defaults['height'],
 			'zoom'   	 => ($instance['zoom']) ? (int)($instance['zoom']) : $defaults['zoom'],
+			'show_legend'=> ($instance['show_legend']) ? (bool)($instance['show_legend']) : $defaults['show_legend'],
 			'lat_center' => ($instance['lat_center']) ? sanitize_text_field($instance['lat_center']) : $defaults['lat_center'], 
 			'lng_center' => ($instance['lng_center']) ? sanitize_text_field($instance['lng_center']) : $defaults['lng_center'], 
 		);
@@ -138,16 +146,23 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 		);
 		
 		if(!empty($marker_ids)) {
-			$params['post__in'] = array_map('intval', explode(',', $marker_ids));	
+			$params['post__in'] = array_map('intval', explode(',', $marker_ids));
+			$show_legend = false; //no legend for single marker  - never
 		}
-		elseif(!empty($layers_ids)){			
+		elseif(!empty($layers_ids)){
+			$layers_ids = array_map('intval', explode(',', $layers_ids));
 			$params['tax_query'] = array(
 				array(
 					'taxonomy' => 'marker_cat',
 					'field' => 'term_id',
-					'terms' => array_map('intval', explode(',', $layers_ids))
+					'terms' => $layers_ids
 				)
 			);
+			
+			if(count($layers_ids) > 1 && $show_legend)
+				$show_legend = true;
+			else
+				$show_legend = false;
 		}
 
         $markers = get_posts($params);		
@@ -161,36 +176,28 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 				continue;
 			}
 			 
-			 
 			//popap
-			$name = get_the_title($marker);
-			$addr = get_post_meta($marker->ID, 'marker_address', true);
-			$content = apply_filters('tst_the_content', $marker->post_content);
-					 
-			$popup = '<div class="marker-content"><h4>'.$name.'</h4>';
-			$popup .= "<div class='address'>".$addr."</div>";
-			if(!empty($content))
-				$popup .= "<div class='content'>".$addr."</div>";
-				
-			$popup .= "</div>";
+			$popup = tst_get_marker_popup($marker, $layers_ids);
 			
-			$type = get_the_terms($marker->ID, 'marker_cat');
-			 
 			$markers_json[] = array(
 				'title' => esc_attr($marker->post_title),
 				//'descr' => $descr,
 				'lat' => $lat,
 				'lng' => $lng,
 				'popup_text' => $popup,
-				'type' => (isset($type[0])) ? esc_attr($type[0]->slug) : '' ,
+				'class' => tst_get_marker_icon_class($marker, $layers_ids) ,
 			);
 		}
-				
+		
+		wp_enqueue_style( 'dashicons' ); //<span class="dashicons dashicons-paperclip"></span>
 		echo $args['before_widget'];
 		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
-	?>
+	?>	
 	<div class="pw_map-wrap">
 	<div class="pw_map_canvas" id="<?php echo esc_attr( $map_id ); ?>" style="height: <?php echo esc_attr($height); ?>px; width:100%"></div>
+	<?php if($show_legend) { ?>
+		<div class="pw_map_legend"><?php echo tst_get_legend($layers_ids);?></div>
+	<?php } ?>
 	</div>
 	<script type="text/javascript">
 		if (typeof mapFunc == "undefined") {
@@ -215,14 +222,24 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 				minZoom: 3			
 			}).addTo(map);
 			
-			var points = <?php echo json_encode($markers_json);?>;
+			var points = <?php echo json_encode($markers_json);?>;			
 			for(var i=0; i<points.length; i++) {
-
-				L.marker([points[i].lat, points[i].lng], {
+				
+				
+				var marker = L.marker([points[i].lat, points[i].lng], {
 					title: points[i].title,
 					alt: points[i].title,
-					icon: L.divIcon({className: 'mymap-icon icon-'+points[i].type, iconSize: [32, 32]})
-				}).addTo(map).bindPopup(points[i].popup_text);
+					icon: L.divIcon({className: 'mymap-icon dashicons '+points[i].class, iconSize: [32, 32]})
+				})
+				.addTo(map)
+				.bindPopup(
+					L.popup({
+						autoPan : true,
+						autoPanPaddingTopLeft : [20,20]
+					})
+					.setContent(points[i].popup_text)
+				); 
+				
 			}
 		});
 			
@@ -255,3 +272,101 @@ add_action('wp_footer', function(){
 //register
 siteorigin_widget_register('tst-markermap', __FILE__, 'TST_Markermap_Widget');
 
+
+/** Helpers to print marker markup and classes **/
+function tst_get_marker_popup($marker, $layers_id = array()){
+	
+	$popup = '';
+	$css = '';
+	
+	$name = get_the_title($marker);
+	$addr = get_post_meta($marker->ID, 'marker_address', true);
+	$content = apply_filters('tst_the_content', $marker->post_content);
+	$thumbnail = tst_post_thumbnail($marker->ID, 'small-thumbnail');
+	
+	if(!empty($layers_id)){
+		$layer = tst_get_marker_layer_match($marker, $layers_id);
+		if($layer && !empty($layer->description)){
+			$content .= apply_filters('tst_the_content', $layer->description);
+		}
+	}
+	else {
+		$css = 'normal';
+	}
+	
+	//markup
+	$popup = "<div class='marker-content ".$css."'><div class='mc-title'>".$name."</div>";
+	
+	if(!empty($thumbnail))
+		$popup .=  "<div class='mc-thumb'>".$thumbnail."</div>";
+		
+	$popup .= "<div class='mc-address'>".$addr."</div>";
+	
+	if(!empty($content))
+		$popup .= "<div class='mc-content'>".$content."</div>";		
+	
+	$popup .= "</div>";
+	
+	return $popup;
+}
+
+function tst_get_marker_icon_class($marker, $layers_id = array()){
+	
+	$class = 'dashicons-sos navi';
+	if(!empty($layers_id)){
+		$layer = tst_get_marker_layer_match($marker, $layers_id);
+		
+		if($layer){
+			$color = get_term_meta($layer->term_id, 'layer_marker_colors', true);
+			$type = get_term_meta($layer->term_id, 'layer_marker_icon', true);
+			
+			$color = ($color) ? $color : 'navi';
+			$type = ($type) ? $type : 'dashicons-sos';
+			$class = $type.' '.$color;
+		}
+		
+	}
+	
+	return $class;
+}
+
+function tst_get_marker_layer_match($marker, $layers_id) {
+	
+	$terms = get_the_terms($marker->ID, 'marker_cat');
+	if(empty($terms) || empty($layers_id))
+		return false;
+	
+	$res = false;
+	foreach($terms as $t){
+		if(in_array($t->term_id, $layers_id)){
+			$res = $t;
+			break;
+		}
+	}
+	
+	return $t;
+}
+
+function tst_get_legend($layers_id) {
+	
+	$list = array();
+	foreach($layers_id as $l) {
+		$layer = get_term($l, 'marker_cat');
+		$name = apply_filters('tst_the_title', $layer->name);
+		$list[] = "<li>".tst_get_layer_icon($l).$name."</li>";
+	}
+	
+	return "<ul>".implode('', $list)."</ul>";
+}
+
+function tst_get_layer_icon($layer_id) {
+	
+	$color = get_term_meta($layer_id, 'layer_marker_colors', true);
+		$type = get_term_meta($layer_id, 'layer_marker_icon', true);
+			
+		$color = ($color) ? $color : 'navi';
+		$type = ($type) ? $type : 'dashicons-sos';
+		$class = $type.' '.$color;
+		
+	return "<span class='mymap-icon dashicons $class'></span>";
+}

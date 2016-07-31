@@ -13,12 +13,12 @@ get_header();
 ?>
 
 <section class="heading">
-	<div class="container"><?php rdc_section_title(); ?></div>
+	<div class="container"><?php tst_section_title(); ?></div>
 	<?php if(!empty($qo->description)) { ?>
-		<div class="category-description"><?php echo apply_filters('rdc_the_content', $qo->description);?></div>
+		<div class="category-description"><?php echo apply_filters('tst_the_content', $qo->description);?></div>
 	<?php } ?>
 	<?php if(!empty($back_url) && !empty($back_text)) { ?>
-		<div class="category-backlink"><a href="<?php echo esc_url($back_url);?>"><?php echo apply_filters('rdc_the_title', $back_text);?>&nbsp;&rarr;</a></div>
+		<div class="category-backlink"><a href="<?php echo esc_url($back_url);?>"><?php echo apply_filters('tst_the_title', $back_text);?>&nbsp;&rarr;</a></div>
 	<?php } ?>
 </section>
 
@@ -38,7 +38,7 @@ get_header();
 </div></section>
 
 <section class="paging">
-<?php rdc_paging_nav($wp_query); ?>
+<?php tst_paging_nav($wp_query); ?>
 </section>
 
 <?php get_footer();

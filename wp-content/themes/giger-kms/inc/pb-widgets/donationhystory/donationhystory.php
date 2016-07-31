@@ -38,7 +38,7 @@ class TST_DonationHystory_Widget extends SiteOrigin_Widget {
 		return array(
 			'title' => array(
 				'type' => 'text',
-				'label' => __('Title', 'rdc')
+				'label' => __('Title', 'tst')
 			),
 			'post_id' => array(
 				'type' => 'text',
@@ -102,13 +102,13 @@ class TST_DonationHystory_Widget extends SiteOrigin_Widget {
 			
 			if(!empty($title)){
 				echo $args['before_title'];
-				echo apply_filters('rdc_the_title', $title);
+				echo apply_filters('tst_the_title', $title);
 				echo $args['after_title'];
 			}
 			
 			echo $history;
 		?>
-			<div class="all-link"><a href="<?php echo get_permalink($post_id);?>donations"><?php _e('Full list', 'rdc');?>&nbsp;&rarr;</a></div>			
+			<div class="all-link"><a href="<?php echo get_permalink($post_id);?>donations"><?php _e('Full list', 'tst');?>&nbsp;&rarr;</a></div>			
 		<?php	
 			echo '</div>';
 			echo $args['after_widget'];

@@ -10,29 +10,29 @@
 
 
 /** Default filters **/
-add_filter( 'rdc_the_content', 'wptexturize'        );
-add_filter( 'rdc_the_content', 'convert_smilies'    );
-add_filter( 'rdc_the_content', 'convert_chars'      );
-add_filter( 'rdc_the_content', 'wpautop'            );
-add_filter( 'rdc_the_content', 'shortcode_unautop'  );
-add_filter( 'rdc_the_content', 'do_shortcode' );
+add_filter( 'tst_the_content', 'wptexturize'        );
+add_filter( 'tst_the_content', 'convert_smilies'    );
+add_filter( 'tst_the_content', 'convert_chars'      );
+add_filter( 'tst_the_content', 'wpautop'            );
+add_filter( 'tst_the_content', 'shortcode_unautop'  );
+add_filter( 'tst_the_content', 'do_shortcode' );
 
-add_filter( 'rdc_the_title', 'wptexturize'   );
-add_filter( 'rdc_the_title', 'convert_chars' );
-add_filter( 'rdc_the_title', 'trim'          );
+add_filter( 'tst_the_title', 'wptexturize'   );
+add_filter( 'tst_the_title', 'convert_chars' );
+add_filter( 'tst_the_title', 'trim'          );
 
 global $wp_embed;
-add_filter( 'rdc_entry_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
-add_filter( 'rdc_entry_the_content', array( $wp_embed, 'autoembed' ), 8 );
-add_filter( 'rdc_entry_the_content', 'wptexturize'                       );
-add_filter( 'rdc_entry_the_content', 'convert_smilies'                   );
-add_filter( 'rdc_entry_the_content', 'convert_chars'                     );
-add_filter( 'rdc_entry_the_content', 'rdc_entry_wpautop'                 );
-add_filter( 'rdc_entry_the_content', 'shortcode_unautop'                 );
-add_filter( 'rdc_entry_the_content', 'prepend_attachment'                );
-add_filter( 'rdc_entry_the_content', 'rdc_force_https'                   );
-add_filter( 'rdc_entry_the_content', 'wp_make_content_images_responsive' );
-add_filter( 'rdc_entry_the_content', 'do_shortcode', 11                  ); 
+add_filter( 'tst_entry_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
+add_filter( 'tst_entry_the_content', array( $wp_embed, 'autoembed' ), 8 );
+add_filter( 'tst_entry_the_content', 'wptexturize'                       );
+add_filter( 'tst_entry_the_content', 'convert_smilies'                   );
+add_filter( 'tst_entry_the_content', 'convert_chars'                     );
+add_filter( 'tst_entry_the_content', 'tst_entry_wpautop'                 );
+add_filter( 'tst_entry_the_content', 'shortcode_unautop'                 );
+add_filter( 'tst_entry_the_content', 'prepend_attachment'                );
+add_filter( 'tst_entry_the_content', 'tst_force_https'                   );
+add_filter( 'tst_entry_the_content', 'wp_make_content_images_responsive' );
+add_filter( 'tst_entry_the_content', 'do_shortcode', 11                  ); 
 
 
 /* jpeg compression */
@@ -40,7 +40,7 @@ add_filter( 'jpeg_quality', create_function( '', 'return 95;' ) );
 
 
 /* temp fix for wpautop in posts */
-function rdc_entry_wpautop($content){
+function tst_entry_wpautop($content){
 	
 	if(false === strpos($content, '[page_section')){
 		$content = wpautop($content);
@@ -53,43 +53,43 @@ function rdc_entry_wpautop($content){
 /** Custom excerpts  **/
 
 /** more link */
-function rdc_continue_reading_link() {
-	$more = rdc_get_more_text();
+function tst_continue_reading_link() {
+	$more = tst_get_more_text();
 	return '&nbsp;<a href="'. esc_url( get_permalink() ) . '"><span class="meta-nav">'.$more.'</span></a>';
 }
 
-function rdc_get_more_text(){
+function tst_get_more_text(){
 	
 	return __('More', 'kds')."&nbsp;&raquo;";
 }
 
 /** excerpt filters  */
-add_filter( 'excerpt_more', 'rdc_auto_excerpt_more' );
-function rdc_auto_excerpt_more( $more ) {
+add_filter( 'excerpt_more', 'tst_auto_excerpt_more' );
+function tst_auto_excerpt_more( $more ) {
 	return '&hellip;';
 }
 
-add_filter( 'excerpt_length', 'rdc_custom_excerpt_length' );
-function rdc_custom_excerpt_length( $l ) {
+add_filter( 'excerpt_length', 'tst_custom_excerpt_length' );
+function tst_custom_excerpt_length( $l ) {
 	return 30;
 }
 
 /** inject */
-add_filter( 'get_the_excerpt', 'rdc_custom_excerpt_more' );
-function rdc_custom_excerpt_more( $output ) {
+add_filter( 'get_the_excerpt', 'tst_custom_excerpt_more' );
+function tst_custom_excerpt_more( $output ) {
 	global $post;
 	
 	if(is_singular() || is_search())
 		return $output;
 	
-	$output .= rdc_continue_reading_link();
+	$output .= tst_continue_reading_link();
 	return $output;
 }
 
 
 /** Current URL  **/
-if(!function_exists('rdc_current_url')){
-function rdc_current_url() {
+if(!function_exists('tst_current_url')){
+function tst_current_url() {
    
     $pageURL = 'http';
    
@@ -108,7 +108,7 @@ function rdc_current_url() {
 
 
 /** Extract posts IDs from query **/
-function rdc_get_posts_ids_from_query($query){
+function tst_get_posts_ids_from_query($query){
 	
 	$ids = array();
 	if(!$query->have_posts())
@@ -121,7 +121,7 @@ function rdc_get_posts_ids_from_query($query){
 	return $ids;
 }
 
-function rdc_get_post_id_from_posts($posts){
+function tst_get_post_id_from_posts($posts){
 		
 	$ids = array();
 	if(!empty($posts)){ foreach($posts as $p) {
@@ -131,7 +131,7 @@ function rdc_get_post_id_from_posts($posts){
 	return $ids;
 }
 
-function rdc_get_term_id_from_terms($terms){
+function tst_get_term_id_from_terms($terms){
 		
 	$ids = array();
 	if(!empty($terms)){ foreach($terms as $t) {
@@ -143,7 +143,7 @@ function rdc_get_term_id_from_terms($terms){
 
 
 /** Favicon **/
-function rdc_favicon(){
+function tst_favicon(){
 	
 	$favicon_test = WP_CONTENT_DIR. '/favicon.ico'; //in the root not working don't know why
     if(!file_exists($favicon_test))
@@ -152,13 +152,13 @@ function rdc_favicon(){
     $favicon = content_url('favicon.ico');
 	echo "<link href='{$favicon}' rel='shortcut icon' type='image/x-icon' >";
 }
-add_action('wp_head', 'rdc_favicon', 1);
-add_action('admin_head', 'rdc_favicon', 1);
-add_action('login_head', 'rdc_favicon', 1);
+add_action('wp_head', 'tst_favicon', 1);
+add_action('admin_head', 'tst_favicon', 1);
+add_action('login_head', 'tst_favicon', 1);
 
 /** Add feed link **/
-add_action('wp_head', 'rdc_feed_link');
-function rdc_feed_link(){
+add_action('wp_head', 'tst_feed_link');
+function tst_feed_link(){
 	
 	$name = get_bloginfo('name');
 	echo '<link rel="alternate" type="'.feed_content_type().'" title="'.esc_attr($name).'" href="'.esc_url( get_feed_link() )."\" />\n";
@@ -166,8 +166,8 @@ function rdc_feed_link(){
 
 
 /** Adds custom classes to the array of body classes **/
-add_filter( 'body_class', 'rdc_body_classes' );
-function rdc_body_classes( $classes ) {
+add_filter( 'body_class', 'tst_body_classes' );
+function tst_body_classes( $classes ) {
 	
 	if(is_page()){
 		$qo = get_queried_object();
@@ -180,8 +180,8 @@ function rdc_body_classes( $classes ) {
 
 
 /** Options in customizer **/
-add_action('customize_register', 'rdc_customize_register', 15);
-function rdc_customize_register(WP_Customize_Manager $wp_customize) {
+add_action('customize_register', 'tst_customize_register', 15);
+function tst_customize_register(WP_Customize_Manager $wp_customize) {
     
 	$wp_customize->add_setting('header_title_one', array(
         'default'   => '',
@@ -279,7 +279,7 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 60,
     )));
 	
-	if(rdc_has_authors()){
+	if(tst_has_authors()){
 		$wp_customize->add_setting('default_avatar', array(
 			'default'   => false,
 			'transport' => 'refresh', // postMessage
@@ -412,15 +412,15 @@ $humans = TST_Humans_Txt::get_instance();
 
 
 /** Admin bar **/
-add_action('wp_head', 'rdc_adminbar_corrections');
-add_action('admin_head', 'rdc_adminbar_corrections');
-function rdc_adminbar_corrections(){
+add_action('wp_head', 'tst_adminbar_corrections');
+add_action('admin_head', 'tst_adminbar_corrections');
+function tst_adminbar_corrections(){
 	remove_action( 'admin_bar_menu', 'wp_admin_bar_wp_menu', 10 );
-	add_action( 'admin_bar_menu', 'rdc_adminbar_logo', 10 );
+	add_action( 'admin_bar_menu', 'tst_adminbar_logo', 10 );
 }
 
 
-function rdc_adminbar_logo($wp_admin_bar){	
+function tst_adminbar_logo($wp_admin_bar){	
 	
 	$wp_admin_bar->add_menu( array(
 		'id'    => 'wp-logo',
@@ -429,9 +429,9 @@ function rdc_adminbar_logo($wp_admin_bar){
 	) );
 }
 
-add_action('wp_footer', 'rdc_adminbar_voices');
-add_action('admin_footer', 'rdc_adminbar_voices');
-function rdc_adminbar_voices() {
+add_action('wp_footer', 'tst_adminbar_voices');
+add_action('admin_footer', 'tst_adminbar_voices');
+function tst_adminbar_voices() {
 	
 ?>
 <script>	
@@ -468,7 +468,7 @@ function rdc_adminbar_voices() {
 }
 
 /** == Filter to ensure https for local URLs in content == **/
-function rdc_force_https($content){
+function tst_force_https($content){
 	
 	if(!is_ssl())
 		return $content;
@@ -498,7 +498,7 @@ function rdc_force_https($content){
 
 
 /** filter search request **/
-function rdc_filter_search_query($s){
+function tst_filter_search_query($s){
 	
 	$s = preg_replace("/&#?[a-z0-9]{2,8};/i","",$s);
 	$s = preg_replace('/[^a-zA-ZА-Яа-я0-9-\s]/u','',$s);

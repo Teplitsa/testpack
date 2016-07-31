@@ -80,7 +80,8 @@ class FRL_CssJs {
 			null
 		);
 
-		wp_dequeue_style('leyka-plugin-styles');		
+		wp_dequeue_style('leyka-plugin-styles');
+		
 	}
 
 	/* front */
@@ -166,7 +167,7 @@ class FRL_CssJs {
         }
 		
 		wp_register_script( 'tst-google-maps-api', $api_url, null, null );
-		wp_enqueue_script( 'tst-google-maps', $src, array( 'tst-google-maps-api' ), FRL_VERSION );
+		wp_enqueue_script( 'tst-google-maps', $src, array( 'tst-google-maps-api' ), TST_VERSION );
 	}
 	
 	/* login style - make it inline ? */

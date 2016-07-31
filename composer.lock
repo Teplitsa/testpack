@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0b3bf9970b425ce98a3371812290e2e3",
-    "content-hash": "7f248559b350bf56ab158544c13046da",
+    "hash": "1b1c9ca9aece3b2db1bbff72f946f5cb",
+    "content-hash": "ab10e244cc1f236ac769d2270f73fee1",
     "packages": [
         {
             "name": "composer/installers",
@@ -465,15 +465,15 @@
         },
         {
             "name": "wpackagist-plugin/leyka",
-            "version": "2.2.10",
+            "version": "2.2.11",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/leyka/",
-                "reference": "tags/2.2.10"
+                "reference": "tags/2.2.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.10.zip",
+                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.11.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -542,26 +542,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/responsive-lightbox/"
-        },
-        {
-            "name": "wpackagist-plugin/simple-css-for-widgets",
-            "version": "1.0",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/simple-css-for-widgets/",
-                "reference": "trunk"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/simple-css-for-widgets.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/simple-css-for-widgets/"
         },
         {
             "name": "wpackagist-plugin/siteorigin-panels",
@@ -642,26 +622,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/w3-total-cache/"
-        },
-        {
-            "name": "wpackagist-plugin/widget-logic",
-            "version": "0.57",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/widget-logic/",
-                "reference": "tags/0.57"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/widget-logic.0.57.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/widget-logic/"
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
@@ -855,7 +815,6 @@
         "wpackagist-plugin/leyka": 0,
         "wpackagist-plugin/media-search-enhanced": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
-        "wpackagist-plugin/simple-css-for-widgets": 0,
         "wpackagist-plugin/posts-to-posts": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,

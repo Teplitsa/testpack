@@ -1023,18 +1023,20 @@ jQuery(document).ready(function($){
 	
 	//submenu on about page
 	$('.about-local').on('click', 'a', function(e){
-		e.preventDefault();
 		
-		var full_url = $(this).attr('href'),
-			trgt = full_url.split("#")[1],
-			target = $("#"+trgt).offset();
-		
-		$site_header.removeClass('menu-open');
+		if($('body').hasClass('slug-about')) {  //allow local scroll
+			e.preventDefault();
 			
-		if (target.top) {			
-			$('html, body').animate({scrollTop:target.top - 50}, 900);
+			var full_url = $(this).attr('href'),
+				trgt = full_url.split("#")[1],
+				target = $("#"+trgt).offset();
+			
+			$site_header.removeClass('menu-open');
+				
+			if (target.top) {			
+				$('html, body').animate({scrollTop:target.top - 50}, 900);
+			}
 		}
-		
 	});
 	
 	/** Newsletter **/
@@ -1115,7 +1117,7 @@ jQuery(document).ready(function($){
 	});
 	
 	// Search forcus on search page 
-	function rdc_search_focus_position(SearchInput) {
+	function tst_search_focus_position(SearchInput) {
 		if (SearchInput.length > 0) {
 			var strLength= SearchInput.val().length * 2;
 		
@@ -1124,7 +1126,7 @@ jQuery(document).ready(function($){
 		}
 	}
 	
-	rdc_search_focus_position($('#sr_form').find('.search-field'));
+	tst_search_focus_position($('#sr_form').find('.search-field'));
 	
 	
 	/** Sticky elements **/
@@ -1144,7 +1146,7 @@ jQuery(document).ready(function($){
 		}		
 		
 		//scroll tolerance 3px and ignore out of boundaries scroll
-		if((Math.abs(scroll-position) < 3) || rdc_scroll_outOfBounds(scroll))
+		if((Math.abs(scroll-position) < 3) || tst_scroll_outOfBounds(scroll))
 			return true;
 		
 		//stick header
@@ -1159,13 +1161,13 @@ jQuery(document).ready(function($){
 		}
 		
 		//sticky sharing
-		if (winW >= breakPointMedium && $('#rdc_sharing').length > 0) {
-			stickInParent('#rdc_sharing .social-likes-wrapper', '#rdc_sharing', position, fixedTopPosition);
+		if (winW >= breakPointMedium && $('#tst_sharing').length > 0) {
+			stickInParent('#tst_sharing .social-likes-wrapper', '#tst_sharing', position, fixedTopPosition);
 		}
 		
 		//sticky sidebar
-		if (winW >= breakPointMedium && $('#rdc_sidebar').length > 0) {
-			stickInParent('#rdc_sidebar .related-widget', '#rdc_sidebar', position, fixedTopPosition);
+		if (winW >= breakPointMedium && $('#tst_sidebar').length > 0) {
+			stickInParent('#tst_sidebar .related-widget', '#tst_sidebar', position, fixedTopPosition);
 		}
 		
 		position = scroll; //upd scroll position
@@ -1199,7 +1201,7 @@ jQuery(document).ready(function($){
 	
 	
 	//determines if the scroll position is outside of document boundaries
-	function rdc_scroll_outOfBounds(scroll) { 
+	function tst_scroll_outOfBounds(scroll) { 
 		var	documentH = $(document).height(),
 			winH = $(window).height();		
 		

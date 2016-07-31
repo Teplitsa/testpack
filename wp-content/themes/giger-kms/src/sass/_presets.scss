@@ -181,7 +181,11 @@ $fixed_side: 222px;
 			font-size: 28px;
 			line-height: 1.1;	
 		}
-	}	
+	}
+	@else if $mod == popup {
+		font-size: 16px;
+		line-height: 18px;
+	}
 }
 
 @mixin sub-title($mod: default) {		

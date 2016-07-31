@@ -5,7 +5,7 @@
  * @package bb
  */
 
-define('FRL_VERSION', '1.0');
+define('TST_VERSION', '1.0');
 define('TST_DOC_URL', 'https://kms.te-st.ru/site-help/');
  
  
@@ -14,10 +14,10 @@ if ( ! isset( $content_width ) ) {
 }
 
 
-function rdc_setup() {
+function tst_setup() {
 
 	// Inits
-	load_theme_textdomain( 'rdc', get_template_directory() . '/lang' );
+	load_theme_textdomain( 'tst', get_template_directory() . '/lang' );
 	//add_theme_support( 'automatic-feed-links' );	
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'html5', array(
@@ -29,7 +29,7 @@ function rdc_setup() {
 	set_post_thumbnail_size(640, 395, true ); // regular thumbnails	
 	add_image_size('square', 450, 450, true ); // square thumbnail 
 	add_image_size('medium-thumbnail', 790, 488, true ); // poster in widget	
-	//add_image_size('embed', 735, 430, true ); // fixed size for embedding
+	add_image_size('small-thumbnail', 250, 154, true ); // fixed size for embedding
 	//add_image_size('cover', 400, 567, true ); // long thumbnail for pages
 
 	// Menus
@@ -44,7 +44,7 @@ function rdc_setup() {
 	// Editor style
 	//add_editor_style(array('css/editor-style.css'));
 }
-add_action( 'init', 'rdc_setup', 30 );
+add_action( 'init', 'tst_setup', 30 );
 
 
 /** Custom image size for medialib **/
@@ -62,7 +62,7 @@ function tst_medialib_custom_image_sizes($sizes) {
 /**
  * Register widget area.
  */
-function rdc_widgets_init() {
+function tst_widgets_init() {
 		
 	$config = array(		
 		'right_single' => array(
@@ -98,7 +98,7 @@ function rdc_widgets_init() {
 		));
 	}
 }
-add_action( 'init', 'rdc_widgets_init', 25 );
+add_action( 'init', 'tst_widgets_init', 25 );
 
 
 

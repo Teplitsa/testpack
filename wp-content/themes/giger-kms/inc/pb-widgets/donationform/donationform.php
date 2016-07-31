@@ -81,7 +81,7 @@ class TST_PaymentForm_Widget extends SiteOrigin_Widget {
 			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
 		?>
 			<div class="campaign-form">
-			<?php rdc_donation_form($post_id);?>
+			<?php tst_donation_form($post_id);?>
 			</div>
 		<?php	
 			echo '</div>';

@@ -60,7 +60,7 @@ get_header();
 <div class="cards-loop sm-cols-1 md-cols-2">
 	<?php
 		foreach($featured as $f){
-			rdc_related_post_card($f);
+			tst_related_post_card($f);
 		}
 	?>
 </div>
@@ -69,14 +69,14 @@ get_header();
 
 <?php if(!empty($future)) { ?>
 <section class="heading">
-	<div class="container"><h1 class="section-title archive"><?php _e('Future events', 'rdc'); ?></h1></div>
+	<div class="container"><h1 class="section-title archive"><?php _e('Future events', 'tst'); ?></h1></div>
 </section>
 
 <section class="main-content cards-holder"><div class="container-wide">
 <div class="cards-loop sm-cols-1 md-cols-2 lg-cols-4">
 	<?php
 		foreach($future as $p){
-			rdc_event_card($p);
+			tst_event_card($p);
 		}		
 	?>
 </div>
@@ -84,7 +84,7 @@ get_header();
 <?php } ?>
 
 <section class="heading">
-	<div class="container"><h1 class="section-title archive"><?php _e('Past events', 'rdc'); ?></h1></div>
+	<div class="container"><h1 class="section-title archive"><?php _e('Past events', 'tst'); ?></h1></div>
 </section>
 
 <section class="main-content cards-holder"><div class="container-wide">
@@ -92,7 +92,7 @@ get_header();
 	<?php
 		if($past_events->have_posts()){
 			foreach($past_events->posts as $p){
-				rdc_event_card($p);
+				tst_event_card($p);
 			}
 		}
 		else {
@@ -102,6 +102,6 @@ get_header();
 </div>
 </div></section>
 
-<section class="paging"><?php rdc_paging_nav($past_events); ?></section>
+<section class="paging"><?php tst_paging_nav($past_events); ?></section>
 
 <?php get_footer();

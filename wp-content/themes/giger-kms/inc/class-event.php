@@ -277,7 +277,7 @@ class TST_Event {
 		$meta[] = ($this->city) ? "<span class='city'>".$this->city."</span>" : '';	
 		$meta = array_filter($meta);
 		
-		return implode(rdc_get_sep('&middot;'), $meta);
+		return implode(tst_get_sep('&middot;'), $meta);
 		
 	}
 		
@@ -290,10 +290,10 @@ class TST_Event {
 			$meta[] = "<span class='date'>".$this->date_mark_for_context('single_top')."</span>";
 		}
 		else {
-			$meta[] = rdc_add_to_calendar_link($this, false, 'date tst-add-calendar', $this->date_mark_for_context('single_top'));
+			$meta[] = tst_add_to_calendar_link($this, false, 'date tst-add-calendar', $this->date_mark_for_context('single_top'));
 		}
 		
-		$meta[] = ($this->city) ? rdc_get_sep('&middot;')."<span class='city'>".$this->city."</span>" : '';	
+		$meta[] = ($this->city) ? tst_get_sep('&middot;')."<span class='city'>".$this->city."</span>" : '';	
 		
 		$meta = array_filter($meta);
 		

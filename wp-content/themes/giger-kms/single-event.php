@@ -6,7 +6,7 @@
  */
 
 $event = new TST_Event(get_queried_object());
-$format = rdc_get_post_format($event->post_object);
+$format = tst_get_post_format($event->post_object);
 $video = $thumbnail = '';
 
 if($format == 'introvid'){
@@ -15,18 +15,18 @@ if($format == 'introvid'){
 		$format = 'standard';
 }
 elseif($format == 'introimg') {
-	$thumbnail = rdc_post_thumbnail_src($event->ID, 'full');
+	$thumbnail = tst_post_thumbnail_src($event->ID, 'full');
 }
 
 get_header(); ?>
 <section class="main-content single-post-section container-wide format-<?php echo $format;?>">
-<div id="rdc_sharing" class="regular-sharing hide-upto-medium"><?php echo rdc_social_share_no_js();?></div>
+<div id="tst_sharing" class="regular-sharing hide-upto-medium"><?php echo tst_social_share_no_js();?></div>
 
 <div class="container " <?php echo $event->get_event_schema_prop();?>>
 	<header class="entry-header-full">
 		<div class="entry-meta"><?php echo $event->posted_on_single(); //for event ?></div>
 		<h1 class="entry-title" <?php echo $event->get_event_name_prop();?>><?php echo get_the_title($event->post_object);?></h1>				
-		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
+		<div class="mobile-sharing hide-on-medium"><?php echo tst_social_share_no_js();?></div>
 		
 		<div class="full-event-metas">
 		<?php
@@ -64,7 +64,7 @@ get_header(); ?>
 			
 		<?php if($format == 'standard') { ?>
 			<div class="entry-preview">
-				<?php echo rdc_post_thumbnail($event->ID, 'medium-thumbnail');?>						
+				<?php echo tst_post_thumbnail($event->ID, 'medium-thumbnail');?>						
 			</div>
 		<?php } elseif($format == 'introvid') { ?>
 			<div class="entry-preview introvid player">
@@ -75,18 +75,18 @@ get_header(); ?>
 			<div class="entry-content">
 				
 				<?php if(!empty($event->post_object->post_excerpt)) { ?>
-				<div class="lead"><?php echo apply_filters('rdc_the_content', $event->post_object->post_excerpt); ?></div>
+				<div class="lead"><?php echo apply_filters('tst_the_content', $event->post_object->post_excerpt); ?></div>
 				<?php } ?>
 				
 				<?php echo apply_filters('the_content', $event->post_object->post_content); ?>
 			</div>
 		</main>
 		
-		<div id="rdc_sidebar" class="bit md-4">
+		<div id="tst_sidebar" class="bit md-4">
 		<?php
 			if(!$event->is_expired()){
 				echo "<p class='add-to-cal-wrap'>";
-				rdc_add_to_calendar_link($event, true, 'tst-add-calendar', "", true);							
+				tst_add_to_calendar_link($event, true, 'tst-add-calendar', "", true);							
 				echo "</p>";
 			}
 			
@@ -108,7 +108,7 @@ get_header(); ?>
 		'meta_key' => 'event_date_start'
 	));
 		
-	rdc_more_section($pquery->posts, __('Visit or events', 'rdc'), 'events', 'addon'); 
+	tst_more_section($pquery->posts, __('Visit or events', 'tst'), 'events', 'addon'); 
 		
 	
 

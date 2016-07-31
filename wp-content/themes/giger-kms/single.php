@@ -6,7 +6,7 @@
  */
 
 $cpost = get_queried_object(); 
-$format = rdc_get_post_format($cpost);
+$format = tst_get_post_format($cpost);
 $video = $thumbnail = '';
 
 
@@ -16,20 +16,20 @@ if($format == 'introvid'){
 		$format = 'standard';
 }
 elseif($format == 'introimg') {
-	$thumbnail = rdc_post_thumbnail_src($cpost->ID, 'full');
+	$thumbnail = tst_post_thumbnail_src($cpost->ID, 'full');
 }
 
 get_header(); ?>
 <section class="main-content single-post-section container-wide format-<?php echo $format;?>">
-<div id="rdc_sharing" class="regular-sharing hide-upto-medium"><?php echo rdc_social_share_no_js();?></div>
+<div id="tst_sharing" class="regular-sharing hide-upto-medium"><?php echo tst_social_share_no_js();?></div>
 
 <div class="container">
 	<header class="entry-header-full">
-		<div class="entry-meta"><?php echo rdc_posted_on($cpost); //for event ?></div>
+		<div class="entry-meta"><?php echo tst_posted_on($cpost); //for event ?></div>
 		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>				
-		<div class="mobile-sharing hide-on-medium"><?php echo rdc_social_share_no_js();?></div>
+		<div class="mobile-sharing hide-on-medium"><?php echo tst_social_share_no_js();?></div>
 		
-		<div class="lead"><?php echo apply_filters('rdc_the_content', $cpost->post_excerpt); ?></div>
+		<div class="lead"><?php echo apply_filters('tst_the_content', $cpost->post_excerpt); ?></div>
 	</header>
 	
 	<?php if($format == 'introimg' && $cpost->post_type != 'project'){ ?>
@@ -43,7 +43,7 @@ get_header(); ?>
 			
 		<?php if($format == 'standard' && $cpost->post_type != 'project') { ?>
 			<div class="entry-preview">
-				<?php echo rdc_post_thumbnail($cpost->ID, 'medium-thumbnail');?>						
+				<?php echo tst_post_thumbnail($cpost->ID, 'medium-thumbnail');?>						
 			</div>
 		<?php } elseif($format == 'introvid' && $cpost->post_type != 'project') { ?>
 			<div class="entry-preview introvid player">
@@ -54,7 +54,7 @@ get_header(); ?>
 			<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
 		</main>
 		
-		<div id="rdc_sidebar" class="bit md-4"><?php dynamic_sidebar( 'right_single-sidebar' ); ?> </div>
+		<div id="tst_sidebar" class="bit md-4"><?php dynamic_sidebar( 'right_single-sidebar' ); ?> </div>
 	
 	</div>
 </div>
@@ -84,7 +84,7 @@ get_header(); ?>
 			));
 		}
 		
-		rdc_more_section($pquery->posts, __('Related news', 'rdc'), 'news', 'addon'); 
+		tst_more_section($pquery->posts, __('Related news', 'tst'), 'news', 'addon'); 
 		
 	}
 	elseif($cpost->post_type == 'project') {
@@ -96,7 +96,7 @@ get_header(); ?>
 		));
 		
 		if($pquery->have_posts()){
-			rdc_more_section($pquery->posts, __('Related projects', 'rdc'), 'projects', 'addon'); 
+			tst_more_section($pquery->posts, __('Related projects', 'tst'), 'projects', 'addon'); 
 		}
 	}
 	elseif($cpost->post_type == 'person') {
@@ -111,13 +111,13 @@ get_header(); ?>
 				array(
 					'taxonomy' => 'person_cat',
 					'field' => 'id',
-					'terms' => (!empty($cat)) ? rdc_get_term_id_from_terms($cat): array()
+					'terms' => (!empty($cat)) ? tst_get_term_id_from_terms($cat): array()
 				)
 			)
 		));
 		
 		if($pquery->have_posts()){
-			rdc_more_section($pquery->posts, $cat[0]->name, 'children', 'addon'); 
+			tst_more_section($pquery->posts, $cat[0]->name, 'children', 'addon'); 
 		}
 	}
 	
