@@ -87,39 +87,7 @@ get_header(); ?>
 		tst_more_section($pquery->posts, __('Related news', 'tst'), 'news', 'addon'); 
 		
 	}
-	elseif($cpost->post_type == 'project') {
-		$pquery = new WP_Query(array(
-			'post_type'=> 'project',
-			'posts_per_page' => 5,
-			'post__not_in' => array($cpost->ID),
-			'orderby' => 'rand'
-		));
-		
-		if($pquery->have_posts()){
-			tst_more_section($pquery->posts, __('Related projects', 'tst'), 'projects', 'addon'); 
-		}
-	}
-	elseif($cpost->post_type == 'person') {
-		$cat = get_the_terms ($cpost, 'person_cat');
-		
-		$pquery = new WP_Query(array(
-			'post_type'=> 'person',
-			'posts_per_page' => 4,
-			'post__not_in' => array($cpost->ID),
-			'orderby' => 'rand',
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'person_cat',
-					'field' => 'id',
-					'terms' => (!empty($cat)) ? tst_get_term_id_from_terms($cat): array()
-				)
-			)
-		));
-		
-		if($pquery->have_posts()){
-			tst_more_section($pquery->posts, $cat[0]->name, 'children', 'addon'); 
-		}
-	}
+	
 	
 
 get_footer();

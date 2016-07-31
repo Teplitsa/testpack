@@ -311,6 +311,8 @@ function tst_child_meta($cpost){
 	if(empty($age) && empty($city) && empty($diag)){
 		$summary = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 40, true));
 	}
+	
+	
 ?>
 	<div class="child-meta">	
 	<?php if(!empty($age)) { ?>	
@@ -324,8 +326,8 @@ function tst_child_meta($cpost){
 	<?php } ?>
 	<?php if(!empty($summary)) { ?>	
 		<p><?php echo $summary;?></p>
-	<?php } ?>
-	</div>
+	<?php } ?>		
+	</div>	
 <?php
 }
 

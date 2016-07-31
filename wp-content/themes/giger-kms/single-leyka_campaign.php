@@ -9,7 +9,7 @@ $cpost = get_queried_object();
 
 get_header();
 
-if(has_term('programms', 'campaign_cat', $cpost)){
+if(!tst_is_children_campaign($cpost->ID)){
 ?>
 <article id="single-page" class="main-content tpl-page-fullwidth project-page">
 	<div id="tst_sharing" class="regular-sharing hide-upto-medium"><?php echo tst_social_share_no_js();?></div>
@@ -20,7 +20,7 @@ if(has_term('programms', 'campaign_cat', $cpost)){
 </article>
 
 
-<?php } elseif(has_term(array('children', 'you-helped', 'need-help', 'rosemary'), 'campaign_cat', $cpost)) { ?>
+<?php } else { ?>
 
 <article class="main-content tpl-child-profile">
 <div id="tst_sharing" class="regular-sharing hide-upto-medium"><?php echo tst_social_share_no_js();?></div>
@@ -41,7 +41,8 @@ if(has_term('programms', 'campaign_cat', $cpost)){
 			</div>
 			<?php } ?>
 			<div class="bit sm-7 ">
-				<?php tst_child_meta($cpost); ?>				
+				<?php tst_child_meta($cpost); ?>
+				<?php tst_connected_project_meta($cpost); ?>
 				<div class="mobile-sharing hide-on-medium"><?php echo tst_social_share_no_js();?></div>
 			</div>
 		</div>	
@@ -94,16 +95,6 @@ if(has_term('programms', 'campaign_cat', $cpost)){
 	</div>
 		
 </div>
-</article>
-
-<?php } else { ?>
-
-<article id="single-page" class="main-content tpl-page-fullwidth project-page">
-	<div id="tst_sharing" class="regular-sharing hide-upto-medium"><?php echo tst_social_share_no_js();?></div>
-		
-	<div class="container">
-		<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
-	</div>
 </article>
 <?php
 } //has terms

@@ -628,3 +628,15 @@ function tst_is_children_campaign($post_id){
 	return false;
 }
 
+function tst_connected_project_meta($cpost){
+		
+	//WP_Query doesn't ork for any reason
+	$connected = p2p_get_connections('children-projects', array('direction' => 'any', 'to' => $cpost->ID));
+	if(!empty($connected) && isset($connected[0]->p2p_from)){
+		$ccpost = new Leyka_Campaign((int)$connected[0]->p2p_from);
+		$label = ($ccpost->is_closed) ? 'Сбор средств осуществлялся в рамках программы/проекта' : 'Сбор средств осуществляется в рамках программы/проекта';
+	?>
+		<div class="child-project"><span class="label"><?php echo $label;?>:</span> <a href="<?php echo get_permalink($ccpost->ID);?>"><?php echo apply_filters('tst_the_title', $ccpost->title);?></a></div>
+	<?php
+	}
+}

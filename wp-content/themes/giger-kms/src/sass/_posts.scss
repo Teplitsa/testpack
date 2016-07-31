@@ -734,6 +734,19 @@
 	}
 }
 
+.child-project {
+	@include body-text(summary);
+	
+	span {
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		color: $color-text-light;
+		font-size: 0.9em;
+	}
+	
+	margin-top: $base;
+}
+
 //inpage case
 .frl-pb-blocks {
 	.tpl-child {
