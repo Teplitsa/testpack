@@ -341,7 +341,7 @@ function kor_donation_fees_settings() {?>
             $fee = $fee < 0.0 ? -$fee : $fee;?>
 
             <div>
-                <label for="<?php echo $pm->full_id;?>"><?php echo $pm->title;?></label>
+                <label for="<?php echo $pm->full_id;?>"><?php echo $pm->title;?>:</label>
                 <input type="text" id="<?php echo $pm->full_id;?>" name="leyka_pm_fee_<?php echo $pm->full_id;?>" value="<?php echo $fee == 0 ? '' : $fee;?>" placeholder="От 0.0 до 100.0" size="15" maxlength="5"> %
             </div>
 
@@ -364,6 +364,7 @@ add_action('admin_init', function(){
             continue;
         }
 
+        $value = round(rtrim($value, '%'), 2);
         if($value >= 0.0 && $value <= 100.0) {
             update_option($name, $value);
         }
