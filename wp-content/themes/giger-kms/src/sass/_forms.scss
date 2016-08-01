@@ -24,14 +24,14 @@ $label-text-color: $color-text;
 }
 
 @mixin input-text {
-	font-family: $title;	
+	font-family: $sans;	
 	line-height: 1;
 	background: transparent;
 	text-align: left;
 }
 
 @mixin checkbox-text($size: 18px) {
-	font-family: $title;	
+	font-family: $sans;	
 	line-height: 1.2;
 	color: $label-text-color;	
 	text-align: left;
@@ -69,7 +69,7 @@ $label-text-color: $color-text;
 /* forms general */
 .frm_forms  {
 	margin: $gut 0;
-	
+	font-size: 16px;
 	&:last-child { margin-bottom: 0;}
 	&:first-child { margin-top: 0;}
 	
@@ -98,14 +98,18 @@ $label-text-color: $color-text;
 	margin-right: 4px;
 	vertical-align: super;
 	font-size: 0.8em;
-	color: $input-color-active;
+	color: $input-color-error;
 }
 
 .frm_hidden {
 	display: none;
 }
 	
-	
+.frm_primary_label {
+	@include input-text-label();
+	font-size: 19px;
+}
+
 /* messages */
 .frm_error_style {
 	@include response-block(error);		
@@ -136,6 +140,9 @@ $label-text-color: $color-text;
 	.rdc-textfield__input {
 		@include input-text();
 		
+		font-size: 16px;
+		line-height: 18px;
+		
 		display: block;
 		border: none;
 		border-bottom: 2px solid $input-border-color;
@@ -151,6 +158,11 @@ $label-text-color: $color-text;
 			-webkit-appearance: none;
 			margin: 0;
 		}
+		
+		@include placeholder {
+			font-size: 15px;
+			color: $color-text-semi;
+		}
 	}
 	
 	textarea {
@@ -159,7 +171,7 @@ $label-text-color: $color-text;
 	
 	label {
 		@include input-text-label();		
-		font-size: 18px;
+		font-size: 19px;
 		
 		position: absolute;
 		left: 0;
@@ -208,7 +220,7 @@ $label-text-color: $color-text;
 	
 	.rdc-inputfix__label {
 		display: inline-block;
-		@include checkbox-text();
+		@include input-text-label();
 		color: $color-text;
 	}
 	
@@ -234,7 +246,7 @@ $label-text-color: $color-text;
 	}
 	
 	.rdc-checkbox__label {
-		@include checkbox-text(17px);
+		@include checkbox-text(15px);
 		display: inline-block;
 		position: relative;
 		line-height: 18px;
@@ -382,7 +394,7 @@ $label-text-color: $color-text;
 /* submit **/
 .frm_submit {
 	display: block;
-	margin-top: $base/2;
+	margin-top: $base;
 	
 	input, input:focus {
 		border: none;		
