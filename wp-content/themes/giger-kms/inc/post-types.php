@@ -55,6 +55,7 @@ function tst_custom_content(){
 			'choose_from_most_used'      => 'Выбрать из часто используемых',
 			'not_found'                  => 'Не найдено'
 		),
+		'public' => false,
 		'hierarchical'      => true,
 		'show_ui'           => true,
 		'show_in_nav_menus' => true,
@@ -86,6 +87,7 @@ function tst_custom_content(){
 			'choose_from_most_used'      => 'Выбрать из часто используемых',
 			'not_found'                  => 'Не найдено'
 		),
+		'public' => false,
 		'hierarchical'      => true,
 		'show_ui'           => true,
 		'show_in_nav_menus' => true,
@@ -216,7 +218,7 @@ function tst_custom_content(){
        ),
         'public'              => true,
         'exclude_from_search' => true,
-        'publicly_queryable'  => true,
+        'publicly_queryable'  => false,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
@@ -251,7 +253,7 @@ function tst_custom_content(){
        ),
         'public'              => true,
         'exclude_from_search' => false,
-        'publicly_queryable'  => true,
+        'publicly_queryable'  => false,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
@@ -295,7 +297,7 @@ function tst_custom_content(){
         ),
         'public'              => true,
         'exclude_from_search' => true,
-        'publicly_queryable'  => true,
+        'publicly_queryable'  => false,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
@@ -331,6 +333,7 @@ function tst_custom_content(){
 			'choose_from_most_used'      => 'Выбрать из часто используемых',
 			'not_found'                  => 'Не найдено'
 		),
+		'public' => false,
 		'hierarchical'      => true,
 		'show_ui'           => true,
 		'show_in_nav_menus' => false,
@@ -549,6 +552,14 @@ function tst_custom_metaboxes() {
 		'title'            => 'Опции шаблона',
 		'object_types'     => array( 'term' ), 
 		'taxonomies'       => array( 'campaign_cat' )		
+	));
+	
+	$campaign_cat_term->add_field( array(
+		'name' => 'Страница на сайте',
+		'desc' => 'Страница категории видна посетителям сайта',
+		'id'   => 'show_term_page',
+		'type' => 'checkbox',
+		'default' => false,
 	));
 	
 	$campaign_cat_term->add_field( array(
