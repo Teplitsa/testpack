@@ -17,16 +17,16 @@ if($paged == 1) { //featured post
 	$fa_link_text = get_term_meta($qo->term_id, 'featured_action_link_text', true);
 	
 	$sharing = (empty($fa_link)) ? true : false;
-	$fa_link_text = (empty($fa_link_text)) ? __('More', 'rdc') : $fa_link_text;
+	$fa_link_text = (empty($fa_link_text)) ? __('More', 'tst') : $fa_link_text;
 	
 	if($fa_image) { ?>
 	<div class="taxonomy-intro"><div class="container">
-	<?php rdc_intro_card_markup_below($fa_title, $fa_subtitle, $fa_image, $fa_link, $fa_link_text); ?>
+	<?php tst_intro_card_markup_below($fa_title, $fa_subtitle, $fa_image, $fa_link, $fa_link_text); ?>
 	</div></div>
  <?php }} ?>
 
 <section class="heading">
-	<div class="container"><?php rdc_section_title(); ?></div>
+	<div class="container"><?php tst_section_title(); ?></div>
 </section>
 
 <section class="main-content cards-holder"><div class="container">
@@ -34,7 +34,7 @@ if($paged == 1) { //featured post
 	<?php
 		if(have_posts()){
 			foreach($posts as $p){
-				rdc_person_card($p);
+				tst_person_card($p);
 			}
 		}
 		else {
@@ -45,7 +45,7 @@ if($paged == 1) { //featured post
 </div></section>
 
 <section class="paging">
-<?php rdc_paging_nav($wp_query); ?>
+<?php tst_paging_nav($wp_query); ?>
 </section>
 
 <?php get_footer();

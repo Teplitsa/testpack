@@ -1,66 +1,158 @@
 /** == Modules == **/
 
 /** Map **/
-#single-page .leaflet-container.leaflet-fade-anim {
-	opacity: 1 !important;
+
+@mixin mapicon($color) {
+	width: 32px;
+	height: 32px;
+	background: $color;
+	color: $color-white;
+	border-radius: 3px;
+	position: relative;
+	font-size: 24px;
+	text-align: center;
+	box-shadow: 1px 1px 5px rgba(0,0,0, 0.4);
+	
+	&:before {		
+		position: relative;
+		top: 3px;
+	}
+	&:after {
+		content: '';
+		display: block;
+		width: 0;
+		height: 0;
+		border: 6px solid transparent;
+		border-top-color: $color;
+		position: absolute;
+		left: 50%;
+		margin-left: -6px;
+		bottom: -11px;
+	}
+}
+
+.mymap-icon {
+	&.navi {
+		@include mapicon($color-link-three);
+	}
+	&.red {
+		@include mapicon($color-link-one);
+	}
+	&.blue {
+		@include mapicon($color-link-two);
+	}
+}
+
+
+.leaflet-container .leaflet-popup a.leaflet-popup-close-button {
+	padding: 2px 2px 0 0;
 }
 
 .leaflet-popup {
 	.leaflet-popup-content-wrapper {
 		border-radius: 3px;
 	}
-	
+		
 	.leaflet-popup-content {
-		max-width: 150px;
-		text-align: center;
+		margin: 14px;
+	}
+	
+	.marker-content  {
+		max-width: 160px;
+		font-size: 11px;
+		line-height: 1.4;
 		
-		.popup-markername {
-			border: none !important;
-			margin-bottom: 10px;
-			@include post-title(small_title);
-			font-size: 16px;
-			line-height: 18px;
+		.mc-title {
+			@include post-title(popup);
+			margin-bottom: 4px;
 		}
 		
-		img {
-			max-width: 150px !important;
-			max-height: 150px !important;
-			height: auto;
-			width: auto;
+		.mc-address {
+			color: $color-text-light;
 		}
 		
-		a[href *= "wp-content"] {
-			display: block;
-			text-align: center;			
-		}
-		
-		a[href *= "campaign"] {
-			@include button(red);
-			margin: 10px auto 0;
-			padding: 7px 16px;
-			font-size: 13px;
-			line-height: 16px;
-			text-decoration: none;
-			&.closed {
-				background: $color-link-two;
-				border: $color-link-two;
-				&:hover, &:focus, &:active {
-					background: darken($color-link-two, 10%);
-					border-color: darken($color-link-two, 10%);					
-				}
+		.mc-thumb {
+			width: 160px;
+			height: 99px;
+			margin: 5px auto;
+			
+			img {
+				width: 100%;
+				height: auto;
 			}
 		}
 		
-		p {
-			margin: 5px 0 0;
+		.mc-content {					
+			p {
+				margin: 4px 0 0;
+			}
+			
+			.c-btn {			
+				text-align: center;
+				margin-top: 10px; 
+			}		
 		}
+		
+		.button-red {
+			@include button(red);
+			font-size: 13px;
+			padding: 5px 14px;			
+			text-align: center;
+		}
+		
+		.button {			
+			font-size: 13px;
+			padding: 5px 14px;			
+			text-align: center;
+		}
+		
 	}
 }
 
-.leaflet-control-container .leaflet-bottom, .leaflet-control-container .leaflet-top {
+.leaflet-control-container .leaflet-bottom,
+.leaflet-control-container .leaflet-top {
 	z-index: 200;
 }
 
+.entry-content .pw_map_legend,
+.pw_map_legend {
+	padding: 10px 10px 0;
+	
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: stretch;
+	}
+	
+	li {
+		min-height: 32px;		
+		margin: 7px;
+		padding: 0;
+		list-style-type: none;
+		&:before { display: none; }
+		
+		font-size: 14px;
+		line-height: 28px;
+		color: $color-text;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	
+	.mymap-icon {
+		width: 28px;
+		height: 28px;
+		font-size: 20px;
+		margin-right: 5px;
+		&:before {		
+			top: 3px;
+		}
+	}
+}
 
 /** add to calnedar **/
 //commons

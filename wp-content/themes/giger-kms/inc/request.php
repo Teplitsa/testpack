@@ -5,8 +5,8 @@
  **/
 
 /* CPT Filters */
-add_action('parse_query', 'rdc_request_corrected');
-function rdc_request_corrected(WP_Query $query) {
+add_action('parse_query', 'tst_request_corrected');
+function tst_request_corrected(WP_Query $query) {
 
 	if(is_admin()) {
 		return;
@@ -19,10 +19,17 @@ function rdc_request_corrected(WP_Query $query) {
 	if(is_search()){
 		
 		$per = get_option('posts_per_page');
-		//if($per < 25)
-		//	$query->set('posts_per_page', 25);		
+		if($per < 25)
+			$query->set('posts_per_page', 25);		
 	}
-	
+	elseif(is_tax('campaign_cat')){
+		$qo = get_queried_object();
+		$show = get_term_meta($qo->term_id, 'show_term_page', true);
+		if(!(bool)$show) {			
+			wp_redirect(home_url('how-to-help'));
+			die();
+		}
+	}
 	//if(is_tax() || is_category()) {
 	//
 	//	$qo = $query->get_queried_object();

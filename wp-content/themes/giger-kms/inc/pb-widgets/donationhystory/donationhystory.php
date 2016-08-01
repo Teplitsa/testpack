@@ -38,7 +38,7 @@ class TST_DonationHystory_Widget extends SiteOrigin_Widget {
 		return array(
 			'title' => array(
 				'type' => 'text',
-				'label' => __('Title', 'rdc')
+				'label' => __('Title', 'tst')
 			),
 			'post_id' => array(
 				'type' => 'text',
@@ -90,21 +90,25 @@ class TST_DonationHystory_Widget extends SiteOrigin_Widget {
 		
 		$css_name = $this->generate_and_enqueue_instance_styles( $instance );
 		
+		$post_id = ($post_id) ? $post_id : get_queried_object_id();
+		$posts_per_page = ($posts_per_page) ? $posts_per_page : 5; 
+		$history = leyka_get_donors_list($post_id, array('num' => $posts_per_page, 'show_purpose' => 0));
+		
+		if(empty($history))
+			return;
+		
 			echo $args['before_widget'];
 			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
 			
 			if(!empty($title)){
 				echo $args['before_title'];
-				echo apply_filters('rdc_the_title', $title);
+				echo apply_filters('tst_the_title', $title);
 				echo $args['after_title'];
 			}
 			
-			$post_id = ($post_id) ? $post_id : get_queried_object_id();
-			$posts_per_page = ($posts_per_page) ? $posts_per_page : 5; 
-			
-			echo leyka_get_donors_list($post_id, array('num' => $posts_per_page, 'show_purpose' => 0));
+			echo $history;
 		?>
-			<div class="all-link"><a href="<?php echo get_permalink($post_id);?>donations"><?php _e('Full list', 'rdc');?>&nbsp;&rarr;</a></div>			
+			<div class="all-link"><a href="<?php echo get_permalink($post_id);?>donations"><?php _e('Full list', 'tst');?>&nbsp;&rarr;</a></div>			
 		<?php	
 			echo '</div>';
 			echo $args['after_widget'];

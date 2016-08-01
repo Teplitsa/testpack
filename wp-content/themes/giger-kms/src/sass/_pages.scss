@@ -228,7 +228,7 @@
 		
 	&:hover {
 		background: $color-link-two;
-		.entry-preview:after { background: rgba(0,0,0, 0.3); }
+		.entry-preview:after { background: transparentize($color-link-three, 0.8); }
 		.entry-summary { color: $color-link-three; }
 	}	
 	

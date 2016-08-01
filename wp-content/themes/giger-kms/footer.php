@@ -8,7 +8,7 @@
  */
 
 $cc_link = '<a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons СС-BY-SA 3.0</a>';
-$tst = __("Teplitsa of social technologies", 'rdc');
+$tst = __("Teplitsa of social technologies", 'tst');
 $banner = get_template_directory_uri().'/assets/images/te-st-logo-10x50';
 $footer_text = get_theme_mod('footer_text');
 ?>
@@ -18,9 +18,9 @@ $footer_text = get_theme_mod('footer_text');
 	<div class="frame frame-wide">
 		<div class="bit md-9 lg-8">
 			<?php if(!is_page('subscribe'))	{ ?>
-				<h5><?php _e('Subscribe to our newsletter', 'rdc');?></h5>
+				<h5><?php _e('Subscribe to our newsletter', 'tst');?></h5>
 				<div class="newsletter-form in-footer">
-					<?php echo rdc_get_newsletter_form('bottom');?>
+					<?php echo tst_get_newsletter_form('bottom');?>
 				</div>
 			<?php } else { ?>
 				&nbsp;
@@ -28,8 +28,8 @@ $footer_text = get_theme_mod('footer_text');
 		</div>
 
 		<div class="bit md-3 lg-3 lg-offset-1">
-			<h5><span class="icons-label"><?php _e('Our social profiles', 'rdc');?></span>&nbsp;</h5>
-			<?php echo rdc_get_social_menu(); ?>
+			<h5><span class="icons-label"><?php _e('Our social profiles', 'tst');?></span>&nbsp;</h5>
+			<?php echo tst_get_social_menu(); ?>
 		</div>
 	</div>
 </div></div>
@@ -43,8 +43,8 @@ $footer_text = get_theme_mod('footer_text');
 		<div class="sf-cols-8">		
 				
 			<div class="copy">
-				<?php echo apply_filters('rdc_the_content', $footer_text); ?>	
-				<p><?php printf(__('All materials of the site are avaliabe under license %s', 'rdc'), $cc_link);?></p>
+				<?php echo apply_filters('tst_the_content', $footer_text); ?>	
+				<p><?php printf(__('All materials of the site are avaliabe under license %s', 'tst'), $cc_link);?></p>
 			</div>
 			
 		</div>
@@ -66,10 +66,8 @@ $footer_text = get_theme_mod('footer_text');
 
 <div id="requestt-call-modal" class="rdc-modal" style="<?php if(isset($_POST['form_key']) && $_POST['form_key'] == 'call_request_form'):?>display:block;"<?php else:?>display:none;<?php endif?>">
   <div class="rdc-modal-content">
-    <span class="rdc-close" id="rdc-request-call-modal-close">x</span>
-    <p>
-        <?php echo rdc_get_call_request_form();?>
-    </p>
+    <span class="rdc-close" id="rdc-request-call-modal-close"><?php tst_svg_icon('icon-close');?></span>
+    <?php echo tst_get_call_request_form();?>    
   </div>
 </div>
 

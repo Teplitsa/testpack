@@ -8,8 +8,8 @@ if(!class_exists('Leyka_Payment_Method'))
 
 /** Custom donation functions */
 
-add_filter('leyka_icons_text_text_box', 'rdc_text_pm_icon');
-function rdc_text_pm_icon($icons){
+add_filter('leyka_icons_text_text_box', 'tst_text_pm_icon');
+function tst_text_pm_icon($icons){
 	//size 155x80 px
 	
 	$icons = array(get_template_directory_uri().'/assets/images/text-box.png');
@@ -77,8 +77,8 @@ class Leyka_Sms_Box extends Leyka_Text_Box {
 
 
 
-add_action('leyka_init_pm_list', 'rdc_add_sms_pm');
-function rdc_add_sms_pm(Leyka_Gateway $gateway){
+add_action('leyka_init_pm_list', 'tst_add_sms_pm');
+function tst_add_sms_pm(Leyka_Gateway $gateway){
 
 	if($gateway->id == 'text'){		
 		$gateway->add_payment_method(Leyka_Sms_Box::get_instance());
@@ -86,15 +86,15 @@ function rdc_add_sms_pm(Leyka_Gateway $gateway){
 }
 
 //no icon for text gateway
-add_filter('leyka_icons_text_text_box', 'rdc_empty_icons');	
-function rdc_empty_icons($icons){
+add_filter('leyka_icons_text_text_box', 'tst_empty_icons');	
+function tst_empty_icons($icons){
 	return array();
 }
 
 
 /** Form template **/
 //custom amount field
-function rdc_amount_field($form){
+function tst_amount_field($form){
 	
 	if(!defined('LEYKA_VERSION'))
 		return;
@@ -124,7 +124,7 @@ function rdc_amount_field($form){
 					</label>
 				<?php } ?>
 				
-				<label class="figure-flex"><span class="figure-sep"><?php _e('or', 'rdc');?></span><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6"></label>
+				<label class="figure-flex"><span class="figure-sep"><?php _e('or', 'tst');?></span><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6"></label>
 			</div>
 		</div>	
 	<?php } ?>
@@ -140,7 +140,7 @@ function rdc_amount_field($form){
 
 
 
-function rdc_donation_form($campaign_id = null){
+function tst_donation_form($campaign_id = null){
 	global $leyka_current_pm;	
 		
 	if(!defined('LEYKA_VERSION'))
@@ -179,7 +179,7 @@ function rdc_donation_form($campaign_id = null){
 		if($leyka_current_pm->is_field_supported('amount') ) {
 			
 			//echo leyka_pf_get_amount_field();
-			rdc_amount_field($leyka_current_pm);
+			tst_amount_field($leyka_current_pm);
 		} //if amount
 		
 		echo leyka_pf_get_hidden_fields();	
@@ -218,7 +218,7 @@ function rdc_donation_form($campaign_id = null){
 		<div class="leyka-field recurring">
 			<label class="rdc-checkbox checkbox" for="leyka_cp-card_recurring">
 				<?php echo $f_html; ?>
-				<span class="rdc-checkbox__label"><?php _e('Monthly donation', 'rdc');?></span>           
+				<span class="rdc-checkbox__label"><?php _e('Monthly donation', 'tst');?></span>           
 			</label>
 		</div>
 	<?php
@@ -282,7 +282,7 @@ function rdc_donation_form($campaign_id = null){
 
 <!-- agreement modal -->
 <div id="leyka-agree-text" class="leyka-oferta-text leyka-custom-modal">
-	<div class="leyka-modal-close"><?php rdc_svg_icon('icon-close');?></div>
+	<div class="leyka-modal-close"><?php tst_svg_icon('icon-close');?></div>
 	<div class="leyka-oferta-text-frame">
 		<div class="leyka-oferta-text-flow">
 			<?php echo apply_filters('leyka_terms_of_service_text', leyka_options()->opt('terms_of_service_text'));?>
@@ -293,30 +293,7 @@ function rdc_donation_form($campaign_id = null){
 }
 
 
-/** save actions **/
-add_action('save_post_leyka_campaign', 'rdc_donations_actions', 2, 3);
-function rdc_donations_actions($post_ID, $post, $update){
-	
-	if(!class_exists('Leyka_Campaign'))
-		return;
-	
-	$camp = new Leyka_Campaign($post);
-	
-	if($camp->is_closed && has_term('need-help', 'campaign_cat', $post)) {
-		$category = get_term_by('slug', 'you-helped', 'campaign_cat');
-		if($category)
-			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
-	}
-	
-	if(!$camp->is_closed && has_term('you-helped', 'campaign_cat', $post)) {
-		$category = get_term_by('slug', 'need-help', 'campaign_cat');
-		if($category)
-			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
-	}
-	
-	
-}
-
+/** Comissions **/
 add_action('leyka_admin_menu_setup', function(){
     add_submenu_page('leyka', 'Комиссии за платежи', 'Комиссии', 'leyka_manage_donations', 'leyka_donation_fees', 'kor_donation_fees_settings');
 });

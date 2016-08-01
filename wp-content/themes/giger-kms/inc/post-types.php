@@ -1,7 +1,7 @@
 <?php
 
-add_action('init', 'rdc_custom_content', 20);
-function rdc_custom_content(){
+add_action('init', 'tst_custom_content', 20);
+function tst_custom_content(){
 	
 	if(defined('TST_HAS_AUTHORS') && TST_HAS_AUTHORS) {
 		register_taxonomy('auctor', array('post',), array(
@@ -55,6 +55,7 @@ function rdc_custom_content(){
 			'choose_from_most_used'      => 'Выбрать из часто используемых',
 			'not_found'                  => 'Не найдено'
 		),
+		'public' => false,
 		'hierarchical'      => true,
 		'show_ui'           => true,
 		'show_in_nav_menus' => true,
@@ -86,6 +87,7 @@ function rdc_custom_content(){
 			'choose_from_most_used'      => 'Выбрать из часто используемых',
 			'not_found'                  => 'Не найдено'
 		),
+		'public' => false,
 		'hierarchical'      => true,
 		'show_ui'           => true,
 		'show_in_nav_menus' => true,
@@ -216,7 +218,7 @@ function rdc_custom_content(){
        ),
         'public'              => true,
         'exclude_from_search' => true,
-        'publicly_queryable'  => true,
+        'publicly_queryable'  => false,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
@@ -251,7 +253,7 @@ function rdc_custom_content(){
        ),
         'public'              => true,
         'exclude_from_search' => false,
-        'publicly_queryable'  => true,
+        'publicly_queryable'  => false,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
@@ -273,11 +275,174 @@ function rdc_custom_content(){
 		
 	//remove post tags
 	unregister_taxonomy_for_object_type('post_tag', 'post');
+	
+	
+	//Markers
+	register_post_type('marker', array(
+        'labels' => array(
+			'name'               => 'Маркеры',
+			'singular_name'      => 'Маркер',
+			'menu_name'          => 'Маркеры',
+			'name_admin_bar'     => 'Добавить маркер',
+			'add_new'            => 'Добавить новый',
+			'add_new_item'       => 'Добавить маркер',
+			'new_item'           => 'Новый маркер',
+			'edit_item'          => 'Редактировать маркер',
+			'view_item'          => 'Просмотр маркеров',
+			'all_items'          => 'Все маркеры',
+			'search_items'       => 'Искать маркер',
+			'parent_item_colon'  => 'Родительский маркер:',
+			'not_found'          => 'Маркеры не найдены',
+			'not_found_in_trash' => 'В Корзине маркеры не найдены'
+        ),
+        'public'              => true,
+        'exclude_from_search' => true,
+        'publicly_queryable'  => false,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => false,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => false,
+        'rewrite'             => array('slug' => 'marker', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 20,
+		'menu_icon'           => 'dashicons-location',
+        'supports'            => array('title', 'editor', 'thumbnail'),
+        'taxonomies'          => array('marker_cat'),
+    ));
+	
+	register_taxonomy('marker_cat', array('marker',), array(
+		'labels' => array(
+			'name'                       => 'Группы маркеров',
+			'singular_name'              => 'Группа',
+			'menu_name'                  => 'Группы',
+			'all_items'                  => 'Все группы',
+			'edit_item'                  => 'Редактировать группу',
+			'view_item'                  => 'Просмотреть',
+			'update_item'                => 'Обновить группу',
+			'add_new_item'               => 'Добавить новую группу',
+			'new_item_name'              => 'Название новой группы',
+			'parent_item'                => 'Родительская группа',
+			'parent_item_colon'          => 'Родительская группа:',            
+			'search_items'               => 'Искать группы',
+			'popular_items'              => 'Часто используемые',
+			'separate_items_with_commas' => 'Разделять запятыми',
+			'add_or_remove_items'        => 'Добавить или удалить группы',
+			'choose_from_most_used'      => 'Выбрать из часто используемых',
+			'not_found'                  => 'Не найдено'
+		),
+		'public' => false,
+		'hierarchical'      => true,
+		'show_ui'           => true,
+		'show_in_nav_menus' => false,
+		'show_tagcloud'     => false,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array('slug' => 'layer', 'with_front' => false),
+		//'update_count_callback' => '',        
+	));
+	
+	/** p2p **/
+	if ( function_exists('p2p_register_connection_type') ) {
+        p2p_register_connection_type ( array (
+            'name' => 'children-projects',
+            'from' => 'leyka_campaign',
+            'to' => 'leyka_campaign',
+            'cardinality' => 'many-to-many',
+            'admin_dropdown' => 'any',
+            'title' => array (
+                'from' => 'Дети',
+                'to' => 'Проект или программа'
+            ),
+            'from_labels' => array (
+				'singular_name' => 'Проект или программа',
+				'search_items' => 'Искать',
+				'not_found' => 'Ничего не найдено.',
+				'create' => 'Выбрать',
+			),
+			'to_labels' => array (
+				'singular_name' => 'Дети',
+				'search_items' => 'Искать детей',
+				'not_found' => 'Дети не найдены.',
+				'create' => 'Выбрать детей',
+			),
+            'admin_column' => true 
+            ) );
+	}
 }
 
+/** P2P for campaigns */
+function tst_get_leyka_compaign_type($compaign) {
+    $terms = wp_get_post_terms( $compaign->ID, 'campaign_cat');
+    
+    $type = '';
+    if(!is_wp_error($terms)) {
+        foreach($terms as $term) {
+            if(in_array($term->slug, array('children', 'you-helped', 'need-help', 'rosemary'))) {
+                $type = 'child';
+            }
+            elseif(in_array($term->slug, array('projects'))) {
+                $type = 'project';
+            }
+            elseif(in_array($term->slug, array('programms'))) {
+                $type = 'program';
+            }        
+        }
+    }
+    
+    return $type;
+}
+
+function tst_is_child_campaign($campaign) {
+	
+	$terms = wp_get_post_terms( $campaign->ID, 'campaign_cat');
+	if(is_wp_error($terms))
+		return false;
+	
+	if(isset($terms[0]) && in_array($terms[0]->slug, array('children', 'you-helped', 'need-help', 'rosemary')))
+		return true;
+	
+	return false;
+}
+
+add_filter( 'p2p_admin_box_show', 'tst_restrict_p2p_box_display', 10, 3 );
+function tst_restrict_p2p_box_display( $show, $ctype, $post ) {
+    if ( 'children-projects' == $ctype->name ) {
+        $show = false;
+        if('to' == $ctype->get_direction() && tst_is_child_campaign($post)) {           
+            $show = true;
+        }
+    }
+    
+    return $show;
+}
+
+add_filter( 'p2p_connectable_args', 'tst_order_pages_by_title', 10, 3 );
+function tst_order_pages_by_title( $args, $ctype, $post_id ) {
+
+    if ( 'children-projects' == $ctype->name ) {       
+        $args['p2p:per_page'] = '20';
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'campaign_cat',
+                'field'    => 'slug',
+                'terms'    => array('children', 'you-helped', 'need-help', 'rosemary'),
+				'operator' => 'NOT IN'
+            )
+        );
+    }
+
+    return $args;
+}
+
+
+
+
 /** Metaboxes **/
-add_action( 'cmb2_admin_init', 'rdc_custom_metaboxes' );
-function rdc_custom_metaboxes() {
+add_action( 'cmb2_admin_init', 'tst_custom_metaboxes' );
+function tst_custom_metaboxes() {
 	
 	
 	/** Post **/
@@ -331,75 +496,6 @@ function rdc_custom_metaboxes() {
 	
 	
 	
-	/** Events **/
-    $event_cmb = new_cmb2_box( array(
-        'id'            => 'event_settings_metabox',
-        'title'         => 'Настройки мероприятия',
-        'object_types'  => array( 'event', ), // Post type
-        'context'       => 'normal',
-        'priority'      => 'high',
-        'show_names'    => true, // Show field names on the left
-		//'show_on_cb'    => 'tst_show_on_general_pages',		
-        //'cmb_styles'    => false, // false to disable the CMB stylesheet
-        // 'closed'     => true, // Keep the metabox closed by default
-    ));
-	
-
-	$event_cmb->add_field( array(
-		'name' => 'Дата начала',
-		'id'   => 'event_date_start',
-		'type' => 'text_date_timestamp',		
-		'date_format' => 'd.m.Y',
-	));
-	
-	$event_cmb->add_field( array(
-		'name' => 'Время начала',
-		'id' => 'event_time_start',
-		'type' => 'text_time',
-		'time_format' => 'H.i',
-	));
-	
-	$event_cmb->add_field( array(
-		'name' => 'Дата окончания',
-		'id'   => 'event_date_end',
-		'type' => 'text_date_timestamp',		
-		'date_format' => 'd.m.Y',
-	));
-	
-	$event_cmb->add_field( array(
-		'name' => 'Время окончания',
-		'id' => 'event_time_end',
-		'type' => 'text_time',
-		'time_format' => 'H.i',
-	));
-	
-	$event_cmb->add_field( array(
-		'name'    => 'Город',
-		'id'      => 'event_city',
-		'type'    => 'text',
-		'default' => ''
-	));
-	
-	$event_cmb->add_field( array(
-		'name'    => 'Адрес',		
-		'default' => '',
-		'id'      => 'event_address',
-		'type'    => 'text',
-	));
-	
-	$event_cmb->add_field( array(
-		'name'    => 'Местро проведения',		
-		'default' => '',
-		'id'      => 'event_location',
-		'type'    => 'text',
-	));
-	
-	$event_cmb->add_field( array(
-		'name'    => 'Участники (спикеры)',		
-		'default' => '',
-		'id'      => 'event_participants',
-		'type'    => 'text'		
-	));
 
 	/* People tax */
 	$person_cat_term = new_cmb2_box( array(
@@ -459,6 +555,14 @@ function rdc_custom_metaboxes() {
 	));
 	
 	$campaign_cat_term->add_field( array(
+		'name' => 'Страница на сайте',
+		'desc' => 'Страница категории видна посетителям сайта',
+		'id'   => 'show_term_page',
+		'type' => 'checkbox',
+		'default' => false,
+	));
+	
+	$campaign_cat_term->add_field( array(
 		'name'     => 'Обратная ссылка',
 		'desc'     => 'Адрес ссылки, позволяющей вернуться в раздел',
 		'id'       => 'term_back_url',
@@ -513,4 +617,74 @@ function rdc_custom_metaboxes() {
             'default' => ''
         ));
 //    }
+
+	//markers
+	$marker_cmb = new_cmb2_box( array(
+        'id'            => 'marker_settings_metabox',
+        'title'         => 'Настройки маркера',
+        'object_types'  => array( 'marker', ), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+		//'show_on_cb'    => 'tst_show_on_general_pages',		
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
+	
+	$marker_cmb->add_field(array(
+		'name'    => 'Адрес',
+		'id'      => 'marker_address',
+		'type'    => 'text',
+		'default' => ''
+	));
+	
+	$marker_cmb->add_field( array(
+		'name' => 'Маркер',
+		'desc' => 'Укажите позициюна карте',
+		'id'   => 'marker_location',
+		'type' => 'pw_map',
+		'split_values' => true, // Save latitude and longitude as two separate fields
+	));
+	
+	$marker_cmb->add_field( array(
+		'name'        => 'Связанная кампания',
+		'id'          => 'marker_related_campaign',
+		'type'        => 'post_search_text', // This field type
+		// post type also as array
+		'post_type'   => 'leyka_campaign',
+		// Default is 'checkbox', used in the modal view to select the post type
+		'select_type' => 'radio',
+		// Will replace any selection with selection from modal. Default is 'add'
+		'select_behavior' => 'replace',
+	));
+	
+	// marker groups 
+	$markern_cat_term = new_cmb2_box( array(
+		'id'               => 'marker_cat_data',
+		'title'            => 'Настройки маркеров ',
+		'object_types'     => array( 'term' ), 
+		'taxonomies'       => array( 'marker_cat' )		
+	));
+
+	$markern_cat_term->add_field( array(
+		'name'             => 'Цвет маркера',		
+		'id'               => 'layer_marker_colors',
+		'type'             => 'select',
+		'show_option_none' => false,
+		'default'          => 'navi',
+		'options'          => array(
+			'navi' 	=> 'Синий',
+			'red'   => 'Красный',
+			'blue'  => 'Голубой',
+		)
+	));
+
+	$markern_cat_term->add_field(array(
+		'name'    => 'Класс иконки',
+		'desc' 	  => 'Справочник по классам иконок WP - <a href="https://developer.wordpress.org/resource/dashicons/" target="_blank">Найдите нужную и скопируйте класс</a>',
+		'id'      => 'layer_marker_icon',
+		'type'    => 'text',
+		'default' => ''
+	));
 }
+

@@ -2,8 +2,8 @@
 /** Formidable filters **/
 
 // @to_do (no correction for repeatable section)
-add_filter('frm_submit_button_class', 'rdc_formidable_submit_classes', 2, 2);
-function rdc_formidable_submit_classes($class, $form){
+add_filter('frm_submit_button_class', 'tst_formidable_submit_classes', 2, 2);
+function tst_formidable_submit_classes($class, $form){
 	
 	
 	$class[] = 'rdc-submit-button';
@@ -11,8 +11,8 @@ function rdc_formidable_submit_classes($class, $form){
 	return $class;
 }
 
-add_filter('frm_field_classes', 'rdc_formidable_field_classes', 2, 2);
-function rdc_formidable_field_classes($class, $field){
+add_filter('frm_field_classes', 'tst_formidable_field_classes', 2, 2);
+function tst_formidable_field_classes($class, $field){
 		
 	if(in_array($field['type'], array('text', 'email', 'textarea', 'url', 'number'))) { 
 		$class = 'rdc-textfield__input';
@@ -39,8 +39,8 @@ function rdc_formidable_field_classes($class, $field){
 	return $class;
 }
 
-add_filter('frm_replace_shortcodes', 'rdc_formidable_default_html', 2, 3);
-function rdc_formidable_default_html($html, $field, $params) {
+add_filter('frm_replace_shortcodes', 'tst_formidable_default_html', 2, 3);
+function tst_formidable_default_html($html, $field, $params) {
 		
 	if(in_array($field['type'], array('text', 'email', 'number', 'url', 'textarea')))  {
 			
@@ -61,6 +61,12 @@ function rdc_formidable_default_html($html, $field, $params) {
 			if($pos){
 				$html = substr_replace($html, $l[0].'</div>', $pos, 6); //move it on top
 			}
+		}
+		
+		preg_match('/<div class=\"frm_description\">(.*?)<\/div>/s',$html, $m);
+		
+		if(isset($m[1]) && !empty($m[1])){
+			$html = str_replace('<div class="frm_description">'.$m[1].'</div>', '', $html);
 		}
 	}	
 	elseif($field['type'] == 'checkbox'){
@@ -115,8 +121,8 @@ function rdc_formidable_default_html($html, $field, $params) {
 }
 
 
-add_filter('frm_field_label_seen', 'rdc_formidable_input_options_html', 2, 3);
-function rdc_formidable_input_options_html($opt, $opt_key, $field) {
+add_filter('frm_field_label_seen', 'tst_formidable_input_options_html', 2, 3);
+function tst_formidable_input_options_html($opt, $opt_key, $field) {
 	
 	if(is_admin())
 		return $opt;
@@ -138,14 +144,14 @@ function rdc_formidable_input_options_html($opt, $opt_key, $field) {
 }
 
 
-add_filter('frm_filter_final_form', 'rdc_formidable_submit_button_html', 50);
-function rdc_formidable_submit_button_html($html){
+add_filter('frm_filter_final_form', 'tst_formidable_submit_button_html', 50);
+function tst_formidable_submit_button_html($html){
 	
 	//// /<p .*?class="(.*?someClass.*?)">(.*?)<\/p>/
 	//preg_match("/<[^>]*type=\"submit\"[^>]*>/", $html, $l);
 	//
 	//if(!empty($l)){
-	//	$icon = rdc_svg_icon('icon-subscribe-button', false);
+	//	$icon = tst_svg_icon('icon-subscribe-button', false);
 	//	$html = str_replace($l[0], '<span class="rdc-submit-wrap">'.$icon.$l[0].'</span>', $html);
 	//}
 	
@@ -156,7 +162,7 @@ function rdc_formidable_submit_button_html($html){
 
 
 /** Functions to interact with Formidable **/
-function rdc_frm_get_form_id_from_key ( $form_key ) {
+function tst_frm_get_form_id_from_key ( $form_key ) {
 	global $wpdb;
 	
 	$table_name = $wpdb->prefix.'frm_forms'; //more reliable than $frmdb->forms

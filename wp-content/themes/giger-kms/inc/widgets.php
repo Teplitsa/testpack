@@ -8,8 +8,8 @@ add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
 add_filter( 'widget_text', array( $wp_embed, 'autoembed' ), 8 );
 add_filter( 'widget_text', 'do_shortcode');
 
-add_action('widgets_init', 'rdc_custom_widgets', 20);
-function rdc_custom_widgets(){
+add_action('widgets_init', 'tst_custom_widgets', 20);
+function tst_custom_widgets(){
 
 	unregister_widget('WP_Widget_Pages');
 	unregister_widget('WP_Widget_Archives');
@@ -41,8 +41,8 @@ function rdc_custom_widgets(){
 }
 
 /* Remove some unused PB widget **/
-add_filter( 'siteorigin_panels_widgets', 'rdc_bp_panels_widgets', 11);
-function rdc_bp_panels_widgets( $widgets ){
+add_filter( 'siteorigin_panels_widgets', 'tst_bp_panels_widgets', 11);
+function tst_bp_panels_widgets( $widgets ){
 	
 	if(isset($widgets['SiteOrigin_Widget_Features_Widget']))
 		unset($widgets['SiteOrigin_Widget_Features_Widget']);
@@ -62,16 +62,16 @@ function rdc_bp_panels_widgets( $widgets ){
 }
 
 /* PB Custom widget folder */
-function rdc_pb_widgets_collection($folders){
+function tst_pb_widgets_collection($folders){
     $folders[] = get_template_directory().'/inc/pb-widgets/';
 	
     return $folders;
 }
-add_filter('siteorigin_widgets_widget_folders', 'rdc_pb_widgets_collection');
+add_filter('siteorigin_widgets_widget_folders', 'tst_pb_widgets_collection');
 
 
 /** Test if widget registered **/
-function rdc_is_widget_registered($widget_class){
+function tst_is_widget_registered($widget_class){
 	global $wp_widget_factory;
 	
 	if(!isset($wp_widget_factory->widgets[$widget_class]))
@@ -99,7 +99,7 @@ class RDC_Social_Links extends SiteOrigin_Widget {
 		
         echo $before_widget;
        
-		echo rdc_get_social_menu();
+		echo tst_get_social_menu();
 				
 		echo $after_widget;
     }
@@ -108,7 +108,7 @@ class RDC_Social_Links extends SiteOrigin_Widget {
 	
     function form($instance) {
 	?>
-        <p><?php _e('Widget doesn\'t have any settings', 'rdc');?></p>
+        <p><?php _e('Widget doesn\'t have any settings', 'tst');?></p>
     <?php
     }
 
@@ -143,14 +143,14 @@ class RDC_Home_News extends WP_Widget {
 		if(empty($show_posts))
 			return;
 		
-		$all_link = "<a href='".home_url('news')."'>".__('More news', 'rdc')."&nbsp;&rarr;</a>";		
+		$all_link = "<a href='".home_url('news')."'>".__('More news', 'tst')."&nbsp;&rarr;</a>";		
 		
         echo $before_widget;
 		?>       
 		<div class="related-cards-loop">
 			<?php
 				foreach($show_posts as $p){			
-					rdc_related_post_card($p);
+					tst_related_post_card($p);
 				}		
 			?>
 		</div>

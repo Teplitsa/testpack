@@ -17,7 +17,7 @@ class FRL_CssJs {
 		
 		add_action('admin_enqueue_scripts',  array($this, 'load_admin_scripts'), 30);
 		add_action('login_enqueue_scripts',  array($this, 'load_login_scripts'), 30);
-		
+		add_filter('cmb2_render_pw_map', array($this, 'load_gmap_scripts'), 30);
 	}
 	
 	public static function get_instance() {
@@ -80,7 +80,8 @@ class FRL_CssJs {
 			null
 		);
 
-		wp_dequeue_style('leyka-plugin-styles');		
+		wp_dequeue_style('leyka-plugin-styles');
+		
 	}
 
 	/* front */
@@ -143,7 +144,30 @@ class FRL_CssJs {
 		
 		$url = get_template_directory_uri();
 			
-		wp_enqueue_style('rdc-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);				
+		wp_enqueue_style('rdc-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);
+		
+	}
+	
+	public function load_gmap_scripts() {
+		global $wp_scripts;
+		
+		$src = '';
+		if(wp_script_is('pw-google-maps', 'registered')){
+			$src = $wp_scripts->registered['pw-google-maps']->src;
+		}
+		
+		wp_deregister_script('pw-google-maps-api');
+		wp_deregister_script('pw-google-maps');
+		
+		//enqueue again
+		$api_url = '//maps.googleapis.com/maps/api/js?libraries=places';
+        $api_key = get_theme_mod('google_maps_api_key');
+        if ( ! empty( $api_key ) ) {
+            $api_url .= '&key=' . $api_key;
+        }
+		
+		wp_register_script( 'tst-google-maps-api', $api_url, null, null );
+		wp_enqueue_script( 'tst-google-maps', $src, array( 'tst-google-maps-api' ), TST_VERSION );
 	}
 	
 	/* login style - make it inline ? */
@@ -216,9 +240,6 @@ class FRL_CssJs {
 	}
 	
 	
-	function dequeue_wpcf7_styles(){
-		wp_dequeue_style( 'contact-form-7' );
-	}
 } //class
 
 FRL_CssJs::get_instance();
