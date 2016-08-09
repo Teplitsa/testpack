@@ -379,7 +379,8 @@ add_filter('leyka_donations_list_amount_content', function($content, Leyka_Donat
             $donation->amount.'</span> / <span class="leyka-donations-list-content amount-minus-fee">'.
             round($donation->amount - ($donation->amount*$payment_fee/100.0), 2).
             '</span>&nbsp;'.$donation->currency_label;*/
-		$content = round($donation->amount - ($donation->amount*$payment_fee/100.0), 2).' '.$donation->currency_label;
+		$amount = round($donation->amount - ($donation->amount*$payment_fee/100.0), 2);
+		$content = number_format($amount, 2, '.', ' ').' '.$donation->currency_label;
     }
 
     return $content;
