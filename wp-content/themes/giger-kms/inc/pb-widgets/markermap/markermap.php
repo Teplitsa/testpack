@@ -229,7 +229,11 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 				var marker = L.marker([points[i].lat, points[i].lng], {
 					title: points[i].title,
 					alt: points[i].title,
-					icon: L.divIcon({className: 'mymap-icon dashicons '+points[i].class, iconSize: [32, 32]})
+					icon: L.divIcon({
+						className: 'mymap-icon dashicons '+points[i].class,
+						iconSize: [32, 32],
+						iconAnchor: [16, 32]						
+					})
 				})
 				.addTo(map)
 				.bindPopup(

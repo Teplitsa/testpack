@@ -338,7 +338,7 @@ $label-text-color: $color-text;
 	
 	.rdc-inputfix__label {
 		display: block;
-		@include checkbox-text();
+		@include input-text-label();
 		color: $color-text;
 	}
 	
@@ -364,23 +364,23 @@ $label-text-color: $color-text;
 		-webkit-appearance: none;
 		outline: none;
 		
-		font-family: $title;	
-		line-height: 1.5;		
+		font-family: $sans;	
+		line-height: 18px;		
 		text-align: left;
-		font-size: 14px;		
+		font-size: 16px;		
 		
 		//to remove outline in FF
 		color: $label-text-color;
-		color: rgba(0,0,0,0);
+		color: rgba(100,100,100,0);
 		text-shadow: 0 0 0 $label-text-color;		
 	}
 	
 	option {
-		font-family: $title;	
-		line-height: 1.5;		
-		color: $label-text-color;
+		font-family: $sans;	
+		line-height: 18px;		
+		color: $label-text-color;		
 		text-align: left;
-		font-size: 14px;
+		font-size: 16px;
 		padding: 4px;
 		width: 100%;
 		cursor: pointer;
