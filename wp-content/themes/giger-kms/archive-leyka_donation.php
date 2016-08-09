@@ -32,7 +32,7 @@ get_header();
 				$amount = number_format($donation->sum, 0, '.', ' ');
 				
 				echo "<div class='ldl-item'>";
-				echo "<div class='amount'>{$amount} {$donation->currency_label}</div>";
+				echo "<div class='amount'>".apply_filters('leyka_donations_list_amount_content', $amount.' '.$donation->currency_label, $donation)."</div>";
 				
 				$meta = array();
 				$name = $donation->donor_name;

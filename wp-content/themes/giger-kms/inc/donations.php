@@ -318,7 +318,7 @@ function kor_donation_fees_settings() {?>
             $fee = $fee < 0.0 ? -$fee : $fee;?>
 
             <div>
-                <label for="<?php echo $pm->full_id;?>"><?php echo $pm->title;?></label>
+                <label for="<?php echo $pm->full_id;?>"><?php echo $pm->title;?>:</label>
                 <input type="text" id="<?php echo $pm->full_id;?>" name="leyka_pm_fee_<?php echo $pm->full_id;?>" value="<?php echo $fee == 0 ? '' : $fee;?>" placeholder="От 0.0 до 100.0" size="15" maxlength="5"> %
             </div>
 
@@ -341,8 +341,46 @@ add_action('admin_init', function(){
             continue;
         }
 
+        $value = round(rtrim($value, '%'), 2);
         if($value >= 0.0 && $value <= 100.0) {
             update_option($name, $value);
         }
     }
 });
+
+add_filter('leyka_admin_donations_columns_names', function($columns_names){
+
+    $columns_names['amount'] = 'Сумма (/ с комиссией)';
+
+    return $columns_names;
+});
+
+add_filter('leyka_admin_donation_amount_column_content', function($content, Leyka_Donation $donation){
+
+    $payment_fee = get_option('leyka_pm_fee_'.$donation->pm_full_id);
+
+    if($payment_fee && $payment_fee > 0.0 && $payment_fee < 100.0) {
+        $content = '<span class="leyka-donations-admin-column-content amount-original">'.
+            $donation->amount.'</span> / <span class="leyka-donations-admin-column-content amount-minus-fee">'.
+            round($donation->amount - ($donation->amount*$payment_fee/100.0), 2).
+            '</span>&nbsp;'.$donation->currency_label;
+    }
+
+    return $content;
+
+}, 10, 2);
+
+add_filter('leyka_donations_list_amount_content', function($content, Leyka_Donation $donation) {
+
+    $payment_fee = get_option('leyka_pm_fee_'.$donation->pm_full_id);
+
+    if($payment_fee && $payment_fee > 0.0 && $payment_fee < 100.0) {
+        $content = '<span class="leyka-donations-list-content amount-original">'.
+            $donation->amount.'</span> / <span class="leyka-donations-list-content amount-minus-fee">'.
+            round($donation->amount - ($donation->amount*$payment_fee/100.0), 2).
+            '</span>&nbsp;'.$donation->currency_label;
+    }
+
+    return $content;
+
+}, 10, 2);

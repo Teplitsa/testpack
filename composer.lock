@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1b1c9ca9aece3b2db1bbff72f946f5cb",
-    "content-hash": "ab10e244cc1f236ac769d2270f73fee1",
+    "hash": "e79f8f5dad6c993aba060ae64a4bd4cd",
     "packages": [
         {
             "name": "composer/installers",
@@ -256,39 +255,6 @@
             "time": "2016-07-11 09:21:59"
         },
         {
-            "name": "mustardbees/cmb_field_map",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mustardBees/cmb_field_map.git",
-                "reference": "ac2d9fe4dba0823e7b6f68bc45007d0749936483"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mustardBees/cmb_field_map/zipball/ac2d9fe4dba0823e7b6f68bc45007d0749936483",
-                "reference": "ac2d9fe4dba0823e7b6f68bc45007d0749936483",
-                "shasum": ""
-            },
-            "type": "wordpress-plugin",
-            "authors": [
-                {
-                    "name": "Phil Wylie",
-                    "homepage": "http://www.philwylie.co.uk/"
-                }
-            ],
-            "description": "Google Maps field type for Custom Metaboxes and Fields for WordPress",
-            "homepage": "https://github.com/mustardBees/cmb_field_map/",
-            "keywords": [
-                "plugin",
-                "wordpress"
-            ],
-            "support": {
-                "source": "https://github.com/mustardBees/cmb_field_map/tree/v2.1.2",
-                "issues": "https://github.com/mustardBees/cmb_field_map/issues"
-            },
-            "time": "2015-12-14 11:26:44"
-        },
-        {
             "name": "tst/cmb2-attached-posts",
             "version": "1.2.2",
             "dist": {
@@ -307,7 +273,7 @@
             "version": "2.7.2",
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-leaflet-maps-marker-pro-2.7.2.zip",
+                "url": "artifacts\\tst-leaflet-maps-marker-pro-2.7.2.zip",
                 "reference": null,
                 "shasum": "b6ada76ae6934d58d1447f1ccc910b0172b4d630"
             },
@@ -544,6 +510,26 @@
             "homepage": "https://wordpress.org/plugins/responsive-lightbox/"
         },
         {
+            "name": "wpackagist-plugin/simple-css-for-widgets",
+            "version": "1.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/simple-css-for-widgets/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/simple-css-for-widgets.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/simple-css-for-widgets/"
+        },
+        {
             "name": "wpackagist-plugin/siteorigin-panels",
             "version": "2.4.10",
             "source": {
@@ -622,6 +608,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/w3-total-cache/"
+        },
+        {
+            "name": "wpackagist-plugin/widget-logic",
+            "version": "0.57",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/widget-logic/",
+                "reference": "tags/0.57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/widget-logic.0.57.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/widget-logic/"
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
@@ -784,26 +790,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/term-management-tools/"
-        },
-        {
-            "name": "wpackagist-plugin/wp-ultimate-csv-importer",
-            "version": "3.11.0",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-ultimate-csv-importer/",
-                "reference": "tags/3.11.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-ultimate-csv-importer.3.11.0.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-ultimate-csv-importer/"
         }
     ],
     "aliases": [],
@@ -815,6 +801,7 @@
         "wpackagist-plugin/leyka": 0,
         "wpackagist-plugin/media-search-enhanced": 0,
         "wpackagist-plugin/responsive-lightbox": 0,
+        "wpackagist-plugin/simple-css-for-widgets": 0,
         "wpackagist-plugin/posts-to-posts": 0,
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
@@ -824,14 +811,12 @@
         "wpackagist-plugin/siteorigin-panels": 0,
         "wpackagist-plugin/so-widgets-bundle": 0,
         "wpackagist-plugin/tiny-compress-images": 0,
-        "mustardbees/cmb_field_map": 20,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
         "wpackagist-plugin/post-duplicator": 0,
         "wpackagist-plugin/disable-wordpress-updates": 0,
         "wpackagist-plugin/term-management-tools": 0,
-        "wpackagist-plugin/post-type-converter": 0,
-        "wpackagist-plugin/wp-ultimate-csv-importer": 0
+        "wpackagist-plugin/post-type-converter": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
