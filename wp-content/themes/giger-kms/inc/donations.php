@@ -370,17 +370,18 @@ add_filter('leyka_admin_donation_amount_column_content', function($content, Leyk
 
 }, 10, 2);
 
-/*add_filter('leyka_donations_list_amount_content', function($content, Leyka_Donation $donation) {
+add_filter('leyka_donations_list_amount_content', function($content, Leyka_Donation $donation) {
 
     $payment_fee = get_option('leyka_pm_fee_'.$donation->pm_full_id);
 
     if($payment_fee && $payment_fee > 0.0 && $payment_fee < 100.0) {
-        $content = '<span class="leyka-donations-list-content amount-original">'.
+        /*$content = '<span class="leyka-donations-list-content amount-original">'.
             $donation->amount.'</span> / <span class="leyka-donations-list-content amount-minus-fee">'.
             round($donation->amount - ($donation->amount*$payment_fee/100.0), 2).
-            '</span>&nbsp;'.$donation->currency_label;
+            '</span>&nbsp;'.$donation->currency_label;*/
+		$content = round($donation->amount - ($donation->amount*$payment_fee/100.0), 2).' '.$donation->currency_label;
     }
 
     return $content;
 
-}, 10, 2);*/
+}, 10, 2);

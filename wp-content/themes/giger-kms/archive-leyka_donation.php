@@ -30,7 +30,7 @@ get_header();
 			foreach($wp_query->posts as $p){
 				$donation = new Leyka_Donation($p);
 				$amount = number_format($donation->sum, 0, '.', ' ');
-				
+								
 				$payment_fee = get_option('leyka_pm_fee_'.$donation->pm_full_id);
 				$payment_fee_html = '';
 				if($payment_fee && $payment_fee > 0.0 && $payment_fee < 100.0) {
