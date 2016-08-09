@@ -386,6 +386,8 @@ $figure_line-height: 40px;
 		padding: $base/2 0;
 		@include form-text();
 	}
+	
+	
 }
 
 .ldl-item {
@@ -412,6 +414,12 @@ $figure_line-height: 40px;
 		width: 75%;
 		padding-left: 6px;
 		color: $color-text-semi;
+	}
+	
+	.payment-fee {
+		font-size: 0.9em;		
+		letter-spacing: 0.5px;
+		color: $color-text-light;
 	}
 }
 

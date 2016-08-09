@@ -31,8 +31,15 @@ get_header();
 				$donation = new Leyka_Donation($p);
 				$amount = number_format($donation->sum, 0, '.', ' ');
 				
+				$payment_fee = get_option('leyka_pm_fee_'.$donation->pm_full_id);
+				$payment_fee_html = '';
+				if($payment_fee && $payment_fee > 0.0 && $payment_fee < 100.0) {
+					$payment_fee_html = "<div class='payment-fee'>комиссия: ".round(($donation->sum*$payment_fee/100.0), 2)." ".$donation->currency_label."</div>";
+				}
+				
 				echo "<div class='ldl-item'>";
 				echo "<div class='amount'>".apply_filters('leyka_donations_list_amount_content', $amount.' '.$donation->currency_label, $donation)."</div>";
+				
 				
 				$meta = array();
 				$name = $donation->donor_name;
@@ -40,7 +47,9 @@ get_header();
 				$meta[] = '<span>'.$name.'</span>';
 				
 				$meta[] = '<time>'.$donation->date_funded.'</time>';
-				echo "<div class='meta'>".implode(' / ', $meta)."</div>";
+				echo "<div class='meta'>".implode(' / ', $meta).$payment_fee_html."</div>";
+					
+				
 				echo "</div>";
 			}
 		}

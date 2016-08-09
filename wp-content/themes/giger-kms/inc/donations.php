@@ -370,7 +370,7 @@ add_filter('leyka_admin_donation_amount_column_content', function($content, Leyk
 
 }, 10, 2);
 
-add_filter('leyka_donations_list_amount_content', function($content, Leyka_Donation $donation) {
+/*add_filter('leyka_donations_list_amount_content', function($content, Leyka_Donation $donation) {
 
     $payment_fee = get_option('leyka_pm_fee_'.$donation->pm_full_id);
 
@@ -383,4 +383,4 @@ add_filter('leyka_donations_list_amount_content', function($content, Leyka_Donat
 
     return $content;
 
-}, 10, 2);
+}, 10, 2);*/
