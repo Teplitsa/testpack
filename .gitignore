@@ -3,6 +3,7 @@ _temp
 .DS_Store
 .komodotools
 .sass-cache
+.idea
 core
 wp-content/debug.log
 wp-content/languages
