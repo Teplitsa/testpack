@@ -4,7 +4,7 @@
         return;
     }
 
-    $fp = @fopen('d:\dev\htdocs\korablik\wp-content\themes\giger-kms\inc\import\donations2import.csv', 'r');
+    $fp = @fopen('/home/dev/web/ngo2.ru/public_html/korablik/wp-content/themes/giger-kms/inc/import/donations2import.csv', 'r');
     if($fp) {
 
         $line_number = 1;

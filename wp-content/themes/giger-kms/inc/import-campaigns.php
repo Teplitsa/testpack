@@ -4,7 +4,7 @@
         return;
     }
 
-    $fp = @fopen('d:\dev\htdocs\korablik\wp-content\themes\giger-kms\inc\import\campaigns2import.csv', 'r');
+    $fp = @fopen('/home/dev/web/ngo2.ru/public_html/korablik/wp-content/themes/giger-kms/inc/import/campaigns2import.csv', 'r');
     if($fp) {
 
         $line_number = 1;
@@ -77,12 +77,12 @@
 
                     if($line[20]) {
 
-                        $new_site_file = str_replace('/', '\\', $uploads_dir['basedir'].'/'.$line[20]);
+                        $new_site_file = $uploads_dir['basedir'].'/'.$line[20];
                         $new_site_dirname = dirname($new_site_file);
                         $new_site_filename = ctl_sanitize_title(basename($new_site_file));
 
                         $file_uploads_subdir = str_replace('/'.basename($line[20]), '', $line[20]);
-                        if( !file_exists($new_site_dirname.'\\'.$new_site_filename) ) { // Thumbnail URL on the old site
+                        if( !file_exists($new_site_dirname.'/'.$new_site_filename) ) { // Thumbnail URL on the old site
 
                             if ( !file_exists($new_site_dirname) ) {
                                 echo '<pre>Creating the directory: ' . print_r($new_site_dirname, 1) . '</pre>';
@@ -91,17 +91,17 @@
 
                             $is_copied = copy(
                                 'http://www.korablik-fond.ru/wp-content/uploads/' . $line[20],
-                                $new_site_dirname.'\\'.$new_site_filename
+                                $new_site_dirname.'/'.$new_site_filename
                             );
                             if ($is_copied) {
-                                echo '<pre>' . print_r('Thumbnail copied: ' . $new_site_dirname . '\\' . $new_site_filename.', basedir: '.$file_uploads_subdir, 1) . '</pre>';
+                                echo '<pre>' . print_r('Thumbnail copied: ' . $new_site_dirname . '/' . $new_site_filename.', basedir: '.$file_uploads_subdir, 1) . '</pre>';
                             }
 
                         }
 
-                        if(file_exists($new_site_dirname.'\\'.$new_site_filename)) { // Insert the campaign attachment
+                        if(file_exists($new_site_dirname.'/'.$new_site_filename)) { // Insert the campaign attachment
 
-                            echo '<pre>' . print_r('Creating media-library entry for file '.$new_site_dirname.'\\'.$new_site_filename, 1) . '</pre>';
+                            echo '<pre>' . print_r('Creating media-library entry for file '.$new_site_dirname.'/'.$new_site_filename, 1) . '</pre>';
                             $filetype = wp_check_filetype($new_site_filename, null);
 
                             $attachment = array(

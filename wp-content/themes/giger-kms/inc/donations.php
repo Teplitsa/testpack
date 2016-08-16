@@ -94,18 +94,18 @@ function tst_empty_icons($icons){
 
 /** Form template **/
 //custom amount field
-function tst_amount_field($form){
-	
-	if(!defined('LEYKA_VERSION'))
+function tst_amount_field(Leyka_Payment_Form $form){
+
+	if( !defined('LEYKA_VERSION') ) {
 		return;
-	
+	}
+
 	$supported_curr = leyka_get_active_currencies();
 	$current_curr = $form->get_current_currency();
 
 	if(empty($supported_curr[$current_curr])) {
 		return; // Current currency isn't supported
-	}
-?>
+	}?>
 
 <div class="leyka-field amount-selector amount mixed">
 	
@@ -119,12 +119,12 @@ function tst_amount_field($form){
 			<div class="amount-variants-row">
 				<?php foreach($variants as $i => $amount) { ?>
 					<label class="figure rdc-radio" title="<?php _e('Please, specify your donation amount', 'leyka');?>">
-						<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button" <?php checked($i, 0);?>>
+						<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button" <?php checked($i, 0);?> <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?> >
 						<span class="rdc-radio__label"><?php echo (int)$amount;?></span>
 					</label>
-				<?php } ?>
-				
-				<label class="figure-flex"><span class="figure-sep"><?php _e('or', 'tst');?></span><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6"></label>
+				<?php }?>
+
+				<label class="figure-flex"><span class="figure-sep"><?php _e('or', 'tst');?></span><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6" <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?>></label>
 			</div>
 		</div>	
 	<?php } ?>
@@ -141,7 +141,7 @@ function tst_amount_field($form){
 
 
 function tst_donation_form($campaign_id = null){
-	global $leyka_current_pm;	
+	global $leyka_current_pm; /** @var $leyka_current_pm Leyka_Payment_Form */
 		
 	if(!defined('LEYKA_VERSION'))
 		return;
@@ -173,9 +173,6 @@ function tst_donation_form($campaign_id = null){
 		
 	<!-- amount -->
 	<?php
-		$supported_curr = leyka_get_active_currencies();
-		$current_curr = $leyka_current_pm->get_current_currency();
-		
 		if($leyka_current_pm->is_field_supported('amount') ) {
 			
 			//echo leyka_pf_get_amount_field();
@@ -385,3 +382,37 @@ add_filter('leyka_donations_list_meta_content', function($donation_meta_content,
     return $donation_meta_content;
 
 }, 10, 2);
+
+add_filter('leyka_donor_phone_field_html', function($donor_phone_field_html, Leyka_Payment_Method $pm){
+
+    return '<div class="rdc-textfield"><input id="leyka_'.$pm->full_id.'_phone" class="required rdc-textfield__input phone-num mixplat-phone" type="text" value="" name="leyka_donor_phone">
+<label class="leyka-screen-reader-text rdc-textfield__label" for="leyka_'.$pm->full_id.'_phone">'.__('Your phone number in the 7xxxxxxxxxx format', 'leyka').'</label>
+<span id="leyka_'.$pm->full_id.'_phone-error" class="mixplat-phone-error field-error leyka_donor_phone-error rdc-textfield__error"></span>
+</div>';
+}, 100, 2);
+
+add_action('init', function(){
+
+    if(empty($_GET['tst-update-is-finished'])) {
+        return;
+    }
+
+    $campaigns = get_posts(array(
+        'post_type' => 'leyka_campaign',
+        'post_status' => 'any',
+        'nopaging' => true,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'campaign_cat',
+                'field'    => 'slug',
+                'terms'    => array('rosemary', 'you-helped'),
+            ),
+        )
+    ));
+
+    foreach($campaigns as $campaign) {
+        update_post_meta($campaign->ID, 'is_finished', true);
+            echo '<pre>updated: ' . print_r($campaign->ID.' - '.(int)get_post_meta($campaign->ID, 'is_finished', true), 1) . '</pre>';
+    }
+
+}, 1000);

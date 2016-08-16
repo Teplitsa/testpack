@@ -510,12 +510,3 @@ function tst_filter_search_query($s){
 
 	return $s;
 }
-
-add_filter('leyka_donor_phone_field_html', function($donor_phone_field_html, Leyka_Payment_Method $pm){
-
-    return '<div class="rdc-textfield"><input id="leyka_'.$pm->full_id.'_phone" class="required rdc-textfield__input" type="text" value="" name="leyka_donor_phone">
-<label class="leyka-screen-reader-text rdc-textfield__label" for="leyka_'.$pm->full_id.'_phone">'.__('Your phone number', 'leyka').'</label>
-<span id="leyka_'.$pm->full_id.'_phone-error" class="mixplat-phone-error field-error rdc-textfield__error"></span>
-<span id="leyka_mixplat_phone_valid-error" style="display:none;top:75px;" class="field-error rdc-textfield__error">'.__('Phone number should be 7xxxxxxxxxx', 'leyka').'</span>
-</div>';
-}, 10, 2);
