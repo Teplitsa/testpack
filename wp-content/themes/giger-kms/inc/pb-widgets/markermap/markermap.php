@@ -189,7 +189,7 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			);
 		}
 		
-		wp_enqueue_style( 'dashicons' ); //<span class="dashicons dashicons-paperclip"></span>
+//		wp_enqueue_style( 'dashicons' ); // Caused leaflet map CSS bugs, so was transferred to the main CSS enqueue blocks
 		echo $args['before_widget'];
 		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
 	?>	
@@ -203,7 +203,7 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 		if (typeof mapFunc == "undefined") {
 			var mapFunc = new Array();
 		}	
-		
+
 		mapFunc.push(function (){
 			
 			var map = L.map('<?php echo $map_id ; ?>', {
@@ -222,7 +222,7 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 				minZoom: 3			
 			}).addTo(map);
 			
-			var points = <?php echo json_encode($markers_json);?>;			
+			var points = <?php echo json_encode($markers_json);?>;
 			for(var i=0; i<points.length; i++) {
 				
 				

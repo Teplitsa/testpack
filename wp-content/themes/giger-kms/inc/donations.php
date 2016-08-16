@@ -390,29 +390,3 @@ add_filter('leyka_donor_phone_field_html', function($donor_phone_field_html, Ley
 <span id="leyka_'.$pm->full_id.'_phone-error" class="mixplat-phone-error field-error leyka_donor_phone-error rdc-textfield__error"></span>
 </div>';
 }, 100, 2);
-
-add_action('init', function(){
-
-    if(empty($_GET['tst-update-is-finished'])) {
-        return;
-    }
-
-    $campaigns = get_posts(array(
-        'post_type' => 'leyka_campaign',
-        'post_status' => 'any',
-        'nopaging' => true,
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'campaign_cat',
-                'field'    => 'slug',
-                'terms'    => array('rosemary', 'you-helped'),
-            ),
-        )
-    ));
-
-    foreach($campaigns as $campaign) {
-        update_post_meta($campaign->ID, 'is_finished', true);
-            echo '<pre>updated: ' . print_r($campaign->ID.' - '.(int)get_post_meta($campaign->ID, 'is_finished', true), 1) . '</pre>';
-    }
-
-}, 1000);

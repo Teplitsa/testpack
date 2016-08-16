@@ -73,6 +73,9 @@ class FRL_CssJs {
 		$style_dependencies[] = 'rdc-fonts';
 
 		// design
+        wp_enqueue_style('dashicons');
+        $style_dependencies[] = 'dashicons';
+
 		wp_enqueue_style(
 			'frl-design',
 			$url.'/assets/rev/'.$this->get_rev_filename('bundle.css'),
