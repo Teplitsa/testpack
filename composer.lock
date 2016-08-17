@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1b1c9ca9aece3b2db1bbff72f946f5cb",
-    "content-hash": "ab10e244cc1f236ac769d2270f73fee1",
+    "hash": "024d2dbf529cc57574f6ce53f3fb1b6f",
+    "content-hash": "c2059c33c80018f9de393b3afce7a6ae",
     "packages": [
         {
             "name": "composer/installers",
@@ -109,16 +109,16 @@
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "4.5.3",
+            "version": "4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "f5c6f4dd899e6365ddf2752d2705ed1de7e10715"
+                "reference": "1fb4b67e331d82f9061eaf3fcbc94163db85c135"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/f5c6f4dd899e6365ddf2752d2705ed1de7e10715",
-                "reference": "f5c6f4dd899e6365ddf2752d2705ed1de7e10715",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/1fb4b67e331d82f9061eaf3fcbc94163db85c135",
+                "reference": "1fb4b67e331d82f9061eaf3fcbc94163db85c135",
                 "shasum": ""
             },
             "require": {
@@ -142,7 +142,7 @@
                 "blog",
                 "cms"
             ],
-            "time": "2016-06-21 16:31:21"
+            "time": "2016-08-16 18:32:04"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -194,10 +194,10 @@
         },
         {
             "name": "koodimonni-language/core-ru_ru",
-            "version": "4.5.3",
+            "version": "4.6",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/core/4.5.3/ru_RU.zip",
+                "url": "https://downloads.wordpress.org/translation/core/4.6/ru_RU.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -287,34 +287,6 @@
                 "issues": "https://github.com/mustardBees/cmb_field_map/issues"
             },
             "time": "2015-12-14 11:26:44"
-        },
-        {
-            "name": "tst/cmb2-attached-posts",
-            "version": "1.2.2",
-            "dist": {
-                "type": "zip",
-                "url": "artifacts/tst-cmb2-attached-posts-1.2.2.zip",
-                "reference": null,
-                "shasum": "d4d69d33e6cca2d0c1837d2328f23d13733d8eb4"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin"
-        },
-        {
-            "name": "tst/leaflet-maps-marker-pro",
-            "version": "2.7.2",
-            "dist": {
-                "type": "zip",
-                "url": "artifacts/tst-leaflet-maps-marker-pro-2.7.2.zip",
-                "reference": null,
-                "shasum": "b6ada76ae6934d58d1447f1ccc910b0172b4d630"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin"
         },
         {
             "name": "webdevstudios/cmb2-post-search-field",
@@ -425,15 +397,15 @@
         },
         {
             "name": "wpackagist-plugin/disable-comments",
-            "version": "1.5",
+            "version": "1.5.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/disable-comments/",
-                "reference": "tags/1.5"
+                "reference": "tags/1.5.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/disable-comments.1.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/disable-comments.1.5.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -545,15 +517,15 @@
         },
         {
             "name": "wpackagist-plugin/siteorigin-panels",
-            "version": "2.4.10",
+            "version": "2.4.12",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/siteorigin-panels/",
-                "reference": "tags/2.4.10"
+                "reference": "tags/2.4.12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/siteorigin-panels.2.4.10.zip",
+                "url": "https://downloads.wordpress.org/plugin/siteorigin-panels.2.4.12.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -565,15 +537,15 @@
         },
         {
             "name": "wpackagist-plugin/so-widgets-bundle",
-            "version": "1.6.4",
+            "version": "1.6.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/so-widgets-bundle/",
-                "reference": "tags/1.6.4"
+                "reference": "tags/1.6.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.6.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.6.5.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -784,26 +756,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/term-management-tools/"
-        },
-        {
-            "name": "wpackagist-plugin/wp-ultimate-csv-importer",
-            "version": "3.11.0",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-ultimate-csv-importer/",
-                "reference": "tags/3.11.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-ultimate-csv-importer.3.11.0.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-ultimate-csv-importer/"
         }
     ],
     "aliases": [],
@@ -819,19 +771,18 @@
         "wpackagist-plugin/wordpress-seo": 0,
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/cmb2": 0,
-        "webdevstudios/cmb2-post-search-field": 20,
         "wpackagist-plugin/formidable": 0,
         "wpackagist-plugin/siteorigin-panels": 0,
         "wpackagist-plugin/so-widgets-bundle": 0,
         "wpackagist-plugin/tiny-compress-images": 0,
+        "webdevstudios/cmb2-post-search-field": 20,
         "mustardbees/cmb_field_map": 20,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
         "wpackagist-plugin/post-duplicator": 0,
         "wpackagist-plugin/disable-wordpress-updates": 0,
         "wpackagist-plugin/term-management-tools": 0,
-        "wpackagist-plugin/post-type-converter": 0,
-        "wpackagist-plugin/wp-ultimate-csv-importer": 0
+        "wpackagist-plugin/post-type-converter": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,

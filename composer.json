@@ -51,15 +51,13 @@
 		"wpackagist-plugin/posts-to-posts" : "@stable",     
         "wpackagist-plugin/wordpress-seo" : "@stable",
         "wpackagist-plugin/w3-total-cache": "@stable",        
-        "wpackagist-plugin/cmb2": "@stable",
-        "webdevstudios/cmb2-post-search-field" : "dev-master",
+        "wpackagist-plugin/cmb2": "@stable",        
         "wpackagist-plugin/formidable": "@stable",
         "wpackagist-plugin/siteorigin-panels": "@stable",
         "wpackagist-plugin/so-widgets-bundle": "@stable",
         "wpackagist-plugin/tiny-compress-images": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
-        "tst/cmb2-attached-posts" : ">=1.2.2",
-		"tst/leaflet-maps-marker-pro" : ">=2.7.2",
+		"webdevstudios/cmb2-post-search-field" : "dev-master",
 		"mustardbees/cmb_field_map" : "dev-master"
     },
     "require-dev" : {
@@ -68,8 +66,7 @@
         "wpackagist-plugin/post-duplicator" : "@stable",
         "wpackagist-plugin/disable-wordpress-updates": "@stable",
         "wpackagist-plugin/term-management-tools": "@stable",
-        "wpackagist-plugin/post-type-converter": "@stable",
-		"wpackagist-plugin/wp-ultimate-csv-importer": "@stable"
+        "wpackagist-plugin/post-type-converter": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",
