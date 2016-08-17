@@ -65,19 +65,19 @@ class FRL_CssJs {
 
 		// fonts
 		wp_enqueue_style(
-			'rdc-fonts',
+			'tst-fonts',
 			'//fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700|Cuprum:400,700&subset=latin,cyrillic',
 			$style_dependencies,
 			null
 		);
-		$style_dependencies[] = 'rdc-fonts';
+		$style_dependencies[] = 'tst-fonts';
 
 		// design
         wp_enqueue_style('dashicons');
         $style_dependencies[] = 'dashicons';
 
 		wp_enqueue_style(
-			'frl-design',
+			'tst-design',
 			$url.'/assets/rev/'.$this->get_rev_filename('bundle.css'),
 			$style_dependencies,
 			null
@@ -95,35 +95,17 @@ class FRL_CssJs {
 		// jQuery
 		$script_dependencies[] = 'jquery'; //adjust gulp if we want it in footer	
 
-		/*if(defined('LEYKA_VERSION') && wp_script_is('leyka-public', 'enqueued' )) {
-
-			wp_dequeue_script('leyka-cp');		
-			wp_dequeue_script('leyka-public');
-			wp_dequeue_script('leyka-modal');
-
-			wp_deregister_script('leyka-public');
-			wp_enqueue_script(
-			   'leyka-public',
-				LEYKA_PLUGIN_BASE_URL.'js/public.js', array('jquery'),
-				LEYKA_VERSION,
-				true
-			);
-			wp_enqueue_script('leyka-cp');
-			
-			
-            leyka()->localize_scripts(); // localize leyka scripts anew
-		}*/
-
+		
 		// front
 		wp_enqueue_script(
-			'frl-front',
+			'tst-front',
 			$url.'/assets/rev/'.$this->get_rev_filename('bundle.js'),
 			$script_dependencies,
 			null,
 			true
 		);
 
-		wp_localize_script('frl-front', 'frontend', array(
+		wp_localize_script('tst-front', 'frontend', array(
 			'ajaxurl' => admin_url('admin-ajax.php')			
 		));
 	}

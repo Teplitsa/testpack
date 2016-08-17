@@ -98,35 +98,7 @@ function tst_custom_content(){
 		//'update_count_callback' => '',        
 	));
 	
-	register_taxonomy('campaign_cat', array('leyka_campaign',), array(
-		'labels' => array(
-			'name'                       => 'Категории кампаний',
-			'singular_name'              => 'Категория',
-			'menu_name'                  => 'Категории',
-			'all_items'                  => 'Все категории',
-			'edit_item'                  => 'Редактировать категорию',
-			'view_item'                  => 'Просмотреть',
-			'update_item'                => 'Обновить категорию',
-			'add_new_item'               => 'Добавить новую категорию',
-			'new_item_name'              => 'Название новой категории',
-			'parent_item'                => 'Родительская категория',
-			'parent_item_colon'          => 'Родительская категория:',            
-			'search_items'               => 'Искать категории',
-			'popular_items'              => 'Часто используемые',
-			'separate_items_with_commas' => 'Разделять запятыми',
-			'add_or_remove_items'        => 'Добавить или удалить категории',
-			'choose_from_most_used'      => 'Выбрать из часто используемых',
-			'not_found'                  => 'Не найдено'
-		),
-		'hierarchical'      => true,
-		'show_ui'           => true,
-		'show_in_nav_menus' => true,
-		'show_tagcloud'     => false,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		'rewrite'           => array('slug' => 'work', 'with_front' => false),
-		//'update_count_callback' => '',        
-	));
+	
 	
 	/** Post types **/
 	/*register_post_type('project', array(
@@ -344,98 +316,10 @@ function tst_custom_content(){
 		//'update_count_callback' => '',        
 	));
 	
-	/** p2p **/
-	if ( function_exists('p2p_register_connection_type') ) {
-        p2p_register_connection_type ( array (
-            'name' => 'children-projects',
-            'from' => 'leyka_campaign',
-            'to' => 'leyka_campaign',
-            'cardinality' => 'many-to-many',
-            'admin_dropdown' => 'any',
-            'title' => array (
-                'from' => 'Дети',
-                'to' => 'Проект или программа'
-            ),
-            'from_labels' => array (
-				'singular_name' => 'Проект или программа',
-				'search_items' => 'Искать',
-				'not_found' => 'Ничего не найдено.',
-				'create' => 'Выбрать',
-			),
-			'to_labels' => array (
-				'singular_name' => 'Дети',
-				'search_items' => 'Искать детей',
-				'not_found' => 'Дети не найдены.',
-				'create' => 'Выбрать детей',
-			),
-            'admin_column' => true 
-            ) );
-	}
-}
-
-/** P2P for campaigns */
-function tst_get_leyka_compaign_type($compaign) {
-    $terms = wp_get_post_terms( $compaign->ID, 'campaign_cat');
-    
-    $type = '';
-    if(!is_wp_error($terms)) {
-        foreach($terms as $term) {
-            if(in_array($term->slug, array('children', 'you-helped', 'need-help', 'rosemary'))) {
-                $type = 'child';
-            }
-            elseif(in_array($term->slug, array('projects'))) {
-                $type = 'project';
-            }
-            elseif(in_array($term->slug, array('programms'))) {
-                $type = 'program';
-            }        
-        }
-    }
-    
-    return $type;
-}
-
-function tst_is_child_campaign($campaign) {
 	
-	$terms = wp_get_post_terms( $campaign->ID, 'campaign_cat');
-	if(is_wp_error($terms))
-		return false;
-	
-	if(isset($terms[0]) && in_array($terms[0]->slug, array('children', 'you-helped', 'need-help', 'rosemary')))
-		return true;
-	
-	return false;
 }
 
-add_filter( 'p2p_admin_box_show', 'tst_restrict_p2p_box_display', 10, 3 );
-function tst_restrict_p2p_box_display( $show, $ctype, $post ) {
-    if ( 'children-projects' == $ctype->name ) {
-        $show = false;
-        if('to' == $ctype->get_direction() && tst_is_child_campaign($post)) {           
-            $show = true;
-        }
-    }
-    
-    return $show;
-}
 
-add_filter( 'p2p_connectable_args', 'tst_order_pages_by_title', 10, 3 );
-function tst_order_pages_by_title( $args, $ctype, $post_id ) {
-
-    if ( 'children-projects' == $ctype->name ) {       
-        $args['p2p:per_page'] = '20';
-        $args['tax_query'] = array(
-            array(
-                'taxonomy' => 'campaign_cat',
-                'field'    => 'slug',
-                'terms'    => array('children', 'you-helped', 'need-help', 'rosemary'),
-				'operator' => 'NOT IN'
-            )
-        );
-    }
-
-    return $args;
-}
 
 
 
@@ -449,7 +333,7 @@ function tst_custom_metaboxes() {
     $format_cmb = new_cmb2_box( array(
         'id'            => 'post_format_metabox',
         'title'         => 'Настройки формата',
-        'object_types'  => array( 'post', 'event'), // Post type
+        'object_types'  => array( 'post'), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
@@ -494,6 +378,21 @@ function tst_custom_metaboxes() {
 		'type'    => 'textarea_small',
 	));
 	
+	$format_cmb->add_field( array(
+		'name'    => 'Источник - название',		
+		'default' => '',
+		'id'      => 'post_source_name',
+		'desc'    => 'Название источника новости',
+		'type'    => 'text',
+	));
+	
+	$format_cmb->add_field( array(
+		'name'    => 'Источник - ссылка',		
+		'default' => '',
+		'id'      => 'post_source_url',
+		'desc'    => 'Ссылка на источник новости',
+		'type'    => 'text_url',
+	));
 	
 	
 
@@ -546,78 +445,7 @@ function tst_custom_metaboxes() {
 		'type'     => 'text'		
 	));
 	
-	/* Campaign tax */
-	$campaign_cat_term = new_cmb2_box( array(
-		'id'               => 'campaign_cat_data',
-		'title'            => 'Опции шаблона',
-		'object_types'     => array( 'term' ), 
-		'taxonomies'       => array( 'campaign_cat' )		
-	));
 	
-	$campaign_cat_term->add_field( array(
-		'name' => 'Страница на сайте',
-		'desc' => 'Страница категории видна посетителям сайта',
-		'id'   => 'show_term_page',
-		'type' => 'checkbox',
-		'default' => false,
-	));
-	
-	$campaign_cat_term->add_field( array(
-		'name'     => 'Обратная ссылка',
-		'desc'     => 'Адрес ссылки, позволяющей вернуться в раздел',
-		'id'       => 'term_back_url',
-		'type'     => 'text_url'		
-	));
-	
-	$campaign_cat_term->add_field( array(
-		'name'     => 'Текст обратной ссылки',
-		'desc'     => 'Текст ссылки, позволяющей вернуться в раздел',
-		'id'       => 'term_back_text',
-		'type'     => 'text'		
-	));
-	
-	
-
-//    if(defined(LEYKA_VERSION)) {
-//        echo '<pre>' . print_r(Leyka_Campaign_Management::$post_type, 1) . '</pre>';
-        /** Campaigns **/
-        $campaign_cmb = new_cmb2_box( array(
-            'id'            => 'campaign_settings_metabox',
-            'title'         => 'Дополнительные параметры кампании',
-            'object_types'  => array('leyka_campaign',), // Post type
-            'context'       => 'normal',
-            'priority'      => 'high',
-            'show_names'    => true, // Show field names on the left
-            //'show_on_cb'    => 'tst_show_on_general_pages',
-            //'cmb_styles'    => false, // false to disable the CMB stylesheet
-            // 'closed'     => true, // Keep the metabox closed by default
-        ));
-		$campaign_cmb->add_field(array(
-            'name'    => 'Возраст',
-            'id'      => 'campaign_child_age',
-            'type'    => 'text',
-            'default' => ''
-        ));
-        $campaign_cmb->add_field(array(
-            'name'    => 'Город',
-            'id'      => 'campaign_child_city',
-            'type'    => 'text',
-            'default' => ''
-        ));
-        $campaign_cmb->add_field(array(
-            'name'    => 'Диагноз',
-            'id'      => 'campaign_child_diagnosis',
-            'type'    => 'text',
-            'default' => ''
-        ));
-		$campaign_cmb->add_field(array(
-            'name'    => 'Благодарность',			
-            'id'      => 'campaign_child_thanks',
-            'type'    => 'textarea',
-            'default' => ''
-        ));
-//    }
-
 	//markers
 	$marker_cmb = new_cmb2_box( array(
         'id'            => 'marker_settings_metabox',

@@ -119,11 +119,6 @@ require get_template_directory().'/inc/social.php';
 require get_template_directory().'/inc/template-tags.php';
 require get_template_directory().'/inc/widgets.php';
 
-//require get_template_directory().'/inc/import-campaigns.php';
-//require get_template_directory().'/inc/import-posts.php';
-//require get_template_directory().'/inc/import-donations.php';
-
-
 
 if(is_admin()){
 	require get_template_directory() . '/inc/admin.php';
