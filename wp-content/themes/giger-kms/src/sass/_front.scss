@@ -520,3 +520,68 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+/* intro stats */
+$intro-stats-offset: 460px;
+.frupalo-intro-stats {
+    margin-top:-$intro-stats-offset;
+    margin-bottom:$intro-stats-offset;
+    z-index:510;
+    position:absolute;
+    
+    .frupalo-intro-stats-item {
+        color:$color-white;
+        font-size:14px;
+        line-height:22px;
+        
+        .widget-title {
+            font-size:22px;
+            font-weight:700;
+            text-transform:none;
+            margin-bottom:18px;
+        }
+    }
+}
+
+.frupalo-share-buttons {
+    margin-top:-$intro-stats-offset;
+    margin-bottom:$intro-stats-offset;
+    z-index:510;
+    position:absolute;
+    
+    .widget-title {
+        display:none;
+    }
+}
+
+/* share buttons */
+.frupalo-share-buttons-row {
+    margin-top:150px;
+    .frupalo-share-buttons {
+        background-color:$color-white;
+        min-width:25%;
+        padding-top: 9px;
+
+        .ya-share2__list {
+            padding-right:19px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+        
+        .ya-share2__item:before {
+            content:"";
+        }
+        
+        .ya-share2__container_size_m {
+            .ya-share2__item {
+                padding-left:0px;
+                
+                .ya-share2__icon {
+                    width:29px;
+                    height:29px;
+                }
+            }
+        }
+        
+    }
+}

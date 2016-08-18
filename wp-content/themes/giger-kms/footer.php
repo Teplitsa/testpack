@@ -17,19 +17,8 @@ $footer_text = get_theme_mod('footer_text');
 <div id="bottom_bar" class="bottom-bar"><div class="container">	
 	<div class="frame frame-wide">
 		<div class="bit md-9 lg-8">
-			<?php if(!is_page('subscribe'))	{ ?>
-				<h5><?php _e('Subscribe to our newsletter', 'tst');?></h5>
-				<div class="newsletter-form in-footer">
-					<?php echo tst_get_newsletter_form('bottom');?>
-				</div>
-			<?php } else { ?>
-				&nbsp;
-			<?php  }?>
 		</div>
-
 		<div class="bit md-3 lg-3 lg-offset-1">
-			<h5><span class="icons-label"><?php _e('Our social profiles', 'tst');?></span>&nbsp;</h5>
-			<?php echo tst_get_social_menu(); ?>
 		</div>
 	</div>
 </div></div>
@@ -63,13 +52,6 @@ $footer_text = get_theme_mod('footer_text');
 </div></footer>
 
 <?php wp_footer(); ?>
-
-<div id="requestt-call-modal" class="rdc-modal" style="<?php if(isset($_POST['form_key']) && $_POST['form_key'] == 'call_request_form'):?>display:block;"<?php else:?>display:none;<?php endif?>">
-  <div class="rdc-modal-content">
-    <span class="rdc-close" id="rdc-request-call-modal-close"><?php tst_svg_icon('icon-close');?></span>
-    <?php echo tst_get_call_request_form();?>    
-  </div>
-</div>
 
 </body>
 </html>
