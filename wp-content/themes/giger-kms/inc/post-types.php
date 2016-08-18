@@ -248,6 +248,43 @@ function tst_custom_content(){
 	//remove post tags
 	unregister_taxonomy_for_object_type('post_tag', 'post');
 	
+	
+	register_post_type('quote', array(
+        'labels' => array(
+            'name'               => 'Цитаты',
+            'singular_name'      => 'Цитата',
+            'menu_name'          => 'Цитаты',
+            'name_admin_bar'     => 'Добавить цитату',
+            'add_new'            => 'Добавить новую',
+            'add_new_item'       => 'Добавить цитату',
+            'new_item'           => 'Новая цитата',
+            'edit_item'          => 'Редактировать цитату',
+            'view_item'          => 'Просмотр цитаты',
+            'all_items'          => 'Все цитаты',
+            'search_items'       => 'Искать цитаты',
+            'parent_item_colon'  => 'Родительская цитата:',
+            'not_found'          => 'Цитаты не найдены',
+            'not_found_in_trash' => 'В Корзине цитаты не найдены'
+        ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => false,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => true,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => true,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => false,
+        'rewrite'             => array('slug' => 'quotation', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 5,
+        'menu_icon'           => 'dashicons-format-quote',
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'taxonomies'          => array(),
+    ));
+
+	
 	register_taxonomy('campaign_cat', array('leyka_campaign',), array(
 		'labels' => array(
 			'name'                       => 'Категории кампаний',
