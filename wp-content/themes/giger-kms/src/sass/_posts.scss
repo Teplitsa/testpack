@@ -183,7 +183,6 @@
 
 /** paging **/
 .paging {
-	
 	margin: $gut*1.5 0 0;
 	
 	nav {
@@ -201,7 +200,7 @@
 		
 		&:hover, &:focus, &:active {
 			color: $color-white;
-			background: $color-link-two;
+			background: $color-link-three;
 		}
 		&.current {
 			color: $color-white;

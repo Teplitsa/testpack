@@ -169,12 +169,7 @@ function tst_add_menu_items(){
                     'post.php?post='.$id.'&action=edit'                    
     );
 	
-	add_submenu_page('leyka',
-                    'Категории',
-                    'Категории',
-                    'leyka_manage_donations',
-                    'edit-tags.php?taxonomy=campaign_cat&post_type=leyka_campaign'       
-    );   
+	
 }
 
 

@@ -21,7 +21,8 @@ body {
     left: 0;
     background: $color-white;   
     @include transition(opacity 0.3s);
-    z-index: 5;
+    z-index: 500;
+	box-shadow: 1px 1px 3px rgba(0,0,0, 0.5);
     
     &.fixed-header {
         position: fixed;
