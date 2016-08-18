@@ -139,6 +139,10 @@ $hamburger-hover-opacity                   : 0.6;
 	@else if $mod == menu {
 		font-weight: bold;
 	}
+	@else if $mod == menu_small {
+		font-size: 12px;	
+		line-height: 16px;
+	}
 	@else if $mod == lowercase {		
 		text-transform: none;
 	}

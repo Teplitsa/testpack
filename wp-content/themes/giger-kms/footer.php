@@ -14,17 +14,9 @@ $footer_text = get_theme_mod('footer_text');
 ?>
 </div><!--  #site_content -->
 
-<div id="bottom_bar" class="bottom-bar"><div class="container">	
-	<div class="frame frame-wide">
-		<div class="bit md-9 lg-8">
-		</div>
-		<div class="bit md-3 lg-3 lg-offset-1">
-		</div>
-	</div>
-</div></div>
 
 <footer class="site-footer"><div class="container">		
-	
+		
 	<div class="widget-area"><?php dynamic_sidebar( 'footer-sidebar' );?></div>
 	<div class="hr"></div>
 	<div class="sf-cols">
