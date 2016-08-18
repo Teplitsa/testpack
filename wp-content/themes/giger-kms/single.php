@@ -7,7 +7,7 @@
 
 $cpost = get_queried_object(); 
 $format = tst_get_post_format($cpost);
-$video = $thumbnail = '';
+$video = '';
 
 
 if($format == 'introvid'){
@@ -15,12 +15,8 @@ if($format == 'introvid'){
 	if(empty($video))
 		$format = 'standard';
 }
-elseif($format == 'introimg') {
-	$thumbnail = tst_post_thumbnail_src($cpost->ID, 'full');
-}
 
 get_header(); ?>
-
 <section class="main-content single-post-section format-<?php echo $format;?>"><div class="container-narrow">
 	
 	<header class="entry-header-full">
@@ -30,15 +26,18 @@ get_header(); ?>
 		<div class="lead"><?php echo apply_filters('tst_the_content', $cpost->post_excerpt); ?></div>
 	</header>
 	
-	<?php if($format == 'standard') { ?>
-		<div class="entry-preview-full">
-			<?php echo tst_post_thumbnail($cpost->ID, 'medium-thumbnail');?>						
-		</div>
-	<?php } elseif($format == 'introvid') { ?>
-		<div class="entry-preview-full introvid player">
-			<?php echo apply_filters('the_content', $video);?>
-		</div>
-	<?php } ?>	
+	<?php
+		if($format == 'standard' || $format == 'introimg') {
+			$thumb = tst_post_thumbnail_on_single($cpost->ID, $format);
+			
+			if(!empty($thumb)) 
+				echo "<div class='entry-preview-full {$format}'>{$thumb}</div>";
+			
+		}
+		elseif($format == 'introvid') {			
+			echo "<div class='entry-preview-full video player'>".apply_filters('the_content', $video)."</div>";		
+		}
+	?>
 	
 	<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
 	

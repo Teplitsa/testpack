@@ -92,6 +92,44 @@ function tst_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 	return $src;
 }
 
+function tst_post_thumbnail_on_single($post_id, $format = 'standard') {
+	
+	$src = '';
+	$thumb = get_post(get_post_thumbnail_id($post_id));
+	
+	if(!$thumb)
+		return '';
+	
+	if($format == 'introimg') {
+		$src = wp_get_attachment_image_src($thumb->ID, 'full');		
+	}
+	else {
+		$src = wp_get_attachment_image_src($thumb->ID, 'medium-thumbnail');		
+	}
+	
+	if(isset($src[0]) && $src[0])
+		$src = $src[0];
+		
+	$cap = (!empty($thumb->post_excerpt)) ? $thumb->post_excerpt : '';
+	
+	if(empty($src))
+		return '';
+	
+	
+	ob_start();
+?>
+<figure class="wp-caption alignnone preview-figure">
+	<div class="preview-figure-img"><div class="tpl-pictured-bg" style="background-image: url(<?php echo $src;?>)"></div></div>
+	<?php if(!empty($cap)) { ?>
+	<figcaption class="wp-caption-text"><?php tst_svg_icon('icon-photo');?><span><?php echo apply_filters('tst_the_title', $cap);?></span></figcaption>
+	<?php } ?>
+</figure>	
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}
 
 
 /** == OLD Mixes == **/

@@ -36,8 +36,8 @@ $color-text:   rgba(0,0,0, 0.99);
 $color-white:  #ffffff;
 
 $color-link-one:   #DC471F; //red
-$color-link-two:   #FF9800; //blue
-$color-link-three: #B00C07; //dark blue
+$color-link-two:   #FF9800; //orange
+$color-link-three: #CC0000; //dark red
 
 $color-text-black:			#000000;
 $color-text-semi:			rgba(0,0,0, 0.6);
@@ -403,4 +403,14 @@ $fixed_side: 222px;
 		height: 480px;
 	}
 }
-	
+
+
+
+.tpl-pictured-bg {
+	width: 100%;
+	height: 100%;
+	background-color: $color-secondary;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}

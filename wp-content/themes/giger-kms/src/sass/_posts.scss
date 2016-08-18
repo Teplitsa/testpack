@@ -140,6 +140,10 @@
 	&:hover img {
 		filter: contrast(110%);
 	}
+	
+	&:hover .tpl-pictured-bg {
+		filter: contrast(110%);
+	}
 }
 
 
@@ -158,6 +162,7 @@
 		@include post-title();
 		color: $color-text-black;
 		margin-bottom: $base;
+				
 		a {
 			color: inherit;
 			@include transition(all 0.35s);
@@ -212,46 +217,102 @@
 .entry-header-full {
 	padding: $gut 0;
 	
-	.crumbs {
-		
+	.crumbs {		
+		text-transform: uppercase;
+		margin-bottom: 5px;
 	}
+	
 	.entry-title {
-		@include header-title(single);		
+		@include header-title(single);
+		margin-bottom: $base/2;
 	}
 	
 	.entry-meta {
-		@include post-meta();
-		
+		@include post-meta();		
 	}
 	
 	.lead {
 		font-size: 1.2em;
-		line-height: 1.4;
+		line-height: 1.7;
+		font-style: italic;		
+		margin: $base*1.5 0 0;
 	}
 }
+
+.entry-preview-full {
+	margin-bottom: $gut*1.5;
+	
+	.wp-caption-text {
+		position: relative;
+		margin-top: $base/2;
+		@include sub-title();
+		line-height: 16px;
+		padding-left: 24px;
+		
+		.svg-icon {
+			width: 16px;
+			height: 16px;
+			fill: $color-link-one;
+			position: absolute;
+			left:0;
+			top: 0;
+		}
+	}
+	
+	&.standard {
+		.preview-figure-img {
+			position: relative;
+			width: 100%;
+			height: 0;
+			padding-bottom: 61.72%;
+		}
+		
+		.tpl-pictured-bg {
+			position: absolute;
+		}
+	}
+	
+	&.introimg {
+		.preview-figure-img {
+			margin: 0 -4.35%;
+			position: relative;
+			width: auto;	
+			$ex_cont_width_mq: 770px / 0.92 + 1px;
+			@media screen and (min-width: $ex_cont_width_mq ) { 
+				margin: 0 -1 * ($full_cont - 770px) / 2;	
+			}
+	
+			@include vertical-image-header-fixed();
+		}
+	}
+}
+
 
 .single-post-section {
 	position: relative;
 		
-	.entry-preview {
-		position: relative;
-		margin-bottom: $gut;
+	.entry-footer {
+		margin-top: $gut;
+		.post-source-link {
+			@include post-meta();			
+		}
+		
+		.post-navigation {
+			margin-top: 8px;
+			@include body-text(summary);
+			
+			a + a { margin-left: 12px; }
+		}
 	}
 	
-	.introimg  {
-		@include vertical-image-header-fixed();
-	}
 }
-
-
-
-
-
 
 /* Related section */
 .related-card-holder {
+	margin-top: $gut;
+	
 	.related-title {
-		@include header-title(head_title);
+		@include header-title(section);
 		margin-bottom: $base;
 		text-align: center;		
 	}	
@@ -259,90 +320,29 @@
 
 .related-all-link {
 	text-align: center;
-	padding-bottom: $gut;
-	color: $color-link-three;
-	
-	a {
-		@include nav-text(meta);
-		padding: 14px 24px;
-		font-size: 16px;
-		line-height: 18px;
-		color: $color-text-black;			
-		text-align: center;
-		
-		&:hover, &:focus, &:active {
-			color: $color-white;
-			background: $color-link-two;	
-		}
-	}
-	
-	margin-top: $gut;
-	@include for(medium-screens) {
-		margin-top: 0;
+	span {
+		color: $color-link-one;
+		a { border-bottom: 1px solid; }
 	}
 }
 
-.related-cards-loop {
-	.card {
-		margin: 0;
-	}
-	
-	@include for(medium-screens) {
-		margin: 0 $gut/2;
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between;
-		
-		.card {
-			margin: 0 $gut/2 $gut;
-			@include calc(width, '50% - 30px');
-		
-			&:first-of-type {
-				@include calc(width, '100% - 30px');
-			}
-		}
-	}
-	
-	@include for(large-screens) {
-		.card {
-			margin: 0 $gut/2 $gut;
-			@include calc(width, '33.3% - 30px');
-		
-			&:nth-of-type(1),
-			&:nth-of-type(2) {
-				@include calc(width, '50% - 30px');
-			}
-		}
-	}
-	
-	@include for(xxlarge-screens) {
-		margin: 0 -1*$gut/2;
-	}
-}
+
 
 .tpl-related-post {
 	@extend .tpl-post;
+	@include transition(all 0.35s);
 	
-	background: $color-secondary;	
 	.entry-meta {
-		font-size: 0.9em;
+		margin-bottom: 4px;
 	}
 	
-	.entry-title {
-		font-size: 1.5em;
-		line-height: 1.1;
-		margin-top: 0 !important;
-	}
+	.entry-title,
+	.entry-summary { @include transition(all 0.35s); }
 	
-	.featured-post & {
-		.entry-meta { background: $color-link-one;}
-	}
-	
-	
-	&:hover {		
-		background: $color-link-two;
-		.entry-title { color: $color-link-three; }
-		.entry-summary { color: $color-link-three; }
+	&:hover { 		
+		.entry-preview img { filter: contrast(110%); }
+		@include transform(translateX(-10px));
+		
 	}
 }
 

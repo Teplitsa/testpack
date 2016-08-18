@@ -1,7 +1,6 @@
 /* modules */
 @import 'bourbon';
 
-@import 'fonts';
 @import 'reset';
 @import 'presets';
 @import 'utility';
@@ -9,7 +8,9 @@
 
 
 @import 'front';
+@import 'modules';
 @import 'forms';
+@import 'social';
 @import 'header';
 @import 'posts';
 @import 'pages';

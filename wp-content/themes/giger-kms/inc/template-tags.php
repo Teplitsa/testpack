@@ -389,10 +389,10 @@ function tst_post_nav() {
 	}?>
 
 	<nav class="navigation post-navigation" role="navigation">		
-		<div class="nav-links">
-			<?php previous_post_link('<div class="nav-previous">%link</div>', '<span class="meta-nav">&larr; Пред.</span>');
-			next_post_link('<div class="nav-next">%link</div>', '<span class="meta-nav">След. &rarr;</span>');?>
-		</div>
+		<div class="nav-links"><?php
+			previous_post_link('%link', '<span class="meta-nav">&larr; Пред.</span>');
+			next_post_link('%link', '<span class="meta-nav">След. &rarr;</span>');
+		?></div>
 	</nav>
 	<?php
 }
@@ -431,30 +431,31 @@ function tst_get_post_format($cpost){
 
 
 /** More section **/
-function tst_more_section($posts, $title = '', $type = 'news', $css= ''){
+function tst_more_section($posts, $title = '', $type = 'news'){
 	
 	if(empty($posts))
 		return;
 	
 	$all_link = '';
 	$container_type = 'container';
+	$loop_css = 'related-cards-loop';
 	
 	if($type == 'projects'){
 		$all_link = "<a href='".home_url('activity')."'>".__('More projects', 'tst')."&nbsp;&rarr;</a>";
 		$title = (empty($title)) ? __('Our projects', 'tst') : $title;
 	}	
 	else {
-		$all_link = "<a href='".home_url('news')."'>Все новости&nbsp;&rarr;</a>";
+		$all_link = "<span><a href='".home_url('news')."'>Все новости&nbsp;</a>&gt;</span>";
 		$title = (empty($title)) ? 'Новости по теме' : $title;
 		$container_type = 'container-narrow';
+		$loop_css = 'related-items-loop';
 	}
 
-	$css .= ' related-card-holder';
 ?>
-<section class="<?php echo esc_attr($css);?>"><div class="<?php echo $container_type;?>">
+<section class="related-card-holder"><div class="<?php echo $container_type;?>">
 <h3 class="related-title"><?php echo $title; ?></h3>
 
-<div class="related-cards-loop">
+<div class="<?php echo $loop_css;?>">
 	<?php
 		foreach($posts as $p){			
 			tst_related_post_card($p);
