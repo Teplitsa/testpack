@@ -59,9 +59,9 @@ gulp.task('build-js', function() {
 gulp.task('build-css', function() {
 
     //paths for mdl and bourbon
-    var paths = require('node-bourbon').includePaths;
-       //mdl = path('./node_modules/material-design-lite/src');
-       //paths.push(mdl);
+    var paths = require('node-bourbon').includePaths,
+        hamburgers = path('./bower_components/css-hamburgers/_sass/hamburgers');
+        paths.push(hamburgers);
 
     var vendorFiles = gulp.src([basePaths.bower + 'leaflet/dist/leaflet.css']), //components
         appFiles = gulp.src(basePaths.src+'sass/main.scss') //our main file with @import-s

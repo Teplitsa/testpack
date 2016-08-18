@@ -138,36 +138,25 @@ function tst_posted_on(WP_Post $cpost) {
 	
 	$meta = array();
 	$sep = '';
+	$cat = '';
 	
 	if('post' == $cpost->post_type){		
 		
 		$meta[] = "<span class='date'>".get_the_date('d.m.Y', $cpost)."</span>";
+		$cat = tst_get_post_source_link($cpost->ID);
 		
-		$cat = get_the_term_list($cpost->ID, 'category', '<span class="category">', ', ', '</span>');
+		if(!empty($cat)) {
+			$cat = "источник: ".$cat;
+		}
+		else {
+			$cat = get_the_term_list($cpost->ID, 'category', '<span class="category">', ', ', '</span>');
+		}
+		
 		$meta[] = $cat;
 		$meta = array_filter($meta);
 		
-		$sep = tst_get_sep('&middot;');		
+		$sep = tst_get_sep(',');		
 	}	
-	elseif('leyka_campaign' == $cpost->post_type ) {
-		
-		$cat = get_the_term_list($cpost->ID, 'campaign_cat', '<span class="category">', ', ', '</span>');
-		if(!empty($cat)){
-			$meta[] = $cat;
-		}
-		else {
-			$meta[] = "<span class='category'>".__('Campaign', 'tst')."</span>";
-		}
-		
-		$sep = tst_get_sep('&middot;');	
-	}
-	elseif('project' == $cpost->post_type) {
-		
-		$p = get_page_by_path('activity');
-		if($p) {
-			$meta[] = "<span class='category'><a href='".get_permalink($p)."'>".get_the_title($p)."</a></span>";
-		}
-	}
 	elseif('person' == $cpost->post_type) {
 		
 		$cat = get_the_term_list($cpost->ID, 'person_cat', '<span class="category">', ', ', '</span>');
@@ -182,6 +171,41 @@ function tst_posted_on(WP_Post $cpost) {
 	}
 		
 	return implode($sep, $meta);		
+}
+
+function tst_posted_on_single(WP_Post $cpost) {
+	
+	$meta = array();
+	$sep = '';
+	$cat = '';
+	
+	if('post' == $cpost->post_type){		
+		
+		$meta[] = "<span class='date'>".get_the_date('d.m.Y', $cpost)."</span>";
+		$cat = get_the_term_list($cpost->ID, 'category', '<span class="category">', ', ', '</span>');
+				
+		$meta[] = $cat;
+		$meta = array_filter($meta);
+		
+		$sep = tst_get_sep('&middot;');		
+	}
+	
+	return implode($sep, $meta);		
+}
+
+function tst_get_post_source_link($post_id) {
+	
+	$source_link = get_post_meta($post_id, 'post_source_url', true);
+	$source_name = get_post_meta($post_id, 'post_source_name', true);
+	
+	if(empty($source_name) || empty($source_link))
+		return '';
+	
+	$source_link = esc_url($source_link);
+	$source_name = apply_filters('tst_the_title', $source_name);
+	$target = (false === strpos($source_link, home_url())) ? " target='_blank'" : '';
+	
+	return "<a href='{$source_link}'{$target} class='post-source-link'>{$source_name}</a>";
 }
 
 
@@ -296,7 +320,7 @@ function tst_paging_nav(WP_Query $query = null) {
 	$p = tst_paginate_links($query, false);
 	if($p) {
 ?>
-	<nav class="paging-navigation" role="navigation"><div class="container"><?php echo $p; ?></div></nav>
+	<nav class="paging-navigation" role="navigation"><?php echo $p; ?></nav>
 <?php
 	}
 }
@@ -364,12 +388,11 @@ function tst_post_nav() {
 		return;
 	}?>
 
-	<nav class="navigation post-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e('Post navigation', 'kds'); ?></h1>
-		<div class="nav-links">
-			<?php previous_post_link('<div class="nav-previous">%link</div>', '<span class="meta-nav">&larr;</span>');
-			next_post_link('<div class="nav-next">%link</div>', '<span class="meta-nav">&rarr;</span>');?>
-		</div>
+	<nav class="navigation post-navigation" role="navigation">		
+		<div class="nav-links"><?php
+			previous_post_link('%link', '<span class="meta-nav">&larr; Пред.</span>');
+			next_post_link('%link', '<span class="meta-nav">След. &rarr;</span>');
+		?></div>
 	</nav>
 	<?php
 }
@@ -380,27 +403,16 @@ function tst_breadcrumbs(WP_Post $cpost){
 			
 	$links = array();
 	if(is_singular('post')) {
-		$links[] = "<a href='".home_url()."' class='crumb-link'>".__('Homepage', 'kds')."</a>";
-				
+						
 		$p = get_post(get_option('page_for_posts'));
 		if($p){
 			$links[] = "<a href='".get_permalink($p)."' class='crumb-link'>".get_the_title($p)."</a>";
 		}
 				
 	}
-	elseif(is_singular('programm')) {
-		
-		$links[] = "<a href='".home_url()."' class='crumb-link'>".__('Homepage', 'kds')."</a>";
-				
-		$p = get_page_by_path('programms');
-		if($p){
-			$links[] = "<a href='".get_permalink($p)."' class='crumb-link'>".get_the_title($p)."</a>";
-		}
-
-	}
 	
 	
-	$sep = tst_get_sep('&gt;');
+	$sep = tst_get_sep('&middot;');
 	
 	return "<div class='crumbs'>".implode($sep, $links)."</div>";	
 }
@@ -419,56 +431,37 @@ function tst_get_post_format($cpost){
 
 
 /** More section **/
-function tst_more_section($posts, $title = '', $type = 'news', $css= ''){
+function tst_more_section($posts, $title = '', $type = 'news'){
 	
 	if(empty($posts))
 		return;
 	
 	$all_link = '';
+	$container_type = 'container';
+	$loop_css = 'related-cards-loop';
 	
 	if($type == 'projects'){
 		$all_link = "<a href='".home_url('activity')."'>".__('More projects', 'tst')."&nbsp;&rarr;</a>";
 		$title = (empty($title)) ? __('Our projects', 'tst') : $title;
-	}
-	elseif($type == 'children') {
-		
-		$all_link = "<a href='".home_url('our-children')."'>".__('Our children', 'tst')."&nbsp;&rarr;</a>";
-		$title = (empty($title)) ? __('Our children', 'tst') : $title;
-	}
-	elseif($type == 'events') {
-		$p = get_page_by_path('events');
-		if($p) {
-			$all_link = "<a href='".get_permalink($p)."'>".__('More events', 'tst')."&nbsp;&rarr;</a>";
-			$title = (empty($title)) ? get_the_title($p) : $title;
-		}
-	}
+	}	
 	else {
-		$all_link = "<a href='".home_url('news')."'>".__('More news', 'tst')."&nbsp;&rarr;</a>";
-		$title = (empty($title)) ? __('Latest news', 'tst') : $title;
+		$all_link = "<span><a href='".home_url('news')."'>Все новости&nbsp;</a>&gt;</span>";
+		$title = (empty($title)) ? 'Новости по теме' : $title;
+		$container_type = 'container-narrow';
+		$loop_css = 'related-items-loop';
 	}
 
-	$css .= ' related-card-holder';
 ?>
-<section class="<?php echo esc_attr($css);?>"><div class="container-wide">
+<section class="related-card-holder"><div class="<?php echo $container_type;?>">
 <h3 class="related-title"><?php echo $title; ?></h3>
 
-<?php if(is_singular('person')) { ?>
-<div class="cards-loop sm-cols-2 md-cols-2 lg-cols-4 related-people-loop">
-	<?php
-		foreach($posts as $p){
-			tst_person_card($p, true);
-		}
-	?>
-</div>
-<?php } else { ?>
-<div class="related-cards-loop">
+<div class="<?php echo $loop_css;?>">
 	<?php
 		foreach($posts as $p){			
 			tst_related_post_card($p);
 		}		
 	?>
 </div>
-<?php } ?>
 
 <div class="related-all-link"><?php echo $all_link;?></div>
 </div></section>
@@ -477,59 +470,6 @@ function tst_more_section($posts, $title = '', $type = 'news', $css= ''){
 
 
 
-/** Related project on single page **/
-function tst_related_project(WP_Post $cpost){
-	
-	$pl = get_permalink($cpost);
-	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
-?>
-<div class="related-widget widget">
-	<h3 class="widget-title"><?php _e('Related project', 'kds');?></h3>
-	<a href="<?php echo $pl;?>" class="entry-link">
-		<div class="rw-preview">
-			<?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?>
-		</div>
-		<div class="rw-content">
-			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-			<div class="entry-summary"><?php echo $ex;?></div>
-		</div>
-	</a>
-	<div class="help-cta">
-		<?php echo tst_get_help_now_cta();?>
-	</div>
-</div>
-<?php	
-}
-
-function tst_get_help_now_cta($cpost = null, $label = ''){
-	
-	$label = (empty($label)) ? __('Help now', 'kds') : $label;
-	$cta = '';
-	
-	if(!$cpost){
-		
-		$help_id = get_theme_mod('help_campaign_id');
-		if(!$help_id)
-			return '';
-		
-		$cta = "<a href='".get_permalink($help_id)."' class='help-button'>{$label}</a>";
-	}
-	else {
-		$url = get_post_meta($cpost->ID, 'cta_link', true);
-		$txt = get_post_meta($cpost->ID, 'cta_text', true);
-		
-		if(empty($url))
-			return '';
-		
-		if(empty($txt))
-			$txt = $label;
-		
-		$css = (false !== strpos($url, '#')) ? 'help-button local-scroll' : 'help-button'; 
-		$cta = "<a href='{$url}' class='{$css}'>{$txt}</a>";
-	}
-	
-	return $cta;
-}
 
 
 /** == People fuctions == **/
@@ -597,7 +537,6 @@ $args = array(
 }
 
 
-
 /** == Children profile related logic == **/
 add_action('save_post_leyka_campaign', 'tst_donations_actions', 2, 3);
 function tst_donations_actions($post_ID, $post, $update){
@@ -639,4 +578,59 @@ function tst_connected_project_meta($cpost){
 		<div class="child-project"><span class="label"><?php echo $label;?>:</span> <a href="<?php echo get_permalink($ccpost->ID);?>"><?php echo apply_filters('tst_the_title', $ccpost->title);?></a></div>
 	<?php
 	}
+}
+
+
+/** Related project on single page **/
+function tst_related_project(WP_Post $cpost){
+	
+	$pl = get_permalink($cpost);
+	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
+?>
+<div class="related-widget widget">
+	<h3 class="widget-title"><?php _e('Related project', 'kds');?></h3>
+	<a href="<?php echo $pl;?>" class="entry-link">
+		<div class="rw-preview">
+			<?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?>
+		</div>
+		<div class="rw-content">
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+			<div class="entry-summary"><?php echo $ex;?></div>
+		</div>
+	</a>
+	<div class="help-cta">
+		<?php echo tst_get_help_now_cta();?>
+	</div>
+</div>
+<?php	
+}
+
+function tst_get_help_now_cta($cpost = null, $label = ''){
+	
+	$label = (empty($label)) ? __('Help now', 'kds') : $label;
+	$cta = '';
+	
+	if(!$cpost){
+		
+		$help_id = get_theme_mod('help_campaign_id');
+		if(!$help_id)
+			return '';
+		
+		$cta = "<a href='".get_permalink($help_id)."' class='help-button'>{$label}</a>";
+	}
+	else {
+		$url = get_post_meta($cpost->ID, 'cta_link', true);
+		$txt = get_post_meta($cpost->ID, 'cta_text', true);
+		
+		if(empty($url))
+			return '';
+		
+		if(empty($txt))
+			$txt = $label;
+		
+		$css = (false !== strpos($url, '#')) ? 'help-button local-scroll' : 'help-button'; 
+		$cta = "<a href='{$url}' class='{$css}'>{$txt}</a>";
+	}
+	
+	return $cta;
 }

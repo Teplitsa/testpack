@@ -84,48 +84,51 @@
 
 
 /** Page builder widgets **/
-.so-panel.widget_nav_menu {
-	
+@mixin local-menu-default {
 	ul {
 		margin: 0;
 	}
 	
 	li {
-		list-style-type: none;
+		list-style-type: none;		
 		&:before { display: none; }
 	}
 	
 	a {
-		display: inline-block;
-		font-size: 1.2em;
-		padding: 5px 12px;
-		white-space: nowrap; 
+		color: $color-link-one;
+		display: inline-block;		
+		padding: 0 6px;
+		white-space: nowrap;		
 	}
 	
 	.current-menu-item {
 		a {
-			background: $color-link-three;
-			color: $color-white;
+			border-bottom: 1px solid $color-link-one;;
 		}
 	}
-	
-	.inpage-h-menu {
-		ul { margin-left: -12px; }
+}
+
+@mixin local-menu-horizont {
+	ul { margin-left: -12px; }
 		
-		li {
-			display: inline-block;
-			margin: 0;
-			padding: 0;
-			
-			&.current-menu-item:first-child {
-				margin-left: 12px;
-			}
-			
-			a {
-				padding: 5px 12px;
-			}
-		}		
+	li {
+		display: inline-block;
+		margin: 0 8px;
+		padding: 0;		
+	}	
+}
+
+.so-panel.widget_nav_menu {	
+	@include local-menu-default();
+	.inpage-h-menu {
+		@include local-menu-horizont();
 	}
+}
+
+.heading-menu {
+	@include local-menu-default();
+	@include local-menu-horizont();
+	margin: $base 0 0;
 }
 
 .tpl-page-fullwidth {
@@ -294,99 +297,62 @@
 	@include container-extended();
 	
 	&.text-over-image {
-		height: 400px;
+		height: 511px;
 	
 		@include for(small-screens) {
-			height: 440px;
+			height: 400px;
 		}
 		
 		@include for(medium-screens) {
-			height: 480px;
+			height: 460px;
 		}
 		
 		@include for(large-screens) {
-			height: 520px;
+			height: 511px;
 		}
 	}
 }
 
-.tpl-pictured-bg {
-	width: 100%;
-	height: 100%;
-	background-color: $color-secondary;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center top;
-}
 
 
 .intro-head-content {
 			
 	.ihc-title {
 		display: inline-block;
-		background: $color-link-three;
-		@include header-title(section);		
+		background: none;
+		@include header-title(intro);		
 		color: $color-white;
-		padding: 10px 20px;
-		margin-bottom: $base;		
+		padding: 10px 20px 0px 20px;
+		margin-bottom: 0px;
 	}
 	
 	.ihc-content {
 		position: relative;
 		margin-top: -40px;
-		border-bottom: 1px solid $color-border-normal;
 		padding-bottom: $base;
 	}
 		
-	p:last-child { margin-bottom: 0;}
-	
-	.md-4 {
-		@include for(medium-screens) { text-align: right; }
-		a { @include button();	}
-	}
-	
-	&.has-button {
-		.ihc-title {
-			background: $color-link-three;
-			@include transition(background 0.35s);
-			a {
-				color: $color-white;
-			}
-			
-			&:hover {
-				background: $color-link-two;
-			}
-		}
-		.ihc-desc {
-			color: $color-text-black;
-			font-size: 1.12em; 
-			font-weight: 300;			
-		}
-	}
-	
 	&.text-over-image {
-		height: 1px;
 		.ihc-content {
-			padding-bottom: $gut*1.5;
-			max-width: 800px;
+			max-width: 750px;
 			margin: 0;			
-			z-undex: 500;
+			z-index: 500;
 			positon: absolute;
 			top: 0;
-			@include transform(translateY(-100%));
+			left:25%;
+			@include transform(translateY(-181%));
 			& > a { display: block; }
 		}
 		
 		.ihc-title {
-			background: transparent;			
+			background: none;
 			padding: 0;
 			
 			span {
-				color: $color-link-three;
-				background: $color-white;
+				color: $color-white;
+				background: none;
 				display: inline-block;
 				padding: 8px 0;
-				box-shadow: 8px 0 0 $color-white, -8px 0 0 $color-white;
 				margin-left: 8px;
 			}
 		}
@@ -394,8 +360,6 @@
 		.ihc-desc {
 			@include body-text(summary);
 			padding: 8px;
-			//background: rgba(0,0,0, 0.5);
-			background:transparentize($color-link-three, 0.2);
 			color: rgba(255,255,255, 0.95);
 			h2, h3, h4, h5, h6 { color: $color-white;}
 		}
@@ -407,14 +371,46 @@
 	}
 }
 
-.homepage-intro .intro-head-content .ihc-content {
-	border-bottom: none;	
+.homepage-intro {
+    .intro-head-content {
+        &.text-over-image {
+            .ihc-content {
+                @include transform(translateY(-169%));
+                border-bottom: none;
+                .ihc-desc {
+                   line-height: 1.8;
+                }
+            }
+        }
+    }	
 }
 
 .intro-head-content + .mobile-sharing {
 	margin-top: $base - 8px;
 }
 
+.so-widget-tst-introfrupalo {
+    .svg-icon.pic-butterfly {
+        display:block;
+        position:absolute;
+        left:-5%;
+        top:71px;
+        height:207px;
+        z-index: 300;
+    }
+    
+    .tpl-pictured-bg:after {
+        display:block;
+        position:absolute;
+        left:0px;
+        top:0px;
+        background: rgba(41, 12, 4, 0.54);
+        content: " ";
+        z-index: 200;
+        width:100%;
+        height:100%;
+    }
+}
 
 /** Donation **/
 .so-widget-tst-donationhystory {

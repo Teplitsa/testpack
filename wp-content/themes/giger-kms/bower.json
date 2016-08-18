@@ -12,7 +12,8 @@
     "test",
     "tests"
   ],
-  "dependencies": {    
-    "leaflet": "~0.7.7"
+  "dependencies": {
+    "leaflet": "~0.7.7",
+    "css-hamburgers": "~0.5.0"
   }
 }

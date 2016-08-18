@@ -4,21 +4,135 @@
 function tst_post_card(WP_Post $cpost){
 	
 	$pl = get_permalink($cpost);
-	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
+	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 40, true));
 ?>
 <article class="tpl-post card">
-	<a href="<?php echo $pl; ?>" class="thumbnail-link">
-	<div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
-	<div class="entry-data">
-		<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost), '<span>');?></div>
-		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-		<div class="entry-summary"><?php echo $ex;?></div>
-	</div>
-	</a>
+	<div class="frame">
+		<div class="bit md-4"><a href="<?php echo $pl; ?>" class="thumbnail-link entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></a></div>
+		<div class="bit md-8">
+			<div class="entry-meta"><?php echo tst_posted_on($cpost);?></div>
+			<h4 class="entry-title"><a href="<?php echo $pl; ?>"><?php echo get_the_title($cpost);?></a></h4>
+			<div class="entry-summary"><a href="<?php echo $pl; ?>"><?php echo $ex;?></a></div>
+		</div>
+	</div>	
 </article>
 <?php
 }
 
+function tst_related_post_card(WP_Post $cpost) {
+
+	$pl = get_permalink($cpost);
+	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
+?>
+<article class="tpl-related-post"><a href="<?php echo $pl; ?>" class="entry-link">	
+	<div class="frame">
+		<div class="bit md-4"><div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div></div>
+		<div class="bit md-8">
+			<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost));?></div>
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+			<div class="entry-summary"><?php echo $ex;?></div>
+		</div>
+	</div>	
+</a></article>	
+<?php
+}
+
+
+
+/** == Helpers == **/
+
+/** Excerpt **/
+function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
+	
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+	
+	$e = (!empty($cpost->post_excerpt)) ? $cpost->post_excerpt : wp_trim_words(strip_shortcodes($cpost->post_content), $l);
+	if($force_l)
+		$e = wp_trim_words($e, $l);	
+	
+	return $e;
+}
+
+
+/** Deafult thumbnail for posts **/
+function tst_get_default_post_thumbnail($type = 'default_thumbnail', $size){
+		
+	$default_thumb_id = attachment_url_to_postid(get_theme_mod($type));
+	$img = '';
+	if($default_thumb_id){
+		$img = wp_get_attachment_image($default_thumb_id, $size);	
+	}
+	
+	return $img;
+}
+
+function tst_post_thumbnail($post_id, $size = 'post-thumbnail'){
+	
+	$thumb = get_the_post_thumbnail($post_id, $size);
+	
+	if(!$thumb){
+		$thumb = tst_get_default_post_thumbnail('default_thumbnail', $size);
+	}
+			
+	return $thumb;
+}
+
+function tst_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
+	
+	$src = get_the_post_thumbnail_url($post_id, $size);
+	if(!$src){
+		$default_thumb_id = attachment_url_to_postid(get_theme_mod('default_thumbnail'));
+		if($default_thumb_id){
+			$src = wp_get_attachment_image_src($default_thumb_id, $size);
+			$src = ($src) ? $src[0] : '';
+		}
+	}
+	
+	return $src;
+}
+
+function tst_post_thumbnail_on_single($post_id, $format = 'standard') {
+	
+	$src = '';
+	$thumb = get_post(get_post_thumbnail_id($post_id));
+	
+	if(!$thumb)
+		return '';
+	
+	if($format == 'introimg') {
+		$src = wp_get_attachment_image_src($thumb->ID, 'full');		
+	}
+	else {
+		$src = wp_get_attachment_image_src($thumb->ID, 'medium-thumbnail');		
+	}
+	
+	if(isset($src[0]) && $src[0])
+		$src = $src[0];
+		
+	$cap = (!empty($thumb->post_excerpt)) ? $thumb->post_excerpt : '';
+	
+	if(empty($src))
+		return '';
+	
+	
+	ob_start();
+?>
+<figure class="wp-caption alignnone preview-figure">
+	<div class="preview-figure-img"><div class="tpl-pictured-bg" style="background-image: url(<?php echo $src;?>)"></div></div>
+	<?php if(!empty($cap)) { ?>
+	<figcaption class="wp-caption-text"><?php tst_svg_icon('icon-photo');?><span><?php echo apply_filters('tst_the_title', $cap);?></span></figcaption>
+	<?php } ?>
+</figure>	
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	
+	return $out;
+}
+
+
+/** == OLD Mixes == **/
 function tst_intro_card_markup_below($title, $subtitle, $img_id, $link = '', $button_text = '') {
 	
 	$button_text = (!empty($button_text)) ? $button_text : __('More', 'tst');
@@ -76,23 +190,7 @@ function tst_intro_card_markup_over($title, $subtitle, $img_id, $link = '', $but
 }
 
 
-function tst_related_post_card(WP_Post $cpost) {
 
-	$pl = get_permalink($cpost);
-	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 40, true));
-?>
-<article class="tpl-related-post card"><a href="<?php echo $pl; ?>" class="entry-link">	
-	<div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
-	<div class="entry-data">
-		<?php if('project' != $cpost->post_type) { ?>
-		<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost), '<span>');?></div>
-		<?php } ?>
-		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-		<div class="entry-summary"><?php echo $ex;?></div>		
-	</div>
-</a></article>	
-<?php
-}
 
 function tst_event_card(WP_Post $cpost){
 		
@@ -198,58 +296,6 @@ function tst_search_card(WP_Post $cpost) {
 
 
 
-/** == Helpers == **/
-
-/** Excerpt **/
-function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
-	
-	if(is_int($cpost))
-		$cpost = get_post($cpost);
-	
-	$e = (!empty($cpost->post_excerpt)) ? $cpost->post_excerpt : wp_trim_words(strip_shortcodes($cpost->post_content), $l);
-	if($force_l)
-		$e = wp_trim_words($e, $l);	
-	
-	return $e;
-}
-
-
-/** Deafult thumbnail for posts **/
-function tst_get_default_post_thumbnail($type = 'default_thumbnail', $size){
-		
-	$default_thumb_id = attachment_url_to_postid(get_theme_mod($type));
-	$img = '';
-	if($default_thumb_id){
-		$img = wp_get_attachment_image($default_thumb_id, $size);	
-	}
-	
-	return $img;
-}
-
-function tst_post_thumbnail($post_id, $size = 'post-thumbnail'){
-	
-	$thumb = get_the_post_thumbnail($post_id, $size);
-	
-	if(!$thumb){
-		$thumb = tst_get_default_post_thumbnail('default_thumbnail', $size);
-	}
-			
-	return $thumb;
-}
-
-function tst_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
-	
-	$src = get_the_post_thumbnail_url($post_id, $size);
-	if(!$src){
-		$default_thumb_id = attachment_url_to_postid(get_theme_mod('default_thumbnail'));
-		if($default_thumb_id){
-			$src = wp_get_attachment_image_src($default_thumb_id, $size);
-			$src = ($src) ? $src[0] : '';
-		}
-	}
-	
-	return $src;
-}
 
 /** Cards for campaigns **/
 function tst_leyka_campaign_card($cpost) {

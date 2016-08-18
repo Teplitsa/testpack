@@ -18,6 +18,8 @@ class FRL_CssJs {
 		add_action('admin_enqueue_scripts',  array($this, 'load_admin_scripts'), 30);
 		add_action('login_enqueue_scripts',  array($this, 'load_login_scripts'), 30);
 		add_filter('cmb2_render_pw_map', array($this, 'load_gmap_scripts'), 30);
+		
+		add_action('wp_head', array($this, 'inline_scripts'));
 	}
 	
 	public static function get_instance() {
@@ -66,7 +68,7 @@ class FRL_CssJs {
 		// fonts
 		wp_enqueue_style(
 			'tst-fonts',
-			'//fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700|Cuprum:400,700&subset=latin,cyrillic',
+			'//fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i|Open+Sans+Condensed:700&subset=cyrillic',
 			$style_dependencies,
 			null
 		);
@@ -108,6 +110,13 @@ class FRL_CssJs {
 		wp_localize_script('tst-front', 'frontend', array(
 			'ajaxurl' => admin_url('admin-ajax.php')			
 		));
+	}
+	
+	public function inline_scripts() {
+		
+	?>
+	<script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
+	<?php
 	}
 	
 	/** disable emojji **/
