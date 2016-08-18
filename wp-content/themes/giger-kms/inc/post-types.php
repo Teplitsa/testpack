@@ -98,79 +98,6 @@ function tst_custom_content(){
 		//'update_count_callback' => '',        
 	));
 	
-	
-	
-	/** Post types **/
-	/*register_post_type('project', array(
-        'labels' => array(
-            'name'               => 'Программы',
-            'singular_name'      => 'Программа',
-            'menu_name'          => 'Программы',
-            'name_admin_bar'     => 'Добавить программу',
-            'add_new'            => 'Добавить новую',
-            'add_new_item'       => 'Добавить программу',
-            'new_item'           => 'Новая программа',
-            'edit_item'          => 'Редактировать программу',
-            'view_item'          => 'Просмотр программ',
-            'all_items'          => 'Все программы',
-            'search_items'       => 'Искать программы',
-            'parent_item_colon'  => 'Родительская программа:',
-            'not_found'          => 'Программы не найдены',
-            'not_found_in_trash' => 'В Корзине программы не найдены'
-       ),
-        'public'              => true,
-        'exclude_from_search' => false,
-        'publicly_queryable'  => true,
-        'show_ui'             => true,
-        'show_in_nav_menus'   => false,
-        'show_in_menu'        => true,
-        'show_in_admin_bar'   => true,
-        //'query_var'           => true,
-        'capability_type'     => 'post',
-        'has_archive'         => 'projects',
-        'rewrite'             => array('slug' => 'project', 'with_front' => false),
-        'hierarchical'        => false,
-        'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-category',
-        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
-        'taxonomies'          => array(),
-    ));
-	
-	register_post_type('event', array(
-        'labels' => array(
-            'name'               => 'События',
-            'singular_name'      => 'Событие',
-            'menu_name'          => 'События',
-            'name_admin_bar'     => 'Добавить событие',
-            'add_new'            => 'Добавить новое',
-            'add_new_item'       => 'Добавить событие',
-            'new_item'           => 'Новое событие',
-            'edit_item'          => 'Редактировать событие',
-            'view_item'          => 'Просмотр события',
-            'all_items'          => 'Все события',
-            'search_items'       => 'Искать события',
-            'parent_item_colon'  => 'Родительское событие:',
-            'not_found'          => 'События не найдены',
-            'not_found_in_trash' => 'В Корзине события не найдены'
-       ),
-        'public'              => true,
-        'exclude_from_search' => false,
-        'publicly_queryable'  => true,
-        'show_ui'             => true,
-        'show_in_nav_menus'   => false,
-        'show_in_menu'        => true,
-        'show_in_admin_bar'   => true,
-        //'query_var'           => true,
-        'capability_type'     => 'post',
-        'has_archive'         => false,
-        'rewrite'             => array('slug' => 'event', 'with_front' => false),
-        'hierarchical'        => false,
-        'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-calendar',
-        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail', 'page-attributes'),
-        'taxonomies'          => array(),
-    ));*/
-	
 	register_post_type('org', array(
         'labels' => array(
             'name'               => 'Организации',
@@ -205,7 +132,7 @@ function tst_custom_content(){
         'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
         'taxonomies'          => array('org_cat'),
     ));
-	
+
 	register_post_type('person', array(
         'labels' => array(
             'name'               => 'Профили людей',
@@ -244,46 +171,44 @@ function tst_custom_content(){
 	//pages
 	add_post_type_support('page', 'excerpt');
 	add_post_type_support('page', 'thumbnail');
-		
-	//remove post tags
-	unregister_taxonomy_for_object_type('post_tag', 'post');
-	
-	
-	//Markers
-	register_post_type('marker', array(
+
+	register_post_type('quote', array(
         'labels' => array(
-			'name'               => 'Маркеры',
-			'singular_name'      => 'Маркер',
-			'menu_name'          => 'Маркеры',
-			'name_admin_bar'     => 'Добавить маркер',
-			'add_new'            => 'Добавить новый',
-			'add_new_item'       => 'Добавить маркер',
-			'new_item'           => 'Новый маркер',
-			'edit_item'          => 'Редактировать маркер',
-			'view_item'          => 'Просмотр маркеров',
-			'all_items'          => 'Все маркеры',
-			'search_items'       => 'Искать маркер',
-			'parent_item_colon'  => 'Родительский маркер:',
-			'not_found'          => 'Маркеры не найдены',
-			'not_found_in_trash' => 'В Корзине маркеры не найдены'
+            'name'               => 'Цитаты',
+            'singular_name'      => 'Цитата',
+            'menu_name'          => 'Цитаты',
+            'name_admin_bar'     => 'Добавить цитату',
+            'add_new'            => 'Добавить новую',
+            'add_new_item'       => 'Добавить цитату',
+            'new_item'           => 'Новая цитата',
+            'edit_item'          => 'Редактировать цитату',
+            'view_item'          => 'Просмотр цитаты',
+            'all_items'          => 'Все цитаты',
+            'search_items'       => 'Искать цитаты',
+            'parent_item_colon'  => 'Родительская цитата:',
+            'not_found'          => 'Цитаты не найдены',
+            'not_found_in_trash' => 'В Корзине цитаты не найдены'
         ),
         'public'              => true,
-        'exclude_from_search' => true,
+        'exclude_from_search' => false,
         'publicly_queryable'  => false,
         'show_ui'             => true,
-        'show_in_nav_menus'   => false,
+        'show_in_nav_menus'   => true,
         'show_in_menu'        => true,
-        'show_in_admin_bar'   => false,
+        'show_in_admin_bar'   => true,
         //'query_var'           => true,
         'capability_type'     => 'post',
         'has_archive'         => false,
-        'rewrite'             => array('slug' => 'marker', 'with_front' => false),
+        'rewrite'             => array('slug' => 'quotation', 'with_front' => false),
         'hierarchical'        => false,
-        'menu_position'       => 20,
-		'menu_icon'           => 'dashicons-location',
-        'supports'            => array('title', 'editor', 'thumbnail'),
-        'taxonomies'          => array('marker_cat'),
+        'menu_position'       => 5,
+        'menu_icon'           => 'dashicons-format-quote',
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'taxonomies'          => array(),
     ));
+
+	//remove post tags
+	unregister_taxonomy_for_object_type('post_tag', 'post');
 	
 	register_taxonomy('marker_cat', array('marker',), array(
 		'labels' => array(
