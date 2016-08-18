@@ -29,14 +29,15 @@ function tst_setup() {
 	set_post_thumbnail_size(640, 395, true ); // regular thumbnails	
 	add_image_size('square', 450, 450, true ); // square thumbnail 
 	add_image_size('medium-thumbnail', 790, 488, true ); // poster in widget	
-	add_image_size('small-thumbnail', 250, 154, true ); // fixed size for embedding
+	add_image_size('small-thumbnail', 320, 198, true ); // fixed size for embedding
 	//add_image_size('cover', 400, 567, true ); // long thumbnail for pages
 
 	// Menus
 	$menus = array(
 		'primary'   => 'Главное',		
 		'social'    => 'Социальные кнопки',
-		'sitemap'   => 'Карта сайта'
+		'sitemap'   => 'Карта сайта',
+		'news'   	=> 'Рубрики новостей',
 	);
 		
 	register_nav_menus($menus);

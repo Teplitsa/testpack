@@ -20,52 +20,45 @@ elseif($format == 'introimg') {
 }
 
 get_header(); ?>
-<section class="main-content single-post-section container-wide format-<?php echo $format;?>">
-<div id="tst_sharing" class="regular-sharing hide-upto-medium"><?php echo tst_social_share_no_js();?></div>
 
-<div class="container">
+<section class="main-content single-post-section format-<?php echo $format;?>"><div class="container-narrow">
+	
 	<header class="entry-header-full">
-		<div class="entry-meta"><?php echo tst_posted_on($cpost); //for event ?></div>
-		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>				
-		<div class="mobile-sharing hide-on-medium"><?php echo tst_social_share_no_js();?></div>
-		
+		<?php echo tst_breadcrumbs($cpost);?>
+		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>
+		<div class="entry-meta"><?php echo tst_posted_on_single($cpost);?></div>
 		<div class="lead"><?php echo apply_filters('tst_the_content', $cpost->post_excerpt); ?></div>
 	</header>
 	
-	<?php if($format == 'introimg' && $cpost->post_type != 'project'){ ?>
-	<section class="entry-preview introimg">		
-		<div class="tpl-pictured-bg" style="background-image: url(<?php echo $thumbnail;?>);" ></div>		
-	</section>
-	<?php } ?>
-		
-	<div class="frame">
-		<main class="bit md-8">		
-			
-		<?php if($format == 'standard' && $cpost->post_type != 'project') { ?>
-			<div class="entry-preview">
-				<?php echo tst_post_thumbnail($cpost->ID, 'medium-thumbnail');?>						
-			</div>
-		<?php } elseif($format == 'introvid' && $cpost->post_type != 'project') { ?>
-			<div class="entry-preview introvid player">
-				<?php echo apply_filters('the_content', $video);?>
-			</div>
-		<?php } ?>				
-			
-			<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
-		</main>
-		
-		<div id="tst_sidebar" class="bit md-4"><?php dynamic_sidebar( 'right_single-sidebar' ); ?> </div>
+	<?php if($format == 'standard') { ?>
+		<div class="entry-preview-full">
+			<?php echo tst_post_thumbnail($cpost->ID, 'medium-thumbnail');?>						
+		</div>
+	<?php } elseif($format == 'introvid') { ?>
+		<div class="entry-preview-full introvid player">
+			<?php echo apply_filters('the_content', $video);?>
+		</div>
+	<?php } ?>	
 	
-	</div>
-</div>
-</section>
+	<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
+	
+	<footer class="entry-footer">
+		<?php
+			$s_link = tst_get_post_source_link($cpost->ID); 
+			if(!empty($s_link)) {
+		?>
+			<div class="post-source-link">Источник: <?php echo $s_link;?></div>
+		<?php } ?>
+			<?php tst_post_nav();?>
+	</footer>
+</div></section>
 
 <?php
 	if($cpost->post_type == 'post') {
 		$cat = get_the_terms($post->ID, 'category');
 		$pquery = new WP_Query(array(
 			'post_type'=> 'post',
-			'posts_per_page' => 5,
+			'posts_per_page' => 4,
 			'post__not_in' => array($cpost->ID),
 			'tax_query' => array(
 				array(
@@ -84,7 +77,7 @@ get_header(); ?>
 			));
 		}
 		
-		tst_more_section($pquery->posts, __('Related news', 'tst'), 'news', 'addon'); 
+		tst_more_section($pquery->posts, 'Новости по теме', 'news', 'addon'); 
 		
 	}
 	

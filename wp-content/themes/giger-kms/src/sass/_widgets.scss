@@ -84,48 +84,51 @@
 
 
 /** Page builder widgets **/
-.so-panel.widget_nav_menu {
-	
+@mixin local-menu-default {
 	ul {
 		margin: 0;
 	}
 	
 	li {
-		list-style-type: none;
+		list-style-type: none;		
 		&:before { display: none; }
 	}
 	
 	a {
-		display: inline-block;
-		font-size: 1.2em;
-		padding: 5px 12px;
-		white-space: nowrap; 
+		color: $color-link-one;
+		display: inline-block;		
+		padding: 0 6px;
+		white-space: nowrap;		
 	}
 	
 	.current-menu-item {
 		a {
-			background: $color-link-three;
-			color: $color-white;
+			border-bottom: 1px solid $color-link-one;;
 		}
 	}
-	
-	.inpage-h-menu {
-		ul { margin-left: -12px; }
+}
+
+@mixin local-menu-horizont {
+	ul { margin-left: -12px; }
 		
-		li {
-			display: inline-block;
-			margin: 0;
-			padding: 0;
-			
-			&.current-menu-item:first-child {
-				margin-left: 12px;
-			}
-			
-			a {
-				padding: 5px 12px;
-			}
-		}		
+	li {
+		display: inline-block;
+		margin: 0 8px;
+		padding: 0;		
+	}	
+}
+
+.so-panel.widget_nav_menu {	
+	@include local-menu-default();
+	.inpage-h-menu {
+		@include local-menu-horizont();
 	}
+}
+
+.heading-menu {
+	@include local-menu-default();
+	@include local-menu-horizont();
+	margin: $base 0 0;
 }
 
 .tpl-page-fullwidth {

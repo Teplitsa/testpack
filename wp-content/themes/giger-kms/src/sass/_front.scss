@@ -15,12 +15,12 @@ body {
 
 a {
 	text-decoration: none;
-	color: $color-link-three;
+	color: $color-link-one;
 	@include transition(all 0.3s);
 	
-	&:visited { color: $color-link-three; }
+	&:visited { color: $color-link-one; }
 	&:hover, &:focus, &:active {
-		color: $color-link-two;
+		color: $color-link-three;
 	}
 }
 
@@ -59,20 +59,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .container-narrow {
 	@extend .container;
-	max-width: 900px;
+	max-width: 770px;
 }
 
-.search .site-content .container { max-width: 900px;}
+.search .site-content .container { max-width: 770px;}
 
 // index
 .heading {
 	background: $color-white;
-	padding: $base;
+	padding: $gut 0;
+	margin-bottom: $gut*1.5;
 	text-align: center;
 }
 
 .section-title {
-	@include header-title(head_title);		
+	@include header-title(head_title);	
 }
 
 .cards-holder {
