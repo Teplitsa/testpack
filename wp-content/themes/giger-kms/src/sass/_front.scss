@@ -8,10 +8,11 @@ html {
 body {
 	background-color: $color-white;
 	text-rendering: optimizeLegibility;	
-	@include body-text();
-	
+	@include body-text();	
 	& > svg { display: none; }	
 }
+
+
 
 a {
 	text-decoration: none;

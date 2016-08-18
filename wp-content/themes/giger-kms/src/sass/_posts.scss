@@ -4,7 +4,7 @@
 .thumbnail-link { display: block; }
 .sep { padding: 0 4px; }
 
-.fixed-top {
+/*.fixed-top {
 	position: fixed;
 	top: $logo_full_h + $height_gap + 280px;
 }
@@ -12,7 +12,7 @@
 .fixed-bottom {
 	position: absolute;
 	bottom: 0;				
-}
+}*/
 
 
 /**  Cards Structure **/
@@ -325,9 +325,6 @@
 		a { border-bottom: 1px solid; }
 	}
 }
-
-
-
 .tpl-related-post {
 	@extend .tpl-post;
 	@include transition(all 0.35s);
@@ -348,6 +345,7 @@
 
 
 
+/** old **/
 
 /** People **/
 .tpl-person {

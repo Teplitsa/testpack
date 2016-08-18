@@ -73,6 +73,16 @@ $rule: 	 1px solid $color-border-normal;
 $fixed_side: 222px;
 
 
+//humburgers settings 
+$hamburger-padding-x                       : 10px;
+$hamburger-padding-y                       : 10px;
+$hamburger-layer-width                     : 28px;
+$hamburger-layer-height                    : 4px;
+$hamburger-layer-spacing                   : 4px; 
+$hamburger-layer-color                     : #000;
+$hamburger-layer-border-radius             : 4px;
+$hamburger-hover-opacity                   : 0.6;
+
 /** Mixins **/
 
 
@@ -127,7 +137,7 @@ $fixed_side: 222px;
 		line-height: 16px;
 	}
 	@else if $mod == menu {
-		
+		font-weight: bold;
 	}
 	@else if $mod == lowercase {		
 		text-transform: none;
@@ -236,20 +246,23 @@ $fixed_side: 222px;
 	font-family: $nav;	
 	text-transform: uppercase;
 	color: $color-white;
-	background: $color-link-two;
-	border: 1px solid $color-link-two;	
+	background: $color-link-one;
+	border-radius: 2px;
+	border-bottom: 2px solid darken($color-link-one, 10%);
+	
 	@include transition(all 0.3s);
 	
-	padding: 14px 24px;
-	font-size: 16px;
-	line-height: 18px;
+	padding: 8px 24px 6px;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
 	
 	&:visited {
 		color: $color-white;
 	}
+	
 	&:hover, &:focus, &:active {
-		background: darken($color-link-two, 10%);
-		border-color: darken($color-link-two, 10%);
+		background: $color-link-three;		
 		color: $color-white;
 	}
 	
@@ -274,14 +287,8 @@ $fixed_side: 222px;
 			border-color: darken($color-link-two, 10%);			
 		}
 	}
-	@else if $mod == red {
-		background: $color-link-one;
-		border: 1px solid $color-link-one;
+	@else if $mod == featured {
 		
-		&:hover, &:focus, &:active {			
-			background: darken($color-link-one, 10%);
-			border-color: darken($color-link-one, 10%);			
-		}
 	}
 }
 
