@@ -64,13 +64,13 @@ class FRL_CssJs {
 		$style_dependencies = array();
 
 		// fonts
-		wp_enqueue_style(
-			'tst-fonts',
-			'//fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700|Cuprum:400,700&subset=latin,cyrillic',
-			$style_dependencies,
-			null
-		);
-		$style_dependencies[] = 'tst-fonts';
+// 		wp_enqueue_style(
+// 			'tst-fonts',
+// 			'//fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700|Cuprum:400,700&subset=latin,cyrillic',
+// 			$style_dependencies,
+// 			null
+// 		);
+// 		$style_dependencies[] = 'tst-fonts';
 
 		// design
         wp_enqueue_style('dashicons');

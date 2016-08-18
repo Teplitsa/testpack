@@ -129,24 +129,29 @@
 	}
 }
 
-
 //hide
 .hide-upto-small {
-	@include upto(small-screens) { display: none;}
+    @include upto(small-screens) { display: none;}
 }
 .hide-upto-medium {
-	@include upto(medium-screens) { display: none;}
+    @include upto(medium-screens) { display: none;}
 }
 .hide-upto-large {
-	@include upto(large-screens) { display: none;}
+    @include upto(large-screens) { display: none;}
+}
+.hide-upto-exlarge {
+    @include upto(exlarge-screens) { display: none;}
 }
 
 .hide-on-small {
-	@include for(small-screens) { display: none;}
+    @include for(small-screens) { display: none;}
 }
 .hide-on-medium {
-	@include for(medium-screens) { display: none;}
+    @include for(medium-screens) { display: none;}
 }
 .hide-on-large {
-	@include for(large-screens) { display: none;}
+    @include for(large-screens) { display: none;}
+}
+.hide-on-exlarge {
+    @include for(exlarge-screens) { display: none;}
 }
