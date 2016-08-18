@@ -537,48 +537,7 @@ $args = array(
 }
 
 
-/** == Children profile related logic == **/
-add_action('save_post_leyka_campaign', 'tst_donations_actions', 2, 3);
-function tst_donations_actions($post_ID, $post, $update){
-	
-	if(!class_exists('Leyka_Campaign'))
-		return;
-	
-	$camp = new Leyka_Campaign($post);
-	
-	if($camp->is_closed && has_term('need-help', 'campaign_cat', $post)) {
-		$category = get_term_by('slug', 'you-helped', 'campaign_cat');
-		if($category)
-			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
-	}
-	
-	if(!$camp->is_closed && has_term('you-helped', 'campaign_cat', $post)) {
-		$category = get_term_by('slug', 'need-help', 'campaign_cat');
-		if($category)
-			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
-	}	
-}
 
-function tst_is_children_campaign($post_id){
-	
-	if(has_term(array('you-helped', 'need-help', 'rosemary', 'children'), 'campaign_cat', $post_id))
-		return true;
-	
-	return false;
-}
-
-function tst_connected_project_meta($cpost){
-		
-	//WP_Query doesn't ork for any reason
-	$connected = p2p_get_connections('children-projects', array('direction' => 'any', 'to' => $cpost->ID));
-	if(!empty($connected) && isset($connected[0]->p2p_from)){
-		$ccpost = new Leyka_Campaign((int)$connected[0]->p2p_from);
-		$label = ($ccpost->is_closed) ? 'Сбор средств осуществлялся в рамках программы/проекта' : 'Сбор средств осуществляется в рамках программы/проекта';
-	?>
-		<div class="child-project"><span class="label"><?php echo $label;?>:</span> <a href="<?php echo get_permalink($ccpost->ID);?>"><?php echo apply_filters('tst_the_title', $ccpost->title);?></a></div>
-	<?php
-	}
-}
 
 
 /** Related project on single page **/

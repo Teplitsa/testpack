@@ -47,9 +47,7 @@ if(!tst_is_children_campaign($cpost->ID)){
 			</div>
 		</div>	
 			
-		<?php if(function_exists('leyka_get_scale') && !has_term('rosemary', 'campaign_cat', $cpost)) {?>
-			<div class="hide-on-medium"><?php echo leyka_get_scale($cpost, array('show_button' => 1));?></div>
-		<?php }?>
+		
 				
 		<?php
 			$thanks = get_post_meta($cpost->ID, 'campaign_child_thanks', true);
