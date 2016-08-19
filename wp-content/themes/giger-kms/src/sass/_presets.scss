@@ -41,11 +41,11 @@ $color-link-three: #CC0000; //dark red
 
 $color-text-black:			#000000;
 $color-text-semi:			rgba(0,0,0, 0.6);
-$color-text-light:			rgba(0,0,0, 0.45);
+$color-text-light:			#9b9b9b;
 $color-secondary:			#FFF3E1;
 $color-secondary-dark:		#e5e5e5;
 $color-secondary-alt:		#f3f3f3;
-$color-secondary-black:		#191411;
+$color-secondary-black:		rgba(41,12,4, 0.54);
 
 
 $color-border-normal: #dfdfdf;
@@ -137,7 +137,8 @@ $hamburger-hover-opacity                   : 0.6;
 		line-height: 16px;
 	}
 	@else if $mod == menu {
-		font-weight: bold;
+		font-size: 13px;	
+		//font-weight: bold;
 	}
 	@else if $mod == menu_small {
 		font-size: 12px;	
@@ -384,6 +385,7 @@ $hamburger-hover-opacity                   : 0.6;
 	position: relative;
 	width: auto;
 	
+	& > .fs-content-wrap,
 	& > div[id *="pl-"],
 	& > div[class *="so-widget"] {
 		max-width: $page_cont;

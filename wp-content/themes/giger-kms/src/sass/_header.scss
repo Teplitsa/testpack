@@ -120,15 +120,25 @@ body {
 		@include nav-text(menu);
 		line-height: $header_height_base;
 		color: $color-text;
+		
 		&:hover { color: $color-link-three; }		
 	}
 	
 	.current-menu-item a,
 	.current-menu-item a:hover {
-		color: rgba(0,0,0, 0.6);
+		color: $color-text-light;
 	}
 	
 	.sub-menu { display: none; }
+	
+	.help-button {
+		@include for(small-screens) { display: none;}
+		margin-top: 10px;
+		
+		a {
+			@include button(red);
+		}
+	}
 }
 
 .mainmenu .main-menu { //horizontal menu
@@ -139,7 +149,7 @@ body {
 		display: inline-block;
 		margin: 0 8px;
 		
-		&.hide-on-large { display: none;}
+		&.help-button { display: none;}
 	}
 	
 }
@@ -151,9 +161,12 @@ body {
 		display: none;
 		background: $color-white;
 	}
+	
 	&.menu-open {
-		.site-nav-mobile { display:block; }
-		@include for(large-screens) {  display: none  }
+		.site-nav-mobile {
+			display:block;
+			@include for(large-screens) {  display: none;  }
+		}		
 	}
 }
 

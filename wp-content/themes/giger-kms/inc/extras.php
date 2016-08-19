@@ -210,21 +210,8 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'header_title_two',
         'priority' => 21,
     ));
+	  	
 	
-    	
-	$wp_customize->add_setting('header_text_top', array(
-        'default'   => '',
-        'transport' => 'refresh',
-		'option' => 'option'
-    ));
-    
-    $wp_customize->add_control('header_text_top', array(
-        'type'     => 'textarea',		
-        'label'    => 'Текст в шапке',
-        'section'  => 'title_tagline',
-        'settings' => 'header_text_top',
-        'priority' => 25,
-    ));
 	
 	$wp_customize->add_setting('er_text', array(
         'default'   => '',
@@ -253,6 +240,20 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 40,
     ));
 	
+	$wp_customize->add_setting('now_campaign_id', array(
+        'default'   => '',
+        'transport' => 'refresh',
+		'option' => 'option'
+    ));
+    
+    $wp_customize->add_control('now_campaign_id', array(
+        'type'     => 'text',		
+        'label'    => 'ID Кампании для кнопки помощи',
+        'section'  => 'title_tagline',
+        'settings' => 'now_campaign_id',
+        'priority' => 45,
+    ));
+	
 	$wp_customize->add_setting('newsletter_bottom_form_id', array(
         'default'   => '',
         'transport' => 'refresh',
@@ -260,10 +261,10 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
     
     $wp_customize->add_control('newsletter_bottom_form_id', array(
         'type'     => 'text',		
-        'label'    => 'ID формы подписки (подвал)',
+        'label'    => 'ID формы подписки',
         'section'  => 'title_tagline',
         'settings' => 'newsletter_bottom_form_id',
-        'priority' => 45,
+        'priority' => 50,
     ));
 	
 	//Images

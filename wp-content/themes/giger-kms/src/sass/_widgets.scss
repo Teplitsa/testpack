@@ -288,9 +288,82 @@
 	
 }
 
+/* featured section */
+.featured-section {
+	@include container-extended();
+	color: $color-white;
+	padding: 20% 0;
+	z-index: 1;
+	position: relative;
+	
+	@include for(large-screens) {
+		padding: 15% 0;
+	}
+	
+	&:after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: $color-secondary-black;
+		z-index: 3;
+	}
+}
+
+.fs-content-wrap {
+	position: relative;
+	color: $color-white;
+	z-index: 20;
+	
+	.fs-content {		
+		margin: 0 auto;
+		position: relative;
+	}
+	
+	.fs-title {
+		@include header-title(head_title);
+		margin-bottom: $gut;		
+		color: $color-white;
+	}
+	
+	.fs-desc {
+		color: transparentize($color-white, 0.05);		
+	}
+	
+	.fs-icon {
+		width: 150px;
+		margin-bottom: $gut;
+			
+		.dashicons {
+			font-size: 150px;
+			width: 150px;
+			height: 150px;
+		}
+	}
+	
+	@include for(small-screens) {
+		.fs-desc,
+		.fs-title { margin-left: 180px;}
+		
+		.fs-icon {
+			position: absolute;
+			top: -15px;
+			left: 0;
+			margin-bottom: 0;
+		}
+	}
+	
+	@include for(medium-screens) {
+		.fs-desc,
+		.fs-title { margin-left: 200px;}
+	}
+}
+
 
 /* intro section */
-
 //page with cards
 .intro-head-image {
 	@include vertical-image-header-fixed();

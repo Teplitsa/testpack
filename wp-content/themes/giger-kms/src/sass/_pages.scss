@@ -1,16 +1,16 @@
 /** Pages **/
-
-.page-header-simple {
-	padding: $gut 0 20px;
+.tpl-page-regular {
 	
-	.page-title {
-		@include header-title(section);		
+	.page-header {
+		margin-bottom: $gut;
+		padding: $gut 0;
+		
+		h1 {
+			@include header-title(head_title);
+			text-align: center;
+		}
 	}
-}
-
-.page-content-simple {
-	margin-bottom: $gut*2;
-	min-height: 400px;
+	
 	min-height: 50vh;
 }
 
