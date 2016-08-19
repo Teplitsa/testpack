@@ -101,32 +101,33 @@ function tst_amount_field(Leyka_Payment_Form $form){
 	}
 
 	$supported_curr = leyka_get_active_currencies();
-	$current_curr = $form->get_current_currency();
+	$current_curr = $form->get_current_currency(); 
 
 	if(empty($supported_curr[$current_curr])) {
 		return; // Current currency isn't supported
-	}?>
+	}
+	$curr_mark = esc_attr($supported_curr[$current_curr]['label']);
+?>
 
 <div class="leyka-field amount-selector amount mixed">
-	
 <div class="currency-selector-row" >
 	<div class="currency-variants">
 <?php
 	foreach($supported_curr as $currency => $data) {
 
 	$variants = explode(',', $data['amount_settings']['fixed']);?>
-		<div class="<?php echo $currency;?> amount-variants-container" <?php echo $currency == $current_curr ? '' : 'style="display:none;"';?> >
-			<div class="amount-variants-row">
-				<?php foreach($variants as $i => $amount) { ?>
-					<label class="figure rdc-radio" title="<?php _e('Please, specify your donation amount', 'leyka');?>">
-						<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button" <?php checked($i, 0);?> <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?> >
-						<span class="rdc-radio__label"><?php echo (int)$amount;?></span>
-					</label>
-				<?php }?>
+	<div class="<?php echo $currency;?> amount-variants-container" <?php echo $currency == $current_curr ? '' : 'style="display:none;"';?> >
+		<div class="amount-variants-row">
+			<?php foreach($variants as $i => $amount) { ?>
+				<label class="figure">
+					<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="figure-radio__button" <?php checked($i, 0);?> <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?> >
+					<span class="figure-radio__label"><?php echo (int)$amount;?>&nbsp;<?php echo $curr_mark;?></span>
+				</label>
+			<?php }?>
 
-				<label class="figure-flex"><span class="figure-sep"><?php _e('or', 'tst');?></span><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6" <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?>></label>
-			</div>
-		</div>	
+			<label class="figure-flex"><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex figure-flex-input__text" value="" placeholder="Другая сумма" maxlength="6" size="12" <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?>></label>
+		</div>
+	</div>	
 	<?php } ?>
 	</div>
 	<div class="currency"><span class="currency-frame"><?php echo $form->get_currency_field();?></span></div>

@@ -388,6 +388,13 @@ $margin-base: 16px;
 			}
 		}
 	}
+	
+	span.linked {
+		color: $color-link-one;
+		a {
+			border-bottom: 1px solid;
+		}
+	}
 		
 } //mixin
 

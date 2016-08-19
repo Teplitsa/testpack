@@ -3,16 +3,21 @@
 /** campaign template **/
 .single-campaign-full {	
 	padding: $gut*2 0;
-		
+	background-color: $color-secondary-dark;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
+	
 	.campaign-form {
 		background: $color-white;
-		margin-bottom: 2px;
+		margin-bottom: 1px;
 		box-shadow: 1px 1px 3px rgba(0,0,0, 0.5);		
 	}
 	
 	.entry-content {
 		@extend .campaign-form;
-		padding: $gut;
+		padding: $gut $gut $gut*1.2 $gut ;
+		margin-bottom: 0;
 		@include for(medium-screens) {
 			padding: $gut $gut*3;
 		}
@@ -88,8 +93,8 @@
 		}
 		
 		a {
-			color: $color-link-three;
-			&:visited { color: $color-link-three; }
+			color: $color-link-one;
+			&:visited { color: $color-link-one; }
 			&:hover, &:focus, &:active {
 				text-decoration: underline;		
 			}
@@ -126,156 +131,94 @@
 	}	
 }
 
-$figure_font_size: 28px;
-$figure_line-height: 40px;
+$figure_font_size: 16px;
+$figure_line-height: 20px;
+$figure_padding-height: 16px;
 
 .leyka-field.amount-selector {
-	line-height: $figure_line-height;
+	
 	
 	.figure,
 	.figure-flex {
-		display: inline-block;
-		height: $figure_line-height;
-		margin-bottom: 8px;
+		@include input-text();
+		font-size: $figure_font_size;
+		line-height: $figure_line-height;
 		
-		span {
-			height: $figure_line-height;
-		}
 	}
 		
 	.figure {
-		display: inline-block;
-		line-height: inherit;		
-		padding-left: 30px;	
-		
-		.rdc-radio__label {
-			@include checkbox-text($figure_font_size);
-			line-height: inherit;
-			
-			&:before {
-				width: 20px;
-				height: 20px;
-				top: 50%;
-				@include transform(translateY(-50%));
-				left: -30px;
-			}
-		}
-	}
-		
-	.figure-sep {		
-		@include form-text();
-		font-size: 18px;
-		line-height: inherit;
-		text-transform: uppercase;
-		color: $color-link-three;
-		margin-right: 8px;
-	}
-	
-	.donate_amount_flex {		
-		border: 2px solid $color-border-normal;
-		border-radius: 2px;
-		@include checkbox-text($figure_font_size);
-		line-height: $figure_line-height - 10px;
-		text-align: right;
-	}
-	
-	
-	.currency {
-		@include form-text();
-		font-size: 18px;
-		line-height: inherit;
-		text-transform: uppercase;		
-		width: 70px;
-		margin-bottom: 8px;
-		
-		.leyka-screen-reader-text {
-			display: none;
-		}
-	}
-	
-	.currency-frame {
-		display: block;
-		line-height: inherit;		
-		width: 100%;
-		height: $figure_line-height;
-		text-align: left;
-		overflow: hidden;
 		position: relative;
-		z-index: 1;
-		
-		&:after {
-			content: '▾';
-			display: inline-block;
-			color: black;
-			font-size: 18px;
-			position: absolute;
-			top: -2px;
-			right: 0;
-			z-index: -1;
-		}
-		
-		span {
-			display: inline-block;
-			background: $color-white;
-			width: 100%;
-			line-height: inherit;
-			height: $figure_line-height;
-			z-index: 10;
-		}
-		
-		select {
-			border: none;
-			width: 90px;
-			background: transparent;
-			@include form-text();
-			font-size: 18px;
-			line-height: inherit;
-			text-transform: uppercase;	
-		}
-		
 	}
 	
-	.rdc-radio__button:checked + .rdc-radio__label {
-		&:before {
-			background-color: $color-link-one;
-			border-color: $color-link-one;
-		}
+	.figure-radio__button {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
 	}
+	
+	.figure-radio__label {
+		display: inline-block;
+		padding: $figure_padding-height;
+		border: 1px solid $color-border-link;
+		text-align: center;
+		width: 100%;
+		cursor: pointer;
+	}
+	
+	.figure-flex-input__text {
+		border: 1px solid $color-border-link;
+		padding: $figure_padding-height $figure_padding-height/2;
+		text-align: center;
+		width: 100%;
+	}
+	
+	//no support for currency change
+	.currency { 
+		display: none; 
+	}
+	
+	.figure-radio__button:checked + .figure-radio__label {
+		border-color: $color-link-one;
+		background: $color-link-one;
+		color: $color-white;
+	}
+	
 }
 
 //position with flexbox
-.currency-selector-row {
+.amount-variants-row {
 	display: flex;
-	flex-flow: row nowrap;
+	flex-flow: row wrap;
 	justify-content: space-between;
-	align-items: center;
+	align-items: stretch;
+	margin: 0 -4px;
 	
-	.currency-variants {
+	.figure {
+		flex: 1 0 auto;
+		@include calc(width, '50% - 8px');
+		margin: 4px;
+	}
+	
+	.figure-flex {
 		flex: 1 1 auto;
+		@include calc(width, '100% - 8px');
+		margin: 4px;		
 	}
 	
-	.currency {
-		flex: 0 0 auto;
-		align-self: flex-end;
-	}
-}
-
-@include for(small-screens) {
-	.amount-variants-row {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between;
-		align-items: flex-start;
-		
-		.figure {
-			flex: 0 0 auto;
-			width: 20%;
+	@include for(small-screens) {
+		.figure {			
+			@include calc(width, '33.30% - 8px');
 		}
-		
 		.figure-flex {
-			flex: 1 1 auto;
-			padding: 0 8px;
-			text-align: right;		
+			@include calc(width, '66.7% - 8px');
+		}
+	}
+	@include for(medium-screens) {
+		.figure {			
+			@include calc(width, '19% - 8px');
+		}
+		.figure-flex {
+			@include calc(width, '24% - 8px');
 		}
 	}
 }
@@ -316,8 +259,8 @@ $figure_line-height: 40px;
 	color: $color-text-light;
 	
 	a {
-		color: $color-link-three;
-		&:visited { color: $color-link-three; }
+		color: $color-link-one;
+		&:visited { color: $color-link-one; }
 		&:hover, &:focus, &:active {
 			text-decoration: underline;		
 		}
@@ -358,7 +301,7 @@ $figure_line-height: 40px;
 	background-color: $color-white;
 	
 	.leyka-modal-close {
-		background: $color-link-three;
+		background: $color-link-one;
 		color: $color-white;
 		width: 28px;
 		height: 28px;
@@ -375,7 +318,7 @@ $figure_line-height: 40px;
 			height: 12px;
 			fill: $color-white;
 			pointer-events: none;
-			margin-top: -1px;
+			margin-top: 8px;
 		}
 	}
 	
