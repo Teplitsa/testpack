@@ -7,8 +7,7 @@
 	
 	& > h3, .widget-title {
 		margin-bottom: $base;		
-		@include header-title(widget);
-		color: $color-link-three;
+		@include header-title(widget);		
 	}
 	
 	.textwidget {		
@@ -149,7 +148,7 @@
 	}
 	
 	.container-narrowed { // for widget in the center
-		max-width: 900px;
+		max-width: 770px;
 		margin: 0 auto;
 	}
 	
@@ -178,6 +177,12 @@
 	.back-to-container div[class *= "so-widget-"]{ //widget limited to container width
 		max-width: $page_cont;
 		margin: 0 auto;
+	}
+	
+	.title-red {
+		.widget-title {
+			color: $color-link-one;
+		}
 	}
 }
 
@@ -265,15 +270,13 @@
 	}
 	
 	h3 {
-		@include header-title(head_title);
-		margin: 0;
-		color: $color-link-three;
+		@include header-title(section);
+		margin: 0;		
 	}
 	
 	h4 {
-		@include post-title();
-		margin: 0;
-		color: $color-link-three;
+		@include post-title(popup);
+		margin: 0;		
 	}
 	
 	h3 + h4 { margin-top: 1em; }
@@ -297,7 +300,7 @@
 	position: relative;
 	
 	@include for(large-screens) {
-		padding: 15% 0;
+		padding: 13% 0;
 	}
 	
 	&:after {
@@ -490,5 +493,18 @@
 	.all-link {
 		margin-top: $base;
 		font-size: 0.8em;
+	}
+}
+
+
+/** Form widget **/
+.entry-content .frm_form_widget, 
+.frm_form_widget {
+	.widget-title {
+		display: none;		
+	}
+	
+	.frm_forms {
+		marign: 0;
 	}
 }
