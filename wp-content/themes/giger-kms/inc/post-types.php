@@ -504,7 +504,7 @@ function tst_custom_metaboxes() {
 	
 	$marker_cmb->add_field( array(
 		'name' => 'Маркер',
-		'desc' => 'Укажите позициюна карте',
+		'desc' => 'Укажите позицию на карте',
 		'id'   => 'marker_location',
 		'type' => 'pw_map',
 		'split_values' => true, // Save latitude and longitude as two separate fields

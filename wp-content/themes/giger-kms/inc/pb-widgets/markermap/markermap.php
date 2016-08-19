@@ -103,8 +103,8 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			'height'   	 => ($instance['height']) ? (int)($instance['height']) : $defaults['height'],
 			'zoom'   	 => ($instance['zoom']) ? (int)($instance['zoom']) : $defaults['zoom'],
 			'show_legend'=> ($instance['show_legend']) ? (bool)($instance['show_legend']) : $defaults['show_legend'],
-			'lat_center' => ($instance['lat_center']) ? sanitize_text_field($instance['lat_center']) : $defaults['lat_center'], 
-			'lng_center' => ($instance['lng_center']) ? sanitize_text_field($instance['lng_center']) : $defaults['lng_center'], 
+			'lat_center' => ($instance['lat_center']) ? sanitize_text_field($instance['lat_center']) : $defaults['lat_center'],
+			'lng_center' => ($instance['lng_center']) ? sanitize_text_field($instance['lng_center']) : $defaults['lng_center'],
 		);
 	}
 	
@@ -165,13 +165,13 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 				$show_legend = false;
 		}
 
-        $markers = get_posts($params);		
+        $markers = get_posts($params);
 		$markers_json = array();
 		foreach($markers as $marker) {
 	 
 			$lat = get_post_meta($marker->ID, 'marker_location_latitude', true);
 			$lng = get_post_meta($marker->ID, 'marker_location_longitude', true);
-	 
+
 			if(empty($lat) || empty($lng)) {
 				continue;
 			}
@@ -188,7 +188,7 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 				'class' => tst_get_marker_icon_class($marker, $layers_ids) ,
 			);
 		}
-		
+
 //		wp_enqueue_style( 'dashicons' ); // Caused leaflet map CSS bugs, so was transferred to the main CSS enqueue blocks
 		echo $args['before_widget'];
 		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
