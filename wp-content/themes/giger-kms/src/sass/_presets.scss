@@ -44,15 +44,15 @@ $color-text-semi:			rgba(0,0,0, 0.6);
 $color-text-light:			#9b9b9b;
 $color-secondary:			#FFF3E1;
 $color-secondary-dark:		#e5e5e5;
-$color-secondary-alt:		#f3f3f3;
+$color-secondary-alt:		#FEF6EC;
 $color-secondary-black:		rgba(41,12,4, 0.54);
 
 
 $color-border-normal: #dfdfdf;
 $color-border-light:  #eeeeee;
-$color-border-link:   #d1d1d1;
+$color-border-link:   #8c8c91;
 
-$color-form-invalid: #ED1C24;
+$color-form-invalid: #CC0000;
 
 $leyka_green : #1DB318;
 
@@ -266,6 +266,7 @@ $hamburger-hover-opacity                   : 0.7;
 	color: $color-white;
 	background: $color-link-one;
 	border-radius: 2px;
+	border:none;
 	border-bottom: 2px solid darken($color-link-one, 10%);
 	
 	@include transition(all 0.3s);
@@ -296,14 +297,8 @@ $hamburger-hover-opacity                   : 0.7;
 			border-color: $color-link-two;
 		}
 	}
-	@else if $mod == leyka {
-		background: $color-link-two;
-		border: 1px solid $color-link-two;
-		
-		&:hover, &:focus, &:active {			
-			background: darken($color-link-two, 10%);
-			border-color: darken($color-link-two, 10%);			
-		}
+	@else if $mod == submit {
+		padding: 15px 26px 13px;
 	}
 	@else if $mod == featured {
 		

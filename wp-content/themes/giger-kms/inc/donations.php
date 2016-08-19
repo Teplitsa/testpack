@@ -186,19 +186,17 @@ function tst_donation_form($campaign_id = null){
 			
 	<!-- name -->
 	<?php if($leyka_current_pm->is_field_supported('name') ) { ?>
-	<div class="rdc-textfield leyka-field name">
-		<input type="text" class="required rdc-textfield__input" name="leyka_donor_name" id="leyka_donor_name" value="">
-		<label for="leyka_donor_name" class="leyka-screen-reader-text rdc-textfield__label"><?php _e('Your name', 'leyka');?></label>		
-		<span id="leyka_donor_name-error" class="leyka_donor_name-error field-error rdc-textfield__error"></span>
+	<div class="tst-textfield leyka-field name">
+		<input type="text" class="required tst-textfield__input" name="leyka_donor_name" id="leyka_donor_name" value="" placeholder="Ваше имя">				
+		<span id="leyka_donor_name-error" class="leyka_donor_name-error field-error tst-textfield__error"></span>
 	</div>
 	<?php  }?>
 	
 	<!-- email -->
 	<?php if($leyka_current_pm->is_field_supported('email') ) { ?>
-	<div class="rdc-textfield leyka-field email">
-		<input type="text" value="" id="leyka_donor_email" name="leyka_donor_email" class="required email rdc-textfield__input">
-		<label class="leyka-screen-reader-text rdc-textfield__label" for="leyka_donor_email">Ваш email</label>
-		<span class="leyka_donor_email-error field-error rdc-textfield__error" id="leyka_donor_email-error"></span>
+	<div class="tst-textfield leyka-field email">
+		<input type="text" value="" id="leyka_donor_email" name="leyka_donor_email" class="required email tst-textfield__input" placeholder="Ваш email">
+		<span class="leyka_donor_email-error field-error tst-textfield__error" id="leyka_donor_email-error"></span>
 	</div>
 	<?php  }?>
 	
@@ -210,12 +208,12 @@ function tst_donation_form($campaign_id = null){
 			$f_html = $leyka_current_pm->get_pm_fields();
 			preg_match("#<\s*?span\b[^>]*>(.*?)</span\b[^>]*>#s", $f_html, $l); 
 			if(isset($l[1]) && !empty($l[1])){
-				$f_html = str_replace('input', 'input class="rdc-checkbox__input"', $l[1]);
+				$f_html = str_replace('input', 'input class="tst-checkbox__input"', $l[1]);
 	?>
 		<div class="leyka-field recurring">
-			<label class="rdc-checkbox checkbox" for="leyka_cp-card_recurring">
+			<label class="tst-checkbox checkbox" for="leyka_cp-card_recurring">
 				<?php echo $f_html; ?>
-				<span class="rdc-checkbox__label"><?php _e('Monthly donation', 'tst');?></span>           
+				<span class="tst-checkbox__label"><?php _e('Monthly donation', 'tst');?></span>           
 			</label>
 		</div>
 	<?php
@@ -225,7 +223,18 @@ function tst_donation_form($campaign_id = null){
 			}
 		}
 		else {
-			echo leyka_pf_get_pm_fields();
+			$fields = leyka_pf_get_pm_fields();
+			
+			$fields = str_replace('rdc-textfield', 'tst-textfield', $fields);
+			$fields = str_replace('rdc-textfield__input', 'tst-textfield__input', $fields);
+			
+			if(false !== strpos($fields, 'tst-textfield')){
+				preg_match("#<\s*?label\b[^>]*>(.*?)</label\b[^>]*>#s", $fields, $l);
+				if(isset($l[1]) && !empty($l[1])){
+					$fields = str_replace('<input', '<input placeholder="'.esc_attr($l[1]).'"', $fields);
+				}
+			}
+			echo $fields;
 		}
 	?>
 	
@@ -234,18 +243,18 @@ function tst_donation_form($campaign_id = null){
 		if($leyka_current_pm->is_field_supported('agree') ) { 
 		$agree_check_id = 'leyka_agree-'.$i; ?>
 	<div class="leyka-field agree">
-		<label class="rdc-checkbox checkbox" for="<?php echo $agree_check_id;?>">
-			<input type="checkbox" name="leyka_agree" id="<?php echo $agree_check_id;?>" class="leyka_agree required rdc-checkbox__input" value="1" />
-			<span class="rdc-checkbox__label">Согласен с <a class="leyka-custom-confirmation-trigger" href="<?php echo $agree_link;?>" data-lmodal="#leyka-agree-text">условиями сбора пожертвований</a></span>           
+		<label class="tst-checkbox checkbox" for="<?php echo $agree_check_id;?>">
+			<input type="checkbox" name="leyka_agree" id="<?php echo $agree_check_id;?>" class="leyka_agree required tst-checkbox__input" value="1" />
+			<span class="tst-checkbox__label">Согласен с <a class="leyka-custom-confirmation-trigger" href="<?php echo $agree_link;?>" data-lmodal="#leyka-agree-text">условиями сбора пожертвований</a></span>           
 		</label>
-		<p class="leyka_agree-error field-error rdc-checkbox__error" id="<?php echo $agree_check_id;?>-error"></p>
+		<p class="leyka_agree-error field-error tst-checkbox__error" id="<?php echo $agree_check_id;?>-error"></p>
 	</div>	
 	<?php }?>
 	
 	<!-- submit -->	
 	<div class="leyka-field submit">
 	<?php if($leyka_current_pm->is_field_supported('submit') ) { ?>
-		<input type="submit" class="rdc-submit-button" id="leyka_donation_submit" name="leyka_donation_submit" value="Пожертвовать" />
+		<input type="submit" class="tst-submit-button" id="leyka_donation_submit" name="leyka_donation_submit" value="Пожертвовать" />
 	<?php  }
 
 		$icons = leyka_pf_get_pm_icons(); 

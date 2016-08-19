@@ -184,21 +184,21 @@ img.wp-smiley {
 	
 /* selections */
 a:link {
-	-webkit-tap-highlight-color: $color-link-two;
-	-webkit-tap-highlight-color : $color-link-two; } /*  highloght color for Safari iOS */
+	-webkit-tap-highlight-color: $color-link-one;
+	-webkit-tap-highlight-color : $color-link-one; } /*  highloght color for Safari iOS */
 
 ::-webkit-selection { 
-	background : $color-link-two;
+	background : $color-link-one;
 	color : $color-white; 
 	text-shadow : none; }
 
 ::-moz-selection { 
-	background : $color-link-two;
+	background : $color-link-one;
 	color : $color-white; 
 	text-shadow : none; }
 
 ::selection { 
-	background : $color-link-two;
+	background : $color-link-one;
 	color : $color-white; 
 	text-shadow : none; }
 
