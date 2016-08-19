@@ -327,4 +327,7 @@ jQuery(document).ready(function($){
 	    $(this).attr("target", "_blank");
 	});
 	
+	var $intro_stats_link = $('.intro-stats-big-link').find('h3');
+	$intro_stats_link.html('<a href="/news/">'+$intro_stats_link.text()+'</a>');
+	
 }); //jQuery

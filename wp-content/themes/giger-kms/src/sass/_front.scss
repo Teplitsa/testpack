@@ -392,12 +392,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* intro stats */
-$intro-stats-offset: 460px;
+$intro-stats-offset: 170px;
+$color-link-intro: #FA9200;
 .frupalo-intro-stats {
-    margin-top:-$intro-stats-offset;
-    margin-bottom:$intro-stats-offset;
     z-index:510;
     position:absolute;
+    
+    margin-top:-$intro-stats-offset - 380px;
+    margin-bottom:$intro-stats-offset + 380px;
+    padding-left:10px;
+
+    @include for(small-screens) { 
+        margin-top:-$intro-stats-offset - 370px; 
+        margin-bottom:$intro-stats-offset + 370px;
+        padding-left:0px;
+    }
+    @include for(medium-screens) { 
+        margin-top:-$intro-stats-offset - 0px; 
+        margin-bottom:$intro-stats-offset + 0px;
+        padding-left:0px;
+    }
+    @include for(large-screens) { 
+        margin-top:-$intro-stats-offset - 0px;
+        margin-bottom:$intro-stats-offset + 0px;
+        padding-left:0px;
+    }
     
     .frupalo-intro-stats-item {
         color:$color-white;
@@ -405,11 +424,26 @@ $intro-stats-offset: 460px;
         line-height:22px;
         
         .widget-title {
-            font-size:22px;
+            color:$color-white;
+            font-size:24px;
             font-weight:700;
             text-transform:none;
             margin-bottom:18px;
+            
+            @include upto(small-screens) {
+                margin-bottom:10px;
+            }
         }
+        
+        .intro-stats-big-link h3 a {
+            text-decoration:underline;
+            color:$color-link-intro;
+            
+            &:hover, &:focus, &:active {
+                color: $color-link-three;
+            }
+        }
+        
     }
 }
 
@@ -426,7 +460,15 @@ $intro-stats-offset: 460px;
 
 /* share buttons */
 .frupalo-share-buttons-row {
-    margin-top:150px;
+    margin-top:120px;
+    
+    @include upto(small-screens) {
+        margin-top:-100px;
+    }
+    @include for(small-screens) { 
+        //margin-top:-120px;
+    }
+    
     .frupalo-share-buttons {
         background-color:$color-white;
         min-width:25%;

@@ -403,21 +403,13 @@
 	}
 	
 	.ihc-content {
-		position: relative;
-		margin-top: -40px;
-		padding-bottom: $base;
+		margin-top: 0px;
 	}
 		
 	&.text-over-image {
 		.ihc-content {
-			max-width: 750px;
 			margin: 0;			
 			z-index: 500;
-			positon: absolute;
-			top: 0;
-			left:25%;
-			@include transform(translateY(-181%));
-			& > a { display: block; }
 		}
 		
 		.ihc-title {
@@ -434,10 +426,16 @@
 		}
 		
 		.ihc-desc {
-			@include body-text(summary);
+			@include body-text(intro);
 			padding: 8px;
+			margin-top:3px;
 			color: rgba(255,255,255, 0.95);
 			h2, h3, h4, h5, h6 { color: $color-white;}
+			
+            display:none;
+            @include for(small-screens) { }
+            @include for(medium-screens) { display:block; }
+            @include for(large-screens) { display:block; }
 		}
 		
 		.cta {
@@ -451,10 +449,25 @@
     .intro-head-content {
         &.text-over-image {
             .ihc-content {
-                @include transform(translateY(-169%));
-                border-bottom: none;
-                .ihc-desc {
-                   line-height: 1.8;
+                position:absolute;
+                max-width: 780px;
+
+                left:0px;
+                top:60px;
+                
+                @include for(small-screens) {
+                    left:120px;
+                    top:30px;
+                }
+        
+                @include for(medium-screens) {
+                    left:180px;
+                    top:40px;
+                }
+                
+                @include for(large-screens) {
+                    top: 60px;
+                    left:26%;
                 }
             }
         }
@@ -469,10 +482,29 @@
     .svg-icon.pic-butterfly {
         display:block;
         position:absolute;
-        left:-5%;
-        top:71px;
-        height:207px;
         z-index: 300;
+        
+        height: 40px;
+        left:-120px;
+        top:20px;
+
+        @include for(small-screens) {
+            height: 100px;
+            left:-100px;
+            top:40px;
+        }
+
+        @include for(medium-screens) {
+            height:150px;
+            left:-75px;
+            top:55px;
+        }
+        
+        @include for(large-screens) {
+            height:207px;
+            left:-5%;
+            top:71px;
+        }
     }
     
     .tpl-pictured-bg:after {
