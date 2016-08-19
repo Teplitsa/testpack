@@ -374,14 +374,7 @@ $label-text-color:   $color-text;
 	input, input:focus {
 		border: none;		
 		outline: none;
-		@include nav-text();
-		
-		color: $color-white;
-		background: $input-color-active;
-		padding: 8px 24px 6px;
-		font-weight: bold;
-		border-radius: 2px;
-		border-bottom: 2px solid darken($input-color-active, 10%);
+		@include button(submit);
 		@include transition(background 0.2s);
 		&:hover {
 			background: darken($input-color-active, 8%);		
