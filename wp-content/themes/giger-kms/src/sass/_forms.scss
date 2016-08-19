@@ -15,7 +15,7 @@ $input-border-color: lighten($color-border-normal, 3%);
 $label-text-color: $color-text;	
 
 @mixin input-text-label {
-	font-family: $title;	
+	font-family: $body;	
 	line-height: 1;
 	color: $label-text-color;
 	white-space: nowrap;
@@ -107,7 +107,7 @@ $label-text-color: $color-text;
 	
 .frm_primary_label {
 	@include input-text-label();
-	font-size: 19px;
+	
 }
 
 /* messages */
@@ -171,7 +171,7 @@ $label-text-color: $color-text;
 	
 	label {
 		@include input-text-label();		
-		font-size: 19px;
+		
 		
 		position: absolute;
 		left: 0;
