@@ -132,19 +132,6 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-/* frontpage elements */
-.non-capital-header {
-    margin-top:76px;
-    display:flex;
-    justify-content: center;
-    
-    .pb-section-title h3 {
-        text-transform:none;
-        max-width:555px;
-    }
-}
-
-
 .bottom-content {
 	margin-bottom: $gut*2;
 	
@@ -156,12 +143,6 @@ h1, h2, h3, h4, h5, h6 {
 	
 	.page-section:last-of-type { margin-bottom: 0; }
 }
-
-
-
-
-
-
 
 /** Social panel **/
 .bottom-bar {

@@ -37,6 +37,36 @@ function tst_related_post_card(WP_Post $cpost) {
 <?php
 }
 
+function tst_quote_card(WP_Post $cpost) {
+
+    $pl = get_permalink($cpost);
+    $ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
+    ?>
+<article class="tpl-post"><a href="<?php echo $pl; ?>" class="entry-link">	
+	<div class="frame">
+		<div class="bit md-4 quote-img-content"><div class="entry-preview quote-preview"><?php echo tst_post_thumbnail($cpost->ID, 'square');?></div></div>
+		<div class="bit md-8 quote-text-content">
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+			<div class="entry-summary"><?php echo $ex;?></div>
+		</div>
+	</div>	
+</a></article>	
+<?php
+}
+
+function tst_news_title_on_main(WP_Post $cpost) {
+
+    $pl = get_permalink($cpost);
+    ?>
+<article class="tpl-related-post"><a href="<?php echo $pl; ?>" class="entry-link">	
+	<div class="frame">
+		<div class="bit md-12">
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+		</div>
+	</div>	
+</a></article>	
+<?php
+}
 
 
 /** == Helpers == **/

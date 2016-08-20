@@ -143,18 +143,30 @@ class RDC_Home_News extends WP_Widget {
 		if(empty($show_posts))
 			return;
 		
-		$all_link = "<a href='".home_url('news')."'>".__('More news', 'tst')."&nbsp;&rarr;</a>";		
+		$all_link = "<a href='".home_url('news')."'>".__('All news', 'tst')."</a><span>&nbsp;&gt;</span>";		
 		
         echo $before_widget;
 		?>       
 		<div class="related-cards-loop">
 			<?php
-				foreach($show_posts as $p){			
-					tst_related_post_card($p);
-				}		
+			    $p = array_shift($show_posts);
+			    tst_related_post_card($p);
 			?>
+                <article class=" other-news-on-main"><a href="<?php echo $pl; ?>" class="entry-link">	
+                	<div class="frame">
+                		<div class="bit md-4"><div class="entry-preview"><?php echo tst_post_thumbnail($p->ID, 'post-thumbnail');?></div></div>
+        			    <div class="bit md-8">
+		    <?php 
+				foreach($show_posts as $p){
+			        tst_news_title_on_main($p);
+				}
+			?>
+		                      <div class="all-news-link"><?php echo $all_link;?></div>
+			             </div>
+		             </div>
+	             </article
 		</div>
-		<!--<div class="related-all-link"><?php echo $all_link;?></div>-->
+		
 		<?php		
 		echo $after_widget;
     }

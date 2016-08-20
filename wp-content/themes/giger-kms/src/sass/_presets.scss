@@ -34,10 +34,12 @@ $base: 24px;
 //Colors
 $color-text:   rgba(0,0,0, 0.99);
 $color-white:  #ffffff;
+$color-blond:  #fff4e3;
 
 $color-link-one:   #DC471F; //red
 $color-link-two:   #FF9800; //orange
 $color-link-three: #CC0000; //dark red
+$color-link-four:  #ff9500; //yellow
 
 $color-text-black:			#000000;
 $color-text-semi:			rgba(0,0,0, 0.6);
@@ -304,6 +306,10 @@ $hamburger-hover-opacity                   : 0.7;
 	@else if $mod == submit {
 		padding: 15px 28px 13px;
 	}
+    @else if $mod == action-on-home {
+        text-align:center;
+        padding: 15px 0px 13px;
+    }
 	@else if $mod == featured {
 		
 	}
