@@ -177,6 +177,10 @@ $hamburger-hover-opacity                   : 0.7;
 		font-size: 21px;
 		line-height: 28px;
 	}
+    @else if $mod == home3featured {
+        font-size: 20px;
+        line-height: 1.1;   
+    }
 }
 
 @mixin sub-title($mod: default) {		

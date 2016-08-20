@@ -150,9 +150,19 @@ class TST_IntroFrupalo_Widget extends SiteOrigin_Widget {
 		if(is_callable($card_callback)) {
 			echo $args['before_widget'];
 			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
-				
-			call_user_func_array($card_callback, array($title, $subtitle, $image, $link, $link_text));		
-			tst_svg_icon('pic-butterfly');
+		    ?>
+        	<section class="intro-head-content text-over-image<?php if(!empty($link)) { echo '  has-button'; }?>"><?php tst_svg_icon('pic-butterfly');?><div class="ihc-content">
+        	<?php if(!empty($link)) { ?><a href="<?php echo esc_url($link);?>"><?php } ?>
+        		<h1 class="ihc-title"><span><?php echo apply_filters('tst_the_title', $title);?></span></h1>
+        		<?php if($subtitle){ ?>
+        			<div class="ihc-desc"><?php echo apply_filters('tst_the_content', $subtitle); ?></div>
+        		<?php } ?>
+        		<?php if(!empty($link)) { ?>
+        			<div class="cta"><?php echo $link_text;?></div>
+        		<?php }
+    	    ?>
+    	    </div></section>
+    	    <?php 
 				
 			echo '</div>';
 			echo $args['after_widget'];

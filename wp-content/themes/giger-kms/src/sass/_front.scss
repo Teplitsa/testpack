@@ -132,7 +132,17 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-
+/* frontpage elements */
+.non-capital-header {
+    margin-top:76px;
+    display:flex;
+    justify-content: center;
+    
+    .pb-section-title h3 {
+        text-transform:none;
+        max-width:555px;
+    }
+}
 
 
 .bottom-content {
@@ -389,112 +399,4 @@ h1, h2, h3, h4, h5, h6 {
 		padding-top: 8px;
 		color: rgba(0,0,0, 0.99);
 	}
-}
-
-/* intro stats */
-$intro-stats-offset: 170px;
-$color-link-intro: #FA9200;
-.frupalo-intro-stats {
-    z-index:510;
-    position:absolute;
-    
-    margin-top:-$intro-stats-offset - 380px;
-    margin-bottom:$intro-stats-offset + 380px;
-    padding-left:10px;
-
-    @include for(small-screens) { 
-        margin-top:-$intro-stats-offset - 370px; 
-        margin-bottom:$intro-stats-offset + 370px;
-        padding-left:0px;
-    }
-    @include for(medium-screens) { 
-        margin-top:-$intro-stats-offset - 0px; 
-        margin-bottom:$intro-stats-offset + 0px;
-        padding-left:0px;
-    }
-    @include for(large-screens) { 
-        margin-top:-$intro-stats-offset - 0px;
-        margin-bottom:$intro-stats-offset + 0px;
-        padding-left:0px;
-    }
-    
-    .frupalo-intro-stats-item {
-        color:$color-white;
-        font-size:14px;
-        line-height:22px;
-        
-        .widget-title {
-            color:$color-white;
-            font-size:24px;
-            font-weight:700;
-            text-transform:none;
-            margin-bottom:18px;
-            
-            @include upto(small-screens) {
-                margin-bottom:10px;
-            }
-        }
-        
-        .intro-stats-big-link h3 a {
-            text-decoration:underline;
-            color:$color-link-intro;
-            
-            &:hover, &:focus, &:active {
-                color: $color-link-three;
-            }
-        }
-        
-    }
-}
-
-.frupalo-share-buttons {
-    margin-top:-$intro-stats-offset;
-    margin-bottom:$intro-stats-offset;
-    z-index:510;
-    position:absolute;
-    
-    .widget-title {
-        display:none;
-    }
-}
-
-/* share buttons */
-.frupalo-share-buttons-row {
-    margin-top:120px;
-    
-    @include upto(small-screens) {
-        margin-top:-100px;
-    }
-    @include for(small-screens) { 
-        //margin-top:-120px;
-    }
-    
-    .frupalo-share-buttons {
-        background-color:$color-white;
-        min-width:25%;
-        padding-top: 9px;
-
-        .ya-share2__list {
-            padding-right:19px;
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-        }
-        
-        .ya-share2__item:before {
-            content:"";
-        }
-        
-        .ya-share2__container_size_m {
-            .ya-share2__item {
-                padding-left:0px;
-                
-                .ya-share2__icon {
-                    width:29px;
-                    height:29px;
-                }
-            }
-        }
-        
-    }
 }

@@ -397,33 +397,10 @@
 }
 
 
-/* intro section */
-//page with cards
-.intro-head-image {
-	@include vertical-image-header-fixed();
-	@include container-extended();
-	
-	&.text-over-image {
-		height: 511px;
-	
-		@include for(small-screens) {
-			height: 400px;
-		}
-		
-		@include for(medium-screens) {
-			height: 460px;
-		}
-		
-		@include for(large-screens) {
-			height: 511px;
-		}
-	}
-}
-
-
-
+/* intro widget */
 .intro-head-content {
-			
+	display:block;
+	
 	.ihc-title {
 		display: inline-block;
 		background: none;
@@ -440,7 +417,6 @@
 	&.text-over-image {
 		.ihc-content {
 			margin: 0;			
-			z-index: 500;
 		}
 		
 		.ihc-title {
@@ -476,78 +452,144 @@
 	}
 }
 
+.intro-container  {
+    background: url(../img/intro.jpg) repeat-x left top;
+}
+
 .homepage-intro {
     .intro-head-content {
-        &.text-over-image {
-            .ihc-content {
-                position:absolute;
-                max-width: 780px;
+        .ihc-content {
+            max-width: 757px;
+            float:left;
+            margin-top: 12px;
 
-                left:0px;
-                top:60px;
-                
-                @include for(small-screens) {
-                    left:120px;
-                    top:30px;
-                }
-        
-                @include for(medium-screens) {
-                    left:180px;
-                    top:40px;
-                }
-                
-                @include for(large-screens) {
-                    top: 60px;
-                    left:26%;
-                }
+            @include for(small-screens) {
+            }
+    
+            @include for(medium-screens) {
+            }
+            
+            @include for(large-screens) {
+                margin-left:7px;
             }
         }
     }	
 }
 
-.intro-head-content + .mobile-sharing {
-	margin-top: $base - 8px;
-}
-
 .so-widget-tst-introfrupalo {
     .svg-icon.pic-butterfly {
         display:block;
-        position:absolute;
-        z-index: 300;
-        
+        float:left;
         height: 40px;
-        left:-120px;
-        top:20px;
+        margin-left:-45px;
 
         @include for(small-screens) {
             height: 100px;
-            left:-100px;
-            top:40px;
         }
 
         @include for(medium-screens) {
             height:150px;
-            left:-75px;
-            top:55px;
         }
         
         @include for(large-screens) {
-            height:207px;
-            left:-5%;
-            top:71px;
+            height:205px;
+            margin-top:26px;
         }
     }
+}
+
+/* intro stats */
+$color-link-intro: #FA9200;
+.frupalo-intro-stats {
+    margin-top:55px;
+    margin-bottom:30px;
+    padding-left:10px;
+
+    @include for(small-screens) { 
+        padding-left:0px;
+    }
+    @include for(medium-screens) { 
+        padding-left:0px;
+    }
+    @include for(large-screens) { 
+        padding-left:0px;
+    }
     
-    .tpl-pictured-bg:after {
-        display:block;
+    .frupalo-intro-stats-item {
+        color:$color-white;
+        font-size:14px;
+        line-height:22px;
+        
+        .widget-title {
+            color:$color-white;
+            font-size:24px;
+            font-weight:700;
+            text-transform:none;
+            margin-bottom:18px;
+            
+            @include upto(small-screens) {
+                margin-bottom:10px;
+            }
+        }
+        
+        .intro-stats-big-link h3 a {
+            text-decoration:underline;
+            color:$color-link-intro;
+            
+            &:hover, &:focus, &:active {
+                color: $color-link-three;
+            }
+        }
+        
+    }
+}
+
+/* share buttons */
+.frupalo-share-buttons {
+    .widget-title {
+        display:none;
+    }
+}
+
+.frupalo-share-buttons-row {
+    margin-top:-50px;
+    height:47px;
+    
+    @include upto(small-screens) {
+    }
+    @include for(small-screens) { 
+    }
+    
+    .frupalo-share-buttons .ya-share2 {
         position:absolute;
-        left:0px;
-        top:0px;
-        background: rgba(41, 12, 4, 0.54);
-        content: " ";
-        z-index: 200;
-        width:100%;
-        height:100%;
+        background-color:$color-white;
+        width:350px;
+        margin-left:-15px;
+        padding-top:9px;
+        height:47px;
+
+        .ya-share2__list {
+            padding-right:19px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+        
+        .ya-share2__item:before {
+            content:"";
+        }
+        
+        .ya-share2__container_size_m {
+            .ya-share2__item {
+                padding-left:0px;
+                
+                .ya-share2__icon {
+                    width:29px;
+                    height:29px;
+                }
+            }
+        }
+        
     }
 }
 
