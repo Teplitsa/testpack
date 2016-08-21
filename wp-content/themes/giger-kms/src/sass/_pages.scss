@@ -44,13 +44,116 @@
     display:flex;
     justify-content: center;
     
+    @include upto(small-screens) {
+        margin-top:0px;
+    }
+    
     .pb-section-title h3 {
         text-transform:none;
         max-width:555px;
     }
 }
 
-//.about-us-blocks {
+//3col module
+.col3-section  {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+        
+    .col3 {
+        width: 100%;
+        margin-bottom: $gut;
+        flex: 1 0 auto;     
+    }
+        
+    @include for(medium-screens){
+        margin: 0 -1*$gut/2;
+        
+        .col3 {
+            margin: 0 $gut/2 $gut;
+            @include calc(width, '50% - 30px');
+            
+            &:last-of-type {
+                @include calc(width, '100% - 30px');
+            }
+        }
+    }
+    
+    @include for(large-screens){
+        margin: 0 -1*$gut/2;
+        
+        .col3, .col3:last-of-type {
+            flex: 0 0 auto; 
+            @include calc(width, '30% + 5px');
+            text-align: center;
+        }
+    }   
+}
+
+//home3featured
+.home3featured {
+    margin-top:43px;
+}
+
+//feature block
+.col3-content {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between; 
+    
+    .col3-title {
+        @include post-title(home3featured);
+        margin-bottom: 10px;
+        height: 40px;
+        flex: 0 0 auto;
+        overflow: hidden;
+        text-transform:uppercase;
+        text-align:left;
+    }
+    
+    .col3-text {
+        flex: 1 0 auto;
+        text-align:left;
+    }
+    
+    .col3-link {
+        flex: 0 0 auto;     
+        margin-top: $base;
+        height: 44px;
+        overflow: hidden;
+        
+        a {
+            @include ghost-button(16px, $color-link-three, $color-white);
+        }
+    }
+    
+}
+
+.siteorigin-panels-home {
+    .col3 {
+        @include for(medium-screens) {
+            .col3-title {
+                position: relative;
+                padding-bottom: 200px;
+                height: 48px + 200px;
+            }
+        }
+        
+        @include for(large-screens) {
+            .col3-title:after {
+                left: 50%;
+                margin-left: -160px;
+            }
+        }
+    }    
+}
+
+/* about us columns */
+.about-us-blocks {
     //3col module
     .col3-section  {
     	display: flex;
@@ -129,10 +232,10 @@
     	}
     	
     }
-//}
+}
 
 .siteorigin-panels-home {
-    //.about-us-blocks {
+    .about-us-blocks {
         .col3 {
             @include for(medium-screens) {
                 .col3-title {
@@ -147,7 +250,7 @@
                         width: 320px;
                         height: 200px;
                         background-image: url("../img/block1-who-we-are.jpg");
-                        background-repeat: none;
+                        background-repeat: no-repeat;
                         background-position: center top;
                         background-size: contain;
                         left:0px;
@@ -171,7 +274,7 @@
                 }
             }
         }    
-    //}
+    }
 }
 
 /* link to docs */
@@ -210,12 +313,22 @@
         width:248px;
     }
     
+    .panel-widget-style {
+        @include upto(medium-screens) {
+            text-align:center;
+        }
+    }
+    
     .action-become-volonteer {
         .link-tst-actionlink-base {
             float:right;
             margin-right:2px;
             @include button(action-on-home);
             background: $color-link-four;
+            
+            @include upto(medium-screens) {
+                float: none;
+            }
         }
     }
     
@@ -225,6 +338,10 @@
             margin-left:2px;
             @include button(action-on-home);
             background: $color-link-one;
+            
+            @include upto(medium-screens) {
+                float: none;
+            }
         }
     }
 }
@@ -270,6 +387,7 @@
                 margin-top:0px;
                 padding-top:0px;
                 padding-bottom:0px;
+                text-align:center;
                 
                 a {
                     @include nav-text(meta_small);
@@ -302,7 +420,7 @@
                         width: 0px;
                         height: 0px;
                         background-image: none;
-                        background-repeat: none;
+                        background-repeat: no-repeat;
                         left:0px;
                         top:0px;
                     }
@@ -355,6 +473,9 @@
         
         .entry-preview {
             visibility:hidden;
+            @include upto(medium-screens) {
+                display:none;
+            }
         }
     }
     
@@ -383,6 +504,7 @@
     background-color: $color-blond;
     
     .subscribe-news-form {
+        
         .frm_forms {
             margin-left:70px;
             width:85%;
@@ -391,9 +513,26 @@
             padding-top: 40px;
             padding-bottom: 44px;
             
+            @include upto(large-screens) {
+                margin-left:auto;
+                margin-right:auto;
+                padding-left:0px;
+                padding-right:0px;
+                width:100%;
+            }
+            
             .tst-textfield {
                 float:left;
                 width:70%;
+                
+                @include upto(medium-screens) {
+                    width:100%;
+                }
+                
+                @include for(medium-screens) {
+                    width:63%;
+                }
+                
                 .tst-textfield__input {
                     padding-top:9px;
                     padding-bottom:9px;
@@ -409,6 +548,16 @@
                 input, input:focus {
                     padding-top:8px;
                     padding-bottom:9px;
+                    
+                    @include upto(medium-screens) {
+                        width:100%;
+                    }
+                }
+                
+                @include upto(medium-screens) {
+                    margin-left:0px;
+                    width:100%;
+                    float:none;
                 }
             }
             
@@ -451,11 +600,13 @@
 
 /* support us */
 .supportus-title {
+    margin-top:25px;
 }
 
 .support-actions-row {
-    display:none;
-    //3col module
+    margin-top: 50px;
+    
+    //4col module
     .col3-section  {
         display: flex;
         flex-flow: row wrap;
@@ -476,7 +627,7 @@
                 @include calc(width, '50% - 30px');
                 
                 &:last-of-type {
-                    @include calc(width, '100% - 30px');
+                    //@include calc(width, '100% - 30px');
                 }
             }
         }
@@ -486,7 +637,7 @@
             
             .col3, .col3:last-of-type {
                 flex: 0 0 auto; 
-                @include calc(width, '30% + 5px');
+                @include calc(width, '21% + 5px');
                 text-align: center;
             }
         }   
@@ -507,23 +658,23 @@
         justify-content: space-between; 
         
         .col3-title {
-            @include post-title(home3featured);
+            @include post-title(featured);
             
             margin-bottom: 10px;
             height: 40px;
             flex: 0 0 auto;
             overflow: hidden;
-            text-transform:uppercase;
-            text-align:left;
+            text-transform:none;
+            text-align:center;
         }
         
         .col3-text {
             flex: 1 0 auto;
-            text-align:left;
+            text-align:center;
         }
         
         .col3-link {
-            flex: 0 0 auto;     
+            flex: 0 0 auto;
             margin-top: $base;
             height: 44px;
             overflow: hidden;
@@ -535,47 +686,52 @@
         
     }
 
-    @include for(medium-screens) {
-        .col3-title {
-            position: relative;
-            padding-bottom: 200px;
-            height: 48px + 200px;
+    .col3 {
+        @include for(medium-screens) {
+            .col3-title {
+                text-align:center;
+                position: relative;
+                padding-top: 108px;
+                padding-bottom: 0px;
+                height: 31px + 108px;
+                
+                &:before {
+                    content: '';
+                    display: block;
+                    position:absolute;
+                    width: 100%;
+                    height: 78px;
+                    background-image: url("../img/pic-volunteer.svg");
+                    background-repeat: no-repeat;
+                    background-position: center top;
+                    background-size: auto 78px;
+                    left:0px;
+                    top:0px;
+                }
+            }
             
-            &:before {
-                content: '';
-                display: block;
-                position:absolute;
-                width: 320px;
-                height: 200px;
-                //background-image: url("../img/pic-volunteer.svg");
-                background-repeat: none;
-                background-position: center top;
-                background-size: contain;
-                left:0px;
-                top:30px;
+            &:nth-of-type(2) .col3-title:before {
+                background-image: url("../img/pic-petition.svg");
+            }
+            
+            &:nth-of-type(3) .col3-title:before {
+                background-image: url("../img/pic-letter.svg");
+            }
+            
+            &:nth-of-type(4) .col3-title:before {
+                background-image: url("../img/pic-donations.svg");
             }
             
         }
-
-        &:nth-of-type(2) .col3-title:before{
-            //background-image: url("../img/pic-petition.svg");
-        }
         
-        &:nth-of-type(3) .col3-title:before {
-            //background-image: url("../img/pic-letter.svg");
-        }
-        
-        &:nth-of-type(4) .col3-title:before {
-            //background-image: url("../img/pic-donations.svg");
+        @include for(large-screens) {
+            .col3-title:before {
+                //left: 50%;
+                //margin-left: -160px;
+            }
         }
     }
-    
-    @include for(large-screens) {
-        .col3-title:after {
-            left: 50%;
-            margin-left: -160px;
-        }
-    }
+     
 }
 
 /** Error 404 **/

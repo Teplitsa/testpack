@@ -164,7 +164,7 @@ class RDC_Home_News extends WP_Widget {
 		                      <div class="all-news-link"><?php echo $all_link;?></div>
 			             </div>
 		             </div>
-	             </article
+	             </article>
 		</div>
 		
 		<?php		

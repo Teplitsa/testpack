@@ -429,6 +429,19 @@
 				display: inline-block;
 				padding: 8px 0;
 				margin-left: 8px;
+				
+                @include upto (medium-screens) {
+                    margin-left: 2px;
+                }
+                
+                @include upto (medium-screens) {
+                    padding: 0px 0;
+                }
+                
+                @include upto (large-screens) {
+                    padding: 8px 0;
+                }
+                
 			}
 		}
 		
@@ -454,12 +467,22 @@
 
 .intro-container  {
     background: url(../img/intro.jpg) repeat-x left top;
+    @include upto(medium-screens) {
+        padding-bottom:0px;
+    }
+    
+    @include for(medium-screens) {
+        padding-top:20px;
+    }
+    
+    @include for(medium-screens) {
+        padding-top:40px;
+    }
 }
 
 .homepage-intro {
     .intro-head-content {
         .ihc-content {
-            max-width: 757px;
             float:left;
             margin-top: 12px;
 
@@ -467,11 +490,21 @@
             }
     
             @include for(medium-screens) {
+                max-width: 530px;
+                margin-top: 0px;
+                margin-left:17px;
             }
             
             @include for(large-screens) {
+                max-width: 680px;
                 margin-left:7px;
+                margin-top: 19px;
             }
+            
+            @include for(exlarge-screens) {
+                max-width: 757px;
+            }
+            
         }
     }	
 }
@@ -480,20 +513,30 @@
     .svg-icon.pic-butterfly {
         display:block;
         float:left;
-        height: 40px;
-        margin-left:-45px;
-
+        height: 80px;
+        width: 80px;
+        margin-left: 0px;
+        margin-top: -30px;
+    
         @include for(small-screens) {
             height: 100px;
+            width: 100px;
+            margin-left: 0px;
         }
 
         @include for(medium-screens) {
             height:150px;
+            width: 150px;
+            margin-top: 10px;
+            margin-left: 0px;
         }
         
         @include for(large-screens) {
             height:205px;
-            margin-top:26px;
+            width:205px;
+            margin-top:32px;
+            margin-left: 0px;
+            margin-right: 47px;
         }
     }
 }
@@ -501,17 +544,20 @@
 /* intro stats */
 $color-link-intro: #FA9200;
 .frupalo-intro-stats {
-    margin-top:55px;
+    margin-top:-10px;
     margin-bottom:30px;
-    padding-left:10px;
+    padding-left:0px;
 
-    @include for(small-screens) { 
+    @include for(small-screens) {
+        margin-top:10px; 
         padding-left:0px;
     }
-    @include for(medium-screens) { 
+    @include for(medium-screens) {
+        margin-top:-5px; 
         padding-left:0px;
     }
-    @include for(large-screens) { 
+    @include for(large-screens) {
+        margin-top:55px; 
         padding-left:0px;
     }
     
@@ -546,6 +592,9 @@ $color-link-intro: #FA9200;
 
 /* share buttons */
 .frupalo-share-buttons {
+    margin-left:auto;
+    margin-right:auto;
+    
     .widget-title {
         display:none;
     }
@@ -556,41 +605,104 @@ $color-link-intro: #FA9200;
     height:47px;
     
     @include upto(small-screens) {
+        margin-top:-45px;
     }
-    @include for(small-screens) { 
+
+    @include for(medium-screens) {
+        margin-top:-65px;
     }
     
-    .frupalo-share-buttons .ya-share2 {
-        position:absolute;
-        background-color:$color-white;
-        width:350px;
-        margin-left:-15px;
-        padding-top:9px;
-        height:47px;
+    @include for(large-screens) {
+        margin-top:-50px;
+    }
 
-        .ya-share2__list {
-            padding-right:19px;
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-        }
-        
-        .ya-share2__item:before {
-            content:"";
-        }
-        
-        .ya-share2__container_size_m {
-            .ya-share2__item {
-                padding-left:0px;
-                
-                .ya-share2__icon {
-                    width:29px;
-                    height:29px;
-                }
+    .frupalo-share-buttons { 
+    
+        .textwidget {
+            width:350px;
+            margin-left:auto;
+            margin-right:auto;
+            position:relative;
+            
+            @include upto(small-screens) {
+                width:300px;
+            }
+
+            @include for(medium-screens) {
+                margin-left:-45px;
+            }
+            
+            @include for(large-screens) {
+                margin-left:-15px;
             }
         }
         
+        .ya-share2 {
+            position:absolute;
+            background-color:$color-white;
+            padding-top:9px;
+            height:47px;
+            width:100%;
+    
+            .ya-share2__list {
+                padding-right:11px;
+                padding-left:11px;
+                
+                @include upto(small-screens) {
+                    padding-right:7px;
+                    padding-left:7px;
+                }
+                
+                margin-left:0px;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+            }
+            
+            .ya-share2__item:before {
+                content:"";
+            }
+            
+            .ya-share2__container_size_m {
+                .ya-share2__item {
+                    padding-left:0px;
+                    width:88px;
+                    
+                    @include upto(small-screens) {
+                        width:70px;
+                    }
+                    
+                    &.ya-share2__item_service_vkontakte, &.ya-share2__item_service_vkontakte .ya-share2__icon {
+                        background-color:#5a87ad;
+                    }
+                    
+                    &.ya-share2__item_service_facebook, &.ya-share2__item_service_facebook .ya-share2__icon {
+                        background-color:#4c6fa8;
+                    }
+    
+                    &.ya-share2__item_service_twitter, &.ya-share2__item_service_twitter .ya-share2__icon {
+                        background-color:#00bcf0;
+                        width:46px;
+                    }
+    
+                    &.ya-share2__item_service_odnoklassniki, &.ya-share2__item_service_odnoklassniki .ya-share2__icon {
+                        background-color:#ffb061;
+                    }
+    
+                    .ya-share2__icon {
+                        width:29px;
+                        height:29px;
+                        background-repeat:no-repeat;
+                    }
+                }
+            }
+        }
     }
+}
+
+.frupalo-share-buttons-row.bottom-share-block {
+    margin-top:-12px;
+    margin-bottom:12px;
 }
 
 /** Donation **/

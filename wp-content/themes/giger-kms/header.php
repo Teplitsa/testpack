@@ -55,5 +55,3 @@
 </header>
 
 <div id="site_content" class="site-content"><a name="#content"></a>
-
-<!-- old yandex share markup <div class="share ya_shr"></div> -->

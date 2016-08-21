@@ -188,6 +188,10 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /** Footer **/
+.home .site-footer {
+    margin-top: $gut*1.85;
+}
+
 .site-footer {
 	margin-top: $gut*2.5;
 	@include body-text(summary);
@@ -285,6 +289,10 @@ h1, h2, h3, h4, h5, h6 {
 		h4 {
 			@include post-title(multiline);
 			cursor: pointer;
+		}
+		
+		p:last-of-type {
+		    margin-top:19px;
 		}
 	}
 	

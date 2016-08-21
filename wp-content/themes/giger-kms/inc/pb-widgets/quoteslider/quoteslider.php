@@ -48,7 +48,6 @@ class RDC_QuoteSlider extends WP_Widget {
 	}
 	
     function form($instance) {
-		
 		$instance['exclude_ids'] = $instance['exclude_ids'] ? explode(',', $instance['exclude_ids']) : '';
 	?>
         <p>
