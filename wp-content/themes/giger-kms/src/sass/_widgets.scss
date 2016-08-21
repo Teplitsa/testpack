@@ -490,13 +490,13 @@
             }
     
             @include for(medium-screens) {
-                max-width: 530px;
+                max-width: 500px;
                 margin-top: 0px;
                 margin-left:17px;
             }
             
             @include for(large-screens) {
-                max-width: 680px;
+                max-width: 665px;
                 margin-left:7px;
                 margin-top: 19px;
             }
