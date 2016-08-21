@@ -416,39 +416,6 @@
     }
 }
 
-/* quoteslider */
-
-.quoteslider-row {
-    margin-top:82px;
-    
-    .quoteslider {
-        .entry-preview {
-            max-width:180px;
-            
-            @border-radius(100%);
-            img {
-                display: block; 
-                max-width: 180px; 
-                border-radius: 50%;
-            }
-        }
-        
-        .quote-img-content {
-            padding-left:120px;
-        }
-        
-        .quote-text-content {
-            padding-left:0px;
-        }
-        
-        .entry-title {
-            margin-top:10px;
-            margin-bottom:31px;
-        }
-    
-    }
-}
-
 /* support us */
 .supportus-title {
 }

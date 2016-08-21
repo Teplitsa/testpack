@@ -152,7 +152,7 @@ class RDC_Home_News extends WP_Widget {
 			    $p = array_shift($show_posts);
 			    tst_related_post_card($p);
 			?>
-                <article class=" other-news-on-main"><a href="<?php echo $pl; ?>" class="entry-link">	
+                <article class=" other-news-on-main">
                 	<div class="frame">
                 		<div class="bit md-4"><div class="entry-preview"><?php echo tst_post_thumbnail($p->ID, 'post-thumbnail');?></div></div>
         			    <div class="bit md-8">
@@ -164,7 +164,7 @@ class RDC_Home_News extends WP_Widget {
 		                      <div class="all-news-link"><?php echo $all_link;?></div>
 			             </div>
 		             </div>
-	             </article
+				</article>
 		</div>
 		
 		<?php		

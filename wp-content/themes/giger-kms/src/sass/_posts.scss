@@ -342,7 +342,35 @@
 	}
 }
 
-
+/** quotes **/
+.tpl-quote {
+	.entry-title {
+		@include post-title();
+		color: $color-text-black;
+		margin-bottom: 4px;
+	}
+	.entry-meta {
+		@include sub-title(extend);
+		color: $color-text-light;
+	}
+	.entry-summary {
+		margin-top: $base;
+		@include body-text();
+		color: $color-text;
+	}
+	
+	.quote-preview {
+		width: 180px;
+		height: 180px;
+		border-radius: 50%;
+		
+		img {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+		}
+	}
+}
 
 /** old **/
 

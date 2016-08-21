@@ -40,17 +40,20 @@ function tst_related_post_card(WP_Post $cpost) {
 function tst_quote_card(WP_Post $cpost) {
 
     $pl = get_permalink($cpost);
-    $ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
-    ?>
-<article class="tpl-post"><a href="<?php echo $pl; ?>" class="entry-link">	
-	<div class="frame">
-		<div class="bit md-4 quote-img-content"><div class="entry-preview quote-preview"><?php echo tst_post_thumbnail($cpost->ID, 'square');?></div></div>
-		<div class="bit md-8 quote-text-content">
-			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
-			<div class="entry-summary"><?php echo $ex;?></div>
-		</div>
-	</div>	
-</a></article>	
+    $ex = apply_filters('tst_the_title', $cpost->post_excerpt);
+?>
+<article class="tpl-quote">
+<div class="frame">
+	<div class="bit md-4 lg-3 quote-img-content"><div class="entry-preview quote-preview"><?php echo tst_post_thumbnail($cpost->ID, 'square');?></div></div>
+	<div class="bit md-8 lg-9 quote-text-content">
+		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+		<?php if($ex) { ?> 
+			<div class="entry-meta"><?php echo $ex;?></div>
+		<?php } ?>
+		<div class="entry-summary"><?php echo apply_filters('tst_the_content', $cpost->post_content);?></div>
+	</div>
+</div>	
+</article>	
 <?php
 }
 
