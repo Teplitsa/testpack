@@ -439,14 +439,7 @@
 }
 
 /* news on home */
-.new-section-title {
-    margin-top:-5px;
-    margin-bottom: -2px;
-}
-
 .news-block {
-    
-    
     .all-link {
         margin-top: $gut;
 		        
@@ -462,73 +455,53 @@
 }
 
 /* subscribe on news */
-.subscribe-news-form-row {
-    margin: 0 -9999rem;
-    margin-top:39px;
-    padding: 0px 9999rem 0px 9999rem;
-    background-color: $color-blond;
-    
-    .subscribe-news-form {
-        
-        .frm_forms {
-            margin-left:70px;
-            width:85%;
-            border:none;
-            background-color: $color-blond;
-            padding-top: 40px;
-            padding-bottom: 44px;
-            
-            @include upto(large-screens) {
-                margin-left:auto;
-                margin-right:auto;
-                padding-left:0px;
-                padding-right:0px;
-                width:100%;
-            }
-            
-            .tst-textfield {
-                float:left;
-                width:70%;
-                
-                @include upto(medium-screens) {
-                    width:100%;
-                }
-                
-                @include for(medium-screens) {
-                    width:63%;
-                }
-                
-                .tst-textfield__input {
-                    padding-top:9px;
-                    padding-bottom:9px;
-                }
-            }
-            
-            .frm_submit {
-                float:left;
-                width:25%;
-                margin-top:4px;
-                margin-left:3%;
-                
-                input, input:focus {
-                    padding-top:8px;
-                    padding-bottom:9px;
-                    
-                    @include upto(medium-screens) {
-                        width:100%;
-                    }
-                }
-                
-                @include upto(medium-screens) {
-                    margin-left:0px;
-                    width:100%;
-                    float:none;
-                }
-            }
-            
-        }
-    }
+.entry-content .subscribe-form ,
+.subscribe-form {
+	
+	.frm_forms {
+		margin: 0;
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		padding: 0;
+	}
+	
+	.frm_submit {
+		margin: 0;
+	}
+	
+	@include for(medium-screens) {
+		fieldset {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			align-items: stretch;
+			
+			input[type="hidden"], .frm_hidden { display: none; }
+		}
+		
+		
+		.tst-textfield {
+			flex: 1 1 auto;
+			padding: 0;
+			@include calc('width', '100% - 270px');
+		}
+		
+		.frm_submit {
+			flex: 0 0 auto;
+			width: 270px;
+			text-align: right;
+			input { height: 100%;}
+		}
+	}
+	
+	@include for(large-screens) {
+		.frm_forms {
+			padding: 10px 84px;
+		}
+	}
 }
+
 
 /* support us */
 .supportus-title {

@@ -322,7 +322,87 @@
 	}
 }
 
-/* featured section */
+/* Form widget */
+.entry-content .frm_form_widget, 
+.frm_form_widget {
+	.widget-title {
+		display: none;		
+	}
+	
+	.frm_forms {
+		marign: 0;
+	}
+}
+
+/* Icon block */
+.iconic-block {
+	text-align: center;
+	
+	.ib-icon {		
+		margin-bottom: $base;
+	}
+	
+	.pic-donations {
+		width: 82px;
+		height: 75px;
+	}
+	
+	.pic-letter-pro,
+	.pic-letter {
+		width: 94px;
+		height: 75px;
+	}
+	.pic-petition {
+		width: 55px;
+		height: 75px;
+	}
+	.pic-volunteer {
+		width: 94px;
+		height: 75px;
+	}
+	.pic-offline,
+	.pic-online {
+		width: 75px;
+		height: 75px;
+	}
+	
+	.ib-title {
+		margin-bottom: $gut/2;
+		
+		&.regular {
+			@include post-title();
+			color: $color-text-black;
+		}
+		&.compact {
+			@include header-title(widget);
+			color: $color-link-one;
+		}
+	}
+	
+	.ib-content {
+		color: $color-text;
+		p { margin: 0; }
+	}
+	
+	.ib-url {
+		display: block;
+		&:hover {
+			.ib-title.regular {
+				color: $color-link-one;
+				text-decoration: underline;
+			}
+		}
+		&:hover {
+			.ib-title.compact {
+				color: $color-link-three;
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+
+/* Title section on pages  */
 .featured-section {
 	@include container-extended();
 	color: $color-white;
@@ -714,14 +794,5 @@ $color-link-intro: #FA9200;
 }
 
 
-/** Form widget **/
-.entry-content .frm_form_widget, 
-.frm_form_widget {
-	.widget-title {
-		display: none;		
-	}
-	
-	.frm_forms {
-		marign: 0;
-	}
-}
+
+

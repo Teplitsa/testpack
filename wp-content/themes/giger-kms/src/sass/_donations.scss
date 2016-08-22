@@ -7,6 +7,7 @@
 	background-repeat: no-repeat;
 	background-position: top center;
 	background-size: cover;
+	@include calc('min-height', '100vh - 54px');
 	
 	.campaign-form {
 		background: $color-white;

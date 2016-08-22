@@ -92,5 +92,5 @@ class TST_ActionLink_Widget extends SiteOrigin_Widget {
 } //class
 
 //register
-siteorigin_widget_register('tst-featureditem', __FILE__, 'TST_ActionLink_Widget');
+siteorigin_widget_register('tst-actionlink', __FILE__, 'TST_ActionLink_Widget');
 

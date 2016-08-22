@@ -67,7 +67,7 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 		return array(			
 			'title'		=> $instance['title'],
 			'subtitle'	=> $instance['subtitle'],
-			'icon'		=> $instance['icon'],
+			'icon'		=> sanitize_text_field($instance['icon']),
 			'image'		=> (int)$instance['image']			
 		);
 	}
