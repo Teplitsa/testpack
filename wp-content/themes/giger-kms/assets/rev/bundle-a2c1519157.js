@@ -1216,6 +1216,17 @@ jQuery(document).ready(function($){
         });
     }
     catch(ex) {}
+
+    $('body').on('click','.leyka-custom-confirmation-trigger', function(e){
+
+        $('#leyka-agree-text').trigger('openModal');
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.leyka-modal-close', function(e){
+
+        $('#leyka-agree-text').trigger('closeModal');
+    });
 	
 	
 	
