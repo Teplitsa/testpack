@@ -41,7 +41,7 @@ get_header();
 	</div>
 </section>
 
-<section class="main-content search-results"><div class="container">
+<section class="main-content search-results <?php if(!$num || !get_search_query()):?>service-message<?php endif?>"><div class="container">
 	<?php
 		if(empty($s_query)){
 			$l = __('Enter terms for search in the form and hit Enter', 'tst');
@@ -58,6 +58,8 @@ get_header();
 		}
 	?>
 </section>
-<section class="paging"><?php tst_paging_nav($wp_query); ?></section>
+<section class="paging"><div class="container">
+    <?php tst_paging_nav($wp_query); ?>
+</div></section>
 
 <?php get_footer();
