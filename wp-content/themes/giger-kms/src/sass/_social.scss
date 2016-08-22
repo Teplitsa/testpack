@@ -255,22 +255,13 @@ $social_color: (
 /* Yandex share buttons */
 .frupalo-share-buttons {
     width:350px;
-    margin-left:auto;
-    margin-right:auto;
+    height:47px;
     position:relative;
     
     @include upto(small-screens) {
         width:300px;
     }
 
-    @include for(medium-screens) {
-        margin-left:-45px;
-    }
-    
-    @include for(large-screens) {
-        margin-left:-15px;
-    }
-    
     .ya-share2 {
         position:absolute;
         background-color:$color-white;
@@ -279,14 +270,6 @@ $social_color: (
         width:100%;
 
         .ya-share2__list {
-            padding-right:11px;
-            padding-left:11px;
-            
-            @include upto(small-screens) {
-                padding-right:7px;
-                padding-left:7px;
-            }
-            
             margin-left:0px;
             display: flex;
             flex-flow: row nowrap;
@@ -397,7 +380,30 @@ $social_color: (
         margin-top:-50px;
     }
 
-    .frupalo-share-buttons { 
+    .frupalo-share-buttons {
+        margin-left:auto;
+        margin-right:auto;
+        
+        @include for(medium-screens) {
+            margin-left:-45px;
+        }
+        
+        @include for(large-screens) {
+            margin-left:-15px;
+        }
+        
+        .ya-share2 {
+    
+            .ya-share2__list {
+                padding-right:11px;
+                padding-left:11px;
+                
+                @include upto(small-screens) {
+                    padding-right:7px;
+                    padding-left:7px;
+                }
+            }
+        }
     }
 }
 
@@ -406,3 +412,10 @@ $social_color: (
     margin-bottom:12px;
 }
 
+.entry-header-full {
+    .single-news-share {
+        .frupalo-share-buttons {
+            margin-bottom:-30px;
+        }
+    }
+}

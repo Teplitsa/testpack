@@ -23,6 +23,7 @@ get_header(); ?>
 		<?php echo tst_breadcrumbs($cpost);?>
 		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>
 		<div class="entry-meta"><?php echo tst_posted_on_single($cpost);?></div>
+		<div class="single-news-share"><?php tst_show_yandex_share();?></div>
 		<div class="lead"><?php echo apply_filters('tst_the_content', $cpost->post_excerpt); ?></div>
 	</header>
 	
@@ -40,6 +41,8 @@ get_header(); ?>
 	?>
 	
 	<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
+	
+	<?php tst_show_yandex_share();?>
 	
 	<footer class="entry-footer">
 		<?php
