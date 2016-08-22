@@ -384,7 +384,8 @@
 	
 	.ib-content {
 		color: $color-text;
-		p { margin: 0; }
+		p:last-child { margin: 0; }
+		
 		b {
 			@include transition(all 0.35s);
 			font-weight: normal;

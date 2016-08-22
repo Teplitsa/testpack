@@ -392,7 +392,15 @@ $margin-base: 16px;
 	span.linked {
 		color: $color-link-one;
 		a {
-			border-bottom: 1px solid;
+			color: $color-link-one;
+			border-bottom: 1px solid transparentize($color-link-one, 0.75);
+		}
+		&:hover {
+			color: $color-link-three;
+			a {
+				color: $color-link-three;
+				border-color: $color-link-three;
+			}
 		}
 	}
 		
