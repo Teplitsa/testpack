@@ -177,6 +177,7 @@ $figure_padding-height: 16px;
 		&:focus {
 			padding: $figure_padding-height - 1px $figure_padding-height/2 - 1px;
 			border: 2px solid $input-color-active;
+			box-shadow: inset 1px 1px 2px rgba(200,200,200, 0.5);
 		}
 	}
 	
