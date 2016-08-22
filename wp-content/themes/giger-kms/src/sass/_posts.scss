@@ -344,6 +344,8 @@
 
 /** quotes **/
 .tpl-quote {
+	text-align: center;
+	
 	.entry-title {
 		@include post-title();
 		color: $color-text-black;
@@ -363,12 +365,17 @@
 		width: 180px;
 		height: 180px;
 		border-radius: 50%;
+		margin: 0 auto;
 		
 		img {
 			width: 100%;
 			height: 100%;
 			border-radius: 50%;
 		}
+	}
+	
+	@include for(medium-screens) {
+		text-align: left;
 	}
 }
 

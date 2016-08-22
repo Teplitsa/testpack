@@ -65,6 +65,30 @@
 			right: 6px;
 		}
 	}
+	
+	.quote-slider {
+		margin-bottom: $gut;
+	}
+	
+	@include for(medium-screens) {
+		padding-left: 54px;
+		padding-right: 54px;
+		
+		.quote-slider {
+			margin-bottom: 0;
+			height: 220px;
+			overflow-y: hidden;
+		}
+		
+		.rslides_nav {
+			display: block;
+			position: absolute;
+			top: 50%;
+			&.prev { left: 0; }
+			&.next { right: 0; }
+			@include transform(translateY(-50%));
+		}
+	}
 }
 
 
