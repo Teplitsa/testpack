@@ -41,30 +41,20 @@ $label-text-color:   $color-text;
 
 @mixin response-block($mod : default) {
 	@include form-text();	
-	padding: 8px 14px;
-	border: 1px solid $input-border-color;
+	padding: 14px;
+	background: $color-border-normal;
 	position: relative;
-	color: $color-text-black;
+	color: $color-white;
 	
-	&:before {
-		content: '';
-		width: 6px;
-		height: 100%;
-		background: $color-border-normal;
-		position: absolute;
-		top: 0;
-		left: -1px;
-		z-index: 10;
+	p:last-child {
+		margin: 0;
 	}
 	
-	@if $mod == error {
-		&:before { background: $input-color-error; }
-		border-color: $input-color-error;
-		color: $input-color-error;
+	@if $mod == error {	
+		background: $input-color-error;		
 	}
-	@else if $mod == ok {		
-		&:before { background: $leyka_green; }
-		color: $leyka_green;
+	@else if $mod == ok {				
+		background: $leyka_green;
 	}
 }
 
@@ -163,8 +153,10 @@ $label-text-color:   $color-text;
 			text-align: center;
 		}
 		
-		&:focus {
-			border-color: $input-color-active;
+		&:focus {			
+			padding: 15px 7px;
+			border: 2px solid $input-color-active;
+			box-shadow: inset 1px 1px 2px rgba(200,200,200, 0.5);
 		}
 	}
 	

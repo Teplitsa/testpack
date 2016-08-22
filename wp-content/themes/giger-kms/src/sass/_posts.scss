@@ -391,10 +391,15 @@
 .entry-content .tpl-intro-post,
 .tpl-intro-post {
 	@extend .tpl-post;
+	margin-bottom: $gut;
 	
 	.entry-title {
 		margin-top: 0;
 		margin-bottom: $base;
+	}
+	
+	@include for(medium-screens) {
+		margin-bottom: $gut*1.5;
 	}
 }
 

@@ -10,6 +10,7 @@
 	@include calc('min-height', '100vh - 54px');
 	
 	.campaign-form {
+		
 		background: $color-white;
 		margin-bottom: 1px;
 		box-shadow: 1px 1px 3px rgba(0,0,0, 0.5);		
@@ -167,10 +168,16 @@ $figure_padding-height: 16px;
 	}
 	
 	.figure-flex-input__text {
+		@include input-text(); 
+		line-height: $figure_line-height;
 		border: 1px solid $color-border-link;
 		padding: $figure_padding-height $figure_padding-height/2;
 		text-align: center;
 		width: 100%;
+		&:focus {
+			padding: $figure_padding-height - 1px $figure_padding-height/2 - 1px;
+			border: 2px solid $input-color-active;
+		}
 	}
 	
 	//no support for currency change
@@ -403,12 +410,17 @@ $figure_padding-height: 16px;
 /** Errors **/
 .leyka-submit-errors {
 	@include response-block(error);		
-	margin-bottom: $gut/2;
+	margin: 0 0 -1px 0;
+	padding: $gut;
 	
 	span { text-transform: uppercase; }
 	
 	ul {
 		margin-top: $gut/4;		
+	}
+	
+	@include for(medium-screens) {
+		padding: $gut $gut*3;
 	}
 }
 
