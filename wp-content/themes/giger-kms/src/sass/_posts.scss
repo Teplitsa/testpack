@@ -359,6 +359,7 @@
 		margin-top: $base;
 		@include body-text();
 		color: $color-text;
+		p:last-child { margin-bottom: 0; }
 	}
 	
 	.quote-preview {
