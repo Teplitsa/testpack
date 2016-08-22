@@ -2,16 +2,18 @@
 
 /** == Common settings == **/
 $social_color: (
-	vk:        #517397,
-	facebook:  #3B5998,
-	twitter:   #1DA1F2,
-	instagram: #B7308C,
-	pinterest: #DE2127,
-	youtube:   #E21D17,
+	vk:        #5a87ad,
+	facebook:  #4c6fa8,
+	twitter:   #00bcf0,
+    ok:        #ffb061,
+	
 	telegram:  #2CA5E0,
 	whatsapp:  #69BD35,
 	viber:     #774C98,
-	ok:        #F58220
+	
+    instagram: #B7308C,
+    pinterest: #DE2127,
+    youtube:   #E21D17,
 );
 
 @function social_color($key) {
@@ -249,4 +251,158 @@ $social_color: (
 	}
 }
 
+
+/* Yandex share buttons */
+.frupalo-share-buttons {
+    width:350px;
+    margin-left:auto;
+    margin-right:auto;
+    position:relative;
+    
+    @include upto(small-screens) {
+        width:300px;
+    }
+
+    @include for(medium-screens) {
+        margin-left:-45px;
+    }
+    
+    @include for(large-screens) {
+        margin-left:-15px;
+    }
+    
+    .ya-share2 {
+        position:absolute;
+        background-color:$color-white;
+        padding-top:9px;
+        height:47px;
+        width:100%;
+
+        .ya-share2__list {
+            padding-right:11px;
+            padding-left:11px;
+            
+            @include upto(small-screens) {
+                padding-right:7px;
+                padding-left:7px;
+            }
+            
+            margin-left:0px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+        
+        .ya-share2__item:before {
+            content:"";
+        }
+        
+        .ya-share2__container_size_m {
+            .ya-share2__item {
+                padding-left:0px;
+                width:88px;
+                overflow:hidden;
+                
+                @include upto(small-screens) {
+                    width:70px;
+                }
+                
+                .ya-share2__icon a {
+                    @include upto(small-screens) {
+                        width:80px;
+                    }
+                }
+                
+                &.ya-share2__item_service_vkontakte, &.ya-share2__item_service_vkontakte .ya-share2__icon, &.ya-share2__item_service_vkontakte .ya-share2__counter {
+                    background-color:social_color(vk);
+                    @include upto(medium-screens) {
+                        display:none;
+                    }
+                }
+                
+                &.ya-share2__item_service_facebook, &.ya-share2__item_service_facebook .ya-share2__icon, &.ya-share2__item_service_facebook .ya-share2__counter {
+                    background-color:social_color(facebook);
+                    @include upto(medium-screens) {
+                        display:none;
+                    }
+                }
+
+                &.ya-share2__item_service_twitter, &.ya-share2__item_service_twitter .ya-share2__icon, &.ya-share2__item_service_twitter .ya-share2__counter {
+                    background-color:social_color(twitter);
+                    width:46px;
+                }
+
+                &.ya-share2__item_service_odnoklassniki, &.ya-share2__item_service_odnoklassniki .ya-share2__icon, &.ya-share2__item_service_odnoklassniki .ya-share2__counter {
+                    background-color:social_color(ok);
+                    @include upto(medium-screens) {
+                        display:none;
+                    }
+                }
+                
+                &.ya-share2__item_service_viber, &.ya-share2__item_service_viber .ya-share2__icon, &.ya-share2__item_service_viber .ya-share2__counter {
+                    background-color:social_color(viber);
+                    @include for (medium-screens) {
+                        display:none;
+                    }
+                }
+                
+                &.ya-share2__item_service_whatsapp, &.ya-share2__item_service_whatsapp .ya-share2__icon, &.ya-share2__item_service_whatsapp .ya-share2__counter {
+                    background-color:social_color(whatsapp);
+                    @include for (medium-screens) {
+                        display:none;
+                    }
+                }
+                
+                &.ya-share2__item_service_telegram, &.ya-share2__item_service_telegram .ya-share2__icon, &.ya-share2__item_service_telegram .ya-share2__counter {
+                    background-color:social_color(telegram);
+                    @include for (medium-screens) {
+                        display:none;
+                    }
+                }
+                
+                .ya-share2__icon {
+                    width:29px;
+                    height:29px;
+                    background-repeat:no-repeat;
+                }
+                
+                .ya-share2__counter {
+                    padding:2px 8px 3px 8px;
+                    width:60px;
+                    cursor:pointer;
+                    display:inline-block;
+                    
+                    &::before {
+                        display:none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.frupalo-share-buttons-row {
+    margin-top:-50px;
+    height:47px;
+    
+    @include upto(small-screens) {
+        margin-top:-45px;
+    }
+
+    @include for(medium-screens) {
+        margin-top:-65px;
+    }
+    
+    @include for(large-screens) {
+        margin-top:-50px;
+    }
+
+    .frupalo-share-buttons { 
+    }
+}
+
+.frupalo-share-buttons-row.bottom-share-block {
+    margin-top:-12px;
+    margin-bottom:12px;
+}
 
