@@ -593,3 +593,9 @@ function tst_get_help_now_cta($cpost = null, $label = ''){
 	
 	return $cta;
 }
+
+function tst_show_yandex_share() {
+    ?>
+    <div class="ya-share2" data-services="vkontakte,facebook,twitter,odnoklassniki,viber,whatsapp,telegram" data-counter=""></div>
+    <?php 
+}
