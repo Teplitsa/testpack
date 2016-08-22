@@ -336,9 +336,8 @@
 	.entry-summary { @include transition(all 0.35s); }
 	
 	&:hover { 		
-		.entry-preview img { filter: contrast(110%); }
-		@include transform(translateX(-10px));
-		
+		.entry-preview img { filter: contrast(110%); } 
+				
 	}
 }
 

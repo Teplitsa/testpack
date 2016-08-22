@@ -19,16 +19,20 @@ function tst_post_card(WP_Post $cpost){
 <?php
 }
 
-function tst_intro_post_card(WP_Post $cpost) {
-
+function tst_related_post_card(WP_Post $cpost) {
 	$pl = get_permalink($cpost);
 	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
 ?>
-<article class="tpl-intro-post">
-	<div class="entry-meta"><?php echo tst_posted_on($cpost);?></div>
-	<h4 class="entry-title"><a href="<?php echo $pl; ?>"><?php echo get_the_title($cpost);?></a></h4>
-	<div class="entry-summary"><a href="<?php echo $pl; ?>"><?php echo $ex;?></a></div>	
-</article>	
+<article class="tpl-related-post"><a href="<?php echo $pl; ?>" class="entry-link">	
+	<div class="frame">
+		<div class="bit md-4"><div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div></div>
+		<div class="bit md-8">
+			<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost));?></div>
+			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
+			<div class="entry-summary"><?php echo $ex;?></div>
+		</div>
+	</div>	
+</a></article>	
 <?php
 }
 
@@ -62,6 +66,18 @@ function tst_news_title_card(WP_Post $cpost) {
 <?php
 }
 
+function tst_intro_post_card(WP_Post $cpost) {
+
+	$pl = get_permalink($cpost);
+	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
+?>
+<article class="tpl-intro-post">
+	<div class="entry-meta"><?php echo tst_posted_on($cpost);?></div>
+	<h4 class="entry-title"><a href="<?php echo $pl; ?>"><?php echo get_the_title($cpost);?></a></h4>
+	<div class="entry-summary"><a href="<?php echo $pl; ?>"><?php echo $ex;?></a></div>	
+</article>	
+<?php
+}
 
 /** == Helpers == **/
 
