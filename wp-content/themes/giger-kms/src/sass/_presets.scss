@@ -38,7 +38,7 @@ $color-blond:  #fff4e3;
 
 $color-link-one:   #DC471F; //red
 $color-link-two:   #FF9800; //orange
-$color-link-three: #CC0000; //dark red
+$color-link-three: saturate($color-link-one, 20%);; //red
 $color-link-four:  #ff9500; //yellow
 
 $color-text-black:			#000000;
@@ -270,14 +270,15 @@ $hamburger-hover-opacity                   : 0.7;
 	font-family: $nav;	
 	text-transform: uppercase;
 	color: $color-white;
-	background: $color-link-one;
 	border-radius: 2px;
-	border:none;
+	
+	background: $color-link-one;	
+	border: 1px solid $color-link-one;
 	border-bottom: 2px solid darken($color-link-one, 10%);
 	
 	@include transition(all 0.3s);
 	
-	padding: 8px 24px 6px;
+	padding: 7px 24px 6px;
 	font-size: 14px;
 	line-height: 20px;
 	font-weight: bold;
@@ -288,6 +289,7 @@ $hamburger-hover-opacity                   : 0.7;
 	
 	&:hover, &:focus, &:active {
 		background: $color-link-three;		
+		box-shadow: 1px 1px 2px rgba(0,0,0, 0.35);
 		color: $color-white;
 	}
 	
@@ -304,11 +306,23 @@ $hamburger-hover-opacity                   : 0.7;
 		}
 	}
 	@else if $mod == submit {
-		padding: 15px 28px 13px;
+		padding: 14px 28px 13px;
 	}
     @else if $mod == action-on-home {
         text-align:center;
-        padding: 15px 0px 13px;
+        padding: 14px 0px 13px;
+    }
+	@else if $mod == action-on-home-yellow {
+        text-align:center;
+        padding: 14px 0px 13px;
+		background: $color-link-two;	
+		border: 1px solid $color-link-two;
+		border-bottom: 2px solid darken($color-link-two, 10%);
+		
+		&:hover, &:focus, &:active {
+			background: adjust_hue($color-link-two, 5deg);			
+			color: $color-white;
+		}
     }
 	@else if $mod == featured {
 		

@@ -116,12 +116,14 @@ class TST_IconicBlock_Widget extends SiteOrigin_Widget {
 		extract( $template_vars );
 		
 		$css_name = $this->generate_and_enqueue_instance_styles( $instance );
-    
+		
+		$link_target = (!empty($block_url) && false === strpos($block_url, untrailingslashit(home_url()))) ? ' target="_blank"' : '';
+		
 			echo $args['before_widget'];
 			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
 		?>
 			<div class="iconic-block">
-			<?php if(!empty($block_url)) { echo "<a href='{$block_url}' class='ib-url'>"; } ?>
+			<?php if(!empty($block_url)) { echo "<a href='{$block_url}' class='ib-url'{$link_target}>"; } ?>
 				<div class="ib-icon"><?php tst_svg_icon($icon);?></div>
 				<div class="ib-title <?php echo esc_attr($title_style);?>"><?php echo apply_filters('tst_the_title', $title);?></div>
 				<div class="ib-content"><?php echo apply_filters('tst_the_content', $content);?></div>

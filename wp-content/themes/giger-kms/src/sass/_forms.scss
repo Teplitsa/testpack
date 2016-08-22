@@ -367,10 +367,6 @@ $label-text-color:   $color-text;
 		border: none;		
 		outline: none;
 		@include button(submit);
-		@include transition(background 0.2s);
-		&:hover {
-			background: darken($input-color-active, 8%);		
-			color: $color-white;
-		}
+		@include transition(background 0.2s);		
 	}
 }

@@ -337,9 +337,11 @@
 /* Icon block */
 .iconic-block {
 	text-align: center;
+	@include clearfix();
 	
 	.ib-icon {		
 		margin-bottom: $base;
+		@include transition(all 0.35s);
 	}
 	
 	.pic-donations {
@@ -368,6 +370,7 @@
 	
 	.ib-title {
 		margin-bottom: $gut/2;
+		@include transition(all 0.35s);
 		
 		&.regular {
 			@include post-title();
@@ -382,21 +385,52 @@
 	.ib-content {
 		color: $color-text;
 		p { margin: 0; }
+		b {
+			@include transition(all 0.35s);
+			font-weight: normal;
+			text-decoration: underline; }
 	}
 	
 	.ib-url {
 		display: block;
+		
+		
 		&:hover {
-			.ib-title.regular {
-				color: $color-link-one;
-				text-decoration: underline;
+			.ib-title {
+				color: $color-link-three;		
+				//text-decoration: underline;
 			}
+						
+			.ib-icon {
+				filter: saturate(120%);
+			}
+			
+			.ib-content b { color: $color-link-three;	}
 		}
-		&:hover {
-			.ib-title.compact {
-				color: $color-link-three;
-				text-decoration: underline;
-			}
+		
+	}
+	
+	@include for(small-screens) {
+		.ib-icon {
+			float: left;
+			width: 95px;
+		}
+		
+		.ib-title, .ib-content {
+			margin-left: 130px;
+			text-align: left;
+		}
+	}
+	
+	@include for(medium-screens) {
+		.ib-icon {
+			float: none;
+			width: 100%;
+		}
+		
+		.ib-title, .ib-content {
+			margin-left: 0;
+			text-align: center;
 		}
 	}
 }

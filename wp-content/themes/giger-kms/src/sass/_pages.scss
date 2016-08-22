@@ -321,26 +321,21 @@
     
     .action-become-volonteer {
         .link-tst-actionlink-base {
-            float:right;
-            margin-right:2px;
-            @include button(action-on-home);
-            background: $color-link-four;
             
-            @include upto(medium-screens) {
-                float: none;
+            @include button(action-on-home-yellow);                       
+            @include for(medium-screens) {
+                float:right;
+				margin-right:2px;
             }
         }
     }
     
     .action-donate {
-        .link-tst-actionlink-base {
-            float:left;
-            margin-left:2px;
-            @include button(action-on-home);
-            background: $color-link-one;
-            
-            @include upto(medium-screens) {
-                float: none;
+        .link-tst-actionlink-base {            
+            @include button(action-on-home);                        
+            @include for(medium-screens) {
+                float:left;
+				margin-left:2px;
             }
         }
     }
