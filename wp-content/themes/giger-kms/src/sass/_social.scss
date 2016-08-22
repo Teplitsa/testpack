@@ -290,12 +290,6 @@ $social_color: (
                     width:70px;
                 }
                 
-                .ya-share2__icon {
-                    @include upto(small-screens) {
-                        width:80px;
-                    }
-                }
-                
                 &.ya-share2__item_service_vkontakte, &.ya-share2__item_service_vkontakte .ya-share2__icon, &.ya-share2__item_service_vkontakte .ya-share2__counter {
                     background-color:social_color(vk);
                     @include upto(medium-screens) {
@@ -343,6 +337,12 @@ $social_color: (
                     }
                 }
                 
+                a.ya-share2__link {
+                    border-bottom:none;
+                    width:100%;
+                    height:29px;
+                }
+                
                 .ya-share2__icon {
                     width:29px;
                     height:29px;
@@ -350,10 +350,12 @@ $social_color: (
                 }
                 
                 .ya-share2__counter {
-                    padding:2px 8px 3px 8px;
+                    padding:2px 8px 1px 8px;
                     width:60px;
+                    height:29px;
                     cursor:pointer;
                     display:inline-block;
+                    margin:0px;
                     
                     &::before {
                         display:none;
