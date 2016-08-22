@@ -57,7 +57,7 @@ get_header(); ?>
 		$cat = get_the_terms($post->ID, 'category');
 		$pquery = new WP_Query(array(
 			'post_type'=> 'post',
-			'posts_per_page' => 4,
+			'posts_per_page' => 3,
 			'post__not_in' => array($cpost->ID),
 			'tax_query' => array(
 				array(

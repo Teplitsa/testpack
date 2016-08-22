@@ -42,6 +42,7 @@
 		display: inline-block;
 		position: relative;
 		margin: 0 2px;
+		@include transition(all 0.35s);
 		
 		&:after {
 			display: inline-block;
@@ -63,6 +64,11 @@
 			content  : '>';
 			top: -1px;
 			right: 6px;
+		}
+		
+		&:hover {
+			border-color:$color-link-three;
+			&:after { color: $color-link-three; }
 		}
 	}
 	

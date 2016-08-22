@@ -13,7 +13,7 @@ get_header(); ?>
 	<div class="campaign-form"><?php tst_donation_form(); ?></div>
 	<div class="entry-content">
 		<?php echo apply_filters('tst_entry_the_content', $cpost->post_content); ?>
-		<div class="all-link"><span><a href="<?php echo get_permalink($cpost->ID);?>donations">Благодарим за помощь&nbsp;</a>&gt;</span></div>
+		<div class="all-link"><span class="linked"><a href="<?php echo get_permalink($cpost->ID);?>donations">Благодарим за помощь&nbsp;</a>&gt;</span></div>
 	</div>
 </div>
 </section>

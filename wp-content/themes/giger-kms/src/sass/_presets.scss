@@ -169,7 +169,7 @@ $hamburger-hover-opacity                   : 0.7;
 			
 	@if $mod == small_title {
 		font-size: 16px;
-		line-height: 24px;		
+		line-height: 20px;		
 	}
 	@else if $mod == featured {
 		font-size: 26px;
@@ -306,7 +306,7 @@ $hamburger-hover-opacity                   : 0.7;
 		}
 	}
 	@else if $mod == submit {
-		padding: 14px 28px 13px;
+		padding: 16px 28px 15px;
 	}
     @else if $mod == action-on-home {
         text-align:center;
@@ -449,7 +449,20 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 }
 
-
+@mixin linked {
+	color: $color-link-one;
+	a {
+		color: $color-link-one;
+		border-bottom: 1px solid transparentize($color-link-one, 0.75);
+	}
+	&:hover {
+		color: $color-link-three;
+		a {
+			color: $color-link-three;
+			border-color: $color-link-three;
+		}
+	}	
+}
 
 .tpl-pictured-bg {
 	width: 100%;

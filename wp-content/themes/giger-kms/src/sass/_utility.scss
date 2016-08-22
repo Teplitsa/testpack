@@ -235,10 +235,13 @@ $margin-base: 16px;
 	}
 	
 	
-	p, li, h4, h3, h5, h6 {		
+	p, li {		
 		
 		a {
-			
+			border-bottom: 1px solid transparentize($color-link-one, 0.75);
+			&:hover {
+				border-color: $color-link-three;
+			}
 		}
 	}
 	
@@ -387,27 +390,19 @@ $margin-base: 16px;
 				break-inside: avoid; /* IE 10+ */
 			}
 		}
-	}
+	}	
 	
 	span.linked {
-		color: $color-link-one;
-		a {
-			color: $color-link-one;
-			border-bottom: 1px solid transparentize($color-link-one, 0.75);
-		}
-		&:hover {
-			color: $color-link-three;
-			a {
-				color: $color-link-three;
-				border-color: $color-link-three;
-			}
-		}
+		@include linked();
 	}
 		
 } //mixin
 
-.entry-content {
-	
+span.linked {
+	@include linked();
+}
+
+.entry-content {	
 	@include content-elements();	
 }
 

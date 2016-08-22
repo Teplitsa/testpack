@@ -166,7 +166,7 @@
 		a {
 			color: inherit;
 			@include transition(all 0.35s);
-			&:hover { color: $color-link-one; }
+			&:hover { color: $color-link-three; }
 		}
 	}
 	
@@ -318,12 +318,9 @@
 }
 
 .related-all-link {
-	text-align: center;
-	span {
-		color: $color-link-one;
-		a { border-bottom: 1px solid; }
-	}
+	text-align: center;	
 }
+
 .tpl-related-post {
 	@extend .tpl-post;
 	@include transition(all 0.35s);
@@ -384,7 +381,7 @@
 	margin-bottom: $base/2;
 	a {
 		@include post_title(small_title);
-		&:hover { color: $color-link-one; }
+		&:hover { color: $color-link-three; }
 	}
 }
 

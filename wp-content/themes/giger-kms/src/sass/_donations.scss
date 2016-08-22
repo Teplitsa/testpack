@@ -26,9 +26,7 @@
 	}
 	
 	.all-link {
-		text-align: center;
-		span { color: $color-link-one; }
-		a { border-bottom: 1px solid; }
+		text-align: center;		
 		p + & {	margin-top: $gut; }
 	}
 }

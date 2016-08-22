@@ -436,16 +436,7 @@
 /* news on home */
 .news-block {
     .all-link {
-        margin-top: $gut;
-		        
-        a {
-            text-decoration:underline;
-			&:hover { color: $color-link-three; }
-        }
-        
-        span {
-            color: $color-link-one;
-        }
+        margin-top: $gut;		
     }
 }
 
@@ -467,26 +458,24 @@
 	
 	@include for(medium-screens) {
 		fieldset {
-			display: flex;
-			flex-flow: row nowrap;
-			justify-content: space-between;
-			align-items: stretch;
-			
+			display: block;
+			position: relative;			
 			input[type="hidden"], .frm_hidden { display: none; }
 		}
 		
 		
-		.tst-textfield {
-			flex: 1 1 auto;
+		.tst-textfield {			
+			@include calc('width', '100% - 272px');
 			padding: 0;
-			@include calc('width', '100% - 270px');
 		}
 		
-		.frm_submit {
-			flex: 0 0 auto;
+		.frm_submit {			
 			width: 270px;
 			text-align: right;
-			input { height: 100%;}
+			
+			position: absolute;
+			top: 0;
+			right: 0;
 		}
 	}
 	

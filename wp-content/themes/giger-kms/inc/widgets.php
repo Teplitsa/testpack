@@ -143,7 +143,7 @@ class TST_Home_News extends WP_Widget {
 		if(empty($show_posts))
 			return;
 		
-		$all_link = "<a href='".home_url('news')."'>".__('All news', 'tst')."</a><span>&nbsp;&gt;</span>";		
+		$all_link = "<span class='linked'><a href='".home_url('news')."'>".__('All news', 'tst')."</a>&nbsp;&gt;</span>";		
 		
 		//intro post
 		$intro = array_slice($show_posts, 0, 1); // Number one as intro

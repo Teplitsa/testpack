@@ -445,7 +445,7 @@ function tst_more_section($posts, $title = '', $type = 'news'){
 		$title = (empty($title)) ? __('Our projects', 'tst') : $title;
 	}	
 	else {
-		$all_link = "<span><a href='".home_url('news')."'>Все новости&nbsp;</a>&gt;</span>";
+		$all_link = "<span class='linked'><a href='".home_url('news')."'>Все новости&nbsp;</a>&gt;</span>";
 		$title = (empty($title)) ? 'Новости по теме' : $title;
 		$container_type = 'container-narrow';
 		$loop_css = 'related-items-loop';
