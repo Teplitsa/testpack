@@ -248,10 +248,22 @@ jQuery(document).ready(function($){
     resize_embed_media(); // Initial page rendering
     $(window).resize(function(){		
 		resize_embed_media();	
-	});	
-	
-	
-	
+	});
+
+
+    /** Leyka custom modal **/
+    var leykaTopPad = (windowWidth > 940) ? 120 : 66;
+
+    try {
+        $('#leyka-agree-text').easyModal({
+            hasVariableWidth : true,
+            top : leykaTopPad,
+            //transitionIn: 'animated zoomIn',
+            //transitionOut: 'animated zoomOut',
+            onClose : function(){  }
+        });
+    }
+    catch(ex) {}
 	
 	
 	
