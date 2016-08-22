@@ -307,7 +307,7 @@ $social_color: (
                     width:70px;
                 }
                 
-                .ya-share2__icon a {
+                .ya-share2__icon {
                     @include upto(small-screens) {
                         width:80px;
                     }
