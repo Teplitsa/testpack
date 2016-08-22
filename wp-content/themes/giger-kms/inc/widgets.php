@@ -35,8 +35,8 @@ function tst_custom_widgets(){
 	unregister_widget('SiteOrigin_Panels_Widgets_PostLoop');
 	
 	
-	register_widget('RDC_Home_News');
-	register_widget('RDC_Social_Links');
+	register_widget('TST_Home_News');
+	register_widget('TST_Social_Links');
 	
 }
 
@@ -84,7 +84,7 @@ function tst_is_widget_registered($widget_class){
 }
 
 /** Social Links Widget **/
-class RDC_Social_Links extends SiteOrigin_Widget {
+class TST_Social_Links extends SiteOrigin_Widget {
 		
     function __construct() {
         WP_Widget::__construct('widget_socila_links', '[TST] Социальные кнопки', array(
@@ -123,7 +123,7 @@ class RDC_Social_Links extends SiteOrigin_Widget {
 } // class end
 
 /** Home news **/
-class RDC_Home_News extends WP_Widget {
+class TST_Home_News extends WP_Widget {
 		
     function __construct() {
         WP_Widget::__construct('widget_home_news', '[TST] Новости на главной', array(
@@ -145,26 +145,35 @@ class RDC_Home_News extends WP_Widget {
 		
 		$all_link = "<a href='".home_url('news')."'>".__('All news', 'tst')."</a><span>&nbsp;&gt;</span>";		
 		
+		//intro post
+		$intro = array_slice($show_posts, 0, 1); // Number one as intro
+		$intro = reset($intro);
+		
+		array_splice($show_posts, 0, 1);
+				
+		$intro_link = get_permalink($intro);
+		
         echo $before_widget;
 		?>       
-		<div class="related-cards-loop">
-			<?php
-			    $p = array_shift($show_posts);
-			    tst_related_post_card($p);
-			?>
-                <article class=" other-news-on-main">
-                	<div class="frame">
-                		<div class="bit md-4"><div class="entry-preview"><?php echo tst_post_thumbnail($p->ID, 'post-thumbnail');?></div></div>
-        			    <div class="bit md-8">
-		    <?php 
-				foreach($show_posts as $p){
-			        tst_news_title_on_main($p);
-				}
-			?>
-		                      <div class="all-news-link"><?php echo $all_link;?></div>
-			             </div>
-		            </div>
-	            </article>
+		<div class="news-block">
+			<div class="frame">
+				<div class="bit md-4">
+					<a href="<?php echo $intro_link; ?>" class="thumbnail-link entry-preview"><?php echo tst_post_thumbnail($intro->ID, 'post-thumbnail');?></a>
+				</div>
+				<div class="bit md-8">
+					<?php tst_intro_post_card($intro) ;?>
+					<?php if(!empty($show_posts)) { ?>
+					<div class="news-block-list">
+					<?php 
+						foreach($show_posts as $p) {
+							tst_news_title_card($p);
+						}
+					?>
+					</div>
+					<?php }?>
+					<div class="all-link"><?php echo $all_link;?></div>
+				</div>
+			</div>
 		</div>
 		
 		<?php		
@@ -180,25 +189,11 @@ class RDC_Home_News extends WP_Widget {
 		if(!empty($exclude))
 			$exclude = array_map('intval', $exclude);
 			
-		$events = new WP_Query(array(
-				'post_type' => array('event'),
-				'posts_per_page' => 1,
-				'orderby'  => array('menu_order' => 'DESC', 'meta_value' => 'ASC'),					
-				'meta_key' => 'event_date_start',
-				'meta_query' => array(					
-					array(
-						'key' => 'event_date_end',
-						'value' => strtotime('today midnight'),
-						'compare' => '>=',
-						'type' => 'numeric'
-					)
-				),
-				'post__not_in' => $exclude));
 
-		$news_per_page = ($events->have_posts()) ? 4 : 5;
+		$news_per_page = 4; //make this options ?
 		$news = new WP_Query(array('post_type' => array('post'), 'posts_per_page' => $news_per_page, 'post__not_in' => $exclude));
 		
-		return array_merge($events->posts, $news->posts);
+		return $news->posts;
 	}
 	
     function form($instance) {

@@ -444,50 +444,15 @@
     margin-bottom: -2px;
 }
 
-.news-on-main {
-    .entry-title {
-        margin-top:8px;
-        margin-bottom:23px;
-    }
+.news-block {
     
-    .entry-summary {
-        margin-bottom:8px;
-    }
     
-    .tpl-related-post {
-        margin-bottom:0px;
-    }
-    
-    .other-news-on-main {
-        margin-top: 7px;
-        
-        .entry-title {
-            margin-top:8px;
-            margin-bottom:0px;
-            @include post-title(small_title);
-        }
-        
-        article {
-            margin-bottom:0px;
-        }
-        
-        .entry-preview {
-            visibility:hidden;
-            @include upto(medium-screens) {
-                display:none;
-            }
-        }
-    }
-    
-    .all-news-link {
-        margin-top:24px;
-        
+    .all-link {
+        margin-top: $gut;
+		        
         a {
             text-decoration:underline;
-            
-            &:hover, &:focus, &:active {
-                text-decoration:none;
-            }
+			&:hover { color: $color-link-three; }
         }
         
         span {

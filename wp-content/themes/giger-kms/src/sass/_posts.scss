@@ -380,6 +380,28 @@
 	}
 }
 
+/** news title on home **/
+.tpl-news-title {
+	margin-bottom: $base/2;
+	a {
+		@include post_title(small_title);
+		&:hover { color: $color-link-one; }
+	}
+}
+
+.entry-content .tpl-intro-post,
+.tpl-intro-post {
+	@extend .tpl-post;
+	
+	.entry-title {
+		margin-top: 0;
+		margin-bottom: $base;
+	}
+}
+
+
+
+
 /** old **/
 
 /** People **/
