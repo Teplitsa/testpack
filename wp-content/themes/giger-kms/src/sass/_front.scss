@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding: $gut 0;	
 	text-align: center;
 	
-	@inlcude for(medium-screens) {
+	@include for(medium-screens) {
 		margin-bottom: $gut;
 	}
 }
