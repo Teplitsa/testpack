@@ -43,7 +43,6 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 				'options' => array(
 					'person'  => 'Люди',
 					'org'     => 'Организации',
-					'project' => 'Проекты',
 				)
 			),
 			
