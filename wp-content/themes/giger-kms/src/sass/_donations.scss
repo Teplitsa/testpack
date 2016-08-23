@@ -106,7 +106,9 @@
 		
 	
 	.tst-submit-button { 
-		@include button(submit);		
+		@include button(submit);
+		outline:none;
+		&:focus { outline:none; }
 	}
 	
 	.submit {
