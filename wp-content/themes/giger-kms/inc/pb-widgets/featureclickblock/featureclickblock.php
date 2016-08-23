@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: [TST] 3 Кликабельных блока-опции
-Description: 3 Стандартизированных кликабельных блока с заголовком текстом и кнопкой
+Description: 3 Стандартизированных кликабельных блока с заголовком текстом и картинкой
 */
 
 class TST_FeatureClickBlock_Widget extends SiteOrigin_Widget {
@@ -38,45 +38,45 @@ class TST_FeatureClickBlock_Widget extends SiteOrigin_Widget {
 		$fields = array(
 			'title' => array(
 				'type' => 'text',
-				'label' => __('Title', 'tst')
+				'label' => 'Заголовок'
 			),
+			
 			'text' => array(
 				'type' => 'textarea',
-				'label' => __('Description', 'tst'),
+				'label' => 'Текст',
 				'rows' => 2
 			),
+			
 			'button_url' => array(
 				'type' => 'link',
-				'label' => __('Link', 'tst'),
+				'label' => 'Ссылка блока',
 				'default' => ''
 			),
-			'button_label' => array(
-				'type' => 'text',
-				'label' => __('Button label', 'tst')				
-			),
-		    'is_block_clickable' => array(
-		        'type' => 'checkbox',
-		        'label' => __('Whole block is clickable', 'tst'),
-		        'default' => false
-		    )
+			
+			'image' => array(
+				'type' => 'media',
+				'label' => 'Изображение',
+				'library' => 'image',
+				'fallback' => true,
+			),	
 		);
 	
 		return array(
 			'col1' => array(
 				'type' => 'section',
-				'label' => __('Column 1', 'tst'),
+				'label' => 'Колонка 1',
 				'hide' => false,
 				'fields' => $fields
 			),
 			'col2' => array(
 				'type' => 'section',
-				'label' => __('Column 2', 'tst'),
+				'label' => 'Колонка 2',
 				'hide' => true,
 				'fields' => $fields
 			),
 			'col3' => array(
 				'type' => 'section',
-				'label' => __('Column 3', 'tst'),
+				'label' => 'Колонка 3',
 				'hide' => true,
 				'fields' => $fields
 			)
@@ -87,7 +87,7 @@ class TST_FeatureClickBlock_Widget extends SiteOrigin_Widget {
 	public function get_template_variables( $instance, $args ) {
 		
 		$sections = array('col1', 'col2', 'col3');
-		$fields = array('title', 'text', 'button_url', 'button_label', 'is_block_clickable');
+		$fields = array('title', 'text', 'button_url', 'image');
 		$results = array();
 		
 		foreach($sections as $sec){
@@ -141,31 +141,37 @@ class TST_FeatureClickBlock_Widget extends SiteOrigin_Widget {
 		$out = "<div class='col3-section'>";
 		
 		foreach($sections as $sec){
-		    if(!empty($template_vars[$sec.'_button_url']) && $template_vars[$sec.'_is_block_clickable']) {
-		        $wrapper_tag_open = "<a href='".$template_vars[$sec.'_button_url']."' title='".$template_vars[$sec.'_button_label']."' class='col3'>";
+		    if(!empty($template_vars[$sec.'_button_url'])) {
+		        $wrapper_tag_open = "<a href='".$template_vars[$sec.'_button_url']."' class='col3-content'>";
 		        $wrapper_tag_close = "</a>";
 		    }
 		    else {
-		        $wrapper_tag_open = "<div class='col3'>";
+		        $wrapper_tag_open = "<div class='col3-content'>";
 		        $wrapper_tag_close = "</div>";
 		    }
 		    
+			$out .= "<div class='col3'>";
 			$out .= $wrapper_tag_open;
-			$out .= "<div class='col3-content'>";
 			
 			if(!empty($template_vars[$sec.'_title'])){
 				$out .= "<h4 class='col3-title'>".apply_filters('tst_the_title', $template_vars[$sec.'_title'])."</h4>";
 			}
+			
+			if(!empty($template_vars[$sec.'_image'])){
+				$src = wp_get_attachment_image_src($template_vars[$sec.'_image'], 'post-thumbnail');
+				if(isset($src[0]) && !empty($src[0])){
+					$style= 'background-image: url('.$src[0].');';
+					$out .= "<div class='col3-image' style='".esc_attr($style)."'></div>";
+				}				
+			}
+			
 			if(!empty($template_vars[$sec.'_text'])){
 				$out .= "<div class='col3-text'>".apply_filters('tst_the_content', $template_vars[$sec.'_text'])."</div>";
 			}
-			if(!empty($template_vars[$sec.'_button_url']) && !empty($template_vars[$sec.'_button_label'])){
-				$target = (false !== strpos($template_vars[$sec.'_button_url'], home_url())) ? '' : ' target="_blank"'; //test this
-				$out .= "<div class='col3-link'><a href='".$template_vars[$sec.'_button_url']."'{$target}>".$template_vars[$sec.'_button_label']."</a></div>";
-			}
+			
 		
-			$out .= "</div>";
 	        $out .= $wrapper_tag_close;
+			$out .= "</div>";
 		}
 		
 		$out .= "</div>";

@@ -154,11 +154,17 @@ class TST_Home_News extends WP_Widget {
 		$intro_link = get_permalink($intro);
 		
         echo $before_widget;
+		
+		$src = tst_post_thumbnail_src($intro->ID, 'post-thumbnail');
+		$src = ($src) ? ' style="background-image: url('.$src.')"' : '';
 		?>       
 		<div class="news-block">
 			<div class="frame">
 				<div class="bit md-4">
-					<a href="<?php echo $intro_link; ?>" class="thumbnail-link entry-preview"><?php echo tst_post_thumbnail($intro->ID, 'post-thumbnail');?></a>
+					<a href="<?php echo $intro_link; ?>" class="thumbnail-link entry-preview">
+					<div class="tpl-pictured-bg" <?php echo $src;?>></div>
+					<div class='vvc-logo'><?php tst_svg_icon('pic-vvc');?></div>
+					</a>
 				</div>
 				<div class="bit md-8">
 					<?php tst_intro_post_card($intro) ;?>

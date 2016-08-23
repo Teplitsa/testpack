@@ -39,7 +39,6 @@
 }
 
 /* frontpage elements */
-
 .non-capital-header {
        
     .pb-section-title {
@@ -54,237 +53,66 @@
     }
 }
 
+
 //3col module
 .col3-section  {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: stretch;
-        
-    .col3 {
-        width: 100%;
-        margin-bottom: $gut;
-        flex: 1 0 auto;     
-    }
-        
-    @include for(medium-screens){
-        margin: 0 -1*$gut/2;
-        
-        .col3 {
-            margin: 0 $gut/2 $gut;
-            @include calc(width, '50% - 30px');
-            
-            &:last-of-type {
-                @include calc(width, '100% - 30px');
-            }
-        }
-    }
-    
-    @include for(large-screens){
-                
-        .col3, .col3:last-of-type {
-            flex: 0 0 auto; 
-            width: 30%;
-            text-align: center;
-        }
-    }   
-}
-
-
-//feature block
-.col3-content {
-    width: 100%;
-    height: 100%;
-    
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between; 
-    
-    .col3-title {
-        @include header-title(widget);
-        margin-bottom: 10px;
-        height: 40px;
-        flex: 0 0 auto;
-        overflow: hidden;
-        text-transform:uppercase;
-        text-align:left;
-    }
-    
-    .col3-text {
-        flex: 1 0 auto;
-        text-align:left;
-		p:last-child { margin-bottom: 0; }
-    }
-    
-    .col3-link {
-        flex: 0 0 auto;     
-        margin-top: $base;
-        height: 44px;
-        overflow: hidden;
-        
-        a {
-            @include ghost-button(16px, $color-link-three, $color-white);
-        }
-    }
-    
-}
-
-.siteorigin-panels-home {
-    .col3 {
-        @include for(medium-screens) {
-            .col3-title {
-                position: relative;
-                padding-bottom: 200px;
-                height: 48px + 200px;
-            }
-        }
-        
-        @include for(large-screens) {
-            .col3-title:after {
-                left: 50%;
-                margin-left: -160px;
-            }
-        }
-    }    
-}
-
-/* about us columns */
-.about-us-blocks {
+	margin-bottom: $gut;
 	
-    //3col module
-    .col3-section  {
-    	display: flex;
-    	flex-flow: row wrap;
-    	justify-content: space-between;
-    	align-items: stretch;
-    		
-    	.col3 {
-    		width: 100%;
-    		margin-bottom: $gut;
-    		flex: 1 0 auto;		
-    	}
-    		
-    	@include for(medium-screens){
-    		margin: 0 -1*$gut/2;
-    		
-    		.col3 {
-    			margin: 0 $gut/2;
-    			@include calc(width, '50% - 30px');
-    			
-    			&:last-of-type {
-    				@include calc(width, '100% - 30px');
-    			}
-    		}
-    	}
-    	
-    	@include for(large-screens){
-    		margin: 0 -1*$gut/2;
-    		
-    		.col3, .col3:last-of-type {
-    			flex: 0 0 auto;	
-    			width:30%;
-    			text-align: center;
-    		}
-    	}	
-    }
-    
-    //home3featured
-    .home3featured {
-        margin-top:43px;
-    }
-    
-    //feature block
-    .col3-content {
-    	width: 100%;
-    	height: 100%;
-    	
-    	display: flex;
-    	flex-flow: column nowrap;
-    	justify-content: space-between;	
-    	
-    	.col3-title {
-    		@include header-title(widget);
-    		margin-bottom: 10px;
-    		height: 40px;
-    		flex: 0 0 auto;
-    		overflow: hidden;
-    		text-transform:uppercase;
-    		text-align:left;
-    	}
-    	
-    	.col3-text {
-    		flex: 1 0 auto;
-    		text-align:left;
-    		@include body-text();
-			p:last-child { margin-bottom: 0; }
-    	}
-    	
-    	.col3-link {
-    		flex: 0 0 auto;		
-    		margin-top: $base;
-    		height: 44px;
-    		overflow: hidden;
-    		
-    		a {
-    			@include ghost-button(16px, $color-link-three, $color-white);
-    		}
-    	}
-    	
-    }
+	@include for(medium-screens) {
+		display: flex;
+		flex-flow: row nowrap;		
+		align-items: stretch;
+		margin: 0 -1*$gut/2;
+		
+		.col3 {
+			@include calc(width, '33.3% - 30px');			
+			margin: 0 $gut/2;
+		}
+		
+	}
 }
 
-.siteorigin-panels-home {
-    .about-us-blocks {
-        .col3 {
-            @include for(medium-screens) {
-                .col3-title {
-                    position: relative;
-                    padding-bottom: 200px;
-                    height: 48px + 200px;
-                    
-                    &:after {
-                        content: '';
-                        display: block;
-                        position:absolute;
-                        width: 320px;
-                        height: 200px;
-                        background-image: url("../img/block1-who-we-are.jpg");
-                        background-repeat: no-repeat;
-                        background-position: left top;
-                        background-size: contain;
-                        left:0px;
-                        top:30px;
-                    }
-                }
-                
-                &:nth-of-type(2) .col3-title:after {
-                    background-image: url("../img/block2-projects.jpg");
-                }
-                
-                &:nth-of-type(3) .col3-title:after {
-                    background-image: url("../img/block3-faq.jpg");
-                }
-            }
-            
-            &:hover, &:focus, &:active {
-                .col3-title {
-                    color: $color-link-three;
-                    &:after {
-                        @include transition(background 0.2s);
-                        box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
-                    }
-                }
-            }
-            
-            @include for(large-screens) {
-                .col3-title:after {
-                    left: 50%;
-                    margin-left: -160px;
-                }
-            }
-        }    
-    }
+.col3-content {
+	display: block;
+		
+	.col3-title {
+		@include header-title(widget);
+		@include transition(all 0.35s);
+	}
+	
+	.col3-image {
+		display: none;
+		
+		@include upto(medium-screens) {
+			background-image: none !important;
+		}
+		
+		@include for(medium-screens) {
+			display: block;
+			width: 100%;
+			height: 0;
+			padding-bottom: 61.18%;
+			background-size: cover;
+			background-color: $color-secondary;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+			margin-bottom: $gut/2;
+			@include transition(all 0.35s);
+		}
+	}
+	
+	.col3-text {
+		@include body-text;
+		p { margin: 0; }
+	}
+	
+	&:hover {
+		.col3-title { color: $color-link-one; }
+		.col3-image { filter: contrast(120%); }
+	}
 }
+
 
 
 
@@ -341,103 +169,16 @@
     }
 }
 
-/* activity stats */
-.activity-stats-row {
-    margin-top:50px;
-    
-    .activity-stats {
-    
-        //3col module
-        .col3-section  {
-        }
-        
-        .col3-content {
-            width: 100%;
-            height: 100%;
-            
-            display: flex;
-            flex-flow: column nowrap;
-            justify-content: space-between; 
-            
-            .col3-title {
-                @include post-title(featured);
-                margin-bottom: 0px;
-                flex: 0 0 auto;
-                overflow: hidden;
-                text-transform:none;
-                text-align:center;
-            }
-            
-            .col3-text {
-                flex: 1 0 auto;
-                text-align:center;
-                
-                p {
-                    margin-bottom:0px; 
-                }
-            }
-            
-            .col3-link {
-                overflow: hidden;
-                margin-top:0px;
-                padding-top:0px;
-                padding-bottom:0px;
-                text-align:center;
-                
-                a {
-                    @include nav-text(meta_small);
-                    background:none;
-                    color: $color-link-one;
-                    border:none;
-                    text-decoration:underline;
-                    margin-top:0px;
-                    padding-top:0px;
-                    padding-bottom:0px;
-                    
-                    &:hover, &:focus, &:active {
-                        border:none;
-                        background:none;
-                        text-decoration:none;
-                    }
-                }
-            }
-            
-        }
-        
-        .col3 {
-            @include for(medium-screens) {
-                .col3-title {
-                    position: relative;
-                    padding-bottom: 0px;
-                    height: 37px;
-                    
-                    &:after {
-                        width: 0px;
-                        height: 0px;
-                        background-image: none;
-                        background-repeat: no-repeat;
-                        left:0px;
-                        top:0px;
-                    }
-                }
-                
-                &:nth-of-type(2) .col3-title:after {
-                    background-image: none;
-                }
-                
-                &:nth-of-type(3) .col3-title:after {
-                    background-image: none;
-                }
-            }
-        }
-    }
-}
 
 /* news on home */
 .news-block {
     .all-link {
         margin-top: $gut;		
     }
+	
+	.entry-preview {
+		@include post-fixed-preview();
+	}
 }
 
 /* subscribe on news */

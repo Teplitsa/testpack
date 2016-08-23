@@ -443,6 +443,13 @@
 	}
 }
 
+/** Stat block **/
+.stat-block {
+	p { margin: 0; }	
+	text-align: center;	
+	.linked { font-size: 0.85em; }
+}
+
 
 /* Title section on pages  */
 .featured-section {
