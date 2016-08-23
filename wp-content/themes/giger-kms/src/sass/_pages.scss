@@ -20,7 +20,7 @@
 .container-extended-pictured.home-intro-wrap {
 	@include for(medium-screens) {
 		padding-top: $gut*2;
-		padding-bottom: $gut*2.5;
+		padding-bottom: $gut*2.5; 
 	}
 }
 .home-intro {
