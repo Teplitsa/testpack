@@ -39,18 +39,18 @@
 }
 
 /* frontpage elements */
+
 .non-capital-header {
-    margin-top:76px;
-    display:flex;
-    justify-content: center;
-    
-    @include upto(small-screens) {
-        margin-top:0px;
-    }
-    
-    .pb-section-title h3 {
-        text-transform:none;
-        max-width:555px;
+       
+    .pb-section-title {
+		h3 {
+			text-transform:none;
+			max-width:555px;
+		}
+		
+		&.align-center h3 {
+			margin: 0 auto;
+		}
     }
 }
 
@@ -81,20 +81,15 @@
     }
     
     @include for(large-screens){
-        margin: 0 -1*$gut/2;
-        
+                
         .col3, .col3:last-of-type {
             flex: 0 0 auto; 
-            width:30%;
+            width: 30%;
             text-align: center;
         }
     }   
 }
 
-//home3featured
-.home3featured {
-    margin-top:43px;
-}
 
 //feature block
 .col3-content {
@@ -106,7 +101,7 @@
     justify-content: space-between; 
     
     .col3-title {
-        @include post-title(home3featured);
+        @include header-title(widget);
         margin-bottom: 10px;
         height: 40px;
         flex: 0 0 auto;
@@ -118,6 +113,7 @@
     .col3-text {
         flex: 1 0 auto;
         text-align:left;
+		p:last-child { margin-bottom: 0; }
     }
     
     .col3-link {
@@ -154,6 +150,7 @@
 
 /* about us columns */
 .about-us-blocks {
+	
     //3col module
     .col3-section  {
     	display: flex;
@@ -171,7 +168,7 @@
     		margin: 0 -1*$gut/2;
     		
     		.col3 {
-    			margin: 0 $gut/2 $gut;
+    			margin: 0 $gut/2;
     			@include calc(width, '50% - 30px');
     			
     			&:last-of-type {
@@ -219,6 +216,7 @@
     		flex: 1 0 auto;
     		text-align:left;
     		@include body-text();
+			p:last-child { margin-bottom: 0; }
     	}
     	
     	.col3-link {
@@ -288,32 +286,23 @@
     }
 }
 
-/* link to docs */
-.project-doc-link {
-    text-align:center;
-    text-transform:uppercase;
-    margin-top:-$base*2 - 2;
-    margin-bottom:1px;
-    
-    a.link-tst-actionlink-base {
-        @include nav-text(menu);
-        
-        text-decoration:underline;
-        text-decoration-color: $color-link-one;
-        
-        &:hover, &:focus, &:active {
-            text-decoration: none;
-            text-decoration-color: none;
-        }
-    }
-}
+
 
 /* good plan */
 .plan-image {
-    margin-top:-3px;
-    margin-bottom:47px;
-    .so-widget-image {
+   
+    .sow-image-container {
         border:2px solid $color-text;
+		filter: contrast(99%);
+		@include transition(all 0.35s);
+		
+		a {
+			display: block;
+		}
+		&:hover {
+			box-shadow: 1px 1px 3px rgba(0,0,0, 0.35);
+			filter: contrast(150%);
+		}
     }
 }
 
@@ -465,6 +454,7 @@
 	
 	.frm_submit {
 		margin: 0;
+		text-align: center;
 	}
 	
 	@include for(medium-screens) {
@@ -498,141 +488,6 @@
 }
 
 
-/* support us */
-.supportus-title {
-    margin-top:25px;
-}
-
-.support-actions-row {
-    margin-top: 50px;
-    
-    //4col module
-    .col3-section  {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        align-items: stretch;
-            
-        .col3 {
-            width: 100%;
-            margin-bottom: $gut;
-            flex: 1 0 auto;     
-        }
-            
-        @include for(medium-screens){
-            margin: 0 -1*$gut/2;
-            
-            .col3 {
-                margin: 0 $gut/2 $gut;
-                @include calc(width, '50% - 30px');
-                
-                &:last-of-type {
-                    //@include calc(width, '100% - 30px');
-                }
-            }
-        }
-        
-        @include for(large-screens){
-            margin: 0 -1*$gut/2;
-            
-            .col3, .col3:last-of-type {
-                flex: 0 0 auto; 
-                @include calc(width, '21% + 5px');
-                text-align: center;
-            }
-        }   
-    }
-
-    //home3featured
-    .home3featured {
-        margin-top:43px;
-    }
-    
-    //feature block
-    .col3-content {
-        width: 100%;
-        height: 100%;
-        
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: space-between; 
-        
-        .col3-title {
-            @include post-title(featured);
-            
-            margin-bottom: 10px;
-            height: 40px;
-            flex: 0 0 auto;
-            overflow: hidden;
-            text-transform:none;
-            text-align:center;
-        }
-        
-        .col3-text {
-            flex: 1 0 auto;
-            text-align:center;
-        }
-        
-        .col3-link {
-            flex: 0 0 auto;
-            margin-top: $base;
-            height: 44px;
-            overflow: hidden;
-            
-            a {
-                @include ghost-button(16px, $color-link-three, $color-white);
-            }
-        }
-        
-    }
-
-    .col3 {
-        @include for(medium-screens) {
-            .col3-title {
-                text-align:center;
-                position: relative;
-                padding-top: 108px;
-                padding-bottom: 0px;
-                height: 31px + 108px;
-                
-                &:before {
-                    content: '';
-                    display: block;
-                    position:absolute;
-                    width: 100%;
-                    height: 78px;
-                    background-image: url("../img/pic-volunteer.svg");
-                    background-repeat: no-repeat;
-                    background-position: center top;
-                    background-size: auto 78px;
-                    left:0px;
-                    top:0px;
-                }
-            }
-            
-            &:nth-of-type(2) .col3-title:before {
-                background-image: url("../img/pic-petition.svg");
-            }
-            
-            &:nth-of-type(3) .col3-title:before {
-                background-image: url("../img/pic-letter.svg");
-            }
-            
-            &:nth-of-type(4) .col3-title:before {
-                background-image: url("../img/pic-donations.svg");
-            }
-            
-        }
-        
-        @include for(large-screens) {
-            .col3-title:before {
-                //left: 50%;
-                //margin-left: -160px;
-            }
-        }
-    }
-     
-}
 
 /** Error 404 **/
 .err-text {
