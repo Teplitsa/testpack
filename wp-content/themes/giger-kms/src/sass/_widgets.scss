@@ -95,24 +95,31 @@
 	
 	a {
 		color: $color-link-one;
-		display: inline-block;		
-		padding: 0 6px;
-		white-space: nowrap;		
+		display: inline-block;
+		padding-top: 6px;
+		border-bottom: 1px solid transparentize($color-link-one, 0.75);
+		white-space: nowrap;
+		
+		&:hover {
+			color: $color-link-three;
+			border-color: $color-link-three;
+		}
 	}
 	
 	.current-menu-item {
-		a {
-			border-bottom: 1px solid $color-link-one;;
+		a, a:hover {
+			border-bottom-color: $color-border-normal;
+			color: $color-text;
+			cursor: default;
 		}
 	}
 }
 
 @mixin local-menu-horizont {
-	ul { margin-left: -12px; }
-		
+			
 	li {
 		display: inline-block;
-		margin: 0 8px;
+		margin: 0 12px;
 		padding: 0;		
 	}	
 }
