@@ -5,10 +5,16 @@ function tst_post_card(WP_Post $cpost){
 	
 	$pl = get_permalink($cpost);
 	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 40, true));
+	
+	$src = tst_post_thumbnail_src($cpost->ID, 'post-thumbnail');
+	$src = ($src) ? ' style="background-image: url('.$src.')"' : '';
 ?>
 <article class="tpl-post">
 	<div class="frame">
-		<div class="bit md-4"><a href="<?php echo $pl; ?>" class="thumbnail-link entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></a></div>
+		<div class="bit md-4"><a href="<?php echo $pl; ?>" class="thumbnail-link entry-preview">
+		<div class="tpl-pictured-bg" <?php echo $src;?>></div>
+		<div class='vvc-logo'><?php tst_svg_icon('pic-vvc');?></div>
+		</a></div>
 		<div class="bit md-8">
 			<div class="entry-meta"><?php echo tst_posted_on($cpost);?></div>
 			<h4 class="entry-title"><a href="<?php echo $pl; ?>"><?php echo get_the_title($cpost);?></a></h4>
@@ -22,10 +28,16 @@ function tst_post_card(WP_Post $cpost){
 function tst_related_post_card(WP_Post $cpost) {
 	$pl = get_permalink($cpost);
 	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
+	
+	$src = tst_post_thumbnail_src($cpost->ID, 'post-thumbnail');
+	$src = ($src) ? ' style="background-image: url('.$src.')"' : '';
 ?>
 <article class="tpl-related-post"><a href="<?php echo $pl; ?>" class="entry-link">	
 	<div class="frame">
-		<div class="bit md-4"><div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div></div>
+		<div class="bit md-4"><div class="entry-preview">
+			<div class="tpl-pictured-bg" <?php echo $src;?>></div>
+			<div class='vvc-logo'><?php tst_svg_icon('pic-vvc');?></div>
+		</div></div>
 		<div class="bit md-8">
 			<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost));?></div>
 			<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>

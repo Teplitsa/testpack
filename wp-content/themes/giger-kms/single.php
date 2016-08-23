@@ -41,10 +41,9 @@ get_header(); ?>
 	?>
 	
 	<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
-	
-	<?php tst_show_yandex_share();?>
-	
+		
 	<footer class="entry-footer">
+		<div class="single-news-share"><?php tst_show_yandex_share();?></div>
 		<?php
 			$s_link = tst_get_post_source_link($cpost->ID); 
 			if(!empty($s_link)) {
