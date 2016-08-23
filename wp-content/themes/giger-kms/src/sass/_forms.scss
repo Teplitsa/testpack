@@ -54,7 +54,7 @@ $label-text-color:   $color-text;
 		background: $input-color-error;		
 	}
 	@else if $mod == ok {				
-		background: $leyka_green;
+		background: $color-form-ok;
 	}
 }
 

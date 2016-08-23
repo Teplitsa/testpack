@@ -39,7 +39,7 @@ $color-blond:  #fff4e3;
 $color-link-one:   #DC471F; //red
 $color-link-two:   #FF9800; //orange
 $color-link-three: saturate($color-link-one, 20%);; //red
-$color-link-four:  #ff9500; //yellow
+
 
 $color-text-black:			#000000;
 $color-text-semi:			rgba(0,0,0, 0.6);
@@ -54,9 +54,9 @@ $color-border-normal: #dfdfdf;
 $color-border-light:  #eeeeee;
 $color-border-link:   #8c8c91;
 
-$color-form-invalid: #CC0000;
+$color-form-invalid: #FF5454;
 
-$leyka_green : #1DB318;
+$color-form-ok : #0A7F6B;
 
 //Colors for widget elements
 $colored-block-bg: 		$color-secondary;
