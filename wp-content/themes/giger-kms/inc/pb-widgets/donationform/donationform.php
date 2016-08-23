@@ -20,7 +20,12 @@ class TST_PaymentForm_Widget extends SiteOrigin_Widget {
 			false,
 			plugin_dir_path(__FILE__)
 		);
-			
+
+        if( !is_admin() ) {
+            add_filter('leyka_form_is_screening', function($form_is_screening){
+                return true;
+            });
+        }
 	}
 	
 	/* abstract method - we not going to use them */
