@@ -24,7 +24,9 @@ get_header(); ?>
 		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>
 		<div class="entry-meta"><?php echo tst_posted_on_single($cpost);?></div>
 		<div class="single-news-share"><?php tst_show_yandex_share();?></div>
+		<?php if(!empty($cpost->post_excerpt)) { ?>
 		<div class="lead"><?php echo apply_filters('tst_the_content', $cpost->post_excerpt); ?></div>
+		<?php } ?>
 	</header>
 	
 	<?php

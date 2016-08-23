@@ -134,122 +134,6 @@ $social_color: (
 }
 
 
-/** == Newsletter form == **/
-.newsletter-form {
-	max-width: 680px;
-		
-	.rdc-textfield  {
-		padding: 0;
-		label { display: none; }
-		
-		input {
-			@include nav-text(meta);
-			text-transform: none;
-			line-height: 18px;
-			border: 1px solid $color-text-light;
-			background: $color-white;
-			box-shadow: none;
-			padding: 14px;
-			width: 100%;
-			border-radius: 0;
-			
-			@include placeholder {
-				color: $color-text;
-			}
-			
-			&:focus {
-				box-shadow: inset 0px 1px 2px rgba(50,50,50, 0.1);		
-			}
-		}
-		
-		.rdc-textfield__error {
-			@include form-text(small);
-			display: inline-block;
-			padding: 2px 2px ;
-			font-size: 11px;
-			color: $color-link-two;
-			position: relative;
-			bottom: auto;
-			
-		}
-	}
-	
-	.frm_submit {
-		margin-top: 8px;
-		
-		input {
-			@include button();
-			border-radius: 0;			
-		}
-	}
-	
-	.frm_error_style {
-		@include response-block(error);		
-		margin: 15px 0;
-	}
-	
-	.frm_message {		
-		@include response-block(ok);
-		margin: 15px 0;
-	}
-	
-	@include for(medium-screens) {
-		fieldset {
-			width: 100%;
-			@include clearfix();
-		}
-		
-		.rdc-textfield {
-			float: left;
-			@include calc(width, '100% - 180px');
-		}
-		
-		.frm_submit {
-			width: 155px + 16px;
-			margin: 0 0 0 8px;
-			float: left;
-			input { width: 100%; }
-		}
-	}
-	
-	&.in-footer {
-		
-		.rdc-textfield {
-			input {
-				border-color: $color-white;
-				&:focus {
-					box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.35);		
-				}
-			}
-			
-			.rdc-textfield__error {
-				color: rgba(255,255,255, 0.95);
-			}
-		}
-		
-		.frm_submit {			
-			input {
-				background: $color-link-two;
-				border-color: $color-link-two;
-							
-				&:hover, &:focus, &:active {
-					background: $color-white;
-					border-color: $color-white;
-					color: $color-link-two;
-				}
-			}
-		}
-		
-		.frm_message ,
-		.frm_error_style {
-			border-color: $color-white;
-			color: $color-white;
-			&:before {
-				background: $color-white;
-			}
-		}
-	}
-}
 
 
 /* Yandex share buttons */
@@ -414,10 +298,25 @@ $social_color: (
     margin-bottom:12px;
 }
 
-.entry-header-full {
-    .single-news-share {
-        .frupalo-share-buttons {
-            margin-bottom:-30px;
-        }
-    }
+.no-twitter  {
+	.frupalo-share-buttons {
+		margin-left: auto;
+        margin-right: auto;
+		width: 250px;
+		
+		@include for(small-screens) {
+			width: 300px;
+			margin-left: 130px;
+			margin-right: 0;
+		}
+		
+		@include for(medium-screens) {
+			width: 100%;
+			max-width: 300px;
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+	
+	.ya-share2__item_service_twitter { display: none !important; }
 }

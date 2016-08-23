@@ -226,7 +226,9 @@ $margin-base: 16px;
 		font-weight: bold;
 	}
 	
-	h6 {		
+	h6 {
+		font-weight: bold;
+		font-size: 1.1em;
 		margin: $margin-base 0 $margin-base/2;
 	}
 	
@@ -398,8 +400,32 @@ span.linked {
 .wp-caption {
 	margin-bottom: $margin-base*2;
 	&:last-child { margin-bottom: 0; }
-	
-	
+	@include caption-figure();	
 }
 
+
+.tst-quote {
+	margin: $base 0;
+	
+	&:first-child { margin-top: 0;}
+	&:last-child { margin-bottom: 0; }
+	
+	.tst-quote-content {
+		font-style: italic;
+		@include clearfix();
+		
+	}
+	
+	img.alignleft {
+		width: 100px;
+		height: 100px;
+		float: left;
+		margin-right: 15px;
+	}
+	
+	.tst-quote-cite {
+		font-weight: bold;
+		margin-top: $base/2;
+	}
+}
 

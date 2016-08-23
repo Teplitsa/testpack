@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
 	$(window).resize(function(){
 		var winW = $('#top').width();
 		
-		
+		resize_embed_media();	
 	});
 		
 		
@@ -105,6 +105,64 @@ jQuery(document).ready(function($){
 	$('.novalidate').attr('novalidate', 'novalidate');
 	
 	
+	/** == Responsive media == **/
+    var resize_embed_media = function(){
+
+        $('iframe, embed, object').each(function(){
+
+            var $iframe = $(this),
+                $parent = $iframe.parent(),
+                do_resize = false;
+				
+            if($parent.hasClass('embed-content')){
+                do_resize = true;            
+            }
+			else if($iframe.parents('.so-panel').length) {
+				$parent = $iframe.parents('.so-panel');
+                do_resize = true;	
+			}
+            else {                
+                
+                $parent = $iframe.parents('.entry-content, .player');
+                if($parent.length)
+                    do_resize = true;				
+            }
+			
+            if(do_resize) {
+                var change_ratio = $parent.width()/$iframe.attr('width');
+                $iframe.width(change_ratio*$iframe.attr('width'));
+                $iframe.height(change_ratio*$iframe.attr('height'));
+            }
+        });
+    };
+	
+    resize_embed_media(); // Initial page rendering
+    
+	/* volunteers filed in focus **/
+	var volunteerForm = $('#form_volunteers');
+		
+	if (volunteerForm.length > 0) {
+		var volunteerFormField = volunteerForm.find('input.tst-textfield__input').eq(0),
+			scrollPosition = $(window).scrollTop();
+		
+		$(window).scroll(function () {
+			var scroll = $(window).scrollTop(),
+				fieldPos = volunteerFormField.offset().top;
+				
+			if (scroll > scrollPosition && (fieldPos - scroll) < 250) { //down
+				if (!volunteerForm.hasClass('seen')) {
+					volunteerFormField.focus();
+					volunteerForm.addClass('seen');
+				}				
+			}
+			
+			scrollPosition = scroll; //upd scroll position
+			return true;
+		});
+	}
+	
+	
+	
 	/** == OLD === **/
 	
 	//submenu on about page
@@ -181,8 +239,7 @@ jQuery(document).ready(function($){
 	
 	
 	/** Sticky elements **/
-	var position = $(window).scrollTop(), //store intitial scroll position
-		scrollTopLimit = ($('body').hasClass('adminbar')) ? 62+32 + 280 : 62 + 280,
+	var scrollTopLimit = ($('body').hasClass('adminbar')) ? 62+32 + 280 : 62 + 280,
 		fixedTopPosition = ($('body').hasClass('adminbar')) ? 95 + 32 + 280 : 95 + 280;
 		
 	
@@ -263,42 +320,7 @@ jQuery(document).ready(function($){
 	}
 	
 	
-	/** == Responsive media == **/
-    var resize_embed_media = function(){
-
-        $('iframe, embed, object').each(function(){
-
-            var $iframe = $(this),
-                $parent = $iframe.parent(),
-                do_resize = false;
-				
-            if($parent.hasClass('embed-content')){
-                do_resize = true;            
-            }
-			else if($iframe.parents('.so-panel').length) {
-				$parent = $iframe.parents('.so-panel');
-                do_resize = true;	
-			}
-            else {                
-                
-                $parent = $iframe.parents('.entry-content, .player');
-                if($parent.length)
-                    do_resize = true;				
-            }
-			
-            if(do_resize) {
-                var change_ratio = $parent.width()/$iframe.attr('width');
-                $iframe.width(change_ratio*$iframe.attr('width'));
-                $iframe.height(change_ratio*$iframe.attr('height'));
-            }
-        });
-    };
 	
-    resize_embed_media(); // Initial page rendering
-    $(window).resize(function(){		
-		resize_embed_media();	
-	});
-
 
     
 	

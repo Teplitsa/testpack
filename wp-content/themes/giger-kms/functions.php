@@ -10,7 +10,7 @@ define('TST_DOC_URL', 'https://kms.te-st.ru/site-help/');
  
  
 if ( ! isset( $content_width ) ) {
-	$content_width = 640; /* pixels */
+	$content_width = 770; /* pixels */
 }
 
 
@@ -53,11 +53,12 @@ add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
 function tst_medialib_custom_image_sizes($sizes) {
 	
 	$addsizes = array(
-		"medium-thumbnail" => 'Горизонтальный',
-		"square" => 'Квадратный'
+		"small-thumbnail" 	=> 'Горизонтальная миниатюра',
+		"post-thumbnail" 	=> 'Горизонтальный средний',
+		"square" 			=> 'Квадратный'
 	);
 		
-	return array_merge($sizes, $addsizes);
+	return array_merge($sizes, $addsizes);	
 }
 
 /**

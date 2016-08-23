@@ -373,7 +373,9 @@ $hamburger-hover-opacity                   : 0.7;
 
 // Media
 @mixin caption-figure {	
-	width: 100%;
+	width: 100% !important;
+	max-width: 100%;
+	text-align: center;
 	
 	a {
 		display: block;
@@ -381,25 +383,15 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 	
 	img {
-		width: 100%; //temp
+		max-width: 100%; 
 		height: auto;
 	}
 			
-	figcaption {
-		vertical-align: middle;
-		display: block;
-		margin-top: $gut/2;
-		@include nav-text();
-		position: relative;
-		padding-left: 28px;
-					
-		
-		
-		span {
-			display: inline-block;
-			@include nav-text();
-			line-height: 1.5;			
-		}
+	.wp-caption-text {
+		@include sub-title();
+		line-height: 16px;
+		text-align: center;
+		margin-top: 8px;
 		
 		p { margin: 0; }		
 	}
