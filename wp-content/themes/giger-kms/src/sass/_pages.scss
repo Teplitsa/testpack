@@ -218,6 +218,7 @@
     	.col3-text {
     		flex: 1 0 auto;
     		text-align:left;
+    		@include body-text();
     	}
     	
     	.col3-link {
@@ -251,7 +252,7 @@
                         height: 200px;
                         background-image: url("../img/block1-who-we-are.jpg");
                         background-repeat: no-repeat;
-                        background-position: center top;
+                        background-position: left top;
                         background-size: contain;
                         left:0px;
                         top:30px;
@@ -264,6 +265,16 @@
                 
                 &:nth-of-type(3) .col3-title:after {
                     background-image: url("../img/block3-faq.jpg");
+                }
+            }
+            
+            &:hover, &:focus, &:active {
+                .col3-title {
+                    color: $color-link-three;
+                    &:after {
+                        @include transition(background 0.2s);
+                        box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
+                    }
                 }
             }
             
@@ -752,4 +763,11 @@
             text-align:center;
         }
     }
+}
+
+.very-first-page-title {
+    margin-top:32px;
+    .pb-section-title h3 {
+        @include header-title(head_title);
+    } 
 }
