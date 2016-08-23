@@ -25,18 +25,17 @@
 }
 .home-intro {
 	color: $color-white;
-	
-	
+		
 	.iconic-block {
-		text-align: left;
+		text-align: center;
 		
 		.ib-title.section {
 			@include header-title(section);
-			color: $color-white !important;
+			color: $color-white !important;			
 		}
 		
 		.ib-content {
-			color: $color-white;
+			color: $color-white;			
 		}
 		
 		.ib-icon {
@@ -52,7 +51,7 @@
 		@include for(small-screens) {			
 			
 			.ib-title, .ib-content {
-				margin-left: 0;				
+				margin-left: 0;
 			}
 		}
 		
@@ -77,6 +76,8 @@
 } 
 
 .home-intro-button {
+	text-align: center;
+	
 	@include for(medium-screens) {
 		margin-top: 37px;
 		text-align: right;
@@ -95,15 +96,24 @@
 
 .home-intro-small,
 .widget .home-intro-small {
+	text-align: center;
 	
 	.widget-title {
 		@include post-title();
 		color: $color-white;
 		margin-bottom: $gut/2;
+		text-align: center;
 	}
 	
 	.textwidget {
 		color: $color-white
+	}
+	
+	@include for(medium-screens) {
+		.widget-title,
+		.textwidget {
+			text-align: left;
+		}
 	}
 }
 
