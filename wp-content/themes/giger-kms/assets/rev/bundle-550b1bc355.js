@@ -1090,6 +1090,28 @@ jQuery(document).ready(function($){
 	
     resize_embed_media(); // Initial page rendering
     
+	/* volunteers filed in focus **/
+	var volunteerForm = $('#form_volunteers');
+		
+	if (volunteerForm.length > 0) {
+		var volunteerFormField = volunteerForm.find('input.tst-textfield__input').eq(0),
+			scrollPosition = $(window).scrollTop();
+		
+		$(window).scroll(function () {
+			var scroll = $(window).scrollTop(),
+				fieldPos = volunteerFormField.offset().top;
+				
+			if (scroll > scrollPosition && (fieldPos - scroll) < 250) { //down
+				if (!volunteerForm.hasClass('seen')) {
+					volunteerFormField.focus();
+					volunteerForm.addClass('seen');
+				}				
+			}
+			
+			scrollPosition = scroll; //upd scroll position
+			return true;
+		});
+	}
 	
 	
 	
@@ -1169,8 +1191,7 @@ jQuery(document).ready(function($){
 	
 	
 	/** Sticky elements **/
-	var position = $(window).scrollTop(), //store intitial scroll position
-		scrollTopLimit = ($('body').hasClass('adminbar')) ? 62+32 + 280 : 62 + 280,
+	var scrollTopLimit = ($('body').hasClass('adminbar')) ? 62+32 + 280 : 62 + 280,
 		fixedTopPosition = ($('body').hasClass('adminbar')) ? 95 + 32 + 280 : 95 + 280;
 		
 	
