@@ -638,3 +638,13 @@
         @include header-title(head_title);
     } 
 }
+
+.home-partners {
+    margin-top:-20px;
+    .logo-gallery {
+        display:flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+}

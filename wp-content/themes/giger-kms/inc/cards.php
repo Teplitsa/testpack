@@ -309,7 +309,7 @@ function tst_org_card(WP_Post $cpost){
 ?>
 <article class="tpl-org logo">
 	<a href="<?php echo $pl;?>" class="logo-link logo-frame" target="_blank" title="<?php echo esc_attr($cpost->post_title);?>">
-		<span><?php echo get_the_post_thumbnail($cpost->ID, 'full'); ?></span>
+		<span><?php echo get_the_post_thumbnail($cpost->ID, 'medium'); ?></span>
 	</a>
 </article>
 <?php
