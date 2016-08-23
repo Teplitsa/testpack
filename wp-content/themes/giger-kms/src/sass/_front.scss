@@ -68,9 +68,12 @@ h1, h2, h3, h4, h5, h6 {
 // index
 .heading {
 	background: $color-white;
-	padding: $gut 0;
-	margin-bottom: $gut;
+	padding: $gut 0;	
 	text-align: center;
+	
+	@inlcude for(medium-screens) {
+		margin-bottom: $gut;
+	}
 }
 
 .section-title {
