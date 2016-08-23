@@ -188,7 +188,7 @@ function tst_donation_form($campaign_id = null){
 	<!-- name -->
 	<?php if($leyka_current_pm->is_field_supported('name') ) { ?>
 	<div class="tst-textfield leyka-field name">
-		<input type="text" class="required tst-textfield__input" name="leyka_donor_name" id="leyka_donor_name" value="" placeholder="Ваше имя">				
+		<input type="text" class="required tst-textfield__input" name="leyka_donor_name" id="leyka_donor_name" value="" placeholder="Ваше имя" autocomplete="name">				
 		<span id="leyka_donor_name-error" class="leyka_donor_name-error field-error tst-textfield__error"></span>
 	</div>
 	<?php  }?>
@@ -196,7 +196,7 @@ function tst_donation_form($campaign_id = null){
 	<!-- email -->
 	<?php if($leyka_current_pm->is_field_supported('email') ) { ?>
 	<div class="tst-textfield leyka-field email">
-		<input type="text" value="" id="leyka_donor_email" name="leyka_donor_email" class="required email tst-textfield__input" placeholder="Ваш email">
+		<input type="text" value="" id="leyka_donor_email" name="leyka_donor_email" class="required email tst-textfield__input" placeholder="Ваш email" autocomplete="email">
 		<span class="leyka_donor_email-error field-error tst-textfield__error" id="leyka_donor_email-error"></span>
 	</div>
 	<?php  }?>

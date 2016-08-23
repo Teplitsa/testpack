@@ -1028,6 +1028,35 @@ jQuery(document).ready(function($){
 	});
 	
 	
+	/** Leyka custom modal **/
+    var leykaTopPad = (windowWidth > 940) ? 120 : 66;
+
+    try {
+        $('#leyka-agree-text').easyModal({
+            hasVariableWidth : true,
+            top : leykaTopPad,
+            //transitionIn: 'animated zoomIn',
+            //transitionOut: 'animated zoomOut',
+            onClose : function(){  }
+        });
+    }
+    catch(ex) {}
+
+    $('body').on('click','.leyka-custom-confirmation-trigger', function(e){
+
+        $('#leyka-agree-text').trigger('openModal');
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.leyka-modal-close', function(e){
+
+        $('#leyka-agree-text').trigger('closeModal');
+    });
+	
+	//no validate 
+	$('.novalidate').attr('novalidate', 'novalidate');
+	
+	
 	/** == OLD === **/
 	
 	//submenu on about page
@@ -1048,8 +1077,7 @@ jQuery(document).ready(function($){
 		}
 	});
 	
-	//no validate no autocomplete
-	$('.novalidate').attr('novalidate', 'novalidate').find('.frm_form_field input').attr('autocomplete', 'off');
+	
 	
 	
 	
@@ -1224,31 +1252,7 @@ jQuery(document).ready(function($){
 	});
 
 
-    /** Leyka custom modal **/
-    var leykaTopPad = (windowWidth > 940) ? 120 : 66;
-
-    try {
-        $('#leyka-agree-text').easyModal({
-            hasVariableWidth : true,
-            top : leykaTopPad,
-            //transitionIn: 'animated zoomIn',
-            //transitionOut: 'animated zoomOut',
-            onClose : function(){  }
-        });
-    }
-    catch(ex) {}
-
-    $('body').on('click','.leyka-custom-confirmation-trigger', function(e){
-
-        $('#leyka-agree-text').trigger('openModal');
-        e.preventDefault();
-    });
-
-    $('body').on('click', '.leyka-modal-close', function(e){
-
-        $('#leyka-agree-text').trigger('closeModal');
-    });
-	
+    
 	
 	
 	/* Center logos  */
