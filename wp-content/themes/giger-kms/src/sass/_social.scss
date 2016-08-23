@@ -250,42 +250,22 @@ $social_color: (
     }
 }
 
-.frupalo-share-buttons-row {
-    
-    height:47px;
-    
-    
-
-    .frupalo-share-buttons {
-        margin-left:auto;
-        margin-right:auto;
-        
-        @include for(medium-screens) {
-            margin-left:-45px;
-        }
-        
-        @include for(large-screens) {
-            margin-left:-15px;
-        }
-        
-        .ya-share2 {
-    
-            .ya-share2__list {
-                padding-right:11px;
-                padding-left:11px;
-                
-                @include upto(small-screens) {
-                    padding-right:7px;
-                    padding-left:7px;
-                }
-            }
-        }
-    }
+.slug-glavnaya .panel-grid-cell .widget_siteorigin-panels-builder.panel-first-child  {
+	margin-bottom: 0 !important;
 }
 
-.frupalo-share-buttons-row.bottom-share-block {
-    margin-top:-12px;
-    margin-bottom:12px;
+.home-sharing {
+	.frupalo-share-buttons {
+		position: realtive;
+		z-index: 500;
+		border-left: 10px solid $color-white;
+		border-right: 7px solid $color-white;
+		margin: -22px auto 0;
+	}
+}
+
+.home-sharing-bottom {
+	.frupalo-share-buttons { margin: 0 auto; }
 }
 
 .no-twitter  {
