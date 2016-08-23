@@ -33,8 +33,13 @@
 
 .single-leyka_campaign .site-footer { display: none; }
 
-.payment-from-project .single-campaign-full {
-    padding: 0 0;
+.payment-from-project.single-campaign-full {
+    
+    .leyka-form-footer {
+        p {
+            margin-bottom:0px;
+        }
+    }
 }
 
 /** custom form **/
