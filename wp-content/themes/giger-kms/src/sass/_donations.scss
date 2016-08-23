@@ -446,4 +446,8 @@ $figure_padding-height: 16px;
 	&:empty { display: none;  }
 }
 
-
+/* thank you page */
+.leyka-thankyou-text {
+    text-align:center;
+    @include body-text(larger);
+}
