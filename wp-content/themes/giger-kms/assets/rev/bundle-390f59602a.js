@@ -965,7 +965,7 @@ jQuery(document).ready(function($){
 	$(window).resize(function(){
 		var winW = $('#top').width();
 		
-		
+		resize_embed_media();	
 	});
 		
 		
@@ -1055,6 +1055,42 @@ jQuery(document).ready(function($){
 	
 	//no validate 
 	$('.novalidate').attr('novalidate', 'novalidate');
+	
+	
+	/** == Responsive media == **/
+    var resize_embed_media = function(){
+
+        $('iframe, embed, object').each(function(){
+
+            var $iframe = $(this),
+                $parent = $iframe.parent(),
+                do_resize = false;
+				
+            if($parent.hasClass('embed-content')){
+                do_resize = true;            
+            }
+			else if($iframe.parents('.so-panel').length) {
+				$parent = $iframe.parents('.so-panel');
+                do_resize = true;	
+			}
+            else {                
+                
+                $parent = $iframe.parents('.entry-content, .player');
+                if($parent.length)
+                    do_resize = true;				
+            }
+			
+            if(do_resize) {
+                var change_ratio = $parent.width()/$iframe.attr('width');
+                $iframe.width(change_ratio*$iframe.attr('width'));
+                $iframe.height(change_ratio*$iframe.attr('height'));
+            }
+        });
+    };
+	
+    resize_embed_media(); // Initial page rendering
+    
+	
 	
 	
 	/** == OLD === **/
@@ -1215,42 +1251,7 @@ jQuery(document).ready(function($){
 	}
 	
 	
-	/** == Responsive media == **/
-    var resize_embed_media = function(){
-
-        $('iframe, embed, object').each(function(){
-
-            var $iframe = $(this),
-                $parent = $iframe.parent(),
-                do_resize = false;
-				
-            if($parent.hasClass('embed-content')){
-                do_resize = true;            
-            }
-			else if($iframe.parents('.so-panel').length) {
-				$parent = $iframe.parents('.so-panel');
-                do_resize = true;	
-			}
-            else {                
-                
-                $parent = $iframe.parents('.entry-content, .player');
-                if($parent.length)
-                    do_resize = true;				
-            }
-			
-            if(do_resize) {
-                var change_ratio = $parent.width()/$iframe.attr('width');
-                $iframe.width(change_ratio*$iframe.attr('width'));
-                $iframe.height(change_ratio*$iframe.attr('height'));
-            }
-        });
-    };
 	
-    resize_embed_media(); // Initial page rendering
-    $(window).resize(function(){		
-		resize_embed_media();	
-	});
-
 
     
 	

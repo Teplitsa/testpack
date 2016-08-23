@@ -272,6 +272,7 @@
 		@include sub-title();
 		line-height: 16px;
 		padding-left: 24px;
+		text-align: left; 
 		
 		.svg-icon {
 			width: 16px;
@@ -308,6 +309,10 @@
 	
 			@include vertical-image-header-fixed();
 		}
+	}
+	
+	&.video {
+		margin-bottom: $gut;
 	}
 }
 

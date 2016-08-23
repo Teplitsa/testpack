@@ -31,66 +31,6 @@ function tst_yt_caption_screen($atts, $content = null){
 }
 
 
-/** Buttons **/
-add_shortcode('tst_btn', 'tst_btn_screen');
-function tst_btn_screen($atts){
-	
-	extract(shortcode_atts(array(				
-		'url'  => '',
-		'txt'  => ''
-	), $atts));
-	
-	if(empty($url))
-		return '';
-	
-	$url = esc_url($url);
-	$txt = apply_filters('tst_the_title', $txt);
-	
-	ob_start();
-?>
-<span class="rdc-btn"><a href="<?php echo $url;?>" class="rdc-button"><?php echo $txt;?></a></span>
-<?php
-	$out = ob_get_contents();
-	ob_end_clean();
-	
-	return $out;
-}
-
-
-
-/** Toggle **/
-if(!shortcode_exists( 'su_spoiler' ))
-	add_shortcode('su_spoiler', 'tst_su_spoiler_screen');
-
-function tst_su_spoiler_screen($atts, $content = null){
-	
-	extract(shortcode_atts(array(
-        'title' => 'Подробнее',
-        'open'  => 'no',
-		'class' => ''
-    ), $atts));
-	
-	if(empty($content))
-		return '';
-	
-	$title = apply_filters('tst_the_title', $title);
-	$class = (!empty($class)) ? ' '.esc_attr($class) : '';
-	if($open == 'yes')
-		$class .= ' toggled';
-	
-	ob_start();
-?>
-<div class="su-spoiler<?php echo $class;?>">
-	<div class="su-spoiler-title"><span class="su-spoiler-icon"></span><?php echo $title;?></div>
-	<div class="su-spoiler-content"><?php echo apply_filters('tst_the_content', $content);?></div>
-</div>
-<?php
-	$out = ob_get_contents();
-	ob_end_clean();
-	
-	return $out;
-}
-
 /** Quote **/
 add_shortcode('tst_quote', 'tst_quote_screen');
 function tst_quote_screen($atts, $content = null) {
@@ -107,10 +47,10 @@ function tst_quote_screen($atts, $content = null) {
 	$class = (!empty($class)) ? ' '.esc_attr($class) : '';
 	ob_start();
 ?>
-<div class="rdc-quote <?php echo $class;?>">	
-	<div class="rdc-quote-content"><?php echo apply_filters('tst_the_content', $content);?></div>
+<div class="tst-quote <?php echo $class;?>">	
+	<div class="tst-quote-content"><?php echo apply_filters('tst_the_content', $content);?></div>
 	<?php if(!empty($name)) { ?>
-		<div class="rdc-quote-cite"><?php echo $name;?></div>
+		<div class="tst-quote-cite"><?php echo $name;?></div>
 	<?php } ?>
 </div>
 <?php

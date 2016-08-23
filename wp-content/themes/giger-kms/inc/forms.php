@@ -52,6 +52,8 @@ function tst_formidable_default_html($html, $field, $params) {
 		if(isset($field['read_only']) && (int)$field['read_only'] == 1){			
 			$html = str_replace('<input', '<input disabled="disabled" ', $html);
 		}
+		
+		$html = str_replace('<input', '<input autocomplete="on" ', $html);
 				
 		/*preg_match("#<\s*?label\b[^>]*>(.*?)</label\b[^>]*>#s", $html, $l);
 		
