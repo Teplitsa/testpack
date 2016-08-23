@@ -453,8 +453,13 @@
 	}
 	
 	.frm_submit {
-		margin: 0;
+		margin: 4px 0 0;
 		text-align: center;
+	}
+	
+	.tst-textfield__input {
+		@include placeholder { text-align: center; }
+		text-align: center;			
 	}
 	
 	@include for(medium-screens) {
@@ -468,12 +473,19 @@
 		.tst-textfield {			
 			@include calc('width', '100% - 272px');
 			padding: 0;
+			
+		}
+		
+		.tst-textfield__input {
+			@include placeholder { text-align: left; }
+			text-align: left;			
 		}
 		
 		.frm_submit {			
 			width: 270px;
 			text-align: right;
 			
+			margin: 0;
 			position: absolute;
 			top: 0;
 			right: 0;
