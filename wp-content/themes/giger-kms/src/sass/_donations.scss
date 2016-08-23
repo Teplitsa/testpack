@@ -53,7 +53,8 @@
 	}
 		
 	.leyka-toggle-area {
-		display: none;	
+		display: none;
+		background: $color-secondary-alt;
 	}
 	
 	.leyka-pm-form {		
@@ -160,13 +161,15 @@ $figure_padding-height: 16px;
 		display: inline-block;
 		padding: $figure_padding-height;
 		border: 1px solid $color-border-link;
+		background: $color-white;
 		text-align: center;
 		width: 100%;
 		cursor: pointer;
 	}
 	
 	.figure-flex-input__text {
-		@include input-text(); 
+		@include input-text();
+		background: $color-white;
 		line-height: $figure_line-height;
 		border: 1px solid $color-border-link;
 		padding: $figure_padding-height $figure_padding-height/2;
