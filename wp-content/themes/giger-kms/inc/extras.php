@@ -211,7 +211,19 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 21,
     ));
 	  	
-	
+    $wp_customize->add_setting('auto_scroll_offset', array(
+        'default'   => '',
+        'transport' => 'refresh',
+        'option' => 'option'
+    ));
+    
+    $wp_customize->add_control('auto_scroll_offset', array(
+        'type'     => 'text',
+        'label'    => 'Отступ сверху при прокрутке',
+        'section'  => 'title_tagline',
+        'settings' => 'auto_scroll_offset',
+        'priority' => 22,
+    ));
 	
 	$wp_customize->add_setting('er_text', array(
         'default'   => '',

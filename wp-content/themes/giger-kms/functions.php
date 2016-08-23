@@ -98,7 +98,19 @@ function tst_widgets_init() {
 }
 add_action( 'init', 'tst_widgets_init', 25 );
 
-
+function tst_formidable_frm_scroll_offset() {
+    $offset = (int)get_theme_mod('auto_scroll_offset');
+    
+    if(!$offset) {
+        $offset = 70;
+    }
+    
+    if(is_user_logged_in()) {
+        $offset += 32;
+    }
+    return $offset;
+}
+add_filter('frm_scroll_offset', 'tst_formidable_frm_scroll_offset');
 
 /**
  * Includes
