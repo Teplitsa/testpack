@@ -77,9 +77,19 @@
 } 
 
 .home-intro-button {
+	@include for(medium-screens) {
+		margin-top: 37px;
+		text-align: right;
+	}
+	
 	.link-tst-actionlink-base {
 		@include button(action-on-home-yellow);
-		 padding: 14px 28px 13px;
+		padding: 14px 32px 13px;
+		@include transition(all 0.35s);
+		
+		&:hover {
+			box-shadow: 2px 2px 4px rgba(0,0,0, 0.6);
+		}
 	}
 }
 
