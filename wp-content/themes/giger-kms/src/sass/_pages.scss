@@ -16,24 +16,87 @@
 
 
 /** Homepage **/
-
+.home-intro-wrap,
+.container-extended-pictured.home-intro-wrap {
+	@include for(medium-screens) {
+		padding-top: $gut*2;
+		padding-bottom: $gut*2;
+	}
+}
 .home-intro {
-	.container-wide {
-		background: $color-secondary;
+	color: $color-white;
+	
+	
+	.iconic-block {
+		text-align: left;
+		
+		.ib-title.section {
+			@include header-title(section);
+			color: $color-white !important;
+		}
+		
+		.ib-content {
+			color: $color-white;
+		}
+		
+		.ib-icon {
+			display: none; 
+		}
+		
+		.pic-butterfly {
+			width: 200px;
+			height: 200px;			
+		}
+		
+		
+		@include for(small-screens) {			
+			
+			.ib-title, .ib-content {
+				margin-left: 0;				
+			}
+		}
+		
+		
+		@include for(medium-screens) {
+			margin-bottom: $gut;
+			
+			.ib-icon {
+				display: block;
+				width: 200px;
+				float: left;
+			}
+			
+			.ib-title, .ib-content {
+				margin-left: 254px;
+				text-align: left;
+			}
+		}
 	}
 	
-	.intro-text {
-		@include body-text(larger);
-		padding: $gut;
-		max-width: $page_cont;
-		margin: 0 auto;
-		text-align: center;
+	
+} 
+
+.home-intro-button {
+	.link-tst-actionlink-base {
+		@include button(action-on-home-yellow);
+		 padding: 14px 28px 13px;
 	}
 }
 
-.home-content-section {
-	margin: $gut*1.5 0;
+.home-intro-small,
+.widget .home-intro-small {
+	
+	.widget-title {
+		@include post-title();
+		color: $color-white;
+		margin-bottom: $gut/2;
+	}
+	
+	.textwidget {
+		color: $color-white
+	}
 }
+
 
 /* frontpage elements */
 .non-capital-header {

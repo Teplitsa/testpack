@@ -383,6 +383,7 @@
 			@include post-title();
 			color: $color-text-black;
 		}
+		
 		&.compact {
 			@include header-title(widget);
 			color: $color-link-one;
@@ -594,130 +595,8 @@
 	}
 }
 
-.intro-container  {
-    background: url(../img/intro.jpg) repeat-x left top;
-    @include upto(medium-screens) {
-        padding-bottom:0px;
-    }
-    
-    @include for(medium-screens) {
-        padding-top:20px;
-    }
-    
-    @include for(medium-screens) {
-        padding-top:40px;
-    }
-}
 
-.homepage-intro {
-    .intro-head-content {
-        .ihc-content {
-            float:left;
-            margin-top: 12px;
 
-            @include for(small-screens) {
-            }
-    
-            @include for(medium-screens) {
-                max-width: 500px;
-                margin-top: 0px;
-                margin-left:17px;
-            }
-            
-            @include for(large-screens) {
-                max-width: 665px;
-                margin-left:12px;
-                margin-top: 19px;
-            }
-            
-            @include for(exlarge-screens) {
-                max-width: 757px;
-            }
-            
-        }
-    }	
-}
-
-.so-widget-tst-introfrupalo {
-    .svg-icon.pic-butterfly {
-        display:block;
-        float:left;
-        height: 80px;
-        width: 80px;
-        margin-left: 0px;
-        margin-top: -30px;
-    
-        @include for(small-screens) {
-            height: 100px;
-            width: 100px;
-            margin-left: 0px;
-        }
-
-        @include for(medium-screens) {
-            height:150px;
-            width: 150px;
-            margin-top: 10px;
-            margin-left: 0px;
-        }
-        
-        @include for(large-screens) {
-            height:205px;
-            width:205px;
-            margin-top:32px;
-            margin-left: 0px;
-            margin-right: 47px;
-        }
-    }
-}
-
-/* intro stats */
-$color-link-intro: #FA9200;
-.frupalo-intro-stats {
-    margin-top:-10px;
-    margin-bottom:30px;
-    padding-left:0px;
-
-    @include for(small-screens) {
-        margin-top:10px; 
-        padding-left:0px;
-    }
-    @include for(medium-screens) {
-        margin-top:-5px; 
-        padding-left:0px;
-    }
-    @include for(large-screens) {
-        margin-top:55px; 
-        padding-left:0px;
-    }
-    
-    .frupalo-intro-stats-item {
-        color:$color-white;
-        font-size:14px;
-        line-height:22px;
-        
-        .widget-title {
-            color:$color-white;
-            font-size:24px;
-            font-weight:700;
-            text-transform:none;
-            margin-bottom:18px;
-            
-            @include upto(small-screens) {
-                margin-bottom:10px;
-            }
-        }
-        
-        .intro-stats-big-link h3 a {
-            text-decoration:underline;
-            color:$color-link-intro;
-            
-            &:hover, &:focus, &:active {
-                color: $color-link-three;
-            }
-        }
-        
-    }
-}
 
 /** Donation **/
 .so-widget-tst-donationhystory {

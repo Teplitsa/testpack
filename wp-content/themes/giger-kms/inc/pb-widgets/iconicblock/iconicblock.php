@@ -65,6 +65,7 @@ class TST_IconicBlock_Widget extends SiteOrigin_Widget {
 					'pic-volunteer' 	=> 'Волонтеры',
 					'pic-online' 		=> 'Онлайн помощь',
 					'pic-offline' 		=> 'Оффлайн помощь',
+					'pic-butterfly' 	=> 'Знак на главной',
 				)
 			),
 			
@@ -74,7 +75,8 @@ class TST_IconicBlock_Widget extends SiteOrigin_Widget {
 				'default' => 'regular',
 				'options' => array(
 					'regular' => 'Регулярный (черный)',
-					'compact' => 'Компактный (красный)'
+					'compact' => 'Компактный (красный)',
+					'section' => 'Секция (белый)'
 				)
 			)
 		);

@@ -251,20 +251,10 @@ $social_color: (
 }
 
 .frupalo-share-buttons-row {
-    margin-top:-50px;
+    
     height:47px;
     
-    @include upto(small-screens) {
-        margin-top:-45px;
-    }
-
-    @include for(medium-screens) {
-        margin-top:-65px;
-    }
     
-    @include for(large-screens) {
-        margin-top:-50px;
-    }
 
     .frupalo-share-buttons {
         margin-left:auto;
