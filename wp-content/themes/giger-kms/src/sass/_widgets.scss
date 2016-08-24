@@ -472,7 +472,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		background: $color-secondary-black;
+		//background: $color-secondary-black;
+		background: rgba(18,46,205, 0.5);
 		z-index: 3;
 	}
 }
