@@ -41,8 +41,7 @@ var changeEvent = function(evt) {
 //js
 gulp.task('build-js', function() {
     var vendorFiles = [
-        basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js',
-        basePaths.bower + 'leaflet/dist/leaflet.js',
+        basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js'
         ],
         appFiles = [basePaths.src+'js/*']; //our own JS files
 
@@ -63,7 +62,7 @@ gulp.task('build-css', function() {
         hamburgers = path('./bower_components/css-hamburgers/_sass/hamburgers');
         paths.push(hamburgers);
 
-    var vendorFiles = gulp.src([basePaths.bower + 'leaflet/dist/leaflet.css']), //components
+    var vendorFiles = gulp.src([]), //components
         appFiles = gulp.src(basePaths.src+'sass/main.scss') //our main file with @import-s
         .pipe(!isProduction ? plugins.sourcemaps.init() : gutil.noop())  //process the original sources for sourcemap
         .pipe(plugins.sass({
