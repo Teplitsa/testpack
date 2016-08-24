@@ -13,7 +13,7 @@ function tst_post_card(WP_Post $cpost){
 	<div class="frame">
 		<div class="bit md-4"><a href="<?php echo $pl; ?>" class="thumbnail-link entry-preview">
 		<div class="tpl-pictured-bg" <?php echo $src;?>></div>
-		<div class='vvc-logo'><?php tst_svg_icon('pic-vvc');?></div>
+		<div class='vvc-logo'><?php tst_svg_icon('pic-butterfly');?></div>
 		</a></div>
 		<div class="bit md-8">
 			<div class="entry-meta"><?php echo tst_posted_on($cpost);?></div>
@@ -36,7 +36,7 @@ function tst_related_post_card(WP_Post $cpost) {
 	<div class="frame">
 		<div class="bit md-4"><div class="entry-preview">
 			<div class="tpl-pictured-bg" <?php echo $src;?>></div>
-			<div class='vvc-logo'><?php tst_svg_icon('pic-vvc');?></div>
+			<div class='vvc-logo'><?php tst_svg_icon('pic-butterfly');?></div>
 		</div></div>
 		<div class="bit md-8">
 			<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost));?></div>

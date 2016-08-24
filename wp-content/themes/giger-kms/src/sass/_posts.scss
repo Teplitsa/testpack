@@ -174,9 +174,19 @@
 	
 	.vvc-logo {
 		position: absolute;
-		bottom: 15px;
-		left: 15px;
+		width: 100%;
+		height: 150px;
+		left: 0;
+		top: 50%;
+		margin-top: -75px;
 		z-index: 5;
+		
+		text-align: center;
+	}
+	
+	.pic-butterfly {
+		width: 150px;
+		height: 150px;
 	}
 }
 
