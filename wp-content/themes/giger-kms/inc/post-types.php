@@ -23,6 +23,7 @@ function tst_custom_content(){
 			'choose_from_most_used'      => 'Выбрать из часто используемых',
 			'not_found'                  => 'Не найдено'
 		),
+		'public'			=> false,
 		'hierarchical'      => true,
 		'show_ui'           => true,
 		'show_in_nav_menus' => true,
@@ -54,6 +55,7 @@ function tst_custom_content(){
 			'choose_from_most_used'      => 'Выбрать из часто используемых',
 			'not_found'                  => 'Не найдено'
 		),
+		'public'			=> false,
 		'hierarchical'      => true,
 		'show_ui'           => true,
 		'show_in_nav_menus' => true,
