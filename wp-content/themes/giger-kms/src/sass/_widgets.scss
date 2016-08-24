@@ -304,7 +304,7 @@
 	}
 	
 	&.page-header {
-		padding-top: $gut*2;
+		padding-top: $gut*1.5;
 		
 		h3 {
 			@include header-title(section);

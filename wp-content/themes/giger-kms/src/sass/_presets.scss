@@ -467,4 +467,13 @@ $rule: 	 1px solid $color-border-normal;
 		height: 480px;
 	}
 }
-	
+
+
+.tpl-pictured-bg {
+	width: 100%;
+	height: 100%;
+	background-color: $color-secondary;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}

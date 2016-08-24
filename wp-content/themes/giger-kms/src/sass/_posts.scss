@@ -145,6 +145,18 @@
 	}	
 }
 
+@mixin fixed-post-preview {
+	width: 100%;
+	padding-bottom: 61.72%;
+	height: 0;	
+	position: relative;
+	
+	.tpl-pictured-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
 
 .tpl-post {
 	background: $color-white;
@@ -152,7 +164,7 @@
 		
 	&:hover {
 		.entry-title  { color: $color-link-one;}
-		.entry-preview:after { background: rgba(0,0,0, 0.3); }
+		.entry-preview { filter: contrast(150%) brightness(0.99); }
 		.entry-summary { color: $color-text-light; }
 	}	
 	
@@ -168,7 +180,7 @@
 	}
 	
 	.entry-preview {
-		@include shadowed-preview();
+		@include fixed-post-preview();		
 		z-index: 1;
 	}
 	
@@ -389,6 +401,10 @@
 .entry-header-full {
 	padding: $gut 0 $gut;
 	
+	.crumbs {
+		margin-bottom: 8px;
+	}
+	
 	.entry-title {
 		@include header-title(single);
 		margin-bottom: 8px;
@@ -401,8 +417,9 @@
 	.entry-meta {
 		@include nav-text(multiline);
 		color: $color-link-one;
+		margin-bottom: 8px; 
 		
-		a {
+		a { 
 			color: inherit;
 			&:hover, &:focus, &:active {
 				background: $color-link-one;

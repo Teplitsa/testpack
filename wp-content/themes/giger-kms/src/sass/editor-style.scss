@@ -1,0 +1,45 @@
+/* modules */
+@import 'bourbon';
+
+@import 'fonts';
+@import 'reset';
+@import 'presets';
+@import 'utility';
+
+html .mceContentBody {
+	font-size: 100%;
+	max-width: 790px;
+	margin: 15px;
+	@include content-elements();	
+}
+
+body {
+	background-color: $color-white;
+	text-rendering: optimizeLegibility;	
+	@include body-text();
+}
+
+a {
+	text-decoration: none;
+	color: $color-link-one;
+	@include transition(all 0.3s);
+	
+	&:visited { color: $color-link-one; }
+	&:hover, &:focus, &:active {
+		color: $color-link-two;
+	}
+}
+
+p {
+	
+	&:last-child { margin-bottom: 0; }	
+}
+
+p,ul,ol,dl,blockquote {
+	@extend .break;
+}
+
+//title with normal weights
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}

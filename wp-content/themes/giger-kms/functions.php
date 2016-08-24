@@ -44,7 +44,7 @@ function tst_setup() {
 	register_nav_menus($menus);
 	
 	// Editor style
-	//add_editor_style(array('css/editor-style.css'));
+	add_editor_style(array('assets/css/editor-style.css'));
 }
 add_action( 'init', 'tst_setup', 30 );
 

@@ -5,10 +5,13 @@ function tst_post_card(WP_Post $cpost){
 	
 	$pl = get_permalink($cpost);
 	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
+	
+	$src = tst_post_thumbnail_src($cpost->ID, 'post-thumbnail');
+	$src = ($src) ? ' style="background-image: url('.$src.')"' : '';
 ?>
 <article class="tpl-post card">
 	<a href="<?php echo $pl; ?>" class="thumbnail-link">
-	<div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
+	<div class="entry-preview"><div class="tpl-pictured-bg" <?php echo $src;?>></div></div>
 	<div class="entry-data">
 		<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost), '<span>');?></div>
 		<h4 class="entry-title"><?php echo get_the_title($cpost);?></h4>
@@ -114,10 +117,13 @@ function tst_intro_card_markup_over($title, $subtitle, $img_id, $link = '', $but
 
 function tst_related_post_card(WP_Post $cpost) {
 
-	$pl = get_permalink($cpost);	
+	$pl = get_permalink($cpost);
+	
+	$src = tst_post_thumbnail_src($cpost->ID, 'post-thumbnail');
+	$src = ($src) ? ' style="background-image: url('.$src.')"' : '';
 ?>
 <article class="tpl-related-post card"><a href="<?php echo $pl; ?>" class="entry-link">	
-	<div class="entry-preview"><?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?></div>
+	<div class="entry-preview"><div class="tpl-pictured-bg" <?php echo $src;?>></div></div>
 	<div class="entry-data">
 		<?php if('project' != $cpost->post_type) { ?>
 			<div class="entry-meta"><?php echo strip_tags(tst_posted_on($cpost), '<span>');?></div>
