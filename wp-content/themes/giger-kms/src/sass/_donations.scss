@@ -451,3 +451,13 @@ $figure_padding-height: 16px;
     text-align:center;
     @include body-text(larger);
 }
+
+.leyka-thankyou-img { 
+    margin-top:60px;
+    .sow-image-container {
+        .so-widget-image {
+            max-width:240px !important;
+            width:60% !important;
+        }
+    }
+}
