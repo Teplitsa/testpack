@@ -22,6 +22,9 @@
 		padding-top: $gut*2;
 		padding-bottom: $gut*2.5; 
 	}
+	&.blurred:after {
+		background: rgba(18,46,205, 0.5);
+	}
 }
 .home-intro {
 	color: $color-white;
@@ -79,7 +82,7 @@
 	text-align: center;
 	
 	@include for(medium-screens) {
-		margin-top: 37px;
+		margin-top: 16px;
 		text-align: right;
 	}
 	
@@ -189,7 +192,9 @@
 	
 	&:hover {
 		.col3-title { color: $color-link-one; }
-		.col3-image { filter: contrast(120%); }
+		.col3-image {
+			box-shadow: 1px 1px 3px rgba(0,0,0, 0.4);
+			filter: contrast(120%); }
 	}
 }
 
@@ -200,16 +205,16 @@
 .plan-image {
    
     .sow-image-container {
-        border:2px solid $color-text;
-		filter: contrast(99%);
-		@include transition(all 0.35s);
+        border:2px solid $color-text;		
+		@include transition(all 0.5s);
 		
 		a {
 			display: block;
 		}
 		&:hover {
-			box-shadow: 1px 1px 3px rgba(0,0,0, 0.35);
-			filter: contrast(150%);
+			box-shadow: 2px 2px 5px rgba(0,0,0, 0.4);
+			filter: brightness(1) contrast(110%);
+			@include transform(scale(1.01));
 		}
     }
 }
