@@ -29,6 +29,10 @@ body {
 		top: $adminbar_small_screen;
 		@media screen and (min-width: 600px) { top: $adminbar_large_screen; }  
 	}
+	
+	&.invisible {
+		visibility: hidden;
+	}
 }
 
 .site-content {
