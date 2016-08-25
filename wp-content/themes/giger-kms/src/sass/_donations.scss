@@ -316,7 +316,12 @@ $figure_padding-height: 16px;
 	}
 	max-width: 760px;
 	@include calc(height, "100% - 220px");
-	max-height: 700px;	
+    max-height: 700px;  
+	
+    @media screen and (max-height: 600px) {
+        height:90%;
+        top:20px !important;
+    }	
 	
 	background-color: $color-white;
 	
