@@ -1118,9 +1118,7 @@ jQuery(document).ready(function($){
 	
 	
 	/* form on small horizontal screens **/
-	
-	//init
-	
+		
 	$('input').on('focus', function(e){
 		var windowHeight = $(window).height();
 		
