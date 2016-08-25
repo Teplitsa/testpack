@@ -66,6 +66,9 @@ class TST_IconicBlock_Widget extends SiteOrigin_Widget {
 					'pic-online' 		=> 'Онлайн помощь',
 					'pic-offline' 		=> 'Оффлайн помощь',
 					'pic-butterfly' 	=> 'Знак на главной',
+					'pic-group' 		=> 'Группа',
+					'pic-family' 		=> 'Семья',
+					'pic-bed' 			=> 'Койка',
 				)
 			),
 			
