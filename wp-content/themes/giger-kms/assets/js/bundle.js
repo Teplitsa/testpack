@@ -1049,8 +1049,8 @@ jQuery(document).ready(function($){
     });
 
     $('body').on('click', '.leyka-modal-close', function(e){
-
         $('#leyka-agree-text').trigger('closeModal');
+        $('.lean-overlay').css('z-index', '1000');
     });
 	
 	//no validate 

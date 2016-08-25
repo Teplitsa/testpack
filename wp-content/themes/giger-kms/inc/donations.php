@@ -196,7 +196,7 @@ function tst_donation_form($campaign_id = null){
 	<!-- email -->
 	<?php if($leyka_current_pm->is_field_supported('email') ) { ?>
 	<div class="tst-textfield leyka-field email">
-		<input type="email" value="" id="leyka_donor_email" name="leyka_donor_email" class="required email tst-textfield__input" placeholder="Ваш email" autocomplete="email">
+		<input type="text" value="" id="leyka_donor_email" name="leyka_donor_email" class="required email tst-textfield__input" placeholder="Ваш email" autocomplete="email">
 		<span class="leyka_donor_email-error field-error tst-textfield__error" id="leyka_donor_email-error"></span>
 	</div>
 	<?php  }?>
