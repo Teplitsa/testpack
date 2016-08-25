@@ -32,6 +32,8 @@ body {
 	
 	&.invisible {
 		visibility: hidden;
+		opacity: 0;
+		* { visibility: hidden; } 
 	}
 }
 
