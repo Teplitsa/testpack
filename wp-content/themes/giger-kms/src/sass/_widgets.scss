@@ -1,6 +1,8 @@
 /** Widgets **/
 
-
+.interview_title {
+	margin-bottom: 10px;
+}
 .widget {	
 	margin-bottom: $gut;
 	&:last-of-type { margin-bottom: 0; }
@@ -13,6 +15,8 @@
 		}
 	}
 	
+	
+	 
 	.textwidget {		
 		p:last-child { margin-bottom: 0; }
 		
@@ -137,6 +141,12 @@
 	.container-narrowed { // for widget in the center
 		max-width: 900px;
 		margin: 0 auto;
+		&.volonteur {
+			margin-bottom: $gut;
+		}
+	}
+	.volonteer_form {
+		margin-bottom: $gut;
 	}
 	
 	.container-narrowed-1000 {
@@ -183,7 +193,12 @@
 		}
 	}
 	
-	ul { margin-left: 0; }
+	ul { 
+		margin-left: 0; 
+		&.bbb {
+			margin-top: $gut;
+		}
+	}
 	
 	.bottom-decor {
 		position: relative;
@@ -224,7 +239,7 @@
 	h4 {
 		@include post-title(small_title);
 		color: $color-link-three;
-		margin: 10px 0 $gut;
+		margin: 10px 0 $gut+(-10);
 	}
 	
 	p:last-child {
@@ -237,7 +252,7 @@
 /** map picture **/
 .map-block {
 	text-align: center;
-	margin: $gut auto;
+	margin: $gut+10 auto;
 	max-width: 900px;
 	
 	.map-frame {
@@ -288,7 +303,7 @@
 .container-extended-colored {
 	@include container-extended();
 	background: $colored-block-bg;
-	padding-top: $gut*1.5;
+	padding-top: $gut*1.2;
 	padding-bottom: $gut*1.5;
 	color: $colored-block-text;
 	
@@ -482,7 +497,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f22962ff', e
 
 .subsection .pb-section-title {
 	
-	h3 { @include header-title(widget); }
+	h3 { 
+		@include header-title(widget);
+		margin-bottom: 25px;
+	}
 	h4 { @include post-title(small_title); }
 }
 

@@ -26,7 +26,7 @@
 		
 		a {
 			display: block;			
-			@include transition(all 0.35s);				
+			@include transition(ease 0.35s);				
 		}
 		
 		img {
@@ -74,5 +74,7 @@ $i: 1; //widths
 	}
 }
 
-
+#vk_groups_1 iframe .wcommunity_header .wcommunity_name .wcommunity_name_link {
+	color: #fff !important;
+}
 
