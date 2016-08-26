@@ -22,7 +22,7 @@
 	.leyka-toggle-trigger {
 		@include header-title();
 		padding: $gut/2 $gut;		
-		cursor: pointer;		
+		//cursor: pointer;		
 		//border-top: 1px solid $color-border-link;
 	}
 		
@@ -110,49 +110,80 @@
 	}	
 }
 
-$figure_font_size: 20px;
+$figure_font_size: 18px;
 $figure_line-height: 30px;
 
 .leyka-field.amount-selector {
 	line-height: $figure_line-height;
 	
+	.figure:nth-child(3) {
+		margin-right: 0;
+	}
+	.figure-flex {
+		margin-left: 5px;
+		text-align: left;
+		padding-left: 0;
+	}
 	.figure,
 	.figure-flex {
 		display: inline-block;
 		height: $figure_line-height;
 		margin-bottom: 8px;
+		.donate_amount_flex{
+			display: inline-block;
+	    padding: 15px 10px;
+	    border: 1px solid #2962ff;
+	    background: #fff;
+	    text-align: center;
+	    width: 100px;
+	    cursor: pointer;
+			border-radius: 0;
+		}
 		
 		span {
-			height: $figure_line-height;
+			// height: $figure_line-height;
 		}
 	}
 		
 	.figure {
 		display: inline-block;
 		line-height: inherit;		
-		padding-left: 30px;	
-		
+		padding-left: 0;	
+		.tst-radio__button:checked+.tst-radio__label{
+			border-color: #0041f5;
+			background: #0041f5;
+			color: #fff;
+			transition: ease 0.25s;
+		}
 		.tst-radio__label {
-			@include checkbox-text($figure_font_size);
-			line-height: inherit;
+			display: inline-block;
+	    padding: 16px 8px;
+	    border: 1px solid #2962ff;
+	    background: #fff;
+	    text-align: center;
+	    width: 100%;
+	    cursor: pointer;
 			
-			&:before {
-				width: 20px;
-				height: 20px;
-				top: 50%;
-				@include transform(translateY(-50%));
-				left: -30px;
-			}
+			// @include checkbox-text($figure_font_size);
+			// line-height: inherit;
+			
+			// &:before {
+			// 	width: 20px;
+			// 	height: 20px;
+			// 	top: 50%;
+			// 	@include transform(translateY(-50%));
+			// 	left: -30px;
+			// }
 		}
 	}
 		
 	.figure-sep {		
 		@include form-text();
-		font-size: 18px;
+		font-size: 14px;
 		line-height: inherit;
 		text-transform: uppercase;
 		color: $color-link-two;
-		margin-right: 8px;
+		margin-right: 6px;
 	}
 	
 	.donate_amount_flex {		
@@ -169,8 +200,8 @@ $figure_line-height: 30px;
 		font-size: 18px;
 		line-height: inherit;
 		text-transform: uppercase;		
-		width: 70px;
-		margin-bottom: 8px;
+		width: 50px;
+		margin-bottom: 0;
 		
 		.leyka-screen-reader-text {
 			display: none;
@@ -205,6 +236,10 @@ $figure_line-height: 30px;
 			line-height: inherit;
 			height: $figure_line-height;
 			z-index: 10;
+			font-size: 80%;
+			font-weight: bold;
+			position: relative;
+			top: 3px;
 		}
 		
 		select {
@@ -253,13 +288,15 @@ $figure_line-height: 30px;
 		
 		.figure {
 			flex: 0 0 auto;
-			width: 20%;
+			width: 18%;
+			margin-right: 10px;
 		}
 		
 		.figure-flex {
 			flex: 1 1 auto;
 			padding: 0 8px;
-			text-align: right;		
+			text-align: right;	
+			width: 20%;	
 		}
 	}
 }

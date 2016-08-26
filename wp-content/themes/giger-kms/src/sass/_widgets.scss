@@ -255,6 +255,11 @@
 	margin: $gut+10 auto;
 	max-width: 900px;
 	
+	a {
+		padding-bottom: 5px;
+    border-bottom: 1px solid;
+	}
+	
 	.map-frame {
 		margin-bottom: $gut/2;
 		display: block;
