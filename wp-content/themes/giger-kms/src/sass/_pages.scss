@@ -16,6 +16,7 @@
 
 
 /** Homepage **/
+
 .home-intro-wrap,
 .container-extended-pictured.home-intro-wrap {
 	@include for(medium-screens) {
@@ -26,6 +27,7 @@
 		background: rgba(18,46,205, 0.5);
 	}
 }
+
 .home-intro {
 	color: $color-white;
 		
@@ -77,7 +79,6 @@
 		}
 	}
 	
-	
 } 
 
 .home-intro-button {
@@ -123,7 +124,7 @@
 }
 
 
-/* frontpage elements */
+// frontpage elements 
 .non-capital-header {
        
     .pb-section-title {
@@ -197,14 +198,15 @@
 		.col3-title { color: $color-link-one; }
 		.col3-image {
 			box-shadow: 1px 1px 3px rgba(0,0,0, 0.4);
-			filter: contrast(120%); }
+			filter: contrast(120%);
+		}
 	}
 }
 
 
 
 
-/* good plan */
+// good plan 
 .plan-image {
    
     .sow-image-container {
@@ -221,6 +223,7 @@
 		}
     }
 }
+
 
 .two-action-buttons {
     margin-top: $base + 17;
@@ -258,7 +261,7 @@
 }
 
 
-/* news on home */
+// news on home 
 .news-block {
     .all-link {
         margin-top: $gut;		
@@ -269,7 +272,7 @@
 	}
 }
 
-/* subscribe on news */
+// subscribe on news
 .entry-content .subscribe-form ,
 .subscribe-form {
 	
@@ -330,7 +333,7 @@
 
 
 
-/** Error 404 **/
+// Error 404 
 .err-text {
 	max-width: 800px;
 	margin: 0 auto $gut;
@@ -352,7 +355,7 @@
 }
 
 
-/** Search **/
+// Search 
 .main-content.search-results {
 	background: $color-secondary;
 	padding: $gut 0;
@@ -387,10 +390,19 @@
 	}
 }
 
+
 .sr-num {
 	@include sub-title(small);
 	text-align: right;
 }
+
+.search-results.service-message {
+    .entry-summary {
+        @include body-text(larger);
+        color: $color-text;
+    }
+}
+
 
 .tpl-search {
 	background: $color-white;
@@ -400,10 +412,8 @@
 	@include transition(all 0.3s);
 		
 	&:hover {
-		@include transition(background 0.2s);
-		.entry-title { 
-		    color: $color-link-three; 
-	    }
+		@include transition(background 0.2s);		
+		.entry-title { color: $color-link-three; }		
         box-shadow: 1px 1px 2px rgba(0,0,0, 0.35);
 	}	
 	
@@ -430,20 +440,17 @@
 	}
 }
 
-.search-results.service-message {
-    .entry-summary {
-        @include body-text(larger);
-        color: $color-text;
-    }
-}
 
-/* circle person images */
+
+
+
+// circle person images 
 .fund-creators {
     article.tpl-person.card {
         background: none;
         
         .entry-preview {
-            @border-radius(100%);
+           border-radius: 50%;
       
             img {
                 display: block; 
@@ -461,17 +468,21 @@
     }
 }
 
+
 .very-first-page-title {
-    margin-top:32px;
+    margin-top: 32px;
+	
     .pb-section-title h3 {
         @include header-title(head_title);
-    } 
+    }
 }
 
+
 .home-partners {
-    margin-top:-20px;
+    margin-top: -20px;
+	
     .logo-gallery {
-        display:flex;
+        display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
         align-items: stretch;

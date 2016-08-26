@@ -204,7 +204,7 @@ class TST_Home_News extends WP_Widget {
 	
     function form($instance) {
 		
-		$instance['exclude_ids'] = $instance['exclude_ids'] ? explode(',', $instance['exclude_ids']) : '';
+		$instance['exclude_ids'] = isset($instance['exclude_ids']) && $instance['exclude_ids'] ? explode(',', $instance['exclude_ids']) : '';
 	?>
         <p>
             <label for="<?php echo $this->get_field_id('exclude_ids');?>">ID записей, которые нужно исключить (через запятую):</label>

@@ -209,8 +209,7 @@
 	}
 	
 	a {
-		color: $colored-block-text;
-		text-decoration: underline;
+		color: $colored-block-text; 		
 		&:hover, &:focus, &:active {
 			color: $color-link-three;				
 		}
