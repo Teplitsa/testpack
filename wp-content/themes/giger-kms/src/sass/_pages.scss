@@ -1,9 +1,8 @@
 /** Pages **/
 .tpl-page-regular, .tpl-page-fullwidth {
 	
-	.page-header {
-		margin-bottom: $gut;
-		padding: $gut 0;
+	.page-header {		
+		padding: $gut 0 0;
 		
 		h1 {
 			@include header-title(head_title);
