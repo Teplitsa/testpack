@@ -450,7 +450,11 @@
 		position: static !important;
 		left: auto !important;
 		top: auto !important;
-		margin: 0 !important;		
+		margin: 0 !important;
+		
+		.hide-upto-medium & {
+			display: none !important;
+		}
 	}
 	
 	@include for(medium-screens) {
