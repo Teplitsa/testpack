@@ -16,6 +16,7 @@
 	}
 	
 	
+	
 	 
 	.textwidget {		
 		p:last-child { margin-bottom: 0; }
@@ -190,6 +191,9 @@
 		text-align: center;
 		a {
 			color: inherit;			
+		}
+		@include upto(small-screens){
+				font-size: 34px;
 		}
 	}
 	
@@ -375,6 +379,15 @@
 		& > div[id *= "pl-"] {
 			@include transform(skewY(2deg));
 		}
+		.panel-grid-cell {
+			@include upto(large-screens) {
+				width: 90% !important;
+			}
+		}
+		@include upto(small-screens) {
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
 	
 	}
 	
@@ -403,6 +416,9 @@
 		width:58%;
 		padding-left: 8%;
 		color: #fff;
+		@include upto(large-screens) {
+			width: 90%;
+		}
 	}
 	
 	.sitename {		
@@ -430,6 +446,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f22962ff', e
 .entry-content .text-white,
 .text-white {
 		padding: $gut 0;
+		@include upto(medium-screens) {
+			padding-bottom: 10px;
+		}
+		&.for_specs {
+			@include upto(medium-screens) {
+				padding-top: 10px;
+			}
+		}
 		
 		h2, h3, h4, h5, h6 { color: $color-white; }
 		color: $color-white;
@@ -487,12 +511,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f22962ff', e
 	
 	h3 {
 		@include header-title(head_title);
-		margin: 0;		
+		margin: 0;
+		@include upto(small-screens) {
+			font-size: 34px;
+		}
 	}
 	
 	h4 {
 		@include post-title();
 		margin: 0;
+		@include upto(small-screens) {
+			font-size: 24px;
+		}
 	}
 	
 	h3 + h4 { margin-top: $gut/2; }

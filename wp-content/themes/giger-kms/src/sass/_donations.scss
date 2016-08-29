@@ -7,6 +7,9 @@
 	border: 36px solid $color-link-two;
 	border-bottom-width: 12px;
 	background: $color-link-two;
+	@include upto(small-screens) {
+		border-width: 10px;
+	}
 }
 
 .leyka-custom-template {
@@ -21,7 +24,10 @@
 			
 	.leyka-toggle-trigger {
 		@include header-title();
-		padding: $gut/2 $gut;		
+		padding: $gut/2 $gut;
+		@include upto(small-screens) {
+			padding: $gut/2 25px;
+		}		
 		//cursor: pointer;		
 		//border-top: 1px solid $color-border-link;
 	}
@@ -33,6 +39,10 @@
 	.leyka-pm-form {		
 		padding: $gut;
 		position: relative;
+		
+		@include upto(small-screens) {
+			padding: 25px;
+		}
 		
 		&:before {
 			content: '';
@@ -118,6 +128,9 @@ $figure_line-height: 30px;
 	
 	.figure:nth-child(3) {
 		margin-right: 0;
+		@include upto (exlarge-screens) {
+			margin-right: 8px;
+		}
 	}
 	.figure-flex {
 		margin-left: 5px;
@@ -129,6 +142,10 @@ $figure_line-height: 30px;
 		display: inline-block;
 		height: $figure_line-height;
 		margin-bottom: 8px;
+		@include upto(exlarge-screens) {
+			height: ($figure_line-height+24);
+			text-align: right;
+		}
 		.donate_amount_flex{
 			display: inline-block;
 	    padding: 15px 10px;
@@ -138,6 +155,9 @@ $figure_line-height: 30px;
 	    width: 100px;
 	    cursor: pointer;
 			border-radius: 0;
+			@include for(exlarge-screens) {
+				width: 90px;
+			}
 		}
 		
 		span {
@@ -184,6 +204,9 @@ $figure_line-height: 30px;
 		text-transform: uppercase;
 		color: $color-link-two;
 		margin-right: 6px;
+		@include upto(exlarge-screens) {
+			font-size: 10px;
+		}
 	}
 	
 	.donate_amount_flex {		
@@ -192,6 +215,7 @@ $figure_line-height: 30px;
 		@include checkbox-text($figure_font_size);
 		line-height: $figure_line-height - 10px;
 		text-align: right;
+		
 	}
 	
 	
@@ -202,6 +226,9 @@ $figure_line-height: 30px;
 		text-transform: uppercase;		
 		width: 50px;
 		margin-bottom: 0;
+		@include upto(small-screens) {
+			width: 40px;
+		}
 		
 		.leyka-screen-reader-text {
 			display: none;
@@ -240,6 +267,12 @@ $figure_line-height: 30px;
 			font-weight: bold;
 			position: relative;
 			top: 3px;
+			@include upto(large-screens) {
+			 top: -1px;
+			}
+			@include upto(small-screens) {
+				text-align: right;
+			}
 		}
 		
 		select {
@@ -290,6 +323,12 @@ $figure_line-height: 30px;
 			flex: 0 0 auto;
 			width: 18%;
 			margin-right: 10px;
+			@include upto(exlarge-screens) {
+				width: 30%;
+			}
+			@include upto(large-screens) {
+				width: 96%;
+			}
 		}
 		
 		.figure-flex {

@@ -92,6 +92,9 @@ $label-text-color: $color-text;
 	border-top: 4px solid $color-link-three;
 	box-shadow: 1px 1px 3px rgba(150, 150, 150, 0.3);	
 	background: $color-white;
+	@include upto(small-screens) {
+		padding: $gut 25px;
+	}
 }
 
 .frm_required {

@@ -139,10 +139,16 @@
 
 .tpl-post {
 	margin-bottom: $gut*1.5;
+	@include upto(small-screens) {
+		margin-bottom: 10px;
+	}
 		
 	.entry-data {
 		padding: $gut;
 		text-align: center;
+		@include upto(small-screens) {
+			padding: $gut 10px;
+		}
 		
 		@include for(medium-screens) {
 			padding: $gut $gut*1.5;
