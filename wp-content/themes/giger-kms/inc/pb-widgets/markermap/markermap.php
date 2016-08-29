@@ -208,7 +208,7 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			
 			var map = L.map('<?php echo $map_id ; ?>', {
 				zoomControl: <?php echo $zoomControl;?>,
-				scrollWheelZoom: <?php echo $enablescrollwheel;?>,
+				scrollWheelZoom: false,
 				center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
 				zoom: <?php echo $zoom;?>
 			});
