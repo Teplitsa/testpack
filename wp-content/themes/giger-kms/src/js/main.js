@@ -16,9 +16,8 @@ jQuery(document).ready(function($){
 	$(window).resize(function(){
 		var winW = $('#top').width();
 		
-		if (winW < breakPointMedium && $site_header.hasClass('newsletter-open')) {
-			$site_header.removeClass('newsletter-open');
-		}
+		
+		
 	});
 		
 	
@@ -406,5 +405,15 @@ jQuery(document).ready(function($){
 	if (testFormMsg.length > 0) {		
 		testFormMsg.eq(0).parents('.tst-formpopup-modal').trigger('openModal');		
 	}
+	
+	$(window).resize(function(){
+		var winW = $('#top').width();
+		
+		if (winW < breakPointMedium) {
+			$('.tst-formpopup-modal').trigger('closeModal');
+		}
+		
+		
+	});
 	
 }); //jQuery
