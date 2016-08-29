@@ -316,22 +316,24 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	
 	.rdc-request-call-link {
-		display: inline-block;
-        border: none;       
-        outline: none;
-        @include nav-text(meta_small);       
-        background: $color-link-three;
-        padding: 3px 10px;
-        color: $color-white;
-		margin-top: 5px;
-		
-        @include transition(background 0.2s);
-		
-        &:hover {
-            background: darken($color-link-three, 5%);
-			text-decoration: none;
-        }
-       
+		display: none;
+		@include for(small-screens) {
+			display: inline-block;
+			border: none;       
+			outline: none;
+			@include nav-text(meta_small);       
+			background: $color-link-three;
+			padding: 3px 10px;
+			color: $color-white;
+			margin-top: 5px;
+			
+			@include transition(background 0.2s);
+			
+			&:hover {
+				background: darken($color-link-three, 5%);
+				text-decoration: none;
+			}
+		}       
         
     }
 }
