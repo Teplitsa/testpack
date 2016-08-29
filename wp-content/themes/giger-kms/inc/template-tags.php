@@ -611,6 +611,7 @@ function tst_donations_actions($post_ID, $post){
 	$camp = new Leyka_Campaign($post);
 	$closed = (isset($_REQUEST['is_finished']) && (int)$_REQUEST['is_finished'] == 1) ? true : false;
  	
+	//campaign is closed but in need-help
 	if(($camp->is_finished || $closed) && has_term('need-help', 'campaign_cat', $post)) {
 		$cats = array();
 		$category = get_term_by('slug', 'you-helped', 'campaign_cat');
@@ -625,8 +626,24 @@ function tst_donations_actions($post_ID, $post){
 			wp_set_post_terms($post->ID, $cats, 'campaign_cat');
 	}
 	
+	// campaign in rosemary or you-helped but not closed
 	if(has_term(array('rosemary', 'you-helped'), 'campaign_cat', $post) && !($camp->is_finished || $closed) ) {
 		update_post_meta($post_ID, 'is_finished', 1);
+	}
+	
+}
+
+//add notice when there is controversial categories
+add_action('edit_form_top', 'tst_campaign_notice');
+function tst_campaign_notice($post) {
+	
+	if($post->post_type != 'leyka_campaign')
+		return;
+	
+	if(has_term(array('rosemary', 'you-helped'), 'campaign_cat', $post) &&  has_term('need-help', 'campaign_cat', $post)) {
+?>
+<div id="tst-notice" class="notice notice-warning"><p>Некорректный состав категорий кампании - проверьте!</p></div>
+<?php
 	}
 }
 
