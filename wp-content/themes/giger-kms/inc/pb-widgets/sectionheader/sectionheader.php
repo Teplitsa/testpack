@@ -120,7 +120,7 @@ class IST_PB_SectionHeader_Widget extends SiteOrigin_Widget {
 		$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
 		if(false !== strpos($class, 'bottom-decor')) {
 			echo "<div class='bottom-decor-el'>";
-			tst_svg_icon('icon-balloon');
+			tst_svg_icon('pic-balloon');
 			echo "</div>";
 		}
 		echo '</div>';
