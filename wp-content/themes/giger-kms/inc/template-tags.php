@@ -599,10 +599,13 @@ $args = array(
 
 
 /** == Children profile related logic == **/
-add_action('save_post_leyka_campaign', 'tst_donations_actions', 2, 3);
-function tst_donations_actions($post_ID, $post, $update){
+add_action('save_post', 'tst_donations_actions', 50, 2);
+function tst_donations_actions($post_ID, $post){
 	
 	if(!class_exists('Leyka_Campaign'))
+		return;
+	
+	if($post->post_type != 'leyka_campaign')
 		return;
 	
 	$camp = new Leyka_Campaign($post);
@@ -621,7 +624,10 @@ function tst_donations_actions($post_ID, $post, $update){
 		if($cats)
 			wp_set_post_terms($post->ID, $cats, 'campaign_cat');
 	}
-		
+	
+	if(has_term(array('rosemary', 'you-helped'), 'campaign_cat', $post) && !($camp->is_finished || $closed) ) {
+		update_post_meta($post_ID, 'is_finished', 1);
+	}
 }
 
 function tst_is_children_campaign($post_id){
