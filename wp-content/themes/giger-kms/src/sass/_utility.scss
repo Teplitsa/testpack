@@ -305,6 +305,8 @@ $margin-base: 16px;
 	ol ul,
 	ol ol {
 	   margin-bottom: 0;
+	   margin-top: $base;
+	   &:first-child {  margin-top: $margin-base; }
 	}
    
 	li {

@@ -322,8 +322,6 @@ jQuery(document).ready(function($){
 		$('#leyka-agree-text').trigger('closeModal');
 	});
 	
-	
-	
 	/* Center logos  */
 	function logo_vertical_center() {
 				
@@ -379,5 +377,34 @@ jQuery(document).ready(function($){
 	$('.social-menu a').each(function(){
 	    $(this).attr("target", "_blank");
 	});
+	
+	/** Modals for buttons **/
+	try {
+		
+	    $('.tst-formpopup-modal').easyModal({      
+	        hasVariableWidth : true,
+	        top : 20        
+	    });
+	}
+	catch(ex) {}
+	
+	$('.tst-formpopup-trigger').on('click', function(e){
+		
+		var target = $(this).parents('.tst-formpopup-block').find('.tst-formpopup-modal');
+		target.trigger('openModal');
+		e.preventDefault();
+	});
+	
+	$('.tst-fpm-close').on('click', function(e){
+		
+		var target = $(this).parents('.tst-formpopup-block').find('.tst-formpopup-modal');
+		target.trigger('closeModal');
+		e.preventDefault();
+	});
+	
+	var testFormMsg = $('.tst-formpopup-modal').find('.frm_message, .frm_error_style');
+	if (testFormMsg.length > 0) {		
+		testFormMsg.eq(0).parents('.tst-formpopup-modal').trigger('openModal');		
+	}
 	
 }); //jQuery

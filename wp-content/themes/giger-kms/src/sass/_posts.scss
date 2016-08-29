@@ -9,8 +9,6 @@
 	top: $logo_full_h + $height_gap + 280px;
 }
 
-
-
 .fixed-bottom {
 	position: absolute;
 	bottom: 0;				
@@ -91,8 +89,15 @@
 	.squared & {
 		margin: 0 -1*$gut/2;
 	}
+	
+	&.center-cards  {
+		justify-content: center;
+	}
 }
 
+.center-cards .cards-loop  {
+	justify-content: center;
+}
 
 /** News **/
 @mixin post-meta() {

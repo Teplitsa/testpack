@@ -606,18 +606,22 @@ function tst_donations_actions($post_ID, $post, $update){
 		return;
 	
 	$camp = new Leyka_Campaign($post);
-	
-	if($camp->is_closed && has_term('need-help', 'campaign_cat', $post)) {
+	$closed = (isset($_REQUEST['is_finished']) && (int)$_REQUEST['is_finished'] == 1) ? true : false;
+ 	
+	if(($camp->is_finished || $closed) && has_term('need-help', 'campaign_cat', $post)) {
+		$cats = array();
 		$category = get_term_by('slug', 'you-helped', 'campaign_cat');
 		if($category)
-			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
+			$cats[] = $category->term_id;
+					
+		$category_root = get_term_by('slug', 'children', 'campaign_cat');
+		if($category_root)
+			$cats[] = $category_root->term_id;
+			
+		if($cats)
+			wp_set_post_terms($post->ID, $cats, 'campaign_cat');
 	}
-	
-	if(!$camp->is_closed && has_term('you-helped', 'campaign_cat', $post)) {
-		$category = get_term_by('slug', 'need-help', 'campaign_cat');
-		if($category)
-			wp_set_post_terms($post->ID, $category->term_id, $category->taxonomy);
-	}	
+		
 }
 
 function tst_is_children_campaign($post_id){

@@ -23,7 +23,7 @@ get_header();
 </section>
 
 <section class="main-content cards-holder"><div class="container">
-<div class="cards-loop sm-cols-2 md-cols-2 lg-cols-4">
+<div class="cards-loop center-cards sm-cols-2 md-cols-2 lg-cols-4">
 	<?php
 		if(!empty($posts)){
 			foreach($posts as $p){				
