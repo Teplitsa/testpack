@@ -383,10 +383,48 @@ add_filter('leyka_donations_list_meta_content', function($donation_meta_content,
 
 }, 10, 2);
 
+//add_filter('leyka_donor_phone_field_html', function($donor_phone_field_html, Leyka_Payment_Method $pm){
+//
+//    return '<div class="rdc-textfield"><input id="leyka_'.$pm->full_id.'_phone" class="required rdc-textfield__input phone-num mixplat-phone" type="text" value="" name="leyka_donor_phone">
+//<label class="leyka-screen-reader-text rdc-textfield__label" for="leyka_'.$pm->full_id.'_phone">'.__('Your phone number in the 7xxxxxxxxxx format', 'leyka').'</label>
+//<span id="leyka_'.$pm->full_id.'_phone-error" class="mixplat-phone-error field-error leyka_donor_phone-error rdc-textfield__error"></span>
+//</div>';
+//}, 100, 2);
+
+
 add_filter('leyka_donor_phone_field_html', function($donor_phone_field_html, Leyka_Payment_Method $pm){
 
-    return '<div class="rdc-textfield"><input id="leyka_'.$pm->full_id.'_phone" class="required rdc-textfield__input phone-num mixplat-phone" type="text" value="" name="leyka_donor_phone">
-<label class="leyka-screen-reader-text rdc-textfield__label" for="leyka_'.$pm->full_id.'_phone">'.__('Your phone number in the 7xxxxxxxxxx format', 'leyka').'</label>
-<span id="leyka_'.$pm->full_id.'_phone-error" class="mixplat-phone-error field-error leyka_donor_phone-error rdc-textfield__error"></span>
+    return '<div class="rdc-textfield"><input id="leyka_'.$pm->full_id.'_phone" class="required rdc-textfield__input" type="text" value="" name="leyka_donor_phone">
+<label class="leyka-screen-reader-text rdc-textfield__label" for="leyka_'.$pm->full_id.'_phone">Ваш номер телефона в формате 7xxxxxxxxxx</label>
+<span id="leyka_'.$pm->full_id.'_phone-error" class="mixplat-phone-error field-error rdc-textfield__error"></span>
+<span id="leyka_mixplat_phone_valid-error" style="display:none;top:75px;" class="field-error rdc-textfield__error">Номер должен быть в формате 7xxxxxxxxxx</span>
 </div>';
-}, 100, 2);
+}, 10, 2);
+
+
+/** utility to fix closed campaign payment status */
+add_action('init', function(){
+
+    if(empty($_GET['tst-update-is-finished'])) {
+        return;
+    }
+
+    $campaigns = get_posts(array(
+        'post_type' => 'leyka_campaign',
+        'post_status' => 'any',
+        'nopaging' => true,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'campaign_cat',
+                'field'    => 'slug',
+                'terms'    => array('rosemary', 'you-helped'),
+            ),
+        )
+    ));
+
+    foreach($campaigns as $campaign) {
+        update_post_meta($campaign->ID, 'is_finished', true);
+            echo '<pre>updated: ' . print_r($campaign->ID.' - '.(int)get_post_meta($campaign->ID, 'is_finished', true), 1) . '</pre>';
+    }
+
+}, 1000);

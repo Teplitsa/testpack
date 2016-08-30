@@ -261,7 +261,7 @@
         background: none;
         
         .entry-preview {
-            @border-radius(100%);
+            border-radius: 50%;
       
             img {
                 display: block; 
