@@ -416,6 +416,7 @@
 		width:58%;
 		padding-left: 8%;
 		color: #fff;
+		font-size: 22px;
 		@include upto(large-screens) {
 			width: 90%;
 		}
@@ -442,12 +443,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f22962ff', e
 	}
 	}
 }
+.specs_block{
+	.specialists {
+		.panel-grid-cell {
+			&:first-child {
+				padding: 0 $gut - 5px !important;
+				background: rgba(69, 82, 101, 0.3);
+				box-shadow: 0 1px 13px rgba(0,0,0,.3);
+				> .widget {
+					margin-bottom: 20px !important;
+				}
+			}
+		}
+	}
+}
 
 .entry-content .text-white,
 .text-white {
 		padding: $gut 0;
 		@include upto(medium-screens) {
 			padding-bottom: 10px;
+		}
+		&.specs {
+			padding-bottom: 0;
 		}
 		&.for_specs {
 			@include upto(medium-screens) {

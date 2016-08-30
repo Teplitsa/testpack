@@ -1061,7 +1061,8 @@ jQuery(document).ready(function($){
 		
 	
 	//no validate no autocomplete
-	$('.novalidate').attr('novalidate', 'novalidate').find('.frm_form_field input').attr('autocomplete', 'off');
+	$('.novalidate').attr('novalidate', 'novalidate');
+	//$('.novalidate').attr('novalidate', 'novalidate').find('.frm_form_field input').attr('autocomplete', 'off');
 	
 	
 	

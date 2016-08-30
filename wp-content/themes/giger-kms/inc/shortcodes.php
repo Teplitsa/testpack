@@ -34,7 +34,7 @@ function tst_map_block_screen($atts) {
 	$url = esc_url($url);
 	
 	$out = "<div class='map-block'>";
-	$out .= "<div class='map-frame'><div class='map-mobile map-pic'>".tst_svg_icon('pic-mapmobile', false)."</div><div class='map-full map-pic'>".tst_svg_icon('pic-map', false)."</div></div>";	
+	$out .= "<div class='map-frame'><div class='map-mobile map-pic'>".tst_svg_icon('pic-mapmobile', false)."</div><div class='map-full map-pic'><a href='{$url}' target='_blank'>".tst_svg_icon('pic-map', false)."</a></div></div>";	
 	$out .= "<a href='{$url}' target='_blank'>Посмотреть на Google карте</a></div>";
 	
 	return $out;
@@ -59,7 +59,7 @@ function tst_gallery_screen($atts){
 	foreach($polygons as $i => $poly) {
 		$count = $i+1;
 	
-$clips .= '<svg width="0" height="0" xmlns="http://www.w3.org/2000/svg"><clipPath id="polshape-'.$count.'" clipPathUnits="objectBoundingBox">'.$poly.'</clipPath></svg><style>.gallery .gallery-item:nth-of-type(5n+'.$count.')  a { -webkit-clip-path: url("#polshape-'.$count.'"); clip-path: url("#polshape-'.$count.'"); }</style>';
+$clips .= '<svg width="0" height="0" xmlns="http://www.w3.org/2000/svg"><clipPath id="polshape-'.$count.'" clipPathUnits="objectBoundingBox">'.$poly.'</clipPath></svg><style>.gallery .gallery-item:nth-of-type(5n+'.$count.')  a {  }</style>';
 	
 	}
 	
