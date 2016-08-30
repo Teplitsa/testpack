@@ -432,13 +432,13 @@
 			color: $color-white;
 			padding: 3% 8% 4%;
 			//@include transform(rotate(-10deg));
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2962ff+0,2962ff+100&0.95+0,0.88+23,0.48+46,0+69 */
-background: -moz-radial-gradient(center, ellipse cover,  rgba(41,98,255,0.5) 0%, rgba(41,98,255,0.5) 23%, rgba(41,98,255,0.48) 46%, rgba(41,98,255,0) 69%, rgba(41,98,255,0) 100%); /* FF3.6-15 */
-background: -webkit-radial-gradient(center, ellipse cover,  rgba(41,98,255,0.5) 0%,rgba(41,98,255,0.5) 23%,rgba(41,98,255,0.48) 46%,rgba(41,98,255,0) 69%,rgba(41,98,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
-background: radial-gradient(ellipse at center,  rgba(41,98,255,0.5) 0%,rgba(41,98,255,0.5) 23%,rgba(41,98,255,0.48) 46%,rgba(41,98,255,0) 69%,rgba(41,98,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f22962ff', endColorstr='#002962ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-
+// /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2962ff+0,2962ff+100&0.95+0,0.88+23,0.48+46,0+69 */
+// background: -moz-radial-gradient(center, ellipse cover,  rgba(41,98,255,0.5) 0%, rgba(41,98,255,0.5) 23%, rgba(41,98,255,0.48) 46%, rgba(41,98,255,0) 69%, rgba(41,98,255,0) 100%); /* FF3.6-15 */
+// background: -webkit-radial-gradient(center, ellipse cover,  rgba(41,98,255,0.5) 0%,rgba(41,98,255,0.5) 23%,rgba(41,98,255,0.48) 46%,rgba(41,98,255,0) 69%,rgba(41,98,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+// background: radial-gradient(ellipse at center,  rgba(41,98,255,0.5) 0%,rgba(41,98,255,0.5) 23%,rgba(41,98,255,0.48) 46%,rgba(41,98,255,0) 69%,rgba(41,98,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f22962ff', endColorstr='#002962ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+// 
+// 
 
 	}
 	}
@@ -457,7 +457,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f22962ff', e
 		}
 	}
 }
-
+.map-pic a {
+	text-decoration: none;
+}
 .entry-content .text-white,
 .text-white {
 		padding: $gut 0;
@@ -562,7 +564,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f22962ff', e
 	}
 	h4 { @include post-title(small_title); }
 }
-
+.subsect .subsection .pb-section-title h3 {
+	font-size: 52px;
+}
 
 /* intro section */
 
