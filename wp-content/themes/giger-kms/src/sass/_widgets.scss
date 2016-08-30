@@ -292,7 +292,10 @@
 			height: 100%;
 		}
 	}
-	
+	.map-pic a {
+		text-decoration: none;
+		border:none;
+	}
 	.map-mobile {
 		@include for(medium-screens) { display: none; }
 	}
