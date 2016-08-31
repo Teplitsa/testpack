@@ -13,7 +13,10 @@
 // Rows and columns basics
 .bit {
 	float: left;
-	padding: 0 $gut/2;
+	padding: 0;
+	@include for(medium-screens) {
+		padding: 0 $gut/2;
+	}
 	width: 100%;
 	margin-bottom: $gut;
 }
@@ -24,7 +27,10 @@
 
 .frame {
 	@include clearfix;
-	margin: 0 -1*$gut/2;
+	margin: 0;
+	@include for(medium-screens) {
+		margin: 0 -1*$gut/2;
+	}
 	
 	&.frame-wide {
 		margin: 0 $gut/2;

@@ -24,9 +24,11 @@
 			
 	.leyka-toggle-trigger {
 		@include header-title();
-		padding: $gut/2 $gut;
-		@include upto(small-screens) {
-			padding: $gut/2 25px;
+		padding: $gut/2 25px;
+		font-size: 20px;
+		@include for(small-screens) {
+			padding: $gut/2 $gut;
+			font-size: 26px;
 		}		
 		//cursor: pointer;		
 		//border-top: 1px solid $color-border-link;
@@ -128,40 +130,54 @@ $figure_line-height: 30px;
 	
 	.figure:nth-child(3) {
 		margin-right: 0;
-		@include upto (exlarge-screens) {
-			margin-right: 8px;
-		}
+		// @include upto (exlarge-screens) {
+		// 	margin-right: 8px;
+		// }
 	}
 	.figure-flex {
 		margin-left: 5px;
 		text-align: left;
 		padding-left: 0;
+		
 	}
 	.figure,
 	.figure-flex {
 		display: inline-block;
 		height: $figure_line-height;
 		margin-bottom: 8px;
-		@include upto(exlarge-screens) {
-			height: ($figure_line-height+24);
+		width: 100%;
+		height: ($figure_line-height+24);
+		margin-left: 0;
+		@include for(medium-screens) {
 			text-align: right;
+			width: 18%;			
 		}
+		// @include upto(exlarge-screens) {
+		// 	
+		// 	text-align: right;
+		// 	margin-left: 0;
+		// }
 		.donate_amount_flex{
 			display: inline-block;
-	    padding: 15px 10px;
+	    padding: 15px 0px;
 	    border: 1px solid #2962ff;
 	    background: #fff;
 	    text-align: center;
-	    width: 100px;
+	    width: 100%;
 	    cursor: pointer;
 			border-radius: 0;
 			@include for(exlarge-screens) {
-				width: 90px;
+				width: 100%;
 			}
 		}
 		
 		span {
 			// height: $figure_line-height;
+		}
+	}
+	.figure-flex{
+		@include for(medium-screens) {
+			margin-left: 10px;
 		}
 	}
 		
@@ -240,7 +256,7 @@ $figure_line-height: 30px;
 		line-height: inherit;		
 		width: 100%;
 		height: $figure_line-height;
-		text-align: left;
+		text-align: center;
 		overflow: hidden;
 		position: relative;
 		z-index: 1;
@@ -309,6 +325,8 @@ $figure_line-height: 30px;
 	.currency {
 		flex: 0 0 auto;
 		align-self: flex-end;
+		-webkit-flex-flow: row wrap;
+  	justify-content: space-around;
 	}
 }
 
@@ -333,7 +351,7 @@ $figure_line-height: 30px;
 		
 		.figure-flex {
 			flex: 1 1 auto;
-			padding: 0 8px;
+			padding: 0;
 			text-align: right;	
 			width: 20%;	
 		}

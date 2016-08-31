@@ -252,7 +252,10 @@ h1, h2, h3, h4, h5, h6 {
 	.widget-area {
 		display: flex;
 		flex-flow: row wrap;
-		margin: 0 -1*$gut/2;
+		margin: 0;
+		@include for(medium-screens) {
+			margin: 0 -1*$gut/2;
+		}
 		justify-content: flex-start;
 		
 		@include for(large-screens) {
@@ -330,7 +333,10 @@ h1, h2, h3, h4, h5, h6 {
 	flex-flow: row wrap;
 	justify-content: space-between;
 	align-items: center;
-	margin: 0 -1*$gut/2;
+	margin: 0;
+	@include for(medium-screens) {
+		margin: 0 -1*$gut/2;
+	}
 	
 	@include for(small-screens) {
 		flex-flow: row nowrap;
@@ -342,7 +348,10 @@ h1, h2, h3, h4, h5, h6 {
 	
 	.sf-cols-8 {
 		flex: 1 0 auto;
-		margin: 0 $gut/2;		
+		margin: 0;
+		@include for(medium-screens) {
+			margin: 0 $gut/2;
+		}
 		@include calc(width, '100% - 30px');
 		
 		@include for(small-screens) {
@@ -356,7 +365,10 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	.sf-cols-4 {
 		flex: 0 0 auto;
-		margin: 0 $gut/2;
+		margin: 0;
+		@include for(medium-screens) {
+			margin: 0 $gut/2;
+		}
 		@include calc(width, '100% - 30px');
 		
 		@include for(small-screens) { width: 200px;	}

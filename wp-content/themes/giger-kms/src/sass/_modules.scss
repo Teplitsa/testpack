@@ -50,7 +50,12 @@
 $i: 1; //widths
 @while $i < 10 {
   
-  .gallery-columns-#{$i} .gallery-item { width: 100% / $i; }
+  .gallery-columns-#{$i} .gallery-item { 
+		width: 100%;
+		@include for(small-screens) {
+			width: 100% / $i; 
+		}
+	}
    $i: $i + 1;
 }
 
