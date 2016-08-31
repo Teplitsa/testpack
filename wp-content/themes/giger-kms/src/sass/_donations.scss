@@ -181,6 +181,7 @@ $figure_padding-height: 16px;
 		@include input-text();
 		background: $color-white;
 		line-height: $figure_line-height;
+		border-radius: 0;
 		border: 1px solid $color-border-link;
 		padding: $figure_padding-height $figure_padding-height/2;
 		text-align: center;

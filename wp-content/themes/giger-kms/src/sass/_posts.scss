@@ -90,24 +90,6 @@
 
 
 /** News **/
-@mixin post-meta() {
-	@include sub-title();	
-	color: $color-text-light;
-	margin-bottom: 8px;
-	
-	a {
-		color: inherit;
-		text-decoration: underline;
-		@inlcude transition(all 0.3s);
-		
-		&:hover { color: $color-text; }
-	}
-	
-	.sep {
-		padding-left: 1px;
-	}
-}
-
 @mixin shadowed-preview {
 	width: 100%;
 	position: relative;
@@ -151,44 +133,7 @@
 }
 
 
-@mixin post-fixed-preview {
-	display: block;
-	width: 100%;
-	height: 0;
-	padding-bottom: 61.72%;
-	position: relative;
-	z-index: 1;
-	background: $color-secondary;
-	
-	.tpl-pictured-bg {
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 10;
-		background-color: transparent;
-	}
-	
-	&:hover {
-		filter: contrast(120%);
-	}
-	
-	.vvc-logo {
-		position: absolute;
-		width: 100%;
-		height: 150px;
-		left: 0;
-		top: 50%;
-		margin-top: -75px;
-		z-index: 5;
-		
-		text-align: center;
-	}
-	
-	.pic-butterfly {
-		width: 150px;
-		height: 150px;
-	}
-}
+
 
 .tpl-post {
 	margin-bottom: $gut*1.5;
