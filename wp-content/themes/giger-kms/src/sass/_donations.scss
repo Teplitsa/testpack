@@ -282,10 +282,8 @@ $figure_line-height: 30px;
 			font-size: 80%;
 			font-weight: bold;
 			position: relative;
-			top: 3px;
-			@include upto(large-screens) {
-			 top: -1px;
-			}
+			top: -1px;
+			
 			@include upto(small-screens) {
 				text-align: right;
 			}
