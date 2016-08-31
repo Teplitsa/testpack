@@ -180,7 +180,7 @@ function tst_donation_form($campaign_id = null){
 			tst_amount_field($leyka_current_pm);
 		} //if amount
 		
-		echo leyka_pf_get_hidden_fields();	
+		echo leyka_pf_get_hidden_fields($campaign_id);	
 	?>
 	<input name="leyka_payment_method" value="<?php echo esc_attr($pm->full_id);?>" type="hidden" />
 	<input name="leyka_ga_payment_method" value="<?php echo esc_attr($pm->label);?>" type="hidden" />
