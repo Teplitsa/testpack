@@ -254,14 +254,37 @@ function tst_post_thumbnail_src($post_id, $size = 'post-thumbnail'){
 /** Cards for campaigns **/
 function tst_leyka_campaign_card($cpost) {
 
-	$callback = 'tst_default_campaign_card';
-	
-	if(has_term('children', 'campaign_cat', $cpost)){
-		$callback = 'tst_child_campaign_card';
-	}
-	else {
-		$callback = 'tst_project_campaign_card';
-	}
+    $callback = 'tst_project_campaign_card';
+
+    if(has_term('', 'campaign_cat', $cpost)) { // Campaign has some campaign cat terms
+
+        $children_campaign_cat = get_terms(array(
+            'taxonomy' => 'campaign_cat',
+            'hide_empty' => false,
+            'slug' => 'children',
+        ));
+        $children_campaign_cat = $children_campaign_cat ? reset($children_campaign_cat) : false;
+
+        $campaign_cats = wp_get_object_terms($cpost->ID, 'campaign_cat', array());
+        foreach($campaign_cats as $campaign_cat) {
+            if(
+                $campaign_cat->slug == $children_campaign_cat->slug ||
+                $campaign_cat->parent == $children_campaign_cat->term_id
+            ) {
+
+                $callback = 'tst_child_campaign_card';
+                break;
+            }
+        }
+
+    }
+
+//	if(has_term('children', 'campaign_cat', $cpost)){
+//		$callback = 'tst_child_campaign_card';
+//	}
+//	else {
+//		$callback = 'tst_project_campaign_card';
+//	}
 	
 	if(is_callable($callback)){
 		call_user_func_array($callback, array($cpost));
