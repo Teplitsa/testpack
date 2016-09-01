@@ -176,15 +176,23 @@ $figure_line-height: 30px;
 		}
 	}
 	.figure-flex{
+		@include for(small-screens) {
+			width: 47.5%;
+			flex:0 0 auto;
+		}
 		@include for(medium-screens) {
-			margin-left: 10px;
+			margin-left: 0px;
+			width: 50%;
 		}
 	}
 		
 	.figure {
 		display: inline-block;
 		line-height: inherit;		
-		padding-left: 0;	
+		padding-left: 0;
+		@include for(small-screens)	{
+			width: 45%;
+		}
 		.tst-radio__button:checked+.tst-radio__label{
 			border-color: #0041f5;
 			background: #0041f5;
@@ -231,7 +239,13 @@ $figure_line-height: 30px;
 		@include checkbox-text($figure_font_size);
 		line-height: $figure_line-height - 10px;
 		text-align: right;
-		
+		@include for(small-screens)	 {
+			width: 94% !important;
+		}
+		@include for(medium-screens)	 {
+			width: 90% !important;
+			margin-right: 10px;
+		}
 	}
 	
 	
@@ -416,12 +430,19 @@ $figure_line-height: 30px;
 }
 
 //modal
-
+.leyka-custom-modal {
+	height: 90% !important;
+	top: 5% !important;
+	margin: 0 auto !important;
+	left: 0 !important;
+	right: 0 !important;
+}
 .leyka-custom-modal {	
 	display: none;
 	box-sizing: border-box;
 	border-radius: 2px;
 	width: 90%;
+
 	
 	@include for(medium-screns) {
 		width: 80%;
@@ -451,6 +472,8 @@ $figure_line-height: 30px;
 			fill: $color-white;
 			pointer-events: none;
 			margin-top: -1px;
+			position: relative;
+			top: 3px;
 		}
 	}
 	

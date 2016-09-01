@@ -14,8 +14,24 @@
 .bit {
 	float: left;
 	padding: 0;
+	&.md-8 {
+		display: none;
+	}
 	@include for(medium-screens) {
 		padding: 0 $gut/2;
+		&.md-8 {
+			display: block;
+			width: 50%;
+		}
+	}
+	@include for(large-screens) {
+		&.md-8 {
+			display: block;
+			width: 58.33333%;
+		}
+		&.md-4 {
+			padding-left: $gut;			
+		}
 	}
 	width: 100%;
 	margin-bottom: $gut;

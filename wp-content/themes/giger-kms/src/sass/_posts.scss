@@ -138,9 +138,9 @@
 
 
 .tpl-post {
-	margin-bottom: $gut*1.5;
-	@include upto(small-screens) {
-		margin-bottom: 10px;
+	margin-bottom: 20px;
+	@include for(medium-screens) {
+		margin-bottom: $gut*1.5;
 	}
 		
 	.entry-data {
@@ -174,7 +174,10 @@
 	.entry-title {
 		@include post-title();
 		line-height: 1.1;
-		margin-bottom: 10px;
+		margin-bottom: 20px;
+		@include for(small-screens) {
+			//margin-bottom: $gut*1.5;
+		}
 	}
 	
 	.entry-summary {
@@ -365,7 +368,10 @@
 		
 		&.standard {
 			@include shadowed-preview();
-			height: 300px;
+			height: 190px;
+			@include for(small-screens) {
+				height: 300px;
+			}
 		}		
 	}
 	
@@ -385,11 +391,11 @@
 			
 			.nav-next {
 				text-align: right;
-				width: 50%;
+				width: 100%;
 			}
 			.nav-previous {
 				text-align: left;
-				width: 50%;
+				width: 100%;
 			}
 		}
 	}
@@ -399,7 +405,7 @@
 	position: absolute;
 	width: 45px;
 	@include calc(height, '100% - 280px');
-	top: 280px;
+	top: 195px;
 	left: 0;
 	z-index: 100;
 	
@@ -420,11 +426,17 @@
 		top: 0;
 		left: 50%;
 		@include transform(translateX(-50%));
+		width: 100%;
+		// @include for(small-screens) {
+		// 	left: 50%;
+		// 	width: auto;
+		// }
 	}
 	
 	.social-likes__widget {
-		float: left;
+		/*float: left;*/
 		margin: 0 4px;
+		display: inline-block;
 	}
 }
 

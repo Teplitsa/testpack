@@ -35,6 +35,10 @@
 		
 	p { //temp		
 		margin-bottom: $gut/2;
+		font-size: 18px;
+		@include for(large-screens) {
+			/*font-size: 16px;*/
+		}
 	}
 	
 	&.red {
@@ -142,12 +146,35 @@
 	.container-narrowed { // for widget in the center
 		max-width: 900px;
 		margin: 0 auto;
+		&.text_block {
+			margin: 40px auto 20px;
+			@include for(large-screens) {
+				margin-top: $gut*1.5;
+			}
+			p {
+				font-size: 18px;
+			}
+		}
 		&.volonteur {
-			margin-bottom: $gut;
+			margin-bottom: 25px;
+			@include for(small-screens) {
+				margin-bottom: $gut;
+			}
+		}
+		&.crisis_center {
+			.gallery {
+				margin-bottom: 0;
+			}
+			.gallery-item {
+				margin-bottom: 10px;
+			}
 		}
 	}
 	.volonteer_form {
-		margin-bottom: $gut;
+		margin-bottom: 0;
+		@include for(small-screens) {
+			margin-bottom: $gut;
+		}
 	}
 	
 	.container-narrowed-1000 {
@@ -163,6 +190,9 @@
 		text-align: center;
 		.widget-title {
 			text-align: center;
+			@include for(large-screens) {
+				font-size: 46px;
+			}
 		}
 	}
 	
@@ -341,7 +371,10 @@
 .container-extended-pictured {
 	background-color: $color-link-three;
 	@include container-extended();	
-	padding-top: $gut*2.5;
+	padding-top: $gut*1.5;
+	@include for(medium-screens) {
+		padding-top: $gut*2.5;
+	}
 	padding-bottom: $gut*1.5;
 	
 	&.shaded {
@@ -383,8 +416,10 @@
 			@include transform(skewY(2deg));
 		}
 		.panel-grid-cell {
+			padding: 0 !important;
 			@include upto(large-screens) {
 				width: 90% !important;
+				margin: 0 auto;
 			}
 		}
 		@include upto(small-screens) {
@@ -396,6 +431,7 @@
 	
 	
 }
+
 
 //site intro
 .intro-headind-sec{
@@ -409,14 +445,14 @@
 		font-weight: bold;
 		position: absolute;
 		right: 0;
-		top: -1*$gut;
+		top: -0.5*$gut;
 		
 		a { color: inherit; }
 		.svg-icon { vertical-align: baseline; }
 	}
 	
 	.about_center {
-		width:58%;
+		width:60%;
 		padding-left: 8%;
 		color: #fff;
 		font-size: 22px;
@@ -450,7 +486,10 @@
 	.specialists {
 		.panel-grid-cell {
 			&:first-child {
-				padding: 0 $gut - 5px !important;
+				padding: 0 $gut/2.5 !important;
+				@include for(small-screens) {
+					padding: 0 $gut - 5px !important;
+				}
 				background: rgba(69, 82, 101, 0.3);
 				box-shadow: 0 1px 13px rgba(0,0,0,.3);
 				> .widget {
@@ -535,8 +574,9 @@
 	h3 {
 		@include header-title(head_title);
 		margin: 0;
-		@include upto(small-screens) {
-			font-size: 34px;
+		font-size: 34px;
+		@include for(large-screens) {
+			font-size: 46px;
 		}
 	}
 	
@@ -568,7 +608,9 @@
 	h4 { @include post-title(small_title); }
 }
 .subsect .subsection .pb-section-title h3 {
-	font-size: 52px;
+	@include for(large-screens) {
+		font-size: 46px;
+	}
 }
 
 /* intro section */

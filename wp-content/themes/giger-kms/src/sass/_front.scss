@@ -259,18 +259,30 @@ h1, h2, h3, h4, h5, h6 {
 		justify-content: flex-start;
 		
 		@include for(large-screens) {
-			&.text { justify-content: flex-end;	}
+			&.text { 
+				justify-content: flex-end;	
+			}
 		}
 	}
 		
 	.widget-bottom {
 		margin-bottom: $gut;
-		padding: 0 $gut/2;
-		
+		padding: 0 10px;
+		width: 50%;
+		@include for(medium-screens) {
+			padding: 0 $gut/2;
+			width: 100%;
+		}
+		@include for(large-screens) {
+			width: 50%;
+		}
 	}
 	
 	.widget_nav_menu {
-		margin-right: $gut;
+		margin-right: 0;
+		@include for(large-screens) {
+			/*margin-right: $gut;*/
+		}
 		li { 
 			display: block;
 			margin-bottom: 15px;

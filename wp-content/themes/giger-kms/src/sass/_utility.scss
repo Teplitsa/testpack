@@ -217,7 +217,7 @@ $margin-base: 16px;
 	
 	h4 { 
 		@include post-title();
-		margin: 1.5em 0 $margin-base;		
+		margin: 1.5em 0 $margin-base+10;
 	}
 	
 	h5 {
@@ -391,8 +391,7 @@ $margin-base: 16px;
 		
 } //mixin
 
-.entry-content {
-	
+.entry-content {	
 	@include content-elements();	
 }
 
