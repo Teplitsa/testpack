@@ -474,6 +474,9 @@ $figure_line-height: 30px;
 			margin-top: -1px;
 			position: relative;
 			top: 3px;
+			@include for(medium-screens) {
+				top: 0;
+			}
 		}
 	}
 	
