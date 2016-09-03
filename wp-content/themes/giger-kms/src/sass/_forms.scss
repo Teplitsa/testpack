@@ -201,7 +201,12 @@ $label-text-color: $color-text;
 		bottom: 6px;
 	}
 }
-
+.reception {
+	@include for(medium-screens) {
+		width: 50%;
+		margin: 0 auto;
+	}
+}
 
 
 /** chackbox **/
