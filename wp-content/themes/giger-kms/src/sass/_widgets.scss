@@ -231,6 +231,13 @@
 		margin-left: 0; 
 		&.bbb {
 			margin-top: $gut;
+			li a {
+				border-bottom: 1px solid #01357B;
+				transition: ease 0.35s;
+				&:hover {
+					border-bottom-color: #2962ff;
+				}
+			}
 		}
 	}
 	
