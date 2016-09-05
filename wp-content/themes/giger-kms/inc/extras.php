@@ -265,8 +265,61 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'newsletter_bottom_form_id',
         'priority' => 45,
     ));
+    
+    /* mailchimp  lists keys */
+    $wp_customize->add_setting('subscribe_list_donation', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('subscribe_list_donation', array(
+        'type'     => 'text',
+        'label'    => __('Subscribe list donation', 'tst'),
+        'section'  => 'title_tagline',
+        'settings' => 'subscribe_list_donation',
+        'priority' => 50,
+    ));
 	
-	//Images
+    $wp_customize->add_setting('subscribe_list_subscription', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('subscribe_list_subscription', array(
+        'type'     => 'text',
+        'label'    => __('Subscribe list subscription', 'tst'),
+        'section'  => 'title_tagline',
+        'settings' => 'subscribe_list_subscription',
+        'priority' => 50,
+    ));
+    
+    $wp_customize->add_setting('subscribe_list_volonter', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('subscribe_list_volonter', array(
+        'type'     => 'text',
+        'label'    => __('Subscribe list volonter', 'tst'),
+        'section'  => 'title_tagline',
+        'settings' => 'subscribe_list_volonter',
+        'priority' => 50,
+    ));
+    
+    $wp_customize->add_setting('subscribe_list_needhelp', array(
+        'default'   => '',
+        'transport' => 'refresh',
+    ));
+    
+    $wp_customize->add_control('subscribe_list_needhelp', array(
+        'type'     => 'text',
+        'label'    => __('Subscribe list need help', 'tst'),
+        'section'  => 'title_tagline',
+        'settings' => 'subscribe_list_needhelp',
+        'priority' => 50,
+    ));
+    
+    //Images
 	$wp_customize->add_setting('default_thumbnail', array(
         'default'   => false,
         'transport' => 'refresh', // postMessage

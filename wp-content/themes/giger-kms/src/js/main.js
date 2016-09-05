@@ -416,4 +416,103 @@ jQuery(document).ready(function($){
 		
 	});
 	
+	function tst_get_name_parts_from_single_field($field) {
+        var name = $field.val().replace(/[ ]+/, " ");
+        return name.split(" ");
+	}
+	
+	function tst_set_mailchimp_data_from_donation_form($form) {
+	    var name_parts = tst_get_name_parts_from_single_field($form.find('#leyka_donor_name'));
+	    $form.find('.tst-mailchimp-fname').val(name_parts[0]);
+	    $form.find('.tst-mailchimp-lname').val(name_parts[1]);
+	}	
+	
+	function tst_set_mailchimp_data_from_subscription_form($form) {
+        $form.find('.tst-mailchimp-email').val($form.find('input[type="email"]').val());
+	}
+	
+	function tst_set_mailchimp_data_from_volonter_form($form) {
+        $form.find('.tst-mailchimp-fname').val($form.find('input#field_lvxsm').val());
+        $form.find('.tst-mailchimp-lname').val($form.find('input#field_ogvad').val());
+	    $form.find('.tst-mailchimp-email').val($form.find('input[type="email"]').val());
+	}
+	
+	function tst_set_mailchimp_data_from_request_help_form($form) {
+        $form.find('.tst-mailchimp-fname').val($form.find('input#field_62oc9').val());
+        $form.find('.tst-mailchimp-lname').val($form.find('input#field_qf64u').val());
+        $form.find('.tst-mailchimp-email').val($form.find('input[type="email"]').val());
+	}
+	
+	// integrate with mailchimp
+	$('#form_ipqtz').append($('#tst_mailchimp_subscribe_list_subscription').html());
+	$('#form_gwqc').append($('#tst_mailchimp_subscribe_list_subscription').html());
+	$('#form_h6smw').append($('#tst_mailchimp_subscribe_list_volonter').html());
+	
+	$('.frm-show-form').each(function(){
+	    if($(this).attr('id') == 'form_request_help') {
+	        $(this).append($('#tst_mailchimp_subscribe_list_needhelp').html());
+	    }
+	});
+	
+	$('.leyka-pm-form').submit(function(){
+	    try {
+	        tst_set_mailchimp_data_from_donation_form($(this));
+	    }
+	    catch(ex) {
+	        console.log('Mailchimp integration failed!!!');
+	        console.log(ex);
+	    }
+	    
+	    return true;
+	});
+	
+    $('#form_ipqtz').submit(function(){
+        try {
+            tst_set_mailchimp_data_from_subscription_form($(this));
+        }
+        catch(ex) {
+            console.log('Mailchimp integration failed!!!');
+            console.log(ex);
+        }
+        
+        return true;
+    });
+    
+    $('#form_gwqc').submit(function(){
+        try {
+            tst_set_mailchimp_data_from_subscription_form($(this));
+        }
+        catch(ex) {
+            console.log('Mailchimp integration failed!!!');
+            console.log(ex);
+        }
+        
+        return true;
+    });
+
+    $('#form_h6smw').submit(function(){
+        try {
+            tst_set_mailchimp_data_from_volonter_form($(this));
+        }
+        catch(ex) {
+            console.log('Mailchimp integration failed!!!');
+            console.log(ex);
+        }
+        
+        return true;
+    });
+    
+    $('.frm-show-form').submit(function(){
+        if($(this).attr('id') == 'form_request_help') {
+            try {
+                tst_set_mailchimp_data_from_request_help_form($(this));
+            }
+            catch(ex) {
+                console.log('Mailchimp integration failed!!!');
+                console.log(ex);
+            }
+        }
+        return true;
+    });
+
 }); //jQuery

@@ -14,6 +14,39 @@ $footer_text = get_theme_mod('footer_text');
 ?>
 </div><!--  #site_content -->
 
+<div style="display:none;">
+	<?php if($subscribe_list = get_theme_mod('subscribe_list_subscription')):?>
+	    <span style="display:none;" id="tst_mailchimp_subscribe_list_subscription">
+	        <input type="hidden" name="FNAME" class="tst-mailchimp-fname"/>
+	        <input type="hidden" name="LNAME" class="tst-mailchimp-lname" />
+	        <input type="hidden" name="EMAIL" class="tst-mailchimp-email" />
+            <input type="hidden" name="_mc4wp_lists" value="<?php echo $subscribe_list; ?>" />
+            <input type="hidden" name="mc4wp-subscribe" value="1" />
+        </span>
+    <?php endif; ?>
+
+	<?php if($subscribe_list = get_theme_mod('subscribe_list_volonter')):?>
+	    <span style="display:none;" id="tst_mailchimp_subscribe_list_volonter">
+	        <input type="hidden" name="FNAME" class="tst-mailchimp-fname"/>
+	        <input type="hidden" name="LNAME" class="tst-mailchimp-lname" />
+	        <input type="hidden" name="EMAIL" class="tst-mailchimp-email" />
+            <input type="hidden" name="_mc4wp_lists" value="<?php echo $subscribe_list; ?>" />
+            <input type="hidden" name="mc4wp-subscribe" value="1" />
+        </span>
+    <?php endif; ?>
+    
+	<?php if($subscribe_list = get_theme_mod('subscribe_list_needhelp')):?>
+	    <span style="display:none;" id="tst_mailchimp_subscribe_list_needhelp">
+	        <input type="hidden" name="FNAME" class="tst-mailchimp-fname"/>
+	        <input type="hidden" name="LNAME" class="tst-mailchimp-lname" />
+	        <input type="hidden" name="EMAIL" class="tst-mailchimp-email" />
+            <input type="hidden" name="_mc4wp_lists" value="<?php echo $subscribe_list; ?>" />
+            <input type="hidden" name="mc4wp-subscribe" value="1" />
+        </span>
+    <?php endif; ?>
+    
+</div>
+
 <div id="bottom_bar" class="bottom-bar"><div class="container">	
 	<div class="frame frame-wide">
 		<div class="bit md-9 lg-8">

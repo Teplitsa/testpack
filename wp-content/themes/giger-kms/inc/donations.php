@@ -202,6 +202,13 @@ function tst_donation_form($campaign_id = null){
 	</div>
 	<?php  }?>
 	
+	<?php if($subscribe_list = get_theme_mod('subscribe_list_donation')):?>
+        <input type="hidden" name="FNAME" class="tst-mailchimp-fname"/>
+        <input type="hidden" name="LNAME" class="tst-mailchimp-lname" />
+        <input type="hidden" name="_mc4wp_lists" value="<?php echo $subscribe_list; ?>" />
+        <input type="hidden" name="mc4wp-subscribe" value="1" />
+    <?php endif; ?>
+	
 	<!-- pm fields -->
 	<?php
 		//correct html
