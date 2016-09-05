@@ -57,6 +57,7 @@
         "wpackagist-plugin/siteorigin-panels": "@stable",
         "wpackagist-plugin/so-widgets-bundle": "@stable",
         "wpackagist-plugin/tiny-compress-images": "@stable",
+		"wpackagist-plugin/mailchimp-for-wp": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
         "tst/cmb2-attached-posts" : ">=1.2.2",
 		"tst/leaflet-maps-marker-pro" : ">=2.7.2",
