@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 01:45+0300\n"
-"PO-Revision-Date: 2016-06-30 01:45+0300\n"
+"POT-Creation-Date: 2016-09-05 09:48+0200\n"
+"PO-Revision-Date: 2016-09-05 09:49+0200\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
 "%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
 "__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
@@ -26,15 +26,15 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 "X-Poedit-SearchPathExcluded-2: assets\n"
 
-#: archive-leyka_donation.php:21 inc/template-tags.php:166
+#: archive-leyka_donation.php:21 inc/template-tags.php:159
 msgid "Campaign"
 msgstr "Кампания"
 
-#: archive-leyka_donation.php:39
+#: archive-leyka_donation.php:46
 msgid "Anonymous"
 msgstr "Анонимно"
 
-#: archive-leyka_donation.php:49
+#: archive-leyka_donation.php:58
 msgid "No donations yet"
 msgstr "Пожертвований пока нет"
 
@@ -42,15 +42,15 @@ msgstr "Пожертвований пока нет"
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:21
+#: footer.php:54
 msgid "Subscribe to our newsletter"
 msgstr "Подпишитесь на рассылку"
 
-#: footer.php:31
+#: footer.php:64
 msgid "Our social profiles"
 msgstr "Мы в социальных сетях"
 
-#: footer.php:47
+#: footer.php:80
 #, php-format
 msgid "All materials of the site are avaliabe under license %s"
 msgstr "Все материалы сайта доступны по лицензии %s"
@@ -59,29 +59,29 @@ msgstr "Все материалы сайта доступны по лиценз�
 msgid "Skip to content"
 msgstr "Перейти к содержанию"
 
-#: header.php:45 inc/cards.php:346
+#: header.php:45 inc/cards.php:369
 msgid "Donate"
 msgstr "Помочь сейчас"
 
-#: inc/admin.php:139 inc/admin.php:148
+#: inc/admin.php:135 inc/admin.php:144
 msgid "Website"
 msgstr "Вебсайт"
 
-#: inc/admin.php:139 inc/admin.php:153
+#: inc/admin.php:135 inc/admin.php:149
 msgid "Excerpt"
 msgstr "Аннотация"
 
-#: inc/admin.php:155
+#: inc/admin.php:151
 msgid ""
 "Annotation for items lists (will be printed at the beginning of the single "
 "page)"
 msgstr "Аннотация для списков (на странице записи добавляется в начало)"
 
-#: inc/admin.php:216
+#: inc/admin.php:212
 msgid "Forms"
 msgstr "Формы"
 
-#: inc/admin.php:339
+#: inc/admin.php:335
 #, php-format
 msgid ""
 "ATTENTION! You thumbnail image is too small. It should be at least %s px"
@@ -89,39 +89,39 @@ msgstr ""
 "ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
 "менее %s px."
 
-#: inc/admin.php:387 inc/admin.php:403
+#: inc/admin.php:383 inc/admin.php:399
 msgid "Facebook Profile"
 msgstr "Профиль на Facebook"
 
-#: inc/admin.php:389 inc/admin.php:405
+#: inc/admin.php:385 inc/admin.php:401
 msgid "Enter URL of author's Facebook profile"
 msgstr "Укажите ссылку на профиль автора"
 
-#: inc/admin.php:392 inc/admin.php:408
+#: inc/admin.php:388 inc/admin.php:404
 msgid "Avatar"
 msgstr "Аватарка"
 
-#: inc/admin.php:440
+#: inc/admin.php:436
 msgid "Taxonomy Term Image"
 msgstr "Заставка"
 
-#: inc/admin.php:441
+#: inc/admin.php:437
 msgid "Select which image should represent this term."
 msgstr "Выберите изображение заставки"
 
-#: inc/admin.php:442
+#: inc/admin.php:438
 msgid "Select Image"
 msgstr "Выбрать изображение"
 
-#: inc/admin.php:443
+#: inc/admin.php:439
 msgid "Remove"
 msgstr "Удалить"
 
-#: inc/admin.php:444
+#: inc/admin.php:440
 msgid "Select or upload an image for this term"
 msgstr "Выбрать или загрузить изображение"
 
-#: inc/admin.php:445
+#: inc/admin.php:441
 msgid "Attach"
 msgstr "Присоединить"
 
@@ -134,15 +134,15 @@ msgstr "Автор"
 msgid "More"
 msgstr "Подробнее"
 
-#: inc/cards.php:319
+#: inc/cards.php:342
 msgid "Age"
 msgstr "Возраст"
 
-#: inc/cards.php:322
+#: inc/cards.php:345
 msgid "City"
 msgstr "Город"
 
-#: inc/cards.php:325
+#: inc/cards.php:348
 msgid "Diagnosis"
 msgstr "Диагноз"
 
@@ -154,45 +154,53 @@ msgstr "Пожалуйста, укажите текст комментария"
 msgid "Please, set a text to describe an additional ways to donate."
 msgstr "Пожалуйста, укажите текст комментария"
 
-#: inc/donations.php:118 inc/donations.php:155
+#: inc/donations.php:121
 msgid "Please, specify your donation amount"
 msgstr "Пожалуйста, укажите сумму пожертвования"
 
-#: inc/donations.php:123 inc/donations.php:160
+#: inc/donations.php:127
 msgid "or"
 msgstr "или"
 
-#: inc/donations.php:124 inc/donations.php:161
+#: inc/donations.php:127
 msgid "Specify the amount of your donation"
 msgstr "Пожалуйста, укажите сумму пожертвования"
 
-#: inc/donations.php:222
+#: inc/donations.php:191
 msgid "Your name"
 msgstr "Ваше имя"
 
-#: inc/donations.php:249
+#: inc/donations.php:225
 msgid "Monthly donation"
 msgstr "Перечислять ежемесячно"
 
-#: inc/extras.php:289
+#: inc/extras.php:277
+msgid "Subscribe list donation"
+msgstr "Mailchimp лист для формы пожертвований"
+
+#: inc/extras.php:290
+msgid "Subscribe list subscription"
+msgstr "Mailchimp лист для формы подписки"
+
+#: inc/extras.php:303
+msgid "Subscribe list volonter"
+msgstr "Mailchimp лист для формы волонтера"
+
+#: inc/extras.php:316
+msgid "Subscribe list need help"
+msgstr "Mailchimp лист для формы запроса помощи"
+
+#: inc/extras.php:342
 msgid "Default Avatar"
 msgstr "Аватарка по-умолчанию"
-
-#: inc/extras.php:517
-msgid "Your phone number"
-msgstr "Ваш номер телефона"
-
-#: inc/extras.php:519
-msgid "Phone number should be 7xxxxxxxxxx"
-msgstr "Формат номера должен быть 7xxxxxxxxxx"
 
 #: inc/pb-widgets/donationhystory/donationhystory.php:41
 #: inc/pb-widgets/featureblock/featureblock.php:41
 msgid "Title"
 msgstr "Заголовок"
 
-#: inc/pb-widgets/donationhystory/donationhystory.php:107
-#: single-leyka_campaign.php:79
+#: inc/pb-widgets/donationhystory/donationhystory.php:111
+#: single-leyka_campaign.php:91
 msgid "Full list"
 msgstr "Полный список"
 
@@ -290,73 +298,65 @@ msgstr "По правому краю"
 msgid "Style as page title"
 msgstr "Применить стиль заголовка страницы"
 
-#: inc/template-tags.php:187
+#: inc/template-tags.php:180
 msgid "Page"
 msgstr "Страница"
 
-#: inc/template-tags.php:274
+#: inc/template-tags.php:267
 msgid "Donations history"
 msgstr "История пожертвований"
 
-#: inc/template-tags.php:278
+#: inc/template-tags.php:271
 msgid "Search results"
 msgstr "Результаты поиска"
 
-#: inc/template-tags.php:282
+#: inc/template-tags.php:275
 msgid "404: Page not found"
 msgstr "Ошибка 404: Страница не найдена"
 
-#: inc/template-tags.php:375
+#: inc/template-tags.php:368
 msgid "Post navigation"
 msgstr "Навигация по записям"
 
-#: inc/template-tags.php:390 inc/template-tags.php:400
+#: inc/template-tags.php:383 inc/template-tags.php:393
 msgid "Homepage"
 msgstr "Главная"
 
-#: inc/template-tags.php:437
+#: inc/template-tags.php:430
 msgid "More projects"
 msgstr "Еще проекты"
 
-#: inc/template-tags.php:438
+#: inc/template-tags.php:431
 msgid "Our projects"
 msgstr "Наши программы"
 
-#: inc/template-tags.php:442 inc/template-tags.php:443
+#: inc/template-tags.php:435 inc/template-tags.php:436
 msgid "Our children"
 msgstr "Наши дети"
 
-#: inc/template-tags.php:448
+#: inc/template-tags.php:441
 msgid "More events"
 msgstr "Еще анонсы"
 
-#: inc/template-tags.php:453 inc/widgets.php:146
+#: inc/template-tags.php:446 inc/widgets.php:146
 msgid "More news"
 msgstr "Еще новости"
 
-#: inc/template-tags.php:454
+#: inc/template-tags.php:447
 msgid "Latest news"
 msgstr "Последние новости"
 
-#: inc/template-tags.php:494
+#: inc/template-tags.php:487
 msgid "Related project"
 msgstr "Программа по теме"
 
-#: inc/template-tags.php:513 single-leyka_campaign.php:70
+#: inc/template-tags.php:506 single-leyka_campaign.php:74
 msgid "Help now"
 msgstr "Помочь сейчас"
 
 #: inc/widgets.php:111
 msgid "Widget doesn't have any settings"
 msgstr "Виджет не имеет настроек"
-
-#: page-events.php:72
-msgid "Future events"
-msgstr "Анонсы"
-
-#: page-events.php:87
-msgid "Past events"
-msgstr "Прошедшие мероприятия"
 
 #: search.php:47
 msgid "Enter terms for search in the form and hit Enter"
@@ -366,19 +366,15 @@ msgstr "Укажите слова для поиска в форме и нажм�
 msgid "Nothing found under your request"
 msgstr "По вашему запросу ничего не найдено."
 
-#: single-event.php:111
-msgid "Visit or events"
-msgstr "Приглашаем на мероприятия"
-
-#: single-leyka_campaign.php:58
+#: single-leyka_campaign.php:59
 msgid "From archive"
 msgstr "Из архива"
 
-#: single-leyka_campaign.php:70
+#: single-leyka_campaign.php:74
 msgid " Thank you!"
 msgstr "Благодарим!"
 
-#: single-leyka_campaign.php:76
+#: single-leyka_campaign.php:89
 msgid "Already helped"
 msgstr "Уже помогли"
 
@@ -386,9 +382,23 @@ msgstr "Уже помогли"
 msgid "Related news"
 msgstr "Новости по теме"
 
-#: single.php:99
-msgid "Related projects"
-msgstr "Познакомьтесь с другими проектами"
+#~ msgid "Your phone number"
+#~ msgstr "Ваш номер телефона"
+
+#~ msgid "Phone number should be 7xxxxxxxxxx"
+#~ msgstr "Формат номера должен быть 7xxxxxxxxxx"
+
+#~ msgid "Future events"
+#~ msgstr "Анонсы"
+
+#~ msgid "Past events"
+#~ msgstr "Прошедшие мероприятия"
+
+#~ msgid "Visit or events"
+#~ msgstr "Приглашаем на мероприятия"
+
+#~ msgid "Related projects"
+#~ msgstr "Познакомьтесь с другими проектами"
 
 #~ msgid "Our supporters"
 #~ msgstr "Нас поддержали"
