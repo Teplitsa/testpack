@@ -5,7 +5,6 @@ _temp
 .idea
 .sass-cache
 core
-wp-content/debug.log
 wp-content/languages
 wp-content/plugins
 node_modules
@@ -17,4 +16,4 @@ wp-config.php
 searchreplacedb2.php
 
 debug.log
-*Конфликтующая копия с компьютера*
+composer.lock
