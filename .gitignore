@@ -2,6 +2,7 @@ _temp
 .htaccess
 .DS_Store
 .komodotools
+.idea
 .sass-cache
 core
 wp-content/debug.log
@@ -13,6 +14,7 @@ wp-content/upgrade
 wp-content/uploads
 wp-content/vendor
 wp-config.php
+searchreplacedb2.php
 
 debug.log
 *Конфликтующая копия с компьютера*
