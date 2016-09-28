@@ -102,14 +102,14 @@ class RDC_Social_Links extends SiteOrigin_Widget {
 	
 	
 	
-    function form($instance) {
+    function form($instance, $form_type = 'widget') {
 	?>
         <p><?php _e('Widget doesn\'t have any settings', 'rdc');?></p>
     <?php
     }
 
     
-    function update($new_instance, $old_instance) {
+    function update($new_instance, $old_instance, $form_type = 'widget') {
         $instance = $new_instance;
 		
 		
@@ -185,7 +185,7 @@ class RDC_Home_News extends WP_Widget {
 		return array_merge($events->posts, $news->posts);
 	}
 	
-    function form($instance) {
+    function form($instance, $form_type = 'widget') {
 		
 		$instance['exclude_ids'] = $instance['exclude_ids'] ? explode(',', $instance['exclude_ids']) : '';
 	?>
@@ -197,7 +197,7 @@ class RDC_Home_News extends WP_Widget {
     }
 
     
-    function update($new_instance, $old_instance) {
+    function update($new_instance, $old_instance, $form_type = 'widget') {
        
 		$instance = $old_instance;
 		$instance['exclude_ids'] = sanitize_text_field($new_instance['exclude_ids']);
