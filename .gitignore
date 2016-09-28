@@ -17,4 +17,4 @@ wp-config.php
 searchreplacedb2.php
 
 debug.log
-*Конфликтующая копия с компьютера*
+composer.lock
