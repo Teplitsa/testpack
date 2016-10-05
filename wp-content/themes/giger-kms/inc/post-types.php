@@ -125,7 +125,7 @@ function dr_custom_content(){
         //'update_count_callback' => '',
     ));
 
-    register_taxonomy('linked-department', array('project', 'event', 'person', 'report',), array(
+    register_taxonomy('linked-department', array('post', 'project', 'event', 'person', 'report',), array(
         'labels' => array(
             'name'                       => 'Связь с подразделениями',
             'singular_name'              => 'Связь с подразделением',
@@ -155,7 +155,7 @@ function dr_custom_content(){
         //'update_count_callback' => '',
     ));
 
-    register_taxonomy('linked-project', array('event', 'person', 'report',), array(
+    register_taxonomy('linked-project', array('post', 'event', 'person', 'report',), array(
         'labels' => array(
             'name'                       => 'Связь с проектами',
             'singular_name'              => 'Связь с проектом',

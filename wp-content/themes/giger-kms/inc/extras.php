@@ -510,3 +510,46 @@ function rdc_filter_search_query($s){
 	
 	return $s;
 }
+
+/** Create/update/delete linking taxonomies' terms on changes of status for Projects and Departments posts. */
+if( !function_exists('dr_update_link_terms') ) {
+
+    function dr_update_link_terms($post_id) {
+
+        if(wp_is_post_revision($post_id)) {
+            return;
+        }
+
+        $post = get_post($post_id);
+        if($post->post_type != 'project' && $post->post_type != 'department') {
+            return;
+        }
+
+        $taxonomy = $post->post_type == 'project' ? 'linked-project' : 'linked-department';
+        $link_term = get_post_meta($post_id, '_dr_link_term', true);
+        $post_title = get_the_title($post_id);
+
+        if($post->post_status == 'trash' && $link_term) {
+
+            wp_delete_term($link_term, $taxonomy);
+            delete_post_meta($post_id, '_dr_link_term');
+
+        } elseif( !$link_term && $post->post_status == 'publish' ) {
+
+            $link_term = wp_create_term($post_title, $taxonomy);
+            if( !is_wp_error($link_term) ) {
+                update_post_meta($post_id, '_dr_link_term', $link_term['term_id']);
+            }
+
+        } else {
+
+            $link_term = get_term($link_term, $taxonomy);
+            if($link_term->name != $post_title) {
+                wp_update_term($link_term->term_id, $taxonomy, array('name' => $post_title));
+            }
+        }
+
+    }
+
+    add_action('save_post', 'dr_update_link_terms');
+}
