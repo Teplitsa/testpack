@@ -544,7 +544,7 @@ if( !function_exists('dr_update_link_terms') ) {
         } else {
 
             $link_term = get_term($link_term, $taxonomy);
-            if($link_term->name != $post_title) {
+            if( !is_wp_error($link_term) && $link_term->name != $post_title) {
                 wp_update_term($link_term->term_id, $taxonomy, array('name' => $post_title));
             }
         }
