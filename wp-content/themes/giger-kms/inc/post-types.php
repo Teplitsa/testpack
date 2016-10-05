@@ -1,8 +1,8 @@
 <?php
 
-add_action('init', 'rdc_custom_content', 20);
-function rdc_custom_content(){
-	
+add_action('init', 'dr_custom_content', 20);
+function dr_custom_content(){
+
 	if(defined('TST_HAS_AUTHORS') && TST_HAS_AUTHORS) {
 		register_taxonomy('auctor', array('post',), array(
 			'labels' => array(
@@ -34,7 +34,7 @@ function rdc_custom_content(){
 			//'update_count_callback' => '',        
 		));
 	}
-	
+
 	register_taxonomy('org_cat', array('org',), array(
 		'labels' => array(
 			'name'                       => 'Категории организаций',
@@ -64,8 +64,7 @@ function rdc_custom_content(){
 		'rewrite'           => array('slug' => 'orgs', 'with_front' => false),
 		//'update_count_callback' => '',        
 	));
-	
-	
+
 	register_taxonomy('person_cat', array('person',), array(
 		'labels' => array(
 			'name'                       => 'Категории персон',
@@ -95,7 +94,127 @@ function rdc_custom_content(){
 		'rewrite'           => array('slug' => 'people', 'with_front' => false),
 		//'update_count_callback' => '',        
 	));
-	
+
+    register_taxonomy('event_cat', array('event',), array(
+        'labels' => array(
+            'name'                       => 'Категории мероприятий',
+            'singular_name'              => 'Категория',
+            'menu_name'                  => 'Категории',
+            'all_items'                  => 'Все категории',
+            'edit_item'                  => 'Редактировать категорию',
+            'view_item'                  => 'Просмотреть',
+            'update_item'                => 'Обновить категорию',
+            'add_new_item'               => 'Добавить новую категорию',
+            'new_item_name'              => 'Название новой категории',
+            'parent_item'                => 'Родительская категория',
+            'parent_item_colon'          => 'Родительская категория:',
+            'search_items'               => 'Искать категории',
+            'popular_items'              => 'Часто используемые',
+            'separate_items_with_commas' => 'Разделять запятыми',
+            'add_or_remove_items'        => 'Добавить или удалить категории',
+            'choose_from_most_used'      => 'Выбрать из часто используемых',
+            'not_found'                  => 'Не найдено'
+        ),
+        'hierarchical'      => true,
+        'show_ui'           => true,
+        'show_in_nav_menus' => true,
+        'show_tagcloud'     => false,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'event-types', 'with_front' => false),
+        //'update_count_callback' => '',
+    ));
+
+    register_taxonomy('linked-department', array('department', 'project', 'event', 'person', 'report',), array(
+        'labels' => array(
+            'name'                       => 'Подразделения',
+            'singular_name'              => 'Подразделение',
+            'menu_name'                  => 'Связанные подразделения',
+            'all_items'                  => 'Все подразделения',
+            'edit_item'                  => 'Редактировать подразделение',
+            'view_item'                  => 'Просмотреть',
+            'update_item'                => 'Обновить подразделение',
+            'add_new_item'               => 'Добавить новое подразделение',
+            'new_item_name'              => 'Название нового подразделения',
+            'parent_item'                => 'Родительское подразделение',
+            'parent_item_colon'          => 'Родительское подразделение:',
+            'search_items'               => 'Искать связанные подразделения',
+            'popular_items'              => 'Часто используемые',
+            'separate_items_with_commas' => 'Разделять запятыми',
+            'add_or_remove_items'        => 'Добавить или удалить подразделения',
+            'choose_from_most_used'      => 'Выбрать из часто используемых',
+            'not_found'                  => 'Не найдено'
+        ),
+        'hierarchical'      => false,
+        'show_ui'           => true,
+        'show_in_nav_menus' => true,
+        'show_tagcloud'     => false,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'linked-departments', 'with_front' => false),
+        //'update_count_callback' => '',
+    ));
+
+    register_taxonomy('linked-project', array('department', 'project', 'event', 'person', 'report',), array(
+        'labels' => array(
+            'name'                       => 'Проекты',
+            'singular_name'              => 'Проект',
+            'menu_name'                  => 'Связанные проекты',
+            'all_items'                  => 'Все проекты',
+            'edit_item'                  => 'Редактировать проект',
+            'view_item'                  => 'Просмотреть',
+            'update_item'                => 'Обновить проект',
+            'add_new_item'               => 'Добавить новый проект',
+            'new_item_name'              => 'Название нового проекта',
+            'parent_item'                => 'Родительский проект',
+            'parent_item_colon'          => 'Родительский проект:',
+            'search_items'               => 'Искать связанные проекты',
+            'popular_items'              => 'Часто используемые',
+            'separate_items_with_commas' => 'Разделять запятыми',
+            'add_or_remove_items'        => 'Добавить или удалить проекты',
+            'choose_from_most_used'      => 'Выбрать из часто используемых',
+            'not_found'                  => 'Не найдено'
+        ),
+        'hierarchical'      => false,
+        'show_ui'           => true,
+        'show_in_nav_menus' => true,
+        'show_tagcloud'     => false,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'linked-projects', 'with_front' => false),
+        //'update_count_callback' => '',
+    ));
+
+    register_taxonomy('place_cat', array('place',), array(
+        'labels' => array(
+            'name'                       => 'Категории мест',
+            'singular_name'              => 'Категория',
+            'menu_name'                  => 'Категории',
+            'all_items'                  => 'Все категории',
+            'edit_item'                  => 'Редактировать категорию',
+            'view_item'                  => 'Просмотреть',
+            'update_item'                => 'Обновить категорию',
+            'add_new_item'               => 'Добавить новую категорию',
+            'new_item_name'              => 'Название новой категории',
+            'parent_item'                => 'Родительская категория',
+            'parent_item_colon'          => 'Родительская категория:',
+            'search_items'               => 'Искать категории',
+            'popular_items'              => 'Часто используемые',
+            'separate_items_with_commas' => 'Разделять запятыми',
+            'add_or_remove_items'        => 'Добавить или удалить категории',
+            'choose_from_most_used'      => 'Выбрать из часто используемых',
+            'not_found'                  => 'Не найдено'
+        ),
+        'hierarchical'      => false,
+        'show_ui'           => true,
+        'show_in_nav_menus' => true,
+        'show_tagcloud'     => false,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'place-types', 'with_front' => false),
+        //'update_count_callback' => '',
+    ));
+
 	/** Post types **/
 	register_post_type('project', array(
         'labels' => array(
@@ -131,7 +250,111 @@ function rdc_custom_content(){
         'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
         'taxonomies'          => array(),
     ));
-	
+    register_post_type('department', array(
+        'labels' => array(
+            'name'               => 'Подразделения',
+            'singular_name'      => 'Подразделение',
+            'menu_name'          => 'Подразделения',
+            'name_admin_bar'     => 'Добавить подразделение',
+            'add_new'            => 'Добавить новое',
+            'add_new_item'       => 'Добавить подразделение',
+            'new_item'           => 'Новое подразделение',
+            'edit_item'          => 'Редактировать подразделение',
+            'view_item'          => 'Просмотр подразделений',
+            'all_items'          => 'Все подразделения',
+            'search_items'       => 'Искать подразделения',
+            'parent_item_colon'  => 'Родительское подразделение:',
+            'not_found'          => 'Подразделения не найдены',
+            'not_found_in_trash' => 'В корзине подразделения не найдены'
+        ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => true,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => 'departments',
+        'rewrite'             => array('slug' => 'department', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 5,
+        'menu_icon'           => 'dashicons-category',
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'taxonomies'          => array(),
+    ));
+
+    register_post_type('newspaper', array(
+        'labels' => array(
+            'name'               => 'Газета',
+            'singular_name'      => 'Газета',
+            'menu_name'          => 'Газета',
+            'name_admin_bar'     => 'Добавить выпуск',
+            'add_new'            => 'Добавить новый выпуск',
+            'add_new_item'       => 'Добавить выпуск',
+            'new_item'           => 'Новый выпуск',
+            'edit_item'          => 'Редактировать выпуск',
+            'view_item'          => 'Просмотр выпусков',
+            'all_items'          => 'Все выпуски',
+            'search_items'       => 'Искать выпуски',
+            'parent_item_colon'  => 'Родительский выпуск:',
+            'not_found'          => 'Выпуски не найдены',
+            'not_found_in_trash' => 'В корзине выпуски не найдены'
+        ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => true,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => 'newspaper',
+        'rewrite'             => array('slug' => 'newspaper', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 5,
+        'menu_icon'           => 'dashicons-category',
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'taxonomies'          => array(),
+    ));
+
+    register_post_type('place', array(
+        'labels' => array(
+            'name'               => 'Места',
+            'singular_name'      => 'Место',
+            'menu_name'          => 'Место',
+            'name_admin_bar'     => 'Добавить место',
+            'add_new'            => 'Добавить новое место',
+            'add_new_item'       => 'Добавить место',
+            'new_item'           => 'Новый место',
+            'edit_item'          => 'Редактировать место',
+            'view_item'          => 'Просмотр место',
+            'all_items'          => 'Все места',
+            'search_items'       => 'Искать места',
+            'parent_item_colon'  => 'Родительское место:',
+            'not_found'          => 'Места не найдены',
+            'not_found_in_trash' => 'В корзине места не найдены'
+        ),
+        'public'              => false,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => true,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+//        'has_archive'         => 'place',
+        'rewrite'             => array('slug' => 'place', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 5,
+        'menu_icon'           => 'dashicons-category',
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'taxonomies'          => array(),
+    ));
+
 	register_post_type('event', array(
         'labels' => array(
             'name'               => 'События',
@@ -236,18 +459,54 @@ function rdc_custom_content(){
         'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
         'taxonomies'          => array('person_cat'),
     ));
-	
-	//pages
+
+    register_post_type('report', array(
+        'labels' => array(
+            'name'               => 'Отчеты',
+            'singular_name'      => 'Отчет',
+            'menu_name'          => 'Отчеты',
+            'name_admin_bar'     => 'Добавить отчет',
+            'add_new'            => 'Добавить новый отчет',
+            'add_new_item'       => 'Добавить отчет',
+            'new_item'           => 'Новый отчет',
+            'edit_item'          => 'Редактировать отчет',
+            'view_item'          => 'Просмотр отчетов',
+            'all_items'          => 'Все отчеты',
+            'search_items'       => 'Искать отчеты',
+            'parent_item_colon'  => 'Родительский отчет:',
+            'not_found'          => 'Отчеты не найдены',
+            'not_found_in_trash' => 'В корзине отчеты не найдены'
+        ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => true,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => 'reports',
+        'rewrite'             => array('slug' => 'report', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 5,
+        'menu_icon'           => 'dashicons-category',
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'taxonomies'          => array(),
+    ));
+
+
+	// Pages
 	add_post_type_support('page', 'excerpt');
 	add_post_type_support('page', 'thumbnail');	
-	
-	//remove post tags
+
+	// Remove post tags
 	unregister_taxonomy_for_object_type('post_tag', 'post');
 }
 
 /** Metaboxes **/
-add_action( 'cmb2_admin_init', 'rdc_custom_metaboxes' );
-function rdc_custom_metaboxes() {
+add_action( 'cmb2_admin_init', 'dr_custom_metaboxes' );
+function dr_custom_metaboxes() {
 	
 	
 	/** Post **/
