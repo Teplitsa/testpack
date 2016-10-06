@@ -125,7 +125,7 @@ function dr_custom_content(){
         //'update_count_callback' => '',
     ));
 
-    register_taxonomy('linked-department', array('post', 'project', 'event', 'person', 'report',), array(
+    register_taxonomy('linked-department', array('post', 'project', 'event', 'person', 'report', 'publication',), array(
         'labels' => array(
             'name'                       => 'Связь с подразделениями',
             'singular_name'              => 'Связь с подразделением',
@@ -155,7 +155,7 @@ function dr_custom_content(){
         //'update_count_callback' => '',
     ));
 
-    register_taxonomy('linked-project', array('post', 'event', 'person', 'report',), array(
+    register_taxonomy('linked-project', array('post', 'event', 'person', 'report', 'publication',), array(
         'labels' => array(
             'name'                       => 'Связь с проектами',
             'singular_name'              => 'Связь с проектом',
@@ -406,7 +406,7 @@ function dr_custom_content(){
             'parent_item_colon'  => 'Родительское событие:',
             'not_found'          => 'События не найдены',
             'not_found_in_trash' => 'В Корзине события не найдены'
-       ),
+        ),
         'public'              => true,
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
