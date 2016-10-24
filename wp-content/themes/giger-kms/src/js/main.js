@@ -1,72 +1,51 @@
-/* Scripts */
-// (function($){
-//     $.fn.viewportChecker = function(useroptions){
-//         // Define options and extend with user
-//         var options = {
-//             classToAdd: 'visible',
-//             offset: 100,
-//             callbackFunction: function(elem){}
-//         };
-//         $.extend(options, useroptions);
-// 
-//         // Cache the given element and height of the browser
-//         var $elem = this,
-//             windowHeight = $(window).height();
-// 
-//         this.checkElements = function(){
-//             // Set some vars to check with
-//             var scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html'),
-//                 viewportTop = $(scrollElem).scrollTop(),
-//                 viewportBottom = (viewportTop + windowHeight);
-// 
-//             $elem.each(function(){
-//                 var $obj = $(this);
-//                 // If class already exists; quit
-//                 if ($obj.hasClass(options.classToAdd)){
-//                     return;
-//                 }
-// 
-//                 // define the top position of the element and include the offset which makes is appear earlier or later
-//                 var elemTop = Math.round( $obj.offset().top ) + options.offset,
-//                     elemBottom = elemTop + ($obj.height());
-// 
-//                 // Add class if in viewport
-//                 if ((elemTop < viewportBottom) && (elemBottom > viewportTop)){
-//                     $obj.addClass(options.classToAdd);
-// 
-//                     // Do the callback function. Callback wil send the jQuery object as parameter
-//                     options.callbackFunction($obj);
-//                 }
-//             });
-//         };
-// 
-//         // Run checkelements on load and scroll
-//         $(window).scroll(this.checkElements);
-//         this.checkElements();
-// 
-//         // On resize change the height var
-//         $(window).resize(function(e){
-//             windowHeight = e.currentTarget.innerHeight;
-//         });
-//     };
-// })(jQuery);
-
 jQuery(document).ready(function($){
-		// $('.city-statistics, .state-statistics').hide();
-    // $('.city-statistics').show().removeClass('hidden').viewportChecker({
-    //   classToAdd: 'visible animated fadeInLeft'
-    //   //offset: 100
-    //  });
-    // $('.state-statistics').show().removeClass('hidden').viewportChecker({
-    //   classToAdd: 'visible animated fadeInRight'
-    //   //offset: 100
-    //  });
-    $('.so-widget-tst-featureblock .col3').attr('data-aos', 'fade-up');
-    // $('.state-statistics').attr('data-aos', 'fade-left');
-    AOS.init({
-      duration: 600
-    });
-    // 
+  function isVisible(tag) {
+      var t = $(tag);
+      var w = $(window);
+      var wt = w.scrollTop();
+      var tt = t.offset().top;
+      var tb = tt + t.height();
+      return ((tb <= wt + w.height()) && (tt >= wt));
+  }
+
+  $(function () {
+      $(window).scroll(function () {
+          var b = $(".col3-section .col3");
+          var c = $(".city-statistics");
+          var d = $(".state-statistics");
+          if (!b.prop("shown") && isVisible(b)) {
+              b.prop("shown", true);
+              b.css('visibility', 'visible');
+              b.addClass("animated fadeInUp");
+          }
+          if (!c.prop("shown") && isVisible(c)) {
+              c.prop("shown", true);
+              c.css('visibility', 'visible');
+              c.addClass("animated fadeInLeft");
+          }
+          if (!d.prop("shown") && isVisible(d)) {
+              d.prop("shown", true);
+              d.css('visibility', 'visible');
+              d.addClass("animated fadeInRight");
+          }
+      });
+  });
+  // $(window).scroll(function() {
+  //   if ($(document).scrollTop() + $(window).height() > $('.col3-section .col3').offset().top && $(document).scrollTop() - $('.col3-section .col3').top < $('.col3-section .col3').height()) {
+  //     $('.col3-section .col3').css('visibility', 'visible');
+  //     $('.col3-section .col3').addClass("animated fadeInUp");
+  //   }
+  // 
+  //   if( $('.city-statistics').is(':visible') ) {
+  //     $('.city-statistics').css('visibility', 'visible');
+  //     $('.city-statistics').addClass("animated fadeInLeft");
+  //   }
+  // 
+  //   if( $('.state-statistics').is(':visible') ) {
+  //     $('.state-statistics').css('visibility', 'visible');
+  //     $('.state-statistics').addClass("animated fadeInRight");
+  //   }
+  // });
 	/** Has js **/
 	$('html').removeClass('no-js').addClass('js');
 	
