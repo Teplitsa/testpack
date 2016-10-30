@@ -326,4 +326,24 @@ h1, h2, h3, h4, h5, h6 {
 		color: rgba(0,0,0, 0.5);
 	}
 }
-
+.so-widget-tst-featureblock {
+	.col3-content {
+		.col3-link{
+			height: 200px;
+			a {
+				width: 200px;
+				height: 200px;
+				font-size: 18px;
+				padding-top: 25%;
+				border: 4px inset #000;
+				/*line-height: 125px;*/
+				border-radius: 50%;
+				&:hover {
+					box-shadow: 0 0 10px 5px rgba(0,0,0,0.7) inset;
+					background: #fff;
+					color: #000;
+				}
+			}
+		}
+	}
+}
