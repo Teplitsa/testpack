@@ -119,12 +119,12 @@ function rdc_amount_field($form){
 			<div class="amount-variants-row">
 				<?php foreach($variants as $i => $amount) { ?>
 					<label class="figure rdc-radio" title="<?php _e('Please, specify your donation amount', 'leyka');?>">
-						<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button" <?php checked($i, 0);?>>
+						<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="rdc-radio__button" <?php checked($i, 0);?> <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?>>
 						<span class="rdc-radio__label"><?php echo (int)$amount;?></span>
 					</label>
 				<?php } ?>
 				
-				<label class="figure-flex"><span class="figure-sep"><?php _e('or', 'rdc');?></span><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6"></label>
+				<label class="figure-flex"><span class="figure-sep"><?php _e('or', 'rdc');?></span><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex" value="<?php echo esc_attr($supported_curr[$current_curr]['amount_settings']['flexible']);?>" maxlength="6" size="6" <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?>></label>
 			</div>
 		</div>	
 	<?php } ?>
