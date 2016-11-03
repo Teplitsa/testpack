@@ -259,7 +259,7 @@
             "version": "1.2.2",
             "dist": {
                 "type": "zip",
-                "url": "artifacts/tst-cmb2-attached-posts-1.2.2.zip",
+                "url": "artifacts\\tst-cmb2-attached-posts-1.2.2.zip",
                 "reference": null,
                 "shasum": "d4d69d33e6cca2d0c1837d2328f23d13733d8eb4"
             },
@@ -577,15 +577,15 @@
         },
         {
             "name": "wpackagist-plugin/w3-total-cache",
-            "version": "0.9.5",
+            "version": "0.9.5.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/w3-total-cache/",
-                "reference": "tags/0.9.5"
+                "reference": "tags/0.9.5.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.0.9.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/w3-total-cache.0.9.5.1.zip",
                 "reference": null,
                 "shasum": null
             },
