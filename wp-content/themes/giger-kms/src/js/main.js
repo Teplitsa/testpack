@@ -11,8 +11,8 @@ jQuery(document).ready(function($){
   $(function () {
       $(window).scroll(function () {
           var b = $(".col3-section .col3");
-          var c = $(".city-statistics");
-          var d = $(".state-statistics");
+          var c = $(".city-block-info");
+          var d = $(".nf_img_back");
           if (!b.prop("shown") && isVisible(b)) {
               b.prop("shown", true);
               b.css('visibility', 'visible');
@@ -21,12 +21,12 @@ jQuery(document).ready(function($){
           if (!c.prop("shown") && isVisible(c)) {
               c.prop("shown", true);
               c.css('visibility', 'visible');
-              c.addClass("animated fadeInLeft");
+              c.addClass("animated fadeInRight");
           }
           if (!d.prop("shown") && isVisible(d)) {
               d.prop("shown", true);
               d.css('visibility', 'visible');
-              d.addClass("animated fadeInRight");
+              d.addClass("animated fadeInLeft");
           }
       });
   });

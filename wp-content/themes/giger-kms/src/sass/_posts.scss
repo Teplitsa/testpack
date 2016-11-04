@@ -611,15 +611,13 @@
 .widget_tst-featureblock .col3-section .col3 {
 	visibility: hidden;
 }
-.city-statistics {
-	.city-block-info {
-		width: 60%;
-		float: left;
-	}
+.city-block-info {
+	width: 100%;
+	position: absolute;
+	right: 0;
+	text-align: right;
+	visibility: hidden;
 }
-.state-statistics {
-	.state-block {
-		width: 50%;
-		float: left;
-	}
+.nf_img_back {
+	visibility: hidden;
 }
