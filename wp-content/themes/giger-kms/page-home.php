@@ -53,17 +53,17 @@ get_header();
   <div class="entry-content">
     <?php echo apply_filters('the_content', $f_test); ?>
     <?php if(have_posts()) { ?>
-    <section class="home-section cases">
+    <section class="home-section">
     	
-    	<div class="mdl-grid">
-        <div class="news-block meropriyatiya">
+    	<div class="mdl-grid cases">
+        <div class="column news-block">
           <?php
             foreach($main_news->posts as $m){
               rdc_related_post_card($m);
             }
           ?>
         </div>
-        <div class="other-news">
+        <div class="column other-news">
           <?php
             foreach($next_news->posts as $n){
               rdc_related_post_card($n);
@@ -71,8 +71,8 @@ get_header();
           ?>
         </div>
     	</div>
-    	<div class="mdl-grid">
-        <div class="other-news-block">
+    	<div class="mdl-grid cases">
+        <div class="column other-news-block">
           <?php
             foreach($other_news->posts as $o){
               rdc_related_post_card($o);

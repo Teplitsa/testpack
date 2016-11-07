@@ -347,3 +347,148 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 }
+
+/* News on main page */
+.home-section {
+	.cases{
+		display: flex;
+		
+	}
+	.tpl-related-post {
+		overflow: hidden;
+		margin: 10px;
+		position: relative;
+		.entry-title {
+			position: absolute;
+			bottom: 0px;
+			color: #fff;
+			background: rgba(0,0,0,.5);
+			z-index: 100;
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 0;
+		}
+		.entry-summary {
+			
+		}
+		.entry-data{
+			padding: 0;
+	    position: absolute;
+	    top: 0;
+	    z-index: 100;
+	    width: 100%;
+			.entry-meta {
+				transform: none;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				max-width: 100%;
+			}
+		}
+	}
+}
+.column {
+	flex-direction: column;
+	&.news-block {
+		flex: 2;
+		.entry-preview {
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+			width: 100%;
+			&:before {
+				content: "";
+				display: block;
+				height: 0;
+				padding-bottom: 57%;
+			}
+			.entry-summary {
+				position: absolute;
+				top: -100%;
+				z-index: 100;
+				height: calc(100% - 24px);
+		    transition: all 0.2s;
+				color: #fff;
+				padding: 10px;
+			}
+			&:hover {
+				.entry-summary {
+					top:24px;
+				}
+			}
+		}
+		.tpl-related-post {
+	    min-height: calc(100% - 20px);
+			a {
+				
+			}
+		}
+	}
+	&.other-news {
+		flex: 1;
+		.tpl-related-post {
+			&:nth-of-type(1){
+				margin-bottom: 25px;
+			}
+		}
+		.entry-preview {
+			min-height: 210px;
+			width: 100%;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+			.entry-title {
+				font-size: 1.2em;
+			}
+			.entry-summary {
+				position: absolute;
+				top: -100%;
+				z-index: 100;
+				height: 100%;
+		    transition: all 0.2s;
+				color: #fff;
+				padding: 10px;
+			}
+			&:hover {
+				.entry-summary {
+					top:24px;
+				}
+			}
+		}
+	}
+	&.other-news-block {
+		flex: 1;
+		flex-direction: row;
+		display: flex;
+		.tpl-related-post {
+			flex: 1;
+			.entry-preview {
+				min-height: 210px;
+				width: 100%;
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size: cover;
+				.entry-title {
+					font-size: 1.2em;
+				}
+				.entry-summary {
+					position: absolute;
+					top: -100%;
+					z-index: 100;
+					height: 100%;
+			    transition: all 0.2s;
+					color: #fff;
+					padding: 10px;
+				}
+				&:hover {
+					.entry-summary {
+						top:24px;
+					}
+				}
+			}
+		}
+	}
+}
+.columns, .column {
+	// display: flex;
+}
