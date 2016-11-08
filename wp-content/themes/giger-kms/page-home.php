@@ -53,9 +53,12 @@ get_header();
   <div class="entry-content">
     <?php echo apply_filters('the_content', $f_test); ?>
     <?php if(have_posts()) { ?>
+    <div class="pb-section-title nf_section">
+      <h3>Мероприятия</h3>
+    </div>
     <section class="home-section">
     	
-    	<div class="mdl-grid cases">
+    	<div class="mdl-grid cases ftRow">
         <div class="column news-block">
           <?php
             foreach($main_news->posts as $m){
@@ -63,7 +66,7 @@ get_header();
             }
           ?>
         </div>
-        <div class="column other-news">
+        <div class="column other-news sdRow">
           <?php
             foreach($next_news->posts as $n){
               rdc_related_post_card($n);
@@ -71,7 +74,7 @@ get_header();
           ?>
         </div>
     	</div>
-    	<div class="mdl-grid cases">
+    	<div class="mdl-grid cases thRow">
         <div class="column other-news-block">
           <?php
             foreach($other_news->posts as $o){
@@ -82,6 +85,9 @@ get_header();
     	</div>
     </section>
     <?php } ?>
+    <div class="typed_block">
+      <span class="typed_text"></span>
+    </div>
   </div>
 </div>
 <!-- <section class="home-section intro">
