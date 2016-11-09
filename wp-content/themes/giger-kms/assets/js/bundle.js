@@ -1167,7 +1167,7 @@ jQuery(document).ready(function($){
 
   $(function () {
       $(window).scroll(function () {
-          var b = $(".col3-section .col3");
+          var b = $(".nf_linked");
           var c = $(".city-block-info");
           var d = $(".nf_img_back");
           var e = $(".ftRow .tpl-related-post, .sdRow .tpl-related-post, .thRow .tpl-related-post");

@@ -618,7 +618,8 @@
 	text-align: right;
 	visibility: hidden;
 }
-.nf_img_back, .news-block .tpl-related-post, .other-news .tpl-related-post, .other-news-block .tpl-related-post{
+.nf_img_back, .news-block .tpl-related-post, .other-news .tpl-related-post, 
+.other-news-block .tpl-related-post, .nf_linked{
 	visibility: hidden;
 }
 .pb-section-title.nf_section {
@@ -657,4 +658,24 @@
 		 color: #e12621;
 		 font-family: 'Rubik One', sans-serif;
 	 }
+}
+.nf_linked {
+	text-align:center;
+	transition: ease 0.25s;
+	&:hover img{
+		box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);		
+	}
+	img {
+		transition: ease 0.25s;
+		border-radius: 50%;
+	}
+	p {
+		margin-top: 15px;
+	}
+	a {
+		font-size: 18px;
+		text-transform: uppercase;
+		color: #000;
+    font-family: "Roboto Condensed", "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica Neue, Helvetica, sans-serif;
+	}
 }
