@@ -394,8 +394,70 @@
 			margin: 0 $gut $base;
 		}
 	}
+	&.related-card-holder {
+		.card {
+			overflow: hidden;
+			margin: 10px;
+			position: relative;
+			&:nth-of-type(1), &:nth-of-type(2) {
+		    width: calc(50% - 30px);
+			}
+			.entry-preview {
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size: cover;
+				width: 100%;
+				&:before {
+					content: "";
+			    display: block;
+			    height: 0;
+			    padding-bottom: 57%;
+				}
+				.entry-summary {
+					position: absolute;
+					top: -100%;
+					z-index: 100;
+					height: calc(100% - 24px);
+					transition: all 0.2s;
+					color: #fff;
+					padding: 10px;
+				}
+				&:hover {
+					.entry-summary {
+						top: 24px;
+					}
+				}
+			}
+			.entry-title {
+				position: absolute;
+				bottom: 0px;
+				color: #fff;
+				background: rgba(0, 0, 0, 0.5);
+				z-index: 100;
+				width: 100%;
+				padding: 10px;
+				margin-bottom: 0;
+			}
+			.entry-data {
+				padding: 0;
+		    position: absolute;
+		    top: 0;
+		    z-index: 100;
+		    width: 100%;
+				.entry-meta {
+					transform: none;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					max-width: 100%;
+				}
+			}
+		}
+	}
 }
-
+.related-all-link {
+	margin-top: 30px;
+}
 
 
 /** Programms **/
