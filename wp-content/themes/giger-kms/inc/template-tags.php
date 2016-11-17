@@ -206,7 +206,7 @@ function rdc_site_logo($size = 'regular') {
 	$file = esc_attr($file);	
 ?>
 <div class="logo">
-	<img src="<?php echo esc_url( home_url( '/' ) ); ?>//wp-content/uploads/logo1.png" alt="" />
+	<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/logo1.png" alt="" />
 </div>
 <!--svg class="logo <?php echo $file;?>">
 	<use xlink:href="#<?php echo $file;?>" />
