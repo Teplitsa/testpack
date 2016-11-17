@@ -267,7 +267,7 @@
 	background-color: $color-secondary;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center top;
+	background-position: center 80%; //top
 }
 
 
@@ -275,7 +275,7 @@
 			
 	.ihc-title {
 		display: inline-block;
-		background: #111;
+		background: $color-link-three;//#111;
 		@include header-title(section);		
 		color: $color-white;
 		padding: 10px 20px;
@@ -285,7 +285,7 @@
 	.ihc-content {
 		position: relative;
 		margin-top: -40px;
-		border-bottom: 1px solid $color-border-normal;
+		border-bottom: 1px solid $custom-border-color;//$color-border-normal;
 		padding-bottom: $base;
 	}
 		

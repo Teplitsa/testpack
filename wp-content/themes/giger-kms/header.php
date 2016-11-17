@@ -26,7 +26,8 @@
 		<div class="site-panel-row">
 			<div class="site-branding site-panel-cell">				
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
-					<div id="logo-full" ><?php rdc_site_logo('regular');?></div>
+					<div id="logo-full" ><?php rdc_site_logo('png');?></div>
+					<!-- div id="logo-full" ><?php rdc_site_logo('regular');?></div--> 
 					<div id="logo-small" ><?php rdc_site_logo('small');?></div>
 					<div class="logo-name-cell">
 						<?php $header_title_1 = get_theme_mod('header_title_one'); ?>

@@ -195,6 +195,9 @@ function rdc_site_logo($size = 'regular') {
 		case 'small':
 			$file = 'pic-logo-small';
 			break;	
+		case 'png':
+			$file = 'png-logo';
+			break;	
 		default:
 			$file = 'icon-logo';
 			break;	
@@ -202,9 +205,12 @@ function rdc_site_logo($size = 'regular') {
 	
 	$file = esc_attr($file);	
 ?>
-<svg class="logo <?php echo $file;?>">
+<div class="logo">
+	<img src="<?php echo esc_url( home_url( '/' ) ); ?>//wp-content/uploads/logo1.png" alt="" />
+</div>
+<!--svg class="logo <?php echo $file;?>">
 	<use xlink:href="#<?php echo $file;?>" />
-</svg>
+</svg-->
 <?php
 }
 

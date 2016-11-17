@@ -362,7 +362,7 @@ h1, h2, h3, h4, h5, h6 {
 			position: absolute;
 			bottom: 0px;
 			color: #fff;
-			background: rgba(0,0,0,.5);
+			background: rgba(3,93,107,.7);
 			z-index: 100;
 			width: 100%;
 			padding: 10px;
@@ -400,7 +400,7 @@ h1, h2, h3, h4, h5, h6 {
 				content: "";
 				display: block;
 				height: 0;
-				padding-bottom: 57%;
+				padding-bottom: 75%;
 			}
 			.entry-summary {
 				position: absolute;
@@ -432,7 +432,7 @@ h1, h2, h3, h4, h5, h6 {
 			}
 		}
 		.entry-preview {
-			min-height: 210px;
+			min-height: 280px;
 			width: 100%;
 			background-repeat: no-repeat;
 			background-position: center center;
@@ -463,7 +463,7 @@ h1, h2, h3, h4, h5, h6 {
 		.tpl-related-post {
 			flex: 1;
 			.entry-preview {
-				min-height: 210px;
+				min-height: 280px;
 				width: 100%;
 				background-repeat: no-repeat;
 				background-position: center center;
@@ -491,4 +491,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .columns, .column {
 	// display: flex;
+}
+#logo-full .logo {
+	width:200px;
+}
+.marginedBlock {
+	margin-top: 70px;
 }
