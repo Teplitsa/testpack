@@ -49,6 +49,7 @@
         "wpackagist-plugin/wordpress-seo" : "@stable",
         "wpackagist-plugin/w3-total-cache": "@stable",        
         "wpackagist-plugin/cmb2": "@stable",
+        "mustardbees/cmb_field_map" : "dev-master",
         "webdevstudios/cmb2-post-search-field" : "dev-master",
         "wpackagist-plugin/formidable": "@stable",
         "wpackagist-plugin/siteorigin-panels": "@stable",

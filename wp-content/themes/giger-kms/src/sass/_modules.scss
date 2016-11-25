@@ -1,42 +1,158 @@
 /** == Modules == **/
 
 /** Map **/
-.mymap-icon {
-	width: 36px;
-	height: 36px;
-	
-	.icon-marker{
-		display: inline-block;
-		width: 36px;
-		height: 36px;
-		fill: $color-link-three;
-	}
-}
 
-.leaflet-container .leaflet-control-attribution a {
-	color: $color-link-three;
-	text-decoration: none;
-	
-	&:hover, &:focus, &:active {
-		color: $color-link-two;
-	}
-}
-
-.no-js .pw_map-wrap {
-	background: $color-secondary;
+@mixin mapicon($color) {
+	width: 32px;
+	height: 32px;
+	background: $color;
+	color: $color-white;
+	border-radius: 3px;
 	position: relative;
+	font-size: 24px;
+	text-align: center;
+	box-shadow: 1px 1px 5px rgba(0,0,0, 0.4);
 	
-	&:before {
-		content: 'Включите JavaScript для просмотра карты';		
-		display: inline-block;
-		@include nav-text();
+	&:before {		
+		position: relative;
+		top: 3px;
+	}
+	&:after {
+		content: '';
+		display: block;
+		width: 0;
+		height: 0;
+		border: 6px solid transparent;
+		border-top-color: $color;
 		position: absolute;
-		top: 50%;
 		left: 50%;
-		@include transform(translate(-50%, -50%));
+		margin-left: -6px;
+		bottom: -11px;
 	}
 }
 
+.mymap-icon {
+	&.navi {
+		@include mapicon($color-link-three);
+	}
+	&.red {
+		@include mapicon($color-link-one);
+	}
+	&.blue {
+		@include mapicon($color-link-two);
+	}
+}
+
+
+.leaflet-container .leaflet-popup a.leaflet-popup-close-button {
+	padding: 2px 2px 0 0;
+}
+
+.leaflet-popup {
+	.leaflet-popup-content-wrapper {
+		border-radius: 3px;
+	}
+		
+	.leaflet-popup-content {
+		margin: 14px;
+	}
+	
+	.marker-content  {
+		max-width: 160px;
+		font-size: 11px;
+		line-height: 1.4;
+		
+		.mc-title {
+			@include post-title(popup);
+			margin-bottom: 4px;
+		}
+		
+		.mc-address {
+			color: $color-text-light;
+		}
+		
+		.mc-thumb {
+			width: 160px;
+			height: 99px;
+			margin: 5px auto;
+			
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+		
+		.mc-content {					
+			p {
+				margin: 4px 0 0;
+			}
+			
+			.c-btn {			
+				text-align: center;
+				margin-top: 10px; 
+			}		
+		}
+		
+		.button-red {
+			@include button(red);
+			font-size: 13px;
+			padding: 5px 14px;			
+			text-align: center;
+		}
+		
+		.button {			
+			font-size: 13px;
+			padding: 5px 14px;			
+			text-align: center;
+		}
+		
+	}
+}
+
+.leaflet-control-container .leaflet-bottom,
+.leaflet-control-container .leaflet-top {
+	z-index: 200;
+}
+
+.entry-content .pw_map_legend,
+.pw_map_legend {
+	padding: 10px 10px 0;
+	
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: stretch;
+	}
+	
+	li {
+		min-height: 32px;		
+		margin: 7px;
+		padding: 0;
+		list-style-type: none;
+		&:before { display: none; }
+		
+		font-size: 14px;
+		line-height: 28px;
+		color: $color-text;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	
+	.mymap-icon {
+		width: 28px;
+		height: 28px;
+		font-size: 20px;
+		margin-right: 5px;
+		&:before {		
+			top: 3px;
+		}
+	}
+}
 
 
 /** add to calnedar **/
@@ -252,4 +368,41 @@ $i: 1; //widths
    $i: $i + 1;
 }
 
+
+/** Map **/
+.pw_map_canvas {
+	background: $color-secondary-alt;
+}
+
+.myicon {
+	display: block;
+	width: 32px;
+	height: 32px;
+
+	&:before {
+		content: '';
+		display: block;
+		width: 28px;
+		height: 28px;
+		border-radius: 50% 50% 50% 0;
+		background: $color-link-one;
+		@include transform(rotate(-45deg));
+		margin-left: 3px;
+		z-index: 5;
+		box-shadow: 1px 1px 3px rgba(0,0,0, 0.5);
+	}
+	&:after {
+		content: "";
+		display: block;
+		width: 12px;
+		height: 12px;
+		background: $color-secondary;
+		border-radius: 50%;
+		position: absolute;
+		top: 7px;
+		left: 10.5px;
+		z-index: 10;
+		box-shadow: inset 1px 1px 1px rgba(200,200,200, 0.5);
+	}
+}
 

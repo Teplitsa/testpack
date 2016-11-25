@@ -369,7 +369,7 @@ h1, h2, h3, h4, h5, h6 {
 			margin-bottom: 0;
 		}
 		.entry-summary {
-			
+			font-size: 16px;
 		}
 		.entry-data{
 			padding: 0;
@@ -410,6 +410,7 @@ h1, h2, h3, h4, h5, h6 {
 		    transition: all 0.2s;
 				color: #fff;
 				padding: 10px;
+				font-size: 16px;
 			}
 			&:hover {
 				.entry-summary {
@@ -448,6 +449,7 @@ h1, h2, h3, h4, h5, h6 {
 		    transition: all 0.2s;
 				color: #fff;
 				padding: 10px;
+				font-size: 16px;
 			}
 			&:hover {
 				.entry-summary {
@@ -479,6 +481,7 @@ h1, h2, h3, h4, h5, h6 {
 			    transition: all 0.2s;
 					color: #fff;
 					padding: 10px;
+					font-size: 16px;
 				}
 				&:hover {
 					.entry-summary {
