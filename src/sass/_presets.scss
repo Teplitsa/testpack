@@ -1,0 +1,179 @@
+/** == Presets (_presets.scss) == **/
+
+
+//Fonts
+$font:	     	'Roboto', Helvetica Neue, Helvetica, sans-serif;
+
+
+//Break points
+$one: 	       480px; //small
+$two:          780px; //medium
+$three:	       1024px; //large
+$four:         1200px; //exlarge
+$five:         1400px; //xxlarge
+
+
+//Page layout
+$full_cont:    1434px;
+$page_cont:    1024px;
+$col:		   56px;
+$gut:	       32px;
+
+
+//Baseline
+$inpage-baseline: 		24px;
+$inpage-margin-base:	18px;
+
+//Colors
+$color-text:   #2a2a2a;
+$color-white:  #ffffff;
+
+$red:  	#D02139;
+$green:	#6BC1BB;
+
+$color-link-one:   $red;
+$color-link-two:   $green;
+
+$color-text-black:			#010101;
+$color-text-semi:			#666;
+$color-text-light:			#999;
+$color-text-tiny:			#bbb;
+
+$color-secondary:			#f5f5f5;
+
+//Layout Settings
+$adminbar_large_screen: 32px;
+$adminbar_small_screen: 46px;
+
+
+/** == Typography == **/
+
+@mixin body-text($mod: default) {
+	font-family: $font;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+
+	@include for(medium-screens) {
+		font-size: 16px;
+		line-height: 24px;
+	}
+}
+
+
+@mixin sub-title($mod: default) {
+	font-family: $font;
+	font-weight: 300;
+	text-transform: uppercase;
+	font-size: 11px;
+	line-height: 16px;
+
+	@include for(medium-screens) {
+		font-size: 13px;
+		line-height: 18px;
+	}
+}
+
+@mixin header-title($mod: default){
+	font-family: $font;
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 30px;
+	line-height: 34px;
+
+	@include for(medium-screens) {
+		font-size: 44px;
+		line-height: 48px;
+	}
+}
+
+
+/** == Mq == **/
+
+@mixin for($media) {
+	@if $media == small-screens {
+		@media screen and (min-width: $one) { @content; }
+	}
+	@else if $media == medium-screens {
+		@media screen and (min-width: $two) { @content; }
+	}
+	@else if $media == large-screens {
+		@media screen and (min-width: $three) { @content; }
+	}
+	@else if $media == exlarge-screens {
+		@media screen and (min-width: $four) { @content; }
+	}
+	@else if $media == xxlarge-screens {
+		@media screen and (min-width: $five) { @content; }
+	}
+}
+
+@mixin upto($media) {
+	@if $media == small-screens {
+		@media screen and (max-width: $one - 1) { @content; }
+	}
+	@else if $media == medium-screens {
+		@media screen and (max-width: $two - 1) { @content; }
+	}
+	@else if $media == large-screens {
+		@media screen and (max-width: $three - 1) { @content; }
+	}
+	@else if $media == exlarge-screens {
+		@media screen and (max-width: $four - 1) { @content; }
+	}
+}
+
+/** == Elements == **/
+
+@mixin button($mod: default){
+	font-family: $font;
+	font-weight: bold;
+	text-transform: uppercase;
+
+	display: inline-block;
+	border: none;
+	color: $color-white;
+	background: $color-link-two;
+	border-radius: 3px;
+	@include transition(all 0.45s);
+
+	padding: 16px 28px;
+	font-size: 14px;
+	line-height: 21px;
+
+	&:visited {
+		color: $color-white;
+	}
+
+	&:hover, &:focus, &:active {
+		background: saturate($color-link-two, 15%);
+		color: $color-white;
+		box-shadow: 2px 1px 4px rgba(0,0,0, 0.45);
+	}
+
+	@include for(medium-screens) {
+		font-size: 17px;
+		line-height: 20px;
+	}
+}
+
+
+/* selections */
+a:link {
+	-webkit-tap-highlight-color: $color-link-one;
+	-webkit-tap-highlight-color : $color-link-one; } /*  highloght color for Safari iOS */
+
+::-webkit-selection {
+	background : $color-link-one;
+	color : $color-white;
+	text-shadow : none; }
+
+::-moz-selection {
+	background : $color-link-one;
+	color : $color-white;
+	text-shadow : none; }
+
+::selection {
+	background : $color-link-one;
+	color : $color-white;
+	text-shadow : none; }
