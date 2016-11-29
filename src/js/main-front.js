@@ -63,5 +63,31 @@ jQuery(document).ready(function($){
 			e.preventDefault();
 	});
 
+	//hand
+	var hand = $('.hand'),
+		winH = $(window).height();
 
+		if(winH > hand.height()){
+			hand.css({
+				top: 'auto',
+				bottom : 0
+			});
+		}
+
+		$(window).resize(function(){
+			var winH = $(window).height();
+
+			if(winH > hand.height()){
+				hand.css({
+					top: 'auto',
+					bottom : 0
+				});
+			}
+			else {
+				hand.css({
+					top: '60px',
+					bottom : 'auto'
+				});
+			}
+		});
 });
