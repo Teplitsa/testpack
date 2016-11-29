@@ -514,6 +514,7 @@ function rdc_custom_metaboxes() {
 		'id'       => 'featured_action_link_text',
 		'type'     => 'text'		
 	));
+	
 	//markers
 		$marker_cmb = new_cmb2_box( array(
 	        'id'            => 'marker_settings_metabox',

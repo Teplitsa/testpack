@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2080e273cc5d262a77c49830d0b26028",
+    "hash": "24bc7913b6f68da3388b0776d0cb9da1",
+    "content-hash": "602386884561eb7440a46c97cb4c17ef",
     "packages": [
         {
             "name": "composer/installers",
@@ -214,16 +215,16 @@
         },
         {
             "name": "koodimonni/composer-dropin-installer",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Koodimonni/Composer-Dropin-Installer.git",
-                "reference": "1903a3a1e981a783618aad9e322a12ad39ad1760"
+                "reference": "e8fcc1862926f4587a137edf240b1e3741f98e7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/1903a3a1e981a783618aad9e322a12ad39ad1760",
-                "reference": "1903a3a1e981a783618aad9e322a12ad39ad1760",
+                "url": "https://api.github.com/repos/Koodimonni/Composer-Dropin-Installer/zipball/e8fcc1862926f4587a137edf240b1e3741f98e7a",
+                "reference": "e8fcc1862926f4587a137edf240b1e3741f98e7a",
                 "shasum": ""
             },
             "require": {
@@ -248,18 +249,52 @@
             "authors": [
                 {
                     "name": "Onni Hakala",
-                    "email": "onni@koodimonni.fi"
+                    "email": "onni@koodimonni.fi",
+                    "role": "Developer"
                 }
             ],
-            "description": "Do what the fuck you want with your composer packages aka. Composer Dropin installer. Install packages or part of packages into custom paths without overwriting existing stuff.",
-            "time": "2016-07-11 09:21:59"
+            "description": "Install packages or a few files from packages into custom paths without overwriting existing stuff.",
+            "time": "2016-10-30 19:22:35"
+        },
+        {
+            "name": "mustardbees/cmb_field_map",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mustardBees/cmb_field_map.git",
+                "reference": "ac2d9fe4dba0823e7b6f68bc45007d0749936483"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mustardBees/cmb_field_map/zipball/ac2d9fe4dba0823e7b6f68bc45007d0749936483",
+                "reference": "ac2d9fe4dba0823e7b6f68bc45007d0749936483",
+                "shasum": ""
+            },
+            "type": "wordpress-plugin",
+            "authors": [
+                {
+                    "name": "Phil Wylie",
+                    "homepage": "http://www.philwylie.co.uk/"
+                }
+            ],
+            "description": "Google Maps field type for Custom Metaboxes and Fields for WordPress",
+            "homepage": "https://github.com/mustardBees/cmb_field_map/",
+            "keywords": [
+                "plugin",
+                "wordpress"
+            ],
+            "support": {
+                "source": "https://github.com/mustardBees/cmb_field_map/tree/v2.1.2",
+                "issues": "https://github.com/mustardBees/cmb_field_map/issues"
+            },
+            "time": "2015-12-14 11:26:44"
         },
         {
             "name": "tst/cmb2-attached-posts",
             "version": "1.2.2",
             "dist": {
                 "type": "zip",
-                "url": "artifacts\\tst-cmb2-attached-posts-1.2.2.zip",
+                "url": "artifacts/tst-cmb2-attached-posts-1.2.2.zip",
                 "reference": null,
                 "shasum": "d4d69d33e6cca2d0c1837d2328f23d13733d8eb4"
             },
@@ -317,7 +352,7 @@
         },
         {
             "name": "wpackagist-plugin/cmb2",
-            "version": "2.2.2.1",
+            "version": "2.2.3.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/cmb2/",
@@ -397,15 +432,15 @@
         },
         {
             "name": "wpackagist-plugin/formidable",
-            "version": "2.02.06",
+            "version": "2.02.10",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/formidable/",
-                "reference": "tags/2.02.06"
+                "reference": "tags/2.02.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.06.zip",
+                "url": "https://downloads.wordpress.org/plugin/formidable.2.02.10.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -437,15 +472,15 @@
         },
         {
             "name": "wpackagist-plugin/leyka",
-            "version": "2.2.11",
+            "version": "2.2.12.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/leyka/",
-                "reference": "tags/2.2.11"
+                "reference": "tags/2.2.12.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.11.zip",
+                "url": "https://downloads.wordpress.org/plugin/leyka.2.2.12.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -474,6 +509,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/media-search-enhanced/"
+        },
+        {
+            "name": "wpackagist-plugin/posts-to-posts",
+            "version": "1.6.5",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/posts-to-posts/",
+                "reference": "tags/1.6.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/posts-to-posts.1.6.5.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/posts-to-posts/"
         },
         {
             "name": "wpackagist-plugin/responsive-lightbox",
@@ -517,15 +572,15 @@
         },
         {
             "name": "wpackagist-plugin/siteorigin-panels",
-            "version": "2.4.16",
+            "version": "2.4.19",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/siteorigin-panels/",
-                "reference": "tags/2.4.16"
+                "reference": "tags/2.4.19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/siteorigin-panels.2.4.16.zip",
+                "url": "https://downloads.wordpress.org/plugin/siteorigin-panels.2.4.19.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -537,15 +592,15 @@
         },
         {
             "name": "wpackagist-plugin/so-widgets-bundle",
-            "version": "1.7.1",
+            "version": "1.7.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/so-widgets-bundle/",
-                "reference": "tags/1.7.1"
+                "reference": "tags/1.7.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.7.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/so-widgets-bundle.1.7.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -617,15 +672,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "3.6",
+            "version": "3.9",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/3.6"
+                "reference": "tags/3.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.6.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.9.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -772,11 +827,13 @@
         "wpackagist-plugin/w3-total-cache": 0,
         "wpackagist-plugin/cmb2": 0,
         "webdevstudios/cmb2-post-search-field": 20,
+        "wpackagist-plugin/posts-to-posts": 0,
         "wpackagist-plugin/formidable": 0,
         "wpackagist-plugin/siteorigin-panels": 0,
         "wpackagist-plugin/so-widgets-bundle": 0,
         "wpackagist-plugin/tiny-compress-images": 0,
         "wpackagist-plugin/imsanity": 0,
+        "mustardbees/cmb_field_map": 20,
         "wp-sync-db/wp-sync-db": 20,
         "wpackagist-plugin/force-regenerate-thumbnails": 0,
         "wpackagist-plugin/post-duplicator": 0,

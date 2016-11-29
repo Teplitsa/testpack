@@ -3,6 +3,7 @@
 Widget Name: [TST] Карта с маркерами
 Description: Вывод карты с маркером или группой маркеров
 */
+
 class TST_Markermap_Widget extends SiteOrigin_Widget {
 	
 	function __construct() {
@@ -40,14 +41,15 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			'enablescrollwheel' => 'false',
 			'zoom'              => 15,
 			'disablecontrols'   => 'false',
-			'lat_center'		=> '55.7257532',
-			'lng_center' 		=> '37.6156754',
+			'lat_center'		=> '51.7693173',
+			'lng_center' 		=> '55.0921503',
 			'show_legend'		=> false
 		);
 	}
 	
 	/** admin form **/
 	function initialize_form(){
+
 		return array(			
 			
 			'marker_ids' => array(
@@ -111,22 +113,25 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 		if( empty( $this->form_options ) ) {
 			$this->form_options = $this->initialize_form();
 		}
+
 		$instance = $this->modify_instance($instance);
+
 		// Filter the instance
 		$instance = apply_filters( 'siteorigin_widgets_instance', $instance, $this );
 		$instance = apply_filters( 'siteorigin_widgets_instance_' . $this->id_base, $instance, $this );
+
 		$args = wp_parse_args( $args, array(
 			'before_widget' => '',
 			'after_widget' => '',
 			'before_title' => '',
 			'after_title' => '',
 		) );
+
 		// Add any missing default values to the instance
 		$instance = $this->add_defaults( $this->form_options, $instance );
 		$template_vars = $this->get_template_variables($instance, $args);
 		$template_vars = wp_parse_args($template_vars, $this->get_defaults());
 		
-    //marker deduce
 		extract( $template_vars );
 		
 		$map_id = uniqid( 'tst_map_' );
@@ -159,6 +164,7 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			else
 				$show_legend = false;
 		}
+
         $markers = get_posts($params);		
 		$markers_json = array();
 		foreach($markers as $marker) {
@@ -197,6 +203,7 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 		if (typeof mapFunc == "undefined") {
 			var mapFunc = new Array();
 		}	
+
 		mapFunc.push(function (){
 			
 			var map = L.map('<?php echo $map_id ; ?>', {
@@ -249,6 +256,7 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 	
 	
 } //class
+
 add_action('wp_footer', function(){
 	
 	$base = get_template_directory_uri().'/assets/img/';	
@@ -264,8 +272,11 @@ add_action('wp_footer', function(){
 </script>
 <?php
 }, 100);
+
 //register
 siteorigin_widget_register('tst-markermap', __FILE__, 'TST_Markermap_Widget');
+
+
 /** Helpers to print marker markup and classes **/
 function tst_get_marker_popup($marker, $layers_id = array()){
 	
@@ -279,6 +290,7 @@ function tst_get_marker_popup($marker, $layers_id = array()){
 	
 	//get info from connected campaign if any
 	$rel_campaign = get_post_meta($marker->ID, 'marker_related_campaign', true); 
+	var_dump($rel_campaign);
 	if($rel_campaign) {
 		$campaign_data = tst_get_data_from_connected_campaign($marker, $rel_campaign); 
 		if(empty($thumbnail))
@@ -315,6 +327,7 @@ function tst_get_marker_popup($marker, $layers_id = array()){
 	
 	return $popup;
 }
+
 function tst_get_data_from_connected_campaign($marker, $rel_campaign) {
 		
 	$data = array('thumbnail' => '', 'content' => '', 'button' => '');
@@ -340,6 +353,7 @@ function tst_get_data_from_connected_campaign($marker, $rel_campaign) {
 	
 	return $data;
 }
+
 function tst_get_marker_icon_class($marker, $layers_id = array()){
 	
 	$class = 'dashicons-sos navi';
@@ -359,6 +373,7 @@ function tst_get_marker_icon_class($marker, $layers_id = array()){
 	
 	return $class;
 }
+
 function tst_get_marker_layer_match($marker, $layers_id) {
 	
 	$terms = get_the_terms($marker->ID, 'marker_cat');
@@ -375,6 +390,7 @@ function tst_get_marker_layer_match($marker, $layers_id) {
 	
 	return $t;
 }
+
 function tst_get_legend($layers_id) {
 	
 	$list = array();
@@ -386,6 +402,7 @@ function tst_get_legend($layers_id) {
 	
 	return "<ul>".implode('', $list)."</ul>";
 }
+
 function tst_get_layer_icon($layer_id) {
 	
 	$color = get_term_meta($layer_id, 'layer_marker_colors', true);

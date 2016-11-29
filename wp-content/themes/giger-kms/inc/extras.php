@@ -240,12 +240,12 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 30,
     ));
 		
-		//Analytics panel
-		$wp_customize->add_section( 'tst_analytics_options', array(
-			'title' => __( 'Analytics and API Keys', 'tst' ),
-			'priority' => 60,
-			'capability' => 'edit_theme_options',
-		));
+					//Analytics panel
+					$wp_customize->add_section( 'tst_analytics_options', array(
+						'title' => __( 'Analytics and API Keys', 'tst' ),
+						'priority' => 60,
+						'capability' => 'edit_theme_options',
+					));
 		
 		// Google Analytics key
     $wp_customize->add_setting('google_analytics_key', array(
@@ -283,7 +283,17 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'google_analytics_amp_key',
         'priority' => 50,
     ));
-
+					$wp_customize->add_setting('google_maps_api_key', array(
+						 'default'   => '',
+						 'transport' => 'refresh',
+					));
+					$wp_customize->add_control('google_maps_api_key', array(
+						 'type'     => 'text',
+						 'label'    => __('Google Maps API Key', 'tst'),
+						 'section'  => 'tst_analytics_options',
+						 'settings' => 'google_maps_api_key',
+						 'priority' => 70,
+					));
 	
 	/*$wp_customize->add_setting('newsletter_form_id', array(
         'default'   => '',

@@ -161,7 +161,7 @@ class FRL_CssJs {
             $api_url .= '&key=' . $api_key;
         }
 		wp_register_script( 'tst-google-maps-api', $api_url, null, null );
-		wp_enqueue_script( 'tst-google-maps', $src, array( 'tst-google-maps-api' ), TST_THEME_VERSION );
+		wp_enqueue_script( 'tst-google-maps', $src, array( 'tst-google-maps-api' ), FRL_VERSION );
 	}	
 	
 	/* login style - make it inline ? */
