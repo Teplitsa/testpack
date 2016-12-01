@@ -18,3 +18,7 @@ wp-config.php
 debug.log
 *Конфликтующая копия с компьютера*
 /searchreplacedb2.php
+composer.lock
+/filelist.txt
+/upd_root.sh
+/upd_theme.sh

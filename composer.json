@@ -24,10 +24,6 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/wp-sync-db/wp-sync-db"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/webdevstudios/cmb2-post-search-field"
         },
 		{
@@ -40,33 +36,30 @@
         "secure-http" : false
     },
    "require"     : {
-        "composer/installers": "~1.0",  
+        "composer/installers": "~1.0",
         "johnpbloch/wordpress" : ">=4.3",
         "wpackagist-plugin/cyr3lat" : "@stable",
         "wpackagist-plugin/crop-thumbnails": "@stable",
-        "wpackagist-plugin/disable-comments" : "@stable",                
+        "wpackagist-plugin/disable-comments" : "@stable",
+		"wpackagist-plugin/imsanity" : "@stable",
         "wpackagist-plugin/leyka" : "@stable",
         "wpackagist-plugin/media-search-enhanced": "@stable",
-        "wpackagist-plugin/responsive-lightbox" : "@stable",       
-		"wpackagist-plugin/posts-to-posts" : "@stable",     
+        "wpackagist-plugin/responsive-lightbox" : "@stable",
         "wpackagist-plugin/wordpress-seo" : "@stable",
-        "wpackagist-plugin/w3-total-cache": "@stable",        
-        "wpackagist-plugin/cmb2": "@stable",        
-        "wpackagist-plugin/formidable": "@stable",
-        "wpackagist-plugin/siteorigin-panels": "@stable",
-        "wpackagist-plugin/so-widgets-bundle": "@stable",
-        "wpackagist-plugin/tiny-compress-images": "@stable",
+        "wpackagist-plugin/cmb2": "@stable",
+		"wpackagist-plugin/pdf-viewer": "@stable",
+		"wpackagist-plugin/all-in-one-wp-security-and-firewall": "@stable",
+		"wpackagist-plugin/amp": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
 		"webdevstudios/cmb2-post-search-field" : "dev-master",
 		"mustardbees/cmb_field_map" : "dev-master"
     },
     "require-dev" : {
-        "wp-sync-db/wp-sync-db" : "dev-master",
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
         "wpackagist-plugin/post-duplicator" : "@stable",
-        "wpackagist-plugin/disable-wordpress-updates": "@stable",
         "wpackagist-plugin/term-management-tools": "@stable",
-        "wpackagist-plugin/post-type-converter": "@stable"
+        "wpackagist-plugin/post-type-converter": "@stable",
+		"wpackagist-plugin/query-monitor": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",
@@ -75,4 +68,3 @@
         }
     }
 }
-
