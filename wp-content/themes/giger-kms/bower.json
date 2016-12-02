@@ -13,7 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "leaflet": "~0.7.7",
+    "leaflet": "~1.0.2",
     "easyModal.js": "https://github.com/flaviusmatis/easyModal.js.git"
   }
 }

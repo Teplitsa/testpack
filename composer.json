@@ -29,6 +29,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/webdevstudios/cmb2-post-search-field"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mustardBees/cmb_field_map"
         }
     ],
     "config"      : {
@@ -49,13 +53,14 @@
         "wpackagist-plugin/wordpress-seo" : "@stable",
         "wpackagist-plugin/w3-total-cache": "@stable",        
         "wpackagist-plugin/cmb2": "@stable",
+        "mustardbees/cmb_field_map" : "dev-master",
         "webdevstudios/cmb2-post-search-field" : "dev-master",
         "wpackagist-plugin/formidable": "@stable",
         "wpackagist-plugin/siteorigin-panels": "@stable",
         "wpackagist-plugin/so-widgets-bundle": "@stable",
         "wpackagist-plugin/tiny-compress-images": "@stable",
         "wpackagist-plugin/imsanity": "@stable",
-        "koodimonni-language/core-ru_ru": "*" ,
+        "koodimonni-language/core-ru_ru": "*" ,        
         "tst/cmb2-attached-posts" : ">=1.2.2"
     },
     "require-dev" : {

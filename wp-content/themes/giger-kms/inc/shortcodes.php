@@ -17,6 +17,7 @@ function rdc_sitemap_screen($atts){
 
 
 /** Map **/
+/*
 add_shortcode('pw_map', 'rdc_pw_map_screen');
 function rdc_pw_map_screen($atts){
 	
@@ -159,7 +160,7 @@ function rdc_map_get_coordinates( $address, $force_refresh = false ) {
 }
 
 
-
+*/
 
 
 

@@ -239,7 +239,60 @@ function rdc_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'er_text',
         'priority' => 30,
     ));
-	
+		$wp_customize->add_setting('google_maps_api_key', array(
+			 'default'   => '',
+			 'transport' => 'refresh',
+	 ));
+	 $wp_customize->add_control('google_maps_api_key', array(
+			 'type'     => 'text',
+			 'label'    => __('Google Maps API Key', 'tst'),
+			 'section'  => 'rdc_analytics_options',
+			 'settings' => 'google_maps_api_key',
+			 'priority' => 70,
+	 ));
+	 //Analytics panel
+ $wp_customize->add_section( 'rdc_analytics_options', array(
+	 'title' => __( 'Analytics and API Keys', 'tst' ),
+	 'priority' => 60,
+	 'capability' => 'edit_theme_options',
+ ));
+	 // Google Analytics key
+	 $wp_customize->add_setting('google_analytics_key', array(
+			 'default'   => '',
+			 'transport' => 'refresh',
+	 ));
+	 $wp_customize->add_control('google_analytics_key', array(
+			 'type'     => 'text',
+			 'label'    => __('Google Analytics Key', 'tst'),
+			 'section'  => 'rdc_analytics_options',
+			 'settings' => 'google_analytics_key',
+			 'priority' => 30,
+	 ));
+	 // Google Analytics key for Category resource
+	 $wp_customize->add_setting('google_analytics_category_key', array(
+			 'default'   => '',
+			 'transport' => 'refresh',
+	 ));
+	 $wp_customize->add_control('google_analytics_category_key', array(
+			 'type'     => 'text',
+			 'label'    => __('Google Analytics ASI Category Key', 'tst'),
+			 'section'  => 'rdc_analytics_options',
+			 'settings' => 'google_analytics_category_key',
+			 'priority' => 40,
+	 ));
+ // Google Analytics key for AMP resource
+	 $wp_customize->add_setting('google_analytics_amp_key', array(
+			 'default'   => '',
+			 'transport' => 'refresh',
+	 ));
+	 $wp_customize->add_control('google_analytics_amp_key', array(
+			 'type'     => 'text',
+			 'label'    => __('Google Analytics ASI AMP Key', 'tst'),
+			 'section'  => 'rdc_analytics_options',
+			 'settings' => 'google_analytics_amp_key',
+			 'priority' => 50,
+	 ));
+
 	/*$wp_customize->add_setting('newsletter_form_id', array(
         'default'   => '',
         'transport' => 'refresh',

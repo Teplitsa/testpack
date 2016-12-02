@@ -6,7 +6,7 @@
 add_filter('manage_posts_columns', 'rdc_common_columns_names', 50, 2);
 function rdc_common_columns_names($columns, $post_type) {
 		
-	if(in_array($post_type, array('post', 'project', 'org', 'person', 'event'))){
+	if(in_array($post_type, array('post', 'project', 'org', 'person', 'event', 'marker'))){
 		
 		if(in_array($post_type, array('event', 'programm')))
 			$columns['menu_order'] = 'Порядок';
@@ -74,6 +74,7 @@ function rdc_pages_columns_names($columns) {
 //manage_edit-topics_columns
 add_filter( "manage_edit-category_columns", 'rdc_common_tax_columns_names', 10);
 add_filter( "manage_edit-post_tag_columns", 'rdc_common_tax_columns_names', 10);
+add_filter( "manage_edit-marker_cat_columns", 'tst_common_tax_columns_names', 10);
 function rdc_common_tax_columns_names($columns){
 	
 	$columns['id'] = 'ID';
@@ -83,6 +84,7 @@ function rdc_common_tax_columns_names($columns){
 
 add_filter( "manage_category_custom_column", 'rdc_common_tax_columns_content', 10, 3);
 add_filter( "manage_post_tag_custom_column", 'rdc_common_tax_columns_content', 10, 3);
+add_filter( "manage_marker_cat_custom_column", 'tst_common_tax_columns_content', 10, 3);
 function rdc_common_tax_columns_content($content, $column_name, $term_id){
 	
 	if($column_name == 'id')
