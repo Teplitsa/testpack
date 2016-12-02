@@ -275,20 +275,12 @@ function rdc_custom_content(){
         'rewrite'             => array('slug' => 'marker', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 20,
-<<<<<<< HEAD
 		'menu_icon'           => 'dashicons-location',
         'supports'            => array('title', 'editor', 'thumbnail'),
         'taxonomies'          => array('marker_cat'),
     ));
 	
 	register_taxonomy('marker_cat', array('marker',), array(
-=======
-				'menu_icon'           => 'dashicons-location',
-        'supports'            => array('title', 'editor', 'thumbnail'),
-        'taxonomies'          => array('marker_cat'),
-    ));
-		register_taxonomy('marker_cat', array('marker',), array(
->>>>>>> f6fa086714fced3bb47db0e5aa062b257a207035
 		'labels' => array(
 			'name'                       => 'Группы маркеров',
 			'singular_name'              => 'Группа',
@@ -318,13 +310,7 @@ function rdc_custom_content(){
 		'rewrite'           => array('slug' => 'layer', 'with_front' => false),
 		//'update_count_callback' => '',        
 	));
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> f6fa086714fced3bb47db0e5aa062b257a207035
 }
-
 /** Metaboxes **/
 add_action( 'cmb2_admin_init', 'rdc_custom_metaboxes' );
 function rdc_custom_metaboxes() {
