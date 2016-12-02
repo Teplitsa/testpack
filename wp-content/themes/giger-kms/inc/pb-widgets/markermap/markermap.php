@@ -147,7 +147,6 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			'posts_per_page' => -1
 		);
 
-var_dump($marker_ids);
 		if(!empty($marker_ids)) {
 			$params['post__in'] = array_map('intval', explode(',', $marker_ids));
 			$show_legend = false; //no legend for single marker  - never
@@ -174,7 +173,6 @@ var_dump($marker_ids);
 	 
 			$lat = get_post_meta($marker->ID, 'marker_location_latitude', true);
 			$lng = get_post_meta($marker->ID, 'marker_location_longitude', true);
-			var_dump($marker->ID);
 	 
 			if(empty($lat) || empty($lng)) {
 				continue;
@@ -294,7 +292,6 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
 	
 	//get info from connected campaign if any
 	$rel_campaign = get_post_meta($marker->ID, 'marker_related_campaign', true); 
-	var_dump($rel_campaign);
 	if($rel_campaign) {
 		$campaign_data = rdc_get_data_from_connected_campaign($marker, $rel_campaign); 
 		if(empty($thumbnail))
@@ -383,6 +380,10 @@ function rdc_get_marker_layer_match($marker, $layers_id) {
 		return false;
 	
 	$res = false;
+	// var_dump($layers_id);
+	if (!empty($layers_id)) {
+		$layers_id = str_split($layers_id);
+	}
 	foreach($terms as $t){
 		if(in_array($t->term_id, $layers_id)){
 			$res = $t;
