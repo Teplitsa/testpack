@@ -275,12 +275,20 @@ function rdc_custom_content(){
         'rewrite'             => array('slug' => 'marker', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 20,
+<<<<<<< HEAD
 		'menu_icon'           => 'dashicons-location',
         'supports'            => array('title', 'editor', 'thumbnail'),
         'taxonomies'          => array('marker_cat'),
     ));
 	
 	register_taxonomy('marker_cat', array('marker',), array(
+=======
+				'menu_icon'           => 'dashicons-location',
+        'supports'            => array('title', 'editor', 'thumbnail'),
+        'taxonomies'          => array('marker_cat'),
+    ));
+		register_taxonomy('marker_cat', array('marker',), array(
+>>>>>>> f6fa086714fced3bb47db0e5aa062b257a207035
 		'labels' => array(
 			'name'                       => 'Группы маркеров',
 			'singular_name'              => 'Группа',
@@ -310,8 +318,11 @@ function rdc_custom_content(){
 		'rewrite'           => array('slug' => 'layer', 'with_front' => false),
 		//'update_count_callback' => '',        
 	));
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> f6fa086714fced3bb47db0e5aa062b257a207035
 }
 
 /** Metaboxes **/
@@ -519,68 +530,70 @@ function rdc_custom_metaboxes() {
 	));
 	
 	//markers
-	$marker_cmb = new_cmb2_box( array(
-      'id'            => 'marker_settings_metabox',
-      'title'         => 'Настройки маркера',
-      'object_types'  => array( 'marker', ), // Post type
-      'context'       => 'normal',
-      'priority'      => 'high',
-      'show_names'    => true, // Show field names on the left
-	//'show_on_cb'    => 'tst_show_on_general_pages',		
-      //'cmb_styles'    => false, // false to disable the CMB stylesheet
-      // 'closed'     => true, // Keep the metabox closed by default
-  ));
-	$marker_cmb->add_field(array(
-		'name'    => 'Адрес',
-		'id'      => 'marker_address',
-		'type'    => 'text',
-		'default' => ''
-	));
-	
-	$marker_cmb->add_field( array(
-		'name' => 'Маркер',
-		'desc' => 'Укажите позициюна карте',
-		'id'   => 'marker_location',
-		'type' => 'pw_map',
-		'split_values' => true, // Save latitude and longitude as two separate fields
-	));
-	
-	$marker_cmb->add_field( array(
-		'name'        => 'Связанная кампания',
-		'id'          => 'marker_related_campaign',
-		'type'        => 'post_search_text', // This field type
-		// post type also as array
-		'post_type'   => 'leyka_campaign',
-		// Default is 'checkbox', used in the modal view to select the post type
-		'select_type' => 'radio',
-		// Will replace any selection with selection from modal. Default is 'add'
-		'select_behavior' => 'replace',
-	));
-	
-	// marker groups 
-	$markern_cat_term = new_cmb2_box( array(
-		'id'               => 'marker_cat_data',
-		'title'            => 'Настройки маркеров ',
-		'object_types'     => array( 'term' ), 
-		'taxonomies'       => array( 'marker_cat' )		
-	));
-	$markern_cat_term->add_field( array(
-		'name'             => 'Цвет маркера',		
-		'id'               => 'layer_marker_colors',
-		'type'             => 'select',
-		'show_option_none' => false,
-		'default'          => 'navi',
-		'options'          => array(
-			'navi' 	=> 'Синий',
-			'red'   => 'Красный',
-			'blue'  => 'Голубой',
-		)
-	));
-	$markern_cat_term->add_field(array(
-		'name'    => 'Класс иконки',
-		'desc' 	  => 'Справочник по классам иконок WP - <a href="https://developer.wordpress.org/resource/dashicons/" target="_blank">Найдите нужную и скопируйте класс</a>',
-		'id'      => 'layer_marker_icon',
-		'type'    => 'text',
-		'default' => ''
-	));
-}
+		$marker_cmb = new_cmb2_box( array(
+	        'id'            => 'marker_settings_metabox',
+	        'title'         => 'Настройки маркера',
+	        'object_types'  => array( 'marker', ), // Post type
+	        'context'       => 'normal',
+	        'priority'      => 'high',
+	        'show_names'    => true, // Show field names on the left
+			//'show_on_cb'    => 'tst_show_on_general_pages',		
+	        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+	        // 'closed'     => true, // Keep the metabox closed by default
+	    ));
+		
+		$marker_cmb->add_field(array(
+			'name'    => 'Адрес',
+			'id'      => 'marker_address',
+			'type'    => 'text',
+			'default' => ''
+		));
+		
+		$marker_cmb->add_field( array(
+			'name' => 'Маркер',
+			'desc' => 'Укажите позициюна карте',
+			'id'   => 'marker_location',
+			'type' => 'pw_map',
+			'split_values' => true, // Save latitude and longitude as two separate fields
+		));
+		
+		$marker_cmb->add_field( array(
+			'name'        => 'Связанная кампания',
+			'id'          => 'marker_related_campaign',
+			'type'        => 'post_search_text', // This field type
+			// post type also as array
+			'post_type'   => 'leyka_campaign',
+			// Default is 'checkbox', used in the modal view to select the post type
+			'select_type' => 'radio',
+			// Will replace any selection with selection from modal. Default is 'add'
+			'select_behavior' => 'replace',
+		));
+		
+		// marker groups 
+		$markern_cat_term = new_cmb2_box( array(
+			'id'               => 'marker_cat_data',
+			'title'            => 'Настройки маркеров ',
+			'object_types'     => array( 'term' ), 
+			'taxonomies'       => array( 'marker_cat' )		
+		));
+		$markern_cat_term->add_field( array(
+			'name'             => 'Цвет маркера',		
+			'id'               => 'layer_marker_colors',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'navi',
+			'options'          => array(
+				'navi' 	=> 'Синий',
+				'red'   => 'Красный',
+				'blue'  => 'Голубой',
+			)
+		));
+		$markern_cat_term->add_field(array(
+			'name'    => 'Класс иконки',
+			'desc' 	  => 'Справочник по классам иконок WP - <a href="https://developer.wordpress.org/resource/dashicons/" target="_blank">Найдите нужную и скопируйте класс</a>',
+			'id'      => 'layer_marker_icon',
+			'type'    => 'text',
+			'default' => ''
+		));
+	}
+

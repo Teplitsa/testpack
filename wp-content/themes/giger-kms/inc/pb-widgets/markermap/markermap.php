@@ -41,8 +41,10 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			'enablescrollwheel' => 'false',
 			'zoom'              => 15,
 			'disablecontrols'   => 'false',
+
 			'lat_center'		=> '51.7675153',
 			'lng_center' 		=> '55.0953063',
+
 			'show_legend'		=> false
 		);
 	}
@@ -133,7 +135,7 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 		$template_vars = wp_parse_args($template_vars, $this->get_defaults());
 		
 		extract( $template_vars );
-		
+
 		$map_id = uniqid( 'rdc_map_' );
 		$zoomControl = ($disablecontrols == 'false') ? 'true' : 'false';
 		
@@ -144,10 +146,10 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 			'post_type' => 'marker',
 			'posts_per_page' => -1
 		);
+
 var_dump($marker_ids);
 		if(!empty($marker_ids)) {
 			$params['post__in'] = array_map('intval', explode(',', $marker_ids));
-
 			$show_legend = false; //no legend for single marker  - never
 		}
 		elseif(!empty($layers_ids)){
@@ -300,8 +302,7 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
 		
 		if(empty($content))
 			$content = apply_filters('rdc_the_content', $campaign_data['content']);
-		
-		$content .= "<p class='c-btn'>".$campaign_data['button']."</p>";
+			$content .= "<p class='c-btn'>".$campaign_data['button']."</p>";
 	}
 	
 	if(!empty($layers_id)){
@@ -331,7 +332,6 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
 }
 
 function rdc_get_data_from_connected_campaign($marker, $rel_campaign) {
-		
 	$data = array('thumbnail' => '', 'content' => '', 'button' => '');
 	if(!class_exists('Leyka_Campaign'))
 		return $data;

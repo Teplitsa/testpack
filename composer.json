@@ -34,6 +34,7 @@
             "type": "vcs",
             "url": "https://github.com/mustardBees/cmb_field_map"
         }
+        
     ],
     "config"      : {
         "vendor-dir": "wp-content/vendor",
@@ -55,6 +56,7 @@
         "wpackagist-plugin/cmb2": "@stable",
         "mustardbees/cmb_field_map" : "dev-master",
         "webdevstudios/cmb2-post-search-field" : "dev-master",
+        "wpackagist-plugin/posts-to-posts" : "@stable",
         "wpackagist-plugin/formidable": "@stable",
         "wpackagist-plugin/siteorigin-panels": "@stable",
         "wpackagist-plugin/so-widgets-bundle": "@stable",
@@ -77,4 +79,3 @@
         }
     }
 }
-

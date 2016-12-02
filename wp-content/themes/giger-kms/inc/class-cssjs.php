@@ -145,8 +145,7 @@ class FRL_CssJs {
 			
 		wp_enqueue_style('rdc-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);				
 	}
-	
-	
+
 	public function load_gmap_scripts() {
 		global $wp_scripts;
 		$src = '';
