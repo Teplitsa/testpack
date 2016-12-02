@@ -381,9 +381,9 @@ function rdc_get_marker_layer_match($marker, $layers_id) {
 	
 	$res = false;
 	// var_dump($layers_id);
-	if (!empty($layers_id)) {
-		$layers_id = str_split($layers_id);
-	}
+	// if (!empty($layers_id)) {
+	// 	$layers_id = str_split($layers_id);
+	// }
 	foreach($terms as $t){
 		if(in_array($t->term_id, $layers_id)){
 			$res = $t;
