@@ -547,7 +547,7 @@ function tst_related_project(WP_Post $cpost){
 	$ex = apply_filters('tst_the_title', tst_get_post_excerpt($cpost, 25, true));
 ?>
 <div class="related-widget widget">
-	<h3 class="widget-title"><?php _e('Related project', 'kds');?></h3>
+	<h3 class="widget-title"><?php _e('Related project', 'tst');?></h3>
 	<a href="<?php echo $pl;?>" class="entry-link">
 		<div class="rw-preview">
 			<?php echo tst_post_thumbnail($cpost->ID, 'post-thumbnail');?>
@@ -566,7 +566,7 @@ function tst_related_project(WP_Post $cpost){
 
 function tst_get_help_now_cta($cpost = null, $label = ''){
 	
-	$label = (empty($label)) ? __('Help now', 'kds') : $label;
+	$label = (empty($label)) ? __('Help now', 'tst') : $label;
 	$cta = '';
 	
 	if(!$cpost){
