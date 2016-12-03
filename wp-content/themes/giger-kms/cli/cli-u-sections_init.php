@@ -16,17 +16,17 @@ try {
 
 	global $wpdb;
 
-	//Sections
+	// Sections
 	echo 'Creating sections'.chr(10);
 	$sections = array(
 		'Сервисы'	=> 'services',
 		'Советы'	=> 'advices',
 		'Ресурсы'	=> 'resources',
 		'Новости'	=> 'news',
-		'О нас '	=> 'about'
+		'О нас'		=> 'about'
 	);
 
-	print_r(get_taxonomies());
+	//print_r(get_taxonomies());
 
 	$count = 0;
 
@@ -74,6 +74,51 @@ try {
 
 		echo 'Add news to section: '.$count.chr(10);
 	}
+
+
+	// Tags in news
+	$old = get_terms(array('taxonomy' => 'post_tag', 'hide_empty' => false,));
+	$deleted_tags_url = array();
+	if(!empty($old)) {
+		foreach($old as $oldt) {
+			$deleted_tags_url[] = $oldt->slug;
+			wp_delete_term($oldt->term_id, $oldt->taxonomy);
+		}
+		wp_cache_flush();
+	}
+	update_option('_tst_deleted_tags_url', $deleted_tags_url);
+
+	$tags = array(
+		'акции'				=> array(261, 212, 159, 151, 79,   ),
+		'группа поддержки'	=> array(1456, 1383, 1306, 1247, 1330, 10),
+		'вебинары'			=> array(1472, 1273 ),
+		'встречи с врачом'	=> array(1481, 1462, 1285, 272),
+		'Казанский марафон'	=> array(261, 151 ),
+		'объявление' 		=> array(1445, 1212, 209)
+	);
+
+	$count = 0;
+	foreach($tags as $t_name => $t_ids){
+		$res = wp_insert_term($t_name, 'post_tag');
+
+		if(!is_wp_error($res)){
+			foreach($t_ids as $p) {
+				wp_set_object_terms((int)$p, $res['term_id'], 'post_tag', true);
+				wp_cache_flush();
+			}
+
+			echo "Added tag ".$t_name.chr(10);
+		}
+		else {
+			echo $res->get_error_message();
+		}
+
+		$count++;
+	}
+
+	echo $count." Tags created. Time in sec: ".(microtime(true) - $time_start).chr(10).chr(10);
+
+
 
 	//Cleanup
 	echo 'Flush rewrite rules'.chr(10);

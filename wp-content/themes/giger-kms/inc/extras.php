@@ -179,7 +179,21 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
     $wp_customize->add_control('footer_text', array(
         'type'     => 'textarea',
-        'label'    => __('Footer text', 'tst'),
+        'label'    => 'Текст в подвале',
+        'section'  => 'title_tagline',
+        'settings' => 'footer_text',
+        'priority' => 28,
+    ));
+
+	$wp_customize->add_setting('header_text', array(
+        'default'   => '',
+        'transport' => 'postMessage',
+		'type' 		=> 'option'
+    ));
+
+    $wp_customize->add_control('header_text', array(
+        'type'     => 'textarea',
+        'label'    => 'Текст в шапке',
         'section'  => 'title_tagline',
         'settings' => 'footer_text',
         'priority' => 28,

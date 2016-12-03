@@ -60,7 +60,6 @@ try {
 		"crop-thumbnails/crop-thumbnails.php",
 		"cyr3lat/cyr-to-lat.php",
 		"disable-comments/disable-comments.php",
-		"leyka/leyka.php",
 		"pdf-viewer/pdf-viewer.php",
 		"post-type-converter/post-type-converter.php",
 		"responsive-lightbox/responsive-lightbox.php",
@@ -71,6 +70,15 @@ try {
 	update_option('active_plugins', $active);
 	echo 'Active plugins updated'.chr(10);
 
+	//Leyka options ???
+
+	//Plugin options
+	$disable_comm = maybe_unserialize('a:5:{s:19:"disabled_post_types";a:3:{i:0;s:4:"post";i:1;s:4:"page";i:2;s:10:"attachment";}s:17:"remove_everywhere";b:1;s:9:"permanent";b:0;s:16:"extra_post_types";b:0;s:10:"db_version";i:6;}');
+	update_option('disable_comments_options', $disable_comm);
+
+	$lightbox = maybe_unserialize('a:18:{s:6:"script";s:8:"swipebox";s:8:"selector";s:8:"lightbox";s:9:"galleries";b:1;s:18:"gallery_image_size";s:4:"full";s:19:"gallery_image_title";s:7:"default";s:20:"force_custom_gallery";b:1;s:28:"woocommerce_gallery_lightbox";b:0;s:6:"videos";b:0;s:11:"image_links";b:1;s:11:"image_title";s:7:"caption";s:17:"images_as_gallery";b:1;s:19:"deactivation_delete";b:0;s:13:"loading_place";s:6:"footer";s:19:"conditional_loading";b:1;s:20:"enable_custom_events";b:0;s:13:"custom_events";s:12:"ajaxComplete";s:14:"update_version";i:1;s:13:"update_notice";b:0;}');
+	update_option('responsive_lightbox_settings', $lightbox);
+
 
 	//Update Error 404 text
 	$err_link = home_url('contacts');
@@ -79,12 +87,15 @@ try {
 
 	//Update theme options
 	$footer_text = "";
-	set_theme_mod('footer_text', $footer_text );
+	update_option('footer_text', $footer_text );
 
-	echo 'Theme options updated for Error404 and Footer text'.chr(10);
+	$header_text = 'Звоните +7(951)031-56-56';
+	update_option('header_text', $header_text);
+
+	echo 'Theme options updated for Error404 and Header / Footer text'.chr(10);
 
 	//No admin username
-	$wpdb->update($wpdb->users, array('user_login' => 'awedlog'), array('ID' => 1), array('%s'), array('%d'));
+	$wpdb->update($wpdb->users, array('user_login' => 'awedlog', 'display_name' => 'Елена'), array('ID' => 1), array('%s', '%s'), array('%d'));
 
 
 	//Final

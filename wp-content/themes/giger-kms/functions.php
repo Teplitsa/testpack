@@ -35,9 +35,7 @@ function tst_setup() {
 	// Menus
 	$menus = array(
 		'primary'   => 'Главное',
-		'social'    => 'Социальные кнопки',
-		'sitemap'   => 'Карта сайта',
-		'news'   	=> 'Рубрики новостей',
+		'sitemap'   => 'Карта сайта'
 	);
 
 	register_nav_menus($menus);
@@ -48,18 +46,7 @@ function tst_setup() {
 add_action( 'init', 'tst_setup', 30 );
 
 
-/** Custom image size for medialib **/
-add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
-function tst_medialib_custom_image_sizes($sizes) {
 
-	$addsizes = array(
-		"small-thumbnail" 	=> 'Горизонтальная миниатюра',
-		"post-thumbnail" 	=> 'Горизонтальный средний',
-		"square" 			=> 'Квадратный'
-	);
-
-	return array_merge($sizes, $addsizes);
-}
 
 /**
  * Register widget area.
@@ -67,13 +54,21 @@ function tst_medialib_custom_image_sizes($sizes) {
 function tst_widgets_init() {
 
 	$config = array(
-		'right_single' => array(
-						'name' => 'Правая колонка - Записи',
-						'description' => 'Боковая колонка справа на страницах новостей'
+		//'right_single' => array(
+		//				'name' => 'Правая колонка - Записи',
+		//				'description' => 'Боковая колонка справа на страницах новостей'
+		//			),
+		'footer_1' => array(
+						'name' => 'Подвал - 1 колонка',
+						'description' => 'Динамическая область в подвале: 1 колонка'
 					),
-		'footer' => array(
-						'name' => 'Подвал - 4 виджета',
-						'description' => 'Динамическая область в подвале: 4 виджета'
+		'footer_2' => array(
+						'name' => 'Подвал - 2 колонка',
+						'description' => 'Динамическая область в подвале: 2 колонка'
+					),
+		'footer_3' => array(
+						'name' => 'Подвал - 3 колонка',
+						'description' => 'Динамическая область в подвале: 3 колонка'
 					),
 	);
 
@@ -81,9 +76,9 @@ function tst_widgets_init() {
 
 		$before = '<div id="%1$s" class="widget %2$s">';
 
-		if(false !== strpos($id, 'footer')){
-			$before = '<div id="%1$s" class="widget-bottom %2$s">';
-		}
+		//if(false !== strpos($id, 'footer')){
+		//	$before = '<div id="%1$s" class="widget-bottom %2$s">';
+		//}
 
 		register_sidebar(array(
 			'name' => $sb['name'],
@@ -98,19 +93,6 @@ function tst_widgets_init() {
 }
 add_action( 'init', 'tst_widgets_init', 25 );
 
-function tst_formidable_frm_scroll_offset() {
-    $offset = (int)get_theme_mod('auto_scroll_offset');
-
-    if(!$offset) {
-        $offset = 70;
-    }
-
-    if(is_user_logged_in()) {
-        $offset += 32;
-    }
-    return $offset;
-}
-add_filter('frm_scroll_offset', 'tst_formidable_frm_scroll_offset');
 
 /**
  * Includes
@@ -126,11 +108,11 @@ require get_template_directory().'/inc/request.php';
 //require get_template_directory().'/inc/cards.php';
 //require get_template_directory().'/inc/donations.php';
 //require get_template_directory().'/inc/forms.php';
-//require get_template_directory().'/inc/shortcodes.php';
 
+require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/social.php';
 require get_template_directory().'/inc/template-tags.php';
-//require get_template_directory().'/inc/widgets.php';
+require get_template_directory().'/inc/widgets.php';
 
 
 if(is_admin()){
@@ -138,11 +120,3 @@ if(is_admin()){
 
 }
 
-/** Cron **/
-//add_action( 'wp', 'tst_cron_job' );
-function tst_cron_job() {
-
-	if (!wp_next_scheduled( 'tst_daily_events')) {
-		wp_schedule_event( strtotime('today midnight'), 'daily', 'tst_daily_events' );
-	}
-}
