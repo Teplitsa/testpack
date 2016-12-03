@@ -190,7 +190,7 @@ class TSTL_Core {
 		} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
 			$test = true;
 		}
-		//return true;
+	//	return true;
 		return $test;
 	}
 

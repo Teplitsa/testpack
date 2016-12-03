@@ -47,12 +47,33 @@ p {
 .page-bg {
 	width: 100%;
 	z-index: 1;
+
+	position: relative;
+
+	&:after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 50%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 2;
+
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.01+0,0.92+100 */
+background: -moz-linear-gradient(top,  rgba(0,0,0,0.01) 0%, rgba(0,0,0,0.92) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.92) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.92) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#03000000', endColorstr='#eb000000',GradientType=0 ); /* IE6-9 */
+
+	}
 }
 .container {
 	width: 92%;
 	max-width: $page_cont;
 	margin: 0 auto;
 	position: relative;
+	z-index: 10;
 }
 
 .card {
@@ -60,7 +81,7 @@ p {
 	max-width: 408px;
 	margin: 0 auto;
 	position: relative;
-	padding: 40px 30px 30px;
+	padding: 20px 20px 20px;
 	background: transparentize($color-link-one, 0.2);
 	color: $color-white;
 	position: relative;
@@ -72,7 +93,11 @@ p {
 		height: 74px;
 		top: 0;
 		right: 0;
-		@include transform(translate(30%, -30%));
+		@include transform(translate(40%, -40%));
+
+		@include for(medium-screens) {
+			@include transform(translate(30%, -30%));
+		}
 	}
 
 	.svg-pic {
@@ -86,7 +111,7 @@ p {
 }
 
 .card__head {
-	margin-bottom: $gut*1.5;
+	margin-bottom: 25px;
 	text-align: center;
 
 	h1 {
@@ -98,18 +123,28 @@ p {
 		@include sub-title();
 	}
 
+	@include for(medium-screens) {
+		margin-bottom: $gut*1.5;
+	}
 }
 
 .card__text {
-	@include for(medium-screens) {
-		p:first-of-type { margin-bottom: 0; }
+	@include upto(medium-screens) {
+		span { display: none; }
+		p { margin-bottom: 5px; }
 	}
 }
 
 .card__action {
 	text-align:center;
 
-	a.card__button { margin-top: $gut*1.5; }
+	a.card__button {
+		margin-top: 25px;
+
+		@include for(medium-screens) {
+			margin-top: $gut*1.5;
+		}
+	}
 }
 
 .card__button {
@@ -148,47 +183,54 @@ p {
 }
 
 .banner {
-	width: 160px;
-	margin: 0 auto 60px;
+	width: 100px;
+	margin: 0 auto 30px;
+	z-index: 10;
+
 
 	.svg-pic {
+		width: 100px;
+		height: 121px;
+	}
+
+	@include for(medium-screens) {
 		width: 160px;
-		height: 194px;
+		margin: 0 auto 60px;
+
+		.svg-pic {
+			width: 160px;
+			height: 194px;
+		}
 	}
 }
 
 .words {
-	width: 256px;
-	margin: 60px auto 0;
+	width: 180px;
+	margin: 40px auto 0;
 	padding-bottom: 60px;
+	z-index: 10;
 
 	.svg-pic {
+		width: 180px;
+		height: 79px;
+	}
+
+	@include for(medium-screens) {
 		width: 256px;
-		height: 112px;
+		margin: 60px auto 0;
+		padding-bottom: 60px;
+
+		.svg-pic {
+			width: 256px;
+			height: 112px;
+		}
 	}
 }
 
 @include for(medium-screens) {
 	.page-bg {
 		overflow: hidden;
-		position: relative;
 
-		&:after {
-			content: '';
-			display: block;
-			width: 100%;
-			height: 50%;
-			position: absolute;
-			bottom: 0;
-			left: 0;
-
-			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.01+0,0.92+100 */
-background: -moz-linear-gradient(top,  rgba(0,0,0,0.01) 0%, rgba(0,0,0,0.92) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.92) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.92) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#03000000', endColorstr='#eb000000',GradientType=0 ); /* IE6-9 */
-
-		}
 	}
 
 	.container {

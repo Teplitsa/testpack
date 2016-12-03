@@ -52,7 +52,7 @@ if(!defined('ABSPATH')) die; // Die if accessed directly
 					$text = 'Наш новый сайт находится в разработке.
 Совсем скоро на нем будут доступные новые материалы и сервисы.
 
-Присоейдиняйтесь к нашей группе в WatsApp, чтобы быть в курсе новостей - мы сообщим, когда сайт заработает.';
+Присоединяйтесь к нашей группе в WatsApp, чтобы быть в курсе новостей - мы сообщим, когда сайт заработает.';
 				}
 				echo apply_filters('the_content', $text);
 			?>
@@ -103,5 +103,15 @@ if(!defined('ABSPATH')) die; // Die if accessed directly
 
 </div>
 <?php do_action('tstl_footer');?>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-81240282-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>
