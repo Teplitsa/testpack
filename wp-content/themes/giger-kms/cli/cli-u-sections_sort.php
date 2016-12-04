@@ -21,7 +21,8 @@ try {
 		'post_title' => '',
 		'post_content' => '',
 		'section' => 'resources',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -30,7 +31,8 @@ try {
 		'post_title' => 'Итоги мероприятий',
 		'post_content' => 'Профильные конференции и мероприятия', //add some text
 		'section' => 'resources',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -39,7 +41,8 @@ try {
 		'post_title' => '',
 		'post_content' => '',
 		'section' => 'resources',
-		'parent' => 'events-results'
+		'parent' => 'events-results',
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -48,7 +51,8 @@ try {
 		'post_title' => '',
 		'post_content' => '',
 		'section' => 'resources',
-		'parent' => 'events-results'
+		'parent' => 'events-results',
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -57,7 +61,8 @@ try {
 		'post_title' => 'Группа взаимопомощи',
 		'post_content' => '',
 		'section' => 'services',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -76,7 +81,8 @@ try {
 		'post_title' => '',
 		'post_content' => '',
 		'section' => 'services',
-		'parent' => 2
+		'parent' => 2,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -85,7 +91,8 @@ try {
 		'post_title' => '',
 		'post_content' => '',
 		'section' => 'services',
-		'parent' => 2
+		'parent' => 2,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -94,7 +101,8 @@ try {
 		'post_title' => '',
 		'post_content' => '',
 		'section' => 'services',
-		'parent' => 2
+		'parent' => 2,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -103,7 +111,8 @@ try {
 		'post_title' => 'Знакомства+',
 		'post_content' => '',
 		'section' => 'resources',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -112,7 +121,8 @@ try {
 		'post_title' => '',
 		'post_content' => '',
 		'section' => 'advices',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -130,16 +140,8 @@ try {
 		'post_title' => '',
 		'post_content' => '',
 		'section' => 'advices',
-		'parent' => 0
-	);
-
-	$move_to_items[] = array(
-		'ID' => 106,
-		'slug' => 'diagnosis-privacy',
-		'post_title' => '',
-		'post_content' => '',
-		'section' => 'advices',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -148,7 +150,8 @@ try {
 		'post_title' => 'Книги и брошюры',
 		'post_content' => 'Книги и брошюры',
 		'section' => 'resources',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -157,7 +160,8 @@ try {
 		'post_title' => 'АРВ-терапия',
 		'post_content' => 'АРВ-терапия',
 		'section' => 'advices',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -166,7 +170,8 @@ try {
 		'post_title' => 'Вебинары',
 		'post_content' => '',
 		'section' => 'resources',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -175,7 +180,8 @@ try {
 		'post_title' => 'Гепатит, туберкулез',
 		'post_content' => '',
 		'section' => 'advices',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -194,7 +200,8 @@ try {
 		'post_title' => 'Беременность+',
 		'post_content' => '',
 		'section' => 'advices',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -203,7 +210,8 @@ try {
 		'post_title' => 'Задать вопрос',
 		'post_content' => 'Задать вопрос', //add some text
 		'section' => 'services',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -212,7 +220,8 @@ try {
 		'post_title' => 'Молчание вредит вашему здоровью',
 		'post_content' => 'Молчание вредит вашему здоровью', //add some text
 		'section' => 'services',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -221,7 +230,8 @@ try {
 		'post_title' => 'У меня ВИЧ?',
 		'post_content' => 'Только узнали о своем статусе?', //add some text
 		'section' => 'advices',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$move_to_items[] = array(
@@ -230,7 +240,8 @@ try {
 		'post_title' => 'Пройти тест на ВИЧ',
 		'post_content' => 'Как пройти тест на ВИЧ и почему это важно', //add some text
 		'section' => 'advices',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('has_sidebar' => 'on')
 	);
 
 	$terms['services'] = get_term_by('slug', 'services', 'section');
@@ -256,7 +267,7 @@ try {
 
 				$page_data['ID'] = $to->ID;
 				$page_data['post_content'] = $content;
-				$uid = wp_insert_post($page_data);
+				$uid = wp_update_post($page_data);
 
 				if($uid) {
 					wp_delete_post($page->ID);
@@ -273,9 +284,15 @@ try {
 			$page_data['ID'] = ($i_obj['ID']) ? (int)$i_obj['ID'] : 0;
 			$page_data['post_type'] = 'item';
 			$page_data['post_status'] = 'publish';
-			$page_data['post_parent'] = (int)$i_obj['parent']; //all top level
 			$page_data['post_title'] = ($i_obj['post_title']) ? $i_obj['post_title'] : $old_page->post_title;
 
+			if(is_string($i_obj['parent'])){
+				$item = get_posts(array('post_type' => 'item', 'posts_per_page' => 1, 'name' => $i_obj['parent']));
+				$page_data['post_parent'] = ($item) ? $item[0]->ID : 0;
+			}
+			else{
+				$page_data['post_parent'] = (int)$i_obj['parent'];
+			}
 
 			if(!empty($i_obj['slug'])){
 				$page_data['post_name'] = $i_obj['slug'];
@@ -286,9 +303,16 @@ try {
 				if(isset($m[1]) && !empty($m[1])){
 					$page_data['post_content'] = str_replace('<script>'.$m[1].'</script>', '', $old_page->post_content);
 				}
+				else {
+					$page_data['post_content'] = $old_page->post_content;
+				}
 			}
 			else {
 				$page_data['post_content'] = $i_obj['post_content'];
+			}
+
+			if(isset($i_obj['meta_input'])){
+				$page_data['meta_input'] = $i_obj['meta_input'];
 			}
 
 			$uid = wp_insert_post($page_data);

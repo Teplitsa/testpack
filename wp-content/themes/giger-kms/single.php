@@ -5,85 +5,47 @@
  * @package bb
  */
 
-$cpost = get_queried_object(); 
-$format = tst_get_post_format($cpost);
-$video = '';
+$cpost = get_queried_object();
 
-
-if($format == 'introvid'){
-	$video = get_post_meta($cpost->ID, 'post_video', true);
-	if(empty($video))
-		$format = 'standard';
-}
 
 get_header(); ?>
-<section class="main-content single-post-section format-<?php echo $format;?>"><div class="container-narrow">
-	
-	<header class="entry-header-full">
-		<?php echo tst_breadcrumbs($cpost);?>
-		<h1 class="entry-title"><?php echo get_the_title($cpost);?></h1>
-		<div class="entry-meta"><?php echo tst_posted_on_single($cpost);?></div>
-		<div class="single-news-share"><?php tst_show_yandex_share();?></div>
-		<?php if(!empty($cpost->post_excerpt)) { ?>
-		<div class="lead"><?php echo apply_filters('tst_the_content', $cpost->post_excerpt); ?></div>
-		<?php } ?>
-	</header>
-	
-	<?php
-		if($format == 'standard' || $format == 'introimg') {
-			$thumb = tst_post_thumbnail_on_single($cpost->ID, $format);
-			
-			if(!empty($thumb)) 
-				echo "<div class='entry-preview-full {$format}'>{$thumb}</div>";
-			
-		}
-		elseif($format == 'introvid') {			
-			echo "<div class='entry-preview-full video player'>".apply_filters('the_content', $video)."</div>";		
-		}
-	?>
-	
-	<div class="entry-content"><?php echo apply_filters('the_content', $cpost->post_content); ?></div>
-		
-	<footer class="entry-footer">
-		<div class="single-news-share"><?php tst_show_yandex_share();?></div>
+
+<article class="single-card">
+	<div class="single-card__header">
+		<div class="single-card__title"><h1><?php echo get_the_title($cpost);?></h1>
+		<div class="single-card__options">
+			<div class="post-meta"><?php echo tst_single_breadcrubms();?></div>
+			<div class="sharing"><?php tst_social_share($cpost);?></div>
+		</div>
+	</div>
+
+	<div class="frame single-card__content">
+
+		<div class="bit md-8 single-body">
+			<?php if(has_post_thumbnail($cpost)) { ?>
+				<div class="single-body__preview"></div>
+			<?php } ?>
+			<div class="single-body__meta"><meta><?php echo tst_single_post_meta($cpost);?></div>
+			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
+			<div class="single-body__footer"><?php tst_single_post_nav();?></div>
+		</div>
+
+		<div class="bit md-4">
 		<?php
-			$s_link = tst_get_post_source_link($cpost->ID); 
-			if(!empty($s_link)) {
+			$related = tst_get_related_query($cpost, 'post_tag', 4);
+			if(!empty($related)) {
 		?>
-			<div class="post-source-link">Источник: <?php echo $s_link;?></div>
-		<?php } ?>
-			<?php tst_post_nav();?>
-	</footer>
-</div></section>
+			<div class="widget">
+				<div class="widget__title"><?php _e('More news', 'tst');?></div>
+				<div class="widget__content"><?php tst_related_list($related->posts); ?></div>
+			</div>
+		<?php
+			}
+		?>
+		</div>
+	</div>
+
+</article>
 
 <?php
-	if($cpost->post_type == 'post') {
-		$cat = get_the_terms($post->ID, 'category');
-		$pquery = new WP_Query(array(
-			'post_type'=> 'post',
-			'posts_per_page' => 3,
-			'post__not_in' => array($cpost->ID),
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'category',
-					'field' => 'id',
-					'terms' => (isset($cat[0])) ? $cat[0]->term_id : array()
-				)
-			)
-		));
-		
-		if(!$pquery->have_posts()) {
-			$pquery = new WP_Query(array(
-				'post_type'=> 'post',
-				'posts_per_page' => 5,
-				'post__not_in' => array($cpost->ID),			
-			));
-		}
-		
-		tst_more_section($pquery->posts, 'Новости по теме', 'news', 'addon'); 
-		
-	}
-	
-	
-
 get_footer();

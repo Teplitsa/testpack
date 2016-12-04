@@ -40,7 +40,7 @@ try {
 	update_option('permalink_structure', "/news/%year%/%monthnum%/%day%/%postname%/");
 	update_option('category_base', "");
 	update_option('tag_base', "");
-	update_option('posts_per_page', 15);
+	update_option('posts_per_page', 10);
 
 	echo "Updated. Time in sec: ".(microtime(true) - $time_start).chr(10).chr(10);
 

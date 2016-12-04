@@ -1,7 +1,8 @@
-/*---------------------------------------------------------
- Grid (_grid.scss)
--------------------------------------------------------- */
-*,
+/** == Grid (_grid.scss) == **/
+// Grid elements and modifications - for regular and flexbox cases
+
+
+*, //oh, yes, everything
 *:after,
 *:before {
 	margin: 0;
@@ -15,7 +16,7 @@
 	float: left;
 	padding: 0 $gut/2;
 	width: 100%;
-	margin-bottom: $gut;
+	margin-bottom: $gut/4;
 }
 
 .bit:last-child, .bit-no-margin {
@@ -25,7 +26,7 @@
 .frame {
 	@include clearfix;
 	margin: 0 -1*$gut/2;
-	
+
 	&.frame-wide {
 		margin: 0 $gut/2;
 		@include for(xxlarge-screens){
@@ -35,24 +36,26 @@
 }
 
 
-//mobile first - as for beginning we have only one column
-.mf-8 {
-	width: percentage(8/12);
-	margin-bottom: 0;
+//mobile first - we have only one column at start
+
+//smalest size
+@for $i from 1 through 12 {
+	.mf-#{$i} {
+		width: percentage($i/12);
+		margin-bottom: 0;
+	}
 }
 
-.mf-6 {
-	width: percentage(6/12);
-	margin-bottom: 0;
+@for $i from 0 through 11 {
+  .mf-offeset-#{$i} { margin-left: percentage($i/12) !important; }
 }
 
-.mf-4 {
-	width: percentage(4/12);
-	margin-bottom: 0;
+.mf-col-5 {
+	width: 20%;
 }
 
 
-// small screens 
+// small screens
 @include for(small-screens) {
 	@for $i from 1 through 12 {
 		.sm-#{$i} {
@@ -60,11 +63,11 @@
 			margin-bottom: 0;
 		}
 	}
-	
+
 	@for $i from 0 through 11 {
 	  .sm-offeset-#{$i} { margin-left: percentage($i/12) !important; }
 	}
-	
+
 	.sm-col-5 {
 		width: 20%;
 	}
@@ -79,11 +82,11 @@
 			margin-bottom: 0;
 		}
 	}
-	
+
 	@for $i from 0 through 11 {
 	  .md-offset-#{$i} { margin-left: percentage($i/12) !important; }
 	}
-	
+
 	.md-col-5 {
 		width: 20%;
 		margin-bottom: 0;
@@ -99,11 +102,11 @@
 			margin-bottom: 0;
 		}
 	}
-	
+
 	@for $i from 0 through 11 {
 		.lg-offset-#{$i} { margin-left: percentage($i/12) !important; }
 	}
-	
+
 	.lg-col-5 {
 		width: 20%;
 		margin-bottom: 0;
@@ -118,40 +121,148 @@
 			margin-bottom: 0;
 		}
 	}
-	
+
 	@for $i from 0 through 11 {
 		.exlg-offset-#{$i} { margin-left: percentage($i/12) !important; }
 	}
-	
+
 	.exlg-col-5 {
 		width: 20%;
 		margin-bottom: 0;
 	}
 }
 
+
 //hide
 .hide-upto-small {
-    @include upto(small-screens) { display: none;}
+	@include upto(small-screens) { display: none;}
 }
 .hide-upto-medium {
-    @include upto(medium-screens) { display: none;}
+	@include upto(medium-screens) { display: none;}
 }
 .hide-upto-large {
-    @include upto(large-screens) { display: none;}
+	@include upto(large-screens) { display: none;}
 }
 .hide-upto-exlarge {
-    @include upto(exlarge-screens) { display: none;}
+	@include upto(exlarge-screens) { display: none;}
 }
 
 .hide-on-small {
-    @include for(small-screens) { display: none;}
+	@include for(small-screens) { display: none;}
 }
 .hide-on-medium {
-    @include for(medium-screens) { display: none;}
+	@include for(medium-screens) { display: none;}
 }
 .hide-on-large {
-    @include for(large-screens) { display: none;}
+	@include for(large-screens) { display: none;}
 }
 .hide-on-exlarge {
-    @include for(exlarge-screens) { display: none;}
+	@include for(exlarge-screens) { display: none;}
+}
+
+//no-js hide
+.no-js .no-js-hide-upto-small {
+	@include upto(small-screens) { display: none;}
+}
+
+.no-js .no-js-hide-upto-medium {
+	@include upto(medium-screens) { display: none;}
+}
+
+.no-js .no-js-hide-upto-large {
+	@include upto(large-screens) { display: none;}
+}
+
+.no-js .no-js-hide-upto-exlarge {
+	@include upto(exlarge-screens) { display: none;}
+}
+
+
+/** Flexbox grid **/
+.flex-grid {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: stretch;
+	justify-content: space-between;
+	margin: 0 -1 * $flex-gut/2;
+
+	&.centered { justify-content: center; }
+	&.start { justify-content: flex-start; }
+}
+
+
+.flex-cell {
+	flex: 0 1 auto;
+	margin: 0 $flex-gut/2 $flex-gut;
+	@include calc(width, "100% - #{$flex-gut}");
+}
+
+@for $i from 1 through 12 {
+	.flex-mf-#{$i} {
+		$w: percentage($i/12);
+		@include calc(width, "#{$w} - #{$flex-gut}");
+	}
+}
+
+.flex-mf-col-5 {
+	@include calc(width, "20% - #{$flex-gut}");
+}
+
+
+// small screens
+@include for(small-screens) {
+	@for $i from 1 through 12 {
+		.flex-sm-#{$i} {
+			$w: percentage($i/12);
+			@include calc(width, "#{$w} - #{$flex-gut}");
+		}
+	}
+
+	.flex-sm-col-5 {
+		@include calc(width, "20% - #{$flex-gut}");
+	}
+}
+
+
+//larger screen
+@include for(medium-screens) {
+	@for $i from 1 through 12 {
+		.flex-md-#{$i} {
+			$w: percentage($i/12);
+			@include calc(width, "#{$w} - #{$flex-gut}");
+		}
+	}
+
+	.flex-md-col-5 {
+		@include calc(width, "20% - #{$flex-gut}");
+	}
+}
+
+
+//the largest screen
+@include for(large-screens) {
+	@for $i from 1 through 12 {
+		.flex-lg-#{$i} {
+			$w: percentage($i/12);
+			@include calc(width, "#{$w} - #{$flex-gut}");
+		}
+	}
+
+	.flex-lg-col-5 {
+		@include calc(width, "20% - #{$flex-gut}");
+	}
+}
+
+//the largest screen
+@include for(exlarge-screens) {
+	@for $i from 1 through 12 {
+		.flex-exlg-#{$i} {
+			$w: percentage($i/12);
+			@include calc(width, "#{$w} - #{$flex-gut}");
+		}
+	}
+
+	.flex-exlg-col-5 {
+		@include calc(width, "20% - #{$flex-gut}");
+	}
 }

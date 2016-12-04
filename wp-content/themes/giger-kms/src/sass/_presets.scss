@@ -3,12 +3,12 @@
 -------------------------------------------------------- */
 
 //Fonts
-$body:	     'Noto Sans', Helvetica, sans-serif; 
+$body:	     'Noto Sans', Helvetica, sans-serif;
 $heading:    'Open Sans Condensed', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $title:      'Open Sans Condensed', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $nav:        'Noto Sans', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
-$sans:       'Noto Sans', Helvetica, sans-serif; 
+$sans:       'Noto Sans', Helvetica, sans-serif;
 $mono: 	     "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 
@@ -24,7 +24,7 @@ $full_cont:    1400px;
 $page_cont:    1024px;
 $col:		   54px;
 $gut:	       30px;
-
+$flex-gut: 	   15px;
 
 
 //Baseline
@@ -39,7 +39,7 @@ $color-blond:  #fff4e3;
 $color-link-one:   #DC471F; //terracota
 $color-link-two:   #FB7E11; //orange
 $color-link-three: #dc1f2f; //red
-$color-link-four:  #dc771f; //dark orange 
+$color-link-four:  #dc771f; //dark orange
 
 
 $color-text-black:			#000000;
@@ -76,12 +76,12 @@ $rule: 	 1px solid $color-border-normal;
 $fixed_side: 222px;
 
 
-//humburgers settings 
+//humburgers settings
 $hamburger-padding-x                       : 10px;
 $hamburger-padding-y                       : 10px;
 $hamburger-layer-width                     : 28px;
 $hamburger-layer-height                    : 4px;
-$hamburger-layer-spacing                   : 4px; 
+$hamburger-layer-spacing                   : 4px;
 $hamburger-layer-color                     : #000;
 $hamburger-layer-border-radius             : 4px;
 $hamburger-hover-opacity                   : 0.7;
@@ -94,33 +94,33 @@ $hamburger-hover-opacity                   : 0.7;
 	font-family: $body;
 	color: $color-text;
 	font-weight: normal;
-	
-	font-size: 14px;	
+
+	font-size: 14px;
 	line-height: 22px;
-		
-		
-	@if $mod == summary {		
-		font-size: 12px;	
+
+
+	@if $mod == summary {
+		font-size: 12px;
 		line-height: 18px;
-			
+
 	}
-	@else if $mod == semi {		
-		font-size: 16px;	
+	@else if $mod == semi {
+		font-size: 16px;
 		line-height: 24px;
-		
+
 	}
 	@else if $mod == larger {
-		font-size: 18px;	
+		font-size: 18px;
 		line-height: 28px;
-		
+
 	}
-	@else if $mod == small {		
-		font-size: 11px;	
-		line-height: 16px;		
+	@else if $mod == small {
+		font-size: 11px;
+		line-height: 16px;
 	}
     @else if $mod == intro {
-        
-        
+
+
     }
 }
 
@@ -128,30 +128,30 @@ $hamburger-hover-opacity                   : 0.7;
 	font-family: $nav;
 	text-transform: uppercase;
 	font-weight: normal;
-	
-	font-size: 14px;	
-	line-height: 20px;	
-	
+
+	font-size: 14px;
+	line-height: 20px;
+
 	@if $mod == multiline {
 		line-height: 20px;
 	}
-	@else if $mod == meta {		
-		
+	@else if $mod == meta {
+
 	}
 	@else if $mod == meta_small {
 		text-transform: none;
-		font-size: 12px;	
+		font-size: 12px;
 		line-height: 16px;
 	}
 	@else if $mod == menu {
-		font-size: 13px;	
+		font-size: 13px;
 		//font-weight: bold;
 	}
 	@else if $mod == menu_small {
-		font-size: 12px;	
+		font-size: 12px;
 		line-height: 16px;
 	}
-	@else if $mod == lowercase {		
+	@else if $mod == lowercase {
 		text-transform: none;
 	}
 }
@@ -161,17 +161,17 @@ $hamburger-hover-opacity                   : 0.7;
 	color: $color-text-black;
 	font-weight: normal;
 	text-transform: none;
-	
+
 	font-size: 24px;
 	line-height: 28px;
-			
+
 	@if $mod == small_title {
 		font-size: 16px;
-		line-height: 20px;		
+		line-height: 20px;
 	}
 	@else if $mod == featured {
 		font-size: 26px;
-		line-height: 1.1;	
+		line-height: 1.1;
 	}
 	@else if $mod == popup {
 		font-size: 21px;
@@ -179,18 +179,18 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 }
 
-@mixin sub-title($mod: default) {		
+@mixin sub-title($mod: default) {
 	font-family: $body;
 	font-weight: normal;
 	text-transform: none;
 	letter-spacing: normal;
 	color: $color-text-light;
-		
-	font-size: 12px;	
+
+	font-size: 12px;
 	line-height: 1.35;
-	
-	@if $mod == small {				
-		font-size: 11px;		
+
+	@if $mod == small {
+		font-size: 11px;
 	}
 	@else if $mod == extend {
 		font-size: 14px;
@@ -200,16 +200,16 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 }
 
-@mixin form-text($mod: default) {	
+@mixin form-text($mod: default) {
 	font-family: $sans;
 	color: $color-text;
 	font-weight: normal;
 	text-transform: none;
 	letter-spacing: normal;
-	
-	font-size: 14px;	
+
+	font-size: 14px;
 	line-height: 1.5;
-	
+
 	@if $mod == small {
 		font-size: 12px;
 	}
@@ -224,23 +224,23 @@ $hamburger-hover-opacity                   : 0.7;
 	color: $color-text-black;
 	font-weight: normal;
 	text-transform: uppercase;
-	
-	font-size: 18px;	
+
+	font-size: 18px;
 	line-height: 24px;
-	
-	
+
+
 	@if $mod == section {
-		font-size: 32px;		
+		font-size: 32px;
 		line-height: 41px;
 	}
 	@if $mod == single {
 		font-size: 32px;
-		@include for(medium-screens) { font-size: 40px; }		
+		@include for(medium-screens) { font-size: 40px; }
 		line-height: 1.15;
 		text-transform: none;
 	}
 	@else if $mod == widget {
-		font-size: 18px;	
+		font-size: 18px;
 		line-height: 24px;
 	}
 	@else if $mod == head_title {
@@ -248,7 +248,7 @@ $hamburger-hover-opacity                   : 0.7;
 		line-height: 44px;
 	}
 	@else if $mod == quote_title {
-		font-size: 36px;		
+		font-size: 36px;
 		line-height: 1.2;
 	}
 	@else if $mod == intro {
@@ -261,40 +261,40 @@ $hamburger-hover-opacity                   : 0.7;
 
 @mixin button($mod: default){
 	display: inline-block;
-	font-family: $nav;	
+	font-family: $nav;
 	text-transform: uppercase;
 	color: $color-white;
 	border-radius: 2px;
-	
-	background: $color-link-one;	
+
+	background: $color-link-one;
 	border: 1px solid $color-link-one;
 	border-bottom: 2px solid darken($color-link-one, 10%);
-	
+
 	@include transition(all 0.3s);
-	
+
 	padding: 7px 24px 6px;
 	font-size: 14px;
 	line-height: 20px;
 	font-weight: bold;
-	
+
 	&:visited {
 		color: $color-white;
 	}
-	
+
 	&:hover, &:focus, &:active {
 		//background: $color-link-three;
 		background: $color-link-three;
 		box-shadow: 1px 1px 2px rgba(0,0,0, 0.4);
 		color: $color-white;
 	}
-	
+
 	@if $mod == white {
 		background: $color-white;
 		border: 1px solid $color-white;
 		color: $color-link-three;
 		&:visited { color: $color-link-three; }
-		
-		&:hover, &:focus, &:active {			
+
+		&:hover, &:focus, &:active {
 			background: $color-link-two;
 			color: $color-white;
 			border-color: $color-link-two;
@@ -310,17 +310,17 @@ $hamburger-hover-opacity                   : 0.7;
 	@else if $mod == action-on-home-yellow {
         text-align:center;
         padding: 14px 0px 13px;
-		background: $color-link-two;	
+		background: $color-link-two;
 		border: 1px solid $color-link-two;
 		border-bottom: 2px solid darken($color-link-two, 10%);
-		
+
 		&:hover, &:focus, &:active {
-			background: $color-link-four;			
+			background: $color-link-four;
 			color: $color-white;
 		}
     }
 	@else if $mod == featured {
-		
+
 	}
 }
 
@@ -329,13 +329,13 @@ $hamburger-hover-opacity                   : 0.7;
 @mixin ghost-button($size: 16px, $color: #fff, $hover_text: #000) {
 	font-family: $nav;
 	font-size: $size;
-	text-transform: uppercase;	
+	text-transform: uppercase;
 	display: inline-block;
 	padding: 0.5em 1.3em;
 	color: $color;
-	border: 2px solid $color;	
+	border: 2px solid $color;
 	@include transition(all 0.3s);
-	
+
 	&:visited {
 		color: $color;
 	}
@@ -349,9 +349,9 @@ $hamburger-hover-opacity                   : 0.7;
 
 @mixin shading-summary($max-height: 48px){
 	max-height: $max-height;
-	overflow: hidden;		
+	overflow: hidden;
 	position: relative;
-	
+
 	&:after {
 		content: '';
 		display: block;
@@ -362,37 +362,37 @@ $hamburger-hover-opacity                   : 0.7;
 		bottom: 0;
 		right: 0;
 		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+82 */
-		background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%); 
-		background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 100%); 
-		background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 100%); 
+		background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%);
+		background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 100%);
+		background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
 	}
-	
+
 }
 
 // Media
-@mixin caption-figure {	
+@mixin caption-figure {
 	width: 100% !important;
 	max-width: 100%;
 	text-align: center;
-	
+
 	a {
 		display: block;
-		width: 100%;	
+		width: 100%;
 	}
-	
+
 	img {
-		max-width: 100%; 
+		max-width: 100%;
 		height: auto;
 	}
-			
+
 	.wp-caption-text {
 		@include sub-title();
 		line-height: 16px;
 		text-align: center;
 		margin-top: 8px;
-		
-		p { margin: 0; }		
+
+		p { margin: 0; }
 	}
 }
 
@@ -403,7 +403,7 @@ $hamburger-hover-opacity                   : 0.7;
 	margin: 0 -4.35%;
 	position: relative;
 	width: auto;
-	
+
 	& > .fs-content-wrap,
 	& > div[id *="pl-"],
 	& > div[class *="so-widget"] {
@@ -411,26 +411,26 @@ $hamburger-hover-opacity                   : 0.7;
 		width: 92%;
 		margin: 0 auto;
 	}
-	
+
 	$ex_cont_width_mq: $page_cont / 0.92 + 1px;
-	@media screen and (min-width: $ex_cont_width_mq ) { 
-		margin: 0 -1 * ($full_cont - $page_cont) / 2;	
+	@media screen and (min-width: $ex_cont_width_mq ) {
+		margin: 0 -1 * ($full_cont - $page_cont) / 2;
 	}
-	
+
 }
 
 @mixin vertical-image-header-fixed(){
 	//60vh;
 	height: 360px;
-	
+
 	@include for(small-screens) {
 		height: 400px;
 	}
-	
+
 	@include for(medium-screens) {
 		height: 460px;
 	}
-	
+
 	@include for(large-screens) {
 		height: 480px;
 	}
@@ -448,7 +448,7 @@ $hamburger-hover-opacity                   : 0.7;
 			color: $color-link-three;
 			border-color: $color-link-three;
 		}
-	}	
+	}
 }
 
 .tpl-pictured-bg {
@@ -468,7 +468,7 @@ $hamburger-hover-opacity                   : 0.7;
 	position: relative;
 	z-index: 1;
 	background: $color-secondary;
-	
+
 	.tpl-pictured-bg {
 		position: absolute;
 		top: 0;
@@ -476,11 +476,11 @@ $hamburger-hover-opacity                   : 0.7;
 		z-index: 10;
 		background-color: transparent;
 	}
-	
+
 	&:hover {
 		filter: contrast(120%);
 	}
-	
+
 	.vvc-logo {
 		position: absolute;
 		width: 100%;
@@ -489,10 +489,10 @@ $hamburger-hover-opacity                   : 0.7;
 		top: 50%;
 		margin-top: -75px;
 		z-index: 5;
-		
+
 		text-align: center;
 	}
-	
+
 	.pic-butterfly {
 		width: 150px;
 		height: 150px;
@@ -500,18 +500,18 @@ $hamburger-hover-opacity                   : 0.7;
 }
 
 @mixin post-meta() {
-	@include sub-title();	
+	@include sub-title();
 	color: $color-text-light;
 	margin-bottom: 8px;
-	
+
 	a {
 		color: inherit;
 		text-decoration: underline;
 		@include transition(all 0.3s);
-		
+
 		&:hover { color: $color-text; }
 	}
-	
+
 	.sep {
 		padding-left: 1px;
 	}

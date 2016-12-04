@@ -102,7 +102,7 @@ function tst_custom_content(){
         'hierarchical'        => true,
         'menu_position'       => 5,
 		'menu_icon'           => 'dashicons-media-text',
-        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail', 'page-attributes'),
         'taxonomies'          => array('section'),
     ));
 
@@ -230,8 +230,23 @@ function tst_custom_metaboxes() {
 	));
 
 
+	/** Item **/
+	$item_cmb = new_cmb2_box( array(
+        'id'            => 'item_settings_metabox',
+        'title'         => 'Настройки статьи',
+        'object_types'  => array( 'item'), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+		//'show_on_cb'    => 'tst_show_on_general_pages',
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
 
-
-
-
+	$item_cmb->add_field( array(
+		'name' => 'Генерировать сайдбар',
+		'id'   => 'has_sidebar',
+		'type' => 'checkbox',
+	));
+	
 }
