@@ -68,7 +68,7 @@ class FRL_CssJs {
 		// fonts
 		wp_enqueue_style(
 			'tst-fonts',
-			'//fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i|Open+Sans+Condensed:700&subset=cyrillic',
+			'//fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700&amp;subset=cyrillic',
 			$style_dependencies,
 			null
 		);
