@@ -36,7 +36,7 @@ $footer_text = get_option('footer_text');
 		<div class="flex-cell flex-sm-5 flex-md-4">
 			<div class="tst-banner">
 				<p class="tst-banner__text">Сайт сделан <br>при поддержке</p>
-				<a title="<?php echo $tst;?>" href="http://te-st.ru/" class="tst-banner__link" target="_blank">
+				<a href="http://te-st.ru/" class="tst-banner__link" target="_blank">
 					<svg class="svg-icon tst-banner__icon"><use xlink:href="#icon-te-st" /></svg>
 				</a>
 			</div>
