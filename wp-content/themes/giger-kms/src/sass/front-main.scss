@@ -1,4 +1,4 @@
-/* modules */
+/* Final */
 @import 'bourbon';
 
 @import 'reset';
@@ -10,11 +10,16 @@
 @import 'hamburgers';
 
 @import 'front';
+@import 'blocks';
 @import 'modules';
+
 //@import 'forms';
 @import 'social';
 @import 'header';
+@import 'footer';
+
 @import 'posts';
 @import 'pages';
-@import 'widgets';
+
+//@import 'widgets';
 //@import 'donations';

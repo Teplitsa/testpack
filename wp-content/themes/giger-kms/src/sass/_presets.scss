@@ -3,13 +3,20 @@
 -------------------------------------------------------- */
 
 //Fonts
-$body:	     'Roboto', Helvetica, sans-serif;
-$heading:    'Roboto', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$title:      'Roboto', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$nav:        'Roboto', "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$body:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$body_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
-$sans:       'Roboto', Helvetica, sans-serif;
-$mono: 	     "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
+$heading:		"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$heading_fb:	"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+
+$title:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$title_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+
+$nav:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$nav_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+
+$sans:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$mono:			"Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 
 //Break points
@@ -32,36 +39,33 @@ $base: 24px;
 
 
 //Colors
-$color-text:   rgba(0,0,0, 0.99);
+$color-text:   #2a2a2a;
 $color-white:  #ffffff;
-$color-blond:  #fff4e3;
 
-$color-link-one:   #DC471F; //terracota
-$color-link-two:   #FB7E11; //orange
-$color-link-three: #dc1f2f; //red
-$color-link-four:  #dc771f; //dark orange
+$red: 			#E23100;
+$green: 		#008E2C;
+$orange: 		#FF542C;
+$grey_green:	#04AE9C;
 
+$color-link-one:   $red;
+$color-link-two:   $green;
+$color-link-three: $orange;
+$color-link-four:  $grey_green;
 
-$color-text-black:			#000000;
-$color-text-semi:			rgba(0,0,0, 0.6);
-$color-text-light:			#9b9b9b;
-$color-secondary:			#FFF3E1;
-$color-secondary-dark:		#e5e5e5;
-$color-secondary-alt:		#FEF8F0;
-$color-secondary-black:		rgba(41,12,4, 0.54);
+$color-text-black:		#000000;
+$color-text-semi:		#666666;
+$color-text-light:		#9b9b9b;
+$color-secondary:		#f5f5f5;
+$color-secondary-alt:	#DAEDEA;
+$color-secondary-dark:	#656D78;
 
 
 $color-border-normal: #dfdfdf;
 $color-border-light:  #eeeeee;
 $color-border-link:   #8c8c91;
 
-$color-form-invalid: #FF5454;
-
-$color-form-ok : #0A7F6B;
-
-//Colors for widget elements
-$colored-block-bg: 		$color-secondary;
-$colored-block-text:	$color-text;
+$color-form-invalid: $red;
+$color-form-ok : $green;
 
 
 //Layout Settings
@@ -69,11 +73,6 @@ $adminbar_large_screen: 32px;
 $adminbar_small_screen: 46px;
 
 
-
-//Element
-$indent: 1.55em;
-$rule: 	 1px solid $color-border-normal;
-$fixed_side: 222px;
 
 
 //humburgers settings
@@ -91,12 +90,17 @@ $hamburger-hover-opacity                   : 0.7;
 
 // Typo
 @mixin body-text($mod: default) {
-	font-family: $body;
-	color: $color-text;
-	font-weight: normal;
+	font-family: $body_fb;
+	font-weight: 400;
 
-	font-size: 14px;
-	line-height: 22px;
+	.roboto & {
+		font-family: $body;
+		font-weight: 400;
+	}
+
+	font-size: 15px;
+	line-height: 20px;
+	color: $color-text;
 
 
 	@if $mod == summary {
@@ -109,28 +113,20 @@ $hamburger-hover-opacity                   : 0.7;
 		line-height: 24px;
 
 	}
-	@else if $mod == larger {
-		font-size: 18px;
-		line-height: 28px;
-
-	}
-	@else if $mod == small {
-		font-size: 11px;
-		line-height: 16px;
-	}
-    @else if $mod == intro {
-
-
-    }
+	
 }
 
 @mixin nav-text($mod: default) {
-	font-family: $nav;
-	text-transform: uppercase;
-	font-weight: normal;
+	font-family: $nav_fb;
+	font-weight: 300;
+
+	.roboto & {
+		font-family: $nav;
+		font-weight: 300;
+	}
 
 	font-size: 14px;
-	line-height: 20px;
+	line-height: 18px;
 
 	@if $mod == multiline {
 		line-height: 20px;
@@ -138,32 +134,21 @@ $hamburger-hover-opacity                   : 0.7;
 	@else if $mod == meta {
 
 	}
-	@else if $mod == meta_small {
-		text-transform: none;
-		font-size: 12px;
-		line-height: 16px;
-	}
-	@else if $mod == menu {
-		font-size: 13px;
-		//font-weight: bold;
-	}
-	@else if $mod == menu_small {
-		font-size: 12px;
-		line-height: 16px;
-	}
-	@else if $mod == lowercase {
-		text-transform: none;
-	}
+	
 }
 
-@mixin post-title($mod: default) {
-	font-family: $title;
-	color: $color-text-black;
-	font-weight: normal;
-	text-transform: none;
 
-	font-size: 24px;
-	line-height: 28px;
+@mixin post-title($mod: default) {
+	font-family: $title_fb;
+	font-weight: 500;
+
+	.roboto & {
+		font-family: $title;
+		font-weight: 500;
+	}
+
+	font-size: 18px;
+	line-height: 26px;
 
 	@if $mod == small_title {
 		font-size: 16px;
@@ -173,17 +158,18 @@ $hamburger-hover-opacity                   : 0.7;
 		font-size: 26px;
 		line-height: 1.1;
 	}
-	@else if $mod == popup {
-		font-size: 21px;
-		line-height: 28px;
-	}
+
 }
 
 @mixin sub-title($mod: default) {
-	font-family: $body;
-	font-weight: normal;
-	text-transform: none;
-	letter-spacing: normal;
+	font-family: $body_fb;
+	font-weight: 400;
+
+	.roboto & {
+		font-family: $body;
+		font-weight: 400;
+	}
+	
 	color: $color-text-light;
 
 	font-size: 12px;
@@ -195,20 +181,17 @@ $hamburger-hover-opacity                   : 0.7;
 	@else if $mod == extend {
 		font-size: 14px;
 	}
-	@else if $mod == lower {
-		text-transform: none;
-	}
 }
 
 @mixin form-text($mod: default) {
-	font-family: $sans;
+	font-family: $mono;
 	color: $color-text;
 	font-weight: normal;
 	text-transform: none;
 	letter-spacing: normal;
 
 	font-size: 14px;
-	line-height: 1.5;
+	line-height: 18px;
 
 	@if $mod == small {
 		font-size: 12px;
@@ -220,13 +203,19 @@ $hamburger-hover-opacity                   : 0.7;
 
 
 @mixin header-title($mod: default){
-	font-family: $heading;
+	font-family: $body_fb;
+	font-weight: 500;
+
+	.roboto & {
+		font-family: $body;
+		font-weight: 500;
+	}
+	
 	color: $color-text-black;
-	font-weight: normal;
-	text-transform: uppercase;
 
 	font-size: 18px;
 	line-height: 24px;
+	text-transform: uppercase;
 
 
 	@if $mod == section {
@@ -247,28 +236,25 @@ $hamburger-hover-opacity                   : 0.7;
 		font-size: 40px;
 		line-height: 44px;
 	}
-	@else if $mod == quote_title {
-		font-size: 36px;
-		line-height: 1.2;
-	}
-	@else if $mod == intro {
-        font-size: 24px; line-height: 1.3;
-        @include for(small-screens) { font-size: 26px; }
-        @include for(medium-screens) { font-size: 32px; line-height: 1.3; }
-        @include for(large-screens) { font-size: 32px; line-height: 1.3; }
-    }
 }
 
+
 @mixin button($mod: default){
+	font-family: $body_fb;
+	font-weight: normal;
+
+	.roboto & {
+		font-family: $body;
+		font-weight: normal;
+	}
+	
 	display: inline-block;
-	font-family: $nav;
 	text-transform: uppercase;
 	color: $color-white;
 	border-radius: 2px;
 
 	background: $color-link-one;
-	border: 1px solid $color-link-one;
-	border-bottom: 2px solid darken($color-link-one, 10%);
+	border: none;
 
 	@include transition(all 0.3s);
 
