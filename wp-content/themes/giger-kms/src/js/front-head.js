@@ -1,0 +1,1 @@
+/** some script may go into head */
