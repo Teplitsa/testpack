@@ -65,6 +65,7 @@ try {
 		$page_data['post_content'] = $content;
 		$page_data['post_type'] = 'page';
 		$page_data['post_status'] = 'publish';
+		$page_data['post_name'] = 'about-us';
 
 		$uid = wp_insert_post($page_data);
 
