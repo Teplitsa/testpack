@@ -119,3 +119,12 @@ function tst_tag_breadcrubms() {
 
 	return "<div class='crumbs'>".implode($sep, $list)."</div>";
 }
+
+/* heading css */
+function tst_get_heading_style() {
+	
+	$i = rand(1, 5);
+	$url = get_template_directory_uri()."/assets/img/bg-ex-".$i.".png";
+	
+	return "style='background-image: url(".$url.")'";
+}

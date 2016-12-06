@@ -41,72 +41,23 @@ $social_color: (
 }
 
 
-/** == Menu == **/
-.social-menu {	
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	@include clearfix;
-	
-	li {
-		float: left;
-		margin-right: 8px;
-		
-		a {
-			@include social-button-link(46px, 20px);			
-			span { display: none; }
-		}
-		
-		.svg-icon {
-			display: inline-block;			
-			fill: #ffffff;					
-			vertical-align: top;
-			width: 20px;
-			height: 20px;
-		}
-	}
-	
-	@each $item in vk, facebook, youtube, twitter, instagram {
-		
-		.#{$item} a {
-			background: social_color($item);
-			&:hover, &:focus, &:active {
-				background: darken(social_color($item), 5%);
-			}
-		}
-	}	
-}
-
-.bottom-bar {
-	
-	@each $item in vk, facebook, youtube, twitter, instagram {		
-		.social-menu .#{$item} a {
-			background: $color-link-two;
-			&:hover, &:focus, &:active {
-				//background: social_color($item);
-				background: $color-white;
-				
-				.svg-icon { fill: social_color($item);}
-			}
-		}
-	}	
-}
 
 
 /** == Sharing == **/
-.social-likes {
+.sharing-list {
 	@include clearfix;	
 }
 
-.social-likes__widget  {			
+.sharing-list  {			
 	cursor: pointer;
 		
 	a {
 		@include social-button-link(44px, 22px);
-		padding: 9px 0;
 	}
 	
-	.sh-text { display: none; }
+	li {
+		float: left;
+	}
 	
 	.svg-icon {
 		display: inline-block;
@@ -134,159 +85,3 @@ $social_color: (
 }
 
 
-
-
-/* Yandex share buttons */
-.frupalo-share-buttons {
-    width:350px;
-    height:47px;
-    position:relative;
-    
-    @include upto(small-screens) {
-        width:300px;
-    }
-
-    .ya-share2 {
-        position:absolute;
-        background-color:$color-white;
-        padding-top:9px;
-        height:47px;
-        width:100%;
-
-        .ya-share2__list {
-            margin-left:0px;
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-        }
-        
-        .ya-share2__item:before {
-            content:"";
-        }
-        
-        .ya-share2__container_size_m {
-            .ya-share2__item {
-                padding-left:0px;
-                width:88px;
-                overflow:hidden;
-                
-                @include upto(small-screens) {
-                    width:70px;
-                }
-                
-                &.ya-share2__item_service_vkontakte, &.ya-share2__item_service_vkontakte .ya-share2__icon, &.ya-share2__item_service_vkontakte .ya-share2__counter {
-                    background-color:social_color(vk);
-                    @include upto(medium-screens) {
-                        display:none;
-                    }
-                }
-                
-                &.ya-share2__item_service_facebook, &.ya-share2__item_service_facebook .ya-share2__icon, &.ya-share2__item_service_facebook .ya-share2__counter {
-                    background-color:social_color(facebook);
-                    @include upto(medium-screens) {
-                        display:none;
-                    }
-                }
-
-                &.ya-share2__item_service_twitter, &.ya-share2__item_service_twitter .ya-share2__icon, &.ya-share2__item_service_twitter .ya-share2__counter {
-                    background-color:social_color(twitter);
-                    width:46px;
-                }
-
-                &.ya-share2__item_service_odnoklassniki, &.ya-share2__item_service_odnoklassniki .ya-share2__icon, &.ya-share2__item_service_odnoklassniki .ya-share2__counter {
-                    background-color:social_color(ok);
-                    @include upto(medium-screens) {
-                        display:none;
-                    }
-                }
-                
-                &.ya-share2__item_service_viber, &.ya-share2__item_service_viber .ya-share2__icon, &.ya-share2__item_service_viber .ya-share2__counter {
-                    background-color:social_color(viber);
-                    @include for (medium-screens) {
-                        display:none;
-                    }
-                }
-                
-                &.ya-share2__item_service_whatsapp, &.ya-share2__item_service_whatsapp .ya-share2__icon, &.ya-share2__item_service_whatsapp .ya-share2__counter {
-                    background-color:social_color(whatsapp);
-                    @include for (medium-screens) {
-                        display:none;
-                    }
-                }
-                
-                &.ya-share2__item_service_telegram, &.ya-share2__item_service_telegram .ya-share2__icon, &.ya-share2__item_service_telegram .ya-share2__counter {
-                    background-color:social_color(telegram);
-                    @include for (medium-screens) {
-                        display:none;
-                    }
-                }
-                
-                a.ya-share2__link {
-                    border-bottom:none;
-                    width:100%;
-                    height:29px;
-                }
-                
-                .ya-share2__icon {
-                    width:29px;
-                    height:29px;
-                    background-repeat:no-repeat;
-                }
-                
-                .ya-share2__counter {
-                    padding:2px 8px 1px 8px;
-                    width:60px;
-                    height:29px;
-                    cursor:pointer;
-                    display:inline-block;
-                    margin:0px;
-                    
-                    &::before {
-                        display:none;
-                    }
-                }
-            }
-        }
-    }
-}
-
-.slug-glavnaya .panel-grid-cell .widget_siteorigin-panels-builder.panel-first-child  {
-	margin-bottom: 0 !important;
-}
-
-.home-sharing {
-	.frupalo-share-buttons {
-		position: realtive;
-		z-index: 10;
-		border-left: 10px solid $color-white;
-		border-right: 7px solid $color-white;
-		margin: -22px auto 0;
-	}
-}
-
-.home-sharing-bottom {
-	.frupalo-share-buttons { margin: 0 auto; }
-}
-
-.no-twitter  {
-	.frupalo-share-buttons {
-		margin-left: auto;
-        margin-right: auto;
-		width: 250px;
-		
-		@include for(small-screens) {
-			width: 300px;
-			margin-left: 130px;
-			margin-right: 0;
-		}
-		
-		@include for(medium-screens) {
-			width: 100%;
-			max-width: 300px;
-			margin-left: 0;
-			margin-right: 0;
-		}
-	}
-	
-	.ya-share2__item_service_twitter { display: none !important; }
-}

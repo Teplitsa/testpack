@@ -13,11 +13,11 @@ $section = get_queried_object();
 
 get_header();
 ?>
-<section class="heading">
-	<div class="heading-block">
-		<div class="heading-block__title"><h1><?php echo apply_filters('tst_the_title', $section->name);?></h1></div>
+<section class="heading" <?php echo tst_get_heading_style();?>>
+	<div class="heading__block">
+		<div class="heading__title"><h1><?php echo apply_filters('tst_the_title', $section->name);?></h1></div>
 		<?php if(!empty($section->description)) { ?>
-			<div class="heading-block__desc"><?php echo apply_filters('tst_the_content', $section->description);?></div>
+			<div class="heading__desc"><?php echo apply_filters('tst_the_content', $section->description);?></div>
 		<?php } ?>
 	</div>
 </section>

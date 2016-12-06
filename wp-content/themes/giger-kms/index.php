@@ -13,14 +13,13 @@ if(is_tag()){
 
 get_header();
 ?>
-<section class="heading">
-	<div class="heading-block">
-		<div class="heading-block__title"><h1><?php echo apply_filters('tst_the_title', $title);?></h1></div>
-
-		<?php if(is_tag()) { ?>
-			<div class="heading-block__options"><?php echo tst_tag_breadcrubms();?></div>
-		<?php } ?>
+<section class="heading" <?php echo tst_get_heading_style();?>>
+	<div class="heading__block">
+		<div class="heading__title"><h1><?php echo apply_filters('tst_the_title', $title);?></h1></div>
 	</div>
+	<?php if(is_tag()) { ?>
+		<div class="heading__options"><?php echo tst_tag_breadcrubms();?></div>
+	<?php } ?>
 </section>
 
 <section class="main">

@@ -6,16 +6,15 @@ $item = new TST_Item($cpost);
 
 get_header();
 ?>
-<section class="heading">
-	<div class="heading-block">
-		<div class="heading-block__title"><h1><?php echo get_the_title($item->post_object);?></h1></div>
+<section class="heading" <?php echo tst_get_heading_style();?>>
+	<div class="heading__block">
+		<div class="heading__title"><h1><?php echo get_the_title($item->post_object);?></h1></div>
 
-		<div class="heading-block__options">
+	</div>
+	<div class="heading__options">
 			<?php echo tst_item_breadcrubms();?>
 			<div class="sharing"><?php tst_social_share($item->post_object);?></div>
 		</div>
-
-	</div>
 </section>
 
 <section class="main">
