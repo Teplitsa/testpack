@@ -98,7 +98,6 @@ $hamburger-hover-opacity                   : 0.7;
 
 	.roboto & {
 		font-family: $body;
-		font-weight: 400;
 	}
 
 	font-size: 15px;
@@ -116,7 +115,16 @@ $hamburger-hover-opacity                   : 0.7;
 		line-height: 20px;
 		font-weight: 300;
 	}
-	
+	@else if $mod == large {
+		font-size: 16px;
+		line-height: 21px;
+		
+		
+		@include for(large-screens) {
+			font-weight: 300;
+			font-size: 18px;
+		}
+	}
 }
 
 @mixin nav-text($mod: default) {
@@ -125,7 +133,6 @@ $hamburger-hover-opacity                   : 0.7;
 
 	.roboto & {
 		font-family: $nav;
-		font-weight: 300;
 	}
 
 	font-size: 14px;
@@ -135,10 +142,19 @@ $hamburger-hover-opacity                   : 0.7;
 	@if $mod == inversion {
 		font-weight: 500;
 	}
-	@else if $mod == meta {
-
+	@else if $mod == menu_item {
+		font-size: 13px;
+		line-height: 20px;
+		
+		@include for(large-screens) {
+			font-size: 16px;
+			line-height: 20px;
+		}
 	}
-	
+	@else if $mod == larger {
+		font-size: 16px;
+		line-height: 20px;
+	}
 }
 
 
@@ -148,7 +164,6 @@ $hamburger-hover-opacity                   : 0.7;
 
 	.roboto & {
 		font-family: $title;
-		font-weight: 500;
 	}
 
 	font-size: 18px;
@@ -171,7 +186,6 @@ $hamburger-hover-opacity                   : 0.7;
 
 	.roboto & {
 		font-family: $body;
-		font-weight: 400;
 	}
 	
 	color: $color-text-light;
@@ -212,7 +226,6 @@ $hamburger-hover-opacity                   : 0.7;
 
 	.roboto & {
 		font-family: $body;
-		font-weight: 500;
 	}
 	
 	color: $color-text-black;

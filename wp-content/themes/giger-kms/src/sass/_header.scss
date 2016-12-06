@@ -2,30 +2,42 @@
 
 #drawer {
 	background: $color-link-four;
-	padding: $inpage-margin-base;
-	width: 360px;
+	padding: $inpage-margin-base 24px;
 	z-index: 1000;
 	position: fixed;
-	right: -360px;
-	@include transition(transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275));
-
 	top: 0;
 	height: 100%;
-	//@include calc(height, "100% - #{$heager_height_mobile}");
+	@include transition(transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275));
+	
+	width: 320px;
+	right: -320px;
+	
+	@include for(small-screens) {
+		width: 360px;
+		right: -360px;
+	}
+	
+	.admin-bar & {
+		
+	}
 	
 	.searchform {
 		background: $color-white;
+		height: 40px;
 	}
 	
 	.searchform__field  {
 		color: $color-text;
+		padding: 11px 8px;
 	}
 	
 	
 	.searchform__icon {
 		background: transparent;
+		height: 40px;
 		
 		.svg-icon {
+			top: 12px;
 			fill: $color-link-four;
 		}
 		
@@ -39,37 +51,34 @@
 }
 
 .drawer-nav {
-	width: 268px;
+	width: 212px;
+	@include for(small-screens) { width: 252px; }
 }
 
 .drawer-nav__menu {
-	padding: $inpage-margin-base 0;
+	padding: $gut/2 0;
 }
 
 .drawer-nav__list {
 	
 	li {
 		margin: 5px 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 	}
 	a {
-		display: inline-block;
-		@include nav-text();
-		padding: 0.2em 0.5em;
-		border-radius: 2px;
+		display: block;
+		@include nav-text(larger);
+		padding: 0.4em;
 		color: $color-white;
-		@include transition(all 0.3s);
+		@include transition(background 0.3s);
+		
 		&:hover {
-			background: darken($color-link-four, 7%);
+			background: $color-link-three;
 		}
 	}
 	
 	a[href *= "join-us"] {
-		border: 1px solid $color-white;
-		@include nav-text(inversion);
-		&:hover {
-			background: $color-white;
-			color: $color-link-one;
-		}
+		
 	}
 }
 
@@ -78,12 +87,13 @@
 }
 
 body.drawer-open {
-	#drawer{
-		@include transform(translateX(-300px));
-	}
-
-	#site_root {
-		@include transform(translateX(-300px));
+	
+	#drawer{ @include transform(translateX(-260px)); }
+	#site_root { @include transform(translateX(-260px)); }
+	
+	@include for(small-screens) {
+		#drawer{ @include transform(translateX(-300px)); }
+		#site_root { @include transform(translateX(-300px)); }
 	}
 }
 
@@ -94,6 +104,9 @@ body.drawer-open {
 	flex-flow: row nowrap;
 	justify-content: space-between;
 	align-items: center;
+	padding-top: 9px;
+	@include for(medium-screens) { padding-top: 18px; }
+	@include for(large-screens) { padding-top: 27px; }
 }
 
 .site-header-cell {
@@ -102,16 +115,14 @@ body.drawer-open {
 		flex: 0 1 auto;
 	}
 	
-	&.actions {
-		
-		
-		@include for(small-screens) {
-			
-		}
-		
-		@include for(mediums-screens) {
-			
-		}
+	@include for(medium-screens) {
+		&.branding { width: 35%; }
+		&.actions { width: 65%; }
+	}
+	
+	@include for(large-screens) {
+		&.branding { width: 40%; }
+		&.actions { width: 60%; }
 	}
 }
 
@@ -158,3 +169,69 @@ body.drawer-open {
 	}
 }
 
+.actions--desktop {
+	display: none;
+	@include for(medium-screens) {
+		display: block;
+	}
+}
+
+
+/* search & phone */
+.actions__info-row {
+	margin-bottom: 14px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	align-items: center;
+	
+}
+
+.actions__text--desktop {
+	@include body-text(large);
+	text-align: right;
+	padding-right: 18px;
+	color: $color-link-four;
+}
+
+.actions__search {
+	width: 275px;
+}
+
+
+/* menu */
+.actions__menu {
+	
+}
+
+.actions__list {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	background: $color-white;
+	box-shadow: 0 1px 3px rgba(200,200,200, 0.4);
+	
+	li {
+		flex: 1 1 auto;
+		text-align: center;
+		@include transition(all 0.3s);
+		&:hover {
+			background: $color-link-four;
+		}
+	}
+	
+	a {
+		display: inline-block;
+		@include nav-text(menu_item);
+		color: $color-text;
+		padding: 15px 0;
+		
+		@include for(large-screens) {
+			padding: 20px 0;
+		}
+		
+	}
+	
+	li:hover a { color: $color-white; }
+}

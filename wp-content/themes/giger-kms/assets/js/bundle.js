@@ -1266,9 +1266,31 @@ jQuery(document).ready(function($){
 		var winW = $('#top').width(),
 			windowHeight = $(window).height();
 		
-		resize_embed_media();
-		
+			resize_embed_media();
+			if ($('body').hasClass('drawer-open') && winW > breakPointMedium) {
+				$('body').removeClass('drawer-open');
+				$('#trigger_menu').removeClass('is-active');
+			}
 		
 	});
+	
+	
+	/** Main menu **/
+	$('#trigger_menu').on('click', function(e){
+		
+		e.preventDefault();
+		var trigger = $(this);
+		
+		if ($('body').hasClass('drawer-open')) {
+			$('body').removeClass('drawer-open');
+			trigger.removeClass('is-active');
+		}
+		else {
+			$('body').addClass('drawer-open');
+			trigger.addClass('is-active');
+		}
+			
+	});
+
 	
 }); //jQuery
