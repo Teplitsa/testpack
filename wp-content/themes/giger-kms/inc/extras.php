@@ -182,20 +182,20 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'label'    => 'Текст в подвале',
         'section'  => 'title_tagline',
         'settings' => 'footer_text',
-        'priority' => 28,
+        'priority' => 26,
     ));
 
-	$wp_customize->add_setting('header_text', array(
+	$wp_customize->add_setting('site_header_text', array(
         'default'   => '',
         'transport' => 'postMessage',
 		'type' 		=> 'option'
     ));
 
-    $wp_customize->add_control('header_text', array(
+    $wp_customize->add_control('site_header_text', array(
         'type'     => 'textarea',
         'label'    => 'Текст в шапке',
         'section'  => 'title_tagline',
-        'settings' => 'footer_text',
+        'settings' => 'site_header_text',
         'priority' => 28,
     ));
 
@@ -207,7 +207,7 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
     $wp_customize->add_control('er_text', array(
         'type'     => 'textarea',
-        'label'    => __('404 Page text', 'tst'),
+        'label'    => 'Текст страницы ошибки 404',
         'section'  => 'title_tagline',
         'settings' => 'er_text',
         'priority' => 30,
@@ -215,9 +215,9 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
 	//Analytics panel
 	$wp_customize->add_section( 'tst_content_options', array(
-		'title' => __( 'Content options', 'tst' ),
-		'priority' => 60,
-		'capability' => 'edit_theme_options',
+		'title' 		=> 'Настройки контента',
+		'priority' 		=> 60,
+		'capability' 	=> 'edit_theme_options',
 	));
 
 	$wp_customize->add_setting('google_maps_api_key', array(

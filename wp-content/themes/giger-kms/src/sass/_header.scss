@@ -1,1 +1,160 @@
 /** == Header (_header.scss) == **/
+
+#drawer {
+	background: $color-link-four;
+	padding: $inpage-margin-base;
+	width: 360px;
+	z-index: 1000;
+	position: fixed;
+	right: -360px;
+	@include transition(transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275));
+
+	top: 0;
+	height: 100%;
+	//@include calc(height, "100% - #{$heager_height_mobile}");
+	
+	.searchform {
+		background: $color-white;
+	}
+	
+	.searchform__field  {
+		color: $color-text;
+	}
+	
+	
+	.searchform__icon {
+		background: transparent;
+		
+		.svg-icon {
+			fill: $color-link-four;
+		}
+		
+		&:hover {
+			background: darken($color-link-four, 12%);
+			.svg-icon {
+				fill: $color-white;
+			}
+		}
+	}
+}
+
+.drawer-nav {
+	width: 268px;
+}
+
+.drawer-nav__menu {
+	padding: $inpage-margin-base 0;
+}
+
+.drawer-nav__list {
+	
+	li {
+		margin: 5px 0;
+	}
+	a {
+		display: inline-block;
+		@include nav-text();
+		padding: 0.2em 0.5em;
+		border-radius: 2px;
+		color: $color-white;
+		@include transition(all 0.3s);
+		&:hover {
+			background: darken($color-link-four, 7%);
+		}
+	}
+	
+	a[href *= "join-us"] {
+		border: 1px solid $color-white;
+		@include nav-text(inversion);
+		&:hover {
+			background: $color-white;
+			color: $color-link-one;
+		}
+	}
+}
+
+#site_root {
+	@include transition(transform 0.55s cubic-bezier(0.185, 0.840, 0.305, 1.185));
+}
+
+body.drawer-open {
+	#drawer{
+		@include transform(translateX(-300px));
+	}
+
+	#site_root {
+		@include transform(translateX(-300px));
+	}
+}
+
+/** header elements */
+.site-header-row {
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.site-header-cell {
+	&.branding {
+		width: 150px;
+		flex: 0 1 auto;
+	}
+	
+	&.actions {
+		
+		
+		@include for(small-screens) {
+			
+		}
+		
+		@include for(mediums-screens) {
+			
+		}
+	}
+}
+
+
+.site-logo { //temp
+	display: block;
+	width: 150px;
+	height: 60px;
+	padding-top: 4px;
+	font-size: 24px;
+	line-height: 26px;
+	text-transform: uppercase;
+	color: #000;
+	&:visited { color: #000; }
+}
+
+.actions--mobile {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	align-items: center;
+	
+	@include for(medium-screens) {
+		display: none;
+	}
+}
+
+.action__drawer-trigger {
+	width: 60px;
+	height: 60px;
+	padding: 4px 0 0 2px;
+	flex: 0 0 auto;
+}
+
+.actions__text {
+	color: $color-link-four;
+	a, a:visited, a:hover, a:active, a:focus { color: $color-link-four; } 
+}
+
+.actions__text--mobile {
+	
+	@include for(small-screens) {
+		flex: 1 1 auto;
+	}
+}
+

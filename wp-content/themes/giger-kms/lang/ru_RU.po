@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-23 02:14+0200\n"
-"PO-Revision-Date: 2016-08-23 02:14+0200\n"
+"POT-Creation-Date: 2016-12-06 00:02+0300\n"
+"PO-Revision-Date: 2016-12-06 00:02+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
 "%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
 "__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
@@ -38,16 +38,16 @@ msgstr "Анонимно"
 msgid "No donations yet"
 msgstr "Пожертвований пока нет"
 
-#: footer.php:11
+#: footer.php:12
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:28
+#: footer.php:32
 #, php-format
 msgid "All materials of the site are avaliabe under license %s"
 msgstr "Все материалы сайта доступны по лицензии %s"
 
-#: header.php:24
+#: header.php:18
 msgid "Skip to content"
 msgstr "Перейти к содержанию"
 
@@ -65,11 +65,7 @@ msgid ""
 "page)"
 msgstr "Аннотация для списков (на странице записи добавляется в начало)"
 
-#: inc/admin.php:207
-msgid "Forms"
-msgstr "Формы"
-
-#: inc/admin.php:330
+#: inc/admin.php:324
 #, php-format
 msgid ""
 "ATTENTION! You thumbnail image is too small. It should be at least %s px"
@@ -77,63 +73,23 @@ msgstr ""
 "ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
 "менее %s px."
 
-#: inc/admin.php:378 inc/admin.php:394
-msgid "Facebook Profile"
-msgstr "Профиль на Facebook"
-
-#: inc/admin.php:380 inc/admin.php:396
-msgid "Enter URL of author's Facebook profile"
-msgstr "Укажите ссылку на профиль автора"
-
-#: inc/admin.php:383 inc/admin.php:399
-msgid "Avatar"
-msgstr "Аватарка"
-
-#: inc/admin.php:431
-msgid "Taxonomy Term Image"
-msgstr "Заставка"
-
-#: inc/admin.php:432
-msgid "Select which image should represent this term."
-msgstr "Выберите изображение заставки"
-
-#: inc/admin.php:433
-msgid "Select Image"
-msgstr "Выбрать изображение"
-
-#: inc/admin.php:434
-msgid "Remove"
-msgstr "Удалить"
-
-#: inc/admin.php:435
-msgid "Select or upload an image for this term"
-msgstr "Выбрать или загрузить изображение"
-
-#: inc/admin.php:436
-msgid "Attach"
-msgstr "Присоединить"
-
-#: inc/author.php:29
-msgid "Author"
-msgstr "Автор"
-
-#: inc/cards.php:178 inc/cards.php:206 inc/extras.php:63
+#: inc/cards.php:190 inc/cards.php:218
 msgid "More"
 msgstr "Подробнее"
 
-#: inc/cards.php:405
+#: inc/cards.php:417
 msgid "Age"
 msgstr "Возраст"
 
-#: inc/cards.php:408
+#: inc/cards.php:420
 msgid "City"
 msgstr "Город"
 
-#: inc/cards.php:411
+#: inc/cards.php:423
 msgid "Diagnosis"
 msgstr "Диагноз"
 
-#: inc/cards.php:432
+#: inc/cards.php:444
 msgid "Donate"
 msgstr "Помочь сейчас"
 
@@ -157,14 +113,8 @@ msgstr "Перечислять ежемесячно"
 msgid "Your phone number in the 7xxxxxxxxxx format"
 msgstr ""
 
-#: inc/extras.php:290
-msgid "Default Avatar"
-msgstr "Аватарка по-умолчанию"
-
 #: inc/pb-widgets/donationhystory/donationhystory.php:41
-#: inc/pb-widgets/feature4block/feature4block.php:41
 #: inc/pb-widgets/featureblock/featureblock.php:41
-#: inc/pb-widgets/featureclickblock/featureclickblock.php:41
 msgid "Title"
 msgstr "Заголовок"
 
@@ -172,49 +122,29 @@ msgstr "Заголовок"
 msgid "Full list"
 msgstr "Полный список"
 
-#: inc/pb-widgets/feature4block/feature4block.php:45
 #: inc/pb-widgets/featureblock/featureblock.php:45
-#: inc/pb-widgets/featureclickblock/featureclickblock.php:45
 msgid "Description"
 msgstr "Описание"
 
-#: inc/pb-widgets/feature4block/feature4block.php:50
 #: inc/pb-widgets/featureblock/featureblock.php:50
-#: inc/pb-widgets/featureclickblock/featureclickblock.php:50
 msgid "Link"
 msgstr "Ссылка"
 
-#: inc/pb-widgets/feature4block/feature4block.php:55
 #: inc/pb-widgets/featureblock/featureblock.php:55
-#: inc/pb-widgets/featureclickblock/featureclickblock.php:55
 msgid "Button label"
 msgstr "Текст кнопки"
 
-#: inc/pb-widgets/feature4block/feature4block.php:62
 #: inc/pb-widgets/featureblock/featureblock.php:62
-#: inc/pb-widgets/featureclickblock/featureclickblock.php:67
 msgid "Column 1"
 msgstr "Колонка 1"
 
-#: inc/pb-widgets/feature4block/feature4block.php:68
 #: inc/pb-widgets/featureblock/featureblock.php:68
-#: inc/pb-widgets/featureclickblock/featureclickblock.php:73
 msgid "Column 2"
 msgstr "Колонка 2"
 
-#: inc/pb-widgets/feature4block/feature4block.php:74
 #: inc/pb-widgets/featureblock/featureblock.php:74
-#: inc/pb-widgets/featureclickblock/featureclickblock.php:79
 msgid "Column 3"
 msgstr "Колонка 3"
-
-#: inc/pb-widgets/feature4block/feature4block.php:80
-msgid "Column 4"
-msgstr ""
-
-#: inc/pb-widgets/featureclickblock/featureclickblock.php:59
-msgid "Whole block is clickable"
-msgstr "Весь блок кликабелен"
 
 #: inc/pb-widgets/introfrupalo/introfrupalo.php:41
 msgid "ID of linked post"
@@ -318,21 +248,88 @@ msgstr "Программа по теме"
 msgid "Help now"
 msgstr "Помочь сейчас"
 
-#: inc/widgets.php:111
+#: inc/templates-single.php:12 inc/templates-single.php:25
+#: inc/templates-tags.php:115
+msgid "Home"
+msgstr "Главная"
+
+#: inc/templates-single.php:13 inc/templates-tags.php:116 index.php:8
+msgid "News"
+msgstr "Новости"
+
+#: inc/templates-single.php:81
+msgid "Prev."
+msgstr "Пред."
+
+#: inc/templates-single.php:84
+msgid "Next."
+msgstr "След."
+
+#: inc/templates-thumbnails.php:233
+msgid "Thumbnail"
+msgstr "Миниатюра"
+
+#: inc/widgets_old.php:111
 msgid "Widget doesn't have any settings"
 msgstr "Виджет не имеет настроек"
 
-#: inc/widgets.php:146
+#: inc/widgets_old.php:146
 msgid "All news"
 msgstr "Все новости"
+
+#: index.php:37 search.php:51 taxonomy-section.php:30
+msgid "Nothing found under your request"
+msgstr "По вашему запросу ничего не найдено."
 
 #: search.php:47
 msgid "Enter terms for search in the form and hit Enter"
 msgstr "Укажите слова для поиска в форме и нажмите Enter"
 
-#: search.php:51
-msgid "Nothing found under your request"
-msgstr "По вашему запросу ничего не найдено."
+#: single.php:39
+msgid "More news"
+msgstr "Еще новости"
+
+#~ msgid "404 Page text"
+#~ msgstr "Тест ст"
+
+#~ msgid "Forms"
+#~ msgstr "Формы"
+
+#~ msgid "Facebook Profile"
+#~ msgstr "Профиль на Facebook"
+
+#~ msgid "Enter URL of author's Facebook profile"
+#~ msgstr "Укажите ссылку на профиль автора"
+
+#~ msgid "Avatar"
+#~ msgstr "Аватарка"
+
+#~ msgid "Taxonomy Term Image"
+#~ msgstr "Заставка"
+
+#~ msgid "Select which image should represent this term."
+#~ msgstr "Выберите изображение заставки"
+
+#~ msgid "Select Image"
+#~ msgstr "Выбрать изображение"
+
+#~ msgid "Remove"
+#~ msgstr "Удалить"
+
+#~ msgid "Select or upload an image for this term"
+#~ msgstr "Выбрать или загрузить изображение"
+
+#~ msgid "Attach"
+#~ msgstr "Присоединить"
+
+#~ msgid "Author"
+#~ msgstr "Автор"
+
+#~ msgid "Default Avatar"
+#~ msgstr "Аватарка по-умолчанию"
+
+#~ msgid "Whole block is clickable"
+#~ msgstr "Весь блок кликабелен"
 
 #~ msgid "Subscribe to our newsletter"
 #~ msgstr "Подпишитесь на рассылку"
@@ -366,9 +363,6 @@ msgstr "По вашему запросу ничего не найдено."
 
 #~ msgid "More events"
 #~ msgstr "Еще анонсы"
-
-#~ msgid "More news"
-#~ msgstr "Еще новости"
 
 #~ msgid "Latest news"
 #~ msgstr "Последние новости"
@@ -498,9 +492,6 @@ msgstr "По вашему запросу ничего не найдено."
 
 #~ msgid "Fixed"
 #~ msgstr "Фиксированный"
-
-#~ msgid "Thumbnail"
-#~ msgstr "Миниатюра"
 
 #~ msgid "Details"
 #~ msgstr "Подробнее"
@@ -924,9 +915,6 @@ msgstr "По вашему запросу ничего не найдено."
 
 #~ msgid "Previous"
 #~ msgstr "Пред."
-
-#~ msgid "Home"
-#~ msgstr "Главная"
 
 #~ msgid "Our partners"
 #~ msgstr "Наши партнеры"

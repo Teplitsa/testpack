@@ -14,14 +14,11 @@ body {
 
 a {
 	text-decoration: none;
-	color: $color-link-two;
-	@include transition(all 0.3s);
-	
-	&:visited { color: $color-link-one; }
-	
-	&:hover, &:focus, &:active {
-		color: $color-link-one;
-	}
+	@include green-link();
+}
+
+a.red {
+	@include red-link();
 }
 
 p {
@@ -51,55 +48,25 @@ h1, h2, h3, h4, h5, h6 {
 	position: relative;	
 }
 
+.site-content {
+	padding-bottom: $gut;
+}
 
-
-
-.te-st-bn {	
-	position: relative;
-	text-align: right;
-	margin-top: $gut;
-	
-	@include for(small-screens) {
-		margin-top: 0;
-	}
-	
-	.rdc-icon {
-		display: inline-block;
-		width: 86px;
-		height: 40px;
-		fill: rgba(0,0,0, 0.99);
-	}
-	
+.widget {
+	margin-bottom: $gut;
+	@include body-text(small);
 	a {
-		display: block;
-		width: 100px;
-		height: 48px;
-		padding-top: 4px;
-		text-align: center;
-		box-sizing: border-box;		
-		border-radius: 5px;
-		border: 1px solid rgba(0,0,0, 0.99);
-		@include transition(all 0.35s);
-		
-		&:hover, &:focus, &:active {
-			background: rgba(255,255,255, 0.9);
-			border-color: $color-white;
-			box-shadow: none;
-			margin: 0;
-			.rdc-icon { fill:rgba(0,0,0, 1); }
+		font-weight: bolder;
+		&[href *= 'tel']{
+			color: $color-text;
+			@include body-text(small);
 		}
-		
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
-		
-	.support {
-		display: inline-block;
-		font-size: 11px;
-		line-height: 14px;
-		margin-right: 110px;
-		padding-top: 8px;
-		color: rgba(0,0,0, 0.99);
 	}
 }
+
+.widget__title {
+	@include header-title(widget);
+	margin-bottom: $inpage-margin-base;
+	
+}
+

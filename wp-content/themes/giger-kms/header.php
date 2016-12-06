@@ -37,11 +37,11 @@
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo"><?php bloginfo('name');?></a>
 			</div>
 
-			<?php $hedaer_text = get_option('header_text'); ?>
+			<?php $hedaer_text = get_option('site_header_text'); ?>
 			<div class="site-header-cell actions">
 
-				<div class="actions--mobile hide-on-medium">
-					<div class="actions__text actions__text--mobile"><?php echo apply_filters('tst_the_title', $hedaer_text);?></div>
+				<div class="actions--mobile">
+					<div class="actions__text actions__text--mobile hide-upto-small"><?php echo apply_filters('tst_the_title', $hedaer_text);?></div>
 					<div class="action__drawer-trigger">
 						<a id="trigger_menu" href="<?php echo home_url('sitemap');?>" class="hamburger hamburger--slider">
 							<span class="hamburger-box"><span class="hamburger-inner"></span></span>
@@ -49,7 +49,7 @@
 					</div>
 				</div>
 
-				<div class="actions--desktop hide-upto-medium">
+				<div class="actions--desktop">
 					<div class="actions__info-row">
 						<div class="actions__text actions__text--desktop"><?php echo apply_filters('tst_the_title', $hedaer_text);?></div>
 						<div class="actions__search"><?php get_search_form();?></div>

@@ -36,6 +36,9 @@ $flex-gut: 	   15px;
 
 //Baseline
 $base: 24px;
+$inpage-baseline: 		24px;
+$inpage-margin-base:	18px;
+$element-margin-base: 	5px;
 
 
 //Colors
@@ -55,7 +58,7 @@ $color-link-four:  $grey_green;
 $color-text-black:		#000000;
 $color-text-semi:		#666666;
 $color-text-light:		#9b9b9b;
-$color-secondary:		#f5f5f5;
+$color-secondary:		#f3f3f3;
 $color-secondary-alt:	#DAEDEA;
 $color-secondary-dark:	#656D78;
 
@@ -76,12 +79,12 @@ $adminbar_small_screen: 46px;
 
 
 //humburgers settings
-$hamburger-padding-x                       : 10px;
-$hamburger-padding-y                       : 10px;
+$hamburger-padding-x                       : 14px;
+$hamburger-padding-y                       : 14px;
 $hamburger-layer-width                     : 28px;
 $hamburger-layer-height                    : 4px;
 $hamburger-layer-spacing                   : 4px;
-$hamburger-layer-color                     : #000;
+$hamburger-layer-color                     : $color-link-four;
 $hamburger-layer-border-radius             : 4px;
 $hamburger-hover-opacity                   : 0.7;
 
@@ -99,7 +102,7 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 
 	font-size: 15px;
-	line-height: 20px;
+	line-height: 23px;
 	color: $color-text;
 
 
@@ -108,10 +111,10 @@ $hamburger-hover-opacity                   : 0.7;
 		line-height: 18px;
 
 	}
-	@else if $mod == semi {
-		font-size: 16px;
-		line-height: 24px;
-
+	@else if $mod == small {
+		font-size: 13px;
+		line-height: 20px;
+		font-weight: 300;
 	}
 	
 }
@@ -127,9 +130,10 @@ $hamburger-hover-opacity                   : 0.7;
 
 	font-size: 14px;
 	line-height: 18px;
+	text-transform: uppercase;
 
-	@if $mod == multiline {
-		line-height: 20px;
+	@if $mod == inversion {
+		font-weight: 500;
 	}
 	@else if $mod == meta {
 
@@ -229,12 +233,32 @@ $hamburger-hover-opacity                   : 0.7;
 		text-transform: none;
 	}
 	@else if $mod == widget {
-		font-size: 18px;
+		font-size: 16px;
 		line-height: 24px;
 	}
 	@else if $mod == head_title {
 		font-size: 40px;
 		line-height: 44px;
+	}
+}
+
+@mixin red-link() {
+	color: $color-link-one;
+	@include transition(color 0.3s);
+	
+	&:visited { color: $color-link-one; }
+	&:hover, &:active, &:focus {
+		color: $color-link-three;
+	}
+}
+
+@mixin green-link() {
+	color: $color-link-two;
+	@include transition(color 0.3s);
+	
+	&:visited { color: $color-link-two; }
+	&:hover, &:active, &:focus {
+		color: $color-link-four;
 	}
 }
 
@@ -261,7 +285,7 @@ $hamburger-hover-opacity                   : 0.7;
 	padding: 7px 24px 6px;
 	font-size: 14px;
 	line-height: 20px;
-	font-weight: bold;
+	
 
 	&:visited {
 		color: $color-white;
@@ -275,39 +299,12 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 
 	@if $mod == white {
-		background: $color-white;
-		border: 1px solid $color-white;
-		color: $color-link-three;
-		&:visited { color: $color-link-three; }
-
-		&:hover, &:focus, &:active {
-			background: $color-link-two;
-			color: $color-white;
-			border-color: $color-link-two;
-		}
+		
 	}
 	@else if $mod == submit {
 		padding: 16px 28px 15px;
 	}
-    @else if $mod == action-on-home {
-        text-align:center;
-        padding: 14px 0px 13px;
-    }
-	@else if $mod == action-on-home-yellow {
-        text-align:center;
-        padding: 14px 0px 13px;
-		background: $color-link-two;
-		border: 1px solid $color-link-two;
-		border-bottom: 2px solid darken($color-link-two, 10%);
-
-		&:hover, &:focus, &:active {
-			background: $color-link-four;
-			color: $color-white;
-		}
-    }
-	@else if $mod == featured {
-
-	}
+    
 }
 
 

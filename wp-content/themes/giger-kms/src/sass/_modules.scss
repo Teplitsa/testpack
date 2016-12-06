@@ -6,24 +6,24 @@
 	background: $color-link-four;
 	border-radius: 4px;
 	position: relative;
-	padding-right: 44px;
-	height: 36px;
-	width: 300px; //temp
+	padding-right: 48px;
+	height: 44px;
 }
 
 .searchform__field {
 	@include form-text();
+	color: $color-white;
 	line-height: 18px;
 	border: none;
-	padding: 8px;
+	padding: 13px 8px;
 	width: 100%;
-	background: rgba(255, 255, 255, 0.5); //temp
+	background: transparent;
 }
 
 .searchform__icon {
 	display: block;
-	width: 40px;
-	height: 36px;
+	width: 44px;
+	height: 44px;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -31,14 +31,19 @@
 	border-left: 4px solid darken($color-link-four, 12%);
 	background: darken($color-link-four, 7%);
 	border-radius: 0 4px 4px 0;
+	@include transition(all 0.3s);
+	
+	&:hover {
+		background: darken($color-link-four, 12%);
+	}
 	
 	.svg-icon {
 		width: 16px;
 		height: 16px;
 		fill: $color-white;
 		position: absolute;
-		top: 10px;
-		left: 10px;
+		top: 14px;
+		left: 12px;
 	}
 }
 

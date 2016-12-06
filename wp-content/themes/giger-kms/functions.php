@@ -86,8 +86,8 @@ function tst_widgets_init() {
 			'description' => $sb['description'],
 			'before_widget' => $before,
 			'after_widget' => '</div>',
-			'before_title' => '<h3 class="widget-title">',
-			'after_title' => '</h3>',
+			'before_title' => '<div class="widget__title">',
+			'after_title' => '</div>',
 		));
 	}
 }
