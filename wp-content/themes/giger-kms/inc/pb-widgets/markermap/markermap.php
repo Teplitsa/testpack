@@ -207,22 +207,48 @@ class TST_Markermap_Widget extends SiteOrigin_Widget {
 		}	
 
 		mapFunc.push(function (){
-			
+
+            var mbAttr = 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
+            
+            var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {id: 'carto_light', attribution: mbAttr, maxZoom: 24, minZoom: 3 }),
+                carto_dark = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {id: 'carto_dark', attribution: mbAttr, maxZoom: 24, minZoom: 3 }),
+                kosmo_light = L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {id: 'kosmo_light', attribution: mbAttr, maxZoom: 24, minZoom: 3 }),
+                kosmo_dark = L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/night/{z}/{x}/{y}.png', {id: 'kosmo_dark', attribution: mbAttr, maxZoom: 24, minZoom: 3 });
+
+            var baseMaps = {
+                "Kosmo Dark": kosmo_dark,
+                "Kosmo Light": kosmo_light,
+                "Carto Light": carto_light,
+                "Carto Dark": carto_dark
+            }; 
+
 			var map = L.map('<?php echo $map_id ; ?>', {
 				zoomControl: <?php echo $zoomControl;?>,
 				scrollWheelZoom: false,
 				center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
-				zoom: <?php echo $zoom;?>
+				zoom: <?php echo $zoom;?>,
+                layers: [kosmo_dark]
 			});
 	
-			//https://b.tile.openstreetmap.org/16/39617/20480.png
-			//http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png
-			
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				attribution: 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            //https://b.tile.openstreetmap.org/16/39617/20480.png
+			//http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png			
+            //https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+            //http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
+            //http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png
+            //http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png
+            //http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
+            
+            //http://{s}.tile.osm.kosmosnimki.ru/night/{z}/{x}/{y}.png
+            //http://b.tile.osm.kosmosnimki.ru/kosmo/16/39617/20480.png
+            
+            /*
+			L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/night/{z}/{x}/{y}.png', {
+				attribution: mbAttr,
 				maxZoom: 24,
 				minZoom: 3			
-			}).addTo(map);
+			}).addTo(map);*/
+            
+            L.control.layers(baseMaps).addTo(map);            
 			
 			var points = <?php echo json_encode($markers_json);?>;
 			for(var i=0; i<points.length; i++) {

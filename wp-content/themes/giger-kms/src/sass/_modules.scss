@@ -111,7 +111,15 @@
 
 .leaflet-control-container .leaflet-bottom,
 .leaflet-control-container .leaflet-top {
+	z-index: 1200;
+}
+
+.leaflet-top .leaflet-left {
 	z-index: 200;
+}
+
+.leaflet-control-layers-toggle {
+    background-image: url("../img/layers.png");
 }
 
 .entry-content .pw_map_legend,
