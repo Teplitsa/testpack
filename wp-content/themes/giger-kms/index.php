@@ -28,9 +28,9 @@ get_header();
 		<div class="bit md-8">
 			<div class="layout-section layout-section--card">
 			<?php
-				if(!empty($posts)) { foreach($posts as $cpost) {
+				if(!empty($posts)) { foreach($posts as $i => $cpost) {
 			?>
-				<div class="layout-section__item"><?php tst_cell($cpost);?></div>
+				<div class="layout-section__item layout-section__item--card"><?php tst_cell($cpost);?></div>
 			<?php
 				}}
 				else {

@@ -39,6 +39,7 @@ $base: 24px;
 $inpage-baseline: 		24px;
 $inpage-margin-base:	18px;
 $element-margin-base: 	5px;
+$element-padding-base: 	16px;
 
 
 //Colors
@@ -182,7 +183,7 @@ $hamburger-hover-opacity                   : 0.7;
 
 @mixin sub-title($mod: default) {
 	font-family: $body_fb;
-	font-weight: 400;
+	font-weight: 300;
 
 	.roboto & {
 		font-family: $body;
@@ -190,7 +191,7 @@ $hamburger-hover-opacity                   : 0.7;
 	
 	color: $color-text-light;
 
-	font-size: 12px;
+	font-size: 13px;
 	line-height: 1.35;
 
 	@if $mod == small {
@@ -229,15 +230,17 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 	
 	color: $color-text-black;
+	text-transform: uppercase;
 
 	font-size: 18px;
 	line-height: 24px;
-	text-transform: uppercase;
+
 
 
 	@if $mod == section {
-		font-size: 32px;
-		line-height: 41px;
+		font-size: 18px;
+		line-height: 24px;
+		
 	}
 	@if $mod == single {
 		font-size: 32px;

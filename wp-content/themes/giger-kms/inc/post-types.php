@@ -249,4 +249,8 @@ function tst_custom_metaboxes() {
 		'type' => 'checkbox',
 	));
 	
+	
+	
+	
+	
 }

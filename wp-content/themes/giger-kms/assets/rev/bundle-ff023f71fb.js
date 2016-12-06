@@ -1237,29 +1237,6 @@ jQuery(document).ready(function($){
 	
     resize_embed_media(); // Initial page rendering
     
-		
-	/* Center logos  */
-	function logo_vertical_center() {
-				
-		$('.logo-gallery').each(function(){
-			
-			var logoH = $(this).find('.logo').eq(0).parents('.bit').height() - 3;
-			console.log(logoH);
-			
-			$(this).find('.logo-frame').find('span').css({'line-height' : logoH + 'px'})
-		});		
-	}
-
-	imagesLoaded('#site_content', function(){
-		logo_vertical_center();
-	});
-
-	$(window).resize(function(){
-		logo_vertical_center();
-	});
-	
-	
-	
 	
 	/** Resize event **/
 	$(window).resize(function(){
@@ -1274,6 +1251,12 @@ jQuery(document).ready(function($){
 		
 	});
 	
+	/** Scroll event **/
+	var position = $(window).scrollTop();
+	$(window).scroll(function(){
+		//to do no scroll when menu opened
+		
+	});
 	
 	/** Main menu **/
 	$('#trigger_menu').on('click', function(e){
@@ -1291,6 +1274,20 @@ jQuery(document).ready(function($){
 		}
 			
 	});
+	
+	/* Scroll */
+	$('.local-scroll').on('click', function(e){
+		e.preventDefault();
 
+		var full_url = $(this).attr('href'),
+			trgt = full_url.split("#")[1],
+			target = $("#"+trgt).offset();
+
+
+		if (target.top) {
+			$('html, body').animate({scrollTop:target.top - 50}, 900);
+		}
+
+	});
 	
 }); //jQuery
