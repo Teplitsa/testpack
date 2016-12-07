@@ -6,8 +6,7 @@
 class TST_Media {
 
 	private static $_instance = null;
-	private $remote_host = 'http://www.asi.org.ru';
-	private $test_host = 'asi.org.ru';
+	private $remote_host = 'http://xn--56-6kchvgg0bfe4n5a.xn--p1ai/wp';
 	private $local_host = null;
 	private $upload_dir = null;
 

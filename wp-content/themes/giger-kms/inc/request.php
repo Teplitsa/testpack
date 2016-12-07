@@ -20,7 +20,6 @@ function tst_request_corrected(WP_Query $query) {
 			$query->set('posts_per_page', -1);
 			$query->set('orderby', array('menu_order' => 'DESC', 'date' => 'DESC'));
 		}
-
 	}
 	
 

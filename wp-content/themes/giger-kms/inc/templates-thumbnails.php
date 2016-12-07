@@ -7,34 +7,24 @@ function tst_thumbnails_setup() {
 	// Thumbnails
 	add_theme_support('post-thumbnails');
 
-	/*set_post_thumbnail_size(640, 480, true ); // regular thumbnail
-	add_image_size('flex-base', 480, 999, false ); // flex-height thumbnail
-	add_image_size('medium-thumbnail', 800, 600, true ); // large thumbnail for single
-	add_image_size('video-thumbnail', 640, 360, true ); // video aspect-ratio
-	 // square aspect-ratio
-	add_image_size('cover', 400, 565, true ); // long thumbnail for pages
-	//add_image_size('cover', 400, 567, true ); // long thumbnail for pages*/
-
 	//special cases
-	add_image_size('nl_thumb', 150, 94, true ); //thumbnail for newsletter
-	add_image_size('vcard', 320, 320, true );
-	add_image_size('cover', 220, 312, true );
-	add_image_size('feature', 788, 520, true );
+	//add_image_size('nl_thumb', 150, 94, true ); //thumbnail for newsletter
+	//add_image_size('vcard', 320, 320, true );
+	//add_image_size('cover', 220, 312, true );
+	//add_image_size('feature', 788, 520, true );
 
 	//thumbnail in cards
-	add_image_size('thumbnail-mini-fixed', 170, 127, true );
-	add_image_size('thumbnail-mini-flex', 170, 999, false );
-	add_image_size('thumbnail-small-fixed', 270, 202, true );
-	add_image_size('thumbnail-small-flex', 270, 999, false );
-	add_image_size('thumbnail-medium-fixed', 400, 300, true );
-	add_image_size('thumbnail-medium-flex', 400, 999, false );
-	add_image_size('thumbnail-large-fixed', 640, 480, true );
+	add_image_size('thumbnail-small-fixed', 320, 198, true );
+	add_image_size('thumbnail-small-flex', 320, 999, false );
+	add_image_size('thumbnail-medium-fixed', 500, 247, true );
+	add_image_size('thumbnail-medium-flex', 500, 999, false );
+	add_image_size('thumbnail-large-fixed', 640, 395, true );
 	//add_image_size('thumbnail-medium-flex', 640, 999, true ); == large default size
 }
 
 
 /** Custom image size for medialib **/
-add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
+//add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
 function tst_medialib_custom_image_sizes($sizes) {
 
 	$sizes = array(
@@ -56,7 +46,7 @@ function tst_get_post_thumbnail_picture(WP_Post $cpost, $args = array()) {
 
 	$defaults = array(
 		'placement_type'	=> 'medium-medium-medium-medium-medium',
-		'aspect_ratio' 		=> 'standard', //square, video, cover
+		'aspect_ratio' 		=> 'standard', //square, cover
 		'crop' 				=> 'fixed' //flex
 	);
 
@@ -66,10 +56,10 @@ function tst_get_post_thumbnail_picture(WP_Post $cpost, $args = array()) {
 	do_action('tst_before_get_post_thumbnail', $cpost->ID, 'feature');
 
 	//test for cache
-	$thumbs = get_post_meta($cpost->ID, 'post_thumbnail_markup_lazy', true);
-	$thumb_key = "{$placement_type}_{$aspect_ratio}_{$crop}";
-	if(isset($thumbs[$thumb_key]))
-		return $thumbs[$thumb_key];
+	//$thumbs = get_post_meta($cpost->ID, 'post_thumbnail_markup_lazy', true);
+	//$thumb_key = "{$placement_type}_{$aspect_ratio}_{$crop}";
+	//if(isset($thumbs[$thumb_key]))
+	//	return $thumbs[$thumb_key];
 
 
 	$css = "{$aspect_ratio} {$crop}";
@@ -106,8 +96,8 @@ function tst_get_post_thumbnail_picture(WP_Post $cpost, $args = array()) {
 	$out = ob_get_contents();
 	ob_end_clean();
 
-	$thumbs[$thumb_key] = $out;
-	update_post_meta($cpost->ID, 'post_thumbnail_markup_lazy', $thumbs);
+	//$thumbs[$thumb_key] = $out;
+	//update_post_meta($cpost->ID, 'post_thumbnail_markup_lazy', $thumbs);
 
 	return $out;
 }
@@ -179,63 +169,6 @@ function tst_get_picture_sources($attachment_id, $placement_type = '', $crop = '
 
 	return $sources;
 }
-
-
-/** Thumbnails in cards old **/
-
-//common markup for thumnbial image
-
-function tst_get_post_thumbnail_markup(WP_Post $cpost, $size = 'post-thumbnail') {
-
-	$thumb = '';
-	if(has_post_thumbnail($cpost->ID)){
-
-		if($size == 'flex-base'){
-			do_action('tst_before_get_post_thumbnail', $cpost->ID, $size);
-			$thumb = get_the_post_thumbnail($cpost->ID, $size);
-		}
-		else {
-			$thumb_id = get_post_thumbnail_id($cpost->ID);
-
-			if($thumb_id){
-				do_action('tst_before_get_post_thumbnail', $cpost->ID, $size);
-
-				$src = wp_get_attachment_image_src($thumb_id, $size);
-				$thumb = "<div class='fixed-thumbnail {$size}' style='background-image: url(".$src[0].")'></div>";
-			}
-		}
-
-	}
-	elseif($cpost->post_type == 'event') {
-		$event = new TST_Event($cpost);
-		$thumb = $event->post_thumbnail($size);
-	}
-	else {
-
-		//here may be the default url finally
-		$logo_url = '';
-		$thumb = "<div class='fixed-thumbnail {$size}' style='background-image: url(".$logo_url.")'></div>";
-
-	}
-
-	return $thumb;
-}
-
-
-/** Thumbnail for newsletter **/
-function tst_get_newsletter_thumbnail_markup( WP_Post $cpost, $size = 'post-thumbnail' ){
-    $img = '';
-    if(has_post_thumbnail($cpost->ID))
-        $img = get_the_post_thumbnail( $cpost->ID, $size );
-
-    if(empty($img)){
-        $url = get_template_directory_uri().'/img/dt-'.$size.'.jpg';
-        $alt = __( 'Thumbnail', 'tst' );
-        $img = "<img src='{$url}' alt='{$alt}'>";
-    }
-    return $img;
-}
-
 
 
 /** == Helpers == **/

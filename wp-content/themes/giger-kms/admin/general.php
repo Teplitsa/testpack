@@ -203,13 +203,6 @@ function tst_admin_menu_labels(){ /* change adming menu labels */
 
 }
 
-/** Remove leyka metabox for embedable iframe */
-add_action( 'add_meta_boxes' , 'tst_remove_leyka_wrong_metaboxes', 20 );
-function tst_remove_leyka_wrong_metaboxes() {
-
-	remove_meta_box('leyka_campaign_embed', 'leyka_campaign', 'normal');
-}
-
 
 /** Dashboards widgets **/
 add_action('wp_dashboard_setup', 'tst_remove_dashboard_widgets' );

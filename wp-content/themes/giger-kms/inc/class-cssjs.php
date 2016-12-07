@@ -102,7 +102,15 @@ class FRL_CssJs {
 			null,
 			true
 		);
-
+		
+		wp_enqueue_script(
+			'tst-head-front',
+			$url.'/assets/rev/'.$this->get_rev_filename('headbundle.js'),
+			array(),
+			null,
+			false
+		);
+		
 		wp_localize_script('tst-front', 'frontend', array(
 			'ajaxurl' => admin_url('admin-ajax.php')
 		));

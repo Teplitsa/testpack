@@ -100,6 +100,7 @@ add_action( 'init', 'tst_widgets_init', 25 );
 
 require get_template_directory().'/inc/class-cssjs.php';
 require get_template_directory().'/inc/class-item.php';
+require get_template_directory().'/inc/class-mediamnt.php';
 require get_template_directory().'/inc/class-section.php';
 
 require get_template_directory().'/inc/extras.php';
@@ -115,11 +116,12 @@ require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/social.php';
 require get_template_directory().'/inc/widgets.php';
 
+require get_template_directory().'/inc/templates-thumbnails.php';
 require get_template_directory().'/inc/templates-micro.php';
 require get_template_directory().'/inc/templates-single.php';
 require get_template_directory().'/inc/templates-tags.php';
 
 if(is_admin()){
-	require get_template_directory() . '/inc/admin.php';
-
+	require get_template_directory() . '/admin/general.php';
+	require get_template_directory() . '/admin/post-hooks.php';
 }
