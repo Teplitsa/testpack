@@ -13,6 +13,7 @@
 	background-position: center top;
 	background-size: cover;
 	@include for(medium-screens) { margin: 30px 0; }
+	box-shadow: 0 1px 3px rgba(200,200,200, 0.4);
 }
 
 $section_color: (
@@ -37,6 +38,11 @@ $section_color: (
 	.current-section-#{$item} .heading__block {
 		background: transparentize(call(section_color, $item), 0.45);
 	}
+	
+	//.current-section-#{$item} .crumbs a {
+	//		color: section_color($item);
+	//		&:hover { color: darken(call(section_color, $item), 10%); }
+	//}
 }
 
 .heading__block {
@@ -84,6 +90,7 @@ $section_color: (
 
 .sharing {
 	border-left: 1px solid $color-border-normal;
+	padding: 0 $element-padding-base;
 }
 
 

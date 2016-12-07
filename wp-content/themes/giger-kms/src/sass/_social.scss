@@ -14,6 +14,7 @@ $social_color: (
     instagram: #B7308C,
     pinterest: #DE2127,
     youtube:   #E21D17,
+	mail:	   #E23100
 );
 
 @function social_color($key) {
@@ -32,12 +33,11 @@ $social_color: (
 	vertical-align: middle;	
 	@include transition(all 0.2s);
 	text-decoration: none;
-				
-	background: #262832;
-	color: #fff;
 	width: $button-size;
 	height: $button-size;
-	padding: ($button-size - $icon-size)/2 0;			
+	padding: ($button-size - $icon-size)/2 0;
+	
+	.svg-icon { fill: #262832; }
 }
 
 
@@ -52,36 +52,48 @@ $social_color: (
 	cursor: pointer;
 		
 	a {
-		@include social-button-link(44px, 22px);
+		@include social-button-link(44px, 20px);
 	}
 	
 	li {
 		float: left;
+		@include transition(background 0.35s);
 	}
 	
 	.svg-icon {
 		display: inline-block;
-		vertical-align: moddle;
-		fill: #ffffff;					
+		vertical-align: moddle;				
 		vertical-align: middle;
-		width: 22px;
-		height: 22px;
+		width: 20px;
+		height: 20px;
 	}
 }
 
-@each $item in vk, facebook, twitter, telegram, whatsapp, viber, ok  {
+@each $item in vk, facebook, twitter, telegram, whatsapp, viber, ok, mail  {
 		
-	.social-likes__widget_#{$item} a {
-		background: social_color($item);
+	.sharing-list li.#{$item} {
+		.svg-icon { fill: social_color($item); }
 		
 		&:hover, &:focus, &:active {
-			background: transparentize(call(social_color, $item), 0.2);
+			background: social_color($item);
+			.svg-icon { fill: $color-white; }
 		}
 		
-		&:last-of-type {
-			border: none;
-		}		
 	}
 }
 
-
+//hide
+.sharing-list {
+	
+	&.regular {
+		.whatsapp, .viber { display: none; }
+		@include upto(small-screens) {
+			.ok, .twitter, .mail { display: none; }
+		}
+		
+	}
+	
+	&.mobile-agent {
+		.vk, .ok, .mail, .facebook { display: none; }
+	}
+}

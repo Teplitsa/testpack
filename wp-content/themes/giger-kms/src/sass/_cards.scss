@@ -111,6 +111,8 @@
 		@include sub-title();
 		margin-left: $element-padding-base/2;
 	}
+	
+	&:first-letter { text-transform: uppercase; }
 }
 
 .cell__thumb {

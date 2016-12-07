@@ -156,6 +156,10 @@ $hamburger-hover-opacity                   : 0.7;
 		font-size: 16px;
 		line-height: 20px;
 	}
+	@else if $mod == small {
+		font-size: 12px;
+		line-height: 20px;
+	}
 }
 
 
@@ -258,6 +262,7 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 }
 
+/* Elements */
 @mixin red-link() {
 	color: $color-link-one;
 	@include transition(color 0.3s);
@@ -345,6 +350,79 @@ $hamburger-hover-opacity                   : 0.7;
 }
 
 
+/** == Mq == **/
+
+@mixin for($media) {
+	@if $media == small-screens {
+		@media screen and (min-width: $one) { @content; }
+	}
+	@else if $media == medium-screens {
+		@media screen and (min-width: $two) { @content; }
+	}
+	@else if $media == large-screens {
+		@media screen and (min-width: $three) { @content; }
+	}
+	@else if $media == exlarge-screens {
+		@media screen and (min-width: $four) { @content; }
+	}
+	@else if $media == xxlarge-screens {
+		@media screen and (min-width: $five) { @content; }
+	}
+}
+
+@mixin upto($media) {
+	@if $media == small-screens {
+		@media screen and (max-width: $one - 1) { @content; }
+	}
+	@else if $media == medium-screens {
+		@media screen and (max-width: $two - 1) { @content; }
+	}
+	@else if $media == large-screens {
+		@media screen and (max-width: $three - 1) { @content; }
+	}
+	@else if $media == exlarge-screens {
+		@media screen and (max-width: $four - 1) { @content; }
+	}
+}
+
+/** == Helpers == **/
+
+@function value_from_map($key, $map) {
+	@if map-has-key($map, $key) {
+		@return map-get($map, $key);
+	}
+
+	@warn "Unknown '#{$key}' in $map.";
+	@return null;
+}
+
+@mixin hidden { //Hide for both screenreaders and browsers
+	display: none;
+	visibility: hidden; }
+
+@mixin visuallyhidden { //Hide only visually, but have it available for screenreaders
+	position : absolute;
+	clip : rect(0 0 0 0);
+	overflow : hidden;
+	margin: -1px;
+	padding : 0;
+	height : 1px;
+	width : 1px;
+	border : 0; }
+
+@mixin image-replace {
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+	text-decoration: none;
+}
+
+@mixin no-select {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	   	-ms-user-select: none;
+	   		user-select: none;
+}
 
 @mixin shading-summary($max-height: 48px){
 	max-height: $max-height;
@@ -367,151 +445,4 @@ $hamburger-hover-opacity                   : 0.7;
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
 	}
 
-}
-
-// Media
-@mixin caption-figure {
-	width: 100% !important;
-	max-width: 100%;
-	text-align: center;
-
-	a {
-		display: block;
-		width: 100%;
-	}
-
-	img {
-		max-width: 100%;
-		height: auto;
-	}
-
-	.wp-caption-text {
-		@include sub-title();
-		line-height: 16px;
-		text-align: center;
-		margin-top: 8px;
-
-		p { margin: 0; }
-	}
-}
-
-
-
-
-@mixin container-extended() {
-	margin: 0 -4.35%;
-	position: relative;
-	width: auto;
-
-	& > .fs-content-wrap,
-	& > div[id *="pl-"],
-	& > div[class *="so-widget"] {
-		max-width: $page_cont;
-		width: 92%;
-		margin: 0 auto;
-	}
-
-	$ex_cont_width_mq: $page_cont / 0.92 + 1px;
-	@media screen and (min-width: $ex_cont_width_mq ) {
-		margin: 0 -1 * ($full_cont - $page_cont) / 2;
-	}
-
-}
-
-@mixin vertical-image-header-fixed(){
-	//60vh;
-	height: 360px;
-
-	@include for(small-screens) {
-		height: 400px;
-	}
-
-	@include for(medium-screens) {
-		height: 460px;
-	}
-
-	@include for(large-screens) {
-		height: 480px;
-	}
-}
-
-@mixin linked {
-	color: $color-link-one;
-	a {
-		color: $color-link-one;
-		border-bottom: 1px solid transparentize($color-link-one, 0.75);
-	}
-	&:hover {
-		color: $color-link-three;
-		a {
-			color: $color-link-three;
-			border-color: $color-link-three;
-		}
-	}
-}
-
-.tpl-pictured-bg {
-	width: 100%;
-	height: 100%;
-	background-color: $color-secondary;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-}
-
-@mixin post-fixed-preview {
-	display: block;
-	width: 100%;
-	height: 0;
-	padding-bottom: 61.72%;
-	position: relative;
-	z-index: 1;
-	background: $color-secondary;
-
-	.tpl-pictured-bg {
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 10;
-		background-color: transparent;
-	}
-
-	&:hover {
-		filter: contrast(120%);
-	}
-
-	.vvc-logo {
-		position: absolute;
-		width: 100%;
-		height: 150px;
-		left: 0;
-		top: 50%;
-		margin-top: -75px;
-		z-index: 5;
-
-		text-align: center;
-	}
-
-	.pic-butterfly {
-		width: 150px;
-		height: 150px;
-	}
-}
-
-@mixin post-meta() {
-	@include sub-title();
-	color: $color-text-light;
-	margin-bottom: 8px;
-
-	a {
-		color: inherit;
-		text-decoration: underline;
-		@include transition(all 0.3s);
-
-		&:hover { color: $color-text; }
-	}
-
-	.sep {
-		padding-left: 1px;
-	}
 }

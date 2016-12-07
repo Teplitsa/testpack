@@ -1,1 +1,114 @@
 /** == Posts (_posts.scss) == **/
+
+/* single news */
+.single-card {
+	margin: 18px 0;
+	background: $color-white;
+	box-shadow: 0 1px 3px rgba(200,200,200, 0.4);
+	@include for(medium-screens) { margin: 30px 0; }
+}
+
+.single-card__header {
+	border-bottom: 1px solid $color-border-normal;
+	h1 {
+		&:first-letter { text-transform: uppercase; }
+	}
+}
+
+.single-card__title {
+	padding: $element-padding-base;
+	border-bottom: 1px solid $color-border-normal;
+	
+	@include for(medium-screens) {
+		padding: $element-padding-base*2;
+	}
+	
+	h1 {
+		@include post-title(featured);
+	}
+}
+
+.single-card__options {
+	@extend .heading__options;
+	
+	.crumbs {
+		@include for(medium-screens) {
+			padding-left: $element-padding-base*2;
+		}
+	}
+	
+	.sharing {
+		@include for(medium-screens) {
+			padding-right: $element-padding-base*2;
+		}
+	}
+}
+
+.single-card__content {
+	padding: 0 $element-padding-base $element-padding-base;
+
+	@include for(medium-screens) {
+		padding: 0 $element-padding-base*2 $element-padding-base*2;
+	}
+}
+
+.single-body__meta {
+	@include sub-title();
+	margin: $inpage-margin-base/2 0 $inpage-margin-base;
+}
+
+
+.single-body--entry {
+	@include the-content();
+}
+
+.single-aside {
+	@include for(medium-screens) { padding-top: 200px; }
+}
+
+.realted-posts {
+	li {
+		margin-bottom: $inpage-margin-base/2;
+		&:last-of-type { margin-bottom: 0; }
+		
+		.related-posts__date {
+			margin-left: 8px;
+			font-size: 0.9em;
+			color: $color-text-light; }
+	}
+}
+
+.single-body__footer-desktop {
+	display: none;
+	
+	@include for(medium-screens) {
+		display: block;
+		border-top: 1px solid $color-border-normal;
+		padding: $element-padding-base $element-padding-base*2;
+		.nav-links {
+			//width: 66.66%;
+		}
+	}
+}
+
+.single-body__footer-mobile {
+	margin: $inpage-margin-base -1*$element-padding-base $inpage-margin-base;
+	padding: $element-padding-base;
+	
+	border-top: 1px solid $color-border-normal;
+	border-bottom: 1px solid $color-border-normal;
+	
+	@include for(medium-screens) {
+		display: none;
+	}
+	
+}
+
+.nav-links {
+	@include nav-text(small);
+	
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+}

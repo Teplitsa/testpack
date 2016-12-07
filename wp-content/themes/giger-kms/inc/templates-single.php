@@ -78,11 +78,38 @@ function tst_single_post_nav() {
 	}?>
 	<div class="nav-links">
 	<?php if($previous) { ?>
-		<div class="nav-links__link nav-links__link--prev"><a href="<?php echo get_permalink($previous);?>"><?php _e('Prev.', 'tst');?></a></div>
+		<div class="nav-links__link nav-links__link--prev"><a href="<?php echo get_permalink($previous);?>">&larr;&nbsp;<?php _e('Prev.', 'tst');?></a></div>
 	<?php }?>
 	<?php if($next) { ?>
-		<div class="nav-links__link nav-links__link--next"><a href="<?php echo get_permalink($next);?>"><?php _e('Next.', 'tst');?></a></div>
+		<div class="nav-links__link nav-links__link--next"><a href="<?php echo get_permalink($next);?>"><?php _e('Next.', 'tst');?>&nbsp;&rarr;</a></div>
 	<?php }?>
 	</div>
+<?php
+}
+
+
+function tst_single_thumbnail(WP_Post $cpost) {
+
+	$thumb = $cap = '';
+
+	$cap = tst_get_post_thumbnail_cation($cpost);
+	$cap = apply_filters('tst_the_content', $cap);
+
+	$thumb_args = array(
+		'placement_type'	=> 'medium-medium-large-large-large',
+		'aspect_ratio' 		=> 'standard',
+		'crop' 				=> 'flex'
+	);
+
+	$thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
+
+
+?>
+	<figure class="fixed-thumbnail--single">
+		<?php echo $thumb; ?>
+		<?php if($cap) { ?>
+			<figcaption><?php echo $cap; ?></figcaption>
+		<?php } ?>
+	</figure>
 <?php
 }
