@@ -112,3 +112,22 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
+/* Single items */
+//menu
+.single-item-list {
+	li {
+		margin-bottom: $element-padding-base/2;
+	}
+	
+	a {
+		@include nav-text();
+	}
+	
+	.current {
+		a {
+			//color: $color-text-black;
+			font-weight: bold;
+		}
+	}
+}

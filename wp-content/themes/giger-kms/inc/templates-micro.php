@@ -54,14 +54,31 @@ function tst_cell(WP_Post $cpost) {
 <?php
 }
 
-function tst_card(WP_Post $cpost) {
+function tst_card(WP_Post $cpost, $show_icon = true) {
 
 	$pl = get_permalink($cpost);
+	$thumb_mark = tst_get_card_icon($cpost);
+	$css = 'has-icon';
+	
+	
+	if(!$show_icon || empty($thumb_mark)){
+		$css = 'has-thumb';
+		
+		$thumb_args = array(
+			'placement_type'	=> 'small-medium-medium-medium-medium',
+			'aspect_ratio' 		=> 'standard',
+			'crop' 				=> 'fixed'
+		);
+		
+		$thumb_mark = tst_get_post_thumbnail_picture($cpost, $thumb_args);
+		$thumb_mark = "<div class='card__thumb'>{$thumb_mark}</div>";
+	}
+	
 ?>
-	<article class="card"><a href="<?php echo $pl;?>" class="card__link">
-		<div class="card__thumb">Thumb</div>
-		<h4 class="card__title"><?php echo get_the_title($cpost);?></h4
-	</a></article>
+<article class="card <?php echo $css;?>"><a href="<?php echo $pl;?>" class="card__link">
+	<?php echo $thumb_mark;?>
+	<h4 class="card__title"><?php echo get_the_title($cpost);?></h4>
+</a></article>
 <?php
 }
 
@@ -93,4 +110,15 @@ function tst_get_tags_list(WP_Post $cpost) {
 	}
 
 	return "<span class='tags-list'>".implode(', ', $list)."</span>";
+}
+
+function tst_get_card_icon($cpost) {
+	
+	$icon_id = get_post_meta($cpost->ID, 'icon_id', true);
+	if(!$icon_id)
+		return '';
+	
+	$out = "<div class='card__icon'><i class='material-icons'>{$icon_id}</i></div>";
+	return $out;
+	
 }

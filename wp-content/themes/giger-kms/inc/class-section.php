@@ -68,3 +68,27 @@ class TST_Current_Section {
 } //class
 
 TST_Current_Section::get_instance();
+
+/** add current section to menu **/
+add_filter('wp_nav_menu_objects', 'tst_current_menu_item', 2, 3);
+function tst_current_menu_item($items, $args){
+
+	if(empty($items))
+		return;
+
+	//var_dump($args);
+	$sec_ob = TST_Current_Section::get_instance();
+	$sec = $sec_ob->get_current_section();
+	
+	if(!$sec || $args->theme_location !='primary')
+		return;
+	
+	foreach($items as $index => $menu_item){
+		if(false !== strpos($menu_item->url, $sec->slug)){
+			$menu_item->classes[] = 'current-section';
+		}
+	}
+	
+
+	return $items;
+}

@@ -51,7 +51,7 @@ class TST_Item {
 
 		//to-do cache in post_meta
 
-		$root = ($this->parent > 0) ? get_post($this->parent) : $this->post_object;
+		$root = ($this->post_parent > 0) ? get_post($this->post_parent) : $this->post_object;
 		$children = get_posts(array(
 			'post_type' => 'item',
 			'posts_per_post' => -1,
@@ -118,7 +118,7 @@ class TST_Item {
 		ob_start();
 		foreach($side_items as $si) {
 		?>
-			<div class="widget widget--card"><?php tst_card($si);?></div>
+			<div class="widget widget--card"><?php tst_card($si, false);?></div>
 		<?php
 		}
 		$out = ob_get_contents();
@@ -126,6 +126,6 @@ class TST_Item {
 
 		return $out;
 	}
-
+	
 
 } //class

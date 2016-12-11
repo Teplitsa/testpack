@@ -250,7 +250,12 @@ function tst_custom_metaboxes() {
 	));
 	
 	
-	
+	$item_cmb->add_field( array(
+		'name' => 'ID иконки',
+		'id'   => 'icon_id',
+		'type' => 'text',
+		'desc' => 'ID можно выбрать по ссылке https://material.io/icons/#ic_markunread'
+	));
 	
 	
 }

@@ -72,7 +72,17 @@ class FRL_CssJs {
 			$style_dependencies,
 			null
 		);
+		
 		$style_dependencies[] = 'tst-fonts';
+		
+		wp_enqueue_style(
+			'tst-icons',
+			'//fonts.googleapis.com/icon?family=Material+Icons',
+			$style_dependencies,
+			null
+		);
+		
+		$style_dependencies[] = 'tst-icons';
 
 
 		wp_enqueue_style(

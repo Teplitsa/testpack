@@ -470,3 +470,4 @@ function tst_filter_search_query($s){
 
 	return $s;
 }
+
