@@ -120,6 +120,24 @@ function tst_tag_breadcrubms() {
 	return "<div class='crumbs'>".implode($sep, $list)."</div>";
 }
 
+function tst_about_breadcrubms() {
+	
+	$page = get_queried_object();
+	$about = get_page_by_path('about-us');
+	
+	if(!$page || !$about)
+		return;
+	
+	$list = array();
+
+	$list[] = "<a href='".home_url('/')."'>".__('Home', 'tst')."</a>";
+	$list[] = "<a href='".get_permalink($about)."'>".apply_filters('tst_the_title', $about->post_title)."</a>";
+	
+	$sep = tst_get_sep('&gt;');
+
+	return "<div class='crumbs'>".implode($sep, $list)."</div>";
+}
+
 /* heading css */
 function tst_get_heading_style() {
 	

@@ -193,10 +193,10 @@ $hamburger-hover-opacity                   : 0.7;
 		font-family: $body;
 	}
 	
-	color: $color-text-light;
+	color: $color-text-semi;
 
 	font-size: 13px;
-	line-height: 1.35;
+	line-height: 1.5;
 
 	@if $mod == small {
 		font-size: 11px;

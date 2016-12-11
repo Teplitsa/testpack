@@ -66,6 +66,7 @@ try {
 		$page_data['post_type'] = 'page';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_name'] = 'about-us';
+		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
 
 		$uid = wp_insert_post($page_data);
 
@@ -86,6 +87,7 @@ try {
 		$page_data['post_type'] = 'page';
 		$page_data['post_content'] = $partners->post_content;
 		$page_data['post_status'] = 'publish';
+		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
 
 		$uid = wp_insert_post($page_data);
 	}
@@ -102,6 +104,7 @@ try {
 		$page_data['post_type'] = 'page';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_name'] = 'projects';
+		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
 
 		$uid = wp_insert_post($page_data);
 	}

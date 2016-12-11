@@ -32,6 +32,7 @@ try {
 	delete_site_transient('theme_roots');
 	delete_site_transient('timeout_theme_roots');
 	delete_site_transient('update_themes');
+	delete_option('site_icon'); //remove old favicon
 
 	echo 'Updated active theme settings'.chr(10);
 

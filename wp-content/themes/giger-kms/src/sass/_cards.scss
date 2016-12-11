@@ -121,6 +121,22 @@
 	max-width: 500px;
 }
 
+.cell__title--project {
+	margin-bottom: $element-padding-base/4;
+}
+
+.cell__subtitle {
+	@include sub-title();
+	margin-bottom: $element-padding-base;
+}
+
+.cell__text--project {
+	p { margin-bottom: $element-padding-base /2; }
+	p:last-child { margin-bottom: 0;}
+	
+	//add lists
+}
+
 /** card **/
 .cell-bg {
 	background: $color-link-four;
@@ -173,6 +189,10 @@
 			margin-left: 130px;
 		}
 	}
+}
+
+.card--news .card__title {
+	color: $color-white;
 }
 
 .has-thumb .card__link {

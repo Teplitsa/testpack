@@ -67,7 +67,7 @@ function tst_custom_content(){
         'hierarchical'        => false,
         'menu_position'       => 20,
 		'menu_icon'           => 'dashicons-category',
-        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
+        'supports'            => array('title', 'excerpt', 'editor'),
         'taxonomies'          => array(),
     ));
 

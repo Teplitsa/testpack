@@ -74,14 +74,17 @@ add_filter('wp_nav_menu_objects', 'tst_current_menu_item', 2, 3);
 function tst_current_menu_item($items, $args){
 
 	if(empty($items))
-		return;
-
+		return $items;
+	
+	if($args->theme_location != 'primary')
+		return $items;
+	
 	//var_dump($args);
 	$sec_ob = TST_Current_Section::get_instance();
 	$sec = $sec_ob->get_current_section();
 	
-	if(!$sec || $args->theme_location !='primary')
-		return;
+	if(!$sec)
+		return $items;
 	
 	foreach($items as $index => $menu_item){
 		if(false !== strpos($menu_item->url, $sec->slug)){
