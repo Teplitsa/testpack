@@ -28,10 +28,10 @@ $five:         1400px; //xxlarge
 
 //Page layout
 $full_cont:    1400px;
-$page_cont:    1024px;
-$col:		   54px;
-$gut:	       30px;
-$flex-gut: 	   15px;
+$page_cont:    1060px;
+$col:		   70px;
+$gut:	       20px;
+$flex-gut: 	   20px;
 
 
 //Baseline
@@ -101,8 +101,8 @@ $hamburger-hover-opacity                   : 0.7;
 		font-family: $body;
 	}
 
-	font-size: 15px;
-	line-height: 23px;
+	font-size: 16px;
+	line-height: 24px;
 	color: $color-text;
 
 
@@ -266,7 +266,7 @@ $hamburger-hover-opacity                   : 0.7;
 
 		@include for(medium-screens) {
 			font-size: 18px;
-			line-height: 24px; 
+			line-height: 24px;
 		}
 	}
 }

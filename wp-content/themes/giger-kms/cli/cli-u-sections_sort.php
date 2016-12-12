@@ -13,6 +13,10 @@ try {
 
 	global $wpdb;
 
+	//clear current upload folder
+	$path_12 = WP_CONTENT_DIR.'/uploads/2016/12/*';
+	array_map('unlink', glob($path_12));
+
 	$move_to_items = array();
 
 	$move_to_items[] = array(
@@ -152,7 +156,7 @@ try {
 		'ID' => 111,
 		'slug' => 'books',
 		'post_title' => 'Книги и брошюры',
-		'post_content' => 'Книги и брошюры',
+		'post_content' => 'books.txt',
 		'section' => 'resources',
 		'parent' => 0,
 		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'import_contacts')
@@ -203,7 +207,7 @@ try {
 		'ID' => 108,
 		'slug' => 'pregnancy',
 		'post_title' => 'Беременность+',
-		'post_content' => '',
+		'post_content' => 'pregnancy.txt',
 		'section' => 'advices',
 		'parent' => 0,
 		'menu_order' => 80,
@@ -324,6 +328,20 @@ try {
 				else {
 					$page_data['post_content'] = $old_page->post_content;
 				}
+			}
+			elseif(false !== strpos($i_obj['post_content'], '.txt')) {
+				echo 'Get content from file: '.$i_obj['post_content'].chr(10);
+
+				$content = file_get_contents($i_obj['post_content']);
+				if($content){
+
+					//correct urls
+					//$home = home_url('/');
+					//$content_test = str_replace('http://asi_dev.dev/', $home, $content_test);
+					$page_data['post_content'] = $content;
+				}
+
+				unset($content);
 			}
 			else {
 				$page_data['post_content'] = $i_obj['post_content'];
