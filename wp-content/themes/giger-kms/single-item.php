@@ -6,16 +6,8 @@ $item = new TST_Item($cpost);
 
 get_header();
 ?>
-<section class="heading" <?php echo tst_get_heading_style();?>>
-	<div class="heading__block">
-		<div class="heading__title"><h1><?php echo get_the_title($item->post_object);?></h1></div>
 
-	</div>
-	<div class="heading__options">
-			<?php echo tst_item_breadcrubms();?>
-			<div class="sharing"><?php tst_social_share($item->post_object);?></div>
-		</div>
-</section>
+<div class="sharing"><?php tst_social_share($item->post_object);?></div>
 
 <section class="main">
 	<div class="frame">
@@ -44,6 +36,7 @@ get_header();
 	<?php } elseif(!empty($sidebar)) { ?>
 
 		<div class="bit md-8 lg-8 single-body">
+			<div class="single-body--title"><h1><?php echo get_the_title($item->post_object);?></h1></div>
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
 		</div>
 		<div class="bit md-3 lg-3 lg-offset-1"><?php echo $sidebar;?></div>
@@ -51,6 +44,7 @@ get_header();
 	<?php } else { ?>
 
 		<div class="bit md-12 single-body">
+			<div class="single-body--title"><h1><?php echo get_the_title($item->post_object);?></h1></div>
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
 		</div>
 

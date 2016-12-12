@@ -119,8 +119,8 @@ $hamburger-hover-opacity                   : 0.7;
 	@else if $mod == large {
 		font-size: 16px;
 		line-height: 21px;
-		
-		
+
+
 		@include for(large-screens) {
 			font-weight: 300;
 			font-size: 18px;
@@ -146,7 +146,7 @@ $hamburger-hover-opacity                   : 0.7;
 	@else if $mod == menu_item {
 		font-size: 13px;
 		line-height: 20px;
-		
+
 		@include for(large-screens) {
 			font-size: 16px;
 			line-height: 20px;
@@ -192,7 +192,7 @@ $hamburger-hover-opacity                   : 0.7;
 	.roboto & {
 		font-family: $body;
 	}
-	
+
 	color: $color-text-semi;
 
 	font-size: 13px;
@@ -232,7 +232,7 @@ $hamburger-hover-opacity                   : 0.7;
 	.roboto & {
 		font-family: $body;
 	}
-	
+
 	color: $color-text-black;
 	text-transform: uppercase;
 
@@ -243,7 +243,7 @@ $hamburger-hover-opacity                   : 0.7;
 	@if $mod == section {
 		font-size: 18px;
 		line-height: 24px;
-		
+
 	}
 	@if $mod == single {
 		font-size: 32px;
@@ -260,13 +260,13 @@ $hamburger-hover-opacity                   : 0.7;
 		line-height: 44px;
 	}
 	@else if $mod == card {
-		font-size: 18px;
-		line-height: 24px;
+		font-size: 16px;
+		line-height: 20px;
 		font-weight: normal;
-		
+
 		@include for(medium-screens) {
-			font-size: 20px;
-			line-height: 28px;
+			font-size: 18px;
+			line-height: 24px; 
 		}
 	}
 }
@@ -275,7 +275,7 @@ $hamburger-hover-opacity                   : 0.7;
 @mixin red-link() {
 	color: $color-link-one;
 	@include transition(color 0.3s);
-	
+
 	&:visited { color: $color-link-one; }
 	&:hover, &:active, &:focus {
 		color: $color-link-three;
@@ -285,7 +285,7 @@ $hamburger-hover-opacity                   : 0.7;
 @mixin green-link() {
 	color: $color-link-two;
 	@include transition(color 0.3s);
-	
+
 	&:visited { color: $color-link-two; }
 	&:hover, &:active, &:focus {
 		color: $color-link-four;
@@ -301,7 +301,7 @@ $hamburger-hover-opacity                   : 0.7;
 		font-family: $body;
 		font-weight: normal;
 	}
-	
+
 	display: inline-block;
 	text-transform: uppercase;
 	color: $color-white;
@@ -315,7 +315,7 @@ $hamburger-hover-opacity                   : 0.7;
 	padding: 7px 24px 6px;
 	font-size: 14px;
 	line-height: 20px;
-	
+
 
 	&:visited {
 		color: $color-white;
@@ -329,12 +329,12 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 
 	@if $mod == white {
-		
+
 	}
 	@else if $mod == submit {
 		padding: 16px 28px 15px;
 	}
-    
+
 }
 
 

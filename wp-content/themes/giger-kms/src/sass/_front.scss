@@ -5,9 +5,9 @@ html {
 }
 body {
 	background-color: $color-secondary;
-	text-rendering: optimizeLegibility;	
-	@include body-text();	
-	& > svg { display: none; }	
+	text-rendering: optimizeLegibility;
+	@include body-text();
+	& > svg { display: none; }
 }
 
 
@@ -22,8 +22,8 @@ a.red {
 }
 
 p {
-	
-	&:last-child { margin-bottom: 0; }	
+
+	&:last-child { margin-bottom: 0; }
 }
 
 p,ul,ol,dl,blockquote {
@@ -45,10 +45,11 @@ h1, h2, h3, h4, h5, h6 {
 	width: 92%;
 	max-width: $page_cont;
 	margin: 0 auto;
-	position: relative;	
+	position: relative;
 }
 
 .site-content {
+	padding-top: $gut;
 	padding-bottom: $gut;
 }
 
@@ -67,6 +68,5 @@ h1, h2, h3, h4, h5, h6 {
 .widget__title {
 	@include header-title(widget);
 	margin-bottom: $inpage-margin-base;
-	
-}
 
+}

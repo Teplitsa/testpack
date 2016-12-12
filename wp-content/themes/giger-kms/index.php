@@ -13,15 +13,6 @@ if(is_tag()){
 
 get_header();
 ?>
-<section class="heading" <?php echo tst_get_heading_style();?>>
-	<div class="heading__block">
-		<div class="heading__title"><h1><?php echo apply_filters('tst_the_title', $title);?></h1></div>
-	</div>
-	<?php if(is_tag()) { ?>
-		<div class="heading__options"><?php echo tst_tag_breadcrubms();?></div>
-	<?php } ?>
-</section>
-
 <section class="main">
 	<div class="frame">
 		<div class="bit md-8">
@@ -44,7 +35,24 @@ get_header();
 		<div class="bit md-4">
 			<div class="layout-section layout-section--card-block">
 				<!-- cards -->
-				sidebar
+			<?php
+				$items = get_posts(array(
+					'post_type' => 'item',
+					'posts_per_page' => 3,
+					'post_parent' => 0,
+					'no_found_rows' => true,
+					'cache_results' => false,
+					'update_post_meta_cache' => false,
+					'update_post_term_cache ' => false,
+					'orderby' => 'rand'
+				));
+
+				if(!empty($items)) { foreach($items as $si) {
+			?>
+				<div class="widget widget--card"><?php tst_card($si, false);?></div>
+			<?php
+				}}
+			?>
 			</div>
 		</div>
 	</div>

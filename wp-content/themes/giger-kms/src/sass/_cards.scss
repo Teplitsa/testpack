@@ -95,23 +95,23 @@
 
 /* cells */
 .cell {
-	
+
 }
 
 .cell__title{
 	margin-bottom: $element-padding-base;
 	@include post-title();
-	
+
 	a, a:visited {
 		color: $color-text-black;
 	}
 	a:hover { color: $color-link-two; }
-	
+
 	.date {
 		@include sub-title();
 		margin-left: $element-padding-base/2;
 	}
-	
+
 	&:first-letter { text-transform: uppercase; }
 }
 
@@ -133,7 +133,7 @@
 .cell__text--project {
 	p { margin-bottom: $element-padding-base /2; }
 	p:last-child { margin-bottom: 0;}
-	
+
 	//add lists
 }
 
@@ -145,9 +145,16 @@
 
 .card {
 	height: 100%;
-	@include clearfix();
+	width: 100%;
+
 	&.has-icon {
 		padding: $element-padding-base;
+		text-align: center;
+	}
+
+	a {
+		height: 100%;
+		width: 100%;
 	}
 }
 
@@ -158,19 +165,19 @@
 	text-align: center;
 	padding-top: 17px;
 	border-radius: 50%;
-	
+	margin: 0 auto;
+
 	i { font-size: 70px; }
-	
+
 	@include for(medium-screens) {
-		float: left;
+
 	}
+
 }
 
 .card__title {
 	@include header-title(card);
-	margin-top: $element-padding-base;
-	color: $color-white;
-	
+
 	.has-thumb & {
 		margin-top: 0;
 		padding: $element-padding-base $element-padding-base/2;
@@ -178,16 +185,20 @@
 		color: $color-text-black;
 		border-left: 6px solid $color-link-four;
 	}
-	
+
+	.has-icon & {
+		text-align: center;
+		color: $color-white;
+		margin-top: $element-padding-base;
+	}
+
 	.widget & {
 		@include header-title(widget);
 		font-weight: normal;
 	}
-	
+
 	@include for(medium-screens) {
-		.has-icon & {
-			margin-left: 130px;
-		}
+
 	}
 }
 
@@ -200,7 +211,7 @@
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: space-between;
-	
+
 	.card__title {
 		flex: 1 1 auto;
 	}
@@ -208,12 +219,12 @@
 
 .scheme-one {
 	background: $color-link-one;
-	
+
 	.card__icon {
 		background: $color-white;
 		i { color: $color-link-one; }
 	}
-	
+
 	.has-thumb .card__title  {
 		border-left-color: $color-link-one;
 	}
@@ -221,12 +232,12 @@
 
 .scheme-two {
 	background: $color-link-two;
-	
+
 	.card__icon {
 		background: $color-white;
 		i { color: $color-link-one; }
 	}
-	
+
 	.has-thumb .card__title  {
 		border-left-color: $color-link-two;
 	}
@@ -234,12 +245,12 @@
 
 .scheme-three {
 	background: $color-link-four;
-	
+
 	.card__icon {
 		background: $color-link-three;
 		i { color: $color-white; }
 	}
-	
+
 	.has-thumb .card__title  {
 		border-left-color: $color-link-four;
 	}
@@ -247,12 +258,12 @@
 
 .scheme-four {
 	background: $color-link-three;
-	
+
 	.card__icon {
-		background: $color-secondary-dark;
+		background: $color-link-four;
 		i { color: $color-white; }
 	}
-	
+
 	.has-thumb .card__title  {
 		border-left-color: $color-link-three;
 	}
@@ -260,7 +271,13 @@
 
 .scheme-five {
 	background: lighten($color-link-two, 10%);
-	
+
+	.card__icon {
+		background: $color-secondary-dark;
+
+		i { color: $color-white; }
+	}
+
 	.has-thumb .card__title  {
 		border-left-color: lighten($color-link-two, 10%);
 	}

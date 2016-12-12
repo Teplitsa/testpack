@@ -34,11 +34,11 @@ $section_color: (
 }
 
 @each $item in news, about, advices, services, resources  {
-	
+
 	.current-section-#{$item} .heading__block {
 		background: transparentize(call(section_color, $item), 0.45);
 	}
-	
+
 	//.current-section-#{$item} .crumbs a {
 	//		color: section_color($item);
 	//		&:hover { color: darken(call(section_color, $item), 10%); }
@@ -51,46 +51,25 @@ $section_color: (
 	flex-flow: column nowrap;
 	justify-content: flex-end;
 	align-items: flex-start;
-	
+
 	@include for(medium-screens) {
 		min-height: 140px;
 	}
 }
 
 .heading__title {
-	
+
 	width: 100%;
-	
+
 	h1 {
 		@include header-title(section);
 		color: $color-white;
 		padding: 0.75em;
 	}
-	
+
 	@include for(medium-screens) {
-		
+
 	}
-}
-
-
-//options
-.heading__options {
-	background: $color-white;
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-}
-
-.crumbs {
-	@include sub-title();
-	padding-left: $element-padding-base;
-}
-
-.sharing {
-	border-left: 1px solid $color-border-normal;
-	padding: 0 $element-padding-base;
 }
 
 
@@ -108,4 +87,3 @@ $section_color: (
 		border-bottom: none;
 	}
 }
-

@@ -113,7 +113,7 @@ try {
 
 	// Aadd to about section
 	if($about_section) {
-		wp_set_object_terms($about->ID, $about_section->term_id, 'section');
+		wp_set_object_terms($about->ID,    $about_section->term_id, 'section');
 		wp_set_object_terms($partners->ID, $about_section->term_id, 'section');
 		wp_set_object_terms($projects->ID, $about_section->term_id, 'section');
 

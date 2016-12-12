@@ -22,7 +22,8 @@ try {
 		'post_content' => '',
 		'section' => 'resources',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'supervisor_account'),
+		'thumb' => 'forum-patient.jpg'
 	);
 
 	$move_to_items[] = array(
@@ -32,7 +33,8 @@ try {
 		'post_content' => 'Профильные конференции и мероприятия', //add some text
 		'section' => 'resources',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'date_range'),
+		'thumb' => 'events.jpg'
 	);
 
 	$move_to_items[] = array(
@@ -62,7 +64,7 @@ try {
 		'post_content' => '',
 		'section' => 'services',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'group')
 	);
 
 	$move_to_items[] = array(
@@ -111,8 +113,9 @@ try {
 		'post_title' => 'Знакомства+',
 		'post_content' => '',
 		'section' => 'resources',
+		'menu_order' => 100,
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'loyalty')
 	);
 
 	$move_to_items[] = array(
@@ -122,7 +125,7 @@ try {
 		'post_content' => '',
 		'section' => 'advices',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'pan_tool')
 	);
 
 	$move_to_items[] = array(
@@ -131,7 +134,8 @@ try {
 		'post_title' => 'Где сдать анализы',
 		'post_content' => 'Карта адресов лабораторий',
 		'section' => 'services',
-		'parent' => 0
+		'parent' => 0,
+		'meta_input' => array('icon_id' => 'add_location')
 	);
 
 	$move_to_items[] = array(
@@ -151,7 +155,7 @@ try {
 		'post_content' => 'Книги и брошюры',
 		'section' => 'resources',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'import_contacts')
 	);
 
 	$move_to_items[] = array(
@@ -161,7 +165,7 @@ try {
 		'post_content' => 'АРВ-терапия',
 		'section' => 'advices',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'security')
 	);
 
 	$move_to_items[] = array(
@@ -171,7 +175,8 @@ try {
 		'post_content' => '',
 		'section' => 'resources',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'menu_order' => 90,
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'cast')
 	);
 
 	$move_to_items[] = array(
@@ -201,7 +206,8 @@ try {
 		'post_content' => '',
 		'section' => 'advices',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'menu_order' => 80,
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'pregnant_woman')
 	);
 
 	$move_to_items[] = array(
@@ -211,7 +217,7 @@ try {
 		'post_content' => 'Задать вопрос', //add some text
 		'section' => 'services',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'forum')
 	);
 
 	$move_to_items[] = array(
@@ -231,7 +237,8 @@ try {
 		'post_content' => 'Только узнали о своем статусе?', //add some text
 		'section' => 'advices',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'menu_order' => 100,
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'accessibility')
 	);
 
 	$move_to_items[] = array(
@@ -241,7 +248,8 @@ try {
 		'post_content' => 'Как пройти тест на ВИЧ и почему это важно', //add some text
 		'section' => 'advices',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'menu_order' => 90,
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'colorize')
 	);
 
 	$terms['services'] = get_term_by('slug', 'services', 'section');
@@ -279,6 +287,16 @@ try {
 		}
 		else { // create
 			$page_data = array();
+
+			//thumbnail
+			$thumb_id = false;
+			if(isset($i_obj['thumb'])){
+				$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.$i_obj['thumb'];
+				var_dump($path);
+				$thumb_id = tst_upload_img_from_path($path);
+				echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+			}
+
 			$old_page = ($i_obj['ID']) ?  get_post((int)$i_obj['ID']) : false;
 
 			$page_data['ID'] = ($i_obj['ID']) ? (int)$i_obj['ID'] : 0;
@@ -313,6 +331,12 @@ try {
 
 			if(isset($i_obj['meta_input'])){
 				$page_data['meta_input'] = $i_obj['meta_input'];
+				if($thumb_id)
+					$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
+			}
+
+			if(isset($i_obj['menu_order'])) {
+				$page_data['menu_order'] = (int)$i_obj['menu_order'];
 			}
 
 			$uid = wp_insert_post($page_data);

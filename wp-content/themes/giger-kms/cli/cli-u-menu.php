@@ -131,8 +131,9 @@ try {
 	}
 
 	$menu_id = wp_create_nav_menu($menu_name);
-	$about = get_page_by_path('about');
+	$about = get_page_by_path('about-us');
 	$projects = get_page_by_path('projects');
+	$partners = get_post(117);
 	$news = get_term_by('slug', 'news', 'section');
 
 	if($about) {
@@ -184,6 +185,24 @@ try {
 			//'menu-item-attr-title' => '',
 			//'menu-item-target' => '',
 			'menu-item-classes' => 'section-'.$news->slug,
+			//'menu-item-xfn' => '',
+			'menu-item-status' => 'publish',
+		));
+	}
+
+	if($partners) {
+		wp_update_nav_menu_item($menu_id, 0, array(
+			'menu-item-object-id' => $partners->ID,
+			'menu-item-object' => 'page',
+			'menu-item-parent-id' => 0,
+			'menu-item-position' => 0,
+			'menu-item-type' => 'post_type',
+			//'menu-item-title' => '',
+			//'menu-item-url' => '',
+			//'menu-item-description' => '',
+			//'menu-item-attr-title' => '',
+			//'menu-item-target' => '',
+			'menu-item-classes' => 'page-'.$partners->post_name,
 			//'menu-item-xfn' => '',
 			'menu-item-status' => 'publish',
 		));

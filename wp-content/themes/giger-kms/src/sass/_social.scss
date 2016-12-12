@@ -6,11 +6,11 @@ $social_color: (
 	facebook:  #4c6fa8,
 	twitter:   #00bcf0,
     ok:        #ffb061,
-	
+
 	telegram:  #2CA5E0,
 	whatsapp:  #69BD35,
 	viber:     #774C98,
-	
+
     instagram: #B7308C,
     pinterest: #DE2127,
     youtube:   #E21D17,
@@ -28,15 +28,15 @@ $social_color: (
 
 
 @mixin social-button-link($button-size, $icon-size) {
-	display: inline-block;			
+	display: inline-block;
 	text-align: center;
-	vertical-align: middle;	
+	vertical-align: middle;
 	@include transition(all 0.2s);
 	text-decoration: none;
 	width: $button-size;
 	height: $button-size;
 	padding: ($button-size - $icon-size)/2 0;
-	
+
 	.svg-icon { fill: #262832; }
 }
 
@@ -45,24 +45,28 @@ $social_color: (
 
 /** == Sharing == **/
 .sharing-list {
-	@include clearfix;	
+	@include clearfix;
 }
 
-.sharing-list  {			
+.sharing-list  {
 	cursor: pointer;
-		
+
 	a {
 		@include social-button-link(44px, 20px);
 	}
-	
+
 	li {
 		float: left;
 		@include transition(background 0.35s);
+
+		@include for(medium-screens) {
+			float: none;
+		}
 	}
-	
+
 	.svg-icon {
 		display: inline-block;
-		vertical-align: moddle;				
+		vertical-align: moddle;
 		vertical-align: middle;
 		width: 20px;
 		height: 20px;
@@ -70,30 +74,42 @@ $social_color: (
 }
 
 @each $item in vk, facebook, twitter, telegram, whatsapp, viber, ok, mail  {
-		
+
 	.sharing-list li.#{$item} {
 		.svg-icon { fill: social_color($item); }
-		
+
 		&:hover, &:focus, &:active {
 			background: social_color($item);
 			.svg-icon { fill: $color-white; }
 		}
-		
+
 	}
 }
 
 //hide
 .sharing-list {
-	
+
 	&.regular {
 		.whatsapp, .viber { display: none; }
+
 		@include upto(small-screens) {
 			.ok, .twitter, .mail { display: none; }
 		}
-		
+
 	}
-	
+
 	&.mobile-agent {
 		.vk, .ok, .mail, .facebook { display: none; }
+	}
+}
+
+/* sharing position */
+.sharing {
+	background: $color-white;
+
+	@include for(medium-screens) {
+		position: fixed;
+		left: 0;
+		top: 208px;
 	}
 }

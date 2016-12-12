@@ -8,39 +8,39 @@
 	top: 0;
 	height: 100%;
 	@include transition(transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275));
-	
+
 	width: 320px;
 	right: -320px;
-	
+
 	@include for(small-screens) {
 		width: 360px;
 		right: -360px;
 	}
-	
+
 	.admin-bar & {
-		
+
 	}
-	
+
 	.searchform {
 		background: $color-white;
 		height: 40px;
 	}
-	
+
 	.searchform__field  {
 		color: $color-text;
 		padding: 11px 8px;
 	}
-	
-	
+
+
 	.searchform__icon {
 		background: transparent;
 		height: 40px;
-		
+
 		.svg-icon {
 			top: 12px;
 			fill: $color-link-four;
 		}
-		
+
 		&:hover {
 			background: darken($color-link-four, 12%);
 			.svg-icon {
@@ -60,7 +60,7 @@
 }
 
 .drawer-nav__list {
-	
+
 	li {
 		margin: 5px 0;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -71,14 +71,14 @@
 		padding: 0.4em;
 		color: $color-white;
 		@include transition(background 0.3s);
-		
+
 		&:hover {
 			background: $color-link-three;
 		}
 	}
-	
+
 	a[href *= "join-us"] {
-		
+
 	}
 }
 
@@ -87,10 +87,10 @@
 }
 
 body.drawer-open {
-	
+
 	#drawer{ @include transform(translateX(-260px)); }
 	#site_root { @include transform(translateX(-260px)); }
-	
+
 	@include for(small-screens) {
 		#drawer{ @include transform(translateX(-300px)); }
 		#site_root { @include transform(translateX(-300px)); }
@@ -114,12 +114,12 @@ body.drawer-open {
 		width: 150px;
 		flex: 0 1 auto;
 	}
-	
+
 	@include for(medium-screens) {
 		&.branding { width: 35%; }
 		&.actions { width: 65%; }
 	}
-	
+
 	@include for(large-screens) {
 		&.branding { width: 40%; }
 		&.actions { width: 60%; }
@@ -144,7 +144,7 @@ body.drawer-open {
 	flex-flow: row nowrap;
 	justify-content: flex-end;
 	align-items: center;
-	
+
 	@include for(medium-screens) {
 		display: none;
 	}
@@ -159,11 +159,11 @@ body.drawer-open {
 
 .actions__text {
 	color: $color-link-four;
-	a, a:visited, a:hover, a:active, a:focus { color: $color-link-four; } 
+	a, a:visited, a:hover, a:active, a:focus { color: $color-link-four; }
 }
 
 .actions__text--mobile {
-	
+
 	@include for(small-screens) {
 		flex: 1 1 auto;
 	}
@@ -184,7 +184,7 @@ body.drawer-open {
 	flex-flow: row nowrap;
 	justify-content: flex-end;
 	align-items: center;
-	
+
 }
 
 .actions__text--desktop {
@@ -201,7 +201,7 @@ body.drawer-open {
 
 /* menu */
 .actions__menu {
-	
+
 }
 
 .actions__list {
@@ -211,7 +211,7 @@ body.drawer-open {
 	align-items: center;
 	background: $color-white;
 	box-shadow: 0 1px 3px rgba(200,200,200, 0.4);
-	
+
 	li {
 		flex: 1 1 auto;
 		text-align: center;
@@ -220,18 +220,23 @@ body.drawer-open {
 			background: $color-link-four;
 		}
 	}
-	
+
 	a {
 		display: inline-block;
 		@include nav-text(menu_item);
 		color: $color-text;
 		padding: 15px 0;
-		
+
 		@include for(large-screens) {
 			padding: 20px 0;
 		}
-		
+
 	}
-	
+
 	li:hover a { color: $color-white; }
+
+	li.current-section  { //temp
+		background: $color-link-three;
+		a { color: $color-white; }
+	}
 }
