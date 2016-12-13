@@ -19,16 +19,16 @@ try {
 		$target = str_replace(array('//', '/wp-content', 'http://', 'https://'), '', WP_CONTENT_URL);
 		var_dump($target);
 		$target = untrailingslashit($target);
-		$target = 'http://'.$target.'/core';
+		$siteurl = 'http://'.$target.'/core';
 		$home = 'http://'.$target;
 
-		$wpdb->query($wpdb->prepare("UPDATE $wpdb->options SET option_value = %s WHERE option_name = 'siteurl'", $target));
+		$wpdb->query($wpdb->prepare("UPDATE $wpdb->options SET option_value = %s WHERE option_name = 'siteurl'", $siteurl));
 		$wpdb->query($wpdb->prepare("UPDATE $wpdb->options SET option_value = %s WHERE option_name = 'home'", $home));
 	}
 
 
 	//active theme
-	update_option('current_theme', 'NewLife Theme');
+	update_option('current_theme', 'Dront Theme');
 	update_option('template', 'giger-kms');
 	update_option('stylesheet', 'giger-kms');
 
@@ -58,7 +58,6 @@ try {
 
 	//Update active plugins list
 	$active = array(
-		"cmb2-post-search-field/cmb2_post_search_field.php",
 		"cmb2/init.php",
 		"cmb_field_map/cmb-field-map.php",
 		"crop-thumbnails/crop-thumbnails.php",
@@ -67,7 +66,6 @@ try {
 		"pdf-viewer/pdf-viewer.php",
 		"post-type-converter/post-type-converter.php",
 		"responsive-lightbox/responsive-lightbox.php",
-		"term-management-tools/term-management-tools.php",
 		"wordpress-seo/wp-seo.php"
 	);
 
@@ -93,13 +91,7 @@ try {
 	$footer_text = "";
 	update_option('footer_text', $footer_text );
 
-	$header_text = 'Звоните +7(951)031-56-56';
-	update_option('header_text', $header_text);
-
 	echo 'Theme options updated for Error404 and Header / Footer text'.chr(10);
-
-	//No admin username
-	$wpdb->update($wpdb->users, array('user_login' => 'awedlog', 'display_name' => 'Елена'), array('ID' => 1), array('%s', '%s'), array('%d'));
 
 
 	//Final

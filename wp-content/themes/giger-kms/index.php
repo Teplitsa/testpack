@@ -28,9 +28,7 @@ get_header();
 				}
 			?>
 			</div>
-			<div class="layout-section layout-section--loadmore">
-				loadmore
-			</div>
+			
 		</div>
 		<div class="bit md-4">
 			<div class="layout-section layout-section--card-block">

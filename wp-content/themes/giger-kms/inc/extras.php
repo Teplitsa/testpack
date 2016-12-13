@@ -185,20 +185,6 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 26,
     ));
 
-	$wp_customize->add_setting('site_header_text', array(
-        'default'   => '',
-        'transport' => 'postMessage',
-		'type' 		=> 'option'
-    ));
-
-    $wp_customize->add_control('site_header_text', array(
-        'type'     => 'textarea',
-        'label'    => 'Текст в шапке',
-        'section'  => 'title_tagline',
-        'settings' => 'site_header_text',
-        'priority' => 28,
-    ));
-
 	$wp_customize->add_setting('er_text', array(
         'default'   => '',
         'transport' => 'postMessage',
@@ -470,4 +456,3 @@ function tst_filter_search_query($s){
 
 	return $s;
 }
-
