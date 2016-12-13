@@ -1,0 +1,98 @@
+/** == Footer (_footer.scss) == **/
+
+.site-footer {
+	background: $color-white;
+	padding-top: $gut;
+	
+	.widget_nav_menu {
+		a {
+			display: inline-block;
+			padding: 2px 0;
+			font-size: 1.05em;
+		}
+	}
+	
+	.widget p {
+		margin-bottom: $inpage-margin-base /2;
+	}
+	
+	.middle, .last {
+		a { @include red-link(); }
+		a.button { @include button(); }
+	}
+	
+	.hr {
+		width: 100%;
+		border-bottom:  1px solid $color-border-normal;
+		margin-bottom: $gut;
+	}
+	
+	@include for(medium-screens) {
+		.textwidget { max-width: 300px; }
+	}
+}
+
+.credits {
+	padding-bottom: $gut;
+}
+
+.credits__copy {
+	@include body-text(summary);
+	a {
+		color: $color-text;
+		border-bottom: 1px solid $color-border-normal;
+		&:visited {
+			color: $color-text;
+		}
+		&:hover, &:active, &:focus {
+			border-bottom-color: $color-link-four;
+		}
+	}
+}
+
+
+
+.tst-banner {
+	position: relative;
+	text-align: right;
+	height: 48px;
+
+	.tst-banner__icon {
+		display: inline-block;
+		width: 86px;
+		height: 40px;
+		fill: $color-text;
+	}
+
+	a {
+		display: block;
+		width: 100px;
+		height: 48px;
+		padding-top: 4px;
+		text-align: center;
+		box-sizing: border-box;
+		border-radius: 5px;
+		border: 1px solid $color-text;
+		@include transition(all 0.35s);
+
+		&:hover, &:focus, &:active {
+			background: $color-white;
+		}
+
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	.tst-banner__support {
+		display: inline-block;
+		font-size: 12px;
+		line-height: 14px;
+		margin-right: 110px;
+		padding-top: 8px;
+		color: $color-text;
+	}
+}
+
+
+

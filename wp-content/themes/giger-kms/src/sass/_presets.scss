@@ -3,297 +3,338 @@
 -------------------------------------------------------- */
 
 //Fonts
-$body:	     'Open Sans',Arial, sans-serif; 
-$heading:    'Roboto Condensed', "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$title:      'Roboto Condensed', "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$nav:        'Roboto Condensed', "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$body:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$body_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
-$sans:       'Open Sans',Arial, sans-serif;
-$mono: 	     "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
+$heading:		"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$heading_fb:	"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+
+$title:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$title_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+
+$nav:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$nav_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+
+$sans:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$mono:			"Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 
 //Break points
 $one: 	       480px; //small
 $two:          767px; //medium
-$three:	       984px; //large
+$three:	       1024px; //large
 $four:         1200px; //exlarge
 $five:         1400px; //xxlarge
 
 //Page layout
 $full_cont:    1400px;
-$page_cont:    1200px;
-$col:		   54px;
-$gut:	       30px;
-
+$page_cont:    1060px;
+$col:		   70px;
+$gut:	       20px;
+$flex-gut: 	   20px;
 
 
 //Baseline
 $base: 24px;
+$inpage-baseline: 		24px;
+$inpage-margin-base:	18px;
+$element-margin-base: 	5px;
+$element-padding-base: 	16px;
 
 
 //Colors
-$color-text:   rgba(0,0,0, 0.9);
+$color-text:   #2a2a2a;
 $color-white:  #ffffff;
 
-$color-link-one:   #33a3ce;
-$color-link-two:   #3bc43b; // #EF2737;
-$color-link-three: #3caa3c; 
+$red: 			#E23100;
+$green: 		#008E2C;
+$orange: 		#FF542C;
+$grey_green:	#04AE9C;
 
-$color-text-black:			#000000;
-$color-text-semi:			rgba(0,0,0, 0.6);
-$color-text-light:			rgba(0,0,0, 0.45);
-$color-secondary:			#f5f5f5;
-$color-secondary-dark:		#e5e5e5;
-$color-secondary-alt:		#f2f2f2;
-$color-secondary-black:		#191411;
+$color-link-one:   $red;
+$color-link-two:   $green;
+$color-link-three: $orange;
+$color-link-four:  $grey_green;
+
+$color-text-black:		#000000;
+$color-text-semi:		#666666;
+$color-text-light:		#9b9b9b;
+$color-secondary:		#f3f3f3;
+$color-secondary-alt:	#DAEDEA;
+$color-secondary-dark:	#656D78;
 
 
 $color-border-normal: #dfdfdf;
 $color-border-light:  #eeeeee;
-$color-border-link:   #eeeeee;
+$color-border-link:   #8c8c91;
 
-$color-form-invalid: #ED1C24;
+$color-form-invalid: $red;
+$color-form-ok : $green;
 
-$leyka_green : #1DB318;
 
 //Layout Settings
 $adminbar_large_screen: 32px;
 $adminbar_small_screen: 46px;
 
-//Element
-$indent: 1.55em;
-$rule: 	 1px solid $color-border-normal;
-$fixed_side: 222px;
 
+
+
+//humburgers settings
+$hamburger-padding-x                       : 14px;
+$hamburger-padding-y                       : 14px;
+$hamburger-layer-width                     : 28px;
+$hamburger-layer-height                    : 4px;
+$hamburger-layer-spacing                   : 4px;
+$hamburger-layer-color                     : $color-link-four;
+$hamburger-layer-border-radius             : 4px;
+$hamburger-hover-opacity                   : 0.7;
 
 /** Mixins **/
 
 
 // Typo
 @mixin body-text($mod: default) {
-	font-family: $body;
+	font-family: $body_fb;
+	font-weight: 400;
+
+	.roboto & {
+		font-family: $body;
+	}
+
+	font-size: 16px;
+	line-height: 24px;
 	color: $color-text;
-	font-weight: normal;
-	
-	font-size: 14px;	
-	line-height: 1.5;
-	
-	@include for(medium-screens) {
-		font-size: 18px;	
-		line-height: 1.45;
+
+
+	@if $mod == summary {
+		font-size: 12px;
+		line-height: 18px;
+
 	}
-		
-	@if $mod == summary {		
-		font-size: 12px;	
-		line-height: 1.5;
-		
-		@include for(medium-screens) {
-			font-size: 14px;	
-			line-height: 1.5;
-		}		
+	@else if $mod == small {
+		font-size: 13px;
+		line-height: 20px;
+		font-weight: 300;
 	}
-	@else if $mod == semi {		
-		font-size: 15px;	
-		line-height: 1.35;
-		
-		@include for(medium-screens) {
-			font-size: 16px;	
-			line-height: 1.4;
-		}	
-	}
-	@else if $mod == larger {
-		font-size: 18px;	
-		line-height: 1.45;
-		
-		@include for(medium-screens) {
-			font-size: 21px;	
-			line-height: 1.45;
-		}	
-	}
-	@if $mod == small {		
-		font-size: 11px;	
-		line-height: 1.45;
-		
-		@include for(medium-screens) {
-			font-size: 12px;	
-			line-height: 1.5;
-		}		
+	@else if $mod == large {
+		font-size: 16px;
+		line-height: 21px;
+
+
+		@include for(large-screens) {
+			font-weight: 300;
+			font-size: 18px;
+		}
 	}
 }
 
 @mixin nav-text($mod: default) {
-	
-	font-family: $nav;
+	font-family: $nav_fb;
+	font-weight: 300;
+
+	.roboto & {
+		font-family: $nav;
+	}
+
+	font-size: 14px;
+	line-height: 18px;
 	text-transform: uppercase;
-	font-weight: normal;
-	
-	font-size: 16px;	
-	line-height: 1;	
-	
-	@if $mod == multiline {
+
+	@if $mod == inversion {
+		font-weight: 500;
+	}
+	@else if $mod == menu_item {
+		font-size: 13px;
+		line-height: 20px;
+
+		@include for(large-screens) {
+			font-size: 16px;
+			line-height: 20px;
+		}
+	}
+	@else if $mod == larger {
+		font-size: 16px;
 		line-height: 20px;
 	}
-	@else if $mod == meta {
-		font-size: 16px;
-		line-height: 16px;
-	}
-	@else if $mod == meta_small {
-		font-size: 14px;
-		line-height: 16px;
-	}
-	@else if $mod == menu {
-		font-size: 16px;
-		letter-spacing: 0.5px;
-		font-weight: 700;
-	}
-	@else if $mod == lowercase {		
-		text-transform: none;
+	@else if $mod == small {
+		font-size: 12px;
+		line-height: 20px;
 	}
 }
 
+
 @mixin post-title($mod: default) {
-	font-family: $title;
-	color: $color-text-black;
-	font-weight: normal;
-	text-transform: none;
-	
-	font-size: 21px;
-	line-height: 24px;
-	@include hyphens(none);
-			
+	font-family: $title_fb;
+	font-weight: 500;
+
+	.roboto & {
+		font-family: $title;
+	}
+
+	font-size: 18px;
+	line-height: 26px;
+
 	@if $mod == small_title {
-		font-size: 18px;
-		line-height: 24px;
-		font-weight: 700;
-		letter-spacing: 0.5px;
+		font-size: 16px;
+		line-height: 20px;
 	}
 	@else if $mod == featured {
 		font-size: 26px;
-		line-height: 1.1;	
-			
-		@include for(medium-screens){
-			font-size: 28px;
-			line-height: 1.1;	
-		}
-	}	
+		line-height: 1.1;
+	}
+
 }
 
-@mixin sub-title($mod: default) {		
-	font-family: $sans;
-	font-weight: normal;
-	text-transform: uppercase;
-	letter-spacing: normal;
+@mixin sub-title($mod: default) {
+	font-family: $body_fb;
+	font-weight: 300;
+
+	.roboto & {
+		font-family: $body;
+	}
+
 	color: $color-text-semi;
-		
-	font-size: 12px;	
+
+	font-size: 13px;
 	line-height: 1.5;
-	
-	@if $mod == small {				
-		font-size: 11px;		
+
+	@if $mod == small {
+		font-size: 11px;
 	}
 	@else if $mod == extend {
 		font-size: 14px;
 	}
 }
 
-@mixin form-text($mod: default) {	
-	font-family: $sans;
+@mixin form-text($mod: default) {
+	font-family: $mono;
 	color: $color-text;
 	font-weight: normal;
 	text-transform: none;
 	letter-spacing: normal;
-	
-	font-size: 14px;	
-	line-height: 1.5;
-	
+
+	font-size: 14px;
+	line-height: 18px;
+
 	@if $mod == small {
 		font-size: 12px;
 	}
-	@if $mod == semi {
+	@else if $mod == semi {
 		font-size: 16px;
 	}
 }
 
 
 @mixin header-title($mod: default){
-	font-family: $heading;
+	font-family: $body_fb;
+	font-weight: 500;
+
+	.roboto & {
+		font-family: $body;
+	}
+
 	color: $color-text-black;
-	font-weight: normal;
 	text-transform: uppercase;
-	
-	font-size: 16px;	
-	line-height: 1.5;
-	
-	
+
+	font-size: 18px;
+	line-height: 24px;
+
+
 	@if $mod == section {
-		font-size: 42px;
-		@include for(large-screens) { font-size: 54px; }
-		line-height: 1.1;
+		font-size: 18px;
+		line-height: 24px;
+
 	}
 	@if $mod == single {
-		font-size: 36px;
-		@include for(medium-screens) { font-size: 42px; }
-		@include for(large-screens) { font-size: 54px; }
-		line-height: 1.05;
+		font-size: 32px;
+		@include for(medium-screens) { font-size: 40px; }
+		line-height: 1.15;
+		text-transform: none;
 	}
 	@else if $mod == widget {
-		font-size: 27px;
-		line-height: 1.2;
+		font-size: 16px;
+		line-height: 24px;
 	}
 	@else if $mod == head_title {
 		font-size: 40px;
-		line-height: 1.2;
+		line-height: 44px;
 	}
-	@else if $mod == quote_title {
-		font-size: 36px;		
-		line-height: 1.2;
+	@else if $mod == card {
+		font-size: 16px;
+		line-height: 20px;
+		font-weight: normal;
+
+		@include for(medium-screens) {
+			font-size: 18px;
+			line-height: 24px;
+		}
 	}
 }
 
+/* Elements */
+@mixin red-link() {
+	color: $color-link-one;
+	@include transition(color 0.3s);
+
+	&:visited { color: $color-link-one; }
+	&:hover, &:active, &:focus {
+		color: $color-link-three;
+	}
+}
+
+@mixin green-link() {
+	color: $color-link-two;
+	@include transition(color 0.3s);
+
+	&:visited { color: $color-link-two; }
+	&:hover, &:active, &:focus {
+		color: $color-link-four;
+	}
+}
+
+
 @mixin button($mod: default){
+	font-family: $body_fb;
+	font-weight: normal;
+
+	.roboto & {
+		font-family: $body;
+		font-weight: normal;
+	}
+
 	display: inline-block;
-	font-family: $nav;	
 	text-transform: uppercase;
 	color: $color-white;
-	background: $color-link-three;
-	border: 1px solid $color-link-three;	
+	border-radius: 2px;
+
+	background: $color-link-one;
+	border: none;
+
 	@include transition(all 0.3s);
-	
-	padding: 14px 24px;
-	font-size: 16px;
-	line-height: 18px;
-	
+
+	padding: 7px 24px 6px;
+	font-size: 14px;
+	line-height: 20px;
+
+
 	&:visited {
 		color: $color-white;
 	}
+
 	&:hover, &:focus, &:active {
-		//background: darken($color-link-three, 10%);
-		background: $color-link-two;
+		//background: $color-link-three;
+		background: $color-link-three;
+		box-shadow: 1px 1px 2px rgba(0,0,0, 0.4);
 		color: $color-white;
-		border-color: $color-link-two;
 	}
-	
+
 	@if $mod == white {
-		background: $color-white;
-		border: 1px solid $color-white;
-		color: $color-link-three;
-		&:visited { color: $color-link-three; }
-		
-		&:hover, &:focus, &:active {			
-			background: $color-link-two;
-			color: $color-white;
-			border-color: $color-link-two;
-		}
+
 	}
-	@else if $mod == leyka {
-		background: $leyka_green;
-		border: 1px solid $leyka_green;
-		
-		&:hover, &:focus, &:active {			
-			background: darken($leyka_green, 10%);
-			border-color: darken($leyka_green, 10%);			
-		}
+	@else if $mod == submit {
+		padding: 16px 28px 15px;
 	}
+
 }
 
 
@@ -301,13 +342,13 @@ $fixed_side: 222px;
 @mixin ghost-button($size: 16px, $color: #fff, $hover_text: #000) {
 	font-family: $nav;
 	font-size: $size;
-	text-transform: uppercase;	
+	text-transform: uppercase;
 	display: inline-block;
 	padding: 0.5em 1.3em;
 	color: $color;
-	border: 2px solid $color;	
+	border: 2px solid $color;
 	@include transition(all 0.3s);
-	
+
 	&:visited {
 		color: $color;
 	}
@@ -318,12 +359,85 @@ $fixed_side: 222px;
 }
 
 
+/** == Mq == **/
+
+@mixin for($media) {
+	@if $media == small-screens {
+		@media screen and (min-width: $one) { @content; }
+	}
+	@else if $media == medium-screens {
+		@media screen and (min-width: $two) { @content; }
+	}
+	@else if $media == large-screens {
+		@media screen and (min-width: $three) { @content; }
+	}
+	@else if $media == exlarge-screens {
+		@media screen and (min-width: $four) { @content; }
+	}
+	@else if $media == xxlarge-screens {
+		@media screen and (min-width: $five) { @content; }
+	}
+}
+
+@mixin upto($media) {
+	@if $media == small-screens {
+		@media screen and (max-width: $one - 1) { @content; }
+	}
+	@else if $media == medium-screens {
+		@media screen and (max-width: $two - 1) { @content; }
+	}
+	@else if $media == large-screens {
+		@media screen and (max-width: $three - 1) { @content; }
+	}
+	@else if $media == exlarge-screens {
+		@media screen and (max-width: $four - 1) { @content; }
+	}
+}
+
+/** == Helpers == **/
+
+@function value_from_map($key, $map) {
+	@if map-has-key($map, $key) {
+		@return map-get($map, $key);
+	}
+
+	@warn "Unknown '#{$key}' in $map.";
+	@return null;
+}
+
+@mixin hidden { //Hide for both screenreaders and browsers
+	display: none;
+	visibility: hidden; }
+
+@mixin visuallyhidden { //Hide only visually, but have it available for screenreaders
+	position : absolute;
+	clip : rect(0 0 0 0);
+	overflow : hidden;
+	margin: -1px;
+	padding : 0;
+	height : 1px;
+	width : 1px;
+	border : 0; }
+
+@mixin image-replace {
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+	text-decoration: none;
+}
+
+@mixin no-select {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	   	-ms-user-select: none;
+	   		user-select: none;
+}
 
 @mixin shading-summary($max-height: 48px){
 	max-height: $max-height;
-	overflow: hidden;		
+	overflow: hidden;
 	position: relative;
-	
+
 	&:after {
 		content: '';
 		display: block;
@@ -334,84 +448,10 @@ $fixed_side: 222px;
 		bottom: 0;
 		right: 0;
 		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+82 */
-		background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%); 
-		background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 100%); 
-		background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 100%); 
+		background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%);
+		background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 100%);
+		background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
 	}
-	
+
 }
-
-// Media
-@mixin caption-figure {	
-	width: 100%;
-	
-	a {
-		display: block;
-		width: 100%;	
-	}
-	
-	img {
-		width: 100%; //temp
-		height: auto;
-	}
-			
-	figcaption {
-		vertical-align: middle;
-		display: block;
-		margin-top: $gut/2;
-		@include nav-text();
-		position: relative;
-		padding-left: 28px;
-					
-		
-		
-		span {
-			display: inline-block;
-			@include nav-text();
-			line-height: 1.5;			
-		}
-		
-		p { margin: 0; }		
-	}
-}
-
-
-
-
-@mixin container-extended() {
-	margin: 0 -4.35%;
-	position: relative;
-	width: auto;
-	
-	& > div[id *="pl-"],
-	& > div[class *="so-widget"] {
-		max-width: $page_cont;
-		width: 92%;
-		margin: 0 auto;
-	}
-	
-	$ex_cont_width_mq: $page_cont / 0.92 + 1px;
-	@media screen and (min-width: $ex_cont_width_mq ) { 
-		margin: 0 -1 * ($full_cont - $page_cont) / 2;	
-	}
-	
-}
-
-@mixin vertical-image-header-fixed(){
-	//60vh;
-	height: 360px;
-	
-	@include for(small-screens) {
-		height: 400px;
-	}
-	
-	@include for(medium-screens) {
-		height: 460px;
-	}
-	
-	@include for(large-screens) {
-		height: 480px;
-	}
-}
-	

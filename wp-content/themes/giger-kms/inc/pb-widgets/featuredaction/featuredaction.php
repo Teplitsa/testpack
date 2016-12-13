@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: [TST] Заставка
-Description: Стартовая заставка с изображением, текстом и кнопкой (опционально)
+Description: Стартовая заставка с изображением, текстом и иконкой
 */
 
 class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
@@ -12,7 +12,7 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 			'tst-featureditem',
 			'[TST] Заставка',
 			array(
-				'description' => 'Стартовая заставка с изображением, текстом и кнопкой (опционально)'		
+				'description' => ' Стартовая заставка с изображением, текстом и иконкой'		
 			),
 			array(
 				
@@ -36,61 +36,29 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 	function initialize_form(){
 
 		return array(
-			'post_id' => array(
-				'type' => 'text',
-				'label' => __('ID of linked post', 'rdc'),
-				'description' => __('Could be post, project, event - provide fallback for empty fields', 'rdc')
-			),		 
-					
 			'image' => array(
 				'type' => 'media',
-				'label' => __('Image file', 'rdc'),
+				'label' => 'Фоновое изображение',
 				'library' => 'image',
 				'fallback' => true,
 			),		
 
 			'title' => array(
 				'type' => 'text',
-				'label' => __('Title text', 'rdc'),
+				'label' => 'Заголовок',
 			),
 			
 			'subtitle' => array(
 				'type' => 'textarea',
-				'label' => __('Sub title text', 'rdc'),
+				'label' => 'Аннотация',
 				'rows' => 4
 			),
 			
-			/*'extend_width' => array(
-				'type' => 'checkbox',
-				'default' => false,
-				'label' => __('Extend Width', 'rdc'),
-				'description' => 'Макет шире основной колонки',
-			),*/
-			
-			'link_section' => array(
-				'type' => 'section',
-				'label' => __('Link settings', 'rdc'),
-				'hide' => true,
-				'fields' => array(					
-					'link' => array(
-						'type' => 'link',
-						'label' => __('Button link', 'rdc'),
-					),
-					'link_text' => array(
-						'type' => 'text',
-						'label' => __('Button text', 'rdc'),
-					),					
-					'link_style' => array(
-						'type' => 'select',
-						'label' => __( 'Style', 'rdc' ),
-						'default' => 'below',
-						'options' => array(
-							'below' => __( 'Text below image', 'rdc' ),
-							'over'   => __( 'Text over image', 'rdc' )										
-						)
-					),
-				)
-			)
+			'icon' => array(
+				'type' => 'text',
+				'label' => 'Класс иконки',
+				'description' => 'Скопируйте класс иконки <a href="https://developer.wordpress.org/resource/dashicons/">на справочной странице</a>',
+			),
 		);
 	}
 	
@@ -98,13 +66,9 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 	public function get_template_variables( $instance, $args ) {
 		return array(			
 			'title'		=> $instance['title'],
-			'subtitle'	=> $instance['subtitle'],			
-			'image'		=> (int)$instance['image'],
-			'post_id' 	=> (int)$instance['post_id'],
-			'link'  	=> (isset($instance['link_section']['link'])) ? $instance['link_section']['link'] : '',
-			'link_text' => (isset($instance['link_section']['link_text'])) ? $instance['link_section']['link_text'] : '',
-			'link_style'=> (isset($instance['link_section']['link_style'])) ? $instance['link_section']['link_style'] : ''
-			//'extend_width' => (bool)$instance['extend_width']
+			'subtitle'	=> $instance['subtitle'],
+			'icon'		=> sanitize_text_field($instance['icon']),
+			'image'		=> (int)$instance['image']			
 		);
 	}
 	
@@ -131,34 +95,31 @@ class TST_FeaturedItem_Widget extends SiteOrigin_Widget {
 		$instance = $this->add_defaults( $this->form_options, $instance );
 		$template_vars = $this->get_template_variables($instance, $args);
 		extract( $template_vars );
-		
-		
+				
 		$css_name = $this->generate_and_enqueue_instance_styles( $instance );
 		
-		$сpost = (!empty($post_id)) ? get_post($post_id) : '';
+		echo $args['before_widget'];
+		echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
+				
+		$this->_print_markup($title, $subtitle, $icon, $image);
 		
-		if($сpost) {
-			$title = (!$title && $сpost) ? get_the_title($сpost) : $title;
-			$subtitle = (!$subtitle) ? $сpost->post_excerpt : $subtitle;
-			$image = (!$image) ? get_post_thumbnail_id($сpost) : $image;
-			$link = (!$link) ? get_permalink($сpost) : $link;
-			$link_text = (!$link_text) ? __('More', 'rdc') : $link_text;
-		}
+		echo '</div>';
+		echo $args['after_widget'];
 		
-        $card_callback = "rdc_intro_card_markup_".$link_style;
-		
-		if(is_callable($card_callback)) {
-			echo $args['before_widget'];
-			echo '<div class="so-widget-'.$this->id_base.' so-widget-'.$css_name.'">';
-			
-			call_user_func_array($card_callback, array($title, $subtitle, $image, $link, $link_text));		
-			
-			echo '</div>';
-			echo $args['after_widget'];
-		}
 	}
 	
+	protected function _print_markup($title, $subtitle, $icon, $image){
 	
+	?>
+	<div class="featured-section" style="background-image: url(<?php echo wp_get_attachment_url($image);?>)">
+		<div class="fs-content-wrap"><div class="fs-content">
+			<div class="fs-icon"><div class="dashicons <?php echo esc_attr($icon);?>"></div></div>
+			<h1 class="fs-title"><?php echo apply_filters('tst_the_title',  $title);?></h1>
+			<div class="fs-desc"><?php echo apply_filters('tst_the_content',  $subtitle);?></div>
+		</div></div>
+	</div>
+	<?php
+	}
 	
 } //class
 

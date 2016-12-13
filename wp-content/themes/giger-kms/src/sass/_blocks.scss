@@ -1,0 +1,89 @@
+/** == Building blocks (_blocks.scss) == **/
+
+//general elements
+.sep {
+	display: inline-block;
+	padding: 0 4px;
+}
+
+// Title Block
+.heading {
+	margin: 18px 0;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
+	@include for(medium-screens) { margin: 30px 0 $gut/2; }
+	box-shadow: 0 1px 3px rgba(200,200,200, 0.4);
+}
+
+$section_color: (
+	news:		$color-link-four,
+	about:  	$color-link-three,
+	advices:	$color-link-two,
+    services:	$color-link-one,
+	resources:	$color-link-three
+);
+
+@function section_color($key) {
+	@if map-has-key($section_color, $key) {
+		@return map-get($section_color, $key);
+	}
+
+	@warn "Unknown '#{$key}' in $section_color.";
+	@return null;
+}
+
+@each $item in news, about, advices, services, resources  {
+
+	.current-section-#{$item} .heading__block {
+		background: transparentize(call(section_color, $item), 0.45);
+	}
+
+	//.current-section-#{$item} .crumbs a {
+	//		color: section_color($item);
+	//		&:hover { color: darken(call(section_color, $item), 10%); }
+	//}
+}
+
+.heading__block {
+	min-height: 100px;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-end;
+	align-items: flex-start;
+
+	@include for(medium-screens) {
+		min-height: 140px;
+	}
+}
+
+.heading__title {
+
+	width: 100%;
+
+	h1 {
+		@include header-title(section);
+		color: $color-white;
+		padding: 0.75em;
+	}
+
+	@include for(medium-screens) {
+
+	}
+}
+
+
+
+//layout
+.layout-section--card {
+	background: $color-white;
+	box-shadow: 0 1px 3px rgba(200,200,200, 0.4);
+}
+
+.layout-section__item--card {
+	padding: $element-padding-base;
+	border-bottom: 1px solid $color-border-normal;
+	&:last-of-type {
+		border-bottom: none;
+	}
+}

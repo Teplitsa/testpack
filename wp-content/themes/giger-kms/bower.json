@@ -12,8 +12,9 @@
     "test",
     "tests"
   ],
-  "dependencies": {    
+  "dependencies": {
     "leaflet": "~0.7.7",
-    "easyModal.js": "https://github.com/flaviusmatis/easyModal.js.git"
+    "css-hamburgers": "~0.5.0",
+	"lazysizes": "~2.0.5"
   }
 }

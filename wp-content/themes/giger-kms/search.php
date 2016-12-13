@@ -12,7 +12,7 @@ if(!empty($s_query) && $wp_query->found_posts > 0){
 
 
 //build correct label for results
-function rdc_build_results_label($number){
+function tst_build_results_label($number){
 	
 	$label = "Найдено %d страниц";	
 	$test = $number % 10;
@@ -35,29 +35,31 @@ get_header();
 ?>
 <section class="heading">
 	<div class="container">
-		<?php rdc_section_title(); ?>
+		<?php tst_section_title(); ?>
 		<div id="sr_form" class="sr-form"><?php get_search_form();?></div>
-		<div class="sr-num"><?php echo rdc_build_results_label($num);?></div>
+		<div class="sr-num"><?php echo tst_build_results_label($num);?></div>
 	</div>
 </section>
 
-<section class="main-content search-results"><div class="container">
+<section class="main-content search-results <?php if(!$num || !get_search_query()):?>service-message<?php endif?>"><div class="container">
 	<?php
 		if(empty($s_query)){
-			$l = __('Enter terms for search in the form and hit Enter', 'rdc');
+			$l = __('Enter terms for search in the form and hit Enter', 'tst');
 			echo "<article class='tpl-search'><div class='entry-summary'><p>{$l }</p></div></article>";							
 		}
 		elseif($num == 0){
-			$l = __('Nothing found under your request', 'rdc');
+			$l = __('Nothing found under your request', 'tst');
 			echo "<article class='tpl-search'><div class='entry-summary'><p>{$l}</p></div></article>";				
 		}
 		else {
 			foreach($wp_query->posts as $sp){
-				rdc_search_card($sp);
+				tst_search_card($sp);
 			}
 		}
 	?>
 </section>
-<section class="paging"><?php rdc_paging_nav($wp_query); ?></section>
+<section class="paging"><div class="container">
+    <?php tst_paging_nav($wp_query); ?>
+</div></section>
 
 <?php get_footer();

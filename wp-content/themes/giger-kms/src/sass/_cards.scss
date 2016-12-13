@@ -1,0 +1,284 @@
+/** == Cards (_cards.scss) == **/
+
+/* thumbnails */
+@mixin cell-thumbnail() {
+	a { display: block; }
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	figcaption {
+		display: block;
+		@include sub-title(meta);
+		color: $color-text-light;
+		margin-top: $element-padding-base /4 ;
+
+		p { margin: 0; }
+	}
+
+}
+
+/** Thumbnails **/
+.tst-thumbnail {
+	width: 100%;
+}
+
+.tst-thumbnail__nopicture {
+	width: 100%;
+	min-height: 50px;
+	height: 50%;
+}
+
+.tst-thumbnail__frame {
+	width: 100%;
+	background: $color-secondary-alt;
+}
+
+
+.flex .tst-thumbnail__picture {
+	display: block;
+	width: 100%;
+}
+
+.fixed {
+	position: relative;
+
+	&:after {
+		content: '';
+		display: block;
+		height: 0;
+		width: 100%;
+	}
+
+	.tst-thumbnail__frame {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: block;
+		overflow: hidden;
+	}
+
+	.tst-thumbnail__picture {
+		img {
+			min-width: 100%;
+			width: auto;
+			max-width: 120%;
+
+			min-height: 100%;
+			height: auto;
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include transform(translate(-50%, -50%));
+		}
+	}
+
+	&.standard { padding-bottom: 61.8%; }
+	&.square { padding-bottom: 100%; }
+}
+
+.no-js .lazyload { display: none; }
+.lazyload,
+.lazyloading {
+    opacity: 0;
+}
+.lazyloaded {
+    opacity: 1;
+	@include transition(opacity 0.3s);
+}
+
+
+/* cells */
+.cell {
+
+}
+
+.cell__title{
+	margin-bottom: $element-padding-base;
+	@include post-title();
+
+	a, a:visited {
+		color: $color-text-black;
+	}
+	a:hover { color: $color-link-two; }
+
+	.date {
+		@include sub-title();
+		margin-left: $element-padding-base/2;
+	}
+
+	&:first-letter { text-transform: uppercase; }
+}
+
+.cell__thumb {
+	margin-top: $element-padding-base;
+	@include cell-thumbnail();
+	max-width: 500px;
+}
+
+.cell__title--project {
+	margin-bottom: $element-padding-base/4;
+}
+
+.cell__subtitle {
+	@include sub-title();
+	margin-bottom: $element-padding-base;
+}
+
+.cell__text--project {
+	p { margin-bottom: $element-padding-base /2; }
+	p:last-child { margin-bottom: 0;}
+
+	//add lists
+}
+
+/** card **/
+.cell-bg {
+	background: $color-link-four;
+	flex: 1 1 auto;
+}
+
+.card {
+	height: 100%;
+	width: 100%;
+
+	&.has-icon {
+		padding: $element-padding-base;
+		text-align: center;
+	}
+
+	a {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.card__icon {
+	color: $color-white;
+	width: 110px;
+	height: 110px;
+	text-align: center;
+	padding-top: 17px;
+	border-radius: 50%;
+	margin: 0 auto;
+
+	i { font-size: 70px; }
+
+	@include for(medium-screens) {
+
+	}
+
+}
+
+.card__title {
+	@include header-title(card);
+
+	.has-thumb & {
+		margin-top: 0;
+		padding: $element-padding-base $element-padding-base/2;
+		background: $color-white;
+		color: $color-text-black;
+		border-left: 6px solid $color-link-four;
+	}
+
+	.has-icon & {
+		text-align: center;
+		color: $color-white;
+		margin-top: $element-padding-base;
+	}
+
+	.widget & {
+		@include header-title(widget);
+		font-weight: normal;
+	}
+
+	@include for(medium-screens) {
+
+	}
+}
+
+.card--news .card__title {
+	color: $color-white;
+}
+
+.has-thumb .card__link {
+	height: 100%;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+
+	.card__title {
+		flex: 1 1 auto;
+	}
+}
+
+.scheme-one {
+	background: $color-link-one;
+
+	.card__icon {
+		background: $color-white;
+		i { color: $color-link-one; }
+	}
+
+	.has-thumb .card__title  {
+		border-left-color: $color-link-one;
+	}
+}
+
+.scheme-two {
+	background: $color-link-two;
+
+	.card__icon {
+		background: $color-white;
+		i { color: $color-link-one; }
+	}
+
+	.has-thumb .card__title  {
+		border-left-color: $color-link-two;
+	}
+}
+
+.scheme-three {
+	background: $color-link-four;
+
+	.card__icon {
+		background: $color-link-three;
+		i { color: $color-white; }
+	}
+
+	.has-thumb .card__title  {
+		border-left-color: $color-link-four;
+	}
+}
+
+.scheme-four {
+	background: $color-link-three;
+
+	.card__icon {
+		background: $color-link-four;
+		i { color: $color-white; }
+	}
+
+	.has-thumb .card__title  {
+		border-left-color: $color-link-three;
+	}
+}
+
+.scheme-five {
+	background: lighten($color-link-two, 10%);
+
+	.card__icon {
+		background: $color-secondary-dark;
+
+		i { color: $color-white; }
+	}
+
+	.has-thumb .card__title  {
+		border-left-color: lighten($color-link-two, 10%);
+	}
+}

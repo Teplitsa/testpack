@@ -43,7 +43,6 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 				'options' => array(
 					'person'  => 'Люди',
 					'org'     => 'Организации',
-					'project' => 'Проекты',
 				)
 			),
 			
@@ -66,8 +65,12 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 			'posts_per_page' => array(
 				'type' => 'text',
 				'label' => 'Количество (по умолчанию - все)'
-			)
-						
+			),
+			'nolinks' => array(
+				'type' => 'checkbox',
+				'label' => 'Карточки не-кликабельные',
+				'default' => false
+			)			
 		);
 	}
 	
@@ -77,7 +80,8 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 			'exclude_ids' 	=> sanitize_text_field($instance['exclude_ids']),
 			'post_type'   	=> sanitize_text_field($instance['post_type']),
 			'taxonomy'    	=> sanitize_text_field($instance['taxonomy']),
-			'tax_terms'  	=> sanitize_text_field($instance['tax_terms']),	
+			'tax_terms'  	=> sanitize_text_field($instance['tax_terms']),
+			'nolinks'  		=> (bool)($instance['nolinks']),	
 			'posts_per_page'=> (int)$instance['posts_per_page']
 		);
 	}
@@ -130,11 +134,19 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 		$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4 exlg-cols-5";
 		
 		if($instance['post_type'] == 'project'){
-			$loop_css = "cards-loop sm-cols-2 md-cols-2 lg-cols-4";
+			$loop_css = "cards-loop sm-cols-2 md-cols-2 lg-cols-3";
 		}
 		
 		if($instance['post_type'] == 'org'){
 			$loop_css = "frame logo-gallery";
+		}
+		
+		$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
+		if(false !== strpos($class, 'people-founders')){
+			$loop_css = "cards-loop sm-cols-2 md-cols-3 ";
+		}
+		elseif(false !== strpos($class, 'people-board')){
+			$loop_css = "cards-loop sm-cols-2 md-cols-3 lg-cols-4";
 		}
 
         if($posts && is_callable('tst_'.$instance['post_type'].'_card_group')) {		
@@ -143,9 +155,10 @@ class TST_BlocksGroup_Widget extends SiteOrigin_Widget {
 		?>
 			<div class="frl-pb-blocks"><div class="<?php echo $loop_css;?>">
 				<?php foreach ($posts as $p) {
-					$class = (isset($instance['panels_info']['style']['class'])) ? $instance['panels_info']['style']['class'] : '';
-					$p->widget_class = ($class) ? $class : 'default'; 
-					call_user_func('tst_'.$instance['post_type'].'_card_group', $p);
+					
+					$p->widget_class = ($class) ? $class : 'default';
+					$linked = (!$nolinks) ? false : true;
+					call_user_func_array('tst_'.$instance['post_type'].'_card_group', array($p, $linked));
 				}?>
 			</div></div>
 		<?php	

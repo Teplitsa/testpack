@@ -1,0 +1,4 @@
+<?php
+/**
+ * SEO related functions
+ **/

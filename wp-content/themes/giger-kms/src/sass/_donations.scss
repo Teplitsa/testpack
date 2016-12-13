@@ -1,25 +1,68 @@
 /** Donations **/
-.single .leyka-campaign {
-	margin-bottom: $gut*2;
+
+/** campaign template **/
+.single-campaign-full {	
+	padding: $gut*2 0;
+	background-color: $color-secondary-dark;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
+	@include calc('min-height', '100vh - 54px');
+	
+	.campaign-form {
+		
+		background: $color-white;
+		margin-bottom: 1px;
+		box-shadow: 1px 1px 3px rgba(0,0,0, 0.5);		
+	}
+	
+	.entry-content {
+		@extend .campaign-form;
+		padding: $gut $gut $gut*1.2 $gut ;
+		margin-bottom: 0;
+		@include for(medium-screens) {
+			padding: $gut $gut*3;
+		}
+	}
+	
+	.all-link {
+		text-align: center;		
+		p + & {	margin-top: $gut; }
+	}
 }
 
+.single-leyka_campaign .site-footer { display: none; }
+
+.payment-from-project.single-campaign-full {
+    
+    .leyka-form-footer {
+        p {
+            margin-bottom:0px;
+        }
+    }
+}
+
+/** custom form **/
 .leyka-custom-template {
-	border: 1px solid $color-border-light;
-	background: $color-white;
-	box-shadow: 1px 2px 2px rgba(0,0,0, 0.08);	
+	border-bottom: 1px solid $color-border-link;
+	
 }
 
 .leyka-payment-option {
 			
 	.leyka-toggle-trigger {
-		@include header-title();
+		@include header-title();		
 		padding: $gut/2 $gut;		
 		cursor: pointer;		
-		border-top: 1px solid $color-border-normal;		
+		border-top: 1px solid $color-border-link;
+		@include for(medium-screens) {
+			padding: $gut/2 $gut*3;
+		}
 	}
 		
 	.leyka-toggle-area {
-		display: none;	
+		display: none;
+		background: $color-secondary-alt;
 	}
 	
 	.leyka-pm-form {		
@@ -31,27 +74,27 @@
 			display: block;
 			width: 100%;
 			height: 2px;
-			background: $color-link-three;
+			background: $color-link-one;
 			position: absolute;
 			top:0;
 			left: 0;
+		}
+		
+		@include for(medium-screens) {
+			padding: $gut $gut*3;
 		}
 	}
 	
 	.leyka-field {
 		&.recurring {			
 			padding: 4px 8px 5px;
-			border-radius: 4px;
-			background: lighten($color-secondary, 1%);
-			margin-bottom: 36px;			
+			background: $color-secondary-alt;
+			margin-bottom: $gut;			
 		}
 		
 		&.agree { margin: 18px 0 18px 8px; }
-		&.amount { margin-bottom: 18px; }
-		&.rdc-textfield {
-			padding: 20px 0;
-			label::after { bottom: 20px; }
-		}
+		&.amount { margin-bottom: 36px; }
+		
 		
 		&.box_details {
 			@include form-text(semi);			
@@ -59,29 +102,26 @@
 		}
 		
 		a {
-			color: $color-link-three;
-			&:visited { color: $color-link-three; }
+			color: $color-link-one;
+			&:visited { color: $color-link-one; }
 			&:hover, &:focus, &:active {
 				text-decoration: underline;		
 			}
 		}
+		
+		.rdc-textfield__label { display: none; }
 	}
 		
-	.rdc-checkbox__input:checked + .rdc-checkbox__label {
-		&:before {
-			background-color: $color-link-three;
-			border-color: $color-link-three;
-		}
+	
+	.tst-submit-button { 
+		@include button(submit);
+		outline:none;
+		&:focus { outline:none; }
 	}
 	
-	.rdc-textfield__label:after { background-color: $color-link-three; }	
-	.rdc-textfield__input:focus ~ .rdc-textfield__label { color: $color-link-three; }
-	
-	.rdc-submit-button { 
-		@include button();
-	}
-	
-	.submit { position: relative; }
+	.submit {
+		margin-top: $gut;
+		position: relative; }
 	
 	.leyka-pm-icons {
 		@media screen and (max-width: 360px) { display: none; }			
@@ -96,169 +136,130 @@
 		}
 		
 		.leyka-toggle-trigger {
-			color: $color-link-three;			
-			&:before { background: $color-link-three; }
+			color: $color-link-one;			
+			&:before { background: $color-link-one; }
 		}
 	}	
 }
 
-$figure_font_size: 28px;
-$figure_line-height: 40px;
+$figure_font_size: 16px;
+$figure_line-height: 20px;
+$figure_padding-height: 16px;
 
 .leyka-field.amount-selector {
-	line-height: $figure_line-height;
+	
 	
 	.figure,
 	.figure-flex {
-		display: inline-block;
-		height: $figure_line-height;
-		margin-bottom: 8px;
+		@include input-text();
+		font-size: $figure_font_size;
+		line-height: $figure_line-height;
 		
-		span {
-			height: $figure_line-height;
-		}
 	}
 		
 	.figure {
-		display: inline-block;
-		line-height: inherit;		
-		padding-left: 30px;	
-		
-		.rdc-radio__label {
-			@include checkbox-text($figure_font_size);
-			line-height: inherit;
-			
-			&:before {
-				width: 20px;
-				height: 20px;
-				top: 50%;
-				@include transform(translateY(-50%));
-				left: -30px;
-			}
-		}
-	}
-		
-	.figure-sep {		
-		@include form-text();
-		font-size: 18px;
-		line-height: inherit;
-		text-transform: uppercase;
-		color: $color-link-three;
-		margin-right: 8px;
-	}
-	
-	.donate_amount_flex {		
-		border: 2px solid $color-border-normal;
-		border-radius: 2px;
-		@include checkbox-text($figure_font_size);
-		line-height: $figure_line-height - 10px;
-		text-align: right;
-	}
-	
-	
-	.currency {
-		@include form-text();
-		font-size: 18px;
-		line-height: inherit;
-		text-transform: uppercase;		
-		width: 70px;
-		margin-bottom: 8px;
-		
-		.leyka-screen-reader-text {
-			display: none;
-		}
-	}
-	
-	.currency-frame {
-		display: block;
-		line-height: inherit;		
-		width: 100%;
-		height: $figure_line-height;
-		text-align: left;
-		overflow: hidden;
 		position: relative;
-		z-index: 1;
-		
-		&:after {
-			content: '▾';
-			display: inline-block;
-			color: black;
-			font-size: 18px;
-			position: absolute;
-			top: -2px;
-			right: 0;
-			z-index: -1;
-		}
-		
-		span {
-			display: inline-block;
-			background: $color-white;
-			width: 100%;
-			line-height: inherit;
-			height: $figure_line-height;
-			z-index: 10;
-		}
-		
-		select {
-			border: none;
-			width: 90px;
-			background: transparent;
-			@include form-text();
-			font-size: 18px;
-			line-height: inherit;
-			text-transform: uppercase;	
-		}
-		
 	}
 	
+	.figure-radio__button {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+	}
+	
+	.figure-radio__label {
+		display: inline-block;
+		padding: $figure_padding-height;
+		border: 1px solid $color-border-link;
+		background: $color-white;
+		text-align: center;
+		width: 100%;
+		cursor: pointer;
+	}
+	
+	.figure-flex-input__text {
+		@include input-text();
+		background: $color-white;
+		line-height: $figure_line-height;
+		border-radius: 0;
+		border: 1px solid $color-border-link;
+		padding: $figure_padding-height $figure_padding-height/2;
+		text-align: center;
+		width: 100%;
+		&:focus {
+			padding: $figure_padding-height - 1px $figure_padding-height/2 - 1px;
+			border: 2px solid $input-color-active;
+			box-shadow: inset 1px 1px 2px rgba(200,200,200, 0.5);
+		}
+	}
+	
+	//no support for currency change
+	.currency { 
+		display: none; 
+	}
+	
+	.figure-radio__button:checked + .figure-radio__label {
+		border-color: $color-link-one;
+		background: $color-link-one;
+		color: $color-white;
+	}
 	
 }
 
 //position with flexbox
-.currency-selector-row {
+.amount-variants-row {
 	display: flex;
-	flex-flow: row nowrap;
+	flex-flow: row wrap;
 	justify-content: space-between;
-	align-items: center;
+	align-items: stretch;
+	margin: 0 -4px;
 	
-	.currency-variants {
+	.figure {
+		flex: 1 0 auto;
+		@include calc(width, '50% - 8px');
+		margin: 4px;
+	}
+	
+	.figure-flex {
 		flex: 1 1 auto;
+		@include calc(width, '100% - 8px');
+		margin: 4px;		
 	}
 	
-	.currency {
-		flex: 0 0 auto;
-		align-self: flex-end;
-	}
-}
-
-@include for(small-screens) {
-	.amount-variants-row {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between;
-		align-items: flex-start;
-		
-		.figure {
-			flex: 0 0 auto;
-			width: 20%;
+	@include for(small-screens) {
+		.figure {			
+			@include calc(width, '33.30% - 8px');
 		}
-		
 		.figure-flex {
-			flex: 1 1 auto;
-			padding: 0 8px;
-			text-align: right;		
+			@include calc(width, '66.7% - 8px');
+		}
+	}
+	@include for(medium-screens) {
+		.figure {			
+			@include calc(width, '19% - 8px');
+		}
+		.figure-flex {
+			@include calc(width, '24% - 8px');
 		}
 	}
 }
 
 
+
+.entry-content .leyka-pm-icons,
 .leyka-pm-icons {
 	@include clearfix;
+	margin: 0;
+		
 	li {
+		list-style-type: none;
 		float: left;
 		width: 52px;
 		height: 36px;
-		margin-left: 4px;
+		margin: 0 0 0 4px;
+		padding: 0;
+		
+		&:before { display: none; }
 		img {
 			max-width: 100%;
 			height: auto;
@@ -276,9 +277,11 @@ $figure_line-height: 40px;
 .leyka-pm-desc {
 	@include form-text(small);
 	margin-top: $gut;
+	color: $color-text-light;
+	
 	a {
-		color: $color-link-three;
-		&:visited { color: $color-link-three; }
+		color: $color-link-one;
+		&:visited { color: $color-link-one; }
 		&:hover, &:focus, &:active {
 			text-decoration: underline;		
 		}
@@ -286,20 +289,19 @@ $figure_line-height: 40px;
 }
 
 .leyka-form-footer {
-	padding: 8px $gut 0;
+	padding: 8px 16px;
 	text-align: right;
-	
+	font-size: 0.8em;
+	text-align: center;
+	background: $color-secondary-alt;
 	a {
-		color: $color-link-three;
-		&:visited { color: $color-link-three; }
+		color: $color-link-one;
+		&:visited { color: $color-link-one; }
 		&:hover, &:focus, &:active {
 			text-decoration: underline;		
 		}
 	}
-	
-	p {
-		@include form-text(small);
-	}
+		
 }
 
 //modal
@@ -315,12 +317,17 @@ $figure_line-height: 40px;
 	}
 	max-width: 760px;
 	@include calc(height, "100% - 220px");
-	max-height: 700px;	
+    max-height: 700px;  
+	
+    @media screen and (max-height: 600px) {
+        height:90%;
+        top:20px !important;
+    }	
 	
 	background-color: $color-white;
 	
 	.leyka-modal-close {
-		background: $color-link-three;
+		background: $color-link-one;
 		color: $color-white;
 		width: 28px;
 		height: 28px;
@@ -337,7 +344,7 @@ $figure_line-height: 40px;
 			height: 12px;
 			fill: $color-white;
 			pointer-events: none;
-			margin-top: -1px;
+			margin-top: 8px;
 		}
 	}
 	
@@ -370,6 +377,8 @@ $figure_line-height: 40px;
 		padding: $base/2 0;
 		@include form-text();
 	}
+	
+	
 }
 
 .ldl-item {
@@ -387,40 +396,49 @@ $figure_line-height: 40px;
 	.amount {
 		color: $color-text-black;
 		flex: 1 0 auto;
-		width: 25%;
+		width: 35%;
 		min-width: 80px;
 	}
 	
 	.meta {
 		flex: 1 1 auto;
-		width: 75%;
+		width: 65%;
 		padding-left: 6px;
 		color: $color-text-semi;
+	}
+	
+	.payment-fee {
+		font-size: 0.9em;		
+		letter-spacing: 0.5px;
+		color: $color-text-light;
 	}
 }
 
 /** Donation history template **/
 .main-content.donations-history-results {
-	background: $color-secondary-dark;
-	padding: $gut 0;
+	
 	min-height: 400px;
 	min-height: 50vh;
 	
 	.donation_history {
-		background: $color-white;
-		margin-bottom: $base;
-		padding: $gut/2; 
+		
 	}
 }
 
 /** Errors **/
 .leyka-submit-errors {
 	@include response-block(error);		
-	margin-bottom: $gut/2;
+	margin: 0 0 -1px 0;
+	padding: $gut;
 	
 	span { text-transform: uppercase; }
+	
 	ul {
 		margin-top: $gut/4;		
+	}
+	
+	@include for(medium-screens) {
+		padding: $gut $gut*3;
 	}
 }
 
@@ -429,17 +447,23 @@ $figure_line-height: 40px;
 	display: inline-block;
 	padding: 0 2px ;
 	font-size: 11px;
-	color: $color-link-two;	
+	color: $color-link-one;	
 	
-	&.rdc-textfield__error {
-		bottom: 5px;
-		right: 0;
-	}
+	&:empty { display: none;  }
 }
 
-#leyka-form-yandex_money {
-	.leyka-pm-icons li {
-		width: 100px;		
-		img { margin-top: -12px;}
-	}
+/* thank you page */
+.leyka-thankyou-text {
+    text-align:center;
+    @include body-text(larger);
+}
+
+.leyka-thankyou-img { 
+    margin-top:60px;
+    .sow-image-container {
+        .so-widget-image {
+            max-width:240px !important;
+            width:60% !important;
+        }
+    }
 }
