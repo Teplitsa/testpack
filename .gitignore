@@ -17,3 +17,8 @@ searchreplacedb2.php
 
 debug.log
 composer.lock
+*Конфликтующая копия с компьютера*
+/filelist.txt
+/upd_root.sh
+/upd_theme.sh
+dront.komodoproject
