@@ -138,6 +138,20 @@ body.drawer-open {
 	color: #000;
 	&:visited { color: #000; }
 }
+#logo-full {
+	display: block;
+    width: 100px;
+    height: 94px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#logo-full .pic-logo{
+	margin-top: 7px;
+	width: 86px;
+	height: 80px;
+}
 
 .actions--mobile {
 	display: flex;
@@ -217,7 +231,7 @@ body.drawer-open {
 		text-align: center;
 		@include transition(all 0.3s);
 		&:hover {
-			background: $color-link-four;
+			background: $color-link-five;
 		}
 	}
 

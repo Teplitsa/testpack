@@ -4,18 +4,23 @@
 
 //Fonts
 $body:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$body_tv:		"Tavolga Free", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $body_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
 $heading:		"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$heading_tv:	"Tavolga Free", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $heading_fb:	"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
 $title:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$title_tv:		"Tavolga Free", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $title_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
 $nav:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$nav_tv:		"Tavolga Free","Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $nav_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
 $sans:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$sans_tv:		"Tavolga Free", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $mono:			"Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 
@@ -46,15 +51,19 @@ $element-padding-base: 	16px;
 $color-text:   #2a2a2a;
 $color-white:  #ffffff;
 
-$red: 			#E23100;
+$red: 			#d93029;
 $green: 		#008E2C;
 $orange: 		#FF542C;
-$grey_green:	#04AE9C;
+$grey_green:	#9fa63a;
+$olive:			#f5c048;
+$light_green: 	#a0a614;
 
-$color-link-one:   $red;
-$color-link-two:   $green;
-$color-link-three: $orange;
-$color-link-four:  $grey_green;
+$color-link-one:   	$red;
+$color-link-two:   	$green;
+$color-link-three: 	$orange;
+$color-link-four:  	$grey_green;
+$color-link-five:  	$olive;
+$color-link-six:	$light_green;
 
 $color-text-black:		#000000;
 $color-text-semi:		#666666;
@@ -100,6 +109,12 @@ $hamburger-hover-opacity                   : 0.7;
 	.roboto & {
 		font-family: $body;
 	}
+	.tavolga & {
+		font-family: $body_tv;
+		@if $mod == small {
+			font-family: $body;
+		}
+	}
 
 	font-size: 16px;
 	line-height: 24px;
@@ -134,6 +149,9 @@ $hamburger-hover-opacity                   : 0.7;
 
 	.roboto & {
 		font-family: $nav;
+	}
+	.tavolga & {
+		font-family: $nav_tv;
 	}
 
 	font-size: 14px;
@@ -170,6 +188,9 @@ $hamburger-hover-opacity                   : 0.7;
 	.roboto & {
 		font-family: $title;
 	}
+	.tavolga & {
+		font-family: $title_tv;
+	}
 
 	font-size: 18px;
 	line-height: 26px;
@@ -191,6 +212,9 @@ $hamburger-hover-opacity                   : 0.7;
 
 	.roboto & {
 		font-family: $body;
+	}
+	.tavolga & {
+		font-family: $body_tv;
 	}
 
 	color: $color-text-semi;
@@ -231,6 +255,9 @@ $hamburger-hover-opacity                   : 0.7;
 
 	.roboto & {
 		font-family: $body;
+	}
+	.tavolga & {
+		font-family: $body_tv;
 	}
 
 	color: $color-text-black;
@@ -283,12 +310,12 @@ $hamburger-hover-opacity                   : 0.7;
 }
 
 @mixin green-link() {
-	color: $color-link-two;
+	color: $color-link-six;
 	@include transition(color 0.3s);
 
-	&:visited { color: $color-link-two; }
+	&:visited { color: $color-link-six; }
 	&:hover, &:active, &:focus {
-		color: $color-link-four;
+		color: lighten($color-link-six, 10%);
 	}
 }
 
@@ -299,6 +326,10 @@ $hamburger-hover-opacity                   : 0.7;
 
 	.roboto & {
 		font-family: $body;
+		font-weight: normal;
+	}
+	.tavolga & {
+		font-family: $body_tv;
 		font-weight: normal;
 	}
 

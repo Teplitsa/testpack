@@ -9,15 +9,18 @@
 			display: inline-block;
 			padding: 2px 0;
 			font-size: 1.05em;
+			font-family: $sans;
+			font-weight: bold;
 		}
 	}
 	
 	.widget p {
 		margin-bottom: $inpage-margin-base /2;
+		font-family: $sans;
 	}
 	
 	.middle, .last {
-		a { @include red-link(); }
+		a { @include red-link(); font-weight: bold; font-family: $sans;}
 		a.button { @include button(); }
 	}
 	

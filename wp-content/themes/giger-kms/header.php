@@ -34,7 +34,17 @@
 		<div class="site-header-row">
 
 			<div class="site-header-cell branding">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo"><?php bloginfo('name');?></a>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
+					<?php bloginfo('name');?>
+					<div id="logo-full" ><?php rdc_site_logo('regular');?></div>
+					<div id="logo-small" ><?php rdc_site_logo('small');?></div>
+					<div class="logo-name-cell">
+						<?php $header_title_1 = get_theme_mod('header_title_one'); ?>
+						<h1 class="logo-name"><?php echo apply_filters('rdc_the_title', $header_title_1); ?></h1>
+						<?php $header_title_2 = get_theme_mod('header_title_two'); ?>
+						<h2 class="logo-name"><?php echo apply_filters('rdc_the_title', $header_title_2); ?></h2>
+					</div>
+				</a>
 			</div>
 
 			<?php $hedaer_text = get_option('site_header_text'); ?>

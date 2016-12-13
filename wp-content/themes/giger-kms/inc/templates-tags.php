@@ -146,3 +146,41 @@ function tst_get_heading_style() {
 	
 	return "style='background-image: url(".$url.")'";
 }
+
+/** Logo **/
+function rdc_site_logo($size = 'regular') {
+
+	switch($size) {
+		case 'regular':
+			$file = 'pic-logo';
+			break;
+		case 'small':
+			$file = 'pic-logo-small';
+			break;	
+		default:
+			$file = 'icon-logo';
+			break;	
+	}
+	
+	$file = esc_attr($file);
+?>
+<svg class="logo <?php echo $file;?>">
+	<use xlink:href="#<?php echo $file;?>" />
+</svg>
+<?php
+}
+
+function rdc_svg_icon($id, $echo = true) {
+	
+	ob_start();
+?>
+<svg class="svg-icon <?php echo $id;?>">
+	<use xlink:href="#<?php echo $id;?>" />
+</svg>
+<?php
+	$out = ob_get_contents();
+	ob_end_clean();
+	if($echo)
+		echo $out;
+	return $out;
+}

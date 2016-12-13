@@ -15,6 +15,12 @@ jQuery(document).ready(function($){
 		},
 		timeout: 5000
 	});
+	FontFaceOnload("Tavolga Free", {
+		success: function() {
+			$('html').addClass('tavolga');
+		},
+		timeout: 5000
+	});
 
 
 	
