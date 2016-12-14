@@ -176,7 +176,7 @@
 }
 
 .card__title {
-	@include header-title(card);
+	@include header-title(title);
 
 	.has-thumb & {
 		margin-top: 0;
@@ -218,28 +218,28 @@
 }
 
 .scheme-one {
-	background: $color-link-one;
+	background: $color-link-seven;
 
 	.card__icon {
 		background: $color-white;
-		i { color: $color-link-one; }
+		i { color: $color-link-seven; }
 	}
 
 	.has-thumb .card__title  {
-		border-left-color: $color-link-one;
+		border-left-color: $color-link-seven;
 	}
 }
 
 .scheme-two {
-	background: $color-link-two;
+	background: $color-link-four;
 
 	.card__icon {
-		background: $color-white;
-		i { color: $color-link-one; }
+		background: $orange-red;
+		i { color: $color-white; }
 	}
 
 	.has-thumb .card__title  {
-		border-left-color: $color-link-two;
+		border-left-color: $color-link-four;
 	}
 }
 
@@ -257,7 +257,7 @@
 }
 
 .scheme-four {
-	background: $color-link-three;
+	background: $color-link-one;
 
 	.card__icon {
 		background: $color-link-four;
@@ -265,17 +265,16 @@
 	}
 
 	.has-thumb .card__title  {
-		border-left-color: $color-link-three;
+		border-left-color: $color-link-one;
 	}
 }
 
 .scheme-five {
-	background: lighten($color-link-two, 10%);
+	background: $color-link-nine;
 
 	.card__icon {
-		background: $color-secondary-dark;
-
-		i { color: $color-white; }
+		background: $color-white;
+		i { color: $color-link-eight; }
 	}
 
 	.has-thumb .card__title  {

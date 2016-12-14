@@ -37,7 +37,7 @@
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
 					<?php bloginfo('name');?>
 					<div id="logo-full" ><?php rdc_site_logo('regular');?></div>
-					<div id="logo-small" ><?php rdc_site_logo('small');?></div>
+					<!-- <div id="logo-small" ><?php rdc_site_logo('small');?></div> -->
 					<div class="logo-name-cell">
 						<?php $header_title_1 = get_theme_mod('header_title_one'); ?>
 						<h1 class="logo-name"><?php echo apply_filters('rdc_the_title', $header_title_1); ?></h1>

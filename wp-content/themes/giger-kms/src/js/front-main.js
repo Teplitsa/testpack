@@ -21,6 +21,12 @@ jQuery(document).ready(function($){
 		},
 		timeout: 5000
 	});
+	FontFaceOnload("BloggerSans-Bold", {
+		success: function() {
+			$('html').addClass('bloggersans-bold');
+		},
+		timeout: 5000
+	});
 
 
 	
