@@ -1,10 +1,8 @@
 <?php
 /**
- * Various DB tweaks that we forget include into proper stage
- * or they appears just a bit later
+ * Create menus and delete old ones
  *
  **/
-
 set_time_limit (0);
 ini_set('memory_limit','256M');
 
@@ -16,12 +14,7 @@ try {
 	global $wpdb;
 
 
-	
 
-
-
-	//regenerate permalinks
-	flush_rewrite_rules();
 
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);

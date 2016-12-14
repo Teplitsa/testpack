@@ -2,6 +2,7 @@
 /**
  * The header for our theme.
  */
+var_dump(wp_upload_dir());
 ?><!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
 <head>

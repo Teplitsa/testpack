@@ -6,7 +6,7 @@
 add_filter('manage_posts_columns', 'tst_common_columns_names', 50, 2);
 function tst_common_columns_names($columns, $post_type) {
 
-	if(in_array($post_type, array('post', 'org', 'person', 'marker'))){
+	if(in_array($post_type, array('post', 'landing', 'person', 'project'))){
 
 		if(!in_array($post_type, array('attachment')))
 			$columns['thumbnail'] = 'Миниат.';
@@ -321,5 +321,3 @@ function tst_thumbnail_dimensions_check($thumbnail_html, $post_id) {
 
     return $thumbnail_html;
 }
-
-

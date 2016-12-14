@@ -33,36 +33,7 @@ function tst_custom_content(){
 		//'update_count_callback' => '',
 	));
 
-	register_taxonomy('person', array('landing', 'page'), array(
-		'labels' => array(
-			'name'                       => 'Сотрудники',
-			'singular_name'              => 'Сотрудник',
-			'menu_name'                  => 'Сотрудники',
-			'all_items'                  => 'Все сотрудники',
-			'edit_item'                  => 'Редактировать сотрудника',
-			'view_item'                  => 'Просмотреть',
-			'update_item'                => 'Обновить сотрудника',
-			'add_new_item'               => 'Добавить нового сотрудника',
-			'new_item_name'              => 'Имя нового сотрудника',
-			'parent_item'                => 'Родительский сотрудник',
-			'parent_item_colon'          => 'Родительский сотрудник:',
-			'search_items'               => 'Искать сотрудника',
-			'popular_items'              => 'Часто используемые',
-			'separate_items_with_commas' => 'Разделять запятыми',
-			'add_or_remove_items'        => 'Добавить или удалить сотрудников',
-			'choose_from_most_used'      => 'Выбрать из часто используемых',
-			'not_found'                  => 'Не найдено'
-		),
-		'hierarchical'      => false,
-		'show_ui'           => true,
-		'show_in_nav_menus' => true,
-		'show_tagcloud'     => false,
-		'show_admin_column' => false,
-		'publicly_queryable'=> false,
-		'query_var'         => true,
-		'rewrite'           => false,
-		//'update_count_callback' => '',
-	));
+
 
 	register_taxonomy('document_cat', array('document'), array(
 		'labels' => array(
@@ -237,7 +208,40 @@ function tst_custom_content(){
         'taxonomies'          => array(),
     ));
 
-
+	register_post_type('person', array(
+        'labels' => array(
+            'name'               => 'Люди',
+            'singular_name'      => 'Профиль',
+            'menu_name'          => 'Люди',
+            'name_admin_bar'     => 'Добавить профиль',
+            'add_new'            => 'Добавить новый',
+            'add_new_item'       => 'Добавить профиль',
+            'new_item'           => 'Новый профиль',
+            'edit_item'          => 'Редактировать профиль',
+            'view_item'          => 'Просмотр профиля',
+            'all_items'          => 'Все профили',
+            'search_items'       => 'Искать профили',
+            'parent_item_colon'  => 'Родительский профиль:',
+            'not_found'          => 'Профили не найдены',
+            'not_found_in_trash' => 'В Корзине профили не найдены'
+       ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => false,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => false,
+        'rewrite'             => array('slug' => 'profile', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 10,
+		'menu_icon'           => 'dashicons-businessman',
+        'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'thumbnail'),
+        'taxonomies'          => array(),
+    ));
 
 
 	/*register_post_type('org', array(
@@ -469,7 +473,8 @@ function tst_p2p_connection_types() {
         'name' 	=> 'landing_landing',
         'from' 	=> 'landing',
         'to' 	=> 'landing',
-		//'admin_column' => 'to',
+		'reciprocal' 	=> true,
+		'admin_column' 	=> 'any',
 		'to_labels' => array(
 			//'column_title' => 'НКО',
 		),
@@ -477,7 +482,7 @@ function tst_p2p_connection_types() {
 			//'column_title' => 'НКО',
 		),
 		'admin_box' => array(
-			'show' => 'to',
+			'show' => 'any',
 			'context' => 'advanced',
 			'can_create_post' => false
 		)
@@ -502,6 +507,21 @@ function tst_p2p_connection_types() {
         'name' 	=> 'landing_document',
         'from' 	=> 'landing',
         'to' 	=> array('document'),
+		'admin_column' => 'to',
+		'to_labels' => array(
+			//'column_title' => 'НКО',
+		),
+		'admin_box' => array(
+			'show' => 'to',
+			'context' => 'advanced',
+			'can_create_post' => false
+		)
+    ));
+
+	p2p_register_connection_type(array(
+        'name' 	=> 'landing_person',
+        'from' 	=> 'landing',
+        'to' 	=> array('person'),
 		'admin_column' => 'to',
 		'to_labels' => array(
 			//'column_title' => 'НКО',
