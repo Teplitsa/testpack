@@ -13,6 +13,10 @@ try {
 
 	global $wpdb;
 
+	// Sections
+	$about_section = get_term_by('slug', 'about', 'section');
+	$support_section = get_term_by('slug', 'supportus', 'section');
+
 	//Homepage
 	echo 'Create static homepage'.chr(10);
 	$homepage = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'page' AND post_title = %s", 'Главная'));
@@ -23,7 +27,7 @@ try {
 		'post_name' 	=> 'homepage',
 		'post_status'	=> 'publish',
 		'meta_input'	=> array('_wp_page_template' => 'page-home.php'),
-		'post_content'	=> '<h4>АНО "Новая жизнь"</h4><p>Организация создана в 2002 году лидерами сообщества людей, живущих с ВИЧ с целью  всесторонней поддержки ВИЧ-позитивных людей и защиты их интересов на местном и региональном уровне.</p>'
+		'post_content'	=> 'Экологический центр «Дронт» был создан в 1989 году для осуществления различных природоохранных программ и проектов.</p>'
 	);
 
 	$home_id = wp_insert_post($update);
@@ -38,186 +42,136 @@ try {
 
 	echo 'Homepage updated. Total time in sec: '.(microtime(true) - $time_start).chr(10);
 
-	// About
-	$about = get_post(39);
-	$contact = get_post(182);
-	$partners = get_post(117); //update content
-	$projects = get_post(33);
-	$about_section = get_term_by('slug', 'about', 'section');
+	//news
+	echo 'Create static news page'.chr(10);
+	$news = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'page' AND post_title = %s", 'Новости'));
+	$update = array(
+		'ID' 			=> ($news) ? $news->ID : 0,
+		'post_title' 	=> 'Новости',
+		'post_type' 	=> 'page',
+		'post_name' 	=> 'news',
+		'post_status'	=> 'publish',
+		'post_content'	=> ''
+	);
 
-	// Delete empty page - принципы
-	wp_delete_post(219);
+	$news_id = wp_insert_post($update);
 
-	//Add contacts to about
-	if($about && $contact) {
-		$content = $about->post_content;
-		$content .= '<h4>'.$contact->post_title.'</h4>';
-		$content .= chr(10).chr(10).$contact->post_content;
+	if($news_id){
+		update_option('page_for_posts', (int)$news_id);
 
-		preg_match('/<script>(.*?)<\/script>/s',$content, $m);
-		if(isset($m[1]) && !empty($m[1])){
-			$content = str_replace('<script>'.$m[1].'</script>', '', $content);
-		}
+		wp_set_object_terms((int)$news_id, $support_section->term_id, 'section');
+		wp_cache_flush();
+	}
 
-		$page_data = array();
-		$page_data['ID'] = $about->ID;
-		$page_data['post_title'] = $about->post_title;
-		$page_data['post_content'] = $content;
-		$page_data['post_type'] = 'page';
-		$page_data['post_status'] = 'publish';
-		$page_data['post_name'] = 'about-us';
-		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
+	unset($homepage);
+	unset($update);
 
+	echo 'Homepage updated. Total time in sec: '.(microtime(true) - $time_start).chr(10);
+
+	// Upd for about page
+	$page_data = array();
+	$page_data['ID'] = 2;
+	$page_data['post_title'] = 'Об экоцентре ';
+	$page_data['post_parent'] = 0;
+	$page_data['post_type'] = 'page';
+	$page_data['post_content'] = file_get_contents('about.txt');
+	$page_data['post_status'] = 'publish';
+	//$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
+
+	$uid = wp_insert_post($page_data);
+	if($uid && $about_section) {
+		wp_set_object_terms((int)$uid, $about_section->term_id, 'section');
+		wp_cache_flush();
+	}
+
+	echo "Update About page ".chr(10);
+	unset($uid);
+
+	$pages = array(
+		'team' => array(
+			'post_data' => array(
+				'post_title' => 'Наши люди',
+				'post_type' => 'page',
+				'post_parent' => 0,
+				'post_status' => 'publish',
+				'post_content' => 'Наша команда',
+				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+			),
+			'section' => 'about'
+		),
+		'reports' => array(
+			'post_data' => array(
+				'post_title' => 'Отчеты',
+				'post_type' => 'page',
+				'post_parent' => 0,
+				'post_status' => 'publish',
+				'post_content' => 'Наши отчеты',
+				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+			),
+			'section' => 'about'
+		),
+		'contacts' => array(
+			'post_data' => array(
+				'post_title' => 'Контакты',
+				'post_type' => 'page',
+				'post_parent' => 0,
+				'post_status' => 'publish',
+				'post_content' => file_get_contents('contacts.txt'),
+				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+			),
+			'section' => 'about'
+		),
+		'volunteers' => array(
+			'post_data' => array(
+				'post_title' => 'Стань волонтером',
+				'post_type' => 'page',
+				'post_parent' => 0,
+				'post_status' => 'publish',
+				'post_content' => 'Оставить заявку и стать волонтером',
+				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+			),
+			'section' => 'supportus'
+		),
+		'company' => array(
+			'post_data' => array(
+				'post_title' => 'Помощь компаний',
+				'post_type' => 'page',
+				'post_parent' => 0,
+				'post_status' => 'publish',
+				'post_content' => 'Оставить заявку и стать волонтером',
+				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+			),
+			'section' => 'supportus'
+		),
+		'sitemap' => array(
+			'post_data' => array(
+				'post_title' => 'Карта сайта',
+				'post_type' => 'page',
+				'post_parent' => 0,
+				'post_status' => 'publish',
+				'post_content' => '[tst_sitemap]',
+				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+			),
+			'section' => ''
+		)
+	);
+
+	foreach($pages as $slug => $obj) {
+
+		$page_data = $obj['post_data'];
+
+		$test = get_page_by_path($slug);
+		$page_data['ID'] = ($test) ? $test->ID: 0;
 		$uid = wp_insert_post($page_data);
 
-		if($uid) {
-			wp_delete_post($contact->ID);
+		if($uid && isset($obj['section']) && !empty($obj['section'])) {
+			$section = ($obj['section'] == 'supportus') ? $support_section : $about_section;
+
+			wp_set_object_terms((int)$uid, $section->term_id, 'section');
 			wp_cache_flush();
 		}
 	}
 
-	echo "Update About page ".chr(10);
-
-	// Upd for partners
-	if($partners) {
-		$page_data = array();
-		$page_data['ID'] = $partners->ID;
-		$page_data['post_title'] = $partners->post_title;
-		$page_data['post_parent'] = 0;
-		$page_data['post_type'] = 'page';
-		$page_data['post_content'] = $partners->post_content;
-		$page_data['post_status'] = 'publish';
-		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
-
-		$uid = wp_insert_post($page_data);
-	}
-
-	echo "Update Partners page ".chr(10);
-
-	// Update for projects
-	if($projects) {
-		$page_data = array();
-		$page_data['ID'] = $projects->ID;
-		$page_data['post_title'] = 'Проекты';
-		$page_data['post_parent'] = 0;
-		$page_data['post_content'] = 'Проекты и мероприятия, реализованные АНО "Новая жизнь"';
-		$page_data['post_type'] = 'page';
-		$page_data['post_status'] = 'publish';
-		$page_data['post_name'] = 'projects';
-		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
-
-		$uid = wp_insert_post($page_data);
-	}
-
-	echo "Update Projects page ".chr(10);
-
-	// Aadd to about section
-	if($about_section) {
-		wp_set_object_terms($about->ID,    $about_section->term_id, 'section');
-		wp_set_object_terms($partners->ID, $about_section->term_id, 'section');
-		wp_set_object_terms($projects->ID, $about_section->term_id, 'section');
-
-		wp_cache_flush();
-	}
-
-	//Projects
-	$sub_programm = get_post(1403);
-
-	if($sub_programm) {
-		$page_data = array();
-
-		$page_data['ID'] = $sub_programm->ID;
-		$page_data['post_type'] = 'project';
-		$page_data['post_status'] = 'publish';
-		$page_data['post_parent'] = 0; //all top level
-		$page_data['post_title'] = 'Комплексная помощь семьям с детьми, затронутыми ВИЧ';
-		$page_data['post_excerpt'] = $sub_programm->post_title;
-		$page_data['post_name'] = 'complex-help';
-
-		preg_match('/<script>(.*?)<\/script>/s', $sub_programm->post_content, $m);
-		if(isset($m[1]) && !empty($m[1])){
-			$page_data['post_content'] = str_replace('<script>'.$m[1].'</script>', '', $sub_programm->post_content);
-		}
-		else {
-			$page_data['post_content'] = $sub_programm->post_content;
-		}
-
-		$add = file_get_contents('complex.txt');
-		if($add)
-			$page_data['post_content'] .= chr(10).chr(10).$add;
-
-		$uid = wp_insert_post($page_data);
-	}
-
-	echo "Updated Complex programmm page page ".chr(10);
-
-
-	//Impport projects
-	$handle = file('projects.tsv');
-	$csv = array();
-	if($handle) { foreach($handle as $line) {
-		//$csv = array_map('str_getcsv', file('projects.csv'));
-		$csv[] = str_getcsv($line, "\t");
-	}}
-
-	var_dump(count($csv));
-
-	$count = 0;
-	foreach($csv as $i => $line) {
-
-		if($i == 0)
-			continue;
-
-		$page_data = array();
-
-		$page_data['ID'] = 0;
-		$page_data['post_type'] = 'project';
-		$page_data['post_status'] = 'publish';
-		$page_data['post_parent'] = 0; //all top level
-		$page_data['post_title'] = $line[0];
-		$page_data['post_excerpt'] = $line[1];
-		$page_data['post_content'] = $line[2];
-
-		$uid = wp_insert_post($page_data);
-		if($uid)
-			$count++;
-	}
-
-	echo "Imported projects ".$count.chr(10);
-
-	//Sitemap
-	$sitemap = get_page_by_path('sitemap');
-	if(!$sitemap) {
-		$page_data = array();
-
-		$page_data['ID'] = 0;
-		$page_data['post_type'] = 'page';
-		$page_data['post_status'] = 'publish';
-		$page_data['post_parent'] = 0; //all top level
-		$page_data['post_title'] = 'Карта сайта';
-		$page_data['post_name'] = 'sitemap';
-		$page_data['post_content'] = '[tst_sitemap]';
-
-		$uid = wp_insert_post($page_data);
-	}
-
-	echo "Sitemap page created ".$count.chr(10);
-
-	//Sitemap
-	$join = get_page_by_path('join-us');
-	if(!$join) {
-		$page_data = array();
-
-		$page_data['ID'] = 0;
-		$page_data['post_type'] = 'page';
-		$page_data['post_status'] = 'publish';
-		$page_data['post_parent'] = 0; //all top level
-		$page_data['post_title'] = 'Присоединяйся';
-		$page_data['post_name'] = 'join-us';
-		$page_data['post_content'] = 'Присоединяйся к группе и помоги нашей работе';
-
-		$uid = wp_insert_post($page_data);
-	}
 
 
 	//Final

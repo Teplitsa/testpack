@@ -167,7 +167,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'therapy',
+		'slug' => 'resources',
 		'post_title' => 'Ресурсы',
 		'post_content' => 'Ресурсы, энергосбережение, климат',
 		'section' => 'ecoproblems',
@@ -257,7 +257,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'jungle',
+		'slug' => 'folks',
 		'post_title' => 'Нижегородский фольклорный клуб',
 		'post_content' => 'Текст, отчеты, фото', //add some text
 		'section' => 'departments',
@@ -403,8 +403,38 @@ try {
 	echo 'Updated pages: '.$count.'. Time in sec: '.(microtime(true) - $time_start).chr(10);
 	//echo 'Memory '.memory_get_usage(true).chr(10).chr(10);
 
+	$wpdb->query("TRUNCATE TABLE {$wpdb->prefix}p2p");
+	$wpdb->query("TRUNCATE TABLE {$wpdb->prefix}p2pmeta");
 
+	$connectons = array(
+		'bereginya'		=> array('publications'),
+		'sbereg-center' => array('activist', 'health'),
+		'sopr'			=> array('researches', 'activist', 'birds'),
+		'ornotologlab' 	=> array('researches', 'birds'),
+		'lawcenter' 	=> array('law'),
+		'striks' 		=> array('education'),
+		'reptiles' 		=> array('researches', 'education', 'rares'),
+		'jungle' 		=> array('education'),
+		'folks' 		=> array('education'),
+		'obereg' 		=> array('education', 'urban', 'resources'),
+		'zavojzhje' 	=> array('activist', 'oopt'),
+		'realworld'		=> array('publications'),
+		'rivercleaners'	=> array('activist')
+	);
 
+	if(!empty($connectons)) { foreach($connectons as $dep => $connect) {
+
+		$from = get_posts(array('post_type' => 'landing', 'posts_per_page' => 1, 'name' => $dep));
+		if($from && !empty($connect)) { foreach($connect as $connect_slug) {
+			$to = get_posts(array('post_type' => 'landing', 'posts_per_page' => 1, 'name' => $connect_slug));
+			if($to) {
+				$c = p2p_type('landing_landing')->connect($from[0]->ID, $to[0]->ID, array('date' => current_time('mysql')));
+			}
+		}}
+
+	}}
+
+	echo "Connections added ".chr(10);
 
 
 	//Final

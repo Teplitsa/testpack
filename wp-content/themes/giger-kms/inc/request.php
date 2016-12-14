@@ -15,7 +15,8 @@ function tst_request_corrected(WP_Query $query) {
 	}
 
 	if($query->is_main_query()) {
-		if($query->is_tax('section') && !$query->is_tax('news')) {
+		if($query->is_tax('section')) {
+			$query->set('post_type', array('landing', 'page', 'leyka_campaign'));
 			$query->set('post_parent', 0);
 			$query->set('posts_per_page', -1);
 			$query->set('orderby', array('menu_order' => 'DESC', 'date' => 'DESC'));
