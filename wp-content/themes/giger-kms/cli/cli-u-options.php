@@ -19,8 +19,11 @@ try {
 		$target = str_replace(array('//', '/wp-content', 'http://', 'https://'), '', WP_CONTENT_URL);
 		var_dump($target);
 		$target = untrailingslashit($target);
-		$target = 'http://'.$target.'/core';
-		$wpdb->query($wpdb->prepare("UPDATE $wpdb->options SET option_value = %s WHERE option_name = 'siteurl'", $target));
+		$siteurl = 'http://'.$target.'/core';
+		$home = 'http://'.$target;
+
+		$wpdb->query($wpdb->prepare("UPDATE $wpdb->options SET option_value = %s WHERE option_name = 'siteurl'", $siteurl));
+		$wpdb->query($wpdb->prepare("UPDATE $wpdb->options SET option_value = %s WHERE option_name = 'home'", $home));
 	}
 
 
