@@ -63,7 +63,9 @@ try {
 		"crop-thumbnails/crop-thumbnails.php",
 		"cyr3lat/cyr-to-lat.php",
 		"disable-comments/disable-comments.php",
+		"formidable/formidable.php",
 		"pdf-viewer/pdf-viewer.php",
+		"posts-to-posts/posts-to-posts.php",
 		"post-type-converter/post-type-converter.php",
 		"responsive-lightbox/responsive-lightbox.php",
 		"wordpress-seo/wp-seo.php"
@@ -93,6 +95,48 @@ try {
 
 	echo 'Theme options updated for Error404 and Header / Footer text'.chr(10);
 
+	/** Formidable **/
+	//Formidable Translation files
+	$path_from = BASE_PATH.'artifacts/';
+	$path_to = BASE_PATH.'wp-content/languages/plugins/';
+
+	if(!file_exists($path_to)){
+		mkdir($path_to, 0775, true);
+	}
+
+	copy($path_from.'formidable-ru_RU.mo' , $path_to.'formidable-ru_RU.mo');
+	copy($path_from.'formidable-ru_RU.po' , $path_to.'formidable-ru_RU.po');
+	echo "Formidable translation files moved".chr(10);
+
+	//delete transients
+	delete_transient('frm_options');
+	delete_transient('frmpro_options');
+
+	$options = array_map('str_getcsv', file('formidable-opt.csv'));
+
+	if(!empty($options)){
+
+		foreach($options as $line) {
+
+			$key = $line[0];
+			$opt = $line[1];
+
+			echo "Updated key ".$key.chr(10);
+			$test = get_option($key);
+
+			if(!$test){
+				$wpdb->insert($wpdb->options, array('option_name' => $key, 'option_value' => $opt), array('%s', '%s'));
+			}
+			else {
+				$wpdb->update($wpdb->options, array('option_value' => $opt), array('option_name' => $key), array('%s'), array('%s'));
+			}
+
+		}
+	}
+
+	echo "Formidable settings imported".chr(10);
+
+	flush_rewrite_rules();
 
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);
