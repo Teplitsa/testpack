@@ -7,7 +7,6 @@
 $cpost = get_queried_object();
 
 get_header();?>
-<div class="sharing"><?php tst_social_share($cpost);?></div>
 
 <section class="main">
 	<div class="frame">

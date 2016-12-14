@@ -48,16 +48,18 @@
         "wpackagist-plugin/leyka" : "@stable",
         "wpackagist-plugin/media-search-enhanced": "@stable",
 		"wpackagist-plugin/pdf-viewer": "@stable",
+		"wpackagist-plugin/posts-to-posts": "@stable",
         "wpackagist-plugin/responsive-lightbox" : "@stable",
 		"wpackagist-plugin/tiny-compress-images": "@stable",
         "wpackagist-plugin/wordpress-seo" : "@stable",
+		"wpackagist-plugin/yandexnews-feed-by-teplitsa": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
         "mustardbees/cmb_field_map" : "dev-master",
 		"tst/formidable" : ">=2.02.11"
     },
     "require-dev" : {
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
-        "wpackagist-plugin/post-duplicator" : "@stable"
+        "wpackagist-plugin/query-monitor": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",
