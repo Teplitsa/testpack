@@ -31,7 +31,10 @@
 	}
 	
 	@include for(medium-screens) {
-		.textwidget { max-width: 300px; }
+		.textwidget { 
+			max-width: 300px;
+			a {	font-family: $sans;	}
+		}
 	}
 }
 

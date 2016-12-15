@@ -7,6 +7,18 @@
     font-weight: normal;
 }
 @font-face {
+    font-family: "Museo700";
+    src: url("../../assets/fonts/Museo700-Regular.otf");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "MuseoCyrl 500";
+    src: url("../../assets/fonts/Museo Cyrl 500.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
     font-family: "BloggerSans-Bold";
     src: url("../../assets/fonts/Blogger Sans/BloggerSans-Bold.eot");
     src: url("../../assets/fonts/Blogger Sans/BloggerSans-Bold.eot?#iefix")format("embedded-opentype"),
@@ -81,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: $gut;
 	@include body-text(small);
 	a {
-		font-weight: bolder;
+		font-weight: 900;
 		&[href *= 'tel']{
 			color: $color-text;
 			@include body-text(small);
