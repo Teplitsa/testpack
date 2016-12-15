@@ -90,7 +90,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .widget__title {
-	@include header-title(widget);
+	@include nav-text(larger);
 	margin-bottom: $inpage-margin-base;
-
 }

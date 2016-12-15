@@ -4,8 +4,6 @@
 
 //Fonts
 $body:				"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-// $body_tv:			"Tavolga Free", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-// $body_bl_bold:		"BloggerSans-Bold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 $body_fb:			"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
 
 $heading:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
@@ -188,7 +186,7 @@ $hamburger-hover-opacity                   : 0.7;
 		}
 	}
 	@else if $mod == larger {
-		font-size: 16px;
+		font-size: 17px;
 		line-height: 20px;
 	}
 	@else if $mod == small {
@@ -358,16 +356,14 @@ $hamburger-hover-opacity                   : 0.7;
 		font-family: $body;
 		font-weight: normal;
 	}
-	// .tavolga & {
-	// 	font-family: $body_tv;
-	// 	font-weight: normal;
-	// }
-	// .bloggersans-bold & {
-	// 	font-family: $body_bl_bold;
-	// }
+	.tavolga & {
+		font-family: $sans_tv;
+		font-weight: normal;
+	}
+
 
 	display: inline-block;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 	color: $color-white;
 	border-radius: 2px;
 
@@ -387,7 +383,7 @@ $hamburger-hover-opacity                   : 0.7;
 
 	&:hover, &:focus, &:active {
 		//background: $color-link-three;
-		background: $color-link-three;
+		background: $color-link-one;
 		box-shadow: 1px 1px 2px rgba(0,0,0, 0.4);
 		color: $color-white;
 	}

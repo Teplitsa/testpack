@@ -8,6 +8,7 @@
 	position: relative;
 	padding-right: 48px;
 	height: 44px;
+	opacity: 0.83;
 }
 
 .searchform__field {
@@ -28,13 +29,13 @@
 	top: 0;
 	right: 0;
 	border: none;
-	border-left: 4px solid darken($color-link-four, 12%);
-	background: darken($color-link-four, 7%);
+	border-left: 4px solid darken($color-link-four, 22%);
+	background: darken($color-link-four, 15%);
 	border-radius: 0 4px 4px 0;
 	@include transition(all 0.3s);
 	
 	&:hover {
-		background: darken($color-link-four, 12%);
+		background: darken($color-link-four, 20%);
 	}
 	
 	.svg-icon {
@@ -44,6 +45,7 @@
 		position: absolute;
 		top: 14px;
 		left: 12px;
+		transform: rotate(-90deg);
 	}
 }
 
