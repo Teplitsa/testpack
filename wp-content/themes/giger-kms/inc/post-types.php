@@ -125,7 +125,7 @@ function tst_custom_content(){
         'rewrite'             => array('slug' => 'item', 'with_front' => false),
         'hierarchical'        => true,
         'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-schedule',
+		'menu_icon'           => 'dashicons-layout',
         'supports'            => array('title', 'excerpt', 'editor', 'thumbnail', 'page-attributes', 'revisions',),
         'taxonomies'          => array('section', 'post_tag'),
     ));
@@ -161,7 +161,7 @@ function tst_custom_content(){
         'rewrite'             => array('slug' => 'project', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-category',
+		'menu_icon'           => 'dashicons-portfolio',
         'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'thumbnail'),
         'taxonomies'          => array('project_cat'),
     ));
@@ -438,7 +438,7 @@ function tst_custom_metaboxes() {
         'show_names'    => true,
     ));
 
-	
+
 }
 
 
