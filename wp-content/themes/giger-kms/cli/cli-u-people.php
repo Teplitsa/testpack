@@ -52,8 +52,7 @@ try {
 				echo 'Uploaded thumbnail '.$thumb_id.chr(10);
 			}
 			else {
-				$a_url = $uploads['url'].'/'.$line[3];
-				$thumb_id = attachment_url_to_postid($a_url);
+				$thumb_id = tst_register_uploaded_file($test_path);
 			}
 
 			if($thumb_id){
@@ -66,7 +65,7 @@ try {
 		if($uid){
 			$count++;
 			//create connections
-			
+
 			$landing = array();
 			$landing = (!empty($line[4])) ? explode(',', $line[4]) : array();
 			$landing = (!empty($line[5])) ? array_merge($landing, explode(',', $line[5])) : array();
