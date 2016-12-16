@@ -378,6 +378,7 @@ function tst_custom_content(){
 
 	//remove post tags
 	unregister_taxonomy_for_object_type('category', 'post');
+    register_taxonomy_for_object_type( 'attachment_tag', 'attachment' );
 
     tst_setup_terms();
 }
