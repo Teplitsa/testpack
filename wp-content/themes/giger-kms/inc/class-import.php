@@ -42,7 +42,7 @@ class TST_Import {
     }
     
     public function set_attachment_old_page_url( $attachment_id, $old_page_url ) {
-        update_post_meta( $post_id, 'old_parent_page_url', $old_page_url );
+        update_post_meta( $attachment_id, 'old_parent_page_url', $old_page_url );
     }
 
     public function import_file( $url ) {
