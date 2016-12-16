@@ -9,6 +9,7 @@ ini_set('memory_limit','256M');
 try {
 	$time_start = microtime(true);
 	include('cli_common.php');
+	include( get_template_directory() . '/inc/class-import.php' );
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
 	global $wpdb;
@@ -46,17 +47,31 @@ try {
 		//content
 		if(false !== strpos($line[1], 'import | ')){
 			//import fromt old page
-			$old_orl = str_replace('import | ', '', $line[1]);
 
-			$page_data['post_content'] = 'Контент будет импортирован';
+			echo "Import fromt URL ".$line[1].chr(10);
+			$old_url = str_replace('import | ', '', $line[1]);
+			$old_post = TST_Import::get_instance()->get_post_by_old_url($old_url);
+
+			if($old_post) {
+
+				$page_data['post_content'] = $old_post->post_content;
+
+				//images
+				if(trim($line[4]) == 'none' || trim($line[4]) == 'NEED'){
+					$img = tst_get_connected_images($old_post);
+					if($img) {
+						$page_data['meta_input']['_thumbnail_id'] = (int)$img[0]->ID;
+					}
+				}
+			}
 		}
 		else {
-			$page_data['post_content'] = $line[1];
+			$page_data['post_content'] = trim($line[1]);
 		}
 
 		//post parent
-		if(is_string($line[3])){
-			$parent = get_posts(array('post_type' => 'project', 'posts_per_page' => 1, 'name' => $line[3], 'post_status' => 'publish'));
+		if($line[3] != 'none'){
+			$parent = get_posts(array('post_type' => 'project', 'posts_per_page' => 1, 'name' => trim($line[3]), 'post_status' => 'publish'));
 			if($parent){
 				$page_data['post_parent'] = (int)$parent[0]->ID;
 			}
@@ -67,12 +82,12 @@ try {
 		}
 
 		//thumbnail
-		if(!empty($line[4]) && $line[4] != 'none'){
-			$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.$line[3];
-			var_dump($path);
+		if(trim($line[4]) != 'none' && trim($line[4]) != 'NEED'){
+			$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.trim($line[4]);
+			//var_dump($path);
 
-			$test_path = $uploads['path'].'/'.$line[4];
-			var_dump($test_path);
+			$test_path = $uploads['path'].'/'.trim($line[4]);
+			//var_dump($test_path);
 
 			if(!file_exists($test_path)) {
 				$thumb_id = tst_upload_img_from_path($path);
@@ -81,7 +96,7 @@ try {
 			else {
 				$thumb_id = tst_register_uploaded_file($test_path);
 			}
-
+var_dump($thumb_id);
 			if($thumb_id){
 				$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
 			}
@@ -99,7 +114,7 @@ try {
 			$landing = (!empty($line[9]) && $line[9] != 'none') ? array_merge($landing, explode(',', $line[9])) : $landing;
 			$landing = array_map('trim', $landing);
 			$landing = array_unique($landing);
-			
+
 
 			$c_count = 0;
 			if(!empty($landing)) { foreach($landing as $l_slug) {
@@ -121,6 +136,24 @@ try {
 			if(!empty($line[6]) && $line[6] != 'none') {
 				wp_set_post_terms((int)$uid, $line[6], 'project_cat', false);
 				wp_cache_flush();
+			}
+
+			//documents
+			$doc = ($line[10] != 'none') ? explode(',', $line[10]) : array();
+			$doc = array_map('trim', $doc);
+			if($doc) {
+				$d_count = 0;
+				foreach($doc as $d) {
+					$d_doc = TST_Import::get_instance()->get_attachment_by_old_url($d);
+					if($d_doc) {
+						$c = p2p_type('connected_attachments')->connect((int)$uid, $d_doc->ID, array('date' => current_time('mysql')));
+						if(!is_wp_error($c)){
+							$d_count++;
+						}
+					}
+				}
+
+				echo 'Added '.$d_count.' document for '.$page_data['post_title'].chr(10);
 			}
 		}
 	}

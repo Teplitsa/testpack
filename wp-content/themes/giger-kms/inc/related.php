@@ -86,3 +86,26 @@ function tst_get_related_query($cpost, $tax = 'post_tag', $limit = 5) {
 
 	return $q;
 }
+
+/** Connections for import */
+function tst_get_connected_images($cpost) {
+
+	if(!$cpost)
+		return array();
+	
+	$connection_type = ($cpost->post_type == 'import') ? 'import_attachments' : 'connected_attachments';
+
+	return get_posts(array(
+		'connected_type' => $connection_type,
+		'connected_items' => $cpost,
+		'post_type' => 'attachment',
+		'post_status' => 'inherit',
+		'posts_per_page' => -1,
+		'post_mime_type' => array('image/jpeg', 'image/png', 'image/gif'),
+		'cache_results'  => false,
+		'update_post_meta_cache' => false,
+		'update_post_term_cache' => false
+	));
+
+
+}

@@ -180,7 +180,7 @@ function tst_custom_content(){
        ),
         'public'              => true,
         'exclude_from_search' => false,
-        'publicly_queryable'  => false,
+        'publicly_queryable'  => true,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
@@ -384,19 +384,19 @@ function tst_custom_content(){
 }
 
 function tst_setup_terms() {
-    
+
     if( !get_term_by( 'slug', 'bereginya', 'attachment_tag' ) ) {
         wp_insert_term( 'Берегиня', 'attachment_tag', $args = array( 'slug' => 'bereginya' ) );
     }
-    
+
     if( !get_term_by( 'slug', 'report', 'attachment_tag' ) ) {
         wp_insert_term( 'Отчет', 'attachment_tag', $args = array( 'slug' => 'report' ) );
     }
-    
+
     if( !get_term_by( 'slug', 'publication', 'attachment_tag' ) ) {
         wp_insert_term( 'Публикация', 'attachment_tag', $args = array( 'slug' => 'publication' ) );
     }
-    
+
 }
 
 
@@ -580,7 +580,7 @@ function tst_p2p_connection_types() {
         'name' 	=> 'connected_attachments',
         'from' 	=> array('landing', 'page', 'project'),
         'to' 	=> 'attachment',
-		'admin_column' => 'any',
+		'admin_column' => false,
 		'from_labels' => array(
 			'column_title' => 'Файлы',
 		),
@@ -590,12 +590,12 @@ function tst_p2p_connection_types() {
 			'can_create_post' => false
 		)
     ));
-    
+
 	p2p_register_connection_type(array(
         'name' 	=> 'import_attachments',
         'from' 	=> array('import'),
         'to' 	=> 'attachment',
-		'admin_column' => 'any',
+		'admin_column' => false,
 		'from_labels' => array(
 			'column_title' => 'Файлы',
 		),
