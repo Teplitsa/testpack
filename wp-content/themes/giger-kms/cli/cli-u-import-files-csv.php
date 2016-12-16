@@ -37,7 +37,7 @@ try {
             $file_id = 0;
             $file_url = '';
             
-            if(false !== strpos($url, 'dront.ru') && preg_match( '/.*(:?jpeg|jpg|png|gif|pdf)$/', $url ) ) {
+            if(false !== strpos($url, 'dront.ru') && preg_match( '/.*(?:jpeg|jpg|png|gif|pdf)$/', $url ) ) {
                 
                 printf( "Saving %s\n", $url );
                 

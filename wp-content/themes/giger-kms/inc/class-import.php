@@ -100,4 +100,12 @@ class TST_Import {
         return $content;
     }
     
+    public function get_file_name( $url, $content ) {
+        $title = '';
+        $matches = array();
+        $content = preg_match( '/<\s*a[^>]+' . preg_quote( $url, '/' ) . '.*?>([^<]*?)<\s*\/\s*a\s*>/is', $content, $matches);
+        #print_r( $matches );
+        return $title;
+    }
+    
 } //class

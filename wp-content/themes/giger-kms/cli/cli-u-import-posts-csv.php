@@ -43,7 +43,7 @@ try {
             $parent_url = $line[6];
             
 //            print_r( $files_url );
-            printf( "%s: %s\n", $post_type, $post_title );
+//            printf( "%s: %s\n", $post_type, $post_title );
             printf( "files: %d\n", count( $files_url ) );
             
 			$file_url = '';
@@ -55,7 +55,7 @@ try {
             $files_id = array();
             foreach( $files_url as $url ) {
                 $file_id = 0;
-                if(false !== strpos($url, 'dront.ru') && preg_match( '/.*(:?jpeg|jpg|png|gif|pdf)$/', $url ) ){
+                if(false !== strpos($url, 'dront.ru') && preg_match( '/.*(?:jpeg|jpg|png|gif|pdf)$/', $url ) ){
                     
                     $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $url );
 
@@ -87,9 +87,11 @@ try {
 
                         $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );
                         
+                        $file_name = TST_Import::get_instance()->get_file_name( $url, $post_content );
+                        
                     }
                     else {
-                        
+                        printf( "removed: %s\n", $url );
                         $post_content = TST_Import::get_instance()->remove_url_tag( $url, $post_content );
                         
                     }
@@ -99,7 +101,10 @@ try {
                 }
             }
             
-            $parent_post = $parent_url ? TST_Import::get_instance()->get_post_by_old_url( $page_url ) : NULL;
+            $parent_post = $parent_url ? TST_Import::get_instance()->get_post_by_old_url( $parent_url ) : NULL;
+            $parent_post_id = $parent_post ? $parent_post->ID : 0;
+//            printf( "parent_url: %s\n", $parent_url );
+//            printf( "parent_id: %d\n", $parent_post_id );
             
 			$post_arr = array(
 				'ID' => 0,
@@ -112,7 +117,7 @@ try {
 				),
 				'post_content' => $post_content,
 				'post_excerpt' => '',
-                'post_parent' => $parent_post ? $parent_post->ID : 0,
+                'post_parent' => $parent_post_id,
 			);
             
             if( $post_date ) {
@@ -132,6 +137,7 @@ try {
 			wp_cache_flush();
 			$count++;
             
+//            break;
 		}
 	}
 
