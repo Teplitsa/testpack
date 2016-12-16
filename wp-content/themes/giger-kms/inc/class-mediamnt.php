@@ -354,9 +354,11 @@ class TST_Media {
 
 	function register_uploaded_file($path) {
 
-		$filename = basename($path);
+		$filename = basename($path); var_dump($filename);
+		$uploads = $this->_get_upload_dir();
 
-		$a_url = $this->uploads_dir['url'].'/'.$filename;
+		$a_url = $uploads['url'].'/'.$filename; var_dump($a_url);
+
 		$attachment_id = attachment_url_to_postid($a_url);
 		if($attachment_id){
 			return $attachment_id; //already registered
@@ -373,15 +375,17 @@ class TST_Media {
 			'post_status' => 'inherit'
 		);
 
-		$attachment_id = wp_insert_attachment( $attachment, $filename, 0 );
+		$attachment_file = ltrim($uploads['subdir'].'/'.$filename, '/');
+		$attachment_id = wp_insert_attachment( $attachment, $attachment_file, 0 );
 
 		if (!is_wp_error($attachment_id)) {
 			require_once(ABSPATH . "wp-admin" . '/includes/image.php');
-			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename);
+			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $attachment_file);
 			wp_update_attachment_metadata( $attachment_id,  $attachment_data );
 
 			$this->regenerate_thumbnails($attachment_id);
 		}
+var_dump(wp_get_attachment_url($attachment_id));
 
 		return $attachment_id;
 	}

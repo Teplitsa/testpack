@@ -47,6 +47,7 @@ try {
 			var_dump($path);
 
 			$test_path = $uploads['path'].'/'.$line[3];
+			var_dump($test_path);
 			if(!file_exists($test_path)) {
 				$thumb_id = tst_upload_img_from_path($path);
 				echo 'Uploaded thumbnail '.$thumb_id.chr(10);
