@@ -15,7 +15,7 @@ class TST_Import {
     
     public function get_post_by_old_url( $old_url ) {
         $args = array(
-            'post_type' => array( 'post', 'landing', 'project', 'event', 'document', 'person' ),
+            'post_type' => array( 'post', 'landing', 'project', 'event', 'person', 'import', 'archive_page' ),
             'meta_query' => array(
                 array(
                     'key' => 'old_url',
@@ -86,4 +86,18 @@ class TST_Import {
         
         return $attachment_id;
     }
+    
+    public function remove_inline_styles( $content ) {
+        $content = preg_replace('/(style\s*=\s*(:?"|\').*?(:?"|\'))/', '', $content);
+        $content = preg_replace('/(width\s*=\s*(:?"|\').*?(:?"|\'))/', '', $content);
+        $content = preg_replace('/(height\s*=\s*(:?"|\').*?(:?"|\'))/', '', $content);
+        return $content;
+    }
+    
+    public function remove_url_tag( $url, $content ) {
+        $content = preg_replace( '/<\s*img[^>]+' . preg_quote( $url, '/' ) . '.*?>/is', '', $content);
+        $content = preg_replace( '/<\s*a[^>]+' . preg_quote( $url, '/' ) . '.*?>[^<]*?<\s*\/\s*a\s*>/is', '', $content);
+        return $content;
+    }
+    
 } //class

@@ -15,8 +15,16 @@ try {
 
 	global $wpdb;
 	$uploads = wp_upload_dir();
-    $input_file = isset( $argv[2] ) ? $argv[2] : '';
+    
+    $options = getopt("", array('file:', 'tag:'));
+    
+    $input_file = isset($options['file']) ? $options['file'] : '';
     printf( "Processing %s\n", $input_file );
+    
+    $tag_slug = isset($options['tag']) ? $options['tag'] : '';
+    if( $tag_slug ) {
+        printf( "Mark with TAG:  %s\n", $tag_slug );        
+    }
 
 	$count = 0;
 	$csv = array_map('str_getcsv', file( $input_file ));
@@ -45,6 +53,15 @@ try {
                     if( $attachment_id ) {
                         $file_url = wp_get_attachment_url( $attachment_id );
                         printf( "Saved %s\n", $file_url );
+                        
+                        if( $tag_slug ) {
+                            $tag = get_term_by( 'slug', $tag_slug, 'attachment_tag' );
+                            if( $tag ) {
+                                wp_set_object_terms( $attachment_id, $tag->term_id, 'attachment_tag' );
+                            }
+                        }
+
+                        
                     }
                     else {
                         printf( "IMPORT ERROR\n");

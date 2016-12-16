@@ -15,7 +15,10 @@ try {
 
 	global $wpdb;
 	$uploads = wp_upload_dir();
-    $input_file = isset( $argv[2] ) ? $argv[2] : '';
+    
+    $options = getopt("", array('file:'));
+    
+    $input_file = isset($options['file']) ? $options['file'] : '';
     printf( "Processing %s\n", $input_file );
 
 	$count = 0;
@@ -30,7 +33,7 @@ try {
 //			if($i == 0)
 //				continue;
 
-			$post_type = 'post'; #$line[0];
+			$post_type = $line[0];
             $page_url = $line[1];
             $post_title = strip_tags( $line[2] );
             $post_content = $line[3];
@@ -66,13 +69,21 @@ try {
                         if( $attachment_id ) {
                             $file_url = wp_get_attachment_url( $attachment_id );
                             printf( "File saved %s\n", $file_url );
-                            
-                            $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );
                         }
                         else {
-                            printf( "IMPORT ERROR");
+                            printf( "IMPORT ERROR\n");
                         }
                     }
+                    
+                    if( $file_url ) {
+                        $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );
+                    }
+                    else {
+                        $post_content = TST_Import::get_instance()->remove_url_tag( $url, $post_content );
+                    }
+                    
+                    $post_content = TST_Import::get_instance()->remove_inline_styles( $post_content );
+                    
                 }
             }
             
@@ -94,9 +105,7 @@ try {
             }
 
 			$post_id = wp_insert_post($post_arr);
-//			if($post_id && !is_wp_error($post_id))
-//				wp_set_object_terms($post_id, $project_cats['publications']['term_id'], $tax);
-
+            
 			wp_cache_flush();
 			$count++;
             
