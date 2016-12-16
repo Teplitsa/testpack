@@ -34,10 +34,9 @@ function tst_custom_content(){
 	));
 
 
-
-	register_taxonomy('document_cat', array('document'), array(
+	register_taxonomy('project_cat', array('project'), array(
 		'labels' => array(
-			'name'                       => 'Категории документов',
+			'name'                       => 'Категории проектов',
 			'singular_name'              => 'Категория',
 			'menu_name'                  => 'Категории',
 			'all_items'                  => 'Все категории',
@@ -56,25 +55,54 @@ function tst_custom_content(){
 			'not_found'                  => 'Не найдено'
 		),
 		'hierarchical'      => true,
+		'publicly_queryable'=> false,
 		'show_ui'           => true,
-		'show_in_nav_menus' => true,
+		'show_in_nav_menus' => false,
 		'show_tagcloud'     => false,
 		'show_admin_column' => true,
-		'query_var'         => true,
-		'rewrite'           => array('slug' => 'section', 'with_front' => false),
+		'rewrite'           => false,
 		//'update_count_callback' => '',
 	));
 
+	register_taxonomy('archive_page_cat', array('archive_page'), array(
+		'labels' => array(
+			'name'                       => 'Категории архива',
+			'singular_name'              => 'Категория',
+			'menu_name'                  => 'Категории',
+			'all_items'                  => 'Все категории',
+			'edit_item'                  => 'Редактировать категорию',
+			'view_item'                  => 'Просмотреть',
+			'update_item'                => 'Обновить категорию',
+			'add_new_item'               => 'Добавить новую категорию',
+			'new_item_name'              => 'Название новой категории',
+			'parent_item'                => 'Родительская категория',
+			'parent_item_colon'          => 'Родительская категория:',
+			'search_items'               => 'Искать категорию',
+			'popular_items'              => 'Часто используемые',
+			'separate_items_with_commas' => 'Разделять запятыми',
+			'add_or_remove_items'        => 'Добавить или удалить категорию',
+			'choose_from_most_used'      => 'Выбрать из часто используемых',
+			'not_found'                  => 'Не найдено'
+		),
+		'hierarchical'      => true,
+		'publicly_queryable'=> false,
+		'show_ui'           => true,
+		'show_in_nav_menus' => false,
+		'show_tagcloud'     => false,
+		'show_admin_column' => true,
+		'rewrite'           => false,
+		//'update_count_callback' => '',
+	));
 
 	/** Post types **/
 	register_post_type('landing', array(
         'labels' => array(
-            'name'               => 'Лэндинги',
-            'singular_name'      => 'Лэндинг',
-            'menu_name'          => 'Лэндинги',
-            'name_admin_bar'     => 'Добавить лэндинг',
+            'name'               => 'Лендинги',
+            'singular_name'      => 'Лендинг',
+            'menu_name'          => 'Лендинги',
+            'name_admin_bar'     => 'Добавить лендинг',
             'add_new'            => 'Добавить новый',
-            'add_new_item'       => 'Добавить лэндинг',
+            'add_new_item'       => 'Добавить лендинг',
             'new_item'           => 'Новый лендинг',
             'edit_item'          => 'Редактировать лендинг',
             'view_item'          => 'Просмотр лендингов',
@@ -99,7 +127,7 @@ function tst_custom_content(){
         'menu_position'       => 5,
 		'menu_icon'           => 'dashicons-schedule',
         'supports'            => array('title', 'excerpt', 'editor', 'thumbnail', 'page-attributes', 'revisions',),
-        'taxonomies'          => array('section', 'person'),
+        'taxonomies'          => array('section', 'post_tag'),
     ));
 
 
@@ -135,7 +163,7 @@ function tst_custom_content(){
         'menu_position'       => 5,
 		'menu_icon'           => 'dashicons-category',
         'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'thumbnail'),
-        'taxonomies'          => array(),
+        'taxonomies'          => array('project_cat'),
     ));
 
 	register_post_type('event', array(
@@ -173,26 +201,26 @@ function tst_custom_content(){
         'taxonomies'          => array(),
     ));
 
-	register_post_type('document', array(
+	register_post_type('archive_page', array(
         'labels' => array(
-            'name'               => 'Документ',
-            'singular_name'      => 'Документы',
-            'menu_name'          => 'Документы',
-            'name_admin_bar'     => 'Добавить документ',
-            'add_new'            => 'Добавить новый',
-            'add_new_item'       => 'Добавить документ',
-            'new_item'           => 'Новый документ',
-            'edit_item'          => 'Редактировать документ',
-            'view_item'          => 'Просмотр документов',
-            'all_items'          => 'Все документы',
-            'search_items'       => 'Искать документы',
-            'parent_item_colon'  => 'Родительский документ:',
-            'not_found'          => 'Документы не найдены',
-            'not_found_in_trash' => 'В Корзине документы не найдены'
+            'name'               => 'Архивные страницы',
+            'singular_name'      => 'Архивная страница',
+            'menu_name'          => 'Архив',
+            'name_admin_bar'     => 'Добавить страницу',
+            'add_new'            => 'Добавить новую',
+            'add_new_item'       => 'Добавить страницу',
+            'new_item'           => 'Новая страница',
+            'edit_item'          => 'Редактировать страницу',
+            'view_item'          => 'Просмотр страниц',
+            'all_items'          => 'Все страницы',
+            'search_items'       => 'Искать страницы',
+            'parent_item_colon'  => 'Родительская страница:',
+            'not_found'          => 'Страницы не найдены',
+            'not_found_in_trash' => 'В Корзине страницы не найдены'
        ),
         'public'              => true,
         'exclude_from_search' => false,
-        'publicly_queryable'  => false,
+        'publicly_queryable'  => true,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
@@ -200,12 +228,12 @@ function tst_custom_content(){
         //'query_var'           => true,
         'capability_type'     => 'post',
         'has_archive'         => false,
-        'rewrite'             => false,
+        'rewrite'             => array('slug' => 'archives', 'with_front' => false),
         'hierarchical'        => false,
-        'menu_position'       => 5,
+        'menu_position'       => 25,
 		'menu_icon'           => 'dashicons-category',
         'supports'            => array('title', 'editor', 'revisions'),
-        'taxonomies'          => array(),
+        'taxonomies'          => array('archive_page_cat'),
     ));
 
 	register_post_type('person', array(
@@ -302,16 +330,13 @@ add_action( 'cmb2_admin_init', 'tst_custom_metaboxes' );
 function tst_custom_metaboxes() {
 
 	/** Projects fields **/
-	$project_cmb = new_cmb2_box( array(
+	/*$project_cmb = new_cmb2_box( array(
         'id'            => 'project_settings_metabox',
         'title'         => 'Настройки проекта',
         'object_types'  => array('project'), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
-        'show_names'    => true, // Show field names on the left
-		//'show_on_cb'    => 'tst_show_on_general_pages',
-        //'cmb_styles'    => false, // false to disable the CMB stylesheet
-        // 'closed'     => true, // Keep the metabox closed by default
+        'show_names'    => true,
     ));
 
 	$project_cmb->add_field( array(
@@ -320,36 +345,7 @@ function tst_custom_metaboxes() {
 		'desc' => 'Не имеет собственной страницы',
 		'type' => 'checkbox',
 		'default' => 0
-	));
-
-
-	/** Documents fields **/
-	$doc_cmb = new_cmb2_box( array(
-        'id'            => 'document_settings_metabox',
-        'title'         => 'Настройки документа',
-        'object_types'  => array('document'), // Post type
-        'context'       => 'normal',
-        'priority'      => 'high',
-        'show_names'    => true, // Show field names on the left
-		//'show_on_cb'    => 'tst_show_on_general_pages',
-        //'cmb_styles'    => false, // false to disable the CMB stylesheet
-        // 'closed'     => true, // Keep the metabox closed by default
-    ));
-
-	$doc_cmb->add_field( array(
-		'name'    => 'Файл для просмотра / скачивания',
-		'desc'    => 'Используйте PDF файлы - просмотр других форматов не работает!',
-		'id'      => 'document_file',
-		'type'    => 'file',
-		// Optional:
-		'options' => array(
-			'url' => true, // Hide the text input for the url
-		),
-		'text'    => array(
-			'add_upload_file_text' => 'Добавить файл' // Change upload button text. Default: "Add or Upload File"
-		),
-	));
-
+	));*/
 
 	/** Events fields  **/
     $event_cmb = new_cmb2_box( array(
@@ -439,12 +435,10 @@ function tst_custom_metaboxes() {
         'object_types'  => array('landing'), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
-        'show_names'    => true, // Show field names on the left
-		//'show_on_cb'    => 'tst_show_on_general_pages',
-        //'cmb_styles'    => false, // false to disable the CMB stylesheet
-        // 'closed'     => true, // Keep the metabox closed by default
+        'show_names'    => true,
     ));
 
+	
 }
 
 
@@ -455,31 +449,16 @@ add_action( 'p2p_init', 'tst_p2p_connection_types' );
 function tst_p2p_connection_types() {
 
 	p2p_register_connection_type(array(
-        'name' 	=> 'landing_post',
-        'from' 	=> 'landing',
-        'to' 	=> array('post'),
-		'admin_column' => 'to',
-		'to_labels' => array(
-			//'column_title' => 'НКО',
-		),
-		'admin_box' => array(
-			'show' => 'to',
-			'context' => 'advanced',
-			'can_create_post' => false
-		)
-    ));
-
-	p2p_register_connection_type(array(
         'name' 	=> 'landing_landing',
         'from' 	=> 'landing',
         'to' 	=> 'landing',
 		'reciprocal' 	=> true,
 		'admin_column' 	=> 'any',
 		'to_labels' => array(
-			//'column_title' => 'НКО',
+			'column_title' => 'Связи',
 		),
 		'from_labels' => array(
-			//'column_title' => 'НКО',
+			'column_title' => 'Связи',
 		),
 		'admin_box' => array(
 			'show' => 'any',
@@ -494,22 +473,7 @@ function tst_p2p_connection_types() {
         'to' 	=> array('project'),
 		'admin_column' => 'to',
 		'to_labels' => array(
-			//'column_title' => 'НКО',
-		),
-		'admin_box' => array(
-			'show' => 'to',
-			'context' => 'advanced',
-			'can_create_post' => false
-		)
-    ));
-
-	p2p_register_connection_type(array(
-        'name' 	=> 'landing_document',
-        'from' 	=> 'landing',
-        'to' 	=> array('document'),
-		'admin_column' => 'to',
-		'to_labels' => array(
-			//'column_title' => 'НКО',
+			'column_title' => 'Лендинги',
 		),
 		'admin_box' => array(
 			'show' => 'to',
@@ -524,10 +488,25 @@ function tst_p2p_connection_types() {
         'to' 	=> array('person'),
 		'admin_column' => 'to',
 		'to_labels' => array(
-			//'column_title' => 'НКО',
+			'column_title' => 'Лендинги',
 		),
 		'admin_box' => array(
 			'show' => 'to',
+			'context' => 'advanced',
+			'can_create_post' => false
+		)
+    ));
+
+	p2p_register_connection_type(array(
+        'name' 	=> 'connected_attachments',
+        'from' 	=> array('landing', 'page', 'project'),
+        'to' 	=> 'attachment',
+		'admin_column' => 'any',
+		'from_labels' => array(
+			'column_title' => 'Файлы',
+		),
+		'admin_box' => array(
+			'show' => 'from',
 			'context' => 'advanced',
 			'can_create_post' => false
 		)

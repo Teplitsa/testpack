@@ -354,10 +354,10 @@ class TST_Media {
 
 	function register_uploaded_file($path) {
 
-		$filename = basename($path); var_dump($filename);
+		$filename = basename($path);
 		$uploads = $this->_get_upload_dir();
 
-		$a_url = $uploads['url'].'/'.$filename; var_dump($a_url);
+		$a_url = $uploads['url'].'/'.$filename;
 
 		$attachment_id = attachment_url_to_postid($a_url);
 		if($attachment_id){
@@ -385,7 +385,7 @@ class TST_Media {
 
 			$this->regenerate_thumbnails($attachment_id);
 		}
-var_dump(wp_get_attachment_url($attachment_id));
+
 
 		return $attachment_id;
 	}
