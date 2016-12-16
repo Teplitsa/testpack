@@ -44,7 +44,8 @@ try {
 		'post_content' => 'Общественная приемная, ссылки на доп.сайты, задать вопрос',
 		'section' => 'work',
 		'parent' => 0,
-		'thumb' => 'landing-law.jpg'
+		'thumb' => 'landing-law.jpg',
+		'tags' => 'защита прав,правовой центр,консультации'
 	);
 
 	$move_to_items[] = array(
@@ -54,7 +55,8 @@ try {
 		'post_content' => 'Эколагеря, творчество, публикации, пособия',
 		'section' => 'work',
 		'parent' => 0,
-		'thumb' => 'landing-education.jpg'
+		'thumb' => 'landing-education.jpg',
+		'tags' => 'экопросвещение,эколагерь,центр Оберег,образование,школникам,студентам'
 	);
 
 	$move_to_items[] = array(
@@ -63,7 +65,8 @@ try {
 		'post_title' => 'Исследования',
 		'post_content' => 'Публикации, статистика',
 		'section' => 'work',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'наука,исследования,статистика,научная работа'
 	);
 
 	$move_to_items[] = array(
@@ -72,7 +75,8 @@ try {
 		'post_title' => 'Активизм',
 		'post_content' => 'Кейсы, действующие и прошлые акции',
 		'section' => 'work',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'акции,конкурсы,мониторинг,экопроблемы,контроль,активизм'
 	);
 
 	$move_to_items[] = array(
@@ -81,7 +85,8 @@ try {
 		'post_title' => 'Публикации',
 		'post_content' => 'Публикации из раздела "публикации", Газета Берегиня, публикации фотостудии',
 		'section' => 'work',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'Берегиня,газета,публикации,фотоработы,фотовыставка,фото природы'
 	);
 
 	$move_to_items[] = array(
@@ -99,7 +104,8 @@ try {
 		'post_title' => 'Чебоксарская ГЭС',
 		'post_content' => 'Кейс Чебоксарской ГЭС',
 		'section' => 'ecoproblems',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'Чебоксарской ГЭС'
 	);
 
 	$move_to_items[] = array(
@@ -108,7 +114,8 @@ try {
 		'post_title' => 'Нижегородская АЭС',
 		'post_content' => 'Кейс угрозы Нижегородской АЭС',
 		'section' => 'ecoproblems',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'Нижегородская АЭС'
 	);
 
 	$move_to_items[] = array(
@@ -117,7 +124,8 @@ try {
 		'post_title' => 'Охрана редких видов',
 		'post_content' => 'Красная книга, публикации',
 		'section' => 'ecoproblems',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'общество охраны амфибий и рептилий,охрана редких видов,разнообразие видов,исчезающие виды,красная книга',
 	);
 
 	$move_to_items[] = array(
@@ -126,7 +134,8 @@ try {
 		'post_title' => 'ООПТ',
 		'post_content' => 'Информация о территориях, что мы делаем, документы',
 		'section' => 'ecoproblems',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'оопт,заповедники,охраняемые территории',
 	);
 
 	$move_to_items[] = array(
@@ -135,7 +144,8 @@ try {
 		'post_title' => 'Птицы',
 		'post_content' => 'Выдержки из проектов, фото, акции, публикации',
 		'section' => 'ecoproblems',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'СОПР,орнитологическая лаборатория,птицы,охрана птиц,орнитология',
 	);
 
 	$move_to_items[] = array(
@@ -144,7 +154,8 @@ try {
 		'post_title' => 'Город',
 		'post_content' => 'Ссылка на лонгрид по зеленым территориям, публикации и высказываиня',
 		'section' => 'ecoproblems',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'город,городское озеленение,экология города',
 	);
 
 	$move_to_items[] = array(
@@ -153,7 +164,8 @@ try {
 		'post_title' => 'Проблемные территории',
 		'post_content' => 'Информация о территориях, что мы делаем, документы',
 		'section' => 'ecoproblems',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'проблемные территории,опасность,экологическая катастрофа,акции',
 	);
 
 	$move_to_items[] = array(
@@ -162,7 +174,8 @@ try {
 		'post_title' => 'Здоровье',
 		'post_content' => 'О влиянии экологии на здоровье',
 		'section' => 'ecoproblems',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'здоровье',
 	);
 
 	$move_to_items[] = array(
@@ -171,7 +184,8 @@ try {
 		'post_title' => 'Ресурсы',
 		'post_content' => 'Ресурсы, энергосбережение, климат',
 		'section' => 'ecoproblems',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'сбережение ресурсов,экономия энергии,климат,акции',
 	);
 
 	$move_to_items[] = array(
@@ -180,34 +194,38 @@ try {
 		'post_title' => 'Отходы',
 		'post_content' => 'Разделльный сбор, проблема свалок, свалки и пункты на карте',
 		'section' => 'ecoproblems',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'отходы,мусор,свалки,раздельный сбор',
 	);
 
 	$move_to_items[] = array(
 		'ID' => false,
 		'slug' => 'bereginya',
 		'post_title' => 'Ежемесячная газета "Берегиня"',
-		'post_content' => 'Все выпуски газеты',
+		'post_content' => 'bereginya.txt',
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'Берегиня,газета,публикации,редакция',
 	);
 
 	$move_to_items[] = array(
 		'ID' => false,
 		'slug' => 'sbereg-center',
 		'post_title' => 'Центр природосберегающих технологий',
-		'post_content' => 'О центре, список проектов, отчеты',
+		'post_content' => 'centerpt.txt',
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'Центр природосберегающих технологий,активизм,сбережение ресурсов,экономия,акции',
 	);
 
 	$move_to_items[] = array(
 		'ID' => false,
 		'slug' => 'sopr',
 		'post_title' => 'Нижегородское отделение Союза охраны птиц России',
-		'post_content' => 'Текстовое описание проектов, отчеты, партнеры, фото',
+		'post_content' => 'sopr.txt',
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'СОПР,птицы,птицы,охрана птиц,орнитология',
 	);
 
 	$move_to_items[] = array(
@@ -216,7 +234,8 @@ try {
 		'post_title' => 'Орнитологическая лаборатория',
 		'post_content' => 'Исследования, публикации, отчеты', //add some text
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'орнитологическая лаборатория,птицы,охрана птиц,орнитология',
 	);
 
 	$move_to_items[] = array(
@@ -225,7 +244,8 @@ try {
 		'post_title' => 'Нижегородский эколого-правовой центр',
 		'post_content' => 'Тексты, проекты, документы, образцы', //add some text
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'защита прав,правовой центр,консультации'
 	);
 
 	$move_to_items[] = array(
@@ -234,7 +254,8 @@ try {
 		'post_title' => 'Информационно-консультационный центр "Стрикс"',
 		'post_content' => 'Проекты, публикации (список), отчеты', //add some text
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'информационный центр,центр Стрикс,консультации,образование,школьникам'
 	);
 
 	$move_to_items[] = array(
@@ -243,7 +264,8 @@ try {
 		'post_title' => 'Нижегородское общество охраны амфибий и рептилий',
 		'post_content' => 'Текст, отчеты, публикации', //add some text
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'общество охраны амфибий и рептилий,охрана редких видов,разнообразие видов,исчезающие виды,красная книга',
 	);
 
 	$move_to_items[] = array(
@@ -252,7 +274,8 @@ try {
 		'post_title' => 'Научно-просветительская организация "Джунгли"',
 		'post_content' => 'Текст, отчеты, публикации', //add some text
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'образовательный центр,центр Джунгли,консультации,образование,школьникам,студентам'
 	);
 
 	$move_to_items[] = array(
@@ -261,7 +284,8 @@ try {
 		'post_title' => 'Нижегородский фольклорный клуб',
 		'post_content' => 'Текст, отчеты, фото', //add some text
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'фольклорный клуб,культура,исследования,образование'
 	);
 
 	$move_to_items[] = array(
@@ -270,7 +294,8 @@ try {
 		'post_title' => 'Эколого-просветительский центр "Оберег"',
 		'post_content' => 'Текст, отчеты, фото', //add some text
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'образовательный центр,центр Оберег,конкурсы,образование,экодом'
 	);
 
 	$move_to_items[] = array(
@@ -279,7 +304,8 @@ try {
 		'post_title' => 'Фонд "Нижегородское Заволжье"',
 		'post_content' => 'Текст, отчеты, фото', //add some text
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'Нижегородское Заволжье,оопт,заповедники,охраняемые территории'
 	);
 
 	$move_to_items[] = array(
@@ -288,7 +314,8 @@ try {
 		'post_title' => 'Фотовидеостудия "Реальный мир"',
 		'post_content' => 'Текст, пПубликации, фотогалереи', //add some text
 		'section' => 'departments',
-		'parent' => 0
+		'parent' => 0,
+		'tags' => 'фотостуия,студия Реальный мир,фото,фото природы,фотовыставки,фотоконкурсы'
 	);
 
 	$move_to_items[] = array(
@@ -298,7 +325,7 @@ try {
 		'post_content' => 'Текст, отчеты, фото', //add some text
 		'section' => 'departments',
 		'parent' => 0,
-
+		'tags' => 'Чистильщики рек,реки,охрана рек'
 	);
 
 	$count = 0;
@@ -391,6 +418,11 @@ try {
 
 		if($uid && isset($sections[$key])) {
 			wp_set_object_terms((int)$uid, $sections[$key]->term_id, 'section');
+			wp_cache_flush();
+		}
+
+		if($uid && isset($i_obj['tags'])) {
+			wp_set_post_terms((int)$uid, $i_obj['tags'], 'post_tag', false);
 			wp_cache_flush();
 		}
 

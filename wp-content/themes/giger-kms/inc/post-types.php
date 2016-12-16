@@ -54,7 +54,7 @@ function tst_custom_content(){
 			'choose_from_most_used'      => 'Выбрать из часто используемых',
 			'not_found'                  => 'Не найдено'
 		),
-		'hierarchical'      => true,
+		'hierarchical'      => false,
 		'publicly_queryable'=> false,
 		'show_ui'           => true,
 		'show_in_nav_menus' => false,
@@ -159,10 +159,10 @@ function tst_custom_content(){
         'capability_type'     => 'post',
         'has_archive'         => false,
         'rewrite'             => array('slug' => 'project', 'with_front' => false),
-        'hierarchical'        => false,
+        'hierarchical'        => true,
         'menu_position'       => 5,
 		'menu_icon'           => 'dashicons-portfolio',
-        'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'thumbnail'),
+        'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'page-attributes', 'thumbnail'),
         'taxonomies'          => array('project_cat'),
     ));
 
@@ -229,7 +229,7 @@ function tst_custom_content(){
         'capability_type'     => 'post',
         'has_archive'         => false,
         'rewrite'             => array('slug' => 'archives', 'with_front' => false),
-        'hierarchical'        => false,
+        'hierarchical'        => true,
         'menu_position'       => 25,
 		'menu_icon'           => 'dashicons-category',
         'supports'            => array('title', 'editor', 'revisions'),
