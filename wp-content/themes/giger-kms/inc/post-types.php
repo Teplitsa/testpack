@@ -94,7 +94,37 @@ function tst_custom_content(){
 		//'update_count_callback' => '',
 	));
 
-	/** Post types **/
+	register_taxonomy('attachment_tag', array('attachment'), array(
+		'labels' => array(
+			'name'                       => 'Метки документов',
+			'singular_name'              => 'Метка документов',
+			'menu_name'                  => 'Метки документов',
+			'all_items'                  => 'Все метки документов',
+			'edit_item'                  => 'Редактировать метку',
+			'view_item'                  => 'Просмотреть',
+			'update_item'                => 'Обновить метку',
+			'add_new_item'               => 'Добавить новую метку',
+			'new_item_name'              => 'Название новой метки',
+			'parent_item'                => 'Родительская метка',
+			'parent_item_colon'          => 'Родительская метка:',
+			'search_items'               => 'Искать метку',
+			'popular_items'              => 'Часто используемые',
+			'separate_items_with_commas' => 'Разделять запятыми',
+			'add_or_remove_items'        => 'Добавить или удалить метку',
+			'choose_from_most_used'      => 'Выбрать из часто используемых',
+			'not_found'                  => 'Не найдено'
+		),
+		'hierarchical'      => false,
+		'publicly_queryable'=> false,
+		'show_ui'           => true,
+		'show_in_nav_menus' => false,
+		'show_tagcloud'     => false,
+		'show_admin_column' => true,
+		'rewrite'           => false,
+		//'update_count_callback' => '',
+	));
+
+    /** Post types **/
 	register_post_type('landing', array(
         'labels' => array(
             'name'               => 'Лендинги',
@@ -271,6 +301,39 @@ function tst_custom_content(){
         'taxonomies'          => array(),
     ));
 
+	register_post_type('import', array(
+        'labels' => array(
+            'name'               => 'Импортные записи',
+            'singular_name'      => 'Импортная запись',
+            'menu_name'          => 'Импорт',
+            'name_admin_bar'     => 'Добавить',
+            'add_new'            => 'Добавить',
+            'add_new_item'       => 'Добавить',
+            'new_item'           => 'Новая',
+            'edit_item'          => 'Редактировать',
+            'view_item'          => 'Просмотр',
+            'all_items'          => 'Все',
+            'search_items'       => 'Искать',
+            'parent_item_colon'  => 'Родительская:',
+            'not_found'          => 'Записи не найдены',
+            'not_found_in_trash' => 'В Корзине записи не найдены'
+       ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => false,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => false,
+        'rewrite'             => array('slug' => 'import', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 27,
+		'menu_icon'           => 'dashicons-category',
+        'supports'            => array('title', 'editor', 'revisions'),
+    ));
 
 	/*register_post_type('org', array(
         'labels' => array(
@@ -316,8 +379,23 @@ function tst_custom_content(){
 	//remove post tags
 	unregister_taxonomy_for_object_type('category', 'post');
 
+    tst_setup_terms();
+}
 
-
+function tst_setup_terms() {
+    
+    if( !get_term_by( 'slug', 'bereginya', 'attachment_tag' ) ) {
+        wp_insert_term( 'Берегиня', 'attachment_tag', $args = array( 'slug' => 'bereginya' ) );
+    }
+    
+    if( !get_term_by( 'slug', 'report', 'attachment_tag' ) ) {
+        wp_insert_term( 'Отчет', 'attachment_tag', $args = array( 'slug' => 'report' ) );
+    }
+    
+    if( !get_term_by( 'slug', 'publication', 'attachment_tag' ) ) {
+        wp_insert_term( 'Публикация', 'attachment_tag', $args = array( 'slug' => 'publication' ) );
+    }
+    
 }
 
 
@@ -500,6 +578,21 @@ function tst_p2p_connection_types() {
 	p2p_register_connection_type(array(
         'name' 	=> 'connected_attachments',
         'from' 	=> array('landing', 'page', 'project'),
+        'to' 	=> 'attachment',
+		'admin_column' => 'any',
+		'from_labels' => array(
+			'column_title' => 'Файлы',
+		),
+		'admin_box' => array(
+			'show' => 'from',
+			'context' => 'advanced',
+			'can_create_post' => false
+		)
+    ));
+    
+	p2p_register_connection_type(array(
+        'name' 	=> 'import_attachments',
+        'from' 	=> array('import'),
         'to' 	=> 'attachment',
 		'admin_column' => 'any',
 		'from_labels' => array(

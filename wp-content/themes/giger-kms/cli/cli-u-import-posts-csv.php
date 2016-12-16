@@ -9,12 +9,17 @@ ini_set('memory_limit','256M');
 try {
 	$time_start = microtime(true);
 	include('cli_common.php');
+    include( get_template_directory() . '/inc/class-import.php' );    
+    
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
 	global $wpdb;
 	$uploads = wp_upload_dir();
-    $input_file = isset( $argv[2] ) ? $argv[2] : '';
-    print_r( $input_file );
+    
+    $options = getopt("", array('file:'));
+    
+    $input_file = isset($options['file']) ? $options['file'] : '';
+    printf( "Processing %s\n", $input_file );
 
 	$count = 0;
 	$csv = array_map('str_getcsv', file( $input_file ));
@@ -28,7 +33,7 @@ try {
 //			if($i == 0)
 //				continue;
 
-			$post_type = 'post'; #$line[0];
+			$post_type = $line[0];
             $page_url = $line[1];
             $post_title = strip_tags( $line[2] );
             $post_content = $line[3];
@@ -44,58 +49,41 @@ try {
 			$file_id = 0;
             $post_files = [];
 
-			echo "Importing " . $line[1].chr(10);
+			printf( "Importing %s\n", $page_url );
 
             foreach( $files_url as $url ) {
                 if(false !== strpos($url, 'dront.ru')){
-                    //remote
-                    $file = wp_remote_get($url, array('timeout' => 50, 'sslverify' => false));
                     
-                    $response_code = $file['response']['code'];
-                    
-                    if(!is_wp_error($file) && isset($file['body']) && $response_code == '200' ){
-                        if(isset($file['headers']['content-type'])) {
+                    $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $url );
 
-                            $filename = basename($url);
-                            $upload_file = wp_upload_bits($filename, null, $file['body']);
+                    if( $exist_attachment ) {
+                        $file_id = $exist_attachment->ID;
+                        $file_url = wp_get_attachment_url($file_id);
 
-                            if (!$upload_file['error']) {
-                                $wp_filetype = wp_check_filetype($filename, null );
+                        printf( "Exist %s\n", $file_url );
+                    }
+                    else {
 
-                                $attachment = array(
-                                    'post_mime_type' => $wp_filetype['type'],
-                                    'post_parent' => 0,
-                                    'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
-                                    'post_content' => '',
-                                    'post_status' => 'inherit'
-                                );
+                        $attachment_id = TST_Import::get_instance()->import_file( $url );
 
-                                $attachment_id = wp_insert_attachment( $attachment, $upload_file['file'], 0 );
-
-                                if (!is_wp_error($attachment_id)) {
-                                    require_once(ABSPATH . "wp-admin" . '/includes/image.php');
-                                    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
-                                    wp_update_attachment_metadata( $attachment_id,  $attachment_data );
-                                }
-
-                                $file_id = $attachment_id;
-                                $file_url = wp_get_attachment_url($file_id);
-                                
-                                $post_files[] = array(
-                                    'file_id' => $file_id,
-                                    'file_url' => $file_url,
-                                );
-                            }
+                        if( $attachment_id ) {
+                            $file_url = wp_get_attachment_url( $attachment_id );
+                            printf( "File saved %s\n", $file_url );
+                        }
+                        else {
+                            printf( "IMPORT ERROR\n");
                         }
                     }
-                    unset($file);
                     
-                    if( $response_code == '200' ) {
+                    if( $file_url ) {
                         $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );
                     }
                     else {
-                        printf( "SKIP FILE STATUS: %s\n", $response_code );
+                        $post_content = TST_Import::get_instance()->remove_url_tag( $url, $post_content );
                     }
+                    
+                    $post_content = TST_Import::get_instance()->remove_inline_styles( $post_content );
+                    
                 }
             }
             
@@ -105,7 +93,7 @@ try {
 				'post_type' 	=> $post_type,
 				'post_status' 	=> 'publish',
 				'meta_input'	=> array(
-					'old_page_url' => $page_url,
+					'old_url' => $page_url,
 					'post_files'   => maybe_serialize( $post_files ),
 				),
 				'post_content' => $post_content,
@@ -117,38 +105,14 @@ try {
             }
 
 			$post_id = wp_insert_post($post_arr);
-//			if($post_id && !is_wp_error($post_id))
-//				wp_set_object_terms($post_id, $project_cats['publications']['term_id'], $tax);
-
+            
 			wp_cache_flush();
 			$count++;
             
 		}
 	}
 
-	echo 'Pubs moved into Publications term: '.$count.chr(10);
-
-//	//Editorial settings for publications widget
-//	$query = new WP_Query(array(
-//		'post_type' => array('project'),
-//		'post_status' => 'publish',
-//		'posts_per_page' => 2,
-//		'cache_results' => false,
-//		'orderby' => 'ID',
-//		'order' => 'ASC',
-//		'update_post_meta_cache' => false,
-//		'update_post_term_cache' => false,
-//		'no_found_rows' => true,
-//		'suppress_filters' => true,
-//		'fields' => 'ids',
-//		'post_name__in' => array('rasskazat-ob-nko-zachem-komu-i-kak', 'kak-povysit-izvestnost-svoej-nko')
-//	));
-//
-//	if($query->have_posts())
-//		set_theme_mod('selected_publications', implode(',', $query->posts));
-
-	echo 'Selected publications stored'.chr(10);
-
+	printf( "Posts imported: %n\n", $count );
 
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);

@@ -9,12 +9,22 @@ ini_set('memory_limit','256M');
 try {
 	$time_start = microtime(true);
 	include('cli_common.php');
+    include( get_template_directory() . '/inc/class-import.php' );
+
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
 	global $wpdb;
 	$uploads = wp_upload_dir();
-    $input_file = isset( $argv[2] ) ? $argv[2] : '';
-    print_r( $input_file );
+    
+    $options = getopt("", array('file:', 'tag:'));
+    
+    $input_file = isset($options['file']) ? $options['file'] : '';
+    printf( "Processing %s\n", $input_file );
+    
+    $tag_slug = isset($options['tag']) ? $options['tag'] : '';
+    if( $tag_slug ) {
+        printf( "Mark with TAG:  %s\n", $tag_slug );        
+    }
 
 	$count = 0;
 	$csv = array_map('str_getcsv', file( $input_file ));
@@ -23,108 +33,50 @@ try {
 
 		while(( $line = fgetcsv( $handle, 1000000, "," )) !== FALSE) {
             
-            $url = $line[1];
+            $url = $line[0];
+            printf( "Saving %s\n", $url );
+            
             if(false !== strpos($url, 'dront.ru')){
-                //remote
-                $file = wp_remote_get($url, array('timeout' => 50, 'sslverify' => false));
-
-                $response_code = $file['response']['code'];
-
-                if(!is_wp_error($file) && isset($file['body']) && $response_code == '200' ){
-                    if(isset($file['headers']['content-type'])) {
-
-                        $filename = basename($url);
-                        $upload_file = wp_upload_bits($filename, null, $file['body']);
-
-                        if (!$upload_file['error']) {
-                            $wp_filetype = wp_check_filetype($filename, null );
-
-                            $attachment = array(
-                                'post_mime_type' => $wp_filetype['type'],
-                                'post_parent' => 0,
-                                'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
-                                'post_content' => '',
-                                'post_status' => 'inherit'
-                            );
-
-                            $attachment_id = wp_insert_attachment( $attachment, $upload_file['file'], 0 );
-
-                            if (!is_wp_error($attachment_id)) {
-                                require_once(ABSPATH . "wp-admin" . '/includes/image.php');
-                                $attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
-                                wp_update_attachment_metadata( $attachment_id,  $attachment_data );
-                            }
-
-                            $file_id = $attachment_id;
-                            $file_url = wp_get_attachment_url($file_id);
-
-                            $post_files[] = array(
-                                'file_id' => $file_id,
-                                'file_url' => $file_url,
-                            );
-                        }
-                    }
-                }
-                unset($file);
-
-                if( $response_code == '200' ) {
-                    $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );
+                
+                $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $url );
+                
+                if( $exist_attachment ) {
+                    $file_id = $exist_attachment->ID;
+                    $file_url = wp_get_attachment_url($file_id);
+                    
+                    printf( "Exist %s\n", $file_url );
                 }
                 else {
-                    printf( "SKIP FILE STATUS: %s\n", $response_code );
+                    
+                    $attachment_id = TST_Import::get_instance()->import_file( $url );
+                    
+                    if( $attachment_id ) {
+                        $file_url = wp_get_attachment_url( $attachment_id );
+                        printf( "Saved %s\n", $file_url );
+                        
+                        if( $tag_slug ) {
+                            $tag = get_term_by( 'slug', $tag_slug, 'attachment_tag' );
+                            if( $tag ) {
+                                wp_set_object_terms( $attachment_id, $tag->term_id, 'attachment_tag' );
+                            }
+                        }
+
+                        
+                    }
+                    else {
+                        printf( "IMPORT ERROR\n");
+                    }
                 }
+
             }
             
-			$post_arr = array(
-				'ID' => 0,
-				'post_title' 	=> $post_title,
-				'post_type' 	=> $post_type,
-				'post_status' 	=> 'publish',
-				'meta_input'	=> array(
-					'old_page_url' => $page_url,
-					'post_files'   => maybe_serialize( $post_files ),
-				),
-				'post_content' => $post_content,
-				'post_excerpt' => '',
-			);
-            
-            if( $post_date ) {
-//                $post_arr['post_date'] = $post_date;
-            }
-
-			$post_id = wp_insert_post($post_arr);
-//			if($post_id && !is_wp_error($post_id))
-//				wp_set_object_terms($post_id, $project_cats['publications']['term_id'], $tax);
-
 			wp_cache_flush();
 			$count++;
-            
 		}
 	}
 
-	echo 'Pubs moved into Publications term: '.$count.chr(10);
-
-//	//Editorial settings for publications widget
-//	$query = new WP_Query(array(
-//		'post_type' => array('project'),
-//		'post_status' => 'publish',
-//		'posts_per_page' => 2,
-//		'cache_results' => false,
-//		'orderby' => 'ID',
-//		'order' => 'ASC',
-//		'update_post_meta_cache' => false,
-//		'update_post_term_cache' => false,
-//		'no_found_rows' => true,
-//		'suppress_filters' => true,
-//		'fields' => 'ids',
-//		'post_name__in' => array('rasskazat-ob-nko-zachem-komu-i-kak', 'kak-povysit-izvestnost-svoej-nko')
-//	));
-//
-//	if($query->have_posts())
-//		set_theme_mod('selected_publications', implode(',', $query->posts));
-
-	echo 'Selected publications stored'.chr(10);
-
+	print( "\n" );
+    printf( "Files from %s stored\n", $input_file );
 
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);
