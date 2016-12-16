@@ -31,17 +31,6 @@ $sections = array(
         "is_files_in_content" => true,
         'post_type' => 'import',
     ),
-    'http://dront.ru/' => array( "xpath" => array( 
-            'title' => ".//body//div[@class='container']//div[contains(@class, 'left_row')]//h1", 
-            'content' => ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h1]", 
-            'date' => ""
-        ), 
-        'clean_content_regexp' => array(
-            '#.*?<h1.*?>.*?</h1>#is',
-        ),
-        "is_files_in_content" => true,
-        'post_type' => 'import',
-    ),
     'http://dront.ru/faunistika/' => array( "xpath" => array( 
             'title' => ".//body//div[@class='container']//div[contains(@class, 'left_row')]//span[@class='path_arrow'][last()]/following-sibling::text()[1]", 
             'content' => ".//body//div[@class='container']//div[contains(@class, 'left_row')][./span[@class='path_arrow']]", 
@@ -66,6 +55,52 @@ $sections = array(
         "is_files_in_content" => true,
         'post_type' => 'import',
     ),
+    'http://dront.ru/' => array( "xpath" => array( 
+            'title' => ".//body//div[@class='container']//div[contains(@class, 'left_row')]//h1", 
+            'content' => ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h1]", 
+            'date' => ""
+        ), 
+        'clean_content_regexp' => array(
+            '#.*?<h1.*?>.*?</h1>#is',
+        ),
+        "is_files_in_content" => true,
+        'post_type' => 'import',
+    ),
+    'http://dront.ru/pravo/' => array( "xpath" => array( 
+            'title' => ".//*[@id='content']//p[1]/u", 
+            'content' => ".//*[@id='content']", 
+            'date' => ""
+        ), 
+        'clean_content_regexp' => array(
+            /*array( 'regexp' => '#<p*?>.*?</p>#is', 'limit' => 1 ),*/
+        ),
+        "is_files_in_content" => true,
+        'is_tree' => true,
+        'post_type' => 'import',
+    ),
+    'http://dront.ru/ur-clinic/' => array( "xpath" => array( 
+            'title' => ".//div[@class='zaglavok_big']", 
+            'content' => ".//body/table[3]/tbody/tr/td[3]", 
+            'date' => ""
+        ), 
+        'clean_content_regexp' => array(
+            array( 'regexp' => '#<p*?>.*?</p>#is', 'limit' => 1 ),
+        ),
+        "is_files_in_content" => true,
+        'is_tree' => true,
+        'post_type' => 'import',
+    ),
+    'http://dront.ru/old/' => array( "xpath" => array( 
+            'title' => ".//html//title/text()", 
+            'content' => ".//body", 
+            'date' => ""
+        ), 
+        'clean_content_regexp' => array(
+            '#.*?<h1.*?>.*?</h1>#is',
+        ),
+        "is_files_in_content" => true,
+        'post_type' => 'import',
+    ),
 );
 
 $common_clean_regexp = array(
@@ -78,7 +113,23 @@ foreach( $sections as $k => $v ) {
     }
 }
 
-//$sections[''] = $sections['http://dront.ru/faunistika/'];
+$sections['http://dront.ru/cpt/'] = $sections['http://dront.ru/'];
+$sections['http://dront.ru/cpt/']['is_tree'] = true;
+
+$sections['http://dront.ru/help/'] = $sections['http://dront.ru/cpt/'];
+$sections['http://dront.ru/nooar/'] = $sections['http://dront.ru/cpt/'];
+$sections['http://dront.ru/orni-lab/'] = $sections['http://dront.ru/cpt/'];
+$sections['http://dront.ru/obereg/'] = $sections['http://dront.ru/cpt/'];
+$sections['http://dront.ru/public-office/'] = $sections['http://dront.ru/cpt/'];
+$sections['http://dront.ru/real-world/'] = $sections['http://dront.ru/cpt/'];
+$sections['http://dront.ru/sopr/'] = $sections['http://dront.ru/cpt/'];
+
+$sections['http://dront.ru/old/strix/'] = $sections['http://dront.ru/old/'];
+$sections['http://dront.ru/old/strix/']['is_tree'] = true;
+
+$sections['http://dront.ru/old/lr/'] = $sections['http://dront.ru/old/strix/'];
+//$sections[''] = $sections['http://dront.ru/'];
+
 
 try {
 	$time_start = microtime(true);
@@ -130,7 +181,7 @@ try {
             'title' => '',
             'content' => '',
             'date' => '',
-            'files' => array(),
+            'files' => '',
         );
 
         $dom = new DomDocument;
@@ -192,6 +243,13 @@ try {
         if( $section['is_files_in_content'] && $result['content'] ) {
             $result['files'] = get_media_files_links( $result['content'] );
         }
+        
+        if( isset( $section['is_tree'] ) && $section['is_tree'] ) {
+            $result['parent_url'] = $section['url'];
+        }
+        else {
+            $result['parent_url'] = '';
+        }
 
         fputcsv($csv_handler, $result);
     }
@@ -228,6 +286,7 @@ function get_section( $page_url, $sections ) {
     if( $proper_section_url ) {
         printf( "section: %s\n", $proper_section_url );
         $proper_section = $sections[ $proper_section_url ];
+        $proper_section['url'] = $proper_section_url;
     }
     else {
         print( "section not found!!!\n" );
@@ -242,7 +301,7 @@ function get_media_files_links( $content ) {
     $docs = $matches[0];
     $inner_docs = array();
     foreach( $docs as $doc ) {
-        if( strpos( $doc, DRONT_SITE_URL ) !== FALSE && preg_match( '/\.(png|gif|jpg|jpeg|pdf|rar|docx|zip|html|xls|pptx|ppt|wav|doc|wma|htm)$/i', $doc ) ) {
+        if( strpos( $doc, DRONT_SITE_URL ) !== FALSE && preg_match( '/\.(png|gif|jpg|jpeg|pdf|rar|docx|zip|xls|pptx|ppt|wav|doc|wma)$/i', $doc ) ) {
             $inner_docs[] = $doc;
         }
     }

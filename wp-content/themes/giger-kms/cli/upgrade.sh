@@ -12,3 +12,10 @@ php cli-u-pages.php --host=$HOST
 #
 php cli-u-menu.php --host=$HOST
 #php cli-u-widgets.php --host=$HOST
+
+php cli-u-import-files-csv.php --host=$HOST --file=dront_urls_news_content.csv
+php cli-u-import-files-csv.php --host=$HOST --file=dront_urls_actual_content.csv
+
+php cli-u-import-files-csv.php --host=$HOST --file=dront_urls_bereginya.csv --tag=bereginya
+php cli-u-import-files-csv.php --host=$HOST --file=dront_urls_publications.csv --tag=publication
+php cli-u-import-files-csv.php --host=$HOST --file=dront_urls_reports.csv --tag=report

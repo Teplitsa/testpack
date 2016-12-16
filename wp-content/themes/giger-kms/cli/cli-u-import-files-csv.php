@@ -34,9 +34,10 @@ try {
 		while(( $line = fgetcsv( $handle, 1000000, "," )) !== FALSE) {
             
             $url = $line[0];
-            printf( "Saving %s\n", $url );
             
-            if(false !== strpos($url, 'dront.ru')){
+            if(false !== strpos($url, 'dront.ru') ){ // && preg_match( '/.*(:?jpeg|jpg|png|gif|pdf)$/', $url )
+                
+                printf( "Saving %s\n", $url );
                 
                 $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $url );
                 
