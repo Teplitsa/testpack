@@ -55,7 +55,7 @@ try {
             $files_id = array();
             foreach( $files_url as $url ) {
                 $file_id = 0;
-                if(false !== strpos($url, 'dront.ru')){
+                if(false !== strpos($url, 'dront.ru') && preg_match( '/.*(:?jpeg|jpg|png|gif|pdf)$/', $url ) ){
                     
                     $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $url );
 
