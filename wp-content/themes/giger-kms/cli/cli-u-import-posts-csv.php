@@ -79,6 +79,8 @@ try {
                         }
                     }
                     
+                    unset( $exist_attachment );
+                    
                     if( $file_id ) {
                         
                         $post_files[] = array( 'id' => $file_id, 'url' => $file_url );
@@ -124,6 +126,8 @@ try {
                 p2p_type( 'import_attachments' )->connect( $post_id, $attachment_id );
                 TST_Import::get_instance()->set_attachment_old_page_url( $attachment_id, $page_url );
             }
+            
+            unset( $line );
             
 			wp_cache_flush();
 			$count++;

@@ -4,7 +4,7 @@
  *
  **/
 set_time_limit (0);
-ini_set('memory_limit','256M');
+ini_set('memory_limit','512M');
 
 try {
 	$time_start = microtime(true);
@@ -60,6 +60,7 @@ try {
                             if( $tag ) {
                                 wp_set_object_terms( $attachment_id, $tag->term_id, 'attachment_tag' );
                             }
+                            unset( $tag );
                         }
 
                         
@@ -68,10 +69,14 @@ try {
                         printf( "IMPORT ERROR\n");
                     }
                 }
+                unset( $exist_attachment );
 
             }
             
 			wp_cache_flush();
+            
+            unset( $line );
+            
 			$count++;
 		}
 	}
