@@ -107,22 +107,25 @@ add_action('admin_init', function(){
 
 function tst_clear_seo_columns($columns){
 
-	if(isset($columns['wpseo-score']))
-		unset($columns['wpseo-score']);
+	$remove_columns = array(
+		'wpseo-score',
+		'wpseo-score-readability',
+		'wpseo-title',
+		'wpseo-metadesc',
+		'wpseo-focuskw'
+	);
 
-	if(isset($columns['wpseo-title']))
-		unset($columns['wpseo-title']);
-
-	if(isset($columns['wpseo-metadesc']))
-		unset($columns['wpseo-metadesc']);
-
-	if(isset($columns['wpseo-focuskw']))
-		unset($columns['wpseo-focuskw']);
-
+	foreach($remove_columns as $key) {
+		if(isset($columns[$key]))
+			unset($columns[$key]);
+	}
+	
 	return $columns;
 }
 
 add_filter('wpseo_use_page_analysis', '__return_false');
+
+
 
 
 /* Excerpt metabox */

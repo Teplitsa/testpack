@@ -56,9 +56,7 @@ try {
 
 
 	//Update active plugins list
-	include(BASE_PATH.'core/wp-admin/includes/plugin.php');
-	var_dump(BASE_PATH.'core/wp-admin/includes/plugin.php');
-	
+
 	$active = array(
 		"cmb2/init.php",
 		"cmb_field_map/cmb-field-map.php",
@@ -72,12 +70,9 @@ try {
 		"wordpress-seo/wp-seo.php"
 	);
 
-	foreach($active as $plugin) {
-		activate_plugin($plugin);
-	}
 
-	update_option('active_plugins', $active);
-	echo 'Active plugins updated'.chr(10);
+	//update_option('active_plugins', $active);
+
 
 	//Leyka options ???
 
