@@ -27,7 +27,7 @@ post,http://dront.ru/news/1004/,"Смертоносная забота","
 <br>
 
 ",2013-10-09,
-project,http://dront.ru/folklore-club/,"Нижегородский фольклорный клуб","
+root,http://dront.ru/folklore-club/,"Нижегородский фольклорный клуб","
 <ul>
 <li>
 <a href=""http://dront.ru/files/reports/2014/Otchot-folk-2014.doc"">Отчет о работе за 2014 год</a><span style=""margin-right: 0.3em""> </span> <span style=""margin-left: -0.3em"">(doc</span>)</li>
@@ -93,7 +93,7 @@ project,http://dront.ru/folklore-club/,"Нижегородский фолькл�
 <br>
 
 ",,http://dront.ru/files/reports/2014/Otchot-folk-2014.doc|http://dront.ru/files/folklore-club/Folklore-club-report-2013.doc|http://dront.ru/files/folklore-club/folklore-report-2012.doc|http://dront.ru/files/folklore-club/folklore-report-2011.doc|http://dront.ru/files/folklore-club/folklore-report-2010.doc|http://dront.ru/files/folklore-club/folklore-report-2009.doc
-project,http://dront.ru/dront/,"Печальная судьба дронта","
+root,http://dront.ru/dront/,"Печальная судьба дронта","
 <p><span><span style=""margin-right: 0.3em""> </span> <span style=""margin-left: -0.3em"">(</span>Обзор подготовлен студенткой Естественно-географического факультета Нижегородского государственного педагогического университета Е. П. Ждановой при научном руководстве доцента кафедры экологии и экологического образования НГПУ Н. Ю. Киселевой. Экологический центр<span style=""margin-right: 0.3em""> </span> <span style=""margin-left: -0.3em"">«</span>Дронт» выражает Н. Ю. Киселевой и Е. П. Ждановой свою искреннюю признательность.)</span></p>
 <h2>Глава 1. Краткий очерк истории открытия и уничтожения дронта</h2>
 <h3>1.1. Местообитание вида</h3>
@@ -252,7 +252,7 @@ project,http://dront.ru/dront/,"Печальная судьба дронта","
 <br>
 
 ",,http://dront.ru/images/dront-2.jpg|http://dront.ru/images/dront-3.png|http://dront.ru/images/dront-4.jpg|http://dront.ru/images/dront-5.jpg|http://dront.ru/images/dront-6.jpg|http://dront.ru/images/dront-7.jpg|http://dront.ru/images/dront-8.jpg|http://dront.ru/images/dront-9.jpg|http://dront.ru/images/dront-10.jpg|http://dront.ru/images/dront-11.jpg|http://dront.ru/images/dront-12.jpg|http://dront.ru/images/dront-18.jpg|http://dront.ru/images/dront-13.jpg|http://dront.ru/images/dront-14.jpg|http://dront.ru/images/dront-15.jpg|http://dront.ru/images/dront-16.jpg|http://dront.ru/images/dront-17.jpg
-project,http://dront.ru/cheboksarskaya/balakhna/,"Балахнинский район","
+cheboksarskaya,http://dront.ru/cheboksarskaya/balakhna/,"Балахнинский район","
 <ul>
 <li>
 <a href=""http://dront.ru/files/cheboksarskaya/balakhna-soldatov.doc"">Выступление Солдатовой</a><span style=""margin-right: 0.3em""> </span> <span style=""margin-left: -0.3em"">(doc</span>)</li>
@@ -267,7 +267,7 @@ project,http://dront.ru/cheboksarskaya/balakhna/,"Балахнинский ра�
 <br>
 
 ",,http://dront.ru/files/cheboksarskaya/balakhna-soldatov.doc|http://dront.ru/files/cheboksarskaya/balakhna-chikovitova.doc|http://dront.ru/files/cheboksarskaya/balakhna-orehov.doc|http://dront.ru/files/cheboksarskaya/rasskazova.doc
-project,http://dront.ru/faunistika/,Фаунистика,"<p><img src=""http://dront.ru/images/faunistika/wildlifemonitoring2.png"" alt="""" width=""182"" height=""143""></p>
+root,http://dront.ru/faunistika/,Фаунистика,"<p><img src=""http://dront.ru/images/faunistika/wildlifemonitoring2.png"" alt="""" width=""182"" height=""143""></p>
 <p><strong>В современном мире, где веб-индустрия внесла изменения в каждый аспект жизни людей, геоинформационные системы<span style=""margin-right: 0.3em""> </span> <span style=""margin-left: -0.3em"">(</span>ГИС) также испытали на себе влияние интернет-технологий. Так появилась на свет веб-ГИС. Её использует каждый пользователь Интернет, например, ищущий адреса в незнакомом городе с использованием картографического ресурса Google в режиме онлайн.</strong></p>
 <p>Веб-ГИС – это ГИС-система, использующая веб-технологии для связи отдельных компонентов системы. Она составлена из инструментов данных для хранения, восстановления, управления и анализа пространственных данных; это разновидность распределенной информационной системы, простая архитектура которой имеет, по меньшей мере, одного клиента – настольное приложение или приложение для браузера и один сервер – приложение веб-сервера, с которым связывается клиент.</p>
 <p>Несмотря на достаточно динамичное развитие веб-ГИС, в мире, а тем более в России, до сих пор очень мало систем, созданных для мониторинга объектов живой природе. Поэтому экологический центр<span style=""margin-right: 0.3em""> </span> <span style=""margin-left: -0.3em"">«</span>Дронт» рад представить пользователям веб-ГИС<span style=""margin-right: 0.3em""> </span> <span style=""margin-left: -0.3em"">«</span>Фаунистика», в разработке которой принимали непосредственное участие наши сотрудники.</p>
