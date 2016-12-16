@@ -40,6 +40,7 @@ try {
             $post_date = $line[4];
             $post_files_string = $line[5];
             $files_url = explode( '|', $post_files_string );
+            $parent_url = $line[6];
             
 //            print_r( $files_url );
             printf( "%s: %s\n", $post_type, $post_title );
@@ -47,12 +48,14 @@ try {
             
 			$file_url = '';
 			$file_id = 0;
-            $post_files = [];
+            $post_files = array();
 
 			printf( "Importing %s\n", $page_url );
 
+            $files_id = array();
             foreach( $files_url as $url ) {
-                if(false !== strpos($url, 'dront.ru')){
+                $file_id = 0;
+                if(false !== strpos($url, 'dront.ru') && preg_match( '/.*(:?jpeg|jpg|png|gif|pdf)$/', $url ) ){
                     
                     $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $url );
 
@@ -67,6 +70,7 @@ try {
                         $attachment_id = TST_Import::get_instance()->import_file( $url );
 
                         if( $attachment_id ) {
+                            $file_id = $attachment_id;
                             $file_url = wp_get_attachment_url( $attachment_id );
                             printf( "File saved %s\n", $file_url );
                         }
@@ -75,17 +79,27 @@ try {
                         }
                     }
                     
-                    if( $file_url ) {
+                    unset( $exist_attachment );
+                    
+                    if( $file_id ) {
+                        
+                        $post_files[] = array( 'id' => $file_id, 'url' => $file_url );
+
                         $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );
+                        
                     }
                     else {
+                        
                         $post_content = TST_Import::get_instance()->remove_url_tag( $url, $post_content );
+                        
                     }
                     
                     $post_content = TST_Import::get_instance()->remove_inline_styles( $post_content );
                     
                 }
             }
+            
+            $parent_post = $parent_url ? TST_Import::get_instance()->get_post_by_old_url( $page_url ) : NULL;
             
 			$post_arr = array(
 				'ID' => 0,
@@ -98,6 +112,7 @@ try {
 				),
 				'post_content' => $post_content,
 				'post_excerpt' => '',
+                'post_parent' => $parent_post ? $parent_post->ID : 0,
 			);
             
             if( $post_date ) {
@@ -105,6 +120,14 @@ try {
             }
 
 			$post_id = wp_insert_post($post_arr);
+            
+            foreach( $post_files as $file ) {
+                $attachment_id = $file['id'];
+                p2p_type( 'import_attachments' )->connect( $post_id, $attachment_id );
+                TST_Import::get_instance()->set_attachment_old_page_url( $attachment_id, $page_url );
+            }
+            
+            unset( $line );
             
 			wp_cache_flush();
 			$count++;

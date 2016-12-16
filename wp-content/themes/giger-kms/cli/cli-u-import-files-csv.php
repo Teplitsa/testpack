@@ -4,7 +4,7 @@
  *
  **/
 set_time_limit (0);
-ini_set('memory_limit','256M');
+ini_set('memory_limit','512M');
 
 try {
 	$time_start = microtime(true);
@@ -34,9 +34,12 @@ try {
 		while(( $line = fgetcsv( $handle, 1000000, "," )) !== FALSE) {
             
             $url = $line[0];
-            printf( "Saving %s\n", $url );
+            $file_id = 0;
+            $file_url = '';
             
-            if(false !== strpos($url, 'dront.ru')){
+            if(false !== strpos($url, 'dront.ru') && preg_match( '/.*(:?jpeg|jpg|png|gif|pdf)$/', $url ) ) {
+                
+                printf( "Saving %s\n", $url );
                 
                 $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $url );
                 
@@ -51,26 +54,32 @@ try {
                     $attachment_id = TST_Import::get_instance()->import_file( $url );
                     
                     if( $attachment_id ) {
+                        $file_id = $attachment_id;
                         $file_url = wp_get_attachment_url( $attachment_id );
                         printf( "Saved %s\n", $file_url );
-                        
-                        if( $tag_slug ) {
-                            $tag = get_term_by( 'slug', $tag_slug, 'attachment_tag' );
-                            if( $tag ) {
-                                wp_set_object_terms( $attachment_id, $tag->term_id, 'attachment_tag' );
-                            }
-                        }
-
-                        
                     }
                     else {
                         printf( "IMPORT ERROR\n");
+                    }
+                }
+                unset( $exist_attachment );
+                
+                if( $file_id ) {
+                    if( $tag_slug ) {
+                        $tag = get_term_by( 'slug', $tag_slug, 'attachment_tag' );
+                        if( $tag ) {
+                            wp_set_object_terms( $file_id, $tag->term_id, 'attachment_tag' );
+                        }
+                        unset( $tag );
                     }
                 }
 
             }
             
 			wp_cache_flush();
+            
+            unset( $line );
+            
 			$count++;
 		}
 	}

@@ -41,8 +41,8 @@ class TST_Import {
         return count( $posts ) ? $posts[0] : null;
     }
     
-    public function connect_file_to_post( $attachment_id, $old_page_url ) {
-        update_post_meta( $post_id, 'old_parent_page_url', $old_page_url );
+    public function set_attachment_old_page_url( $attachment_id, $old_page_url ) {
+        update_post_meta( $attachment_id, 'old_parent_page_url', $old_page_url );
     }
 
     public function import_file( $url ) {
