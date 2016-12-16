@@ -15,16 +15,16 @@ try {
 
 	$uploads = wp_upload_dir();
 
-	//Impport people
+	//Read file
 	$handle = file('projects.tsv');
 	$csv = array();
-	
+
 	if($handle) { foreach($handle as $i => $line) {
 		//$csv = array_map('str_getcsv', file('projects.csv'));
 		$csv[] = str_getcsv($line, "\t");
 	}}
 
-	var_dump(count($csv));
+	echo "Read lines ".count($csv).chr(10);
 
 	$count = 0;
 	foreach($csv as $i => $line) {
@@ -35,19 +35,45 @@ try {
 		$page_data = array();
 
 		$page_data['ID'] = 0;
-		$page_data['post_type'] = 'person';
+		$page_data['post_type'] = 'project';
 		$page_data['post_status'] = 'publish';
-		$page_data['post_parent'] = 0; //all top level
-		$page_data['post_title'] = $line[0];
-		$page_data['post_excerpt'] = $line[1];
-		$page_data['post_content'] = $line[2];
+		$page_data['post_excerpt'] = '';
 
-		if(isset($line[3]) && !empty($line[3])){
+		$page_data['post_title']	= $line[0];
+		$page_data['post_name'] 	= $line[2];
+		$page_data['menu_order']	= (int)$line[5];
+
+		//content
+		if(false !== strpos($line[1], 'import | ')){
+			//import fromt old page
+			$old_orl = str_replace('import | ', '', $line[1]);
+
+			$page_data['post_content'] = 'Контент будет импортирован';
+		}
+		else {
+			$page_data['post_content'] = $line[1];
+		}
+
+		//post parent
+		if(is_string($line[3])){
+			$parent = get_posts(array('post_type' => 'project', 'posts_per_page' => 1, 'name' => $line[3], 'post_status' => 'publish'));
+			if($parent){
+				$page_data['post_parent'] = (int)$parent[0]->ID;
+			}
+
+		}
+		else {
+			$page_data['post_parent'] = 0;
+		}
+
+		//thumbnail
+		if(!empty($line[4]) && $line[4] != 'none'){
 			$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.$line[3];
 			var_dump($path);
 
-			$test_path = $uploads['path'].'/'.$line[3];
+			$test_path = $uploads['path'].'/'.$line[4];
 			var_dump($test_path);
+
 			if(!file_exists($test_path)) {
 				$thumb_id = tst_upload_img_from_path($path);
 				echo 'Uploaded thumbnail '.$thumb_id.chr(10);
@@ -68,11 +94,12 @@ try {
 			//create connections
 
 			$landing = array();
-			$landing = (!empty($line[4])) ? explode(',', $line[4]) : array();
-			$landing = (!empty($line[5])) ? array_merge($landing, explode(',', $line[5])) : array();
-			$landing = (!empty($line[6])) ? array_merge($landing, explode(',', $line[6])) : array();
+			$landing = ($line[7] != 'none') ? array_merge($landing, explode(',', $line[7])) : $landing;
+			$landing = (!empty($line[8]) && $line[8] != 'none') ? array_merge($landing, explode(',', $line[8])) : $landing;
+			$landing = (!empty($line[9]) && $line[9] != 'none') ? array_merge($landing, explode(',', $line[9])) : $landing;
 			$landing = array_map('trim', $landing);
 			$landing = array_unique($landing);
+			
 
 			$c_count = 0;
 			if(!empty($landing)) { foreach($landing as $l_slug) {
@@ -81,7 +108,7 @@ try {
 
 				$item = get_posts(array('post_type' => 'landing', 'posts_per_page' => 1, 'name' => $l_slug));
 				if($item) {
-					$c = p2p_type('landing_person')->connect($item[0]->ID, $uid, array('date' => current_time('mysql')));
+					$c = p2p_type('landing_project')->connect($item[0]->ID, $uid, array('date' => current_time('mysql')));
 					if(!is_wp_error($c)){
 						$c_count++;
 					}
@@ -89,10 +116,16 @@ try {
 			}}
 
 			echo 'Added '.$c_count.' connections for '.$page_data['post_title'].chr(10);
+
+			//add tags
+			if(!empty($line[6]) && $line[6] != 'none') {
+				wp_set_post_terms((int)$uid, $line[6], 'project_cat', false);
+				wp_cache_flush();
+			}
 		}
 	}
 
-	echo "Imported people ".$count.chr(10);
+	echo "Imported projects ".$count.chr(10);
 
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);
