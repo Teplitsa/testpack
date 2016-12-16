@@ -21,7 +21,7 @@ function find_wordpress_base_path() {
 
 define('BASE_PATH', find_wordpress_base_path()."/");
 define('WP_USE_THEMES', false);
-define('WP_CURRENT_THEME', 'asi-teplitsa'); //make this detectable how accurate this shoul be ???
+define('WP_CURRENT_THEME', 'giger-kms'); //make this detectable how accurate this shoul be ???
 
 
 if(php_sapi_name() !== 'cli') {

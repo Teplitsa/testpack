@@ -3,7 +3,6 @@
 HOST=$1
 
 : ${HOST:="dront.dev"}
-
 php cli-u-options.php --host=$HOST
 php cli-u-sections_init.php --host=$HOST
 php cli-u-sections_sort.php --host=$HOST

@@ -26,7 +26,6 @@ try {
 		$wpdb->query($wpdb->prepare("UPDATE $wpdb->options SET option_value = %s WHERE option_name = 'home'", $home));
 	}
 
-
 	//active theme
 	update_option('current_theme', 'Dront Theme');
 	update_option('template', 'giger-kms');
@@ -57,6 +56,9 @@ try {
 
 
 	//Update active plugins list
+	include(BASE_PATH.'core/wp-admin/includes/plugin.php');
+	var_dump(BASE_PATH.'core/wp-admin/includes/plugin.php');
+	
 	$active = array(
 		"cmb2/init.php",
 		"cmb_field_map/cmb-field-map.php",
@@ -66,10 +68,13 @@ try {
 		"formidable/formidable.php",
 		"pdf-viewer/pdf-viewer.php",
 		"posts-to-posts/posts-to-posts.php",
-		"post-type-converter/post-type-converter.php",
 		"responsive-lightbox/responsive-lightbox.php",
 		"wordpress-seo/wp-seo.php"
 	);
+
+	foreach($active as $plugin) {
+		activate_plugin($plugin);
+	}
 
 	update_option('active_plugins', $active);
 	echo 'Active plugins updated'.chr(10);
@@ -135,8 +140,6 @@ try {
 	}
 
 	echo "Formidable settings imported".chr(10);
-
-	flush_rewrite_rules();
 
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);
