@@ -26,6 +26,7 @@ $sections = array(
         ), 
         'clean_content_regexp' => array(
             '#.*?<h1.*?>.*?</h1>#is',
+            array( 'regexp' => '#<p(.*?)>\s*<a(.*?)>\s*<strong.*?>.*?Вернуться назад.*?</strong>\s*</a>\s*</p>#i', 'limit' => 1 ),
         ),
         "is_files_in_content" => true,
         'post_type' => 'import',
@@ -38,7 +39,7 @@ $sections = array(
         ), 
         'clean_content_regexp' => array(
             array( 'regexp' => '#.*?(?=<p(.*?)>)#is', 'limit' => 1 ),
-            '#<p(.*?)>\s*<a(.*?)>\s*<strong>← Вернуться назад</strong>\s*</a>\s*</p>#is',
+            array( 'regexp' => '#<p(.*?)>\s*<a(.*?)>\s*<strong.*?>.*?Вернуться назад.*?</strong>\s*</a>\s*</p>#i', 'limit' => 1 ),
         ),
         "is_files_in_content" => true,
         'post_type' => 'import',
@@ -50,17 +51,23 @@ $sections = array(
         ), 
         'clean_content_regexp' => array(
             '#.*?<h1.*?>.*?</h1>#is',
-            '#<p(.*?)>\s*<a(.*?)>\s*<strong>Читать другие советы</strong>\s*</a>\s*</p>#is',
+            '#<p.*?>\s*<a.*?>\s*<strong>Читать другие советы</strong>\s*</a>\s*</p>#i',
         ),
         "is_files_in_content" => true,
         'post_type' => 'import',
     ),
     'http://dront.ru/' => array( "xpath" => array( 
-            'title' => array( ".//body//div[@class='container']//div[contains(@class, 'left_row')]//h1", ".//body//div[@class='container']//div[contains(@class, 'left_row')]//span[@class='path_arrow'][last()]/following-sibling::text()[1]" ),
+            'title' => array( 
+                ".//body//div[@class='container']//div[contains(@class, 'left_row')]//h1", 
+                ".//body//div[@class='container']//div[contains(@class, 'left_row')]//span[@class='path_arrow'][last()]/following-sibling::text()[1]", 
+                ".//body/div[5]/div/div[4]/h2",
+                ".//body//div[@class='container']//div//h2", 
+            ),
             'content' => array( 
                 ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h1]", 
                 ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h2]",
                 ".//body//div[@class='container']//div[contains(@class, 'left_row')][.//span[@class='path_arrow']]",
+                ".//body//div[@class='container']//div[@class='left'][./h2][1]",
             ),
             'date' => ""
         ), 
@@ -121,14 +128,24 @@ $sections = array(
         'charset' => 'KOI8-R',
     ),
     'http://dront.ru/old/lr/' => array( "xpath" => array( 
-            'title' => array( ".//body//p[.//font[@size='4']]", ".//body//h1", ".//body//b[.//font[@size='4']//p]", ".//body//font[@size='3']/b/i", ".//body//font[@size='4'][1]" ), 
+            'title' => array( 
+                ".//body//p[.//font[@size='4']]", 
+                ".//body//h1", 
+                ".//body//b[.//font[@size='4']//p]", 
+                ".//body//font[@size='3']/b/i", 
+                ".//body//font[@size='4'][1]" 
+            ), 
             'content' => ".//body", 
             'date' => ""
         ), 
         'clean_content_regexp' => array(
+            '#.*?<h1.*?>.*?</h1>#is',
             '#.*?<h4.*?>.*?</h4>#is',
-            /*'#<table.*?>.*?Предыдущий\s+раздел.*?</table>#is',*/
+            /*
+            '#<table.*?>.*?Предыдущий.*?раздел.*?</table>#is',
             '#<table.*?>.*?<h1>.*?</table>#is',
+             * 
+             */
         ),
         "is_files_in_content" => true,
         'post_type' => 'import',
@@ -284,7 +301,15 @@ try {
             $result['date'] = clean_date( $result['date'], $section );
         }
 
-//        echo $result['content'];
+        /*
+        error_reporting( E_ALL );
+        //echo $result['content'] . "\n*******************************************\n";
+        $res = preg_match( '#(<p.*?>\s*?<span.*?>\s*?<a.*?>.*?Решение.*?</a>\s*?</span>\s*?</p>)#i', $result['content'], $matches );
+        print_r( $matches );
+        $result['content'] = preg_replace( '#<p(.*?)>\s*<a(.*?)>\s*<strong>.*?</strong>\s*</a>\s*</p>#i', '', $result['content'], 1 );
+        echo $result['content'] . "\n*******************************************\n";
+        exit();*/
+
         if( $result['content'] ) {
             $result['content'] = clean_content( $result['content'], $section );
             $result['content'] = urls_rel2abs( $result['content'], $page_base_url );
@@ -292,8 +317,7 @@ try {
         }
 //        echo $result['content'];
 
-        $result['title'] = trim( strip_tags( $result['title'] ) );
-        $result['title'] = preg_replace( '/\s+/is', ' ', $result['title'] );
+        $result['title'] = TST_Import::get_instance()->clean_string( $result['title'] );
 
         if( $section['is_files_in_content'] && $result['content'] ) {
             $result['files'] = get_media_files_links( $result['content'] );
@@ -309,6 +333,7 @@ try {
         fputcsv($csv_handler, $result);
     }
     fclose($csv_handler);
+    print( "\n" );
     printf( "Data parsed: %d pages\n", $i );
     printf( "Result: %s\n", $csv );
 

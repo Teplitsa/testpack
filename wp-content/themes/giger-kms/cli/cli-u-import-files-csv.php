@@ -9,6 +9,7 @@ ini_set('memory_limit','512M');
 try {
 	$time_start = microtime(true);
 	include('cli_common.php');
+    require_once( ABSPATH . 'wp-admin/includes/media.php' );
     include( get_template_directory() . '/inc/class-import.php' );
 
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
@@ -37,7 +38,7 @@ try {
             $file_id = 0;
             $file_url = '';
             
-            if(false !== strpos($url, 'dront.ru') && preg_match( '/.*(?:jpeg|jpg|png|gif|pdf)$/', $url ) ) {
+            if(false !== strpos($url, 'dront.ru')) { # && preg_match( '/.*(?:jpeg|jpg|png|gif|pdf)$/i', $url ) 
                 
                 printf( "Saving %s\n", $url );
                 
@@ -66,6 +67,9 @@ try {
                 
                 if( $file_id ) {
                     if( $tag_slug ) {
+                        
+                        TST_Import::get_instance()->set_file_date( $file_id, $url, $tag_slug );
+                        
                         $tag = get_term_by( 'slug', $tag_slug, 'attachment_tag' );
                         if( $tag ) {
                             wp_set_object_terms( $file_id, $tag->term_id, 'attachment_tag' );

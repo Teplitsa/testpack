@@ -4,11 +4,12 @@
  *
  **/
 set_time_limit (0);
-ini_set('memory_limit','256M');
+ini_set('memory_limit','512M');
 
 try {
 	$time_start = microtime(true);
 	include('cli_common.php');
+    require_once( ABSPATH . 'wp-admin/includes/media.php' );
     include( get_template_directory() . '/inc/class-import.php' );    
     
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
@@ -55,7 +56,7 @@ try {
             $files_id = array();
             foreach( $files_url as $url ) {
                 $file_id = 0;
-                if(false !== strpos($url, 'dront.ru') && preg_match( '/.*(?:jpeg|jpg|png|gif|pdf)$/', $url ) ){
+                if(false !== strpos($url, 'dront.ru') ){ # && preg_match( '/.*(?:jpeg|jpg|png|gif|pdf)$/i', $url )
                     
                     $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $url );
 
@@ -85,10 +86,20 @@ try {
                         
                         $post_files[] = array( 'id' => $file_id, 'url' => $file_url );
 
-                        $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );
-                        
+                        // get url title
                         $file_name = TST_Import::get_instance()->get_file_name( $url, $post_content );
                         
+                        // update attachment title
+                        $attachment = array(
+                            'ID'           => $file_id,
+                            'post_title'   => $file_name,
+                        );
+                        wp_update_post( $attachment ); 
+                        
+                        TST_Import::get_instance()->set_file_date( $file_id, $url );
+                        
+                        // replace old url with new
+                        $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );
                     }
                     else {
                         printf( "removed: %s\n", $url );
@@ -121,7 +132,7 @@ try {
 			);
             
             if( $post_date ) {
-//                $post_arr['post_date'] = $post_date;
+                $post_arr['post_date'] = $post_date;
             }
 
 			$post_id = wp_insert_post($post_arr);
@@ -137,8 +148,7 @@ try {
 			wp_cache_flush();
 			$count++;
             
-//            break;
-		}
+ 		}
 	}
 
 	printf( "Posts imported: %n\n", $count );
