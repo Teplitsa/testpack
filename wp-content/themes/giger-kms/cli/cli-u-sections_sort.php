@@ -660,7 +660,7 @@ try {
 		'section' => 'departments',
 		'parent' => 0,
 		'thumb' => 'realworld.jpg',
-		'tags' => 'фотостуия,студия Реальный мир,фото,фото природы,фотовыставки,фотоконкурсы',
+		'tags' => 'фотостудия,студия Реальный мир,фото,фото природы,фотовыставки,фотоконкурсы',
 		'docs' => array(
 			'http://dront.ru/files/nooar/RU12_TURTLES_01_11.pdf',
 			'http://dront.ru/files/nooar/NG_RU_NEXT_VARAN.pdf',
