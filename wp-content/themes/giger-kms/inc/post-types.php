@@ -115,12 +115,12 @@ function tst_custom_content(){
 			'not_found'                  => 'Не найдено'
 		),
 		'hierarchical'      => false,
-		'publicly_queryable'=> false,
+		'publicly_queryable'=> true,
 		'show_ui'           => true,
 		'show_in_nav_menus' => false,
 		'show_tagcloud'     => false,
 		'show_admin_column' => true,
-		'rewrite'           => false,
+		'rewrite'           => array('slug'=> 'media', 'with_front' => false),
 		//'update_count_callback' => '',
 	));
 
@@ -555,7 +555,7 @@ function tst_p2p_connection_types() {
 			'column_title' => 'Лендинги',
 		),
 		'admin_box' => array(
-			'show' => 'to',
+			'show' => 'any',
 			'context' => 'advanced',
 			'can_create_post' => false
 		)
@@ -570,7 +570,7 @@ function tst_p2p_connection_types() {
 			'column_title' => 'Лендинги',
 		),
 		'admin_box' => array(
-			'show' => 'to',
+			'show' => 'any',
 			'context' => 'advanced',
 			'can_create_post' => false
 		)

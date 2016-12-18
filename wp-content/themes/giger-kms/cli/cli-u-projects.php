@@ -10,6 +10,7 @@ try {
 	$time_start = microtime(true);
 	include('cli_common.php');
 	include( get_template_directory() . '/inc/class-import.php' );
+
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
 	global $wpdb;
@@ -41,7 +42,7 @@ try {
 		$page_data['post_excerpt'] = '';
 
 		$page_data['post_title']	= $line[0];
-		$page_data['post_name'] 	= $line[2];
+		$page_data['post_name'] 	= trim($line[2]);
 		$page_data['menu_order']	= (int)$line[5];
 
 		//content

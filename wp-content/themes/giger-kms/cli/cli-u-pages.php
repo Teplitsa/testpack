@@ -9,6 +9,11 @@ ini_set('memory_limit','256M');
 try {
 	$time_start = microtime(true);
 	include('cli_common.php');
+	include( get_template_directory() . '/inc/class-import.php' );
+
+	//upload folder
+	$uploads = wp_upload_dir();
+
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
 	global $wpdb;
@@ -171,10 +176,10 @@ try {
 
 		$page_data = $obj['post_data'];
 
-		if(false !== strpos($obj['post_content'], 'import | ')) {
-			echo "Import fromt URL ".$obj['post_content'].chr(10);
+		if(false !== strpos($page_data['post_content'], 'import | ')) {
+			echo "Import fromt URL ".$page_data['post_content'].chr(10);
 
-			$old_url = str_replace('import | ', '', $obj['post_content']);
+			$old_url = str_replace('import | ', '', $page_data['post_content']);
 			$old_post = TST_Import::get_instance()->get_post_by_old_url($old_url);
 
 			if($old_post) {

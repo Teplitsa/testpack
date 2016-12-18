@@ -9,6 +9,7 @@ ini_set('memory_limit','256M');
 try {
 	$time_start = microtime(true);
 	include('cli_common.php');
+	include( get_template_directory() . '/inc/class-import.php' );
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
 	global $wpdb;
@@ -28,7 +29,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' =>  false,
-		'slug' => 'events',
+		'slug' => 'dront-events',
 		'post_title' => 'Мероприятия',
 		'post_content' => 'Профильные конференции и мероприятия', //add some text
 		'section' => 'work',
@@ -39,7 +40,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'law',
+		'slug' => 'dront-law',
 		'post_title' => 'Юридическая защита',
 		'post_content' => 'Общественная приемная, ссылки на доп.сайты, задать вопрос',
 		'section' => 'work',
@@ -54,7 +55,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'education',
+		'slug' => 'dront-education',
 		'post_title' => 'Экопросвещение',
 		'post_content' => 'Эколагеря, творчество, публикации, пособия',
 		'section' => 'work',
@@ -85,7 +86,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'researches',
+		'slug' => 'dront-researches',
 		'post_title' => 'Исследования',
 		'post_content' => 'Публикации, статистика',
 		'section' => 'work',
@@ -108,7 +109,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'activist',
+		'slug' => 'dront-activist',
 		'post_title' => 'Активизм',
 		'post_content' => 'Кейсы, действующие и прошлые акции',
 		'section' => 'work',
@@ -122,12 +123,13 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'publications',
+		'slug' => 'dront-publications',
 		'post_title' => 'Публикации',
 		'post_content' => 'Публикации из раздела "публикации", Газета Берегиня, публикации фотостудии',
 		'section' => 'work',
 		'parent' => 0,
 		'tags' => 'Берегиня,газета,публикации,фотоработы,фотовыставка,фото природы',
+		'thumb' => 'reptiles3.jpg',
 		'docs' => array(
 			'http://dront.ru/files/publications/chto-takoe-prirodoohrannoe-dvizhenie.zip',
 			'http://dront.ru/files/publications/mir-mezhdu-dvuh-ekologiy.rar',
@@ -144,7 +146,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'ecomap',
+		'slug' => 'dront-ecomap',
 		'post_title' => 'Экокарта',
 		'post_content' => 'Карта с маркерами экологических проблем, сервис "сообщить о проблеме"',
 		'section' => 'ecoproblems',
@@ -154,7 +156,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'cheboksarges',
+		'slug' => 'dront-cheboksarges',
 		'post_title' => 'Чебоксарская ГЭС',
 		'post_content' => 'cheboksarges.txt',
 		'section' => 'ecoproblems',
@@ -216,7 +218,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'nizhaes',
+		'slug' => 'dront-nizhaes',
 		'post_title' => 'Нижегородская АЭС',
 		'post_content' => 'Кейс угрозы Нижегородской АЭС',
 		'section' => 'ecoproblems',
@@ -227,7 +229,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'rares',
+		'slug' => 'dront-rares',
 		'post_title' => 'Охрана редких видов',
 		'post_content' => 'Красная книга, публикации',
 		'section' => 'ecoproblems',
@@ -262,7 +264,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'oopt',
+		'slug' => 'dront-oopt',
 		'post_title' => 'ООПТ',
 		'post_content' => 'Информация о территориях, что мы делаем, документы',
 		'section' => 'ecoproblems',
@@ -289,7 +291,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'birds',
+		'slug' => 'dront-birds',
 		'post_title' => 'Птицы',
 		'post_content' => 'Выдержки из проектов, фото, акции, публикации',
 		'section' => 'ecoproblems',
@@ -353,14 +355,13 @@ try {
 			'http://dront.ru/files/publications/pustelga_2002.pdf',
 			'http://dront.ru/files/publications/NK_2002_2.pdf',
 			'http://dront.ru/files/publications/ecosled.rar',
-			'http://dront.ru/files/publications/2015/Ornitofauna.doc',
-
+			'http://dront.ru/files/publications/2015/Ornitofauna.doc'
 		)
 	);
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'urban',
+		'slug' => 'dront-urban',
 		'post_title' => 'Город',
 		'post_content' => 'Ссылка на лонгрид по зеленым территориям, публикации и высказываиня',
 		'section' => 'ecoproblems',
@@ -374,7 +375,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'locals',
+		'slug' => 'dront-locals',
 		'post_title' => 'Проблемные территории',
 		'post_content' => 'Информация о территориях, что мы делаем, документы',
 		'section' => 'ecoproblems',
@@ -388,7 +389,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'health',
+		'slug' => 'dront-health',
 		'post_title' => 'Здоровье',
 		'post_content' => 'О влиянии экологии на здоровье',
 		'section' => 'ecoproblems',
@@ -402,7 +403,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'resources',
+		'slug' => 'dront-resources',
 		'post_title' => 'Ресурсы',
 		'post_content' => 'Ресурсы, энергосбережение, климат',
 		'section' => 'ecoproblems',
@@ -416,7 +417,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'garbage',
+		'slug' => 'dront-garbage',
 		'post_title' => 'Отходы',
 		'post_content' => 'Разделльный сбор, проблема свалок, свалки и пункты на карте',
 		'section' => 'ecoproblems',
@@ -431,19 +432,18 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'bereginya',
+		'slug' => 'dront-bereginya',
 		'post_title' => 'Ежемесячная газета "Берегиня"',
 		'post_content' => 'bereginya.txt',
 		'section' => 'departments',
 		'parent' => 0,
 		//'thumb' => 'garbage.jpg',
-		'tags' => 'Берегиня,газета,публикации,редакция',
-		'docs_from_page' => 'bereginya'
+		'tags' => 'Берегиня,газета,публикации,редакция'
 	);
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'sbereg-center',
+		'slug' => 'dront-sbereg-center',
 		'post_title' => 'Центр природосберегающих технологий',
 		'post_content' => 'centerpt.txt',
 		'section' => 'departments',
@@ -454,7 +454,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'sopr',
+		'slug' => 'dront-sopr',
 		'post_title' => 'Нижегородское отделение Союза охраны птиц России',
 		'post_content' => 'sopr.txt',
 		'section' => 'departments',
@@ -489,7 +489,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'ornotologlab',
+		'slug' => 'dront-ornotologlab',
 		'post_title' => 'Орнитологическая лаборатория',
 		'post_content' => 'Лаборатория реализует проекты связанные с изучением и защитой птиц в Нижегородской области.', //add some text
 		'section' => 'departments',
@@ -523,7 +523,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'lawcenter',
+		'slug' => 'dront-lawcenter',
 		'post_title' => 'Нижегородский эколого-правовой центр',
 		'post_content' => 'lawcenter.txt', //add some text
 		'section' => 'departments',
@@ -534,7 +534,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'striks',
+		'slug' => 'dront-striks',
 		'post_title' => 'Информационно-консультационный центр "Стрикс"',
 		'post_content' => 'striks.txt', //add some text
 		'section' => 'departments',
@@ -548,7 +548,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'reptiles',
+		'slug' => 'dront-reptiles',
 		'post_title' => 'Нижегородское общество охраны амфибий и рептилий',
 		'post_content' => 'reptiles.txt', //add some text
 		'section' => 'departments',
@@ -589,7 +589,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'jungle',
+		'slug' => 'dront-jungle',
 		'post_title' => 'Научно-просветительская организация "Джунгли"',
 		'post_content' => 'jungle.txt', //add some text
 		'section' => 'departments',
@@ -600,7 +600,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'folks',
+		'slug' => 'dront-folks',
 		'post_title' => 'Нижегородский фольклорный клуб',
 		'post_content' => 'folks.txt', //add some text
 		'section' => 'departments',
@@ -611,7 +611,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'obereg',
+		'slug' => 'dront-obereg',
 		'post_title' => 'Эколого-просветительский центр "Оберег"',
 		'post_content' => 'Текст, отчеты, фото', //add some text
 		'section' => 'departments',
@@ -637,7 +637,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'zavojzhje',
+		'slug' => 'dront-zavojzhje',
 		'post_title' => 'Фонд "Нижегородское Заволжье"',
 		'post_content' => 'Содействие устойчивому развитию международной биосферной территории «Нижегородское Заволжье», центром которой является государственный природный биосферный заповедник "Керженский"', //add some text
 		'section' => 'departments',
@@ -654,7 +654,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'realworld',
+		'slug' => 'dront-realworld',
 		'post_title' => 'Фотовидеостудия "Реальный мир"',
 		'post_content' => 'realworld.txt', //add some text
 		'section' => 'departments',
@@ -676,7 +676,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'rivercleaners',
+		'slug' => 'dront-rivercleaners',
 		'post_title' => 'Движение "Чистильщики рек"',
 		'post_content' => 'Текст, отчеты, фото', //add some text
 		'section' => 'departments',
@@ -690,7 +690,7 @@ try {
 
 		$page_data = array();
 
-		//thumbnail
+		//thumbnail id
 		$thumb_id = false;
 		if(isset($i_obj['thumb'])){
 			$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.$i_obj['thumb'];
@@ -704,6 +704,9 @@ try {
 			else {
 				$a_url = $uploads['url'].'/'.$i_obj['thumb'];
 				$thumb_id = attachment_url_to_postid($a_url);
+				if(!$thumb_id) {
+					$thumb_id = tst_register_uploaded_file($test_path);
+				}
 			}
 		}
 
@@ -724,15 +727,7 @@ try {
 		$page_data['post_type'] = 'landing';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_title'] = ($i_obj['post_title']) ? $i_obj['post_title'] : $old_page->post_title;
-
-		//parent
-		if(is_string($i_obj['parent'])){
-			$item = get_posts(array('post_type' => 'landing', 'posts_per_page' => 1, 'name' => $i_obj['parent']));
-			$page_data['post_parent'] = ($item) ? $item[0]->ID : 0;
-		}
-		else{
-			$page_data['post_parent'] = (int)$i_obj['parent'];
-		}
+		$page_data['post_parent'] = 0;
 
 		//post name
 		if(!empty($i_obj['slug'])){
@@ -775,9 +770,10 @@ try {
 		//thumbnail
 		if(isset($i_obj['meta_input'])){
 			$page_data['meta_input'] = $i_obj['meta_input'];
-			if($thumb_id)
-				$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
 		}
+
+		if($thumb_id)
+			$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
 
 		if(isset($i_obj['menu_order'])) {
 			$page_data['menu_order'] = (int)$i_obj['menu_order'];
@@ -806,8 +802,10 @@ try {
 					$d = str_replace('^', ',', $d); //yes, we have commas in URLs
 					$d_doc = TST_Import::get_instance()->get_attachment_by_old_url($d);
 					if($d_doc) {
-						$c = p2p_type('connected_attachments')->connect((int)$uid, $d_doc->ID, array('date' => current_time('mysql')));
+
+						$c = p2p_type('connected_attachments')->connect((int)$uid, (int)$d_doc->ID, array('date' => current_time('mysql')));
 						if(!is_wp_error($c)){
+							echo 'Connection '.$c.' for '.$d.chr(10);
 							$d_count++;
 						}
 					}
@@ -816,7 +814,7 @@ try {
 				echo 'Added '.$d_count.' document for '.$page_data['post_title'].chr(10);
 			}
 		}
-		elseif($i_obj['slug'] == 'bereginya') {
+		elseif($i_obj['slug'] == 'dront-bereginya') {
 			$doc = get_posts(array(
 				'post_type' => 'attachment',
 				'post_status' => 'inherit',
@@ -830,9 +828,10 @@ try {
 				)
 			));
 
+			echo 'Bereginya files: '.count($doc).chr(10);
 			$d_count = 0;
 			if($doc) { foreach($doc as $d_doc) {
-				$c = p2p_type('connected_attachments')->connect((int)$uid, $d_doc->ID, array('date' => current_time('mysql')));
+				$c = p2p_type('connected_attachments')->connect((int)$uid, (int)$d_doc->ID, array('date' => current_time('mysql')));
 				if(!is_wp_error($c)){
 					$d_count++;
 				}
@@ -852,23 +851,21 @@ try {
 	echo 'Updated pages: '.$count.'. Time in sec: '.(microtime(true) - $time_start).chr(10);
 	//echo 'Memory '.memory_get_usage(true).chr(10).chr(10);
 
-	$wpdb->query("TRUNCATE TABLE {$wpdb->prefix}p2p");
-	$wpdb->query("TRUNCATE TABLE {$wpdb->prefix}p2pmeta");
 
 	$connectons = array(
-		'bereginya'		=> array('publications'),
-		'sbereg-center' => array('activist', 'health'),
-		'sopr'			=> array('researches', 'activist', 'birds', 'rares'),
-		'ornotologlab' 	=> array('researches', 'birds', 'oopt', 'rares'),
-		'lawcenter' 	=> array('law'),
-		'striks' 		=> array('education'),
-		'reptiles' 		=> array('researches', 'education', 'rares', 'oopt',),
-		'jungle' 		=> array('education'),
-		'folks' 		=> array('education'),
-		'obereg' 		=> array('education', 'urban', 'resources'),
-		'zavojzhje' 	=> array('activist', 'oopt'),
-		'realworld'		=> array('publications'),
-		'rivercleaners'	=> array('activist', 'oopt')
+		'dront-bereginya'		=> array('dront-publications'),
+		'dront-sbereg-center' 	=> array('dront-activist', 'dront-health'),
+		'dront-sopr'			=> array('dront-researches', 'dront-activist', 'dront-birds', 'dront-rares'),
+		'dront-ornotologlab' 	=> array('dront-researches', 'dront-birds', 'dront-oopt', 'dront-rares'),
+		'dront-lawcenter' 		=> array('dront-law'),
+		'dront-striks' 			=> array('dront-education'),
+		'dront-reptiles' 		=> array('dront-researches', 'dront-education', 'dront-rares', 'dront-oopt',),
+		'dront-jungle' 			=> array('dront-education'),
+		'dront-folks' 			=> array('dront-education'),
+		'dront-obereg' 			=> array('dront-education', 'dront-urban', 'dront-resources'),
+		'dront-zavojzhje' 		=> array('dront-activist', 'dront-oopt'),
+		'dront-realworld'		=> array('dront-publications'),
+		'dront-rivercleaners'	=> array('dront-activist', 'dront-oopt')
 	);
 
 	if(!empty($connectons)) { foreach($connectons as $dep => $connect) {
