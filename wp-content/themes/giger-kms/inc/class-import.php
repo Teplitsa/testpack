@@ -1,6 +1,33 @@
 <?php
 
 class TST_Import {
+    private static $date_from_url = array(
+        'bereginya' => array(
+            array(
+                'regexp' => '/\/(\d+\/\d+-\d+).\w+$/i',
+                'pattern' => '%Y/%y-%m',
+            ),
+            array(
+                'regexp' => '/\/(\d+-\d+).\w+$/i',
+                'pattern' => '%Y-%m',
+            ),
+            
+        ),
+        'report' => array(
+            array(
+                'regexp' => '/\/(\d{4})[^\/]*.\w+$/i',
+                'pattern' => '%Y',
+            ),
+        ),
+        'common' => array(
+            array(
+                'regexp' => '/(\d+-\d+-\d+).\w+$/i',
+                'pattern' => '%d-%m-%y',
+            ),
+            
+        ),
+    );
+    
 	private static $_instance = null;
 
 	private function __construct() {
@@ -21,10 +48,12 @@ class TST_Import {
                     'key' => 'old_url',
                     'value' => $old_url,
                 )
-            )
+            ),
+            'fields'         => 'ids',
         );
         $posts = get_posts( $args );
-        return count( $posts ) ? $posts[0] : null;
+        $post_id = count( $posts ) ? $posts[0] : null;
+        return $post_id ? get_post( $post_id ) : null;
     }
 
     public function get_attachment_by_old_url( $old_url ) {
@@ -35,10 +64,12 @@ class TST_Import {
                     'key' => 'old_url',
                     'value' => $old_url,
                 )
-            )
+            ),
+            'fields'         => 'ids',
         );
         $posts = get_posts( $args );
-        return count( $posts ) ? $posts[0] : null;
+        $post_id = count( $posts ) ? $posts[0] : null;
+        return $post_id ? get_post( $post_id ) : null;
     }
     
     public function set_attachment_old_page_url( $attachment_id, $old_page_url ) {
@@ -98,6 +129,68 @@ class TST_Import {
         $content = preg_replace( '/<\s*img[^>]+' . preg_quote( $url, '/' ) . '.*?>/is', '', $content);
         $content = preg_replace( '/<\s*a[^>]+' . preg_quote( $url, '/' ) . '.*?>[^<]*?<\s*\/\s*a\s*>/is', '', $content);
         return $content;
+    }
+    
+    public function get_file_name( $url, $content ) {
+        $title = '';
+        
+        $matches = array();
+        preg_match( '/<a[^>]*' . preg_quote( $url, '/' ) . '.*?>(.*?)<\/a>/i', $content, $matches);
+        $title = isset( $matches[1] ) ? $matches[1] : '';
+        $title = $this->clean_string( $title );
+        
+        return $title;
+    }
+    
+    public function clean_string( $s ) {
+        $res = preg_replace( '/\r\n/is', ' ', $s );
+        $res = preg_replace( '/\n/is', ' ', $s );
+        $res = preg_replace( '/\s+/is', ' ', $s );
+        $res = trim( strip_tags( $res ) );
+        return $res;
+    }
+    
+    public function get_date_from_url( $url, $parse_rules ) {
+        $file_date = '';
+        
+        foreach( $parse_rules as $k => $v ) {
+            if( preg_match( $v['regexp'], $url, $matches ) ) {
+//                print_r( $matches );
+                if( isset( $matches[1] ) ) {
+                    $date_str = $matches[1];
+                    $file_time = strptime( $date_str, $v['pattern'] );
+                    if( $file_time ) {
+                        $month = $file_time['tm_mon'] + 1;
+                        $year = $file_time['tm_year'] + 1900;
+                        $file_date = sprintf( '%d-%02d-01', $year, $month );
+                    }
+                }
+                break;
+            }
+        }
+        
+        printf( "file_date: %s\n", $file_date );
+        
+        return $file_date;
+    }
+    
+    public function set_file_date( $file_id, $url, $tag_slug = '' ) {
+        $date_parse_rules = array();
+        if( $tag_slug && isset( self::$date_from_url[ $tag_slug ] ) ) {
+            $date_parse_rules[$tag_slug] = self::$date_from_url[ $tag_slug ];
+        }
+        
+        if( !count( $date_parse_rules ) ) {
+            $date_parse_rules = self::$date_from_url;
+        }
+        
+        foreach( $date_parse_rules as $tag_slug => $parse_rules ) {
+            $file_date = TST_Import::get_instance()->get_date_from_url( $url, $parse_rules );
+            if( $file_date ) {
+                update_post_meta( $file_id, 'file_date', $file_date );
+                break;
+            }
+        }
     }
     
 } //class

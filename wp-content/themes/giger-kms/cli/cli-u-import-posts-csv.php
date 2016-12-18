@@ -4,11 +4,12 @@
  *
  **/
 set_time_limit (0);
-ini_set('memory_limit','256M');
+ini_set('memory_limit','512M');
 
 try {
 	$time_start = microtime(true);
 	include('cli_common.php');
+    require_once( ABSPATH . 'wp-admin/includes/media.php' );
     include( get_template_directory() . '/inc/class-import.php' );    
     
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
@@ -43,7 +44,7 @@ try {
             $parent_url = $line[6];
             
 //            print_r( $files_url );
-            printf( "%s: %s\n", $post_type, $post_title );
+//            printf( "%s: %s\n", $post_type, $post_title );
             printf( "files: %d\n", count( $files_url ) );
             
 			$file_url = '';
@@ -55,7 +56,7 @@ try {
             $files_id = array();
             foreach( $files_url as $url ) {
                 $file_id = 0;
-                if(false !== strpos($url, 'dront.ru') && preg_match( '/.*(:?jpeg|jpg|png|gif|pdf)$/', $url ) ){
+                if(false !== strpos($url, 'dront.ru') ){ # && preg_match( '/.*(?:jpeg|jpg|png|gif|pdf)$/i', $url )
                     
                     $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $url );
 
@@ -85,11 +86,23 @@ try {
                         
                         $post_files[] = array( 'id' => $file_id, 'url' => $file_url );
 
-                        $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );
+                        // get url title
+                        $file_name = TST_Import::get_instance()->get_file_name( $url, $post_content );
                         
+                        // update attachment title
+                        $attachment = array(
+                            'ID'           => $file_id,
+                            'post_title'   => $file_name,
+                        );
+                        wp_update_post( $attachment ); 
+                        
+                        TST_Import::get_instance()->set_file_date( $file_id, $url );
+                        
+                        // replace old url with new
+                        $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );
                     }
                     else {
-                        
+                        printf( "removed: %s\n", $url );
                         $post_content = TST_Import::get_instance()->remove_url_tag( $url, $post_content );
                         
                     }
@@ -99,7 +112,10 @@ try {
                 }
             }
             
-            $parent_post = $parent_url ? TST_Import::get_instance()->get_post_by_old_url( $page_url ) : NULL;
+            $parent_post = $parent_url ? TST_Import::get_instance()->get_post_by_old_url( $parent_url ) : NULL;
+            $parent_post_id = $parent_post ? $parent_post->ID : 0;
+//            printf( "parent_url: %s\n", $parent_url );
+//            printf( "parent_id: %d\n", $parent_post_id );
             
 			$post_arr = array(
 				'ID' => 0,
@@ -112,11 +128,11 @@ try {
 				),
 				'post_content' => $post_content,
 				'post_excerpt' => '',
-                'post_parent' => $parent_post ? $parent_post->ID : 0,
+                'post_parent' => $parent_post_id,
 			);
             
             if( $post_date ) {
-//                $post_arr['post_date'] = $post_date;
+                $post_arr['post_date'] = $post_date;
             }
 
 			$post_id = wp_insert_post($post_arr);
@@ -132,7 +148,7 @@ try {
 			wp_cache_flush();
 			$count++;
             
-		}
+ 		}
 	}
 
 	printf( "Posts imported: %n\n", $count );

@@ -21,15 +21,16 @@ $sections = array(
     
     'http://dront.ru/cheboksarskaya/' => array( "xpath" => array( 
             'title' => ".//body//div[@class='container']//div[contains(@class, 'left_row')]//h1", 
-            'content' => ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h1]", 
+            'content' => array( ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h1]", ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h2]"), 
             'date' => ""
         ), 
         'clean_content_regexp' => array(
             '#.*?<h1.*?>.*?</h1>#is',
-            '#<p(.*?)>\s*<a(.*?)>\s*<strong>← Вернуться назад</strong>\s*</a>\s*</p>#is',
+            array( 'regexp' => '#<p(.*?)>\s*<a(.*?)>\s*<strong.*?>.*?Вернуться назад.*?</strong>\s*</a>\s*</p>#i', 'limit' => 1 ),
         ),
         "is_files_in_content" => true,
         'post_type' => 'import',
+        'is_tree' => true,
     ),
     'http://dront.ru/faunistika/' => array( "xpath" => array( 
             'title' => ".//body//div[@class='container']//div[contains(@class, 'left_row')]//span[@class='path_arrow'][last()]/following-sibling::text()[1]", 
@@ -38,7 +39,7 @@ $sections = array(
         ), 
         'clean_content_regexp' => array(
             array( 'regexp' => '#.*?(?=<p(.*?)>)#is', 'limit' => 1 ),
-            '#<p(.*?)>\s*<a(.*?)>\s*<strong>← Вернуться назад</strong>\s*</a>\s*</p>#is',
+            array( 'regexp' => '#<p(.*?)>\s*<a(.*?)>\s*<strong.*?>.*?Вернуться назад.*?</strong>\s*</a>\s*</p>#i', 'limit' => 1 ),
         ),
         "is_files_in_content" => true,
         'post_type' => 'import',
@@ -50,14 +51,24 @@ $sections = array(
         ), 
         'clean_content_regexp' => array(
             '#.*?<h1.*?>.*?</h1>#is',
-            '#<p(.*?)>\s*<a(.*?)>\s*<strong>Читать другие советы</strong>\s*</a>\s*</p>#is',
+            '#<p.*?>\s*<a.*?>\s*<strong>Читать другие советы</strong>\s*</a>\s*</p>#i',
         ),
         "is_files_in_content" => true,
         'post_type' => 'import',
     ),
     'http://dront.ru/' => array( "xpath" => array( 
-            'title' => ".//body//div[@class='container']//div[contains(@class, 'left_row')]//h1", 
-            'content' => ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h1]", 
+            'title' => array( 
+                ".//body//div[@class='container']//div[contains(@class, 'left_row')]//h1", 
+                ".//body//div[@class='container']//div[contains(@class, 'left_row')]//span[@class='path_arrow'][last()]/following-sibling::text()[1]", 
+                ".//body/div[5]/div/div[4]/h2",
+                ".//body//div[@class='container']//div//h2", 
+            ),
+            'content' => array( 
+                ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h1]", 
+                ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h2]",
+                ".//body//div[@class='container']//div[contains(@class, 'left_row')][.//span[@class='path_arrow']]",
+                ".//body//div[@class='container']//div[@class='left'][./h2][1]",
+            ),
             'date' => ""
         ), 
         'clean_content_regexp' => array(
@@ -72,19 +83,20 @@ $sections = array(
             'date' => ""
         ), 
         'clean_content_regexp' => array(
-            /*array( 'regexp' => '#<p*?>.*?</p>#is', 'limit' => 1 ),*/
+            array( 'regexp' => '#<p*?>.*?</p>#is', 'limit' => 1 ),
         ),
         "is_files_in_content" => true,
         'is_tree' => true,
         'post_type' => 'import',
+        'charset' => 'windows-1251',
     ),
     'http://dront.ru/ur-clinic/' => array( "xpath" => array( 
             'title' => ".//div[@class='zaglavok_big']", 
-            'content' => ".//body/table[3]/tbody/tr/td[3]", 
+            'content' => ".//body//td[.//div[@class='zaglavok_big']]",
             'date' => ""
         ), 
         'clean_content_regexp' => array(
-            array( 'regexp' => '#<p*?>.*?</p>#is', 'limit' => 1 ),
+            array( 'regexp' => '#<div class="zaglavok_big">.*?</div>#is', 'limit' => 1 ),
         ),
         "is_files_in_content" => true,
         'is_tree' => true,
@@ -100,7 +112,47 @@ $sections = array(
         ),
         "is_files_in_content" => true,
         'post_type' => 'import',
+        'charset' => 'KOI8-R',
     ),
+    'http://dront.ru/old/strix/' => array( "xpath" => array( 
+            'title' => array( ".//body//h4//text()", ".//body//b[1]//text()" ), 
+            'content' => ".//body", 
+            'date' => ""
+        ), 
+        'clean_content_regexp' => array(
+            '#.*?<h4.*?>.*?</h4>#is',
+        ),
+        "is_files_in_content" => true,
+        'post_type' => 'import',
+        'is_tree' => true,
+        'charset' => 'KOI8-R',
+    ),
+    'http://dront.ru/old/lr/' => array( "xpath" => array( 
+            'title' => array( 
+                ".//body//p[.//font[@size='4']]", 
+                ".//body//h1", 
+                ".//body//b[.//font[@size='4']//p]", 
+                ".//body//font[@size='3']/b/i", 
+                ".//body//font[@size='4'][1]" 
+            ), 
+            'content' => ".//body", 
+            'date' => ""
+        ), 
+        'clean_content_regexp' => array(
+            '#.*?<h1.*?>.*?</h1>#is',
+            '#.*?<h4.*?>.*?</h4>#is',
+            /*
+            '#<table.*?>.*?Предыдущий.*?раздел.*?</table>#is',
+            '#<table.*?>.*?<h1>.*?</table>#is',
+             * 
+             */
+        ),
+        "is_files_in_content" => true,
+        'post_type' => 'import',
+        'is_tree' => true,
+        'charset' => 'KOI8-R',
+    ),
+    
 );
 
 $common_clean_regexp = array(
@@ -124,10 +176,6 @@ $sections['http://dront.ru/public-office/'] = $sections['http://dront.ru/cpt/'];
 $sections['http://dront.ru/real-world/'] = $sections['http://dront.ru/cpt/'];
 $sections['http://dront.ru/sopr/'] = $sections['http://dront.ru/cpt/'];
 
-$sections['http://dront.ru/old/strix/'] = $sections['http://dront.ru/old/'];
-$sections['http://dront.ru/old/strix/']['is_tree'] = true;
-
-$sections['http://dront.ru/old/lr/'] = $sections['http://dront.ru/old/strix/'];
 //$sections[''] = $sections['http://dront.ru/'];
 
 
@@ -167,6 +215,8 @@ try {
     foreach( $pages as $page_url ) {
         $i += 1;
         printf( "processing link#%d\n", $i );
+        
+        $page_base_url = url2base( $page_url );
 
         $section = get_section( $page_url, $sections );
 
@@ -198,11 +248,15 @@ try {
 
         $headers = get_headers_from_curl_response( $header_text );
         $content = substr($response, $header_size);
+//        echo $content;
 
     //    print_r( $headers );
 
         curl_close($ch);
 
+        if( isset( $section['charset'] ) ) {
+            $content = mb_convert_encoding($content, 'UTF-8', $section['charset'] );
+        }
         $content = mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8');
 
         if( $headers['STATUS_CODE'] != '200' ) {
@@ -222,8 +276,22 @@ try {
 
         foreach( $section['xpath'] as $k => $v ) {
             if( $v ) {
-                $nodes = $xpath->query( $v );
+                if( is_array( $v ) ) {
+                    foreach( $v as $v1 ) {
+                        $nodes = $xpath->query( $v1 );
+                        if( $nodes && $nodes->item(0) ) {
+                            break;
+                        }
+                    }
+                }
+                else {
+                    $nodes = $xpath->query( $v );
+                }
+                
                 $node = $nodes ? $nodes->item(0) : NULL;
+//                printf( "%s\n", $k );
+//                printf( "%s\n", $v );
+//                print_r( $node->childNodes );
                 $result[$k] = $node ? ( $node->childNodes ? get_inner_html($node) : $node->nodeValue ) : '';
                 $result[$k] = trim( $result[$k] );
             }
@@ -233,12 +301,23 @@ try {
             $result['date'] = clean_date( $result['date'], $section );
         }
 
+        /*
+        error_reporting( E_ALL );
+        //echo $result['content'] . "\n*******************************************\n";
+        $res = preg_match( '#(<p.*?>\s*?<span.*?>\s*?<a.*?>.*?Решение.*?</a>\s*?</span>\s*?</p>)#i', $result['content'], $matches );
+        print_r( $matches );
+        $result['content'] = preg_replace( '#<p(.*?)>\s*<a(.*?)>\s*<strong>.*?</strong>\s*</a>\s*</p>#i', '', $result['content'], 1 );
+        echo $result['content'] . "\n*******************************************\n";
+        exit();*/
+
         if( $result['content'] ) {
             $result['content'] = clean_content( $result['content'], $section );
+            $result['content'] = urls_rel2abs( $result['content'], $page_base_url );
             $result['content'] = TST_Import::get_instance()->remove_inline_styles( $result['content'] );
         }
+//        echo $result['content'];
 
-        $result['title'] = strip_tags( $result['title'] );
+        $result['title'] = TST_Import::get_instance()->clean_string( $result['title'] );
 
         if( $section['is_files_in_content'] && $result['content'] ) {
             $result['files'] = get_media_files_links( $result['content'] );
@@ -254,6 +333,7 @@ try {
         fputcsv($csv_handler, $result);
     }
     fclose($csv_handler);
+    print( "\n" );
     printf( "Data parsed: %d pages\n", $i );
     printf( "Result: %s\n", $csv );
 
@@ -323,13 +403,25 @@ function clean_content( $content, $section ) {
             else {
                 $limit = -1;
             }
+//            echo $regexp . "\n";
+//            echo strlen( $content ) . "\n";
             $content = preg_replace( $regexp , "", $content, $limit );
+//            echo strlen( $content ) . "\n";
         }
     }
     
-    $content = preg_replace('/(src|href)\s*=\s*(["\'])\s*(\/[^\"\' ]+)/', '\1=\2' . DRONT_SITE_URL . '\3', $content);
-    
     return $content;
+}
+
+function urls_rel2abs( $content, $base_url ) {
+    $content = preg_replace('/(src|href)\s*=\s*(["\'])\s*(\/(?!\/)[^\"\' ]+)/', '\1=\2' . DRONT_SITE_URL . '\3', $content);
+    $content = preg_replace('/(src|href)\s*=\s*(["\'])\s*((?!https?:\/\/)[^\"\' ]+)/', '\1=\2' . $base_url . '/\3', $content);
+    return $content;
+}
+
+function url2base( $url ) {
+    $base_url = preg_replace( '/\/[^\/]*$/', '', $url );
+    return $base_url;
 }
 
 function remove_script( $html ) {
