@@ -82,7 +82,17 @@ try {
 		}
 
 		//thumbnail
-		if(trim($line[4]) != 'none' && trim($line[4]) != 'NEED'){
+		$thumb_id = false;
+		if(false !== strpos($line[4], 'http://dront.ru')) {
+			//imported old photo
+			$old_url = trim($line[4]);
+			$atthachment = TST_Import::get_instance()->get_attachment_by_old_url($old_url);
+			if($atthachment){
+				$thumb_id = $atthachment->ID;
+			}
+		}
+		elseif(trim($line[4]) != 'none' && trim($line[4]) != 'NEED'){
+			//new photo
 			$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.trim($line[4]);
 			//var_dump($path);
 
@@ -96,10 +106,11 @@ try {
 			else {
 				$thumb_id = tst_register_uploaded_file($test_path);
 			}
-var_dump($thumb_id);
-			if($thumb_id){
-				$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
-			}
+			var_dump($thumb_id);
+		}
+
+		if($thumb_id){
+			$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
 		}
 
 		$uid = wp_insert_post($page_data);
@@ -144,6 +155,7 @@ var_dump($thumb_id);
 			if($doc) {
 				$d_count = 0;
 				foreach($doc as $d) {
+					$d = str_replace('^', ',', $d); //yes, we have commas in URLs
 					$d_doc = TST_Import::get_instance()->get_attachment_by_old_url($d);
 					if($d_doc) {
 						$c = p2p_type('connected_attachments')->connect((int)$uid, $d_doc->ID, array('date' => current_time('mysql')));

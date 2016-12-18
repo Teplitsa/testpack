@@ -584,8 +584,11 @@ function tst_p2p_connection_types() {
 		'from_labels' => array(
 			'column_title' => 'Файлы',
 		),
+		'to_labels' => array(
+			'column_title' => 'Связанные страницы',
+		),
 		'admin_box' => array(
-			'show' => 'from',
+			'show' => 'any',
 			'context' => 'advanced',
 			'can_create_post' => false
 		)

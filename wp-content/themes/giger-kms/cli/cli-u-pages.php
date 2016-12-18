@@ -99,6 +99,17 @@ try {
 			),
 			'section' => 'about'
 		),
+		'about-dront' => array(
+			'post_data' => array(
+				'post_title' => 'Cудьба дронта',
+				'post_type' => 'page',
+				'post_parent' => 0,
+				'post_status' => 'publish',
+				'post_content' => 'import | http://dront.ru/dront/',
+				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+			),
+			'section' => 'about'
+		),
 		'reports' => array(
 			'post_data' => array(
 				'post_title' => 'Отчеты',
@@ -160,6 +171,17 @@ try {
 
 		$page_data = $obj['post_data'];
 
+		if(false !== strpos($obj['post_content'], 'import | ')) {
+			echo "Import fromt URL ".$obj['post_content'].chr(10);
+
+			$old_url = str_replace('import | ', '', $obj['post_content']);
+			$old_post = TST_Import::get_instance()->get_post_by_old_url($old_url);
+
+			if($old_post) {
+				$page_data['post_content'] = $old_post->post_content;
+			}
+		}
+
 		$test = get_page_by_path($slug);
 		$page_data['ID'] = ($test) ? $test->ID: 0;
 		$uid = wp_insert_post($page_data);
@@ -172,6 +194,39 @@ try {
 		}
 	}
 
+
+	//Thumbnails
+	$thumbnails = array(
+		'news' 				=> 'news2.jpg',
+		'nashi-lyudi'		=> 'nashi-lyudi.jpg',
+		'otchety' 			=> 'otchety.jpg',
+		'stan-volonterom'	=> 'stan-volonterom.jpg',
+		'pomoshh-kompanij'	=> 'pomoshh-kompanij.jpg'
+	);
+
+	foreach($thumbnails as $slug => $file) {
+
+		$thumb_id = false;
+		$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.$file;
+		var_dump($path);
+
+		$test_path = $uploads['path'].'/'.$file;
+		if(!file_exists($test_path)) {
+			$thumb_id = tst_upload_img_from_path($path);
+			echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+		}
+		else {
+			$a_url = $uploads['url'].'/'.$file;
+			$thumb_id = attachment_url_to_postid($a_url);
+		}
+
+		$page = get_page_by_path($slug);
+		if($page && $thumb_id){
+			update_post_meta($page->ID, '_thumbnail_id', (int)$thumb_id);
+		}
+
+		echo 'Updated thumbnail for page '.$slug.chr(10);
+	}
 
 
 	//Final
