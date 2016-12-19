@@ -15,7 +15,7 @@ get_header();
 ?>
 <section class="main">
 	<div class="frame">
-		<div class="bit md-8">
+		<div class="bit md-12">
 			<div class="layout-section layout-section--card">
 			<?php
 				if(!empty($posts)) { foreach($posts as $i => $cpost) {
@@ -30,10 +30,10 @@ get_header();
 			</div>
 			
 		</div>
-		<div class="bit md-4">
+		<!-- <div class="bit md-4">
 			<div class="layout-section layout-section--card-block">
 				<!-- cards -->
-			<?php
+			<!--?php
 				$items = get_posts(array(
 					'post_type' => 'item',
 					'posts_per_page' => 3,
@@ -47,12 +47,12 @@ get_header();
 
 				if(!empty($items)) { foreach($items as $si) {
 			?>
-				<div class="widget widget--card"><?php tst_card($si, false);?></div>
-			<?php
+				<div class="widget widget--card"><!--?php tst_card($si, false);?></div>
+			<!?php
 				}}
 			?>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 

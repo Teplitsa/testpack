@@ -34,6 +34,9 @@
 	@include for(medium-screens) {
 		padding: 0 $element-padding-base*2 $element-padding-base*2;
 	}
+	.single-body__preview {
+		margin-bottom: 15px;
+	}
 }
 
 .single-card__meta {
