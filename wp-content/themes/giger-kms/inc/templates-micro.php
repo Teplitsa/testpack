@@ -38,18 +38,24 @@ function tst_cell(WP_Post $cpost) {
 		ob_end_clean();
 	}//has thumb
 ?>
+
 	<article class="cell">
-		<h4 class="cell__title">
-			<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
-			<span class="date"><?php echo get_the_date('d.m.Y', $cpost);?></span>
-		</h4>
-		<div class="cell__text">
-			<p><?php echo apply_filters('tst_the_title', $ex);?></p>
-			<p><?php echo $tags;?></p>
-		</div>
-		<?php if(!empty($thumb_mark)) { ?>
-			<div class="cell__thumb"><?php echo $thumb_mark;?></div>
-		<?php }?>
+		<div class="frame">
+			<div class="bit sm-8">
+				<h4 class="cell__title">
+					<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
+					<span class="date"><?php echo get_the_date('d.m.Y', $cpost);?></span>
+				</h4>
+				<div class="cell__text">
+					<p><?php echo apply_filters('tst_the_title', $ex);?></p>
+					<p><?php echo $tags;?></p>
+				</div>
+			</div>
+			<div class="bit sm-4">
+				<?php if(!empty($thumb_mark)) { ?>
+					<div class="cell__thumb"><?php echo $thumb_mark;?></div>
+				<?php }?>
+			</div>
 	</article>
 <?php
 }

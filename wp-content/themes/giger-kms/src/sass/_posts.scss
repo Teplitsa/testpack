@@ -52,7 +52,7 @@
 }
 
 .single-aside {
-	@include for(medium-screens) { padding-top: 200px; }
+	@include for(medium-screens) { padding-top: 50px; }
 }
 
 .realted-posts {
