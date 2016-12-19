@@ -22,7 +22,7 @@ get_header(); ?>
 	<div class="single-card__content">
 	<div class="frame">
 
-		<div class="bit md-8 single-body">
+		<div class="bit md-12 single-body">
 
 			<?php if(has_post_thumbnail($cpost)) { ?>
 				<div class="single-body__preview"><?php tst_single_thumbnail($cpost);?></div>
@@ -32,7 +32,7 @@ get_header(); ?>
 			<div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
 		</div>
 
-		<div class="bit md-4 single-aside">
+		<div class="bit md-12 single-aside">
 		<?php
 			$related = tst_get_related_query($cpost, 'post_tag', 4);
 			if(!empty($related)) {
