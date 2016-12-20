@@ -18,11 +18,35 @@ get_header();
 		<div class="bit md-12">
 			<div class="layout-section layout-section--card">
 			<?php
-				if(!empty($posts)) { foreach($posts as $i => $cpost) {
+				$items = get_posts(array(
+					'post_type' => 'post',
+					'posts_per_page' => 10,
+					'post_parent' => 0,
+					'no_found_rows' => true,
+					'cache_results' => false,
+					'update_post_meta_cache' => false,
+					'update_post_term_cache ' => false,
+					'orderby' => 'desc',
+					'paged' => $paged
+				));
+
+				if(!empty($items)) { foreach($items as $i => $cpost) {
 			?>
 				<div class="layout-section__item layout-section__item--card"><?php tst_cell($cpost);?></div>
+				
 			<?php
-				}}
+				}
+				if ($paged) {
+				?>
+					
+					<div class="nav-links"><?php
+						previous_posts_link('<span class="meta-nav">&larr; Пред. страница</span>');
+						next_posts_link('<span class="meta-nav">След. страница &rarr;</span>');
+					?></div>
+					
+					<?php
+				}
+				}
 				else {
 					echo "<p>".__('Nothing found under your request', 'tst')."</p>";
 				}
