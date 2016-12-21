@@ -89,12 +89,21 @@ try {
                         // get url title
                         $file_name = TST_Import::get_instance()->get_file_name( $url, $post_content );
                         
+                        $file_guid = TST_Import::get_instance()->get_attachment_guid_by_url( $file_url );
+                        echo $file_guid . "\n";
+                        if( $file_guid ) {
+                            $wpdb->update( $wpdb->prefix . 'posts', array( 'guid' => $file_guid ), array( 'ID' => $file_id ) ); 
+                        }
+                        //$found_attachment_id = TST_Import::get_instance()->get_attachment_id_by_url( $file_url );
+                        
                         // update attachment title
-                        $attachment = array(
-                            'ID'           => $file_id,
-                            'post_title'   => $file_name,
-                        );
-                        wp_update_post( $attachment ); 
+                        if( $file_name ) {
+                            $attachment = array(
+                                'ID'           => $file_id,
+                                'post_title'   => $file_name,
+                            );
+                            wp_update_post( $attachment ); 
+                        }
                         
                         TST_Import::get_instance()->set_file_date( $file_id, $url );
                         
@@ -135,7 +144,7 @@ try {
                 $post_arr['post_date'] = $post_date;
             }
 
-			$post_id = wp_insert_post($post_arr);
+            $post_id = wp_insert_post($post_arr);
             
             foreach( $post_files as $file ) {
                 $attachment_id = $file['id'];

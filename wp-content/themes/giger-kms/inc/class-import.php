@@ -193,4 +193,33 @@ class TST_Import {
         }
     }
     
+    function get_attachment_guid_by_url( $url ) {
+        $parsed_url  = explode( parse_url( WP_CONTENT_URL, PHP_URL_PATH ), $url );
+        
+        $this_host = str_ireplace( 'www.', '', parse_url( home_url(), PHP_URL_HOST ) );
+        $file_host = str_ireplace( 'www.', '', parse_url( $url, PHP_URL_HOST ) );
+        
+        if ( ! isset( $parsed_url[1] ) || empty( $parsed_url[1] ) || ( $this_host != $file_host ) ) {
+            return;
+        }
+        
+        return WP_CONTENT_URL . $parsed_url[1];
+    }
+
+    function get_attachment_id_by_url( $url ) {
+        $parsed_url  = explode( parse_url( WP_CONTENT_URL, PHP_URL_PATH ), $url );
+        
+        $this_host = str_ireplace( 'www.', '', parse_url( home_url(), PHP_URL_HOST ) );
+        $file_host = str_ireplace( 'www.', '', parse_url( $url, PHP_URL_HOST ) );
+        
+        if ( ! isset( $parsed_url[1] ) || empty( $parsed_url[1] ) || ( $this_host != $file_host ) ) {
+            return;
+        }
+        
+        global $wpdb;
+        $attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->prefix}posts WHERE guid RLIKE %s;", $parsed_url[1] ) );
+        
+        return $attachment[0];
+    }
+    
 } //class
