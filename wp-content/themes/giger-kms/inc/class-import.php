@@ -219,7 +219,7 @@ class TST_Import {
         global $wpdb;
         $attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->prefix}posts WHERE guid LIKE %s;", '%' . $parsed_url[1] ) );
         
-        return $attachment[0];
+        return count( $attachment ) ? $attachment[0] : 0;
     }
     
 } //class
