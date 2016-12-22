@@ -10,7 +10,7 @@ try {
 	$time_start = microtime(true);
 	include('cli_common.php');
     require_once( ABSPATH . 'wp-admin/includes/media.php' );
-    include( get_template_directory() . '/inc/class-import.php' );    
+    // include( get_template_directory() . '/inc/class-import.php' );    
     
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
@@ -144,7 +144,7 @@ try {
                 $post_arr['post_date'] = $post_date;
             }
 
-            $post_id = wp_insert_post($post_arr);
+            // $post_id = wp_insert_post($post_arr);
             
             foreach( $post_files as $file ) {
                 $attachment_id = $file['id'];
