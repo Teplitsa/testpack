@@ -18,7 +18,6 @@ $sections = array(
         "is_files_in_content" => true,
         'post_type' => 'post',
     ),
-    
     'http://dront.ru/cheboksarskaya/' => array( "xpath" => array( 
             'title' => ".//body//div[@class='container']//div[contains(@class, 'left_row')]//h1", 
             'content' => array( ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h1]", ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h2]"), 
@@ -103,16 +102,67 @@ $sections = array(
         'post_type' => 'import',
     ),
     'http://dront.ru/old/' => array( "xpath" => array( 
-            'title' => ".//html//title/text()", 
+            'title' => array( "(.//body/b[.//p])[1]", "(.//body/p[.//b])[1]", "(.//body/blockquote/p)[1]", "(.//body/p)[1]", ".//title", ), 
             'content' => ".//body", 
             'date' => ""
         ), 
         'clean_content_regexp' => array(
             '#.*?<h1.*?>.*?</h1>#is',
         ),
+        'clean_content_xpath' => array(
+            "(.//body/table[.//img[contains(@src, 'dront1.gif')]])[1]",
+            "(.//body/table[.//a[contains(@href, 'english.ru.html')]])[1]",
+        ),
         "is_files_in_content" => true,
         'post_type' => 'import',
         'charset' => 'KOI8-R',
+    ),
+    'http://dront.ru/old/news/' => array( "xpath" => array( 
+            'title' => array( "(.//body//*[@class='red'])[1]", "(.//body/blockquote/p[.//font])[1]", "(.//body/blockquote/p[.//b])[1]", ),
+            'content' => ".//body", 
+            'date' => ""
+        ), 
+        'clean_content_regexp' => array(
+            '#.*<p class="date">[.0-9]+</p>#s',
+        ),
+        'clean_content_xpath' => array(
+            "(.//body/table[.//img[contains(@src, 'dront1.gif')]])[1]",
+            "(.//body/table[.//a[contains(@href, 'english.ru.html')]])[1]",
+            "(.//body//*[@class='green'])[1]", 
+        ),
+        "is_files_in_content" => true,
+        'is_date_from_url' => true,
+        'date_from_url_rules' => array(
+            array(
+                'regexp' => '/(\d+-\d+-\d+).\w+$/i',
+                'pattern' => '%y-%m-%d',
+            ),
+        ),
+        'post_type' => 'post',
+        'charset' => 'KOI8-R',
+    ),
+    
+    'http://dront.ru/old/aee/' => array( "xpath" => array( 
+            'title' => array( "(.//body//p[.//b])[1]", "(.//body//p[.//font])[1]", "(.//body//font[.//b])[1]", ),
+            'content' => ".//body", 
+            'date' => ""
+        ), 
+        'clean_content_regexp' => array(
+        ),
+        'clean_content_xpath' => array(
+            '(.//body/table)[1]',
+            '(.//body/table)[2]',
+            '(.//body/table)[3]',
+        ),
+        "is_files_in_content" => true,
+        'is_date_from_url' => true,
+        'date_from_url_rules' => array(
+            array(
+                'regexp' => '/(\d+-\d+-\d+).\w+$/i',
+                'pattern' => '%y-%m-%d',
+            ),
+        ),
+        'post_type' => 'import',
     ),
     'http://dront.ru/old/strix/' => array( "xpath" => array( 
             'title' => array( ".//body//h4//text()", ".//body//b[1]//text()" ), 
@@ -176,13 +226,36 @@ $sections['http://dront.ru/public-office/'] = $sections['http://dront.ru/cpt/'];
 $sections['http://dront.ru/real-world/'] = $sections['http://dront.ru/cpt/'];
 $sections['http://dront.ru/sopr/'] = $sections['http://dront.ru/cpt/'];
 
+$sections['http://dront.ru/old/aist2004/'] = $sections['http://dront.ru/old/'];
+$sections['http://dront.ru/old/aist2004/']['is_tree'] = TRUE;
+        
+$sections['http://dront.ru/old/cinema/'] = $sections['http://dront.ru/old/aist2004/'];
+unset( $sections['http://dront.ru/old/cinema/']['charset'] );
+
+$sections['http://dront.ru/old/obereg/'] = $sections['http://dront.ru/old/aist2004/'];
+$sections['http://dront.ru/old/sopr/'] = $sections['http://dront.ru/old/aist2004/'];
+$sections['http://dront.ru/old/strix/'] = $sections['http://dront.ru/old/aist2004/'];
+$sections['http://dront.ru/old/vezdehod/'] = $sections['http://dront.ru/old/aist2004/'];
+$sections['http://dront.ru/old/works/'] = $sections['http://dront.ru/old/aist2004/'];
+
+$sections['http://dront.ru/old/clnct/'] = $sections['http://dront.ru/old/aist2004/'];
+$sections['http://dront.ru/old/clnct/']['charset'] = 'windows-1251';
+$sections['http://dront.ru/old/clnct/']['is_tree'] = FALSE;
+
+$sections['http://dront.ru/old/cent-ens.ru.htm'] = $sections['http://dront.ru/old/aist2004/'];
+$sections['http://dront.ru/old/cent-ens.ru.htm']['is_tree'] = FALSE;
+$sections['http://dront.ru/old/cent-ens.ru.htm']['charset'] = 'windows-1251';
+
+$sections['http://dront.ru/old/index.html'] = $sections['http://dront.ru/old/'];
+unset( $sections['http://dront.ru/old/index.html']['clean_content_regexp'] );
+#unset( $sections['http://dront.ru/old/index.html']['clean_content_xpath'] );
+
 //$sections[''] = $sections['http://dront.ru/'];
 
 
 try {
 	$time_start = microtime(true);
 	include('cli_common.php');
-    include( get_template_directory() . '/inc/class-import.php' );    
     
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
@@ -273,8 +346,9 @@ try {
         $dom->loadHTML( $content, LIBXML_NOWARNING | LIBXML_NOERROR );
 
         $xpath = new DomXPath($dom);
-
+        
         foreach( $section['xpath'] as $k => $v ) {
+//            printf( "%s\n", $v );
             if( $v ) {
                 if( is_array( $v ) ) {
                     foreach( $v as $v1 ) {
@@ -292,13 +366,20 @@ try {
 //                printf( "%s\n", $k );
 //                printf( "%s\n", $v );
 //                print_r( $node->childNodes );
-                $result[$k] = $node ? ( $node->childNodes ? get_inner_html($node) : $node->nodeValue ) : '';
+                $result[$k] = $node ? ( $node->childNodes ? TST_Import::get_instance()->get_inner_html($node) : $node->nodeValue ) : '';
                 $result[$k] = trim( $result[$k] );
             }
         }
 
         if( $result['date'] ) {
             $result['date'] = clean_date( $result['date'], $section );
+        }
+        
+        if( isset( $section['is_date_from_url'] ) && $section['is_date_from_url'] ) {
+            $file_date = TST_Import::get_instance()->get_exact_date_from_url( $page_url, $section['date_from_url_rules'] );
+            if( $file_date ) {
+                $result['date'] = $file_date;
+            }
         }
 
         /*
@@ -394,21 +475,9 @@ function clean_date( $date, $section ) {
 
 function clean_content( $content, $section ) {
     $content = remove_script( $content );
-    if( is_array( $section["clean_content_regexp"] ) ) {
-        foreach( $section["clean_content_regexp"] as $regexp ) {
-            if( is_array( $regexp ) ) {
-                $limit = $regexp['limit'];
-                $regexp = $regexp['regexp'];
-            }
-            else {
-                $limit = -1;
-            }
-//            echo $regexp . "\n";
-//            echo strlen( $content ) . "\n";
-            $content = preg_replace( $regexp , "", $content, $limit );
-//            echo strlen( $content ) . "\n";
-        }
-    }
+    
+    $content = TST_Import::get_instance()->clean_content_regexp( $content, $section );
+    $content = TST_Import::get_instance()->clean_content_xpath( $content, $section );
     
     return $content;
 }
@@ -428,19 +497,6 @@ function remove_script( $html ) {
     $html = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $html);
     return $html;
 }
-
-function get_inner_html(DOMNode $element) { 
-    $innerHTML = ""; 
-    $children  = $element->childNodes;
-
-    if( $children ) {
-        foreach ($children as $child) { 
-            $innerHTML .= $element->ownerDocument->saveHTML($child);
-        }
-    }
-
-    return $innerHTML; 
-} 
 
 function get_headers_from_curl_response( $header_text ) {
     $headers = array();
