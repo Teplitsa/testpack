@@ -72,6 +72,7 @@ $sections = array(
         ), 
         'clean_content_regexp' => array(
             '#.*?<h1.*?>.*?</h1>#is',
+            '#<a href="/">Главная</a>\s*<span class="path_arrow">→</span>\s*<a href=".*?">.*?</a>\s*<span class="path_arrow">→</span>\s*?.*<#i',
         ),
         "is_files_in_content" => true,
         'post_type' => 'import',

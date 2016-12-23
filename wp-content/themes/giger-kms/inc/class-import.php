@@ -204,11 +204,11 @@ class TST_Import {
             $command = 'lowriter --headless --convert-to pdf:writer_pdf_Export --outdir %s %s';
             $compiled_command = sprintf( $command, substr( $tmp_dir, 0, -1 ), $original_file );
             echo sprintf( "%s\n", $compiled_command );
+            
+            system( $compiled_command );
         }
 
-        system( $compiled_command );
-        
-        if( is_file( $new_file ) ) {
+        if( file_exists( $new_file ) && $localpdf ) {
             printf( "new file OK\n" );
             $new_attachment_id = $this->import_file_from_path( $new_file );
             printf( "converted attachment id: %s\n", $new_attachment_id );
@@ -229,8 +229,28 @@ class TST_Import {
             
             unlink( $new_file );
         }
+        elseif( file_exists( $new_file ) ) {
+            $this->copy_to_localpdf( $new_file, $new_file_base_name );
+            unlink( $new_file );
+        }
         
         return $ret_attachment_id;
+    }
+    
+    public function copy_to_localpdf( $new_file, $new_file_base_name ) {
+        $upload_dir = wp_upload_dir();
+        $pdf_dirname = $upload_dir['basedir'].'/localpdf';
+        if ( ! file_exists( $pdf_dirname ) ) {
+            wp_mkdir_p( $pdf_dirname );
+        }
+        
+        $localpdf_file = $pdf_dirname . '/' . $new_file_base_name;
+        if( ! file_exists( $localpdf_file ) ) {
+            copy( $new_file, $localpdf_file );
+        }
+        else {
+            printf( "localpdf exists: %s\n", $localpdf_file );
+        }
     }
     
     public function remove_inline_styles( $content ) {

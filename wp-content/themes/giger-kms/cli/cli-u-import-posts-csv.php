@@ -20,6 +20,8 @@ try {
     
     $input_file = isset($options['file']) ? $options['file'] : '';
     printf( "Processing %s\n", $input_file );
+    
+    $localpdf = $options['localpdf'] ? $options['localpdf'] : NULL;
 
 	$count = 0;
 	$csv = array_map('str_getcsv', file( $input_file ));
@@ -86,11 +88,16 @@ try {
                     if( $file_id ) {
                         
                         if( TST_Import::get_instance()->is_must_convert2pdf( $file_url ) ) {
-                            $pdf_file_id = TST_Import::get_instance()->convert2pdf( $file_id, $options['localpdf'] );
+                            $pdf_file_id = TST_Import::get_instance()->convert2pdf( $file_id, $localpdf );
                             if( $pdf_file_id ) {
                                 $file_id = $pdf_file_id;
                                 $file_url = wp_get_attachment_url( $file_id );
                             }
+                        }
+                        elseif( TST_Import::get_instance()->is_must_convert2pdf( $url ) ) {
+                            $pdf_file = get_attached_file( $file_id );
+                            $pdf_file_info = pathinfo( $pdf_file );                            
+                            TST_Import::get_instance()->copy_to_localpdf( $pdf_file, $pdf_file_info['basename'] );
                         }
                     }
                         
@@ -140,7 +147,9 @@ try {
             $parent_post = $parent_url ? TST_Import::get_instance()->get_post_by_old_url( $parent_url ) : NULL;
             $exist_post = $page_url ? TST_Import::get_instance()->get_post_by_old_url( $page_url ) : NULL;
             
-            $post_content = TST_Import::get_instance()->replace_file_type_hints( $post_content ); 
+            if( $localpdf ) {
+                $post_content = TST_Import::get_instance()->replace_file_type_hints( $post_content ); 
+            }
             
             $parent_post_id = $parent_post ? $parent_post->ID : 0;
 //            printf( "parent_url: %s\n", $parent_url );
