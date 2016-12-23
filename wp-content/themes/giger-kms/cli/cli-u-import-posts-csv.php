@@ -7,20 +7,21 @@ set_time_limit (0);
 ini_set('memory_limit','512M');
 
 try {
-	$time_start = microtime(true);
-	include('cli_common.php');
+    $time_start = microtime(true);
+    include('cli_common.php');
     require_once( ABSPATH . 'wp-admin/includes/media.php' );
-    // include( get_template_directory() . '/inc/class-import.php' );    
     
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
 	global $wpdb;
 	$uploads = wp_upload_dir();
     
-    $options = getopt("", array('file:'));
+    $options = getopt("", array('file:', 'localpdf:'));
     
     $input_file = isset($options['file']) ? $options['file'] : '';
     printf( "Processing %s\n", $input_file );
+    
+    $localpdf = $options['localpdf'] ? $options['localpdf'] : NULL;
 
 	$count = 0;
 	$csv = array_map('str_getcsv', file( $input_file ));
@@ -55,8 +56,10 @@ try {
 
             $files_id = array();
             foreach( $files_url as $url ) {
+                printf( "orig url: %s\n", $url );
+                
                 $file_id = 0;
-                if(false !== strpos($url, 'dront.ru') ){ # && preg_match( '/.*(?:jpeg|jpg|png|gif|pdf)$/i', $url )
+                if(false !== strpos($url, 'dront.ru') ) {
                     
                     $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $url );
 
@@ -84,20 +87,40 @@ try {
                     
                     if( $file_id ) {
                         
+                        if( TST_Import::get_instance()->is_must_convert2pdf( $file_url ) ) {
+                            $pdf_file_id = TST_Import::get_instance()->convert2pdf( $file_id, $localpdf );
+                            if( $pdf_file_id ) {
+                                $file_id = $pdf_file_id;
+                                $file_url = wp_get_attachment_url( $file_id );
+                            }
+                        }
+                        elseif( TST_Import::get_instance()->is_must_convert2pdf( $url ) ) {
+                            $pdf_file = get_attached_file( $file_id );
+                            $pdf_file_info = pathinfo( $pdf_file );                            
+                            TST_Import::get_instance()->copy_to_localpdf( $pdf_file, $pdf_file_info['basename'] );
+                        }
+                    }
+                        
+                    printf( "file_id: %d\n", $file_id );
+                    
+                    if( $file_id ) {
+                        
                         $post_files[] = array( 'id' => $file_id, 'url' => $file_url );
 
-                        // get url title
-                        $file_name = TST_Import::get_instance()->get_file_name( $url, $post_content );
-                        
+                        // set proper file guid
                         $file_guid = TST_Import::get_instance()->get_attachment_guid_by_url( $file_url );
-                        echo $file_guid . "\n";
+                        printf( "guid: %s\n", $file_guid );
                         if( $file_guid ) {
                             $wpdb->update( $wpdb->prefix . 'posts', array( 'guid' => $file_guid ), array( 'ID' => $file_id ) ); 
                         }
                         //$found_attachment_id = TST_Import::get_instance()->get_attachment_id_by_url( $file_url );
                         
+                        // get url title
+                        $file_name = TST_Import::get_instance()->get_file_name( $url, $post_content );
+                        
                         // update attachment title
                         if( $file_name ) {
+                            printf( "file name: %s\n", $file_name );
                             $attachment = array(
                                 'ID'           => $file_id,
                                 'post_title'   => $file_name,
@@ -122,12 +145,18 @@ try {
             }
             
             $parent_post = $parent_url ? TST_Import::get_instance()->get_post_by_old_url( $parent_url ) : NULL;
+            $exist_post = $page_url ? TST_Import::get_instance()->get_post_by_old_url( $page_url ) : NULL;
+            
+            if( $localpdf ) {
+                $post_content = TST_Import::get_instance()->replace_file_type_hints( $post_content ); 
+            }
+            
             $parent_post_id = $parent_post ? $parent_post->ID : 0;
 //            printf( "parent_url: %s\n", $parent_url );
 //            printf( "parent_id: %d\n", $parent_post_id );
             
 			$post_arr = array(
-				'ID' => 0,
+				'ID' => $exist_post ? $exist_post->ID : 0,
 				'post_title' 	=> $post_title,
 				'post_type' 	=> $post_type,
 				'post_status' 	=> 'publish',
@@ -144,7 +173,7 @@ try {
                 $post_arr['post_date'] = $post_date;
             }
 
-            // $post_id = wp_insert_post($post_arr);
+            $post_id = wp_insert_post($post_arr);
             
             foreach( $post_files as $file ) {
                 $attachment_id = $file['id'];
