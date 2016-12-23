@@ -28,6 +28,8 @@ try {
     }
 
     $data = json_decode($file);
+    $csv = fopen('dront_markers_all.csv', 'w');
+    fputcsv($csv, array("Название", "Кр. описание", "Описание", "Адрес", "Шир.", "Долг.", "ID на старом сайте"));
 
     foreach($data as $group) {
 
@@ -44,33 +46,50 @@ try {
 
         foreach($group->items as $marker) {
 
-            $marker_post_id = wp_insert_post(array(
-                'post_type' => 'marker',
-                'post_content' => html_entity_decode($marker->longcontent, ENT_COMPAT, 'UTF-8'),
-                'post_excerpt' => strip_tags($marker->content),
-                'post_title' => str_replace(
-                    array("'",),
-                    array('"',),
-                    html_entity_decode($marker->name, ENT_COMPAT, 'UTF-8')
-                ),
-                'post_status' => 'publish',
-                'meta_input' => array(
-                    'marker_address' => $marker->name,
-                    'marker_location' => array(
-                        'latitude' => floatval($marker->center[0]),
-                        'longitude' => floatval($marker->center[1])
-                    ),
-                    'marker_location_latitude' => floatval($marker->center[0]),
-                    'marker_location_longitude' => floatval($marker->center[1]),
-                    '_old_id' => $marker->id,
-                ),
+            $marker_name = str_replace(
+                array("'",),
+                array('"',),
+                html_entity_decode($marker->name, ENT_COMPAT, 'UTF-8')
+            );
+            fputcsv($csv, array(
+                $marker_name,
+                strip_tags(html_entity_decode($marker->content, ENT_COMPAT, 'UTF-8')),
+                strip_tags(html_entity_decode($marker->longcontent, ENT_COMPAT, 'UTF-8')),
+                $marker_name,
+                floatval($marker->center[0]),
+                floatval($marker->center[1]),
+                $marker->id
             ));
 
-            wp_set_object_terms($marker_post_id, array($term->term_id), 'marker_cat');
+//            $marker_post_id = wp_insert_post(array(
+//                'post_type' => 'marker',
+//                'post_content' => html_entity_decode($marker->longcontent, ENT_COMPAT, 'UTF-8'),
+//                'post_excerpt' => strip_tags($marker->content),
+//                'post_title' => str_replace(
+//                    array("'",),
+//                    array('"',),
+//                    html_entity_decode($marker->name, ENT_COMPAT, 'UTF-8')
+//                ),
+//                'post_status' => 'publish',
+//                'meta_input' => array(
+//                    'marker_address' => $marker->name,
+//                    'marker_location' => array(
+//                        'latitude' => floatval($marker->center[0]),
+//                        'longitude' => floatval($marker->center[1])
+//                    ),
+//                    'marker_location_latitude' => floatval($marker->center[0]),
+//                    'marker_location_longitude' => floatval($marker->center[1]),
+//                    '_old_id' => $marker->id,
+//                ),
+//            ));
+//
+//            wp_set_object_terms($marker_post_id, array($term['term_id']), 'marker_cat');
 
         }
 
     }
+
+    fclose($csv);
 
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);
