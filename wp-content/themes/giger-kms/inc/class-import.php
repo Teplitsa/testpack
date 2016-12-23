@@ -215,11 +215,10 @@ class TST_Import {
         if ( ! isset( $parsed_url[1] ) || empty( $parsed_url[1] ) || ( $this_host != $file_host ) ) {
             return;
         }
-        
         global $wpdb;
-        $attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->prefix}posts WHERE guid RLIKE %s;", $parsed_url[1] ) );
+        $attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->prefix}posts WHERE guid LIKE %s;", '%' . $parsed_url[1] ) );
         
-        return $attachment[0];
+        return count( $attachment ) ? $attachment[0] : 0;
     }
     
 } //class

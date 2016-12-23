@@ -9,7 +9,6 @@ function tst_cell(WP_Post $cpost) {
 	$tags = tst_get_tags_list($cpost);
 	$ex = tst_get_post_excerpt($cpost, 25);
 
-	//thumb
 	$thumb_mark = '';
 	if(has_post_thumbnail($cpost)) {
 		$cap = tst_get_post_thumbnail_cation($cpost);
@@ -24,19 +23,26 @@ function tst_cell(WP_Post $cpost) {
 
 		//build thumbnail markup
 		ob_start();
+		
 ?>
-
 		<figure class="cell_picture">
 			<a href="<?php echo $pl;?>" class="thumbnail-link"><?php echo $thumb;?></a>
 			<?php if($cap) { ?>
 				<figcaption><?php echo $cap; ?></figcaption>
 			<?php } ?>
 		</figure>
-
 <?php
 		$thumb_mark = ob_get_contents();
 		ob_end_clean();
-	}//has thumb
+	} else {
+		// if no thumbnail		
+		$output = preg_match_all('/<img(.*?)src=("|\'|)(.*?)("|\'| )(.*?)>/s', $cpost->post_content, $match);
+		if($output) {
+			$file_url = $match[3][0];
+			$found_attachment_id = TST_Import::get_instance()->get_attachment_id_by_url( $file_url );
+			$cap = set_post_thumbnail($cpost,$found_attachment_id);
+		}
+	}
 ?>
 
 	<article class="cell">
