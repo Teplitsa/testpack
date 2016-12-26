@@ -189,28 +189,47 @@ class TST_Import {
 //        print_r( $of_info );
         
         $of_base_name = $of_info['basename'];
+        $of_dir = $of_info['dirname'];
+        $upload_dir = wp_upload_dir();
+        $of_dir = str_replace( $upload_dir['basedir'], '', $of_dir );
+//        printf( "of_dir: %s\n", $of_dir );
+        
+        $new_file_prefix = preg_replace( '/\/$/', '', $of_dir );
+        $new_file_prefix = preg_replace( '/^\//', '', $new_file_prefix );
+        $new_file_prefix = str_replace( '/', '_', $new_file_prefix );
+        $new_file_prefix = str_replace( '\\', '_', $new_file_prefix );
+        $new_file_prefix = $new_file_prefix . '_';
         $tmp_dir = get_temp_dir();
         
-        $new_file_base_name = preg_replace( '/\.\w+$/', '.pdf', $of_base_name );
+        $new_file_base_name_no_prefix = preg_replace( '/\.\w+$/', '.pdf', $of_base_name );
+        $new_file_base_name = $new_file_prefix . $new_file_base_name_no_prefix;
         $new_file = $tmp_dir . $new_file_base_name;
+        $new_file_no_prefix = $tmp_dir . $new_file_base_name_no_prefix;
+        
+        
+        printf( "original file: %s\n", $original_file );
+        printf( "new PDF file NO PREFIX: %s\n", $new_file_no_prefix );
         printf( "new PDF file: %s\n", $new_file );
         
         if( $localpdf ) {
             $localpdf_file = preg_replace( '/\/$/', '', $localpdf) . '/' . $new_file_base_name;
-            copy( $localpdf_file, $new_file );
-            echo sprintf( "copy from: %s\n", $compiled_command );
+            copy( $localpdf_file, $new_file_no_prefix );
         }
         else {
             $command = 'lowriter --headless --convert-to pdf:writer_pdf_Export --outdir %s %s';
-            $compiled_command = sprintf( $command, substr( $tmp_dir, 0, -1 ), $original_file );
-            echo sprintf( "%s\n", $compiled_command );
+            
+            $original_file_copy = $tmp_dir . $new_file_prefix . $of_base_name;
+            copy( $original_file, $original_file_copy );
+            $compiled_command = sprintf( $command, substr( $tmp_dir, 0, -1 ), $original_file_copy );
+            //printf( "%s\n", $compiled_command );
             
             system( $compiled_command );
+            unlink( $original_file_copy );
         }
 
-        if( file_exists( $new_file ) && $localpdf ) {
+        if( $localpdf && file_exists( $new_file_no_prefix ) ) {
             printf( "new file OK\n" );
-            $new_attachment_id = $this->import_file_from_path( $new_file );
+            $new_attachment_id = $this->import_file_from_path( $new_file_no_prefix );
             printf( "converted attachment id: %s\n", $new_attachment_id );
             
             if( $new_attachment_id ) {
@@ -225,13 +244,23 @@ class TST_Import {
                     delete_post_meta( $attachment_id, 'old_parent_page_url' );
                     update_post_meta( $new_attachment_id, 'old_parent_page_url', $old_parent_page_url );
                 }
+                
+                $attachment_terms = wp_get_post_terms( $post_id, 'attachment_tag' );
+                foreach( $attachment_terms as $tag ) {
+                    wp_set_object_terms( $new_attachment_id, $tag->term_id, 'attachment_tag' );
+                }
+                wp_delete_object_term_relationships( $attachment_id, 'attachment_tag' );
             }
             
-            unlink( $new_file );
+            unlink( $new_file_no_prefix );
         }
         elseif( file_exists( $new_file ) ) {
+            printf( "SAVE local PDF\n");
             $this->copy_to_localpdf( $new_file, $new_file_base_name );
             unlink( $new_file );
+        }
+        else {
+            printf( "NO local PDF\n");
         }
         
         return $ret_attachment_id;
@@ -246,6 +275,7 @@ class TST_Import {
         
         $localpdf_file = $pdf_dirname . '/' . $new_file_base_name;
         if( ! file_exists( $localpdf_file ) ) {
+            printf( "new local PDF: %s\n", $localpdf_file );
             copy( $new_file, $localpdf_file );
         }
         else {
@@ -473,4 +503,65 @@ class TST_Import {
 
         return $innerHTML; 
     } 
-} //class
+    
+    function url2base( $url ) {
+        $base_url = preg_replace( '/\/[^\/]*$/', '', $url );
+        return $base_url;
+    }
+
+    function clean_content( $content, $section ) {
+        
+        $content = $this->remove_script( $content );
+        $content = $this->clean_content_regexp( $content, $section );
+        $content = $this->clean_content_xpath( $content, $section );
+
+        return $content;
+    }
+
+    function urls_rel2abs( $content, $base_url, $dront_site_url ) {
+        $content = preg_replace('/(src|href)\s*=\s*(["\'])\s*(\/(?!\/)[^\"\' ]+)/', '\1=\2' . $dront_site_url . '\3', $content);
+        $content = preg_replace('/(src|href)\s*=\s*(["\'])\s*((?!https?:\/\/)[^\"\' ]+)/', '\1=\2' . $base_url . '/\3', $content);
+        return $content;
+    }
+    
+    function get_headers_from_curl_response( $header_text ) {
+        $headers = array();
+
+        foreach (explode("\r\n", $header_text) as $i => $line) {
+            if ($i === 0) {
+                $headers['STATUS'] = $line;
+                preg_match( "/HTT\w+\/\d+.\d+\s+(\d+)/", $line, $matches );
+                $headers['STATUS_CODE'] = trim( $matches[1] );
+            }
+            else {
+                if( $line && strpos( $line, ':' ) ) {
+                    list ($key, $value) = explode(': ', $line);
+                    $headers[$key] = $value;
+                }
+            }
+        }
+
+        return $headers;
+    }
+
+    function remove_script( $html ) {
+        $html = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $html);
+        return $html;
+    }
+    
+} //class TST_Import
+
+class TST_ImportOldBereginya {
+	private static $_instance = null;
+
+	private function __construct() {
+	}
+
+	public static function get_instance() {
+        if( !self::$_instance ) {
+            self::$_instance = new self;
+        }
+        return self::$_instance;
+    }
+    
+} //class TST_ImportOldBereginya

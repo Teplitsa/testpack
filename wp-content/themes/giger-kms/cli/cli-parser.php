@@ -72,7 +72,6 @@ $sections = array(
         ), 
         'clean_content_regexp' => array(
             '#.*?<h1.*?>.*?</h1>#is',
-            '#<a href="/">Главная</a>\s*<span class="path_arrow">→</span>\s*<a href=".*?">.*?</a>\s*<span class="path_arrow">→</span>\s*?.*<#i',
         ),
         "is_files_in_content" => true,
         'post_type' => 'import',
@@ -208,6 +207,8 @@ $sections = array(
 
 $common_clean_regexp = array(
     '#<div class="yashare-auto-init"(.*?)>(.*?)</div>#is',
+    '#<a href="/">Главная</a>\s*<span class="path_arrow">→</span>\s*<a href=".*?">.*?</a>\s*<span class="path_arrow">→</span>\s*[^<]*#i',
+    '#<a href="/">Главная</a>\s*<span class="path_arrow">→</span>\s*[^<]*#i',
 );
 
 foreach( $sections as $k => $v ) {
@@ -236,7 +237,10 @@ unset( $sections['http://dront.ru/old/cinema/']['charset'] );
 $sections['http://dront.ru/old/obereg/'] = $sections['http://dront.ru/old/aist2004/'];
 $sections['http://dront.ru/old/sopr/'] = $sections['http://dront.ru/old/aist2004/'];
 $sections['http://dront.ru/old/strix/'] = $sections['http://dront.ru/old/aist2004/'];
+
 $sections['http://dront.ru/old/vezdehod/'] = $sections['http://dront.ru/old/aist2004/'];
+$sections['http://dront.ru/old/vezdehod/']['charset'] = 'windows-1251';
+
 $sections['http://dront.ru/old/works/'] = $sections['http://dront.ru/old/aist2004/'];
 
 $sections['http://dront.ru/old/clnct/'] = $sections['http://dront.ru/old/aist2004/'];
@@ -249,10 +253,29 @@ $sections['http://dront.ru/old/cent-ens.ru.htm']['charset'] = 'windows-1251';
 
 $sections['http://dront.ru/old/index.html'] = $sections['http://dront.ru/old/'];
 unset( $sections['http://dront.ru/old/index.html']['clean_content_regexp'] );
-#unset( $sections['http://dront.ru/old/index.html']['clean_content_xpath'] );
+
+$sections['http://dront.ru/old/forma6.html'] = $sections['http://dront.ru/old/'];
+$sections['http://dront.ru/old/forma6.html']['charset'] = 'windows-1251';
+
+$sections['http://dront.ru/old/recentr/Index.html'] = $sections['http://dront.ru/old/'];
+$sections['http://dront.ru/old/recentr/Index.html']['charset'] = 'windows-1251';
+
+$sections['http://dront.ru/old/news/08-11-01-1.html'] = $sections['http://dront.ru/old/news/'];
+$sections['http://dront.ru/old/news/08-11-01-1.html']['charset'] = 'windows-1251';
+
+$sections['http://dront.ru/old/news/08-11-01-2.html'] = $sections['http://dront.ru/old/news/'];
+$sections['http://dront.ru/old/news/08-11-01-2.html']['charset'] = 'windows-1251';
+
+$sections['http://dront.ru/old/news/08-11-01-3.html'] = $sections['http://dront.ru/old/news/'];
+$sections['http://dront.ru/old/news/08-11-01-3.html']['charset'] = 'windows-1251';
+
+$sections['http://dront.ru/old/news/08-11-25.html'] = $sections['http://dront.ru/old/news/'];
+$sections['http://dront.ru/old/news/08-11-25.html']['charset'] = 'windows-1251';
+
+$sections['http://dront.ru/old/news/inform.html'] = $sections['http://dront.ru/old/news/'];
+$sections['http://dront.ru/old/news/inform.html']['charset'] = 'windows-1251';
 
 //$sections[''] = $sections['http://dront.ru/'];
-
 
 try {
 	$time_start = microtime(true);
