@@ -163,8 +163,8 @@ function tst_custom_content(){
 
 	register_post_type('project', array(
         'labels' => array(
-            'name'               => 'Проект',
-            'singular_name'      => 'Проекты',
+            'name'               => 'Проекты',
+            'singular_name'      => 'Проект',
             'menu_name'          => 'Проекты',
             'name_admin_bar'     => 'Добавить проект',
             'add_new'            => 'Добавить новый',
