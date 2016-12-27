@@ -183,8 +183,9 @@ if( !class_exists('TST_Import') ) {
 
         public function convert2pdf( $attachment_id, $localpdf = '' ) {
     
+            $wp_upload_dir = wp_upload_dir();
             if( $localpdf ) {
-                $localpdf = $upload_dir['basedir'].'/localpdf';
+                $localpdf = $wp_upload_dir['basedir'].'/localpdf';
             }
     
             $ret_attachment_id = $attachment_id;
@@ -198,8 +199,7 @@ if( !class_exists('TST_Import') ) {
 
             $of_base_name = $of_info['basename'];
             $of_dir = $of_info['dirname'];
-            $upload_dir = wp_upload_dir();
-            $of_dir = str_replace( $upload_dir['basedir'], '', $of_dir );
+            $of_dir = str_replace( $wp_upload_dir['basedir'], '', $of_dir );
 //        printf( "of_dir: %s\n", $of_dir );
 
             $new_file_prefix = preg_replace( '/\/$/', '', $of_dir );
@@ -279,8 +279,8 @@ if( !class_exists('TST_Import') ) {
         }
 
         public function copy_to_localpdf( $new_file, $new_file_base_name ) {
-            $upload_dir = wp_upload_dir();
-            $pdf_dirname = $upload_dir['basedir'].'/localpdf';
+            $wp_upload_dir = wp_upload_dir();
+            $pdf_dirname = $wp_upload_dir['basedir'].'/localpdf';
             if ( ! file_exists( $pdf_dirname ) ) {
                 wp_mkdir_p( $pdf_dirname );
             }
