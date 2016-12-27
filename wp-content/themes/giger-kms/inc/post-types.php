@@ -362,7 +362,7 @@ function tst_custom_content(){
         'show_in_admin_bar'   => false,
         //'query_var'           => true,
         'capability_type'     => 'post',
-        'has_archive'         => false,
+        'has_archive'         => true,
         'rewrite'             => array('slug' => 'marker', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 20,
@@ -394,7 +394,7 @@ function tst_custom_content(){
         'public' => false,
         'hierarchical'      => true,
         'show_ui'           => true,
-        'show_in_nav_menus' => false,
+        'show_in_nav_menus' => true,
         'show_tagcloud'     => false,
         'show_admin_column' => true,
         'query_var'         => true,
@@ -430,10 +430,6 @@ function tst_setup_terms() {
 }
 
 
-
-
-
-
 /** Metaboxes **/
 add_action( 'cmb2_admin_init', 'tst_custom_metaboxes' );
 function tst_custom_metaboxes() {
@@ -442,7 +438,7 @@ function tst_custom_metaboxes() {
     $marker_cmb = new_cmb2_box( array(
         'id'            => 'marker_settings_metabox',
         'title'         => 'Настройки маркера',
-        'object_types'  => array( 'marker', ), // Post type
+        'object_types'  => array('marker',), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left

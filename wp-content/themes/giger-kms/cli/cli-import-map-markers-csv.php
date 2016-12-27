@@ -26,59 +26,88 @@ try {
     $file_csv = fopen($fname_csv, 'r');
 
     if( !$file_orig || !$file_csv ) {
-        die( "File(s) not found: $fname_orig or $fname_csv\n");
+        die("File(s) not found: $fname_orig or $fname_csv\n");
     }
 
     $data = json_decode($file_orig);
 
+    $markers_num = 0;
     while(($line = fgetcsv($file_csv)) !== false ) {
-        echo '<pre>' . print_r($line."\n\n", 1) . '</pre>';
+
+        if($line[0] == 'Название') {
+            continue;
+        }
+
+        foreach($data as $index => $group) {
+
+            $term = get_terms(array(
+                'taxonomy' => 'marker_cat',
+                'hide_empty' => false,
+                'name' => $group->name,
+            ));
+
+            if( !$term ) {
+
+                $term = wp_insert_term($group->name, 'marker_cat');
+                $term = $term['term_id'];
+
+            } else {
+
+                $term = reset($term);
+                $term = $term->term_id;
+
+            }
+
+            foreach($group->items as $marker_index => $marker) {
+
+                if($marker->id == $line[6]) { // $line[6] - old ID
+
+                    $already_inserted = get_posts(array(
+                        'post_type' => 'marker',
+                        'meta_query' => array(array('key' => '_old_id', 'value' => $line[6])),
+                    ));
+                    if($already_inserted) {
+                        break 2;
+                    }
+
+                    $marker_post_id = wp_insert_post(array(
+                        'post_type' => 'marker',
+                        'post_content' => html_entity_decode($marker->longcontent, ENT_COMPAT, 'UTF-8'),
+                        'post_excerpt' => strip_tags($marker->content),
+                        'post_title' => str_replace(
+                            array("'",),
+                            array('"',),
+                            html_entity_decode($marker->name, ENT_COMPAT, 'UTF-8')
+                        ),
+                        'post_status' => 'publish',
+                        'meta_input' => array(
+                            'marker_address' => $marker->name,
+                            'marker_location' => array(
+                                'latitude' => floatval($marker->center[0]),
+                                'longitude' => floatval($marker->center[1])
+                            ),
+                            'marker_location_latitude' => floatval($marker->center[0]),
+                            'marker_location_longitude' => floatval($marker->center[1]),
+                            '_old_id' => $marker->id,
+                        ),
+                    ));
+
+                    wp_set_object_terms($marker_post_id, array($term), 'marker_cat');
+
+                    unset($group->items[$marker_index]);
+                    $markers_num++;
+                    break 2;
+
+                }
+
+            }
+
+        }
+
     }
 
-//    foreach($data as $group) {
-//
-//        $term = get_terms(array(
-//            'taxonomy' => 'marker_cat',
-//            'hide_empty' => false,
-//            'name' => $group->name,
-//        ));
-//        if( !$term ) {
-//            $term = wp_insert_term($group->name, 'marker_cat');
-//        } else {
-//            $term = reset($term);
-//        }
-//
-//        foreach($group->items as $marker) {
-//
-////            $marker_post_id = wp_insert_post(array(
-////                'post_type' => 'marker',
-////                'post_content' => html_entity_decode($marker->longcontent, ENT_COMPAT, 'UTF-8'),
-////                'post_excerpt' => strip_tags($marker->content),
-////                'post_title' => str_replace(
-////                    array("'",),
-////                    array('"',),
-////                    html_entity_decode($marker->name, ENT_COMPAT, 'UTF-8')
-////                ),
-////                'post_status' => 'publish',
-////                'meta_input' => array(
-////                    'marker_address' => $marker->name,
-////                    'marker_location' => array(
-////                        'latitude' => floatval($marker->center[0]),
-////                        'longitude' => floatval($marker->center[1])
-////                    ),
-////                    'marker_location_latitude' => floatval($marker->center[0]),
-////                    'marker_location_longitude' => floatval($marker->center[1]),
-////                    '_old_id' => $marker->id,
-////                ),
-////            ));
-////
-////            wp_set_object_terms($marker_post_id, array($term['term_id']), 'marker_cat');
-//
-//        }
-//
-//    }
-
 	//Final
+	echo 'Markers inserted: '.$markers_num.chr(10);
 	echo 'Memory '.memory_get_usage(true).chr(10);
 	echo 'Total execution time in sec: ' . (microtime(true) - $time_start).chr(10).chr(10);
 }
