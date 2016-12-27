@@ -221,7 +221,9 @@ if( !class_exists('TST_Import') ) {
 
             if( $localpdf ) {
                 $localpdf_file = preg_replace( '/\/$/', '', $localpdf) . '/' . $new_file_base_name;
+                printf( "local PDF file: %s\n", $localpdf_file );
                 if( file_exists( $localpdf_file ) ) {
+                    printf( "local PDF not found\n" );
                     copy( $localpdf_file, $new_file_no_prefix );
                 }
             }
