@@ -257,7 +257,7 @@ if( !class_exists('TST_Import') ) {
                         update_post_meta( $new_attachment_id, 'old_parent_page_url', $old_parent_page_url );
                     }
 
-                    $attachment_terms = wp_get_post_terms( $post_id, 'attachment_tag' );
+                    $attachment_terms = wp_get_post_terms( $attachment_id, 'attachment_tag' );
                     foreach( $attachment_terms as $tag ) {
                         wp_set_object_terms( $new_attachment_id, $tag->term_id, 'attachment_tag' );
                     }
