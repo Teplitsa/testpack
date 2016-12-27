@@ -182,6 +182,11 @@ if( !class_exists('TST_Import') ) {
         }
 
         public function convert2pdf( $attachment_id, $localpdf = '' ) {
+    
+            if( $localpdf ) {
+                $localpdf = $upload_dir['basedir'].'/localpdf';
+            }
+    
             $ret_attachment_id = $attachment_id;
 
             $original_file = get_attached_file( $attachment_id );
@@ -216,7 +221,9 @@ if( !class_exists('TST_Import') ) {
 
             if( $localpdf ) {
                 $localpdf_file = preg_replace( '/\/$/', '', $localpdf) . '/' . $new_file_base_name;
-                copy( $localpdf_file, $new_file_no_prefix );
+                if( file_exists( $localpdf_file ) ) {
+                    copy( $localpdf_file, $new_file_no_prefix );
+                }
             }
             else {
                 $command = 'lowriter --headless --convert-to pdf:writer_pdf_Export --outdir %s %s';
@@ -263,7 +270,7 @@ if( !class_exists('TST_Import') ) {
                 unlink( $new_file );
             }
             else {
-                printf( "NO local PDF\n");
+                printf( "NO local PDF: %d - %s\n", $attachment_id, $of_base_name );
             }
 
             return $ret_attachment_id;

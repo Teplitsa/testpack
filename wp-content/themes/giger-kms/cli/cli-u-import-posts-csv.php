@@ -10,21 +10,22 @@ try {
     $time_start = microtime(true);
     include('cli_common.php');
     require_once( ABSPATH . 'wp-admin/includes/media.php' );
-    
-	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
-	global $wpdb;
-	$uploads = wp_upload_dir();
-    
-    $options = getopt("", array('file:', 'localpdf:'));
-    
+    echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
+
+    global $wpdb;
+    $uploads = wp_upload_dir();
+
+    $options = getopt("", array('file:', 'localpdf::'));
+
     $input_file = isset($options['file']) ? $options['file'] : '';
     printf( "Processing %s\n", $input_file );
-    
-    $localpdf = $options['localpdf'] ? $options['localpdf'] : NULL;
 
-	$count = 0;
-	$csv = array_map('str_getcsv', file( $input_file ));
+    $localpdf = isset( $options['localpdf'] ) ? True : False;
+
+    $count = 0;
+    $converted2pdf_count = 0;
+    $csv = array_map('str_getcsv', file( $input_file ));
 
 	if (($handle = fopen( $input_file, "r" )) !== FALSE) {
 
@@ -43,6 +44,8 @@ try {
             $post_files_string = $line[5];
             $files_url = explode( '|', $post_files_string );
             $parent_url = $line[6];
+            
+            printf( "page: %s\n", $page_url );
             
 //            print_r( $files_url );
 //            printf( "%s: %s\n", $post_type, $post_title );
@@ -88,6 +91,8 @@ try {
                     if( $file_id ) {
                         
                         if( TST_Import::get_instance()->is_must_convert2pdf( $file_url ) ) {
+                            $converted2pdf_count += 1;
+                            
                             $pdf_file_id = TST_Import::get_instance()->convert2pdf( $file_id, $localpdf );
                             if( $pdf_file_id ) {
                                 $file_id = $pdf_file_id;
