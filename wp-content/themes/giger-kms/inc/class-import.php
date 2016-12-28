@@ -182,6 +182,12 @@ if( !class_exists('TST_Import') ) {
         }
 
         public function convert2pdf( $attachment_id, $localpdf = '' ) {
+    
+            $wp_upload_dir = wp_upload_dir();
+            if( $localpdf ) {
+                $localpdf = $wp_upload_dir['basedir'].'/localpdf';
+            }
+    
             $ret_attachment_id = $attachment_id;
 
             $original_file = get_attached_file( $attachment_id );
@@ -193,8 +199,7 @@ if( !class_exists('TST_Import') ) {
 
             $of_base_name = $of_info['basename'];
             $of_dir = $of_info['dirname'];
-            $upload_dir = wp_upload_dir();
-            $of_dir = str_replace( $upload_dir['basedir'], '', $of_dir );
+            $of_dir = str_replace( $wp_upload_dir['basedir'], '', $of_dir );
 //        printf( "of_dir: %s\n", $of_dir );
 
             $new_file_prefix = preg_replace( '/\/$/', '', $of_dir );
@@ -216,7 +221,11 @@ if( !class_exists('TST_Import') ) {
 
             if( $localpdf ) {
                 $localpdf_file = preg_replace( '/\/$/', '', $localpdf) . '/' . $new_file_base_name;
-                copy( $localpdf_file, $new_file_no_prefix );
+                printf( "local PDF file: %s\n", $localpdf_file );
+                if( file_exists( $localpdf_file ) ) {
+                    printf( "local PDF not found\n" );
+                    copy( $localpdf_file, $new_file_no_prefix );
+                }
             }
             else {
                 $command = 'lowriter --headless --convert-to pdf:writer_pdf_Export --outdir %s %s';
@@ -248,7 +257,7 @@ if( !class_exists('TST_Import') ) {
                         update_post_meta( $new_attachment_id, 'old_parent_page_url', $old_parent_page_url );
                     }
 
-                    $attachment_terms = wp_get_post_terms( $post_id, 'attachment_tag' );
+                    $attachment_terms = wp_get_post_terms( $attachment_id, 'attachment_tag' );
                     foreach( $attachment_terms as $tag ) {
                         wp_set_object_terms( $new_attachment_id, $tag->term_id, 'attachment_tag' );
                     }
@@ -263,15 +272,15 @@ if( !class_exists('TST_Import') ) {
                 unlink( $new_file );
             }
             else {
-                printf( "NO local PDF\n");
+                printf( "NO local PDF: %d - %s\n", $attachment_id, $of_base_name );
             }
 
             return $ret_attachment_id;
         }
 
         public function copy_to_localpdf( $new_file, $new_file_base_name ) {
-            $upload_dir = wp_upload_dir();
-            $pdf_dirname = $upload_dir['basedir'].'/localpdf';
+            $wp_upload_dir = wp_upload_dir();
+            $pdf_dirname = $wp_upload_dir['basedir'].'/localpdf';
             if ( ! file_exists( $pdf_dirname ) ) {
                 wp_mkdir_p( $pdf_dirname );
             }

@@ -7,6 +7,24 @@ ini_set('memory_limit','256M');
 
 define( 'DRONT_SITE_URL', 'http://dront.ru');
 $sections = array(
+    
+    'http://dront.ru/old/defense/' => array( "xpath" => array( 
+            'title' => array( ".//div[@id='content']/div[@class='post'][1]//h2[1]", ".//div[@id='content']/div[@class='post'][1]//font[@size='3']", ), 
+            'content' => ".//div[@id='content']/div[@class='post'][1]", 
+            'date' => ""
+        ), 
+        'clean_content_regexp' => array(
+        ),
+        'clean_content_xpath' => array(
+            ".//div[@id='content']/div[@class='post'][1]//font[@size='3']",
+            ".//div[@id='content']/div[@class='post'][1]//h2[1]",
+        ),
+        "is_files_in_content" => true,
+        'post_type' => 'import',
+        'is_tree' => true,
+        'charset' => 'windows-1251',
+    ),
+    
     'http://dront.ru/news/' => array( "xpath" => array( 
             'title' => ".//body//div[@class='container']//div[contains(@class, 'left_row')]//h1", 
             'content' => ".//body//div[@class='container']//div[contains(@class, 'left_row')][./h1]", 
@@ -274,6 +292,9 @@ $sections['http://dront.ru/old/news/08-11-25.html']['charset'] = 'windows-1251';
 
 $sections['http://dront.ru/old/news/inform.html'] = $sections['http://dront.ru/old/news/'];
 $sections['http://dront.ru/old/news/inform.html']['charset'] = 'windows-1251';
+
+$sections['http://dront.ru/old/defense/aes/index.html'] = $sections['http://dront.ru/old/defense/'];
+$sections['http://dront.ru/old/defense/aes/index.html']['xpath']['title'] = ".//*[@id='header']/h1/a/font";
 
 //$sections[''] = $sections['http://dront.ru/'];
 

@@ -677,7 +677,7 @@ function tst_p2p_connection_types() {
 
 	p2p_register_connection_type(array(
         'name' 	=> 'import_attachments',
-        'from' 	=> array('import'),
+        'from' 	=> array('archive_page', 'post', 'import'),
         'to' 	=> 'attachment',
 		'admin_column' => false,
 		'from_labels' => array(
