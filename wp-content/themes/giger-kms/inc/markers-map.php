@@ -15,12 +15,12 @@ function tst_markers_map_output($atts){
         'width' => '',
         'height' => 460,
 
-        'enable_scroll_wheel' => 'false',
-        'zoom' => 15,
-        'disable_controls' => 'false',
+        'enable_scroll_wheel' => false,
+        'zoom' => 10,
+        'disable_controls' => false,
 
-        'lat_center' => '51.7675153',
-        'lng_center' => '55.0953063',
+        'lat_center' => '56.296504',
+        'lng_center' => '43.936059',
 
         'show_legend' => true,
         'legend_is_filter' => true,
@@ -44,6 +44,49 @@ function tst_markers_map_output($atts){
     /** @var $css_classes string */
     $groups_excluded_ids = $groups_excluded_ids ? array_map('intval', explode(',', $groups_excluded_ids)) : array();
     $groups_ids = $groups_ids ? array_map('intval', explode(',', $groups_ids)) : array();
+    $groups = array();
+    if( !$groups_ids ) {
+
+        $parent_groups = get_terms(array(
+            'taxonomy' => 'marker_cat',
+            'hide_empty' => false,
+            'exclude' => $groups_excluded_ids,
+            'parent' => 0,
+        ));
+
+        foreach($parent_groups as $group) {
+            $groups['parents'][$group->term_id] = $group;
+        }
+
+        $child_groups = get_terms(array(
+            'taxonomy' => 'marker_cat',
+            'hide_empty' => false,
+            'exclude' => $groups_excluded_ids,
+            'childless' => true,
+            'orderby' => 'parent,name',
+        ));
+        foreach($child_groups as $group) {
+
+            $groups['children'][$group->term_id] = $group;
+            $groups_ids[] = $group->term_id;
+
+        }
+
+
+
+    } else {
+
+        $child_groups = get_terms(array(
+            'taxonomy' => 'marker_cat',
+            'hide_empty' => false,
+            'include' => $groups_ids,
+        ));
+        foreach($child_groups as $group) {
+            $groups['children'][$group->term_id] = $group;
+        }
+
+    }
+
     $markers_ids = $markers_ids ? array_map('intval', explode(',', $markers_ids)) : array();
 
     $width = $width ? trim($width) : '100%';
@@ -51,7 +94,7 @@ function tst_markers_map_output($atts){
 
     $enable_scroll_wheel = !!$enable_scroll_wheel;
     $zoom = intval($zoom);
-    $disable_controls = !!$disable_controls;
+    $disable_controls = $disable_controls ? true : false;
     $show_legend = !!$show_legend;
     $legend_is_filter = !!$legend_is_filter;
 
@@ -63,7 +106,6 @@ function tst_markers_map_output($atts){
     ob_start();
 
     $map_id = uniqid('rdc_map_');
-    $zoomControl = $disable_controls ? 'false' : 'true';
 
     // Markers query
     $params = array(
@@ -76,7 +118,7 @@ function tst_markers_map_output($atts){
         $params['post__in'] = $markers_ids;
         $show_legend = false; // we won't show a legend for a single marker
 
-    } elseif ($groups_ids || $groups_excluded_ids) {
+    } elseif($groups_ids || $groups_excluded_ids) {
 
         $params['tax_query'] = array(
             'relation' => 'AND',
@@ -101,9 +143,8 @@ function tst_markers_map_output($atts){
 //            $show_legend = false;
     }
 
-    $markers = get_posts($params);
     $markers_json = array();
-    foreach ($markers as $marker) {
+    foreach(get_posts($params) as $marker) {
 
         $lat = get_post_meta($marker->ID, 'marker_location_latitude', true);
         $lng = get_post_meta($marker->ID, 'marker_location_longitude', true);
@@ -114,6 +155,9 @@ function tst_markers_map_output($atts){
 
         $popup = rdc_get_marker_popup($marker, $groups_ids);
 
+//        echo '<pre>' . print_r($marker->post_title.' ('.$marker->ID.')', 1) . '</pre>';
+//        echo '<pre>' . print_r(rdc_get_marker_icon_class($marker, $groups_ids), 1) . '<hr></pre>';
+
         $markers_json[] = array(
             'title' => esc_attr($marker->post_title),
             //'descr' => $descr,
@@ -122,18 +166,15 @@ function tst_markers_map_output($atts){
             'popup_text' => $popup,
             'class' => rdc_get_marker_icon_class($marker, $groups_ids),
         );
-    }
+    }?>
 
-//    wp_enqueue_style( 'dashicons' ); // Caused leaflet map CSS bugs, so was transferred to the main CSS enqueue blocks
-
-    ?>
     <div class="<?php echo $css_classes;?>">
     <div class="pw_map-wrap">
         <div class="pw_map_canvas" id="<?php echo esc_attr($map_id);?>"
              style="height: <?php echo esc_attr($height);?>px; width: <?php echo esc_attr($width);?>"></div>
-        <?php if ($show_legend) { ?>
+        <?php if($show_legend) {?>
             <div class="pw_map_legend"><?php echo rdc_get_legend($groups_ids); ?></div>
-        <?php } ?>
+        <?php }?>
     </div>
     <script type="text/javascript">
         if (typeof mapFunc == "undefined") {
@@ -151,15 +192,15 @@ function tst_markers_map_output($atts){
                 minZoom: 3
             });
 
-            var map = L.map('<?php echo $map_id; ?>', {
-                zoomControl: <?php echo $zoomControl;?>,
-                scrollWheelZoom: false,
+            var map = L.map('<?php echo $map_id;?>', {
+                zoomControl: <?php echo $disable_controls ? 'false' : 'true';?>,
+                scrollWheelZoom: <?php echo $enable_scroll_wheel ? 'true' : 'false';?>,
                 center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
                 zoom: <?php echo $zoom;?>,
                 layers: [kosmo_light]
             });
 
-            L.control.layers({"Kosmo Light": kosmo_light}).addTo(map);
+//            L.control.layers({"Kosmo Light": kosmo_light}).addTo(map);
 
             var points = <?php echo json_encode($markers_json);?>;
             for (var i = 0; i < points.length; i++) {
@@ -182,6 +223,7 @@ function tst_markers_map_output($atts){
                 );
 
             }
+            console.log(points.length)
         });
 
     </script>
@@ -193,6 +235,22 @@ function tst_markers_map_output($atts){
     return $out;
 
 }
+
+add_action('wp_footer', function(){
+
+    $base = get_template_directory_uri().'/assets/img/';?>
+
+    <script type="text/javascript">
+        L.Icon.Default.imagePath = '<?php echo $base; ?>';
+
+        if (typeof mapFunc != "undefined") {
+            for (var i = 0; i < mapFunc.length; i++) {
+                mapFunc[i]();
+            }
+        }
+    </script>
+
+<?php }, 100);
 
 if(class_exists('SiteOrigin_Widget')) {
 
@@ -503,22 +561,6 @@ if(class_exists('SiteOrigin_Widget')) {
 
     } //class
 
-    add_action('wp_footer', function(){
-
-        $base = get_template_directory_uri().'/assets/img/';
-        ?>
-        <script type="text/javascript">
-            L.Icon.Default.imagePath = '<?php echo $base; ?>';
-
-            if (typeof mapFunc != "undefined") {
-                for (var i = 0; i < mapFunc.length; i++) {
-                    mapFunc[i]();
-                }
-            }
-        </script>
-        <?php
-    }, 100);
-
     //register
     siteorigin_widget_register('tst-markermap', __FILE__, 'TST_Markermap_Widget');
 
@@ -533,40 +575,55 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
 
     $name = get_the_title($marker);
     $addr = get_post_meta($marker->ID, 'marker_address', true);
-    $content = apply_filters('rdc_the_content', $marker->post_excerpt); // $marker->post_content
+    $content = trim(apply_filters('rdc_the_content', $marker->post_excerpt)); // $marker->post_content
+
     $thumbnail = get_the_post_thumbnail($marker->ID, 'small-thumbnail');
 
     // get info from connected campaign if any
     $rel_campaign = get_post_meta($marker->ID, 'marker_related_campaign', true);
     if($rel_campaign) {
-        $campaign_data = rdc_get_data_from_connected_campaign($marker, $rel_campaign);
-        if(empty($thumbnail))
-            $thumbnail = $campaign_data['thumbnail'];
 
-        if(empty($content))
+        $campaign_data = rdc_get_data_from_connected_campaign($marker, $rel_campaign);
+        if(empty($thumbnail)) {
+            $thumbnail = $campaign_data['thumbnail'];
+        }
+
+        if(empty($content)) {
             $content = apply_filters('rdc_the_content', $campaign_data['content']);
+        }
+
         $content .= "<p class='c-btn'>".$campaign_data['button']."</p>";
+
     }
 
-    if( !empty($layers_id) ) {
+    if($layers_id) {
+
         $layer = rdc_get_marker_layer_match($marker, $layers_id);
         if($layer && !empty($layer->description)){
             $content .= apply_filters('rdc_the_content', $layer->description);
         }
+
     } else {
         $css = 'normal';
     }
 
-    // markup
     $popup = "<div class='marker-content ".$css."'><div class='mc-title'>".$name."</div>";
 
-    if(!empty($thumbnail))
+    if($thumbnail) {
         $popup .=  "<div class='mc-thumb'>".$thumbnail."</div>";
+    }
 
-    $popup .= "<div class='mc-address'>".$addr."</div>";
+    $name_filtered = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($name, ENT_COMPAT, 'UTF-8')));
+    $addr_filtered = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($addr, ENT_COMPAT, 'UTF-8')));
+    $content_filtered = trim(str_replace(array('"', "'", '«', '»'), array(), html_entity_decode($content, ENT_COMPAT, 'UTF-8')));
 
-    if(!empty($content))
+    if($addr_filtered && $addr_filtered != $name_filtered) {
+        $popup .= "<div class='mc-address'>$addr</div>";
+    }
+
+    if($content_filtered && $content_filtered != $name_filtered) {
         $popup .= "<div class='mc-content'>".$content."</div>";
+    }
 
     $popup .= "</div>";
 

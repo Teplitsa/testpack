@@ -25,13 +25,13 @@ get_header();?>
 
                 <div class="bit md-12 single-body">
 
-                    <?php if(has_post_thumbnail($cpost)) { ?>
-                        <div class="single-body__preview"><?php tst_single_thumbnail($cpost);?></div>
-                    <?php } ?>
+<!--                    --><?php //if(has_post_thumbnail($cpost)) { ?>
+<!--                        <div class="single-body__preview">--><?php //tst_single_thumbnail($cpost);?><!--</div>-->
+<!--                    --><?php //} ?>
 
                     <div class="single-body--entry">
                         <?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
-                        <?php echo do_shortcode('[tst_markers_map groups_excluded="146,147"]');?>
+                        <?php echo do_shortcode('[tst_markers_map groups_excluded_ids="146,147"]');?>
                     </div>
                     <div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
                 </div>
