@@ -4,6 +4,196 @@ Widget Name: [TST] Карта с маркерами
 Description: Вывод карты с маркером или группой маркеров
 */
 
+add_shortcode('tst_markers_map', 'tst_markers_map_output');
+function tst_markers_map_output($atts){
+
+    extract(shortcode_atts(array(
+
+        'groups_excluded_ids' => '',
+        'groups_ids' => '',
+        'markers_ids' => '',
+        'width' => '',
+        'height' => 460,
+
+        'enable_scroll_wheel' => 'false',
+        'zoom' => 15,
+        'disable_controls' => 'false',
+
+        'lat_center' => '51.7675153',
+        'lng_center' => '55.0953063',
+
+        'show_legend' => true,
+        'legend_is_filter' => true,
+
+        'css_classes' => '',
+
+    ), $atts));
+
+    /** @var $groups_excluded_ids string */
+    /** @var $groups_ids string */
+    /** @var $markers_ids string */
+    /** @var $width integer */
+    /** @var $height integer */
+    /** @var $enable_scroll_wheel bool */
+    /** @var $zoom integer */
+    /** @var $disable_controls bool */
+    /** @var $lat_center float */
+    /** @var $lng_center float */
+    /** @var $show_legend bool */
+    /** @var $legend_is_filter bool */
+    /** @var $css_classes string */
+    $groups_excluded_ids = $groups_excluded_ids ? array_map('intval', explode(',', $groups_excluded_ids)) : array();
+    $groups_ids = $groups_ids ? array_map('intval', explode(',', $groups_ids)) : array();
+    $markers_ids = $markers_ids ? array_map('intval', explode(',', $markers_ids)) : array();
+
+    $width = $width ? trim($width) : '100%';
+    $height = $height ? intval($height) : 200;
+
+    $enable_scroll_wheel = !!$enable_scroll_wheel;
+    $zoom = intval($zoom);
+    $disable_controls = !!$disable_controls;
+    $show_legend = !!$show_legend;
+    $legend_is_filter = !!$legend_is_filter;
+
+    $lat_center = floatval($lat_center);
+    $lng_center = floatval($lng_center);
+
+    $css_classes = trim($css_classes);
+
+    ob_start();
+
+    $map_id = uniqid('rdc_map_');
+    $zoomControl = $disable_controls ? 'false' : 'true';
+
+    // Markers query
+    $params = array(
+        'post_type' => 'marker',
+        'posts_per_page' => -1
+    );
+
+    if ($markers_ids) {
+
+        $params['post__in'] = $markers_ids;
+        $show_legend = false; // we won't show a legend for a single marker
+
+    } elseif ($groups_ids || $groups_excluded_ids) {
+
+        $params['tax_query'] = array(
+            'relation' => 'AND',
+            array(
+                'taxonomy' => 'marker_cat',
+                'field' => 'term_id',
+                'terms' => $groups_ids
+            ),
+            array(
+                'taxonomy' => 'marker_cat',
+                'field' => 'term_id',
+                'terms' => $groups_excluded_ids,
+                'operator' => 'NOT IN'
+            )
+        );
+
+        $show_legend = true;
+
+//        if (count($groups_ids) > 1 && $show_legend)
+//            $show_legend = true;
+//        else
+//            $show_legend = false;
+    }
+
+    $markers = get_posts($params);
+    $markers_json = array();
+    foreach ($markers as $marker) {
+
+        $lat = get_post_meta($marker->ID, 'marker_location_latitude', true);
+        $lng = get_post_meta($marker->ID, 'marker_location_longitude', true);
+
+        if (empty($lat) || empty($lng)) {
+            continue;
+        }
+
+        $popup = rdc_get_marker_popup($marker, $groups_ids);
+
+        $markers_json[] = array(
+            'title' => esc_attr($marker->post_title),
+            //'descr' => $descr,
+            'lat' => $lat,
+            'lng' => $lng,
+            'popup_text' => $popup,
+            'class' => rdc_get_marker_icon_class($marker, $groups_ids),
+        );
+    }
+
+//    wp_enqueue_style( 'dashicons' ); // Caused leaflet map CSS bugs, so was transferred to the main CSS enqueue blocks
+
+    ?>
+    <div class="<?php echo $css_classes;?>">
+    <div class="pw_map-wrap">
+        <div class="pw_map_canvas" id="<?php echo esc_attr($map_id);?>"
+             style="height: <?php echo esc_attr($height);?>px; width: <?php echo esc_attr($width);?>"></div>
+        <?php if ($show_legend) { ?>
+            <div class="pw_map_legend"><?php echo rdc_get_legend($groups_ids); ?></div>
+        <?php } ?>
+    </div>
+    <script type="text/javascript">
+        if (typeof mapFunc == "undefined") {
+            var mapFunc = new Array();
+        }
+
+        mapFunc.push(function () {
+
+            var mbAttr = 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
+
+            var kosmo_light = L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
+                id: 'kosmo_light',
+                attribution: mbAttr,
+                maxZoom: 24,
+                minZoom: 3
+            });
+
+            var map = L.map('<?php echo $map_id; ?>', {
+                zoomControl: <?php echo $zoomControl;?>,
+                scrollWheelZoom: false,
+                center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
+                zoom: <?php echo $zoom;?>,
+                layers: [kosmo_light]
+            });
+
+            L.control.layers({"Kosmo Light": kosmo_light}).addTo(map);
+
+            var points = <?php echo json_encode($markers_json);?>;
+            for (var i = 0; i < points.length; i++) {
+
+                var marker = L.marker([points[i].lat, points[i].lng], {
+                    title: points[i].title,
+                    alt: points[i].title,
+                    icon: L.divIcon({
+                        className: 'mymap-icon dashicons ' + points[i].class,
+                        iconSize: [32, 32],
+                        iconAnchor: [16, 32]
+                    })
+                })
+                .addTo(map)
+                .bindPopup(
+                    L.popup({
+                        autoPan: true,
+                        autoPanPaddingTopLeft: [20, 20]
+                    }).setContent(points[i].popup_text)
+                );
+
+            }
+        });
+
+    </script>
+    </div>
+
+    <?php $out = ob_get_contents();
+    ob_end_clean();
+
+    return $out;
+
+}
+
 if(class_exists('SiteOrigin_Widget')) {
 
     class TST_Markermap_Widget extends SiteOrigin_Widget
@@ -343,10 +533,10 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
 
     $name = get_the_title($marker);
     $addr = get_post_meta($marker->ID, 'marker_address', true);
-    $content = apply_filters('rdc_the_content', $marker->post_content);
+    $content = apply_filters('rdc_the_content', $marker->post_excerpt); // $marker->post_content
     $thumbnail = get_the_post_thumbnail($marker->ID, 'small-thumbnail');
 
-    //get info from connected campaign if any
+    // get info from connected campaign if any
     $rel_campaign = get_post_meta($marker->ID, 'marker_related_campaign', true);
     if($rel_campaign) {
         $campaign_data = rdc_get_data_from_connected_campaign($marker, $rel_campaign);
@@ -358,17 +548,16 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
         $content .= "<p class='c-btn'>".$campaign_data['button']."</p>";
     }
 
-    if(!empty($layers_id)){
+    if( !empty($layers_id) ) {
         $layer = rdc_get_marker_layer_match($marker, $layers_id);
         if($layer && !empty($layer->description)){
             $content .= apply_filters('rdc_the_content', $layer->description);
         }
-    }
-    else {
+    } else {
         $css = 'normal';
     }
 
-    //markup
+    // markup
     $popup = "<div class='marker-content ".$css."'><div class='mc-title'>".$name."</div>";
 
     if(!empty($thumbnail))
@@ -382,6 +571,7 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
     $popup .= "</div>";
 
     return $popup;
+
 }
 
 function rdc_get_data_from_connected_campaign($marker, $rel_campaign) {
@@ -396,15 +586,15 @@ function rdc_get_data_from_connected_campaign($marker, $rel_campaign) {
     $css = ($camp->is_closed) ? 'button' : 'button-red';
     $data['button'] = "<a href='".get_permalink($camp->ID)."' class='{$css}'>{$label}</a>";
 
-    if(rdc_is_children_campaign($camp->ID)){
-
-        $m = array();
-        $m[]  = get_post_meta($camp->ID, 'campaign_child_age', true);
-        $m[] = get_post_meta($camp->ID, 'campaign_child_diagnosis', true);
-        array_filter($m);
-
-        $data['content'] = implode(', ', $m);
-    }
+//    if(rdc_is_children_campaign($camp->ID)){
+//
+//        $m = array();
+//        $m[]  = get_post_meta($camp->ID, 'campaign_child_age', true);
+//        $m[] = get_post_meta($camp->ID, 'campaign_child_diagnosis', true);
+//        array_filter($m);
+//
+//        $data['content'] = implode(', ', $m);
+//    }
 
     return $data;
 }
@@ -427,6 +617,7 @@ function rdc_get_marker_icon_class($marker, $layers_id = array()){
     }
 
     return $class;
+
 }
 
 function rdc_get_marker_layer_match($marker, $layers_id) {

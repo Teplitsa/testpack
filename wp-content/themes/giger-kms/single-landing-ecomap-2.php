@@ -8,8 +8,7 @@
 $cpost = get_queried_object();
 
 
-get_header();
-echo '<pre>' . print_r($cpost, 1) . '</pre>';?>
+get_header();?>
 
     <article class="single-card">
         <div class="single-card__header">
@@ -30,7 +29,10 @@ echo '<pre>' . print_r($cpost, 1) . '</pre>';?>
                         <div class="single-body__preview"><?php tst_single_thumbnail($cpost);?></div>
                     <?php } ?>
 
-                    <div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
+                    <div class="single-body--entry">
+                        <?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
+                        <?php echo do_shortcode('[tst_markers_map groups_excluded="146,147"]');?>
+                    </div>
                     <div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
                 </div>
 
