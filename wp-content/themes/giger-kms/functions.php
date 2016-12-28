@@ -109,6 +109,7 @@ require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/post-types.php';
 require get_template_directory().'/inc/related.php';
 require get_template_directory().'/inc/request.php';
+require get_template_directory().'/inc/map.php';
 
 //require get_template_directory().'/inc/donations.php';
 //require get_template_directory().'/inc/forms.php';

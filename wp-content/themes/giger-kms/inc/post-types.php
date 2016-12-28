@@ -127,20 +127,20 @@ function tst_custom_content(){
     /** Post types **/
 	register_post_type('landing', array(
         'labels' => array(
-            'name'               => 'Лендинги',
-            'singular_name'      => 'Лендинг',
-            'menu_name'          => 'Лендинги',
-            'name_admin_bar'     => 'Добавить лендинг',
+            'name'               => 'Лэндинги',
+            'singular_name'      => 'Лэндинг',
+            'menu_name'          => 'Лэндинги',
+            'name_admin_bar'     => 'Добавить лэндинг',
             'add_new'            => 'Добавить новый',
-            'add_new_item'       => 'Добавить лендинг',
-            'new_item'           => 'Новый лендинг',
-            'edit_item'          => 'Редактировать лендинг',
-            'view_item'          => 'Просмотр лендингов',
-            'all_items'          => 'Все лендинги',
-            'search_items'       => 'Искать лендинги',
-            'parent_item_colon'  => 'Родительские лендинги:',
-            'not_found'          => 'Лендинг не найдены',
-            'not_found_in_trash' => 'В Корзине лендинги не найдены'
+            'add_new_item'       => 'Добавить лэндинг',
+            'new_item'           => 'Новый лэндинг',
+            'edit_item'          => 'Редактировать лэндинг',
+            'view_item'          => 'Просмотр лэндингов',
+            'all_items'          => 'Все лэндинги',
+            'search_items'       => 'Искать лэндинги',
+            'parent_item_colon'  => 'Родительские лэндинги:',
+            'not_found'          => 'Лэндинг не найдены',
+            'not_found_in_trash' => 'В Корзине лэндинги не найдены'
        ),
         'public'              => true,
         'exclude_from_search' => false,
@@ -633,7 +633,7 @@ function tst_p2p_connection_types() {
         'to' 	=> array('project'),
 		'admin_column' => 'to',
 		'to_labels' => array(
-			'column_title' => 'Лендинги',
+			'column_title' => 'Лэндинги',
 		),
 		'admin_box' => array(
 			'show' => 'any',
@@ -648,7 +648,7 @@ function tst_p2p_connection_types() {
         'to' 	=> array('person'),
 		'admin_column' => 'to',
 		'to_labels' => array(
-			'column_title' => 'Лендинги',
+			'column_title' => 'Лэндинги',
 		),
 		'admin_box' => array(
 			'show' => 'any',
