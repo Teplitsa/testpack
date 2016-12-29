@@ -16,17 +16,26 @@ try {
 	global $wpdb;
 	$uploads = wp_upload_dir();
     
-    $options = getopt("", array('file:', 'tag:'));
+    $options = getopt("", array('file:', 'tag:', 'localpdf::'));
     
     $input_file = isset($options['file']) ? $options['file'] : '';
     printf( "Processing %s\n", $input_file );
     
+    $localpdf = isset( $options['localpdf'] ) ? True : False;
+    if( $localpdf ) {
+        printf( "localpdf option ON\n" );
+    }
+    else {
+        printf( "localpdf option OFF\n" );
+    }
+    
     $tag_slug = isset($options['tag']) ? $options['tag'] : '';
     if( $tag_slug ) {
-        printf( "Mark with TAG:  %s\n", $tag_slug );        
+        printf( "Mark with TAG:  %s\n", $tag_slug );
     }
 
 	$count = 0;
+    $converted2pdf_count = 0;
 	$csv = array_map('str_getcsv', file( $input_file ));
 
 	if (($handle = fopen( $input_file, "r" )) !== FALSE) {
@@ -63,6 +72,25 @@ try {
                     }
                 }
                 unset( $exist_attachment );
+                
+                if( $file_id ) {
+                    
+                    if( TST_Import::get_instance()->is_must_convert2pdf( $file_url ) ) {
+                        $converted2pdf_count += 1;
+
+                        $pdf_file_id = TST_Import::get_instance()->convert2pdf( $file_id, $localpdf );
+                        if( $pdf_file_id ) {
+                            $file_id = $pdf_file_id;
+                            $file_url = wp_get_attachment_url( $file_id );
+                        }
+                    }
+                    elseif( TST_Import::get_instance()->is_must_convert2pdf( $url ) ) {
+                        $pdf_file = get_attached_file( $file_id );
+                        $pdf_file_info = pathinfo( $pdf_file );                            
+                        TST_Import::get_instance()->copy_to_localpdf( $pdf_file, $pdf_file_info['basename'] );
+                    }
+                    
+                }                
                 
                 if( $file_id ) {
                     if( $tag_slug ) {
