@@ -1171,9 +1171,6 @@ jQuery(document).ready(function($){
 		},
 		timeout: 5000
 	});
-
-
-	
 	
 	/** Leyka custom modal **/
     var leykaTopPad = (windowWidth > 940) ? 120 : 66;
