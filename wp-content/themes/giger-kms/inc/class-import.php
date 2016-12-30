@@ -83,13 +83,32 @@ if( !class_exists('TST_Import') ) {
         public function import_file( $url ) {
             $attachment_id = 0;
             //remote
+            
+//            $tmp_file = tempnam( sys_get_temp_dir(), 'dront_' );
+//            set_time_limit(0);
+//            $fp = fopen ( $tmp_file, 'w+' );
+//            $ch = curl_init( $url );
+//            curl_setopt( $ch, CURLOPT_TIMEOUT, 180 );
+//            curl_setopt( $ch, CURLOPT_FILE, $fp ); 
+//            curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
+//            curl_exec( $ch ); 
+//            curl_close( $ch );
+//            fclose($fp);
+
             $file = wp_remote_get($url, array('timeout' => 50, 'sslverify' => false));
+            
+            if( !file_exists( $tmp_file ) ) {
+                printf( "Download file ERROR!\n" );
+                return $attachment_id;
+            }
 
             $response_code = $file['response']['code'];
 
             if( !is_wp_error($file) && isset($file['body']) ){
                 if( $response_code == '200' && isset($file['headers']['content-type'])) {
-
+//            
+//            if( file_exists( $tmp_file ) ) {
+//                if( true ) {
                     $filename = basename($url);
                     $upload_file = wp_upload_bits($filename, null, $file['body']);
 
@@ -214,7 +233,6 @@ if( !class_exists('TST_Import') ) {
             $new_file = $tmp_dir . $new_file_base_name;
             $new_file_no_prefix = $tmp_dir . $new_file_base_name_no_prefix;
 
-
             printf( "original file: %s\n", $original_file );
             printf( "new PDF file NO PREFIX: %s\n", $new_file_no_prefix );
             printf( "new PDF file: %s\n", $new_file );
@@ -223,20 +241,14 @@ if( !class_exists('TST_Import') ) {
                 $localpdf_file = preg_replace( '/\/$/', '', $localpdf) . '/' . $new_file_base_name;
                 printf( "local PDF file: %s\n", $localpdf_file );
                 if( file_exists( $localpdf_file ) ) {
-                    printf( "local PDF not found\n" );
                     copy( $localpdf_file, $new_file_no_prefix );
+                }
+                else {
+                    printf( "local PDF not found\n" );
                 }
             }
             else {
-                $command = 'lowriter --headless --convert-to pdf:writer_pdf_Export --outdir %s %s';
-
-                $original_file_copy = $tmp_dir . $new_file_prefix . $of_base_name;
-                copy( $original_file, $original_file_copy );
-                $compiled_command = sprintf( $command, substr( $tmp_dir, 0, -1 ), $original_file_copy );
-                //printf( "%s\n", $compiled_command );
-
-                system( $compiled_command );
-                unlink( $original_file_copy );
+                TST_Convert2PDF::get_instance()->doc2pdf( $original_file, $new_file );
             }
 
             if( $localpdf && file_exists( $new_file_no_prefix ) ) {
@@ -262,6 +274,7 @@ if( !class_exists('TST_Import') ) {
                         wp_set_object_terms( $new_attachment_id, $tag->term_id, 'attachment_tag' );
                     }
                     wp_delete_object_term_relationships( $attachment_id, 'attachment_tag' );
+                    unset( $attachment_terms );
                 }
 
                 unlink( $new_file_no_prefix );
@@ -567,9 +580,21 @@ if( !class_exists('TST_Import') ) {
 
 
 if( !class_exists('TST_ImportOldBereginya') ) {
-
+    
     class TST_ImportOldBereginya {
         private static $_instance = null;
+        
+        private static $clean_content_xpath = array(
+            ".//body/table[2]/tr/td[2]//a[starts-with(@href, '../')]",
+            ".//body/table[2]/tr/td[2]//a[@href='/members/bereginya']",
+            "(.//body/table[2]/tr/td)[1]",
+            "(.//body/table[2]/tr/td)[3]",
+            "(.//body/table)[3]",
+            "(.//body/table)[1]",
+            ".//body/p",
+            ".//body//a[starts-with(@href, '/members')]",
+            ".//body//a[@class='menu']",
+        );
 
         private function __construct() {
         }
@@ -580,7 +605,175 @@ if( !class_exists('TST_ImportOldBereginya') ) {
             }
             return self::$_instance;
         }
+        
+        public function clean( $dir ) {
+            printf( "cleaning...\n" );
+            
+            $this->iterate_editions( $dir, "clean_edition" );
+        }
+        
+        public function clean_edition( $edition_dir, $year, $month ) {
+            printf( "clean edition: %s, %s, %s\n", $edition_dir, $year, $month);
+            
+            $files = scandir( $edition_dir );
+            $edition_dir = preg_replace( '#/$#', '', $edition_dir );
+            
+            foreach($files as $file) {
+                $file_path = $edition_dir . '/' . $file;
+//                printf( "2clean candidate: %s\n", $file_path );
+                if( file_exists( $file_path ) && preg_match( "#\.htm$#", $file_path ) ) {
+//                    printf( "2clean: %s\n", $file_path );
+                    $this->clean_file( $file_path );
+                }
+            }
+        }
+
+        public function convert( $dir ) {
+            printf( "converting...\n" );
+        }
+
+        public function import( $dir ) {
+            printf( "importing...\n" );
+        }
+        
+        private function clean_file( $file ) {
+            printf( "file: %s\n", $file );
+
+            $dom = new DomDocument();
+            libxml_use_internal_errors( true );
+            $dom->loadHTMLFile( $file );
+            
+            $xpath = new DomXPath($dom);
+
+            $nodes2delete = array();
+            foreach( self::$clean_content_xpath as $v ) {
+                if( !$v ) {
+                    continue;
+                }
+                $nodes = $xpath->query( $v );
+//                print_r( $nodes );
+                
+                $item_index = 0;
+                while( $node = $nodes->item( $item_index ) ) {
+                    $nodes2delete[] = $node;
+                    $item_index += 1;
+                }
+                
+            }
+
+            foreach( $nodes2delete as $element ) {
+                if( $element->parentNode ) {
+                    $element->parentNode->removeChild( $element );
+                }
+            }
+            
+//            $clean_file = preg_replace( "/\.htm$/", "_clean.htm", $file );
+            $clean_file = $file;
+            $content = $dom->saveHTML();
+            $content = mb_convert_encoding($content, 'iso-8859-1', 'HTML-ENTITIES');
+            file_put_contents( $clean_file, $content);
+            
+//            printf( "clean file: %s\n", $clean_file );
+        }
+
+        private function get_years_dirs( $dir ) {
+            return $this->get_date_dirs( $dir, $this->get_year_dir_regexp() );
+        }
+        
+        private function get_months_dirs( $dir ) {
+            return $this->get_date_dirs( $dir, $this->get_month_dir_regexp() );
+        }
+        
+        private function get_date_dirs( $dir, $regexp ) {
+            $files = scandir( $dir );
+            $dir = preg_replace( '#/$#', '', $dir );
+            $res_dirs = array();
+            foreach($files as $file) {
+                $file_path = $dir . '/' . $file;
+                if( is_dir( $file_path ) && preg_match( $regexp, $file_path ) ) {
+                    $res_dirs[] = $file_path;
+                }
+            }
+            
+            return $res_dirs;
+        }
+        
+        private function get_year_from_dir( $dir ) {
+            $year = '';
+            if( preg_match( $this->get_year_dir_regexp(), $dir, $matches ) ) {
+                $year = $matches[1];
+            }
+            return $year;
+        }
+        
+        private function get_month_from_dir( $dir ) {
+            $month = '';
+            if( preg_match( $this->get_month_dir_regexp(), $dir, $matches ) ) {
+                $month = $matches[1];
+            }
+            return $month;
+        }
+        
+        private function get_year_dir_regexp() {
+            return "#/(\d+)/?$#";
+        }
+        
+        private function get_month_dir_regexp() {
+            return "#/(\d+)(?:-\d+)?/?$#";
+        }
+        
+        public function iterate_editions( $dir, $edition_action ) {
+            $years_dirs = $this->get_years_dirs( $dir );
+            foreach( $years_dirs as $year_dir ) {
+                $year = $this->get_year_from_dir( $year_dir );
+                $month_dirs = $this->get_months_dirs( $year_dir );
+                foreach( $month_dirs as $month_dir ) {
+                    $month = $this->get_month_from_dir( $month_dir );
+                    call_user_func( array( $this, $edition_action ), $month_dir, $year, $month);
+                }
+            }
+        }
 
     } //class TST_ImportOldBereginya
 
+}
+
+if( !class_exists('TST_Convert2PDF') ) {
+    
+    class TST_Convert2PDF {
+        
+        private static $_instance = null;
+        
+        private function __construct() {
+        }
+
+        public static function get_instance() {
+            if( !self::$_instance ) {
+                self::$_instance = new self;
+            }
+            return self::$_instance;
+        }
+        
+        public function doc2pdf( $src, $dst ) {
+            $command = 'lowriter --headless --convert-to pdf:writer_pdf_Export --outdir %s %s';
+
+            $src_info = pathinfo( $src );
+            $dst_info = pathinfo( $dst );
+//            print_r($dst_info);
+
+            $original_file_copy = str_replace( $dst_info['basename'], $src_info['basename'], $dst );
+            copy( $src, $original_file_copy );
+            $compiled_command = sprintf( $command, $dst_info['dirname'], $original_file_copy );
+            printf( "%s\n", $compiled_command );
+
+            system( $compiled_command );
+            unlink( $original_file_copy );
+        }
+        
+        public function htmldir2pdf( $dir, $dst ) {
+            
+        }
+    }
+    
+    
 }
