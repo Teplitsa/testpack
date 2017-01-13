@@ -70,3 +70,55 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: $inpage-margin-base;
 
 }
+
+/** Maps **/
+.pw_map_canvas {
+  position: relative;
+}
+
+.pw_map_legend {
+  cursor: default;
+  z-index: 100;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  padding: 15px 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 30%;
+  height: 100%;
+  text-align: left;
+}
+
+.pw_map_legend ul.markers-map-legend {
+  margin: 0;
+}
+.pw_map_legend ul.markers-map-legend li::before {
+  content: '';
+}
+
+.pw_map_legend ul.markers-map-legend li.legend-child {
+  padding-left: 25px;
+}
+
+.pw_map_legend.is-filter ul.markers-map-legend {
+  cursor: pointer;
+}
+
+.pw_map_legend ul.markers-map-legend li {
+  padding: 5px 10px;
+  margin-bottom: 0;
+}
+
+.pw_map_legend ul.markers-map-legend.is-filter li.legend-child:hover {
+  background-color: transparentize($green, 0.7);
+  color: $color-white;
+}
+.pw_map_legend ul.markers-map-legend.is-filter li.legend-child.marker-group-active {
+  background-color: transparentize($green, 0.25);
+  color: $color-white;
+}
+
+.pw_map_legend ul.markers-map-legend .mymap-icon.dashicons {
+  margin-right: 5px;
+}

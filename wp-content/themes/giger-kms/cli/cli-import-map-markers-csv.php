@@ -51,6 +51,25 @@ try {
                 $term = wp_insert_term($group->name, 'marker_cat');
                 $term = $term['term_id'];
 
+                switch($group->name) {
+                    case 'Архив': update_term_meta($term, 'layer_marker_icon', 'dashicons-archive'); break;
+                    case 'Объекты': update_term_meta($term, 'layer_marker_icon', 'dashicons-location-alt'); break;
+                    case 'Особо охраняемые природные территории': update_term_meta($term, 'layer_marker_icon', 'dashicons-universal-access-alt'); break;
+                    case 'Пункты приема вторсырья': update_term_meta($term, 'layer_marker_icon', 'dashicons-update'); break;
+                    case 'Экологические организации и ведомства': update_term_meta($term, 'layer_marker_icon', 'dashicons-businessman'); break;
+                    case 'Проблемы': update_term_meta($term, 'layer_marker_icon', 'dashicons-warning'); break;
+                    case 'Вырубка зеленых насаждений': update_term_meta($term, 'layer_marker_icon', 'dashicons-palmtree'); break;
+                    case 'Другие экологические проблемы': update_term_meta($term, 'layer_marker_icon', 'dashicons-editor-help'); break;
+                    case 'Загрязнение воды': update_term_meta($term, 'layer_marker_icon', 'dashicons-image-filter'); break;
+                    case 'Загрязнение воздуха': update_term_meta($term, 'layer_marker_icon', 'dashicons-cloud'); break;
+                    case 'Зоны накопленного экологического ущерба': update_term_meta($term, 'layer_marker_icon', 'dashicons-schedule'); break;
+                    case 'Проблемные проекты': update_term_meta($term, 'layer_marker_icon', 'dashicons-vault'); break;
+                    case 'Свалки': update_term_meta($term, 'layer_marker_icon', 'dashicons-trash'); break;
+                    case 'Решенные проблемы': update_term_meta($term, 'layer_marker_icon', 'dashicons-thumbs-up'); break;
+                }
+
+                // Update marker groups' colors?
+
             } else {
 
                 $term = reset($term);

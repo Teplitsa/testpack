@@ -61,30 +61,6 @@ try {
                 $marker->id
             ));
 
-//            $marker_post_id = wp_insert_post(array(
-//                'post_type' => 'marker',
-//                'post_content' => html_entity_decode($marker->longcontent, ENT_COMPAT, 'UTF-8'),
-//                'post_excerpt' => strip_tags($marker->content),
-//                'post_title' => str_replace(
-//                    array("'",),
-//                    array('"',),
-//                    html_entity_decode($marker->name, ENT_COMPAT, 'UTF-8')
-//                ),
-//                'post_status' => 'publish',
-//                'meta_input' => array(
-//                    'marker_address' => $marker->name,
-//                    'marker_location' => array(
-//                        'latitude' => floatval($marker->center[0]),
-//                        'longitude' => floatval($marker->center[1])
-//                    ),
-//                    'marker_location_latitude' => floatval($marker->center[0]),
-//                    'marker_location_longitude' => floatval($marker->center[1]),
-//                    '_old_id' => $marker->id,
-//                ),
-//            ));
-//
-//            wp_set_object_terms($marker_post_id, array($term['term_id']), 'marker_cat');
-
         }
 
     }

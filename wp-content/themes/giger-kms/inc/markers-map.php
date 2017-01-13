@@ -143,7 +143,6 @@ function tst_markers_map_output($atts){
     }
 
     $markers_json = array();
-//    $markers_groups_json = array();
     foreach(get_posts($params) as $marker) {
 
         $lat = get_post_meta($marker->ID, 'marker_location_latitude', true);
@@ -174,29 +173,29 @@ function tst_markers_map_output($atts){
 
     <div class="<?php echo $css_classes;?>">
     <div class="pw_map-wrap">
-        <div class="pw_map_canvas" id="<?php echo esc_attr($map_id);?>"
-             style="height: <?php echo esc_attr($height);?>px; width: <?php echo esc_attr($width);?>"></div>
-        <?php if($show_legend) {?>
-            <div class="pw_map_legend"><?php echo rdc_get_legend($groups); ?></div>
-        <?php }?>
+        <div class="pw_map_canvas" id="<?php echo esc_attr($map_id);?>" style="height: <?php echo esc_attr($height);?>px; width: <?php echo esc_attr($width);?>">
+            <?php if($show_legend) {?>
+                <div class="pw_map_legend"><?php echo rdc_get_legend($groups, $legend_is_filter); ?></div>
+            <?php }?>
+        </div>
     </div>
     <script type="text/javascript">
         if(typeof mapFunc == "undefined") {
-            var mapFunc = new Array();
+            var mapFunc = [];
         }
 
         if(typeof points == 'undefined') {
-            var points = new Array();
+            var points = [];
         }
         if(typeof points['<?php echo $map_id;?>'] == 'undefined') {
             points['<?php echo $map_id;?>'] = <?php echo json_encode($markers_json);?>;
         }
         if(typeof marker_group_layers == 'undefined') {
-            marker_group_layers = new Array();
+            marker_group_layers = [];
         }
 
         if(typeof maps == 'undefined') {
-            maps = new Array();
+            maps = [];
         }
 
         jQuery(document).ready(function($){
@@ -235,10 +234,10 @@ function tst_markers_map_output($atts){
             var map_id = '<?php echo $map_id;?>';
 
             if(typeof marker_group_layers[map_id] == 'undefined') {
-                marker_group_layers[map_id] = new Array();
+                marker_group_layers[map_id] = [];
             }
             if(typeof maps[map_id] == 'undefined') {
-                maps[map_id] = new Array();
+                maps[map_id] = [];
             }
 
             mapFunc.push(function(){
@@ -268,7 +267,7 @@ function tst_markers_map_output($atts){
 
             });
 
-            $('ul.markers-map-legend').on('click', 'li', function(e){
+            $('ul.markers-map-legend.is-filter').on('click', 'li.legend-child', function(e){
 
                 e.preventDefault();
 
@@ -285,8 +284,6 @@ function tst_markers_map_output($atts){
                 var $active_groups_lines = $this.parents('ul:first').find('li.marker-group-active');
                 if($active_groups_lines.length) {
 
-//                    console.log($active_groups_lines);
-
                     $active_groups_lines.each(function(index, element){
 
                         var $element = $(this),
@@ -294,8 +291,6 @@ function tst_markers_map_output($atts){
 
                         marker_group_layers[map_id][group_id] = tst_fill_group_layer(points[map_id][group_id]);
                         marker_group_layers[map_id][group_id].addTo(maps[map_id]);
-
-//                        console.log('Group', group_id, 'markers:', points[map_id][group_id]);
 
                     });
                 }
