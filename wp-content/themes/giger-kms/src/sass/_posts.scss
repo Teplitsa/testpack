@@ -15,7 +15,7 @@
 
 .single-card__title {
 	padding: $element-padding-base $element-padding-base 0;
-
+	
 	@include for(medium-screens) {
 		padding-left: $element-padding-base*2;
 		padding-right: $element-padding-base*2;
@@ -27,9 +27,9 @@
 }
 
 
-
 .single-card__content {
 	padding: 0 $element-padding-base $element-padding-base;
+	margin-top: $base;
 
 	@include for(medium-screens) {
 		padding: 0 $element-padding-base*2 $element-padding-base*2;
@@ -57,13 +57,18 @@
 
 .realted-posts {
 	li {
-		margin-bottom: $inpage-margin-base/2;
+		margin-bottom: $inpage-margin-base;
 		&:last-of-type { margin-bottom: 0; }
 
 		.related-posts__date {
 			margin-left: 8px;
-			font-size: 0.9em;
+			font-size: 0.6em;
+			font-weight: normal;
 			color: $color-text-light; }
+		a {
+			font-size: 16px;
+			line-height: 1.15px;
+		}
 	}
 }
 

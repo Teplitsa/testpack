@@ -34,6 +34,7 @@
 .tst-thumbnail__frame {
 	width: 100%;
 	background: $color-secondary-alt;
+	margin-bottom: $element-padding-base;
 }
 
 
@@ -214,6 +215,7 @@
 
 	.card__title {
 		flex: 1 1 auto;
+		@include side-title();
 	}
 }
 

@@ -2,7 +2,7 @@
 
 .site-footer {
 	background: $color-white;
-	padding-top: $gut;
+	padding-top: $gut + 15px;
 	
 	.widget_nav_menu {
 		a {
@@ -35,6 +35,9 @@
 			max-width: 300px;
 			a {	font-family: $sans;	}
 		}
+	}
+	.widget__title {
+		font-weight: bold;
 	}
 }
 

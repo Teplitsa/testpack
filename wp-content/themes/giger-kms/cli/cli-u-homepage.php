@@ -1,0 +1,1 @@
+<!-- post, taxonomy, terms, attachment, custom post type, custom taxonomy -->

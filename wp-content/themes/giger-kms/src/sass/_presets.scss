@@ -162,9 +162,9 @@ $hamburger-hover-opacity                   : 0.7;
 	.roboto & {
 		font-family: $nav;
 	}
-	.tavolga & {
-		font-family: $nav_tv;
-	}
+	// .tavolga & {
+	// 	font-family: $nav_tv;
+	// }
 	// .bloggersans-bold & {
 	// 	font-family: $nav_bl_bold;
 	// }
@@ -200,17 +200,17 @@ $hamburger-hover-opacity                   : 0.7;
 	font-family: $title_fb;
 	font-weight: 500;
 
-	.roboto & {
-		font-family: $title;
-	}
-	.tavolga & {
-		font-family: $title_tv;
-	}
+	// .roboto & {
+	// 	font-family: $title;
+	// }
+	// .tavolga & {
+	// 	font-family: $title_tv;
+	// }
 	.bloggersans-bold & {
 		font-family: $title_bl_bold;
 	}
 
-	font-size: 18px;
+	font-size: 21px;
 	line-height: 26px;
 
 	@if $mod == small_title {
@@ -222,6 +222,12 @@ $hamburger-hover-opacity                   : 0.7;
 		line-height: 1.1;
 	}
 
+}
+
+@mixin side-title($mod: default) {
+	font-family: $heading_tv;
+	font-weight: 500;
+	font-size: 16px;
 }
 
 @mixin sub-title($mod: default) {
