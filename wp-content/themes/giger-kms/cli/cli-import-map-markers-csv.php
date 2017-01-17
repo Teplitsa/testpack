@@ -146,7 +146,11 @@ try {
                         'meta_query' => array(array('key' => '_old_id', 'value' => $line[6])),
                     ));
                     if($already_inserted) {
+
+                        $marker_post_id = reset($already_inserted)->ID;
+                        wp_set_object_terms($marker_post_id, array($term), 'marker_cat');
                         break 2;
+
                     }
 
                     $marker_post_id = wp_insert_post(array(
