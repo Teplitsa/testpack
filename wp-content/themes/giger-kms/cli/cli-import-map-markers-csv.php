@@ -53,8 +53,8 @@ try {
                 $problems_group_id = $group_in_db['term_id'];
             }
 
-        } elseif( !get_term_meta($group_in_db['term_id'], 'layer_marker_icon', true) ) {
-            update_term_meta($group_in_db['term_id'], 'layer_marker_icon', $group['layer_marker_icon']);
+        } elseif( !get_term_meta($group_in_db->term_id, 'layer_marker_icon', true) ) {
+            update_term_meta($group_in_db->term_id, 'layer_marker_icon', $group['layer_marker_icon']);
         }
         // Update marker parent groups' colors?
 
