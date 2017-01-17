@@ -56,7 +56,7 @@ class TST_Media {
 	/** Download images from production by request **/
 
 	//action for tst_get_thumbnail
-	public function localize_thumbnail($post_id, $size = 'post-thumbnail'){
+	public function localize_thumbnail($post_id, $size = 'post-thumbnail') {
 
 		//if(!is_single()) //only on single for  performance
 		//	return;
