@@ -65,6 +65,10 @@ class FRL_CssJs {
 		$url = get_template_directory_uri();
 		$style_dependencies = array();
 
+        if( !is_admin() ) {
+            wp_enqueue_style('dashicons');
+        }
+
 		// fonts
 		wp_enqueue_style(
 			'tst-fonts',
@@ -176,6 +180,7 @@ class FRL_CssJs {
 
 		wp_register_script( 'tst-google-maps-api', $api_url, null, null );
 		wp_enqueue_script( 'tst-google-maps', $src, array( 'tst-google-maps-api' ), TST_VERSION );
+
 	}
 
 	/* login style - make it inline ? */
