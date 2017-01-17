@@ -8,7 +8,7 @@ try {
 	$time_start = microtime(true);
 	include('cli_common.php');
     
-    include( dirname( __FILE__ ) . '/../admin/posts-hooks.php');
+    include( dirname( __FILE__ ) . '/../admin/post-hooks.php');
 
     $per_page = 100;
 
