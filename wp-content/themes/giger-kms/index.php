@@ -16,7 +16,7 @@ get_header();
 <section class="main">
 	<div class="frame">
 		<div class="bit md-8">
-			<div class="layout-section layout-section--card">
+			<div class="layout-section layout-section--card" id="loadmore-news">
 			<?php
 				if(!empty($posts)) { foreach($posts as $i => $cpost) {
 			?>
@@ -29,7 +29,12 @@ get_header();
 			?>
 			</div>
 			<div class="layout-section layout-section--loadmore">
-				loadmore
+    		<?php
+    			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
+    				$more_template = 'general_'.$middle_meta.'_'.(int)$show_author;
+    				tst_load_more_button($wp_query, $more_template, $dnd, "loadmore-news");
+    			}
+    		?>
 			</div>
 		</div>
 		<div class="bit md-4">
@@ -37,7 +42,7 @@ get_header();
 				<!-- cards -->
 			<?php
 				$items = get_posts(array(
-					'post_type' => 'item',
+					'post_type' => 'post',
 					'posts_per_page' => 3,
 					'post_parent' => 0,
 					'no_found_rows' => true,

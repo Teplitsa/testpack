@@ -17,7 +17,14 @@ function tst_request_corrected(WP_Query $query) {
 	if($query->is_main_query()) {
 		if($query->is_tax('section') && !$query->is_tax('news')) {
 			$query->set('post_parent', 0);
-			$query->set('posts_per_page', -1);
+			
+			if( isset( $query->query['section'] ) && $query->query['section'] == 'news' ) {
+			    $query->set('posts_per_page', 3);
+			}
+			else {
+			    $query->set('posts_per_page', -1);
+			}
+			
 			$query->set('orderby', array('menu_order' => 'DESC', 'date' => 'DESC'));
 		}
 	}
@@ -25,9 +32,40 @@ function tst_request_corrected(WP_Query $query) {
 
 }
 
+// add next page detection for load more actions
+add_filter('found_posts', 'tst_request_corrected_after_get_posts', 2, 2);
+function tst_request_corrected_after_get_posts($found_posts, WP_Query $query) {
+    //detect next page for load more request
+    $query = tst_request_correction_has_next_page($query);
+    return $found_posts;
+}
 
+function tst_get_current_page_for_query(WP_Query $query) {
+    return (isset($query->query_vars['paged']) && $query->query_vars['paged'] > 1) ? (int)$query->query_vars['paged'] : 1;
+}
 
+/** after geeting posts detect if we have more posts to load **/
+function tst_request_correction_has_next_page(WP_Query $query) {
 
+    $query->set('has_next_page', 0);
+
+    $current = tst_get_current_page_for_query($query);
+    $per_page = $query->get('posts_per_page', get_option('posts_per_page'));
+    $displayed = 0;
+
+    if(isset($query->query_vars['offset']) && $query->query_vars['offset'] > 0){
+        $offset = (int)$query->query_vars['offset'];
+        $displayed = $offset + $per_page * ($current - 1);
+    }
+    else {
+        $displayed = $current * $per_page;
+    }
+
+    if($displayed < $query->found_posts)
+        $query->set('has_next_page', 1);
+
+        return $query;
+}
 
 /** == Rewrites and links filters == **/
 
