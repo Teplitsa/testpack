@@ -31,7 +31,15 @@ get_header();?>
 
                     <div class="single-body--entry">
                         <?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
-                        <?php echo do_shortcode('[tst_markers_map groups_excluded_ids="146,147"]');?>
+                        <?php
+                            $excluded_groups = get_terms(array(
+                                'taxonomy' => 'marker_cat',
+                                'hide_empty' => false,
+                                'name' => array('Архив', 'Решенные проблемы'),
+                                'fields' => 'ids',
+                            ));
+                            echo do_shortcode('[tst_markers_map groups_excluded_ids="'.implode(',', $excluded_groups).'"]');
+                        ?>
                     </div>
                     <div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
                 </div>
