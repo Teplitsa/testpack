@@ -51,6 +51,14 @@ try {
                 $term = wp_insert_term($group->name, 'marker_cat');
                 $term = $term['term_id'];
 
+            } else {
+
+                $term = reset($term);
+                $term = $term->term_id;
+
+            }
+
+            if( !get_term_meta($term, 'layer_marker_icon', true) ) {
                 switch($group->name) {
                     case 'Архив': update_term_meta($term, 'layer_marker_icon', 'dashicons-archive'); break;
                     case 'Объекты': update_term_meta($term, 'layer_marker_icon', 'dashicons-location-alt'); break;
@@ -66,16 +74,10 @@ try {
                     case 'Проблемные проекты': update_term_meta($term, 'layer_marker_icon', 'dashicons-vault'); break;
                     case 'Свалки': update_term_meta($term, 'layer_marker_icon', 'dashicons-trash'); break;
                     case 'Решенные проблемы': update_term_meta($term, 'layer_marker_icon', 'dashicons-thumbs-up'); break;
+                    default:
                 }
-
-                // Update marker groups' colors?
-
-            } else {
-
-                $term = reset($term);
-                $term = $term->term_id;
-
             }
+            // Update marker groups' colors?
 
             foreach($group->items as $marker_index => $marker) {
 
