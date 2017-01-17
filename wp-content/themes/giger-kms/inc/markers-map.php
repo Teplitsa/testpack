@@ -91,7 +91,8 @@ function tst_markers_map_output($atts){
     $width = $width ? trim($width) : '100%';
     $height = $height ? intval($height) : 200;
 
-    $enable_scroll_wheel = !!$enable_scroll_wheel;
+    $enable_scroll_wheel = empty($enable_scroll_wheel) || $enable_scroll_wheel == 'mobile_only' ?
+        'mobile_only' : !!$enable_scroll_wheel;
     $zoom = intval($zoom);
     $disable_controls = $disable_controls ? true : false;
     $show_legend = !!$show_legend;
@@ -106,7 +107,6 @@ function tst_markers_map_output($atts){
 
     $map_id = uniqid('rdc_map_');
 
-    // Markers query
     $params = array(
         'post_type' => 'marker',
         'posts_per_page' => -1
@@ -136,10 +136,6 @@ function tst_markers_map_output($atts){
 
         $show_legend = true;
 
-//        if (count($groups_ids) > 1 && $show_legend)
-//            $show_legend = true;
-//        else
-//            $show_legend = false;
     }
 
     $markers_json = array();
@@ -212,13 +208,15 @@ function tst_markers_map_output($atts){
                             alt: marker_data.title,
                             icon: L.divIcon({
                                 className: 'mymap-icon dashicons ' + marker_data.class,
-                                iconSize: [32, 32],
-                                iconAnchor: [16, 32]
+                                iconSize: [25, 25] //,
+//                                iconAnchor: [16, 32],
+//                                popupAnchor: [-5, -26]
                             })
                         }).bindPopup(
                             L.popup({
                                 autoPan: true,
-                                autoPanPaddingTopLeft: [20, 20]
+                                autoPanPaddingTopLeft: [10, 10],
+                                autoPanPaddingBottomRight: [parseInt($('.pw_map_legend:first-child').width()) + 10, 50]
                             }).setContent(marker_data.popup_text)
                         );
 
@@ -250,9 +248,14 @@ function tst_markers_map_output($atts){
                     }),
                     map_id = '<?php echo $map_id;?>';
 
+                var enable_scroll_zoom = '<?php echo strval($enable_scroll_wheel);?>';
+                if(enable_scroll_zoom == 'mobile_only') {
+                    enable_scroll_zoom = $(window).width() > 767;
+                }
+
                 maps[map_id] = L.map(map_id, {
                     zoomControl: <?php echo $disable_controls ? 'false' : 'true';?>,
-                    scrollWheelZoom: <?php echo $enable_scroll_wheel ? 'true' : 'false';?>,
+                    scrollWheelZoom: enable_scroll_zoom,
                     center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
                     zoom: <?php echo $zoom;?>,
                     layers: [kosmo_light]
