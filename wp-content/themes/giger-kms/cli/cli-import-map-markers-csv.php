@@ -29,6 +29,37 @@ try {
         die("File(s) not found: $fname_orig or $fname_csv\n");
     }
 
+    // Insert special marker groups and metadata:
+    $special_marker_groups = array(
+        array('name' => 'Архив', 'slug' => 'archive-markers', 'layer_marker_icon' => 'dashicons-archive',),
+        array('name' => 'Объекты', 'slug' => 'objects', 'layer_marker_icon' => 'dashicons-location-alt',),
+        array('name' => 'Проблемы', 'slug' => 'problems', 'layer_marker_icon' => 'dashicons-warning',),
+        array('name' => 'Решенные проблемы', 'slug' => 'solved-problems', 'layer_marker_icon' => 'dashicons-thumbs-up',),
+    );
+
+    $objects_group_id = 0;
+    $problems_group_id = 0;
+    foreach($special_marker_groups as $group) {
+
+        $group_in_db = get_term_by('name', $group['name'], 'marker_cat');
+        if( !$group_in_db ) {
+
+            $group_in_db = wp_insert_term($group['name'], 'marker_cat', array('slug' => $group['slug']));
+            update_term_meta($group_in_db['term_id'], 'layer_marker_icon', $group['layer_marker_icon']);
+
+            if($group['name'] == 'Объекты') {
+                $objects_group_id = $group_in_db['term_id'];
+            } elseif($group['name'] == 'Проблемы') {
+                $problems_group_id = $group_in_db['term_id'];
+            }
+
+        } elseif( !get_term_meta($group_in_db['term_id'], 'layer_marker_icon', true) ) {
+            update_term_meta($group_in_db['term_id'], 'layer_marker_icon', $group['layer_marker_icon']);
+        }
+        // Update marker parent groups' colors?
+
+    }
+
     $data = json_decode($file_orig);
 
     $markers_num = 0;
@@ -60,20 +91,47 @@ try {
 
             if( !get_term_meta($term, 'layer_marker_icon', true) ) {
                 switch($group->name) {
-                    case 'Архив': update_term_meta($term, 'layer_marker_icon', 'dashicons-archive'); break;
-                    case 'Объекты': update_term_meta($term, 'layer_marker_icon', 'dashicons-location-alt'); break;
-                    case 'Особо охраняемые природные территории': update_term_meta($term, 'layer_marker_icon', 'dashicons-universal-access-alt'); break;
-                    case 'Пункты приема вторсырья': update_term_meta($term, 'layer_marker_icon', 'dashicons-update'); break;
-                    case 'Экологические организации и ведомства': update_term_meta($term, 'layer_marker_icon', 'dashicons-businessman'); break;
-                    case 'Проблемы': update_term_meta($term, 'layer_marker_icon', 'dashicons-warning'); break;
-                    case 'Вырубка зеленых насаждений': update_term_meta($term, 'layer_marker_icon', 'dashicons-palmtree'); break;
-                    case 'Другие экологические проблемы': update_term_meta($term, 'layer_marker_icon', 'dashicons-editor-help'); break;
-                    case 'Загрязнение воды': update_term_meta($term, 'layer_marker_icon', 'dashicons-image-filter'); break;
-                    case 'Загрязнение воздуха': update_term_meta($term, 'layer_marker_icon', 'dashicons-cloud'); break;
-                    case 'Зоны накопленного экологического ущерба': update_term_meta($term, 'layer_marker_icon', 'dashicons-schedule'); break;
-                    case 'Проблемные проекты': update_term_meta($term, 'layer_marker_icon', 'dashicons-vault'); break;
-                    case 'Свалки': update_term_meta($term, 'layer_marker_icon', 'dashicons-trash'); break;
-                    case 'Решенные проблемы': update_term_meta($term, 'layer_marker_icon', 'dashicons-thumbs-up'); break;
+                    case 'Особо охраняемые природные территории':
+                        update_term_meta($term, 'layer_marker_icon', 'dashicons-universal-access-alt');
+                        wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
+                        break;
+                    case 'Пункты приема вторсырья':
+                        update_term_meta($term, 'layer_marker_icon', 'dashicons-update');
+                        wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
+                        break;
+                    case 'Экологические организации и ведомства':
+                        update_term_meta($term, 'layer_marker_icon', 'dashicons-businessman');
+                        wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
+                        break;
+
+                    case 'Вырубка зеленых насаждений':
+                        update_term_meta($term, 'layer_marker_icon', 'dashicons-palmtree');
+                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                        break;
+                    case 'Другие экологические проблемы':
+                        update_term_meta($term, 'layer_marker_icon', 'dashicons-editor-help');
+                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                        break;
+                    case 'Загрязнение воды':
+                        update_term_meta($term, 'layer_marker_icon', 'dashicons-image-filter');
+                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                        break;
+                    case 'Загрязнение воздуха':
+                        update_term_meta($term, 'layer_marker_icon', 'dashicons-cloud');
+                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                        break;
+                    case 'Зоны накопленного экологического ущерба':
+                        update_term_meta($term, 'layer_marker_icon', 'dashicons-schedule');
+                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                        break;
+                    case 'Проблемные проекты':
+                        update_term_meta($term, 'layer_marker_icon', 'dashicons-vault');
+                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                        break;
+                    case 'Свалки':
+                        update_term_meta($term, 'layer_marker_icon', 'dashicons-trash');
+                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                        break;
                     default:
                 }
             }
@@ -126,6 +184,7 @@ try {
         }
 
     }
+
 
 	//Final
 	echo 'Markers inserted: '.$markers_num.chr(10);
