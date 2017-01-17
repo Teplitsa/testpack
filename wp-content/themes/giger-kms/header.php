@@ -47,7 +47,7 @@
 				</a>
 			</div>
 
-			<?php $hedaer_text = get_option('site_header_text'); ?>
+			<?php $hedaer_text = get_option('header_text');?>
 			<div class="site-header-cell actions">
 
 				<div class="actions--mobile">
@@ -61,7 +61,7 @@
 
 				<div class="actions--desktop">
 					<div class="actions__info-row">
-						<div class="actions__text actions__text--desktop"><?php echo apply_filters('tst_the_title', $header_text);?></div>
+						<div class="actions__text actions__text--desktop"><?php echo apply_filters('tst_the_title', $hedaer_text);?></div>
 						<div class="actions__search"><?php get_search_form();?></div>
 					</div>
 					<div class="actions__menu">
