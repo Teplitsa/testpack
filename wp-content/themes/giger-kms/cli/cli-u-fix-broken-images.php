@@ -63,7 +63,7 @@ function fix_images_step( $post_id = 0, $is_update = 0, $debug = 0 ) {
             . " ORDER BY post_date ASC"
             . " ) AS p2 ON p1.ID = p2.ID";
     
-    $sql = $wpdb->prepare( $sql );
+    $sql = $post_id ? $wpdb->prepare( $sql ) : $sql;
     $posts = $wpdb->get_results( $sql );
 
     $file = get_template_directory() . '/data/broken-images-report.csv';
