@@ -147,3 +147,58 @@ jQuery(document).ready(function($){
 	});
 	
 }); //jQuery
+
+jQuery(document).ready(function($){
+	
+	$('#tstl_phone').mask("+7(999) 999-9999");
+
+	$('.tstl-join-group').on('focus', '#tstl_phone', function(e){
+		$('.tstl-join-group').find('.field__error').removeClass('show');
+	});
+
+	$('.tstl-join-group').on('submit', function(e){
+
+		var $_form = $(this),
+			$_input = $('#tstl_phone').val();
+
+			$_form.find('.field__error').removeClass('show');
+
+			//validate
+			var reg = /^\+?7?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+			if(!$_input.match(reg)){
+				$_form.find('.field__error').addClass('show');
+			}
+			else {
+				//submit
+
+				$.ajax({
+					type : "post",
+					dataType : "json",
+					url : frontend.ajaxurl,
+					data : {
+						'action'	: 'tst_join_whatsapp_group',
+						'nonce' 	: $_form.find('#_tstl_nonce').val(),
+						'phone'  	: $_input
+					},
+					beforeSend : function () {
+						$_form.addClass('loading');
+						$('#form-response').empty();
+					},
+					success: function(response) {
+						$_form.removeClass('loading');
+						$(response.msg).appendTo('#form-response');
+
+						if(response.type == 'ok') {
+							$_form.hide();
+						}
+
+					}
+				});
+			}
+
+
+			//stop
+			e.preventDefault();
+	});
+	
+}); //jQuery

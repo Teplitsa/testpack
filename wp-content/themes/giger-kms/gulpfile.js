@@ -43,7 +43,8 @@ gulp.task('build-js', function() {
     var vendorFiles = [
         basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js',
 		basePaths.bower + 'leaflet/dist/leaflet.js',
-        basePaths.npm + 'fontfaceonload/dist/fontfaceonload.js'
+        basePaths.npm + 'fontfaceonload/dist/fontfaceonload.js',
+        basePaths.npm + 'jquery-mask-plugin/src/jquery.mask.js'
         ],
         appFiles = [basePaths.src+'js/front-main*']; //our own JS files
 

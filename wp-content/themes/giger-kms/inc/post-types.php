@@ -101,12 +101,80 @@ function tst_custom_content(){
         'rewrite'             => array('slug' => 'item', 'with_front' => false),
         'hierarchical'        => true,
         'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-media-text',
+        'menu_icon'           => 'dashicons-media-text',
         'supports'            => array('title', 'excerpt', 'editor', 'thumbnail', 'page-attributes'),
         'taxonomies'          => array('section'),
     ));
-
-	/*register_post_type('org', array(
+    
+    register_post_type('book', array(
+        'labels' => array(
+            'name'               => 'Книга',
+            'singular_name'      => 'Книги',
+            'menu_name'          => 'Книги',
+            'name_admin_bar'     => 'Добавить книгу',
+            'add_new'            => 'Добавить новую',
+            'add_new_item'       => 'Добавить книгу',
+            'new_item'           => 'Новая книга',
+            'edit_item'          => 'Редактировать',
+            'view_item'          => 'Просмотр',
+            'all_items'          => 'Все книги',
+            'search_items'       => 'Искать книги',
+            'parent_item_colon'  => 'Родительская книга:',
+            'not_found'          => 'Книги не найдены',
+            'not_found_in_trash' => 'В корзине книги не найдены'
+        ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => true,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => false,
+        'capability_type'     => 'post',
+        'has_archive'         => true,
+        'rewrite'             => true,
+        'hierarchical'        => false,
+        'menu_position'       => 20,
+        'menu_icon'           => 'dashicons-media-text',
+        'supports'            => array( 'title', 'excerpt', 'editor' ),
+        'taxonomies'          => array( 'post_tag' ),
+    ));
+    
+    register_post_type('story', array(
+        'labels' => array(
+            'name'               => 'История',
+            'singular_name'      => 'Истории',
+            'menu_name'          => 'Истории',
+            'name_admin_bar'     => 'Добавить историю',
+            'add_new'            => 'Добавить новую',
+            'add_new_item'       => 'Добавить историю',
+            'new_item'           => 'Новая история',
+            'edit_item'          => 'Редактировать',
+            'view_item'          => 'Просмотр',
+            'all_items'          => 'Все истории',
+            'search_items'       => 'Искать истории',
+            'parent_item_colon'  => 'Родительская история:',
+            'not_found'          => 'Истории не найдены',
+            'not_found_in_trash' => 'В корзине истории не найдены'
+        ),
+        'public'              => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => true,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => false,
+        'capability_type'     => 'post',
+        'has_archive'         => false,
+        'rewrite'             => false,
+        'hierarchical'        => false,
+        'menu_position'       => 21,
+        'menu_icon'           => 'dashicons-media-text',
+        'supports'            => array('title', 'excerpt', 'editor'),
+        'taxonomies'          => array( 'post_tag' ),
+    ));
+    
+    /*register_post_type('org', array(
         'labels' => array(
             'name'               => 'Организации',
             'singular_name'      => 'Организация',
@@ -149,8 +217,6 @@ function tst_custom_content(){
 
 	//remove post tags
 	unregister_taxonomy_for_object_type('category', 'post');
-
-
 
 }
 

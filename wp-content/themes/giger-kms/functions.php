@@ -103,6 +103,7 @@ require get_template_directory().'/inc/class-cssjs.php';
 require get_template_directory().'/inc/class-item.php';
 require get_template_directory().'/inc/class-mediamnt.php';
 require get_template_directory().'/inc/class-section.php';
+require get_template_directory().'/inc/class-whatsapp-group.php';
 
 require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/post-types.php';

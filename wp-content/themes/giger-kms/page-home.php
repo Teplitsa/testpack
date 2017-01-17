@@ -18,5 +18,6 @@ get_header();?>
     </div>
 </article>
 
+<?php do_shortcode( '[tst-join-whatsapp-group]' ) ?>
 
 <?php get_footer(); ?>
