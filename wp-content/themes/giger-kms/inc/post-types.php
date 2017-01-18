@@ -419,6 +419,13 @@ function tst_custom_metaboxes() {
         'split_values' => true, // Save latitude and longitude as two separate fields
     ));
 
+    $marker_cmb->add_field(array(
+        'name'    => 'Телефон',
+        'id'      => 'marker_phones',
+        'type'    => 'textarea_small',
+        'default' => ''
+    ));
+
     // Marker groups taxonomy CFs:
     $markern_cat_term = new_cmb2_box( array(
         'id'               => 'marker_cat_data',

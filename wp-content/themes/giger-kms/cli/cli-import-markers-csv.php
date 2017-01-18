@@ -25,8 +25,8 @@ try {
 
     // Insert special marker groups and metadata:
     $special_marker_groups = array(
-        array('name' => 'Платные', 'slug' => 'commercial-labs', 'layer_marker_icon' => 'dashicons-plus-alt',),
-        array('name' => 'Бесплатные', 'slug' => 'free-labs', 'layer_marker_icon' => 'dashicons-plus',),
+        array('name' => 'Платные', 'slug' => 'commercial-labs', 'layer_marker_icon' => 'dashicons-plus-alt', 'layer_marker_color' => 'yellow',),
+        array('name' => 'Бесплатные', 'slug' => 'free-labs', 'layer_marker_icon' => 'dashicons-plus', 'layer_marker_color' => 'green',),
     );
 
     $free_group_id = 0;
@@ -38,6 +38,7 @@ try {
 
             $group_in_db = wp_insert_term($group['name'], 'marker_cat', array('slug' => $group['slug']));
             update_term_meta($group_in_db['term_id'], 'layer_marker_icon', $group['layer_marker_icon']);
+            update_term_meta($group_in_db['term_id'], 'layer_marker_color', $group['layer_marker_color']);
 
             if($group['name'] == 'Платные') {
                 $commercial_group_id = $group_in_db['term_id'];
@@ -45,33 +46,43 @@ try {
                 $free_group_id = $group_in_db['term_id'];
             }
 
-        } elseif( !get_term_meta($group_in_db->term_id, 'layer_marker_icon', true) ) {
-            update_term_meta($group_in_db->term_id, 'layer_marker_icon', $group['layer_marker_icon']);
+        } else {
+
+            if($group['name'] == 'Платные') {
+                $commercial_group_id = $group_in_db->term_id;
+            } elseif($group['name'] == 'Бесплатные') {
+                $free_group_id = $group_in_db->term_id;
+            }
+
+            if( !get_term_meta($group_in_db->term_id, 'layer_marker_icon', true) ) {
+                update_term_meta($group_in_db->term_id, 'layer_marker_icon', $group['layer_marker_icon']);
+            } elseif( !get_term_meta($group_in_db->term_id, 'layer_marker_color', true) ) {
+                update_term_meta($group_in_db->term_id, 'layer_marker_color', $group['layer_marker_color']);
+            }
         }
-        // Update marker parent groups' colors?
 
     }
 
     $markers_num = 0;
     while(($line = fgetcsv($file_csv)) !== false ) {
 
-        if($line[0] == 'Название') { // Skip the first line
+        if($line[0] == 'Название' || empty($line[0])) { // Skip the first line
             continue;
         }
 
         $is_free = stripos($line[0], 'ГБУЗ') !== false;
 
-        $already_inserted = get_posts(array(
-            'post_type' => 'marker',
-            'title' => $line[0],
-        ));
-        if($already_inserted) {
-
-            $marker_post_id = reset($already_inserted)->ID;
-            wp_set_object_terms($marker_post_id, $is_free ? $free_group_id : $commercial_group_id, 'marker_cat');
-            continue;
-
-        }
+//        $already_inserted = get_posts(array(
+//            'post_type' => 'marker',
+//            'title' => $line[0],
+//        ));
+//        if($already_inserted) {
+//
+//            $marker_post_id = reset($already_inserted)->ID;
+//            wp_set_object_terms($marker_post_id, $is_free ? $free_group_id : $commercial_group_id, 'marker_cat');
+//            continue;
+//
+//        }
 
         $address_full = $line[1].', '.$line[2].', '.$line[3].($line[4] ? ' '.$line[4] : '');
         $marker_post_id = wp_insert_post(array(
@@ -83,7 +94,7 @@ try {
             ),
             'post_status' => 'publish',
             'meta_input' => array(
-                'marker_phones' => $line[5],
+                'marker_phones' => str_replace(',', "\n", $line[5]),
                 'marker_address' => $address_full,
                 'marker_location' => array(
                     'latitude' => floatval($line[6]),

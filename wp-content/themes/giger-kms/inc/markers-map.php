@@ -19,8 +19,8 @@ function tst_markers_map_output($atts){
         'zoom' => 10,
         'disable_controls' => false,
 
-        'lat_center' => '56.296504',
-        'lng_center' => '43.936059',
+        'lat_center' => '51.46',
+        'lng_center' => '55.06',
 
         'show_legend' => true,
         'legend_is_filter' => true,
@@ -340,7 +340,7 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
 
     $name = get_the_title($marker);
     $addr = get_post_meta($marker->ID, 'marker_address', true);
-    $content = trim(apply_filters('rdc_the_content', $marker->post_excerpt)); // $marker->post_content
+    $content = trim(apply_filters('rdc_the_content', $marker->post_excerpt));
 
     $thumbnail = get_the_post_thumbnail($marker->ID, 'small-thumbnail');
 
@@ -413,7 +413,7 @@ function rdc_get_data_from_connected_campaign($marker, $rel_campaign) {
 
 function rdc_get_marker_icon_class($marker, $layers_id = array()){
 
-    $class = 'dashicons-sos navi';
+    $class = 'dashicons-plus-alt yellow';
     if( !$layers_id ) {
         $layer = rdc_get_marker_layer_match($marker, $layers_id);
 
@@ -486,12 +486,13 @@ function rdc_get_legend(array $groups, $legend_is_filter = true) {
 
 function rdc_get_layer_icon($layer_id) {
 
-    $color = get_term_meta($layer_id, 'layer_marker_colors', true);
+    $color = get_term_meta($layer_id, 'layer_marker_color', true);
     $type = get_term_meta($layer_id, 'layer_marker_icon', true);
 
-    $color = ($color) ? $color : 'navi';
-    $type = ($type) ? $type : 'dashicons-sos';
+    $color = $color ? $color : 'yellow';
+    $type = $type ? $type : 'dashicons-plus-alt';
     $class = $type.' '.$color;
 
     return "<span class='mymap-icon dashicons $class'></span>";
+
 }
