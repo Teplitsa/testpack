@@ -122,7 +122,7 @@ class TST_WhatsappGroup {
     
     public function show_join_form() {
 ?>
-    <div class="card__action">
+    <div class="card__action join-whatsapp-group">
     <?php
         if(!$this->is_mobile_user_agent()) {
     ?>
