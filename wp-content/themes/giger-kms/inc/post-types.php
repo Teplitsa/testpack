@@ -36,6 +36,74 @@ function tst_custom_content(){
 
 
 	/** Post types **/
+    // Markers:
+    register_post_type('marker', array(
+        'labels' => array(
+            'name'               => 'Маркеры',
+            'singular_name'      => 'Маркер',
+            'menu_name'          => 'Маркеры',
+            'name_admin_bar'     => 'Добавить маркер',
+            'add_new'            => 'Добавить новый',
+            'add_new_item'       => 'Добавить маркер',
+            'new_item'           => 'Новый маркер',
+            'edit_item'          => 'Редактировать маркер',
+            'view_item'          => 'Просмотр маркеров',
+            'all_items'          => 'Все маркеры',
+            'search_items'       => 'Искать маркер',
+            'parent_item_colon'  => 'Родительский маркер:',
+            'not_found'          => 'Маркеры не найдены',
+            'not_found_in_trash' => 'В Корзине маркеры не найдены'
+        ),
+        'public'              => true,
+        'exclude_from_search' => true,
+        'publicly_queryable'  => false,
+        'show_ui'             => true,
+        'show_in_nav_menus'   => false,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => false,
+        //'query_var'           => true,
+        'capability_type'     => 'post',
+        'has_archive'         => true,
+        'rewrite'             => array('slug' => 'marker', 'with_front' => false),
+        'hierarchical'        => false,
+        'menu_position'       => 20,
+        'menu_icon'           => 'dashicons-location',
+        'supports'            => array('title', 'editor', 'thumbnail'),
+        'taxonomies'          => array('marker_cat'),
+    ));
+
+    register_taxonomy('marker_cat', array('marker',), array(
+        'labels' => array(
+            'name'                       => 'Группы маркеров',
+            'singular_name'              => 'Группа',
+            'menu_name'                  => 'Группы',
+            'all_items'                  => 'Все группы',
+            'edit_item'                  => 'Редактировать группу',
+            'view_item'                  => 'Просмотреть',
+            'update_item'                => 'Обновить группу',
+            'add_new_item'               => 'Добавить новую группу',
+            'new_item_name'              => 'Название новой группы',
+            'parent_item'                => 'Родительская группа',
+            'parent_item_colon'          => 'Родительская группа:',
+            'search_items'               => 'Искать группы',
+            'popular_items'              => 'Часто используемые',
+            'separate_items_with_commas' => 'Разделять запятыми',
+            'add_or_remove_items'        => 'Добавить или удалить группы',
+            'choose_from_most_used'      => 'Выбрать из часто используемых',
+            'not_found'                  => 'Не найдено'
+        ),
+        'public' => false,
+        'hierarchical'      => true,
+        'show_ui'           => true,
+        'show_in_nav_menus' => true,
+        'show_tagcloud'     => false,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'layer', 'with_front' => false),
+        //'update_count_callback' => '',
+    ));
+    // Markers - end
+
 	register_post_type('project', array(
         'labels' => array(
             'name'               => 'Проект',
@@ -322,6 +390,59 @@ function tst_custom_metaboxes() {
 		'type' => 'text',
 		'desc' => 'ID можно выбрать по ссылке https://material.io/icons/#ic_markunread'
 	));
-	
-	
+
+    // Markers CPT CFs:
+    $marker_cmb = new_cmb2_box( array(
+        'id'            => 'marker_settings_metabox',
+        'title'         => 'Настройки маркера',
+        'object_types'  => array('marker',), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+        //'show_on_cb'    => 'tst_show_on_general_pages',
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
+
+    $marker_cmb->add_field(array(
+        'name'    => 'Адрес',
+        'id'      => 'marker_address',
+        'type'    => 'text',
+        'default' => ''
+    ));
+
+    $marker_cmb->add_field( array(
+        'name' => 'Маркер',
+        'desc' => 'Укажите позицию на карте',
+        'id'   => 'marker_location',
+        'type' => 'pw_map',
+        'split_values' => true, // Save latitude and longitude as two separate fields
+    ));
+
+    // Marker groups taxonomy CFs:
+    $markern_cat_term = new_cmb2_box( array(
+        'id'               => 'marker_cat_data',
+        'title'            => 'Настройки маркеров',
+        'object_types'     => array('term'),
+        'taxonomies'       => array('marker_cat')
+    ));
+    $markern_cat_term->add_field( array(
+        'name'             => 'Цвет маркера',
+        'id'               => 'layer_marker_color',
+        'type'             => 'select',
+        'show_option_none' => false,
+        'default'          => 'yellow',
+        'options'          => array(
+            'yellow'   => 'Желтый',
+            'green'  => 'Зеленый',
+            'red'  => 'Красный',
+        )
+    ));
+    $markern_cat_term->add_field(array(
+        'name'    => 'Класс иконки',
+        'desc' 	  => 'Справочник по классам иконок WP - <a href="https://developer.wordpress.org/resource/dashicons/" target="_blank">Найдите нужную и скопируйте класс</a>',
+        'id'      => 'layer_marker_icon',
+        'type'    => 'text',
+        'default' => ''
+    ));
 }
