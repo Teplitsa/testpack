@@ -33,11 +33,11 @@
 	background: darken($color-link-two, 15%);
 	border-radius: 0 4px 4px 0;
 	@include transition(all 0.3s);
-	
+
 	&:hover {
 		background: darken($color-link-two, 20%);
 	}
-	
+
 	.svg-icon {
 		width: 17px;
 		height: 17px;
@@ -56,7 +56,7 @@
 .entry-content .gallery {
 	margin-top: $gut;
 	margin-bottom: $gut;
-	
+
 	&:first-child { margin-top: 0;}
 	&:last-child { margin-bottom: 0;}
 }
@@ -64,28 +64,28 @@
 .gallery {
 	@include clearfix;
 	margin: 0 -4px;
-	
+
 	.gallery-caption { display: none; }
-	
+
 	.gallery-item {
 		display: block;
 		float: left;
 		margin: 0;
 		width: 50%;
 	}
-	
+
 	.gallery-icon {
 		padding: 4px;
-		
+
 		a {
-			display: block;			
+			display: block;
 			@include transition(all 0.35s);
-			
+
 			&:hover {
 				filter: contrast(130%);
 			}
 		}
-		
+
 		img {
 			width: 100%;
 			height: auto;
@@ -97,7 +97,7 @@
 @include for(medium-screens) {
 	$i: 1; //widths
 	@while $i < 10 {
-	  
+
 	  .gallery-columns-#{$i} .gallery-item { width: 100% / $i; }
 	   $i: $i + 1;
 	}
@@ -111,7 +111,7 @@
 	font-size: 12px;
 	line-height: 18px;
 	height: 50px;
-	
+
 	#swipebox-title {
 		width: 80%;
 		max-width: 700px;
@@ -119,9 +119,8 @@
 		height: 36px;
 		overflow: hidden;
 	}
-	
+
 	&.visible-bars {
 		@include transform(none);
 	}
 }
-

@@ -148,16 +148,30 @@
 	height: 100%;
 	width: 100%;
 
-	&.has-icon {
-		padding: $element-padding-base;
-		text-align: center;
-	}
-
 	a {
 		height: 100%;
 		width: 100%;
 	}
 }
+
+.card.has-icon {
+	padding: $element-padding-base;
+	text-align: center;
+
+	.card__link {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.card__link_content {
+		
+	}
+}
+
 
 .card__icon {
 	color: $color-white;
@@ -236,7 +250,7 @@
 	background: $color-link-two;
 
 	.card__icon {
-		
+		background: $color-link-four;
 		i { color: $color-white; }
 	}
 
@@ -276,10 +290,10 @@
 
 	.card__icon {
 		background: $color-white;
-		i { color: $color-link-two; }
+		i { color: $color-link-four; }
 	}
 
 	.has-thumb .card__title  {
-		border-left-color: lighten($color-link-two, 10%);
+		border-left-color: $color-link-five;
 	}
 }

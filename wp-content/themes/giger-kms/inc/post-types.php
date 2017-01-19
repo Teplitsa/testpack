@@ -173,7 +173,7 @@ function tst_custom_content(){
         'supports'            => array('title', 'excerpt', 'editor', 'thumbnail', 'page-attributes'),
         'taxonomies'          => array('section'),
     ));
-    
+
     register_post_type('book', array(
         'labels' => array(
             'name'               => 'Книга',
@@ -207,7 +207,7 @@ function tst_custom_content(){
         'supports'            => array( 'title', 'excerpt', 'editor' ),
         'taxonomies'          => array( 'post_tag' ),
     ));
-    
+
     register_post_type('story', array(
         'labels' => array(
             'name'               => 'История',
@@ -241,7 +241,7 @@ function tst_custom_content(){
         'supports'            => array('title', 'excerpt', 'editor'),
         'taxonomies'          => array( 'post_tag' ),
     ));
-    
+
     /*register_post_type('org', array(
         'labels' => array(
             'name'               => 'Организации',
@@ -382,8 +382,8 @@ function tst_custom_metaboxes() {
 		'id'   => 'has_sidebar',
 		'type' => 'checkbox',
 	));
-	
-	
+
+
 	$item_cmb->add_field( array(
 		'name' => 'ID иконки',
 		'id'   => 'icon_id',
@@ -452,4 +452,72 @@ function tst_custom_metaboxes() {
         'type'    => 'text',
         'default' => ''
     ));
+
+
+	//Homepage
+	$home_cmb = new_cmb2_box( array(
+        'id'            => 'home_settings_metabox',
+        'title'         => 'Настройки страницы',
+        'object_types'  => array( 'page'), // Post type
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'page-home.php' ),
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true,
+    ));
+
+	$home_cmb->add_field( array(
+		'name' => 'ID статей карточек 1-го блока',
+		'desc' => 'Строго 5 элементов в нужном порядке',
+		'id'   => 'block_one',
+		'type' => 'post_search_text',
+		'post_type' => array('item'),
+		'select_type' => 'checkbox',
+		'select_behavior' => 'add'
+	) );
+
+	$home_cmb->add_field( array(
+		'name' => 'ID статей карточек 2-го блока',
+		'desc' => 'Строго 3 элемента в нужном порядке',
+		'id'   => 'block_two',
+		'type' => 'post_search_text',
+		'post_type' => array('item'),
+		'select_type' => 'checkbox',
+		'select_behavior' => 'add'
+	));
+
+	$home_cmb->add_field( array(
+		'name'        		=> 'Инф. поддержка - 1',
+		'id'          		=> 'infosup_one',
+		'type' 				=> 'post_search_text',
+		'post_type'			=> array('item'),
+		'select_type' 		=> 'checkbox',
+		'select_behavior'	=> 'add'
+	));
+
+	$home_cmb->add_field( array(
+		'name'        		=> 'Инф. поддержка - 2',
+		'id'          		=> 'infosup_two',
+		'type' 				=> 'post_search_text',
+		'post_type'			=> array('item'),
+		'select_type' 		=> 'checkbox',
+		'select_behavior'	=> 'add'
+	));
+
+	$home_cmb->add_field( array(
+		'name'        		=> 'Инф. поддержка - 3',
+		'id'          		=> 'infosup_three',
+		'type' 				=> 'post_search_text',
+		'post_type'			=> array('item'),
+		'select_type' 		=> 'checkbox',
+		'select_behavior'	=> 'add'
+	));
+
+	$home_cmb->add_field( array(
+		'name'        		=> 'Инф. поддержка - 4',
+		'id'          		=> 'infosup_four',
+		'type' 				=> 'post_search_text',
+		'post_type'			=> array('item'),
+		'select_type' 		=> 'checkbox',
+		'select_behavior'	=> 'add'
+	));
 }

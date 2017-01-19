@@ -17,32 +17,57 @@
 	padding: 0 $gut/2;
 	width: 100%;
 	margin-bottom: $gut/4;
-}
 
-.bit:last-child, .bit-no-margin {
-	margin-bottom: 0;
-}
+	&[class *= 'mf-'],
+	&[class *= 'sm-'],
+	&[class *= 'md-'],
+	&[class *= 'ld-'],
+	&[class *= 'exlg-'] {
+		margin-bottom: 0;
+	}
 
-.frame {
-	@include clearfix;
-	margin: 0 -1*$gut/2;
-
-	&.frame-wide {
-		margin: 0 $gut/2;
-		@include for(xxlarge-screens){
-			margin: 0 -1*$gut/2;
-		}
+	&:last-child,
+	&.bit--nomargin {
+		margin-bottom: 0;
 	}
 }
 
 
-//mobile first - we have only one column at start
+.frame {
+	@include clearfix;
+	margin: 0 -1*$gut/2;
+}
+
+
+/** Flexbox grid without margin **/
+.flex-grid--stacked {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: stretch;
+	justify-content: space-between;
+	margin: 0;
+
+	&.centered { justify-content: center; }
+	&.start { justify-content: flex-start; }
+	&.row-reverse {
+		flex-direction: row-reverse;
+	}
+}
+
+
+.flex-cell--stacked {
+	flex: 0 1 auto;
+	margin: 0;
+	width: 100%;
+}
+
+
+// width settings
 
 //smalest size
 @for $i from 1 through 12 {
 	.mf-#{$i} {
 		width: percentage($i/12);
-		margin-bottom: 0;
 	}
 }
 
@@ -60,7 +85,6 @@
 	@for $i from 1 through 12 {
 		.sm-#{$i} {
 			width: percentage($i/12);
-			margin-bottom: 0;
 		}
 	}
 
@@ -79,7 +103,6 @@
 	@for $i from 1 through 12 {
 		.md-#{$i} {
 			width: percentage($i/12);
-			margin-bottom: 0;
 		}
 	}
 
@@ -89,7 +112,6 @@
 
 	.md-col-5 {
 		width: 20%;
-		margin-bottom: 0;
 	}
 }
 
@@ -99,7 +121,6 @@
 	@for $i from 1 through 12 {
 		.lg-#{$i} {
 			width: percentage($i/12);
-			margin-bottom: 0;
 		}
 	}
 
@@ -109,7 +130,6 @@
 
 	.lg-col-5 {
 		width: 20%;
-		margin-bottom: 0;
 	}
 }
 
@@ -118,7 +138,6 @@
 	@for $i from 1 through 12 {
 		.exlg-#{$i} {
 			width: percentage($i/12);
-			margin-bottom: 0;
 		}
 	}
 
@@ -128,7 +147,6 @@
 
 	.exlg-col-5 {
 		width: 20%;
-		margin-bottom: 0;
 	}
 }
 
@@ -188,6 +206,9 @@
 
 	&.centered { justify-content: center; }
 	&.start { justify-content: flex-start; }
+	&.row-reverse {
+		flex-direction: row-reverse;
+	}
 }
 
 

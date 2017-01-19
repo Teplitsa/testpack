@@ -3,7 +3,7 @@
  * Micro elements
  **/
 
-function tst_cell(WP_Post $cpost) {
+function tst_cell(WP_Post $cpost, $show_thumb = true) {
 
 	$pl = get_permalink($cpost);
 	$tags = tst_get_tags_list($cpost);
@@ -11,7 +11,7 @@ function tst_cell(WP_Post $cpost) {
 
 	//thumb
 	$thumb_mark = '';
-	if(has_post_thumbnail($cpost)) {
+	if($show_thumb && has_post_thumbnail($cpost)) {
 		$cap = tst_get_post_thumbnail_cation($cpost);
 
 		$thumb_args = array(
@@ -94,8 +94,8 @@ function tst_card(WP_Post $cpost, $show_icon = true) {
 
 ?>
 <article class="card <?php echo $css;?>"><a href="<?php echo $pl;?>" class="card__link">
-	<?php echo $thumb_mark;?>
-	<h4 class="card__title"><?php echo get_the_title($cpost);?></h4>
+	<div class="card__link_content"><?php echo $thumb_mark;?>
+	<h4 class="card__title"><?php echo get_the_title($cpost);?></h4></div>
 </a></article>
 <?php
 }

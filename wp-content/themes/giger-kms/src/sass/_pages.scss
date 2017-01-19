@@ -1,1 +1,138 @@
+/** == Pages (_pages.scss) == **/
 
+/* Homepage **/
+.home-section.news {
+	.flex-cell--join {
+		background: $color-link-one;
+	}
+
+	.flex-cell--news {
+		background: $color-white;
+		box-shadow: 0 1px 3px rgba(200,200,200, 0.4);
+	}
+
+}
+
+.news-block {
+	height: 100%;
+
+	.news-block__title {
+		background: $color-secondary-dark;
+
+		h3 {
+			padding: $base*2;
+			@include header-title(title);
+			color: $color-white;
+		}
+	}
+
+	.news-block__content {
+		@extend .layout-section__item--card;
+
+	}
+
+	@include for(large-screens) {
+
+		display: flex;
+		flex-flow: row nowrap;
+
+		.news-block__title {
+			width: 210px;
+			text-align: center;
+		}
+
+		.vcenter {
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: center;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}
+
+
+.home-section.info-block {
+
+}
+
+.info-block {
+	background: $color-secondary-alt;
+	margin-bottom: $gut;
+
+	.info-block__title {
+		background: $color-link-two;
+		text-align: center;
+	}
+
+	h3 {
+		padding: $base*2;
+		@include header-title(title);
+		color: $color-white;
+	}
+
+	.info-block__content {
+		padding: $base*2;
+	}
+}
+
+.infosup-cell {
+	text-align: center;
+	padding-top: $base*2;
+
+	.card__icon {
+		background: $color-link-one;
+		margin-bottom: $base*4;
+	}
+}
+
+.infosup-cell--one {
+	.card__icon {
+		background: $color-link-one;
+		i { color: $color-white;}
+	}
+}
+
+.infosup-cell--two {
+	.card__icon {
+		background: $color-white;
+		i {
+			margin-top: 5px;
+			color: $color-link-three;}
+	}
+}
+
+.infosup-cell--three {
+	.card__icon {
+		background: $color-link-five;
+		i { color: $color-white;}
+	}
+}
+
+.infosup-cell--four {
+	.card__icon {
+		background: $color-white;
+		i { color: $color-link-one;}
+	}
+}
+
+.infosup-cell__links {
+
+	li {
+		margin-top: $base;
+	}
+
+	a {
+		@include nav-text(link);
+		color: $color-text-black;
+		border-bottom: 1px solid transparent;
+		display: inline-block;
+		padding-bottom: 1px;
+		@inlcude transition(all 0.35s);
+
+		&:hover {
+			color: $color-link-one;
+			border-bottom: 1px solid $color-link-two;
+		}
+	}
+}
