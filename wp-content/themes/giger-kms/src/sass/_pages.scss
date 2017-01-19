@@ -150,7 +150,7 @@
 }
 
 .err-404__search {
-	margin: $gut/2 auto $gut*1.5;
+	margin: $gut/1.5 auto $gut*2;
 	width: 90%;
 
 	@include for(small-screens) {
@@ -161,7 +161,7 @@
 }
 
 .err-404__text {
-	@include body-text(general_card);
+	@include body-text(large);
 
 	a {
 		border-bottom: 1px solid $color-border-normal;
