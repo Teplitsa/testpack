@@ -31,10 +31,34 @@ try {
 	if($home_id){
 		update_option('show_on_front', 'page');
 		update_option('page_on_front', (int)$home_id);
+
+
+		//Homepage settings
+		$blocks = array(
+			'block_one' => array('У меня ВИЧ?', 'Группа взаимопомощи', 'Задать вопрос', 'Где сдать анализы', 'Вебинары'),
+			'block_two' => array('Книги и брошюры', 'Молчание вредит вашему здоровью', 'Итоги мероприятий'),
+			'infosup_one' => array('Пройти тест на ВИЧ'),
+			'infosup_two' => array('Знакомства+', 'Беременность+'),
+			'infosup_three' => array('Право на здоровье', 'Тайна диагноза'),
+			'infosup_four' => array('АРВ-терапия', 'Гепатит, туберкулез'),
+		);
+
+		foreach($blocks as $key => $names) {
+
+			$ids = array();
+			foreach($names as $n) {
+				$p = get_page_by_title($n, OBJECT, 'item');
+				if($p)
+					$ids[] = $p->ID;
+			}
+			$ids = implode(',', $ids);
+			update_post_meta($home_id, $key, $ids);
+		}
 	}
 
 	unset($homepage);
 	unset($update);
+	unset($ids);
 
 	echo 'Homepage updated. Total time in sec: '.(microtime(true) - $time_start).chr(10);
 
@@ -54,9 +78,9 @@ try {
 		$content .= '<h4>'.$contact->post_title.'</h4>';
 		$content .= chr(10).chr(10).$contact->post_content;
 
-		preg_match('/<script>(.*?)<\/script>/s',$content, $m);
+		preg_match('/<script>(.*?)<\/script>/s', $content, $m);
 		if(isset($m[1]) && !empty($m[1])){
-			$content = str_replace('<script>'.$m[1].'</script>', '', $content);
+			$content = str_replace($m[0], '', $content);
 		}
 
 		$page_data = array();
@@ -111,7 +135,7 @@ try {
 
 	echo "Update Projects page ".chr(10);
 
-	// Aadd to about section
+	// Add to about section
 	if($about_section) {
 		wp_set_object_terms($about->ID,    $about_section->term_id, 'section');
 		wp_set_object_terms($partners->ID, $about_section->term_id, 'section');
@@ -203,7 +227,7 @@ try {
 
 	echo "Sitemap page created ".$count.chr(10);
 
-	//Sitemap
+	//Join
 	$join = get_page_by_path('join-us');
 	if(!$join) {
 		$page_data = array();
@@ -212,7 +236,7 @@ try {
 		$page_data['post_type'] = 'page';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_parent'] = 0; //all top level
-		$page_data['post_title'] = 'Присоединяйся';
+		$page_data['post_title'] = 'Вступай';
 		$page_data['post_name'] = 'join-us';
 		$page_data['post_content'] = 'Присоединяйся к группе и помоги нашей работе';
 

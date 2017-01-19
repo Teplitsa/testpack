@@ -101,7 +101,8 @@
 
 .cell__title{
 	margin-bottom: $element-padding-base;
-	@include post-title();
+	margin-top: $base/2;
+	@include post-title(inlist);
 
 	a, a:visited {
 		color: $color-text-black;
@@ -168,7 +169,7 @@
 	}
 
 	.card__link_content {
-		
+
 	}
 }
 

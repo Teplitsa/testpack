@@ -68,6 +68,7 @@ try {
 		'post_content' => '',
 		'section' => 'services',
 		'parent' => 0,
+		'menu_order' => 100,
 		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'group')
 	);
 
@@ -149,7 +150,7 @@ try {
 		'post_content' => '',
 		'section' => 'advices',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'opacity')
 	);
 
 	$move_to_items[] = array(
@@ -231,7 +232,7 @@ try {
 		'post_content' => 'Молчание вредит вашему здоровью', //add some text
 		'section' => 'services',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'speaker_notes_off')
 	);
 
 	$move_to_items[] = array(
@@ -307,6 +308,7 @@ try {
 			$page_data['post_type'] = 'item';
 			$page_data['post_status'] = 'publish';
 			$page_data['post_title'] = ($i_obj['post_title']) ? $i_obj['post_title'] : $old_page->post_title;
+
 
 			if(is_string($i_obj['parent'])){
 				$item = get_posts(array('post_type' => 'item', 'posts_per_page' => 1, 'name' => $i_obj['parent']));

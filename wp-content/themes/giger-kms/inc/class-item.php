@@ -73,7 +73,7 @@ class TST_Item {
 			$list[] = "<li class='".$css."'><a href='".get_permalink($m)."'>".get_the_title($m)."</a></li>";
 		}
 
-		$out = "<ul class='single-item-list'>".implode('', $list)."</ul>";
+		$out = "<ul class='single-item-list'><li class='intro'><span>В этом разделе</span></li>".implode('', $list)."</ul>";
 
 
 		return $out;
@@ -85,24 +85,53 @@ class TST_Item {
 		if(empty($section))
 			return array();
 
-		return get_posts(array(
-			'post_type' => 'item',
-			'posts_per_page' => $this->item_on_side,
-			'post__not_in' => array($this->ID),
-			'post_parent' => 0,
-			'no_found_rows' => true,
-			'cache_results' => false,
-			'update_post_meta_cache' => false,
-			'update_post_term_cache ' => false,
-			'orderby' => 'rand',
-			'tax_query' => array(
-				array(
-					'taxonomy'	=> 'section',
-					'field' 	=> 'term_id',
-					'terms'		=> $section->term_id
+		$items = array();
+		if($this->post_name == 'have-test'){
+			$items[] = get_page_by_title('Где сдать анализы', OBJECT, 'item');
+			$items = array_merge(
+				$items,
+				get_posts(array(
+					'post_type' => 'item',
+					'posts_per_page' => $this->item_on_side - 1,
+					'post__not_in' => array($this->ID),
+					'post_parent' => 0,
+					'no_found_rows' => true,
+					'cache_results' => false,
+					'update_post_meta_cache' => false,
+					'update_post_term_cache ' => false,
+					'orderby' => 'rand',
+					'tax_query' => array(
+						array(
+							'taxonomy'	=> 'section',
+							'field' 	=> 'term_id',
+							'terms'		=> $section->term_id
+						)
+					)
+				))
+			);
+		}
+		else {
+			$items = get_posts(array(
+				'post_type' => 'item',
+				'posts_per_page' => $this->item_on_side,
+				'post__not_in' => array($this->ID),
+				'post_parent' => 0,
+				'no_found_rows' => true,
+				'cache_results' => false,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache ' => false,
+				'orderby' => 'rand',
+				'tax_query' => array(
+					array(
+						'taxonomy'	=> 'section',
+						'field' 	=> 'term_id',
+						'terms'		=> $section->term_id
+					)
 				)
-			)
-		));
+			));
+		}
+
+		return $items;
 	}
 
 	public function get_sidebar() {
@@ -126,6 +155,10 @@ class TST_Item {
 
 		return $out;
 	}
-	
+
+	public function get_root_title() {
+		$root = ($this->post_parent > 0) ? get_post($this->post_parent) : $this->post_object;
+		return $root->post_title;
+	}
 
 } //class

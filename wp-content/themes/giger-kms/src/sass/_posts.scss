@@ -14,31 +14,34 @@
 }
 
 .single-card__title {
-	padding: $element-padding-base $element-padding-base 0;
-	
+	padding: $base*2.5 $base*2 0;
+
 	@include for(medium-screens) {
-		padding-left: $element-padding-base*2;
-		padding-right: $element-padding-base*2;
+		padding-left: $base*4;
+		padding-right: $base*4;
 	}
 
 	h1 {
-		@include post-title(featured);
+		@include header-title(single);
 	}
 }
 
 
 .single-card__content {
 	padding: 0 $element-padding-base $element-padding-base;
-	margin-top: $base;
 
 	@include for(medium-screens) {
 		padding: 0 $element-padding-base*2 $element-padding-base*2;
+	}
+
+	&.no-thumbnail {
+		padding-top: $base*3;
 	}
 }
 
 .single-card__meta {
 	@include sub-title();
-	margin: $inpage-margin-base/2 0 $inpage-margin-base;
+	margin: $base 0 $base*3;
 	padding-left: $element-padding-base;
 
 	@include for(medium-screens) {
@@ -109,19 +112,36 @@
 
 /* Single items */
 //menu
+.single-item--title {
+	@include header-title(single);
+	margin-bottom: $base*4;
+}
+
 .single-item-list {
 	li {
-		margin-bottom: $element-padding-base/2;
+		margin-bottom: $base;
 	}
 
 	a {
-		@include nav-text();
+		@include nav-text(small);
+		border-bottom: 1px solid transparent;
+		line-height: 1;
 	}
 
 	.current {
 		a {
-			//color: $color-text-black;
-			font-weight: bold;
+			border-bottom: 1px solid $color-link-two;
+			color: $color-link-one;
+		}
+	}
+
+	.intro {
+		margin-bottom: $base*3;
+		span {
+			@include body-text(summary);
+			text-transform: uppercase;
+			color: $color-text-black;
 		}
 	}
 }
+

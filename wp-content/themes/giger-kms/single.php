@@ -19,7 +19,7 @@ get_header(); ?>
 		</div>
 	</div>
 
-	<div class="single-card__content">
+	<div class="single-card__content <?php if(!has_post_thumbnail($cpost)) {echo 'no-thumbnail'; } ?>">
 	<div class="frame">
 
 		<div class="bit md-8 single-body">

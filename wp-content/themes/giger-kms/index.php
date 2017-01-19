@@ -42,7 +42,7 @@ get_header();
 				<!-- cards -->
 			<?php
 				$items = get_posts(array(
-					'post_type' => 'post',
+					'post_type' => 'item',
 					'posts_per_page' => 3,
 					'post_parent' => 0,
 					'no_found_rows' => true,

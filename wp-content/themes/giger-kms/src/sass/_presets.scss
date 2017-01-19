@@ -116,7 +116,6 @@ $hamburger-hover-opacity                   : 0.7;
 	@else if $mod == small {
 		font-size: 13px;
 		line-height: 20px;
-		font-weight: 300;
 	}
 	@else if $mod == large {
 		font-size: 18px;
@@ -149,7 +148,7 @@ $hamburger-hover-opacity                   : 0.7;
 		}
 	}
 	@else if $mod == small {
-		font-size: 12px;
+		font-size: 14px;
 		line-height: 20px;
 	}
 	@else if $mod == link {
@@ -175,7 +174,7 @@ $hamburger-hover-opacity                   : 0.7;
 		font-size: 16px;
 		line-height: 20px;
 	}
-	@if $mod == larger {
+	@if $mod == inlist {
 		font-size: 21px;
 		line-height: 24px;
 	}
