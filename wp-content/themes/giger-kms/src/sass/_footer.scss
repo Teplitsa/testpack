@@ -3,7 +3,7 @@
 .site-footer {
 	background: $color-white;
 	padding-top: $gut + 15px;
-	
+
 	.widget_nav_menu {
 		a {
 			display: inline-block;
@@ -13,32 +13,30 @@
 			font-weight: bold;
 		}
 	}
-	
+
 	.widget p {
 		margin-bottom: $inpage-margin-base /2;
 		font-family: $sans;
 	}
-	
+
 	.middle, .last {
 		a { @include red-link(); font-weight: bold; font-family: $sans;}
 		a.button { @include button(); }
 	}
-	
+
 	.hr {
 		width: 100%;
 		border-bottom:  1px solid $color-border-normal;
 		margin-bottom: $gut;
 	}
-	
+
 	@include for(medium-screens) {
-		.textwidget { 
+		.textwidget {
 			max-width: 300px;
 			a {	font-family: $sans;	}
 		}
 	}
-	.widget__title {
-		font-weight: bold;
-	}
+	
 }
 
 .credits {
@@ -54,7 +52,7 @@
 			color: $color-text;
 		}
 		&:hover, &:active, &:focus {
-			border-bottom-color: $color-link-four;
+			border-bottom-color: $color-link-two;
 		}
 	}
 }
@@ -102,6 +100,3 @@
 		color: $color-text;
 	}
 }
-
-
-

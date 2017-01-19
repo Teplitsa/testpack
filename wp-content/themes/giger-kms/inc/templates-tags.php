@@ -60,23 +60,10 @@ function is_tax_branch($slug, $tax) {
 /** Logo & icons **/
 function tst_site_logo($size = 'regular') {
 
-	switch($size) {
-		case 'regular':
-			$file = 'pic-logo';
-			break;
-		case 'small':
-			$file = 'pic-logo-small';
-			break;
-		default:
-			$file = 'icon-logo';
-			break;
-	}
 
-	$file = esc_attr($file);
+	$url = get_template_directory_uri().'/assets/img/';
 ?>
-<svg class="logo <?php echo $file;?>">
-	<use xlink:href="#<?php echo $file;?>" />
-</svg>
+<img src="<?php echo $url;?>logo.svg" onerror="this.src='<?php echo $url;?>logo.png'">
 <?php
 }
 
@@ -114,73 +101,29 @@ function tst_tag_breadcrubms() {
 
 	$list[] = "<a href='".home_url('/')."'>".__('Home', 'tst')."</a>";
 	$list[] = "<a href='".home_url('news')."'>".__('News', 'tst')."</a>";
-	
+
 	$sep = tst_get_sep('&gt;');
 
 	return "<div class='crumbs'>".implode($sep, $list)."</div>";
 }
 
 function tst_about_breadcrubms() {
-	
+
 	$page = get_queried_object();
 	$about = get_page_by_path('about-us');
-	
+
 	if(!$page || !$about)
 		return;
-	
+
 	$list = array();
 
 	$list[] = "<a href='".home_url('/')."'>".__('Home', 'tst')."</a>";
 	$list[] = "<a href='".get_permalink($about)."'>".apply_filters('tst_the_title', $about->post_title)."</a>";
-	
+
 	$sep = tst_get_sep('&gt;');
 
 	return "<div class='crumbs'>".implode($sep, $list)."</div>";
 }
 
 /* heading css */
-function tst_get_heading_style() {
-	
-	$i = rand(1, 5);
-	$url = get_template_directory_uri()."/assets/img/bg-ex-".$i.".png";
-	
-	return "style='background-image: url(".$url.")'";
-}
 
-/** Logo **/
-function rdc_site_logo($size = 'regular') {
-
-	switch($size) {
-		case 'regular':
-			$file = 'pic-logo';
-			break;
-		case 'small':
-			$file = 'pic-logo-small';
-			break;	
-		default:
-			$file = 'icon-logo';
-			break;	
-	}
-	
-	$file = esc_attr($file);
-?>
-<svg class="logo <?php echo $file;?>">
-	<use xlink:href="#<?php echo $file;?>" />
-</svg>
-<?php
-}
-
-function rdc_svg_icon($id, $echo = true) {
-	
-	ob_start();
-?>
-<svg class="svg-icon <?php echo $id;?>">
-	<use xlink:href="#<?php echo $id;?>" />
-</svg>
-<?php
-	$out = ob_get_contents();
-	ob_end_clean();
-	if($echo)
-		echo $out;
-	return $out;
-}

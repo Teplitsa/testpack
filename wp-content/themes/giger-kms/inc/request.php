@@ -15,20 +15,13 @@ function tst_request_corrected(WP_Query $query) {
 	}
 
 	if($query->is_main_query()) {
-		if($query->is_tax('section') && !$query->is_tax('news')) {
+		if($query->is_tax('section') && !$query->is_tax('section', 'news')) {
 			$query->set('post_parent', 0);
-			
-			if( isset( $query->query['section'] ) && $query->query['section'] == 'news' ) {
-			    $query->set('posts_per_page', 3);
-			}
-			else {
-			    $query->set('posts_per_page', -1);
-			}
-			
+			$query->set('posts_per_page', -1);
 			$query->set('orderby', array('menu_order' => 'DESC', 'date' => 'DESC'));
 		}
 	}
-	
+
 
 }
 
@@ -129,5 +122,5 @@ function tst_section_redirects() {
 add_action('template_redirect', 'tst_pages_redirect', 5);
 function tst_pages_redirect() {
 
-	
+
 }

@@ -1,7 +1,7 @@
 /** == Header (_header.scss) == **/
 
 #drawer {
-	background: $color-link-four;
+	background: $color-link-two;
 	padding: $inpage-margin-base 24px;
 	z-index: 1000;
 	position: fixed;
@@ -24,6 +24,10 @@
 	.searchform {
 		background: $color-white;
 		height: 40px;
+
+		&.focus {
+			opacity: 1;
+		}
 	}
 
 	.searchform__field  {
@@ -38,11 +42,11 @@
 
 		.svg-icon {
 			top: 12px;
-			fill: $color-link-four;
+			fill: $color-link-two;
 		}
 
 		&:hover {
-			background: darken($color-link-four, 12%);
+			background: darken($color-link-two, 22%);
 			.svg-icon {
 				fill: $color-white;
 			}
@@ -55,6 +59,10 @@
 	@include for(small-screens) { width: 252px; }
 }
 
+.drawer-nav__search {
+	margin-bottom: $base*3;
+}
+
 .drawer-nav__menu {
 	padding: $gut/2 0;
 }
@@ -62,18 +70,23 @@
 .drawer-nav__list {
 
 	li {
-		margin: 5px 0;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		margin: $base/2 0;
+		padding: $base*0.5 0 $base/2;
 	}
+
 	a {
-		display: block;
-		@include nav-text(larger);
-		padding: 0.4em;
+		display: inline-block;
+		@include nav-text();
+		padding: $base $base $base/2;
 		color: $color-white;
-		@include transition(background 0.3s);
+
+
+		@include transition(background 0.4s);
 
 		&:hover {
-			background: $color-link-three;
+			background: $color-link-five;
+			color: $color-white;
+			border-radius: 2px;
 		}
 	}
 
@@ -130,26 +143,26 @@ body.drawer-open {
 .site-logo { //temp
 	display: block;
 	width: 150px;
-	height: 60px;
+	height: 74px;
 	padding-top: 4px;
-	font-size: 24px;
-	line-height: 26px;
-	text-transform: uppercase;
-	color: #000;
-	&:visited { color: #000; }
+
+	img {
+		width: 150px;
+		height: 70px;
+	}
+
+	@include for(medium-screens) {
+		width:236px;
+		height: 118px;
+
+		img {
+			width: 236px;
+			height: 118px;
+		}
+	}
 }
-#logo-full {
-	display: block;
-    width: 318px;
-    height: 159px;
-    text-align: center;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-#logo-full .pic-logo{
-	margin-top: 7px;
-}
+
+
 
 .actions--mobile {
 	display: flex;
@@ -163,15 +176,27 @@ body.drawer-open {
 }
 
 .action__drawer-trigger {
-	width: 60px;
-	height: 60px;
+	width: 74px;
+	height: 74px;
 	padding: 4px 0 0 2px;
 	flex: 0 0 auto;
+	text-align: right;
+
+	a {
+		margin-top: 5px;
+	}
 }
 
 .actions__text {
-	color: $color-link-four;
-	a, a:visited, a:hover, a:active, a:focus { color: $color-link-four; }
+	@include body-text(large);
+	line-height: 1.2;
+	color: $color-link-two;
+	a, a:visited, a:hover, a:active, a:focus { color: $color-link-two; }
+
+	margin-top: -5px;
+	@include for(medium-screens) {
+		margin-top: 0;
+	}
 }
 
 .actions__text--mobile {
@@ -200,10 +225,10 @@ body.drawer-open {
 }
 
 .actions__text--desktop {
-	@include body-text(large);
+	line-height: 1.2;
 	text-align: right;
 	padding-right: 18px;
-	color: $color-link-four;
+	color: $color-link-two;
 }
 
 .actions__search {
@@ -244,6 +269,12 @@ body.drawer-open {
 			padding: 20px 0;
 		}
 
+	}
+
+	a[href *= "join-us"] {
+		color: $color-link-three;
+
+		
 	}
 
 	li:hover a { color: $color-white; }

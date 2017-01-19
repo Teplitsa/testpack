@@ -68,20 +68,20 @@ class FRL_CssJs {
 		// fonts
 		wp_enqueue_style(
 			'tst-fonts',
-			'//fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700&amp;subset=cyrillic',
+			'//fonts.googleapis.com/css?family=Roboto:400,400i,700&amp;subset=cyrillic',
 			$style_dependencies,
 			null
 		);
-		
+
 		$style_dependencies[] = 'tst-fonts';
-		
+
 		wp_enqueue_style(
 			'tst-icons',
 			'//fonts.googleapis.com/icon?family=Material+Icons',
 			$style_dependencies,
 			null
 		);
-		
+
 		$style_dependencies[] = 'tst-icons';
 
 
@@ -112,7 +112,7 @@ class FRL_CssJs {
 			null,
 			true
 		);
-		
+
 		wp_enqueue_script(
 			'tst-head-front',
 			$url.'/assets/rev/'.$this->get_rev_filename('headbundle.js'),
@@ -120,7 +120,7 @@ class FRL_CssJs {
 			null,
 			false
 		);
-		
+
 		wp_localize_script('tst-front', 'frontend', array(
 			'ajaxurl' => admin_url('admin-ajax.php')
 		));

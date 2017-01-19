@@ -44,7 +44,7 @@
 
 /** custom form **/
 .leyka-custom-template {
-	border-bottom: 1px solid $color-border-link;
+	border-bottom: 1px solid $color-border-normal;
 	
 }
 
@@ -54,7 +54,7 @@
 		@include header-title();		
 		padding: $gut/2 $gut;		
 		cursor: pointer;		
-		border-top: 1px solid $color-border-link;
+		border-top: 1px solid $color-border-normal;
 		@include for(medium-screens) {
 			padding: $gut/2 $gut*3;
 		}
@@ -170,7 +170,7 @@ $figure_padding-height: 16px;
 	.figure-radio__label {
 		display: inline-block;
 		padding: $figure_padding-height;
-		border: 1px solid $color-border-link;
+		border: 1px solid $color-border-normal;
 		background: $color-white;
 		text-align: center;
 		width: 100%;
@@ -182,7 +182,7 @@ $figure_padding-height: 16px;
 		background: $color-white;
 		line-height: $figure_line-height;
 		border-radius: 0;
-		border: 1px solid $color-border-link;
+		border: 1px solid $color-border-normal;
 		padding: $figure_padding-height $figure_padding-height/2;
 		text-align: center;
 		width: 100%;

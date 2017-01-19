@@ -171,6 +171,21 @@ function tst_body_classes( $classes ) {
 add_action('customize_register', 'tst_customize_register', 15);
 function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
+
+	$wp_customize->add_setting('header_text', array(
+        'default'   => '',
+        'transport' => 'postMessage',
+		'type' 		=> 'option'
+    ));
+
+    $wp_customize->add_control('header_text', array(
+        'type'     => 'textarea',
+        'label'    => 'Текст в шапке',
+        'section'  => 'title_tagline',
+        'settings' => 'header_text',
+        'priority' => 25,
+    ));
+
 	$wp_customize->add_setting('footer_text', array(
         'default'   => '',
         'transport' => 'postMessage',
@@ -182,20 +197,6 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'label'    => 'Текст в подвале',
         'section'  => 'title_tagline',
         'settings' => 'footer_text',
-        'priority' => 26,
-    ));
-
-	$wp_customize->add_setting('site_header_text', array(
-        'default'   => '',
-        'transport' => 'postMessage',
-		'type' 		=> 'option'
-    ));
-
-    $wp_customize->add_control('site_header_text', array(
-        'type'     => 'textarea',
-        'label'    => 'Текст в шапке',
-        'section'  => 'title_tagline',
-        'settings' => 'site_header_text',
         'priority' => 28,
     ));
 
@@ -470,4 +471,3 @@ function tst_filter_search_query($s){
 
 	return $s;
 }
-

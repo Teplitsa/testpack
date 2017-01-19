@@ -3,27 +3,19 @@
 -------------------------------------------------------- */
 
 //Fonts
-$body:				"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$body_fb:			"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$body:				"Roboto", Arial,  sans-serif;
+$body_fb:			Arial, sans-serif;
 
-$heading:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$heading_tv:		"Tavolga Free", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$heading_bl_bold:	"BloggerSans-Bold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$heading_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$heading:			"BloggerSans", Arial Narrow, Arial, sans-serif;
+$heading_fb:		Arial Narrow, Arial, sans-serif;
 
-$title:				"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$title_tv:			"Tavolga Free", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$title_bl_bold:		"BloggerSans-Bold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$title_fb:			"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$title:				"Tavolga", Arial Narrow, Arial, sans-serif;
+$title_fb:			Arial Narrow, Arial, sans-serif;
 
-$nav:				"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$nav_tv:			"Tavolga Free","Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-// $nav_bl_bold:		"BloggerSans-Bold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$nav_fb:			"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$nav:				"Tavolga", Arial Narrow, Arial, sans-serif;
+$nav_fb:			Arial Narrow, Arial, sans-serif;
 
-$sans:				"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$sans_tv:			"Tavolga Free", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$sans_bl_bold:		"BloggerSans-Bold", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$sans:				"Roboto", Arial,  sans-serif;
 $mono:				"Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 
@@ -43,48 +35,43 @@ $flex-gut: 	   20px;
 
 
 //Baseline
-$base: 24px;
-$inpage-baseline: 		24px;
-$inpage-margin-base:	18px;
-$element-margin-base: 	5px;
-$element-padding-base: 	16px;
+$base: 8px;
+$inpage-baseline: 		3*$base;
+$inpage-margin-base:	4*$base;
+$element-margin-base: 	$base / 2;
+$element-padding-base: 	$base*2;
 
 
 //Colors
 $color-text:   #2a2a2a;
 $color-white:  #ffffff;
 
-$red: 			#d93029;
-$pale-red: 		#dc3f39;
-$green: 		#008E2C;
-$orange: 		#FF542C;
-$orange-red: 	#e24825;
-$grey_green:	#9fa63a;
-$olive:			#f5c048;
-$light_green: 	#a0a614;
-$sand:			#f5c048;
+//correct
+$red:    		#D93029;
+$green:  		#9FA63A;
+$orange: 		#F74218;
+$orange-dark:	#E24825;
+$sand:			#F5C048;
+
 
 $color-link-one:   	$red;
 $color-link-two:   	$green;
 $color-link-three: 	$orange;
-$color-link-four:  	$grey_green;
-$color-link-five:  	$olive;
-$color-link-six:	$light_green;
-$color-link-seven:	$pale_red;
-$color-link-eight:	$orange-red;
-$color-link-nine:	$sand;
+$color-link-four:  	$orange-dark;
+$color-link-five:  	$sand;
+
 
 $color-text-black:		#000000;
 $color-text-semi:		#666666;
 $color-text-light:		#9b9b9b;
+
 $color-secondary:		#f3f3f3;
-$color-secondary-alt:	#DAEDEA;
-$color-secondary-dark:	#656D78;
+$color-secondary-alt:	#D6D8A9;
+$color-secondary-dark:	#888C47;
 
 
 $color-border-normal: #dfdfdf;
 $color-border-light:  #eeeeee;
-$color-border-link:   #8c8c91;
 
 $color-form-invalid: $red;
 $color-form-ok : $green;
@@ -94,16 +81,13 @@ $color-form-ok : $green;
 $adminbar_large_screen: 32px;
 $adminbar_small_screen: 46px;
 
-
-
-
 //humburgers settings
 $hamburger-padding-x                       : 14px;
 $hamburger-padding-y                       : 14px;
 $hamburger-layer-width                     : 28px;
 $hamburger-layer-height                    : 4px;
 $hamburger-layer-spacing                   : 4px;
-$hamburger-layer-color                     : $color-link-four;
+$hamburger-layer-color                     : $color-link-two;
 $hamburger-layer-border-radius             : 4px;
 $hamburger-hover-opacity                   : 0.7;
 
@@ -118,15 +102,6 @@ $hamburger-hover-opacity                   : 0.7;
 	.roboto & {
 		font-family: $body;
 	}
-	// .tavolga & {
-	// 	font-family: $body_tv;
-	// 	@if $mod == small {
-	// 		font-family: $body;
-	// 	}
-	// }
-	// .bloggersans-bold & {
-	// 	font-family: $body_bl_bold;
-	// }
 
 	font-size: 16px;
 	line-height: 24px;
@@ -144,37 +119,25 @@ $hamburger-hover-opacity                   : 0.7;
 		font-weight: 300;
 	}
 	@else if $mod == large {
-		font-size: 16px;
-		line-height: 21px;
-
-
-		@include for(large-screens) {
-			font-weight: 300;
-			font-size: 18px;
-		}
+		font-size: 18px;
+		line-height: 28px;
 	}
 }
 
 @mixin nav-text($mod: default) {
 	font-family: $nav_fb;
-	font-weight: 300;
+	font-weight: 400;
 
-	.roboto & {
+	.tavolga & {
 		font-family: $nav;
 	}
-	// .tavolga & {
-	// 	font-family: $nav_tv;
-	// }
-	// .bloggersans-bold & {
-	// 	font-family: $nav_bl_bold;
-	// }
 
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 18px;
 	text-transform: uppercase;
 
 	@if $mod == inversion {
-		font-weight: 500;
+
 	}
 	@else if $mod == menu_item {
 		font-size: 13px;
@@ -185,10 +148,6 @@ $hamburger-hover-opacity                   : 0.7;
 			line-height: 20px;
 		}
 	}
-	@else if $mod == larger {
-		font-size: 17px;
-		line-height: 20px;
-	}
 	@else if $mod == small {
 		font-size: 12px;
 		line-height: 20px;
@@ -198,37 +157,79 @@ $hamburger-hover-opacity                   : 0.7;
 
 @mixin post-title($mod: default) {
 	font-family: $title_fb;
-	font-weight: 500;
+	font-weight: 400;
 
-	// .roboto & {
-	// 	font-family: $title;
-	// }
-	// .tavolga & {
-	// 	font-family: $title_tv;
-	// }
-	.bloggersans-bold & {
-		font-family: $title_bl_bold;
+	.tavolga & {
+		font-family: $title;
 	}
 
-	font-size: 21px;
-	line-height: 26px;
+	font-size: 16px;
+	line-height: 24px;
 
 	@if $mod == small_title {
 		font-size: 16px;
 		line-height: 20px;
 	}
+	@if $mod == larger {
+		font-size: 21px;
+		line-height: 24px;
+	}
 	@else if $mod == featured {
 		font-size: 26px;
 		line-height: 1.1;
 	}
-
 }
 
-@mixin side-title($mod: default) {
-	font-family: $heading_tv;
-	font-weight: 500;
-	font-size: 16px;
+@mixin header-title($mod: default){
+	font-family: $heading_fb;
+	font-weight: 600;
+
+	.bloggersans & {
+		font-family: $heading;
+	}
+
+	color: $color-text-black;
+	text-transform: uppercase;
+
+	font-size: 24px;
+	line-height: 28px;
+
+
+	@if $mod == section {
+		font-size: 18px;
+		line-height: 24px;
+
+	}
+	@if $mod == single {
+		font-size: 32px;
+		@include for(medium-screens) { font-size: 40px; }
+		line-height: 1.15;
+		text-transform: none;
+	}
+	@else if $mod == title {
+		font-size: 28px;
+		line-height: 30px;
+	}
+	@else if $mod == widget {
+		font-size: 18px;
+		line-height: 24px;
+	}
+	@else if $mod == head_title {
+		font-size: 40px;
+		line-height: 44px;
+	}
+	@else if $mod == card {
+		font-size: 16px;
+		line-height: 20px;
+		font-weight: normal;
+
+		@include for(medium-screens) {
+			font-size: 18px;
+			line-height: 24px;
+		}
+	}
 }
+
 
 @mixin sub-title($mod: default) {
 	font-family: $body_fb;
@@ -237,12 +238,6 @@ $hamburger-hover-opacity                   : 0.7;
 	.roboto & {
 		font-family: $body;
 	}
-	// .tavolga & {
-	// 	font-family: $body_tv;
-	// }
-	// .bloggersans-bold & {
-	// 	font-family: $body_bl_bold;
-	// }
 
 	color: $color-text-semi;
 
@@ -276,61 +271,7 @@ $hamburger-hover-opacity                   : 0.7;
 }
 
 
-@mixin header-title($mod: default){
-	font-family: $body_fb;
-	font-weight: 500;
 
-	.roboto & {
-		font-family: $body;
-	}
-	// .tavolga & {
-	// 	font-family: $body_tv;
-	// }
-	.bloggersans-bold & {
-		font-family: $heading_bl_bold;
-	}
-
-	color: $color-text-black;
-	text-transform: uppercase;
-
-	font-size: 18px;
-	line-height: 24px;
-
-
-	@if $mod == section {
-		font-size: 18px;
-		line-height: 24px;
-
-	}
-	@if $mod == single {
-		font-size: 32px;
-		@include for(medium-screens) { font-size: 40px; }
-		line-height: 1.15;
-		text-transform: none;
-	}
-	@else if $mod == title {
-		font-size: 28px;
-		line-height: 30px;
-	}
-	@else if $mod == widget {
-		font-size: 16px;
-		line-height: 24px;
-	}
-	@else if $mod == head_title {
-		font-size: 40px;
-		line-height: 44px;
-	}
-	@else if $mod == card {
-		font-size: 16px;
-		line-height: 20px;
-		font-weight: normal;
-
-		@include for(medium-screens) {
-			font-size: 18px;
-			line-height: 24px;
-		}
-	}
-}
 
 /* Elements */
 @mixin red-link() {
@@ -344,29 +285,24 @@ $hamburger-hover-opacity                   : 0.7;
 }
 
 @mixin green-link() {
-	color: $color-link-six;
+	color: $color-link-two;
 	@include transition(color 0.3s);
 
-	&:visited { color: $color-link-six; }
+	&:visited { color: $color-link-two; }
 	&:hover, &:active, &:focus {
-		color: lighten($color-link-six, 10%);
+		color: lighten($color-link-two, 10%);
 	}
 }
 
 
 @mixin button($mod: default){
-	font-family: $body_fb;
-	font-weight: normal;
+	font-family: $nav_fb;
+	font-weight: 400;
 
-	.roboto & {
-		font-family: $body;
-		font-weight: normal;
-	}
 	.tavolga & {
-		font-family: $sans_tv;
+		font-family: $nav;
 		font-weight: normal;
 	}
-
 
 	display: inline-block;
 	// text-transform: uppercase;

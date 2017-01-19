@@ -3,7 +3,7 @@
 /* search */
 .searchform {
 	display: block;
-	background: $color-link-four;
+	background: $color-link-two;
 	border-radius: 4px;
 	position: relative;
 	padding-right: 48px;
@@ -29,13 +29,13 @@
 	top: 0;
 	right: 0;
 	border: none;
-	border-left: 4px solid darken($color-link-four, 22%);
-	background: darken($color-link-four, 15%);
+	border-left: 4px solid darken($color-link-two, 22%);
+	background: darken($color-link-two, 15%);
 	border-radius: 0 4px 4px 0;
 	@include transition(all 0.3s);
 	
 	&:hover {
-		background: darken($color-link-four, 20%);
+		background: darken($color-link-two, 20%);
 	}
 	
 	.svg-icon {

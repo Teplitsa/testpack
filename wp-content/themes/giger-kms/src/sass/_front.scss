@@ -1,41 +1,5 @@
 /** == Global styles (_front.scss) == **/
-@font-face {
-    font-family: "Tavolga Free";
-    src: url("../../assets/fonts/Ivan Petrov - Tavolga Free.otf");
-    src: url("../../assets/fonts/Ivan Petrov - Tavolga Free.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face {
-    font-family: "Museo700";
-    src: url("../../assets/fonts/Museo700-Regular.otf");
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face {
-    font-family: "MuseoCyrl 500";
-    src: url("../../assets/fonts/Museo Cyrl 500.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-@font-face {
-    font-family: "BloggerSans-Bold";
-    src: url("../../assets/fonts/Blogger Sans/BloggerSans-Bold.eot");
-    src: url("../../assets/fonts/Blogger Sans/BloggerSans-Bold.eot?#iefix")format("embedded-opentype"),
-    url("../../assets/fonts/Blogger Sans/BloggerSans-Bold.woff") format("woff"),
-    url("../../assets/fonts/Blogger Sans/BloggerSans-Bold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: normal;
-}
-// @font-face {
-//     font-family: "Tavolga Free";
-//     src: url("../assets/fonts/AaarghRegular/AaarghRegular.eot");
-//     src: url("../assets/fonts/AaarghRegular/AaarghRegular.eot?#iefix")format("embedded-opentype"),
-//     url("../assets/fonts/AaarghRegular/AaarghRegular.woff") format("woff"),
-//     url("../assets/fonts/AaarghRegular/AaarghRegular.ttf") format("truetype");
-//     font-style: normal;
-//     font-weight: normal;
-// }
+
 html {
 	//font-size: 62.5%; //10px
 }
@@ -58,7 +22,6 @@ a.red {
 }
 
 p {
-
 	&:last-child { margin-bottom: 0; }
 }
 
@@ -92,6 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 .widget {
 	margin-bottom: $gut;
 	@include body-text(small);
+
 	a {
 		font-weight: 500;
 		&[href *= 'tel']{
@@ -102,6 +66,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .widget__title {
-	@include nav-text(larger);
+	@include header-title(widget);
 	margin-bottom: $inpage-margin-base;
 }

@@ -140,7 +140,7 @@
 
 /** card **/
 .cell-bg {
-	background: $color-link-four;
+	background: $color-link-two;
 	flex: 1 1 auto;
 }
 
@@ -184,7 +184,7 @@
 		padding: $element-padding-base $element-padding-base/2;
 		background: $color-white;
 		color: $color-text-black;
-		border-left: 6px solid $color-link-four;
+		border-left: 6px solid $color-link-two;
 	}
 
 	.has-icon & {
@@ -215,38 +215,38 @@
 
 	.card__title {
 		flex: 1 1 auto;
-		@include side-title();
+		@include post-title();
 	}
 }
 
 .scheme-one {
-	background: $color-link-seven;
+	background: $color-link-one;
 
 	.card__icon {
 		background: $color-white;
-		i { color: $color-link-seven; }
+		i { color: $color-link-one; }
 	}
 
 	.has-thumb .card__title  {
-		border-left-color: $color-link-seven;
+		border-left-color: $color-link-one;
 	}
 }
 
 .scheme-two {
-	background: $color-link-four;
+	background: $color-link-two;
 
 	.card__icon {
-		background: $orange-red;
+		
 		i { color: $color-white; }
 	}
 
 	.has-thumb .card__title  {
-		border-left-color: $color-link-four;
+		border-left-color: $color-link-two;
 	}
 }
 
 .scheme-three {
-	background: $color-link-four;
+	background: $color-link-two;
 
 	.card__icon {
 		background: $color-link-three;
@@ -254,7 +254,7 @@
 	}
 
 	.has-thumb .card__title  {
-		border-left-color: $color-link-four;
+		border-left-color: $color-link-two;
 	}
 }
 
@@ -262,7 +262,7 @@
 	background: $color-link-one;
 
 	.card__icon {
-		background: $color-link-four;
+		background: $color-link-two;
 		i { color: $color-white; }
 	}
 
@@ -272,11 +272,11 @@
 }
 
 .scheme-five {
-	background: $color-link-nine;
+	background: $color-link-five;
 
 	.card__icon {
 		background: $color-white;
-		i { color: $color-link-eight; }
+		i { color: $color-link-two; }
 	}
 
 	.has-thumb .card__title  {
