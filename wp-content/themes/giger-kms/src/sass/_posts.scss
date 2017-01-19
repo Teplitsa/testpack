@@ -24,6 +24,9 @@
 	h1 {
 		@include header-title(single);
 	}
+	&h1 {
+		@include header-title(single);
+	}
 }
 
 

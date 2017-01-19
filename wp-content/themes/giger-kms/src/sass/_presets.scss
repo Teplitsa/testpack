@@ -469,3 +469,13 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 
 }
+
+@mixin bg-as-picture($height: 75%) {
+	width: 100%;
+	height: 0;
+	padding-bottom: $height;
+
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
