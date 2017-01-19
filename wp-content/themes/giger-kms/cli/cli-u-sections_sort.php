@@ -219,7 +219,7 @@ try {
 		'ID' => false,
 		'slug' => 'your-question',
 		'post_title' => 'Задать вопрос',
-		'post_content' => 'Задать вопрос', //add some text
+		'post_content' => '[formidable key="ask-question"]', //add some text
 		'section' => 'services',
 		'parent' => 0,
 		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'forum')

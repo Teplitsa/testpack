@@ -40,17 +40,8 @@ get_header();
 			<div class="layout-section layout-section--card-block">
 				<!-- cards -->
 			<?php
-				$items = get_posts(array(
-					'post_type' => 'item',
-					'posts_per_page' => 3,
-					'post_parent' => 0,
-					'no_found_rows' => true,
-					'cache_results' => false,
-					'update_post_meta_cache' => false,
-					'update_post_term_cache ' => false,
-					'orderby' => 'rand'
-				));
-
+				$items = TST_Stories::get_rotated( 3 );
+				
 				if(!empty($items)) { foreach($items as $si) {
 			?>
 				<div class="widget widget--card"><?php tst_card($si, false);?></div>

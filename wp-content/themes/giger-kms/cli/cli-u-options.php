@@ -68,7 +68,8 @@ try {
 		"post-type-converter/post-type-converter.php",
 		"responsive-lightbox/responsive-lightbox.php",
 		"term-management-tools/term-management-tools.php",
-		"wordpress-seo/wp-seo.php"
+		"wordpress-seo/wp-seo.php",
+	    "formidable/formidable.php"
 	);
 
 	update_option('active_plugins', $active);
