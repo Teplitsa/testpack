@@ -39,7 +39,7 @@
         "vendor-dir": "wp-content/vendor",
         "secure-http" : false
     },
-   "require"     : {
+    "require"     : {
         "composer/installers": "~1.0",
         "johnpbloch/wordpress" : ">=4.3",
         "wpackagist-plugin/cyr3lat" : "@stable",
@@ -57,7 +57,7 @@
         "koodimonni-language/core-ru_ru": "*" ,
         "webdevstudios/cmb2-post-search-field": "dev-master",
         "mustardbees/cmb_field_map": "dev-master",
-        "strategy11/formidable-forms": ">=2.02.13"
+        "strategy11/formidable-forms": "@stable"
     },
     "require-dev" : {
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
