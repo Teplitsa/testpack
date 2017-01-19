@@ -24,14 +24,16 @@ function tst_load_more_button(WP_Query $query, $template = 'search_card', $dnd =
     if(!empty($dnd))
         $query->query_vars['post__not_in'] = (isset($query->query_vars['post__not_in'])) ? array_merge((array)$query->query_vars['post__not_in'], (array)$dnd) : (array)$dnd;
 
-        //set load more arg
-        $query->set('load_more_request', 1);
+    //set load more arg
+    $query->set('load_more_request', 1);
 
-        //print
-        if(!$target_id) {
-            ?>
+    //print
+    if(!$target_id) {
+?>
     <div id="<?php echo esc_attr($target);?>"></div>
-<?php } ?>
+<?php
+    } 
+?>
 
     <nav class="load-more">
         <span class="loader"></span>
