@@ -104,6 +104,7 @@ require get_template_directory().'/inc/class-item.php';
 require get_template_directory().'/inc/class-mediamnt.php';
 require get_template_directory().'/inc/class-section.php';
 require get_template_directory().'/inc/class-whatsapp-group.php';
+require get_template_directory().'/inc/class-stories.php';
 
 require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/post-types.php';
@@ -118,6 +119,7 @@ require get_template_directory().'/inc/navs.php';
 require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/social.php';
 require get_template_directory().'/inc/widgets.php';
+require get_template_directory().'/inc/markers-map.php';
 
 require get_template_directory().'/inc/templates-thumbnails.php';
 require get_template_directory().'/inc/templates-micro.php';

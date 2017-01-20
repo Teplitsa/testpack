@@ -204,7 +204,7 @@ function tst_custom_content(){
         'hierarchical'        => false,
         'menu_position'       => 20,
         'menu_icon'           => 'dashicons-media-text',
-        'supports'            => array( 'title', 'excerpt', 'editor' ),
+        'supports'            => array( 'title', 'excerpt', 'editor', 'thumbnail' ),
         'taxonomies'          => array( 'post_tag' ),
     ));
 
@@ -238,7 +238,7 @@ function tst_custom_content(){
         'hierarchical'        => false,
         'menu_position'       => 21,
         'menu_icon'           => 'dashicons-media-text',
-        'supports'            => array('title', 'excerpt', 'editor'),
+        'supports'            => array( 'title', 'excerpt', 'editor', 'thumbnail' ),
         'taxonomies'          => array( 'post_tag' ),
     ));
 

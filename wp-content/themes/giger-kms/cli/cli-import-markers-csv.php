@@ -5,12 +5,12 @@ ini_set('memory_limit','256M');
 
 try {
 
-	$time_start = microtime(true);
-	include('cli_common.php');
+    $time_start = microtime(true);
+    include('cli_common.php');
 
-	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
+    echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
-	global $wpdb;
+    global $wpdb;
 
     $options = getopt('', array('file:',));
 
@@ -25,8 +25,8 @@ try {
 
     // Insert special marker groups and metadata:
     $special_marker_groups = array(
-        array('name' => 'Платные', 'slug' => 'commercial-labs', 'layer_marker_icon' => 'dashicons-plus-alt', 'layer_marker_color' => 'yellow',),
-        array('name' => 'Бесплатные', 'slug' => 'free-labs', 'layer_marker_icon' => 'dashicons-plus', 'layer_marker_color' => 'green',),
+        array('name' => 'Платные', 'slug' => 'commercial-labs', 'layer_marker_icon' => 'add_circle', 'layer_marker_color' => 'yellow',),
+        array('name' => 'Бесплатные', 'slug' => 'free-labs', 'layer_marker_icon' => 'add_circle_outline', 'layer_marker_color' => 'green',),
     );
 
     $free_group_id = 0;
@@ -111,17 +111,17 @@ try {
 
     }
 
-	//Final
-	echo 'Markers inserted: '.$markers_num.chr(10);
-	echo 'Memory '.memory_get_usage(true).chr(10);
-	echo 'Total execution time in sec: ' . (microtime(true) - $time_start).chr(10).chr(10);
+    //Final
+    echo 'Markers inserted: '.$markers_num.chr(10);
+    echo 'Memory '.memory_get_usage(true).chr(10);
+    echo 'Total execution time in sec: ' . (microtime(true) - $time_start).chr(10).chr(10);
 }
 catch (TstNotCLIRunException $ex) {
-	echo $ex->getMessage() . "\n";
+    echo $ex->getMessage() . "\n";
 }
 catch (TstCLIHostNotSetException $ex) {
-	echo $ex->getMessage() . "\n";
+    echo $ex->getMessage() . "\n";
 }
 catch (Exception $ex) {
-	echo $ex;
+    echo $ex;
 }

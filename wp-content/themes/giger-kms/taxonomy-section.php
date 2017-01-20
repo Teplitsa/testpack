@@ -10,6 +10,18 @@ if(is_tax('section', 'news')){
 
 $section = get_queried_object();
 
+$additional_blocks = array();
+
+if(is_tax('section', 'advices') || is_tax( 'section', 'resources' ) ){
+    $additional_blocks = get_posts( array(
+        'post_type' => 'story',
+        'posts_per_page' => 3,
+    ) );
+}
+
+if( count( $additional_blocks ) ) {
+    $posts = array_merge( $posts, $additional_blocks );
+}
 
 get_header();
 ?>

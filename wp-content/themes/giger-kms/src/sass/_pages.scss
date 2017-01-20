@@ -136,3 +136,42 @@
 		}
 	}
 }
+
+
+/** Error 404 **/
+.error404 {
+	min-height: 100vh;
+	.container { max-width: 1024px; }
+	.single-header { text-align: center; }
+}
+
+.err-404 {
+	text-align: center; 
+}
+
+.err-404__search {
+	margin: $gut/1.5 auto $gut*2;
+	width: 90%;
+
+	@include for(small-screens) {
+		width: 66.6%;
+		max-width: 675px;
+	}
+
+}
+
+.err-404__text {
+	@include body-text(large);
+
+	a {
+		border-bottom: 1px solid $color-border-normal;
+	}
+}
+
+.img-background {
+	@include bg-as-picture(50%);
+}
+
+.page-template-page-404  .single-header__title {
+	text-align: center;
+}
