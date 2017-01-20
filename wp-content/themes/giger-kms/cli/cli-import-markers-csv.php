@@ -14,13 +14,10 @@ try {
 
     $options = getopt('', array('file:',));
 
-    $fname = isset($options['file']) ? $options['file'] : '';
-    printf("Processing %s\n", $fname);
-
-    $file_csv = fopen($fname, 'r');
+    $file_csv = fopen('data/markers.csv', 'r');
 
     if( !$file_csv ) {
-        die("File(s) not found: $fname\n");
+        die("File(s) not found: data/markers.csv\n");
     }
 
     // Insert special marker groups and metadata:
