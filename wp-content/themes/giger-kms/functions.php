@@ -119,6 +119,7 @@ require get_template_directory().'/inc/navs.php';
 require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/social.php';
 require get_template_directory().'/inc/widgets.php';
+require get_template_directory().'/inc/markers-map.php';
 
 require get_template_directory().'/inc/templates-thumbnails.php';
 require get_template_directory().'/inc/templates-micro.php';

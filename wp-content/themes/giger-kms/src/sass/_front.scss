@@ -69,3 +69,102 @@ h1, h2, h3, h4, h5, h6 {
 	@include header-title(widget);
 	margin-bottom: $inpage-margin-base;
 }
+
+/* Markers map */
+.pw_map_canvas {
+  position: relative;
+
+  .marker-content {
+
+    .mc-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .material-icons {
+      color: $green;
+    }
+
+    .mc-address {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .material-icons {
+        margin-right: 3px;
+      }
+    }
+
+    .mc-phones .phone {
+      display: flex;
+      align-items: center;
+
+      .material-icons {
+        margin-right: 3px;
+      }
+    }
+  }
+}
+
+.pw_map_legend {
+  cursor: default;
+  z-index: 100;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 15px 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 30%;
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.pw_map_legend ul.markers-map-legend {
+  margin: 0;
+}
+.pw_map_legend ul.markers-map-legend li::before {
+  content: '';
+}
+
+.pw_map_legend ul.markers-map-legend li.legend-child {
+  padding-left: 25px;
+}
+
+.pw_map_legend.is-filter ul.markers-map-legend {
+  cursor: pointer;
+}
+
+.pw_map_legend ul.markers-map-legend li {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin-bottom: 0;
+}
+
+.pw_map_legend ul.markers-map-legend.is-filter li.legend-child:hover {
+  background-color: transparentize($green, 0.7);
+  color: $color-white;
+}
+.pw_map_legend ul.markers-map-legend.is-filter li.legend-child.marker-group-active {
+  background-color: transparentize($green, 0.25);
+  color: $color-white;
+}
+
+.pw_map_canvas .material-icons {
+  font-size: 25px;
+
+  &.yellow {
+    color: $orange;
+  }
+  &.green {
+    color: $green;
+  }
+}
+
+.pw_map_legend ul.markers-map-legend .mymap-icon.material-icons {
+  margin-right: 10px;
+  vertical-align: middle;
+}
