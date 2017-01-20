@@ -467,7 +467,11 @@ function rdc_get_legend(array $groups, $legend_is_filter = true) {
 
     }
 
-    return "<ul class='markers-map-legend ".($legend_is_filter ? 'is-filter' : '')."'>".implode('', $list)."</ul>";
+    return "<div class='legend-header'>
+                <div class='legend-title'>Объекты на карте</div>
+                <div class='legend-subtitle'>Выделите нужные вам объекты, чтобы показать только их.</div>
+            </div>"
+        ."<ul class='markers-map-legend ".($legend_is_filter ? 'is-filter' : '')."'>".implode('', $list)."</ul>";
 
 }
 
