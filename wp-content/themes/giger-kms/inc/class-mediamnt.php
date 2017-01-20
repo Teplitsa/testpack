@@ -15,9 +15,9 @@ class TST_Media {
 	private function __construct() {
 
 		if(defined('TST_DEVMODE') && TST_DEVMODE){
-			add_action('tst_before_get_post_thumbnail',  array($this, 'localize_thumbnail'), 2, 2);
-			add_action('tst_before_display_attachment',  array($this, 'localize_attachment'), 2);
-			add_filter('tst_entry_the_content', array($this, 'localize_images_in_content'), 15);
+			//add_action('tst_before_get_post_thumbnail',  array($this, 'localize_thumbnail'), 2, 2);
+			//add_action('tst_before_display_attachment',  array($this, 'localize_attachment'), 2);
+			//add_filter('tst_entry_the_content', array($this, 'localize_images_in_content'), 15);
 		}
 	}
 
@@ -352,46 +352,103 @@ class TST_Media {
 		}
 	}
 
+
+
+	function register_uploaded_file($path, $title = '') {
+
+		$filename = basename($path);
+		$uploads = $this->_get_upload_dir();
+
+		$a_url = $uploads['url'].'/'.$filename;
+
+		$attachment_id = attachment_url_to_postid($a_url);
+		if($attachment_id){
+			return $attachment_id; //already registered
+		}
+
+		$attachment_id = false;
+		$wp_filetype = wp_check_filetype($filename, null );
+
+		$attachment = array(
+			'post_mime_type' => $wp_filetype['type'],
+			'post_parent' => 0,
+			'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
+			'post_content' => '',
+			'post_excerpt' => $title,
+			'post_status' => 'inherit'
+		);
+
+		$attachment_file = ltrim($uploads['subdir'].'/'.$filename, '/');
+		$attachment_id = wp_insert_attachment( $attachment, $attachment_file, 0 );
+
+		if (!is_wp_error($attachment_id)) {
+			require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $attachment_file);
+			wp_update_attachment_metadata( $attachment_id,  $attachment_data );
+
+			$this->regenerate_thumbnails($attachment_id);
+		}
+
+
+		return $attachment_id;
+	}
+
+
+
+	function upload_img_from_path($path, $title = '') {
+
+		if(!$path || !file_exists($path))
+			return false;
+
+		$attachment_id = false;
+
+		$file = file_get_contents($path);
+
+		if($file){
+			$filename = basename($path);
+			$upload_file = wp_upload_bits($filename, null, $file);
+
+			if (!$upload_file['error']) {
+				$wp_filetype = wp_check_filetype($filename, null );
+
+				$attachment = array(
+					'post_mime_type' => $wp_filetype['type'],
+					'post_parent' => 0,
+					'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
+					'post_content' => '',
+					'post_excerpt' => $title,
+					'post_status' => 'inherit'
+				);
+
+				$attachment_id = wp_insert_attachment( $attachment, $upload_file['file'], 0 );
+
+				if (!is_wp_error($attachment_id)) {
+					require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+					$attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
+					wp_update_attachment_metadata( $attachment_id,  $attachment_data );
+				}
+			}
+		}
+
+		return $attachment_id;
+	}
+
+
 }  //class
 
 TST_Media::get_instance();
 
 
+
 //upload file from local folder
-function tst_upload_img_from_path($path) {
+function tst_upload_img_from_path($path, $title = '') {
 
-	if(!$path || !file_exists($path))
-		return false;
+	$mnt = TST_Media::get_instance();
+	return $mnt->upload_img_from_path($path);
+}
 
-	$attachment_id = false;
+function tst_register_uploaded_file($path, $title = '') {
 
-	$file = file_get_contents($path);
-
-	if($file){
-		$filename = basename($path);
-		$upload_file = wp_upload_bits($filename, null, $file);
-
-		if (!$upload_file['error']) {
-			$wp_filetype = wp_check_filetype($filename, null );
-
-			$attachment = array(
-				'post_mime_type' => $wp_filetype['type'],
-				'post_parent' => 0,
-				'post_title' => preg_replace('/\.[^.]+$/', '', $filename),
-				'post_content' => '',
-				'post_status' => 'inherit'
-			);
-
-			$attachment_id = wp_insert_attachment( $attachment, $upload_file['file'], 0 );
-
-			if (!is_wp_error($attachment_id)) {
-				require_once(ABSPATH . "wp-admin" . '/includes/image.php');
-				$attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
-				wp_update_attachment_metadata( $attachment_id,  $attachment_data );
-			}
-		}
-
-	}
-
-	return $attachment_id;
+	$mnt = TST_Media::get_instance();
+	return $mnt->register_uploaded_file($path);
 }
