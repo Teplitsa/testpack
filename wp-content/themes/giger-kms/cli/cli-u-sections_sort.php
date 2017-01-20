@@ -13,8 +13,10 @@ try {
 
 	global $wpdb;
 
+	$uploads = wp_upload_dir();
+
 	//clear current upload folder
-	$path_12 = WP_CONTENT_DIR.'/uploads/2016/12/*';
+	$path_12 = WP_CONTENT_DIR.'/uploads/2017/01/*';
 	array_map('unlink', glob($path_12));
 
 	$move_to_items = array();
@@ -157,7 +159,7 @@ try {
 		'ID' => 111,
 		'slug' => 'books',
 		'post_title' => 'Книги и брошюры',
-		'post_content' => 'books.txt',
+		'post_content' => '',
 		'section' => 'resources',
 		'parent' => 0,
 		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'import_contacts')
@@ -229,7 +231,7 @@ try {
 		'ID' => false,
 		'slug' => 'no-silence',
 		'post_title' => 'Молчание вредит вашему здоровью',
-		'post_content' => 'Молчание вредит вашему здоровью', //add some text
+		'post_content' => 'no-silence.txt', //add some text
 		'section' => 'services',
 		'parent' => 0,
 		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'speaker_notes_off')
@@ -265,30 +267,10 @@ try {
 	foreach($move_to_items as $i_obj) {
 
 		if(isset($i_obj['join_to']) && $i_obj['ID']){ //join to another page
-			$page = get_post($i_obj['ID']);
-			$to = get_post($i_obj['join_to']);
 
-			if($to) {
-				$content = $to->post_content;
-				$content .= '<h4>'.$page->post_title.'</h4>';
-				$content .= chr(10).chr(10).$page->post_content;
+			wp_delete_post($i_obj['ID']);
+			wp_cache_flush();
 
-				preg_match('/<script>(.*?)<\/script>/s',$content, $m);
-				if(isset($m[1]) && !empty($m[1])){
-					$content = str_replace('<script>'.$m[1].'</script>', '', $content);
-				}
-
-				$page_data['ID'] = $to->ID;
-				$page_data['post_content'] = $content;
-				$uid = wp_update_post($page_data);
-
-				if($uid) {
-					wp_delete_post($page->ID);
-					wp_cache_flush();
-
-					echo "Update page ".$page->post_title.chr(10);
-				}
-			}
 		}
 		else { // create
 			$page_data = array();
@@ -298,11 +280,29 @@ try {
 			if(isset($i_obj['thumb'])){
 				$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.$i_obj['thumb'];
 				var_dump($path);
-				$thumb_id = tst_upload_img_from_path($path);
-				echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+
+				$test_path = $uploads['path'].'/'.$i_obj['thumb'];
+				if(!file_exists($test_path)) {
+					$thumb_id = tst_upload_img_from_path($path, trim($i_obj['post_title']));
+					echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+				}
+				else {
+					$a_url = $uploads['url'].'/'.$i_obj['thumb'];
+					$thumb_id = attachment_url_to_postid($a_url);
+					if(!$thumb_id) {
+						$thumb_id = tst_register_uploaded_file($test_path, trim($i_obj['post_title']));
+					}
+				}
 			}
 
-			$old_page = ($i_obj['ID']) ?  get_post((int)$i_obj['ID']) : false;
+			$old_page = false;
+			if($i_obj['ID']) {
+				$old_page = get_post((int)$i_obj['ID']);
+			}
+			elseif($i_obj['post_title']) {
+				$old_page = get_page_by_title($i_obj['post_title'], OBJECT, 'item');
+			}
+
 
 			$page_data['ID'] = ($i_obj['ID']) ? (int)$i_obj['ID'] : 0;
 			$page_data['post_type'] = 'item';
@@ -334,12 +334,9 @@ try {
 			elseif(false !== strpos($i_obj['post_content'], '.txt')) {
 				echo 'Get content from file: '.$i_obj['post_content'].chr(10);
 
-				$content = file_get_contents($i_obj['post_content']);
+				$content = file_get_contents('data/'.$i_obj['post_content']); 
 				if($content){
 
-					//correct urls
-					//$home = home_url('/');
-					//$content_test = str_replace('http://asi_dev.dev/', $home, $content_test);
 					$page_data['post_content'] = $content;
 				}
 
@@ -358,6 +355,7 @@ try {
 			if(isset($i_obj['menu_order'])) {
 				$page_data['menu_order'] = (int)$i_obj['menu_order'];
 			}
+
 
 			$uid = wp_insert_post($page_data);
 
