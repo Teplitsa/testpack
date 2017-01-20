@@ -299,6 +299,16 @@ function tst_markers_map_output($atts){
                             marker_group_layers[map_id][group_id].addTo(maps[map_id]);
 
                         });
+
+                    } else { // None selected - show all markers groups
+
+                        $.each(marker_group_layers[map_id], function(group_id, group_layer){
+                            if(typeof group_layer != 'undefined') {
+                                marker_group_layers[map_id][group_id] = tst_fill_group_layer(points[map_id][group_id]);
+                                marker_group_layers[map_id][group_id].addTo(maps[map_id]);
+                            }
+                        });
+
                     }
                 });
 
@@ -344,8 +354,6 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
     $content = trim(str_replace(array('"', "'", '«', '»'), array(), html_entity_decode(trim(apply_filters('rdc_the_content', $marker->post_excerpt)), ENT_COMPAT, 'UTF-8')));
     $addr = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_address', true), ENT_COMPAT, 'UTF-8')));
     $phones = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_phones', true), ENT_COMPAT, 'UTF-8')));
-
-    $thumbnail = get_the_post_thumbnail($marker->ID, 'small-thumbnail');
 
     if($layers_id) {
 
