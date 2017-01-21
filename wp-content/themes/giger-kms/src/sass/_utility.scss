@@ -250,3 +250,28 @@ a:link {
 	
 	
 }
+
+/* loader */
+.load-more {
+    text-align:center;
+    padding: 10px 0px 15px 0px;
+    
+    .loader {
+        display:none;
+        color: $color-link-two;
+    }
+    
+	.load-more-btn {
+	    display:inline;
+	}
+    
+    &.loading {
+        .loader {
+            display:block;
+        }
+        
+        .load-more-btn {
+            display:none;
+        }
+    }
+}

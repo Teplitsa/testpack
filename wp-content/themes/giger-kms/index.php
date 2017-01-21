@@ -28,7 +28,7 @@ get_header();
 				}
 			?>
 			</div>
-			<div class="layout-section layout-section--loadmore">
+			<div class="layout-section layout-section--card layout-section--loadmore">
     		<?php
     			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
     				tst_load_more_button($wp_query, 'news_card', array(), "loadmore-news");
