@@ -29,6 +29,10 @@
 		{
             "type": "vcs",
             "url": "https://github.com/mustardBees/cmb_field_map"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Strategy11/formidable-forms"
         }
     ],
     "config"      : {
@@ -41,30 +45,34 @@
         "wpackagist-plugin/cyr3lat" : "@stable",
         "wpackagist-plugin/crop-thumbnails": "@stable",
         "wpackagist-plugin/disable-comments" : "@stable",
-		"wpackagist-plugin/imsanity" : "@stable",
+        "wpackagist-plugin/imsanity" : "@stable",
         "wpackagist-plugin/leyka" : "@stable",
         "wpackagist-plugin/media-search-enhanced": "@stable",
         "wpackagist-plugin/responsive-lightbox" : "@stable",
         "wpackagist-plugin/wordpress-seo" : "@stable",
         "wpackagist-plugin/cmb2": "@stable",
-		"wpackagist-plugin/pdf-viewer": "@stable",
-		"wpackagist-plugin/all-in-one-wp-security-and-firewall": "@stable",
-		"wpackagist-plugin/amp": "@stable",
+        "wpackagist-plugin/pdf-viewer": "@stable",
+        "wpackagist-plugin/all-in-one-wp-security-and-firewall": "@stable",
+        "wpackagist-plugin/amp": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
-		"webdevstudios/cmb2-post-search-field" : "dev-master",
-		"mustardbees/cmb_field_map" : "dev-master"
+        "webdevstudios/cmb2-post-search-field": "dev-master",
+        "mustardbees/cmb_field_map": "dev-master",
+        "phpmailer/phpmailer": "dev-master",
+        "strategy11/formidable-forms": "~2.03"
     },
     "require-dev" : {
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
         "wpackagist-plugin/post-duplicator" : "@stable",
         "wpackagist-plugin/term-management-tools": "@stable",
         "wpackagist-plugin/post-type-converter": "@stable",
-		"wpackagist-plugin/query-monitor": "@stable"
+        "wpackagist-plugin/query-monitor": "@stable"
     },
     "extra"       : {
         "wordpress-install-dir": "core",
         "dropin-paths": {
-            "wp-content/languages/": ["vendor:koodimonni-language"]
+            "wp-content/languages/": ["vendor:koodimonni-language"],
+            "wp-content/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+            "wp-content/languages/themes/": ["vendor:koodimonni-theme-language"]
         }
     }
 }

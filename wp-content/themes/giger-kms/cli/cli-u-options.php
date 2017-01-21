@@ -55,7 +55,6 @@ try {
 	//Google Analytics Keys
 	//update_option('google_analytics_key', 'UA-80377406-5');
 
-
 	//Update active plugins list
 	$active = array(
 		"cmb2-post-search-field/cmb2_post_search_field.php",
@@ -68,7 +67,8 @@ try {
 		"post-type-converter/post-type-converter.php",
 		"responsive-lightbox/responsive-lightbox.php",
 		"term-management-tools/term-management-tools.php",
-		"wordpress-seo/wp-seo.php"
+		"wordpress-seo/wp-seo.php",
+	    "formidable-forms/formidable.php"
 	);
 
 	update_option('active_plugins', $active);
@@ -101,7 +101,9 @@ try {
 	//No admin username
 	$wpdb->update($wpdb->users, array('user_login' => 'awedlog', 'display_name' => 'Елена'), array('ID' => 1), array('%s', '%s'), array('%d'));
 
-
+	// formidable options
+	update_option( 'frm_options', 'O:11:"FrmSettings":33:{s:11:"option_name";s:11:"frm_options";s:4:"menu";s:10:"Формы";s:7:"mu_menu";i:0;s:15:"preview_page_id";i:0;s:8:"use_html";s:1:"1";s:10:"jquery_css";i:0;s:12:"accordion_js";i:0;s:11:"success_msg";s:48:"Форма отправлена. Спасибо!";s:9:"blank_msg";s:48:"Поле необходимо заполнить";s:10:"unique_msg";s:26:"This value must be unique.";s:11:"invalid_msg";s:74:"Во время отправки формы возникли ошибки!";s:10:"failed_msg";s:48:"Вы уже отправили эту форму";s:12:"submit_value";s:18:"Отправить";s:9:"login_msg";s:45:"You do not have permission to view this form.";s:16:"admin_permission";s:37:"You do not have permission to do that";s:8:"email_to";s:13:"[admin_email]";s:10:"load_style";s:3:"all";s:12:"custom_style";b:1;s:6:"pubkey";s:0:"";s:7:"privkey";s:0:"";s:7:"re_lang";s:0:"";s:6:"re_msg";s:39:"The reCAPTCHA was not entered correctly";s:8:"re_multi";i:0;s:14:"frm_view_forms";a:1:{i:0;s:13:"administrator";}s:14:"frm_edit_forms";a:1:{i:0;s:13:"administrator";}s:16:"frm_delete_forms";a:1:{i:0;s:13:"administrator";}s:19:"frm_change_settings";a:1:{i:0;s:13:"administrator";}s:16:"frm_view_entries";a:1:{i:0;s:13:"administrator";}s:18:"frm_delete_entries";a:1:{i:0;s:13:"administrator";}s:18:"frm_create_entries";s:13:"administrator";s:16:"frm_edit_entries";s:13:"administrator";s:16:"frm_view_reports";s:13:"administrator";s:17:"frm_edit_displays";s:13:"administrator";}' );
+	
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);
 	echo 'Total execution time in seconds: ' . (microtime(true) - $time_start).chr(10).chr(10);

@@ -36,7 +36,7 @@ function tst_load_more_button(WP_Query $query, $template = 'search_card', $dnd =
 ?>
 
     <nav class="load-more">
-        <span class="loader"></span>
+        <div class="loader"><?php _e('Loading...', 'tst');?></div>
         <a href="<?php echo esc_url($url);?>" class="load-more-btn"
             data-nonce="<?php echo $nonce;?>"
             data-query="<?php echo esc_attr(json_encode($query->query_vars));?>"
