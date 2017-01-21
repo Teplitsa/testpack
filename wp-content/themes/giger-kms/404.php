@@ -24,7 +24,7 @@ get_header();
 		<div class="layout-section__content">
 
 			<article class="err-404">
-				<div class="err-404__text border--half-space"><?php echo apply_filters('tst_the_content', $er_text); ?></div>
+				<div class="err-404__text  flex-sm-6 flex-md-8"><?php echo apply_filters('tst_the_content', $er_text); ?></div>
 				<div class="err-404__search regular-search"><?php get_search_form();?></div>
 				<div class="err-404__img"><div class="img-background" style="background-image: url(<?php echo $src;?>);"></div></div>
 			</article>

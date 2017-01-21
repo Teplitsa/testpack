@@ -142,26 +142,34 @@
 .error404 {
 	min-height: 100vh;
 	.container { max-width: 1024px; }
-	.single-header { text-align: center; }
+	.single-card__header { 
+		text-align: left;
+		border: none;
+	}
+	.single-card__title { 
+		text-align: left;
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
 .err-404 {
-	text-align: center; 
+	text-align: left; 
 }
 
 .err-404__search {
-	margin: $gut/1.5 auto $gut*2;
+	margin: $gut/1.5 0 $gut*2;
 	width: 90%;
 
 	@include for(small-screens) {
-		width: 66.6%;
+		width: 40.6%;
 		max-width: 675px;
 	}
 
 }
 
 .err-404__text {
-	@include body-text(large);
+	@include body-text(default);
 
 	a {
 		border-bottom: 1px solid $color-border-normal;
