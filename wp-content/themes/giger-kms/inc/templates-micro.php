@@ -150,3 +150,21 @@ function tst_get_card_icon($cpost) {
 	return $out;
 
 }
+/** Search card **/
+function tst_card_search(WP_Post $cpost) {
+
+	$pl = get_permalink($cpost);
+	$tags = tst_get_tags_list($cpost); 
+
+?>
+<article class="cell">
+	<h4 class="cell__title">
+		<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
+	</h4>
+	<div class="card-search__summary"><?php echo tst_get_post_excerpt($cpost, 25, true);?></div>
+	<?php if(!empty($tags)) { ?>
+		<div class="card-search__meta"><?php echo $tags;?></div>
+	<?php } ?>
+</article>
+<?php
+}

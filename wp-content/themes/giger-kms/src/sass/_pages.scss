@@ -183,3 +183,16 @@
 .page-template-page-404  .single-header__title {
 	text-align: center;
 }
+/** Search **/
+.sr-form {
+	margin: $gut/1.5 0 $gut;
+	width: 90%;
+
+	@include for(small-screens) {
+		width: 40.6%;
+		max-width: 675px;
+	}
+}
+.sr-block {
+	margin-bottom: $gut/2;
+}
