@@ -97,17 +97,17 @@ a:link {
 	}
 
 	h2, h3 {
-		//@include post-title(general_card);
+		@include post-title(featured);
 		color: $color-text-black;
 	}
 
 	h4 {
-		//@include header-title(featured-label);
+		@include post-title(inlist);
 		color: $color-text-black;
 	}
 
 	h5 {
-		//@include body-text(general_card);
+		@include body-text(default);
 		text-transform: uppercase;
 	}
 
@@ -247,7 +247,15 @@ a:link {
 	}
 
 	//blockquote
-	
+	blockquote {
+		border-left: 5px solid $green;
+		// margin: 30px 0 30px 45px;
+		margin: $inpage-baseline 0 $inpage-baseline $inpage-baseline*1.5;
+		padding-left: $inpage-margin-base;
+		font-style: italic;
+		color: $color-text-light;
+
+	}
 	
 }
 

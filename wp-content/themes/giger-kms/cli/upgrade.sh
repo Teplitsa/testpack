@@ -10,6 +10,7 @@ php cli-u-sections_sort.php --host=$HOST
 php cli-u-pages.php --host=$HOST
 php cli-u-repair.php --host=$HOST
 php cli-u-import-books-csv.php --host=$HOST
+php cli-u-test-post-csv.php --host=$HOST
 php cli-u-import-stories-csv.php --host=$HOST
 php cli-u-import-markers-csv.php --host=$HOST
 php cli-u-fix-broken-images.php --host=$HOST --update=1
