@@ -93,7 +93,7 @@ try {
 	$footer_text = "";
 	update_option('footer_text', $footer_text );
 
-	$header_text = 'Звоните +7(951)031-56-56';
+	$header_text = '<span>Звоните</span> +7(951)031-56-56';
 	update_option('header_text', $header_text);
 
 	echo 'Theme options updated for Error404 and Header / Footer text'.chr(10);

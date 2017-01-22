@@ -48,8 +48,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .site-content {
-	padding-top: $gut*2;
+	padding-top: $gut;
 	padding-bottom: $gut*2;
+	
+	@include for(medium-screens) {
+		padding-top: $gut*2;
+	}
 }
 
 .widget {

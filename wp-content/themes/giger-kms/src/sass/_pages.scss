@@ -185,13 +185,16 @@
 }
 /** Search **/
 .sr-form {
-	margin: $gut/1.5 0 $gut;
-	width: 90%;
+	margin: $gut/1.6 0 $gut/1.6;
 
-	@include for(small-screens) {
+	@include for(medium-screens) {
 		width: 40.6%;
 		max-width: 675px;
 	}
+}
+.sr-num {
+	font-size: .9em;
+	margin-left: 14px
 }
 .sr-block {
 	margin-bottom: $gut/2;
