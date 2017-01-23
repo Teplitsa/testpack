@@ -51,7 +51,9 @@ get_header();
 		<div class="bit md-12 single-body">
 
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
-			
+			<?php if(is_singular('item', 'hiv-test')) { ?>
+				<div class="lab-map"><?php echo do_shortcode('[tst_markers_map]');?></div>
+			<?php } ?>
 		</div>
 
 	<?php } ?>

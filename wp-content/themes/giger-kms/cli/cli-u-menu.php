@@ -132,7 +132,7 @@ try {
 
 	$menu_id = wp_create_nav_menu($menu_name);
 	$about = get_page_by_path('about-us');
-	$projects = get_page_by_path('projects');
+	$projects = get_page_by_path('our-projects');
 	$partners = get_post(117);
 	$news = get_term_by('slug', 'news', 'section');
 

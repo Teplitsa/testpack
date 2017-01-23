@@ -81,11 +81,16 @@ class TST_Item {
 
 	protected function get_side_items() {
 
+		$items = array();
+		if($this->post_name == 'your-question'){
+			return $items;
+		}
+
 		$section = $this->get_section();
 		if(empty($section))
 			return array();
 
-		$items = array();
+
 		if($this->post_name == 'have-test'){
 			$items[] = get_page_by_title('Где сдать анализы', OBJECT, 'item');
 			$items = array_merge(
@@ -141,15 +146,33 @@ class TST_Item {
 			return '';
 
 		$side_items = $this->get_side_items();
-		if(empty($side_items))
-			return '';
+
 
 		ob_start();
-		foreach($side_items as $si) {
 		?>
-			<div class="widget widget--card"><?php tst_card($si, false);?></div>
+			<div class="widget widget--card scheme-two"><?php $this->get_enter_card();?></div>
+
 		<?php
-		}
+			if(!empty($side_items)) { foreach($side_items as $i => $si) {
+
+			$css = '';
+			switch($i){
+				case 0:
+					$css = 'scheme-four';
+					break;
+
+				case 1:
+					$css = 'scheme-five';
+					break;
+
+				case 2:
+					$css = 'scheme-one';
+					break;
+			}
+		?>
+			<div class="widget widget--card <?php echo $css; ?>"><?php tst_card($si, true);?></div>
+		<?php
+		}}
 		$out = ob_get_contents();
 		ob_end_clean();
 
@@ -161,12 +184,15 @@ class TST_Item {
 		return $root->post_title;
 	}
 
-	public function get_entrer_card() {
+	public function get_enter_card() {
 
 	?>
-		<article class="card <?php echo $css;?>"><a href="<?php echo $pl;?>" class="card__link">
-			<div class="card__link_content"><?php echo $thumb_mark;?>
-			<h4 class="card__title"><?php echo get_the_title($cpost);?></h4></div>
+		<article class="card card--cta has-icon"><a href="<?php echo home_url('join-us');?>" class="card__link">
+			<div class="card__link_content">
+				<div class='card__icon'><i class='material-icons'>group</i></div>
+				<h4 class="card__title">Вступай</h4>
+				<h5 class="card__subtitle">В группу взаимопомощи людей живущих с ВИЧ</h5>
+			</div>
 		</a></article>
 	<?php
 	}

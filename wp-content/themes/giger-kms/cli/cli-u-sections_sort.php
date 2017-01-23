@@ -24,7 +24,7 @@ try {
 	$move_to_items[] = array(
 		'ID' => 1241,
 		'slug' => 'forum-patients',
-		'post_title' => '',
+		'post_title' => 'Форум пациентов',
 		'post_content' => '',
 		'section' => 'resources',
 		'parent' => 0,
@@ -193,7 +193,7 @@ try {
 		'post_content' => '',
 		'section' => 'advices',
 		'parent' => 0,
-		'meta_input' => array('has_sidebar' => 'on')
+		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'verified_user')
 	);
 
 	$move_to_items[] = array(
