@@ -42,11 +42,8 @@ get_header();
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
 		</div>
 		<div class="bit md-3 lg-3 lg-offset-1">
-			<?php if( $item->post_name == 'your-question' ):?>
-				<?php do_shortcode( '[tst-join-whatsapp-group]' ) ?>
-			<?php else:?>
-				<?php echo $sidebar;?>
-			<?php endif?>
+
+			<?php echo $sidebar;?>
 		</div>
 
 	<?php } else { ?>
@@ -54,6 +51,7 @@ get_header();
 		<div class="bit md-12 single-body">
 
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
+			
 		</div>
 
 	<?php } ?>

@@ -161,4 +161,14 @@ class TST_Item {
 		return $root->post_title;
 	}
 
+	public function get_entrer_card() {
+
+	?>
+		<article class="card <?php echo $css;?>"><a href="<?php echo $pl;?>" class="card__link">
+			<div class="card__link_content"><?php echo $thumb_mark;?>
+			<h4 class="card__title"><?php echo get_the_title($cpost);?></h4></div>
+		</a></article>
+	<?php
+	}
+
 } //class

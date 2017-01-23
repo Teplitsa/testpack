@@ -300,11 +300,11 @@ try {
 				$old_page = get_post((int)$i_obj['ID']);
 			}
 			elseif($i_obj['post_title']) {
-				$old_page = get_page_by_title($i_obj['post_title'], OBJECT, 'item');
+				$old_page = get_page_by_title(trim($i_obj['post_title']), OBJECT, 'item');
 			}
 
 
-			$page_data['ID'] = ($i_obj['ID']) ? (int)$i_obj['ID'] : 0;
+			$page_data['ID'] = ($old_page) ? $old_page->ID : 0;
 			$page_data['post_type'] = 'item';
 			$page_data['post_status'] = 'publish';
 			$page_data['post_title'] = ($i_obj['post_title']) ? $i_obj['post_title'] : $old_page->post_title;
@@ -334,7 +334,7 @@ try {
 			elseif(false !== strpos($i_obj['post_content'], '.txt')) {
 				echo 'Get content from file: '.$i_obj['post_content'].chr(10);
 
-				$content = file_get_contents('data/'.$i_obj['post_content']); 
+				$content = file_get_contents('data/'.$i_obj['post_content']);
 				if($content){
 
 					$page_data['post_content'] = $content;

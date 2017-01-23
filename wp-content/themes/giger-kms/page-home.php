@@ -122,7 +122,7 @@ get_header();?>
 
 <section class="home-section news">
 <div class="flex-grid row-reverse start">
-	<div class="flex-cell flex-md-4 flex-cell--join"><?php do_shortcode( '[tst-join-whatsapp-group]' ) ?></div>
+	<div class="flex-cell flex-md-4 flex-cell--join"><?php do_shortcode( '[tst_join_whatsapp_group]' ) ?></div>
 	<div class="flex-cell flex-md-8 flex-cell--news">
 		<div class="news-block">
 			<div class="news-block__title"><div class="vcenter"><h3>Новости</h3></div></div>

@@ -114,7 +114,7 @@ require get_template_directory().'/inc/navs.php';
 
 //require get_template_directory().'/inc/cards.php';
 //require get_template_directory().'/inc/donations.php';
-//require get_template_directory().'/inc/forms.php';
+require get_template_directory().'/inc/forms.php';
 
 require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/social.php';
