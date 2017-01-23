@@ -13,6 +13,8 @@ try {
 
 	global $wpdb;
 
+	$uploads = wp_upload_dir();
+
 	//Homepage
 	echo 'Create static homepage'.chr(10);
 	$homepage = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'page' AND post_title = %s", 'Главная'));
@@ -73,45 +75,81 @@ try {
 	wp_delete_post(219);
 
 	//Add contacts to about
-	if($about && $contact) {
-		$content = $about->post_content;
-		$content .= '<h4>'.$contact->post_title.'</h4>';
-		$content .= chr(10).chr(10).$contact->post_content;
+	if($about) {
 
-		preg_match('/<script>(.*?)<\/script>/s', $content, $m);
-		if(isset($m[1]) && !empty($m[1])){
-			$content = str_replace($m[0], '', $content);
+		//thumbnail id
+		$thumb_id = false;
+		$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/about.jpg';
+		var_dump($path);
+
+		$test_path = $uploads['path'].'/about.jpg';
+		if(!file_exists($test_path)) {
+			$thumb_id = tst_upload_img_from_path($path, trim($about->post_title).' заставка');
+			echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+		}
+		else {
+			$a_url = $uploads['url'].'/about.jpg';
+			$thumb_id = attachment_url_to_postid($a_url);
+			if(!$thumb_id) {
+				$thumb_id = tst_register_uploaded_file($test_path, trim($about->post_title).' заставка');
+			}
 		}
 
 		$page_data = array();
 		$page_data['ID'] = $about->ID;
 		$page_data['post_title'] = $about->post_title;
-		$page_data['post_content'] = $content;
+		$page_data['post_content'] = file_get_contents('data/about.txt');
 		$page_data['post_type'] = 'page';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_name'] = 'about-us';
 		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
 
-		$uid = wp_insert_post($page_data);
-
-		if($uid) {
-			wp_delete_post($contact->ID);
-			wp_cache_flush();
+		if($thumb_id){
+			$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
 		}
+
+		$uid = wp_insert_post($page_data);
+	}
+
+	if($contact) {
+		wp_delete_post($contact->ID);
+		wp_cache_flush();
 	}
 
 	echo "Update About page ".chr(10);
 
 	// Upd for partners
 	if($partners) {
+
+		//thumbnail id
+		$thumb_id = false;
+		$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/partners.jpg';
+		var_dump($path);
+
+		$test_path = $uploads['path'].'/partners.jpg';
+		if(!file_exists($test_path)) {
+			$thumb_id = tst_upload_img_from_path($path, trim($partners->post_title).' заставка');
+			echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+		}
+		else {
+			$a_url = $uploads['url'].'/partners.jpg';
+			$thumb_id = attachment_url_to_postid($a_url);
+			if(!$thumb_id) {
+				$thumb_id = tst_register_uploaded_file($test_path, trim($partners->post_title).' заставка');
+			}
+		}
+
 		$page_data = array();
 		$page_data['ID'] = $partners->ID;
 		$page_data['post_title'] = $partners->post_title;
 		$page_data['post_parent'] = 0;
 		$page_data['post_type'] = 'page';
-		$page_data['post_content'] = $partners->post_content;
+		$page_data['post_content'] = file_get_contents('data/partners.txt');
 		$page_data['post_status'] = 'publish';
 		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
+		if($thumb_id){
+			$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
+		}
 
 		$uid = wp_insert_post($page_data);
 	}
@@ -120,6 +158,25 @@ try {
 
 	// Update for projects
 	if($projects) {
+
+		//thumbnail id
+		$thumb_id = false;
+		$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/projects.jpg';
+		var_dump($path);
+
+		$test_path = $uploads['path'].'/projects.jpg';
+		if(!file_exists($test_path)) {
+			$thumb_id = tst_upload_img_from_path($path, trim($projects->post_title).' заставка');
+			echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+		}
+		else {
+			$a_url = $uploads['url'].'/projects.jpg';
+			$thumb_id = attachment_url_to_postid($a_url);
+			if(!$thumb_id) {
+				$thumb_id = tst_register_uploaded_file($test_path, trim($projects->post_title).' заставка');
+			}
+		}
+
 		$page_data = array();
 		$page_data['ID'] = $projects->ID;
 		$page_data['post_title'] = 'Проекты';
@@ -127,8 +184,12 @@ try {
 		$page_data['post_content'] = 'Проекты и мероприятия, реализованные АНО "Новая жизнь"';
 		$page_data['post_type'] = 'page';
 		$page_data['post_status'] = 'publish';
-		$page_data['post_name'] = 'projects';
+		$page_data['post_name'] = 'our-projects';
 		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
+
+		if($thumb_id){
+			$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
+		}
 
 		$uid = wp_insert_post($page_data);
 	}
@@ -166,7 +227,7 @@ try {
 			$page_data['post_content'] = $sub_programm->post_content;
 		}
 
-		$add = file_get_contents('complex.txt');
+		$add = file_get_contents('data/complex.txt');
 		if($add)
 			$page_data['post_content'] .= chr(10).chr(10).$add;
 
@@ -177,7 +238,7 @@ try {
 
 
 	//Impport projects
-	$handle = file('projects.tsv');
+	$handle = file('data/projects.tsv');
 	$csv = array();
 	if($handle) { foreach($handle as $line) {
 		//$csv = array_map('str_getcsv', file('projects.csv'));

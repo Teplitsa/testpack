@@ -202,16 +202,18 @@
 		border-left: 6px solid $color-link-two;
 	}
 
+	.widget & {
+		@include header-title(widget);
+		font-weight: normal;
+	}
+
 	.has-icon & {
 		text-align: center;
 		color: $color-white;
 		margin-top: $element-padding-base;
 	}
 
-	.widget & {
-		@include header-title(widget);
-		font-weight: normal;
-	}
+
 
 	@include for(medium-screens) {
 
@@ -303,26 +305,26 @@
 .cell-story {
 	display:block;
 	text-align:center;
-	
+
 	.story-author {
         display:block;
-        
+
         .story-author-ava {
             display:block;
         }
-        
+
         .story-author-name {
             display:block;
             font-family: $title;
             font-weight: bold;
         }
     }
-    
+
     .story-ex {
         display:block;
         color: $color-text-black;
         text-align:left;
-       
+
 	    &:hover, &:active, &:focus {
 	        color: lighten($color-text-black, 20%);
 	    }

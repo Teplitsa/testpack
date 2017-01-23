@@ -18,7 +18,7 @@ get_header();
 	<div class="frame">
 
 		<div class="bit md-8">
-		<?php if(is_page('projects')) { ?>
+		<?php if(is_page('our-projects')) { ?>
 			<div class="layout-section layout-section--card"><?php echo $about->get_projects_content();?></div>
 		<?php } else { ?>
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $about->post_content);?></div>
