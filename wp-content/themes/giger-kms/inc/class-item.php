@@ -150,7 +150,7 @@ class TST_Item {
 
 		ob_start();
 		?>
-			<div class="widget widget--card scheme-two"><?php $this->get_enter_card();?></div>
+			<div class="widget widget--card scheme-two"><?php self::get_enter_card();?></div>
 
 		<?php
 			if(!empty($side_items)) { foreach($side_items as $i => $si) {
@@ -184,7 +184,7 @@ class TST_Item {
 		return $root->post_title;
 	}
 
-	public function get_enter_card() {
+	static public function get_enter_card() {
 
 	?>
 		<article class="card card--cta has-icon"><a href="<?php echo home_url('join-us');?>" class="card__link">

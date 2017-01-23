@@ -79,21 +79,21 @@ try {
 
 		//thumbnail id
 		$thumb_id = false;
-		$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/about.jpg';
-		var_dump($path);
-
-		$test_path = $uploads['path'].'/about.jpg';
-		if(!file_exists($test_path)) {
-			$thumb_id = tst_upload_img_from_path($path, trim($about->post_title).' заставка');
-			echo 'Uploaded thumbnail '.$thumb_id.chr(10);
-		}
-		else {
-			$a_url = $uploads['url'].'/about.jpg';
-			$thumb_id = attachment_url_to_postid($a_url);
-			if(!$thumb_id) {
-				$thumb_id = tst_register_uploaded_file($test_path, trim($about->post_title).' заставка');
-			}
-		}
+		//$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/about.jpg';
+		//var_dump($path);
+		//
+		//$test_path = $uploads['path'].'/about.jpg';
+		//if(!file_exists($test_path)) {
+		//	$thumb_id = tst_upload_img_from_path($path, trim($about->post_title).' заставка');
+		//	echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+		//}
+		//else {
+		//	$a_url = $uploads['url'].'/about.jpg';
+		//	$thumb_id = attachment_url_to_postid($a_url);
+		//	if(!$thumb_id) {
+		//		$thumb_id = tst_register_uploaded_file($test_path, trim($about->post_title).' заставка');
+		//	}
+		//}
 
 		$page_data = array();
 		$page_data['ID'] = $about->ID;
@@ -102,7 +102,7 @@ try {
 		$page_data['post_type'] = 'page';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_name'] = 'about-us';
-		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
+		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php', 'icon_id' => 'library_books');
 
 		if($thumb_id){
 			$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
@@ -123,21 +123,21 @@ try {
 
 		//thumbnail id
 		$thumb_id = false;
-		$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/partners.jpg';
-		var_dump($path);
-
-		$test_path = $uploads['path'].'/partners.jpg';
-		if(!file_exists($test_path)) {
-			$thumb_id = tst_upload_img_from_path($path, trim($partners->post_title).' заставка');
-			echo 'Uploaded thumbnail '.$thumb_id.chr(10);
-		}
-		else {
-			$a_url = $uploads['url'].'/partners.jpg';
-			$thumb_id = attachment_url_to_postid($a_url);
-			if(!$thumb_id) {
-				$thumb_id = tst_register_uploaded_file($test_path, trim($partners->post_title).' заставка');
-			}
-		}
+		//$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/partners.jpg';
+		//var_dump($path);
+		//
+		//$test_path = $uploads['path'].'/partners.jpg';
+		//if(!file_exists($test_path)) {
+		//	$thumb_id = tst_upload_img_from_path($path, trim($partners->post_title).' заставка');
+		//	echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+		//}
+		//else {
+		//	$a_url = $uploads['url'].'/partners.jpg';
+		//	$thumb_id = attachment_url_to_postid($a_url);
+		//	if(!$thumb_id) {
+		//		$thumb_id = tst_register_uploaded_file($test_path, trim($partners->post_title).' заставка');
+		//	}
+		//}
 
 		$page_data = array();
 		$page_data['ID'] = $partners->ID;
@@ -146,7 +146,7 @@ try {
 		$page_data['post_type'] = 'page';
 		$page_data['post_content'] = file_get_contents('data/partners.txt');
 		$page_data['post_status'] = 'publish';
-		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
+		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php', 'icon_id' => 'contacts');
 		if($thumb_id){
 			$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;
 		}
@@ -161,21 +161,21 @@ try {
 
 		//thumbnail id
 		$thumb_id = false;
-		$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/projects.jpg';
-		var_dump($path);
-
-		$test_path = $uploads['path'].'/projects.jpg';
-		if(!file_exists($test_path)) {
-			$thumb_id = tst_upload_img_from_path($path, trim($projects->post_title).' заставка');
-			echo 'Uploaded thumbnail '.$thumb_id.chr(10);
-		}
-		else {
-			$a_url = $uploads['url'].'/projects.jpg';
-			$thumb_id = attachment_url_to_postid($a_url);
-			if(!$thumb_id) {
-				$thumb_id = tst_register_uploaded_file($test_path, trim($projects->post_title).' заставка');
-			}
-		}
+		//$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/projects.jpg';
+		//var_dump($path);
+		//
+		//$test_path = $uploads['path'].'/projects.jpg';
+		//if(!file_exists($test_path)) {
+		//	$thumb_id = tst_upload_img_from_path($path, trim($projects->post_title).' заставка');
+		//	echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+		//}
+		//else {
+		//	$a_url = $uploads['url'].'/projects.jpg';
+		//	$thumb_id = attachment_url_to_postid($a_url);
+		//	if(!$thumb_id) {
+		//		$thumb_id = tst_register_uploaded_file($test_path, trim($projects->post_title).' заставка');
+		//	}
+		//}
 
 		$page_data = array();
 		$page_data['ID'] = $projects->ID;
@@ -185,7 +185,7 @@ try {
 		$page_data['post_type'] = 'page';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_name'] = 'our-projects';
-		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
+		$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php', 'icon_id' => 'business_center');
 
 		if($thumb_id){
 			$page_data['meta_input']['_thumbnail_id'] = (int)$thumb_id;

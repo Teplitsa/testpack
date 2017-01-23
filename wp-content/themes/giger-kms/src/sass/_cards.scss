@@ -342,11 +342,10 @@
 		padding: 0 $base;
     }
 
-	@include transition(opacity 0.35s);
-	opacity: 0.8;
+	@include transition(all 0.35s);
 
 	&:hover {
-		opacity: 1;
+		
 		.story-ex { color: $color-text-black; }
 		.story-author-name { color: darken($color-link-two, 5%);}
 

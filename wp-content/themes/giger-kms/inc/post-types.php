@@ -363,6 +363,26 @@ function tst_custom_metaboxes() {
 		'type'    => 'text_url',
 	));
 
+	/* Pages **/
+	$page_cmb = new_cmb2_box( array(
+        'id'            => 'page_settings_metabox',
+        'title'         => 'Настройки страницы',
+        'object_types'  => array( 'page'), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+		//'show_on_cb'    => 'tst_show_on_general_pages',
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
+
+	$page_cmb->add_field( array(
+		'name' => 'ID иконки',
+		'id'   => 'icon_id',
+		'type' => 'text',
+		'desc' => 'ID можно выбрать по ссылке https://material.io/icons/#ic_markunread'
+	));
+	
 
 	/** Item **/
 	$item_cmb = new_cmb2_box( array(
@@ -462,7 +482,7 @@ function tst_custom_metaboxes() {
         'priority'      => 'high',
         'show_names'    => true,
     ));
-    
+
     $book_cmb->add_field( array(
         'name' => 'Автор',
         'id'   => 'book_author',
@@ -478,19 +498,19 @@ function tst_custom_metaboxes() {
         'priority'      => 'high',
         'show_names'    => true,
     ));
-    
+
     $story_cmb->add_field( array(
         'name' => 'Имя',
         'id'   => 'story_author_name',
         'type' => 'text',
     ));
-    
+
     $story_cmb->add_field( array(
         'name' => 'Возраст',
         'id'   => 'story_author_age',
         'type' => 'text',
     ));
-    
+
     $story_cmb->add_field( array(
         'name' => 'Пол',
         'id'   => 'story_author_gender',
@@ -502,7 +522,7 @@ function tst_custom_metaboxes() {
         ),
         'default' => 'female',
     ));
-    
+
     //Homepage
 	$home_cmb = new_cmb2_box( array(
         'id'            => 'home_settings_metabox',

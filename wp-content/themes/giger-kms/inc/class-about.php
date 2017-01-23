@@ -18,7 +18,7 @@ class TST_About {
 			throw new Exception("TST_Item can be created from post object only");
 		}
 	}
-	
+
 	public function __get( $key ) {
 
 		if(!$this->post_object)
@@ -34,7 +34,7 @@ class TST_About {
 				break;
 		}
 	}
-	
+
 	protected function get_section() {
 
 		if(!$this->section) {
@@ -45,10 +45,10 @@ class TST_About {
 		}
 
 		return $this->section;
-	}	
-	
+	}
+
 	protected function get_side_items() {
-		
+
 		$items = get_posts(array(
 			'post_type' => 'page',
 			'posts_per_page' => -1,
@@ -66,7 +66,7 @@ class TST_About {
 				)
 			)
 		));
-		
+
 		/*$events = get_posts(array(
 			'post_type' => 'item',
 			'posts_per_page' => 1,
@@ -76,10 +76,10 @@ class TST_About {
 			'update_post_term_cache ' => false,
 			'title' => 'Итоги мероприятий'
 		));
-		
+
 		if($events)
 			$items[] = $events[0];
-			
+
 		$books = get_posts(array(
 			'post_type' => 'item',
 			'posts_per_page' => 1,
@@ -89,33 +89,54 @@ class TST_About {
 			'update_post_term_cache ' => false,
 			'title' => 'Книги и брошюры'
 		));
-		
+
 		if($books)
 			$items[] = $books[0];*/
-			
+
 		return $items;
 	}
 
 	public function get_sidebar() {
 
-		$side_items = $this->get_side_items(); 
+		$side_items = $this->get_side_items();
 
 		ob_start();
 
-		if(!empty($side_items)) { foreach($side_items as $si) { ?>
-			<div class="widget widget--card"><?php tst_card($si, false);?></div>
+		$count = 1;
+		if(!empty($side_items)) { foreach($side_items as $i => $si) {
+			$css = '';
+			if($count > 3)
+				$count = 1;
+
+			switch($count){
+				case 1:
+					$css .= 'scheme-one';
+					break;
+
+				case 2:
+					$css .= 'scheme-five';
+					break;
+
+				case 3:
+					$css .= 'scheme-four';
+					break;
+			}
+
+			$count++;
+		?>
+			<div class="widget widget--card <?php echo $css;?>"><?php tst_card($si, true);?></div>
 		<?php }} ?>
 			<div class="widget widget--card scheme-three"><?php tst_news_card();?></div>
 		<?php
-		
+
 		$out = ob_get_contents();
 		ob_end_clean();
 
 		return $out;
 	}
-	
+
 	public function get_projects_content() {
-		
+
 		$projects = get_posts(array(
 			'post_type' => 'project',
 			'posts_per_page' => -1,
@@ -125,26 +146,26 @@ class TST_About {
 			'update_post_term_cache ' => false,
 			'orderby' => array('date' => 'DESC')
 		));
-		
+
 		if(empty($projects))
 			return '';
-		
+
 		ob_start();
-		
+
 		foreach($projects as $pr) {
-			
+
 		?>
 			<div class="layout-section__item layout-section__item--card ">
 			<?php tst_project_cell($pr); ?>
 			</div>
 		<?php
 		}
-		
+
 		$out = ob_get_contents();
 		ob_end_clean();
 
 		return $out;
 	}
-	
-	
+
+
 } //class
