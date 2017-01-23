@@ -66,7 +66,7 @@
 	}
 
 	h3 {
-		padding: $base*2;
+		padding: 20px $base*2 15px;
 		@include header-title(title);
 		color: $color-white;
 	}
@@ -235,4 +235,3 @@
 		margin-bottom: $base*15;
 	}
 }
-
