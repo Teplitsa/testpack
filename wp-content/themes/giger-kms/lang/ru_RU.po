@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-21 01:56+0200\n"
-"PO-Revision-Date: 2017-01-21 01:56+0200\n"
+"POT-Creation-Date: 2017-01-23 08:08+0200\n"
+"PO-Revision-Date: 2017-01-23 08:09+0200\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -246,11 +246,11 @@ msgstr "Новости"
 msgid "Home"
 msgstr "Главная"
 
-#: inc/templates-single.php:81
+#: inc/templates-single.php:84
 msgid "Prev."
 msgstr "Пред. новость"
 
-#: inc/templates-single.php:84
+#: inc/templates-single.php:87
 msgid "Next."
 msgstr "След. новость"
 
@@ -262,17 +262,38 @@ msgstr "Виджет не имеет настроек"
 msgid "All news"
 msgstr "Все новости"
 
-#: index.php:27 search.php:51 taxonomy-section.php:63
+#: index.php:27 taxonomy-section.php:56
 msgid "Nothing found under your request"
 msgstr "По вашему запросу ничего не найдено."
 
-#: search.php:47
-msgid "Enter terms for search in the form and hit Enter"
-msgstr "Укажите слова для поиска в форме и нажмите Enter"
+#: search.php:49
+msgid "Пожалуйста, укажите слова для поиска в форме и нажмите Enter."
+msgstr ""
+
+#: search.php:52
+msgid ""
+"К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать "
+"иначе."
+msgstr ""
+
+#: single-story.php:41
+msgid "More stories"
+msgstr "Еще истории"
+
+#: single-story.php:49
+msgid "Prev. Story"
+msgstr "Пред. история"
+
+#: single-story.php:49
+msgid "Next Story"
+msgstr "След. история"
 
 #: single.php:41
 msgid "More news"
 msgstr "Еще новости"
+
+#~ msgid "Enter terms for search in the form and hit Enter"
+#~ msgstr "Укажите слова для поиска в форме и нажмите Enter"
 
 #~ msgid "More"
 #~ msgstr "Подробнее"
