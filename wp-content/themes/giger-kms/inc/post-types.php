@@ -438,9 +438,9 @@ function tst_custom_metaboxes() {
         'id'               => 'layer_marker_color',
         'type'             => 'select',
         'show_option_none' => false,
-        'default'          => 'yellow',
+        'default'          => 'orange',
         'options'          => array(
-            'yellow'   => 'Желтый',
+            'orange'   => 'Оранжевый',
             'green'  => 'Зеленый',
             'red'  => 'Красный',
         )

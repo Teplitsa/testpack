@@ -22,8 +22,8 @@ try {
 
     // Insert special marker groups and metadata:
     $special_marker_groups = array(
-        array('name' => 'Платные', 'slug' => 'commercial-labs', 'layer_marker_icon' => 'add_circle', 'layer_marker_color' => 'yellow',),
-        array('name' => 'Бесплатные', 'slug' => 'free-labs', 'layer_marker_icon' => 'add_circle_outline', 'layer_marker_color' => 'green',),
+        array('name' => 'Платные', 'slug' => 'commercial-labs', 'layer_marker_icon' => 'add_circle', 'layer_marker_color' => 'orange',),
+        array('name' => 'Бесплатные', 'slug' => 'free-labs', 'layer_marker_icon' => 'add_circle', 'layer_marker_color' => 'green',),
     );
 
     $free_group_id = 0;
