@@ -46,7 +46,10 @@ function tst_related_list($posts) {
 	<?php foreach($posts as $p) { ?>
 		<li class="related-posts__item">
 			<a href="<?php echo get_permalink($p);?>" class="related-posts__link">
-				<?php echo get_the_title($p);?> <span class="related-posts__date"><?php echo get_the_date('d.m.Y', $p);?></span>
+				<?php echo get_the_title($p);?>
+				<?php if( $p->post_type != 'story' ): ?> 
+				<span class="related-posts__date"><?php echo get_the_date('d.m.Y', $p);?></span>
+				<?php endif;?>
 			</a>
 		</li>
 	<?php }?>
@@ -68,7 +71,7 @@ function tst_single_post_meta(WP_Post $cpost) {
 
 
 /** next/previous post  */
-function tst_single_post_nav() {
+function tst_single_post_nav( $prev_text = '', $next_text = '' ) {
 
 	$previous = get_adjacent_post(false, '', true);
 	$next = get_adjacent_post(false, '', false);
@@ -78,10 +81,10 @@ function tst_single_post_nav() {
 	}?>
 	<div class="nav-links">
 	<?php if($previous) { ?>
-		<div class="nav-links__link nav-links__link--prev"><a href="<?php echo get_permalink($previous);?>">&larr;&nbsp;<?php _e('Prev.', 'tst');?></a></div>
+		<div class="nav-links__link nav-links__link--prev"><a href="<?php echo get_permalink($previous);?>">&larr;&nbsp;<?php echo $prev_text ? $prev_text : __('Prev.', 'tst');?></a></div>
 	<?php }?>
 	<?php if($next) { ?>
-		<div class="nav-links__link nav-links__link--next"><a href="<?php echo get_permalink($next);?>"><?php _e('Next.', 'tst');?>&nbsp;&rarr;</a></div>
+		<div class="nav-links__link nav-links__link--next"><a href="<?php echo get_permalink($next);?>"><?php echo $next_text ? $next_text : __('Next.', 'tst');?>&nbsp;&rarr;</a></div>
 	<?php }?>
 	</div>
 <?php

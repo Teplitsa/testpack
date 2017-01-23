@@ -14,8 +14,7 @@ get_header(); ?>
 	<div class="single-card__header">
 		<div class="single-card__title"><h1><?php echo get_the_title($cpost);?></h1></div>
 		<div class="single-card__options">
-			<div class="single-card__meta"><meta><?php echo tst_single_post_meta($cpost);?></div>
-			<div class="sharing"><?php tst_social_share($cpost);?></div>
+			<div class="single-card__meta"><meta><?php echo tst_single_post_meta($cpost);?></div>			
 		</div>
 	</div>
 
@@ -29,6 +28,7 @@ get_header(); ?>
 			<?php } ?>
 
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
+			<div class="sharing"><?php tst_social_share($cpost);?></div>
 			<div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
 		</div>
 

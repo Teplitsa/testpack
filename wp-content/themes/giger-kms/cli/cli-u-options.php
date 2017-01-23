@@ -55,7 +55,6 @@ try {
 	//Google Analytics Keys
 	//update_option('google_analytics_key', 'UA-80377406-5');
 
-
 	//Update active plugins list
 	$active = array(
 		"cmb2-post-search-field/cmb2_post_search_field.php",
@@ -69,7 +68,7 @@ try {
 		"responsive-lightbox/responsive-lightbox.php",
 		"term-management-tools/term-management-tools.php",
 		"wordpress-seo/wp-seo.php",
-	    "formidable/formidable.php"
+	    "formidable-forms/formidable.php"
 	);
 
 	update_option('active_plugins', $active);
@@ -94,7 +93,7 @@ try {
 	$footer_text = "";
 	update_option('footer_text', $footer_text );
 
-	$header_text = 'Звоните +7(951)031-56-56';
+	$header_text = '<span>Звоните</span> +7(951)031-56-56';
 	update_option('header_text', $header_text);
 
 	echo 'Theme options updated for Error404 and Header / Footer text'.chr(10);

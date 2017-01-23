@@ -74,13 +74,18 @@ $social_color: (
 @each $item in vk, facebook, twitter, telegram, whatsapp, viber, ok, mail  {
 
 	.sharing-list li.#{$item} {
-		.svg-icon { fill: social_color($item); }
+		background: social_color($item);
+		.svg-icon { fill: $color-white; }
 
-		&:hover, &:focus, &:active {
-			background: social_color($item);
-			.svg-icon { fill: $color-white; }
+		@include for(medium-screens) {
+			background: none;
+			.svg-icon { fill: social_color($item); }
+			
+			&:hover, &:focus, &:active {
+				background: social_color($item);
+				.svg-icon { fill: $color-white; }
+			}
 		}
-
 	}
 }
 
@@ -104,7 +109,8 @@ $social_color: (
 /* sharing position */
 .sharing {
 	background: $color-white;
-
+	margin-top: $element-padding-base;
+	
 	@include for(medium-screens) {
 		position: fixed;
 		left: 0;

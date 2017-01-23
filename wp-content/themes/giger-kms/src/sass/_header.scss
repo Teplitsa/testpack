@@ -64,7 +64,10 @@
 }
 
 .drawer-nav__menu {
-	padding: $gut/2 0;
+	
+	@include for(medium-screens) {
+		padding: $gut/2 0;
+	}
 }
 
 .drawer-nav__list {
@@ -72,6 +75,9 @@
 	li {
 		margin: $base/2 0;
 		padding: $base*0.5 0 $base/2;
+		border-bottom: 1px solid lighten($color-link-five, 10%);
+		border-left: 4px solid lighten($color-link-five, 10%);
+		margin-bottom: 6px;
 	}
 
 	a {
@@ -203,6 +209,9 @@ body.drawer-open {
 
 	@include for(small-screens) {
 		flex: 1 1 auto;
+		span {
+			display: none;
+		}
 	}
 }
 

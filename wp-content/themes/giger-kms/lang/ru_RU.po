@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-19 11:21+0200\n"
-"PO-Revision-Date: 2017-01-19 11:22+0200\n"
+"POT-Creation-Date: 2017-01-23 08:08+0200\n"
+"PO-Revision-Date: 2017-01-23 08:09+0200\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -25,6 +25,10 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: bower_components\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 "X-Poedit-SearchPathExcluded-2: assets\n"
+
+#: 404.php:13 inc/template-tags.php:299
+msgid "404: Page not found"
+msgstr "Ошибка 404: Страница не найдена"
 
 #: admin/general.php:135 admin/general.php:144
 msgid "Website"
@@ -93,7 +97,11 @@ msgstr "Перечислять ежемесячно"
 msgid "Your phone number in the 7xxxxxxxxxx format"
 msgstr ""
 
-#: inc/navs.php:43
+#: inc/navs.php:39
+msgid "Loading..."
+msgstr "Загрузка..."
+
+#: inc/navs.php:45
 msgid "Load more"
 msgstr "Больше новостей"
 
@@ -212,10 +220,6 @@ msgstr "История пожертвований"
 msgid "Search results"
 msgstr "Результаты поиска"
 
-#: inc/template-tags.php:299
-msgid "404: Page not found"
-msgstr "Ошибка 404: Страница не найдена"
-
 #: inc/template-tags.php:444
 msgid "More projects"
 msgstr "Еще проекты"
@@ -233,20 +237,20 @@ msgid "Help now"
 msgstr "Помочь сейчас"
 
 #: inc/templates-micro.php:108 inc/templates-single.php:13
-#: inc/templates-tags.php:116 index.php:8
+#: inc/templates-tags.php:103 index.php:8
 msgid "News"
 msgstr "Новости"
 
 #: inc/templates-single.php:12 inc/templates-single.php:25
-#: inc/templates-tags.php:115 inc/templates-tags.php:133
+#: inc/templates-tags.php:102 inc/templates-tags.php:120
 msgid "Home"
 msgstr "Главная"
 
-#: inc/templates-single.php:81
+#: inc/templates-single.php:84
 msgid "Prev."
 msgstr "Пред. новость"
 
-#: inc/templates-single.php:84
+#: inc/templates-single.php:87
 msgid "Next."
 msgstr "След. новость"
 
@@ -258,17 +262,38 @@ msgstr "Виджет не имеет настроек"
 msgid "All news"
 msgstr "Все новости"
 
-#: index.php:27 search.php:51 taxonomy-section.php:51
+#: index.php:27 taxonomy-section.php:56
 msgid "Nothing found under your request"
 msgstr "По вашему запросу ничего не найдено."
 
-#: search.php:47
-msgid "Enter terms for search in the form and hit Enter"
-msgstr "Укажите слова для поиска в форме и нажмите Enter"
+#: search.php:49
+msgid "Пожалуйста, укажите слова для поиска в форме и нажмите Enter."
+msgstr ""
+
+#: search.php:52
+msgid ""
+"К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать "
+"иначе."
+msgstr ""
+
+#: single-story.php:41
+msgid "More stories"
+msgstr "Еще истории"
+
+#: single-story.php:49
+msgid "Prev. Story"
+msgstr "Пред. история"
+
+#: single-story.php:49
+msgid "Next Story"
+msgstr "След. история"
 
 #: single.php:41
 msgid "More news"
 msgstr "Еще новости"
+
+#~ msgid "Enter terms for search in the form and hit Enter"
+#~ msgstr "Укажите слова для поиска в форме и нажмите Enter"
 
 #~ msgid "More"
 #~ msgstr "Подробнее"

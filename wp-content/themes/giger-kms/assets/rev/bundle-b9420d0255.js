@@ -1950,7 +1950,6 @@ jQuery(document).ready(function($){
 				loadingPosts = true;
 			},
 			success: function(response) {
-
 				if (response.type == 'ok') {
 					$(response.data).appendTo('#'+loadTarget);
 
@@ -1958,7 +1957,7 @@ jQuery(document).ready(function($){
 					nav.removeClass('loading');
 
 					if (!response.has_more) {
-						nav.find('.load-more-btn').remove();
+						nav.remove();
 					}
 					else {
 						page++;

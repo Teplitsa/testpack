@@ -36,11 +36,33 @@ try {
 			if(isset($m[1]) && !empty($m[1])){
 				$content = str_replace($m[0], '', $content);
 			}
+			preg_match('/&lt;script&gt;(.*?)&lt;\/script&gt;/s', $content, $m);
+			foreach($m as $res) {
+				if(isset($res) && !empty($res)){
+					$content = str_replace($res, '', $content);
+				}
+			}
+			if(isset($m[1]) && !empty($m[1])){
+				$content = str_replace($m[0], '', $content);
+			}
 
 			preg_match('/\(function\((.*?)\'pageview\'\)\;/s', $content, $m);
 			if(isset($m[0]) && !empty($m[0])){
 				$content = str_replace($m[0], '', $content);
 			}
+			preg_match('/\[easingslider(.*?)\]/s', $content, $m);
+			foreach($m as $result) {
+				if(isset($result) && !empty($result)){
+					$content = str_replace($result, '', $content);
+				}
+			}
+			preg_match('/\[photo(.*?)\]/s', $content, $m);
+			foreach($m as $r) {
+				if(isset($r) && !empty($r)){
+					$content = str_replace($r, '', $content);
+				}
+			}
+			
 
 			$post_data = array();
 			$post_data['ID'] = $post->ID;

@@ -28,10 +28,10 @@
 
 
 .single-card__content {
-	padding: 0 $element-padding-base $element-padding-base;
+	padding: $element-padding-base $element-padding-base $element-padding-base;
 
 	@include for(medium-screens) {
-		padding: 0 $element-padding-base*2 $element-padding-base*2;
+		padding: $element-padding-base $element-padding-base*2 $element-padding-base*2;
 	}
 
 	&.no-thumbnail {
@@ -89,7 +89,7 @@
 }
 
 .single-body__footer-mobile {
-	margin: $inpage-margin-base -1*$element-padding-base $inpage-margin-base;
+	margin: $inpage-baseline -1*$element-padding-base $inpage-margin-base;
 	padding: $element-padding-base;
 
 	border-top: 1px solid $color-border-normal;
@@ -146,7 +146,7 @@
 }
 .spacer {
 	min-width: 10px;
-	height: $gut*2;
+	height: $gut/2;
 	margin: 0;
 	padding: 0;
 }
