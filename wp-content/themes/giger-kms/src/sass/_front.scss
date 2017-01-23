@@ -92,7 +92,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .pw_map_canvas {
-  //position: relative;
   border-bottom: 1px dashed $green;
 
   .leaflet-popup-content-wrapper {
@@ -132,18 +131,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .pw_map_legend {
   cursor: default;
-  //z-index: 500;
-  //position: absolute;
-  //right: 0;
-  //bottom: 0;
   margin: 0;
   padding: 15px 0;
   background-color: rgba(255, 255, 255, 0.95);
   width: 100%;
   text-align: left;
-  //border: 1px solid transparentize($green, 0.25); /*rgba(200, 200, 200, 0.9)*/;
-  //border-top: 0; /*rgba(200, 200, 200, 0.9)*/;
-  //box-shadow: -2px -2px 3px rgba(200, 200, 200, 0.4);
 
   display: flex;
   flex-direction: column;
@@ -189,11 +181,11 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     &.is-filter li.legend-child:hover {
-      background-color: $sand; /*transparentize($yellow, 0.7);*/
+      background-color: $sand;
       color: $color-white;
     }
     &.is-filter li.legend-child.marker-group-active {
-      background-color: $sand; /*transparentize($yellow, 0.25);*/
+      background-color: $sand;
       color: $color-white;
     }
   }
