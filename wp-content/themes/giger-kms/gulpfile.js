@@ -70,7 +70,7 @@ gulp.task('build-head-js', function() {
         .pipe(isProduction ? plugins.uglify() : gutil.noop()) //minification
         .pipe(plugins.size()) //print size for log
         .on('error', console.log) //log
-        .pipe(gulp.dest(basePaths.dest+'js')) //write results into file
+        .pipe(gulp.dest(basePaths.dest+'js')); //write results into file
 });
 
 //sass
@@ -83,8 +83,8 @@ gulp.task('build-css', function() {
 
     var vendorFiles = gulp.src([
             basePaths.bower + 'leaflet/dist/leaflet.css',
-            basePaths.bower + 'leaflet/dist/MarkerCluster.css',
-            basePaths.bower + 'leaflet/dist/MarkerCluster.Default.css'
+            basePaths.bower + 'leaflet-markercluster/dist/MarkerCluster.css',
+            basePaths.bower + 'leaflet-markercluster/dist/MarkerCluster.Default.css'
         ]), //components
         appFiles = gulp.src(basePaths.src+'sass/front-main.scss') //our main file with @import-s
         .pipe(!isProduction ? plugins.sourcemaps.init() : gutil.noop())  //process the original sources for sourcemap
