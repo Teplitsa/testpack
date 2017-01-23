@@ -30,13 +30,30 @@ try {
 		        continue;
 		    }
 		    
-		    $post_title = $line[0];
-		    $post_content = $line[1];
-		    $post_date = $line[2];
+		    $post_content = $line[0];
+		    $post_date = $line[1];
+		    $post_author_name = $line[2];
+		    $post_author_age = $line[3];
+		    $post_author_gender = $line[4];
+		    $post_img = $line[5];
 		    
-		    $post_title = strip_tags( $post_title );
-		    $post_content = nl2br( $post_content );
-		    $post_date = date( 'Y-m-d H:i:s', strtotime( $post_date ) );
+		    $post_content = wpautop( $post_content );
+		    $post_date = $post_date ? date( 'Y-m-d H:i:s', strtotime( $post_date ) ) : current_time( 'mysql' );
+		    $post_author_name = trim( strip_tags( $post_author_name ) );
+		    $post_author_age = trim( strip_tags( $post_author_age ) );
+		    $post_author_gender = trim( strip_tags( $post_author_gender ) );
+		    if( !in_array( $post_author_gender, array( 'male', 'female' ) ) ) {
+		        $post_author_gender = 'female';
+		    }
+		    $post_title = implode( ', ', array( $post_author_name, $post_author_age ) );
+		    
+		    $attachment_id = 0;
+		    if( $post_img ) {
+		        $post_img = get_template_directory() . '/cli/data/stories_images/' . $post_img;
+		        if( file_exists( $post_img ) ) {
+		            $attachment_id = tst_upload_img_from_path( $post_img );
+		        }
+		    }
 		    
 			$post_arr = array(
 				'post_title' 	=> $post_title,
@@ -44,6 +61,11 @@ try {
 				'post_status' 	=> 'publish',
 				'post_content' => $post_content,
 				'post_excerpt' => '',
+			    'meta_input' => array(
+			        'story_author_name' => $post_author_name,
+			        'story_author_age' => $post_author_age,
+			        'story_author_gender' => $post_author_gender,
+			    ),
 			);
             
             if( $post_date ) {
@@ -51,6 +73,14 @@ try {
             }
 
             $post_id = wp_insert_post($post_arr);
+            
+            $is_img = false;
+            if( $post_id && $attachment_id ) {
+                set_post_thumbnail( $post_id, $attachment_id );
+                $is_img = true;
+            }
+            
+            printf( "imported: %s, img: %s\n", $post_title, ($is_img ? 'YES' : 'no') );
             
             unset( $line );
             

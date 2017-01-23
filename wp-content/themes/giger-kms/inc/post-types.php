@@ -453,8 +453,57 @@ function tst_custom_metaboxes() {
         'default' => ''
     ));
 
+    /** Book **/
+    $book_cmb = new_cmb2_box( array(
+        'id'            => 'book_info_metabox',
+        'title'         => 'Подробности',
+        'object_types'  => array( 'book' ), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true,
+    ));
+    
+    $book_cmb->add_field( array(
+        'name' => 'Автор',
+        'id'   => 'book_author',
+        'type' => 'text',
+    ));
 
-	//Homepage
+    /** Story **/
+    $story_cmb = new_cmb2_box( array(
+        'id'            => 'story_settings_metabox',
+        'title'         => 'Автор',
+        'object_types'  => array( 'story' ), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true,
+    ));
+    
+    $story_cmb->add_field( array(
+        'name' => 'Имя',
+        'id'   => 'story_author_name',
+        'type' => 'text',
+    ));
+    
+    $story_cmb->add_field( array(
+        'name' => 'Возраст',
+        'id'   => 'story_author_age',
+        'type' => 'text',
+    ));
+    
+    $story_cmb->add_field( array(
+        'name' => 'Пол',
+        'id'   => 'story_author_gender',
+        'type' => 'text',
+        'type'    => 'radio_inline',
+        'options' => array(
+            'female' => 'Женщина',
+            'male' => 'Мужчина',
+        ),
+        'default' => 'female',
+    ));
+    
+    //Homepage
 	$home_cmb = new_cmb2_box( array(
         'id'            => 'home_settings_metabox',
         'title'         => 'Настройки страницы',

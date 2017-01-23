@@ -150,6 +150,7 @@ function tst_get_card_icon($cpost) {
 	return $out;
 
 }
+
 /** Search card **/
 function tst_card_search(WP_Post $cpost) {
 
@@ -167,4 +168,39 @@ function tst_card_search(WP_Post $cpost) {
 	<?php } ?>
 </article>
 <?php
+}
+
+/* story card */
+function tst_story_card(WP_Post $cpost) {
+
+    $pl = get_permalink($cpost);
+    $ex = tst_get_post_excerpt($cpost, 25);
+    $author_name = get_post_meta( $cpost->ID, 'story_author_name', true );
+    $author_age = trim( get_post_meta( $cpost->ID, 'story_author_age', true ) );
+    $author_gender = get_post_meta( $cpost->ID, 'story_author_gender', true );
+    
+    $author = array( $author_name );
+    if( trim( $author_age ) ) {
+        $author[] = $author_age;
+    }
+    
+    $author_text = implode( ', ', $author );
+    
+    $icon = TST_Stories::get_story_unique_icon( $cpost->ID, $author_gender, 3 );
+?>
+	<article class="cell">
+		<a href="<?php echo $pl?>" class="cell-story">
+    		<span href="<?php echo $pl?>" class="story-author">
+    			<span class="story-author-ava"><?php tst_svg_icon( $icon );?></span>
+    			<span class="story-author-name"><?php echo $author_text;?></span>
+    		</span>
+			<span class="story-ex"><?php echo apply_filters('tst_the_title', $ex);?></span>
+		</a>
+	</article>
+<?php
+}
+
+/* book item */
+function tst_book_item( WP_Post $book ) {
+    
 }

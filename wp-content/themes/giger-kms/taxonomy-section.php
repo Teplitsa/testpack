@@ -12,13 +12,6 @@ $section = get_queried_object();
 
 $additional_blocks = array();
 
-if(is_tax('section', 'advices') || is_tax( 'section', 'resources' ) ){
-    $additional_blocks = get_posts( array(
-        'post_type' => 'story',
-        'posts_per_page' => 3,
-    ) );
-}
-
 if( count( $additional_blocks ) ) {
     $posts = array_merge( $posts, $additional_blocks );
 }
@@ -65,5 +58,24 @@ get_header();
 	</div>
 </section>
 
+<?php 
+$stories = array();
+if(is_tax('section', 'advices') || is_tax( 'section', 'resources' ) ){
+        $stories = TST_Stories::get_rotated( 3 );
+}
+?>
+
+<?php if( count( $stories ) ): ?>
+<section class="home-section info-block">
+	<div class="info-block__title"><h3>Истории</h3></div>
+	<div class="info-block__content">
+		<div class="flex-grid">
+		<?php foreach( $stories as $story ):?>
+			<div class="flex-cell flex-sm-12 flex-md-4"><?php tst_story_card( $story ) ?></div>
+		<?php endforeach;?>
+		</div>
+	</div>
+</section>
+<?php endif?>
 
 <?php get_footer();

@@ -298,3 +298,33 @@
 		border-left-color: $color-link-five;
 	}
 }
+
+/* story card */
+.cell-story {
+	display:block;
+	text-align:center;
+	
+	.story-author {
+        display:block;
+        
+        .story-author-ava {
+            display:block;
+        }
+        
+        .story-author-name {
+            display:block;
+            font-family: $title;
+            font-weight: bold;
+        }
+    }
+    
+    .story-ex {
+        display:block;
+        color: $color-text-black;
+        text-align:left;
+       
+	    &:hover, &:active, &:focus {
+	        color: lighten($color-text-black, 20%);
+	    }
+    }
+}
