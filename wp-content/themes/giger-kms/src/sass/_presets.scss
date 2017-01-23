@@ -232,6 +232,16 @@ $hamburger-hover-opacity                   : 0.7;
 			line-height: 24px;
 		}
 	}
+	@else if $mod == widget_card {
+		font-size: 21px;
+		line-height: 26px;
+		font-weight: normal;
+	}
+	@else if $mod == widget_subcard {
+		font-size: 16px;
+		line-height: 22px;
+		font-weight: normal;
+	}
 }
 
 
@@ -257,17 +267,14 @@ $hamburger-hover-opacity                   : 0.7;
 }
 
 @mixin form-text($mod: default) {
-	font-family: $mono;
+	font-family: $sans;
 	color: $color-white;
 	font-weight: normal;
 	text-transform: none;
 	letter-spacing: normal;
 
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 18px;
-	
-    font-size:1.1em !important;
-    font-weight:normal !important;
 
 	@if $mod == small {
 		font-size: 12px;
@@ -312,18 +319,17 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 
 	display: inline-block;
-	// text-transform: uppercase;
+	text-transform: uppercase;
 	color: $color-white;
 	border-radius: 2px;
-
 	background: $color-link-one;
 	border: none;
 
-	@include transition(all 0.3s);
+	@include transition(background 0.3s);
 
-	padding: 7px 24px 6px;
+	padding: 14px 24px 12px;
 	font-size: 14px;
-	line-height: 20px;
+	line-height: 16px;
 
 
 	&:visited {
@@ -331,9 +337,7 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 
 	&:hover, &:focus, &:active {
-		//background: $color-link-three;
-		background: $color-link-one;
-		box-shadow: 1px 1px 2px rgba(0,0,0, 0.4);
+		background: lighten($color-link-one, 5%);
 		color: $color-white;
 	}
 

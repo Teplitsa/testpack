@@ -8,11 +8,12 @@
 .frm_ajax_loading { display: none; }
 
 //variables
-$input-top-gut: 4px;
+$input-top-gut: $base/2;
 $input-color-active: $color-link-one;
 $input-color-error:  $color-form-invalid;
-$input-border-color: $color-border-normal;
-$label-text-color:   $color-text;	
+$input-border-color: $color-white;
+$input-text-color:   $color-text-black;
+$label-text-color:   $color-white;
 
 @mixin input-text-label {
 	@include form-text();
@@ -20,55 +21,50 @@ $label-text-color:   $color-text;
 	white-space: nowrap;
 	text-align: left;
 	pointer-events: none;
-	color: $color-white !important;
-	font-family: $sans !important;
+	color: $label-text-color;
 }
 
 @mixin input-text {
-	@include form-text(semi);
+	@include form-text();
 	line-height: 1.2;
 	background: transparent;
 	text-align: left;
+	color: $input-text-color;
 }
 
 @mixin checkbox-text($size: 14px) {
-	@include form-text();	
-	color: $label-text-color;	
+	@include form-text();
+	color: $label-text-color;
 	text-align: left;
 	font-size: $size;
 	line-height: 1.2;
-	font-style: italic;
 }
 
 @mixin response-block($mod : default) {
 	@include form-text();
-	font-family: $title !important;
-	padding: 14px;
-	background: $color-border-normal;
+	padding: $base*2;
+
 	position: relative;
 	color: $color-white;
-	
-    width:95% !important;
-    margin-left:auto !important;
-    margin-right:auto !important;
-    
+
 	p:last-child {
 		margin: 0;
+		line-height: 1.35;
 	}
-	
-	@if $mod == error {	
-		background: $input-color-error;		
+
+	@if $mod == error {
+		background: $input-color-error;
 	}
-	@else if $mod == ok {				
-		background: $color-form-ok;
+	@else if $mod == ok {
+		background: $color-link-five;
 	}
 }
 
 /* autocomplete background in chrome */
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus
-input:-webkit-autofill, 
+input:-webkit-autofill,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover
 textarea:-webkit-autofill:focus,
@@ -80,17 +76,19 @@ select:-webkit-autofill:focus {
 
 /* forms general */
 .frm_forms  {
-	margin: $gut 0;
-	font-size: 16px;
+	margin: $base*3 0;
+	padding: $base*3;
+
+
 	&:last-child { margin-bottom: 0;}
 	&:first-child { margin-top: 0;}
-	
+
 	form, fieldset  {
 		display: block;
 		width: 100%;
 		margin: 0;
 		padding: 0;
-	}	
+	}
 }
 
 .screen-reader-response {
@@ -98,10 +96,9 @@ select:-webkit-autofill:focus {
 }
 
 .entry-content .frm_forms,
-.regular-form .frm_forms {	
-	padding: $gut $gut $gut;
-	border: 1px solid $color-border-normal;	 	
-	background: $color-secondary-alt;;
+.regular-form .frm_forms {
+	padding: $base*2;
+	background: $color-link-two;
 }
 
 .frm_required {
@@ -114,14 +111,15 @@ select:-webkit-autofill:focus {
 .frm_hidden {
 	display: none;
 }
-	
+
 .frm_primary_label {
-	@include input-text-label();	
+	@include input-text-label();
 }
 
 .frm_description {
-	@include input-text-label();
-	font-size:0.8em !important;
+	//@include input-text-label();
+	//font-size:0.8em !important;
+	display: none;
 }
 
 
@@ -129,27 +127,18 @@ select:-webkit-autofill:focus {
 .frm_error_style {
 	@include response-block(error);
 	margin-bottom: $gut;
-    border: none !important;
-    color: $red !important;
-    background: $color-white !important;
-    font-size:1.0em !important;
-    font-weight:bold !important;
 }
 
-.frm_message {		
+.frm_message {
 	@include response-block(ok);
 	margin: 15px 0;
 }
 
 .frm_error {
-	@include form-text(small);
 	display: inline-block;
-	padding: 1px 4px !important;
-	font-size: 11px;
-	font-weight:bold !important;
-	color: $input-color-error !important;
-	background-color: $color-white;
-	font-size:0.8em !important;
+	@include form-text(small);
+	padding: 2px;
+	color: $color-white;
 }
 
 
@@ -159,51 +148,63 @@ select:-webkit-autofill:focus {
 	width: 100%;
 	padding: $input-top-gut 0;
 	position: relative;
-		
+	z-index: 1;
+
 	.tst-textfield__input {
+		z-index: 5;
 		@include input-text();
-		border-radius: 0;
-		border: 1px solid $input-border-color;
+		border-radius: 2px;
+		border: 2px solid $input-border-color;
 		background: $color-white;
 		width: 100% !important;
-		padding: 16px 8px;
-		
+		padding: $base*1.5 $base;
+
 		&[type="number"] {
 			-moz-appearance: textfield;
 		}
-	
+
 		&[type="number"]::-webkit-inner-spin-button,
 		&[type="number"]::-webkit-outer-spin-button {
 			-webkit-appearance: none;
 			margin: 0;
 		}
-		
-		@include placeholder {			
-			color: $color-text-semi;
+
+		@include placeholder {
+			color: $color-text;
 		}
-		
+
 		.centered-form & {
 			@include placeholder { text-align: center; }
 			text-align: center;
 		}
-		
-		&:focus {			
-			padding: 15px 7px;
-			border: 2px solid $input-color-active;
+
+		&:focus {
+			border-color: $input-color-active;
 			box-shadow: inset 1px 1px 2px rgba(200,200,200, 0.5);
 		}
 	}
-	
+
+	&.frm_required_field:after {
+		content: '*';
+		color:  $input-color-active;
+		display: inline-block;
+		z-index: 20;
+		position: absolute;
+		top: $base;
+		right: $base;
+	}
+
+
 	textarea {
-		@include placeholder {			
-			color: $color-text-semi;
+		@include placeholder {
+			color: $color-text;
 		}
 	}
-	
+
 	label {
 		display: none;
 	}
-	
+
 }
 
 
@@ -213,13 +214,13 @@ select:-webkit-autofill:focus {
 	width: 100%;
 	padding: $input-top-gut*4 0;
 	position: relative;
-	
+
 	.tst-inputfix__label {
 		display: inline-block;
 		@include input-text-label();
-		color: $color-text;
+
 	}
-	
+
 	.frm_opt_container {
 		margin-top: $input-top-gut;
 	}
@@ -229,25 +230,25 @@ select:-webkit-autofill:focus {
 	display: block;
 	width: 100%;
 	position: relative;
-	padding: 2px 0 2px 26px;		
-	
+	padding: 2px 0 2px 26px;
+
 	.tst-checkbox__input {
 		margin: 0;
 		padding: 0;
 		position: absolute;
 		top: 4px;
-		left: 0;	
-		
+		left: 0;
+
 		border: none;
 		opacity: 0;
 	}
-	
+
 	.tst-checkbox__label {
 		@include checkbox-text();
 		display: inline-block;
 		position: relative;
 		line-height: 18px;
-				
+
 		&:before {
 			content: '';
 			display: block;
@@ -262,7 +263,7 @@ select:-webkit-autofill:focus {
 			cursor: pointer;
 		}
 	}
-	
+
 	.tst-checkbox__input:checked + .tst-checkbox__label {
 		&:before {
 			background-color: $input-color-active;
@@ -279,25 +280,25 @@ select:-webkit-autofill:focus {
 	display: block;
 	width: 100%;
 	position: relative;
-	padding: 2px 0 2px 26px;		
-	
-	
+	padding: 2px 0 2px 26px;
+
+
 	.tst-radio__button {
 		margin: 0;
 		padding: 0;
 		top: 4px;
-		left: 0;		
+		left: 0;
 		position: absolute;
 		border: none;
 		opacity: 0;
 	}
-	
+
 	.tst-radio__label {
 		@include checkbox-text();
 		display: inline-block;
 		position: relative;
-		line-height: 18px;		
-		
+		line-height: 18px;
+
 		&:before {
 			content: '';
 			display: block;
@@ -305,24 +306,24 @@ select:-webkit-autofill:focus {
 			height: 16px;
 			border-radius: 50%;
 			background: $color-white;
-			border: 2px solid $color-text;			
+			border: 2px solid $color-text;
 			position: absolute;
 			top: 1px;
 			left: -26px;
 			cursor: pointer;
 		}
 	}
-		
+
 	.tst-radio__button:checked + .tst-radio__label {
 		&:before {
 			background-color: $input-color-active;
-			border-color: $input-color-active;			
+			border-color: $input-color-active;
 	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMnB4IiB2aWV3Qm94PSIwIDAgMTIgMTIiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiPiAgICAgICAgPHRpdGxlPk92YWwgMTwvdGl0bGU+ICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPiAgICA8ZGVmcz48L2RlZnM+ICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHNrZXRjaDp0eXBlPSJNU1BhZ2UiPiAgICAgICAgPHBhdGggZD0iTTYsMTIgQzkuMzEzNzA4NSwxMiAxMiw5LjMxMzcwODUgMTIsNiBDMTIsMi42ODYyOTE1IDkuMzEzNzA4NSwwIDYsMCBDMi42ODYyOTE1LDAgMCwyLjY4NjI5MTUgMCw2IEMwLDkuMzEzNzA4NSAyLjY4NjI5MTUsMTIgNiwxMiBaIE02LDEwIEM4LjIwOTEzOSwxMCAxMCw4LjIwOTEzOSAxMCw2IEMxMCwzLjc5MDg2MSA4LjIwOTEzOSwyIDYsMiBDMy43OTA4NjEsMiAyLDMuNzkwODYxIDIsNiBDMiw4LjIwOTEzOSAzLjc5MDg2MSwxMCA2LDEwIFoiIGlkPSJPdmFsLTEiIGZpbGw9IiNGRkZGRkYiIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4gICAgPC9nPjwvc3ZnPg==);
 			background-repeat: no-repeat;
 			background-size: 12px 12px;
 			background-position: center center;
 		}
-		
+
 	}
 }
 
@@ -332,58 +333,60 @@ select:-webkit-autofill:focus {
 	width: 100%;
 	padding: $input-top-gut*4 0 $input-top-gut;
 	position: relative;
-	
+
 	.tst-inputfix__label {
 		display: block;
 		@include input-text-label();
-		color: $color-text;
+
 	}
-	
+
 	.tst-select-wrap {
 		display: block;
 		margin-top: $input-top-gut;
 		position: realtive;
 		overflow: hidden;
-		
+
 		border: 1px solid $input-border-color;
+		border-radius: 2px;
+		background-color: $color-white;
 		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTFweCIgaGVpZ2h0PSIxM3B4IiB2aWV3Qm94PSIwIDAgMTEgMTMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgICAgICA8dGl0bGU+U2hhcGU8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGQ9Ik05LjcwNzUsMC41OSBMMTEsMS44NTE3NDQ5NyBMNS41LDcuMjIwODcyNDggTDAsMS44NTE3NDQ5NyBMMS4yOTI1LDAuNTkgTDUuNSw0LjY4ODQzNCBMOS43MDc1LDAuNTkgTDkuNzA3NSwwLjU5IFogTTkuNzA3NSw1Ljk1OTEyNzUyIEwxMSw3LjIyMDg3MjQ4IEw1LjUsMTIuNTkgTDAsNy4yMjA4NzI0OCBMMS4yOTI1LDUuOTU5MTI3NTIgTDUuNSwxMC4wNTc1NjE1IEw5LjcwNzUsNS45NTkxMjc1MiBMOS43MDc1LDUuOTU5MTI3NTIgWiIgaWQ9IlNoYXBlIiBmaWxsPSIjMDAwMDAwIj48L3BhdGg+ICAgIDwvZz48L3N2Zz4=);
 		background-repeat: no-repeat;
 		background-size: 11px 12px;
 		background-position: 98% center;
-	}	
-	
+	}
+
 	select {
 		display: inline-block;
 		@include calc(width, '100% + 20px');
-		padding: 10px 0 10px 8px;
+		padding: 8px 0 8px 8px;
 		background: transparent;
 		border: 0;
-		border-radius: 0;  
+		border-radius: 0;
 		-webkit-appearance: none;
 		outline: none;
-		
-		font-family: $sans;	
-		line-height: 18px;		
+
+		font-family: $sans;
+		line-height: 18px;
 		text-align: left;
-		font-size: 14px;		
-		
+		font-size: 14px;
+
 		//to remove outline in FF
-		color: $label-text-color;
+		color: $input-text-color;
 		color: rgba(100,100,100,0);
-		text-shadow: 0 0 0 $label-text-color;		
+		text-shadow: 0 0 0 $input-text-color;
 	}
-	
+
 	option {
-		@include input-text();		
-		line-height: 18px;		
-		color: $label-text-color;		
-		text-align: left;		
+		@include input-text();
+		line-height: 18px;
+		color: $input-text-color;
+		text-align: left;
 		padding: 4px;
 		width: 100%;
 		cursor: pointer;
-		
+
 		&:hover, &:focus, &:active {
-			
+
 		}
 	}
 }
@@ -391,68 +394,23 @@ select:-webkit-autofill:focus {
 /* submit **/
 .frm_submit {
 	display: block;
-	margin-top: $base;
-	
+	margin-top: $base /2;
+	text-align: right;
+
 	.centered-form & {
 		text-align: center;
 	}
-	
-	input, input:focus {
-		border: none;		
-		outline: none;
-		@include button(submit);
-		@include transition(background 0.2s);		
-	}
-}
 
-.ask-question-form {
-    background: $color-link-two;
-    padding-top: $base*2 !important;
-	
-	.frm_form_fields {
-	    background: $color-link-two;
-	    color: $color-white;
-	    padding: 0px $base*2 $base*2 $base*2;
-	
-	    .frm_submit {
-	       input {
-	            width: 100%;
-	            display: block;
-	            position: relative;
-	            text-align: center;
-	            cursor: pointer;
-	            @include button(join);
-	            border:none !important;
-	            box-shadow:none;
-	            background-color:$red;
-	            
-			    &:hover, &:focus, &:active {
-			        background: darken($color-link-one, 15%);
-			        box-shadow: 1px 1px 2px rgba(0,0,0, 0.4);
-			        color: $color-white;
-			    }
-            }
-	    }
-	
-	    .frm_form_field {
-	        margin-left:auto;
-	        margin-right:auto;
-	
-	        input {
-                height:auto;
-			    background: #ffffff none repeat scroll 0 0;
-			    border: medium none;
-			    border-radius: 3px;
-			    font-family: monospace;
-			    font-size: 16px;
-			    line-height: 16px !important;
-			    padding: 14px 6px;
-			    width: 100%;
-	
-	            &:focus {
-	                box-shadow: inset 1px 1px 3px rgba(0,0,0, 0.4);
-	            }
-	        }
-	    }
-	} 
+	input, input:focus {
+		border: none;
+		outline: none;
+		@include button();
+	}
+
+	@include for(medium-screens) {
+		input {
+			min-width: 200px;
+			text-align:center;
+		}
+	}
 }

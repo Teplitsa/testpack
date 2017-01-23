@@ -142,11 +142,11 @@
 .error404 {
 	min-height: 100vh;
 	.container { max-width: 1024px; }
-	.single-card__header { 
+	.single-card__header {
 		text-align: left;
 		border: none;
 	}
-	.single-card__title { 
+	.single-card__title {
 		text-align: left;
 		padding-left: 0;
 		padding-right: 0;
@@ -154,7 +154,7 @@
 }
 
 .err-404 {
-	text-align: left; 
+	text-align: left;
 }
 
 .err-404__search {
@@ -183,6 +183,7 @@
 .page-template-page-404  .single-header__title {
 	text-align: center;
 }
+
 /** Search **/
 .sr-form {
 	margin: $gut/1.6 0 $gut/1.6;
@@ -199,3 +200,39 @@
 .sr-block {
 	margin-bottom: $gut/2;
 }
+
+
+/** question **/
+.question-grid {
+
+}
+
+.question-form {
+	background: $color-link-two;
+
+}
+.question-side {
+	background: $color-link-two;
+
+	.card--cta,
+	.widget--card  {
+		height: 100%;
+	}
+}
+
+/* join */
+.main--join {
+	.single-item--title {
+		text-align: center;
+	}
+
+	.single-body {
+		margin-bottom: $base*4;
+	}
+
+	.join-whatsapp-group {
+		padding: $base*3;
+		margin-bottom: $base*15;
+	}
+}
+

@@ -58,11 +58,18 @@ get_header();
 	</div>
 </section>
 
+
+<section class="home-section join-stand-alone">
+	<div class="join-stand-alone__title"><h3>Вступайте в группу взаимопомощи людей, живущих с&nbsp;ВИЧ</h3></div>
+	<div class="join-stand-alone__content"><?php do_shortcode( '[tst_join_whatsapp_group]' ) ?></div>
+</section>
+
+
 <?php
-$stories = array();
-if(is_tax('section', 'advices') || is_tax( 'section', 'resources' ) ){
-        $stories = TST_Stories::get_rotated( 3 );
-}
+	$stories = array();
+	if(is_tax('section', 'advices') || is_tax( 'section', 'resources' ) ){
+		$stories = TST_Stories::get_rotated( 3 );
+	}
 ?>
 
 <?php if( count( $stories ) ): ?>

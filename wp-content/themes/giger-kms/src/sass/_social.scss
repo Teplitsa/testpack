@@ -80,7 +80,7 @@ $social_color: (
 		@include for(medium-screens) {
 			background: none;
 			.svg-icon { fill: social_color($item); }
-			
+
 			&:hover, &:focus, &:active {
 				background: social_color($item);
 				.svg-icon { fill: $color-white; }
@@ -110,7 +110,7 @@ $social_color: (
 .sharing {
 	background: $color-white;
 	margin-top: $element-padding-base;
-	
+
 	@include for(medium-screens) {
 		position: fixed;
 		left: 0;
@@ -207,4 +207,20 @@ $social_color: (
 			border-radius: 3px;
 		}
 	}
+}
+
+.join-stand-alone {
+	margin: $base*5 0;
+	
+	.join-stand-alone__title {
+		text-align: center;
+		h3 {
+			padding: $base*2;
+			@include header-title(title);
+		}
+	}
+	.join-stand-alone__content {
+
+	}
+	.join-whatsapp-group { padding: $base*3; }
 }

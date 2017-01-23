@@ -203,7 +203,7 @@
 	}
 
 	.widget & {
-		@include header-title(widget);
+		@include header-title(widget_card);
 		font-weight: normal;
 	}
 
@@ -213,12 +213,22 @@
 		margin-top: $element-padding-base;
 	}
 
+}
 
+.card__subtitle {
+	@include header-title(widget);
 
-	@include for(medium-screens) {
+	.widget & {
+		@include header-title(widget_subcard);
+	}
 
+	.has-icon & {
+		text-align: center;
+		color: $color-white;
+		margin-top: $base/2;
 	}
 }
+
 
 .card--news .card__title {
 	color: $color-white;

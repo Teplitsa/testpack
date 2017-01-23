@@ -67,7 +67,7 @@ try {
 		'ID' => 2,
 		'slug' => 'support-group',
 		'post_title' => 'Группа взаимопомощи',
-		'post_content' => '',
+		'post_content' => 'support-group.txt',
 		'section' => 'services',
 		'parent' => 0,
 		'menu_order' => 100,
@@ -221,7 +221,7 @@ try {
 		'ID' => false,
 		'slug' => 'your-question',
 		'post_title' => 'Задать вопрос',
-		'post_content' => '[formidable key="ask-question"]', //add some text
+		'post_content' => 'Задайте вопрос участникам нашей группы взаимопомощи или специалистам, которых мы приглашаем на встречи. Присоединяйтесь к нашему сообществу в WhatsApp, приходите <a href="item/support-group/">на встречу</a> или отправьте вопрос через форму. Оставьте контактный email, если хотите, чтобы мы вам ответили.', //add some text
 		'section' => 'services',
 		'parent' => 0,
 		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'forum')

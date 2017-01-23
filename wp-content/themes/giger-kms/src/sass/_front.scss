@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 .site-content {
 	padding-top: $gut;
 	padding-bottom: $gut*2;
-	
+
 	@include for(medium-screens) {
 		padding-top: $gut*2;
 	}
@@ -59,6 +59,8 @@ h1, h2, h3, h4, h5, h6 {
 .widget {
 	margin-bottom: $gut;
 	@include body-text(small);
+
+	&.widget--card:last-of-type { margin-bottom: 0; }
 
 	a {
 		font-weight: 500;

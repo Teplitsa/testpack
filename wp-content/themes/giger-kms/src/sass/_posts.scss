@@ -150,6 +150,15 @@
 	margin: 0;
 	padding: 0;
 }
+
+.single-side {
+	margin-top: $base*3;
+	@include for(medium-screens) {
+		margin-top: 0;
+	}
+}
+
+
 /** Borders **/
 .border--regular {
 	position: relative;

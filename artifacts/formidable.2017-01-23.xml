@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- generator="WordPress/4.7.1" created="2017-01-23 20:01" -->
+
+<channel>
+	<title>Новая жизнь</title>
+	<pubDate>Mon, 23 Jan 2017 20:01:23 +0000</pubDate>
+
+	<form>
+		<id>2</id>
+		<form_key><![CDATA[ask-question]]></form_key>
+		<name><![CDATA[Задать вопрос]]></name>
+		<description><![CDATA[We would like to hear from you. Please send us a message by filling out the form below and we will get back with you shortly.]]></description>
+		<created_at>2017-01-18 16:41:40</created_at>
+		<logged_in>0</logged_in>
+		<is_template>0</is_template>
+		<default_template>0</default_template>
+		<editable>0</editable>
+		<options><![CDATA[{"success_action":"message","success_url":"","custom_style":1,"submit_value":"\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c","success_msg":"\u0412\u0430\u0448 \u0432\u043e\u043f\u0440\u043e\u0441 \u043f\u0440\u0438\u0448\u0435\u043b \u043a \u043d\u0430\u043c, \u0441\u043f\u0430\u0441\u0438\u0431\u043e!\r\n\u041c\u044b \u043e\u0442\u0432\u0435\u0442\u0438\u043c \u0432\u0430\u043c \u0432 \u0431\u043b\u0438\u0436\u0430\u0439\u0448\u0435\u0435 \u0432\u0440\u0435\u043c\u044f.","form_class":"ask-question-form","before_html":"<legend class=\\\"frm_hidden\\\">[form_name]<\/legend>\r\n[if form_name]<h3 class=\\\"frm_form_title\\\">[form_name]<\/h3>[\/if form_name]\r\n[if form_description]<div class=\\\"frm_description\\\">[form_description]<\/div>[\/if form_description]","after_html":"","submit_html":"<div class=\\\"frm_submit\\\">\r\n[if back_button]<input type=\\\"button\\\" value=\\\"[back_label]\\\" name=\\\"frm_prev_page\\\" formnovalidate=\\\"formnovalidate\\\" class=\\\"frm_prev_page\\\" [back_hook] \/>[\/if back_button]\r\n<input type=\\\"submit\\\" value=\\\"[button_label]\\\" [button_action] \/>\r\n<img class=\\\"frm_ajax_loading\\\" src=\\\"[frmurl]\/images\/ajax_loader.gif\\\" alt=\\\"Sending\\\"\/>\r\n[if save_draft]<a href=\\\"#\\\" class=\\\"frm_save_draft\\\" [draft_hook]>[draft_label]<\/a>[\/if save_draft]\r\n<\/div>","show_form":0,"akismet":"","no_save":0,"ajax_load":0}]]></options>
+		<status><![CDATA[published]]></status>
+        <parent_form_id>0</parent_form_id>
+		<field>
+		    <id>10</id>
+            <field_key><![CDATA[ask-question-body]]></field_key>
+            <name><![CDATA[Вопрос]]></name>
+            <description><![CDATA[]]></description>
+            <type><![CDATA[textarea]]></type>
+            <default_value><![CDATA[Ваш вопрос]]></default_value>
+            <field_order>0</field_order>
+            <form_id>2</form_id>
+            <required>1</required>
+            <options><![CDATA[]]></options>
+            <field_options><![CDATA[{"max":"5","blank":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448 \u0432\u043e\u043f\u0440\u043e\u0441!","classes":"frm_full","in_section":0,"size":"","label":"","required_indicator":"","invalid":"","separate_value":0,"clear_on_focus":"1","default_blank":"1","captcha_size":"normal","captcha_theme":"light","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>"}]]></field_options>
+		</field>
+		<field>
+		    <id>8</id>
+            <field_key><![CDATA[ask-question-name]]></field_key>
+            <name><![CDATA[Ваше имя]]></name>
+            <description><![CDATA[Вы можете представиться, если хотите]]></description>
+            <type><![CDATA[text]]></type>
+            <default_value><![CDATA[Ваше имя]]></default_value>
+            <field_order>1</field_order>
+            <form_id>2</form_id>
+            <required>0</required>
+            <options><![CDATA[]]></options>
+            <field_options><![CDATA[{"blank":"This field cannot be blank.","separate_value":0,"classes":"frm_first frm_full","in_section":0,"size":"","max":"","label":"","required_indicator":"*","invalid":"","clear_on_focus":"1","default_blank":"1","captcha_size":"normal","captcha_theme":"light","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>"}]]></field_options>
+		</field>
+		<field>
+		    <id>9</id>
+            <field_key><![CDATA[ask-question-email]]></field_key>
+            <name><![CDATA[Ваш email]]></name>
+            <description><![CDATA[Для обратной связи с вами]]></description>
+            <type><![CDATA[email]]></type>
+            <default_value><![CDATA[Ваш email]]></default_value>
+            <field_order>2</field_order>
+            <form_id>2</form_id>
+            <required>0</required>
+            <options><![CDATA[]]></options>
+            <field_options><![CDATA[{"blank":"This field cannot be blank.","invalid":"Please enter a valid email address","classes":"frm_full","in_section":0,"size":"","max":"","label":"","required_indicator":"*","separate_value":0,"clear_on_focus":"1","default_blank":"0","captcha_size":"normal","captcha_theme":"light","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>"}]]></field_options>
+		</field>
+	</form>
+</channel>
