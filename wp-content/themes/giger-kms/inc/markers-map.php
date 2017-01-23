@@ -16,13 +16,17 @@ function tst_markers_map_output($atts){
         'height' => 460,
 
         'enable_scroll_wheel' => false,
-        'zoom' => 12,
+        'minZoom' => '',
+        'maxZoom' => '',
+        'zoom' => 6,
         'disable_controls' => false,
 
-        'lat_center' => '51.80',
+        'lat_center' => '50.8',
         'lng_center' => '55.15',
 
         'show_legend' => true,
+        'legend_title' => '',
+        'legend_subtitle' => '',
         'legend_is_filter' => true,
 
         'css_classes' => '',
@@ -40,6 +44,8 @@ function tst_markers_map_output($atts){
     /** @var $lat_center float */
     /** @var $lng_center float */
     /** @var $show_legend bool */
+    /** @var $legend_title string */
+    /** @var $legend_subtitle string */
     /** @var $legend_is_filter bool */
     /** @var $css_classes string */
 
@@ -97,6 +103,8 @@ function tst_markers_map_output($atts){
     $zoom = intval($zoom);
     $disable_controls = $disable_controls ? true : false;
     $show_legend = !!$show_legend;
+    $legend_title = $legend_title ? trim($legend_title) : '';
+    $legend_subtitle = $legend_subtitle ? trim($legend_subtitle) : '';
     $legend_is_filter = !!$legend_is_filter;
 
     $lat_center = floatval($lat_center);
@@ -173,7 +181,7 @@ function tst_markers_map_output($atts){
         <div class="pw_map-wrap">
             <div class="pw_map_canvas" id="<?php echo esc_attr($map_id);?>" style="height: <?php echo esc_attr($height);?>px; width: <?php echo esc_attr($width);?>">
                 <?php if($show_legend) {?>
-                    <div class="pw_map_legend"><?php echo rdc_get_legend($groups, $legend_is_filter); ?></div>
+                    <div class="pw_map_legend"><?php echo tst_get_legend($groups, $legend_title, $legend_subtitle, $legend_is_filter);?></div>
                 <?php }?>
             </div>
         </div>
@@ -256,13 +264,18 @@ function tst_markers_map_output($atts){
                         enable_scroll_zoom = $(window).width() > 767;
                     }
 
+                    var bounds = L.latLngBounds(L.latLng(50.548294, 50.758355), L.latLng(54.288965, 61.117437));
                     maps[map_id] = L.map(map_id, {
                         zoomControl: <?php echo $disable_controls ? 'false' : 'true';?>,
                         scrollWheelZoom: enable_scroll_zoom,
+                        minZoom: 7,
                         center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
                         zoom: <?php echo $zoom;?>,
+                        maxBounds: bounds,
                         layers: [kosmo_light]
                     });
+
+//                    L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(maps[map_id]);
 
                     $.each(points[map_id], function(group_id, group_markers){ // loop through all marker groups
 
@@ -271,6 +284,18 @@ function tst_markers_map_output($atts){
 
                     });
 
+                });
+
+                // Turn off map zoom by scrolling when mouse is hovering over a legend:
+                $('.pw_map_legend').on('mouseenter', function(){
+                    $(this).parents('.pw_map_canvas:first').addClass('not-scrollable');
+                }).on('mouseleave', function(){
+                    $(this).parents('.pw_map_canvas:first').removeClass('not-scrollable');
+                });
+
+                $('.pw_map_canvas.not-scrollable').on('scroll', function(){
+                    console.log('scroll!');
+                    return false;
                 });
 
                 $('ul.markers-map-legend.is-filter').on('click', 'li.legend-child', function(e){
@@ -404,27 +429,6 @@ function rdc_get_data_from_connected_campaign($marker, $rel_campaign) {
     return $data;
 }
 
-//function rdc_get_marker_icon_class($marker, $layers_id = array()){
-//
-//    $class = 'monetization_on yellow';
-//    if( !$layers_id ) {
-//        $layer = rdc_get_marker_layer_match($marker, $layers_id);
-//
-//        if($layer) {
-//            $color = get_term_meta($layer->term_id, 'layer_marker_colors', true);
-//            $type = get_term_meta($layer->term_id, 'layer_marker_icon', true);
-//
-//            $color = $color ? $color : 'yellow';
-//            $type = $type ? $type : 'monetization_on';
-//            $class = $type.' '.$color;
-//        }
-//
-//    }
-//
-//    return $class;
-//
-//}
-
 function rdc_get_marker_layer_match($marker, $layers_id) {
 
     $terms = get_the_terms($marker->ID, 'marker_cat');
@@ -445,11 +449,13 @@ function rdc_get_marker_layer_match($marker, $layers_id) {
     return $res; //$t;
 }
 
-function rdc_get_legend(array $groups, $legend_is_filter = true) {
+function tst_get_legend(array $groups, $title = '', $subtitle = '', $legend_is_filter = true) {
 
     if( !$groups ) {
         return '';
     }
+    $title = $title ? trim($title) : '';
+    $subtitle = $subtitle ? trim($subtitle) : '';
     $legend_is_filter = !!$legend_is_filter;
 
     $list = array();
@@ -475,10 +481,10 @@ function rdc_get_legend(array $groups, $legend_is_filter = true) {
 
     }
 
-    return "<div class='legend-header'>
-                <div class='legend-title'>Объекты на карте</div>
-                <div class='legend-subtitle'>Выделите нужные вам объекты, чтобы показать только их.</div>
-            </div>"
+    return ($title || $subtitle ? "<div class='legend-header'>"
+                .($title ? "<div class='legend-title'>$title</div>" : "")
+                .($subtitle ? "<div class='legend-subtitle'>$subtitle</div>" : "")
+            ."</div>" : "")
         ."<ul class='markers-map-legend ".($legend_is_filter ? 'is-filter' : '')."'>".implode('', $list)."</ul>";
 
 }
