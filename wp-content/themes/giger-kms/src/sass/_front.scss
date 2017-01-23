@@ -77,21 +77,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Markers map */
-.pw_map_canvas {
-  position: relative;
-  box-shadow: 3px 3px 5px rgba(200, 200, 200, 0.4);
-  border: 1px solid $green;
+.material-icons {
+  font-size: 25px;
 
-  .material-icons {
-    font-size: 25px;
-
-    &.orange {
-      color: $orange;
-    }
-    &.green {
-      color: darken($color-link-two, 15%);
-    }
+  &.orange {
+    color: $orange;
   }
+  &.green {
+    color: darken($color-link-two, 15%);
+  }
+}
+
+.pw_map-wrap {
+  border: 1px solid $green;
+  box-shadow: 2px 2px 3px rgba(200, 200, 200, 0.4);
+}
+
+.pw_map_canvas {
+  //position: relative;
+  border-bottom: 1px dashed $green;
 
   .leaflet-popup-content-wrapper {
     border-radius: 3px;
@@ -130,18 +134,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .pw_map_legend {
   cursor: default;
-  z-index: 100;
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  //z-index: 500;
+  //position: absolute;
+  //right: 0;
+  //bottom: 0;
   margin: 0;
   padding: 15px 0;
   background-color: rgba(255, 255, 255, 0.95);
-  width: 30%;
+  width: 100%;
   text-align: left;
-  border-left: 1px solid transparentize($green, 0.25); /*rgba(200, 200, 200, 0.9)*/;
-  border-top: 1px solid transparentize($green, 0.25); /*rgba(200, 200, 200, 0.9)*/;
-  box-shadow: -2px -2px 3px rgba(200, 200, 200, 0.4);
+  //border: 1px solid transparentize($green, 0.25); /*rgba(200, 200, 200, 0.9)*/;
+  //border-top: 0; /*rgba(200, 200, 200, 0.9)*/;
+  //box-shadow: -2px -2px 3px rgba(200, 200, 200, 0.4);
 
   display: flex;
   flex-direction: column;
@@ -150,16 +154,17 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 10px 10px 25px;
 
     .legend-title {
-      font-size: 15px;
+      font-size: 20px;
       font-weight: bold;
     }
     .legend-subtitle {
-      font-size: 11px;
+      font-size: 12px;
     }
   }
 
   ul.markers-map-legend {
     margin: 0;
+    display: flex;
 
     .mymap-icon.material-icons {
       margin-right: 10px;
@@ -175,7 +180,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     li.legend-child {
-      padding-left: 25px;
+      padding: 5px 25px;
     }
 
     li {

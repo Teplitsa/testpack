@@ -179,11 +179,10 @@ function tst_markers_map_output($atts){
 
     <div class="<?php echo $css_classes;?>">
         <div class="pw_map-wrap">
-            <div class="pw_map_canvas" id="<?php echo esc_attr($map_id);?>" style="height: <?php echo esc_attr($height);?>px; width: <?php echo esc_attr($width);?>">
-                <?php if($show_legend) {?>
-                    <div class="pw_map_legend"><?php echo tst_get_legend($groups, $legend_title, $legend_subtitle, $legend_is_filter);?></div>
-                <?php }?>
-            </div>
+            <div class="pw_map_canvas" id="<?php echo esc_attr($map_id);?>" style="height: <?php echo esc_attr($height);?>px; width: <?php echo esc_attr($width);?>"></div>
+            <?php if($show_legend) {?>
+                <div class="pw_map_legend"><?php echo tst_get_legend($groups, $legend_title, $legend_subtitle, $legend_is_filter);?></div>
+            <?php }?>
         </div>
         <script type="text/javascript">
             if(typeof mapFunc == "undefined") {
@@ -204,12 +203,19 @@ function tst_markers_map_output($atts){
                 maps = [];
             }
 
+            if(typeof marker_clusters == 'undefined') {
+                var marker_clusters = [];
+            }
+            if(typeof marker_clusters['<?php echo $map_id;?>'] == 'undefined') {
+                marker_clusters['<?php echo $map_id;?>'] = [];
+            }
+
             jQuery(document).ready(function($){
 
                 if(typeof tst_fill_group_layer == 'undefined') {
                     function tst_fill_group_layer(group_markers) {
 
-                        var group_layer = L.layerGroup();
+                        var group_layer = L.layerGroup()
 
                         $.each(group_markers, function(key, marker_data){
 
@@ -275,27 +281,21 @@ function tst_markers_map_output($atts){
                         layers: [kosmo_light]
                     });
 
-//                    L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(maps[map_id]);
+//                    L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(maps[map_id]); // Map bounding box visualization
 
+                    marker_clusters[map_id] = L.markerClusterGroup({maxClusterRadius: 40});
                     $.each(points[map_id], function(group_id, group_markers){ // loop through all marker groups
 
                         marker_group_layers[map_id][group_id] = tst_fill_group_layer(group_markers);
-                        marker_group_layers[map_id][group_id].addTo(maps[map_id]);
+//                        marker_group_layers[map_id][group_id].addTo(maps[map_id]);
+
+                        $.each(marker_group_layers[map_id][group_id].getLayers(), function(index, marker){
+                            marker_clusters[map_id].addLayer(marker);
+                        });
 
                     });
+                    maps[map_id].addLayer(marker_clusters[map_id]);
 
-                });
-
-                // Turn off map zoom by scrolling when mouse is hovering over a legend:
-                $('.pw_map_legend').on('mouseenter', function(){
-                    $(this).parents('.pw_map_canvas:first').addClass('not-scrollable');
-                }).on('mouseleave', function(){
-                    $(this).parents('.pw_map_canvas:first').removeClass('not-scrollable');
-                });
-
-                $('.pw_map_canvas.not-scrollable').on('scroll', function(){
-                    console.log('scroll!');
-                    return false;
                 });
 
                 $('ul.markers-map-legend.is-filter').on('click', 'li.legend-child', function(e){
@@ -311,6 +311,7 @@ function tst_markers_map_output($atts){
                             group_layer.clearLayers();
                         }
                     });
+                    marker_clusters[map_id].clearLayers();
 
                     var $active_groups_lines = $this.parents('ul:first').find('li.marker-group-active');
                     if($active_groups_lines.length) {
@@ -321,7 +322,10 @@ function tst_markers_map_output($atts){
                                 group_id = $element.data('group-id');
 
                             marker_group_layers[map_id][group_id] = tst_fill_group_layer(points[map_id][group_id]);
-                            marker_group_layers[map_id][group_id].addTo(maps[map_id]);
+                            $.each(marker_group_layers[map_id][group_id].getLayers(), function(index, marker){
+                                marker_clusters[map_id].addLayer(marker);
+                            });
+//                            marker_group_layers[map_id][group_id].addTo(maps[map_id]);
 
                         });
 
@@ -329,8 +333,13 @@ function tst_markers_map_output($atts){
 
                         $.each(marker_group_layers[map_id], function(group_id, group_layer){
                             if(typeof group_layer != 'undefined') {
+
                                 marker_group_layers[map_id][group_id] = tst_fill_group_layer(points[map_id][group_id]);
-                                marker_group_layers[map_id][group_id].addTo(maps[map_id]);
+                                $.each(marker_group_layers[map_id][group_id].getLayers(), function(index, marker){
+                                    marker_clusters[map_id].addLayer(marker);
+                                });
+//                                marker_group_layers[map_id][group_id].addTo(maps[map_id]);
+
                             }
                         });
 
