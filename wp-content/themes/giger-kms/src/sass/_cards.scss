@@ -315,28 +315,43 @@
 .cell-story {
 	display:block;
 	text-align:center;
+	padding: $base;
 
 	.story-author {
         display:block;
 
         .story-author-ava {
             display:block;
+			@include transition(all 0.35s);
         }
 
         .story-author-name {
             display:block;
-            font-family: $title;
-            font-weight: bold;
+			margin-top: $base;
+            @include post-title(inlist);
+			color: $color-link-two;
         }
     }
 
     .story-ex {
         display:block;
-        color: $color-text-black;
+		margin-top: $base*2;
+		@include body-text();
+        color: $color-text;
         text-align:left;
-
-	    &:hover, &:active, &:focus {
-	        color: lighten($color-text-black, 20%);
-	    }
+		padding: 0 $base;
     }
+
+	@include transition(opacity 0.35s);
+	opacity: 0.8;
+
+	&:hover {
+		opacity: 1;
+		.story-ex { color: $color-text-black; }
+		.story-author-name { color: darken($color-link-two, 5%);}
+
+		.story-author-ava {
+			filter: contrast(120%);
+		}
+	}
 }
