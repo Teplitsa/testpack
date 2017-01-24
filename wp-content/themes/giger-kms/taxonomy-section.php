@@ -60,7 +60,7 @@ get_header();
 
 
 <section class="home-section join-stand-alone">
-	<div class="join-stand-alone__title"><h3>Вступайте в группу взаимопомощи людей, живущих с&nbsp;ВИЧ</h3></div>
+	<div class="join-stand-alone__title"><h3>Вступайте</h3><h4>в группу взаимопомощи людей, живущих с&nbsp;ВИЧ</h4></div>
 	<div class="join-stand-alone__content"><?php do_shortcode( '[tst_join_whatsapp_group]' ) ?></div>
 </section>
 

@@ -16,7 +16,7 @@ get_header();?>
 		</div>
 
 
-		<div class="bit md-8 md-offset-2 ">
+		<div class="bit md-6 md-offset-3 ">
 			<?php do_shortcode( '[tst_join_whatsapp_group]' ) ?>
 		</div>
 

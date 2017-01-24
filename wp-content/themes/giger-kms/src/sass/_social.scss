@@ -210,17 +210,25 @@ $social_color: (
 }
 
 .join-stand-alone {
-	margin: $base*5 0;
-	
+	margin: $base*5 0 $base*7;
+
 	.join-stand-alone__title {
 		text-align: center;
+		padding: $base*2;
 		h3 {
-			padding: $base*2;
 			@include header-title(title);
+		}
+		h4 {
+			@include header-title(widget);
+			margin-top: $base;
 		}
 	}
 	.join-stand-alone__content {
 
 	}
-	.join-whatsapp-group { padding: $base*3; }
+	.join-whatsapp-group {
+		max-width: 520px;
+		margin: 0 auto;
+		padding: $base*4 $base*3;
+	}
 }

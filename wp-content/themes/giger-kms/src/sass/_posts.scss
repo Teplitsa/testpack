@@ -28,10 +28,10 @@
 
 
 .single-card__content {
-	padding: $element-padding-base $element-padding-base $element-padding-base;
+	padding: 0 $element-padding-base $element-padding-base;
 
 	@include for(medium-screens) {
-		padding: $element-padding-base $element-padding-base*2 $element-padding-base*2;
+		padding: 0 $element-padding-base*2 $element-padding-base*2;
 	}
 
 	&.no-thumbnail {
