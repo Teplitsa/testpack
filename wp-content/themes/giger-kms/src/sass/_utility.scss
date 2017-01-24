@@ -147,7 +147,7 @@ a:link {
 
 	// Lists
 	ul {
-		margin: $inpage-margin-base 0 $inpage-margin-base 1.5em;
+		margin: $inpage-baseline 0 $inpage-baseline 1.5em;
 
 		li {
 			position: relative;
@@ -193,13 +193,16 @@ a:link {
 	}
 
 	li {
-		margin-bottom: $inpage-margin-base;
+		margin-bottom: $base;
 		&:last-child { margin-bottom: 0; }
 	}
 
 	ul + p,
 	ol + p { margin-top:  $inpage-margin-base }
 
+	hr {
+		border-color: $green;
+	}
 
 	//in text shortcodes
 	
@@ -249,14 +252,24 @@ a:link {
 	//blockquote
 	blockquote {
 		border-left: 5px solid $green;
-		// margin: 30px 0 30px 45px;
-		margin: $inpage-baseline 0 $inpage-baseline $inpage-baseline*1.5;
-		padding-left: $inpage-margin-base;
+		margin: $inpage-baseline 0 $inpage-baseline $inpage-baseline/2;
+		padding-left: $inpage-margin-base/2;
 		font-style: italic;
 		color: $color-text-light;
-
+		
+		@include for(small-screens) {
+			margin: $inpage-baseline 0 $inpage-baseline $inpage-baseline*1.5;
+			padding-left: $inpage-margin-base;
+		}
 	}
 	
+}
+pre {
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
 /* loader */
