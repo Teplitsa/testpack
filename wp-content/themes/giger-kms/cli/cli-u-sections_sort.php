@@ -179,7 +179,7 @@ try {
 		'ID' => 96,
 		'slug' => 'webinars',
 		'post_title' => 'Вебинары',
-		'post_content' => '',
+		'post_content' => 'webinars.txt',
 		'section' => 'resources',
 		'parent' => 0,
 		'menu_order' => 90,
@@ -187,10 +187,43 @@ try {
 	);
 
 	$move_to_items[] = array(
+		'ID' => false,
+		'slug' => 'webinars-parents',
+		'post_title' => 'Хотим стать родителями',
+		'post_content' => 'webinars-parents.txt',
+		'section' => 'resources',
+		'parent' => 96,
+		'menu_order' => 900,
+		'meta_input' => array('has_sidebar' => 'on')
+	);
+
+	$move_to_items[] = array(
+		'ID' => false,
+		'slug' => 'webinar-pravo-rebenka',
+		'post_title' => 'Право ребенка',
+		'post_content' => 'webinar-pravo-rebenka.txt',
+		'section' => 'resources',
+		'parent' => 96,
+		'menu_order' => 910,
+		'meta_input' => array('has_sidebar' => 'on')
+	);
+
+	$move_to_items[] = array(
+		'ID' => false,
+		'slug' => 'webinar-stigma',
+		'post_title' => 'Снижение стигматизации',
+		'post_content' => 'webinar-stigma.txt',
+		'section' => 'resources',
+		'parent' => 96,
+		'menu_order' => 920,
+		'meta_input' => array('has_sidebar' => 'on')
+	);
+
+	$move_to_items[] = array(
 		'ID' => 98,
 		'slug' => 'co-infections',
 		'post_title' => 'Гепатит, туберкулез',
-		'post_content' => '',
+		'post_content' => 'co-infections.txt',
 		'section' => 'advices',
 		'parent' => 0,
 		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'verified_user')
@@ -241,7 +274,7 @@ try {
 		'ID' => false,
 		'slug' => 'first-time',
 		'post_title' => 'У меня ВИЧ?',
-		'post_content' => 'Только узнали о своем статусе?', //add some text
+		'post_content' => 'first-time.txt', //add some text
 		'section' => 'advices',
 		'parent' => 0,
 		'menu_order' => 100,
@@ -252,7 +285,7 @@ try {
 		'ID' => false,
 		'slug' => 'have-test',
 		'post_title' => 'Пройти тест на ВИЧ',
-		'post_content' => 'Как пройти тест на ВИЧ и почему это важно', //add some text
+		'post_content' => 'have-test.txt', //add some text
 		'section' => 'advices',
 		'parent' => 0,
 		'menu_order' => 90,
