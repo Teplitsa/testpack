@@ -250,15 +250,28 @@
 	@include sub-title(extend);
 	color: $color-white;
     padding: $element-padding-base;
-    background-color: $red;
-}
-
-.widget--card:first-of-type .card__excerpt {
     background-color: $green;
 }
 
-.widget--card:last-of-type .card__excerpt {
-    background-color: $sand;
+.widget--card:first-of-type {
+    .card__excerpt {
+       background-color: $red;
+    }
+    
+    .card__title {
+       border-color: $red;
+    }
+	
+}
+
+.widget--card:last-of-type {
+	.card__excerpt {
+	   background-color: $sand;
+	}
+    
+    .card__title {
+       border-color: $sand;
+    }
 }
 
 .card--news .card__title {
