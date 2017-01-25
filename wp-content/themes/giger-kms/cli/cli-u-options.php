@@ -130,6 +130,29 @@ try {
 
 	echo "Formidable translations imported".chr(10);
 
+	//SEO
+	$options = array();
+	$options = array_map('str_getcsv', file('data/wpseo-opt.csv'));
+	if(!empty($options)){
+
+		foreach($options as $line) {
+
+			$key = $line[0];
+			$opt = $line[1];
+
+			echo "Updated key ".$key.chr(10);
+			$test = get_option($key);
+
+			if(!$test){
+				$wpdb->insert($wpdb->options, array('option_name' => $key, 'option_value' => $opt), array('%s', '%s'));
+			}
+			else {
+				$wpdb->update($wpdb->options, array('option_value' => $opt), array('option_name' => $key), array('%s'), array('%s'));
+			}
+
+		}
+	}
+
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);
 	echo 'Total execution time in seconds: ' . (microtime(true) - $time_start).chr(10).chr(10);

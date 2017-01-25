@@ -22,8 +22,9 @@ function tst_request_corrected(WP_Query $query) {
 		}
 	}
 
-
 }
+
+
 
 // add next page detection for load more actions
 add_filter('found_posts', 'tst_request_corrected_after_get_posts', 2, 2);

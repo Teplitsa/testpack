@@ -14,16 +14,6 @@ function tst_sitemap_screen($atts){
 
 
 
-/** == OLD == **/
-/** logo vvc **/
-add_shortcode('tst_logo_vvc', 'tst_logo_vvc_screen');
-function tst_logo_vvc_screen($atts){
-
-	$out =  "<div class='vvc-logo'>".tst_svg_icon('pic-vvc', false)."</div>";
-
-	return $out;
-}
-
 
 
 
