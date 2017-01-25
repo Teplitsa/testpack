@@ -54,6 +54,25 @@ function tst_cell(WP_Post $cpost, $show_thumb = true) {
 <?php
 }
 
+function tst_cell_story(WP_Post $cpost, $show_thumb = true) {
+
+    $pl = get_permalink($cpost);
+    $tags = tst_get_tags_list($cpost);
+    $ex = tst_get_post_excerpt($cpost, 25);
+
+?>
+	<article class="cell cell-inlist-story">
+		<div  class="cell-ex">
+			<a href="<?php echo $pl;?>"><?php echo apply_filters('tst_the_title', $ex);?></a>
+		</div>
+		<div class="cell__text">
+			<p><?php echo get_the_title($cpost);?></p>
+			<p><?php echo $tags;?></p>
+		</div>
+	</article>
+<?php
+}
+
 function tst_project_cell(WP_Post $cpost) {
 
 	$ex = tst_get_post_excerpt($cpost, 25);

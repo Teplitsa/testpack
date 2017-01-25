@@ -286,7 +286,7 @@ try {
 		$uid = wp_insert_post($page_data);
 	}
 
-	echo "Sitemap page created ".$count.chr(10);
+	echo "Sitemap page created ".chr(10);
 
 	//Join
 	$join = get_page_by_path('join-us');
@@ -304,7 +304,26 @@ try {
 
 		$uid = wp_insert_post($page_data);
 	}
+	
+	echo "Join page created ".chr(10);
 
+	//Credits
+	$contributors = get_page_by_path('contributors');
+	if(!$contributors) {
+	    $page_data = array();
+	
+	    $page_data['ID'] = 0;
+	    $page_data['post_type'] = 'page';
+	    $page_data['post_status'] = 'publish';
+	    $page_data['post_parent'] = 0; //all top level
+	    $page_data['post_title'] = 'Котрибьюторы';
+	    $page_data['post_name'] = 'contributors';
+	    $page_data['post_content'] = file_get_contents('data/contributors.txt');
+	
+	    $uid = wp_insert_post($page_data);
+	}
+	
+	echo "Сontributors page created ".chr(10);
 
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);
