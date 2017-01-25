@@ -201,7 +201,12 @@ a:link {
 	ol + p { margin-top:  $inpage-margin-base }
 
 	hr {
-		border-color: $green;
+		display: block;
+	    height: 1px;
+	    border: 0;
+	    border-top: 1px solid $color-border-normal;
+	    margin: 1em 0;
+	    padding: 0; 
 	}
 
 	//in text shortcodes
