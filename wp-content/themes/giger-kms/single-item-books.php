@@ -27,7 +27,8 @@ get_header();
     		
 	?>
     	
-		<div class="bit md-8 lg-8 single-body">
+		<div class="bit md-8 lg-8">
+			<div class="layout-section layout-section--card">
 			<?php
 			    foreach($books as $i => $cpost) {
 			?>
@@ -35,7 +36,8 @@ get_header();
 			<?php
 				}
 			?>
-			<div class="sharing"><?php tst_social_share($item->post_object);?></div>
+				<div class="sharing"><?php tst_social_share($item->post_object);?></div>
+			</div>
 		</div>
 		<div class="bit md-3 lg-3 lg-offset-1 single-side">
 			<?php if( $item->post_name == 'your-question' ):?>
