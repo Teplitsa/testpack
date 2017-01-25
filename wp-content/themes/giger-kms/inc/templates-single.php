@@ -47,15 +47,58 @@ function tst_related_list($posts) {
 		<li class="related-posts__item">
 			<a href="<?php echo get_permalink($p);?>" class="related-posts__link">
 				<?php echo get_the_title($p);?>
-				<?php if( $p->post_type != 'story' ): ?> 
 				<span class="related-posts__date"><?php echo get_the_date('d.m.Y', $p);?></span>
-				<?php endif;?>
 			</a>
 		</li>
 	<?php }?>
 	</ul>
 <?php
 }
+
+function tst_related_stories($posts) {
+
+    if(empty($posts))
+        return;
+
+        ?>
+	<ul class="realted-posts">
+	<?php foreach($posts as $p) {
+	    $ex = tst_get_post_excerpt($p, 15);
+	?>
+		<li class="related-posts__item">
+			<a href="<?php echo get_permalink($p);?>" class="related-posts__link">
+				<?php echo $ex?>
+				<span class="related-posts__author"><?php echo get_the_title($p);?></span>
+			</a>
+		</li>
+	<?php }?>
+	</ul>
+<?php
+}
+
+function tst_related_books($posts) {
+    
+    if(empty($posts))
+        return;
+
+        ?>
+	<ul class="realted-posts">
+	<?php foreach($posts as $p) { 
+	    $author = get_post_meta( $p->ID, 'book_author', true );
+    ?>
+		<li class="related-posts__item">
+			<a href="<?php echo get_permalink($p);?>" class="related-posts__link">
+				<?php echo get_the_title($p);?>
+				<?php if( $author ):?>
+					<span class="related-posts__author"><?php echo $author?></span>
+				<?php endif ?>
+			</a>
+		</li>
+	<?php }?>
+	</ul>
+<?php
+}
+
 
 function tst_single_post_meta(WP_Post $cpost) {
 
