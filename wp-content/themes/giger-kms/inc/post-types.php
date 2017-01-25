@@ -357,7 +357,7 @@ function tst_custom_metaboxes() {
         'closed'        => false,
     ));
 
-    $group_field_id = $about_page_cmb->add_field( array(
+    $group_field_id = $about_page_cmb->add_field(array(
         'id'          => 'team',
         'type'        => 'group',
         'description' => 'Настройки команды проекта',
@@ -369,7 +369,7 @@ function tst_custom_metaboxes() {
             'sortable'      => true, // beta
             // 'closed'     => true, // true to have the groups closed by default
         ),
-    ) );
+    ));
     $about_page_cmb->add_group_field($group_field_id, array(
         'name' => 'Имя',
         'id'   => 'name',
