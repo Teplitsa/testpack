@@ -20,6 +20,10 @@ function tst_request_corrected(WP_Query $query) {
 			$query->set('posts_per_page', -1);
 			$query->set('orderby', array('menu_order' => 'DESC', 'date' => 'DESC'));
 		}
+		elseif( isset( $query->query['post_type'] ) && $query->query['post_type'] == 'story' ) {
+		    $query->set('posts_per_page', -1);
+		    $query->set('orderby', array( 'date' => 'DESC' ));
+		}
 	}
 
 

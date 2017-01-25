@@ -16,7 +16,7 @@ get_header();
 <section class="main">
 	<div class="frame">
 		<div class="bit md-8">
-			<div class="layout-section layout-section--card" id="loadmore-news">
+			<div class="layout-section layout-section--card">
 			<?php
 				if(!empty($posts)) { foreach($posts as $i => $cpost) {
 			?>
@@ -27,13 +27,6 @@ get_header();
 					echo "<p>".__('Nothing found under your request', 'tst')."</p>";
 				}
 			?>
-			</div>
-			<div class="layout-section layout-section--card layout-section--loadmore">
-    		<?php
-    			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
-    				tst_load_more_button($wp_query, 'news_card', array(), "loadmore-news");
-    			}
-    		?>
 			</div>
 		</div>
 		<div class="bit md-4">
