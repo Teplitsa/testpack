@@ -14,6 +14,7 @@ if(is_tag()){
 get_header();
 ?>
 <section class="main">
+	<div class="single-item--title"><h1><?php _e( 'Stories', 'tst' ) ?></h1></div>
 	<div class="frame">
 		<div class="bit md-8">
 			<div class="layout-section layout-section--card">

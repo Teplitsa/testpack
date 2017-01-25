@@ -308,7 +308,7 @@ try {
 	echo "Join page created ".chr(10);
 
 	//Credits
-	$contributors = get_page_by_path('contributors');
+	$contributors = get_page_by_path('copyright');
 	if(!$contributors) {
 	    $page_data = array();
 	
@@ -316,8 +316,8 @@ try {
 	    $page_data['post_type'] = 'page';
 	    $page_data['post_status'] = 'publish';
 	    $page_data['post_parent'] = 0; //all top level
-	    $page_data['post_title'] = 'Котрибьюторы';
-	    $page_data['post_name'] = 'contributors';
+	    $page_data['post_title'] = __('Copyright', 'tst');
+	    $page_data['post_name'] = 'copyright';
 	    $page_data['post_content'] = file_get_contents('data/contributors.txt');
 	
 	    $uid = wp_insert_post($page_data);
