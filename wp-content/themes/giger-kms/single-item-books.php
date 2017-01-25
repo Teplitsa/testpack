@@ -8,8 +8,6 @@ $item = new TST_Item($cpost);
 get_header();
 ?>
 
-<div class="sharing"><?php tst_social_share($item->post_object);?></div>
-
 <section class="main">
 	<div class="single-item--title"><h1><?php echo apply_filters('tst_the_title', $item->get_root_title());?></h1></div>
 
@@ -29,8 +27,7 @@ get_header();
     		
 	?>
     	
-		<div class="bit md-8 lg-8">
-			<div class="layout-section layout-section--card">
+		<div class="bit md-8 lg-8 single-body">
 			<?php
 			    foreach($books as $i => $cpost) {
 			?>
@@ -38,9 +35,9 @@ get_header();
 			<?php
 				}
 			?>
-			</div>
+			<div class="sharing"><?php tst_social_share($item->post_object);?></div>
 		</div>
-		<div class="bit md-3 lg-3 lg-offset-1">
+		<div class="bit md-3 lg-3 lg-offset-1 single-side">
 			<?php if( $item->post_name == 'your-question' ):?>
 				<?php do_shortcode( '[tst_join_whatsapp_group]' ) ?>
 			<?php else:?>

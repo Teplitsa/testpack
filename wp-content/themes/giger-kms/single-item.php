@@ -8,8 +8,6 @@ $item = new TST_Item($cpost);
 get_header();
 ?>
 
-<div class="sharing"><?php tst_social_share($item->post_object);?></div>
-
 <section class="main">
 	<div class="single-item--title"><h1><?php echo apply_filters('tst_the_title', $item->get_root_title());?></h1></div>
 
@@ -24,6 +22,7 @@ get_header();
 
 		<div class="bit md-9 lg-7 single-body">
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
+			<div class="sharing"><?php tst_social_share($item->post_object);?></div>
 		</div>
 
 		<div class="bit md-12 lg-3 single-side"><?php echo $sidebar;?></div>

@@ -108,10 +108,11 @@ $social_color: (
 
 /* sharing position */
 .sharing {
-	background: $color-white;
+	
 	margin-top: $element-padding-base;
 
 	@include for(medium-screens) {
+		background: $color-white;
 		position: fixed;
 		left: 0;
 		top: 208px;
