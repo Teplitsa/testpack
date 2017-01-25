@@ -216,7 +216,7 @@ get_header();?>
 						break;
 
 					case 3:
-						$css .= 'flex-sm-12 flex-lg-4 scheme-five';
+						$css .= 'flex-sm-12 flex-lg-4 scheme-three';
 						break;
 				}
 

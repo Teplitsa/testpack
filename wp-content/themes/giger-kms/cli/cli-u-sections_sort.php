@@ -25,7 +25,7 @@ try {
 		'ID' => 1241,
 		'slug' => 'forum-patients',
 		'post_title' => 'Форум пациентов',
-		'post_content' => '',
+		'post_content' => 'forum.txt',
 		'section' => 'resources',
 		'parent' => 0,
 		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'supervisor_account'),
@@ -36,7 +36,7 @@ try {
 		'ID' =>  false,
 		'slug' => 'events-results',
 		'post_title' => 'Итоги мероприятий',
-		'post_content' => 'Профильные конференции и мероприятия', //add some text
+		'post_content' => 'itogi.txt', //add some text
 		'section' => 'resources',
 		'parent' => 0,
 		'meta_input' => array('has_sidebar' => 'on', 'icon_id' => 'date_range'),
@@ -118,7 +118,7 @@ try {
 		'ID' => 104,
 		'slug' => 'dating',
 		'post_title' => 'Знакомства+',
-		'post_content' => '',
+		'post_content' => 'znak.txt',
 		'section' => 'resources',
 		'menu_order' => 100,
 		'parent' => 0,

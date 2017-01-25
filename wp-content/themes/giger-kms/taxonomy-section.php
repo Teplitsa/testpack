@@ -41,11 +41,11 @@ get_header();
 						break;
 
 					case 4:
-						$css .= 'flex-sm-7 flex-lg-5 scheme-five';
+						$css .= 'flex-sm-7 flex-lg-5 scheme-four';
 						break;
 
 					case 5:
-						$css .= 'flex-sm-5 flex-lg-3 scheme-four';
+						$css .= 'flex-sm-5 flex-lg-3 scheme-five';
 						break;
 				}
 
@@ -67,9 +67,9 @@ get_header();
 
 <?php
 	$stories = array();
-	if(is_tax('section', 'advices') || is_tax( 'section', 'resources' ) ){
+	//if(is_tax('section', 'advices') || is_tax( 'section', 'resources' ) ){
 		$stories = TST_Stories::get_rotated( 3 );
-	}
+	//}
 ?>
 
 <?php if( count( $stories ) ): ?>

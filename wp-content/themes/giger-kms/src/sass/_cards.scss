@@ -129,10 +129,10 @@
 
 .tst-book-no-cover {
     .tst-thumbnail__frame {
-        
+
         text-align:center;
         background-color: lighten($sand, 20%);
-        
+
         .material-icons {
             font-size: 120px;
             color: $color-white;
@@ -250,27 +250,49 @@
 	@include sub-title(extend);
 	color: $color-white;
     padding: $element-padding-base;
-    background-color: $green;
+    background-color: $color-link-two;
 }
 
-.widget--card:first-of-type {
+.widget--card:nth-of-type(1) {
     .card__excerpt {
-       background-color: $red;
+       background-color: $color-link-one;
     }
-    
+
     .card__title {
-       border-color: $red;
+       border-color: $color-link-one;
     }
-	
+
+}
+
+.widget--card:nth-of-type(3) {
+    .card__excerpt {
+       background-color: $color-link-four;
+    }
+
+    .card__title {
+       border-color: $color-link-four;
+    }
+
+}
+
+.widget--card:nth-of-type(4) {
+    .card__excerpt {
+       background-color: $color-link-five;
+    }
+
+    .card__title {
+       border-color: $color-link-five;
+    }
+
 }
 
 .widget--card:last-of-type {
 	.card__excerpt {
-	   background-color: $sand;
+	   background-color: $color-link-three;
 	}
-    
+
     .card__title {
-       border-color: $sand;
+       border-color:$color-link-three;
     }
 }
 
@@ -307,7 +329,7 @@
 	background: $color-link-two;
 
 	.card__icon {
-		background: $color-link-four;
+		background: rgba(0,0,0, 0.4);
 		i { color: $color-white; }
 	}
 
@@ -317,41 +339,41 @@
 }
 
 .scheme-three {
-	background: $color-link-two;
-
-	.card__icon {
-		background: $color-link-three;
-		i { color: $color-white; }
-	}
-
-	.has-thumb .card__title  {
-		border-left-color: $color-link-two;
-	}
-}
-
-.scheme-four {
-	background: $color-link-one;
-
-	.card__icon {
-		background: $color-link-two;
-		i { color: $color-white; }
-	}
-
-	.has-thumb .card__title  {
-		border-left-color: $color-link-one;
-	}
-}
-
-.scheme-five {
 	background: $color-link-five;
 
 	.card__icon {
 		background: $color-white;
-		i { color: $color-link-four; }
+		i { color: $color-link-five; }
 	}
 
 	.has-thumb .card__title  {
 		border-left-color: $color-link-five;
+	}
+}
+
+.scheme-four {
+	background: $color-link-four;
+
+	.card__icon {
+		background: rgba(0,0,0, 0.4);
+		i { color: $color-white; }
+	}
+
+	.has-thumb .card__title  {
+		border-left-color: $color-link-four;
+	}
+}
+
+.scheme-five {
+	background: $color-link-three;
+
+	.card__icon {
+		background: $color-white;
+		i { color: $color-link-three; }
+	}
+
+	.has-thumb .card__title  {
+		border-left-color: $color-link-three;
 	}
 }
 
@@ -389,7 +411,7 @@
 	@include transition(all 0.35s);
 
 	&:hover {
-		
+
 		.story-ex { color: $color-text-black; }
 		.story-author-name { color: darken($color-link-two, 5%);}
 
