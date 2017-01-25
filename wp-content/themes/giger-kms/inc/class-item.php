@@ -162,11 +162,11 @@ class TST_Item {
 					break;
 
 				case 1:
-					$css = 'scheme-five';
+					$css = 'scheme-three';
 					break;
 
 				case 2:
-					$css = 'scheme-one';
+					$css = 'scheme-five';
 					break;
 			}
 		?>

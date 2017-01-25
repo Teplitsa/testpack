@@ -64,7 +64,7 @@
 }
 
 .drawer-nav__menu {
-	
+
 	@include for(medium-screens) {
 		padding: $gut/2 0;
 	}
@@ -75,8 +75,7 @@
 	li {
 		margin: $base/2 0;
 		padding: $base*0.5 0 $base/2;
-		border-bottom: 1px solid lighten($color-link-five, 10%);
-		border-left: 4px solid lighten($color-link-five, 10%);
+		border-bottom: 1px solid transparentize($color-white, 0.6);
 		margin-bottom: 6px;
 	}
 
@@ -90,7 +89,7 @@
 		@include transition(background 0.4s);
 
 		&:hover {
-			background: $color-link-five;
+			background: darken($color-link-two, 22%);
 			color: $color-white;
 			border-radius: 2px;
 		}
@@ -251,7 +250,7 @@ body.drawer-open {
 }
 
 .actions__list {
-	padding: 0 15px;
+	//padding: 0 15px;
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
@@ -283,7 +282,7 @@ body.drawer-open {
 	a[href *= "join-us"] {
 		color: $color-link-three;
 
-		
+
 	}
 
 	li:hover a { color: $color-white; }

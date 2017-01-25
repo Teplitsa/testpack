@@ -110,15 +110,15 @@ class TST_About {
 
 			switch($count){
 				case 1:
-					$css .= 'scheme-one';
-					break;
-
-				case 2:
 					$css .= 'scheme-five';
 					break;
 
-				case 3:
+				case 2:
 					$css .= 'scheme-four';
+					break;
+
+				case 3:
+					$css .= 'scheme-three';
 					break;
 			}
 
@@ -126,7 +126,7 @@ class TST_About {
 		?>
 			<div class="widget widget--card <?php echo $css;?>"><?php tst_card($si, true);?></div>
 		<?php }} ?>
-			<div class="widget widget--card scheme-three"><?php tst_news_card();?></div>
+			<div class="widget widget--card scheme-two"><?php tst_news_card();?></div>
 		<?php
 
 		$out = ob_get_contents();

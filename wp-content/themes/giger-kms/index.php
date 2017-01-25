@@ -40,8 +40,8 @@ get_header();
 			<div class="layout-section layout-section--card-block">
 				<!-- cards -->
 			<?php
-				$items = TST_Stories::get_rotated( 3 );
-				
+				$items = TST_Stories::get_rotated( 5 );
+
 				if(!empty($items)) { foreach($items as $si) {
 			?>
 				<div class="widget widget--card"><?php tst_card_story($si, false);?></div>
