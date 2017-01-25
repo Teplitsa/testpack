@@ -10,7 +10,7 @@ $cpost = get_queried_object();
 
 get_header(); ?>
 
-<article class="single-card">
+<article class="single-card single-story">
 	<div class="single-card__header">
 		<div class="single-card__title"><h1><?php echo get_the_title($cpost);?></h1></div>
 		<div class="single-card__options">
@@ -23,11 +23,6 @@ get_header(); ?>
 	<div class="frame">
 
 		<div class="bit md-8 single-body">
-
-			<?php if(has_post_thumbnail($cpost)) { ?>
-				<div class="single-body__preview"><?php tst_single_thumbnail($cpost);?></div>
-			<?php } ?>
-
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
 			<div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
 		</div>
@@ -39,7 +34,7 @@ get_header(); ?>
 		?>
 			<div class="widget">
 				<div class="widget__title"><?php _e('More stories', 'tst');?></div>
-				<div class="widget__content"><?php tst_related_list($related->posts); ?></div>
+				<div class="widget__content"><?php tst_related_stories($related->posts); ?></div>
 			</div>
 		<?php
 			}

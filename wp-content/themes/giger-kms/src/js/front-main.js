@@ -138,7 +138,7 @@ jQuery(document).ready(function($){
 			}
             else {
 
-                $parent = $iframe.parents('.entry-content, .player');
+                $parent = $iframe.parents('.entry-content, .player, .single-body--entry');
                 if($parent.length)
                     do_resize = true;
             }

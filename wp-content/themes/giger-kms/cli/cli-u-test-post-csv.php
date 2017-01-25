@@ -51,7 +51,7 @@ try {
             }
 
             $post_id = wp_insert_post($post_arr);
-            
+            wp_set_object_terms($post_id, 98, 'section');
             unset( $line );
             
             wp_cache_flush();

@@ -488,6 +488,12 @@ function tst_custom_metaboxes() {
         'id'   => 'book_author',
         'type' => 'text',
     ));
+    
+    $book_cmb->add_field( array(
+        'name' => 'Файл для скачивания',
+        'id'   => 'book_att_id',
+        'type' => 'file',
+    ));
 
     /** Story **/
     $story_cmb = new_cmb2_box( array(

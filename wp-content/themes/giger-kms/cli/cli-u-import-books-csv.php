@@ -37,6 +37,7 @@ try {
             $post_date = $line[2];
             $post_author = $line[3];
             $post_img = $line[4];
+            $book_pdf = $line[5];
             
             $post_title = trim( strip_tags( $post_title ) );
             $post_content = wpautop( $post_content );
@@ -51,15 +52,29 @@ try {
                 }
             }
             
+            $book_att_id = 0;
+            if( $book_pdf ) {
+                $book_pdf = get_template_directory() . '/cli/data/books_images/' . $book_pdf;
+                if( file_exists( $book_pdf ) ) {
+                    $book_att_id = tst_upload_img_from_path( $book_pdf );
+                }
+            }
+            
+            $book_meta = array(
+                'book_author' => $post_author,
+            );
+            
+            if( $book_att_id ) {
+                $book_meta['book_att_id'] = $book_att_id;
+            }
+            
             $post_arr = array(
                 'post_title' 	=> $post_title,
                 'post_type' 	=> 'book',
                 'post_status' 	=> 'publish',
                 'post_content' => $post_content,
                 'post_excerpt' => '',
-                'meta_input' => array(
-                    'book_author' => $post_author,
-                ),
+                'meta_input' => $book_meta,
             );
             
             if( $post_date ) {
@@ -74,7 +89,7 @@ try {
                 $is_img = true;
             }
             
-            printf( "imported: %s, img: %s\n", $post_title, ($is_img ? 'YES' : 'no') );
+            printf( "imported: %s, img: %s, file: %s\n", $post_title, ($is_img ? 'YES' : 'no'), ($book_att_id ? 'YES' : 'no') );
             
             unset( $line );
             

@@ -123,6 +123,23 @@
 	max-width: 500px;
 }
 
+.cell__cover {
+    @include cell-thumbnail();
+}
+
+.tst-book-no-cover {
+    .tst-thumbnail__frame {
+        
+        text-align:center;
+        background-color: lighten($sand, 20%);
+        
+        .material-icons {
+            font-size: 120px;
+            color: $color-white;
+        }
+    }
+}
+
 .cell__title--project {
 	margin-bottom: $element-padding-base/4;
 }
@@ -229,6 +246,33 @@
 	}
 }
 
+.card__excerpt {
+	@include sub-title(extend);
+	color: $color-white;
+    padding: $element-padding-base;
+    background-color: $green;
+}
+
+.widget--card:first-of-type {
+    .card__excerpt {
+       background-color: $red;
+    }
+    
+    .card__title {
+       border-color: $red;
+    }
+	
+}
+
+.widget--card:last-of-type {
+	.card__excerpt {
+	   background-color: $sand;
+	}
+    
+    .card__title {
+       border-color: $sand;
+    }
+}
 
 .card--news .card__title {
 	color: $color-white;

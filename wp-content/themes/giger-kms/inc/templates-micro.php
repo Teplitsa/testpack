@@ -100,6 +100,20 @@ function tst_card(WP_Post $cpost, $show_icon = true) {
 <?php
 }
 
+function tst_card_story(WP_Post $cpost, $show_icon = true) {
+
+    $pl = get_permalink($cpost);
+    $ex = tst_get_post_excerpt($cpost, 15);
+    
+    ?>
+<article class="card has-thumb"><a href="<?php echo $pl;?>" class="card__link">
+	<div class="card__link_content"><div class="card__excerpt"><?php echo $ex?></div>
+	<h4 class="card__title"><?php echo get_the_title($cpost);?></h4></div>
+</a></article>
+<?php
+}
+
+
 function tst_news_card() {
 
 ?>
@@ -206,19 +220,40 @@ function tst_book_item( WP_Post $cpost, $show_thumb = true ) {
 	$pl = get_permalink($cpost);
 	$tags = tst_get_tags_list($cpost);
 	$ex = tst_get_post_excerpt($cpost, 25);
+	$book_att_id = get_post_meta( $cpost->ID, 'book_att_id', true );
+	$book_download_url = $book_att_id ? wp_get_attachment_url( $book_att_id ) : "";
 
 	//thumb
 	$thumb_mark = '';
-	if($show_thumb && has_post_thumbnail($cpost)) {
-		$cap = tst_get_post_thumbnail_cation($cpost);
-
-		$thumb_args = array(
-			'placement_type'	=> 'small-medium-medium-medium-medium',
-			'aspect_ratio' 		=> 'standard',
-			'crop' 				=> 'fixed'
-		);
-
-		$thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
+	if($show_thumb) {
+	    
+	    if( has_post_thumbnail($cpost) ) {
+	        
+	        $cap = tst_get_post_thumbnail_cation($cpost);
+	        
+	        $thumb_args = array(
+	            'placement_type'	=> 'small-medium-medium-medium-medium',
+	            'aspect_ratio' 		=> 'cover',
+	            'crop' 				=> 'flex'
+	        );
+	        
+	        $thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
+	        
+	    }
+	    else {
+	        
+	        $cap = '';
+	        $book_icon_src = get_template_directory_uri() . '/assets/img/book-cover.png';
+	        ob_start();
+	        ?>
+	        <div class="tst-thumbnail tst-book-no-cover">
+	        	<div class="tst-thumbnail__frame">
+					<i class="material-icons">import_contacts</i>
+        		</div>
+        	</div>
+	        <?php
+	        $thumb = ob_get_clean();
+	    }
 
 		//build thumbnail markup
 		ob_start();
@@ -237,17 +272,25 @@ function tst_book_item( WP_Post $cpost, $show_thumb = true ) {
 	}//has thumb
 ?>
 	<article class="cell">
-		<h4 class="cell__title">
-			<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
-			<span class="date"><?php echo get_the_date('d.m.Y', $cpost);?></span>
-		</h4>
-		<div class="cell__text">
-			<p><?php echo apply_filters('tst_the_title', $ex);?></p>
-			<p><?php echo $tags;?></p>
-		</div>
-		<?php if(!empty($thumb_mark)) { ?>
-			<div class="cell__thumb"><?php echo $thumb_mark;?></div>
-		<?php }?>
+		<div class="frame">
+			<div class="bit mf-4">
+    		<?php if(!empty($thumb_mark)) { ?>
+    			<div class="cell__cover"><?php echo $thumb_mark;?></div>
+    		<?php }?>
+			</div>
+			
+			<div class="bit mf-8">
+        		<h4 class="cell__title">
+        			<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
+        		</h4>
+        		<div class="cell__text">
+        			<p><?php echo apply_filters('tst_the_title', $ex);?></p>
+        			<p><?php echo $tags;?></p>
+        			<?php if( $book_download_url ): ?>
+        				<p><a class="book-download-link" href="<?php echo $book_download_url?>"><i class="material-icons">file_download</i> <?php _e( 'Download book', 'tst' ) ?></a></p>
+        			<?php endif ?>
+        		</div>
+			</div>
 	</article>
 <?php
 }

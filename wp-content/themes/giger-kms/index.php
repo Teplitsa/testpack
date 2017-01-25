@@ -44,7 +44,7 @@ get_header();
 				
 				if(!empty($items)) { foreach($items as $si) {
 			?>
-				<div class="widget widget--card"><?php tst_card($si, false);?></div>
+				<div class="widget widget--card"><?php tst_card_story($si, false);?></div>
 			<?php
 				}}
 			?>
