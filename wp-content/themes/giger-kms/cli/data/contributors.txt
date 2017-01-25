@@ -1,0 +1,4 @@
+<h4>Ниже преведен список авторов, чьи разработки были использованы при создании сайта:</h4>
+
+Иконки, сделанные <a href="http://www.flaticon.com/authors/eucalyp" title="Eucalyp" target="_blank">Eucalyp</a> с сайта <a href="http://www.flaticon.com" title="Flaticon" target="_blank">www.flaticon.com</a> доступны по лицензии <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+Иконки, сделанные <a href="http://www.freepik.com" title="Freepik" target="_blank">Freepik</a> с сайта <a href="http://www.flaticon.com" title="Flaticon" target="_blank">www.flaticon.com</a> доступны по лицензии <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>

@@ -242,43 +242,6 @@ function tst_custom_content(){
         'taxonomies'          => array( 'post_tag' ),
     ));
 
-    /*register_post_type('org', array(
-        'labels' => array(
-            'name'               => 'Организации',
-            'singular_name'      => 'Организация',
-            'menu_name'          => 'Партнеры',
-            'name_admin_bar'     => 'Добавить организацию',
-            'add_new'            => 'Добавить новую',
-            'add_new_item'       => 'Добавить организацию',
-            'new_item'           => 'Новая организация',
-            'edit_item'          => 'Редактировать организацию',
-            'view_item'          => 'Просмотр организации',
-            'all_items'          => 'Все организации',
-            'search_items'       => 'Искать организации',
-            'parent_item_colon'  => 'Родительская организация:',
-            'not_found'          => 'Организации не найдены',
-            'not_found_in_trash' => 'В Корзине организации не найдены'
-       ),
-        'public'              => true,
-        'exclude_from_search' => true,
-        'publicly_queryable'  => false,
-        'show_ui'             => true,
-        'show_in_nav_menus'   => false,
-        'show_in_menu'        => true,
-        'show_in_admin_bar'   => true,
-        //'query_var'           => true,
-        'capability_type'     => 'post',
-        'has_archive'         => false,
-        'rewrite'             => array('slug' => 'org', 'with_front' => false),
-        'hierarchical'        => false,
-        'menu_position'       => 10,
-		'menu_icon'           => 'dashicons-networking',
-        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
-        'taxonomies'          => array('org_cat'),
-    ));*/
-
-
-
 	//pages
 	add_post_type_support('page', 'excerpt');
 	add_post_type_support('page', 'thumbnail');
@@ -296,7 +259,6 @@ function tst_custom_content(){
 /** Metaboxes **/
 add_action( 'cmb2_admin_init', 'tst_custom_metaboxes' );
 function tst_custom_metaboxes() {
-
 
 	/** Post **/
     $format_cmb = new_cmb2_box( array(
@@ -382,7 +344,49 @@ function tst_custom_metaboxes() {
 		'type' => 'text',
 		'desc' => 'ID можно выбрать по ссылке https://material.io/icons/#ic_markunread'
 	));
-	
+
+    /** "About" page */
+    $about_page_cmb = new_cmb2_box( array(
+        'id'            => 'team_settings_metabox',
+        'title'         => 'Команда',
+        'object_types'  => array('page'),
+        'show_on'       => array('key' => 'id', 'value' => array(39,)),
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+        'closed'        => false,
+    ));
+
+    $group_field_id = $about_page_cmb->add_field( array(
+        'id'          => 'team',
+        'type'        => 'group',
+        'description' => 'Настройки команды проекта',
+        // 'repeatable'  => false, // use false if you want non-repeatable group
+        'options'     => array(
+            'group_title'   => '№ {#}', // since version 1.1.4, {#} gets replaced by row number
+            'add_button'    => 'Добавить',
+            'remove_button' => 'Удалить',
+            'sortable'      => true, // beta
+            // 'closed'     => true, // true to have the groups closed by default
+        ),
+    ) );
+    $about_page_cmb->add_group_field($group_field_id, array(
+        'name' => 'Имя',
+        'id'   => 'name',
+        'type' => 'text',
+        // 'repeatable' => true,
+    ));
+    $about_page_cmb->add_group_field($group_field_id, array(
+        'name' => 'Должность/обязанности',
+        'id'   => 'position',
+        'type' => 'text',
+        // 'repeatable' => true,
+    ));
+    $about_page_cmb->add_group_field( $group_field_id, array(
+        'name' => 'Фото',
+        'id'   => 'image',
+        'type' => 'file',
+    ) );
 
 	/** Item **/
 	$item_cmb = new_cmb2_box( array(
