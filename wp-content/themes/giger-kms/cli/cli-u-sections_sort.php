@@ -139,7 +139,7 @@ try {
 		'ID' => 102,
 		'slug' => 'hiv-test',
 		'post_title' => 'Где сдать анализы',
-		'post_content' => 'Карта адресов лабораторий',
+		'post_content' => '',
 		'section' => 'services',
 		'parent' => 0,
 		'meta_input' => array('icon_id' => 'add_location')
