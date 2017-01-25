@@ -233,7 +233,7 @@ function tst_custom_content(){
         'show_in_menu'        => true,
         'show_in_admin_bar'   => false,
         'capability_type'     => 'post',
-        'has_archive'         => false,
+        'has_archive'         => true,
         'rewrite'             => false,
         'hierarchical'        => false,
         'menu_position'       => 21,
