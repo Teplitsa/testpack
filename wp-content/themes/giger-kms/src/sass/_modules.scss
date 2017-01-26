@@ -68,6 +68,9 @@
 .gallery {
 	@include clearfix;
 	margin: 0 -4px;
+	align-content: flex-start;
+	display: flex;
+	flex-wrap: wrap;
 
 	.gallery-caption { display: none; }
 
