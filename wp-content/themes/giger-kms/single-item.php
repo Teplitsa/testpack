@@ -52,6 +52,7 @@ get_header();
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
 			<?php if(is_singular('item', 'hiv-test')) { ?>
 				<div class="lab-map"><?php echo do_shortcode('[tst_markers_map show_legend="1" legend_title="Лаборатории по диагностике ВИЧ" legend_subtitle="Выделите нужные вам типы лабораторий, чтобы вывести на карту только их."]');?></div>
+                <div class="lab-list"><?php echo do_shortcode('[tst_markers_list show_list_title="0"]');?></div>
 			<?php } ?>
 		</div>
 
