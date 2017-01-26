@@ -108,7 +108,7 @@ $social_color: (
 
 /* sharing position */
 .sharing {
-	
+
 	margin-top: $element-padding-base;
 
 	@include for(medium-screens) {
@@ -211,7 +211,7 @@ $social_color: (
 }
 
 .join-stand-alone {
-	margin: $base*5 0 $base*7;
+	margin: $base*3 0;
 
 	.join-stand-alone__title {
 		text-align: center;
@@ -228,8 +228,13 @@ $social_color: (
 
 	}
 	.join-whatsapp-group {
-		max-width: 520px;
 		margin: 0 auto;
 		padding: $base*4 $base*3;
+	}
+
+	@include for(medium-screens) {
+		margin: $base*3 0 $base*9;
+
+		.join-whatsapp-group { max-width: 520px; }
 	}
 }
