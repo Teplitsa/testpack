@@ -264,7 +264,7 @@ function tst_custom_metaboxes() {
     $format_cmb = new_cmb2_box( array(
         'id'            => 'post_format_metabox',
         'title'         => 'Настройки формата',
-        'object_types'  => array( 'post'), // Post type
+        'object_types'  => array('post'), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
@@ -426,6 +426,13 @@ function tst_custom_metaboxes() {
         //'show_on_cb'    => 'tst_show_on_general_pages',
         //'cmb_styles'    => false, // false to disable the CMB stylesheet
         // 'closed'     => true, // Keep the metabox closed by default
+    ));
+
+    $marker_cmb->add_field(array(
+        'name'    => 'Город',
+        'id'      => 'marker_city',
+        'type'    => 'text',
+        'default' => ''
     ));
 
     $marker_cmb->add_field(array(

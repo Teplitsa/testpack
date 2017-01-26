@@ -81,7 +81,7 @@ try {
 //
 //        }
 
-        $address_full = $line[1].', '.$line[2].', '.$line[3].($line[4] ? ' '.$line[4] : '');
+        $address_full = $line[2].', '.$line[3].($line[4] ? ' '.$line[4] : '');
         $marker_post_id = wp_insert_post(array(
             'post_type' => 'marker',
             'post_title' => str_replace(
@@ -92,6 +92,7 @@ try {
             'post_status' => 'publish',
             'meta_input' => array(
                 'marker_phones' => str_replace(',', "\n", $line[5]),
+                'marker_city' => str_replace(',', "\n", $line[1]),
                 'marker_address' => $address_full,
                 'marker_location' => array(
                     'latitude' => floatval($line[6]),
