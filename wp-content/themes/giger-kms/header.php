@@ -36,6 +36,7 @@
 			<div class="site-header-cell branding">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
 					<div id="logo-full" ><?php tst_site_logo('regular');?></div>
+					<div id="logo-mobile" ><?php tst_site_logo('mobile');?></div>
 				</a>
 			</div>
 

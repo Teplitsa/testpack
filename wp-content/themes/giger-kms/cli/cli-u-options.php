@@ -153,6 +153,34 @@ try {
 		}
 	}
 
+	//sharing
+	$uploads = wp_upload_dir();
+	$thumb_id = false;
+	$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/sharing.png';
+	var_dump($path);
+
+	$test_path = $uploads['path'].'/sharing.png';
+	if(!file_exists($test_path)) {
+		$thumb_id = tst_upload_img_from_path($path, "Новая жизнь");
+		echo 'Uploaded sharing pic ';
+	}
+	else {
+		$a_url = $uploads['url'].'/sharing.png';
+		$thumb_id = attachment_url_to_postid($a_url);
+		if(!$thumb_id) {
+			$thumb_id = tst_register_uploaded_file($test_path, "Новая жизнь");
+		}
+	}
+
+	if($thumb_id) {
+		$social = get_option('wpseo_social');
+		if(is_array($social)) {
+			$social['og_default_image'] = wp_get_attachment_url($thumb_id);
+			update_option('wpseo_social', $social);
+		}
+	}
+
+
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);
 	echo 'Total execution time in seconds: ' . (microtime(true) - $time_start).chr(10).chr(10);

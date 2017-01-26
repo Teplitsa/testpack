@@ -60,10 +60,11 @@ function is_tax_branch($slug, $tax) {
 /** Logo & icons **/
 function tst_site_logo($size = 'regular') {
 
-
 	$url = get_template_directory_uri().'/assets/img/';
+	$file = ($size != 'regular') ? 'logo-'.$size : 'logo';
+
 ?>
-<img src="<?php echo $url;?>logo.svg" onerror="this.src='<?php echo $url;?>logo.png'">
+<img src="<?php echo $url.$file;?>.svg" onerror="this.src='<?php echo $url.$file;?>.png'">
 <?php
 }
 
@@ -126,4 +127,3 @@ function tst_about_breadcrubms() {
 }
 
 /* heading css */
-

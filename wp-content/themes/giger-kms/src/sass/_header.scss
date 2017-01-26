@@ -147,22 +147,55 @@ body.drawer-open {
 
 .site-logo { //temp
 	display: block;
-	width: 150px;
-	height: 74px;
+	width: 230px;
+	height: 90px;
 	padding-top: 4px;
 
-	img {
-		width: 150px;
-		height: 70px;
+	#logo-full {
+		display: none;
+
+		img {
+			width: 240px;
+			height: 104px;
+		}
+
+		@include for(large-screens) {
+			img {
+				width: 300px;
+				height: 130px;
+			}
+		}
+	}
+
+	#logo-mobile {
+
+		img {
+			width: 225px;
+			height: 86px;
+		}
 	}
 
 	@include for(medium-screens) {
-		width:236px;
-		height: 118px;
+		padding-top: 4px;
+		width: 250px;
+		height: 108px;
 
-		img {
-			width: 236px;
-			height: 118px;
+		#logo-mobile { display: none; }
+		#logo-full { display: block; }
+	}
+
+	@include for(large-screens) {
+		padding-top: 0;
+		width: 350px;
+		height: 118px;
+		position: relative;
+
+		#logo-full {
+			width: 300px;
+			height: 130px;
+			position: absolute;
+			left: 0;
+			bottom: 0;
 		}
 	}
 }
@@ -188,7 +221,7 @@ body.drawer-open {
 	text-align: right;
 
 	a {
-		margin-top: 5px;
+		margin-top: -10px;
 	}
 }
 
@@ -205,17 +238,18 @@ body.drawer-open {
 }
 
 .actions__text--mobile {
-
-	@include for(small-screens) {
-		flex: 1 1 auto;
-		span {
-			display: none;
-		}
-	}
+	display: none;
+	//@include for(small-screens) {
+	//	flex: 1 1 auto;
+	//	span {
+	//		display: none;
+	//	}
+	//}
 }
 
 .actions--desktop {
 	display: none;
+
 	@include for(medium-screens) {
 		display: block;
 	}
