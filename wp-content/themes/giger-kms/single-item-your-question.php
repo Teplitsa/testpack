@@ -19,7 +19,6 @@ get_header();
 			<div class="question-form">
 				<?php echo do_shortcode('[formidable key="ask-question"]');?>
 			</div>
-			<div class="sharing"><?php tst_social_share($item->post_object);?></div>
 		</div>
 		<div class="flex-cell flex-md-4 flex-lg-3 question-side">
 			<?php echo $item->get_sidebar();?>

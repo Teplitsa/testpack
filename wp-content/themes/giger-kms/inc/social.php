@@ -47,6 +47,7 @@ function tst_social_share(WP_Post $cpost) {
 
 	$css = (tst_is_mobile_user_agent()) ? 'mobile-agent' : 'regular';
 ?>
+	<div class="sharing-up"><a href="#top" class="up-link local-scroll"><?php tst_svg_icon('icon-up');?></a></div>
 	<ul class="sharing-list <?php echo esc_attr($css);?>">
 	<?php foreach ($data as $id => $item){ ?>
 		<li class="<?php echo $id;?>"><a href="<?php echo $item['url'];?>" target="_blank"><?php tst_svg_icon($item['icon']);?></a></li>
@@ -75,4 +76,3 @@ function tst_is_mobile_user_agent(){
 
 	return $test;
 }
-

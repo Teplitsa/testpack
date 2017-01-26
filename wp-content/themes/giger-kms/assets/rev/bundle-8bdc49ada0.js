@@ -1861,13 +1861,78 @@ jQuery(document).ready(function($){
 
 
 	/** Scroll event **/
-	var position = $(window).scrollTop();
-	$(window).scroll(function(){
-		//to do no scroll when menu opened
+	var position = $(window).scrollTop(), //store intitial scroll position
+		fixedTopPosition = ($('body').hasClass('adminbar')) ? 145 + 40 + 32 : 145 + 40;
 
+	$(window).scroll(function(){
+
+		var scroll = $(window).scrollTop(),
+			winW = $('#top').width();
+
+
+		if(scroll > 200) {
+			if(!$('body').hasClass('sharing-fixed')){
+				$('body').addClass('sharing-fixed');
+			}
+		}
+		else if($('body').hasClass('sharing-fixed')) {
+			$('body').removeClass('sharing-fixed');
+		}
+
+		//fixed
+		if (winW  > breakPointMedium) { //large screens
+
+			if($('#outer_sharing').length > 0)	{
+				stickInParent('#outer_sharing', '.sharing-frame', position, fixedTopPosition);
+			}
+
+		}
+		else {
+			//#single_sidebar - removed
+			$('#outer_sharing').removeClass('fixed-bottom').removeClass('fixed-top');
+		}
+
+		position = scroll; //upd scroll position
+		return true;
 	});
 
+	//stick element on scroll
+	function stickInParent(el, el_parent, el_position, el_fixedTopPosition) {
+		var $_el = $(el),
+			$_el_parent = $(el_parent);
 
+
+		if (!($_el.length > 0 && $_el_parent.length > 0)) {
+			return; //no elements
+		}
+
+		//calcs
+		var scroll = $(window).scrollTop(),
+			topPos = $_el_parent.offset().top,
+			height = $_el_parent.height() ;
+
+
+
+		if ($_el.outerHeight() >= height) {
+			$_el.removeClass('fixed-bottom').removeClass('fixed-top');
+			return;
+		}
+
+		if (scroll > ((height + topPos) - $_el.outerHeight() - el_fixedTopPosition)) { //stick on bottom
+			if (scroll > el_position) //scroll down
+				$_el.addClass('fixed-bottom').removeClass('fixed-top');
+		}
+		else if (scroll > ((height + topPos) - $_el.outerHeight() - el_fixedTopPosition)) { //unstick on bottom
+			if (scroll < el_position)
+				$_el.removeClass('fixed-bottom').addClass('fixed-top');
+		}
+		else if (scroll > el_fixedTopPosition - topPos) { //stick on top
+			$_el.removeClass('fixed-bottom').addClass('fixed-top');
+		}
+		else {
+			$_el.removeClass('fixed-bottom').removeClass('fixed-top'); //normal position
+		}
+	}
 
 }); //jQuery
 

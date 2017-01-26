@@ -19,7 +19,6 @@ get_header(); ?>
 		<div class="single-card__title"><h1><?php echo get_the_title($cpost);?></h1></div>
 		<div class="single-card__options">
 			<div class="single-card__meta"></div>
-			<div class="sharing"><?php tst_social_share($cpost);?></div>
 		</div>
 	</div>
 
@@ -33,16 +32,15 @@ get_header(); ?>
 			<?php } ?>
 
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
-			
+
 			<?php if( $book_author ):?>
 				<div class="single-card__author"><?php echo sprintf( __( 'Book author: %s', 'tst' ), $book_author )?></div>
 			<?php endif?>
-			
+
 			<?php if( $book_download_url ): ?>
 			<div class="single-card__download"><a class="book-download-link" href="<?php echo $book_download_url?>"><i class="material-icons">file_download</i> <?php _e( 'Download book', 'tst' ) ?></a></div>
 			<?php endif?>
 			
-			<div class="sharing"><?php tst_social_share($cpost);?></div>
 			<div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
 		</div>
 

@@ -34,7 +34,7 @@ $social_color: (
 	@include transition(all 0.2s);
 	text-decoration: none;
 	width: $button-size;
-	height: $button-size;
+	height: $button-size ;
 	padding: ($button-size - $icon-size)/2 0;
 
 	.svg-icon { fill: #262832; }
@@ -44,15 +44,13 @@ $social_color: (
 
 
 /** == Sharing == **/
-.sharing-list {
-	@include clearfix;
-}
-
 .sharing-list  {
+	@include clearfix;
 	cursor: pointer;
 
 	a {
-		@include social-button-link(44px, 20px);
+		@include social-button-link(36px, 16px);
+		width: 38px;
 	}
 
 	li {
@@ -66,31 +64,9 @@ $social_color: (
 
 	.svg-icon {
 		display: inline-block;
-		width: 20px;
-		height: 20px;
+		width: 16px;
+		height: 16px;
 	}
-}
-
-@each $item in vk, facebook, twitter, telegram, whatsapp, viber, ok, mail  {
-
-	.sharing-list li.#{$item} {
-		background: social_color($item);
-		.svg-icon { fill: $color-white; }
-
-		@include for(medium-screens) {
-			background: none;
-			.svg-icon { fill: social_color($item); }
-
-			&:hover, &:focus, &:active {
-				background: social_color($item);
-				.svg-icon { fill: $color-white; }
-			}
-		}
-	}
-}
-
-//hide
-.sharing-list {
 
 	&.regular {
 		.whatsapp, .viber { display: none; }
@@ -98,26 +74,118 @@ $social_color: (
 		@include upto(small-screens) {
 			.ok, .twitter, .mail { display: none; }
 		}
-
 	}
 
 	&.mobile-agent {
-		.vk, .ok, .mail, .facebook { display: none; }
+		.vk, .ok, .mail { display: none; }
+	}
+
+	@include for(exlarge-screens) {
+		a { @include social-button-link(44px, 16px); }
+	}
+}
+
+@each $item in vk, facebook, twitter, telegram, whatsapp, viber, ok, mail  {
+
+	.sharing-list li.#{$item} {
+		background: social_color($item);
+
+		.svg-icon { fill: $color-white; }
+
+		&:hover {
+			background: darken(social_color($item), 10%);
+		}
+	}
+}
+
+
+// up button
+.sharing-up {
+	width: 36px;
+	height: 36px;
+
+	text-aling: center;
+
+	a {
+		display: block;
+		padding: 8px;
+	}
+
+	.svg-icon {
+		width: 16px;
+		height: 16px;
+		fill: $color-text-black;
+
+		&:hover {
+			fill: $color-link-one;
+		}
 	}
 }
 
 /* sharing position */
 .sharing {
+	opacity: 0;
+	background: $color-white;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 36px;
+	text-align: right;
+	box-shadow: 1px -1px 3px rgba(0,0,0, 0.3);
+	@include transition(all 0.35s);
+	@include transform(translateZ(0));
 
-	margin-top: $element-padding-base;
+	.sharing-list  {
+		display: inline-block;
+	}
+
+	.sharing-up {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.sharing-fixed & {
+		opacity: 1;
+		z-index: 1000;
+	}
 
 	@include for(medium-screens) {
-		background: $color-white;
-		position: fixed;
-		left: 0;
-		top: 208px;
+		opacity: 1;
+		z-index: 1000;
+		width: 38px;
+		height: auto;
+		top: auto;
+		bottom: auto;
+		box-shadow: none;
+		position: absolute;
+
+
+		.sharing-up { display: none; }
+
+		&.fixed-top {
+			top: 145 + 40 px;
+			position: fixed;
+		}
+
+		&.fixed-bottom {
+			top: auto;
+			position: absolute;
+			bottom: 40px;
+		}
+	}
+
+	@inlcude for(exlarge-screens) {
+		width: 44px;
 	}
 }
+
+
+.sharing-frame {
+	position: relative;
+}
+
 
 /* join whatsapp */
 .join-whatsapp-group {

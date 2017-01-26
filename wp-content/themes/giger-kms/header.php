@@ -68,5 +68,10 @@
 	</div><!-- .container -->
 </header>
 
-<div id="site_content" class="site-content"><a name="#content"></a>
+<div id="site_content" class="site-content sharing-frame"><a name="#content"></a>
+
+<?php if(is_singular(array('post', 'item', 'book', 'story'))) { ?>
+<div id="outer_sharing" class="sharing"><?php tst_social_share(get_queried_object());?></div>
+<?php } ?>
+
 <div class="container">

@@ -15,7 +15,7 @@ get_header(); ?>
 		<div class="single-card__title"><h1><?php echo get_the_title($cpost);?></h1></div>
 		<div class="single-card__options">
 			<div class="single-card__meta"></div>
-			<div class="sharing"><?php tst_social_share($cpost);?></div>
+			
 		</div>
 	</div>
 

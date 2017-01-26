@@ -15,7 +15,7 @@ get_header();
 	<?php
     	$menu = $item->get_menu();
     	$sidebar = $item->get_sidebar();
-    	
+
     	$books = get_posts(array(
     	    'post_type' => 'book',
     	    'posts_per_page' => -1,
@@ -24,19 +24,14 @@ get_header();
     	    'update_post_meta_cache' => false,
     	    'update_post_term_cache ' => false,
     	));
-    		
+
 	?>
-    	
+
 		<div class="bit md-8 lg-8">
 			<div class="layout-section layout-section--card">
-			<?php
-			    foreach($books as $i => $cpost) {
-			?>
+			<?php foreach($books as $i => $cpost) { ?>
 				<div class="layout-section__item layout-section__item--card"><?php tst_book_item( $cpost );?></div>
-			<?php
-				}
-			?>
-				<div class="sharing"><?php tst_social_share($item->post_object);?></div>
+			<?php } ?>
 			</div>
 		</div>
 		<div class="bit md-3 lg-3 lg-offset-1 single-side">
@@ -46,7 +41,7 @@ get_header();
 				<?php echo $sidebar;?>
 			<?php endif?>
 		</div>
-		
+
 	</div>
 </section>
 

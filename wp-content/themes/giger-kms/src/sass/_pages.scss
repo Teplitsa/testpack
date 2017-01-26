@@ -1,6 +1,6 @@
 /** == Pages (_pages.scss) == **/
 
-/* Homepage **/
+// Homepage
 .home-section.news {
 	.flex-cell--join {
 		background: $color-link-one;
@@ -28,11 +28,10 @@
 
 	.news-block__content {
 		@extend .layout-section__item--card;
-
 	}
 
-	@include for(large-screens) {
 
+	@include for(large-screens) {
 		display: flex;
 		flex-flow: row nowrap;
 
@@ -52,9 +51,6 @@
 }
 
 
-.home-section.info-block {
-
-}
 
 .info-block {
 	background: $color-secondary-alt;
@@ -69,7 +65,7 @@
 		padding: 20px $base*2 15px;
 		@include header-title(title);
 		color: $color-white;
-		
+
         a {
             color: $color-white;
             cursor: pointer;
@@ -94,7 +90,7 @@
 .infosup-cell--one {
 	.card__icon {
 		background: $color-link-one;
-		i { color: $color-white;}
+		i { color: $color-white; }
 	}
 }
 
@@ -133,7 +129,7 @@
 		border-bottom: 1px solid transparent;
 		display: inline-block;
 		padding-bottom: 1px;
-		@inlcude transition(all 0.35s);
+		@include transition(all 0.35s);
 
 		&:hover {
 			color: $color-link-one;
@@ -143,7 +139,7 @@
 }
 
 
-/** Error 404 **/
+// Error 404
 .error404 {
 	min-height: 100vh;
 	.container { max-width: 1024px; }
@@ -189,7 +185,7 @@
 	text-align: center;
 }
 
-/** Search **/
+// Search
 .sr-form {
 	margin: $gut/1.6 0 $gut/1.6;
 
@@ -207,15 +203,15 @@
 }
 
 
-/** question **/
+// question
 .question-grid {
 
 }
 
 .question-form {
 	background: $color-link-two;
-
 }
+
 .question-side {
 	background: $color-link-two;
 
@@ -225,7 +221,7 @@
 	}
 }
 
-/* join */
+// join
 .main--join {
 	.single-item--title {
 		text-align: center;
@@ -236,7 +232,7 @@
 	}
 
 	.join-whatsapp-group {
-		padding: $base*4 $base*3; 
+		padding: $base*4 $base*3;
 		margin-bottom: $base*15;
 	}
 }
