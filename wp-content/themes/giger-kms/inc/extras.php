@@ -172,17 +172,17 @@ add_action('customize_register', 'tst_customize_register', 15);
 function tst_customize_register(WP_Customize_Manager $wp_customize) {
 
 
-	$wp_customize->add_setting('header_text', array(
+	$wp_customize->add_setting('tst_top_text', array(
         'default'   => '',
         'transport' => 'postMessage',
 		'type' 		=> 'option'
     ));
 
-    $wp_customize->add_control('header_text', array(
+    $wp_customize->add_control('tst_top_text', array(
         'type'     => 'textarea',
         'label'    => 'Текст в шапке',
         'section'  => 'title_tagline',
-        'settings' => 'header_text',
+        'settings' => 'tst_top_text',
         'priority' => 25,
     ));
 

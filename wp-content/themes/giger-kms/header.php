@@ -39,7 +39,7 @@
 				</a>
 			</div>
 
-			<?php $hedaer_text = get_option('header_text');?>
+			<?php $hedaer_text = get_option('tst_top_text');?>
 			<div class="site-header-cell actions">
 
 				<div class="actions--mobile">

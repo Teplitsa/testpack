@@ -93,8 +93,8 @@ try {
 	$footer_text = "";
 	update_option('footer_text', $footer_text );
 
-	$header_text = '<span>Звоните</span> +7&thinsp;(951)&thinsp;031-56-56';
-	update_option('header_text', $header_text);
+	$tst_top_text = '<span>Звоните</span> +7&nbsp;(951)&nbsp;031-56-56';
+	update_option('tst_top_text', $tst_top_text);
 
 	echo 'Theme options updated for Error404 and Header / Footer text'.chr(10);
 
