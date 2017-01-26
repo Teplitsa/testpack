@@ -17,7 +17,7 @@ try {
 	$text_widgets = array(
 		1 => array(
 			'title' => '',
-			'text' => 'г. Оренбург, ул. Восточная, 3-52'.chr(10).'тел.:  <a href="tel:+73532465656" target="_blank">+7 (3532) 46-56-56</a>, <a href="tel:+79510315656" target="_blank">+7 (951) 031-56-56</a>'.chr(10).'<a href="mailto:new.life.aids@mail.ru" target="_blank">new.life.aids@mail.ru</a>',
+			'text' => 'Автономная некоммерческая организация поддержки людей, живущих с ВИЧ, в&nbsp;Оренбурге и Оренбургской обл. - помощь, консультации, информация'.chr(10).chr(10).'г. Оренбург, ул. Восточная, 3-52'.chr(10).'тел.:  <a href="tel:+73532465656" target="_blank">+7 (3532) 46-56-56</a>, <a href="tel:+79510315656" target="_blank">+7 (951) 031-56-56</a>'.chr(10).'<a href="mailto:new.life.aids@mail.ru" target="_blank">new.life.aids@mail.ru</a>',
 			'filter' => 1
 		),
 		2 => array(

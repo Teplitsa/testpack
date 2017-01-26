@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-25 03:50+0200\n"
-"PO-Revision-Date: 2017-01-25 03:50+0200\n"
+"POT-Creation-Date: 2017-01-25 17:31+0200\n"
+"PO-Revision-Date: 2017-01-25 17:31+0200\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -64,14 +64,26 @@ msgstr "Анонимно"
 msgid "No donations yet"
 msgstr "Пожертвований пока нет"
 
+#: archive-story.php:8
+msgid "Stories"
+msgstr "Истории"
+
+#: archive-story.php:27 index.php:27 taxonomy-section.php:56
+msgid "Nothing found under your request"
+msgstr "По вашему запросу ничего не найдено."
+
 #: footer.php:12
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:32
+#: footer.php:33
 #, php-format
 msgid "All materials of the site are avaliabe under license %s"
 msgstr "Все материалы сайта доступны по лицензии %s"
+
+#: footer.php:33
+msgid "Copyright"
+msgstr "Авторские права"
 
 #: header.php:18
 msgid "Skip to content"
@@ -133,12 +145,12 @@ msgstr "Программа по теме"
 msgid "Help now"
 msgstr "Помочь сейчас"
 
-#: inc/templates-micro.php:108 inc/templates-single.php:13
+#: inc/templates-micro.php:195 inc/templates-single.php:13
 #: inc/templates-tags.php:103 index.php:8
 msgid "News"
 msgstr "Новости"
 
-#: inc/templates-micro.php:276 single-book.php:41
+#: inc/templates-micro.php:363 single-book.php:42
 msgid "Download book"
 msgstr "Скачать книгу"
 
@@ -147,17 +159,13 @@ msgstr "Скачать книгу"
 msgid "Home"
 msgstr "Главная"
 
-#: inc/templates-single.php:125
+#: inc/templates-single.php:127
 msgid "Prev."
 msgstr "Пред. новость"
 
-#: inc/templates-single.php:128
+#: inc/templates-single.php:130
 msgid "Next."
 msgstr "След. новость"
-
-#: index.php:27 taxonomy-section.php:56
-msgid "Nothing found under your request"
-msgstr "По вашему запросу ничего не найдено."
 
 #: search.php:49
 msgid "Пожалуйста, укажите слова для поиска в форме и нажмите Enter."
@@ -169,38 +177,41 @@ msgid ""
 "иначе."
 msgstr ""
 
-#: single-book.php:37
+#: single-book.php:38
 #, php-format
 msgid "Book author: %s"
 msgstr "Автор: %s"
 
-#: single-book.php:54
+#: single-book.php:55
 msgid "More books"
 msgstr "Еще книги"
 
-#: single-book.php:62
+#: single-book.php:63
 msgid "Prev. Book"
 msgstr "Пред. книга"
 
-#: single-book.php:62
+#: single-book.php:63
 msgid "Next Book"
 msgstr "След. книга"
 
-#: single-story.php:41
+#: single-story.php:36
 msgid "More stories"
 msgstr "Еще истории"
 
-#: single-story.php:49
+#: single-story.php:44
 msgid "Prev. Story"
 msgstr "Пред. история"
 
-#: single-story.php:49
+#: single-story.php:44
 msgid "Next Story"
 msgstr "След. история"
 
 #: single.php:41
 msgid "More news"
 msgstr "Еще новости"
+
+#~ msgid "Contributors"
+#~ msgstr "Контрибьюторы"
 
 #~ msgid "Title"
 #~ msgstr "Заголовок"
@@ -769,9 +780,6 @@ msgstr "Еще новости"
 
 #~ msgid "Story"
 #~ msgstr "История"
-
-#~ msgid "Stories"
-#~ msgstr "Истории"
 
 #~ msgid "Add a story"
 #~ msgstr "Добавить историю"

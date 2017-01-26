@@ -93,8 +93,8 @@ try {
 	$footer_text = "";
 	update_option('footer_text', $footer_text );
 
-	$header_text = '<span>Звоните</span> +7&thinsp;(951)&thinsp;031-56-56';
-	update_option('header_text', $header_text);
+	$tst_top_text = '<span>Звоните</span> +7&nbsp;(951)&nbsp;031-56-56';
+	update_option('tst_top_text', $tst_top_text);
 
 	echo 'Theme options updated for Error404 and Header / Footer text'.chr(10);
 
@@ -129,6 +129,57 @@ try {
 	}
 
 	echo "Formidable translations imported".chr(10);
+
+	//SEO
+	$options = array();
+	$options = array_map('str_getcsv', file('data/wpseo-opt.csv'));
+	if(!empty($options)){
+
+		foreach($options as $line) {
+
+			$key = $line[0];
+			$opt = $line[1];
+
+			echo "Updated key ".$key.chr(10);
+			$test = get_option($key);
+
+			if(!$test){
+				$wpdb->insert($wpdb->options, array('option_name' => $key, 'option_value' => $opt), array('%s', '%s'));
+			}
+			else {
+				$wpdb->update($wpdb->options, array('option_value' => $opt), array('option_name' => $key), array('%s'), array('%s'));
+			}
+
+		}
+	}
+
+	//sharing
+	$uploads = wp_upload_dir();
+	$thumb_id = false;
+	$path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/sharing.png';
+	var_dump($path);
+
+	$test_path = $uploads['path'].'/sharing.png';
+	if(!file_exists($test_path)) {
+		$thumb_id = tst_upload_img_from_path($path, "Новая жизнь");
+		echo 'Uploaded sharing pic ';
+	}
+	else {
+		$a_url = $uploads['url'].'/sharing.png';
+		$thumb_id = attachment_url_to_postid($a_url);
+		if(!$thumb_id) {
+			$thumb_id = tst_register_uploaded_file($test_path, "Новая жизнь");
+		}
+	}
+
+	if($thumb_id) {
+		$social = get_option('wpseo_social');
+		if(is_array($social)) {
+			$social['og_default_image'] = wp_get_attachment_url($thumb_id);
+			update_option('wpseo_social', $social);
+		}
+	}
+
 
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);

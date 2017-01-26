@@ -19,19 +19,12 @@
 	padding: 13px;
 	width: 100%;
 	background: transparent;
+
+	@include placeholder {
+		color: $color-white;
+	}
 }
-.searchform__field::-webkit-input-placeholder {
-  color: #fff;
-}
-.searchform__field::-moz-placeholder {
-  color: #fff;
-}
-.searchform__field:-ms-input-placeholder {
-  color: #fff;
-}
-.searchform__field:-moz-placeholder {
-  color: #fff;
-}
+
 .searchform__icon {
 	display: block;
 	width: 44px;

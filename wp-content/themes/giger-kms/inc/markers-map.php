@@ -16,8 +16,8 @@ function tst_markers_map_output($atts){
         'height' => 460,
 
         'enable_scroll_wheel' => false,
-        'minZoom' => '',
-        'maxZoom' => '',
+        'min_zoom' => '',
+        'max_zoom' => '',
         'zoom' => 6,
         'disable_controls' => false,
 
@@ -40,6 +40,8 @@ function tst_markers_map_output($atts){
     /** @var $height integer */
     /** @var $enable_scroll_wheel bool */
     /** @var $zoom integer */
+    /** @var $min_zoom integer */
+    /** @var $max_zoom integer */
     /** @var $disable_controls bool */
     /** @var $lat_center float */
     /** @var $lng_center float */
@@ -101,6 +103,8 @@ function tst_markers_map_output($atts){
     $enable_scroll_wheel = empty($enable_scroll_wheel) || $enable_scroll_wheel == 'mobile_only' ?
         'mobile_only' : !!$enable_scroll_wheel;
     $zoom = intval($zoom);
+    $min_zoom = intval($min_zoom) > 0 ? intval($min_zoom) : 7;
+    $max_zoom = intval($max_zoom) > 0 ? intval($max_zoom) : 24;
     $disable_controls = $disable_controls ? true : false;
     $show_legend = !!$show_legend;
     $legend_title = $legend_title ? trim($legend_title) : '';
@@ -274,7 +278,8 @@ function tst_markers_map_output($atts){
                     maps[map_id] = L.map(map_id, {
                         zoomControl: <?php echo $disable_controls ? 'false' : 'true';?>,
                         scrollWheelZoom: enable_scroll_zoom,
-                        minZoom: 7,
+                        minZoom: <?php echo $min_zoom;?>,
+                        maxZoom: <?php echo $max_zoom;?>,
                         center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
                         zoom: <?php echo $zoom;?>,
                         maxBounds: bounds,
@@ -378,6 +383,116 @@ add_action('wp_footer', function(){
 
 <?php }, 100);
 
+add_shortcode('tst_markers_list', 'tst_markers_list_output');
+function tst_markers_list_output($atts){
+
+//    extract(shortcode_atts(array(
+//
+//        'groups_excluded_ids' => '',
+//        'groups_ids' => '',
+//        'markers_ids' => '',
+//        'width' => '',
+//        'height' => 460,
+//
+//        'enable_scroll_wheel' => false,
+//        'min_zoom' => '',
+//        'max_zoom' => '',
+//        'zoom' => 6,
+//        'disable_controls' => false,
+//
+//        'lat_center' => '50.8',
+//        'lng_center' => '55.15',
+//
+//        'show_legend' => true,
+//        'legend_title' => '',
+//        'legend_subtitle' => '',
+//        'legend_is_filter' => true,
+//
+//        'css_classes' => '',
+//
+//    ), $atts));
+
+    /** @var $show_list_title bool */
+    /** @var $list_title string */
+    /** @var $css_classes string */
+
+    $show_list_title = !empty($atts['show_list_title']);
+    $list_title = empty($atts['show_list_title']) ? '' : esc_attr($atts['list_title']);
+    $css_classes = empty($atts['css_classes']) ? '' : esc_attr($atts['css_classes']);
+
+    $params = array(
+        'post_type' => 'marker',
+        'posts_per_page' => -1,
+        'orderby'   => 'meta_value',
+        'meta_key'  => 'marker_city',
+        'order'   => 'ASC',
+    );
+    $markers = get_posts($params);
+
+    if( !$markers ) {
+        return;
+    }
+
+    if($show_list_title) {?>
+        <h2 class="markers-list-title"><?php echo $list_title;?></h2>
+    <?php }
+
+    $markers_by_city = array('г. Оренбург' => array(),); // So we had a first city in a list
+    foreach($markers as $marker) {
+
+        $city = get_post_meta($marker->ID, 'marker_city', true);
+        if(empty($markers_by_city[$city])) {
+            $markers_by_city[$city] = array($marker);
+        } else {
+            $markers_by_city[$city][] = $marker;
+        }
+
+    }?>
+
+    <div class="markers-list">
+    <?php foreach($markers_by_city as $city => $markers) {?>
+
+        <?php if($markers) {?>
+        <div class="markers-city">
+            <div class="city-name"><?php echo esc_attr($city);?></div>
+            <?php foreach($markers as $marker) { /** @marker WP_Post */?>
+                <div class="marker-data"><?php echo tst_get_markers_list_entry($marker);?></div>
+            <?php }?>
+        </div>
+        <?php }?>
+
+    <?php }?>
+    </div>
+<?php }
+
+function tst_get_markers_list_entry(WP_Post $marker) {
+
+    $name = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_the_title($marker), ENT_COMPAT, 'UTF-8')));
+    $content = trim(str_replace(array('"', "'", '«', '»'), array(), html_entity_decode(trim(apply_filters('rdc_the_content', $marker->post_excerpt)), ENT_COMPAT, 'UTF-8')));
+    $addr = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_address', true), ENT_COMPAT, 'UTF-8')));
+    $phones = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_phones', true), ENT_COMPAT, 'UTF-8')));
+
+    $marker_markup = "<div class='mc-title'>".$name."</div>";
+
+    if($addr) {
+        $marker_markup .= "<div class='mc-address'><i class='material-icons'>place</i>$addr</div>";
+    }
+    if($content) {
+        $marker_markup .= "<div class='mc-content'>".$content."</div>";
+    }
+    if($phones) {
+
+        $phones = explode("\n", $phones);
+        $marker_markup .= "<div class='mc-phones'><div class='phone'><i class='material-icons'>phone</i>"
+            .implode("</div><div class='phone'><i class='material-icons'>phone</i>", $phones)
+            ."</div></div>";
+
+    }
+
+    return $marker_markup;
+
+}
+
 
 /** Helpers to print marker markup and classes **/
 function rdc_get_marker_popup($marker, $layers_id = array()){
@@ -386,7 +501,9 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
 
     $name = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_the_title($marker), ENT_COMPAT, 'UTF-8')));
     $content = trim(str_replace(array('"', "'", '«', '»'), array(), html_entity_decode(trim(apply_filters('rdc_the_content', $marker->post_excerpt)), ENT_COMPAT, 'UTF-8')));
-    $addr = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_address', true), ENT_COMPAT, 'UTF-8')));
+
+    $city = get_post_meta($marker->ID, 'marker_city', true);
+    $addr = ($city ? trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($city, ENT_COMPAT, 'UTF-8'))).', ' : '').trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_address', true), ENT_COMPAT, 'UTF-8')));
     $phones = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_phones', true), ENT_COMPAT, 'UTF-8')));
 
     if($layers_id) {
@@ -423,20 +540,20 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
 
 }
 
-function rdc_get_data_from_connected_campaign($marker, $rel_campaign) {
-    $data = array('thumbnail' => '', 'content' => '', 'button' => '');
-    if(!class_exists('Leyka_Campaign'))
-        return $data;
-
-    $camp = new Leyka_Campaign($rel_campaign);
-    $data['thumbnail'] = get_the_post_thumbnail($camp->ID, 'small-thumbnail');
-
-    $label = ($camp->is_closed) ? 'Подробности' : 'Поддержать';
-    $css = ($camp->is_closed) ? 'button' : 'button-red';
-    $data['button'] = "<a href='".get_permalink($camp->ID)."' class='{$css}'>{$label}</a>";
-
-    return $data;
-}
+//function rdc_get_data_from_connected_campaign($marker, $rel_campaign) {
+//    $data = array('thumbnail' => '', 'content' => '', 'button' => '');
+//    if(!class_exists('Leyka_Campaign'))
+//        return $data;
+//
+//    $camp = new Leyka_Campaign($rel_campaign);
+//    $data['thumbnail'] = get_the_post_thumbnail($camp->ID, 'small-thumbnail');
+//
+//    $label = ($camp->is_closed) ? 'Подробности' : 'Поддержать';
+//    $css = ($camp->is_closed) ? 'button' : 'button-red';
+//    $data['button'] = "<a href='".get_permalink($camp->ID)."' class='{$css}'>{$label}</a>";
+//
+//    return $data;
+//}
 
 function rdc_get_marker_layer_match($marker, $layers_id) {
 
@@ -509,3 +626,4 @@ function rdc_get_layer_icon($layer_id) {
     return "<i class='mymap-icon material-icons $color'>$type</i>";
 
 }
+

@@ -36,10 +36,11 @@
 			<div class="site-header-cell branding">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo">
 					<div id="logo-full" ><?php tst_site_logo('regular');?></div>
+					<div id="logo-mobile" ><?php tst_site_logo('mobile');?></div>
 				</a>
 			</div>
 
-			<?php $hedaer_text = get_option('header_text');?>
+			<?php $hedaer_text = get_option('tst_top_text');?>
 			<div class="site-header-cell actions">
 
 				<div class="actions--mobile">
@@ -68,5 +69,10 @@
 	</div><!-- .container -->
 </header>
 
-<div id="site_content" class="site-content"><a name="#content"></a>
+<div id="site_content" class="site-content sharing-frame"><a name="#content"></a>
+
+<?php if(is_singular(array('post', 'item', 'book', 'story'))) { ?>
+<div id="outer_sharing" class="sharing"><?php tst_social_share(get_queried_object());?></div>
+<?php } ?>
+
 <div class="container">

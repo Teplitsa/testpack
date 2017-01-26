@@ -64,10 +64,14 @@ h1, h2, h3, h4, h5, h6 {
 
 	a {
 		font-weight: 500;
-		&[href *= 'tel']{
-			color: $color-text;
-			@include body-text(small);
-		}
+
+	}
+}
+
+.textwidget a {
+	&[href *= 'tel']{
+		color: $color-text;
+		@include body-text(small);
 	}
 }
 
@@ -89,12 +93,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .pw_map-wrap {
-  border: 1px solid $green;
+  border: 3px solid $green;
+  border-radius: 2px;
   box-shadow: 2px 2px 3px rgba(200, 200, 200, 0.4);
 }
 
 .pw_map_canvas {
   border-bottom: 1px dashed $green;
+
+  .marker-cluster-small div {
+    background-color: $green;
+  }
+  .marker-cluster-medium div {
+    background-color: $sand;
+  }
+  .marker-cluster-large div {
+    background-color: $orange;
+  }
 
   .leaflet-popup-content-wrapper {
     border-radius: 3px;
