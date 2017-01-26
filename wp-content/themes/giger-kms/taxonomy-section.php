@@ -74,7 +74,7 @@ get_header();
 
 <?php if( count( $stories ) ): ?>
 <section class="home-section info-block">
-	<div class="info-block__title"><h3>Истории</h3></div>
+	<div class="info-block__title"><h3><a href="<?php echo get_post_type_archive_link( 'story' )?>">Истории</a></h3></div>
 	<div class="info-block__content">
 		<div class="flex-grid">
 		<?php foreach( $stories as $story ):?>

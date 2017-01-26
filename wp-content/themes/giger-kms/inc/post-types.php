@@ -200,7 +200,7 @@ function tst_custom_content(){
         'show_in_admin_bar'   => false,
         'capability_type'     => 'post',
         'has_archive'         => true,
-        'rewrite'             => true,
+        'rewrite'             => array('slug' => 'books', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 20,
         'menu_icon'           => 'dashicons-media-text',
@@ -233,8 +233,8 @@ function tst_custom_content(){
         'show_in_menu'        => true,
         'show_in_admin_bar'   => false,
         'capability_type'     => 'post',
-        'has_archive'         => false,
-        'rewrite'             => false,
+        'has_archive'         => true,
+        'rewrite'             => array('slug' => 'stories', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 21,
         'menu_icon'           => 'dashicons-media-text',
@@ -357,7 +357,7 @@ function tst_custom_metaboxes() {
         'closed'        => false,
     ));
 
-    $group_field_id = $about_page_cmb->add_field( array(
+    $group_field_id = $about_page_cmb->add_field(array(
         'id'          => 'team',
         'type'        => 'group',
         'description' => 'Настройки команды проекта',
@@ -369,7 +369,7 @@ function tst_custom_metaboxes() {
             'sortable'      => true, // beta
             // 'closed'     => true, // true to have the groups closed by default
         ),
-    ) );
+    ));
     $about_page_cmb->add_group_field($group_field_id, array(
         'name' => 'Имя',
         'id'   => 'name',

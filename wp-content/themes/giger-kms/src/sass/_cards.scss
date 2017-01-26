@@ -420,3 +420,28 @@
 		}
 	}
 }
+
+.cell-inlist-story {
+    text-align:left;
+
+    .cell-ex {
+        
+	    margin-bottom: $element-padding-base;
+	    margin-top: $base/2;
+	    @include post-title(small_title);
+	
+	    a, a:visited {
+	        color: $color-text-black;
+	    }
+	    
+	    a:hover { 
+	       color: $color-link-two; 
+        }
+	
+	    .date {
+	        @include sub-title();
+	        margin-left: $element-padding-base/2;
+	    }
+    }
+    	
+}

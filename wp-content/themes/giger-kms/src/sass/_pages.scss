@@ -69,6 +69,11 @@
 		padding: 20px $base*2 15px;
 		@include header-title(title);
 		color: $color-white;
+		
+        a {
+            color: $color-white;
+            cursor: pointer;
+        }
 	}
 
 	.info-block__content {

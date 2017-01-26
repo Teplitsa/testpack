@@ -10,7 +10,7 @@
 $cc_link = '<a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons СС-BY-SA 3.0</a>';
 $footer_text = get_option('footer_text');
 $tst = __("Teplitsa of social technologies", 'tst');
-$contributors_link = get_permalink( get_page_by_path( 'contributors' ) );
+$contributors_link = get_permalink( get_page_by_path( 'copyright' ) );
 ?>
 </div></div><!--  .container #site_content -->
 
@@ -30,7 +30,7 @@ $contributors_link = get_permalink( get_page_by_path( 'contributors' ) );
 
 			<div class="credits__copy">
 				<?php echo apply_filters('tst_the_content', $footer_text); ?>
-				<p><?php printf(__('All materials of the site are avaliabe under license %s', 'tst'), $cc_link);?> | <a href="<?php echo $contributors_link ?>"><?php _e('Contributors', 'tst')?></a></p>
+				<p><?php printf(__('All materials of the site are avaliabe under license %s', 'tst'), $cc_link);?> | <a href="<?php echo $contributors_link ?>"><?php _e('Copyright', 'tst')?></a></p>
 			</div>
 
 		</div>
