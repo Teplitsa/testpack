@@ -177,7 +177,7 @@ function tst_card_story(WP_Post $cpost, $show_icon = true) {
 
     $pl = get_permalink($cpost);
     $ex = tst_get_post_excerpt($cpost, 15);
-    
+
     ?>
 <article class="card has-thumb"><a href="<?php echo $pl;?>" class="card__link">
 	<div class="card__link_content"><div class="card__excerpt"><?php echo $ex?></div>
@@ -242,12 +242,9 @@ function tst_get_card_icon($cpost) {
 function tst_card_search(WP_Post $cpost) {
 
 	$pl = get_permalink($cpost);
-	$tags = tst_get_tags_list($cpost); 
-	$cats = get_the_term_list($cpost->ID, 'category', '<span class="category">', ', ', '</span>');
+	$tags = tst_get_tags_list($cpost);
+	$cats = tst_get_search_cats($cpost);
 
-	if($project = preg_match('/project/i', $pl)){
-		$pl = get_home_url().'/our-projects/?#'.$cpost->ID;
-	}
 
 ?>
 <article class="cell">
@@ -265,6 +262,7 @@ function tst_card_search(WP_Post $cpost) {
 <?php
 }
 
+
 /* story card */
 function tst_story_card(WP_Post $cpost) {
 
@@ -273,14 +271,14 @@ function tst_story_card(WP_Post $cpost) {
     $author_name = get_post_meta( $cpost->ID, 'story_author_name', true );
     $author_age = trim( get_post_meta( $cpost->ID, 'story_author_age', true ) );
     $author_gender = get_post_meta( $cpost->ID, 'story_author_gender', true );
-    
+
     $author = array( $author_name );
     if( trim( $author_age ) ) {
         $author[] = $author_age;
     }
-    
+
     $author_text = implode( ', ', $author );
-    
+
     $icon = TST_Stories::get_story_unique_icon( $cpost->ID, $author_gender, 3 );
 ?>
 	<article class="cell">
@@ -307,22 +305,22 @@ function tst_book_item( WP_Post $cpost, $show_thumb = true ) {
 	//thumb
 	$thumb_mark = '';
 	if($show_thumb) {
-	    
+
 	    if( has_post_thumbnail($cpost) ) {
-	        
+
 	        $cap = tst_get_post_thumbnail_cation($cpost);
-	        
+
 	        $thumb_args = array(
 	            'placement_type'	=> 'small-medium-medium-medium-medium',
 	            'aspect_ratio' 		=> 'cover',
 	            'crop' 				=> 'flex'
 	        );
-	        
+
 	        $thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
-	        
+
 	    }
 	    else {
-	        
+
 	        $cap = '';
 	        $book_icon_src = get_template_directory_uri() . '/assets/img/book-cover.png';
 	        ob_start();
@@ -359,7 +357,7 @@ function tst_book_item( WP_Post $cpost, $show_thumb = true ) {
     			<div class="cell__cover"><?php echo $thumb_mark;?></div>
     		<?php }?>
 			</div>
-			
+
 			<div class="bit mf-8">
         		<h4 class="cell__title">
         			<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
@@ -374,4 +372,38 @@ function tst_book_item( WP_Post $cpost, $show_thumb = true ) {
 			</div>
 	</article>
 <?php
+}
+
+function tst_get_search_cats(WP_Post $cpost) {
+
+	$terms = get_the_terms($cpost, 'section');
+	$list = array();
+
+	if(!empty($terms)){ foreach($terms as $t) {
+		if($t->slug == 'about'){
+			$list[] = "<a href='".home_url('about-us')."'>О нас</a>";
+		}
+		else {
+			$list[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
+		}
+	}}
+	elseif($cpost->post_type == 'book') {
+		$item = get_page_by_title('Книги и брошюры', OBJECT, 'item');
+		if($item)
+			$list[] = "<a href='".get_permalink($item)."'>".apply_filters('tst_the_title', $item->post_title)."</a>";
+	}
+	elseif($cpost->post_type == 'project') {
+		$item = get_page_by_title('Проекты', OBJECT, 'page');
+		if($item)
+			$list[] = "<a href='".get_permalink($item)."'>".apply_filters('tst_the_title', $item->post_title)."</a>";
+	}
+	elseif($cpost->post_type == 'story') {
+		$list[] = "<a href='".home_url('stories')."'>Истории</a>";
+	}
+
+
+
+
+	$out = (!empty($list)) ? "<span class='category'>".implode(',', $list)."</span>" : '';
+	return $out;
 }

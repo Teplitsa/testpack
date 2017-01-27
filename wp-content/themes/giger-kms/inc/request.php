@@ -101,6 +101,15 @@ function tst_filter_section_link($termlink, $term, $taxonomy) {
 	return $termlink;
 }
 
+add_filter('post_link', 'tst_project_link', 5, 3 );
+function tst_project_link($permalink, $post, $leavename) {
+
+	if($post->post_type == 'project'){
+		$permalink = untrailingslashit(home_url('our-projects')).'#'.intval($post->ID);
+	}
+
+	return $permalink;
+}
 
 
 /** == Redirects == **/
@@ -113,9 +122,18 @@ function tst_section_redirects() {
         return;
     }
 
+	if(is_tax('section', 'about')){
+		wp_redirect(home_url('about-us'), 301);
+        die();
+	}
+
     $str_to_lookup = $_SERVER['REQUEST_URI'];
 	if(false != strpos($str_to_lookup, 'section')){
 		$redirect = str_replace('section/', '', $str_to_lookup);
+
+		if($redirect == 'about')
+			$redirect = 'about-us';
+
 		wp_redirect(home_url($redirect), 301);
         die();
 	}
@@ -128,18 +146,18 @@ add_action('template_redirect', 'tst_pages_redirect', 5);
 function tst_pages_redirect() {
     global $wp_query;
     global $wp;
-    
+
     $args = $wp_query->query_vars;
     $request_uri = $wp->request;
     $is_debug = isset( $_GET['tst_debug_redirects'] ) ? true : false;
-    
+
     if( $is_debug ) {
         echo $request_uri . "<br />";
     }
-    
+
     $redirect = '';
     $matches = array();
-    
+
     if( !$redirect ) {
         $redirect = TST_URL::get_custom_redirect( $request_uri );
     }
