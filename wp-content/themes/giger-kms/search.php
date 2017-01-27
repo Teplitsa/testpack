@@ -50,6 +50,9 @@ get_header();
 				echo "<div class='layout-section__item layout-section__item--card'><p>".__('К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать иначе.', 'tst')."</p></div>";
 			}
 			else {
+	    ?>
+			    <div id="loadmore-search-results">
+	    <?php
 				foreach($loop_1 as $i => $cpost) {
 					$class = ($i == (count($loop_1) - 1)) ? 'layout-section__item--card' : 'layout-section__item--card';
 		?>
@@ -57,15 +60,16 @@ get_header();
 					<?php tst_card_search($cpost); ?>
 				</div>
 		<?php }} ?>
-
-
+				</div>
+				
+		<div class="layout-section layout-section--card layout-section--loadmore">
 		<?php
-			if(!empty($s_query) && $num > 0 && isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
-				$more_template = 'search_card';
-				tst_load_more_button($wp_query, $more_template);
+			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
+				tst_load_more_button($wp_query, 'search_card', array(), "loadmore-search-results");
 			}
 		?>
-
+		</div>
+		
 	</div>
 
 </section>

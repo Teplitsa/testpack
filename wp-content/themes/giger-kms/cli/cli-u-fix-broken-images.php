@@ -84,12 +84,13 @@ function fix_images_step( $post_id = 0, $is_update = 0, $debug = 0 ) {
 
         foreach($posts as $p){			
 
-            printf( 'time: %s post_id: %d post_name: %s post_date: %s images: ' . chr(10), date( 'H:i:s' ), $p->ID, $p->post_name, substr($p->post_date, 0, 10), count( $all_post_images ) );
+            printf( 'time: %s post_id: %d post_name: %s post_date: %s images: ', date( 'H:i:s' ), $p->ID, $p->post_name, substr($p->post_date, 0, 10), count( $all_post_images ) );
             if (!preg_match_all('/<img [^>]+>/', $p->post_content, $matches)){
                     echo '0' . chr(10);
             }
-
-            echo count($matches[0]) . chr(10);
+            else {
+                echo count($matches[0]) . chr(10);
+            }
 
             $content = $p->post_content;
             $is_any_image_changed = false;

@@ -78,7 +78,7 @@ function tst_project_cell(WP_Post $cpost) {
 	$ex = tst_get_post_excerpt($cpost, 25);
 
 ?>
-	<article class="cell cell--project">
+	<article class="cell cell--project " id="<?php echo $cpost->ID; ?>">
 		<h4 class="cell__title cell__title--project">
 			<?php echo get_the_title($cpost);?>
 		</h4>
@@ -243,12 +243,20 @@ function tst_card_search(WP_Post $cpost) {
 
 	$pl = get_permalink($cpost);
 	$tags = tst_get_tags_list($cpost); 
+	$cats = get_the_term_list($cpost->ID, 'category', '<span class="category">', ', ', '</span>');
+
+	if($project = preg_match('/project/i', $pl)){
+		$pl = get_home_url().'/our-projects/?#'.$cpost->ID;
+	}
 
 ?>
 <article class="cell">
-	<h4 class="cell__title">
+	<h4 class="card-search__title cell__title">
 		<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
 	</h4>
+	<?php if(!empty($cats)) { ?>
+		<div class="card-search__meta"><?php echo $cats;?></div>
+	<?php } ?>
 	<div class="card-search__summary"><?php echo tst_get_post_excerpt($cpost, 25, true);?></div>
 	<?php if(!empty($tags)) { ?>
 		<div class="card-search__meta"><?php echo $tags;?></div>

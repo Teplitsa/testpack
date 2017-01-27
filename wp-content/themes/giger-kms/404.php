@@ -12,11 +12,9 @@ get_header();
 
 <section class="main-content">
 
-
 	<article class="err-404">
 		<div class="err-404__text"><?php echo apply_filters('tst_the_content', $er_text); ?></div>
 		<div class="err-404__search regular-search"><?php get_search_form();?></div>
-				<!-- <div class="err-404__img"><div class="img-background" style="background-image: url(<?php echo $src;?>);"></div></div> -->
 	</article>
 
 </section>

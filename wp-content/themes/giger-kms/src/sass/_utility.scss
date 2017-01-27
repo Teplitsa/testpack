@@ -134,7 +134,13 @@ a:link {
 		margin: $inpage-margin-base*2 0;
 		&:last-child { margin-bottom: 0; }
 		&:first-child { margin-top: 0; }
+		figcaption {
+			@include sub-title(extend);
+			font-style: italic;
+			margin: $base auto 0;
+		}
 	}
+	
 
 	figure + figure,
 	h3 + figure,

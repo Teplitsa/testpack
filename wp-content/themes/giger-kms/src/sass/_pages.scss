@@ -200,6 +200,21 @@
 		width: 24px;
 		height: 24px;
 	}
+
+}
+.card-search__title {
+	margin-bottom: 0;
+}
+.card-search__meta {
+	margin-bottom: $base;
+	
+	.category {
+		@include body-text(small);
+		@include green-link();
+	}
+}
+.card-search__summary {
+	margin: $base*2 auto $base;
 }
 
 

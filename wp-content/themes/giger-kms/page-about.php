@@ -9,7 +9,7 @@ $about = new TST_About($cpage);
 get_header();?>
 
 <section class="main">
-	<div class="single-item--title"><h1><?php echo get_the_title($cpage);?></div>
+	<div class="single-item--title"><h1><?php echo get_the_title($cpage);?></h1></div>
 
 	<div class="frame">
 
