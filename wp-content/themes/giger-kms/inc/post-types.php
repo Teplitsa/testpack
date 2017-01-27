@@ -123,7 +123,7 @@ function tst_custom_content(){
        ),
         'public'              => true,
         'exclude_from_search' => false,
-        'publicly_queryable'  => false,
+        'publicly_queryable'  => true,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
@@ -131,7 +131,7 @@ function tst_custom_content(){
         //'query_var'           => true,
         'capability_type'     => 'post',
         'has_archive'         => false,
-        'rewrite'             => false,
+        'rewrite'             => array('slug' => 'project', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 20,
 		'menu_icon'           => 'dashicons-category',
@@ -499,7 +499,7 @@ function tst_custom_metaboxes() {
         'id'   => 'book_author',
         'type' => 'text',
     ));
-    
+
     $book_cmb->add_field( array(
         'name' => 'Файл для скачивания',
         'id'   => 'book_att_id',
