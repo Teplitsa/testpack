@@ -122,9 +122,18 @@ function tst_section_redirects() {
         return;
     }
 
+	if(is_tax('section', 'about')){
+		wp_redirect(home_url('about-us'), 301);
+        die();
+	}
+
     $str_to_lookup = $_SERVER['REQUEST_URI'];
 	if(false != strpos($str_to_lookup, 'section')){
 		$redirect = str_replace('section/', '', $str_to_lookup);
+
+		if($redirect == 'about')
+			$redirect = 'about-us';
+
 		wp_redirect(home_url($redirect), 301);
         die();
 	}
