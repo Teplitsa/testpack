@@ -81,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lab-map {
-  margin-bottom: 3*$base;
+  margin-bottom: 6*$base;
 }
 
 /* Markers map */
@@ -119,6 +119,10 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 3px;
   }
   .marker-content {
+
+    .material-icons {
+      font-size: 16px;
+    }
 
     .mc-title {
       font-weight: bold;
@@ -216,10 +220,11 @@ h1, h2, h3, h4, h5, h6 {
 
   .markers-city {
 
+    margin-bottom: 6*$base;
+
     .city-name {
       font-size: 20px;
       font-weight: bold;
-      text-transform: capitalize;
     }
 
     .city-markers {
@@ -228,23 +233,26 @@ h1, h2, h3, h4, h5, h6 {
       margin-bottom: 2*$base;
 
       .marker-data {
-        flex: 1 3 250px;
-        padding: 2*$base $base;
+        flex: 1 2 300px;
+        padding: 3*$base 3*$base;
+        line-height: 20px;
+        font-size: 14px;
         border-bottom: 1px solid transparentize(darken($color-link-two, 15%), 0.5);
 
         .mc-title {
           font-weight: bold;
-          margin-bottom: 2*$base;
+          margin-bottom: $base;
         }
 
         .material-icons {
           color: $green;
+          font-size: 14px;
         }
 
         .mc-address {
           display: flex;
           align-items: center;
-          margin-bottom: $base;
+          margin-bottom: $base/2;
 
           .material-icons {
             margin-right: $base/2;

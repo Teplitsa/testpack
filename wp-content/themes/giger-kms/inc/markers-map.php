@@ -441,6 +441,22 @@ function tst_markers_list_output($atts){
     foreach($markers as $marker) {
 
         $city = get_post_meta($marker->ID, 'marker_city', true);
+        if(in_array(mb_substr($city, 0, 1), array('г', 'с', 'п'))) {
+
+            $city = lcfirst($city);
+            $city = str_replace(array(
+                'г. ', 'с. ', 'п. ', 'г.', 'с.', 'п.'
+            ), array(
+                'г.', 'с.', 'п.', 'г. ', 'с. ', 'п. '
+            ), $city);
+//            $city = str_replace(array(
+//                'г.', 'с.', 'п.'
+//            ), array(
+//                'г. ', 'с. ', 'п. '
+//            ), $city);
+
+        }
+
         if(empty($markers_by_city[$city])) {
             $markers_by_city[$city] = array($marker);
         } else {
