@@ -127,6 +127,7 @@ require get_template_directory().'/inc/templates-thumbnails.php';
 require get_template_directory().'/inc/templates-micro.php';
 require get_template_directory().'/inc/templates-single.php';
 require get_template_directory().'/inc/templates-tags.php';
+require get_template_directory().'/inc/feed.php';
 
 if(is_admin()){
 	require get_template_directory() . '/admin/general.php';
