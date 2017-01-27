@@ -287,6 +287,22 @@ jQuery(document).ready(function($){
 
 }); //jQuery
 
+jQuery(document).ready(function($){
+
+    function show_hidden_menu(){
+        $('.inner-menu').click(function(){
+            $('.inner-menu').toggleClass('opened');
+            $('.single-item-list').slideToggle();  
+        });      
+    }
+    
+    if ($(window).width() < 768){
+        show_hidden_menu();
+    }
+
+    
+}); //jQuery
+
 
 jQuery(document).ready(function($){
 
