@@ -126,6 +126,30 @@ function tst_section_redirects() {
 /* redirects fr urls of the old site **/
 add_action('template_redirect', 'tst_pages_redirect', 5);
 function tst_pages_redirect() {
+    global $wp_query;
+    global $wp;
+    
+    $args = $wp_query->query_vars;
+    $request_uri = $wp->request;
+    $is_debug = isset( $_GET['tst_debug_redirects'] ) ? true : false;
+    
+    if( $is_debug ) {
+        echo $request_uri . "<br />";
+    }
+    
+    $redirect = '';
+    $matches = array();
+    
+    if( !$redirect ) {
+        $redirect = TST_URL::get_custom_redirect( $request_uri );
+    }
 
+    if( $is_debug ) {
+        echo "<br /><br />redirect: " . $redirect . "<br />"; exit();
+    }
 
+    if(!empty($redirect)){
+        wp_redirect($redirect, 302);
+        die();
+    }
 }

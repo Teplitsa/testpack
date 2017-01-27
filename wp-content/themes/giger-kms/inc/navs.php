@@ -55,9 +55,9 @@ function tst_load_more_posts_screen() {
 
     $result = array('type' => 'ok', 'data' => array(), 'has_more' => false);
 
-//     if(!wp_verify_nonce($_REQUEST['nonce'], "load_more_posts")) {
-//         die('nonce error');
-//     }
+    if(!wp_verify_nonce($_REQUEST['nonce'], "load_more_posts")) {
+        die('nonce error');
+    }
 
     //get params
     $paged     	= (isset($_REQUEST['page'])) ? (int)$_REQUEST['page'] : 0;
@@ -93,7 +93,14 @@ function tst_load_more_posts_screen() {
         $middle_meta = (isset($template_args[1])) ? trim($template_args[1]) : 'topics';
         $show_author = (isset($template_args[2])) ? (bool)$template_args[2] : false;
         ?>
-			<div class="layout-section__item layout-section__item--card"><?php tst_cell($p);?></div>
+			<div class="layout-section__item layout-section__item--card"><?php
+			    if( $template == 'search_card' ) {
+			        tst_card_search( $p );
+			    }
+			    else {
+			        tst_cell( $p );
+			    }
+		    ?></div>
         <?php
     }
 

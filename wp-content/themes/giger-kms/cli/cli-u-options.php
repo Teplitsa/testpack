@@ -16,7 +16,7 @@ try {
 
 	//site url
 	if(defined('WP_CONTENT_URL') && WP_CONTENT_URL){
-		$target = str_replace(array('//', '/wp-content', 'http://', 'https://'), '', WP_CONTENT_URL);
+		$target = str_replace(array( 'http://', 'https://', '//', '/wp-content' ), '', WP_CONTENT_URL);
 		var_dump($target);
 		$target = untrailingslashit($target);
 		$siteurl = 'http://'.$target.'/core';
