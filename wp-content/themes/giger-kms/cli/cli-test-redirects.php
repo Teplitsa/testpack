@@ -58,7 +58,7 @@ try {
     		if( !$url ) {
     			continue;
     		}
-    
+
     		$old_url = str_replace( $old_site_home, '', $url );
     		$old_url = $old_site_home . $old_url;
     		
@@ -116,7 +116,7 @@ try {
     		
     		$val_data = array(
     			$counter++,
-    			str_replace( $ngo2_auth_cred . '@', '', $new_url),
+    		    $old_url, #str_replace( $ngo2_auth_cred . '@', '', $new_url),
     			$status_code,
     			$h_status,
     			isset( $res['Location'] ) ? is_array( $res['Location'] ) ? $res['Location'][0] : $res['Location'] : '',

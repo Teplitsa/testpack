@@ -326,10 +326,26 @@ try {
 	    $uid = wp_insert_post($page_data);
 	}
 
-	echo "Сontributors page created ".chr(10);
+	echo "Сopiright page created ".chr(10);
+	
+	// fix link in post
+	$post = get_page_by_path( 'uchastnikov-gruppy-vzaimopomoshhi-pribavlyaetsya', OBJECT, 'post' );
+	if( $post ) {
+	    $post_content = $post->post_content;
+	    $post_content = str_replace( 'gruppa-vzaimopomoshhi/statistika', 'item/support-group/group-stat', $post_content );
+	    
+	    $post_data = array(
+	        'ID' => $post->ID,
+	        'post_content' => $post_content,
+        );
+	    
+	    wp_update_post( $post_data );
+	    
+	    echo sprintf( "Post %s updated ", $post->post_name ) . chr(10);
+	}
 
 	//Final
-	echo 'Memory '.memory_get_usage(true).chr(10);
+	echo chr(10) . 'Memory '.memory_get_usage(true).chr(10);
 	echo 'Total execution time in sec: ' . (microtime(true) - $time_start).chr(10).chr(10);
 }
 catch (TstNotCLIRunException $ex) {

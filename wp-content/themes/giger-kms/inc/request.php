@@ -142,24 +142,24 @@ function tst_section_redirects() {
 
 
 /* redirects fr urls of the old site **/
-add_action('template_redirect', 'tst_pages_redirect', 5);
+add_action('template_redirect', 'tst_pages_redirect', -1);
 function tst_pages_redirect() {
     global $wp_query;
     global $wp;
-
+    
     $args = $wp_query->query_vars;
-    $request_uri = $wp->request;
+    $request_uri_with_query = $wp->request . ( $_SERVER['QUERY_STRING'] ? '?' . $_SERVER['QUERY_STRING'] : '');
     $is_debug = isset( $_GET['tst_debug_redirects'] ) ? true : false;
-
+    
     if( $is_debug ) {
-        echo $request_uri . "<br />";
+        echo $request_uri_with_query . "<br />";
     }
-
+    
     $redirect = '';
     $matches = array();
-
+    
     if( !$redirect ) {
-        $redirect = TST_URL::get_custom_redirect( $request_uri );
+        $redirect = TST_URL::get_custom_redirect( $request_uri_with_query );
     }
 
     if( $is_debug ) {
@@ -167,7 +167,15 @@ function tst_pages_redirect() {
     }
 
     if(!empty($redirect)){
-        wp_redirect($redirect, 302);
+        wp_redirect($redirect, 301);
         die();
     }
+}
+
+add_filter( 'request', 'tst_rss_redirect' );
+function tst_rss_redirect( $query ) {
+    if( isset( $query['feed'] ) ) {
+        tst_pages_redirect();
+    }
+    return $query;
 }
