@@ -80,6 +80,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: $inpage-margin-base;
 }
 
+.lab-map {
+  margin-bottom: 3*$base;
+}
+
 /* Markers map */
 .material-icons {
   font-size: 25px;
@@ -204,6 +208,58 @@ h1, h2, h3, h4, h5, h6 {
     &.is-filter li.legend-child.marker-group-active {
       background-color: $sand;
       color: $color-white;
+    }
+  }
+}
+
+.markers-list {
+
+  .markers-city {
+
+    .city-name {
+      font-size: 20px;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    .city-markers {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 2*$base;
+
+      .marker-data {
+        flex: 1 3 250px;
+        padding: 2*$base $base;
+        border-bottom: 1px solid transparentize(darken($color-link-two, 15%), 0.5);
+
+        .mc-title {
+          font-weight: bold;
+          margin-bottom: 2*$base;
+        }
+
+        .material-icons {
+          color: $green;
+        }
+
+        .mc-address {
+          display: flex;
+          align-items: center;
+          margin-bottom: $base;
+
+          .material-icons {
+            margin-right: $base/2;
+          }
+        }
+
+        .mc-phones .phone {
+          display: flex;
+          align-items: center;
+
+          .material-icons {
+            margin-right: $base/2;
+          }
+        }
+      }
     }
   }
 }

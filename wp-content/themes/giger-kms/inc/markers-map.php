@@ -455,9 +455,11 @@ function tst_markers_list_output($atts){
         <?php if($markers) {?>
         <div class="markers-city">
             <div class="city-name"><?php echo esc_attr($city);?></div>
+            <div class="city-markers">
             <?php foreach($markers as $marker) { /** @marker WP_Post */?>
                 <div class="marker-data"><?php echo tst_get_markers_list_entry($marker);?></div>
             <?php }?>
+            </div>
         </div>
         <?php }?>
 
