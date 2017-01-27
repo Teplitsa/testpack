@@ -290,16 +290,27 @@ jQuery(document).ready(function($){
 jQuery(document).ready(function($){
 
     function show_hidden_menu(){
-        $('.inner-menu').click(function(){
-            $('.inner-menu').toggleClass('opened');
+        $('.mobile').click(function(){
+            $(this).toggleClass('opened');
             $('.single-item-list').slideToggle();  
         });      
     }
-    
     if ($(window).width() < 768){
+        $('.inner-menu').addClass('mobile');
         show_hidden_menu();
-    }
-
+    } 
+    
+    $(window).on('resize',function(){
+        if ($(window).width() < 768){
+            if (!$('.inner-menu').hasClass('mobile')) {
+                $('.inner-menu').addClass('mobile');
+                show_hidden_menu();
+            }            
+        } else {
+            $('.inner-menu').removeClass('mobile');
+            $('.single-item-list').show();  
+        }
+    });
     
 }); //jQuery
 
