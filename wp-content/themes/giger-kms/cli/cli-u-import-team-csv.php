@@ -58,6 +58,14 @@ try {
 
         update_post_meta($about_page_id, 'team', $team);
 
+        // Manually fix one wrongly cropped image:
+        $image = wp_get_image_editor( 'cool_image.jpg' );
+        if ( ! is_wp_error( $image ) ) {
+            $image->rotate( 90 );
+            $image->resize( 300, 300, true );
+            $image->save( 'new_image.jpg' );
+        }
+
 	}
 
 	printf( "\nTeam members imported: %d\n", $count );
