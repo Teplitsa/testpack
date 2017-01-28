@@ -121,56 +121,29 @@ function tst_card(WP_Post $cpost, $show_icon = true) {
 
 function tst_card_team_member(array $member) {
 
-    //thumb
+    // thumb
     $thumb_mark = '';
     if($member['image_id']) {
 
-        $thumb_args = array(
-            'placement_type'	=> 'small-square_mini-square_mini-square_mini-square_mini',
-            'aspect_ratio' 		=> 'standard',
-            'crop' 				=> 'fixed'
-        );
-
-        //build thumbnail markup
-        ob_start();
-
-        $css = "{$thumb_args['aspect_ratio']} {$thumb_args['crop']}";
-
         ob_start();?>
 
-        <div class="tst-thumbnail <?php echo esc_attr($css);?>">
-            <div class="tst-thumbnail__frame">
-
-            <?php $sources = tst_get_picture_sources($member['image_id'], $thumb_args['placement_type'], $thumb_args['crop']);
-            $base = wp_get_attachment_image_src($member['image_id'], $sources['base_size']);?>
-
-            <picture class="tst-thumbnail__picture">
-                <!-- sources -->
-                <?php if($sources) { foreach($sources as $media_query => $src) { ?>
-                    <source data-srcset="<?php echo esc_attr($src);?>" media="<?php echo esc_attr($media_query);?>"></source>
-                <?php }} ?>
-                <!-- fallback -->
-                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                     data-src="<?php echo $base[0];?>"
-                     class="lazyload">
-                <noscript><img src="<?php echo $base[0];?>"></noscript>
-            </picture>
-
-            </div>
+        <div class="member-pic">
+            <?php $base = wp_get_attachment_image_src($member['image_id'], 'thumbnail-small-fixed');?>
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php echo $base[0];?>" class="lazyload">
         </div>
 
-        <?php
-        $thumb_mark = ob_get_contents();
+        <?php $thumb_mark = ob_get_contents();
         ob_end_clean();
-    }//has thumb ?>
+    } // has thumb ?>
 
-    <article class="cell team-member">
-        <h4 class="cell__title"><?php echo esc_attr($member['name']);?></h4>
-        <div class="cell__text"><?php echo esc_attr($member['position']);?></div>
-        <?php if($thumb_mark) { ?>
-            <div class="cell__thumb"><?php echo $thumb_mark;?></div>
+    <div class="team-member">
+        <?php if($thumb_mark) {?>
+            <?php echo $thumb_mark;?>
         <?php }?>
-    </article>
+        <div class="member-name"><?php echo esc_attr($member['name']);?></div>
+        <div class="member-position"><?php echo esc_attr($member['position']);?></div>
+
+    </div>
 <?php }
 
 function tst_card_story(WP_Post $cpost, $show_icon = true) {
@@ -313,7 +286,7 @@ function tst_book_item( WP_Post $cpost, $show_thumb = true ) {
 	        $thumb_args = array(
 	            'placement_type'	=> 'small-medium-medium-medium-medium',
 	            'aspect_ratio' 		=> 'cover',
-	            'crop' 				=> 'flex'
+	            'crop' 				=> 'fixed'
 	        );
 
 	        $thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);

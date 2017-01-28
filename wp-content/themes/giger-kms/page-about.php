@@ -23,11 +23,10 @@ get_header();?>
             $team = get_post_meta(get_the_ID(), 'team', true);
             if($team) {?>
 
-                <div class="team">
+                <h4>Команда</h4>
+                <div class="team-list">
                 <?php foreach($team as $member) {?>
-                    <div class="layout-section__item layout-section__item--card">
                         <?php tst_card_team_member($member);?>
-                    </div>
                 <?php }?>
                 </div>
 

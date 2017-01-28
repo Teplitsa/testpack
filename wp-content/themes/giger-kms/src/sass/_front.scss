@@ -271,3 +271,25 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 }
+
+/** About - Team */
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  .team-member {
+    flex: 0 1 320px;
+    margin-right: 2*$base;
+    margin-bottom: 4*$base;
+
+    .member-name {
+      margin: $base 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .member-position {
+      font-size: smaller;
+    }
+  }
+}
