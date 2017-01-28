@@ -287,6 +287,33 @@ jQuery(document).ready(function($){
 
 }); //jQuery
 
+jQuery(document).ready(function($){
+
+    function show_hidden_menu(){
+        $('.mobile').click(function(){
+            $(this).toggleClass('opened');
+            $('.single-item-list').slideToggle();  
+        });      
+    }
+    if ($(window).width() < 768){
+        $('.inner-menu').addClass('mobile');
+        show_hidden_menu();
+    } 
+    
+    $(window).on('resize',function(){
+        if ($(window).width() < 768){
+            if (!$('.inner-menu').hasClass('mobile')) {
+                $('.inner-menu').addClass('mobile');
+                show_hidden_menu();
+            }            
+        } else {
+            $('.inner-menu').removeClass('mobile');
+            $('.single-item-list').show();  
+        }
+    });
+    
+}); //jQuery
+
 
 jQuery(document).ready(function($){
 

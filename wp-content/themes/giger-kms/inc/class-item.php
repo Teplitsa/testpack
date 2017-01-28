@@ -73,7 +73,7 @@ class TST_Item {
 			$list[] = "<li class='".$css."'><a href='".get_permalink($m)."'>".get_the_title($m)."</a></li>";
 		}
 
-		$out = "<ul class='single-item-list'><li class='intro'><span>В этом разделе</span></li>".implode('', $list)."</ul>";
+		$out = "<div class='inner-menu'><span>В этом разделе</span></div><ul class='single-item-list'>".implode('', $list)."</ul>";
 
 
 		return $out;

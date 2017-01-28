@@ -128,12 +128,60 @@
 
 /* Single items */
 //menu
+.inner-menu {
+	margin-bottom: $base*3;
+	background: #fff;
+	padding: $base/2 $base*2;
+	position: relative;
+	text-align: center;
+	
+	span {
+		@include body-text(summary);
+		text-transform: uppercase;
+		color: $color-text-black;
+	}
+	&:after {
+		content: "\2039";
+		position: absolute;
+		right: $base*2;
+		transform: rotate(-90deg);
+		transform-origin: 50% 55%;
+		transition: ease 0.25s;
+		font-size: 28px;
+	}
+	&.opened {
+		&:after {
+			transform: rotate(90deg);
+		}
+	}
+	@include for(medium-screens) {
+		background: none;
+		padding: 0;
+		text-align: left;
+		
+		&:after {
+			display: none;
+		}
+	}
+}
+
 .single-item--title {
 	@include header-title(single);
 	margin-bottom: $base*4;
 }
 
 .single-item-list {
+	display: none;
+	background: #fff;
+	padding: $base*2;
+	margin-bottom: $base*3;
+	
+	@include for(medium-screens) {
+		background: none;
+		display: block;
+		padding: 0;
+		margin-bottom: 0;
+	}
 	li {
 		margin-bottom: $base;
 	}

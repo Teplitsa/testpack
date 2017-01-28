@@ -57,7 +57,7 @@ function fix_images_step( $post_id = 0, $is_update = 0, $debug = 0 ) {
     
     $post_id = (int)$post_id;
     
-    $sql = " SELECT p1.* FROM {$wpdb->posts} AS p1 JOIN ( SELECT * FROM {$wpdb->posts} WHERE post_type IN ('post')"
+    $sql = " SELECT p1.* FROM {$wpdb->posts} AS p1 JOIN ( SELECT * FROM {$wpdb->posts} WHERE post_type IN ('post', 'project', 'item')"
             . " AND post_status = 'publish'"
             . ($post_id ? " AND ID = $post_id" : "")
             . " ORDER BY post_date ASC"
