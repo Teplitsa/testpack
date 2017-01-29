@@ -149,7 +149,7 @@
 		transition: ease 0.25s;
 		font-size: 28px;
 	}
-	&.opened {
+	&.active {
 		&:after {
 			transform: rotate(90deg);
 		}
