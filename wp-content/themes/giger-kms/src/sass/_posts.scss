@@ -131,9 +131,10 @@
 .inner-menu {
 	margin-bottom: $base*3;
 	background: #fff;
-	padding: $base/2 $base*2;
+	padding: $base $base*2;
 	position: relative;
 	text-align: center;
+	cursor: pointer;
 	
 	span {
 		@include body-text(summary);
@@ -158,6 +159,7 @@
 		background: none;
 		padding: 0;
 		text-align: left;
+		cursor: initial;
 		
 		&:after {
 			display: none;
