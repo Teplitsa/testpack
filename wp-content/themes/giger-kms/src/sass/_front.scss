@@ -198,10 +198,8 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     li.legend-child {
-      flex: 0 1 225px;
+      flex: 0 1 200px;
       padding: $base 3*$base;
-      //background-color: $color-white;
-      //color: $color-text-semi;
     }
 
     li {
@@ -218,9 +216,7 @@ h1, h2, h3, h4, h5, h6 {
       }
     }
 
-
     &.is-filter li.legend-child.marker-group-active {
-      border: 1px solid black;
       background-color: $sand;
       color: $color-white;
     }
