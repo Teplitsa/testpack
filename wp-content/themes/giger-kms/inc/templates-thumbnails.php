@@ -24,7 +24,7 @@ function tst_thumbnails_setup() {
 
 
 /** Custom image size for medialib **/
-//add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
+add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
 function tst_medialib_custom_image_sizes($sizes) {
 
 	$sizes = array(
@@ -32,7 +32,7 @@ function tst_medialib_custom_image_sizes($sizes) {
 		"thumbnail-small-fixed"		=> 'Мин. маленькая',
 		'thumbnail-medium-fixed'	=> 'Мин. горизонтальная',
 		'medium'					=> 'Средний',
-		'feature'					=> 'Фиксированный',
+		'thumbnail-large-fixed'		=> 'Фиксированный',
 		'full'						=> 'Полный'
 	);
 
