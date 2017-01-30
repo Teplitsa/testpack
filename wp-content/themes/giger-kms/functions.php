@@ -112,6 +112,7 @@ require get_template_directory().'/inc/navs.php';
 require get_template_directory().'/inc/post-types.php';
 require get_template_directory().'/inc/related.php';
 require get_template_directory().'/inc/request.php';
+require get_template_directory().'/inc/caching.php';
 require get_template_directory().'/inc/seo.php';
 
 //require get_template_directory().'/inc/cards.php';
