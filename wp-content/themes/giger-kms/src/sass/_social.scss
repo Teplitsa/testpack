@@ -115,8 +115,9 @@ $social_color: (
 		width: 16px;
 		height: 16px;
 		fill: $color-text-black;
+		pointer-events: none;
 
-		&:hover {
+		a:hover & {
 			fill: $color-link-one;
 		}
 	}

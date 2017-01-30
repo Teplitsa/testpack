@@ -87,7 +87,8 @@ try {
 
 	//Update Error 404 text
 	$err_link = home_url('contacts');
-	$err_text = "<p>К сожалению, эта страница отсутствует! Ошибка 404.</p><p>Если вы перешли сюда по ссылке, пожалуйста, <a href='{$err_link}'>дайте нам знать</a>, чтобы мы исправили это как можно быстрее.</p>";
+	$home_link = home_url();
+	$err_text = "<p>К сожалению, эта страница отсутствует на нашем сайте!</p><p>Если вы перешли сюда по ссылке, пожалуйста, <a href='{$err_link}'>дайте нам знать</a>, чтобы мы исправили это как можно быстрее.</p><p>Воспользуйтесь поиском, чтобы найти нужную информацию или начните с <a href='{$home_link}'>Главной</a></p>";
 	update_option('er_text', $err_text);
 
 	//Update theme options
@@ -101,6 +102,12 @@ try {
 
 	//No admin username
 	$wpdb->update($wpdb->users, array('user_login' => 'awedlog', 'display_name' => 'Елена'), array('ID' => 1), array('%s', '%s'), array('%d'));
+
+	//load theme functions
+	if(!function_exists('tst_upload_img_from_path')){
+		require_once(WP_CONTENT_DIR.'/themes/giger-kms/functions.php');
+	}
+
 
 	//delete transients
 	delete_transient('frm_options');
