@@ -1769,7 +1769,7 @@ jQuery(document).ready(function($){
 	});
 
 	/** Local scroll **/
-	$('.local-scroll').on('click', function(e){
+	$('.local-scroll').on('click', function(e){ 
 		e.preventDefault();
 
 		var full_url = $(this).attr('href'),
