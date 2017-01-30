@@ -92,6 +92,7 @@
 .lazyloaded {
     opacity: 1;
 	@include transition(opacity 0.3s);
+	width: 100%;
 }
 
 
