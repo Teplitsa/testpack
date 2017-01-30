@@ -182,6 +182,7 @@ h1, h2, h3, h4, h5, h6 {
   ul.markers-map-legend {
     margin: 0;
     display: flex;
+    flex-wrap: wrap;
 
     .mymap-icon.material-icons {
       margin-right: $base;
@@ -197,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     li.legend-child {
-      flex: 0 0 300px;
+      flex: 0 1 225px;
       padding: $base 3*$base;
     }
 
@@ -213,6 +214,7 @@ h1, h2, h3, h4, h5, h6 {
       color: $color-white;
     }
     &.is-filter li.legend-child.marker-group-active {
+      border: 1px solid black;
       background-color: $sand;
       color: $color-white;
     }
