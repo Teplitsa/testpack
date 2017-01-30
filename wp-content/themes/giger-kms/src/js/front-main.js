@@ -53,7 +53,7 @@ jQuery(document).ready(function($){
 		e.preventDefault();
 		var trigger = $(this);
 
-		if ($('body').hasClass('drawer-open')) {
+		if ($('body').hasClass('drawer-open')) { 
 			$('body').removeClass('drawer-open');
 			trigger.removeClass('is-active');
 		}
