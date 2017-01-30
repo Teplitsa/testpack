@@ -1757,7 +1757,7 @@ jQuery(document).ready(function($){
 		e.preventDefault();
 		var trigger = $(this);
 
-		if ($('body').hasClass('drawer-open')) { 
+		if ($('body').hasClass('drawer-open')) {
 			$('body').removeClass('drawer-open');
 			trigger.removeClass('is-active');
 		}
@@ -1769,19 +1769,27 @@ jQuery(document).ready(function($){
 	});
 
 	/** Local scroll **/
-	$('.local-scroll').on('click', function(e){ 
+
+
+	$('.local-scroll').on('click', function(e){
 		e.preventDefault();
 
 		var full_url = $(this).attr('href'),
 			trgt = full_url.split("#")[1],
-			target = $("#"+trgt).offset();
+			target = $("#"+trgt);
 
 
-		if (target.top) {
-			$('html, body').animate({scrollTop:target.top - 50}, 900);
+		if (target.length > 0) {
+			var offset = target.offset().top;
+
+			if(offset > 50)
+				offset = offset - 50;
+
+			$('html, body').animate({scrollTop:offset}, 900);
 		}
 
 	});
+
 
 	/** Focus on search **/
 	$('.searchform__field')

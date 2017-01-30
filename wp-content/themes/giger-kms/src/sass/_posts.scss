@@ -77,13 +77,13 @@
 			font-size: 0.6em;
 			font-weight: normal;
 			color: $color-text-light; }
-			
+
         .related-posts__author {
             margin-top: 8px;
             font-size: 0.8em;
             display:block;
             margin-left: 0px; }
-			
+
 		a {
 			font-size: 16px;
 			line-height: 1.15px;
@@ -135,7 +135,7 @@
 	position: relative;
 	text-align: center;
 	cursor: pointer;
-	
+
 	span {
 		@include body-text(summary);
 		text-transform: uppercase;
@@ -160,7 +160,7 @@
 		padding: 0;
 		text-align: left;
 		cursor: initial;
-		
+
 		&:after {
 			display: none;
 		}
@@ -177,7 +177,7 @@
 	background: #fff;
 	padding: $base*2;
 	margin-bottom: $base*3;
-	
+
 	@include for(medium-screens) {
 		background: none;
 		display: block;
@@ -219,10 +219,18 @@
 
 .single-side {
 	margin-top: $base*3;
-	@include for(medium-screens) {
+
+	@include for(large-screens) {
 		margin-top: 0;
 	}
+
+	&.lg-offset-1 {
+		@include for(medium-screens) {
+			margin-top: 0;
+		}
+	}
 }
+
 
 
 /** Borders **/
