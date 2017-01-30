@@ -6,80 +6,17 @@
 
 $cpost = get_queried_object();
 
-$block_one_ids = get_post_meta($cpost->ID, 'block_one', true);
-$block_one = array();
-
-if($block_one_ids) {
-	$block_one = get_posts(array(
-		'post_type' => 'item',
-		'posts_per_page' => 5, //limit?
-		'post__in' => array_map('intval', explode(',', $block_one_ids)),
-		'orderby' => 'post__in'
-	));
-}
-
-$block_two_ids = get_post_meta($cpost->ID, 'block_two', true);
-$block_two = array();
-
-if($block_two_ids) {
-	$block_two = get_posts(array(
-		'post_type' => 'item',
-		'posts_per_page' => 5, //limit?
-		'post__in' => array_map('intval', explode(',', $block_two_ids)),
-		'orderby' => 'post__in'
-	));
-}
+$block_one = tst_get_homepage_block($cpost->ID, 'block_one');
+$block_two = tst_get_homepage_block($cpost->ID, 'block_two');
+$infosup_one = tst_get_homepage_block($cpost->ID, 'infosup_one');
+$infosup_two = tst_get_homepage_block($cpost->ID, 'infosup_two');
+$infosup_three = tst_get_homepage_block($cpost->ID, 'infosup_three');
+$infosup_four = tst_get_homepage_block($cpost->ID, 'infosup_four');
 
 $news = get_posts(array(
 	'post_type' => 'post',
 	'posts_per_page' => 1,
 ));
-
-//тащ ыгззщке
-$infosup_one_ids = get_post_meta($cpost->ID, 'infosup_one', true);
-$infosup_one = array();
-if($infosup_one_ids) {
-	$infosup_one = get_posts(array(
-		'post_type' => 'item',
-		'posts_per_page' => -1, //limit?
-		'post__in' => array_map('intval', explode(',', $infosup_one_ids)),
-		'orderby' => 'post__in'
-	));
-}
-
-$infosup_two_ids = get_post_meta($cpost->ID, 'infosup_two', true);
-$infosup_two = array();
-if($infosup_two_ids) {
-	$infosup_two = get_posts(array(
-		'post_type' => 'item',
-		'posts_per_page' => -1, //limit?
-		'post__in' => array_map('intval', explode(',', $infosup_two_ids)),
-		'orderby' => 'post__in'
-	));
-}
-
-$infosup_three_ids = get_post_meta($cpost->ID, 'infosup_three', true);
-$infosup_three = array();
-if($infosup_three_ids) {
-	$infosup_three = get_posts(array(
-		'post_type' => 'item',
-		'posts_per_page' => -1, //limit?
-		'post__in' => array_map('intval', explode(',', $infosup_three_ids)),
-		'orderby' => 'post__in'
-	));
-}
-
-$infosup_four_ids = get_post_meta($cpost->ID, 'infosup_four', true);
-$infosup_four = array();
-if($infosup_four_ids) {
-	$infosup_four = get_posts(array(
-		'post_type' => 'item',
-		'posts_per_page' => -1, //limit?
-		'post__in' => array_map('intval', explode(',', $infosup_four_ids)),
-		'orderby' => 'post__in'
-	));
-}
-
 
 get_header();?>
 <section class="home-section block-one">
