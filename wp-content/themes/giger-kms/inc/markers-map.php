@@ -75,10 +75,7 @@ function tst_markers_map_output($atts){
                 'orderby' => 'name',
             ));
             foreach($child_groups as $child_group) {
-
                 $groups['children'][$child_group->term_id] = $child_group;
-                $groups_ids[] = $group->term_id;
-
             }
         }
 
@@ -152,30 +149,35 @@ function tst_markers_map_output($atts){
     }
 
     $markers_json = array();
-    foreach(get_posts($params) as $marker) {
+    $markers = count($params) == 2 ? tst_get_default_map_markers() : get_posts($params);
+    $markers_groups_meta = array();
+    foreach($markers as $marker) {
 
-        $lat = get_post_meta($marker->ID, 'marker_location_latitude', true);
-        $lng = get_post_meta($marker->ID, 'marker_location_longitude', true);
+        $marker_data = tst_get_map_marker_data($marker->ID);
 
-        if( !$lat || !$lng ) {
+        if(empty($marker_data['lat']) || empty($marker_data['lng'])) {
             continue;
         }
 
-        $popup_text = rdc_get_marker_popup($marker, $groups_ids);
+        $popup_text = rdc_get_marker_popup($marker, $marker_data);
 
-        foreach(get_the_terms($marker, 'marker_cat') as $term) {
+        foreach($marker_data['groups'] as $term) {
 
-            $color = get_term_meta($term->term_id, 'layer_marker_color', true);
-            $type = get_term_meta($term->term_id, 'layer_marker_icon', true);
+            if(empty($markers_groups_meta[$term->term_id])) {
+                $markers_groups_meta[$term->term_id] = array(
+                    'color' => get_term_meta($term->term_id, 'layer_marker_color', true),
+                    'type' => get_term_meta($term->term_id, 'layer_marker_icon', true),
+                );
+            }
 
             $markers_json[$term->term_id][] = array(
                 'title' => esc_attr($marker->post_title),
                 //'descr' => $descr,
-                'lat' => $lat,
-                'lng' => $lng,
+                'lat' => $marker_data['lat'],
+                'lng' => $marker_data['lng'],
                 'popup_text' => $popup_text,
-                'class' => $color,
-                'icon' => $type,
+                'class' => $markers_groups_meta[$term->term_id]['color'],
+                'icon' => $markers_groups_meta[$term->term_id]['type'],
             );
         }
 
@@ -386,48 +388,13 @@ add_action('wp_footer', function(){
 add_shortcode('tst_markers_list', 'tst_markers_list_output');
 function tst_markers_list_output($atts){
 
-//    extract(shortcode_atts(array(
-//
-//        'groups_excluded_ids' => '',
-//        'groups_ids' => '',
-//        'markers_ids' => '',
-//        'width' => '',
-//        'height' => 460,
-//
-//        'enable_scroll_wheel' => false,
-//        'min_zoom' => '',
-//        'max_zoom' => '',
-//        'zoom' => 6,
-//        'disable_controls' => false,
-//
-//        'lat_center' => '50.8',
-//        'lng_center' => '55.15',
-//
-//        'show_legend' => true,
-//        'legend_title' => '',
-//        'legend_subtitle' => '',
-//        'legend_is_filter' => true,
-//
-//        'css_classes' => '',
-//
-//    ), $atts));
-
     /** @var $show_list_title bool */
     /** @var $list_title string */
-    /** @var $css_classes string */
 
     $show_list_title = !empty($atts['show_list_title']);
     $list_title = empty($atts['show_list_title']) ? '' : esc_attr($atts['list_title']);
-    $css_classes = empty($atts['css_classes']) ? '' : esc_attr($atts['css_classes']);
 
-    $params = array(
-        'post_type' => 'marker',
-        'posts_per_page' => -1,
-        'orderby'   => 'meta_value',
-        'meta_key'  => 'marker_city',
-        'order'   => 'ASC',
-    );
-    $markers = get_posts($params);
+    $markers = tst_get_default_map_markers();
 
     if( !$markers ) {
         return;
@@ -438,22 +405,18 @@ function tst_markers_list_output($atts){
     <?php }
 
     $markers_by_city = array('г. Оренбург' => array(),); // So we had a first city in a list
+    $markers_data = array();
     foreach($markers as $marker) {
 
-        $city = get_post_meta($marker->ID, 'marker_city', true);
+        $markers_data[$marker->ID] = tst_get_map_marker_data($marker->ID);
+        $city = $markers_data[$marker->ID]['city'];
         if(in_array(mb_substr($city, 0, 1), array('г', 'с', 'п'))) {
 
-            $city = lcfirst($city);
             $city = str_replace(array(
                 'г. ', 'с. ', 'п. ', 'г.', 'с.', 'п.'
             ), array(
                 'г.', 'с.', 'п.', 'г. ', 'с. ', 'п. '
             ), $city);
-//            $city = str_replace(array(
-//                'г.', 'с.', 'п.'
-//            ), array(
-//                'г. ', 'с. ', 'п. '
-//            ), $city);
 
         }
 
@@ -472,8 +435,8 @@ function tst_markers_list_output($atts){
         <div class="markers-city">
             <div class="city-name"><?php echo esc_attr($city);?></div>
             <div class="city-markers">
-            <?php foreach($markers as $marker) { /** @marker WP_Post */?>
-                <div class="marker-data"><?php echo tst_get_markers_list_entry($marker);?></div>
+            <?php foreach($markers as $marker) { /** @marker WP_Post */ ?>
+                <div class="marker-data"><?php echo tst_get_markers_list_entry($marker, $markers_data[$marker->ID]);?></div>
             <?php }?>
             </div>
         </div>
@@ -483,12 +446,18 @@ function tst_markers_list_output($atts){
     </div>
 <?php }
 
-function tst_get_markers_list_entry(WP_Post $marker) {
+/**
+ * Helper to print marker list entry markup and classes
+ * @var WP_Post $marker
+ * @var array $marker_meta
+ * @return string List markup text
+ */
+function tst_get_markers_list_entry(WP_Post $marker, array $marker_data) {
 
     $name = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_the_title($marker), ENT_COMPAT, 'UTF-8')));
     $content = trim(str_replace(array('"', "'", '«', '»'), array(), html_entity_decode(trim(apply_filters('rdc_the_content', $marker->post_excerpt)), ENT_COMPAT, 'UTF-8')));
-    $addr = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_address', true), ENT_COMPAT, 'UTF-8')));
-    $phones = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_phones', true), ENT_COMPAT, 'UTF-8')));
+    $addr = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_data['address'], ENT_COMPAT, 'UTF-8')));
+    $phones = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_data['phones'], ENT_COMPAT, 'UTF-8')));
 
     $marker_markup = "<div class='mc-title'>".$name."</div>";
 
@@ -512,30 +481,21 @@ function tst_get_markers_list_entry(WP_Post $marker) {
 }
 
 
-/** Helpers to print marker markup and classes **/
-function rdc_get_marker_popup($marker, $layers_id = array()){
-
-    $css = '';
+/**
+ * Helper to print marker markup and classes
+ * @var WP_Post $marker
+ * @var array $marker_meta
+ * @return string Popup content text
+ */
+function rdc_get_marker_popup(WP_Post $marker, array $marker_meta) {
 
     $name = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_the_title($marker), ENT_COMPAT, 'UTF-8')));
     $content = trim(str_replace(array('"', "'", '«', '»'), array(), html_entity_decode(trim(apply_filters('rdc_the_content', $marker->post_excerpt)), ENT_COMPAT, 'UTF-8')));
 
-    $city = get_post_meta($marker->ID, 'marker_city', true);
-    $addr = ($city ? trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($city, ENT_COMPAT, 'UTF-8'))).', ' : '').trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_address', true), ENT_COMPAT, 'UTF-8')));
-    $phones = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_post_meta($marker->ID, 'marker_phones', true), ENT_COMPAT, 'UTF-8')));
+    $addr = ($marker_meta['city'] ? trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['city'], ENT_COMPAT, 'UTF-8'))).', ' : '').trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['address'], ENT_COMPAT, 'UTF-8')));
+    $phones = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['phones'], ENT_COMPAT, 'UTF-8')));
 
-    if($layers_id) {
-
-        $layer = rdc_get_marker_layer_match($marker, $layers_id);
-        if($layer && !empty($layer->description)){
-            $content .= apply_filters('rdc_the_content', $layer->description);
-        }
-
-    } else {
-        $css = 'normal';
-    }
-
-    $popup = "<div class='marker-content ".$css."'><div class='mc-title'>".$name."</div>";
+    $popup = "<div class='marker-content normal'><div class='mc-title'>".$name."</div>";
 
     if($addr) {
         $popup .= "<div class='mc-address'><i class='material-icons'>place</i>$addr</div>";
@@ -556,41 +516,6 @@ function rdc_get_marker_popup($marker, $layers_id = array()){
 
     return $popup;
 
-}
-
-//function rdc_get_data_from_connected_campaign($marker, $rel_campaign) {
-//    $data = array('thumbnail' => '', 'content' => '', 'button' => '');
-//    if(!class_exists('Leyka_Campaign'))
-//        return $data;
-//
-//    $camp = new Leyka_Campaign($rel_campaign);
-//    $data['thumbnail'] = get_the_post_thumbnail($camp->ID, 'small-thumbnail');
-//
-//    $label = ($camp->is_closed) ? 'Подробности' : 'Поддержать';
-//    $css = ($camp->is_closed) ? 'button' : 'button-red';
-//    $data['button'] = "<a href='".get_permalink($camp->ID)."' class='{$css}'>{$label}</a>";
-//
-//    return $data;
-//}
-
-function rdc_get_marker_layer_match($marker, $layers_id) {
-
-    $terms = get_the_terms($marker->ID, 'marker_cat');
-    if( !$terms || !$layers_id ) {
-        return false;
-    }
-
-    $res = false;
-    foreach($terms as $term) {
-        if(in_array($term->term_id, $layers_id)) {
-
-            $res = $term;
-            break;
-
-        }
-    }
-
-    return $res; //$t;
 }
 
 function tst_get_legend(array $groups, $title = '', $subtitle = '', $legend_is_filter = true) {
