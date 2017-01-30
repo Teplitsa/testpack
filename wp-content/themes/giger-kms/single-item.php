@@ -37,7 +37,7 @@ get_header();
 
 	<?php } elseif(!empty($sidebar)) { ?>
 
-		<div class="bit md-8 lg-8 single-body">
+		<div class="bit md-8 lg-8 single-body ">
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
 		</div>
 		<div class="bit md-4 lg-3 lg-offset-1 single-side">
