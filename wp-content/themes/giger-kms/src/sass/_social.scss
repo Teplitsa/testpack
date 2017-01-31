@@ -219,14 +219,16 @@ $social_color: (
 	    }
 	}
 
+	p {
+		text-align: left;
+		margin-bottom: $base*2;
+	}
+
 	.form-area {
 		max-width: 400px;
 		margin: 0 auto;
 
-		p {
-			text-align: left;
-			margin-bottom: $base*2;
-		}
+
 
 		input {
 			width: 100%;

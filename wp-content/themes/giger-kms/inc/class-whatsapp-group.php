@@ -129,7 +129,7 @@ class TST_WhatsappGroup {
     <div class="form-area">
         <div id="form-response"></div>
         <form class="tstl-join-group" action="#" method="post">
-            <p>Оставьте номер вашего мобильного телефона, мы добавим вас в группу поддержки в WatsApp</p>
+            <p>Оставьте номер вашего мобильного телефона, мы добавим вас в группу поддержки в&nbsp;WatsApp</p>
             <div class="field">
                 <input type="text" name="tstl_phone" id="tstl_phone" value="">
                 <?php wp_nonce_field('tstl_join_group', '_tstl_nonce'); ?>
@@ -151,10 +151,11 @@ class TST_WhatsappGroup {
         else {
             $url = $this->button_url();
     ?>
-    <a href="<?php echo $url;?>" target="_blank" class="card__button">
-        <span><svg class="svg-icon icon-whatsapp"><use xlink:href="#icon-whatsapp" /></svg>
-        Вступить в группу</span>
-    </a>
+		<p>Присоединяйтесь к группе взаимопомощи в&nbsp;WatsApp</p>
+		<a href="<?php echo $url;?>" target="_blank" class="card__button">
+			<span><svg class="svg-icon icon-whatsapp"><use xlink:href="#icon-whatsapp" /></svg>
+			Вступить в группу</span>
+		</a>
     <?php
         }
     ?>
