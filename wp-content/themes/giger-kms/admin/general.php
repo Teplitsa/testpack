@@ -6,11 +6,18 @@
 add_filter('manage_posts_columns', 'tst_common_columns_names', 50, 2);
 function tst_common_columns_names($columns, $post_type) {
 
-	if(in_array($post_type, array('post', 'org', 'person', 'marker', 'item', 'book'))){
+	if(in_array($post_type, array('post', 'org', 'person', 'item', 'book'))){
 
 		if(!in_array($post_type, array('attachment')))
 			$columns['thumbnail'] = 'Миниат.';
 
+		if(isset($columns['author'])){
+			$columns['author'] = 'Создал';
+		}
+
+		$columns['id'] = 'ID';
+	}
+	elseif($post_type == 'marker') {
 		if(isset($columns['author'])){
 			$columns['author'] = 'Создал';
 		}

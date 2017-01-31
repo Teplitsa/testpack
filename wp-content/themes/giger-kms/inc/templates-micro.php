@@ -270,7 +270,7 @@ function tst_story_card(WP_Post $cpost) {
 function tst_book_item( WP_Post $cpost, $show_thumb = true ) {
 
 	$pl = get_permalink($cpost);
-	$tags = tst_get_tags_list($cpost);
+
 	$ex = tst_get_post_excerpt($cpost, 25);
 	$book_att_id = get_post_meta( $cpost->ID, 'book_att_id', true );
 	$book_download_url = $book_att_id ? wp_get_attachment_url( $book_att_id ) : "";
@@ -281,20 +281,11 @@ function tst_book_item( WP_Post $cpost, $show_thumb = true ) {
 
 	    if( has_post_thumbnail($cpost) ) {
 
-	        $cap = tst_get_post_thumbnail_cation($cpost);
-
-	        $thumb_args = array(
-	            'placement_type'	=> 'small-medium-medium-medium-medium',
-	            'aspect_ratio' 		=> 'cover',
-	            'crop' 				=> 'fixed'
-	        );
-
-	        $thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
-
+	        $thumb = "<div class='tst-thumbnail tst-thumbnail--book'>".get_the_post_thumbnail($cpost, 'cover')."</div>";
 	    }
 	    else {
 
-	        $cap = '';
+
 	        $book_icon_src = get_template_directory_uri() . '/assets/img/book-cover.png';
 	        ob_start();
 	        ?>
@@ -313,9 +304,6 @@ function tst_book_item( WP_Post $cpost, $show_thumb = true ) {
 
 		<figure class="cell_picture">
 			<a href="<?php echo $pl;?>" class="thumbnail-link"><?php echo $thumb;?></a>
-			<?php if($cap) { ?>
-				<figcaption><?php echo $cap; ?></figcaption>
-			<?php } ?>
 		</figure>
 
 <?php
@@ -323,26 +311,27 @@ function tst_book_item( WP_Post $cpost, $show_thumb = true ) {
 		ob_end_clean();
 	}//has thumb
 ?>
-	<article class="cell">
+	<article class="cell cell--book">
 		<div class="frame">
-			<div class="bit mf-4">
+			<div class="bit sm-4 md-3">
     		<?php if(!empty($thumb_mark)) { ?>
     			<div class="cell__cover"><?php echo $thumb_mark;?></div>
     		<?php }?>
 			</div>
 
-			<div class="bit mf-8">
+			<div class="bit sm-8 md-9">
         		<h4 class="cell__title">
         			<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
         		</h4>
         		<div class="cell__text">
         			<p><?php echo apply_filters('tst_the_title', $ex);?></p>
-        			<p><?php echo $tags;?></p>
+
         			<?php if( $book_download_url ): ?>
         				<p><a class="book-download-link" href="<?php echo $book_download_url?>"><i class="material-icons">file_download</i> <?php _e( 'Download book', 'tst' ) ?></a></p>
         			<?php endif ?>
         		</div>
 			</div>
+		</div>
 	</article>
 <?php
 }

@@ -10,7 +10,7 @@ function tst_thumbnails_setup() {
 	//special cases
 	//add_image_size('nl_thumb', 150, 94, true ); //thumbnail for newsletter
 	//add_image_size('vcard', 320, 320, true );
-	//add_image_size('cover', 220, 312, true );
+	add_image_size('cover', 220, 312, true );
 	//add_image_size('feature', 788, 520, true );
 
 	//thumbnail in cards

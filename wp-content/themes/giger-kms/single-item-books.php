@@ -27,19 +27,15 @@ get_header();
 
 	?>
 
-		<div class="bit md-8 lg-8">
+		<div class="bit md-8 lg-9">
 			<div class="layout-section layout-section--card">
 			<?php foreach($books as $i => $cpost) { ?>
 				<div class="layout-section__item layout-section__item--card"><?php tst_book_item( $cpost );?></div>
 			<?php } ?>
 			</div>
 		</div>
-		<div class="bit md-3 lg-3 lg-offset-1 single-side">
-			<?php if( $item->post_name == 'your-question' ):?>
-				<?php do_shortcode( '[tst_join_whatsapp_group]' ) ?>
-			<?php else:?>
-				<?php echo $sidebar;?>
-			<?php endif?>
+		<div class="bit md-4 lg-3 single-side">
+			<?php echo $sidebar;?>
 		</div>
 
 	</div>

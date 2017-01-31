@@ -205,7 +205,7 @@ function tst_custom_content(){
         'menu_position'       => 20,
         'menu_icon'           => 'dashicons-media-text',
         'supports'            => array( 'title', 'excerpt', 'editor', 'thumbnail' ),
-        'taxonomies'          => array( 'post_tag' ),
+        'taxonomies'          => array(),
     ));
 
     register_post_type('story', array(
@@ -239,7 +239,7 @@ function tst_custom_content(){
         'menu_position'       => 21,
         'menu_icon'           => 'dashicons-media-text',
         'supports'            => array( 'title', 'excerpt', 'editor', 'thumbnail' ),
-        'taxonomies'          => array( 'post_tag' ),
+        'taxonomies'          => array(),
     ));
 
 	//pages

@@ -28,7 +28,7 @@ get_header(); ?>
 		<div class="bit md-8 single-body">
 
 			<?php if(has_post_thumbnail($cpost)) { ?>
-				<div class="single-body__preview center"><?php tst_single_thumbnail($cpost);?></div>
+				<div class="single-body__preview "><?php tst_single_thumbnail($cpost);?></div>
 			<?php } ?>
 
 			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
@@ -40,7 +40,7 @@ get_header(); ?>
 			<?php if( $book_download_url ): ?>
 			<div class="single-card__download"><a class="book-download-link" href="<?php echo $book_download_url?>"><i class="material-icons">file_download</i> <?php _e( 'Download book', 'tst' ) ?></a></div>
 			<?php endif?>
-			
+
 			<div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
 		</div>
 
