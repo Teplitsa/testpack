@@ -249,7 +249,35 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 45,
     ));
 
-	$wp_customize->add_setting('now_campaign_id', array(
+	$wp_customize->add_setting('landing_url', array(
+        'default'   => '',
+        'transport' => 'postMessage',
+		'type' 		=> 'option'
+    ));
+
+    $wp_customize->add_control('landing_url', array(
+        'type'     => 'text',
+        'label'    => 'Инвайт линк группы в WhatsApp',
+        'section'  => 'tst_content_options',
+        'settings' => 'landing_url',
+        'priority' => 50,
+    ));
+
+	$wp_customize->add_setting('landing_to_email', array(
+        'default'   => '',
+        'transport' => 'postMessage',
+		'type' 		=> 'option'
+    ));
+
+    $wp_customize->add_control('landing_to_email', array(
+        'type'     => 'text',
+        'label'    => 'Адреса для уведомлений о вступлении в группу',
+        'section'  => 'tst_content_options',
+        'settings' => 'landing_to_email',
+        'priority' => 55,
+    ));
+
+	/*$wp_customize->add_setting('now_campaign_id', array(
         'default'  	 => '',
         'transport'	 => 'postMessage',
 		'type'		 => 'option'
@@ -261,7 +289,7 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'section'  => 'tst_content_options',
         'settings' => 'now_campaign_id',
         'priority' => 45,
-    ));
+    ));*/
 
 
 
