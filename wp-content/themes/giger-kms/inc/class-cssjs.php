@@ -169,7 +169,7 @@ class FRL_CssJs {
 		//enqueue again
 		$api_url = '//maps.googleapis.com/maps/api/js?libraries=places';
         $api_key = stripos(home_url(), 'newlife.local') !== false ?
-            'AIzaSyDCaFs1sNsCvQQ5LcxnqHcWOPEWnSSfLyU' : get_theme_mod('google_maps_api_key');
+            'AIzaSyA1DUmd5iqs2C0DRY-aFvjA9DG7Dz-tveQ' : get_theme_mod('google_maps_api_key');
         echo '<pre>HERE: ' . print_r($api_key, 1) . '</pre>';
         if ( ! empty( $api_key ) ) {
             $api_url .= '&key=' . $api_key;
