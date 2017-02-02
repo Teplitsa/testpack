@@ -263,7 +263,7 @@ function tst_markers_map_output($atts){
 
                 mapFunc.push(function(){
 
-                    var kosmo_light = L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
+                    var kosmo_light = L.tileLayer('https://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
                             id: 'kosmo_light',
                             attribution: 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
                             maxZoom: 24,
