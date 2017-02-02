@@ -263,8 +263,8 @@ function tst_markers_map_output($atts){
 
                 mapFunc.push(function(){
 
-                    var kosmo_light = L.tileLayer('https://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
-                            id: 'kosmo_light',
+                    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            id: 'osm',
                             attribution: 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
                             maxZoom: 24,
                             minZoom: 3
@@ -285,7 +285,7 @@ function tst_markers_map_output($atts){
                         center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
                         zoom: <?php echo $zoom;?>,
                         maxBounds: bounds,
-                        layers: [kosmo_light]
+                        layers: [osm]
                     });
 
 //                    L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(maps[map_id]); // Map bounding box visualization
