@@ -169,11 +169,9 @@ class FRL_CssJs {
 		//enqueue again
 		$api_url = '//maps.googleapis.com/maps/api/js?libraries=places';
         $api_key = get_option('google_maps_api_key');
-//        $api_key = $api_key ? $api_key : 'AIzaSyA1DUmd5iqs2C0DRY-aFvjA9DG7Dz-tveQ';
         if ( ! empty( $api_key ) ) {
             $api_url .= '&key=' . $api_key;
         }
-        echo '<pre>' . print_r($api_key, 1) . '</pre>';
 
 		wp_register_script( 'tst-google-maps-api', $api_url, null, null );
 		wp_enqueue_script( 'tst-google-maps', $src, array( 'tst-google-maps-api' ), TST_VERSION );
