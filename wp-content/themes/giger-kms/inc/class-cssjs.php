@@ -173,6 +173,7 @@ class FRL_CssJs {
         if ( ! empty( $api_key ) ) {
             $api_url .= '&key=' . $api_key;
         }
+        echo '<pre>' . print_r($api_key, 1) . '</pre>';
 
 		wp_register_script( 'tst-google-maps-api', $api_url, null, null );
 		wp_enqueue_script( 'tst-google-maps', $src, array( 'tst-google-maps-api' ), TST_VERSION );
