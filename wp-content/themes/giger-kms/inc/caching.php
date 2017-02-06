@@ -88,19 +88,23 @@ function tst_invalidate_caches_actions(){
 
         foreach($blocks as $block) { // Check the vaidity of block cache and refresh it if needed
 
-            $existing_ids = array_map('intval', explode(',', get_post_meta($block)));
-            $new_ids = array_map('intval', explode(',', $block));
+            $existing_ids = array();
+            foreach(get_transient('homepage_'.$block) as $value) {
+                if($value) {
+                    $existing_ids[] = $value->ID;
+                }
+            }
+            $new_ids = array_map('intval', explode(',', $_POST[$block]));
 
-            echo '<pre>' . print_r($block, 1) . '</pre>';
-            echo '<pre>' . print_r($existing_ids, 1) . '</pre>';
-            echo '<pre>' . print_r($new_ids, 1) . '</pre>';
-            echo '<pre>' . print_r(array_intersect($existing_ids, $new_ids), 1) . '</pre>';
-            die();
-            if( !get_transient('homepage_'.$block) || count(array_intersect($existing_ids, $new_ids)) != count($new_ids) ) {
+            if(
+                !get_transient('homepage_'.$block)
+                || array_diff($existing_ids, $new_ids)
+                || array_diff($new_ids, $existing_ids)
+            ) {
                 set_transient('homepage_'.$block, get_posts(array(
                     'post_type' => 'item',
                     'posts_per_page' => 5, // limit?
-                    'post__in' => array_map('intval', $new_ids),
+                    'post__in' => $new_ids,
                     'orderby' => 'post__in'
                 )));
             }
