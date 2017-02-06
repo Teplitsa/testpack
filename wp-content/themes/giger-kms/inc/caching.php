@@ -91,6 +91,11 @@ function tst_invalidate_caches_actions(){
             $existing_ids = array_map('intval', explode(',', get_post_meta($block)));
             $new_ids = array_map('intval', explode(',', $block));
 
+            echo '<pre>' . print_r($block, 1) . '</pre>';
+            echo '<pre>' . print_r($existing_ids, 1) . '</pre>';
+            echo '<pre>' . print_r($new_ids, 1) . '</pre>';
+            echo '<pre>' . print_r(array_intersect($existing_ids, $new_ids), 1) . '</pre>';
+            die();
             if( !get_transient('homepage_'.$block) || count(array_intersect($existing_ids, $new_ids)) != count($new_ids) ) {
                 set_transient('homepage_'.$block, get_posts(array(
                     'post_type' => 'item',
