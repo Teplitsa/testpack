@@ -502,7 +502,7 @@ function tst_custom_metaboxes() {
 
     $book_cmb->add_field( array(
         'name' => 'Файл для скачивания',
-        'id'   => 'book_att_id',
+        'id'   => 'book_att',
         'type' => 'file',
     ));
 
