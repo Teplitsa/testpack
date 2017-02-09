@@ -168,12 +168,11 @@ function tst_markers_map_output($atts){
     }?>
 
     <div class="<?php echo $css_classes;?>">
-    <div class="pw_map-wrap">
-        <div class="pw_map_canvas" id="<?php echo esc_attr($map_id);?>" style="height: <?php echo esc_attr($height);?>px; width: <?php echo esc_attr($width);?>">
-            <?php if($show_legend) {?>
-                <div class="pw_map_legend"><?php echo rdc_get_legend($groups, $legend_is_filter); ?></div>
-            <?php }?>
-        </div>
+    <div class="pw_map-wrap" style="height: <?php echo esc_attr($height);?>px; width: <?php echo esc_attr($width);?>">
+        <div class="pw_map_canvas" id="<?php echo esc_attr($map_id);?>"></div>
+        <?php if($show_legend) {?>
+        <div class="pw_map_legend"><?php echo rdc_get_legend($groups, $legend_is_filter); ?></div>
+        <?php }?>
     </div>
     <script type="text/javascript">
         if(typeof mapFunc == "undefined") {
@@ -464,17 +463,23 @@ function rdc_get_legend(array $groups, $legend_is_filter = true) {
 
         foreach($groups['parents'] as $parent) {
 
-            $list[] = "<li class='legend-parent marker-group group-{$parent->term_id}' data-group-id='{$parent->term_id}'>"
-                .rdc_get_layer_icon($parent->term_id).apply_filters('rdc_the_title', $parent->name)
-                ."</li>";
+            $list_item =
+            "<li class='legend-parent marker-group group-{$parent->term_id}' data-group-id='{$parent->term_id}'>"
+                .rdc_get_layer_icon($parent->term_id).apply_filters('rdc_the_title', $parent->name);
 
+            $children = array();
             foreach($groups['children'] as $child) {
                 if($child->parent == $parent->term_id) {
-                    $list[] = "<li class='legend-child marker-group group-{$child->term_id}' data-group-id='{$child->term_id}'>"
+                    $children[] = "<li class='legend-child marker-group group-{$child->term_id}' data-group-id='{$child->term_id}'>"
                         .rdc_get_layer_icon($child->term_id).apply_filters('rdc_the_title', $child->name)
                         ."</li>";
                 }
             }
+            if($children) {
+                $list_item .= "<ul class='legend-children'>".implode('', $children)."</ul>";
+            }
+
+            $list[] = $list_item."</li>";
 
         }
 

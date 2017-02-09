@@ -72,58 +72,95 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /** Maps **/
-.pw_map_canvas {
-  position: relative;
+
+@include for(large-screens) {
+
+  .pw_map-wrap {
+    position: relative;
+
+    .dashicons {
+      font-size: 20px;
+    }
+  }
+
+  .pw_map_canvas {
+    //@include for(small-screens) {
+    //  width: 100%;
+    //}
+
+    width: 70%;
+    height: 100%;
+  }
+
+  .pw_map_legend {
+    font-size: 13px;
+    cursor: default;
+
+    margin: 0;
+    padding: 15px 0;
+    background-color: rgba(255, 255, 255, 0.9);
+
+    //@include for(small-screens) {
+    //  width: 100%;
+    //}
+    width: 30%;
+    z-index: 100;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    text-align: left;
+
+    ul.markers-map-legend {
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+
+      &.is-filter {
+        cursor: pointer;
+
+        li.legend-child:hover {
+          background-color: transparentize($green, 0.7);
+          color: $color-white;
+        }
+
+        li.legend-child.marker-group-active {
+          background-color: transparentize($green, 0.25);
+          color: $color-white;
+        }
+      }
+
+      li::before {
+        content: '';
+      }
+
+      li {
+        padding: 5px 10px;
+        margin-bottom: 0;
+        line-height: 20px;
+      }
+
+      .mymap-icon.dashicons {
+        margin-right: 10px;
+        vertical-align: bottom;
+      }
+
+      ul.legend-children {
+        display: block;
+        list-style: none;
+        margin-left: 0;
+        margin-top: 5px;
+
+        li.legend-child {
+          padding-left: 25px;
+          display: flex;
+          align-items: flex-start;
+        }
+      }
+    }
+
+  }
+
 }
 
-.pw_map_legend {
-  cursor: default;
-  z-index: 100;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 0;
-  padding: 15px 0;
-  background-color: rgba(255, 255, 255, 0.9);
-  width: 30%;
-  height: 100%;
-  text-align: left;
-}
 
-.pw_map_legend ul.markers-map-legend {
-  margin: 0;
-}
-.pw_map_legend ul.markers-map-legend li::before {
-  content: '';
-}
-
-.pw_map_legend ul.markers-map-legend li.legend-child {
-  padding-left: 25px;
-}
-
-.pw_map_legend.is-filter ul.markers-map-legend {
-  cursor: pointer;
-}
-
-.pw_map_legend ul.markers-map-legend li {
-  padding: 5px 10px;
-  margin-bottom: 0;
-}
-
-.pw_map_legend ul.markers-map-legend.is-filter li.legend-child:hover {
-  background-color: transparentize($green, 0.7);
-  color: $color-white;
-}
-.pw_map_legend ul.markers-map-legend.is-filter li.legend-child.marker-group-active {
-  background-color: transparentize($green, 0.25);
-  color: $color-white;
-}
-
-.pw_map_canvas .dashicons {
-  font-size: 25px;
-}
-
-.pw_map_legend ul.markers-map-legend .mymap-icon.dashicons {
-  margin-right: 10px;
-  vertical-align: bottom;
-}
