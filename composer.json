@@ -55,7 +55,8 @@
 		"wpackagist-plugin/yandexnews-feed-by-teplitsa": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
         "mustardbees/cmb_field_map" : "dev-master",
-		"tst/formidable" : ">=2.02.11"
+		"tst/formidable" : ">=2.02.11",
+        "tst/wds-simple-page-builder" : ">=1.5"
     },
     "require-dev" : {
         "wpackagist-plugin/force-regenerate-thumbnails" : "@stable",
