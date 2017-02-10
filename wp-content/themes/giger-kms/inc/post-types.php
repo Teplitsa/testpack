@@ -476,9 +476,13 @@ function tst_custom_metaboxes() {
         'show_option_none' => false,
         'default'          => 'navi',
         'options'          => array(
-            'navi' 	=> 'Синий',
-            'red'   => 'Красный',
-            'blue'  => 'Голубой',
+            'black'         => 'Черный',
+            'red'           => 'Красный',
+            'orange' 	    => 'Оранжевый',
+            'dark-pink'     => 'Темно-розовый',
+            'sand'          => 'Желтый',
+            'green'         => 'Зеленый',
+            'grey-green'    => 'Серо-зеленый',
         )
     ));
     $markern_cat_term->add_field(array(

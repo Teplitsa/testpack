@@ -16,13 +16,17 @@ function tst_markers_map_output($atts){
         'height' => 460,
 
         'enable_scroll_wheel' => false,
-        'zoom' => 10,
+        'min_zoom' => '',
+        'max_zoom' => '',
+        'zoom' => 9,
         'disable_controls' => false,
 
-        'lat_center' => '56.296504',
-        'lng_center' => '43.936059',
+        'lat_center' => '56.2926606',
+        'lng_center' => '43.7863199',
 
         'show_legend' => true,
+        'legend_title' => '',
+        'legend_subtitle' => '',
         'legend_is_filter' => true,
 
         'css_classes' => '',
@@ -36,10 +40,14 @@ function tst_markers_map_output($atts){
     /** @var $height integer */
     /** @var $enable_scroll_wheel bool */
     /** @var $zoom integer */
+    /** @var $min_zoom integer */
+    /** @var $max_zoom integer */
     /** @var $disable_controls bool */
     /** @var $lat_center float */
     /** @var $lng_center float */
     /** @var $show_legend bool */
+    /** @var $legend_title string */
+    /** @var $legend_subtitle string */
     /** @var $legend_is_filter bool */
     /** @var $css_classes string */
 
@@ -93,9 +101,14 @@ function tst_markers_map_output($atts){
 
     $enable_scroll_wheel = empty($enable_scroll_wheel) || $enable_scroll_wheel == 'mobile_only' ?
         'mobile_only' : !!$enable_scroll_wheel;
+
     $zoom = intval($zoom);
+    $min_zoom = intval($min_zoom) > 0 ? intval($min_zoom) : 4;
+    $max_zoom = intval($max_zoom) > 0 ? intval($max_zoom) : 24;
     $disable_controls = $disable_controls ? true : false;
     $show_legend = !!$show_legend;
+//    $legend_title = $legend_title ? trim($legend_title) : '';
+//    $legend_subtitle = $legend_subtitle ? trim($legend_subtitle) : '';
     $legend_is_filter = !!$legend_is_filter;
 
     $lat_center = floatval($lat_center);
@@ -239,11 +252,11 @@ function tst_markers_map_output($atts){
 
             mapFunc.push(function(){
 
-                var kosmo_light = L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
-                        id: 'kosmo_light',
+                var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        id: 'osm',
                         attribution: 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-                        maxZoom: 24,
-                        minZoom: 3
+                        maxZoom: <?php echo $max_zoom;?>,
+                        minZoom: <?php echo $min_zoom;?>
                     }),
                     map_id = '<?php echo $map_id;?>';
 
@@ -252,12 +265,16 @@ function tst_markers_map_output($atts){
                     enable_scroll_zoom = $(window).width() > 767;
                 }
 
+                var bounds = L.latLngBounds(L.latLng(54.576765, 41.717001), L.latLng(58.218216, 47.814413));
                 maps[map_id] = L.map(map_id, {
                     zoomControl: <?php echo $disable_controls ? 'false' : 'true';?>,
                     scrollWheelZoom: enable_scroll_zoom,
+                    minZoom: <?php echo $min_zoom;?>,
+                    maxZoom: <?php echo $max_zoom;?>,
                     center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
                     zoom: <?php echo $zoom;?>,
-                    layers: [kosmo_light]
+                    maxBounds: bounds,
+                    layers: [osm]
                 });
 
                 $.each(points[map_id], function(group_id, group_markers){ // loop through all marker groups
