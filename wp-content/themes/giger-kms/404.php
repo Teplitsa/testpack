@@ -6,7 +6,7 @@ $src = get_template_directory_uri().'/assets/img/er404.jpg';
 get_header();
 ?>
 <header class="single-item--title">
-	<h1 class="err-404"><?php _e('404: Page not found', 'tst');?></h1>
+	<h1 class="err-404 cell__title"><?php _e('404: Page not found', 'tst');?></h1>
 </header>
 
 <section class="main-content">
