@@ -2,8 +2,8 @@
 $mobile_header: 72px;
 
 #drawer {
-	background: $color-link-four;
-	padding: $inpage-margin-base 24px;
+	background: $bark;
+	padding: $base*3 $base*3;
 	z-index:900;
 	position: fixed;
 	top: $mobile_header;
@@ -26,6 +26,11 @@ $mobile_header: 72px;
 	.searchform {
 		background: $color-white;
 		height: 40px;
+		border-color: $grass;
+
+		&.focus {
+			border-color: $leaf;
+		}
 	}
 
 	.searchform__field  {
@@ -39,14 +44,13 @@ $mobile_header: 72px;
 		height: 40px;
 
 		.svg-icon {
-			top: 12px;
-			fill: $color-link-four;
+			top: 14px;
+			fill: $bark;
 		}
 
 		&:hover {
-			background: darken($color-link-four, 12%);
 			.svg-icon {
-				fill: $color-white;
+				fill: $leaf;
 			}
 		}
 	}
@@ -64,23 +68,24 @@ $mobile_header: 72px;
 .drawer-nav__list {
 
 	li {
-		margin: 5px 0;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		margin: 6px 0;
 	}
+
 	a {
-		display: block;
-		@include nav-text(larger);
-		padding: 0.4em;
+		display: inline-block;
+		@include nav-text();
+		padding: 0.5em 0.7em;
 		color: $color-white;
 		@include transition(background 0.3s);
 
 		&:hover {
-			background: $color-link-three;
+			background: transparentize($leaf, 0.5);
 		}
 	}
 
-	a[href *= "join-us"] {
-
+	li:last-child {
+		margin-top: 12px;
+		a { @include button(); }
 	}
 }
 
