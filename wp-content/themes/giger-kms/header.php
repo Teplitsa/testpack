@@ -18,6 +18,48 @@
 <?php include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'tst' ); ?></a>
 
+<div class="fixed-elements">
+
+<header id="site_header" class="site-header">
+<div class="container">
+
+	<div class="site-header-row">
+
+		<div class="site-header-cell branding">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo"><?php tst_site_logo('regular');?></a>
+		</div>
+
+
+		<div class="site-header-cell actions">
+
+			<div class="actions--mobile">
+				<div class="action__drawer-trigger">
+					<a id="trigger_menu" href="<?php echo home_url('sitemap');?>" class="hamburger hamburger--slider">
+						<span class="hamburger-box"><span class="hamburger-inner"></span></span>
+					</a>
+				</div>
+			</div>
+
+			<div class="actions--desktop">
+				<div class="actions__menu">
+					<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_id' => 'main', 'menu_class' => 'actions__list')); ?>
+				</div>
+				<div class="actions__search">
+					<div class="search-box">
+					<div class="search-box__panel"><?php get_search_form();?></div>
+					<div class="search-box__trigger">
+						<?php tst_svg_icon('icon-search');?>
+						<?php tst_svg_icon('icon-close');?>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div><!-- .container -->
+</header>
+
 <div id="drawer">
 	<div class="drawer-nav">
 		<div class="drawer-nav__search"><?php get_search_form();?></div>
@@ -27,45 +69,7 @@
 	</div>
 </div>
 
+</div>
+
 <div id="site_root">
-
-<header id="site_header" class="site-header">
-	<div class="container">
-
-		<div class="site-header-row">
-
-			<div class="site-header-cell branding">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-logo"><?php bloginfo('name');?></a>
-			</div>
-
-			<?php $hedaer_text = get_option('site_header_text'); ?>
-			<div class="site-header-cell actions">
-
-				<div class="actions--mobile">
-					<div class="actions__text actions__text--mobile hide-upto-small"><?php echo apply_filters('tst_the_title', $hedaer_text);?></div>
-					<div class="action__drawer-trigger">
-						<a id="trigger_menu" href="<?php echo home_url('sitemap');?>" class="hamburger hamburger--slider">
-							<span class="hamburger-box"><span class="hamburger-inner"></span></span>
-						</a>
-					</div>
-				</div>
-
-				<div class="actions--desktop">
-					<div class="actions__info-row">
-						<div class="actions__text actions__text--desktop"><?php echo apply_filters('tst_the_title', $hedaer_text);?></div>
-						<div class="actions__search"><?php get_search_form();?></div>
-					</div>
-					<div class="actions__menu">
-						<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_id' => 'main', 'menu_class' => 'actions__list')); ?>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-
-	</div><!-- .container -->
-</header>
-
 <div id="site_content" class="site-content"><a name="#content"></a>
-<div class="container">

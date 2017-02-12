@@ -39,7 +39,6 @@
         "composer/installers": "~1.0",
         "johnpbloch/wordpress" : ">=4.3",
 		"wpackagist-plugin/all-in-one-wp-security-and-firewall": "@stable",
-		"wpackagist-plugin/amp": "@stable",
 		"wpackagist-plugin/cmb2": "@stable",
 		"wpackagist-plugin/crop-thumbnails": "@stable",
         "wpackagist-plugin/cyr3lat" : "@stable",

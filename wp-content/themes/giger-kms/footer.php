@@ -11,7 +11,7 @@ $cc_link = '<a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_bl
 $footer_text = get_option('footer_text');
 $tst = __("Teplitsa of social technologies", 'tst');
 ?>
-</div></div><!--  .container #site_content -->
+</div><!--  .container #site_content -->
 
 <footer class="site-footer"><div class="container">
 
@@ -48,7 +48,7 @@ $tst = __("Teplitsa of social technologies", 'tst');
 </div></footer>
 
 </div><!-- site_root -->
-<?php wp_footer(); ?>
 
+<?php wp_footer(); ?>
 </body>
 </html>

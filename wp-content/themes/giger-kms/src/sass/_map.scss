@@ -1,0 +1,115 @@
+/** == Map (_map.scss) == **/
+
+/** Maps **/
+
+@include for(large-screens) {
+
+  .pw_map-wrap {
+    position: relative;
+
+    .dashicons {
+      font-size: 20px;
+
+      &.black {
+        color: $ground;
+      }
+      &.red {
+        color: $wood;
+      }
+      &.orange {
+        color: $loam;
+      }
+      &.dark-pink {
+        color: $map_select;
+      }
+      &.sand {
+        color: $leaf;
+      }
+      &.green {
+        color: $moss;
+      }
+      &.grey-green {
+        color: $wetsoil;
+      }
+    }
+}
+
+.pw_map_canvas {
+//@include for(small-screens) {
+//  width: 100%;
+//}
+
+width: 70%;
+height: 100%;
+}
+
+.pw_map_legend {
+font-size: 13px;
+cursor: default;
+
+margin: 0;
+padding: 15px 0;
+background-color: rgba(255, 255, 255, 0.9);
+
+//@include for(small-screens) {
+//  width: 100%;
+//}
+width: 30%;
+z-index: 100;
+position: absolute;
+right: 0;
+top: 0;
+
+text-align: left;
+
+ul.markers-map-legend {
+margin: 0;
+display: flex;
+flex-wrap: wrap;
+
+&.is-filter {
+cursor: pointer;
+
+li.legend-child:hover {
+  background-color: $map_select;
+  color: $color-white;
+}
+
+li.legend-child.marker-group-active {
+  background-color: $map_select;
+  color: $color-white;
+}
+}
+
+li::before {
+content: '';
+}
+
+li {
+padding: 5px 10px;
+margin-bottom: 0;
+line-height: 20px;
+}
+
+.mymap-icon.dashicons {
+margin-right: 10px;
+vertical-align: bottom;
+}
+
+ul.legend-children {
+display: block;
+list-style: none;
+margin-left: 0;
+margin-top: 5px;
+
+li.legend-child {
+  padding-left: 25px;
+  display: flex;
+  align-items: flex-start;
+}
+}
+}
+
+}
+
+}

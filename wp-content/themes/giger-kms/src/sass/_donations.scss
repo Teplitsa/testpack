@@ -62,7 +62,7 @@
 		
 	.leyka-toggle-area {
 		display: none;
-		background: $color-secondary-alt;
+		background: $color-secondary;
 	}
 	
 	.leyka-pm-form {		
@@ -88,7 +88,7 @@
 	.leyka-field {
 		&.recurring {			
 			padding: 4px 8px 5px;
-			background: $color-secondary-alt;
+			background: $color-secondary;
 			margin-bottom: $gut;			
 		}
 		
@@ -293,7 +293,7 @@ $figure_padding-height: 16px;
 	text-align: right;
 	font-size: 0.8em;
 	text-align: center;
-	background: $color-secondary-alt;
+	background: $color-secondary;
 	a {
 		color: $color-link-one;
 		&:visited { color: $color-link-one; }

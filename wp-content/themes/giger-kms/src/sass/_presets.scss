@@ -3,19 +3,19 @@
 -------------------------------------------------------- */
 
 //Fonts
-$body:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$body_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$body:			"BwSurco", Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma,sans-serif;
+$body_fb:		Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma,sans-serif;
 
-$heading:		"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$heading_fb:	"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$heading:		"BwSurco", Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma,sans-serif;
+$heading_fb:	Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma,sans-serif;
 
-$title:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$title_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$title:			"BwSurco", Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma,sans-serif;
+$title_fb:		Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma,sans-serif;
 
-$nav:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
-$nav_fb:		"Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$nav:			"BwSurco", Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma,sans-serif;
+$nav_fb:		Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma,sans-serif;
 
-$sans:			"Roboto", "Helvetica Neue", Helvetica Neue, Helvetica,sans-serif;
+$sans:			"BwSurco", Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma,sans-serif;
 $mono:			"Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
 
 
@@ -27,58 +27,61 @@ $four:         1200px; //exlarge
 $five:         1400px; //xxlarge
 
 //Page layout
-$full_cont:    1400px;
+$full_cont:    1192px;
 $page_cont:    1060px;
-$col:		   70px;
+$col:		   81px;
 $gut:	       20px;
 $flex-gut: 	   20px;
 
+//Dimensions
+$base: 8px;
+$inpage-baseline: 		$base*3;
+$inpage-margin-base:	$base*2;
+$element-margin-base: 	$base/2;
+$element-padding-base: 	$base*2;
 
-//Baseline
-$base: 24px;
-$inpage-baseline: 		24px;
-$inpage-margin-base:	18px;
-$element-margin-base: 	5px;
-$element-padding-base: 	16px;
-
-
-//Colors
-$color-text:   #2a2a2a;
-$color-white:  #ffffff;
-
-$red: 			#E23100;
-$green: 		#008E2C;
-$orange: 		#FF542C;
-$grey_green:	#04AE9C;
-$sand:          #F9928F;
-$map_select:    #F9928F;
-
-$color-link-one:   $red;
-$color-link-two:   $green;
-$color-link-three: $orange;
-$color-link-four:  $grey_green;
-
-$color-text-black:		#000000;
-$color-text-semi:		#666666;
-$color-text-light:		#9b9b9b;
-$color-secondary:		#f3f3f3;
-$color-secondary-alt:	#DAEDEA;
-$color-secondary-dark:	#656D78;
-
-
-$color-border-normal: #dfdfdf;
-$color-border-light:  #eeeeee;
-$color-border-link:   #8c8c91;
-
-$color-form-invalid: $red;
-$color-form-ok : $green;
-
-
-//Layout Settings
+//Adminbar
 $adminbar_large_screen: 32px;
 $adminbar_small_screen: 46px;
 
 
+//Colors
+$ground: 		#444642; //black - grey
+$wetsoil: 		#59705D; //dark green-grey
+$moss:	 		#a6bab7; //green-grey
+$bark:			#493b29; //black - brown
+$wood:          #87623e; //brown
+$loam:          #e99c34; //orange
+$grass:			#9b9912; //dark olive
+$leaf:          #bcc600; //olive
+$pollen:        #d7db54; //light olive
+
+$color-text:   #222222;
+$color-white:  #ffffff;
+
+$color-link-one:   $loam; //orange
+$color-link-two:   $leaf; //olive
+$color-link-three: $pollen; //light olive
+$color-link-four:  $wetsoil; //dark green-grey
+
+$color-text-black:		#000000;
+$color-text-semi:		#666666;
+$color-text-light:		#9b9b9b;
+$color-secondary:		#F5F5F5;
+$color-secondary-alt:	$wood;
+$color-secondary-dark:	$bark;
+
+
+$color-border-normal: #dfdfdf;
+$color-border-light:  #eeeeee;
+$color-border-link:   $grass;
+
+$color-form-invalid: red; //to-do find proper color
+$color-form-ok : green; //to-do find proper color
+
+
+//Maps
+$map_select:    $grass;
 
 
 //humburgers settings
@@ -91,115 +94,86 @@ $hamburger-layer-color                     : $color-link-four;
 $hamburger-layer-border-radius             : 4px;
 $hamburger-hover-opacity                   : 0.7;
 
+//$hamburger-types: (
+//	slider
+//);
+
+//default
+$hamburger-hover-transition-duration       	: 0.15s !default;
+$hamburger-hover-transition-timing-function	: linear !default;
+$hamburger-hover-use-filter					: false !default;
+$hamburger-hover-filter    					: opacity(50%) !default;
+
+
 /** Mixins **/
 
 
 // Typo
 @mixin body-text($mod: default) {
+	//main text
 	font-family: $body_fb;
+	color: $color-text;
 	font-weight: 400;
 
-	.roboto & {
+	.bwsurco & {
 		font-family: $body;
-	}
-
-	font-size: 16px;
-	line-height: 24px;
-	color: $color-text;
-
-
-	@if $mod == summary {
-		font-size: 12px;
-		line-height: 18px;
-
-	}
-	@else if $mod == small {
-		font-size: 13px;
-		line-height: 20px;
-		font-weight: 300;
-	}
-	@else if $mod == large {
-		font-size: 16px;
-		line-height: 21px;
-
-
-		@include for(large-screens) {
-			font-weight: 300;
-			font-size: 18px;
-		}
-	}
-}
-
-@mixin nav-text($mod: default) {
-	font-family: $nav_fb;
-	font-weight: 300;
-
-	.roboto & {
-		font-family: $nav;
 	}
 
 	font-size: 14px;
-	line-height: 18px;
-	text-transform: uppercase;
+	line-height: 20px;
 
-	@if $mod == inversion {
-		font-weight: 500;
-	}
-	@else if $mod == menu_item {
-		font-size: 13px;
+
+	@if $mod == reading {
+		font-size: 14px;
 		line-height: 20px;
 
-		@include for(large-screens) {
+		@include for(small-screens){
 			font-size: 16px;
-			line-height: 20px;
+			line-height: 22px;
+		}
+
+		@include for(medium-screens){
+			font-size: 18px;
+			line-height: 27px;
+		}
+
+		@include for(large-screens){
+			font-size: 21px;
+			line-height: 32px;
 		}
 	}
-	@else if $mod == larger {
+	@else if $mod == extra_summary {
 		font-size: 16px;
-		line-height: 20px;
-	}
-	@else if $mod == small {
-		font-size: 12px;
-		line-height: 20px;
+		line-height: 22px;
+
+		@include for(medium-screens){
+			font-size: 21px;
+			line-height: 32px;
+		}
+
+		@include for(large-screens){
+			font-size: 24px;
+			line-height: 32px;
+		}
 	}
 }
 
-
-@mixin post-title($mod: default) {
-	font-family: $title_fb;
-	font-weight: 500;
-
-	.roboto & {
-		font-family: $title;
-	}
-
-	font-size: 18px;
-	line-height: 26px;
-
-	@if $mod == small_title {
-		font-size: 16px;
-		line-height: 20px;
-	}
-	@else if $mod == featured {
-		font-size: 26px;
-		line-height: 1.1;
-	}
-
-}
 
 @mixin sub-title($mod: default) {
+	//metas
 	font-family: $body_fb;
-	font-weight: 300;
+	color: $color-text-semi;
+	font-weight: 400;
 
-	.roboto & {
+	.bwsurco & {
 		font-family: $body;
 	}
-
-	color: $color-text-semi;
 
 	font-size: 13px;
 	line-height: 1.5;
 
+
+	//old
 	@if $mod == small {
 		font-size: 11px;
 	}
@@ -208,7 +182,133 @@ $hamburger-hover-opacity                   : 0.7;
 	}
 }
 
+
+@mixin nav-text($mod: default) {
+	//buttons, links, menus
+	font-family: $nav_fb;
+	font-weight: 400;
+
+	.bwsurco & {
+		font-family: $nav;
+	}
+
+	font-size: 14px;
+	line-height: 18px;
+	text-transform: uppercase;
+
+
+	@if $mod == button_text {
+		font-weight: 700;
+	}
+	@else if $mod == menu_item {
+		font-size: 16px;
+		line-height: 22px;
+		font-weight: 700;
+	}
+	@else if $mod == menu_item_small {
+		font-size: 13px;
+		line-height: 20px;
+	}
+	@else if $mod == cta_link {
+		font-size: 21px;
+		line-height: 24px;
+		text-transform: none;
+	}
+}
+
+
+@mixin post-title($mod: default) {
+	//title of posts in lists, cards, singles
+	font-family: $title_fb;
+	font-weight: 700;
+
+	.bwsurco-b & {
+		font-family: $title;
+	}
+
+	font-size: 24px;
+	line-height: 32px;
+
+
+	//old
+	@if $mod == small {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	@else if $mod == large {
+		font-size: 28px;
+		line-height: 36px;
+
+		@include for(medium-screens) {
+			font-size: 32px;
+			line-height: 40px;
+		}
+	}
+
+}
+
+
+@mixin header-title($mod: default){
+	//page headers, major sections
+	font-family: $heading_fb;
+	font-weight: 300;
+	color: $color-text-black;
+
+	.bwsurco & {
+		font-family: $heading;
+	}
+
+	font-size: 36px;
+	line-height: 44px;
+
+
+	@if $mod == langing_subsection {
+		font-size: 45px;
+		line-height: 54px;
+
+		@include for(medium-screens) {
+			font-size: 54px;
+			line-height: 65px;
+		}
+	}
+	@else if $mod == langing_section {
+		font-size: 40px;
+		line-height: 50px;
+		font-weight: 700;
+
+		@include for(medium-screens) {
+			font-size: 48px;
+			line-height: 60px;
+		}
+	}
+	@else if $mod == single {
+		font-size: 32px;
+		@include for(medium-screens) { font-size: 40px; }
+		line-height: 1.15;
+		text-transform: none;
+	}
+
+}
+
+@mixin block-title() {
+	//widgets, sub-sections
+	font-family: $heading_fb;
+	font-weight: 700;
+	text-transfotm: uppercase;
+	color: $color-text-black;
+
+	.bwsurco & {
+		font-family: $heading;
+	}
+
+	font-size: 36px;
+	line-height: 44px;
+
+}
+
 @mixin form-text($mod: default) {
+	//text in forms
+
 	font-family: $mono;
 	color: $color-text;
 	font-weight: normal;
@@ -227,51 +327,7 @@ $hamburger-hover-opacity                   : 0.7;
 }
 
 
-@mixin header-title($mod: default){
-	font-family: $body_fb;
-	font-weight: 500;
 
-	.roboto & {
-		font-family: $body;
-	}
-
-	color: $color-text-black;
-	text-transform: uppercase;
-
-	font-size: 18px;
-	line-height: 24px;
-
-
-	@if $mod == section {
-		font-size: 18px;
-		line-height: 24px;
-
-	}
-	@if $mod == single {
-		font-size: 32px;
-		@include for(medium-screens) { font-size: 40px; }
-		line-height: 1.15;
-		text-transform: none;
-	}
-	@else if $mod == widget {
-		font-size: 16px;
-		line-height: 24px;
-	}
-	@else if $mod == head_title {
-		font-size: 40px;
-		line-height: 44px;
-	}
-	@else if $mod == card {
-		font-size: 16px;
-		line-height: 20px;
-		font-weight: normal;
-
-		@include for(medium-screens) {
-			font-size: 18px;
-			line-height: 24px;
-		}
-	}
-}
 
 /* Elements */
 @mixin red-link() {
@@ -290,47 +346,42 @@ $hamburger-hover-opacity                   : 0.7;
 
 	&:visited { color: $color-link-two; }
 	&:hover, &:active, &:focus {
-		color: $color-link-four;
+		color: $color-link-three;
 	}
 }
 
 
 @mixin button($mod: default){
 	font-family: $body_fb;
-	font-weight: normal;
+	font-weight: 700;
 
-	.roboto & {
+	.bwsurco & {
 		font-family: $body;
-		font-weight: normal;
 	}
 
 	display: inline-block;
 	text-transform: uppercase;
 	color: $color-white;
-	border-radius: 2px;
 
-	background: $color-link-one;
+	background: $leaf;
 	border: none;
 
 	@include transition(all 0.3s);
 
-	padding: 7px 24px 6px;
+	padding: 8px 24px;
 	font-size: 14px;
 	line-height: 20px;
-
 
 	&:visited {
 		color: $color-white;
 	}
 
 	&:hover, &:focus, &:active {
-		//background: $color-link-three;
-		background: $color-link-three;
-		box-shadow: 1px 1px 2px rgba(0,0,0, 0.4);
+		background: $grass;
 		color: $color-white;
 	}
 
-	@if $mod == white {
+	@if $mod == menu_button {
 
 	}
 	@else if $mod == submit {
