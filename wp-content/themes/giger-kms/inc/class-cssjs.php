@@ -65,6 +65,10 @@ class FRL_CssJs {
 		$url = get_template_directory_uri();
 		$style_dependencies = array();
 
+        if( !is_admin() ) {
+            wp_enqueue_style('dashicons');
+        }
+
 		// fonts
 		wp_enqueue_style(
 			'tst-fonts',
@@ -168,13 +172,15 @@ class FRL_CssJs {
 
 		//enqueue again
 		$api_url = '//maps.googleapis.com/maps/api/js?libraries=places';
-        $api_key = get_theme_mod('google_maps_api_key');
+
+        $api_key = stristr(home_url(), 'dront.local') !== false ? 'AIzaSyDoI_nMSgPYKfmW-FVHUGxYzEyByr4CtoI' : get_theme_mod('google_maps_api_key');
         if ( ! empty( $api_key ) ) {
             $api_url .= '&key=' . $api_key;
         }
 
 		wp_register_script( 'tst-google-maps-api', $api_url, null, null );
 		wp_enqueue_script( 'tst-google-maps', $src, array( 'tst-google-maps-api' ), TST_VERSION );
+
 	}
 
 	/* login style - make it inline ? */

@@ -1,26 +1,21 @@
 <?php
 /** Error **/
 
-
-$er_text = get_theme_mod('er_text'); 
+$er_text = get_option('er_text');
 $src = get_template_directory_uri().'/assets/img/er404.jpg';
 get_header();
 ?>
+<header class="single-item--title">
+	<h1 class="err-404 cell__title"><?php _e('404: Page not found', 'tst');?></h1>
+</header>
 
-<section class="heading">
-	<div class="container"><?php tst_section_title(); ?></div>
-</section>
+<section class="main-content">
 
-<section class="main-content single-post-section">
-	<div class="entry-content err-text">
-		<?php echo apply_filters('tst_the_content', $er_text); ?>	
-	</div>
-</section>
+	<article class="err-404">
+		<div class="err-404__text"><?php echo apply_filters('tst_the_content', $er_text); ?></div>
+		<div class="err-404__search regular-search"><?php get_search_form();?></div>
+	</article>
 
-<section class="er-picture">
-	<div class="container-wide">
-		<div class="err-bg" style="background-image: url(<?php echo $src;?>);"></div>
-	</div>
 </section>
 
 <?php get_footer(); ?>

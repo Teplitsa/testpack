@@ -103,11 +103,14 @@ require get_template_directory().'/inc/class-cssjs.php';
 require get_template_directory().'/inc/class-item.php';
 require get_template_directory().'/inc/class-mediamnt.php';
 require get_template_directory().'/inc/class-section.php';
+require get_template_directory().'/inc/class-import.php';
 
 require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/post-types.php';
+require get_template_directory().'/inc/pagebuilder.php';
 require get_template_directory().'/inc/related.php';
 require get_template_directory().'/inc/request.php';
+require get_template_directory().'/inc/markers-map.php';
 
 //require get_template_directory().'/inc/donations.php';
 //require get_template_directory().'/inc/forms.php';

@@ -1,1 +1,30 @@
 
+.main .nav-links {
+    padding: 10px;
+}
+.person-vcard {
+	margin-bottom: 8px;
+}
+
+.person-vcard__thumbnail {
+	margin-bottom: 8px;
+}
+
+.vcard-img-background {
+	@include bg-as-picture(100%);
+	background-position: center center;
+}
+
+.person_vcard__title {
+	@include post-title();
+	margin-bottom: 8px/2;
+	border-radius: 2px;
+}
+
+.person-vcard__role {
+	@include sub-title(meta);
+}
+.sr-num {
+	font-size: .8em;
+	text-align: right;
+}

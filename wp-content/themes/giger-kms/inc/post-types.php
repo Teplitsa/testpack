@@ -127,20 +127,20 @@ function tst_custom_content(){
     /** Post types **/
 	register_post_type('landing', array(
         'labels' => array(
-            'name'               => 'Лендинги',
-            'singular_name'      => 'Лендинг',
-            'menu_name'          => 'Лендинги',
-            'name_admin_bar'     => 'Добавить лендинг',
+            'name'               => 'Лэндинги',
+            'singular_name'      => 'Лэндинг',
+            'menu_name'          => 'Лэндинги',
+            'name_admin_bar'     => 'Добавить лэндинг',
             'add_new'            => 'Добавить новый',
-            'add_new_item'       => 'Добавить лендинг',
-            'new_item'           => 'Новый лендинг',
-            'edit_item'          => 'Редактировать лендинг',
-            'view_item'          => 'Просмотр лендингов',
-            'all_items'          => 'Все лендинги',
-            'search_items'       => 'Искать лендинги',
-            'parent_item_colon'  => 'Родительские лендинги:',
-            'not_found'          => 'Лендинг не найдены',
-            'not_found_in_trash' => 'В Корзине лендинги не найдены'
+            'add_new_item'       => 'Добавить лэндинг',
+            'new_item'           => 'Новый лэндинг',
+            'edit_item'          => 'Редактировать лэндинг',
+            'view_item'          => 'Просмотр лэндингов',
+            'all_items'          => 'Все лэндинги',
+            'search_items'       => 'Искать лэндинги',
+            'parent_item_colon'  => 'Родительские лэндинги:',
+            'not_found'          => 'Лэндинг не найдены',
+            'not_found_in_trash' => 'В Корзине лэндинги не найдены'
        ),
         'public'              => true,
         'exclude_from_search' => false,
@@ -163,8 +163,8 @@ function tst_custom_content(){
 
 	register_post_type('project', array(
         'labels' => array(
-            'name'               => 'Проект',
-            'singular_name'      => 'Проекты',
+            'name'               => 'Проекты',
+            'singular_name'      => 'Проект',
             'menu_name'          => 'Проекты',
             'name_admin_bar'     => 'Добавить проект',
             'add_new'            => 'Добавить новый',
@@ -335,42 +335,72 @@ function tst_custom_content(){
         'supports'            => array('title', 'editor', 'revisions'),
     ));
 
-	/*register_post_type('org', array(
+    //Markers
+    register_post_type('marker', array(
         'labels' => array(
-            'name'               => 'Организации',
-            'singular_name'      => 'Организация',
-            'menu_name'          => 'Партнеры',
-            'name_admin_bar'     => 'Добавить организацию',
-            'add_new'            => 'Добавить новую',
-            'add_new_item'       => 'Добавить организацию',
-            'new_item'           => 'Новая организация',
-            'edit_item'          => 'Редактировать организацию',
-            'view_item'          => 'Просмотр организации',
-            'all_items'          => 'Все организации',
-            'search_items'       => 'Искать организации',
-            'parent_item_colon'  => 'Родительская организация:',
-            'not_found'          => 'Организации не найдены',
-            'not_found_in_trash' => 'В Корзине организации не найдены'
-       ),
+            'name'               => 'Маркеры',
+            'singular_name'      => 'Маркер',
+            'menu_name'          => 'Маркеры',
+            'name_admin_bar'     => 'Добавить маркер',
+            'add_new'            => 'Добавить новый',
+            'add_new_item'       => 'Добавить маркер',
+            'new_item'           => 'Новый маркер',
+            'edit_item'          => 'Редактировать маркер',
+            'view_item'          => 'Просмотр маркеров',
+            'all_items'          => 'Все маркеры',
+            'search_items'       => 'Искать маркер',
+            'parent_item_colon'  => 'Родительский маркер:',
+            'not_found'          => 'Маркеры не найдены',
+            'not_found_in_trash' => 'В Корзине маркеры не найдены'
+        ),
         'public'              => true,
         'exclude_from_search' => true,
         'publicly_queryable'  => false,
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
-        'show_in_admin_bar'   => true,
+        'show_in_admin_bar'   => false,
         //'query_var'           => true,
         'capability_type'     => 'post',
-        'has_archive'         => false,
-        'rewrite'             => array('slug' => 'org', 'with_front' => false),
+        'has_archive'         => true,
+        'rewrite'             => array('slug' => 'marker', 'with_front' => false),
         'hierarchical'        => false,
-        'menu_position'       => 10,
-		'menu_icon'           => 'dashicons-networking',
-        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail'),
-        'taxonomies'          => array('org_cat'),
-    ));*/
+        'menu_position'       => 20,
+        'menu_icon'           => 'dashicons-location',
+        'supports'            => array('title', 'editor', 'thumbnail'),
+        'taxonomies'          => array('marker_cat'),
+    ));
 
-
+    register_taxonomy('marker_cat', array('marker',), array(
+        'labels' => array(
+            'name'                       => 'Группы маркеров',
+            'singular_name'              => 'Группа',
+            'menu_name'                  => 'Группы',
+            'all_items'                  => 'Все группы',
+            'edit_item'                  => 'Редактировать группу',
+            'view_item'                  => 'Просмотреть',
+            'update_item'                => 'Обновить группу',
+            'add_new_item'               => 'Добавить новую группу',
+            'new_item_name'              => 'Название новой группы',
+            'parent_item'                => 'Родительская группа',
+            'parent_item_colon'          => 'Родительская группа:',
+            'search_items'               => 'Искать группы',
+            'popular_items'              => 'Часто используемые',
+            'separate_items_with_commas' => 'Разделять запятыми',
+            'add_or_remove_items'        => 'Добавить или удалить группы',
+            'choose_from_most_used'      => 'Выбрать из часто используемых',
+            'not_found'                  => 'Не найдено'
+        ),
+        'public' => false,
+        'hierarchical'      => true,
+        'show_ui'           => true,
+        'show_in_nav_menus' => true,
+        'show_tagcloud'     => false,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'layer', 'with_front' => false),
+        //'update_count_callback' => '',
+    ));
 
 	//pages
 	add_post_type_support('page', 'excerpt');
@@ -400,13 +430,68 @@ function tst_setup_terms() {
 }
 
 
-
-
-
-
 /** Metaboxes **/
 add_action( 'cmb2_admin_init', 'tst_custom_metaboxes' );
 function tst_custom_metaboxes() {
+
+    //markers
+    $marker_cmb = new_cmb2_box( array(
+        'id'            => 'marker_settings_metabox',
+        'title'         => 'Настройки маркера',
+        'object_types'  => array('marker',), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+        //'show_on_cb'    => 'tst_show_on_general_pages',
+        //'cmb_styles'    => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ));
+
+    $marker_cmb->add_field(array(
+        'name'    => 'Адрес',
+        'id'      => 'marker_address',
+        'type'    => 'text',
+        'default' => ''
+    ));
+
+    $marker_cmb->add_field( array(
+        'name' => 'Маркер',
+        'desc' => 'Укажите позицию на карте',
+        'id'   => 'marker_location',
+        'type' => 'pw_map',
+        'split_values' => true, // Save latitude and longitude as two separate fields
+    ));
+
+    // marker groups
+    $markern_cat_term = new_cmb2_box( array(
+        'id'               => 'marker_cat_data',
+        'title'            => 'Настройки маркеров ',
+        'object_types'     => array( 'term' ),
+        'taxonomies'       => array( 'marker_cat' )
+    ));
+    $markern_cat_term->add_field( array(
+        'name'             => 'Цвет маркера',
+        'id'               => 'layer_marker_colors',
+        'type'             => 'select',
+        'show_option_none' => false,
+        'default'          => 'navi',
+        'options'          => array(
+            'black'         => 'Черный',
+            'red'           => 'Красный',
+            'orange' 	    => 'Оранжевый',
+            'dark-pink'     => 'Темно-розовый',
+            'sand'          => 'Желтый',
+            'green'         => 'Зеленый',
+            'grey-green'    => 'Серо-зеленый',
+        )
+    ));
+    $markern_cat_term->add_field(array(
+        'name'    => 'Класс иконки',
+        'desc' 	  => 'Справочник по классам иконок WP - <a href="https://developer.wordpress.org/resource/dashicons/" target="_blank">Найдите нужную и скопируйте класс</a>',
+        'id'      => 'layer_marker_icon',
+        'type'    => 'text',
+        'default' => ''
+    ));
 
 	/** Projects fields **/
 	/*$project_cmb = new_cmb2_box( array(
@@ -500,7 +585,7 @@ function tst_custom_metaboxes() {
 
 	$event_cmb->add_field(array(
 		'name'			=> 'Маркер',
-		'desc'			=> 'Укажите позициюна карте',
+		'desc'			=> 'Укажите позицию на карте',
 		'id'			=> 'event_marker',
 		'type' 			=> 'pw_map',
 		'split_values'	=> true
@@ -552,7 +637,7 @@ function tst_p2p_connection_types() {
         'to' 	=> array('project'),
 		'admin_column' => 'to',
 		'to_labels' => array(
-			'column_title' => 'Лендинги',
+			'column_title' => 'Лэндинги',
 		),
 		'admin_box' => array(
 			'show' => 'any',
@@ -567,7 +652,7 @@ function tst_p2p_connection_types() {
         'to' 	=> array('person'),
 		'admin_column' => 'to',
 		'to_labels' => array(
-			'column_title' => 'Лендинги',
+			'column_title' => 'Лэндинги',
 		),
 		'admin_box' => array(
 			'show' => 'any',
@@ -596,7 +681,7 @@ function tst_p2p_connection_types() {
 
 	p2p_register_connection_type(array(
         'name' 	=> 'import_attachments',
-        'from' 	=> array('import'),
+        'from' 	=> array('archive_page', 'post', 'import'),
         'to' 	=> 'attachment',
 		'admin_column' => false,
 		'from_labels' => array(

@@ -9,7 +9,6 @@ function tst_cell(WP_Post $cpost) {
 	$tags = tst_get_tags_list($cpost);
 	$ex = tst_get_post_excerpt($cpost, 25);
 
-	//thumb
 	$thumb_mark = '';
 	if(has_post_thumbnail($cpost)) {
 		$cap = tst_get_post_thumbnail_cation($cpost);
@@ -24,32 +23,45 @@ function tst_cell(WP_Post $cpost) {
 
 		//build thumbnail markup
 		ob_start();
+		
 ?>
-
 		<figure class="cell_picture">
 			<a href="<?php echo $pl;?>" class="thumbnail-link"><?php echo $thumb;?></a>
 			<?php if($cap) { ?>
 				<figcaption><?php echo $cap; ?></figcaption>
 			<?php } ?>
 		</figure>
-
 <?php
 		$thumb_mark = ob_get_contents();
 		ob_end_clean();
-	}//has thumb
+	} else {
+		// if no thumbnail		
+		$output = preg_match_all('/<img(.*?)src=("|\'|)(.*?)("|\'| )(.*?)>/s', $cpost->post_content, $match);
+		if($output) {
+			$file_url = $match[3][0];
+			$found_attachment_id = TST_Import::get_instance()->get_attachment_id_by_url( $file_url );
+			$cap = set_post_thumbnail($cpost,$found_attachment_id);
+		}
+	}
 ?>
+
 	<article class="cell">
-		<h4 class="cell__title">
-			<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
-			<span class="date"><?php echo get_the_date('d.m.Y', $cpost);?></span>
-		</h4>
-		<div class="cell__text">
-			<p><?php echo apply_filters('tst_the_title', $ex);?></p>
-			<p><?php echo $tags;?></p>
-		</div>
-		<?php if(!empty($thumb_mark)) { ?>
-			<div class="cell__thumb"><?php echo $thumb_mark;?></div>
-		<?php }?>
+		<div class="frame">
+			<div class="bit sm-8">
+				<h4 class="cell__title">
+					<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
+					<span class="date"><?php echo get_the_date('d.m.Y', $cpost);?></span>
+				</h4>
+				<div class="cell__text">
+					<p><?php echo apply_filters('tst_the_title', $ex);?></p>
+					<p><?php echo $tags;?></p>
+				</div>
+			</div>
+			<div class="bit sm-4">
+				<?php if(!empty($thumb_mark)) { ?>
+					<div class="cell__thumb"><?php echo $thumb_mark;?></div>
+				<?php }?>
+			</div>
 	</article>
 <?php
 }
@@ -149,4 +161,62 @@ function tst_get_card_icon($cpost) {
 	$out = "<div class='card__icon'><i class='material-icons'>{$icon_id}</i></div>";
 	return $out;
 
+}
+
+/** Search card **/
+function tst_card_search(WP_Post $cpost) {
+
+	$pl = get_permalink($cpost);
+	$tags = tst_get_tags_list($cpost);
+	$cats = tst_get_search_cats($cpost);
+
+
+?>
+<article class="cell">
+	<h4 class="card-search__title cell__title">
+		<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
+	</h4>
+	<?php if(!empty($cats)) { ?>
+		<div class="card-search__meta"><?php echo $cats;?></div>
+	<?php } ?>
+	<div class="card-search__summary"><?php echo tst_get_post_excerpt($cpost, 25, true);?></div>
+	<?php if(!empty($tags)) { ?>
+		<div class="card-search__meta"><?php echo $tags;?></div>
+	<?php } ?>
+</article>
+<?php
+}
+
+function tst_get_search_cats(WP_Post $cpost) {
+
+	$terms = get_the_terms($cpost, 'section');
+	$list = array();
+
+	if(!empty($terms)){ foreach($terms as $t) {
+		if($t->slug == 'about'){
+			$list[] = "<a href='".home_url('about-us')."'>О нас</a>";
+		}
+		else {
+			$list[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
+		}
+	}}
+	elseif($cpost->post_type == 'book') {
+		$item = get_page_by_title('Книги и брошюры', OBJECT, 'item');
+		if($item)
+			$list[] = "<a href='".get_permalink($item)."'>".apply_filters('tst_the_title', $item->post_title)."</a>";
+	}
+	elseif($cpost->post_type == 'project') {
+		$item = get_page_by_title('Проекты', OBJECT, 'page');
+		if($item)
+			$list[] = "<a href='".get_permalink($item)."'>".apply_filters('tst_the_title', $item->post_title)."</a>";
+	}
+	elseif($cpost->post_type == 'story') {
+		$list[] = "<a href='".home_url('stories')."'>Истории</a>";
+	}
+
+
+
+
+	$out = (!empty($list)) ? "<span class='category'>".implode(',', $list)."</span>" : '';
+	return $out;
 }
