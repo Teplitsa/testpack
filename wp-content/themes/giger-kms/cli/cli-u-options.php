@@ -44,6 +44,7 @@ try {
 	update_option('category_base', "");
 	update_option('tag_base', "");
 	update_option('posts_per_page', 10);
+	update_option('posts_per_rss', 20);
 
 	echo "Updated. Time in sec: ".(microtime(true) - $time_start).chr(10).chr(10);
 
