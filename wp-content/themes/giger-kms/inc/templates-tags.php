@@ -64,8 +64,8 @@ function tst_site_logo($size = 'regular') {
 		case 'regular':
 			$file = 'pic-logo';
 			break;
-		case 'small':
-			$file = 'pic-logo-small';
+		case 'white':
+			$file = 'pic-logo-w';
 			break;
 		default:
 			$file = 'icon-logo';
@@ -114,25 +114,25 @@ function tst_tag_breadcrubms() {
 
 	$list[] = "<a href='".home_url('/')."'>".__('Home', 'tst')."</a>";
 	$list[] = "<a href='".home_url('news')."'>".__('News', 'tst')."</a>";
-	
+
 	$sep = tst_get_sep('&gt;');
 
 	return "<div class='crumbs'>".implode($sep, $list)."</div>";
 }
 
 function tst_about_breadcrubms() {
-	
+
 	$page = get_queried_object();
 	$about = get_page_by_path('about-us');
-	
+
 	if(!$page || !$about)
 		return;
-	
+
 	$list = array();
 
 	$list[] = "<a href='".home_url('/')."'>".__('Home', 'tst')."</a>";
 	$list[] = "<a href='".get_permalink($about)."'>".apply_filters('tst_the_title', $about->post_title)."</a>";
-	
+
 	$sep = tst_get_sep('&gt;');
 
 	return "<div class='crumbs'>".implode($sep, $list)."</div>";
@@ -140,9 +140,9 @@ function tst_about_breadcrubms() {
 
 /* heading css */
 function tst_get_heading_style() {
-	
+
 	$i = rand(1, 5);
 	$url = get_template_directory_uri()."/assets/img/bg-ex-".$i.".png";
-	
+
 	return "style='background-image: url(".$url.")'";
 }

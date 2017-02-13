@@ -3,19 +3,23 @@
 /* search */
 .searchform {
 	display: block;
-	background: $color-link-four;
-	border-radius: 4px;
+	background: $color-white;
+	border-bottom: 2px solid $bark;
 	position: relative;
 	padding-right: 48px;
 	height: 44px;
+
+	&.focus {
+		border-bottom-color: $leaf;
+	}
 }
 
 .searchform__field {
 	@include form-text();
-	color: $color-white;
+	color: $color-text;
 	line-height: 18px;
 	border: none;
-	padding: 13px 8px;
+	padding: 13px 8px 13px 0;
 	width: 100%;
 	background: transparent;
 }
@@ -28,22 +32,21 @@
 	top: 0;
 	right: 0;
 	border: none;
-	border-left: 4px solid darken($color-link-four, 12%);
-	background: darken($color-link-four, 7%);
-	border-radius: 0 4px 4px 0;
+	background: transparent;
 	@include transition(all 0.3s);
-	
-	&:hover {
-		background: darken($color-link-four, 12%);
-	}
-	
+	text-align: right;
+
 	.svg-icon {
 		width: 17px;
 		height: 17px;
-		fill: $color-white;
+		fill: $bark;
 		position: absolute;
 		top: 14px;
 		left: 12px;
+	}
+
+	&:hover .svg-icon {
+		fill: $leaf;
 	}
 }
 
@@ -54,7 +57,7 @@
 .entry-content .gallery {
 	margin-top: $gut;
 	margin-bottom: $gut;
-	
+
 	&:first-child { margin-top: 0;}
 	&:last-child { margin-bottom: 0;}
 }
@@ -62,28 +65,28 @@
 .gallery {
 	@include clearfix;
 	margin: 0 -4px;
-	
+
 	.gallery-caption { display: none; }
-	
+
 	.gallery-item {
 		display: block;
 		float: left;
 		margin: 0;
 		width: 50%;
 	}
-	
+
 	.gallery-icon {
 		padding: 4px;
-		
+
 		a {
-			display: block;			
+			display: block;
 			@include transition(all 0.35s);
-			
+
 			&:hover {
 				filter: contrast(130%);
 			}
 		}
-		
+
 		img {
 			width: 100%;
 			height: auto;
@@ -95,7 +98,7 @@
 @include for(medium-screens) {
 	$i: 1; //widths
 	@while $i < 10 {
-	  
+
 	  .gallery-columns-#{$i} .gallery-item { width: 100% / $i; }
 	   $i: $i + 1;
 	}
@@ -109,7 +112,7 @@
 	font-size: 12px;
 	line-height: 18px;
 	height: 50px;
-	
+
 	#swipebox-title {
 		width: 80%;
 		max-width: 700px;
@@ -117,9 +120,8 @@
 		height: 36px;
 		overflow: hidden;
 	}
-	
+
 	&.visible-bars {
 		@include transform(none);
 	}
 }
-

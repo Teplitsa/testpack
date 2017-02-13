@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-06 00:02+0300\n"
-"PO-Revision-Date: 2016-12-07 12:42+0300\n"
+"POT-Creation-Date: 2017-01-08 19:07+0300\n"
+"PO-Revision-Date: 2017-01-08 19:07+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -26,6 +26,28 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 "X-Poedit-SearchPathExcluded-2: assets\n"
 
+#: admin/general.php:138 admin/general.php:147
+msgid "Website"
+msgstr "Вебсайт"
+
+#: admin/general.php:138 admin/general.php:152
+msgid "Excerpt"
+msgstr "Аннотация"
+
+#: admin/general.php:154
+msgid ""
+"Annotation for items lists (will be printed at the beginning of the single "
+"page)"
+msgstr "Аннотация для списков (на странице записи добавляется в начало)"
+
+#: admin/general.php:320
+#, php-format
+msgid ""
+"ATTENTION! You thumbnail image is too small. It should be at least %s px"
+msgstr ""
+"ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
+"менее %s px."
+
 #: archive-leyka_donation.php:21
 msgid "Campaign"
 msgstr "Кампания"
@@ -47,51 +69,9 @@ msgstr "Теплица социальных технологий"
 msgid "All materials of the site are avaliabe under license %s"
 msgstr "Все материалы сайта доступны по лицензии %s"
 
-#: header.php:18
+#: header.php:19
 msgid "Skip to content"
 msgstr "Перейти к содержанию"
-
-#: inc/admin.php:135 inc/admin.php:144
-msgid "Website"
-msgstr "Вебсайт"
-
-#: inc/admin.php:135 inc/admin.php:149
-msgid "Excerpt"
-msgstr "Аннотация"
-
-#: inc/admin.php:151
-msgid ""
-"Annotation for items lists (will be printed at the beginning of the single "
-"page)"
-msgstr "Аннотация для списков (на странице записи добавляется в начало)"
-
-#: inc/admin.php:324
-#, php-format
-msgid ""
-"ATTENTION! You thumbnail image is too small. It should be at least %s px"
-msgstr ""
-"ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
-"менее %s px."
-
-#: inc/cards.php:190 inc/cards.php:218
-msgid "More"
-msgstr "Подробнее"
-
-#: inc/cards.php:417
-msgid "Age"
-msgstr "Возраст"
-
-#: inc/cards.php:420
-msgid "City"
-msgstr "Город"
-
-#: inc/cards.php:423
-msgid "Diagnosis"
-msgstr "Диагноз"
-
-#: inc/cards.php:444
-msgid "Donate"
-msgstr "Помочь сейчас"
 
 #: inc/donations.php:62
 msgid "Please, set a text of comment to describe an additional ways to donate."
@@ -248,14 +228,15 @@ msgstr "Программа по теме"
 msgid "Help now"
 msgstr "Помочь сейчас"
 
-#: inc/templates-single.php:12 inc/templates-single.php:25
-#: inc/templates-tags.php:115
-msgid "Home"
-msgstr "Главная"
-
-#: inc/templates-single.php:13 inc/templates-tags.php:116 index.php:8
+#: inc/templates-micro.php:108 inc/templates-single.php:13
+#: inc/templates-tags.php:116 index.php:8
 msgid "News"
 msgstr "Новости"
+
+#: inc/templates-single.php:12 inc/templates-single.php:25
+#: inc/templates-tags.php:115 inc/templates-tags.php:133
+msgid "Home"
+msgstr "Главная"
 
 #: inc/templates-single.php:81
 msgid "Prev."
@@ -265,10 +246,6 @@ msgstr "Пред. новость"
 msgid "Next."
 msgstr "След. новость"
 
-#: inc/templates-thumbnails.php:233
-msgid "Thumbnail"
-msgstr "Миниатюра"
-
 #: inc/widgets_old.php:111
 msgid "Widget doesn't have any settings"
 msgstr "Виджет не имеет настроек"
@@ -277,7 +254,7 @@ msgstr "Виджет не имеет настроек"
 msgid "All news"
 msgstr "Все новости"
 
-#: index.php:37 search.php:51 taxonomy-section.php:30
+#: index.php:27 search.php:51 taxonomy-section.php:51
 msgid "Nothing found under your request"
 msgstr "По вашему запросу ничего не найдено."
 
@@ -285,9 +262,27 @@ msgstr "По вашему запросу ничего не найдено."
 msgid "Enter terms for search in the form and hit Enter"
 msgstr "Укажите слова для поиска в форме и нажмите Enter"
 
-#: single.php:39
+#: single.php:41
 msgid "More news"
 msgstr "Еще новости"
+
+#~ msgid "More"
+#~ msgstr "Подробнее"
+
+#~ msgid "Age"
+#~ msgstr "Возраст"
+
+#~ msgid "City"
+#~ msgstr "Город"
+
+#~ msgid "Diagnosis"
+#~ msgstr "Диагноз"
+
+#~ msgid "Donate"
+#~ msgstr "Помочь сейчас"
+
+#~ msgid "Thumbnail"
+#~ msgstr "Миниатюра"
 
 #~ msgid "404 Page text"
 #~ msgstr "Тест ст"

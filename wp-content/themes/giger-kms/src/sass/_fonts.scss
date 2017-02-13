@@ -1,0 +1,47 @@
+/** == Fonts (_footer.scss) == **/
+//Custom fonts loading
+
+
+@font-face {
+	font-family: 'BwSurco';
+	src: url('../fonts/BwSurcoDEMO-Regular.eot');
+	src:	local('☺'),
+			url('../fonts/BwSurcoDEMO-Regular.woff2') format('woff2'),
+			url('../fonts/BwSurcoDEMO-Regular.woff') format('woff'),
+			url('../fonts/BwSurcoDEMO-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BwSurco';
+	src: url('../fonts/BwSurcoDEMO-RegularItalic.eot');
+	src:	local('☺'),
+			url('../fonts/BwSurcoDEMO-RegularItalic.woff2') format('woff2'),
+			url('../fonts/BwSurcoDEMO-RegularItalic.woff') format('woff'),
+			url('../fonts/BwSurcoDEMO-RegularItalic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'BwSurco';
+	src: url('../fonts/BwSurcoDEMO-Bold.eot');
+	src:	local('☺'),
+			url('../fonts/BwSurcoDEMO-Bold.woff2') format('woff2'),
+			url('../fonts/BwSurcoDEMO-Bold.woff') format('woff'),
+			url('../fonts/BwSurcoDEMO-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BwSurco';
+	src: url('../fonts/BwSurcoDEMO-Light.eot');
+	src:	local('☺'),
+			url('../fonts/BwSurcoDEMO-Light.woff2') format('woff2'),
+			url('../fonts/BwSurcoDEMO-Light.woff') format('woff'),
+			url('../fonts/BwSurcoDEMO-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}

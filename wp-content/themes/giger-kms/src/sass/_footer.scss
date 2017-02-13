@@ -1,51 +1,159 @@
 /** == Footer (_footer.scss) == **/
 
 .site-footer {
-	background: $color-white;
-	padding-top: $gut;
-	
-	.widget_nav_menu {
-		a {
-			display: inline-block;
-			padding: 2px 0;
-			font-size: 1.05em;
-		}
-	}
-	
-	.widget p {
-		margin-bottom: $inpage-margin-base /2;
-	}
-	
-	.middle, .last {
-		a { @include red-link(); }
-		a.button { @include button(); }
-	}
-	
+	background: $color-secondary-dark;
+	padding-top: $base*4;
+
 	.hr {
 		width: 100%;
-		border-bottom:  1px solid $color-border-normal;
-		margin-bottom: $gut;
+		border-bottom:  1px solid transparentize($color-white, 0.65);
+		margin-bottom: $base*4;
 	}
-	
-	@include for(medium-screens) {
-		.textwidget { max-width: 300px; }
+
+	.social-buttons {
+		@include for(large-screens) {
+			text-align: right;
+		}
 	}
 }
 
+.footer-branding {
+	align-items: center;
+}
+.site-logo--footer {
+	display: block;
+	width: 58px;
+	height: 60px;
+	margin: 0 auto;
+
+	.logo {
+		width: 54px;
+		height: 60px;
+	}
+
+	@include for(medium-screens) {
+		margin: 0;
+		width: 70px;
+		height: 74px;
+
+		.logo {
+			width: 68px;
+			height: 74px;
+		}
+	}
+}
+
+#form_subscribe {
+	height: 40px;
+
+	.frm_form_fields  {
+		position: relative;
+	}
+
+	.tst-textfield {
+		@include calc(width, '100% - 158px');
+		padding: 0;
+		margin: 0;
+	}
+
+	.tst-textfield__input {
+		@include form-text();
+		line-height: 20px;
+		border: 2px solid $color-white;
+		padding: 8px;
+
+		&:focus, &:active {
+			border-color: $leaf;
+		}
+
+		@include placeholder {
+			color: $color-text-semi;
+			opacity: 0.95;
+		}
+	}
+
+	.frm_submit {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 150px;
+		margin: 0;
+	}
+
+	.tst-submit-button {
+		@include button();
+		line-height: 20px;
+		padding: 10px 20px 11px;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.footer-text {
+	@include sub-title();
+	color: transparentize($color-white, 0.1);
+
+	h3 {
+		font-size: 1.1em;
+		font-weight: bold;
+		color: $color-white;
+		margin-bottom: $base*2;
+	}
+
+	a {
+		color: $color-link-two;
+		&:hover {
+			color: $color-link-three;
+		}
+	}
+}
+
+
+//menus
+.footer-menu-grid {
+	@include for(small-screens) {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		ul {
+			width: 33.333%;
+			padding: 0 $base;
+		}
+	}
+}
+
+.footer-menu {
+	margin-bottom: $base*3;
+
+	li {
+		margin-bottom: 8px;
+	}
+
+	a {
+		@include nav-text(menu_item_small);
+	}
+}
+
+
+//credits
 .credits {
 	padding-bottom: $gut;
 }
 
 .credits__copy {
 	@include body-text(summary);
+	color: transparentize($color-white, 0.1);
+
 	a {
-		color: $color-text;
-		border-bottom: 1px solid $color-border-normal;
+		color: transparentize($color-white, 0.1);
+		border-bottom: 1px solid $color-white;
 		&:visited {
-			color: $color-text;
+			color: transparentize($color-white, 0.2);
 		}
 		&:hover, &:active, &:focus {
-			border-bottom-color: $color-link-four;
+			border-bottom-color: $color-link-three;
 		}
 	}
 }
@@ -61,7 +169,7 @@
 		display: inline-block;
 		width: 86px;
 		height: 40px;
-		fill: $color-text;
+		fill: $color-white;
 	}
 
 	a {
@@ -72,11 +180,11 @@
 		text-align: center;
 		box-sizing: border-box;
 		border-radius: 5px;
-		border: 1px solid $color-text;
+		border: 1px solid transparentize($color-white,0.1);
 		@include transition(all 0.35s);
 
 		&:hover, &:focus, &:active {
-			background: $color-white;
+			background: transparentize($color-white, 0.85);
 		}
 
 		position: absolute;
@@ -90,9 +198,6 @@
 		line-height: 14px;
 		margin-right: 110px;
 		padding-top: 8px;
-		color: $color-text;
+		color: transparentize($color-white,0.1);
 	}
 }
-
-
-

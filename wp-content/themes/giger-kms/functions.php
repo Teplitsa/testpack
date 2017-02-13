@@ -35,7 +35,10 @@ function tst_setup() {
 	// Menus
 	$menus = array(
 		'primary'   => 'Главное',
-		'sitemap'   => 'Карта сайта'
+		'sitemap'   => 'Карта сайта',
+		"footer_1"	=> 'Футер - 1',
+		"footer_2"	=> 'Футер - 2',
+		"footer_3"	=> 'Футер - 3'
 	);
 
 	register_nav_menus($menus);
@@ -113,7 +116,7 @@ require get_template_directory().'/inc/request.php';
 require get_template_directory().'/inc/markers-map.php';
 
 //require get_template_directory().'/inc/donations.php';
-//require get_template_directory().'/inc/forms.php';
+require get_template_directory().'/inc/forms.php';
 
 require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/social.php';

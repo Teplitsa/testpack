@@ -1,26 +1,31 @@
 /* Final */
 @import 'bourbon';
 
+@import 'fonts';
 @import 'reset';
 @import 'presets';
 @import 'utility';
 @import 'grid';
 
 //should go after presets strictly
-@import 'hamburgers';
+@import 'hamburgers'; //to-do import only needed styles
+//@import "base";
+//@import "types/slider";
+
 
 @import 'front';
 @import 'blocks';
 @import 'cards';
 @import 'modules';
 
-//@import 'forms';
+@import 'forms';
+@import 'map';
 @import 'social';
 @import 'header';
 @import 'footer';
 
-@import 'posts';
-@import 'pages';
+//@import 'posts';
+//@import 'pages';
 
 //@import 'widgets';
 //@import 'donations';

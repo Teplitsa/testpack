@@ -11,14 +11,37 @@ $cc_link = '<a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_bl
 $footer_text = get_option('footer_text');
 $tst = __("Teplitsa of social technologies", 'tst');
 ?>
-</div></div><!--  .container #site_content -->
+</div><!--  .container #site_content -->
 
 <footer class="site-footer"><div class="container">
 
+	<div class="flex-grid footer-branding">
+		<div class="flex-cell flex-md-6 flex-lg-6 flex-exlg-7">
+			<a href="<?php echo home_url('/');?>" class="site-logo--footer"><?php  tst_site_logo('white'); ?></a>
+		</div>
+		<div class="flex-cell flex-md-6 flex-lg-6 flex-exlg-5">
+			<?php tst_subscribe_form();?>
+		</div>
+	</div>
+
+	<div class="hr"></div>
+
 	<div class="widgets flex-grid">
-		<div class="flex-cell flex-sm-6 flex-md-4 first"><?php dynamic_sidebar( 'footer_1-sidebar' );?></div>
-		<div class="flex-cell flex-sm-6 flex-md-4 middle"><?php dynamic_sidebar( 'footer_2-sidebar' );?></div>
-		<div class="flex-cell flex-sm-9 flex-md-4 last"><?php dynamic_sidebar( 'footer_3-sidebar' );?></div>
+		<div class="flex-cell flex-md-4 flex-lg-3 footer-col-1">
+			<div class="footer-text"><?php echo apply_filters('tst_the_content', $footer_text);?></div>
+		</div>
+		<div class="flex-cell flex-md-8 flex-lg-6 footer-col-2">
+			<div class="footer-menu-grid">
+				<?php wp_nav_menu(array('theme_location' => 'footer_1', 'container' => false, 'menu_class' => 'footer-menu')); ?>
+
+				<?php wp_nav_menu(array('theme_location' => 'footer_2', 'container' => false, 'menu_class' => 'footer-menu')); ?>
+
+				<?php wp_nav_menu(array('theme_location' => 'footer_3', 'container' => false, 'menu_class' => 'footer-menu')); ?>
+			</div>
+		</div>
+		<div class="flex-cell flex-lg-3 footer-col-3">
+			<?php echo tst_get_social_buttons_list(array(), true);?>
+		</div>
 	</div>
 
 	<div class="hr"></div>
@@ -28,7 +51,6 @@ $tst = __("Teplitsa of social technologies", 'tst');
 		<div class="flex-cell flex-sm-7 flex-md-8">
 
 			<div class="credits__copy">
-				<?php echo apply_filters('tst_the_content', $footer_text); ?>
 				<p><?php printf(__('All materials of the site are avaliabe under license %s', 'tst'), $cc_link);?></p>
 			</div>
 
@@ -48,7 +70,7 @@ $tst = __("Teplitsa of social technologies", 'tst');
 </div></footer>
 
 </div><!-- site_root -->
-<?php wp_footer(); ?>
 
+<?php wp_footer(); ?>
 </body>
 </html>

@@ -64,7 +64,7 @@ try {
 	if($news_id){
 		update_option('page_for_posts', (int)$news_id);
 
-		wp_set_object_terms((int)$news_id, $support_section->term_id, 'section');
+		wp_set_object_terms((int)$news_id, $about_section->term_id, 'section');
 		wp_cache_flush();
 	}
 

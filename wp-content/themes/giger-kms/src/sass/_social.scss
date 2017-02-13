@@ -14,7 +14,8 @@ $social_color: (
     instagram: #B7308C,
     pinterest: #DE2127,
     youtube:   #E21D17,
-	mail:	   #E23100
+	mail:	   #E23100,
+	rss: 	   #FFA722
 );
 
 @function social_color($key) {
@@ -37,10 +38,39 @@ $social_color: (
 	height: $button-size;
 	padding: ($button-size - $icon-size)/2 0;
 
-	.svg-icon { fill: #262832; }
+	.svg-icon {
+		width: $icon-size;
+		height: $icon-size;
+		fill: #262832;
+	}
 }
 
 
+.social-buttons {
+
+	li {
+		display: inline-block;
+	}
+	a {
+		@include social-button-link(40px, 22px);
+		
+		.svg-icon {
+			@include transition(all 0.35s);
+			fill: $color-white;
+		}
+	}
+}
+
+@each $item in vk, facebook, instagram, rss  {
+
+	.social-buttons li.social-buttons__item--#{$item} {
+
+		&:hover, &:focus, &:active {
+
+			.svg-icon { fill: social_color($item); }
+		}
+	}
+}
 
 
 /** == Sharing == **/
