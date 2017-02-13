@@ -16,8 +16,9 @@ $args = array(
 $posts_array = get_posts( $args );
 
 function tst_team_member_vcard(WP_Post $member) {
+	
 	$name = apply_filters('tst_the_title', $member->post_title);
-	$role = apply_filters('tst_the_title', $member->post_excerpt);;
+	$role = apply_filters('tst_the_title', $member->post_excerpt);
 
 	$thumb_id = get_term_meta($member->term_id, 'author_image_id', true);
 	$thumb = '';
@@ -33,7 +34,7 @@ function tst_team_member_vcard(WP_Post $member) {
 ?>
 <article class="person-vcard">
 	<div class="person-vcard__thumbnail"><?php echo $thumb;?></div>
-	<h4 class="person_vcard__title"><?php echo $name;?></h4>
+	<h4 class="person_vcard__title"><a href="<?php echo get_permalink($member);?>"><?php echo $name;?></a></h4>
 	<div class="person-vcard__role"><?php echo $role;?></div>
 </article>
 

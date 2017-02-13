@@ -5,17 +5,21 @@ $er_text = get_option('er_text');
 $src = get_template_directory_uri().'/assets/img/er404.jpg';
 get_header();
 ?>
-<header class="single-item--title">
-	<h1 class="err-404 cell__title"><?php _e('404: Page not found', 'tst');?></h1>
-</header>
+<div class="container-narrow">
 
-<section class="main-content">
+	<header class="single-item--title">
+		<h1 class="err-404 cell__title"><?php _e('404: Page not found', 'tst');?></h1>
+	</header>
 
-	<article class="err-404">
-		<div class="err-404__text"><?php echo apply_filters('tst_the_content', $er_text); ?></div>
-		<div class="err-404__search regular-search"><?php get_search_form();?></div>
-	</article>
+	<section class="main-content">
 
-</section>
+		<article class="err-404">
+			<div class="err-404__text"><?php echo apply_filters('tst_the_content', $er_text); ?></div>
+			<div class="err-404__search regular-search"><?php get_search_form();?></div>
+		</article>
+
+	</section>
+
+</div>
 
 <?php get_footer(); ?>
