@@ -40,13 +40,21 @@ try {
             $path = WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.$line[11];
             $test_path = $uploads['path'].'/'.$line[11];
 
+            if( !file_exists(WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.$line[11]) ) {
+
+                echo 'Cant find a thumbnail: '.WP_CONTENT_DIR.'/themes/giger-kms/cli/sideload/'.$line[11];
+                continue;
+
+            }
+
             if( !file_exists($test_path) ) {
 
                 $thumb_id = tst_upload_img_from_path($path);
-                echo 'Uploaded thumbnail '.$thumb_id.chr(10);
+                echo 'Thumbnail uploaded: '.$thumb_id.chr(10);
 
             } else {
                 $thumb_id = tst_register_uploaded_file($test_path);
+                echo 'Thumbnail found: '.$thumb_id.chr(10);
             }
 
         }
@@ -63,9 +71,9 @@ try {
                 array('"',),
                 html_entity_decode($line[0], ENT_COMPAT, 'UTF-8')
             ),
+            '_thumbnail_id' => $thumb_id ? $thumb_id : '',
             'post_status' => 'publish',
             'meta_input' => array(
-                '_thumbnail_id' => $thumb_id ? $thumb_id : '',
                 'event_name' => $line[1], // Short name
                 'event_address' => $line[4],
                 'event_location' => $line[5],
