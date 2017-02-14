@@ -219,4 +219,178 @@ function tst_get_search_cats(WP_Post $cpost) {
 
 	$out = (!empty($list)) ? "<span class='category'>".implode(',', $list)."</span>" : '';
 	return $out;
+
 }
+
+/** Events */
+function tst_card_event(WP_Post $cpost, $args = array()) {
+
+    $defaults = array(
+        'thumb_position' 	=> 'left', //right
+        'show_summary'		=> true,
+        'show_meta' 		=> true,
+    );
+
+    $args = wp_parse_args($args, $defaults);
+    $pl = get_permalink($cpost);
+
+    $event = new TST_Event($cpost);
+    $thumb = $event->post_thumbnail_card_markup();
+
+    $figure_css = (false !== strpos($thumb, 'logo-frame')) ? 'card-event__thumbnail--logo' : 'card-event__thumbnail';
+    $figure_css .= ' thumb-'.$args['thumb_position'];
+
+    $thumb_markup = "<figure class='{$figure_css}'><a href='{$pl}' class='thumbnail-link'>";
+    $thumb_markup .= $thumb;
+    $thumb_markup .= "</a></figure>";
+
+    $thumb_markup = "<div class='bit mf-12 sm-4'>{$thumb_markup}</div>";
+    ?>
+    <article class="card-event">
+        <?php $event->schema_markup();?>
+        <div class="frame">
+
+            <?php if($args['thumb_position'] == 'left') { echo $thumb_markup; } ?>
+
+            <div class="bit mf-12 sm-8">
+                <h4 class="card-event__title">
+                    <a href="<?php echo $pl;?>"><?php echo apply_filters('tst_the_title', get_the_title($cpost));?></a>
+                </h4>
+
+                <?php if($args['show_summary']) { ?>
+                    <div class="card-event__summary"><?php echo tst_get_post_excerpt($cpost, 25, true);?></div>
+                <?php } ?>
+
+                <?php if($args['show_meta']) { ?>
+                    <div class="card-event__meta"><?php echo tst_event_card_meta($cpost);?></div>
+                <?php } ?>
+            </div>
+
+            <?php if($args['thumb_position'] == 'right') { echo $thumb_markup; } ?>
+        </div>
+    </article>
+    <?php
+}
+
+function tst_event_card_meta(WP_Post $cpost) {
+
+    $event = new TST_Event($cpost);
+    $sep = tst_get_sep('&middot;');
+
+    $meta = $event->get_regular_card_meta();
+
+    return implode($sep, $meta);
+}
+
+
+function tst_event_thumbnail_img($post_id, $size = 'post-thumbnail') {
+
+    $event = new TST_Event($post_id);
+    $thumb = $event->post_thumbnail($size);
+
+    return $thumb;
+}
+
+/** Nearest events block **/
+//function tst_nearest_events_posts($num = 5, $query_args = array()) {
+//    //when $query_args empty just get alll neares events
+//    $today_stamp = strtotime('today midnight');
+//
+//    // pre query 1
+//    $qv = array(
+//        'post_type' => 'event',
+//        'fields' => 'ids',
+//        'posts_per_page' => TST_EVENTS_SHORT_LIST_LIMIT,
+//        'orderby'  => array('date' => 'DESC'),
+//    );
+//    $qv = array_merge($qv, $query_args);
+//    $tmp_posts = get_posts($qv);
+//    $posts_id = array_values( $tmp_posts );
+//
+//    if( !count( $posts_id ) ) {
+//        return array();
+//    }
+//
+//    // pre query 2
+//    $qv = array(
+//        'post_type' => 'event',
+//        'fields' => 'ids',
+//        'include' => $posts_id,
+//        'meta_query' => array(
+//            array(
+//                'key' => 'event_date_end',
+//                'value' => $today_stamp,
+//                'compare' => '>=',
+//                'type' => 'numeric'
+//            )
+//        ),
+//        'cache_results'  => false,
+//        'update_post_meta_cache' => false,
+//        'update_post_term_cache' => false,
+//        'no_found_rows' => true
+//    );
+//    $tmp_posts = get_posts($qv);
+//    $posts_id = array_values( $tmp_posts );
+//
+//    if( !count( $posts_id ) ) {
+//        return array();
+//    }
+//
+//    // main query
+//    $qv = array(
+//        'post_type' => 'event',
+//        'posts_per_page' => $num,
+//        'orderby'  => array('menu_order' => 'DESC', 'meta_value' => 'ASC'),
+//        'meta_key' => 'event_date_start',
+//
+//        'numberposts' => $num, // IMPORTANT!!! DO NOT USE posts_per_page HERE!!!
+//        'query_id' => 'nearest_events_posts_query',
+//        'include' => $posts_id,
+//
+//        'cache_results'  => false,
+//        'update_post_meta_cache' => false,
+//        'update_post_term_cache' => false,
+//        'no_found_rows' => true
+//    );
+//
+//    $posts = get_posts($qv);
+//
+//    return $posts;
+//}
+//
+// function tst_nearest_events_markup($num = 5, $last_border = true, $query_args = array()) {
+
+    /*$posts = tst_nearest_events_posts($num, $query_args);
+
+    if(empty($posts))
+        return;
+
+
+    ob_start();
+    ?>
+    <ul class="nearest-events">
+        <?php
+        foreach($posts as $i => $p) {
+            $num = $i+1;
+
+            $event = new TST_Event($p);
+            $thumb = $event->post_thumbnail_widget_markup();
+            ?>
+            <li class="nearest-events__item<?php if(!$last_border && $num == count($posts)) { echo ' nearest-events__item--no-border'; } ?>">
+                <?php $event->schema_markup();?>
+                <a href="<?php echo get_permalink($p);?>" class="nearest-events__link">
+                    <div class="nearest-events__thumb"><?php echo $thumb;?></div>
+                    <div class="nearest-events__title"><?php echo get_the_title($p);?></div>
+                    <div class="nearest-events__meta"><?php echo tst_cell_post_meta($p);?></div>
+                </a>
+            </li>
+            <?php
+        }
+        ?>
+    </ul>
+    <?php
+    $out = ob_get_contents();
+    ob_end_clean();
+
+    return $out;*/
+// }

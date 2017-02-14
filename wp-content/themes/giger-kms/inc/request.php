@@ -23,7 +23,6 @@ function tst_request_corrected(WP_Query $query) {
 		}
 	}
 
-
 }
 
 
@@ -137,4 +136,9 @@ add_action('template_redirect', 'tst_pages_redirect', 5);
 function tst_pages_redirect() {
 
 
+}
+
+/** Helper to detect current page position from query **/
+function tst_get_current_page_for_query(WP_Query $query) {
+    return isset($query->query_vars['paged']) && $query->query_vars['paged'] > 1 ? (int)$query->query_vars['paged'] : 1;
 }
