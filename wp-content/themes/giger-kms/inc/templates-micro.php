@@ -244,9 +244,9 @@ function tst_card_event(WP_Post $cpost, $args = array()) {
     $thumb_markup .= $thumb;
     $thumb_markup .= "</a></figure>";
 
-    $thumb_markup = "<div class='bit mf-12 sm-4'>{$thumb_markup}</div>";
-    ?>
-    <article class="card-event">
+    $thumb_markup = "<div class='bit mf-12 sm-4'>{$thumb_markup}</div>";?>
+
+    <article class="card-event <?php echo $event->is_expired() ? 'event-expired' : '';?>">
         <?php $event->schema_markup();?>
         <div class="frame">
 
@@ -280,6 +280,7 @@ function tst_event_card_meta(WP_Post $cpost) {
     $meta = $event->get_regular_card_meta();
 
     return implode($sep, $meta);
+
 }
 
 

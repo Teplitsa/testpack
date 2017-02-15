@@ -3,7 +3,7 @@
  * Events Template
  **/
 
-//$section = new TST_Section(get_queried_object_id());
+global $wp_query;
 
 $loop_1 = $wp_query->posts;
 $found = $wp_query->found_posts;
@@ -16,14 +16,11 @@ get_header();?>
         <section class="main-content bit lg-9 shift-left">
             <div class="layout-section layout-section--full">
 
-                <div class="layout-section__rail-title events-states <?php //if(!$has_current_filters) { echo 'empty-filters-groups'; } ?>">
+                <div class="layout-section__rail-title events-states">
                     <div class="frame">
 
                         <div class="bit md-9 lg-10 mf-12">
                             <div class="events-states--current-rail">
-                            <?php // if(!empty($filter_groups)) { foreach($filter_groups as $root) {
-//                                tst_event_current_filter_mark($root, $section);
-//                            }} ?>
                             </div>
                         </div>
                         <div class="bit md-3 lg-2 hide-upto-medium">
@@ -55,11 +52,9 @@ get_header();?>
                     <?php }?>
                 </div>
 
-                <?php
-                if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
+                <?php if($loop_1 /*&& !empty($wp_query->query_vars['paged'])*/) {
                     tst_load_more_button($wp_query, 'events_card', $dnd, $target);
-                }
-                ?>
+                }?>
 
             </div>
 

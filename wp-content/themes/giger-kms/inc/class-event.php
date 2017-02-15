@@ -284,27 +284,22 @@ class TST_Event {
 	public function get_full_address($add_location = true) {
 
 		$list = array();
-		$city = $this->city;
 
-		$adr = $this->address;
-		$adr = preg_replace ('/г.(\s+)?,/' , '' , $adr); //fix for incorrect migration artefact
+		$addr = $this->address;
+		$addr = preg_replace ('/г.(\s+)?,/' , '' , $addr); //fix for incorrect migration artefact
 
-
-		if(!empty($adr) && !empty($city)){
-			if(false === strpos($adr, $city))
-				$list[] = $city;
-
-			$list[] = $adr;
-		}
-		elseif(!empty($city)){
-			$list[] = $city;
+		if($addr) {
+			$list[] = $addr;
 		}
 
-		if($add_location)
+		if( !!$add_location ) {
 			$list[] = $this->location;
+        }
 
-		$list = array_filter($list);
-		return implode(', ', $list);
+        $addr = implode(', ', array_filter($list));
+
+		return $addr;
+
 	}
 
 
@@ -362,7 +357,7 @@ class TST_Event {
 //		if( !$this->is_expired() )
 //			$meta[] = tst_add_to_calendar_link($this, 'tst-add-calendar', __('Add to calendar', 'tst'), false);
 
-
+        $meta[] = "<span class='event-location'>".$this->get_full_address()."</span>";
 
 		return $meta;
 	}
@@ -446,8 +441,9 @@ class TST_Event {
 
 		$addr = $this->get_full_address(false);
 
-		if(empty($addr))
+		if(empty($addr)) {
 			$addr = __('Russia', 'tst');
+        }
 
 		return $addr;
 	}
@@ -554,3 +550,16 @@ class TST_Event {
 
 
 } //class
+
+/** Customize events archive query */
+add_action('pre_get_posts', function(WP_Query $query) {
+
+    if($query->is_post_type_archive('event')) {
+
+        $query->set('meta_key', 'event_date_start');
+        $query->set('orderby', 'meta_value_num');
+        $query->set('order', 'DESC');
+
+    }
+
+});
