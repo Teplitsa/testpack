@@ -8,6 +8,7 @@ $qo = get_queried_object();
 $prefix = "cover_general_";
 
 $cover = wds_page_builder_get_this_part_data($prefix.'cover_post');
+$cover = ($cover) ? get_post($cover) : $cover;
 
 $about_url = trailingslashit(get_permalink($qo)).'about';
 $cover_url = '';
@@ -30,7 +31,12 @@ if($qo && has_post_thumbnail($qo)){
 	<?php if($cover) { ?>
 	<div class="cover-general__item">
 		<div class="container">
-			<a href="<?php echo get_permalink($cover);?>" class="cover-item__link"><?php echo get_the_title($cover);?></a>
+			<a href="<?php echo get_permalink($cover);?>" class="cover-item__link">
+				<h4><?php echo get_the_title($cover);?></h4>
+				<?php if(get_post_type($cover) == 'event') { ?>
+					<div class="cover-item__date"><?php echo tst_event_card_date($cover);?></div>
+				<?php } ?>
+			</a>
 		</div>
 		<div class="cover-item__bg" style="background-image: url(<?php echo $cover_url;?>);"></div>
 

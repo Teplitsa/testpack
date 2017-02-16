@@ -211,8 +211,12 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	}
 	@else if $mod == cta_link {
 		font-size: 18px;
-		line-height: 22px;
+		line-height: 1.2;
 		text-transform: none;
+
+		@include for(medium-screens) {
+			font-size: 21px;
+		}
 	}
 }
 

@@ -128,6 +128,25 @@ function tst_card_text_markup($args = array()) {
 }
 
 
+function tst_person_card($cpost) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+
+	$name = apply_filters('tst_the_title', $cpost->post_title);
+	$role = apply_filters('tst_the_title', $cpost->post_excerpt);
+
+	$thumb = get_the_post_thumbnail($cpost, 'thumbnail');
+?>
+<article class="person-item">
+	<div class="person-item__thumbnail"><?php echo $thumb;?></div>
+	<h4 class="person-item__title"><a href="<?php echo get_permalink($member);?>"><?php echo $name;?></a></h4>
+	<div class="person-item__role"><?php echo $role;?></div>
+</article>
+
+<?php
+}
 
 
 
@@ -410,6 +429,15 @@ function tst_event_card_meta(WP_Post $cpost) {
     $meta = $event->get_regular_card_meta();
 
     return implode($sep, $meta);
+
+}
+
+function tst_event_card_date(WP_Post $cpost) {
+
+    $event = new TST_Event($cpost);
+    $sep = tst_get_sep('&middot;');
+
+    return $event->get_start_date_mark();
 
 }
 

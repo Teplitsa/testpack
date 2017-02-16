@@ -66,6 +66,13 @@
 
 	.container {
 		z-index: 100;
+		height: 100%;
+	}
+
+	.cover-item__link {
+		position: absolute;
+		left: 0;
+		bottom: 0;
 	}
 }
 
@@ -83,7 +90,8 @@
 
 .cover-item__link {
 	@include link-label();
-	@include link-label-box();
+	width: 298px;
+	min-height: 149px;
 	background: $color-white;
 	color: $color-text-black;
 
@@ -92,74 +100,8 @@
 	}
 }
 
-//buttonned cover
-.cover-buttoned {
-	.landing-header__links {
-		a {
-			margin: 0 18px;
-		}
-	}
+.cover-item__date {
+	font-weight: normal;
 }
-
-.cover-buttoned__title {
-	text-align: center;
-	padding: $base*5 0;
-
-	@include for(medium-screens) {
-		padding: $base*8 0;
-	}
-}
-
-.cover-buttoned__bg {
-	@include progressive-height(cover);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-.cover-buttoned__item {
-	padding: $base*5 0;
-
-	@include for(medium-screens) {
-		padding: $base*8 0;
-	}
-
-}
-
-@include for(large-screens) {
-	.cover-buttoned__title {
-		width: 42%;
-		height: 550px;
-		text-align: left;
-		padding-bottom: 0;
-	}
-
-	.cover-buttoned__item {
-		@include clearfix;
-		padding-top: 0;
-		padding-top: $base*5;
-	}
-
-	.cover-buttoned_button {
-		a { @include button(cover); }
-		float: left;
-		width: 40%;
-	}
-
-	.cover-buttoned__card {
-		width: 50%;
-		float: right;
-	}
-
-	.cover-buttoned__bg {
-		@include calc(width, '50% + 81px');
-		height: 550px;
-		position: absolute;
-		left: 50%;
-		top: 0;
-		@include transform(translateX(-81px));
-	}
-}
-
 
 
