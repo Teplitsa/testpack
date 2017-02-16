@@ -12,7 +12,7 @@ $cover = wds_page_builder_get_this_part_data($prefix.'cover_post');
 $about_url = trailingslashit(get_permalink($qo)).'about';
 $cover_url = '';
 if($qo && has_post_thumbnail($qo)){
-	$cover_url = get_the_post_thumbnail_url($cover, 'full');
+	$cover_url = get_the_post_thumbnail_url($qo, 'full');
 }
 ?>
 <header class="landing-header landing-header--buttoned">
@@ -24,6 +24,7 @@ if($qo && has_post_thumbnail($qo)){
 				<a href="<?php echo $about_url;?>"><?php _e('Get details', 'tst');?>&nbsp;&gt;</a>
 				<a href="#" class="local-scroll hide-on-large"><?php _e('Join us', 'tst');?>&nbsp;&gt;</a>
 			</div>
+
 		</div>
 	</div>
 

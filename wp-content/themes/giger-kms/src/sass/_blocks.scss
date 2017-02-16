@@ -6,19 +6,12 @@
 	padding: 0 4px;
 }
 
-
-//general cover
-.cover-general {
-	margin-bottom: $base*7;
-
-	@include for(medium-screens) {
-		margin-bottom: $base*10;
-	}
+.landing-header {
+	position: relative;
 }
 
 .landing-header__title {
 	@include post-title(cover);
-
 }
 
 .landing-header__tagline {
@@ -32,6 +25,18 @@
 	margin-top: $base*4;
 	white-space: nowrap;
 }
+
+
+//general cover
+.cover-general {
+	margin-bottom: $base*7;
+
+	@include for(medium-screens) {
+		margin-bottom: $base*10;
+	}
+}
+
+
 
 .cover-general__title {
 	text-align: center;
@@ -53,8 +58,6 @@
 		}
 	}
 }
-
-
 
 .cover-general__item {
 	position: relative;
@@ -88,3 +91,75 @@
 		color: $color-text-black;
 	}
 }
+
+//buttonned cover
+.cover-buttoned {
+	.landing-header__links {
+		a {
+			margin: 0 18px;
+		}
+	}
+}
+
+.cover-buttoned__title {
+	text-align: center;
+	padding: $base*5 0;
+
+	@include for(medium-screens) {
+		padding: $base*8 0;
+	}
+}
+
+.cover-buttoned__bg {
+	@include progressive-height(cover);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.cover-buttoned__item {
+	padding: $base*5 0;
+
+	@include for(medium-screens) {
+		padding: $base*8 0;
+	}
+
+}
+
+@include for(large-screens) {
+	.cover-buttoned__title {
+		width: 42%;
+		height: 550px;
+		text-align: left;
+		padding-bottom: 0;
+	}
+
+	.cover-buttoned__item {
+		@include clearfix;
+		padding-top: 0;
+		padding-top: $base*5;
+	}
+
+	.cover-buttoned_button {
+		a { @include button(cover); }
+		float: left;
+		width: 40%;
+	}
+
+	.cover-buttoned__card {
+		width: 50%;
+		float: right;
+	}
+
+	.cover-buttoned__bg {
+		@include calc(width, '50% + 81px');
+		height: 550px;
+		position: absolute;
+		left: 50%;
+		top: 0;
+		@include transform(translateX(-81px));
+	}
+}
+
+
+

@@ -52,6 +52,7 @@
 
 .card__label {
 	@include link-label();
+	min-height: 149px;
 }
 
 
@@ -76,6 +77,7 @@
 	background: $color-link-one;
 	color: $color-white;
 	position: relative;
+	min-height: 149px;
 
 	a {
 		color: $color-white;
@@ -89,6 +91,10 @@
 		left: $base*3;
 		z-index: 10;
 	}
+}
+
+.card--colored + .card--colored {
+	background: $color-link-four;
 }
 
 
@@ -234,4 +240,3 @@
     opacity: 1;
 	@include transition(opacity 0.3s);
 }
-

@@ -416,8 +416,18 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 		color: $color-white;
 	}
 
-	@if $mod == menu_button {
+	@if $mod == cover {
+		text-transform: none;
+		padding: 16px 32px;
+		font-size: 24px;
+		line-height: 30px;
+		letter-spacing: 0.5px;
 
+		@include for(medium-screens) {
+			padding: 20px 40px;
+			font-size: 28px;
+			line-height: 36px;
+		}
 	}
 	@else if $mod == submit {
 		padding: 16px 28px 15px;
