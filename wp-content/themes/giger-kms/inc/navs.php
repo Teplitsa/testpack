@@ -203,8 +203,8 @@ function tst_paginate_links(WP_Query $query = null, $echo = true) {
 
 
 
-/** next/previous post when applicabl */
-function tst_post_nav() {
+/** next/previous post when applicable */
+/* function tst_post_nav() {
 
 	$previous = is_attachment() ? get_post(get_post()->post_parent) : get_adjacent_post(false, '', true);
 
@@ -220,26 +220,4 @@ function tst_post_nav() {
 		</div>
 	</nav>
 	<?php
-}
-
-
-/** regions menu **/
-function tst_get_items_for_regions_menu() {
-	global $wpdb;
-
-	$stats = new TST_Stats( $wpdb );
-	$terms_raw = $stats->get_top_terms_by_period( 'regions', array( date('Y-m', strtotime('month ago')), date('Y-m', strtotime('today')) ), 20);
-	$terms = array();
-	foreach($terms_raw as $i => $t) {
-		if($t->slug != 'federation' && $t->slug != 'other-regions'){
-			$key = $i.'count_'.$t->period_post_count;
-			$terms[$key] = $t;
-		}
-	}
-
-	uksort($terms, 'tst_sort_by_count');
-	$terms = array_splice($terms, 0, 9);
-
-
-	return $terms;
-}
+}*/

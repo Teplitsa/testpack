@@ -154,7 +154,6 @@ function tst_feed_link(){
 	echo '<link rel="alternate" type="'.feed_content_type().'" title="'.esc_attr($name).'" href="'.esc_url( get_feed_link() )."\" />\n";
 }
 
-
 /** Adds custom classes to the array of body classes **/
 add_filter( 'body_class', 'tst_body_classes' );
 function tst_body_classes( $classes ) {
@@ -165,7 +164,6 @@ function tst_body_classes( $classes ) {
 	}
 	return $classes;
 }
-
 
 /** Options in customizer **/
 add_action('customize_register', 'tst_customize_register', 15);
@@ -233,8 +231,6 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'now_campaign_id',
         'priority' => 45,
     ));
-
-
 
 	$wp_customize->remove_setting('site_icon'); //remove favicon
 	$wp_customize->remove_control('blogdescription'); //remove
@@ -460,7 +456,7 @@ function tst_filter_search_query($s){
 function tst_get_pb_post( $post_id, $post_type = 'post' ) {
     $post = null;
     if( is_numeric( $post_id ) ) {
-        $post = get_page_by_path( $post_id, OBJECT );
+        $post = get_post( $post_id, OBJECT );
     }
     else {
         $post = get_page_by_path( $post_id, OBJECT, $post_type );

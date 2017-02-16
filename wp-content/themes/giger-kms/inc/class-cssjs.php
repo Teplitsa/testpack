@@ -107,14 +107,13 @@ class FRL_CssJs {
 		// jQuery
 		$script_dependencies[] = 'jquery'; //adjust gulp if we want it in footer
 
-
 		// front
 		wp_enqueue_script(
 			'tst-front',
 			$url.'/assets/rev/'.$this->get_rev_filename('bundle.js'),
 			$script_dependencies,
 			null,
-			true
+			false
 		);
 		
 		wp_enqueue_script(
@@ -130,12 +129,10 @@ class FRL_CssJs {
 		));
 	}
 
-	public function inline_scripts() {
-
-	?>
+	public function inline_scripts() {?>
 	<script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
 	<?php
-	}
+    }
 
 	/** disable emojji **/
 	public function disable_wp_emojicons() {
