@@ -39,6 +39,7 @@ get_header();?>
                                 'fields' => 'ids',
                             ));
                             echo do_shortcode('[tst_markers_map groups_excluded_ids="'.implode(',', $excluded_groups).'"]');
+                            echo do_shortcode('[formidable id=6]');
                         ?>
                     </div>
                     <div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
