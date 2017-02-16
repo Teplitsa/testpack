@@ -18,12 +18,13 @@ try {
 
 	// Sections
 	echo 'Creating sections'.chr(10);
+	// sections import implemented in landings import from csv
 	$sections = array(
-		'Наша работа'	=> 'work',
-		'Экопроблемы'	=> 'ecoproblems',
-		'Подразделения'	=> 'departments',
-		'О нас'			=> 'about',
-		'Как помочь'	=> 'supportus'
+// 		'Наша работа'	=> 'work',
+// 		'Экопроблемы'	=> 'ecoproblems',
+// 		'Подразделения'	=> 'departments',
+// 		'О нас'			=> 'about',
+// 		'Как помочь'	=> 'supportus'
 	);
 
 	//print_r(get_taxonomies());

@@ -46,11 +46,28 @@ if( !class_exists('TST_Import') ) {
 
         public function get_post_by_old_url( $old_url ) {
             $args = array(
-                'post_type' => array( 'post', 'landing', 'project', 'event', 'person', 'import', 'archive_page' ),
+                'post_type' => array( 'post', 'landing', 'project', 'event', 'person', 'import', 'archive_page' ), // wp does not search without post type
                 'meta_query' => array(
                     array(
                         'key' => 'old_url',
                         'value' => $old_url,
+                    )
+                ),
+                'fields'         => 'ids',
+            );
+            $posts = get_posts( $args );
+            $post_id = count( $posts ) ? $posts[0] : null;
+            return $post_id ? get_post( $post_id ) : null;
+        }
+        
+        public function get_post_by_meta_value( $meta_key, $meta_value ) {
+            $args = array(
+                'post_type' => array( 'post', 'landing', 'project', 'event', 'person', 'import', 'archive_page' ), // wp does not search without post type
+                'post_parent' => 0,
+                'meta_query' => array(
+                    array(
+                        'key' => $meta_key,
+                        'value' => $meta_value,
                     )
                 ),
                 'fields'         => 'ids',
@@ -97,14 +114,15 @@ if( !class_exists('TST_Import') ) {
 
             $file = wp_remote_get($url, array('timeout' => 50, 'sslverify' => false));
             
-            if( !file_exists( $tmp_file ) ) {
-                printf( "Download file ERROR!\n" );
-                return $attachment_id;
-            }
-
-            $response_code = $file['response']['code'];
+//             if( !file_exists( $tmp_file ) ) {
+//                 printf( "Download file ERROR!\n" );
+//                 return $attachment_id;
+//             }
 
             if( !is_wp_error($file) && isset($file['body']) ){
+                
+                $response_code = $file['response']['code'];
+                
                 if( $response_code == '200' && isset($file['headers']['content-type'])) {
 //            
 //            if( file_exists( $tmp_file ) ) {
@@ -135,6 +153,9 @@ if( !class_exists('TST_Import') ) {
                         }
                     }
                 }
+            }
+            else {
+                printf( "Download file ERROR!\n" );
             }
             unset($file);
 
@@ -574,6 +595,35 @@ if( !class_exists('TST_Import') ) {
             return $html;
         }
 
+        public function maybe_import( $external_file_url ) {
+        
+            $exist_attachment = $this->get_attachment_by_old_url( $external_file_url );
+            $attachment_id = 0;
+        
+            if( $exist_attachment ) {
+                $file_id = $exist_attachment->ID;
+                $file_url = wp_get_attachment_url($file_id);
+                $attachment_id = $exist_attachment->ID;
+        
+                printf( "File exist %s\n", $file_url );
+            }
+            else {
+                $attachment_id = $this->import_file( $external_file_url );
+        
+                if( $attachment_id ) {
+                    $file_id = $attachment_id;
+                    $file_url = wp_get_attachment_url( $attachment_id );
+                    printf( "File saved %s\n", $file_url );
+                }
+                else {
+                    printf( "IMPORT FILE ERROR!\n");
+                }
+            }
+            unset( $exist_attachment );
+        
+            return $attachment_id;
+        }
+        
     } //class TST_Import
 
 }
@@ -733,7 +783,7 @@ if( !class_exists('TST_ImportOldBereginya') ) {
                 }
             }
         }
-
+        
     } //class TST_ImportOldBereginya
 
 }

@@ -101,7 +101,7 @@ try {
                         }
                         elseif( TST_Import::get_instance()->is_must_convert2pdf( $url ) ) {
                             $pdf_file = get_attached_file( $file_id );
-                            $pdf_file_info = pathinfo( $pdf_file );                            
+                            $pdf_file_info = pathinfo( $pdf_file );
                             TST_Import::get_instance()->copy_to_localpdf( $pdf_file, $pdf_file_info['basename'] );
                         }
                     }

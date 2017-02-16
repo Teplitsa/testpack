@@ -456,7 +456,7 @@ function tst_filter_search_query($s){
 function tst_get_pb_post( $post_id, $post_type = 'post' ) {
     $post = null;
     if( is_numeric( $post_id ) ) {
-        $post = get_page_by_path( $post_id, OBJECT );
+        $post = get_post( $post_id, OBJECT );
     }
     else {
         $post = get_page_by_path( $post_id, OBJECT, $post_type );
