@@ -367,7 +367,7 @@ function tst_custom_content(){
         'hierarchical'        => false,
         'menu_position'       => 20,
         'menu_icon'           => 'dashicons-location',
-        'supports'            => array('title', 'editor', 'thumbnail'),
+        'supports'            => array('title', 'editor', 'thumbnail', 'excerpt',),
         'taxonomies'          => array('marker_cat'),
     ));
 
