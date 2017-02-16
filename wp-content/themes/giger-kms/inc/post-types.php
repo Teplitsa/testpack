@@ -447,6 +447,22 @@ function tst_custom_metaboxes() {
         // 'closed'     => true, // Keep the metabox closed by default
     ));
 
+    $marker_cmb->add_field( array(
+        'name' => 'Приложенные фото',
+        'desc' => '',
+        'id'   => 'marker_photos',
+        'type' => 'file_list',
+         'preview_size' => array(100, 100),
+        // Optional, override default text strings
+//        'text' => array(
+//            'add_upload_files_text' => 'Replacement', // default: "Add or Upload Files"
+//            'remove_image_text' => 'Replacement', // default: "Remove Image"
+//            'file_text' => 'Replacement', // default: "File:"
+//            'file_download_text' => 'Replacement', // default: "Download"
+//            'remove_text' => 'Replacement', // default: "Remove"
+//        ),
+    ) );
+
     $marker_cmb->add_field(array(
         'name'    => 'Адрес',
         'id'      => 'marker_address',
@@ -460,6 +476,27 @@ function tst_custom_metaboxes() {
         'id'   => 'marker_location',
         'type' => 'pw_map',
         'split_values' => true, // Save latitude and longitude as two separate fields
+    ));
+
+    $marker_cmb->add_field(array(
+        'name'    => 'ФИО отправителя',
+        'id'      => 'marker_contact_fullname',
+        'type'    => 'text',
+        'default' => ''
+    ));
+
+    $marker_cmb->add_field(array(
+        'name'    => 'Номер телефона отправителя',
+        'id'      => 'marker_contact_phone',
+        'type'    => 'text',
+        'default' => ''
+    ));
+
+    $marker_cmb->add_field(array(
+        'name'    => 'Email отправителя',
+        'id'      => 'marker_contact_email',
+        'type'    => 'text_email',
+        'default' => ''
     ));
 
     // marker groups

@@ -3,9 +3,7 @@
 set_time_limit (0);
 ini_set('memory_limit','256M');
 
-
-
-define( 'DRONT_SITE_URL', 'http://dront.ru');
+define('DRONT_SITE_URL', 'http://dront.ru');
 
 try {
 	$time_start = microtime(true);
@@ -16,10 +14,10 @@ try {
 
 	global $wpdb;
 
-    $options = getopt('', array('file-orig:', 'file-csv:',));
+//    $options = getopt('', array('file-orig:', 'file-csv:',));
     
-    $fname_orig = isset($options['file-orig']) ? $options['file-orig'] : '';
-    $fname_csv = isset($options['file-csv']) ? $options['file-csv'] : '';
+    $fname_orig = 'dront_map_points.json';
+    $fname_csv = 'dront_markers_verified.csv';
     printf("Processing %s and %s\n", $fname_orig, $fname_csv);
 
     $file_orig = file_get_contents($fname_orig, "r");
@@ -91,10 +89,6 @@ try {
 
             if( !get_term_meta($term, 'layer_marker_icon', true) ) {
                 switch($group->name) {
-                    case 'Особо охраняемые природные территории':
-                        update_term_meta($term, 'layer_marker_icon', 'dashicons-universal-access-alt');
-                        wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
-                        break;
                     case 'Пункты приема вторсырья':
                         update_term_meta($term, 'layer_marker_icon', 'dashicons-update');
                         wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
@@ -135,7 +129,8 @@ try {
                     default:
                 }
             }
-            // Update marker groups' colors?
+
+            // Update marker groups' colors here..
 
             foreach($group->items as $marker_index => $marker) {
 
