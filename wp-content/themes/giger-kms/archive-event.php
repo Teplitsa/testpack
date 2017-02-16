@@ -52,7 +52,7 @@ get_header();?>
                     <?php }?>
                 </div>
 
-                <?php if($loop_1 /*&& !empty($wp_query->query_vars['paged'])*/) {
+                <?php if($loop_1 && $wp_query->max_num_pages > 1) {
                     tst_load_more_button($wp_query, 'events_card', $dnd, $target);
                 }?>
 
@@ -64,15 +64,15 @@ get_header();?>
 
     <section class="bottom-content hide-on-large">
 
-        <div class="hide-on-large border--regular events-side-content-fixer">
-            <a href="<?php echo $fp_btn_url;?>" class="button--fullwidth"><?php echo $fp_btn_label; ?></a>
-        </div>
+<!--        <div class="hide-on-large border--regular events-side-content-fixer">-->
+<!--            <a href="--><?php //echo $fp_btn_url;?><!--" class="button--fullwidth">--><?php //echo $fp_btn_label; ?><!--</a>-->
+<!--        </div>-->
+<!---->
+<!--        --><?php //if($banner_bottom) { ?>
+<!--            <div class="widget">--><?php //echo $banner_bottom;?><!--</div>-->
+<!--        --><?php //}?>
 
-        <?php if($banner_bottom) { ?>
-            <div class="widget"><?php echo $banner_bottom;?></div>
-        <?php }?>
-
-        <div class="side-footer"><?php tst_cached_fragment('side_footer');?></div><!-- .side-footer -->
+<!--        <div class="side-footer">--><?php //tst_cached_fragment('side_footer');?><!--</div><!-- .side-footer -->-->
     </section>
 
 <?php get_footer();

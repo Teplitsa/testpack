@@ -113,9 +113,9 @@ class FRL_CssJs {
 			$url.'/assets/rev/'.$this->get_rev_filename('bundle.js'),
 			$script_dependencies,
 			null,
-			false
+			true
 		);
-		
+
 		wp_enqueue_script(
 			'tst-head-front',
 			$url.'/assets/rev/'.$this->get_rev_filename('headbundle.js'),

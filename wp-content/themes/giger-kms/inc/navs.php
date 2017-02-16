@@ -138,17 +138,17 @@ function tst_load_more_posts_screen() {
 			}
 	}
 
-
 	$result['data'] = ob_get_contents();
 	ob_end_clean();
 
 	//check do we have next page
-	if(isset($query->query_vars['has_next_page']) && $query->query_vars['has_next_page'])
+	if(isset($query->max_num_pages) && $paged < $query->max_num_pages) {
 		$result['has_more'] = true;
-
+    }
 
 	echo json_encode($result);
 	die();
+
 }
 
 
