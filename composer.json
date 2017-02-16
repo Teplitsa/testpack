@@ -51,8 +51,8 @@
         "wpackagist-plugin/responsive-lightbox" : "@stable",
 		"wpackagist-plugin/tiny-compress-images": "@stable",
         "wpackagist-plugin/wordpress-seo" : "@stable",
-		"wpackagist-plugin/yandexnews-feed-by-teplitsa": "@stable",
         "koodimonni-language/core-ru_ru": "*" ,
+		"webdevstudios/cmb2-post-search-field" : "dev-master",
         "mustardbees/cmb_field_map" : "dev-master",
 		"tst/formidable" : ">=2.02.11",
         "tst/wds-simple-page-builder" : ">=1.5"

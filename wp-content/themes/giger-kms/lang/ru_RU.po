@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-08 19:07+0300\n"
-"PO-Revision-Date: 2017-01-08 19:07+0300\n"
+"POT-Creation-Date: 2017-02-15 23:05+0300\n"
+"PO-Revision-Date: 2017-02-15 23:06+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -25,6 +25,10 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: bower_components\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 "X-Poedit-SearchPathExcluded-2: assets\n"
+
+#: 404.php:11
+msgid "404: Page not found"
+msgstr "Ошибка 404: Страница не найдена"
 
 #: admin/general.php:138 admin/general.php:147
 msgid "Website"
@@ -48,6 +52,15 @@ msgstr ""
 "ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
 "менее %s px."
 
+#: archive-event.php:31
+#, php-format
+msgid "Total: %d"
+msgstr ""
+
+#: archive-event.php:53
+msgid "Unfortunately, nothing found under your request."
+msgstr ""
+
 #: archive-leyka_donation.php:21
 msgid "Campaign"
 msgstr "Кампания"
@@ -64,7 +77,7 @@ msgstr "Пожертвований пока нет"
 msgid "Teplitsa of social technologies"
 msgstr "Теплица социальных технологий"
 
-#: footer.php:32
+#: footer.php:54
 #, php-format
 msgid "All materials of the site are avaliabe under license %s"
 msgstr "Все материалы сайта доступны по лицензии %s"
@@ -72,6 +85,18 @@ msgstr "Все материалы сайта доступны по лиценз�
 #: header.php:19
 msgid "Skip to content"
 msgstr "Перейти к содержанию"
+
+#: inc/class-event.php:445 inc/class-event.php:458
+msgid "Online"
+msgstr ""
+
+#: inc/class-event.php:450
+msgid "Russia"
+msgstr ""
+
+#: inc/class-event.php:463
+msgid "By address"
+msgstr ""
 
 #: inc/donations.php:62
 msgid "Please, set a text of comment to describe an additional ways to donate."
@@ -92,6 +117,14 @@ msgstr "Перечислять ежемесячно"
 #: inc/donations.php:399
 msgid "Your phone number in the 7xxxxxxxxxx format"
 msgstr ""
+
+#: inc/navs.php:48
+msgid "Load more"
+msgstr ""
+
+#: inc/navs.php:216
+msgid "Post navigation"
+msgstr "Навигация по записям"
 
 #: inc/pb-widgets/donationhystory/donationhystory.php:41
 #: inc/pb-widgets/featureblock/featureblock.php:41
@@ -196,39 +229,23 @@ msgstr "По правому краю"
 msgid "Style as page title"
 msgstr "Применить стиль заголовка страницы"
 
-#: inc/template-tags.php:169
-msgid "Page"
-msgstr "Страница"
+#: inc/social.php:12
+msgid "Facebook"
+msgstr ""
 
-#: inc/template-tags.php:291
-msgid "Donations history"
-msgstr "История пожертвований"
+#: inc/social.php:15
+msgid "Instagram"
+msgstr ""
 
-#: inc/template-tags.php:295
-msgid "Search results"
-msgstr "Результаты поиска"
+#: inc/social.php:16
+msgid "VKontakte"
+msgstr ""
 
-#: inc/template-tags.php:299
-msgid "404: Page not found"
-msgstr "Ошибка 404: Страница не найдена"
+#: inc/templates-micro.php:83
+msgid "Details"
+msgstr "Подробнее"
 
-#: inc/template-tags.php:444
-msgid "More projects"
-msgstr "Еще проекты"
-
-#: inc/template-tags.php:445
-msgid "Our projects"
-msgstr "Наши программы"
-
-#: inc/template-tags.php:550
-msgid "Related project"
-msgstr "Программа по теме"
-
-#: inc/template-tags.php:569
-msgid "Help now"
-msgstr "Помочь сейчас"
-
-#: inc/templates-micro.php:108 inc/templates-single.php:13
+#: inc/templates-micro.php:226 inc/templates-single.php:13
 #: inc/templates-tags.php:116 index.php:8
 msgid "News"
 msgstr "Новости"
@@ -254,17 +271,56 @@ msgstr "Виджет не имеет настроек"
 msgid "All news"
 msgstr "Все новости"
 
-#: index.php:27 search.php:51 taxonomy-section.php:51
+#: index.php:34 taxonomy-section.php:51
 msgid "Nothing found under your request"
 msgstr "По вашему запросу ничего не найдено."
 
-#: search.php:47
-msgid "Enter terms for search in the form and hit Enter"
-msgstr "Укажите слова для поиска в форме и нажмите Enter"
+#: pagebuilder/part-cover-buttoned.php:24 pagebuilder/part-cover-general.php:25
+msgid "Get details"
+msgstr "Вникнуть"
 
-#: single.php:41
+#: pagebuilder/part-cover-buttoned.php:25
+#: pagebuilder/part-cover-buttoned.php:35 pagebuilder/part-cover-general.php:26
+msgid "Join us"
+msgstr "Давайте вместе!"
+
+#: search.php:47
+msgid "Пожалуйста, укажите слова для поиска в форме и нажмите Enter."
+msgstr ""
+
+#: search.php:50
+msgid ""
+"К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать "
+"иначе."
+msgstr ""
+
+#: single-landing-ecomap-2.php:53 single.php:41
 msgid "More news"
 msgstr "Еще новости"
+
+#~ msgid "Page"
+#~ msgstr "Страница"
+
+#~ msgid "Donations history"
+#~ msgstr "История пожертвований"
+
+#~ msgid "Search results"
+#~ msgstr "Результаты поиска"
+
+#~ msgid "More projects"
+#~ msgstr "Еще проекты"
+
+#~ msgid "Our projects"
+#~ msgstr "Наши программы"
+
+#~ msgid "Related project"
+#~ msgstr "Программа по теме"
+
+#~ msgid "Help now"
+#~ msgstr "Помочь сейчас"
+
+#~ msgid "Enter terms for search in the form and hit Enter"
+#~ msgstr "Укажите слова для поиска в форме и нажмите Enter"
 
 #~ msgid "More"
 #~ msgstr "Подробнее"
@@ -346,9 +402,6 @@ msgstr "Еще новости"
 
 #~ msgid "Phone number should be 7xxxxxxxxxx"
 #~ msgstr "Формат номера должен быть 7xxxxxxxxxx"
-
-#~ msgid "Post navigation"
-#~ msgstr "Навигация по записям"
 
 #~ msgid "Homepage"
 #~ msgstr "Главная"
@@ -487,9 +540,6 @@ msgstr "Еще новости"
 
 #~ msgid "Fixed"
 #~ msgstr "Фиксированный"
-
-#~ msgid "Details"
-#~ msgstr "Подробнее"
 
 #~ msgid "Event date"
 #~ msgstr "Дата мероприятия"

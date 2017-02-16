@@ -24,13 +24,6 @@ function tst_setup() {
 		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
 	) );
 
-	// Thumbnails
-	add_theme_support('post-thumbnails');
-	set_post_thumbnail_size(640, 395, true ); // regular thumbnails
-	add_image_size('square', 450, 450, true ); // square thumbnail
-	add_image_size('medium-thumbnail', 790, 488, true ); // poster in widget
-	add_image_size('small-thumbnail', 320, 198, true ); // fixed size for embedding
-	//add_image_size('cover', 400, 567, true ); // long thumbnail for pages
 
 	// Menus
 	$menus = array(
@@ -57,10 +50,6 @@ add_action( 'init', 'tst_setup', 30 );
 function tst_widgets_init() {
 
 	$config = array(
-		//'right_single' => array(
-		//				'name' => 'Правая колонка - Записи',
-		//				'description' => 'Боковая колонка справа на страницах новостей'
-		//			),
 		'footer_1' => array(
 						'name' => 'Подвал - 1 колонка',
 						'description' => 'Динамическая область в подвале: 1 колонка'
@@ -94,7 +83,7 @@ function tst_widgets_init() {
 		));
 	}
 }
-add_action( 'init', 'tst_widgets_init', 25 );
+//add_action( 'init', 'tst_widgets_init', 25 );
 
 
 /**
@@ -112,6 +101,8 @@ require get_template_directory().'/inc/class-import.php';
 require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/post-types.php';
 require get_template_directory().'/inc/pagebuilder.php';
+require get_template_directory().'/inc/pagebuilder-ann.php'; //temp
+
 require get_template_directory().'/inc/related.php';
 require get_template_directory().'/inc/request.php';
 require get_template_directory().'/inc/markers-map.php';

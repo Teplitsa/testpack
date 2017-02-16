@@ -3,6 +3,136 @@
  * Micro elements
  **/
 
+function tst_card_linked($cpost, $args = array()) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+	$defaults = array(
+		'size' => 'block-2col'
+	);
+
+	$args = wp_parse_args($args, $defaults);
+	$pl = get_permalink($cpost);
+
+?>
+<a href="<?php echo $pl;?>" class="card-link">
+	<div class="card__thumbnail">
+		<?php echo get_the_post_thumbnail($cpost, $args['size']); ?>
+	</div>
+
+	<div class="card__label">
+		<h4><?php echo get_the_title($cpost);?></h4>
+	</div>
+</a>
+<?php
+}
+
+
+function tst_card_colored($cpost) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+	$pl = $icon = $title = $summary = '';
+
+	if($cpost->post_type == 'attachment') {
+		$pl = wp_get_attachment_url($cpost->ID);
+		$icon = tst_svg_icon('icon-pdf', false);
+		$title = (!empty($cpost->post_excerpt)) ? $cpost->post_excerpt : $cpost->post_title;
+		$summary = $cpost->post_content;
+
+	}
+	else {
+		$pl = get_permalink($cpost);
+		$title = get_the_title($cpost);
+		$summary = $cpost->post_excerpt;
+	}
+
+?>
+<a href="<?php echo $pl;?>" class="card-link">
+	<div class="card__title">
+		<h4><?php echo apply_filters('tst_the_title', $title);?></h4>
+	</div>
+
+	<?php if(!empty($summary)) { ?>
+	<div class="card__summary">
+		<?php echo apply_filters('tst_the_content', $summary); ?>
+	</div>
+	<?php } ?>
+
+	<?php if(!empty($icon)) { ?>
+	<div class="card__icon">
+		<?php echo $icon; ?>
+	</div>
+	<?php }?>
+</a>
+<?php
+}
+
+//tst_event_card_meta($cpost)
+function tst_card_text($cpost) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+	$args = array();
+
+	$args['action_url'] = get_permalink($cpost);
+
+	$args['action_text'] = get_post_meta($cpost->ID, 'action_text', true);
+	//add to calendar for events
+	if(empty($args['action_text']))
+		$args['action_text'] = __('Details', 'tst');
+
+	$args['title'] = get_the_title($cpost);
+
+	$args['subtitle'] = ($cpost->post_type == 'event') ? tst_event_card_meta($cpost) : apply_filters('tst_the_title', get_post_meta($cpost->ID, 'subtitle_meta', true));
+
+	$args['summary'] = (!empty($cpost->post_excerpt)) ? apply_filters('tst_the_content', $cpost->post_excerpt) : '';
+
+	tst_card_text_markup($args);
+}
+
+function tst_card_text_markup($args = array()) {
+
+	$defaults = array(
+		'title' => '',
+		'subtitle' => '',
+		'summary' => '',
+		'action_text' => '',
+		'action_url' => ''
+	);
+
+	$args = wp_parse_args($args, $defaults);
+
+	if(!empty($args['title'])) { ?>
+		<div class="card__title card__title--text"><h4><?php echo apply_filters('tst_the_title', $args['title']);?></h4></div>
+	<?php } ?>
+
+	<?php if(!empty($args['subtitle'])) { ?>
+		<div class="card__subtitle"><?php echo apply_filters('tst_the_title', $args['subtitle']);?></div>
+	<?php } ?>
+
+	<?php if(!empty($args['summary'])) { ?>
+		<div class="card__summary"><?php echo apply_filters('tst_the_title', $args['summary']);?></div>
+	<?php } ?>
+
+	<?php if(!empty($args['action_url']) && !empty($args['action_text'])) { ?>
+		<div class="card__action">
+			<a href="<?php echo $args['action_url'];?>">
+				<?php echo apply_filters('tst_the_title', $args['action_text']);?>&nbsp;&gt;
+			</a>
+		</div>
+	<?php }
+}
+
+
+
+
+
+
+ /* Old */
 function tst_cell(WP_Post $cpost) {
 
 	$pl = get_permalink($cpost);
@@ -23,7 +153,7 @@ function tst_cell(WP_Post $cpost) {
 
 		//build thumbnail markup
 		ob_start();
-		
+
 ?>
 		<figure class="cell_picture">
 			<a href="<?php echo $pl;?>" class="thumbnail-link"><?php echo $thumb;?></a>
@@ -35,7 +165,7 @@ function tst_cell(WP_Post $cpost) {
 		$thumb_mark = ob_get_contents();
 		ob_end_clean();
 	} else {
-		// if no thumbnail		
+		// if no thumbnail
 		$output = preg_match_all('/<img(.*?)src=("|\'|)(.*?)("|\'| )(.*?)>/s', $cpost->post_content, $match);
 		if($output) {
 			$file_url = $match[3][0];

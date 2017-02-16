@@ -123,6 +123,11 @@ body.drawer-open {
 	z-index: 1000;
 	box-shadow: 1px 1px 3px rgba(200,200,200, 0.5);
 	@include transform(translateZ(0));
+
+	body.admin-bar & {
+		@media screen and (min-width: 600px) { top: $adminbar_small_screen; }
+		@media screen and (min-width: 783px) { top: $adminbar_large_screen; } 
+	}
 }
 
 .site-header-row {

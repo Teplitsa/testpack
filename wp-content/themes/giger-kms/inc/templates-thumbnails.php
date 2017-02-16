@@ -7,13 +7,13 @@ function tst_thumbnails_setup() {
 	// Thumbnails
 	add_theme_support('post-thumbnails');
 
-	//special cases
-	//add_image_size('nl_thumb', 150, 94, true ); //thumbnail for newsletter
-	//add_image_size('vcard', 320, 320, true );
-	//add_image_size('cover', 220, 312, true );
-	//add_image_size('feature', 788, 520, true );
+	//sizes for landing blocks
+	add_image_size('block-full', 1192, 482, true );
+	add_image_size('block-2col', 596, 482, true );
+	add_image_size('block-3col', 894, 482, true );
+	add_image_size('block-small', 298, 298, true );
 
-	//thumbnail in cards
+	//thumbnail in cards - create system
 	add_image_size('thumbnail-small-fixed', 320, 198, true );
 	add_image_size('thumbnail-small-flex', 320, 999, false );
 	add_image_size('thumbnail-medium-fixed', 500, 247, true );

@@ -6,3 +6,85 @@
 	padding: 0 4px;
 }
 
+
+//general cover
+.cover-general {
+	margin-bottom: $base*7;
+
+	@include for(medium-screens) {
+		margin-bottom: $base*10;
+	}
+}
+
+.landing-header__title {
+	@include post-title(cover);
+
+}
+
+.landing-header__tagline {
+	@include header-title(cover);
+	margin-top: $base*2;
+}
+
+
+.landing-header__links {
+	@include nav-text(cta_link);
+	margin-top: $base*4;
+	white-space: nowrap;
+}
+
+.cover-general__title {
+	text-align: center;
+	padding: $base*5 0;
+
+	@include for(medium-screens) {
+		padding: $base*8 0;
+	}
+
+	.landing-header__title {
+		max-width: 840px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.landing-header__links  {
+		a {
+			margin: 0 18px;
+		}
+	}
+}
+
+
+
+.cover-general__item {
+	position: relative;
+	z-index: 1;
+	@include progressive-height(cover);
+
+	.container {
+		z-index: 100;
+	}
+}
+
+.cover-item__bg {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.cover-item__link {
+	@include link-label();
+	@include link-label-box();
+	background: $color-white;
+	color: $color-text-black;
+
+	&:visited, &:hover {
+		color: $color-text-black;
+	}
+}

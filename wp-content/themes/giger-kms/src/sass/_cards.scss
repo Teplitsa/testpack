@@ -1,5 +1,148 @@
 /** == Cards (_cards.scss) == **/
 
+//common elements
+
+.card-link {
+	display: block;
+}
+
+.card__title {
+	@include post-title(cards_regular);
+	h4 { font-weight: bold; }
+}
+
+.card__title--text {
+	@include post-title(cards_text);
+	h4 { font-weight: bold; }
+}
+
+.card__subtitle {
+	@include header-title(cards_text);
+	margin-top: $base;
+}
+
+.card__summary {
+	@include body-text(reading);
+	margin-top: $base *4;
+}
+
+.card__action {
+	@include nav-text(cta_link);
+	margin-top: $base*3;
+	white-space: nowrap;
+}
+
+.card__icon {
+	.svg-icon {
+		width: 48px;
+		height: 48px;
+		fill: transparentize($color-white, 0.4);
+	}
+}
+
+.card__thumbnail {
+	position: relative;
+	z-index: 1;
+
+	img { //temp no fix for incorrect size
+		width: 100%;
+		height: auto;
+	}
+}
+
+.card__label {
+	@include link-label();
+}
+
+
+//Types
+.card--linked {
+	position: relative;
+	z-index: 1;
+
+	.card__label {
+		@include link-label-box();
+		background: $color-white;
+		color: $color-text-black;
+		position: absolute;
+		z-index: 10;
+		bottom: 0;
+		left: 0;
+	}
+}
+
+
+.card--colored {
+	background: $color-link-one;
+	color: $color-white;
+	position: relative;
+
+	a {
+		color: $color-white;
+		padding: $base*3;
+		height: 100%;
+	}
+
+	.card__icon {
+		position: absolute;
+		bottom: $base*3;
+		left: $base*3;
+		z-index: 10;
+	}
+}
+
+
+.card--item {
+	background: $color-secondary-dark;
+	color: $color-white;
+
+	a {
+		color: $color-white;
+	}
+}
+
+
+.card--text {
+
+	.flex-column-centered {
+		padding: $base*5 0 $base*5 $base*8;
+		height: 100%;
+	}
+
+	&.row-reverse .flex-column-centered {
+		padding-left: 0;
+		padding-right: $base*8;
+	}
+
+
+	&.block-2col {
+
+	}
+}
+
+//single centered
+.singleblock-text {
+	text-align: center;
+	padding: $base*5 0;
+
+	@include for(medium-screens) {
+		padding: $base*8 0;
+	}
+
+	.card--text {
+		max-width: 840px;
+		margin: 0 auto;
+	}
+
+	.card__title {
+		@include post-title(cards_text_feature);
+	}
+}
+
+
+
+
+/**  Thumbnails OLD **/
 /* thumbnails */
 @mixin cell-thumbnail() {
 	a { display: block; }
@@ -90,50 +233,5 @@
 .lazyloaded {
     opacity: 1;
 	@include transition(opacity 0.3s);
-}
-
-
-/* cells */
-.cell {
-
-}
-
-.cell__title{
-	margin-bottom: $element-padding-base;
-	@include post-title();
-
-	a, a:visited {
-		color: $color-text-black;
-	}
-	a:hover { color: $color-link-two; }
-
-	.date {
-		@include sub-title();
-		margin-left: $element-padding-base/2;
-	}
-
-	&:first-letter { text-transform: uppercase; }
-}
-
-.cell__thumb {
-	margin-top: $element-padding-base;
-	@include cell-thumbnail();
-	max-width: 500px;
-}
-
-.cell__title--project {
-	margin-bottom: $element-padding-base/4;
-}
-
-.cell__subtitle {
-	@include sub-title();
-	margin-bottom: $element-padding-base;
-}
-
-.cell__text--project {
-	p { margin-bottom: $element-padding-base /2; }
-	p:last-child { margin-bottom: 0;}
-
-	//add lists
 }
 

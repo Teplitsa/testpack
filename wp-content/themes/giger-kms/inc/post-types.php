@@ -591,17 +591,34 @@ function tst_custom_metaboxes() {
 		'split_values'	=> true
 	));
 
+	$event_cmb->add_field(array(
+		'name' 		=> 'Теглайн',
+		'desc'	  	=> 'Теглайн - для отображения в текстовый карточек на лендинге (если применимо)',
+		'default' 	=> '',
+		'id'   		=> 'subtitle_meta',
+		'type'		=> 'text'
+	));
 
-	/** Landing fields  **/
-	$landing_cmb = new_cmb2_box( array(
-        'id'            => 'landing_settings_metabox',
-        'title'         => 'Настройки лэндинга',
-        'object_types'  => array('landing'), // Post type
+
+
+
+	/** Project fields  **/
+	$project_cmb = new_cmb2_box( array(
+        'id'            => 'project_settings_metabox',
+        'title'         => 'Настройки проекта',
+        'object_types'  => array('project'), // Post type
         'context'       => 'normal',
         'priority'      => 'high',
         'show_names'    => true,
     ));
 
+	$project_cmb->add_field(array(
+		'name' 		=> 'Теглайн',
+		'desc'	  	=> 'Теглайн - для отображения в текстовых карточках на лендинге (если применимо)',
+		'default' 	=> '',
+		'id'   		=> 'subtitle_meta',
+		'type'		=> 'text'
+	));
 
 }
 

@@ -34,7 +34,7 @@ function tst_add_col3_section_field( $fields ) {
             'id'      => 'col3_post_id_col1',
             'type'    => 'text',
         ),
-        
+
         array(
             'name'    => 'Тип',
             'id'      => 'col3_post_type_col2',
@@ -45,8 +45,8 @@ function tst_add_col3_section_field( $fields ) {
             'id'      => 'col3_post_id_col2',
             'type'    => 'text',
         ),
-         
-        
+
+
         array(
             'name'    => 'Тип',
             'id'      => 'col3_post_type_col3',
@@ -58,7 +58,6 @@ function tst_add_col3_section_field( $fields ) {
             'type'    => 'text',
         ),
     );
-    
+
     return array_merge( $fields, $new_fields );
 }
-
