@@ -454,12 +454,17 @@ function tst_filter_search_query($s){
 }
 
 function tst_get_pb_post( $post_id, $post_type = 'post' ) {
+    global $wpdb;
     $post = null;
-    if( is_numeric( $post_id ) ) {
+    if( preg_match( '/^\d+$/', $post_id ) ) {
         $post = get_post( $post_id, OBJECT );
     }
     else {
-        $post = get_page_by_path( $post_id, OBJECT, $post_type );
+        $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type = %s", $post_id, $post_type ) );
+//         printf( "post_id=%s\n", $post_id );
+        if( $post_id ) {
+            $post = get_post( $post_id, OBJECT );
+        }
     }
     return $post;
 }

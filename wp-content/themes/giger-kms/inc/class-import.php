@@ -161,6 +161,56 @@ if( !class_exists('TST_Import') ) {
 
             return $attachment_id;
         }
+        
+        public function import_big_file( $url ) {
+            $attachment_id = 0;
+        
+//             printf( "file url: %s\n", $url );
+            
+            $tmp_dir = sys_get_temp_dir() . '/tst_dront';
+            if( !is_dir( $tmp_dir ) ) {
+                mkdir( $tmp_dir );
+            }
+            
+//             print_r( $tmp_dir ); echo "\n";
+            
+            $tmp_file = tempnam( $tmp_dir, 'dront_' );
+            set_time_limit(0);
+            $fp = fopen ( $tmp_file, 'w+' );
+            
+            $ch = curl_init();
+            curl_setopt ($ch, CURLOPT_URL, $url );
+            curl_setopt( $ch, CURLOPT_TIMEOUT, 300 );
+            curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
+            curl_setopt( $ch, CURLOPT_FILE, $fp );
+            curl_exec( $ch );
+            curl_close( $ch );
+            fclose($fp);
+            
+//             printf( "file: %s\n", $tmp_file );
+            
+            $filename_no_ext = pathinfo( $url, PATHINFO_FILENAME );
+            $extension = pathinfo( $url, PATHINFO_EXTENSION );
+            $filedir = dirname( $tmp_file );
+            $new_file = $filedir . "/" . $filename_no_ext . '.' . $extension;
+            echo $new_file . "\n";
+            
+            rename( $tmp_file, $new_file );
+            $tmp_file = $new_file;
+            
+            $attachment_id = tst_upload_file_from_path( $tmp_file );
+//             printf( "res_att_id: %d\n", $attachment_id );
+
+            if( file_exists( $tmp_file ) ) {
+                unlink( $tmp_file );
+            }
+            
+            if( $attachment_id ) {
+                update_post_meta( $attachment_id, 'old_url', $url );
+            }
+            
+            return $attachment_id;
+        }
 
         public function import_file_from_path($path) {
 
@@ -608,7 +658,7 @@ if( !class_exists('TST_Import') ) {
                 printf( "File exist %s\n", $file_url );
             }
             else {
-                $attachment_id = $this->import_file( $external_file_url );
+                $attachment_id = $this->import_big_file( $external_file_url );
         
                 if( $attachment_id ) {
                     $file_id = $attachment_id;
