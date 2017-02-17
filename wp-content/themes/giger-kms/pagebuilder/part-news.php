@@ -40,5 +40,3 @@ $grid_css =  '';
 		</div>
 	</div>
 </div>
-
-<?php

@@ -460,6 +460,7 @@ function tst_get_pb_post( $post_id, $post_type = 'post' ) {
         $post = get_post( $post_id, OBJECT );
     }
     else {
+//         printf( "post_id=%s\n", $post_id );
         $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type = %s", $post_id, $post_type ) );
 //         printf( "post_id=%s\n", $post_id );
         if( $post_id ) {
