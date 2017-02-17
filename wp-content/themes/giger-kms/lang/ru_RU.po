@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-15 23:05+0300\n"
-"PO-Revision-Date: 2017-02-15 23:06+0300\n"
+"POT-Creation-Date: 2017-02-17 09:14+0300\n"
+"PO-Revision-Date: 2017-02-17 09:20+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -52,12 +52,12 @@ msgstr ""
 "ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
 "менее %s px."
 
-#: archive-event.php:31
+#: archive-event.php:28
 #, php-format
 msgid "Total: %d"
 msgstr ""
 
-#: archive-event.php:53
+#: archive-event.php:50
 msgid "Unfortunately, nothing found under your request."
 msgstr ""
 
@@ -86,15 +86,15 @@ msgstr "Все материалы сайта доступны по лиценз�
 msgid "Skip to content"
 msgstr "Перейти к содержанию"
 
-#: inc/class-event.php:445 inc/class-event.php:458
+#: inc/class-event.php:440 inc/class-event.php:454
 msgid "Online"
 msgstr ""
 
-#: inc/class-event.php:450
+#: inc/class-event.php:445
 msgid "Russia"
 msgstr ""
 
-#: inc/class-event.php:463
+#: inc/class-event.php:459
 msgid "By address"
 msgstr ""
 
@@ -121,10 +121,6 @@ msgstr ""
 #: inc/navs.php:48
 msgid "Load more"
 msgstr ""
-
-#: inc/navs.php:216
-msgid "Post navigation"
-msgstr "Навигация по записям"
 
 #: inc/pb-widgets/donationhystory/donationhystory.php:41
 #: inc/pb-widgets/featureblock/featureblock.php:41
@@ -241,19 +237,19 @@ msgstr ""
 msgid "VKontakte"
 msgstr ""
 
-#: inc/templates-micro.php:83
+#: inc/templates-micro.php:86
 msgid "Details"
 msgstr "Подробнее"
-
-#: inc/templates-micro.php:226 inc/templates-single.php:13
-#: inc/templates-tags.php:116 index.php:8
-msgid "News"
-msgstr "Новости"
 
 #: inc/templates-single.php:12 inc/templates-single.php:25
 #: inc/templates-tags.php:115 inc/templates-tags.php:133
 msgid "Home"
 msgstr "Главная"
+
+#: inc/templates-single.php:13 inc/templates-tags.php:116 index.php:8
+#: pagebuilder/part-news.php:25
+msgid "News"
+msgstr "Новости"
 
 #: inc/templates-single.php:81
 msgid "Prev."
@@ -275,14 +271,41 @@ msgstr "Все новости"
 msgid "Nothing found under your request"
 msgstr "По вашему запросу ничего не найдено."
 
-#: pagebuilder/part-cover-buttoned.php:24 pagebuilder/part-cover-general.php:25
+#: pagebuilder/part-cover-general.php:26
 msgid "Get details"
 msgstr "Вникнуть"
 
-#: pagebuilder/part-cover-buttoned.php:25
-#: pagebuilder/part-cover-buttoned.php:35 pagebuilder/part-cover-general.php:26
+#: pagebuilder/part-cover-general.php:27
 msgid "Join us"
 msgstr "Давайте вместе!"
+
+#: pagebuilder/part-help.php:28
+msgid "Join our actions"
+msgstr "Примите участие в наших акциях"
+
+#: pagebuilder/part-help.php:32
+msgid "Become volunteer"
+msgstr "Стать волонтером"
+
+#: pagebuilder/part-help.php:43
+msgid "Support our programms"
+msgstr "Поддержите наши программы"
+
+#: pagebuilder/part-help.php:44
+msgid "Donate"
+msgstr "Помочь сейчас"
+
+#: pagebuilder/part-help.php:76
+msgid "Support us"
+msgstr "Поддержите нас"
+
+#: pagebuilder/part-help.php:86
+msgid "Corporate help"
+msgstr "Помощь компаний"
+
+#: pagebuilder/part-help.php:86
+msgid "Become partner"
+msgstr "Стать партнером"
 
 #: search.php:47
 msgid "Пожалуйста, укажите слова для поиска в форме и нажмите Enter."
@@ -294,9 +317,20 @@ msgid ""
 "иначе."
 msgstr ""
 
-#: single-landing-ecomap-2.php:53 single.php:41
+#: single-event.php:60
+msgid "Contacts"
+msgstr ""
+
+#: single-event.php:96
+msgid "Tags"
+msgstr ""
+
+#: single-landing-ecomap-2.php:54 single.php:41
 msgid "More news"
 msgstr "Еще новости"
+
+#~ msgid "Post navigation"
+#~ msgstr "Навигация по записям"
 
 #~ msgid "Page"
 #~ msgstr "Страница"
@@ -333,9 +367,6 @@ msgstr "Еще новости"
 
 #~ msgid "Diagnosis"
 #~ msgstr "Диагноз"
-
-#~ msgid "Donate"
-#~ msgstr "Помочь сейчас"
 
 #~ msgid "Thumbnail"
 #~ msgstr "Миниатюра"
@@ -492,9 +523,6 @@ msgstr "Еще новости"
 
 #~ msgid "Our programms"
 #~ msgstr "Наши программы"
-
-#~ msgid "Support us"
-#~ msgstr "Поддержите нас"
 
 #~ msgid "Our news"
 #~ msgstr "Наши новости"

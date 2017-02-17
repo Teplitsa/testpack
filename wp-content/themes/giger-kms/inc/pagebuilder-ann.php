@@ -400,3 +400,41 @@ function tst_add_doubleblock_picturepeople_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
+/** Help block **/
+add_filter( 'wds_page_builder_fields_help', 'tst_add_help_field' );
+function tst_add_help_field( $fields ) {
+
+	$prefix = "help_";
+	$new_fields = array(
+		array(
+			'name'    => 'Изображение - пожертвования',
+			'id'      => $prefix.'img1_file_id',
+			'type'    => 'file',
+			'options' => array(
+				'url' => false,
+			),
+			'text'    => array(
+				'add_upload_file_text' => 'Добавить файл'
+			),
+			//'query_args' => array(
+			//	'type' => 'application/pdf',  image
+			//),
+		),
+		array(
+			'name'    => 'Изображение - компаниям',
+			'id'      => $prefix.'img2_file_id',
+			'type'    => 'file',
+			'options' => array(
+				'url' => false,
+			),
+			'text'    => array(
+				'add_upload_file_text' => 'Добавить файл'
+			),
+			//'query_args' => array(
+			//	'type' => 'application/pdf',  image
+			//),
+		),
+	);
+
+	return array_merge( $fields, $new_fields );
+}

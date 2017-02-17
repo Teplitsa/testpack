@@ -252,7 +252,7 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	}
 	@else if $mod == cards_regular {
 		font-size: 21px;
-		line-height: 32px;
+		line-height: 1.35;
 	}
 	@else if $mod == cards_text {
 		font-size: 24px;

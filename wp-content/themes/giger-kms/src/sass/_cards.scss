@@ -133,24 +133,24 @@
 	float: left;
 
 	@include for(small-screens) {
-		width: 110px;
-		height: 110px;
+		width: 95px;
+		height: 95px;
 	}
 }
 
 .person-item__title {
-	margin-left: $base*2 + 90px;
+	margin-left: $base*2 + 80px;
 
 	@include for(small-screens) {
-		margin-left: $base*2 + 110px;
+		margin-left: $base*2 + 95px;
 	}
 }
 
 .person-item__role {
-	margin-left: $base*2 + 90px;
+	margin-left: $base*2 + 80px;
 
 	@include for(small-screens) {
-		margin-left: $base*2 + 110px;
+		margin-left: $base*2 + 95px;
 	}
 }
 
@@ -167,10 +167,10 @@
 //single centered
 .singleblock-text {
 	text-align: center;
-	padding: $base*5 0;
+	padding: $base*6 0;
 
 	@include for(medium-screens) {
-		padding: $base*8 0;
+		padding: $base*12 0;
 	}
 
 	.card--text {
@@ -187,8 +187,12 @@
 //news
 .news-block__title {
 	@include block-title();
-	padding: $base*5 0;
+	padding: $base*6 0 $base*5;
 	text-align: center;
+
+	@include for(medium-screens) {
+		padding-top: $base*12;
+	}
 }
 .card--news {
 	a {
@@ -222,13 +226,26 @@
 			padding: 0 $base*3 $base*3;
 		}
 	}
+}
 
 
+//рудз
+.help-block__title {
+	@extend .news-block__title;
+}
 
-	&.card--colored {
+.card__button {
+	@include button();
+	margin-top: $base;
 
+	//colors are temp
+	background: $color-link-one;
+
+	.card--colored & {
+		background: $color-secondary-dark;
 	}
 }
+
 
 
 

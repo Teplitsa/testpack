@@ -148,7 +148,7 @@ function tst_news_card($cpost, $mod = 'pictured') {
 	</div>
 
 	<div class="card__summary">
-		<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost)); ?>
+		<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost, 20)); ?>
 	</div>
 
 	<div class="card__meta">
