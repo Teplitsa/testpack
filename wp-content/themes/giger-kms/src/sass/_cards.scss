@@ -163,6 +163,23 @@
 	}
 }
 
+.card--person {
+	.person-item__thumbnail  { float: none; }
+	.person-item__title,
+	.person-item__role { margin: $base*2 0 0; }
+
+	.flex-column-centered {
+		padding: $base*5 0 $base*5 $base*5;
+		height: 100%;
+		justify-content: flex-start;
+	}
+
+	.row-reverse & .flex-column-centered {
+		padding-left: 0;
+		padding-right: $base*5;
+	}
+}
+
 
 //single centered
 .singleblock-text {
