@@ -128,6 +128,38 @@ function tst_card_text_markup($args = array()) {
 }
 
 
+/** by type **/
+function tst_news_card($cpost, $mod = 'pictured') {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+?>
+<a href="<?php echo $pl;?>" class="card-link">
+
+	<?php if($mod == 'pictured' && has_post_thumbnail($cpost)) { ?>
+		<div class="card__thumbnail">
+			<?php echo get_the_post_thumbnail($cpost, "block-small"); ?>
+		</div>
+	<?php } ?>
+
+	<div class="card__title">
+		<h4><?php echo apply_filters('tst_the_title', get_the_title($cpost));?></h4>
+	</div>
+
+	<div class="card__summary">
+		<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost)); ?>
+	</div>
+
+	<div class="card__meta">
+		<?php echo get_the_date('d.m.Y', $cpost); ?>
+	</div>
+
+</a>
+<?php
+}
+
+
 function tst_person_card($cpost) {
 
 	if(is_int($cpost))
@@ -215,61 +247,11 @@ function tst_cell(WP_Post $cpost) {
 <?php
 }
 
-function tst_project_cell(WP_Post $cpost) {
-
-	$ex = tst_get_post_excerpt($cpost, 25);
-
-?>
-	<article class="cell cell--project">
-		<h4 class="cell__title cell__title--project">
-			<?php echo get_the_title($cpost);?>
-		</h4>
-		<div class="cell__subtitle"><?php echo apply_filters('tst_the_title', $ex);?></div>
-		<div class="cell__text cell__text--project">
-			<?php echo apply_filters('tst_the_content', $cpost->post_content);?>
-		</div>
-
-	</article>
-<?php
-}
-
-function tst_card(WP_Post $cpost, $show_icon = true) {
-
-	$pl = get_permalink($cpost);
-	$thumb_mark = tst_get_card_icon($cpost);
-	$css = 'has-icon';
 
 
-	if(!$show_icon || empty($thumb_mark)){
-		$css = 'has-thumb';
 
-		$thumb_args = array(
-			'placement_type'	=> 'small-medium-small-small-small',
-			'aspect_ratio' 		=> 'standard',
-			'crop' 				=> 'fixed'
-		);
 
-		$thumb_mark = tst_get_post_thumbnail_picture($cpost, $thumb_args);
-		$thumb_mark = "<div class='card__thumb'>{$thumb_mark}</div>";
-	}
 
-?>
-<article class="card <?php echo $css;?>"><a href="<?php echo $pl;?>" class="card__link">
-	<?php echo $thumb_mark;?>
-	<h4 class="card__title"><?php echo get_the_title($cpost);?></h4>
-</a></article>
-<?php
-}
-
-function tst_news_card() {
-
-?>
-<article class="card has-icon card--news"><a href="<?php echo home_url('news');?>" class="card__link">
-	<div class='card__icon'><i class='material-icons'>receipt</i></div>
-	<h4 class="card__title"><?php _e('News', 'tst');?></h4>
-</a></article>
-<?php
-}
 
 /** == Helpers == **/
 

@@ -333,15 +333,14 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	//widgets, sub-sections
 	font-family: $heading_fb;
 	font-weight: 700;
-	text-transfotm: uppercase;
-	color: $color-text-black;
+	text-transform: uppercase;
 
 	.bwsurco & {
 		font-family: $heading;
 	}
 
-	font-size: 36px;
-	line-height: 44px;
+	font-size: 32px;
+	line-height: 40px;
 
 }
 

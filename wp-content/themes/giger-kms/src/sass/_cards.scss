@@ -184,6 +184,52 @@
 }
 
 
+//news
+.news-block__title {
+	@include block-title();
+	padding: $base*5 0;
+	text-align: center;
+}
+.card--news {
+	a {
+		height: 100%;
+		position: relative;
+		padding-bottom:  $base*6;
+	}
+
+	.card__title {
+
+	}
+
+	.card__summary {
+		@include body-text();
+		color: $color-white;
+	}
+
+	.card__meta {
+		@include sub-title();
+		color: $color-white;
+		position: absolute;
+		bottom: $base*3;
+		left: $base*3;
+	}
+
+	&.card--item {
+		.card__title {
+			padding: $base*3 $base*3 0 $base*3;
+		}
+		.card__summary {
+			padding: 0 $base*3 $base*3;
+		}
+	}
+
+
+
+	&.card--colored {
+
+	}
+}
+
 
 
 /**  Thumbnails OLD **/
