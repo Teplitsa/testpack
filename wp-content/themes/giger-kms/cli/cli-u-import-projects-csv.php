@@ -9,7 +9,10 @@ ini_set('memory_limit','512M');
 try {
     $time_start = microtime(true);
     include('cli_common.php');
-
+    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+    require_once( ABSPATH . 'wp-admin/includes/image.php' );
+    require_once( ABSPATH . 'wp-admin/includes/media.php' );
+    
     echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
     global $wpdb;
@@ -35,21 +38,22 @@ try {
             $post_title = trim( strip_tags( $line[0] ) );
             $post_content = strip_tags( $line[1] );
             $post_type = 'project';
-            $slug = $line[2];
-            $parent_project = $line[3] == 'none' ? '' : $line[3];
-            $thumbnail_url = $line[4];
-            $menu_order = $line[5];
-            $tags = $line[6];
+            $slug = trim( $line[2] );
+            $parent_project = tst_get_csv_noneable_val( $line[3] );
+            $thumbnail_url = tst_get_csv_noneable_val( $line[4] );
+            $menu_order = trim( $line[5] );
+            $tags = trim( $line[6] );
             
-            $department = $line[7] == 'none' ? '' : $line[7];
-            $direction = $line[8] == 'none' ? '' : $line[8];
-            $problem = $line[9] == 'none' ? '' : $line[9];
-            $documents_urls = $line[10];
+            $department = tst_get_csv_noneable_val( $line[7] );
+            $direction = tst_get_csv_noneable_val( $line[8] );
+            $problem = tst_get_csv_noneable_val( $line[9] );
+            $documents_urls = tst_get_csv_noneable_val( $line[10] );
+            
             $documents_urls = explode( ",", $documents_urls );
             
             printf( "title: %s, slug: %s, type: %s\n", $post_title, $slug, $post_type );
             
-            $parent_post = $parent_project ? get_page_by_path( $parent_project, OBJECT, $parent_project ) : NULL;
+            $parent_post = $parent_project ? get_page_by_path( $parent_project, OBJECT, $post_type ) : NULL;
             $exist_post = $slug ? get_page_by_path( $slug, OBJECT, $post_type ) : NULL;
             
             $parent_post_id = $parent_post ? $parent_post->ID : 0;
@@ -85,31 +89,48 @@ try {
             $post_id = wp_insert_post($post_arr);
             
             if( $post_id ) {
+                p2p_type( 'landing_project' )->disconnect( $landing->ID, $post_id );
+                
                 if( $department ) {
-                    update_post_meta( $post_id, 'landing_department', $department );
+                    $landing = tst_get_pb_post( $department, 'landing' );
+                    if( $landing ) {
+                        p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'department' ) );
+                    }
                 }
                 
                 if( $direction ) {
-                    update_post_meta( $post_id, 'landing_direction', $direction );
+                    $landing = tst_get_pb_post( $direction, 'landing' );
+                    if( $landing ) {
+                        p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'direction' ) );
+                    }
                 }
                 
                 if( $problem ) {
-                    update_post_meta( $post_id, 'landing_problem', $problem );
+                    $landing = tst_get_pb_post( $problem, 'landing' );
+                    if( $landing ) {
+                        p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'problem' ) );
+                    }
                 }
                 
                 printf( "thumbnail_url: %s\n", $thumbnail_url );
-                $thumbnail_id = TST_Import::get_instance()->maybe_import( $thumbnail_url );
+                if( $thumbnail_url ) {
+                    $thumbnail_id = TST_Import::get_instance()->maybe_import( $thumbnail_url );
+                }
                 if( $thumbnail_id ) {
+                    printf( "set post thumbnail: %d\n", $thumbnail_id );
                     set_post_thumbnail( $post_id, $thumbnail_id );
                 }
                 
-                foreach( $documents_urls as $doc_url ) {
-                    $doc_url = trim( $doc_url );
-                    $doc_id = TST_Import::get_instance()->maybe_import( $doc_url );
-                    if( $doc_id ) {
-                        p2p_type( 'connected_attachments' )->connect( $post_id, $doc_id );
-                    }
-                }
+//                 foreach( $documents_urls as $doc_url ) {
+//                     $doc_url = trim( $doc_url );
+//                     if( $doc_url ) {
+//                         printf( "doc url: %s\n", $doc_url );
+//                         $doc_id = TST_Import::get_instance()->maybe_import( $doc_url );
+//                         if( $doc_id ) {
+//                             p2p_type( 'connected_attachments' )->connect( $post_id, $doc_id );
+//                         }
+//                     }
+//                 }
             }
             
             unset( $line );
@@ -117,7 +138,7 @@ try {
             
 			wp_cache_flush();
 			$count++;
-            
+			
  		}
 	}
 
@@ -135,4 +156,8 @@ catch (TstCLIHostNotSetException $ex) {
 }
 catch (Exception $ex) {
 	echo $ex;
+}
+
+function tst_get_csv_noneable_val( $val ) {
+    return trim( $val ) == 'none' ? '' : trim( $val );
 }

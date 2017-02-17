@@ -430,7 +430,70 @@ class TST_Media {
 		return $attachment_id;
 	}
 
+	function upload_file_from_path( $path ) {
+	    $attachment_id = 0;
 
+		if ( !file_exists( $path ) ) {
+			return $attachment_id;
+		}
+		
+		$filename = basename( $path );
+		$filename_no_ext = pathinfo( $path, PATHINFO_FILENAME );
+		$extension = pathinfo( $path, PATHINFO_EXTENSION );
+		
+		#$file_info = new finfo( FILEINFO_MIME );
+		#$mime_type = $file_info->buffer( file_get_contents( $path, false, null, 0, 1000 ) );
+		$mime_type = mime_content_type( $path );
+		
+// 		echo $mime_type . "\n";
+		
+		$tmp_path = $path;
+// 		$tmp = tmpfile();
+// 		$tmp_path = stream_get_meta_data($tmp)['uri'];
+// 		fwrite($tmp, file_get_contents( $path ));
+// 		fseek($tmp, 0); // If we don't do this, WordPress thinks the file is empty
+//		fseek( $path, 0 );
+		
+		$fake_FILE = array(
+			'name' => $filename,
+			'type' => $mime_type,
+			'tmp_name'=> $tmp_path,
+			#'error' => UPLOAD_ERR_OK,
+			'size' => filesize( $tmp_path ),
+		);
+		
+		$_FILES['file'] = $fake_FILE;
+// 		print_r( $_FILES['file'] ); echo "\n";
+		
+		$result = wp_handle_upload( $_FILES['file'], array( 'test_form' => false, 'action' => 'local' ) );
+		
+// 		print_r( $result ); echo "\n";
+		
+		unset( $_FILES[basename($tmp_path)] );
+		
+		if( empty( $result['error'] ) ) {
+			$args = array(
+				'post_title' => $filename_no_ext,
+				'post_content' => '',
+				'post_status' => 'publish',
+				'post_mime_type' => $result['type'],
+			);
+			$attachment_id = wp_insert_attachment( $args, $result['file'] );
+			
+			if( is_wp_error( $attachment_id ) ) {
+			    $attachment_id = false;
+			}
+			else {
+				$attach_data = wp_generate_attachment_metadata( $result['attachment_id'], $result['file'] );
+				wp_update_attachment_metadata( $result['attachment_id'], $attach_data );
+			}
+		}
+		else {
+		    print_r( $result ); echo "\n";
+		}
+		
+		return $attachment_id;
+	}
 
 }  //class
 
@@ -442,6 +505,12 @@ function tst_upload_img_from_path($path) {
 
 	$mnt = TST_Media::get_instance();
 	return $mnt->upload_img_from_path($path);
+}
+
+function tst_upload_file_from_path( $path ) {
+
+	$mnt = TST_Media::get_instance();
+	return $mnt->upload_file_from_path( $path );
 }
 
 function tst_register_uploaded_file($path) {
