@@ -200,7 +200,12 @@ a:link {
 	ul + p,
 	ol + p { margin-top:  $inpage-margin-base }
 
-
+	blockquote {
+		border-left: 2px solid $leaf;
+		padding-left: $inpage-margin-base;
+		color: $moss;
+		font-style: italic;
+	}
 	//in text shortcodes
 	
 	

@@ -31,10 +31,27 @@
 
 /* *Single Person* */
 .single-person {
-    margin-top: $base*3;
+    margin-top: $base*2;
     
     .single-person-item {
-
+        
+        .back_to_list {
+            
+            &:before {
+                content: "\2190";
+                display: inline-block;
+                font-size: 18px;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            
+            &:after {
+                display: block;
+                margin-bottom: $base;
+                content: "";
+            }
+        }
+        
         .single-person-item__thumbnail {
             float: right;
             margin: $base*3;
@@ -51,4 +68,16 @@
         
     }
     
+}
+.back_to_list {
+    
+}
+
+blockquote {
+    border-left: 2px solid $leaf;
+    padding-left: $inpage-margin-base;
+    color: $moss;
+    font-style: italic;
+    margin: $inpage-margin-base $inpage-baseline ;
+
 }
