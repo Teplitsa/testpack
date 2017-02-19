@@ -1,4 +1,4 @@
-
+/*
 .main .nav-links {
     padding: 10px;
 }
@@ -27,4 +27,28 @@
 .sr-num {
 	font-size: .8em;
 	text-align: right;
+}*/
+
+/* *Single Person* */
+.single-person {
+    margin-top: $base*3;
+    
+    .single-person-item {
+
+        .single-person-item__thumbnail {
+            float: right;
+            margin: $base*3;
+        }
+        
+        .single-person-item__title{
+            @include post-title(cards_text);
+        }
+        
+        .single-person-item__role {
+            @include nav-text(cta_link);
+            margin-bottom: $base*3;
+        }
+        
+    }
+    
 }

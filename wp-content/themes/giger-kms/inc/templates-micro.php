@@ -180,6 +180,31 @@ function tst_person_card($cpost) {
 <?php
 }
 
+function tst_single_person_card($cpost) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+
+	$name = apply_filters('tst_the_title', $cpost->post_title);
+	$role = apply_filters('tst_the_title', $cpost->post_excerpt);
+
+	$thumb = get_the_post_thumbnail($cpost, 'thumbnail');
+	
+	$content = $cpost->post_content;
+?>
+<article class="single-person-item">
+	<div class="single-person-item__thumbnail"><?php echo $thumb;?></div>
+	<h4 class="single-person-item__title"><a href="<?php echo get_permalink($member);?>"><?php echo $name;?></a></h4>
+	<div class="single-person-item__role"><?php echo $role;?></div>
+	<div class="single-person-item__content">
+		<?php echo $content;?>
+	</div>
+</article>
+
+<?php
+}
+
 
 
 
