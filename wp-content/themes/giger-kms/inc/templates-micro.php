@@ -267,6 +267,17 @@ function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 
 	return $e;
 }
+/** short title **/
+function tst_get_post_title_excerpt($cpost, $l = 30, $force_l = false){
+
+	if(is_string($cpost))
+		$cpost = get_post($cpost);
+	$e = (!empty($cpost->post_title)) ? $cpost->post_title : wp_trim_words(strip_shortcodes($cpost->post_content), $l);
+	if($force_l)
+		$e = wp_trim_words($e, $l);
+
+	return $e;
+}
 
 function tst_get_tags_list(WP_Post $cpost) {
 
@@ -300,12 +311,11 @@ function tst_card_search(WP_Post $cpost) {
 	$pl = get_permalink($cpost);
 	$tags = tst_get_tags_list($cpost);
 	$cats = tst_get_search_cats($cpost);
-
-
+// var_dump($tags);
 ?>
 <article class="cell">
 	<h4 class="card-search__title cell__title">
-		<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
+		<a href="<?php echo $pl;?>"><?php echo tst_get_post_title_excerpt($cpost, 30, true);?></a>
 	</h4>
 	<?php if(!empty($cats)) { ?>
 		<div class="card-search__meta"><?php echo $cats;?></div>
@@ -324,33 +334,31 @@ function tst_get_search_cats(WP_Post $cpost) {
 	$list = array();
 
 	if(!empty($terms)){ foreach($terms as $t) {
-		if($t->slug == 'about'){
-			$list[] = "<a href='".home_url('about-us')."'>О нас</a>";
-		}
-		else {
-			$list[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
-		}
+		$list[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
 	}}
-	elseif($cpost->post_type == 'book') {
-		$item = get_page_by_title('Книги и брошюры', OBJECT, 'item');
-		if($item)
-			$list[] = "<a href='".get_permalink($item)."'>".apply_filters('tst_the_title', $item->post_title)."</a>";
+	elseif($cpost->post_type == 'landing') {
+		$list[] = "<a href='".home_url('landing')."'>Лендинги</a>";
 	}
 	elseif($cpost->post_type == 'project') {
-		$item = get_page_by_title('Проекты', OBJECT, 'page');
-		if($item)
-			$list[] = "<a href='".get_permalink($item)."'>".apply_filters('tst_the_title', $item->post_title)."</a>";
+		$list[] = "<a href='".home_url('project')."'>Проекты</a>";
 	}
-	elseif($cpost->post_type == 'story') {
-		$list[] = "<a href='".home_url('stories')."'>Истории</a>";
+	elseif($cpost->post_type == 'event') {
+		$list[] = "<a href='".home_url('event')."'>Анонсы</a>";
 	}
-
-
-
+	elseif($cpost->post_type == 'person') {
+		$list[] = "<a href='".home_url('person')."'>Люди</a>";
+	}
+	elseif($cpost->post_type == 'archive_page') {
+		$list[] = "<a href='".home_url('person')."'>Архив</a>";
+	}
+	elseif($cpost->post_type == 'marker') {
+		$list[] = "<a href='".home_url('person')."'>Маркеры</a>";
+	} else {
+		$list[] = "<a href='".home_url('news')."'>Новости</a>";
+	}
 
 	$out = (!empty($list)) ? "<span class='category'>".implode(',', $list)."</span>" : '';
 	return $out;
-
 }
 
 /** Events */
