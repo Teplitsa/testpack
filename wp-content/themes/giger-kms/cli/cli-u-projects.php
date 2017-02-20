@@ -140,10 +140,14 @@ try {
 
 				$item = get_posts(array('post_type' => 'landing', 'posts_per_page' => 1, 'name' => $l_slug));
 				if($item) {
-					$c = p2p_type('landing_project')->connect($item[0]->ID, $uid, array('date' => current_time('mysql')));
-					if(!is_wp_error($c)){
-						$c_count++;
-					}
+				    if( !p2p_connection_exists( 'landing_project', array( 'from' => $item[0]->ID, 'to' => $uid ) ) ) {
+				        
+				        $c = p2p_type('landing_project')->connect($item[0]->ID, $uid, array('date' => current_time('mysql')));
+				        if( !is_wp_error( $c ) ) {
+				            $c_count++;
+				        }
+				        
+				    }
 				}
 			}}
 

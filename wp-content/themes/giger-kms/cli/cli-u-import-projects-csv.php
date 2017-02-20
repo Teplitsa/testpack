@@ -91,26 +91,43 @@ try {
             $post_id = wp_insert_post($post_arr);
             
             if( $post_id ) {
-//                 p2p_type( 'landing_project' )->disconnect( $landing->ID, $post_id );
                 
                 if( $department ) {
                     $landing = tst_get_pb_post( $department, 'landing' );
                     if( $landing ) {
-//                         p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'department' ) );
+                        if( p2p_connection_exists( 'landing_project', array( 'from' => $landing->ID, 'to' => $post_id ) ) ) {
+                            printf( "connection exist - DEPARTMENT\n" );
+                        }
+                        else {
+                            printf( "create connection - DEPARTMENT\n" );
+                            p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'department' ) );
+                        }
                     }
                 }
                 
                 if( $direction ) {
                     $landing = tst_get_pb_post( $direction, 'landing' );
                     if( $landing ) {
-//                         p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'direction' ) );
+                        if( p2p_connection_exists( 'landing_project', array( 'from' => $landing->ID, 'to' => $post_id ) ) ) {
+                            printf( "connection exits - DIRECTION\n" );
+                        }
+                        else {
+                            printf( "create connection - DIRECTION\n" );
+                            p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'direction' ) );
+                        }
                     }
                 }
                 
                 if( $problem ) {
                     $landing = tst_get_pb_post( $problem, 'landing' );
                     if( $landing ) {
-//                         p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'problem' ) );
+                        if( p2p_connection_exists( 'landing_project', array( 'from' => $landing->ID, 'to' => $post_id ) ) ) {
+                            printf( "connection exits - PROBLEM\n" );
+                        }
+                        else {
+                            printf( "create connection - PROBLEM\n" );
+                            p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'problem' ) );
+                        }
                     }
                 }
                 
@@ -129,6 +146,12 @@ try {
                 if( $thumbnail_id ) {
                     printf( "set post thumbnail: %d\n", $thumbnail_id );
                     set_post_thumbnail( $post_id, $thumbnail_id );
+                }
+                
+                //add tags
+                if( !empty( $tags ) && $tags != 'none' ) {
+                    wp_set_post_terms((int)$post_id, $tags, 'project_cat', false);
+                    wp_cache_flush();
                 }
                 
 //                 foreach( $documents_urls as $doc_url ) {
