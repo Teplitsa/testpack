@@ -32,13 +32,13 @@ get_header();?>
                     <div class="single-body--entry">
                         <?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
                         <?php
-                            $excluded_groups = get_terms(array(
+                            $included_groups = get_terms(array(
                                 'taxonomy' => 'marker_cat',
                                 'hide_empty' => false,
-                                'name' => array('Архив', 'Решенные проблемы'),
+                                'name' => array('Проблемы', /*'Решенные проблемы'*/),
                                 'fields' => 'ids',
                             ));
-                            echo do_shortcode('[tst_markers_map groups_excluded_ids="'.implode(',', $excluded_groups).'"]');
+                            echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'"]');
                             echo do_shortcode('[formidable id=6]');
                         ?>
                     </div>
