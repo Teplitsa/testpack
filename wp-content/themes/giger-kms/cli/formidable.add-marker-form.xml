@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/4.7.2" created="2017-02-16 12:21" -->
+<!-- generator="WordPress/4.7.2" created="2017-02-20 14:36" -->
 
 <channel>
 	<title>Дронт</title>
-	<pubDate>Thu, 16 Feb 2017 12:21:46 +0000</pubDate>
+	<pubDate>Mon, 20 Feb 2017 14:36:14 +0000</pubDate>
 
 	<form>
 		<id>5</id>
@@ -32,25 +32,12 @@
             <field_options><![CDATA[{"size":"","max":"","label":"top","blank":"","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":0,"default_blank":0,"classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field frm_section_heading form-field[error_class]\\\">\r\n<h3 class=\\\"frm_pos_[label_position][collapse_class]\\\">[field_name]<\/h3>\r\n[if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n[collapse_this]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u043c","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"in_section":"0","custom_field":"","post_field":"","taxonomy":"category","exclude_cat":0}]]></field_options>
 		</field>
 		<field>
-		    <id>64</id>
-            <field_key><![CDATA[rs02s]]></field_key>
-            <name><![CDATA[Название проблемы]]></name>
-            <description><![CDATA[]]></description>
-            <type><![CDATA[text]]></type>
-            <default_value><![CDATA[Укажите название проблемы]]></default_value>
-            <field_order>1</field_order>
-            <form_id>5</form_id>
-            <required>1</required>
-            <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"\u041f\u043e\u043b\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"1","default_blank":"1","classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"70","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"","post_field":"post_title","taxonomy":"category","exclude_cat":0}]]></field_options>
-		</field>
-		<field>
 		    <id>65</id>
             <field_key><![CDATA[vebl6]]></field_key>
             <name><![CDATA[Описание проблемы]]></name>
             <description><![CDATA[]]></description>
             <type><![CDATA[textarea]]></type>
-            <default_value><![CDATA[Опишите проблему]]></default_value>
+            <default_value><![CDATA[Расскажите о проблеме]]></default_value>
             <field_order>2</field_order>
             <form_id>5</form_id>
             <required>1</required>
@@ -125,28 +112,15 @@
 		<field>
 		    <id>75</id>
             <field_key><![CDATA[3k2dq]]></field_key>
-            <name><![CDATA[Контактный номер телефона]]></name>
-            <description><![CDATA[]]></description>
-            <type><![CDATA[phone]]></type>
-            <default_value><![CDATA[]]></default_value>
+            <name><![CDATA[Как с вами связаться?]]></name>
+            <description><![CDATA[Мы используем их только чтобы связаться с вами для уточнения деталей проблемы]]></description>
+            <type><![CDATA[text]]></type>
+            <default_value><![CDATA[Укажите ваш email или номер тел. в формате +7хххххххххх]]></default_value>
             <field_order>8</field_order>
-            <form_id>5</form_id>
-            <required>0</required>
-            <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"115px","max":"","label":"","blank":"\u041f\u043e\u043b\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c","required_indicator":"*","invalid":"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u043d\u044b\u0439 \u043d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0430 is invalid","separate_value":0,"clear_on_focus":"0","default_blank":"0","classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"72","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"marker_contact_phone","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
-		</field>
-		<field>
-		    <id>76</id>
-            <field_key><![CDATA[3rwar]]></field_key>
-            <name><![CDATA[Email]]></name>
-            <description><![CDATA[]]></description>
-            <type><![CDATA[email]]></type>
-            <default_value><![CDATA[]]></default_value>
-            <field_order>9</field_order>
             <form_id>5</form_id>
             <required>1</required>
             <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"\u041f\u043e\u043b\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c","required_indicator":"*","invalid":"Email is invalid","separate_value":0,"clear_on_focus":"0","default_blank":"0","classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"72","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"marker_contact_email","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
+            <field_options><![CDATA[{"size":"115px","max":"","label":"","blank":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0443\u043a\u0430\u0436\u0438\u0442\u0435 \u0432\u0430\u0448 \u043d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0430 \u0438\u043b\u0438 email.","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"0","default_blank":"0","classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"72","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"marker_contacts","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
 		</field>
 		<field>
 		    <id>66</id>
@@ -204,7 +178,7 @@
 		<link></link>
 		<post_author><![CDATA[ahaenor]]></post_author>
 		<description></description>
-		<content><![CDATA[{"post_type":"marker","post_title":"64","post_content":"65","display_id":"","post_excerpt":"","post_password":"","post_name":"","post_date":"","post_status":"","post_custom_fields":[{"meta_name":"marker_address","field_id":"78"},{"meta_name":"marker_contact_fullname","field_id":"67"},{"meta_name":"marker_contact_phone","field_id":"75"},{"meta_name":"marker_contact_email","field_id":"76"},{"meta_name":"marker_photos","field_id":"69"}],"event":["create","update","import"],"conditions":{"send_stop":"send","any_all":"any"}}]]></content>
+		<content><![CDATA[{"post_type":"marker","post_title":"","post_content":"65","display_id":"","post_excerpt":"","post_password":"","post_name":"","post_date":"","post_status":"","post_custom_fields":{"marker_address":{"meta_name":"marker_address","field_id":"78"},"marker_contact_fullname":{"meta_name":"marker_contact_fullname","field_id":"67"},"marker_contact_phone":{"meta_name":"marker_contacts","field_id":"75"},"marker_photos":{"meta_name":"marker_photos","field_id":"69"}},"event":["create","update","import"],"conditions":{"send_stop":"send","any_all":"any"}}]]></content>
 		<excerpt><![CDATA[wppost]]></excerpt>
 		<post_id>6859</post_id>
 		<post_date>2017-02-16 13:29:24</post_date>
