@@ -5,7 +5,7 @@
 ",Tagline,"Fulltext
 ","Содержание
 "
-1,Наша работа,our-work,Наша работа,section archive,,-,"Обложка, плитка видов работ, иконки,
+1,Наша работа,work,Наша работа,section archive,,-,"Обложка, плитка видов работ, иконки,
 последние новости анонсы публикации"
 2,Мероприятия,events,Наша работа,landing,,-,Анонсы будущие / прошедшие
 3,Экоправо,dront-ecopravo,Наша работа,landing,,ecopravo.txt,
@@ -42,7 +42,7 @@
 34,Наши люди,team,О нас,page,,-,
 35,Отчеты,reports,О нас,page,,-,
 36,Контакты,contacts,О нас,page,,contacts.txt,
-37,Как помочь,how-to-help,Как помочь,section archive,,how-to-help.txt,
+37,Как помочь,supportus,Как помочь,section archive,,how-to-help.txt,
 38,Сделать пожертвоание,donate,Как помочь,leyka_campaign,,-,
 39,Стань волонтером,volunteer,Как помочь,page,,volunteer.txt,
 40,Помощь компаний,corporate,Как помочь,page,,corporate.txt,

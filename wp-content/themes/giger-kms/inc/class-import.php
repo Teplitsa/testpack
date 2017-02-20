@@ -211,6 +211,17 @@ if( !class_exists('TST_Import') ) {
             
             return $attachment_id;
         }
+        
+        public function import_local_file( $path ) {
+            
+            $attachment_id = tst_upload_file_from_path( $path );
+            
+            if( $attachment_id ) {
+                update_post_meta( $attachment_id, 'old_url', $path );
+            }
+            
+            return $attachment_id;
+        }
 
         public function import_file_from_path($path) {
 
@@ -673,6 +684,13 @@ if( !class_exists('TST_Import') ) {
         
             return $attachment_id;
         }
+        
+        public function maybe_import_local_file( $filename ) {
+            $exist_attachment = TST_Import::get_instance()->get_attachment_by_old_url( $filename );
+            $thumbnail_id = $exist_attachment ? $exist_attachment->ID : TST_Import::get_instance()->import_local_file( $filename );
+            return $thumbnail_id;
+        }
+        
         
     } //class TST_Import
 

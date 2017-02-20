@@ -34,15 +34,20 @@ try {
 		if($i == 0)
 			continue;
 
+			
+			
+		$post_name = trim($line[2]);
+		$exist_page = tst_get_pb_post( $post_name, 'project' );
+			
 		$page_data = array();
 
-		$page_data['ID'] = 0;
+		$page_data['ID'] = $exist_page ? $exist_page->ID : 0;
 		$page_data['post_type'] = 'project';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_excerpt'] = '';
 
 		$page_data['post_title']	= $line[0];
-		$page_data['post_name'] 	= trim($line[2]);
+		$page_data['post_name'] 	= $post_name;
 		$page_data['menu_order']	= (int)$line[5];
 
 		//content

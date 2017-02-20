@@ -73,11 +73,11 @@ try {
             }
             
             $parent_post = NULL;
-            $exist_post = $slug ? get_page_by_path( $slug, OBJECT, $post_type ) : NULL;
+            $exist_post = $slug ? tst_get_pb_post( $slug, $post_type ) : NULL;
             
             $parent_post_id = $parent_post ? $parent_post->ID : 0;
             
-            $fulltext_file_path = dirname( __FILE__ ) . '/' . $fulltext_file_name;
+            $fulltext_file_path = dirname( __FILE__ ) . '/data/' . $fulltext_file_name;
             $post_content = file_exists( $fulltext_file_path ) ? file_get_contents( $fulltext_file_path ) : '';
             
 			$post_arr = array(
@@ -94,6 +94,16 @@ try {
 // 			print_r( $post_arr );
             
             $post_id = wp_insert_post($post_arr);
+            
+            if( $post_type == 'landing' ) {
+                $section_term = get_term_by( 'slug', $section, 'section' );
+                if( $section_term ) {
+                    wp_set_post_terms( $post_id, $section_term->term_id );
+                }
+                else {
+                    printf( "section not found: %s\n", $section );
+                }
+            }
             
             unset( $line );
             unset( $post_arr );

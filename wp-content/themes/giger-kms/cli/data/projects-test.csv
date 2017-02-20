@@ -1,5 +1,5 @@
 Title,Content,"Slug
-",Parent,Thumbnail,Menu order,Теги,Подразделение,Направление,Проблема,Документы
+",Parent,Thumbnail,Menu order,Теги,Подразделение,Направление,Проблема,Документы,,,,,
 "Подписка на свежие номера
 ","<p>Вы можете подписаться на печатный вариант газеты в редакции. Стоимость подписки с рассылкой по России за один экземпляр — 40 руб., на полгода — 250 руб., на год — 500 руб.</p>
 <p>Стоимость отправки одного экземпляра в ближнее зарубежье — 60 руб., в дальнее — 75 руб.</p>
@@ -11,34 +11,37 @@ Title,Content,"Slug
 <p>В назначении платежа укажите адрес, по которому нужно высылать газету.</p>",bereginya-subscribe,none,"http://dront.ru/images/obereg/eco-gorod-eco-dom/2013/Image47.jpg
 ",0,"берегиня
 ",dront-bereginya,dront-publications,none,"none
-"
+",,,,,
 Что мы делаем,obereg.txt,"obereg-activity
 ",none,http://dront.ru/images/obereg/lesnaya-olimpiada/2005/09_big.jpg,90,"оберег,деятельность
-",dront-obereg,none,none,"http://dront.ru/files/obereg/reports/Otchot-Obereg-2015.doc,http://dront.ru/files/reports/2014/Otchot-Obereg-2014.doc,http://dront.ru/files/obereg/reports/Obereg Report 202013.doc,http://dront.ru/files/obereg/reports/obereg-report-2012.doc"
+",dront-obereg,none,none,http://dront.ru/files/obereg/reports/Otchot-Obereg-2015.doc,http://dront.ru/files/reports/2014/Otchot-Obereg-2014.doc,http://dront.ru/files/obereg/reports/Obereg Report 202013.doc,http://dront.ru/files/obereg/reports/obereg-report-2012.doc,,
 "Конкурс ""Экогород. Экодом""","<p>Областной конкурс молодежных экологических проектов проводится с 2006 года. Одной из важнейших задач конкурса является привлечение внимания подрастающего поколения к возможностям применения новых экологически чистых технологий в строительстве.</p>
 <p>Организаторы конкурса: Министерство экологии и природных ресурсов Нижегородской области, Экологический центр «Дронт», редакция журнала «Умный дом», видеожурнал «Строй», архитектурно-ландшафтный центр «Архиленд», общественная организация «Зеленый мир», и другие. Среди участников конкурса и школьники, и студенты средних и высших учебных заведений, в том числе профильных (строительных). </p>
 <p>Итоги конкурса традиционно подводятся на форуме «Великие реки». Это делается не случайно. Экологический Форум «Великие Реки» проходит вместе с Архитектурно-строительным форумом, поэтому проекты детей могут увидеть и профессиональные строители и архитекторы. А дети, в свою очередь, могут познакомиться с современными технологиями строительства и энергосбережения.</p>","ecodom-konkurs
 ",none,"http://dront.ru/images/obereg/eco-gorod-eco-dom/2012/IMG_2843.jpg
-",100,"оберег,конкурсы",dront-obereg,dront-education,none,"http://dront.ru/files/obereg/eco-gorod-eco-dom-books.rar,http://dront.ru/files/competition/ecogorod-ecodom/2015/Polozheniye-Ekogorod.doc,http://dront.ru/files/competition/ecogorod-ecodom/2015/Pustynskaya-biostantsiya.doc"
+",100,оберег,конкурсы,dront-obereg,dront-education,none,http://dront.ru/files/obereg/eco-gorod-eco-dom-books.rar,http://dront.ru/files/competition/ecogorod-ecodom/2015/Polozheniye-Ekogorod.doc,http://dront.ru/files/competition/ecogorod-ecodom/2015/Pustynskaya-biostantsiya.doc,,
 "2015. Экогород.Экодом
 ",import | http://dront.ru/news/1901/,ecodom-2015,"ecodom-konkurs
 ","http://dront.ru/images/obereg/eco-gorod-eco-dom/2013/Image24.jpg
-",0,"оберег,конкурсы,итоги",dront-obereg,none,none,"http://dront.ru/files/competition/ecogorod-ecodom/2015/Polozheniye-Ekogorod.doc,http://dront.ru/files/competition/ecogorod-ecodom/2015/Pustynskaya-biostantsiya.doc"
+",0,оберег,конкурсы,итоги,dront-obereg,none,none,http://dront.ru/files/competition/ecogorod-ecodom/2015/Polozheniye-Ekogorod.doc,http://dront.ru/files/competition/ecogorod-ecodom/2015/Pustynskaya-biostantsiya.doc,,
 "2014. Экогород.Экодом
 ",import | http://dront.ru/news/1119/,ecodom-2014,"ecodom-konkurs
 ","http://dront.ru/images/obereg/eco-gorod-eco-dom/2013/Image52.jpg
-",0,"оберег,конкурсы,итоги",dront-obereg,none,none,"http://dront.ru/files/competition/ecogorod-ecodom/2013/Polozheniye_Ekogorod_2013-14.doc,http://dront.ru/files/competition/ecogorod-ecodom/2013/Metodich_posobiye_uchastnikam.doc"
+",0,оберег,конкурсы,итоги,dront-obereg,none,none,http://dront.ru/files/competition/ecogorod-ecodom/2013/Polozheniye_Ekogorod_2013-14.doc,http://dront.ru/files/competition/ecogorod-ecodom/2013/Metodich_posobiye_uchastnikam.doc,,
 "2013. Экогород.Экодом
 ",import | http://dront.ru/obereg/eco-gorod-eco-dom-2013/,ecodom-2013,"ecodom-konkurs
-",none,0,"оберег,конкурсы,итоги",dront-obereg,none,none,"http://dront.ru/files/competition/ecogorod-ecodom/2013/Polozheniye_Ekogorod_2013-14.doc,http://dront.ru/files/competition/ecogorod-ecodom/2013/Metodich_posobiye_uchastnikam.doc,http://dront.ru/files/competition/ecogorod-ecodom/2013/itogi.doc,http://dront.ru/files/competition/ecogorod-ecodom/polozhenie-2013.doc"
+",none,0,оберег,конкурсы,итоги,dront-obereg,none,none,http://dront.ru/files/competition/ecogorod-ecodom/2013/Polozheniye_Ekogorod_2013-14.doc,http://dront.ru/files/competition/ecogorod-ecodom/2013/Metodich_posobiye_uchastnikam.doc,http://dront.ru/files/competition/ecogorod-ecodom/2013/itogi.doc,http://dront.ru/files/competition/ecogorod-ecodom/polozhenie-2013.doc
 "2012. Экогород.Экодом
 ",import | http://dront.ru/obereg/eco-gorod-eco-dom-2012/,ecodom-2012,"ecodom-konkurs
-",none,0,"оберег,конкурсы,итоги",dront-obereg,none,none,none
+",none,0,оберег,конкурсы,итоги,dront-obereg,none,none,none,,,
 "2010-2011. Экогород.Экодом
 ",import | http://dront.ru/obereg/eco-gorod-eco-dom-2010/,ecodom-2010,"ecodom-konkurs
 ","http://dront.ru/images/obereg/eco-gorod-eco-dom/2013/Image47.jpg
-",0,"оберег,конкурсы,итоги",dront-obereg,none,none,none
+",0,оберег,конкурсы,итоги,dront-obereg,none,none,none,,,
 "Конкурс ""Лесная олимпиада""","<p>Областная олимпиада проводится с 2000 года и в 2003г. завершилась выставкой работ ""Чей дуб лучше"".</p>
 <p>Конкурс традиционно включает вс ебя конкурсы творческих работ (стихи, проза, рисунки, фотографии), посвящённых широколиственным лесам, конкурс исследовательских, краеведческих работ, посвященных широколиственным лесам, вековым дубравам.</p>
 <p>Среди задач конкурса — пропаганда бережного отношения к широколиственным лесам и исчезающим видам растений и животных, выявление групп, активно заинтересованных в их сохранении, развитие исследовательских навыков у школьников и инвентаризация сохранившихся участков широколиственных лесов и отдельных деревьев.</p>",lesolimp,none,"http://dront.ru/images/obereg/lesnaya-olimpiada/2006/28_big.jpg
-",90,"оберег,конкурсы",dront-obereg,dront-education,none,none
+",90,оберег,конкурсы,dront-obereg,dront-education,none,none,,,,
+Изучение миграций птиц,Изучение миграций птиц является важным компонентом научной работы которую ведет лаборатория,birds-migration,none,birds-migration.jpg,0,орнитологическая лаборатория,исследования,птицы,dront-ornotologlab,dront-researches,dront-birds,http://dront.ru/files/orni-lab/ornitofauna-ilovyh-polei.pdf,http://dront.ru/files/orni-lab/Migrations/Results-2014.pdf,,
+"ООПТ-Спасательный круг
+",import | http://dront.ru/sk/,birds-krug,none,birds-krug.png,0,орнитологическая лаборатория,защита птиц,птицы,dront-ornotologlab,dront-activist,dront-birds,dront-oopt,,,
