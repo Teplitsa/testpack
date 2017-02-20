@@ -119,7 +119,7 @@ function tst_clear_seo_columns($columns){
 		if(isset($columns[$key]))
 			unset($columns[$key]);
 	}
-	
+
 	return $columns;
 }
 
@@ -132,11 +132,13 @@ add_filter('wpseo_use_page_analysis', '__return_false');
 add_action('add_meta_boxes', 'tst_correct_metaboxes', 2, 2);
 function tst_correct_metaboxes($post_type, $post ){
 
-	if(post_type_supports($post_type, 'excerpt')){
+	if(post_type_supports($post_type, 'excerpt') ){
 		remove_meta_box('postexcerpt', null, 'normal');
 
-		$label = ($post_type == 'org') ? __('Website', 'tst') : __('Excerpt', 'tst');
-		add_meta_box('tst_postexcerpt', $label, 'tst_excerpt_meta_box', null, 'normal', 'core');
+		if($post_type != 'landing') {
+			$label = ($post_type == 'org') ? __('Website', 'tst') : __('Excerpt', 'tst');
+			add_meta_box('tst_postexcerpt', $label, 'tst_excerpt_meta_box', null, 'normal', 'core');
+		}
 	}
 
 }

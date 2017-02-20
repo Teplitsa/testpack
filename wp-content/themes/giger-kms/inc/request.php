@@ -43,6 +43,9 @@ function tst_custom_rewrites(){
 	add_rewrite_rule('^('.$slugs.')/page/?([0-9]{1,})/?$', 'index.php?section=$matches[1]&paged=$matches[2]', 'top');
 	add_rewrite_rule('^('.$slugs.')/(feed|rdf|rss|rss2|atom)/?$', 'index.php?section=$matches[1]&feed=$matches[2]', 'top');
 
+	// urls for landing about
+	add_rewrite_rule('item/([^/]+)/about/?$', 'index.php?landing=$matches[1]&item_about=1', 'top');
+
 
 	//should we flush permalinks
 	if($slugs != get_option('_tst_section_slugs') ) {
@@ -51,7 +54,8 @@ function tst_custom_rewrites(){
 		update_option('_tst_section_slugs', $slugs);
 	}
 
-
+	//add custom qv
+	$wp->add_query_var('item_about');
 }
 
 /* filters sections term link **/
@@ -108,6 +112,18 @@ function tst_custom_unique_post_slug( $slug, $post_ID, $post_status, $post_type 
 
 
     return $slug;
+}
+
+/** == Custom templates == **/
+add_filter('template_include', 'tst_template_include_correction', 10);
+function tst_template_include_correction($template) {
+
+	$test = get_query_var('item_about');
+	if($test && $test == 1) {
+		$template = get_template_directory().'/single-landing.php';
+	}
+
+	return $template;
 }
 
 

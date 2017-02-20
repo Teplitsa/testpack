@@ -156,7 +156,7 @@ function tst_custom_content(){
         'hierarchical'        => true,
         'menu_position'       => 5,
 		'menu_icon'           => 'dashicons-layout',
-        'supports'            => array('title', 'excerpt', 'editor', 'thumbnail', 'page-attributes', 'revisions',),
+        'supports'            => array('title', 'excerpt', 'thumbnail', 'page-attributes', 'revisions',),
         'taxonomies'          => array('section', 'post_tag'),
     ));
 
@@ -637,6 +637,34 @@ function tst_custom_metaboxes() {
 	));
 
 
+	/** Landing fields  **/
+	$landing_cmb = new_cmb2_box( array(
+        'id'            => 'landing_settings_metabox',
+        'title'         => 'Тексты',
+        'object_types'  => array('landing'), // Post type
+        'context'       => 'normal',
+        'priority'      => 'low',
+        'show_names'    => true,
+    ));
+
+	$landing_cmb->add_field(array(
+		'name' 		=> 'Аннотация',
+		'desc'	  	=> 'Отображается в карточках и списках',
+		'default' 	=> '',
+		'id'   		=> 'landing_excerpt',
+		'type'		=> 'textarea_small'
+	));
+
+	$landing_cmb->add_field(array(
+		'name' 		=> 'Полный текст',
+		'desc'	  	=> 'Отображается на странице Вникнуть',
+		'default' 	=> '',
+		'id'   		=> 'landing_content',
+		'type'		=> 'wysiwyg',
+		'options' 	=> array(
+			'textarea_rows' => 8
+		)
+	));
 
 
 	/** Project fields  **/

@@ -227,7 +227,7 @@ function tst_add_singleblock_text_field( $fields ) {
 		array(
 			'name' 		=> 'Аннотация',
 			'id'   		=> $prefix.'summary',
-			'type'		=> 'textarea'
+			'type'		=> 'textarea_small'
 		),
 		array(
 			'name' 		=> 'Текст ссылки',
@@ -277,7 +277,7 @@ function tst_add_doubleblock_element_field( $fields ) {
 		array(
 			'name' 		=> 'Аннотация',
 			'id'   		=> $prefix.'summary',
-			'type'		=> 'textarea'
+			'type'		=> 'textarea_small'
 		),
 		array(
 			'name' 		=> 'Текст ссылки',
