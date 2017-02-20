@@ -44,6 +44,8 @@ try {
             $menu_order = trim( $line[5] );
             $tags = trim( $line[6] );
             
+//             print_r($line);
+            
             $department = tst_get_csv_noneable_val( $line[7] );
             $direction = tst_get_csv_noneable_val( $line[8] );
             $problem = tst_get_csv_noneable_val( $line[9] );
@@ -53,8 +55,8 @@ try {
             
             printf( "title: %s, slug: %s, type: %s\n", $post_title, $slug, $post_type );
             
-            $parent_post = $parent_project ? get_page_by_path( $parent_project, OBJECT, $post_type ) : NULL;
-            $exist_post = $slug ? get_page_by_path( $slug, OBJECT, $post_type ) : NULL;
+            $parent_post = $parent_project ? tst_get_pb_post( $parent_project, $post_type ) : NULL;
+            $exist_post = $slug ? tst_get_pb_post( $slug, $post_type ) : NULL;
             
             $parent_post_id = $parent_post ? $parent_post->ID : 0;
             printf( "parent_id: %d\n", $parent_post_id );
@@ -89,32 +91,40 @@ try {
             $post_id = wp_insert_post($post_arr);
             
             if( $post_id ) {
-                p2p_type( 'landing_project' )->disconnect( $landing->ID, $post_id );
+//                 p2p_type( 'landing_project' )->disconnect( $landing->ID, $post_id );
                 
                 if( $department ) {
                     $landing = tst_get_pb_post( $department, 'landing' );
                     if( $landing ) {
-                        p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'department' ) );
+//                         p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'department' ) );
                     }
                 }
                 
                 if( $direction ) {
                     $landing = tst_get_pb_post( $direction, 'landing' );
                     if( $landing ) {
-                        p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'direction' ) );
+//                         p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'direction' ) );
                     }
                 }
                 
                 if( $problem ) {
                     $landing = tst_get_pb_post( $problem, 'landing' );
                     if( $landing ) {
-                        p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'problem' ) );
+//                         p2p_type( 'landing_project' )->connect( $landing->ID, $post_id, array( 'type' => 'problem' ) );
                     }
                 }
                 
                 printf( "thumbnail_url: %s\n", $thumbnail_url );
                 if( $thumbnail_url ) {
-                    $thumbnail_id = TST_Import::get_instance()->maybe_import( $thumbnail_url );
+                    if( preg_match( '/^http[s]?:\/\//', $thumbnail_url ) ) {
+                        $thumbnail_id = TST_Import::get_instance()->maybe_import( $thumbnail_url );
+                    }
+                    else {
+                        $filename = dirname( __FILE__ ) . '/sideload/' . $thumbnail_url;
+                        printf( "local file: %s\n", $filename );
+                        $thumbnail_id = TST_Import::get_instance()->maybe_import_local_file( $filename );
+                        printf( "thumbnail_id=%s\n", $thumbnail_id );
+                    }
                 }
                 if( $thumbnail_id ) {
                     printf( "set post thumbnail: %d\n", $thumbnail_id );

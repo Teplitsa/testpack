@@ -32,13 +32,16 @@ try {
 		if($i == 0)
 			continue;
 
+		$post_title = trim( $line[0] );
+		$person = tst_get_post_by_title( $post_title, 'person' );
+			
 		$page_data = array();
-
-		$page_data['ID'] = 0;
+		
+		$page_data['ID'] = $person ? $person->ID : 0;
 		$page_data['post_type'] = 'person';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_parent'] = 0; //all top level
-		$page_data['post_title'] = $line[0];
+		$page_data['post_title'] = $post_title;
 		$page_data['post_excerpt'] = $line[1];
 		$page_data['post_content'] = $line[2];
 

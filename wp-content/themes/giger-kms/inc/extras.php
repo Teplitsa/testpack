@@ -461,11 +461,23 @@ function tst_get_pb_post( $post_id, $post_type = 'post' ) {
     }
     else {
 //         printf( "post_id=%s\n", $post_id );
-        $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type = %s", $post_id, $post_type ) );
+        $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type = %s LIMIT 1 ", $post_id, $post_type ) );
 //         printf( "post_id=%s\n", $post_id );
         if( $post_id ) {
             $post = get_post( $post_id, OBJECT );
         }
     }
+    return $post;
+}
+
+function tst_get_post_by_title( $post_title, $post_type = 'post' ) {
+    global $wpdb;
+    
+    $post = null;
+    $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title = %s AND post_type = %s LIMIT 1 ", $post_title, $post_type ) );
+    if( $post_id ) {
+        $post = get_post( $post_id, OBJECT );
+    }
+    
     return $post;
 }
