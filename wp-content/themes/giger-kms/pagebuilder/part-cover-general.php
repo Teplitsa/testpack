@@ -1,6 +1,6 @@
 <?php
 /**
- * Part Name: Обложка простая
+ * Part Name: Обложка
  * Description: Заголовок, ссылки, заставочный элемент
  */
 
@@ -11,9 +11,12 @@ $cover = wds_page_builder_get_this_part_data($prefix.'cover_post');
 $cover = ($cover) ? get_post($cover) : $cover;
 
 $about_url = trailingslashit(get_permalink($qo)).'about';
+
+
+$cover_img = wds_page_builder_get_this_part_data($prefix.'cover_file_id'); //correct field id
 $cover_url = '';
-if($qo && has_post_thumbnail($qo)){
-	$cover_url = get_the_post_thumbnail_url($qo, 'full');
+if($cover_img){
+	$cover_url = wp_get_attachment_url($cover_img, 'full');
 }
 ?>
 
@@ -24,7 +27,7 @@ if($qo && has_post_thumbnail($qo)){
 		<div class="landing-header__tagline"><?php echo apply_filters('tst_the_title', $qo->post_excerpt);?></div>
 		<div class="landing-header__links">
 			<a href="<?php echo $about_url;?>"><?php _e('Get details', 'tst');?></a>
-			<a href="#" class="local-scroll"><?php _e('Join us', 'tst');?></a>
+			<a href="#help-block" class="local-scroll"><?php _e('Join us', 'tst');?></a>
 		</div>
 	</div>
 

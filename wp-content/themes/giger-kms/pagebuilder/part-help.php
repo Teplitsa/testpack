@@ -72,7 +72,7 @@ function tst_linked_help_card($help_id, $img_id = 0, $args = array()){
 
 
 ?>
-<div class="help-block container">
+<div id="help-block" class="help-block container">
 	<h3 class="help-block__title"><?php _e('Support us', 'tst'); ?></h3>
 	<div class="help-block__content">
 		<div class="flex-grid--stacked <?php echo $grid_css;?>">

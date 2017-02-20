@@ -17,31 +17,28 @@ function tst_add_cover_general_field( $fields ) {
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
-	);
-
-	return array_merge( $fields, $new_fields );
-}
-
-/** Buttoned general */
-add_filter( 'wds_page_builder_fields_cover-buttoned', 'tst_add_cover_buttoned_field' );
-function tst_add_cover_buttoned_field( $fields ) {
-
-	$prefix = "cover_buttoned_";
-	$new_fields = array(
 		array(
-			'name'        		=> 'Связанный проект или анонс', //to do for private only
-			'id'          		=> $prefix.'cover_post',
-			'type'        		=> 'post_search_text', // This field type
-			'post_type'  		=> array('project', 'event'),
-			'select_type' 		=> 'radio',
-			'select_behavior' 	=> 'replace'
+			'name'    => 'Файл - заставка',
+			'id'      => $prefix.'cover_file',
+			'type'    => 'file',
+			'options' => array(
+				'url' => false,
+			),
+			'text'    => array(
+				'add_upload_file_text' => 'Добавить файл'
+			),
+			'query_args' => array(
+				'type' => array('image/jpeg', 'image/jpg', 'image/png'),
+			),
 		),
+
 	);
 
 	return array_merge( $fields, $new_fields );
 }
 
-/** Tripple picture */
+
+/** Triple picture */
 add_filter( 'wds_page_builder_fields_tripleblock-picture', 'tst_add_tripleblock_picture_field' );
 function tst_add_tripleblock_picture_field( $fields ) {
 
