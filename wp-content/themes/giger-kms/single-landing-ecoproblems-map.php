@@ -35,7 +35,7 @@ get_header();?>
                             $included_groups = get_terms(array(
                                 'taxonomy' => 'marker_cat',
                                 'hide_empty' => false,
-                                'name' => array('Проблемы', /*'Решенные проблемы'*/),
+                                'name' => array('Проблемы', 'Решенные проблемы'),
                                 'fields' => 'ids',
                             ));
                             echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'"]');
