@@ -38,7 +38,7 @@ get_header();?>
                                 'name' => array('Проблемы', 'Решенные проблемы'),
                                 'fields' => 'ids',
                             ));
-                            echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'"]');
+                            echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'" enable_scroll_wheel="0"]');
                             echo do_shortcode('[formidable id=6]');
                         ?>
                     </div>
