@@ -40,7 +40,7 @@
       border-bottom: 1px dashed $moss;
 
       .marker-cluster-small div {
-        background-color: lighten($grass, 50%);
+        background-color: $grass;
       }
       .marker-cluster-medium div {
         background-color: $pollen;
@@ -118,7 +118,7 @@
       vertical-align: middle;
     }
 
-    &.is-filter {
+    &.is-filter .interactive {
       cursor: pointer;
     }
 
@@ -126,29 +126,43 @@
       content: '';
     }
 
-    li.legend-child {
-      flex: 0 1 200px;
-      padding: $base 3*$base;
+    //.group-title {
+    //  display: flex;
+    //  align-items: flex-start;
+    //  padding: $base $base;
+    //  margin-bottom: 0;
+    //}
+
+    li.legend-parent {
+      padding: $base $base;
+      margin-bottom: 0;
     }
 
-    li {
+    ul.children-groups-list {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
+      margin-left: 4*$base;
+    }
+
+    li.legend-child {
+      flex: 0 1 200px;
+      align-items: flex-start;
       padding: $base $base;
       margin-bottom: 0;
     }
 
     @include for(large-screens) {
-      &.is-filter li.interactive:hover { // Hover event behaviors wierdly on mobiles
+      &.is-filter li.interactive/*.group-title*/:hover { // Hover event behaviors wierdly on mobiles
         background-color: $pollen;
         color: $color-white;
       }
     }
 
-    &.is-filter li.interactive.marker-group-active {
+    &.is-filter li.interactive.marker-group-active /*.group-title*/ {
       background-color: $pollen;
       color: $color-white;
     }
+
   }
 
 }
