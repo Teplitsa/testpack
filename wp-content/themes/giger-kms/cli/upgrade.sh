@@ -8,18 +8,18 @@ php cli-u-options.php --host=$HOST
 #import
 
 # import all old content
-#php cli-u-import-posts-csv.php --host=$HOST --file=dront_urls_actual_content.csv
-#php cli-u-import-posts-csv.php --host=$HOST --file=dront_urls_news_content.csv
-#php cli-u-import-posts-csv.php --host=$HOST --file=dront_urls_old_news_content.csv
-#php cli-u-import-posts-csv.php --host=$HOST --file=dront_urls_old_other_content.csv
-#php cli-u-import-posts-csv.php --host=$HOST --file=dront_urls_old_defence_content.csv
+#php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_actual_content.csv
+#php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_news_content.csv
+#php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_old_news_content.csv
+#php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_old_other_content.csv
+#php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_old_defence_content.csv
 
 # import old files
-#php cli-u-import-files-csv.php --host=$HOST --file=dront_urls_bereginya.csv --tag=bereginya
-#php cli-u-import-files-csv.php --host=$HOST --file=dront_urls_publications.csv --tag=publication
-#php cli-u-import-files-csv.php --host=$HOST --file=dront_urls_reports.csv --tag=report
+#php cli-u-import-files-csv.php --host=$HOST --file=data/dront_urls_bereginya.csv --tag=bereginya
+#php cli-u-import-files-csv.php --host=$HOST --file=data/dront_urls_publications.csv --tag=publication
+#php cli-u-import-files-csv.php --host=$HOST --file=data/dront_urls_reports.csv --tag=report
 
-php cli-import-events-csv.php --host=$HOST --file=dront_events_all.csv
+php cli-import-events-csv.php --host=$HOST --file=data/dront_events_all.csv
 php cli-import-map-markers-csv.php --host=$HOST
 php cli-u-testpost.php --host=$HOST
 

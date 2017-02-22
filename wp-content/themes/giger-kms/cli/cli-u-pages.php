@@ -79,7 +79,7 @@ try {
 	$page_data['post_title'] = 'Об экоцентре ';
 	$page_data['post_parent'] = 0;
 	$page_data['post_type'] = 'page';
-	$page_data['post_content'] = file_get_contents('about.txt');
+	$page_data['post_content'] = file_get_contents('data/txt/about.txt');
 	$page_data['post_status'] = 'publish';
 	//$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
 
@@ -132,7 +132,7 @@ try {
 				'post_type' => 'page',
 				'post_parent' => 0,
 				'post_status' => 'publish',
-				'post_content' => file_get_contents('contacts.txt'),
+				'post_content' => file_get_contents('data/txt/contacts.txt'),
 				//'meta_input' => array('_wp_page_template' => 'page-about.php')
 			),
 			'section' => 'about'

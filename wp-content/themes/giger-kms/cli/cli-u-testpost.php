@@ -18,7 +18,7 @@ try {
 	$uploads = wp_upload_dir();
 
 	//Read file
-	$handle = file('testpost.tsv');
+	$handle = file('data/testpost.tsv');
 	$csv = array();
 
 	if($handle) { foreach($handle as $i => $line) {

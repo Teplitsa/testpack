@@ -740,9 +740,9 @@ try {
 
 		}
 		elseif(false !== strpos($i_obj['post_content'], '.txt')) {
-			echo 'Get content from file: '.$i_obj['post_content'].chr(10);
+			echo 'Get content from file: data/txt/'.$i_obj['post_content'].chr(10);
 
-			$content = file_get_contents($i_obj['post_content']);
+			$content = file_get_contents( 'data/txt/' . $i_obj['post_content']);
 			if($content){
 
 				//correct urls

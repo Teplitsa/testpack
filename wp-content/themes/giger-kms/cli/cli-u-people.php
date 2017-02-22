@@ -17,7 +17,7 @@ try {
 	$uploads = wp_upload_dir();
 
 	//Impport people
-	$handle = file('people.tsv');
+	$handle = file('data/people.tsv');
 	$csv = array();
 	if($handle) { foreach($handle as $i => $line) {
 		//$csv = array_map('str_getcsv', file('projects.csv'));
