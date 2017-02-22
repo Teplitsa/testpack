@@ -2,84 +2,81 @@
 
 /** Maps **/
 
-@include for(large-screens) {
+.pw_map-wrap {
+  position: relative;
+  //border: 3px solid $moss;
+  //border-radius: 2px;
+  //box-shadow: 2px 2px 3px rgba(200, 200, 200, 0.4);
 
-  .pw_map-wrap {
-    position: relative;
-    //border: 3px solid $moss;
-    //border-radius: 2px;
-    //box-shadow: 2px 2px 3px rgba(200, 200, 200, 0.4);
+  .dashicons {
+    font-size: 20px;
 
-    .dashicons {
-      font-size: 20px;
+    &.black {
+      color: $ground;
+    }
+    &.red {
+      color: $wood;
+    }
+    &.orange {
+      color: $loam;
+    }
+    &.dark-pink {
+      color: $map_select;
+    }
+    &.sand {
+      color: $leaf;
+    }
+    &.green {
+      color: $moss;
+    }
+    &.grey-green {
+      color: $wetsoil;
+    }
+  }
 
-      &.black {
-        color: $ground;
+  .pw_map_canvas {
+    border-bottom: 1px dashed $moss;
+
+    .marker-cluster-small div {
+      background-color: $grass;
+    }
+    .marker-cluster-medium div {
+      background-color: $pollen;
+    }
+    .marker-cluster-large div {
+      background-color: $loam;
+    }
+
+    .leaflet-popup-content-wrapper {
+      border-radius: 3px;
+    }
+    .marker-content {
+
+      .material-icons {
+        font-size: 16px;
       }
-      &.red {
-        color: $wood;
+
+      .mc-title {
+        font-weight: bold;
+        margin-bottom: 2*$base;
       }
-      &.orange {
-        color: $loam;
-      }
-      &.dark-pink {
-        color: $map_select;
-      }
-      &.sand {
-        color: $leaf;
-      }
-      &.green {
+
+      .material-icons {
         color: $moss;
       }
-      &.grey-green {
-        color: $wetsoil;
-      }
-    }
 
-    .pw_map_canvas {
-      border-bottom: 1px dashed $moss;
-
-      .marker-cluster-small div {
-        background-color: $grass;
-      }
-      .marker-cluster-medium div {
-        background-color: $pollen;
-      }
-      .marker-cluster-large div {
-        background-color: $loam;
-      }
-
-      .leaflet-popup-content-wrapper {
-        border-radius: 3px;
-      }
-      .marker-content {
+      .mc-address {
+        display: flex;
+        align-items: center;
+        margin-bottom: $base;
 
         .material-icons {
-          font-size: 16px;
-        }
-
-        .mc-title {
-          font-weight: bold;
-          margin-bottom: 2*$base;
-        }
-
-        .material-icons {
-          color: $moss;
-        }
-
-        .mc-address {
-          display: flex;
-          align-items: center;
-          margin-bottom: $base;
-
-          .material-icons {
-            margin-right: $base/2;
-          }
+          margin-right: $base/2;
         }
       }
     }
-
   }
+
 }
 
 .pw_map_legend {
