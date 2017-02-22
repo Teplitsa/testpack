@@ -6,9 +6,9 @@
 
   .pw_map-wrap {
     position: relative;
-    border: 3px solid $moss;
-    border-radius: 2px;
-    box-shadow: 2px 2px 3px rgba(200, 200, 200, 0.4);
+    //border: 3px solid $moss;
+    //border-radius: 2px;
+    //box-shadow: 2px 2px 3px rgba(200, 200, 200, 0.4);
 
     .dashicons {
       font-size: 20px;
@@ -40,13 +40,13 @@
       border-bottom: 1px dashed $moss;
 
       .marker-cluster-small div {
-        //background-color: $green;
+        background-color: lighten($grass, 50%);
       }
       .marker-cluster-medium div {
-        //background-color: $sand;
+        background-color: $pollen;
       }
       .marker-cluster-large div {
-        //background-color: $orange;
+        background-color: $loam;
       }
 
       .leaflet-popup-content-wrapper {
@@ -139,14 +139,14 @@
     }
 
     @include for(large-screens) {
-      &.is-filter li.legend-child:hover { // Hover event behaviors wierdly on mobiles
-        //background-color: $sand;
+      &.is-filter li.interactive:hover { // Hover event behaviors wierdly on mobiles
+        background-color: $pollen;
         color: $color-white;
       }
     }
 
-    &.is-filter li.legend-child.marker-group-active {
-      //background-color: $sand;
+    &.is-filter li.interactive.marker-group-active {
+      background-color: $pollen;
       color: $color-white;
     }
   }

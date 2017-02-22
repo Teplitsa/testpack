@@ -94,7 +94,7 @@ function tst_markers_map_output($atts){
             'include' => $groups_ids,
             'exclude' => $groups_excluded_ids,
 //            'parent' => 0,
-//            'hide_empty' => true, /** @todo Make it true (or just remove) when debug is over */
+            'hide_empty' => false, /** @todo Make it true (or just remove) when debug is over */
         ));
 
         foreach($groups_selected as $group) {
@@ -221,7 +221,7 @@ function tst_markers_map_output($atts){
 
             $markers_json[$term->term_id][] = array(
                 'title' => esc_attr($marker->post_title),
-                //'descr' => $descr,
+                'descr' => esc_attr($marker->post_content),
                 'lat' => $marker_data['lat'],
                 'lng' => $marker_data['lng'],
                 'popup_text' => $popup_text,
@@ -312,38 +312,35 @@ function tst_markers_map_output($atts){
 
                 mapFunc.push(function(){
 
-                var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        id: 'osm',
-                        attribution: 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            id: 'osm',
+                            attribution: 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                            maxZoom: <?php echo $max_zoom;?>,
+                            minZoom: <?php echo $min_zoom;?>
+                        }),
+                        map_id = '<?php echo $map_id;?>';
+
+                    var enable_scroll_zoom = '<?php echo strval($enable_scroll_wheel);?>';
+                    if(enable_scroll_zoom == 'mobile_only') {
+                        enable_scroll_zoom = $(window).width() > 767;
+                    }
+
+                    var bounds = L.latLngBounds(L.latLng(54.576765, 41.717001), L.latLng(58.218216, 47.814413));
+                    maps[map_id] = L.map(map_id, {
+                        zoomControl: <?php echo $disable_controls ? 'false' : 'true';?>,
+                        scrollWheelZoom: enable_scroll_zoom,
+                        minZoom: <?php echo $min_zoom;?>,
                         maxZoom: <?php echo $max_zoom;?>,
-                        minZoom: <?php echo $min_zoom;?>
-                    }),
-                    map_id = '<?php echo $map_id;?>';
-
-                var enable_scroll_zoom = '<?php echo strval($enable_scroll_wheel);?>';
-                if(enable_scroll_zoom == 'mobile_only') {
-                    enable_scroll_zoom = $(window).width() > 767;
-                }
-
-                var bounds = L.latLngBounds(L.latLng(54.576765, 41.717001), L.latLng(58.218216, 47.814413));
-                maps[map_id] = L.map(map_id, {
-                    zoomControl: <?php echo $disable_controls ? 'false' : 'true';?>,
-                    scrollWheelZoom: enable_scroll_zoom,
-                    minZoom: <?php echo $min_zoom;?>,
-                    maxZoom: <?php echo $max_zoom;?>,
-                    center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
-                    zoom: <?php echo $zoom;?>,
-                    maxBounds: bounds,
-                    layers: [osm]
-                });
-
-//                    L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(maps[map_id]); // Map bounding box visualization
+                        center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
+                        zoom: <?php echo $zoom;?>,
+                        maxBounds: bounds,
+                        layers: [osm]
+                    });
 
                     marker_clusters[map_id] = L.markerClusterGroup({maxClusterRadius: 40});
                     $.each(points[map_id], function(group_id, group_markers){ // loop through all marker groups
 
                         marker_group_layers[map_id][group_id] = tst_fill_group_layer(group_markers);
-//                        marker_group_layers[map_id][group_id].addTo(maps[map_id]);
 
                         $.each(marker_group_layers[map_id][group_id].getLayers(), function(index, marker){
                             marker_clusters[map_id].addLayer(marker);

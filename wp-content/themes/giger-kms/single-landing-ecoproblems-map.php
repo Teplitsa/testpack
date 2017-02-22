@@ -29,8 +29,9 @@ get_header();?>
 <!--                        <div class="single-body__preview">--><?php //tst_single_thumbnail($cpost);?><!--</div>-->
 <!--                    --><?php //} ?>
 
+
                     <div class="single-body--entry">
-                        <?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
+<!--                        --><?php //echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
                         <?php
                             $included_groups = get_terms(array(
                                 'taxonomy' => 'marker_cat',
@@ -38,9 +39,10 @@ get_header();?>
                                 'name' => array('Проблемы', 'Решенные проблемы'),
                                 'fields' => 'ids',
                             ));
-                            echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'" enable_scroll_wheel="0"]');
-                            echo do_shortcode('[formidable id=6]');
-                        ?>
+                            echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'" enable_scroll_wheel="0"]');?>
+                        <div class="marker-submit-form" style="display: none">
+                            <?php echo do_shortcode('[formidable id=5]');?>
+                        </div>
                     </div>
                     <div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
                 </div>

@@ -29,10 +29,10 @@ try {
 
     // Insert special marker groups and metadata:
     $special_marker_groups = array(
-        array('name' => 'Архив', 'slug' => 'archive-markers', 'layer_marker_icon' => 'dashicons-archive',),
-        array('name' => 'Объекты', 'slug' => 'objects', 'layer_marker_icon' => 'dashicons-location-alt',),
-        array('name' => 'Проблемы', 'slug' => 'problems', 'layer_marker_icon' => 'dashicons-warning',),
-        array('name' => 'Решенные проблемы', 'slug' => 'solved-problems', 'layer_marker_icon' => 'dashicons-thumbs-up',),
+        array('name' => 'Архив', 'slug' => 'archive-markers', 'layer_marker_icon' => 'archive',),
+        array('name' => 'Объекты', 'slug' => 'objects', 'layer_marker_icon' => 'location_on',),
+        array('name' => 'Проблемы', 'slug' => 'problems', 'layer_marker_icon' => 'report_problem',),
+        array('name' => 'Решенные проблемы', 'slug' => 'solved-problems', 'layer_marker_icon' => 'thumb_up',),
     );
 
     $objects_group_id = 0;
@@ -87,48 +87,48 @@ try {
 
             }
 
-            if( !get_term_meta($term, 'layer_marker_icon', true) ) {
-                switch($group->name) {
-                    case 'Пункты приема вторсырья':
-                        update_term_meta($term, 'layer_marker_icon', 'dashicons-update');
-                        wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
-                        break;
-                    case 'Экологические организации и ведомства':
-                        update_term_meta($term, 'layer_marker_icon', 'dashicons-businessman');
-                        wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
-                        break;
+//            if( !get_term_meta($term, 'layer_marker_icon', true) ) {
+            switch($group->name) {
+                case 'Пункты приема вторсырья':
+                    update_term_meta($term, 'layer_marker_icon', 'autorenew');
+                    wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
+                    break;
+                case 'Экологические организации и ведомства':
+                    update_term_meta($term, 'layer_marker_icon', 'business_center');
+                    wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
+                    break;
 
-                    case 'Вырубка зеленых насаждений':
-                        update_term_meta($term, 'layer_marker_icon', 'dashicons-palmtree');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Другие экологические проблемы':
-                        update_term_meta($term, 'layer_marker_icon', 'dashicons-editor-help');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Загрязнение воды':
-                        update_term_meta($term, 'layer_marker_icon', 'dashicons-image-filter');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Загрязнение воздуха':
-                        update_term_meta($term, 'layer_marker_icon', 'dashicons-cloud');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Зоны накопленного экологического ущерба':
-                        update_term_meta($term, 'layer_marker_icon', 'dashicons-schedule');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Проблемные проекты':
-                        update_term_meta($term, 'layer_marker_icon', 'dashicons-vault');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Свалки':
-                        update_term_meta($term, 'layer_marker_icon', 'dashicons-trash');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    default:
-                }
+                case 'Вырубка зеленых насаждений':
+                    update_term_meta($term, 'layer_marker_icon', 'nature');
+                    wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                    break;
+                case 'Другие экологические проблемы':
+                    update_term_meta($term, 'layer_marker_icon', 'help');
+                    wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                    break;
+                case 'Загрязнение воды':
+                    update_term_meta($term, 'layer_marker_icon', 'invert_colors');
+                    wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                    break;
+                case 'Загрязнение воздуха':
+                    update_term_meta($term, 'layer_marker_icon', 'cloud');
+                    wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                    break;
+                case 'Зоны накопленного экологического ущерба':
+                    update_term_meta($term, 'layer_marker_icon', 'view_quilt');
+                    wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                    break;
+                case 'Проблемные проекты':
+                    update_term_meta($term, 'layer_marker_icon', 'business');
+                    wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                    break;
+                case 'Свалки':
+                    update_term_meta($term, 'layer_marker_icon', 'delete_sweep');
+                    wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                    break;
+                default:
             }
+//            }
 
             // Update marker groups' colors here..
 

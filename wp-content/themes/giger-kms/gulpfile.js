@@ -43,6 +43,7 @@ gulp.task('build-js', function() {
     var vendorFiles = [
         basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js',
 		basePaths.bower + 'leaflet/dist/leaflet.js',
+        basePaths.bower + 'leaflet-markercluster/dist/leaflet.markercluster.js',
         basePaths.npm + 'fontfaceonload/dist/fontfaceonload.js'
         ],
         appFiles = [basePaths.src+'js/front-main*']; //our own JS files
@@ -68,7 +69,7 @@ gulp.task('build-head-js', function() {
         .pipe(isProduction ? plugins.uglify() : gutil.noop()) //minification
         .pipe(plugins.size()) //print size for log
         .on('error', console.log) //log
-        .pipe(gulp.dest(basePaths.dest+'js')) //write results into file
+        .pipe(gulp.dest(basePaths.dest+'js')); //write results into file
 });
 
 //sass
@@ -79,7 +80,11 @@ gulp.task('build-css', function() {
         hamburgers = path('./bower_components/css-hamburgers/_sass/hamburgers');
         paths.push(hamburgers);
 
-    var vendorFiles = gulp.src([basePaths.bower + 'leaflet/dist/leaflet.css']), //components
+    var vendorFiles = gulp.src([
+            basePaths.bower + 'leaflet/dist/leaflet.css',
+            basePaths.bower + 'leaflet-markercluster/dist/MarkerCluster.css',
+            basePaths.bower + 'leaflet-markercluster/dist/MarkerCluster.Default.css'
+        ]), //components
         appFiles = gulp.src(basePaths.src+'sass/front-main.scss') //our main file with @import-s
         .pipe(!isProduction ? plugins.sourcemaps.init() : gutil.noop())  //process the original sources for sourcemap
         .pipe(plugins.sass({
