@@ -190,7 +190,7 @@ function tst_single_person_card($cpost) {
 	$role = apply_filters('tst_the_title', $cpost->post_excerpt);
 
 	$thumb = get_the_post_thumbnail($cpost, 'thumbnail');
-	
+
 	$content = $cpost->post_content;
 ?>
 <article class="single-person-item">
@@ -200,14 +200,40 @@ function tst_single_person_card($cpost) {
 	<div class="single-person-item__role"><?php echo $role;?></div>
 	<div class="single-person-item__content">
 		<?php echo $content;?>
-		
+
 	</div>
 </article>
 
 <?php
 }
 
+function tst_card_iconic($cpost) {
 
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+	$pl = get_permalink($cpost);
+
+	$test_file = get_template_directory().'/src/svg/icon-item-'.$cpost->post_name.'.svg';
+
+	if(file_exists($test_file)){
+		$icon = tst_svg_icon('icon-item-'.$cpost->post_name, false);
+	}
+	else {
+		$icon = tst_svg_icon('icon-item-default', false);
+	}
+?>
+<a href="<?php echo $pl;?>" class="card-link">
+
+	<div class="card__icon">
+		<?php echo $icon; ?>
+	</div>
+	<div class="card__title">
+		<h4><?php echo get_the_title($cpost);?></h4>
+	</div>
+</a>
+<?php
+}
 
 
  /* Old */

@@ -685,6 +685,32 @@ function tst_custom_metaboxes() {
 		'type'		=> 'text'
 	));
 
+
+	/** News settings  **/
+	$news_cmb = new_cmb2_box( array(
+        'id'            => 'post_settings_metabox',
+        'title'         => 'Настройки записи',
+        'object_types'  => array('post'), // Post type
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true,
+    ));
+
+	$news_cmb->add_field( array(
+        'name'				=> 'Призыв к действию',
+		'desc'				=> 'Показывается в боковой колонке',
+        'id'  	            => 'post_cta',
+        'type'	            => 'select',
+        'show_option_none'	=> false,
+        'default'          	=> 'donate',
+        'options'          	=> array(
+			'donate'  	=> 'Пожертвование',
+            'volunteer'     => 'Стать волонтером',
+            'corporate' 	=> 'Помощь компаний',
+            'problem'     	=> 'Сообщить о проблеме'
+        )
+    ));
+
 }
 
 
@@ -694,24 +720,7 @@ add_action( 'p2p_init', 'tst_p2p_connection_types' );
 
 function tst_p2p_connection_types() {
 
-	p2p_register_connection_type(array(
-        'name' 	=> 'landing_landing',
-        'from' 	=> 'landing',
-        'to' 	=> 'landing',
-		'reciprocal' 	=> true,
-		'admin_column' 	=> 'any',
-		'to_labels' => array(
-			'column_title' => 'Связи',
-		),
-		'from_labels' => array(
-			'column_title' => 'Связи',
-		),
-		'admin_box' => array(
-			'show' => 'any',
-			'context' => 'advanced',
-			'can_create_post' => false
-		)
-    ));
+
 
 	p2p_register_connection_type(array(
         'name' 	=> 'landing_project',
@@ -728,20 +737,6 @@ function tst_p2p_connection_types() {
 		)
     ));
 
-	p2p_register_connection_type(array(
-        'name' 	=> 'landing_person',
-        'from' 	=> 'landing',
-        'to' 	=> array('person'),
-		'admin_column' => 'to',
-		'to_labels' => array(
-			'column_title' => 'Лэндинги',
-		),
-		'admin_box' => array(
-			'show' => 'any',
-			'context' => 'advanced',
-			'can_create_post' => false
-		)
-    ));
 
 	p2p_register_connection_type(array(
         'name' 	=> 'connected_attachments',

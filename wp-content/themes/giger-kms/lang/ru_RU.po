@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-20 10:57+0300\n"
-"PO-Revision-Date: 2017-02-20 10:58+0300\n"
+"POT-Creation-Date: 2017-02-22 15:06+0300\n"
+"PO-Revision-Date: 2017-02-22 15:06+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -241,23 +241,23 @@ msgstr ""
 msgid "Details"
 msgstr "Подробнее"
 
-#: inc/templates-single.php:12 inc/templates-single.php:25
+#: inc/templates-single.php:40
+msgid "Inform about problem"
+msgstr "Сообщить о проблеме"
+
+#: inc/templates-single.php:44 pagebuilder/part-help.php:44
+msgid "Donate"
+msgstr "Помочь сейчас"
+
+#: inc/templates-single.php:83 inc/templates-single.php:96
 #: inc/templates-tags.php:115 inc/templates-tags.php:133
 msgid "Home"
 msgstr "Главная"
 
-#: inc/templates-single.php:13 inc/templates-tags.php:116 index.php:8
-#: pagebuilder/part-news.php:25
+#: inc/templates-single.php:84 inc/templates-tags.php:116 index.php:8
+#: pagebuilder/part-news.php:25 single.php:13
 msgid "News"
 msgstr "Новости"
-
-#: inc/templates-single.php:81
-msgid "Prev."
-msgstr "Пред. новость"
-
-#: inc/templates-single.php:84
-msgid "Next."
-msgstr "След. новость"
 
 #: inc/widgets_old.php:111
 msgid "Widget doesn't have any settings"
@@ -271,11 +271,11 @@ msgstr "Все новости"
 msgid "Nothing found under your request"
 msgstr "По вашему запросу ничего не найдено."
 
-#: pagebuilder/part-cover-general.php:26
+#: pagebuilder/part-cover-general.php:29
 msgid "Get details"
 msgstr "Вникнуть"
 
-#: pagebuilder/part-cover-general.php:27
+#: pagebuilder/part-cover-general.php:30
 msgid "Join us"
 msgstr "Давайте вместе!"
 
@@ -290,10 +290,6 @@ msgstr "Стать волонтером"
 #: pagebuilder/part-help.php:43
 msgid "Support our programms"
 msgstr "Поддержите наши программы"
-
-#: pagebuilder/part-help.php:44
-msgid "Donate"
-msgstr "Помочь сейчас"
 
 #: pagebuilder/part-help.php:76
 msgid "Support us"
@@ -321,11 +317,11 @@ msgstr ""
 msgid "Contacts"
 msgstr "Контакты"
 
-#: single-event.php:96
+#: single-event.php:96 single.php:72
 msgid "Tags"
-msgstr ""
+msgstr "Тэги"
 
-#: single-landing-ecomap-2.php:54 single.php:41
+#: single-landing-ecomap-2.php:54
 msgid "More news"
 msgstr "Еще новости"
 
@@ -333,6 +329,16 @@ msgstr "Еще новости"
 #, php-format
 msgid "%s - What are we doing"
 msgstr "%s -  Что мы делаем"
+
+#: single.php:89
+msgid "More on the topic"
+msgstr "Еще по теме"
+
+#~ msgid "Prev."
+#~ msgstr "Пред. новость"
+
+#~ msgid "Next."
+#~ msgstr "След. новость"
 
 #~ msgid "Post navigation"
 #~ msgstr "Навигация по записям"

@@ -33,6 +33,9 @@ $col:		   81px;
 $gut:	       20px;
 $flex-gut: 	   20px;
 
+$card_base_w: 298px;
+$card_base_h: 482px;
+
 //Dimensions
 $base: 8px;
 $inpage-baseline: 		$base*3;
@@ -156,6 +159,14 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 			line-height: 32px;
 		}
 	}
+	@else if $mod == meta {
+		font-size: 18px;
+		line-height: 1.35px;
+
+		@include for(medium-screens){
+			font-size: 21px;
+		}
+	}
 }
 
 
@@ -213,6 +224,15 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 		font-size: 18px;
 		line-height: 1.2;
 		text-transform: none;
+
+		@include for(medium-screens) {
+			font-size: 21px;
+		}
+	}
+	@else if $mod == crumb {
+		font-size: 18px;
+		line-height: 1.2;
+		font-weight: bold;
 
 		@include for(medium-screens) {
 			font-size: 21px;
@@ -278,6 +298,14 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 			font-size: 64px;
 		}
 	}
+	@else if $mod == single {
+		font-size: 32px;
+		line-height: 1.25;
+		text-transform: uppercase;
+		@include for(medium-screens) {
+			font-size: 36px;
+		}
+	}
 
 }
 
@@ -322,9 +350,9 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	}
 	@else if $mod == single {
 		font-size: 32px;
-		@include for(medium-screens) { font-size: 40px; }
-		line-height: 1.15;
-		text-transform: none;
+		@include for(medium-screens) { font-size: 36px; }
+		line-height: 1.25;
+
 	}
 
 }
