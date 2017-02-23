@@ -147,16 +147,20 @@ try {
                         break 2;
 
                     }
+                    
+                    $marker_title = str_replace(
+                            array("'",),
+                            array('"',),
+                            html_entity_decode($marker->name, ENT_COMPAT, 'UTF-8')
+                        );
+                    $market_post_name = sanitize_title( $marker_title );
 
                     $marker_post_id = wp_insert_post(array(
                         'post_type' => 'marker',
                         'post_content' => html_entity_decode($marker->longcontent, ENT_COMPAT, 'UTF-8'),
                         'post_excerpt' => strip_tags($marker->content),
-                        'post_title' => str_replace(
-                            array("'",),
-                            array('"',),
-                            html_entity_decode($marker->name, ENT_COMPAT, 'UTF-8')
-                        ),
+                        'post_title' => $marker_title,
+                        'post_name' => $market_post_name,
                         'post_status' => 'publish',
                         'meta_input' => array(
                             'marker_address' => $marker->name,

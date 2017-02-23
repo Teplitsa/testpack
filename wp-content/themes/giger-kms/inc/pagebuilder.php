@@ -1,24 +1,7 @@
 <?php
 /**
- * Pagebuilder functions
+ * Temp pagebuilder functions. REMOVE IT AFTER PB SETUP COMPLETE!
  **/
-
-add_action( 'init', 'tst_pagebuilder_conifg', 30 );
-function tst_pagebuilder_conifg() {
-    add_theme_support( 'wds-simple-page-builder' );
-
-    if(function_exists('wds_page_builder_theme_support')) {
-        wds_page_builder_theme_support( array(
-            'hide_options'    => false,
-            'parts_dir'       => 'pagebuilder',
-            'parts_prefix'    => 'part',
-            'use_wrap'        => 'off',
-            'container'       => 'div',
-            'container_class' => 'pagebuilder-part',
-            'post_types'      => array( 'page', 'landing' ),
-        ) );
-    }
-}
 
 function tst_wds_get_field_name_prefix( $regex, $filter ) {
     preg_match( $regex, $filter, $matches);

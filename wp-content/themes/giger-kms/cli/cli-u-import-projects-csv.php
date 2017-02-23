@@ -38,7 +38,7 @@ try {
             $post_title = trim( strip_tags( $line[0] ) );
             $post_content = strip_tags( $line[1] );
             $post_type = 'project';
-            $slug = trim( $line[2] );
+            $slug = tst_clean_csv_slug( $line[2] );
             $parent_project = tst_get_csv_noneable_val( $line[3] );
             $thumbnail_url = tst_get_csv_noneable_val( $line[4] );
             $menu_order = trim( $line[5] );
@@ -57,6 +57,9 @@ try {
             
             $parent_post = $parent_project ? tst_get_pb_post( $parent_project, $post_type ) : NULL;
             $exist_post = $slug ? tst_get_pb_post( $slug, $post_type ) : NULL;
+            if( $exist_post ) {
+                print( "project EXISTS!!!\n" );
+            }
             
             $parent_post_id = $parent_post ? $parent_post->ID : 0;
             printf( "parent_id: %d\n", $parent_post_id );
@@ -146,6 +149,7 @@ try {
                 if( $thumbnail_id ) {
                     printf( "set post thumbnail: %d\n", $thumbnail_id );
                     set_post_thumbnail( $post_id, $thumbnail_id );
+                    wp_update_attachment_metadata( $thumbnail_id, wp_generate_attachment_metadata( $thumbnail_id, get_attached_file( $thumbnail_id ) ) );
                 }
                 
                 //add tags
@@ -155,7 +159,7 @@ try {
                 }
                 
 //                 foreach( $documents_urls as $doc_url ) {
-//                     $doc_url = trim( $doc_url );
+//                     $doc_url = tst_clean_csv_file_url( $doc_url );
 //                     if( $doc_url ) {
 //                         printf( "doc url: %s\n", $doc_url );
 //                         $doc_id = TST_Import::get_instance()->maybe_import( $doc_url );
