@@ -445,18 +445,15 @@ class TST_Media {
 		$filename_no_ext = pathinfo( $path, PATHINFO_FILENAME );
 		$extension = pathinfo( $path, PATHINFO_EXTENSION );
 		
-		#$file_info = new finfo( FILEINFO_MIME );
-		#$mime_type = $file_info->buffer( file_get_contents( $path, false, null, 0, 1000 ) );
 		$mime_type = mime_content_type( $path );
 		
-// 		echo $mime_type . "\n";
-		
-		$tmp_path = $path;
-// 		$tmp = tmpfile();
-// 		$tmp_path = stream_get_meta_data($tmp)['uri'];
-// 		fwrite($tmp, file_get_contents( $path ));
-// 		fseek($tmp, 0); // If we don't do this, WordPress thinks the file is empty
-//		fseek( $path, 0 );
+		$tmp_dir = get_temp_dir() . 'tst_dront';
+		if( !is_dir( $tmp_dir ) ) {
+		    mkdir( $tmp_dir, 0777, true );
+		}
+		$tmp_path = $tmp_dir . '/' . $filename;
+		copy( $path, $tmp_path );
+// 		printf( "tmp_path=%s\n", $tmp_path );
 		
 		$fake_FILE = array(
 			'name' => $filename,

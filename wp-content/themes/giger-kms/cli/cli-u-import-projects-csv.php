@@ -149,6 +149,7 @@ try {
                 if( $thumbnail_id ) {
                     printf( "set post thumbnail: %d\n", $thumbnail_id );
                     set_post_thumbnail( $post_id, $thumbnail_id );
+                    wp_update_attachment_metadata( $thumbnail_id, wp_generate_attachment_metadata( $thumbnail_id, get_attached_file( $thumbnail_id ) ) );
                 }
                 
                 //add tags

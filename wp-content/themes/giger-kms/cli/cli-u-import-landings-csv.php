@@ -41,15 +41,15 @@ try {
             
             $post_title = strip_tags( $line[1] );
             $slug = $line[2];
-            $section = $line[3];
-            $post_type = $line[4];
+            $section = trim( $line[3] );
+            $post_type = trim( $line[4] );
             $tagline = $line[5];
             $fulltext_file_name = $line[6];
             $details = $line[7];
-            $excerpt = strip_tags( trim( $line[8] ) );
-            $thumbnail = strip_tags( trim( $line[9] ) );
+            $post_excerpt = strip_tags( trim( $line[8] ) );
+            $landing_thumbnail = strip_tags( trim( $line[9] ) );
             
-            printf( "title: %s, slug: %s, type: %s\n", $post_title, $slug, $post_type );
+            printf( "title: %s, slug: %s, type: %s, section: %s\n", $post_title, $slug, $post_type, $section );
             
             if( $post_type == "section archive" ) {
                 
@@ -88,9 +88,14 @@ try {
 				'post_type' 	=> $post_type,
 			    'post_name' 	=> $slug,
 				'post_status' 	=> 'publish',
-				'post_content' => $post_content,
+				'post_content' => '',
 				'post_excerpt' => $tagline,
                 'post_parent' => $parent_post_id,
+			    'post_excerpt' => $post_excerpt,
+			    'meta_input' => array(
+			        'landing_excerpt' => $post_excerpt,
+			        'landing_content' => $post_content,
+			    ),
 			);
 			
 // 			print_r( $post_arr );
@@ -98,22 +103,26 @@ try {
             $post_id = wp_insert_post($post_arr);
             
             if( $post_id ) {
+                printf( "post added: %d\n", $post_id );
+                
                 if( $post_type == 'landing' ) {
-                    $section_term = get_term_by( 'slug', $section, 'section' );
+                    $section_term = get_term_by( 'name', $section, 'section' );
                     if( $section_term ) {
-                        wp_set_post_terms( $post_id, $section_term->term_id );
+                        wp_set_post_terms( $post_id, array( $section_term->term_id ), 'section' );
                     }
                     else {
                         printf( "section not found: %s\n", $section );
                     }
                 }
                 
-                if( $thumbnail ) {
-                    printf( "upload thumbnail: %s\n", $thumbnail );
-                    $thumbnail_id = TST_Import::get_instance()->maybe_import_local_file( dirname( __FILE__ ) . '/sideload/' . $thumbnail );
+                printf( "thumbnail: %s\n", $landing_thumbnail );
+                if( $landing_thumbnail ) {
+                    printf( "upload thumbnail: %s\n", $landing_thumbnail );
+                    $thumbnail_id = TST_Import::get_instance()->maybe_import_local_file( dirname( __FILE__ ) . '/sideload/' . $landing_thumbnail );
                     if( $thumbnail_id ) {
-                        printf( "set post thumbnail: %d\n", $thumbnail_id );
+                        printf( "set post thumbnail: %d, %s\n", $thumbnail_id, get_attached_file( $thumbnail_id ) );
                         set_post_thumbnail( $post_id, $thumbnail_id );
+                        wp_update_attachment_metadata( $thumbnail_id, wp_generate_attachment_metadata( $thumbnail_id, get_attached_file( $thumbnail_id ) ) );
                     }
                     else {
                         printf( "set thumbnail error!\n" );

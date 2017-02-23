@@ -8,18 +8,19 @@ set_time_limit (0);
 ini_set('memory_limit','256M');
 
 $landings_sections = array(
-    'dront-ornotologlab' => array(
+    'dront-birds' => array(
         array(
             'template_group' => 'cover-general',
-            'cover_general_cover_post' => '',
+            'cover_general_cover_post' => array( 'dront-birds', 'landing' ),
+            'cover_general_cover_file_id' => 'thumbnail',
         ),
         array(
             'template_group' => 'tripleblock-picture',
             'tripleblock_picture_block_order' => 'direct',
-            'tripleblock_picture_element1_post' => array( 'obereg-activity', 'project' ),
-            'tripleblock_picture_element2_post' => array( 'ecodom-2014', 'project' ),
-            'tripleblock_picture_element2_file_id' => '',
-            'tripleblock_picture_element3_post' => array( 'birds-defender', 'project' ),
+            'tripleblock_picture_element1_post' => array( 'dront-ornotologlab', 'landing' ),
+            'tripleblock_picture_element2_post' => array( 'birds-territ', 'project' ),
+            'tripleblock_picture_element2_file_id' => array( 'di-vesna-ptitsy-buklet-2014', 'attachment' ),
+            'tripleblock_picture_element3_post' => array( 'birds-kadastr', 'project' ),
         ),
         array(
             'template_group' => 'tripleblock-picture',
@@ -263,6 +264,12 @@ try {
                         $landing_pb_meta[$section_index][$option_key] = $post ? $post->ID : '';
                     }
                 }
+                elseif( in_array( $option_key, array( 'cover_general_cover_file_id' ) ) ) {
+                    if( $option_val == 'thumbnail' ) {
+                        $thumbnail_id = get_post_thumbnail_id( $landing->ID );
+                        $landing_pb_meta[$section_index][$option_key] = $thumbnail_id;
+                    }
+                }
             }
         }
         
@@ -300,16 +307,19 @@ try {
         ) );
         
         if( count( $department_projects ) ) {
-            foreach( $department_projects as $project ) {
-                printf( "department_prject_title: %s\n", $project->post_title );
-            }
+//             foreach( $department_projects as $project ) {
+//                 printf( "department_prject_title: %s\n", $project->post_title );
+//             }
 //             $landing_pb_meta[0]['col1_post_type_col1'] = $project_department->post_type;
 //             $landing_pb_meta[0]['col1_post_id_col1'] = $project_department->ID;
         }
         
+        print_r( $landing_pb_meta );
+        
         $landing_data['meta_input'] = array( '_wds_builder_template' => $landing_pb_meta );
         
         $landing_id = wp_insert_post( $landing_data );
+        printf( "landing init ok: %d\n", $landing_id );
         
         if( is_wp_error($landing_id) ){
             echo $res->get_error_message() . "\n";
