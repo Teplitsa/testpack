@@ -36,6 +36,9 @@ php cli-u-projects.php --host=$HOST
 php cli-u-import-landings-csv.php --host=$HOST --file=data/landings.csv
 php cli-u-import-projects-csv.php --host=$HOST --file=data/projects.csv
 
+# set posts thumbnails
+php cli-u-posts-thumbnails.php --host=$HOST
+
 # init landings
 php cli-u-landing_init.php --host=$HOST
 
