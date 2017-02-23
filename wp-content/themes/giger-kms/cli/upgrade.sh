@@ -19,6 +19,8 @@ php cli-u-options.php --host=$HOST
 #php cli-u-import-files-csv.php --host=$HOST --file=data/dront_urls_publications.csv --tag=publication
 #php cli-u-import-files-csv.php --host=$HOST --file=data/dront_urls_reports.csv --tag=report
 
+php cli-u-fix-import-data.php --host=$HOST
+
 php cli-import-events-csv.php --host=$HOST --file=data/dront_events_all.csv
 php cli-import-map-markers-csv.php --host=$HOST
 php cli-u-testpost.php --host=$HOST
@@ -31,8 +33,8 @@ php cli-u-pages.php --host=$HOST
 php cli-u-projects.php --host=$HOST
 
 # import new prepared data
-php cli-u-import-projects-csv.php --host=$HOST --file=data/projects.csv
 php cli-u-import-landings-csv.php --host=$HOST --file=data/landings.csv
+php cli-u-import-projects-csv.php --host=$HOST --file=data/projects.csv
 
 # init landings
 php cli-u-landing_init.php --host=$HOST

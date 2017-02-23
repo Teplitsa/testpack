@@ -35,8 +35,9 @@ try {
 			continue;
 
 			
-			
-		$post_name = trim($line[2]);
+		
+		$post_title = trim( $line[0] );
+		$post_name = tst_clean_csv_slug( trim( $line[2] ) );
 		$exist_page = tst_get_pb_post( $post_name, 'project' );
 			
 		$page_data = array();
@@ -46,7 +47,7 @@ try {
 		$page_data['post_status'] = 'publish';
 		$page_data['post_excerpt'] = '';
 
-		$page_data['post_title']	= $line[0];
+		$page_data['post_title']	= $post_title;
 		$page_data['post_name'] 	= $post_name;
 		$page_data['menu_order']	= (int)$line[5];
 
@@ -77,7 +78,7 @@ try {
 
 		//post parent
 		if($line[3] != 'none'){
-			$parent = get_posts(array('post_type' => 'project', 'posts_per_page' => 1, 'name' => trim($line[3]), 'post_status' => 'publish'));
+			$parent = get_posts(array('post_type' => 'project', 'posts_per_page' => 1, 'name' => tst_clean_csv_slug( trim( $line[3] ) ), 'post_status' => 'publish'));
 			if($parent){
 				$page_data['post_parent'] = (int)$parent[0]->ID;
 			}

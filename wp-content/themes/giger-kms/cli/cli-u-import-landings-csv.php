@@ -46,6 +46,8 @@ try {
             $tagline = $line[5];
             $fulltext_file_name = $line[6];
             $details = $line[7];
+            $excerpt = strip_tags( trim( $line[8] ) );
+            $thumbnail = strip_tags( trim( $line[9] ) );
             
             printf( "title: %s, slug: %s, type: %s\n", $post_title, $slug, $post_type );
             
@@ -95,14 +97,29 @@ try {
             
             $post_id = wp_insert_post($post_arr);
             
-            if( $post_type == 'landing' ) {
-                $section_term = get_term_by( 'slug', $section, 'section' );
-                if( $section_term ) {
-                    wp_set_post_terms( $post_id, $section_term->term_id );
+            if( $post_id ) {
+                if( $post_type == 'landing' ) {
+                    $section_term = get_term_by( 'slug', $section, 'section' );
+                    if( $section_term ) {
+                        wp_set_post_terms( $post_id, $section_term->term_id );
+                    }
+                    else {
+                        printf( "section not found: %s\n", $section );
+                    }
                 }
-                else {
-                    printf( "section not found: %s\n", $section );
+                
+                if( $thumbnail ) {
+                    printf( "upload thumbnail: %s\n", $thumbnail );
+                    $thumbnail_id = TST_Import::get_instance()->maybe_import_local_file( dirname( __FILE__ ) . '/sideload/' . $thumbnail );
+                    if( $thumbnail_id ) {
+                        printf( "set post thumbnail: %d\n", $thumbnail_id );
+                        set_post_thumbnail( $post_id, $thumbnail_id );
+                    }
+                    else {
+                        printf( "set thumbnail error!\n" );
+                    }
                 }
+                
             }
             
             unset( $line );
