@@ -39,9 +39,12 @@ $social_color: (
 	padding: ($button-size - $icon-size)/2 0;
 
 	.svg-icon {
+		vertical-align: middle;
 		width: $icon-size;
 		height: $icon-size;
 		fill: #262832;
+		pointer-events: none;
+		@include transition(all 0.35s);
 	}
 }
 
@@ -82,7 +85,12 @@ $social_color: (
 	cursor: pointer;
 
 	a {
-		@include social-button-link(44px, 20px);
+		@include social-button-link(40px, 20px);
+		.svg-icon { fill: $leaf; }
+		
+		&:hover {
+			.svg-icon { fill: $color-white; }
+		}
 	}
 
 	li {
@@ -94,29 +102,7 @@ $social_color: (
 		}
 	}
 
-	.svg-icon {
-		display: inline-block;
-		vertical-align: moddle;
-		vertical-align: middle;
-		width: 20px;
-		height: 20px;
-		fill: $leaf;
-		
-	}
 }
-
-/*@each $item in vk, facebook, twitter, telegram, whatsapp, viber, ok, mail  {
-
-	.sharing-list li.#{$item} {
-		.svg-icon { fill: social_color($item); }
-
-		&:hover, &:focus, &:active {
-			background: social_color($item);
-			.svg-icon { fill: $color-white; }
-		}
-
-	}
-}*/
 
 //hide
 .sharing-list {

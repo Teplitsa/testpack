@@ -214,7 +214,13 @@ function tst_card_iconic($cpost) {
 
 	$pl = get_permalink($cpost);
 
-	$test_file = get_template_directory().'/src/svg/icon-item-'.$cpost->post_name.'.svg';
+	if(has_term('departments', 'section', $cpost)){
+		$test_file = get_template_directory().'/src/svg/icon-item-departments.svg';
+	}
+	else {
+		$test_file = get_template_directory().'/src/svg/icon-item-'.$cpost->post_name.'.svg';
+	}
+
 
 	if(file_exists($test_file)){
 		$icon = tst_svg_icon('icon-item-'.$cpost->post_name, false);

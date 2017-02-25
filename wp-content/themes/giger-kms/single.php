@@ -18,13 +18,13 @@ get_header(); ?>
 		<div class="container">
 			<div class="flex-grid--stacked">
 
-				<div class="flex-cell--stacked md-8 lg-9 single__title-block">
+				<div class="flex-cell--stacked lg-9 single__title-block">
 					<div class="single-card__meta"><?php echo get_the_date('d.m.Y', $cpost);?></div>
 					<h1><?php echo get_the_title($cpost);?></h1>
 					<div class="sharing"><?php tst_social_share($cpost);?></div>
 				</div>
 
-				<div class="flex-cell--stacked md-4 lg-3 single__nav">
+				<div class="flex-cell--stacked lg-3 single__nav">
 					<?php tst_single_post_nav();?>
 				</div>
 
@@ -35,14 +35,14 @@ get_header(); ?>
 	<?php if(has_post_thumbnail($cpost)) { ?>
 	<div class="single__preview"><div class="container">
 		<div class="flex-grid--stacked">
-			<div class="flex-cell--stacked md-8 lg-9 single__thumbnail">
+			<div class="flex-cell--stacked lg-9 single__thumbnail">
 				<?php tst_single_thumbnail($cpost);?>
 			</div>
 			<?php
 				$land = tst_get_related_landings($cpost, 2);
 				if(!empty($land)) {
 			?>
-			<div class="flex-cell--stacked md-4 lg-3 single__related_land">
+			<div class="flex-cell--stacked lg-3 single__related_land">
 				<div class="realted-landings">
 				<?php foreach($land as $l) { ?>
 					<div class="realted-landings__item">
@@ -59,7 +59,7 @@ get_header(); ?>
 	<div class="single__content"><div class="container">
 		<div class="flex-grid--stacked">
 
-			<div class="flex-cell--stacked md-8 lg-9 single-body">
+			<div class="flex-cell--stacked lg-9 single-body">
 
 				<?php if(!empty($cpost->post_excerpt)) { ?>
 					<div class="single-body--summary"><?php echo apply_filters('tst_entry_the_content', $cpost->post_excerpt);?></div>
@@ -74,7 +74,7 @@ get_header(); ?>
 				</div>
 			</div>
 
-			<div class="flex-cell--stacked md-4 lg-3 single-aside">
+			<div class="flex-cell--stacked lg-3 single-aside">
 				<?php  tst_single_cta($cpost, true);?>
 			</div>
 		</div>

@@ -77,7 +77,7 @@ a:link {
 
 /** == Post content elements == **/
 @mixin link-in-content {
-	
+
 }
 
 
@@ -207,8 +207,8 @@ a:link {
 		font-style: italic;
 	}
 	//in text shortcodes
-	
-	
+
+
 
 	//image caption
 	.wp-caption {
@@ -252,6 +252,10 @@ a:link {
 	}
 
 	//blockquote
-	
-	
+
+
+}
+
+.single-body--entry  {
+	@include the-content();
 }

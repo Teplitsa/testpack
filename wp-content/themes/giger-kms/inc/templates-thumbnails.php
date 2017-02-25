@@ -12,6 +12,7 @@ function tst_thumbnails_setup() {
 	add_image_size('block-2col', 596, 482, true );
 	add_image_size('block-3col', 894, 482, true );
 	add_image_size('block-small', 298, 298, true );
+	add_image_size('block-single', 894, 596, true );
 
 	//thumbnail in cards - create system
 	add_image_size('thumbnail-small-fixed', 320, 198, true );

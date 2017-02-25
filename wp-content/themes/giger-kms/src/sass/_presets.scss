@@ -274,6 +274,10 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 		font-size: 21px;
 		line-height: 1.35;
 	}
+	@else if $mod == cards_side {
+		font-size: 18px;
+		line-height: 1.35;
+	}
 	@else if $mod == cards_text {
 		font-size: 24px;
 		line-height: 1.35;
@@ -357,7 +361,7 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 
 }
 
-@mixin block-title() {
+@mixin block-title($mod: default) {
 	//widgets, sub-sections
 	font-family: $heading_fb;
 	font-weight: 700;
@@ -370,6 +374,10 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	font-size: 32px;
 	line-height: 40px;
 
+	@if $mod == related {
+		font-size: 24px;
+		line-height: 1.2;
+	}
 }
 
 @mixin form-text($mod: default) {

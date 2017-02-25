@@ -61,12 +61,12 @@ function tst_single_cta(WP_Post $cpost, $show_pic = true) {
 		</div>
 	<?php } ?>
 
-	<div class="card__label--iconic">
+	<div class="card__label--iconic"><div class="card__label-wrap">
 		<div class="card__icon">
 			<?php tst_svg_icon('icon-'.$type); ?>
 		</div>
 		<h4><?php echo apply_filters('tst_the_title', $label);?></h4>
-	</div>
+	</div></div>
 </a>
 <?php
 }
@@ -153,9 +153,9 @@ function tst_single_thumbnail(WP_Post $cpost) {
 		'crop' 				=> 'flex'
 	);
 
-	$thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
+	//$thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
 
-
+	$thumb = get_the_post_thumbnail($cpost, 'block-single');
 ?>
 	<figure class="fixed-thumbnail--single">
 		<?php echo $thumb; ?>
