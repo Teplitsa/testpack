@@ -34,7 +34,7 @@
  get_header();
  ?>
 <div class="container">
-    
+
     <section class="main main--search">
     	<div class="search-block">
     		<div class="sr-form regular-search"><?php get_search_form();?></div>
@@ -61,7 +61,7 @@
     				</div>
     		<?php }} ?>
     				</div>
-    				
+
     		<div class="layout-section layout-section--card layout-section--loadmore">
     		<?php
     			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
@@ -69,7 +69,7 @@
     			}
     		?>
     		</div>
-    		
+
     	</div>
 
     </section>

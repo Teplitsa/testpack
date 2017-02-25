@@ -134,6 +134,7 @@ function tst_news_card($cpost, $mod = 'pictured') {
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
 
+	$pl = get_permalink($cpost);
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
 

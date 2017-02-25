@@ -101,7 +101,7 @@ require get_template_directory().'/inc/class-import.php';
 
 require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/post-types.php';
-require get_template_directory().'/inc/pagebuilder-ann.php'; //temp
+require get_template_directory().'/inc/pagebuilder.php'; //temp
 
 require get_template_directory().'/inc/related.php';
 require get_template_directory().'/inc/request.php';
