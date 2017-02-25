@@ -18,7 +18,7 @@ try {
 	$uploads = wp_upload_dir();
 
 	//Read file
-	$handle = file('projects.tsv');
+	$handle = file('data/projects.tsv');
 	$csv = array();
 
 	if($handle) { foreach($handle as $i => $line) {
@@ -34,15 +34,21 @@ try {
 		if($i == 0)
 			continue;
 
+			
+		
+		$post_title = trim( $line[0] );
+		$post_name = tst_clean_csv_slug( trim( $line[2] ) );
+		$exist_page = tst_get_pb_post( $post_name, 'project' );
+			
 		$page_data = array();
 
-		$page_data['ID'] = 0;
+		$page_data['ID'] = $exist_page ? $exist_page->ID : 0;
 		$page_data['post_type'] = 'project';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_excerpt'] = '';
 
-		$page_data['post_title']	= $line[0];
-		$page_data['post_name'] 	= trim($line[2]);
+		$page_data['post_title']	= $post_title;
+		$page_data['post_name'] 	= $post_name;
 		$page_data['menu_order']	= (int)$line[5];
 
 		//content
@@ -72,7 +78,7 @@ try {
 
 		//post parent
 		if($line[3] != 'none'){
-			$parent = get_posts(array('post_type' => 'project', 'posts_per_page' => 1, 'name' => trim($line[3]), 'post_status' => 'publish'));
+			$parent = get_posts(array('post_type' => 'project', 'posts_per_page' => 1, 'name' => tst_clean_csv_slug( trim( $line[3] ) ), 'post_status' => 'publish'));
 			if($parent){
 				$page_data['post_parent'] = (int)$parent[0]->ID;
 			}
@@ -135,10 +141,14 @@ try {
 
 				$item = get_posts(array('post_type' => 'landing', 'posts_per_page' => 1, 'name' => $l_slug));
 				if($item) {
-					$c = p2p_type('landing_project')->connect($item[0]->ID, $uid, array('date' => current_time('mysql')));
-					if(!is_wp_error($c)){
-						$c_count++;
-					}
+				    if( !p2p_connection_exists( 'landing_project', array( 'from' => $item[0]->ID, 'to' => $uid ) ) ) {
+				        
+				        $c = p2p_type('landing_project')->connect($item[0]->ID, $uid, array('date' => current_time('mysql')));
+				        if( !is_wp_error( $c ) ) {
+				            $c_count++;
+				        }
+				        
+				    }
 				}
 			}}
 

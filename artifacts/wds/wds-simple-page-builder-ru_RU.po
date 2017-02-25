@@ -1,0 +1,684 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wds-simple-page-builder\n"
+"POT-Creation-Date: 2017-02-21 20:56+0200\n"
+"PO-Revision-Date: 2017-02-22 20:57+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: inc/class-wds-page-builder-admin.php:81
+msgid "Template"
+msgstr "Шаблон"
+
+#: inc/class-wds-page-builder-admin.php:214
+#, php-format
+msgid "%s Page Builder Templates"
+msgstr "%s шаблоны Конструктора Страниц"
+
+#: inc/class-wds-page-builder-admin.php:231
+#, php-format
+msgid "%s Template Part {#}"
+msgstr "%s часть шаблона {#}"
+
+#: inc/class-wds-page-builder-admin.php:232
+#: inc/class-wds-page-builder-layouts.php:85
+msgid "Add another template part"
+msgstr "Добавьте другую часть шаблона"
+
+#: inc/class-wds-page-builder-admin.php:233
+#: inc/class-wds-page-builder-layouts.php:86
+msgid "Remove template part"
+msgstr "Удалите часть шаблона"
+
+#: inc/class-wds-page-builder-areas.php:45
+msgid "Default Page Builder Area"
+msgstr "Начальная область"
+
+#: inc/class-wds-page-builder-areas.php:46
+msgid ""
+"This is the default area. Place the template tag wds_page_builder_area() in "
+"your theme file to display. You can also create custom areas."
+msgstr ""
+"Это начальная область. Разместите тег шаблона wds_page_builder_area() в "
+"вашей теме для отображения. Вы также можете создать кастомные области."
+
+#: inc/class-wds-page-builder-layouts.php:51
+msgid "Add New Layout"
+msgstr "Добавить новый макет"
+
+#: inc/class-wds-page-builder-layouts.php:52
+msgid "New Layout"
+msgstr "Новый макет"
+
+#: inc/class-wds-page-builder-layouts.php:53
+msgid "Edit Layout"
+msgstr "Редактировать макет"
+
+#: inc/class-wds-page-builder-layouts.php:54
+msgid "View Layout"
+msgstr "Просмотреть макет"
+
+#: inc/class-wds-page-builder-layouts.php:55
+msgid "Saved Layouts"
+msgstr "Сохраненные макеты"
+
+#: inc/class-wds-page-builder-layouts.php:56
+msgid "Search Layouts"
+msgstr "Поиск макетов"
+
+#: inc/class-wds-page-builder-layouts.php:57
+msgid "No layouts found."
+msgstr "Макетов не найдено."
+
+#: inc/class-wds-page-builder-layouts.php:58
+msgid "No layouts found in Trash."
+msgstr "Макетов в Корзине не найдено."
+
+#: inc/class-wds-page-builder-layouts.php:75
+msgid "Page Builder Templates"
+msgstr "шаблонов Конструктора Страниц"
+
+#: inc/class-wds-page-builder-layouts.php:84
+msgid "Template Part {#}"
+msgstr "Часть шаблона {#}"
+
+#: inc/class-wds-page-builder-layouts.php:97
+msgid "Layout Defaults"
+msgstr "Макет по умолчанию"
+
+#: inc/class-wds-page-builder-layouts.php:104
+msgid "Post Type"
+msgstr "Тип записи"
+
+#: inc/class-wds-page-builder-layouts.php:105
+msgid "Set this layout as the default layout for the these post types."
+msgstr "Установить этот макет как макет по умолчанию для этих типов записи."
+
+#: inc/class-wds-page-builder-layouts.php:112
+msgid "Area"
+msgstr "Область"
+
+#: inc/class-wds-page-builder-layouts.php:113
+msgid ""
+"If the layout is set as a default layout for a post type, select what area "
+"the layout should be the default in."
+msgstr ""
+"Если макет установлен как макет по умолчанию, выберите в какой области "
+"макет должен быть по умолчанию."
+
+#: inc/class-wds-page-builder-layouts.php:121
+msgid "Hide Metabox"
+msgstr "Скрыть Панель Управления"
+
+#: inc/class-wds-page-builder-layouts.php:122
+msgid ""
+"If checked, the metabox for this area will be hidden on these post types."
+msgstr ""
+"Если отмечено, панель управления для этой области будет скрыта для этих "
+"типов записей."
+
+#: inc/class-wds-page-builder-layouts.php:184
+msgid "Page Builder Default"
+msgstr "Конструктор Страниц по умолчанию"
+
+#: inc/class-wds-page-builder-options.php:51
+msgid "Options"
+msgstr "Опции"
+
+#: inc/class-wds-page-builder-options.php:203
+msgid "Page Builder"
+msgstr "Конструктор Страниц"
+
+#: inc/class-wds-page-builder-options.php:204
+msgid "Page Builder Options"
+msgstr "Опции Конструктора Страниц"
+
+#: inc/class-wds-page-builder-options.php:222
+msgid "Settings"
+msgstr "Настройки"
+
+#: inc/class-wds-page-builder-options.php:223
+msgid "Global Area Layouts"
+msgstr "Макеты Общей Области"
+
+#: inc/class-wds-page-builder-options.php:263
+msgid "Template Parts Directory"
+msgstr "Каталог Частей Шаблона"
+
+#: inc/class-wds-page-builder-options.php:264
+msgid "Where the template parts are located in the theme. Default is /parts"
+msgstr "Расположение частей шаблона в теме. Изначально это /parts"
+
+#: inc/class-wds-page-builder-options.php:273
+msgid "Template Parts Prefix"
+msgstr "Префикс Частей Шаблона"
+
+#: inc/class-wds-page-builder-options.php:274
+msgid "File prefix that identifies template parts. Default is part-"
+msgstr "Префикс файла. определяющего части шаблона. Изначально это /part-"
+
+#: inc/class-wds-page-builder-options.php:285
+msgid "Use Wrapper"
+msgstr "Использовать Обертку"
+
+#: inc/class-wds-page-builder-options.php:286
+msgid ""
+"If checked, a wrapper HTML container will be added around each individual "
+"template part."
+msgstr ""
+"Если отмечено, HTML контейнер обертки будет добавлен вокруг каждой "
+"индивидуальной части шаблона."
+
+#: inc/class-wds-page-builder-options.php:294
+msgid "Container Type"
+msgstr "Тип Контейнера"
+
+#: inc/class-wds-page-builder-options.php:295
+msgid "The type of HTML container wrapper to use, if Use Wrapper is selected."
+msgstr ""
+"Тип HTML обертки контейнера будет использован, если выбран \"Использовать "
+"Обертку\"."
+
+#: inc/class-wds-page-builder-options.php:299
+msgid "Section"
+msgstr "Section"
+
+#: inc/class-wds-page-builder-options.php:300
+msgid "Div"
+msgstr "Div"
+
+#: inc/class-wds-page-builder-options.php:301
+msgid "Aside"
+msgstr "Aside"
+
+#: inc/class-wds-page-builder-options.php:302
+msgid "Article"
+msgstr "Article"
+
+#: inc/class-wds-page-builder-options.php:310
+msgid "Container Class"
+msgstr "Класс Контейнера"
+
+#: inc/class-wds-page-builder-options.php:311
+#, php-format
+msgid ""
+"%1$sThe default class to use for all template part wrappers. Specific "
+"classes will be added to each wrapper in addition to this. %2$sMultiple "
+"classes, separated by a space, can be added here.%3$s"
+msgstr ""
+"%1$sНачальный класс, используемый для всех частей оберток. Конкретные "
+"классы будут добавлены к каждой обертке в дополнение к этому. %2$sНесколько "
+"классов, разделенные пробелом, могут быть добавлены здесь.%3$s"
+
+#: inc/class-wds-page-builder-options.php:320
+msgid "Allowed Post Types"
+msgstr "Разрешенные Типы Записи"
+
+#: inc/class-wds-page-builder-options.php:321
+msgid "Post types that can use the page builder. Default is Page."
+msgstr ""
+"Типы Записей которые могут быть использованы в Конструкторе Страниц. "
+"Изначально это \"Страница\""
+
+#: inc/class-wds-page-builder-options.php:460
+msgid "- No Template Parts -"
+msgstr "- Нет Частей Шаблона -"
+
+#: inc/cmb2/example-functions.php:82 inc/cmb2/tests/test-cmb-field.php:294
+msgid "Test Metabox"
+msgstr "Тест \"Панель Управления\""
+
+#: inc/cmb2/example-functions.php:93 inc/cmb2/example-functions.php:380
+msgid "Test Text"
+msgstr "Тест \"Текст\""
+
+#: inc/cmb2/example-functions.php:94 inc/cmb2/example-functions.php:106
+#: inc/cmb2/example-functions.php:114 inc/cmb2/example-functions.php:122
+#: inc/cmb2/example-functions.php:131 inc/cmb2/example-functions.php:139
+#: inc/cmb2/example-functions.php:153 inc/cmb2/example-functions.php:160
+#: inc/cmb2/example-functions.php:168 inc/cmb2/example-functions.php:185
+#: inc/cmb2/example-functions.php:194 inc/cmb2/example-functions.php:202
+#: inc/cmb2/example-functions.php:209 inc/cmb2/example-functions.php:216
+#: inc/cmb2/example-functions.php:230 inc/cmb2/example-functions.php:243
+#: inc/cmb2/example-functions.php:256 inc/cmb2/example-functions.php:268
+#: inc/cmb2/example-functions.php:277 inc/cmb2/example-functions.php:285
+#: inc/cmb2/example-functions.php:294 inc/cmb2/example-functions.php:301
+#: inc/cmb2/example-functions.php:315 inc/cmb2/example-functions.php:381
+#: inc/cmb2/example-functions.php:476 inc/cmb2/example-functions.php:484
+#: inc/cmb2/example-functions.php:491 inc/cmb2/example-functions.php:498
+#: inc/cmb2/example-functions.php:505 inc/cmb2/example-functions.php:512
+#: inc/cmb2/example-functions.php:519 inc/cmb2/example-functions.php:557
+#: inc/cmb2/tests/test-cmb-field.php:306
+msgid "field description (optional)"
+msgstr "описание поля (опционально)"
+
+#: inc/cmb2/example-functions.php:105
+msgid "Test Text Small"
+msgstr "Тест \"Маленький текст\""
+
+#: inc/cmb2/example-functions.php:113
+msgid "Test Text Medium"
+msgstr "Тест \"Средний Текст\""
+
+#: inc/cmb2/example-functions.php:121
+msgid "Website URL"
+msgstr "\"URL сайта\""
+
+#: inc/cmb2/example-functions.php:130
+msgid "Test Text Email"
+msgstr "Тест \"Текст Email\""
+
+#: inc/cmb2/example-functions.php:138
+msgid "Test Time"
+msgstr "Тест \"Время\""
+
+#: inc/cmb2/example-functions.php:145 inc/cmb2/example-functions.php:146
+msgid "Time zone"
+msgstr "\"Часовой пояс\""
+
+#: inc/cmb2/example-functions.php:152
+msgid "Test Date Picker"
+msgstr "Тест \"Выбор даты\""
+
+#: inc/cmb2/example-functions.php:159
+msgid "Test Date Picker (UNIX timestamp)"
+msgstr "Тест \"Выбор даты (UNIX метка времени)\""
+
+#: inc/cmb2/example-functions.php:167
+msgid "Test Date/Time Picker Combo (UNIX timestamp)"
+msgstr "Тест \"Выбор Даты/Времени\"  комбинированный (UNIX метка времени)"
+
+#: inc/cmb2/example-functions.php:184
+msgid "Test Money"
+msgstr "Тест \"Деньги\""
+
+#: inc/cmb2/example-functions.php:193
+msgid "Test Color Picker"
+msgstr "Тест \"Выбор Цвета\""
+
+#: inc/cmb2/example-functions.php:201
+msgid "Test Text Area"
+msgstr "Тест \"Область Текста\""
+
+#: inc/cmb2/example-functions.php:208
+msgid "Test Text Area Small"
+msgstr "Тест \"Область Маленького Текста\""
+
+#: inc/cmb2/example-functions.php:215
+msgid "Test Text Area for Code"
+msgstr "Тест \"Текстовая Область для Кода\""
+
+#: inc/cmb2/example-functions.php:222
+msgid "Test Title Weeeee"
+msgstr "Тест \"Заголовок Weeeee\""
+
+#: inc/cmb2/example-functions.php:223
+msgid "This is a title description"
+msgstr "Это описание названия"
+
+#: inc/cmb2/example-functions.php:229
+msgid "Test Select"
+msgstr "Тест \"Выбор\""
+
+#: inc/cmb2/example-functions.php:235 inc/cmb2/example-functions.php:248
+#: inc/cmb2/example-functions.php:260
+msgid "Option One"
+msgstr "Опция \"Один\""
+
+#: inc/cmb2/example-functions.php:236 inc/cmb2/example-functions.php:249
+#: inc/cmb2/example-functions.php:261
+msgid "Option Two"
+msgstr "Опция \"Два\""
+
+#: inc/cmb2/example-functions.php:237 inc/cmb2/example-functions.php:250
+#: inc/cmb2/example-functions.php:262
+msgid "Option Three"
+msgstr "Опция \"Три\""
+
+#: inc/cmb2/example-functions.php:242
+msgid "Test Radio inline"
+msgstr "Тест \"Радио-кнопка в ряд\""
+
+#: inc/cmb2/example-functions.php:255
+msgid "Test Radio"
+msgstr "Тест \"Радио-кнопка\""
+
+#: inc/cmb2/example-functions.php:267
+msgid "Test Taxonomy Radio"
+msgstr "Тест \"Таксономия Радио-кнопки\""
+
+#: inc/cmb2/example-functions.php:276
+msgid "Test Taxonomy Select"
+msgstr "Тест \"Таксономия Выбора\""
+
+#: inc/cmb2/example-functions.php:284
+msgid "Test Taxonomy Multi Checkbox"
+msgstr "Тест \"Таксономия Мульти Чекбокса\""
+
+#: inc/cmb2/example-functions.php:293
+msgid "Test Checkbox"
+msgstr "Тест \"Чекбокс\""
+
+#: inc/cmb2/example-functions.php:300 inc/cmb2/tests/test-cmb-field.php:305
+msgid "Test Multi Checkbox"
+msgstr "Тест \"Мульти Чекбокс\""
+
+#: inc/cmb2/example-functions.php:306 inc/cmb2/tests/test-cmb-field.php:311
+msgid "Check One"
+msgstr "Чекбокс \"Один\""
+
+#: inc/cmb2/example-functions.php:307 inc/cmb2/tests/test-cmb-field.php:312
+msgid "Check Two"
+msgstr "Чекбокс \"Два\""
+
+#: inc/cmb2/example-functions.php:308 inc/cmb2/tests/test-cmb-field.php:313
+msgid "Check Three"
+msgstr "Чекбокс \"Три\""
+
+#: inc/cmb2/example-functions.php:314
+msgid "Test wysiwyg"
+msgstr "Тест \"wysiwyg\""
+
+#: inc/cmb2/example-functions.php:322
+msgid "Test Image"
+msgstr "Тест \"Картинка\""
+
+#: inc/cmb2/example-functions.php:323
+msgid "Upload an image or enter a URL."
+msgstr "Загрузите картинку или вставьте URL"
+
+#: inc/cmb2/example-functions.php:329
+msgid "Multiple Files"
+msgstr "Несколько файлов"
+
+#: inc/cmb2/example-functions.php:330
+msgid "Upload or add multiple images/attachments."
+msgstr "Загрузите или добавьте несколько картинок/вложений"
+
+#: inc/cmb2/example-functions.php:337
+msgid "oEmbed"
+msgstr "oEmbed"
+
+#: inc/cmb2/example-functions.php:338
+msgid ""
+"Enter a youtube, twitter, or instagram URL. Supports services listed at <a "
+"href=\"http://codex.wordpress.org/Embeds\">http://codex.wordpress.org/"
+"Embeds</a>."
+msgstr ""
+"Введите URL ютюб-видео, твиттера или иснтаграмма. Сервисы поддержки "
+"перечислены здесь <a href=\"http://codex.wordpress.org/Embeds\">http://"
+"codex.wordpress.org/Embeds</a>."
+
+#: inc/cmb2/example-functions.php:371
+msgid "About Page Metabox"
+msgstr "О странице Панели Управления"
+
+#: inc/cmb2/example-functions.php:402
+msgid "Repeating Field Group"
+msgstr "\"Группа Повторяющихся Полей\""
+
+#: inc/cmb2/example-functions.php:410
+msgid "Generates reusable form entries"
+msgstr "Формирует многоразовые формы записи"
+
+#: inc/cmb2/example-functions.php:412
+msgid "Entry {#}"
+msgstr "Запись {#}"
+
+#: inc/cmb2/example-functions.php:413
+msgid "Add Another Entry"
+msgstr "Добавить другую запись"
+
+#: inc/cmb2/example-functions.php:414
+msgid "Remove Entry"
+msgstr "Удалить Запись"
+
+#: inc/cmb2/example-functions.php:427
+msgid "Entry Title"
+msgstr "Заголовок Записи"
+
+#: inc/cmb2/example-functions.php:434
+msgid "Description"
+msgstr "Описание"
+
+#: inc/cmb2/example-functions.php:435
+msgid "Write a short description for this entry"
+msgstr "Напишите небольшое описание для этой записи"
+
+#: inc/cmb2/example-functions.php:441
+msgid "Entry Image"
+msgstr "Картинка Записи"
+
+#: inc/cmb2/example-functions.php:447
+msgid "Image Caption"
+msgstr "Подпись Изображения"
+
+#: inc/cmb2/example-functions.php:468
+msgid "User Profile Metabox"
+msgstr "Панель Управления Профиля Пользователя"
+
+#: inc/cmb2/example-functions.php:475
+msgid "Extra Info"
+msgstr "Дополнительная Информация"
+
+#: inc/cmb2/example-functions.php:483
+msgid "Avatar"
+msgstr "Аватар"
+
+#: inc/cmb2/example-functions.php:490
+msgid "Facebook URL"
+msgstr "Facebook URL"
+
+#: inc/cmb2/example-functions.php:497
+msgid "Twitter URL"
+msgstr "Twitter URL"
+
+#: inc/cmb2/example-functions.php:504
+msgid "Google+ URL"
+msgstr "Google+ URL"
+
+#: inc/cmb2/example-functions.php:511
+msgid "Linkedin URL"
+msgstr "Linkedin URL"
+
+#: inc/cmb2/example-functions.php:518
+msgid "User Field"
+msgstr "Поле Пользователя"
+
+#: inc/cmb2/example-functions.php:541
+msgid "Theme Options Metabox"
+msgstr "Панель Управления Опций Темы"
+
+#: inc/cmb2/example-functions.php:556
+msgid "Site Background Color"
+msgstr "Цвет Фона Сайта"
+
+#: inc/cmb2/includes/CMB2.php:120
+msgid "Metabox configuration is required to have an ID parameter"
+msgstr "Конфигурация Панели Управления должна иметь ID параметр"
+
+#: inc/cmb2/includes/CMB2.php:332
+msgid "Click to toggle"
+msgstr "Нажмите для переключения"
+
+#: inc/cmb2/includes/CMB2_Ajax.php:40
+msgid "Please Try Again"
+msgstr "Попробуйте снова"
+
+#: inc/cmb2/includes/CMB2_Ajax.php:135 inc/cmb2/tests/test-cmb-types.php:811
+msgid "Remove Embed"
+msgstr "Удалить встроенное"
+
+#: inc/cmb2/includes/CMB2_Ajax.php:139 inc/cmb2/tests/test-cmb-types.php:812
+#, php-format
+msgid "No oEmbed Results Found for %s. View more info at"
+msgstr "Не найдены oEmbed для %s. Посмотрите больше информации в"
+
+#: inc/cmb2/includes/CMB2_Field.php:1016
+msgid "Add Group"
+msgstr "Добавить Группу"
+
+#: inc/cmb2/includes/CMB2_Field.php:1017
+msgid "Remove Group"
+msgstr "Удалить Группу"
+
+#: inc/cmb2/includes/CMB2_Field.php:1039 inc/cmb2/includes/CMB2_Field.php:1043
+#: inc/cmb2/tests/test-cmb-field.php:266
+msgid "None"
+msgstr "Отсутствует"
+
+#: inc/cmb2/includes/CMB2_JS.php:86 inc/cmb2/includes/CMB2_JS.php:119
+msgid "Clear"
+msgstr "Очистить"
+
+#: inc/cmb2/includes/CMB2_JS.php:87
+msgid "Default"
+msgstr "По умолчанию"
+
+#: inc/cmb2/includes/CMB2_JS.php:88
+msgid "Select Color"
+msgstr "Выберите цвет"
+
+#: inc/cmb2/includes/CMB2_JS.php:89
+msgid "Current Color"
+msgstr "Текущий цвет"
+
+#: inc/cmb2/includes/CMB2_JS.php:110
+msgid "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
+msgstr "Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота"
+
+#: inc/cmb2/includes/CMB2_JS.php:111
+msgid "Su, Mo, Tu, We, Th, Fr, Sa"
+msgstr "Вс, Пн, Вт, Ср, Чт, Пт, Сб"
+
+#: inc/cmb2/includes/CMB2_JS.php:112
+msgid "Sun, Mon, Tue, Wed, Thu, Fri, Sat"
+msgstr "Воск, Пон, Втор, Сред, Четв, Пятн, Суб"
+
+#: inc/cmb2/includes/CMB2_JS.php:113
+msgid ""
+"January, February, March, April, May, June, July, August, September, "
+"October, November, December"
+msgstr ""
+"Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, "
+"Ноябрь, Декабрь"
+
+#: inc/cmb2/includes/CMB2_JS.php:114
+msgid "Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
+msgstr "Янв, Фев, Мар, Апр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек"
+
+#: inc/cmb2/includes/CMB2_JS.php:115
+msgid "Next"
+msgstr "Следующий"
+
+#: inc/cmb2/includes/CMB2_JS.php:116
+msgid "Prev"
+msgstr "Предыдущий"
+
+#: inc/cmb2/includes/CMB2_JS.php:117
+msgid "Today"
+msgstr "Сегодня"
+
+#: inc/cmb2/includes/CMB2_JS.php:118 inc/cmb2/includes/CMB2_JS.php:128
+msgid "Done"
+msgstr "Готово"
+
+#: inc/cmb2/includes/CMB2_JS.php:122
+msgid "Choose Time"
+msgstr "Выберите Время"
+
+#: inc/cmb2/includes/CMB2_JS.php:123
+msgid "Time"
+msgstr "Время"
+
+#: inc/cmb2/includes/CMB2_JS.php:124
+msgid "Hour"
+msgstr "Час"
+
+#: inc/cmb2/includes/CMB2_JS.php:125
+msgid "Minute"
+msgstr "Минута"
+
+#: inc/cmb2/includes/CMB2_JS.php:126
+msgid "Second"
+msgstr "Секунда"
+
+#: inc/cmb2/includes/CMB2_JS.php:127
+msgid "Now"
+msgstr "Сейчас"
+
+#: inc/cmb2/includes/CMB2_JS.php:135
+msgid "Use this file"
+msgstr "Использовать этот фаил"
+
+#: inc/cmb2/includes/CMB2_JS.php:136
+msgid "Use these files"
+msgstr "Использовать эти фаилы"
+
+#: inc/cmb2/includes/CMB2_JS.php:137 inc/cmb2/includes/CMB2_Types.php:1009
+msgid "Remove Image"
+msgstr "Удалить картинку"
+
+#: inc/cmb2/includes/CMB2_JS.php:138 inc/cmb2/includes/CMB2_Types.php:357
+#: inc/cmb2/includes/CMB2_Types.php:1028 inc/cmb2/tests/test-cmb-types.php:155
+#: inc/cmb2/tests/test-cmb-types.php:163 inc/cmb2/tests/test-cmb-types.php:760
+#: inc/cmb2/tests/test-cmb-types.php:785
+msgid "Remove"
+msgstr "Удалить"
+
+#: inc/cmb2/includes/CMB2_JS.php:139 inc/cmb2/includes/CMB2_Types.php:1023
+#: inc/cmb2/tests/test-cmb-types.php:761 inc/cmb2/tests/test-cmb-types.php:786
+msgid "File:"
+msgstr "Фаил:"
+
+#: inc/cmb2/includes/CMB2_JS.php:140 inc/cmb2/includes/CMB2_Types.php:1026
+#: inc/cmb2/tests/test-cmb-types.php:759 inc/cmb2/tests/test-cmb-types.php:784
+msgid "Download"
+msgstr "Загрузить"
+
+#: inc/cmb2/includes/CMB2_JS.php:141
+msgid "Select / Deselect All"
+msgstr "Выделить / Снять выделение всех"
+
+#: inc/cmb2/includes/CMB2_Types.php:298
+msgid "Add Row"
+msgstr "Добавить строку"
+
+#: inc/cmb2/includes/CMB2_Types.php:756 inc/cmb2/includes/CMB2_Types.php:804
+msgid "No terms"
+msgstr "Нет терминов"
+
+#: inc/cmb2/includes/CMB2_Types.php:872 inc/cmb2/tests/test-cmb-types.php:736
+#: inc/cmb2/tests/test-cmb-types.php:762
+msgid "Add or Upload Files"
+msgstr "Добавить или загрузить фаилы"
+
+#: inc/cmb2/includes/CMB2_Types.php:933 inc/cmb2/tests/test-cmb-types.php:772
+#: inc/cmb2/tests/test-cmb-types.php:787
+msgid "Add or Upload File"
+msgstr "Добавить или загрузить фаил"
+
+#: inc/cmb2/includes/helper-functions.php:250
+msgid "Save"
+msgstr "WDS"
+
+#: wds-simple-page-builder.php:148
+#, php-format
+msgid ""
+"WDS Simple Page Builder requires CMB2 but could not find it. The plugin has "
+"been <a href=\"%s\">deactivated</a>. Please make sure all requirements are "
+"available."
+msgstr ""
+"WDS Simple Page Builder требует CMB2, но не может его найти. Этот плагин "
+"был <a href=\"%s\">деактивирован</a>. Убедитесь, что все требования "
+"соблюдены."

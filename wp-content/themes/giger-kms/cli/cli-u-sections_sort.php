@@ -740,9 +740,9 @@ try {
 
 		}
 		elseif(false !== strpos($i_obj['post_content'], '.txt')) {
-			echo 'Get content from file: '.$i_obj['post_content'].chr(10);
+			echo 'Get content from file: data/txt/'.$i_obj['post_content'].chr(10);
 
-			$content = file_get_contents($i_obj['post_content']);
+			$content = file_get_contents( 'data/txt/' . $i_obj['post_content']);
 			if($content){
 
 				//correct urls
@@ -850,37 +850,6 @@ try {
 
 	echo 'Updated pages: '.$count.'. Time in sec: '.(microtime(true) - $time_start).chr(10);
 	//echo 'Memory '.memory_get_usage(true).chr(10).chr(10);
-
-
-	$connectons = array(
-		'dront-bereginya'		=> array('dront-publications'),
-		'dront-sbereg-center' 	=> array('dront-activist', 'dront-health'),
-		'dront-sopr'			=> array('dront-researches', 'dront-activist', 'dront-birds', 'dront-rares'),
-		'dront-ornotologlab' 	=> array('dront-researches', 'dront-birds', 'dront-oopt', 'dront-rares'),
-		'dront-lawcenter' 		=> array('dront-law'),
-		'dront-striks' 			=> array('dront-education'),
-		'dront-reptiles' 		=> array('dront-researches', 'dront-education', 'dront-rares', 'dront-oopt',),
-		'dront-jungle' 			=> array('dront-education'),
-		'dront-folks' 			=> array('dront-education'),
-		'dront-obereg' 			=> array('dront-education', 'dront-urban', 'dront-resources'),
-		'dront-zavojzhje' 		=> array('dront-activist', 'dront-oopt'),
-		'dront-realworld'		=> array('dront-publications'),
-		'dront-rivercleaners'	=> array('dront-activist', 'dront-oopt')
-	);
-
-	if(!empty($connectons)) { foreach($connectons as $dep => $connect) {
-
-		$from = get_posts(array('post_type' => 'landing', 'posts_per_page' => 1, 'name' => $dep));
-		if($from && !empty($connect)) { foreach($connect as $connect_slug) {
-			$to = get_posts(array('post_type' => 'landing', 'posts_per_page' => 1, 'name' => $connect_slug));
-			if($to) {
-				$c = p2p_type('landing_landing')->connect($from[0]->ID, $to[0]->ID, array('date' => current_time('mysql')));
-			}
-		}}
-
-	}}
-
-	echo "Connections added ".chr(10);
 
 
 	//Final

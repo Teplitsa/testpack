@@ -2,114 +2,164 @@
 
 /** Maps **/
 
-@include for(large-screens) {
+.pw_map-wrap {
+  position: relative;
+  //border: 3px solid $moss;
+  //border-radius: 2px;
+  //box-shadow: 2px 2px 3px rgba(200, 200, 200, 0.4);
 
-  .pw_map-wrap {
-    position: relative;
+  .dashicons {
+    font-size: 20px;
 
-    .dashicons {
-      font-size: 20px;
+    &.black {
+      color: $ground;
+    }
+    &.red {
+      color: $wood;
+    }
+    &.orange {
+      color: $loam;
+    }
+    &.dark-pink {
+      color: $map_select;
+    }
+    &.sand {
+      color: $leaf;
+    }
+    &.green {
+      color: $moss;
+    }
+    &.grey-green {
+      color: $wetsoil;
+    }
+  }
 
-      &.black {
-        color: $ground;
+  .pw_map_canvas {
+    border-bottom: 1px dashed $moss;
+
+    .marker-cluster-small div {
+      background-color: $grass;
+    }
+    .marker-cluster-medium div {
+      background-color: $pollen;
+    }
+    .marker-cluster-large div {
+      background-color: $loam;
+    }
+
+    .leaflet-popup-content-wrapper {
+      border-radius: 3px;
+    }
+    .marker-content {
+
+      .material-icons {
+        font-size: 16px;
       }
-      &.red {
-        color: $wood;
+
+      .mc-title {
+        font-weight: bold;
+        margin-bottom: 2*$base;
       }
-      &.orange {
-        color: $loam;
-      }
-      &.dark-pink {
-        color: $map_select;
-      }
-      &.sand {
-        color: $leaf;
-      }
-      &.green {
+
+      .material-icons {
         color: $moss;
       }
-      &.grey-green {
-        color: $wetsoil;
+
+      .mc-address {
+        display: flex;
+        align-items: center;
+        margin-bottom: $base;
+
+        .material-icons {
+          margin-right: $base/2;
+        }
       }
     }
-}
+  }
 
-.pw_map_canvas {
-//@include for(small-screens) {
-//  width: 100%;
-//}
-
-width: 70%;
-height: 100%;
 }
 
 .pw_map_legend {
-font-size: 13px;
-cursor: default;
+  cursor: default;
+  margin: 0;
+  padding: 2*$base 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  width: 100%;
+  text-align: left;
 
-margin: 0;
-padding: 15px 0;
-background-color: rgba(255, 255, 255, 0.9);
-
-//@include for(small-screens) {
-//  width: 100%;
-//}
-width: 30%;
-z-index: 100;
-position: absolute;
-right: 0;
-top: 0;
-
-text-align: left;
-
-ul.markers-map-legend {
-margin: 0;
-display: flex;
-flex-wrap: wrap;
-
-&.is-filter {
-cursor: pointer;
-
-li.legend-child:hover {
-  background-color: $map_select;
-  color: $color-white;
-}
-
-li.legend-child.marker-group-active {
-  background-color: $map_select;
-  color: $color-white;
-}
-}
-
-li::before {
-content: '';
-}
-
-li {
-padding: 5px 10px;
-margin-bottom: 0;
-line-height: 20px;
-}
-
-.mymap-icon.dashicons {
-margin-right: 10px;
-vertical-align: bottom;
-}
-
-ul.legend-children {
-display: block;
-list-style: none;
-margin-left: 0;
-margin-top: 5px;
-
-li.legend-child {
-  padding-left: 25px;
   display: flex;
-  align-items: flex-start;
-}
-}
-}
+  flex-direction: column;
 
-}
+  .legend-header {
+    margin: 0 $base $base 3*$base;
+
+    .legend-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: $base/2;
+    }
+    .legend-subtitle {
+      font-size: 12px;
+      line-height: 2*$base;
+    }
+  }
+
+  ul.markers-map-legend {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+
+    .mymap-icon.material-icons {
+      margin-right: $base;
+      vertical-align: middle;
+    }
+
+    &.is-filter .interactive {
+      cursor: pointer;
+    }
+
+    li::before {
+      content: '';
+    }
+
+    //.group-title {
+    //  display: flex;
+    //  align-items: flex-start;
+    //  padding: $base $base;
+    //  margin-bottom: 0;
+    //}
+
+    li.legend-parent {
+      padding: $base $base;
+      margin-bottom: 0;
+    }
+
+    ul.children-groups-list {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 4*$base;
+    }
+
+    li.legend-child {
+      flex: 0 1 200px;
+      align-items: flex-start;
+      padding: $base $base;
+      margin-bottom: 0;
+    }
+
+    @include for(large-screens) {
+      &.is-filter li.interactive/*.group-title*/:hover { // Hover event behaviors wierdly on mobiles
+        background-color: $pollen;
+        color: $color-white;
+      }
+    }
+
+    &.is-filter li.interactive.marker-group-active /*.group-title*/ {
+      background-color: $pollen;
+      color: $color-white;
+    }
+
+  }
 
 }

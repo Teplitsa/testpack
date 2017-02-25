@@ -74,12 +74,15 @@ try {
 	echo 'Homepage updated. Total time in sec: '.(microtime(true) - $time_start).chr(10);
 
 	// Upd for about page
+	$page_title = 'Об экоцентре';
+	$about_page = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'page' AND post_title = %s", $page_title));
+	
 	$page_data = array();
-	$page_data['ID'] = 2;
-	$page_data['post_title'] = 'Об экоцентре ';
+	$page_data['ID'] = $about_page ? $about_page->ID : 0;
+	$page_data['post_title'] = $page_title;
 	$page_data['post_parent'] = 0;
 	$page_data['post_type'] = 'page';
-	$page_data['post_content'] = file_get_contents('about.txt');
+	$page_data['post_content'] = file_get_contents('data/txt/about.txt');
 	$page_data['post_status'] = 'publish';
 	//$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
 
@@ -132,7 +135,7 @@ try {
 				'post_type' => 'page',
 				'post_parent' => 0,
 				'post_status' => 'publish',
-				'post_content' => file_get_contents('contacts.txt'),
+				'post_content' => file_get_contents('data/txt/contacts.txt'),
 				//'meta_input' => array('_wp_page_template' => 'page-about.php')
 			),
 			'section' => 'about'
@@ -189,7 +192,8 @@ try {
 
 		$test = get_page_by_path($slug);
 		$page_data['ID'] = ($test) ? $test->ID: 0;
-		$uid = wp_insert_post($page_data);
+		$page_data['post_name'] = $slug;
+		$uid = tst_get_pb_post( $page_data, 'page' );
 
 		if($uid && isset($obj['section']) && !empty($obj['section'])) {
 			$section = ($obj['section'] == 'supportus') ? $support_section : $about_section;

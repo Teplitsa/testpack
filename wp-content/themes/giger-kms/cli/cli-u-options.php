@@ -100,14 +100,27 @@ try {
 	//Formidable Translation files
 	$path_from = BASE_PATH.'artifacts/';
 	$path_to = BASE_PATH.'wp-content/languages/plugins/';
+	
+	/** WDS Simple Page Builder **/
+	//WDS Simple Page Builder Translation files
+	$wds_path_from = BASE_PATH.'artifacts/wds/';
+	$wds_path_to = BASE_PATH.'wp-content/plugins/wds-simple-page-builder/languages/';
 
 	if(!file_exists($path_to)){
 		mkdir($path_to, 0775, true);
+	}
+	
+	if(!file_exists($wds_path_to)){
+		mkdir($wds_path_to, 0775, true);
 	}
 
 	copy($path_from.'formidable-ru_RU.mo' , $path_to.'formidable-ru_RU.mo');
 	copy($path_from.'formidable-ru_RU.po' , $path_to.'formidable-ru_RU.po');
 	echo "Formidable translation files moved".chr(10);
+
+	copy($wds_path_from.'wds-simple-page-builder-ru_RU.mo' , $wds_path_to.'wds-simple-page-builder-ru_RU.mo');
+	copy($wds_path_from.'wds-simple-page-builder-ru_RU.po' , $wds_path_to.'wds-simple-page-builder-ru_RU.po');
+	echo "WDS Simple Page Builder translation files moved".chr(10);
 
 	//delete transients
 	delete_transient('frm_options');

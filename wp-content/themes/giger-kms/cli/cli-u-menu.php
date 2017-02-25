@@ -20,7 +20,7 @@ try {
 	}
 
 	$menu_id = wp_create_nav_menu($menu_name);
-	$sections = array('work', 'ecoproblems', 'departments', 'about', 'supportus');
+	$sections = array( 'work', 'ecoproblems', 'departments', 'about', 'supportus' );
 
 
 	foreach($sections as $s) {

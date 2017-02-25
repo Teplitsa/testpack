@@ -18,7 +18,7 @@ try {
 	$uploads = wp_upload_dir();
 
 	//Read file
-	$handle = file('testpost.tsv');
+	$handle = file('data/testpost.tsv');
 	$csv = array();
 
 	if($handle) { foreach($handle as $i => $line) {
@@ -33,15 +33,19 @@ try {
 
 		if($i == 0)
 			continue;
-var_dump($line);
+		
+// 		var_dump($line);
 		$page_data = array();
+		
+		$post_title = trim( $line[0] );
+		$exist_post = tst_get_post_by_title( $post_title, 'post' );
 
-		$page_data['ID'] = 0;
+		$page_data['ID'] = $exist_post ? $exist_post->ID : 0;
 		$page_data['post_type'] = 'post';
 		$page_data['post_status'] = 'publish';
 		$page_data['post_excerpt'] = '';
 
-		$page_data['post_title']	= $line[0];
+		$page_data['post_title']	= $post_title;
 		$page_data['post_name'] 	= trim($line[2]);
 		$page_data['menu_order']	= (int)$line[5];
 

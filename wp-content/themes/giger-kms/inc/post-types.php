@@ -486,16 +486,9 @@ function tst_custom_metaboxes() {
     ));
 
     $marker_cmb->add_field(array(
-        'name'    => 'Номер телефона отправителя',
-        'id'      => 'marker_contact_phone',
+        'name'    => 'Контакты отправителя',
+        'id'      => 'marker_contacts',
         'type'    => 'text',
-        'default' => ''
-    ));
-
-    $marker_cmb->add_field(array(
-        'name'    => 'Email отправителя',
-        'id'      => 'marker_contact_email',
-        'type'    => 'text_email',
         'default' => ''
     ));
 

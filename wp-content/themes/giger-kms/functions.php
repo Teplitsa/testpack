@@ -90,6 +90,7 @@ function tst_widgets_init() {
  * Includes
  */
 
+require get_template_directory().'/inc/caching.php';
 require get_template_directory().'/inc/class-event.php';
 require get_template_directory().'/inc/class-about.php';
 require get_template_directory().'/inc/class-cssjs.php';
