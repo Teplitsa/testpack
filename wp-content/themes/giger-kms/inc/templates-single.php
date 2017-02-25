@@ -28,7 +28,7 @@ function tst_single_post_nav() {
 <?php
 }
 
-function tst_single_cta(WP_Post $cpost, $show_pic = true) {
+function tst_single_cta(WP_Post $cpost, $mod = 'pictured') {
 
 	$page = null;
 
@@ -55,8 +55,8 @@ function tst_single_cta(WP_Post $cpost, $show_pic = true) {
 	$pl = get_permalink($page->ID);
 
 ?>
-<a href="<?php echo $pl;?>" class="card-link">
-	<?php if($show_pic == 'pictured' && has_post_thumbnail($page)) { ?>
+<a href="<?php echo $pl;?>" class="card-link card--cta">
+	<?php if($mod == 'pictured' && has_post_thumbnail($page)) { ?>
 		<div class="card__thumbnail">
 			<?php echo get_the_post_thumbnail($page, "block-small"); ?>
 		</div>

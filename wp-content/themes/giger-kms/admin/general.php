@@ -135,7 +135,7 @@ function tst_correct_metaboxes($post_type, $post ){
 	if(post_type_supports($post_type, 'excerpt') ){
 		remove_meta_box('postexcerpt', null, 'normal');
 
-		if($post_type != 'landing') {
+		if(!in_array($post_type, array('project', 'landing'))) {
 			$label = ($post_type == 'org') ? __('Website', 'tst') : __('Excerpt', 'tst');
 			add_meta_box('tst_postexcerpt', $label, 'tst_excerpt_meta_box', null, 'normal', 'core');
 		}

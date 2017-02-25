@@ -246,14 +246,16 @@ function tst_card_iconic($cpost) {
 
 	if(has_term('departments', 'section', $cpost)){
 		$test_file = get_template_directory().'/src/svg/icon-item-departments.svg';
+		$icon_id = 'icon-item-departments';
 	}
 	else {
 		$test_file = get_template_directory().'/src/svg/icon-item-'.$cpost->post_name.'.svg';
+		$icon_id = 'icon-item-'.$cpost->post_name;
 	}
 
 
 	if(file_exists($test_file)){
-		$icon = tst_svg_icon('icon-item-'.$cpost->post_name, false);
+		$icon = tst_svg_icon($icon_id, false);
 	}
 	else {
 		$icon = tst_svg_icon('icon-item-default', false);
@@ -281,7 +283,20 @@ function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
 
-	$e = (!empty($cpost->post_excerpt)) ? $cpost->post_excerpt : wp_trim_words(strip_shortcodes($cpost->post_content), $l);
+	if($cpost->post_type == 'landing'){
+		$e = get_post_meta($cpost, 'landing_excerpt', true);
+
+	}
+	elseif($cpost->post_type == 'project'){
+		$e = get_post_meta($cpost, 'project_excerpt', true);
+
+	}
+	else {
+		$e = $cpost->post_excerpt;
+	}
+
+	$e = (!empty($e)) ? $e : wp_trim_words(strip_shortcodes($cpost->post_content), $l);
+
 	if($force_l)
 		$e = wp_trim_words($e, $l);
 

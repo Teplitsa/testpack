@@ -34,36 +34,6 @@ function tst_custom_content(){
 	));
 
 
-	register_taxonomy('project_cat', array('project'), array(
-		'labels' => array(
-			'name'                       => 'Категории проектов',
-			'singular_name'              => 'Категория',
-			'menu_name'                  => 'Категории',
-			'all_items'                  => 'Все категории',
-			'edit_item'                  => 'Редактировать категорию',
-			'view_item'                  => 'Просмотреть',
-			'update_item'                => 'Обновить категорию',
-			'add_new_item'               => 'Добавить новую категорию',
-			'new_item_name'              => 'Название новой категории',
-			'parent_item'                => 'Родительская категория',
-			'parent_item_colon'          => 'Родительская категория:',
-			'search_items'               => 'Искать категорию',
-			'popular_items'              => 'Часто используемые',
-			'separate_items_with_commas' => 'Разделять запятыми',
-			'add_or_remove_items'        => 'Добавить или удалить категорию',
-			'choose_from_most_used'      => 'Выбрать из часто используемых',
-			'not_found'                  => 'Не найдено'
-		),
-		'hierarchical'      => false,
-		'publicly_queryable'=> false,
-		'show_ui'           => true,
-		'show_in_nav_menus' => false,
-		'show_tagcloud'     => false,
-		'show_admin_column' => true,
-		'rewrite'           => false,
-		//'update_count_callback' => '',
-	));
-
 	register_taxonomy('archive_page_cat', array('archive_page'), array(
 		'labels' => array(
 			'name'                       => 'Категории архива',
@@ -193,7 +163,7 @@ function tst_custom_content(){
         'menu_position'       => 5,
 		'menu_icon'           => 'dashicons-portfolio',
         'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'page-attributes', 'thumbnail'),
-        'taxonomies'          => array('project_cat'),
+        'taxonomies'          => array('post_tag'),
     ));
 
 	register_post_type('event', array(
@@ -678,7 +648,13 @@ function tst_custom_metaboxes() {
 		'type'		=> 'text'
 	));
 
-
+	$project_cmb->add_field(array(
+		'name' 		=> 'Аннотация',
+		'desc'	  	=> 'Аннотация - для отображения в списках и карточках',
+		'default' 	=> '',
+		'id'   		=> 'project_excerpt',
+		'type'		=> 'textarea_small'
+	));
 
 }
 

@@ -212,6 +212,10 @@
 	}
 }
 
+.news-block__content .flex-grid--stacked  {
+	justify-content: flex-start;
+}
+
 .card--news {
 	a {
 		height: 100%;

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-25 19:58+0300\n"
-"PO-Revision-Date: 2017-02-25 19:58+0300\n"
+"POT-Creation-Date: 2017-02-26 01:24+0300\n"
+"PO-Revision-Date: 2017-02-26 01:24+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -241,20 +241,20 @@ msgstr "VKontakte"
 msgid "Details"
 msgstr "Подробнее"
 
-#: inc/templates-single.php:40
+#: inc/templates-single.php:41
 msgid "Inform about problem"
 msgstr "Сообщить о проблеме"
 
-#: inc/templates-single.php:44 pagebuilder/part-help.php:44
+#: inc/templates-single.php:45 pagebuilder/part-help.php:44
 msgid "Donate"
 msgstr "Помочь сейчас"
 
-#: inc/templates-single.php:84 inc/templates-single.php:97
+#: inc/templates-single.php:85 inc/templates-single.php:98
 #: inc/templates-tags.php:115 inc/templates-tags.php:133
 msgid "Home"
 msgstr "Главная"
 
-#: inc/templates-single.php:85 inc/templates-tags.php:116 index.php:8
+#: inc/templates-single.php:86 inc/templates-tags.php:116 index.php:8
 #: pagebuilder/part-news.php:25 single.php:13
 msgid "News"
 msgstr "Новости"
@@ -317,7 +317,8 @@ msgstr ""
 msgid "Contacts"
 msgstr "Контакты"
 
-#: single-event.php:96 single-landing.php:56 single.php:72
+#: single-event.php:96 single-landing.php:54 single-project.php:71
+#: single.php:72
 msgid "Tags"
 msgstr "Тэги"
 
@@ -330,10 +331,14 @@ msgstr "Еще новости"
 msgid "%s: What are we doing"
 msgstr "%s: Что мы делаем"
 
-#: single-landing.php:78
+#: single-landing.php:76
 #, php-format
 msgid "Projects by topic: %s"
 msgstr "Проекты по теме: %s"
+
+#: single-project.php:98
+msgid "News on the topic"
+msgstr "Новости по теме"
 
 #: single.php:89
 msgid "More on the topic"

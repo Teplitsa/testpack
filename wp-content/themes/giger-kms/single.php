@@ -75,7 +75,7 @@ get_header(); ?>
 			</div>
 
 			<div class="flex-cell--stacked lg-3 single-aside">
-				<?php  tst_single_cta($cpost, true);?>
+				<?php  tst_single_cta($cpost);?>
 			</div>
 		</div>
 	</div></div><!-- .single__content -->

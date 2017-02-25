@@ -43,7 +43,10 @@ function tst_get_related_ids($cpost, $tax = 'post_tag', $limit = 5){
 function tst_get_related_posts_by_tags($relation_tags = array(), $post_type = array(), $limit = 5, $exclude_post_id = 0) {
 	global $wpdb;
 
+
 	$related_ids = array();
+	if(empty($relation_tags))
+		return $related_ids;
 
 	//num
 	$limit = absint($limit);
@@ -181,6 +184,22 @@ function tst_landing_get_related_news($cpost, $num = 4) {
 	return $news;
 }
 
+function tst_project_get_related_news($cpost, $num = 4) {
+
+	$tags = get_the_terms($cpost, 'post_tag');
+	$news_ids = tst_get_related_posts_by_tags($tags, array('post'), $num, $cpost->ID);
+
+	if(empty($news_ids)) {
+		$news = get_posts(array('post_type' => 'post', 'posts_per_page' => $num, 'post_status' => 'publish'));
+	}
+	else {
+		$news = get_posts(array('post_type' => 'post', 'post__in' => $news_ids));
+	}
+
+
+	return $news;
+}
+
 
 function tst_landing_get_connected_projects($cpost, $num = -1 ) {
 
@@ -194,6 +213,39 @@ function tst_landing_get_connected_projects($cpost, $num = -1 ) {
 		'post_type' => 'project',
 		'orderby' => 'title',
 		'order' => 'ASC'
+	));
+
+	return $connected;
+}
+
+function tst_project_get_connected_landings($cpost, $num = -1 ) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+	$connected = get_posts( array(
+		'connected_type' => 'landing_project',
+		'connected_items' => $cpost,
+		'posts_per_page' => $num,
+		'post_type' => 'landing',
+		'orderby' => 'title',
+		'order' => 'ASC'
+	));
+
+	return $connected;
+}
+
+function tst_project_get_connected_projects($cpost, $num = -1 ) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+	$connected = get_posts( array(
+		'posts_per_page' => $num,
+		'post_type' => 'project',
+		'orderby' => 'title',
+		'order' => 'ASC',
+		'post_parent' => $cpost->ID
 	));
 
 	return $connected;
