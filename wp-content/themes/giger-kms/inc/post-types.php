@@ -679,30 +679,6 @@ function tst_custom_metaboxes() {
 	));
 
 
-	/** News settings  **/
-	$news_cmb = new_cmb2_box( array(
-        'id'            => 'post_settings_metabox',
-        'title'         => 'Настройки записи',
-        'object_types'  => array('post'), // Post type
-        'context'       => 'normal',
-        'priority'      => 'high',
-        'show_names'    => true,
-    ));
-
-	$news_cmb->add_field( array(
-        'name'				=> 'Призыв к действию',
-		'desc'				=> 'Показывается в боковой колонке',
-        'id'  	            => 'post_cta',
-        'type'	            => 'select',
-        'show_option_none'	=> false,
-        'default'          	=> 'donate',
-        'options'          	=> array(
-			'donate'  	=> 'Пожертвование',
-            'volunteer'     => 'Стать волонтером',
-            'corporate' 	=> 'Помощь компаний',
-            'problem'     	=> 'Сообщить о проблеме'
-        )
-    ));
 
 }
 

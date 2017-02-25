@@ -123,27 +123,22 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	}
 
 	font-size: 14px;
-	line-height: 20px;
+	line-height: 1.35;
 
 
 	@if $mod == reading {
 		font-size: 14px;
-		line-height: 20px;
+		line-height: 1.35;
 
 		@include for(small-screens){
 			font-size: 16px;
-			line-height: 22px;
 		}
 
 		@include for(medium-screens){
 			font-size: 18px;
-			line-height: 27px;
+			line-height: 1.2;
 		}
 
-		@include for(large-screens){
-			font-size: 21px;
-			line-height: 32px;
-		}
 	}
 	@else if $mod == extra_summary {
 		font-size: 16px;

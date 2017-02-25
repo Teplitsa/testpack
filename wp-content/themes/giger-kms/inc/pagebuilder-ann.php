@@ -16,6 +16,8 @@ function tst_pagebuilder_conifg() {
             'post_types'      => array( 'page', 'landing' ),
         ) );
     }
+
+	register_page_builder_area( 'cta' );
 }
 
 
