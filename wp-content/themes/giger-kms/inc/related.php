@@ -226,13 +226,24 @@ function tst_project_get_connected_landings($cpost, $num = -1 ) {
 	$connected = get_posts( array(
 		'connected_type' => 'landing_project',
 		'connected_items' => $cpost,
-		'posts_per_page' => $num,
+		'posts_per_page' => -1,
 		'post_type' => 'landing',
 		'orderby' => 'title',
 		'order' => 'ASC'
 	));
 
-	return $connected;
+	if($num < count($connected)){
+		$k = array_rand($connected, $num);
+		$cont = array();
+		if($k) { foreach($k as $key) {
+			$cont[] = 	$connected[$key];
+		}}
+	}
+	else {
+		$cont = $connected;
+	}
+
+	return $cont;
 }
 
 function tst_project_get_connected_projects($cpost, $num = -1 ) {

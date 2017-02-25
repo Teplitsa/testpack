@@ -7,9 +7,7 @@
 
 $cpost = get_queried_object();
 
-$land = tst_project_get_connected_landings($cpost);
-$land_1 = array_slice($land, 0, 2);
-$land_2 = array_slice($land, 2);
+$land = tst_project_get_connected_landings($cpost, 2);
 
 get_header(); ?>
 <div class="single-crumb container">
@@ -40,10 +38,10 @@ get_header(); ?>
 			<div class="flex-cell--stacked lg-9 single__thumbnail">
 				<?php tst_single_thumbnail($cpost);?>
 			</div>
-			<?php if(!empty($land_1)) { ?>
+			<?php if(!empty($land)) { ?>
 			<div class="flex-cell--stacked lg-3 single__related_land">
 				<div class="realted-landings">
-				<?php foreach($land_1 as $l) { ?>
+				<?php foreach($land as $l) { ?>
 					<div class="realted-landings__item">
 						<?php tst_card_iconic($l); ?>
 					</div>
@@ -74,16 +72,6 @@ get_header(); ?>
 			</div>
 
 			<div class="flex-cell--stacked lg-3 single-aside">
-				<?php if(!empty($land_2)) { ?>
-					<div class="realted-landings--aside">
-					<?php foreach($land_2 as $l) { ?>
-						<div class="realted-landings__item">
-							<?php tst_card_iconic($l); ?>
-						</div>
-					<?php } ?>
-					</div>
-				<?php } ?>
-
 				<?php  tst_single_cta($cpost, true);?>
 			</div>
 		</div>
