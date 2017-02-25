@@ -94,7 +94,6 @@ require get_template_directory().'/inc/caching.php';
 require get_template_directory().'/inc/class-event.php';
 require get_template_directory().'/inc/class-about.php';
 require get_template_directory().'/inc/class-cssjs.php';
-require get_template_directory().'/inc/class-item.php';
 require get_template_directory().'/inc/class-mediamnt.php';
 require get_template_directory().'/inc/class-section.php';
 require get_template_directory().'/inc/class-import.php';

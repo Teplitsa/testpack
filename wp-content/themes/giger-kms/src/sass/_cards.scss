@@ -211,6 +211,7 @@
 		padding-top: $base*12;
 	}
 }
+
 .card--news {
 	a {
 		height: 100%;
@@ -246,7 +247,7 @@
 }
 
 
-//рудз
+//help
 .help-block__title {
 	@extend .news-block__title;
 }
@@ -260,6 +261,63 @@
 
 	.card--colored & {
 		background: $color-secondary-dark;
+	}
+}
+
+
+// card--news-apart
+.card--news-apart {
+	background: $wetsoil;
+
+	.card__label {
+		padding: $base*3;
+		color: $color-white;
+		overflow: hidden;
+	}
+
+	.card__summary {
+		@include body-text();
+		color: $color-white;
+	}
+
+	.card__meta {
+		padding-top: $base*3;
+		@include sub-title();
+		color: $color-white;
+	}
+
+	@include for(small-screens) {
+		min-height: $card_base_w;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: flex-start;
+		align-item: stretch;
+
+		.card__thumbnail {
+			width: 50%;
+			max-width: $card_base_w;
+		}
+
+		.card__label {
+			flex: 1 1 auto;
+		}
+	}
+
+	@include for(large-screens) {
+		min-height: $card_base_w *2;
+		flex-flow: column nowrap;
+		justify-content: flex-start;
+		align-item: stretch;
+
+		.card__thumbnail {
+			width: 100%;
+			min-height: $card_base_w;
+		}
+
+		.card__label {
+			width: 100%;
+			min-height: $card_base_w;
+		}
 	}
 }
 

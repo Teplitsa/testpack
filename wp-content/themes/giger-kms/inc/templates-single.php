@@ -33,7 +33,8 @@ function tst_single_cta(WP_Post $cpost, $show_pic = true) {
 	$page = null;
 
 	$types = array('donate', 'problem', 'volunteer', 'corporate');
-	$type = $types[array_rand($types)];
+	$r = array_rand($types);
+	$type = $types[$r];
 
 	if($type == 'problem') {
 		$page = get_page_by_path('dront-ecomap', 'OBJECT', 'landing');

@@ -28,15 +28,13 @@ get_header();?>
 	<header class="single__header single__header--smaller">
 		<div class="container">
 			<div class="flex-grid--stacked">
-				<div class="flex-cell--stacked lg-9 single__title-block">
+				<div class="flex-cell--stacked md-9 single__title-block">
 					<h1><?php printf(__('%s: What are we doing', 'tst'), get_the_title($cpost));?></h1>
 					<div class="sharing"><?php tst_social_share($cpost);?></div>
 				</div>
 
-				<div class="flex-cell--stacked lg-3 single__nav--back">
-					<div class="parent-landing">
+				<div class="flex-cell--stacked md-3 single__nav--back">
 						<?php tst_card_iconic($cpost); ?>
-					</div>
 				</div>
 
 			</div>
@@ -58,13 +56,13 @@ get_header();?>
 				</div>
 			</div>
 
-			<div class="flex-cell--stacked lg-3 single-aside">
-			<?php
-				$news = tst_landing_get_related_news($cpost, 1);
-				if(!empty($news)) {
-					tst_news_card($news[0]);
-				}
-			?>
+			<div class="flex-cell--stacked lg-3 single-sidenews">
+				<?php
+					$news = tst_landing_get_related_news($cpost, 1);
+					if(!empty($news)) {
+						tst_news_apart_card($news[0]);
+					}
+				?>
 			</div>
 		</div>
 	</div></div><!-- .single__content -->
@@ -78,7 +76,7 @@ get_header();?>
 				<h3 class="projects-block__title"><?php printf(__('Projects by topic: %s', 'tst'), get_the_title($cpost)); ?></h3>
 
 				<div class="projects-block__content">
-					<div class="projects-block__icon"><?php tst_svg_icon('icon-project');?></div>
+					<div class="projects-block__icon hide-upto-medium"><?php tst_svg_icon('icon-project');?></div>
 
 					<div class="projects-block__list">
 						<ul>
