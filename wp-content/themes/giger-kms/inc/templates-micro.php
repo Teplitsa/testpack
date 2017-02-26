@@ -134,6 +134,7 @@ function tst_news_card($cpost, $mod = 'pictured') {
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
 
+	$pl = get_permalink($cpost);
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
 
@@ -142,6 +143,7 @@ function tst_news_card($cpost, $mod = 'pictured') {
 			<?php echo get_the_post_thumbnail($cpost, "block-small"); ?>
 		</div>
 	<?php } ?>
+
 
 	<div class="card__title">
 		<h4><?php echo apply_filters('tst_the_title', get_the_title($cpost));?></h4>
@@ -155,6 +157,34 @@ function tst_news_card($cpost, $mod = 'pictured') {
 		<?php echo get_the_date('d.m.Y', $cpost); ?>
 	</div>
 
+</a>
+<?php
+}
+
+function tst_news_apart_card($cpost) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+	$pl = get_permalink($cpost);
+?>
+<a href="<?php echo $pl;?>" class="card-link card--news-apart">
+	<div class="card__thumbnail">
+		<?php echo get_the_post_thumbnail($cpost, "block-small"); ?>
+	</div>
+
+	<div class="card__label">
+		<div class="card__title">
+			<h4><?php echo apply_filters('tst_the_title', get_the_title($cpost));?></h4>
+		</div>
+		<div class="card__summary">
+			<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost, 20)); ?>
+		</div>
+
+		<div class="card__meta">
+			<?php echo get_the_date('d.m.Y', $cpost); ?>
+		</div>
+	</div>
 </a>
 <?php
 }
@@ -190,7 +220,7 @@ function tst_single_person_card($cpost) {
 	$role = apply_filters('tst_the_title', $cpost->post_excerpt);
 
 	$thumb = get_the_post_thumbnail($cpost, 'thumbnail');
-	
+
 	$content = $cpost->post_content;
 ?>
 <article class="single-person-item">
@@ -200,83 +230,48 @@ function tst_single_person_card($cpost) {
 	<div class="single-person-item__role"><?php echo $role;?></div>
 	<div class="single-person-item__content">
 		<?php echo $content;?>
-		
+
 	</div>
 </article>
 
 <?php
 }
 
+function tst_card_iconic($cpost) {
 
-
-
- /* Old */
-function tst_cell(WP_Post $cpost) {
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
 
 	$pl = get_permalink($cpost);
-	$tags = tst_get_tags_list($cpost);
-	$ex = tst_get_post_excerpt($cpost, 25);
 
-	$thumb_mark = '';
-	if(has_post_thumbnail($cpost)) {
-		$cap = tst_get_post_thumbnail_cation($cpost);
+	if(has_term('departments', 'section', $cpost)){
+		$test_file = get_template_directory().'/src/svg/icon-item-departments.svg';
+		$icon_id = 'icon-item-departments';
+	}
+	else {
+		$test_file = get_template_directory().'/src/svg/icon-item-'.$cpost->post_name.'.svg';
+		$icon_id = 'icon-item-'.$cpost->post_name;
+	}
 
-		$thumb_args = array(
-			'placement_type'	=> 'small-medium-medium-medium-medium',
-			'aspect_ratio' 		=> 'standard',
-			'crop' 				=> 'fixed'
-		);
 
-		$thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
-
-		//build thumbnail markup
-		ob_start();
-
-?>
-		<figure class="cell_picture">
-			<a href="<?php echo $pl;?>" class="thumbnail-link"><?php echo $thumb;?></a>
-			<?php if($cap) { ?>
-				<figcaption><?php echo $cap; ?></figcaption>
-			<?php } ?>
-		</figure>
-<?php
-		$thumb_mark = ob_get_contents();
-		ob_end_clean();
-	} else {
-		// if no thumbnail
-		$output = preg_match_all('/<img(.*?)src=("|\'|)(.*?)("|\'| )(.*?)>/s', $cpost->post_content, $match);
-		if($output) {
-			$file_url = $match[3][0];
-			$found_attachment_id = TST_Import::get_instance()->get_attachment_id_by_url( $file_url );
-			$cap = set_post_thumbnail($cpost,$found_attachment_id);
-		}
+	if(file_exists($test_file)){
+		$icon = tst_svg_icon($icon_id, false);
+	}
+	else {
+		$icon = tst_svg_icon('icon-item-default', false);
 	}
 ?>
+<a href="<?php echo $pl;?>" class="card-link">
 
-	<article class="cell">
-		<div class="frame">
-			<div class="bit sm-8">
-				<h4 class="cell__title">
-					<a href="<?php echo $pl;?>"><?php echo get_the_title($cpost);?></a>
-					<span class="date"><?php echo get_the_date('d.m.Y', $cpost);?></span>
-				</h4>
-				<div class="cell__text">
-					<p><?php echo apply_filters('tst_the_title', $ex);?></p>
-					<p><?php echo $tags;?></p>
-				</div>
-			</div>
-			<div class="bit sm-4">
-				<?php if(!empty($thumb_mark)) { ?>
-					<div class="cell__thumb"><?php echo $thumb_mark;?></div>
-				<?php }?>
-			</div>
-	</article>
+	<div class="card__icon">
+		<?php echo $icon; ?>
+	</div>
+	<div class="card__title">
+		<h4><?php echo get_the_title($cpost);?></h4>
+	</div>
+</a>
 <?php
 }
-
-
-
-
 
 
 
@@ -288,7 +283,20 @@ function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
 
-	$e = (!empty($cpost->post_excerpt)) ? $cpost->post_excerpt : wp_trim_words(strip_shortcodes($cpost->post_content), $l);
+	if($cpost->post_type == 'landing'){
+		$e = get_post_meta($cpost, 'landing_excerpt', true);
+
+	}
+	elseif($cpost->post_type == 'project'){
+		$e = get_post_meta($cpost, 'project_excerpt', true);
+
+	}
+	else {
+		$e = $cpost->post_excerpt;
+	}
+
+	$e = (!empty($e)) ? $e : wp_trim_words(strip_shortcodes($cpost->post_content), $l);
+
 	if($force_l)
 		$e = wp_trim_words($e, $l);
 
@@ -331,6 +339,8 @@ function tst_get_card_icon($cpost) {
 	return $out;
 
 }
+
+
 
 /** Search card **/
 function tst_card_search(WP_Post $cpost) {
@@ -387,6 +397,7 @@ function tst_get_search_cats(WP_Post $cpost) {
 	$out = (!empty($list)) ? "<span class='category'>".implode(',', $list)."</span>" : '';
 	return $out;
 }
+
 
 /** Events */
 function tst_card_event(WP_Post $cpost, $args = array()) {
@@ -466,107 +477,3 @@ function tst_event_thumbnail_img($post_id, $size = 'post-thumbnail') {
 
     return $thumb;
 }
-
-/** Nearest events block **/
-//function tst_nearest_events_posts($num = 5, $query_args = array()) {
-//    //when $query_args empty just get alll neares events
-//    $today_stamp = strtotime('today midnight');
-//
-//    // pre query 1
-//    $qv = array(
-//        'post_type' => 'event',
-//        'fields' => 'ids',
-//        'posts_per_page' => TST_EVENTS_SHORT_LIST_LIMIT,
-//        'orderby'  => array('date' => 'DESC'),
-//    );
-//    $qv = array_merge($qv, $query_args);
-//    $tmp_posts = get_posts($qv);
-//    $posts_id = array_values( $tmp_posts );
-//
-//    if( !count( $posts_id ) ) {
-//        return array();
-//    }
-//
-//    // pre query 2
-//    $qv = array(
-//        'post_type' => 'event',
-//        'fields' => 'ids',
-//        'include' => $posts_id,
-//        'meta_query' => array(
-//            array(
-//                'key' => 'event_date_end',
-//                'value' => $today_stamp,
-//                'compare' => '>=',
-//                'type' => 'numeric'
-//            )
-//        ),
-//        'cache_results'  => false,
-//        'update_post_meta_cache' => false,
-//        'update_post_term_cache' => false,
-//        'no_found_rows' => true
-//    );
-//    $tmp_posts = get_posts($qv);
-//    $posts_id = array_values( $tmp_posts );
-//
-//    if( !count( $posts_id ) ) {
-//        return array();
-//    }
-//
-//    // main query
-//    $qv = array(
-//        'post_type' => 'event',
-//        'posts_per_page' => $num,
-//        'orderby'  => array('menu_order' => 'DESC', 'meta_value' => 'ASC'),
-//        'meta_key' => 'event_date_start',
-//
-//        'numberposts' => $num, // IMPORTANT!!! DO NOT USE posts_per_page HERE!!!
-//        'query_id' => 'nearest_events_posts_query',
-//        'include' => $posts_id,
-//
-//        'cache_results'  => false,
-//        'update_post_meta_cache' => false,
-//        'update_post_term_cache' => false,
-//        'no_found_rows' => true
-//    );
-//
-//    $posts = get_posts($qv);
-//
-//    return $posts;
-//}
-//
-// function tst_nearest_events_markup($num = 5, $last_border = true, $query_args = array()) {
-
-    /*$posts = tst_nearest_events_posts($num, $query_args);
-
-    if(empty($posts))
-        return;
-
-
-    ob_start();
-    ?>
-    <ul class="nearest-events">
-        <?php
-        foreach($posts as $i => $p) {
-            $num = $i+1;
-
-            $event = new TST_Event($p);
-            $thumb = $event->post_thumbnail_widget_markup();
-            ?>
-            <li class="nearest-events__item<?php if(!$last_border && $num == count($posts)) { echo ' nearest-events__item--no-border'; } ?>">
-                <?php $event->schema_markup();?>
-                <a href="<?php echo get_permalink($p);?>" class="nearest-events__link">
-                    <div class="nearest-events__thumb"><?php echo $thumb;?></div>
-                    <div class="nearest-events__title"><?php echo get_the_title($p);?></div>
-                    <div class="nearest-events__meta"><?php echo tst_cell_post_meta($p);?></div>
-                </a>
-            </li>
-            <?php
-        }
-        ?>
-    </ul>
-    <?php
-    $out = ob_get_contents();
-    ob_end_clean();
-
-    return $out;*/
-// }

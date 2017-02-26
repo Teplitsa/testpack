@@ -3,6 +3,79 @@
  * Elements of single templates
 */
 
+
+/** next/previous post  */
+function tst_single_post_nav() {
+
+	$previous = get_adjacent_post(false, '', true);
+	$next = get_adjacent_post(false, '', false);
+
+	if(!$previous && !$next) {
+		return;
+	}?>
+	<div class="nav-links">
+	<?php if($next) { ?>
+		<div class="nav-links__link nav-links__link--next">
+			<a href="<?php echo get_permalink($next);?>"><?php tst_svg_icon('icon-prev');?></a>
+		</div>
+	<?php }?>
+	<?php if($previous) { ?>
+		<div class="nav-links__link nav-links__link--prev">
+			<a href="<?php echo get_permalink($previous);?>"><?php tst_svg_icon('icon-next');?></a>
+		</div>
+	<?php }?>
+	</div>
+<?php
+}
+
+function tst_single_cta(WP_Post $cpost, $mod = 'pictured') {
+
+	$page = null;
+
+	$types = array('donate', 'problem', 'volunteer', 'corporate');
+	$r = array_rand($types);
+	$type = $types[$r];
+
+	if($type == 'problem') {
+		$page = get_page_by_path('dront-ecomap', 'OBJECT', 'landing');
+		$label = __('Inform about problem', 'tst');
+	}
+	if($type == 'donate') {
+		$page = get_page_by_path($type, 'OBJECT', 'leyka_campaign');
+		$label = __('Donate', 'tst');
+	}
+	else {
+		$page = get_page_by_path($type);
+		$label = get_the_title($page);
+	}
+
+	if(empty($page))
+		return;
+
+	$pl = get_permalink($page->ID);
+
+?>
+<a href="<?php echo $pl;?>" class="card-link card--cta">
+	<?php if($mod == 'pictured' && has_post_thumbnail($page)) { ?>
+		<div class="card__thumbnail">
+			<?php echo get_the_post_thumbnail($page, "block-small"); ?>
+		</div>
+	<?php } ?>
+
+	<div class="card__label--iconic"><div class="card__label-wrap">
+		<div class="card__icon">
+			<?php tst_svg_icon('icon-'.$type); ?>
+		</div>
+		<h4><?php echo apply_filters('tst_the_title', $label);?></h4>
+	</div></div>
+</a>
+<?php
+}
+
+
+
+
+/** == OLD == **/
 function tst_single_breadcrubms() {
 
 	$cpost = get_queried_object();
@@ -67,25 +140,6 @@ function tst_single_post_meta(WP_Post $cpost) {
 }
 
 
-/** next/previous post  */
-function tst_single_post_nav() {
-
-	$previous = get_adjacent_post(false, '', true);
-	$next = get_adjacent_post(false, '', false);
-
-	if(!$previous && !$next) {
-		return;
-	}?>
-	<div class="nav-links">
-	<?php if($previous) { ?>
-		<div class="nav-links__link nav-links__link--prev"><a href="<?php echo get_permalink($previous);?>">&larr;&nbsp;<?php _e('Prev.', 'tst');?></a></div>
-	<?php }?>
-	<?php if($next) { ?>
-		<div class="nav-links__link nav-links__link--next"><a href="<?php echo get_permalink($next);?>"><?php _e('Next.', 'tst');?>&nbsp;&rarr;</a></div>
-	<?php }?>
-	</div>
-<?php
-}
 
 
 function tst_single_thumbnail(WP_Post $cpost) {
@@ -101,9 +155,9 @@ function tst_single_thumbnail(WP_Post $cpost) {
 		'crop' 				=> 'flex'
 	);
 
-	$thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
+	//$thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
 
-
+	$thumb = get_the_post_thumbnail($cpost, 'block-single');
 ?>
 	<figure class="fixed-thumbnail--single">
 		<?php echo $thumb; ?>
