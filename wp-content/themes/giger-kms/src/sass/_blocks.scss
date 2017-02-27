@@ -6,6 +6,13 @@
 	padding: 0 4px;
 }
 
+.landing {
+	padding-bottom: $base*6;
+	@include for(large-screens) {
+		padding-bottom: $base*10;
+	}
+}
+
 .landing-header {
 	position: relative;
 }
@@ -16,7 +23,8 @@
 
 .landing-header__tagline {
 	@include header-title(cover);
-	margin-top: $base*2;
+	max-width: $text_col;
+	margin: $base*2 auto 0 auto;
 }
 
 
@@ -29,7 +37,7 @@
 
 //general cover
 .cover-general {
-	margin-bottom: $base*7;
+	margin-bottom: $base*6;
 
 	@include for(medium-screens) {
 		margin-bottom: $base*10;
@@ -43,11 +51,11 @@
 	padding: $base*5 0;
 
 	@include for(medium-screens) {
-		padding: $base*8 0;
+		padding: $base*7 0;
 	}
 
 	.landing-header__title {
-		max-width: 840px;
+		max-width: $text_col;
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -90,8 +98,8 @@
 
 .cover-item__link {
 	@include link-label();
-	width: 298px;
-	min-height: 149px;
+	width: $card_base_w ;
+	min-height: $card_base_w /1.618;
 	background: $color-white;
 	color: $color-text-black;
 
@@ -102,6 +110,6 @@
 
 .cover-item__date {
 	font-weight: normal;
+	font-size: 0.9em;
+	margin-top: $base/2;
 }
-
-

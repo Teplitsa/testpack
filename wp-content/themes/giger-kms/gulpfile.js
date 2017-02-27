@@ -72,6 +72,20 @@ gulp.task('build-head-js', function() {
         .pipe(gulp.dest(basePaths.dest+'js')); //write results into file
 });
 
+gulp.task('build-admin-js', function() {
+    var vendorFiles = [
+        ],
+        appFiles = [basePaths.src+'js/admin-*']; //our own JS files
+
+    return gulp.src(vendorFiles.concat(appFiles)) //join them
+        .pipe(plugins.filter('*.js'))//select only .js ones
+        .pipe(plugins.concat('bundle-admin.js'))//combine them into bundle.js
+        .pipe(isProduction ? plugins.uglify() : gutil.noop()) //minification
+        .pipe(plugins.size()) //print size for log
+        .on('error', console.log) //log
+        .pipe(gulp.dest(basePaths.dest+'js')) //write results into file
+});
+
 //sass
 gulp.task('build-css', function() {
 
@@ -155,6 +169,7 @@ gulp.task('full-build', function(callback) {
         'build-admin-css',
         'build-js',
 		'build-head-js',
+		'build-admin-js',
         'revision-clean',
         'revision',
         callback);
@@ -171,6 +186,7 @@ gulp.task('full-build-css', function(callback) {
 gulp.task('full-build-js', function(callback) {
     runSequence('build-js',
 		'build-head-js',
+		'build-admin-js',
         'revision-clean',
         'revision',
         callback);

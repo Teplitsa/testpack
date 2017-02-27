@@ -33,9 +33,8 @@ if(!empty($p_ids)) {
 
 //corrections for grid class
 $grid_css = ($block_order == 'revers') ? ' row-reverse' : '';
+$grid_css .= ' '.tst_get_colors_for_section();
 
-//colorschemes
-//position of label for picture block
 
 ?>
 <div class="container">

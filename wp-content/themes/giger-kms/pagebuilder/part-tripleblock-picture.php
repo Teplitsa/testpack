@@ -7,6 +7,7 @@
 $prefix = "tripleblock_picture_";
 
 $block_order = wds_page_builder_get_this_part_data($prefix.'block_order'); //direct-revers
+$color_scheme = wds_page_builder_get_this_part_data($prefix.'color_scheme');
 
 $el1 = wds_page_builder_get_this_part_data($prefix.'element1_post');
 $el3 = wds_page_builder_get_this_part_data($prefix.'element3_post');
@@ -20,13 +21,12 @@ if(empty($el2)) {
 
 //corrections for grid class
 $grid_css = ($block_order == 'revers') ? ' row-reverse' : '';
+$grid_css .= ' '.tst_get_colors_for_section();
 
-//colorschemes
-//position of label for picture block
 
 ?>
 <div class="container">
-	<div class="flex-grid--stacked <?php echo $grid_css;?>">
+	<div class="flex-grid--stacked <?php echo $grid_css;?> colors-<?php echo $color_scheme;?>">
 		<div class="flex-cell--stacked sm-12 lg-6 card card--linked block-2col">
 			<?php tst_card_linked((int)$el1, array('size' => 'block-2col')) ;?>
 		</div>

@@ -92,11 +92,12 @@ function tst_widgets_init() {
 
 require get_template_directory().'/inc/caching.php';
 require get_template_directory().'/inc/class-event.php';
-require get_template_directory().'/inc/class-about.php';
+require get_template_directory().'/inc/class-colors.php';
 require get_template_directory().'/inc/class-cssjs.php';
 require get_template_directory().'/inc/class-mediamnt.php';
 require get_template_directory().'/inc/class-section.php';
 require get_template_directory().'/inc/class-import.php';
+require get_template_directory().'/inc/class-part-colors.php';
 
 require get_template_directory().'/inc/extras.php';
 require get_template_directory().'/inc/post-types.php';

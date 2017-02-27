@@ -1,15 +1,14 @@
 <?php
 /**
- * Part Name: Тройной блок - Плашка-картинка-сотрудник
- * Description: Тройной блок связанных элементов - плашка-картинка-сотрудник
+ * Part Name: Двойной блок - Картинка 3/4-плашка
+ * Description: Двойной блок связанных элементов - картинка 3/4 колонки, карточка
  */
 
-$prefix = "tripleblock_person_";
+$prefix = "threeforth_picture_";
 
 $block_order = wds_page_builder_get_this_part_data($prefix.'block_order'); //direct-revers
 
 $el1 = wds_page_builder_get_this_part_data($prefix.'element1_post');
-$person = wds_page_builder_get_this_part_data($prefix.'person_post');
 
 $el2 = wds_page_builder_get_this_part_data($prefix.'element2_post');
 if(empty($el2)) {
@@ -22,20 +21,15 @@ if(empty($el2)) {
 $grid_css = ($block_order == 'revers') ? ' row-reverse' : '';
 $grid_css .= ' '.tst_get_colors_for_section();
 
-
+//colorschemes
 ?>
 <div class="container">
 	<div class="flex-grid--stacked <?php echo $grid_css;?>">
-		<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
-			<?php tst_card_colored((int)$el2) ;?>
-		</div>
-
-		<div class="flex-cell--stacked sm-12 lg-6 card card--linked block-2col">
+		<div class="flex-cell--stacked sm-6 md-8 lg-9 card card--linked block-3col">
 			<?php tst_card_linked((int)$el1, array('size' => 'block-2col')) ;?>
 		</div>
-
-		<div class="flex-cell--stacked sm-6 lg-3 card card--person">
-			<div class="flex-column-centered"><?php tst_person_card((int)$person);?></div>
+		<div class="flex-cell--stacked sm-6 md-4 lg-3 card card--colored">
+			<?php tst_card_colored((int)$el2) ;?>
 		</div>
 	</div>
 </div>

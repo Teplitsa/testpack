@@ -1,7 +1,7 @@
 <?php
 /**
  * Part Name: Тройной блок - Картинка-плашка-плашка
- * Description: Тройной блок связанных элементов - картинка, плашка, карточка
+ * Description: Тройной блок связанных элементов - картинка, плашка, плашка
  */
 
 $prefix = "tripleblock_2cards_";
@@ -26,9 +26,8 @@ if(empty($el3)) {
 
 //corrections for grid class
 $grid_css = ($block_order == 'revers') ? ' row-reverse' : '';
+$grid_css .= ' '.tst_get_colors_for_section();
 
-//colorschemes
-//position of label for picture block
 
 ?>
 <div class="container">
