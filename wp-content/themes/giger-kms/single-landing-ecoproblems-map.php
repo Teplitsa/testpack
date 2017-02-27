@@ -40,7 +40,7 @@ get_header();?>
                                 'fields' => 'ids',
                             ));
                             echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'" enable_scroll_wheel="0"]');?>
-                        <div class="marker-submit-form" style="display: none">
+                        <div class="marker-submit-form">
                             <?php echo do_shortcode('[formidable id=5]');?>
                         </div>
                     </div>

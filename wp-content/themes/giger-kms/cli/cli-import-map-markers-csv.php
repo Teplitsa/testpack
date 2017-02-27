@@ -132,9 +132,10 @@ try {
                         wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
                         break;
 
-                    case 'Другие экологические проблемы':
+                    case 'Другие проблемы':
                     default:
                         update_term_meta($term, 'layer_marker_icon', 'help');
+                        update_term_meta($term, 'layer_marker_colors', 'grey-green');
                         wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
                 }
             }
