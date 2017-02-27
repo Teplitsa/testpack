@@ -82,6 +82,10 @@ try {
 
         foreach($data as $index => $group) {
 
+            if(in_array($group->name, array('Зоны накопленного экологического ущерба', 'Загрязнение воздуха', 'Загрязнение воды'))) {
+                $group->name = 'Другие проблемы';
+            }
+
             $term = get_terms(array(
                 'taxonomy' => 'marker_cat',
                 'hide_empty' => false,
