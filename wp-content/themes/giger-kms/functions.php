@@ -92,7 +92,7 @@ function tst_widgets_init() {
 
 require get_template_directory().'/inc/caching.php';
 require get_template_directory().'/inc/class-event.php';
-require get_template_directory().'/inc/class-about.php';
+require get_template_directory().'/inc/class-colors.php';
 require get_template_directory().'/inc/class-cssjs.php';
 require get_template_directory().'/inc/class-mediamnt.php';
 require get_template_directory().'/inc/class-section.php';

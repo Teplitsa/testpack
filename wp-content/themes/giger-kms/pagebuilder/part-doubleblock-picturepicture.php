@@ -15,7 +15,7 @@ $label_order2 = wds_page_builder_get_this_part_data($prefix.'label2_order');
 
 
 //corrections for grid class
-$grid_css = '';
+$grid_css =  tst_get_colors_for_section();
 ?>
 <div class="container">
 	<div class="flex-grid--stacked <?php echo $grid_css;?>">

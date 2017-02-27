@@ -19,7 +19,7 @@ $person = wds_page_builder_get_this_part_data($prefix.'person_post');
 $grid_css = ($block_order == 'revers') ? ' row-reverse' : '';
 
 //colorschemes
-//position of label for picture block
+$grid_css .=  ' '.tst_get_colors_for_section();
 
 ?>
 <div class="container">

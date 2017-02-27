@@ -25,6 +25,8 @@ if(!empty($p_ids)) {
 
 //corrections for grid class
 $grid_css = ($picture_position == 'right') ? ' row-reverse' : '';
+$grid_css .= ' '.tst_get_colors_for_section();
+
 ?>
 <div class="container">
 	<div class="flex-grid--stacked <?php echo $grid_css;?>">

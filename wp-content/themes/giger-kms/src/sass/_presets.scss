@@ -32,6 +32,7 @@ $page_cont:    1060px;
 $col:		   81px;
 $gut:	       20px;
 $flex-gut: 	   20px;
+$text_col:     840px;
 
 $card_base_w: 298px;
 $card_base_h: 482px;
@@ -142,16 +143,14 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	}
 	@else if $mod == extra_summary {
 		font-size: 16px;
-		line-height: 22px;
+		line-height: 1.35;
 
 		@include for(medium-screens){
-			font-size: 21px;
-			line-height: 32px;
+			font-size: 18px;
 		}
 
 		@include for(large-screens){
-			font-size: 24px;
-			line-height: 32px;
+			font-size: 21px;
 		}
 	}
 	@else if $mod == meta {
@@ -328,11 +327,11 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 		line-height: 1.2;
 
 		@include for(small-screens) {
-			font-size: 48px;
+			font-size: 44px;
 		}
 
 		@include for(large-screens) {
-			font-size: 54px;
+			font-size: 48px;
 		}
 	}
 	@else if $mod == card_text {
@@ -588,7 +587,7 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 		}
 
 		@include for(medium-screens) {
-			height: 600px;
+			height: 596px;
 		}
 	}
 }
@@ -606,6 +605,6 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 }
 
 @mixin link-label-box() {
-	width: 298px;
-	height: 149px;
+	width: $card_base_w;
+	height: $card_base_w / 1.618;
 }

@@ -22,6 +22,7 @@ $args['action_url'] = get_permalink($el);
 
 //corrections for grid class
 $grid_css = ($picture_position == 'right') ? ' row-reverse' : '';
+
 ?>
 <div class="container">
 	<div class="flex-grid--stacked <?php echo $grid_css;?>">
