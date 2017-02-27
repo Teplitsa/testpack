@@ -41,7 +41,7 @@ get_header();?>
                             ));
                             echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'" enable_scroll_wheel="0"]');?>
                         <div class="marker-submit-form">
-                            <?php echo do_shortcode('[formidable id=5]');?>
+                            <?php echo do_shortcode('[formidable id=6]');?>
                         </div>
                     </div>
                     <div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
