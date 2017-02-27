@@ -337,7 +337,7 @@ function tst_markers_map_output($atts){
                         layers: [osm]
                     });
 
-                    marker_clusters[map_id] = L.markerClusterGroup({maxClusterRadius: 50});
+                    marker_clusters[map_id] = L.markerClusterGroup({maxClusterRadius: 40});
                     $.each(points[map_id], function(group_id, group_markers){ // loop through all marker groups
 
                         marker_group_layers[map_id][group_id] = tst_fill_group_layer(group_markers);
