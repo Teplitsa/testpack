@@ -7,7 +7,7 @@
 $prefix = "help_";
 
 
-$img1 = wds_page_builder_get_this_part_data($prefix.'img1_file_id');
+$img1 = wds_page_builder_get_this_part_data($prefix.'img1_file_id'); 
 $img2 = wds_page_builder_get_this_part_data($prefix.'img2_file_id');
 
 //get real IDs of pages

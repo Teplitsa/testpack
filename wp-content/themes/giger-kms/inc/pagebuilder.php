@@ -24,7 +24,7 @@ function tst_pagebuilder_conifg() {
 }
 
 
-/** Cover general */
+/** Cover  **/
 add_filter( 'wds_page_builder_fields_cover-general', 'tst_add_cover_general_field' );
 function tst_add_cover_general_field( $fields ) {
 
@@ -59,7 +59,7 @@ function tst_add_cover_general_field( $fields ) {
 }
 
 
-/** Triple picture */
+/** Triple block - picture/panel/card **/
 add_filter( 'wds_page_builder_fields_tripleblock-picture', 'tst_add_tripleblock_picture_field' );
 function tst_add_tripleblock_picture_field( $fields ) {
 
@@ -120,7 +120,7 @@ function tst_add_tripleblock_picture_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
-/** Tripple 2 cards */
+/** Tripple block - picture/panel/panel **/
 add_filter( 'wds_page_builder_fields_tripleblock-2cards', 'tst_add_tripleblock_2cards_field' );
 function tst_add_tripleblock_2cards_field( $fields ) {
 
@@ -265,7 +265,7 @@ function tst_add_singleblock_text_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
-/** Double block - element **/
+/** Double block - 1 element: picture / text **/
 add_filter( 'wds_page_builder_fields_doubleblock-element', 'tst_add_doubleblock_element_field' );
 function tst_add_doubleblock_element_field( $fields ) {
 
@@ -315,7 +315,7 @@ function tst_add_doubleblock_element_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
-/** Triple block - people with cards **/
+/** Triple block - people/panel/panel **/
 add_filter( 'wds_page_builder_fields_tripleblock-people2cards', 'tst_add_tripleblock_people2cards_field' );
 function tst_add_tripleblock_people2cards_field( $fields ) {
 
@@ -378,7 +378,7 @@ function tst_add_tripleblock_people2cards_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
-/** Triple block - Picture with people **/
+/** Triple block - panel/picture/person **/
 add_filter( 'wds_page_builder_fields_tripleblock-person', 'tst_add_tripleblock_person_field' );
 function tst_add_tripleblock_person_field( $fields ) {
 
@@ -442,7 +442,7 @@ function tst_add_tripleblock_person_field( $fields ) {
 }
 
 
-/** Double block - element **/
+/** Double block - picture/people **/
 add_filter( 'wds_page_builder_fields_doubleblock-picturepeople', 'tst_add_doubleblock_picturepeople_field' );
 function tst_add_doubleblock_picturepeople_field( $fields ) {
 
@@ -481,6 +481,169 @@ function tst_add_doubleblock_picturepeople_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
+/** Double block - picture/picture **/
+add_filter( 'wds_page_builder_fields_doubleblock-picturepicture', 'tst_add_doubleblock_picturepicture_field' );
+function tst_add_doubleblock_picturepicture_field( $fields ) {
+
+	$prefix = "doubleblock_picturepicture_";
+	$new_fields = array(
+		array(
+			'name'        		=> 'Элемент - 1',
+			'id'          		=> $prefix.'element1_post',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'landing'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name' 				=> 'Положение ссылки - 1',
+			'id' 				=> $prefix.'label1_order',
+			'type' 				=> 'select',
+			'show_option_none'	=> false,
+			'default' 			=> 'left_bottom',
+			'options' 			=> array(
+				'left_bottom'	=> 'Левый нижний угол',
+				'left_top' 		=> 'Левый верхний угол',
+			)
+		),
+		array(
+			'name'        		=> 'Элемент',
+			'id'          		=> $prefix.'element2_post',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'landing'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name' 				=> 'Положение ссылки - 2',
+			'id' 				=> $prefix.'label2_order',
+			'type' 				=> 'select',
+			'show_option_none'	=> false,
+			'default' 			=> 'left_bottom',
+			'options' 			=> array(
+				'left_bottom'	=> 'Левый нижний угол',
+				'left_top' 		=> 'Левый верхний угол',
+			)
+		),
+	);
+
+	return array_merge( $fields, $new_fields );
+}
+
+
+/** Double block - picture3_4/panel **/
+add_filter( 'wds_page_builder_fields_threeforth-picture', 'tst_add_threeforth_picture_field' );
+function tst_add_threeforth_picture_field( $fields ) {
+
+	$prefix = "threeforth_picture_";
+
+	$new_fields = array(
+		array(
+			'name' 				=> 'Порядок блоков',
+			'id' 				=> $prefix.'block_order',
+			'type' 				=> 'select',
+			'show_option_none'	=> false,
+			'default' 			=> 'direct',
+			'options' 			=> array(
+				'direct' => 'Прямой',
+				'revers' => 'Обратный'
+			)
+		),
+		array(
+			'name'        		=> 'Элемент - картинка', //to do for private only
+			'id'          		=> $prefix.'element1_post',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'landing'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name'        		=> 'Элемент - плашка', //to do for private only
+			'id'          		=> $prefix.'element2_post',
+			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'landing'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name'    => 'Файл - плашка',
+			'id'      => $prefix.'element2_file',
+			'type'    => 'file',
+			'options' => array(
+				'url' => false,
+			),
+			'text'    => array(
+				'add_upload_file_text' => 'Добавить файл'
+			),
+			'query_args' => array(
+				'type' => 'application/pdf',
+			),
+		)
+	);
+
+	return array_merge( $fields, $new_fields );
+}
+
+
+/** Double block - picture3_4/person **/
+add_filter( 'wds_page_builder_fields_threeforth-person', 'tst_add_threeforth_person_field' );
+function tst_add_threeforth_person_field( $fields ) {
+
+	$prefix = "threeforth_person_";
+	$new_fields = array(
+		array(
+			'name' 				=> 'Порядок блоков',
+			'id' 				=> $prefix.'block_order',
+			'type' 				=> 'select',
+			'show_option_none'	=> false,
+			'default' 			=> 'direct',
+			'options' 			=> array(
+				'direct' => 'Прямой',
+				'revers' => 'Обратный'
+			)
+		),
+
+		array(
+			'name'        		=> 'Элемент - картинка', //to do for private only
+			'id'          		=> $prefix.'element1_post',
+			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'landing'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+
+		array(
+			'name' 				=> 'Положение ссылки - 1',
+			'id' 				=> $prefix.'label1_order',
+			'type' 				=> 'select',
+			'show_option_none'	=> false,
+			'default' 			=> 'left_bottom',
+			'options' 			=> array(
+				'left_bottom'	=> 'Левый нижний угол',
+				'right_top' 	=> 'Правый верхний угол',
+			)
+		),
+		array(
+			'name'        		=> 'Сотрудник', //to do for private only
+			'id'          		=> $prefix.'person_post',
+			'desc'				=> 'Добавьте 1 сотрудника',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('person'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+	);
+
+	return array_merge( $fields, $new_fields );
+}
+
+
+
+
+
+
 /** Help block **/
 add_filter( 'wds_page_builder_fields_help', 'tst_add_help_field' );
 function tst_add_help_field( $fields ) {
@@ -489,7 +652,7 @@ function tst_add_help_field( $fields ) {
 	$new_fields = array(
 		array(
 			'name'    => 'Изображение - пожертвования',
-			'id'      => $prefix.'img1_file_id',
+			'id'      => $prefix.'img1_file',
 			'type'    => 'file',
 			'options' => array(
 				'url' => false,
@@ -503,7 +666,7 @@ function tst_add_help_field( $fields ) {
 		),
 		array(
 			'name'    => 'Изображение - компаниям',
-			'id'      => $prefix.'img2_file_id',
+			'id'      => $prefix.'img2_file',
 			'type'    => 'file',
 			'options' => array(
 				'url' => false,

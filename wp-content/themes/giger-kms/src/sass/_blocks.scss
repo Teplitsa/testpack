@@ -6,6 +6,13 @@
 	padding: 0 4px;
 }
 
+.landing {
+	padding-bottom: $base*6;
+	@include for(large-screens) {
+		padding-bottom: $base*10;
+	}
+}
+
 .landing-header {
 	position: relative;
 }
@@ -29,10 +36,10 @@
 
 //general cover
 .cover-general {
-	margin-bottom: $base*7;
+	margin-bottom: $base*8;
 
 	@include for(medium-screens) {
-		margin-bottom: $base*10;
+		margin-bottom: $base*12;
 	}
 }
 
@@ -103,5 +110,3 @@
 .cover-item__date {
 	font-weight: normal;
 }
-
-
