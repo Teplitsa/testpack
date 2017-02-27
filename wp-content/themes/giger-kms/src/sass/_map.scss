@@ -15,19 +15,19 @@
       color: $ground;
     }
     &.red {
-      color: $wood;
+      color: $color-form-invalid;
     }
     &.orange {
       color: $loam;
     }
     &.dark-pink {
-      color: $map_select;
+      color: lighten($color-form-invalid, 40%);
     }
     &.sand {
-      color: $leaf;
+      color: lighten($loam, 20%);
     }
     &.green {
-      color: $moss;
+      color: $grass;
     }
     &.grey-green {
       color: $wetsoil;

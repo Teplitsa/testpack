@@ -29,10 +29,22 @@ try {
 
     // Insert special marker groups and metadata:
     $special_marker_groups = array(
-        array('name' => 'Архив', 'slug' => 'archive-markers', 'layer_marker_icon' => 'archive',),
-        array('name' => 'Объекты', 'slug' => 'objects', 'layer_marker_icon' => 'location_on',),
-        array('name' => 'Проблемы', 'slug' => 'problems', 'layer_marker_icon' => 'report_problem',),
-        array('name' => 'Решенные проблемы', 'slug' => 'solved-problems', 'layer_marker_icon' => 'thumb_up',),
+        array(
+            'name' => 'Архив', 'slug' => 'archive-markers', 'layer_marker_icon' => 'archive',
+            'layer_marker_colors' => 'grey-green',
+        ),
+        array(
+            'name' => 'Объекты', 'slug' => 'objects', 'layer_marker_icon' => 'location_on',
+            'layer_marker_colors' => 'black',
+        ),
+        array(
+            'name' => 'Проблемы', 'slug' => 'problems', 'layer_marker_icon' => 'report_problem',
+            'layer_marker_colors' => 'red',
+        ),
+        array(
+            'name' => 'Решенные проблемы', 'slug' => 'solved-problems', 'layer_marker_icon' => 'thumb_up',
+            'layer_marker_colors' => 'green',
+        ),
     );
 
     $objects_group_id = 0;
@@ -44,6 +56,7 @@ try {
 
             $group_in_db = wp_insert_term($group['name'], 'marker_cat', array('slug' => $group['slug']));
             update_term_meta($group_in_db['term_id'], 'layer_marker_icon', $group['layer_marker_icon']);
+            update_term_meta($group_in_db['term_id'], 'layer_marker_colors', $group['layer_marker_colors']);
 
             if($group['name'] == 'Объекты') {
                 $objects_group_id = $group_in_db['term_id'];
@@ -89,44 +102,36 @@ try {
 
             if( !get_term_meta($term, 'layer_marker_icon', true) ) {
                 switch($group->name) {
-                    case 'Пункты приема вторсырья':
-                        update_term_meta($term, 'layer_marker_icon', 'autorenew');
-                        wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
-                        break;
-                    case 'Экологические организации и ведомства':
-                        update_term_meta($term, 'layer_marker_icon', 'business_center');
-                        wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
-                        break;
-
-                    case 'Вырубка зеленых насаждений':
-                        update_term_meta($term, 'layer_marker_icon', 'nature');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Другие экологические проблемы':
-                        update_term_meta($term, 'layer_marker_icon', 'help');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Загрязнение воды':
-                        update_term_meta($term, 'layer_marker_icon', 'invert_colors');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Загрязнение воздуха':
-                        update_term_meta($term, 'layer_marker_icon', 'cloud');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Зоны накопленного экологического ущерба':
-                        update_term_meta($term, 'layer_marker_icon', 'view_quilt');
-                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
                     case 'Проблемные проекты':
                         update_term_meta($term, 'layer_marker_icon', 'business');
+                        update_term_meta($term, 'layer_marker_colors', 'red');
                         wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
                         break;
                     case 'Свалки':
                         update_term_meta($term, 'layer_marker_icon', 'delete_sweep');
+                        update_term_meta($term, 'layer_marker_colors', 'dark-pink');
                         wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
                         break;
+                    case 'Вырубка зеленых насаждений':
+                        update_term_meta($term, 'layer_marker_icon', 'nature');
+                        update_term_meta($term, 'layer_marker_colors', 'green');
+                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
+                        break;
+                    case 'Пункты приема вторсырья':
+                        update_term_meta($term, 'layer_marker_icon', 'autorenew');
+                        update_term_meta($term, 'layer_marker_colors', 'green');
+                        wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
+                        break;
+                    case 'Экологические организации и ведомства':
+                        update_term_meta($term, 'layer_marker_icon', 'business_center');
+                        update_term_meta($term, 'layer_marker_colors', 'grey-green');
+                        wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
+                        break;
+
+                    case 'Другие экологические проблемы':
                     default:
+                        update_term_meta($term, 'layer_marker_icon', 'help');
+                        wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
                 }
             }
 
