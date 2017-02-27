@@ -76,6 +76,14 @@ function tst_add_tripleblock_picture_field( $fields ) {
 				'revers' => 'Обратный'
 			)
 		),
+	    array(
+	        'name' 				=> 'Цветовая схема',
+	        'id' 				=> $prefix.'color_scheme',
+	        'type' 				=> 'select',
+	        'show_option_none'	=> false,
+	        'default' 			=> TST_Part_Colors::get_instance()->get_pb_select_default_option('tripleblock'),
+	        'options' 			=> TST_Part_Colors::get_instance()->get_pb_select_options('tripleblock'),
+	    ),
 		array(
 			'name'        		=> 'Элемент - картинка', //to do for private only
 			'id'          		=> $prefix.'element1_post',
