@@ -603,7 +603,7 @@ function tst_custom_metaboxes() {
 	/** Landing fields  **/
 	$landing_cmb = new_cmb2_box( array(
         'id'            => 'landing_settings_metabox',
-        'title'         => 'Тексты',
+        'title'         => 'Тексты и настройки',
         'object_types'  => array('landing'), // Post type
         'context'       => 'normal',
         'priority'      => 'low',
@@ -627,6 +627,12 @@ function tst_custom_metaboxes() {
 		'options' 	=> array(
 			'textarea_rows' => 8
 		)
+	));
+
+	$landing_cmb->add_field( array(
+		'name' => 'Сбросить настройки цветовой схемы',
+		'id'   => 'landing_reset_colors',
+		'type' => 'checkbox',
 	));
 
 

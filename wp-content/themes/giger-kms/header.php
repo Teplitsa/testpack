@@ -17,6 +17,7 @@
 <body id="top" <?php body_class(); ?>>
 <?php include_once(get_template_directory()."/assets/svg/svg.svg"); //all svgs ?>
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'tst' ); ?></a>
+<?php do_action('tst_site_body');?>
 
 <div class="fixed-elements">
 

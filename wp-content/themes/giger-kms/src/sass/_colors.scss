@@ -1,0 +1,143 @@
+/** == Color schemes for cards (_colors.scss) == **/
+
+$scheme_colors: (
+	wetsoil:	$wetsoil,
+	moss:		$moss,
+	bark:		$bark,
+	loam:		$loam,
+	grass:	 	$grass,
+	leaf: 		$leaf,
+	white: 		$color-white,
+	ground: 	$ground
+);
+
+@function scheme_color($key) {
+	@if map-has-key($scheme_colors, $key) {
+		@return map-get($scheme_colors, $key);
+	}
+
+	@warn "Unknown '#{$key}' in scheme_colors.";
+	@return null;
+}
+
+
+@each $item in wetsoil, moss, bark, loam,  grass, leaf, white, ground {
+
+	.tripleblock-picture {
+		.scheme-color-1-#{$item} {
+			.card--colored { background: scheme_color($item); }
+		}
+
+		.scheme-color-2-#{$item} {
+			.card--item { background: scheme_color($item); }
+		}
+	}
+
+	.tripleblock-2cards {
+		.scheme-color-1-#{$item} {
+			.card--colored:nth-of-type(1) { background: scheme_color($item); }
+		}
+
+		.scheme-color-2-#{$item} {
+			.card--colored:nth-of-type(2) { background: scheme_color($item); }
+		}
+	}
+
+	.singleblock-picture {
+		.scheme-color-1-#{$item} {
+			.card--linked .card__label {
+				background: scheme_color($item);
+				@if $item != white {
+					color: $color-white;
+				}
+				@else {
+					color: $color-text-black;
+				}
+			}
+		}
+	}
+
+	.tripleblock-people2cards {
+		.scheme-color-1-#{$item} {
+			.card--colored { background: scheme_color($item); }
+		}
+
+		.scheme-color-2-#{$item} {
+			.card--item { background: scheme_color($item); }
+		}
+	}
+
+	.tripleblock-person {
+		.scheme-color-1-#{$item} {
+			.card--colored { background: scheme_color($item); }
+		}
+
+		.scheme-color-2-#{$item} {
+			.card--linked .card__label {
+				background: scheme_color($item);
+				@if $item != white {
+					color: $color-white;
+				}
+				@else {
+					color: $color-text-black;
+				}
+			}
+		}
+	}
+
+	.doubleblock-picturepicture {
+		.scheme-color-1-#{$item} {
+			.card--linked:nth-of-type(1) .card__label {
+				background: scheme_color($item);
+				@if $item != white {
+					color: $color-white;
+				}
+				@else {
+					color: $color-text-black;
+				}
+			}
+		}
+
+		.scheme-color-2-#{$item} {
+			.card--linked:nth-of-type(2) .card__label {
+				background: scheme_color($item);
+				@if $item != white {
+					color: $color-white;
+				}
+				@else {
+					color: $color-text-black;
+				}
+			}
+		}
+	}
+
+	.threeforth-picture {
+		.scheme-color-1-#{$item} {
+			.card--colored { background: scheme_color($item); }
+		}
+	}
+
+	.threeforth-person {
+		.scheme-color-1-#{$item} {
+			.card--linked .card__label {
+				background: scheme_color($item);
+				@if $item != white {
+					color: $color-white;
+				}
+				@else {
+					color: $color-text-black;
+				}
+			}
+		}
+	}
+
+	.news-block__content {
+		.scheme-color-1-#{$item} {
+			.card--colored:nth-of-type(1) { background: scheme_color($item); }
+		}
+		.scheme-color-2-#{$item} {
+			.card--colored:nth-of-type(2) { background: scheme_color($item); }
+		}
+	}
+
+} //loop

@@ -24,6 +24,27 @@ function tst_pagebuilder_conifg() {
 }
 
 
+function tst_get_colors_for_section(){
+
+	$colors = TST_Color_Schemes::get_instance();
+	$scheme = $colors->get_scheme();
+
+	if(empty($scheme))
+		return '';
+
+
+	$slug = wds_page_builder()->functions->get_part();
+	$index = wds_page_builder()->functions->get_parts_index();
+
+	$sec_key = $index.'_'.$slug;
+//var_dump($scheme);
+//	var_dump($sec_key);
+	if(isset($scheme[$sec_key]))
+		return  $scheme[$sec_key];
+
+	return '';
+}
+
 /** Cover  **/
 add_filter( 'wds_page_builder_fields_cover-general', 'tst_add_cover_general_field' );
 function tst_add_cover_general_field( $fields ) {
@@ -115,6 +136,11 @@ function tst_add_tripleblock_picture_field( $fields ) {
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-panels__color-2-panels'
+		)
 	);
 
 	return array_merge( $fields, $new_fields );
@@ -191,6 +217,11 @@ function tst_add_tripleblock_2cards_field( $fields ) {
 				'type' => 'application/pdf',
 			),
 		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-panels__color-2-panels'
+		)
 	);
 
 	return array_merge( $fields, $new_fields );
@@ -221,6 +252,11 @@ function tst_add_singleblock_picture_field( $fields ) {
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-labels'
+		)
 	);
 
 	return array_merge( $fields, $new_fields );
@@ -373,6 +409,11 @@ function tst_add_tripleblock_people2cards_field( $fields ) {
 			'select_type' 		=> 'checkbox',
 			'select_behavior' 	=> 'add'
 		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-panels__color-2-panels'
+		)
 	);
 
 	return array_merge( $fields, $new_fields );
@@ -436,6 +477,11 @@ function tst_add_tripleblock_person_field( $fields ) {
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-panels__color-2-panels'
+		)
 	);
 
 	return array_merge( $fields, $new_fields );
@@ -476,6 +522,11 @@ function tst_add_doubleblock_picturepeople_field( $fields ) {
 			'select_type' 		=> 'checkbox',
 			'select_behavior' 	=> 'add'
 		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-labels'
+		)
 	);
 
 	return array_merge( $fields, $new_fields );
@@ -525,6 +576,11 @@ function tst_add_doubleblock_picturepicture_field( $fields ) {
 				'left_top' 		=> 'Левый верхний угол',
 			)
 		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-panels__color-2-panels'
+		)
 	);
 
 	return array_merge( $fields, $new_fields );
@@ -579,6 +635,11 @@ function tst_add_threeforth_picture_field( $fields ) {
 			'query_args' => array(
 				'type' => 'application/pdf',
 			),
+		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-panels'
 		)
 	);
 
@@ -634,6 +695,11 @@ function tst_add_threeforth_person_field( $fields ) {
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-labels'
+		)
 	);
 
 	return array_merge( $fields, $new_fields );
@@ -641,7 +707,21 @@ function tst_add_threeforth_person_field( $fields ) {
 
 
 
+/** News block **/
+add_filter( 'wds_page_builder_fields_news', 'tst_add_news_field' );
+function tst_add_news_field( $fields ) {
 
+	$prefix = "news_";
+	$new_fields = array(
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-panels__color-2-panels'
+		)
+	);
+
+	return array_merge( $fields, $new_fields );
+}
 
 
 /** Help block **/
@@ -677,7 +757,7 @@ function tst_add_help_field( $fields ) {
 			//'query_args' => array(
 			//	'type' => 'application/pdf',  image
 			//),
-		),
+		)
 	);
 
 	return array_merge( $fields, $new_fields );

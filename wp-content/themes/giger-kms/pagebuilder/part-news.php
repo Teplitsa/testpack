@@ -14,8 +14,8 @@ $news = get_posts(array(
 	'posts_per_page' => 4
 ));
 
-//corrections for grid class
-$grid_css =  '';
+//add grid class
+$grid_css =  tst_get_colors_for_section();
 
 //colorschemes
 ?>
