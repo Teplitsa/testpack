@@ -22,7 +22,7 @@
 }
 
 .card__summary {
-	@include body-text(reading);
+	@include body-text(extra_summary);
 	margin-top: $base *4;
 }
 
