@@ -8,43 +8,57 @@
   //border-radius: 2px;
   //box-shadow: 2px 2px 3px rgba(200, 200, 200, 0.4);
 
-  .dashicons {
-    font-size: 20px;
+  .material-icons {
+    font-size: 30px;
 
     &.black {
       color: $ground;
     }
     &.red {
-      color: $wood;
+      color: darken($color-form-invalid, 10%);
     }
     &.orange {
       color: $loam;
     }
     &.dark-pink {
-      color: $map_select;
+      color: lighten($color-form-invalid, 15%);
     }
     &.sand {
-      color: $leaf;
+      color: lighten($loam, 20%);
     }
     &.green {
-      color: $moss;
+      color: $grass;
     }
     &.grey-green {
-      color: $wetsoil;
+      color: darken($wetsoil, 0%);
     }
   }
 
   .pw_map_canvas {
     border-bottom: 1px dashed $moss;
 
-    .marker-cluster-small div {
-      background-color: $grass;
+    .marker-cluster-small {
+      background-color: transparentize($grass, 0.6);
+
+      div {
+        background-color: transparentize($grass, 0);
+      }
     }
-    .marker-cluster-medium div {
-      background-color: $pollen;
+
+    .marker-cluster-medium {
+      background-color: transparentize($pollen, 0.6);
+
+      div {
+        background-color: transparentize($pollen, 0);
+      }
     }
-    .marker-cluster-large div {
-      background-color: $loam;
+
+    .marker-cluster-large {
+      background-color: transparentize($loam, 0.6);
+
+      div {
+        background-color: transparentize($loam, 0);
+      }
     }
 
     .leaflet-popup-content-wrapper {
@@ -54,15 +68,12 @@
 
       .material-icons {
         font-size: 16px;
+        color: $grass;
       }
 
       .mc-title {
         font-weight: bold;
         margin-bottom: 2*$base;
-      }
-
-      .material-icons {
-        color: $moss;
       }
 
       .mc-address {
@@ -108,6 +119,7 @@
     margin: 0;
     display: flex;
     flex-wrap: wrap;
+    //flex-direction: column;
     list-style: none;
 
     .mymap-icon.material-icons {
@@ -123,14 +135,9 @@
       content: '';
     }
 
-    //.group-title {
-    //  display: flex;
-    //  align-items: flex-start;
-    //  padding: $base $base;
-    //  margin-bottom: 0;
-    //}
-
     li.legend-parent {
+      //flex: 0 1 15px;
+      //align-items: flex-start;
       padding: $base $base;
       margin-bottom: 0;
     }
@@ -139,6 +146,7 @@
       display: flex;
       flex-wrap: wrap;
       margin-left: 4*$base;
+      list-style: none;
     }
 
     li.legend-child {
@@ -149,15 +157,23 @@
     }
 
     @include for(large-screens) {
-      &.is-filter li.interactive/*.group-title*/:hover { // Hover event behaviors wierdly on mobiles
+      &.is-filter li.interactive:hover { // Hover event behaviors wierdly on mobiles
         background-color: $pollen;
         color: $color-white;
+
+        .material-icons {
+          color: $color-white;
+        }
       }
     }
 
-    &.is-filter li.interactive.marker-group-active /*.group-title*/ {
+    &.is-filter li.interactive.marker-group-active {
       background-color: $pollen;
       color: $color-white;
+
+      .material-icons {
+        color: $color-white;
+      }
     }
 
   }

@@ -139,3 +139,9 @@ div [id *="ninja_forms_metabox"] .item-edit.metabox-item-edit {
 #p2p-to-children-projects .p2p-create-connections-tabs ul li:last-of-type {
     display:none;
 }
+.inside .cmb-type-group .cmb-remove-field-row, .inside .cmb-type-group .cmb-repeat-group-field, .inside .postbox-container .cmb-remove-field-row, 
+.inside .postbox-container .cmb-repeat-group-field {
+	padding-top:  0.5em;
+	padding-bottom:  0.5em;
+	margin-bottom:  0.5em;
+}

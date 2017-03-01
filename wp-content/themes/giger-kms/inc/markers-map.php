@@ -214,7 +214,7 @@ function tst_markers_map_output($atts){
 
             if(empty($markers_groups_meta[$term->term_id])) {
                 $markers_groups_meta[$term->term_id] = array(
-                    'color' => get_term_meta($term->term_id, 'layer_marker_color', true),
+                    'color' => get_term_meta($term->term_id, 'layer_marker_colors', true),
                     'type' => get_term_meta($term->term_id, 'layer_marker_icon', true),
                 );
             }
@@ -536,12 +536,12 @@ function tst_get_marker_popup(WP_Post $marker, array $marker_meta) {
     $name = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_the_title($marker), ENT_COMPAT, 'UTF-8')));
     $content = trim(str_replace(array('"', "'", '«', '»'), array(), html_entity_decode(trim(apply_filters('tst_the_content', $marker->post_excerpt)), ENT_COMPAT, 'UTF-8')));
 
-    $addr = ($marker_meta['city'] ? trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['city'], ENT_COMPAT, 'UTF-8'))).', ' : '').trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['address'], ENT_COMPAT, 'UTF-8')));
+    $addr = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['address'], ENT_COMPAT, 'UTF-8')));
     $phones = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['phones'], ENT_COMPAT, 'UTF-8')));
 
     $popup = "<div class='marker-content normal'><div class='mc-title'>".$name."</div>";
 
-    if($addr) {
+    if($addr && $addr != $name) {
         $popup .= "<div class='mc-address'><i class='material-icons'>place</i>$addr</div>";
     }
     if($content) {
@@ -615,7 +615,7 @@ function tst_get_legend(array $groups, $title = '', $subtitle = '', $legend_is_f
 
 function tst_get_layer_icon($layer_id) {
 
-    $color = get_term_meta($layer_id, 'layer_marker_color', true);
+    $color = get_term_meta($layer_id, 'layer_marker_colors', true);
     $type = get_term_meta($layer_id, 'layer_marker_icon', true);
 
     $color = $color ? $color : 'yellow';

@@ -434,3 +434,67 @@
     opacity: 1;
 	@include transition(opacity 0.3s);
 }
+
+// color scheme {
+.colors-white-orange-dbrown {
+    .card--linked {
+        .card__label {
+            background: $color-white;
+            color: $color-text-black;
+        }
+    }
+
+    .card--colored {
+	    background: $color-link-one;
+	    color: $color-white;
+	
+	    a {
+	        color: $color-white;
+        }
+    }
+    
+	.card--item {
+	    background: $color-secondary-dark;
+	    color: $color-white;
+	
+	    a {
+	        color: $color-white;
+	    }
+	}
+}
+
+.colors-dolive-dgreengray-white {
+	.card--linked {
+	    .card__label {
+	        background: $grass;
+	        color: $color-white;
+	    }
+    }
+	
+    .card--colored {
+        background: $moss;
+        color: $color-white;
+    
+        a {
+            color: $color-white;
+        }
+    }
+    
+    .card--item {
+        background: $color-white;
+        color: $color-text;
+    
+        a {
+            color: $color-text;
+        }
+    }
+}
+
+.colors-white-dolive-dbrown {
+}
+
+.colors-olive-dbrown-greengray {
+}
+
+.colors-white-dolive-dgreengray {
+}

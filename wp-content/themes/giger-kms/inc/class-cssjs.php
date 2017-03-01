@@ -153,7 +153,19 @@ class FRL_CssJs {
 
 		$url = get_template_directory_uri();
 
-		wp_enqueue_style('rdc-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);
+		wp_enqueue_style('tst-admin', $url.'/assets/rev/'.$this->get_rev_filename('admin.css'), array(), null);
+		
+		// js
+		$script_dependencies[] = 'jquery';
+		
+		wp_enqueue_script(
+            'tst-admin',
+            $url.'/assets/rev/'.$this->get_rev_filename('bundle-admin.js'),
+            $script_dependencies,
+            null,
+            true
+        );
+		
 	}
 
 	public function load_gmap_scripts() {

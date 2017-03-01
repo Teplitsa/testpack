@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-26 01:24+0300\n"
-"PO-Revision-Date: 2017-02-26 01:24+0300\n"
+"POT-Creation-Date: 2017-02-27 10:28+0200\n"
+"PO-Revision-Date: 2017-02-27 10:29+0200\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
 "%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
 "__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
@@ -98,6 +98,34 @@ msgstr "Россия"
 msgid "By address"
 msgstr "По адресу"
 
+#: inc/class-part-colors.php:70
+msgid "white"
+msgstr "Белый"
+
+#: inc/class-part-colors.php:71
+msgid "orange"
+msgstr "Оранжевый"
+
+#: inc/class-part-colors.php:72
+msgid "dbrown"
+msgstr "Темно-коричневый"
+
+#: inc/class-part-colors.php:73
+msgid "dolive"
+msgstr "Темно-оливковый"
+
+#: inc/class-part-colors.php:74
+msgid "dgreengray"
+msgstr "Темно-зеленый серый"
+
+#: inc/class-part-colors.php:75
+msgid "olive"
+msgstr "Оливковый"
+
+#: inc/class-part-colors.php:76
+msgid "greengray"
+msgstr "Зеленый серый"
+
 #: inc/donations.php:62
 msgid "Please, set a text of comment to describe an additional ways to donate."
 msgstr "Пожалуйста, укажите текст комментария"
@@ -121,109 +149,6 @@ msgstr ""
 #: inc/navs.php:48
 msgid "Load more"
 msgstr "Загрузить еще"
-
-#: inc/pb-widgets/donationhystory/donationhystory.php:41
-#: inc/pb-widgets/featureblock/featureblock.php:41
-msgid "Title"
-msgstr "Заголовок"
-
-#: inc/pb-widgets/donationhystory/donationhystory.php:111
-msgid "Full list"
-msgstr "Полный список"
-
-#: inc/pb-widgets/featureblock/featureblock.php:45
-msgid "Description"
-msgstr "Описание"
-
-#: inc/pb-widgets/featureblock/featureblock.php:50
-msgid "Link"
-msgstr "Ссылка"
-
-#: inc/pb-widgets/featureblock/featureblock.php:55
-msgid "Button label"
-msgstr "Текст кнопки"
-
-#: inc/pb-widgets/featureblock/featureblock.php:62
-msgid "Column 1"
-msgstr "Колонка 1"
-
-#: inc/pb-widgets/featureblock/featureblock.php:68
-msgid "Column 2"
-msgstr "Колонка 2"
-
-#: inc/pb-widgets/featureblock/featureblock.php:74
-msgid "Column 3"
-msgstr "Колонка 3"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:41
-msgid "ID of linked post"
-msgstr "Связанный пост"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:42
-msgid "Could be post, project, event - provide fallback for empty fields"
-msgstr "Может быть запись, программа - значения по умолчанию для пустых полей"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:47
-msgid "Image file"
-msgstr "Изображение"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:54
-#: inc/pb-widgets/sectionheader/sectionheader.php:41
-msgid "Title text"
-msgstr "Заголовок"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:59
-#: inc/pb-widgets/sectionheader/sectionheader.php:46
-msgid "Sub title text"
-msgstr "Подзаголовок"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:72
-msgid "Link settings"
-msgstr "Настройки ссылки"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:77
-msgid "Button link"
-msgstr "Ссылка кнопки"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:81
-msgid "Button text"
-msgstr "Текст кнопки"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:85
-msgid "Style"
-msgstr "Стиль"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:88
-msgid "Text below image"
-msgstr "Текст под картинкой"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:89
-msgid "Text over image"
-msgstr "Текст поверх картинки"
-
-#: inc/pb-widgets/introfrupalo/introfrupalo.php:145
-msgid "More details"
-msgstr "Подробнее"
-
-#: inc/pb-widgets/sectionheader/sectionheader.php:51
-msgid "Align"
-msgstr "Выравнивание"
-
-#: inc/pb-widgets/sectionheader/sectionheader.php:54
-msgid "Center"
-msgstr "По центру"
-
-#: inc/pb-widgets/sectionheader/sectionheader.php:55
-msgid "Left"
-msgstr "По левому краю"
-
-#: inc/pb-widgets/sectionheader/sectionheader.php:56
-msgid "Right"
-msgstr "По правому краю"
-
-#: inc/pb-widgets/sectionheader/sectionheader.php:61
-msgid "Style as page title"
-msgstr "Применить стиль заголовка страницы"
 
 #: inc/social.php:12
 msgid "Facebook"
@@ -317,7 +242,7 @@ msgstr ""
 msgid "Contacts"
 msgstr "Контакты"
 
-#: single-event.php:96 single-landing.php:54 single-project.php:71
+#: single-event.php:96 single-landing.php:54 single-project.php:69
 #: single.php:72
 msgid "Tags"
 msgstr "Тэги"
@@ -331,18 +256,94 @@ msgstr "Еще новости"
 msgid "%s: What are we doing"
 msgstr "%s: Что мы делаем"
 
-#: single-landing.php:76
+#: single-landing.php:76 single-project.php:86
 #, php-format
 msgid "Projects by topic: %s"
 msgstr "Проекты по теме: %s"
 
-#: single-project.php:98
+#: single-project.php:109
 msgid "News on the topic"
 msgstr "Новости по теме"
 
 #: single.php:89
 msgid "More on the topic"
 msgstr "Еще по теме"
+
+#~ msgid "Title"
+#~ msgstr "Заголовок"
+
+#~ msgid "Full list"
+#~ msgstr "Полный список"
+
+#~ msgid "Description"
+#~ msgstr "Описание"
+
+#~ msgid "Link"
+#~ msgstr "Ссылка"
+
+#~ msgid "Button label"
+#~ msgstr "Текст кнопки"
+
+#~ msgid "Column 1"
+#~ msgstr "Колонка 1"
+
+#~ msgid "Column 2"
+#~ msgstr "Колонка 2"
+
+#~ msgid "Column 3"
+#~ msgstr "Колонка 3"
+
+#~ msgid "ID of linked post"
+#~ msgstr "Связанный пост"
+
+#~ msgid "Could be post, project, event - provide fallback for empty fields"
+#~ msgstr ""
+#~ "Может быть запись, программа - значения по умолчанию для пустых полей"
+
+#~ msgid "Image file"
+#~ msgstr "Изображение"
+
+#~ msgid "Title text"
+#~ msgstr "Заголовок"
+
+#~ msgid "Sub title text"
+#~ msgstr "Подзаголовок"
+
+#~ msgid "Link settings"
+#~ msgstr "Настройки ссылки"
+
+#~ msgid "Button link"
+#~ msgstr "Ссылка кнопки"
+
+#~ msgid "Button text"
+#~ msgstr "Текст кнопки"
+
+#~ msgid "Style"
+#~ msgstr "Стиль"
+
+#~ msgid "Text below image"
+#~ msgstr "Текст под картинкой"
+
+#~ msgid "Text over image"
+#~ msgstr "Текст поверх картинки"
+
+#~ msgid "More details"
+#~ msgstr "Подробнее"
+
+#~ msgid "Align"
+#~ msgstr "Выравнивание"
+
+#~ msgid "Center"
+#~ msgstr "По центру"
+
+#~ msgid "Left"
+#~ msgstr "По левому краю"
+
+#~ msgid "Right"
+#~ msgstr "По правому краю"
+
+#~ msgid "Style as page title"
+#~ msgstr "Применить стиль заголовка страницы"
 
 #~ msgid "%s - What are we doing"
 #~ msgstr "%s -  Что мы делаем"
