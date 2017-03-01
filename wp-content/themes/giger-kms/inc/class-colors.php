@@ -77,28 +77,44 @@ class TST_Color_Schemes {
 		//print_r($sections);
 		//echo "</pre>";
 
-		//get colors data
-		if(empty($sections))
-			return $scheme;
-
-		$panels = $this->panels_config();
-		$labels = $this->labels_config();
-
 		//loop through section and generate colors for each
-		foreach($sections as $i => $sec){
+		if(!empty($sections)) {
+			foreach($sections as $i => $sec){
 
-			$sec_key = $i.'_'.$sec['template_group'];
+				$sec_key = $i.'_'.$sec['template_group'];
 
-			$field = str_replace('-', '_', $sec['template_group']);
-			$field = $field.'_color_scheme';
-			$scheme_code = (isset($sec[$field])) ? $sec[$field] : null;
-			$scheme_classes = $this->get_colors_classes($scheme_code);
+				$field = str_replace('-', '_', $sec['template_group']);
+				$field = $field.'_color_scheme';
+				$scheme_code = (isset($sec[$field])) ? $sec[$field] : null;
+				$scheme_classes = $this->get_colors_classes($scheme_code);
 
-			$scheme[$sec_key] = $scheme_classes;
+				$scheme[$sec_key] = $scheme_classes;
 
-			//echo "<pre>";
-			//var_dump($scheme_classes);
-			//echo "</pre>";
+				//echo "<pre>";
+				//var_dump($scheme_classes);
+				//echo "</pre>";
+			}
+		}
+
+		//add cta sections
+		$cta_sections = get_post_meta($this->current_post->ID, '_wds_builder_cta_template', true);
+		if(!empty($cta_sections)) {
+			foreach($cta_sections as $i => $sec){
+
+				$sec_key = $i.'_'.$sec['template_group'];
+				if(!isset($scheme[$sec_key])) {
+					$field = str_replace('-', '_', $sec['template_group']);
+					$field = $field.'_color_scheme';
+					$scheme_code = (isset($sec[$field])) ? $sec[$field] : null;
+					$scheme_classes = $this->get_colors_classes($scheme_code);
+
+					$scheme[$sec_key] = $scheme_classes;
+				}
+
+				//echo "<pre>";
+				//var_dump($scheme_classes);
+				//echo "</pre>";
+			}
 		}
 
 		//store results
@@ -124,12 +140,18 @@ class TST_Color_Schemes {
 
 		$panels =  $this->panels_config();
 		$labels = $this->labels_config();
+		$donation = $this->donation_config();
 
 		foreach($keys as $color_key){
 			if(false !== strpos($color_key, 'panels')){
 				$r_key = array_rand($panels);
 				$classes[] = 'scheme-'.str_replace('panels', $panels[$r_key], $color_key);
 				unset($panels[$r_key]);
+			}
+			elseif(false !== strpos($color_key, 'donation')) {
+				$r_key = array_rand($donation);
+				$classes[] = 'scheme-'.str_replace('donation', $donation[$r_key], $color_key);
+				unset($labels[$r_key]);
 			}
 			else {
 				$r_key = array_rand($labels);
@@ -162,9 +184,82 @@ class TST_Color_Schemes {
 		);
 	}
 
+	protected function donation_config() {
+
+		return array(
+			'moss',
+			'loam',
+			'grass',
+			'leaf',
+			'pollen'
+		);
+	}
+
 
 } //class
 
 
 //init
 TST_Color_Schemes::get_instance();
+
+
+/** Helpers **/
+//get color scheme classes for section on landing
+function tst_get_colors_for_section(){
+
+	$colors = TST_Color_Schemes::get_instance();
+	$scheme = $colors->get_scheme();
+
+	if(empty($scheme))
+		return '';
+
+
+	$slug = wds_page_builder()->functions->get_part();
+	$index = wds_page_builder()->functions->get_parts_index();
+
+	$sec_key = $index.'_'.$slug;
+//var_dump($scheme);
+//var_dump($sec_key);
+	if(isset($scheme[$sec_key]))
+		return  $scheme[$sec_key];
+
+	return '';
+}
+
+//get color scheme classes for news section by landing ID
+function tst_get_colors_for_news($landing_id){
+
+	$scheme = get_post_meta($landing_id, '_tst_color_scheme', true);
+	$colors = '';
+
+	if(empty($scheme))
+		return $colors;
+
+	foreach($scheme as $key => $classes){
+		if(false !== strpos($key, 'news')){
+			$colors = $classes;
+			break;
+		}
+	}
+
+	return $classes;
+}
+
+//get color scheme classes for help section by landing ID
+function tst_get_colors_for_help($landing_id){
+
+	$scheme = get_post_meta($landing_id, '_tst_color_scheme', true);
+	$colors = '';
+
+	if(empty($scheme))
+		return $colors;
+
+	foreach($scheme as $key => $classes){
+		if(false !== strpos($key, 'help')){
+			$colors = $classes;
+			break;
+		}
+	}
+
+	return $classes;
+}
