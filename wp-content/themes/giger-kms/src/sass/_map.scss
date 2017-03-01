@@ -35,7 +35,6 @@
   }
 
   .pw_map_canvas {
-    border-bottom: 1px dashed $moss;
 
     .marker-cluster-small {
       background-color: transparentize($grass, 0.6);
@@ -93,10 +92,17 @@
 .pw_map_legend {
   cursor: default;
   margin: 0;
-  padding: 2*$base 0;
   background-color: rgba(255, 255, 255, 0.95);
   width: 100%;
   text-align: left;
+
+  @include for(small-screens) {
+    padding: 2*$base 0;
+  }
+  @include for(large-screens) {
+    padding: 2*$base 4*$base;
+  }
+  //border-bottom: 1px solid $moss;
 
   display: flex;
   flex-direction: column;
@@ -121,6 +127,8 @@
     flex-wrap: wrap;
     //flex-direction: column;
     list-style: none;
+    //justify-content: space-around;
+    align-items: flex-start;
 
     .mymap-icon.material-icons {
       margin-right: $base;
@@ -136,11 +144,18 @@
     }
 
     li.legend-parent {
-      //flex: 0 1 15px;
+      //flex: 0 1 200px;
       //align-items: flex-start;
       padding: $base $base;
       margin-bottom: 0;
+      //flex-grow: 1;
+
+      &:not(.interactive) {
+        //flex: 1 1 200px;
+        //flex-grow: 5;
+      }
     }
+
 
     ul.children-groups-list {
       display: flex;
@@ -176,6 +191,38 @@
       }
     }
 
+  }
+
+}
+
+#marker-submit-form-wrapper {
+
+  display: flex;
+  justify-content: center;
+
+  .frm_forms {
+    @include for(small-screens) {
+      width: 90%;
+    }
+    @include for(medium-screens) {
+      width: 60%;
+    }
+    @include for(large-screens) {
+      width: 40%;
+    }
+
+    .frm_form_title {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .frm_description {
+      font-size: 12px;
+      margin: $base 0 2*$base 0;
+    }
+  }
+
+  .tst-file-upload {
+    margin-top: $base;
   }
 
 }
