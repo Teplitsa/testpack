@@ -155,7 +155,7 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	}
 	@else if $mod == meta {
 		font-size: 18px;
-		line-height: 1.35px;
+		line-height: 1.35;
 
 		@include for(medium-screens){
 			font-size: 21px;
