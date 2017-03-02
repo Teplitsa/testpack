@@ -122,17 +122,5 @@ blockquote {
     a:hover {
         cursor: pointer;
     }
-    .tags {
-        a {
-            background: $loam;
-            border: 1px solid $loam;
-            color: #fff;
-            border-radius: 2px;
-            
-            &:hover {
-                background: lighten($loam, 7%);
-            }
-        }
-    }
-    
+
 }

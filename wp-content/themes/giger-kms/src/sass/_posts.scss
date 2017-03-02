@@ -209,6 +209,27 @@ article.single {
 			padding: $base*6;
 		}
 	}
+	
+	h3 {
+		@include body-text(meta);
+		font-weight: bold;
+	}
+	h4 {
+		@include body-text(reading);
+		font-weight: bold;
+	}
+	h5 {
+		@include form-text(semi);
+		text-transform: uppercase;
+	}
+	h6 {
+		@include sub-title(default);
+		font-weight: bold;
+	}
+	figcaption {
+		@include sub-title(default);
+	}
+	
 }
 
 .single-body--summary {
