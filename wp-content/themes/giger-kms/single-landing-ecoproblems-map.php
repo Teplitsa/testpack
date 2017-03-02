@@ -30,21 +30,29 @@ get_header();?>
             </div>
         </div>
 
-        <div id="ecoproblems-map">
-        <?php $included_groups = get_terms(array(
-            'taxonomy' => 'marker_cat',
-            'hide_empty' => false,
-            'name' => array('Проблемы', 'Решенные проблемы'),
-            'fields' => 'ids',
-        ));
-        echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'" enable_scroll_wheel="0"]');?>
-        </div>
-
-        <div id="marker-submit-form-wrapper">
-            <?php echo do_shortcode('[formidable id="6" title="true" description="true"]');?>
-        </div>
-
     </header>
+
+    <div class="singleblock-map pagebuilder-part">
+        <div class="container scheme-color-1-ground">
+            <div id="ecoproblems-map">
+                <?php $included_groups = get_terms(array(
+                    'taxonomy' => 'marker_cat',
+                    'hide_empty' => false,
+                    'name' => array('Проблемы', 'Решенные проблемы'),
+                    'fields' => 'ids',
+                ));
+                echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'" enable_scroll_wheel="0"]');?>
+            </div>
+        </div>
+    </div>
+
+    <div class="singleblock-map pagebuilder-part">
+        <div class="container scheme-color-1-ground">
+            <div id="marker-submit-form-wrapper">
+                <?php echo do_shortcode('[formidable id="6" title="true" description="true"]');?>
+            </div>
+        </div>
+    </div>
 
 	<div class="single__content"><div class="container">
 		<div class="flex-grid--stacked">
