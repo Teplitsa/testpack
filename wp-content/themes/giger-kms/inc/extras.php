@@ -232,6 +232,19 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 45,
     ));
 
+    $wp_customize->add_setting('ecoproblem_submission_form_id', array(
+        'default'   => '',
+        'transport' => 'postMessage',
+        'type' 		=> 'option'
+    ));
+    $wp_customize->add_control('ecoproblem_submission_form_id', array(
+        'type'     => 'text',
+        'label'    => 'ID формы для добавления экопроблем',
+        'section'  => 'tst_content_options',
+        'settings' => 'ecoproblem_submission_form_id',
+        'priority' => 40,
+    ));
+
 	$wp_customize->remove_setting('site_icon'); //remove favicon
 	$wp_customize->remove_control('blogdescription'); //remove
 }
