@@ -357,7 +357,7 @@ class TST_Event {
 //		if( !$this->is_expired() )
 //			$meta[] = tst_add_to_calendar_link($this, 'tst-add-calendar', __('Add to calendar', 'tst'), false);
 
-        $meta[] = "<span class='event-location'>".$this->get_full_address()."</span>";
+        //$meta[] = "<span class='event-location'>".$this->get_full_address()."</span>";
 
 		return $meta;
 	}

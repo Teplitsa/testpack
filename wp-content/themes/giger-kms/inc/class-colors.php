@@ -7,7 +7,7 @@ class TST_Color_Schemes {
 
 	private static $_instance = null;
 
-	protected $supported_post_types = array('landing');
+	protected $supported_post_types = array('landing', 'page');
 	protected $current_post = null;
 	protected $current_scheme = array();
 

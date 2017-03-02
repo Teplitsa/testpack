@@ -9,12 +9,31 @@ function tst_card_linked($cpost, $args = array()) {
 		$cpost = get_post($cpost);
 
 	$defaults = array(
-		'size' => 'block-2col'
+		'size' => 'block-2col',
+		'show_desc' => false
 	);
 
 	$args = wp_parse_args($args, $defaults);
 	$pl = get_permalink($cpost);
+	$desc = '';
 
+
+	if($args['show_desc'] && $cpost->post_type == 'project'){
+		$desc = get_post_meta($cpost->ID, 'subtitle_meta', true);
+	}
+
+	if($args['show_desc'] && empty($desc)){
+		$desc = tst_get_post_excerpt($cpost, 10, true);
+	}
+
+
+	$meta = '';
+	if($cpost->post_type == 'post'){
+		$meta = get_the_date('d.m.Y', $cpost);
+	}
+	elseif($cpost->post_type == 'event') {
+		$meta = tst_event_card_meta($cpost);
+	}
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
 	<div class="card__thumbnail">
@@ -22,7 +41,13 @@ function tst_card_linked($cpost, $args = array()) {
 	</div>
 
 	<div class="card__label">
+		<?php if(!empty($meta)) {?>
+			<div class="card__meta"><?php echo $meta;?></div>
+		<?php } ?>
 		<h4><?php echo get_the_title($cpost);?></h4>
+		<?php if(!empty($desc)) {?>
+			<div class="card__summary"><?php echo apply_filters('tst_the_title', $desc);?></div>
+		<?php } ?>
 	</div>
 </a>
 <?php
@@ -135,15 +160,15 @@ function tst_news_card($cpost, $mod = 'pictured') {
 		$cpost = get_post($cpost);
 
 	$pl = get_permalink($cpost);
+
+	$meta = ($cpost->post_type == 'event') ? tst_event_card_meta($cpost) : get_the_date('d.m.Y', $cpost);
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
-
 	<?php if($mod == 'pictured' && has_post_thumbnail($cpost)) { ?>
 		<div class="card__thumbnail">
 			<?php echo get_the_post_thumbnail($cpost, "block-small"); ?>
 		</div>
 	<?php } ?>
-
 
 	<div class="card__title">
 		<h4><?php echo apply_filters('tst_the_title', get_the_title($cpost));?></h4>
@@ -153,10 +178,7 @@ function tst_news_card($cpost, $mod = 'pictured') {
 		<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost, 20)); ?>
 	</div>
 
-	<div class="card__meta">
-		<?php echo get_the_date('d.m.Y', $cpost); ?>
-	</div>
-
+	<div class="card__meta"><?php echo $meta; ?></div>
 </a>
 <?php
 }
