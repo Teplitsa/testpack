@@ -1,17 +1,25 @@
 <?php
 /**
- * Import landings and other basic site elements from CSV
+ * Set posts thumbnails
  *
  **/
 set_time_limit (0);
 ini_set('memory_limit','512M');
 
 $process_posts = array(
+    // landings
     array(
         'post_type' => 'landing',
         'post_name' => 'dront-ornotologlab',
         'thumbnail' => 'birds-dront-ornotologlab.jpg',
     ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-publications',
+        'thumbnail' => '',
+    ),
+    
+    // projects
     array(
         'post_type' => 'project',
         'post_name' => 'birds-kadastr',
@@ -38,15 +46,20 @@ try {
         
         if( $post ) {
             
-            $thumbnail_id = TST_Import::get_instance()->maybe_import_local_file( dirname( __FILE__ ) . '/sideload/' . $post_data['thumbnail'] );
-            
-            if( $thumbnail_id ) {
-                printf( "set post thumbnail: %d, %s\n", $thumbnail_id, get_attached_file( $thumbnail_id ) );
-                set_post_thumbnail( $post_id, $thumbnail_id );
-                wp_update_attachment_metadata( $thumbnail_id, wp_generate_attachment_metadata( $thumbnail_id, get_attached_file( $thumbnail_id ) ) );
+            if( isset( $post_data['thumbnail'] ) && $post_data['thumbnail'] ) {
+                $thumbnail_id = TST_Import::get_instance()->maybe_import_local_file( dirname( __FILE__ ) . '/sideload/' . $post_data['thumbnail'] );
+                
+                if( $thumbnail_id ) {
+                    printf( "set post thumbnail: %d, %s\n", $thumbnail_id, get_attached_file( $thumbnail_id ) );
+                    set_post_thumbnail( $post_id, $thumbnail_id );
+                    wp_update_attachment_metadata( $thumbnail_id, wp_generate_attachment_metadata( $thumbnail_id, get_attached_file( $thumbnail_id ) ) );
+                }
+                else {
+                    printf( "set thumbnail error!\n" );
+                }
             }
-            else {
-                printf( "set thumbnail error!\n" );
+            elseif( isset( $post_data['thumbnail'] ) ) {
+                delete_post_thumbnail( $post_id );
             }
             
         }

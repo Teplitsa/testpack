@@ -502,3 +502,12 @@ function tst_clean_csv_slug( $slug ) {
 function tst_clean_csv_file_url( $url ) {
     return preg_replace( '/\^/', ',', trim( $url ) );
 }
+
+function tst_get_past_years( $limit = 20 ) {
+    $year = (int)date('Y');
+    $years = array();
+    for( $i = 0; $i < 20; $i++ ) {
+        $years[] = $year - $i;
+    }
+    return $years;
+}

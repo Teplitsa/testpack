@@ -477,7 +477,7 @@ class TST_Media {
 				'post_title' => $filename_no_ext,
 			    'post_name' => 'datt-' . sanitize_title( $filename_no_ext ),
 				'post_content' => '',
-				'post_status' => 'publish',
+				'post_status' => 'inherit',
 				'post_mime_type' => $result['type'],
 			);
 			$attachment_id = wp_insert_attachment( $args, $result['file'] );

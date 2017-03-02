@@ -12,8 +12,9 @@ try {
     include('cli_common.php');
     echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
-    tst_cli_tags_add_landing_tags();
-    tst_cli_tags_connect_posts_to_landing_with_tags();
+//     tst_cli_tags_add_landing_tags();
+//     tst_cli_tags_connect_posts_to_landing_with_tags();
+    tst_cli_tags_connect_attachments_to_landing_with_tags();
     
     wp_cache_flush();
 
@@ -54,12 +55,13 @@ function tst_cli_tags_add_landing_tags() {
     
         $tag_name = $landing->post_title;
     
-        $landing_tag = term_exists( $landing->post_title, 'post_tag' );
+        $landing_tag = get_term_by( 'slug', $landing->post_name, 'post_tag' );
         if( !$landing_tag ) {
-            $landing_tag = wp_insert_term( $landing->post_title, 'post_tag' );
+            $landing_tag_ret = wp_insert_term( $landing->post_title, 'post_tag', array( 'slug' => $landing->post_name ) );
+            $landing_tag = get_term_by( 'id', $landing_tag_ret['term_id'], 'post_tag' );
         }
     
-        $landing_tag_id = (int)$landing_tag['term_id'];
+        $landing_tag_id = $landing_tag->term_id;
         wp_set_object_terms( $landing->ID, array( $landing_tag_id ), 'post_tag', true );
     
         $landing_count++;
@@ -73,7 +75,7 @@ function tst_cli_tags_add_landing_tags() {
 function tst_cli_tags_connect_posts_to_landing_with_tags() {
     global $wpdb;
     
-    $post_types = array( 'post' );
+    $post_types = array( 'post', 'archive_page' );
     
     $tags = get_terms( array( 
         'taxonomy' => 'post_tag', 
@@ -112,4 +114,26 @@ function tst_cli_tags_connect_posts_to_landing_with_tags() {
     }
     
     echo count( $posts_tags )." posts tagged. Time in sec: ".(microtime(true) - $time_start).chr(10).chr(10);
+}
+
+function tst_cli_tags_connect_attachments_to_landing_with_tags() {
+    $landing = tst_get_pb_post( 'dront-publications', 'landing' );
+    
+    $landing_tag = get_term_by( 'slug', $landing->post_name, 'attachment_tag' );
+    if( !$landing_tag ) {
+        $landing_tag_ret = wp_insert_term( $landing->post_title, 'attachment_tag', array( 'slug' => $landing->post_name ) );
+        $landing_tag = get_term_by( 'id', $landing_tag_ret['term_id'], 'attachment_tag' );
+    }
+    $landing_tag_id = $landing_tag->term_id;
+    wp_set_object_terms( $landing->ID, array( $landing_tag_id ), 'attachment_tag', true );
+    
+    $publications = array( 'datt-chto-takoe-prirodoohrannoe-dvizhenie', 'datt-mir-mezhdu-dvuh-ekologiy', 'datt-factor_four', 'datt-limits_to_growth', 'datt-zhitkov_buturlin', 'datt-serebrovsky-1918', 'datt-1915' );
+    foreach( $publications as $pub_name ) {
+        $pub = tst_get_pb_post( $pub_name, 'attachment' );
+        if( $pub ) {
+            wp_set_object_terms( $pub->ID, array( $landing_tag_id ), 'attachment_tag', true );
+        }
+    }
+    
+    printf( "publications attachments connected to publicataions landing - ok\n" );
 }

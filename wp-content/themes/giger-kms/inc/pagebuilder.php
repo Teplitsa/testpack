@@ -37,8 +37,8 @@ function tst_get_colors_for_section(){
 	$index = wds_page_builder()->functions->get_parts_index();
 
 	$sec_key = $index.'_'.$slug;
-//var_dump($scheme);
-//	var_dump($sec_key);
+// 	var_dump($scheme);
+// 	var_dump($sec_key);
 	if(isset($scheme[$sec_key]))
 		return  $scheme[$sec_key];
 
@@ -79,6 +79,43 @@ function tst_add_cover_general_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
+/** Cover archive **/
+add_filter( 'wds_page_builder_fields_cover-archive', 'tst_add_cover_archive_field' );
+function tst_add_cover_archive_field( $fields ) {
+
+    $prefix = "cover_archive_";
+    $new_fields = array(
+        array(
+            'name'        		=> 'Связанный пост - заставка', //to do for private only
+            'id'          		=> $prefix.'cover_post',
+            'type'        		=> 'post_search_text', // This field type
+            'post_type'  		=> array('project', 'event', 'post'),
+            'select_type' 		=> 'radio',
+            'select_behavior' 	=> 'replace'
+        ),
+        array(
+            'name'    => 'Файл - заставка',
+            'id'      => $prefix.'cover_file',
+            'type'    => 'file',
+            'options' => array(
+                'url' => false,
+            ),
+            'text'    => array(
+                'add_upload_file_text' => 'Добавить файл'
+            ),
+            'query_args' => array(
+                'type' => array('image/jpeg', 'image/jpg', 'image/png'),
+            ),
+        ),
+        array(
+            'id'   => $prefix.'post_type',
+            'type' => 'hidden',
+            'default' => ''
+        )
+    );
+
+    return array_merge( $fields, $new_fields );
+}
 
 /** Triple block - picture/panel/card **/
 add_filter( 'wds_page_builder_fields_tripleblock-picture', 'tst_add_tripleblock_picture_field' );
@@ -97,14 +134,6 @@ function tst_add_tripleblock_picture_field( $fields ) {
 				'revers' => 'Обратный'
 			)
 		),
-	    array(
-	        'name' 				=> 'Цветовая схема',
-	        'id' 				=> $prefix.'color_scheme',
-	        'type' 				=> 'select',
-	        'show_option_none'	=> false,
-	        'default' 			=> TST_Part_Colors::get_instance()->get_pb_select_default_option('tripleblock'),
-	        'options' 			=> TST_Part_Colors::get_instance()->get_pb_select_options('tripleblock'),
-	    ),
 		array(
 			'name'        		=> 'Элемент - картинка', //to do for private only
 			'id'          		=> $prefix.'element1_post',
