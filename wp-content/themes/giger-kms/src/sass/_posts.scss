@@ -240,17 +240,20 @@ article.single {
 
 	a {
 		display:  inline-block;
-		border: 1px solid $color-border-normal;
+		border: 1px solid $loam;
+		border-radius: 2px;
+		background: $loam;
 		padding: 2px $base;
 		@inlcude @include body-text();
 		text-transform: lowercase;
 		margin: 4px 6px;
-		color: $color-text-light;
+		color: $color-white;
 		@include transition(all 0.35s);
 		&:hover {
-			background: $color-secondary;
+			background: lighten($loam, 7%);
 		}
 	}
+	
 }
 
 //aside
