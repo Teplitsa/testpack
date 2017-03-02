@@ -36,10 +36,7 @@ function tst_single_cta(WP_Post $cpost, $mod = 'pictured') {
 	$r = array_rand($types);
 	$type = $types[$r];
 
-	if($type == 'problem') {
-		$page = get_page_by_path('dront-ecomap', 'OBJECT', 'landing');
-		$label = __('Inform about problem', 'tst');
-	}
+
 	if($type == 'donate') {
 		$page = get_page_by_path($type, 'OBJECT', 'leyka_campaign');
 		$label = __('Donate', 'tst');
@@ -48,10 +45,14 @@ function tst_single_cta(WP_Post $cpost, $mod = 'pictured') {
 		$page = get_page_by_path($type);
 		$label = get_the_title($page);
 	}
+	if($type == 'problem') {
+		$page = get_page_by_path('dront-ecomap', 'OBJECT', 'landing');
+		$label = __('Inform about problem', 'tst');
+	}
 
 	if(empty($page))
 		return;
-
+		
 	$pl = get_permalink($page->ID);
 
 ?>

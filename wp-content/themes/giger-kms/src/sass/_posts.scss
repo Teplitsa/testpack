@@ -451,3 +451,41 @@ article.single {
 		color: $grass;
 	}
 }
+/* Events */
+.single__event {
+	
+	.single__date-and-place {
+		// margin: -48px -48px 16px;
+	    background: $grass;
+	    padding: $base*3 $base*6;
+		color: $leaf;
+
+		@include for(large-screens) {
+			margin: $base*(-6) $base*(-6) $base*3;
+			padding: $base*3 $base*6;
+		}
+		.single__title {
+			@include post-title(cards_side);
+			color: $color-white;
+			
+			b {
+				color: $leaf;
+				margin-right: $base;
+				flex: 0 1 auto;
+			}
+			
+			span {
+				flex: 0 1 auto;
+			}
+			
+			.event-full-meta__item {
+				display: flex;
+			}
+		}
+	}
+	
+	.single-body--entry {
+		margin-bottom: $base*4;
+	}
+
+}
