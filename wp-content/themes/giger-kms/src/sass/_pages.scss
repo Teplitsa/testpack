@@ -81,3 +81,58 @@ blockquote {
     margin: $inpage-margin-base $inpage-baseline ;
 
 }
+
+/* Search Page */
+.search {
+    .search__regular {
+        margin-bottom: $inpage-margin-base;
+        
+        .searchform__field {
+            padding-left: $inpage-margin-base;
+        }
+        
+    }
+    
+    .search__meta {
+        @include body-text(meta);
+    	color: $leaf;
+        text-align: right;
+    }
+    .search__hint {
+        @include body-text(meta);
+    	color: $leaf;
+    }
+    
+    .card__summary {
+        margin-top: $inpage-margin-base;
+        @include body-text(reading);
+        margin-bottom: $element-margin-base;
+    }
+    
+    .card__meta {
+        color: $leaf;
+        float: left;
+        margin-right: $base;
+    }
+    
+    .layout-section__item {
+        margin-bottom: $inpage-baseline;
+    }
+    
+    a:hover {
+        cursor: pointer;
+    }
+    .tags {
+        a {
+            background: $loam;
+            border: 1px solid $loam;
+            color: #fff;
+            border-radius: 2px;
+            
+            &:hover {
+                background: lighten($loam, 7%);
+            }
+        }
+    }
+    
+}

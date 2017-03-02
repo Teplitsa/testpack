@@ -341,27 +341,41 @@ function tst_get_card_icon($cpost) {
 }
 
 
-
 /** Search card **/
 function tst_card_search(WP_Post $cpost) {
 
 	$pl = get_permalink($cpost);
 	$tags = tst_get_tags_list($cpost);
 	$cats = tst_get_search_cats($cpost);
-// var_dump($tags);
+// var_dump($cpost);
 ?>
-<article class="cell">
-	<h4 class="card-search__title cell__title">
-		<a href="<?php echo $pl;?>"><?php echo tst_get_post_title_excerpt($cpost, 30, true);?></a>
-	</h4>
+<a href="<?php echo $pl;?>" class="card-link">
+
+	<div class="card__title">
+		<h4><?php echo apply_filters('tst_the_title', tst_get_post_title_excerpt($cpost, 25, true));?></h4>
+	</div>
+	<div class="card__meta">
+		<?php echo get_the_date('d.m.Y', $cpost); ?>
+	</div>
+	
 	<?php if(!empty($cats)) { ?>
 		<div class="card-search__meta"><?php echo $cats;?></div>
 	<?php } ?>
-	<div class="card-search__summary"><?php echo tst_get_post_excerpt($cpost, 25, true);?></div>
+
+	<div class="card__summary">
+		<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost, 20)); ?>
+	</div>
+	<div class="card__author">
+		
+	 </div>
+
 	<?php if(!empty($tags)) { ?>
-		<div class="card-search__meta"><?php echo $tags;?></div>
+		<?php $label = __('Tags', 'tst'); ?>
+		<?php echo get_the_term_list($cpost->ID, 'post_tag', '<span class="tags"><i>'.$label.'</i>', ' ', '</span>' );?>
 	<?php } ?>
-</article>
+
+</a>
+
 <?php
 }
 
@@ -372,25 +386,7 @@ function tst_get_search_cats(WP_Post $cpost) {
 
 	if(!empty($terms)){ foreach($terms as $t) {
 		$list[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
-	}}
-	elseif($cpost->post_type == 'landing') {
-		$list[] = "<a href='".home_url('landing')."'>Лендинги</a>";
-	}
-	elseif($cpost->post_type == 'project') {
-		$list[] = "<a href='".home_url('project')."'>Проекты</a>";
-	}
-	elseif($cpost->post_type == 'event') {
-		$list[] = "<a href='".home_url('event')."'>Анонсы</a>";
-	}
-	elseif($cpost->post_type == 'person') {
-		$list[] = "<a href='".home_url('person')."'>Люди</a>";
-	}
-	elseif($cpost->post_type == 'archive_page') {
-		$list[] = "<a href='".home_url('person')."'>Архив</a>";
-	}
-	elseif($cpost->post_type == 'marker') {
-		$list[] = "<a href='".home_url('person')."'>Маркеры</a>";
-	} else {
+	}} else {
 		$list[] = "<a href='".home_url('news')."'>Новости</a>";
 	}
 
