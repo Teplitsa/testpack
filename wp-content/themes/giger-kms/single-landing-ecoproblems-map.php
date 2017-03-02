@@ -49,7 +49,7 @@ get_header();?>
     <div class="singleblock-map pagebuilder-part">
         <div class="container scheme-color-1-ground">
             <div id="marker-submit-form-wrapper">
-                <?php echo do_shortcode('[formidable id="6" title="true" description="true"]');?>
+                <?php echo do_shortcode('[formidable id="'.get_option('ecoproblem_submission_form_id').'" title="true" description="true"]');?>
             </div>
         </div>
     </div>
