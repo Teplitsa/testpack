@@ -118,7 +118,6 @@ try {
     }
                 
 	printf( "\nPosts processed: %d; ok - %d; error - %d\n", count( $process_posts ), $posts_ok, $posts_error );
-	printf( "Not found posts: %d\n", $not_found_posts );
 
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);

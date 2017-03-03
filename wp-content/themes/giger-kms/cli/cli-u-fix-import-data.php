@@ -21,9 +21,9 @@ try {
     $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->posts} SET post_name = CONCAT( 'di-', post_name ) WHERE post_type = %s AND post_name NOT LIKE 'di-%%' ", 'import' ) );
     printf( "post_name prefix added for all import items\n" );
 
-    $publications_ids = tst_get_latest_publications( -1, -1, 'ids' );
+    $attachments_ids = tst_get_latest_attachments( false, -1, -1, 'ids' );
     $updated_count = 0;
-    foreach( $publications_ids as $post_id ) {
+    foreach( $attachments_ids as $post_id ) {
         $meta_file_date = get_post_meta( $post_id, 'file_date', true );
         if( $meta_file_date ) {
             $post_date = $meta_file_date;
@@ -40,12 +40,13 @@ try {
             $updated_count += 1;
         }
     }
-    printf( "Date fixed for %d imported publications\n", $updated_count ); 
+    printf( "Date fixed for %d imported attachments\n", $updated_count ); 
 
     //regenerate permalinks
     flush_rewrite_rules();
 
     //Final
+    echo "\n";
     echo 'Memory '.memory_get_usage(true).chr(10);
     echo 'Total execution time in seconds: ' . (microtime(true) - $time_start).chr(10).chr(10);
 }
