@@ -253,7 +253,7 @@ add_filter('upload_mimes', 'tst_custom_upload_mimes');
 function tst_custom_upload_mimes ( $existing_mimes=array() ) {
     $existing_mimes['zip'] = 'application/zip';
     $existing_mimes['gz'] = 'application/x-gzip';
-    $existing_mimes['rar'] = 'application/x-rar-compressed';
+    $existing_mimes['rar'] = 'application/x-rar';
     return $existing_mimes;
 }
 
