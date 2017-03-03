@@ -66,12 +66,12 @@ try {
     
     foreach( $process_posts as $index => $post_data ) {
         
-        if( !$post_data['post_name'] ) {
+        if( !isset( $post_data['post_name'] ) || !$post_data['post_name'] ) {
             printf( "post_name must be defined\n" );
             continue;
         }
         
-        if( !$post_data['post_type'] ) {
+        if( !isset( $post_data['post_type'] ) || !$post_data['post_type'] ) {
             printf( "post_type must be defined\n" );
             continue;
         }
@@ -80,7 +80,7 @@ try {
         
         $post_data['post_status'] = 'publish';
         
-        if( preg_match( '/[-_a-zA-Z0-9].txt$/', $post_data['post_content'] ) ) {
+        if( isset( $post_data['post_content'] ) && preg_match( '/[-_a-zA-Z0-9].txt$/', $post_data['post_content'] ) ) {
             $fulltext_file_path = dirname( __FILE__ ) . '/data/txt/' . $post_data['post_content'];
             $post_data['post_content'] = file_exists( $fulltext_file_path ) ? file_get_contents( $fulltext_file_path ) : '';
         }

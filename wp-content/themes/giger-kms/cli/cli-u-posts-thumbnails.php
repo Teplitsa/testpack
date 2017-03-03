@@ -51,7 +51,7 @@ try {
                 
                 if( $thumbnail_id ) {
                     printf( "set post thumbnail: %d, %s\n", $thumbnail_id, get_attached_file( $thumbnail_id ) );
-                    set_post_thumbnail( $post_id, $thumbnail_id );
+                    set_post_thumbnail( $post->ID, $thumbnail_id );
                     wp_update_attachment_metadata( $thumbnail_id, wp_generate_attachment_metadata( $thumbnail_id, get_attached_file( $thumbnail_id ) ) );
                 }
                 else {
@@ -59,7 +59,7 @@ try {
                 }
             }
             elseif( isset( $post_data['thumbnail'] ) ) {
-                delete_post_thumbnail( $post_id );
+                delete_post_thumbnail( $post->ID );
             }
             
         }
