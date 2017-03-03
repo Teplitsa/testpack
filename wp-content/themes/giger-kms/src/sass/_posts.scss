@@ -497,7 +497,9 @@ article.single {
 	.single__date-and-place {
 		// margin: -48px -48px 16px;
 	    background: $grass;
-	    padding: $base*3 $base*6;
+	    // padding: $base*3 $base*6;
+	    padding: $base*2;
+		margin-bottom: $base*2;
 		color: $leaf;
 
 		@include for(large-screens) {
@@ -511,15 +513,11 @@ article.single {
 			b {
 				color: $leaf;
 				margin-right: $base;
-				flex: 0 1 auto;
+				// flex: 0 1 auto;
 			}
 			
-			span {
-				flex: 0 1 auto;
-			}
-			
-			.event-full-meta__item {
-				display: flex;
+			.event-full-meta__item--date {
+				margin-bottom: $base;
 			}
 		}
 	}
