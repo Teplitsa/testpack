@@ -125,7 +125,7 @@ blockquote {
     }
     
     .search-block__title {
-    	@include block-title();
+    	@include post-title(cover);
     	padding: $base*6 0 $base*5;
         text-transform: none;
     	text-align: center;
