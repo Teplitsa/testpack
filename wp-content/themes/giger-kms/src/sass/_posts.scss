@@ -56,7 +56,11 @@ article.single {
 	}
 
 	h1 {
-		@include post-title(single);
+		@include post-title(card-regular);
+		// @include post-title(single);
+		@include for(small-screens){
+			@include post-title(single);
+		}
 		margin-bottom: $base*4;
 		margin-top: $base*3;
 		color: $color-white;
@@ -194,8 +198,13 @@ article.single {
 //content
 .single__content {
 	.single-body {
-		padding: $base*4;
+		padding: $base*2;
 		background: $color-white;
+		// @include body-text(reading);
+
+		@include for(medium-screens) {
+			padding: $base*4;
+		}
 
 		@include for(large-screens) {
 			padding: $base*6;
@@ -207,7 +216,8 @@ article.single {
 		font-weight: bold;
 	}
 	h4 {
-		@include body-text(reading);
+		// @include body-text(reading);
+		@include post-title(cards_regular);
 		font-weight: bold;
 	}
 	h5 {
@@ -220,6 +230,7 @@ article.single {
 	}
 	figcaption {
 		@include sub-title(default);
+		font-style: italic;
 	}
 	
 }
@@ -357,6 +368,8 @@ article.single {
 
 .single__nav--back {
 	background: $grass;
+	display: block;
+	clear: both;
 
 	a {
 		display: block;
@@ -372,11 +385,17 @@ article.single {
 			padding: $base*3;
 			align-items: center;
 		}
+		&.card-link {
+			clear: both;
+			text-align: center;
+			display: block;
+			padding-top: $base*3;
+		}
 	}
 
 	.svg-icon {
-		width: 36px;
-		height: 36px;
+		width: 54px;
+		height: 54px;
 
 		@include for(medium-screens) {
 			width: 54px;
@@ -393,7 +412,7 @@ article.single {
 	}
 
 	.card__title {
-		display: none;
+		// display: none;
 		@include for(medium-screens) {
 			display: block;
 		}
@@ -504,4 +523,9 @@ article.single {
 		margin-bottom: $base*4;
 	}
 
+}
+.single-body--entry {
+	li {
+		margin-bottom: $base;
+	}
 }
