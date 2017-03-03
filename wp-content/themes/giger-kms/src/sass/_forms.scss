@@ -24,7 +24,7 @@ $label-text-color:   $color-text;
 }
 
 @mixin input-text {
-	@include form-text(semi);
+	@include form-text();
 	line-height: 1.2;
 	background: transparent;
 	text-align: left;
@@ -75,7 +75,7 @@ select:-webkit-autofill:focus {
 /* forms general */
 .frm_forms  {
 	margin: $gut 0;
-	font-size: 16px;
+	font-size: 13px;
 	&:last-child { margin-bottom: 0;}
 	&:first-child { margin-top: 0;}
 	
@@ -120,6 +120,7 @@ select:-webkit-autofill:focus {
   border-radius: 4px;
   color: #555555;
   box-sizing: border-box;
+  margin-bottom: 5px;
 
   &.dz-clickable {
     border: 1px dashed $grass;
@@ -127,8 +128,8 @@ select:-webkit-autofill:focus {
     cursor: pointer;
     line-height: 1.42857;
     margin-top: 5px;
-    min-height: 70px;
-    padding: 10px 20px;
+    min-height: 30px;
+    padding: 0 2*$base;
   }
 
   &.dz-drag-hover {
@@ -139,7 +140,7 @@ select:-webkit-autofill:focus {
   .dz-message {
     display: none;
     font-size: 14px;
-    margin: 0.5em 0 1em;
+    margin: $base $base;
     text-align: center;
   }
 
@@ -149,7 +150,7 @@ select:-webkit-autofill:focus {
   }
 
   .frm_upload_icon::before {
-    font-size: 40px;
+    font-size: 25px;
     content: "\e616";
   }
   .frm_icon_font::before, select.frm_icon_font {
@@ -172,7 +173,7 @@ select:-webkit-autofill:focus {
   // Loaded pics previews
   .dz-preview {
     display: inline-block;
-    margin: 16px;
+    margin: $base;
     min-height: 100px;
     position: relative;
     vertical-align: top;
@@ -310,7 +311,7 @@ select:-webkit-autofill:focus {
 		border: 1px solid $input-border-color;
 		background: $color-white;
 		width: 100% !important;
-		padding: 16px 8px;
+		padding: $base $base;
 		
 		&[type="number"] {
 			-moz-appearance: textfield;
@@ -331,10 +332,10 @@ select:-webkit-autofill:focus {
 			text-align: center;
 		}
 		
-		&:focus {			
-			padding: 15px 7px;
+		&:focus {
+			padding: 7px 7px;
 			border: 2px solid $input-color-active;
-			box-shadow: inset 1px 1px 2px rgba(200,200,200, 0.5);
+			box-shadow: inset 1px 1px 2px rgba(200,200,200, 0.75);
 		}
 	}
 	

@@ -210,7 +210,7 @@
   .frm_forms {
 
     @include for(small-screens) {
-      width: 90%;
+      width: 100%;
     }
     @include for(medium-screens) {
       width: 60%;
