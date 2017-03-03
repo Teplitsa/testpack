@@ -96,6 +96,9 @@ function tst_formidable_default_html($html, $field, $params) {
 	elseif($field['type'] == 'file'){
 		$html = str_replace('frm_form_field', 'tst-file-upload frm_form_field', $html);
 	}
+    elseif($field['type'] == 'captcha'){
+        $html = str_replace('frm_form_field', 'tst-captcha frm_form_field', $html);
+    }
 	elseif($field['type'] == 'date'){
 		$html = str_replace('frm_form_field', 'tst-date frm_form_field', $html);
 		preg_match('/<div class=\"frm_description\">(.*?)<\/div>/s',$html, $m);
