@@ -12,8 +12,8 @@ try {
     include('cli_common.php');
     echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
-//     tst_cli_tags_add_landing_tags();
-//     tst_cli_tags_connect_posts_to_landing_with_tags();
+    tst_cli_tags_add_landing_tags();
+    tst_cli_tags_connect_posts_to_landing_with_tags();
     tst_cli_tags_connect_attachments_to_landing_with_tags();
     
     wp_cache_flush();
