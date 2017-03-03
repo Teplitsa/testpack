@@ -156,7 +156,7 @@
 		padding: $base*2 0;
 		height: 100%;
 		
-		@include for(mmedium-screens) {
+		@include for(medium-screens) {
 			padding: $base*5 0 $base*5 $base*8;
 			height: 100%;
 		}
