@@ -306,6 +306,7 @@ article.single {
 
 		.card__label-wrap  {
 			height: 100%;
+			min-height: $card_base_w;
 		}
 	}
 
@@ -320,7 +321,7 @@ article.single {
 
 		.card__label--iconic {
 			width: 100%;
-			min-height: $card_base_w * 2 / 3;
+			min-height: $card_base_w;
 		}
 	}
 }
@@ -332,6 +333,10 @@ article.single {
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
+	
+	@include for (small-screens){
+		padding: $base*4 $base*3;
+	}
 
 	.svg-icon {
 		@include card-icon-size();
