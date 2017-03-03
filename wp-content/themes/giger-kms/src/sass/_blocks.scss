@@ -37,7 +37,11 @@
 
 //general cover
 .cover-general {
-	margin-bottom: $base*6;
+	margin-bottom: $base*3;
+	
+	@include for(small-screens){
+		margin-bottom: $base*6;
+	}
 
 	@include for(medium-screens) {
 		margin-bottom: $base*10;

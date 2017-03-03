@@ -17,7 +17,11 @@
 }
 
 .card__subtitle {
-	@include header-title(cards_text);
+	@include header-title(small);
+	
+	@include for(small-screens) {
+		@include header-title(card_text);
+	}
 	margin-top: $base;
 }
 
@@ -26,10 +30,13 @@
 	margin-top: $base *4;
 }
 
-.card__action {
+.card__action {	
 	@include nav-text(cta_link);
 	margin-top: $base*3;
-	white-space: nowrap;
+	
+	@include for(small-screens) {
+		white-space: nowrap;
+	}
 }
 
 .card__icon {
@@ -50,7 +57,7 @@
 	}
 }
 
-.card__label {
+.card__label {	
 	@include link-label();
 	min-height: 149px;
 }
@@ -94,8 +101,11 @@
 
 	a {
 		color: $color-white;
-		padding: $base*3;
+		padding: $base*2 ;
 		height: 100%;
+		@include for(small-screens) {
+			padding: $base*3;
+		}
 	}
 
 	.card__icon {
@@ -123,8 +133,13 @@
 
 .card--text {
 	.flex-column-centered {
-		padding: $base*5 0 $base*5 $base*8;
+		padding: $base*2 0;
 		height: 100%;
+		
+		@include for(small-screens) {
+			padding: $base*5 0 $base*5 $base*8;
+			height: 100%;
+		}
 	}
 
 	.row-reverse & .flex-column-centered {
@@ -497,4 +512,11 @@
 }
 
 .colors-white-dolive-dgreengray {
+}
+.help-block__content .flex-grid--stacked  {
+	.card--linked {
+		.card__label {
+			position: relative;
+		}
+	}
 }

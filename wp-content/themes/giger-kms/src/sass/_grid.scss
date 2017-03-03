@@ -202,7 +202,11 @@
 	flex-flow: row wrap;
 	align-items: stretch;
 	justify-content: space-between;
-	margin: 0 -1 * $flex-gut/2;
+	margin: 0;
+	
+	@include for(small-screens) {
+		margin: 0 -1 * $flex-gut/2;
+	}
 
 	&.centered { justify-content: center; }
 	&.start { justify-content: flex-start; }
