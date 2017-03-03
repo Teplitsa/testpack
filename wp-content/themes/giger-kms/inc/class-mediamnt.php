@@ -486,8 +486,8 @@ class TST_Media {
 			    $attachment_id = false;
 			}
 			else {
-				$attach_data = wp_generate_attachment_metadata( $result['attachment_id'], $result['file'] );
-				wp_update_attachment_metadata( $result['attachment_id'], $attach_data );
+				$attach_data = wp_generate_attachment_metadata( $attachment_id, $result['file'] );
+				wp_update_attachment_metadata( $attachment_id, $attach_data );
 			}
 		}
 		else {
