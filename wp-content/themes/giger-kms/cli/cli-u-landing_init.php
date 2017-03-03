@@ -339,10 +339,10 @@ try {
         
         if( $landing ) {
             $landing_data['ID'] = $landing->ID;
+            $landing_data['post_title'] = $landing->post_title;
         }
         $landing_data['post_type'] = $post_type;
         $landing_data['post_status'] = 'publish';
-        $landing_data['post_title'] = $landing->post_title;
         
         foreach( $post_pb_param['sections'] as $area_name => $landing_pb_meta ) {
         
@@ -370,8 +370,10 @@ try {
                     }
                     elseif( preg_match( '/_file_id$/', $option_key ) ) {
                         if( $option_val == 'thumbnail' ) {
-                            $thumbnail_id = get_post_thumbnail_id( $landing->ID );
-                            $landing_pb_meta[$section_index][$option_key] = $thumbnail_id;
+                            if( $landing ) {
+                                $thumbnail_id = get_post_thumbnail_id( $landing->ID );
+                                $landing_pb_meta[$section_index][$option_key] = $thumbnail_id;
+                            }
                         }
                         elseif( preg_match( '/^datt-/', $option_val ) ) {
                             $attachment = tst_get_pb_post( $option_val, 'attachment' );
@@ -434,7 +436,7 @@ try {
             $landing_data['meta_input'][$area_name] = $landing_pb_meta;
         }
         
-        $landing_id = wp_insert_post( $landing_data );
+        $landing_id = $landing ? wp_update_post( $landing_data ) : wp_insert_post( $landing_data );
         printf( "post init ok: %d\n", $landing_id );
         
         if( is_wp_error($landing_id) ){
