@@ -40,8 +40,8 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'dront-law',
-		'post_title' => 'Юридическая защита',
+		'slug' => 'dront-ecopravo',
+		'post_title' => 'Экоправо',
 		'post_content' => 'Общественная приемная, ссылки на доп.сайты, задать вопрос',
 		'section' => 'work',
 		'parent' => 0,

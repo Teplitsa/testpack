@@ -24,28 +24,23 @@ function tst_pagebuilder_conifg() {
 }
 
 
-function tst_get_colors_for_section(){
+/** Subtitle **/
+add_filter( 'wds_page_builder_fields_subtitle', 'tst_add_subtitle_field' );
+function tst_add_subtitle_field( $fields ) {
 
-	$colors = TST_Color_Schemes::get_instance();
-	$scheme = $colors->get_scheme();
+	$prefix = "subtitle_";
+	$new_fields = array(
+		array(
+			'name'        		=> 'Текст подзагловока', //to do for private only
+			'id'          		=> $prefix.'subtitle_text',
+			'type'        		=> 'text'
+		)
+	);
 
-	if(empty($scheme))
-		return '';
-
-
-	$slug = wds_page_builder()->functions->get_part();
-	$index = wds_page_builder()->functions->get_parts_index();
-
-	$sec_key = $index.'_'.$slug;
-//var_dump($scheme);
-//	var_dump($sec_key);
-	if(isset($scheme[$sec_key]))
-		return  $scheme[$sec_key];
-
-	return '';
+	return array_merge( $fields, $new_fields );
 }
 
-/** Cover  **/
+/** Cover  - general **/
 add_filter( 'wds_page_builder_fields_cover-general', 'tst_add_cover_general_field' );
 function tst_add_cover_general_field( $fields ) {
 
@@ -55,7 +50,7 @@ function tst_add_cover_general_field( $fields ) {
 			'name'        		=> 'Связанный проект - заставка', //to do for private only
 			'id'          		=> $prefix.'cover_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'  		=> array('project', 'event'),
+			'post_type'  		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -79,6 +74,52 @@ function tst_add_cover_general_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
+/** Cover  - minimal **/
+add_filter( 'wds_page_builder_fields_cover-minimal', 'tst_add_cover_minimal_field' );
+function tst_add_cover_minimal_field( $fields ) {
+
+	$prefix = "cover_minimal_";
+	$new_fields = array(
+		array(
+			'name'        		=> 'Связанный элемент - заставка', //to do for private only
+			'id'          		=> $prefix.'cover_post',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'  		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name'    => 'Файл - заставка',
+			'id'      => $prefix.'cover_file',
+			'type'    => 'file',
+			'options' => array(
+				'url' => false,
+			),
+			'text'    => array(
+				'add_upload_file_text' => 'Добавить файл'
+			),
+			'query_args' => array(
+				'type' => array('image/jpeg', 'image/jpg', 'image/png'),
+			),
+		),
+		array(
+			'name' 		=> 'Заголовок',
+			'desc'	  	=> 'Если не указан - будет указан заголовок поста',
+			'default' 	=> '',
+			'id'   		=> $prefix.'cover_title',
+			'type'		=> 'text'
+		),
+		array(
+			'name' 		=> 'Подпись',
+			'desc'	  	=> 'Если не указана - будет сгенерирована автоматически из аннотации поста',
+			'default' 	=> '',
+			'id'   		=> $prefix.'cover_desc',
+			'type'		=> 'textarea_small'
+		)
+	);
+
+	return array_merge( $fields, $new_fields );
+}
 
 /** Triple block - picture/panel/card **/
 add_filter( 'wds_page_builder_fields_tripleblock-picture', 'tst_add_tripleblock_picture_field' );
@@ -97,19 +138,11 @@ function tst_add_tripleblock_picture_field( $fields ) {
 				'revers' => 'Обратный'
 			)
 		),
-	    array(
-	        'name' 				=> 'Цветовая схема',
-	        'id' 				=> $prefix.'color_scheme',
-	        'type' 				=> 'select',
-	        'show_option_none'	=> false,
-	        'default' 			=> TST_Part_Colors::get_instance()->get_pb_select_default_option('tripleblock'),
-	        'options' 			=> TST_Part_Colors::get_instance()->get_pb_select_options('tripleblock'),
-	    ),
 		array(
 			'name'        		=> 'Элемент - картинка', //to do for private only
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -118,7 +151,7 @@ function tst_add_tripleblock_picture_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -140,7 +173,7 @@ function tst_add_tripleblock_picture_field( $fields ) {
 			'name'        		=> 'Элемент - карточка', //to do for private only
 			'id'          		=> $prefix.'element3_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -175,7 +208,7 @@ function tst_add_tripleblock_2cards_field( $fields ) {
 			'name'        		=> 'Элемент - картинка', //to do for private only
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -184,7 +217,7 @@ function tst_add_tripleblock_2cards_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -207,7 +240,7 @@ function tst_add_tripleblock_2cards_field( $fields ) {
 			'id'          		=> $prefix.'element3_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -256,7 +289,7 @@ function tst_add_singleblock_picture_field( $fields ) {
 			'name'        		=> 'Элемент', //to do for private only
 			'id'          		=> $prefix.'element_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -300,7 +333,7 @@ function tst_add_singleblock_text_field( $fields ) {
 			'name'        		=> 'Элемент',
 			'id'          		=> $prefix.'element_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -350,7 +383,7 @@ function tst_add_doubleblock_element_field( $fields ) {
 			'name'        		=> 'Элемент',
 			'id'          		=> $prefix.'element_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -381,7 +414,7 @@ function tst_add_tripleblock_people2cards_field( $fields ) {
 			'id'          		=> $prefix.'element1_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -404,7 +437,7 @@ function tst_add_tripleblock_people2cards_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -449,7 +482,7 @@ function tst_add_tripleblock_person_field( $fields ) {
 			'id'          		=> $prefix.'element1_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -472,7 +505,7 @@ function tst_add_tripleblock_person_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -517,7 +550,7 @@ function tst_add_doubleblock_picturepeople_field( $fields ) {
 			'name'        		=> 'Элемент',
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -550,7 +583,7 @@ function tst_add_doubleblock_picturepicture_field( $fields ) {
 			'name'        		=> 'Элемент - 1',
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -569,7 +602,7 @@ function tst_add_doubleblock_picturepicture_field( $fields ) {
 			'name'        		=> 'Элемент',
 			'id'          		=> $prefix.'element2_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -617,7 +650,7 @@ function tst_add_threeforth_picture_field( $fields ) {
 			'name'        		=> 'Элемент - картинка', //to do for private only
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -626,7 +659,7 @@ function tst_add_threeforth_picture_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -678,13 +711,13 @@ function tst_add_threeforth_person_field( $fields ) {
 			'id'          		=> $prefix.'element1_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'landing'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
 
 		array(
-			'name' 				=> 'Положение ссылки - 1',
+			'name' 				=> 'Положение ссылки - на картинке',
 			'id' 				=> $prefix.'label1_order',
 			'type' 				=> 'select',
 			'show_option_none'	=> false,
@@ -714,6 +747,62 @@ function tst_add_threeforth_person_field( $fields ) {
 }
 
 
+/** Double block - picture3_4/section **/
+add_filter( 'wds_page_builder_fields_threeforth-section', 'tst_add_threeforth_section_field' );
+function tst_add_threeforth_section_field( $fields ) {
+
+	$prefix = "threeforth_section_";
+	$new_fields = array(
+		array(
+			'name' 				=> 'Порядок блоков',
+			'id' 				=> $prefix.'block_order',
+			'type' 				=> 'select',
+			'show_option_none'	=> false,
+			'default' 			=> 'direct',
+			'options' 			=> array(
+				'direct' => 'Прямой',
+				'revers' => 'Обратный'
+			)
+		),
+
+		array(
+			'name'        		=> 'Элемент - картинка', //to do for private only
+			'id'          		=> $prefix.'element1_post',
+			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+
+		array(
+			'name' 				=> 'Положение ссылки - на картинке',
+			'id' 				=> $prefix.'label1_order',
+			'type' 				=> 'select',
+			'show_option_none'	=> false,
+			'default' 			=> 'left_bottom',
+			'options' 			=> array(
+				'left_bottom'	=> 'Левый нижний угол',
+				'right_top' 	=> 'Правый верхний угол',
+			)
+		),
+		array(
+			'name'        		=> 'Раздел', //to do for private only
+			'id'          		=> $prefix.'section',
+			'desc'				=> 'Укажите ярлык раздела',
+			'type'        		=> 'text'
+		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-labels'
+		)
+	);
+
+	return array_merge( $fields, $new_fields );
+}
+
+
 
 /** News block **/
 add_filter( 'wds_page_builder_fields_news', 'tst_add_news_field' );
@@ -726,6 +815,44 @@ function tst_add_news_field( $fields ) {
 			'type' => 'hidden',
 			'default' => 'color-1-panels__color-2-panels'
 		)
+	);
+
+	return array_merge( $fields, $new_fields );
+}
+
+add_filter( 'wds_page_builder_fields_homenews', 'tst_add_homenews_field' );
+function tst_add_homenews_field( $fields ) {
+
+	$prefix = "homenews_";
+	$new_fields = array(
+		array(
+			'name'    => 'Публикация 1 - файл',
+			'id'      => $prefix.'element1_file',
+			'type'    => 'file',
+			'options' => array(
+				'url' => false,
+			),
+			'text'    => array(
+				'add_upload_file_text' => 'Добавить файл'
+			),
+			'query_args' => array(
+				'type' => 'application/pdf',
+			),
+		),
+		array(
+			'name'    => 'Публикация 2 - файл',
+			'id'      => $prefix.'element2_file',
+			'type'    => 'file',
+			'options' => array(
+				'url' => false,
+			),
+			'text'    => array(
+				'add_upload_file_text' => 'Добавить файл'
+			),
+			'query_args' => array(
+				'type' => 'application/pdf',
+			),
+		),
 	);
 
 	return array_merge( $fields, $new_fields );
@@ -765,11 +892,17 @@ function tst_add_help_field( $fields ) {
 			//'query_args' => array(
 			//	'type' => 'application/pdf',  image
 			//),
+		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-donation'
 		)
 	);
 
 	return array_merge( $fields, $new_fields );
 }
+
 
 
 

@@ -9,7 +9,9 @@ ini_set('memory_limit','512M');
 try {
 	$time_start = microtime(true);
 	include('cli_common.php');
-    require_once( ABSPATH . 'wp-admin/includes/media.php' );
+	require_once( ABSPATH . 'wp-admin/includes/file.php' );
+	require_once( ABSPATH . 'wp-admin/includes/image.php' );
+	require_once( ABSPATH . 'wp-admin/includes/media.php' );
 
 	echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
@@ -60,7 +62,7 @@ try {
                 }
                 else {
                     
-                    $attachment_id = TST_Import::get_instance()->import_file( $url );
+                    $attachment_id = TST_Import::get_instance()->import_big_file( $url );
                     
                     if( $attachment_id ) {
                         $file_id = $attachment_id;

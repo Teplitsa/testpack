@@ -44,11 +44,12 @@
 	display: flex;
 	flex-flow: row wrap;
 	align-items: stretch;
-	justify-content: space-between;
+	justify-content: flex-start;
 	margin: 0;
 
 	&.centered { justify-content: center; }
-	&.start { justify-content: flex-start; }
+	//&.start { justify-content: flex-start; }
+	&.space-between { justify-content: space-between; }
 	&.row-reverse {
 		flex-direction: row-reverse;
 	}

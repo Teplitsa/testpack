@@ -25,8 +25,10 @@
 	margin-top: $base;
 }
 
+.card__insummary,
 .card__summary {
-	@include body-text(extra_summary);
+	@include body-text(summary_small);
+	color: currentColor;
 	margin-top: $base *4;
 }
 
@@ -59,7 +61,7 @@
 
 .card__label {	
 	@include link-label();
-	min-height: 149px;
+	min-height: $card_base_h - $card_base_w;
 }
 
 
@@ -69,35 +71,41 @@
 	z-index: 1;
 
 	.card__label {
-		@include link-label-box();
 		background: $color-white;
 		color: $color-text-black;
-		position: absolute;
-		z-index: 10;
-		bottom: 0;
-		left: 0;
 	}
 
-	&.label-left_top .card__label {
-		bottom: auto;
-		top: 0;
+
+	@include for(small-screens) {
+		.card__label {
+			@include link-label-box();
+			position: absolute;
+			z-index: 10;
+			bottom: 0;
+			left: 0;
+		}
+
+		&.label-left_top .card__label {
+			bottom: auto;
+			top: 0;
+		}
+
 	}
 
-	&.label-left_top.block-full .card__label {
-		bottom: auto;
-		top: 0;
-		@include for(medium-screens) {
+	@include for(medium-screens) {
+		&.label-left_top.block-full .card__label {
 			@include transform(translateX(100%));
 		}
 	}
 }
 
 
+
 .card--colored {
 	background: $color-link-one;
 	color: $color-white;
 	position: relative;
-	min-height: 149px;
+	min-height: $card_base_h - $card_base_w;
 
 	a {
 		color: $color-white;
@@ -106,6 +114,12 @@
 		@include for(small-screens) {
 			padding: $base*3;
 		}
+
+		&.has-icon {
+			padding-bottom: $base*4 + 48px;
+		}
+
+
 	}
 
 	.card__icon {
@@ -130,6 +144,11 @@
 	}
 }
 
+.card__meta {
+	@include sub-title();
+	color: currentColor;
+}
+
 
 .card--text {
 	.flex-column-centered {
@@ -146,7 +165,13 @@
 		padding-left: 0;
 		padding-right: $base*8;
 	}
+
+	.card__summary {
+		@include body-text(extra_summary);
+	}
 }
+
+
 
 //people
 .person-item {
@@ -219,7 +244,7 @@
 	}
 
 	.card--text {
-		max-width: 840px;
+		max-width: $text_col;
 		margin: 0 auto;
 	}
 
@@ -236,7 +261,7 @@
 	text-align: center;
 
 	@include for(medium-screens) {
-		padding-top: $base*12;
+		padding-top: $base*9;
 	}
 }
 
@@ -244,25 +269,16 @@
 	justify-content: flex-start;
 }
 
+
+
 .card--news {
 	a {
 		height: 100%;
 		position: relative;
-		padding-bottom:  $base*6;
-	}
-
-	.card__title {
-
-	}
-
-	.card__summary {
-		@include body-text();
-		color: $color-white;
+		padding-bottom:  $base*7;
 	}
 
 	.card__meta {
-		@include sub-title();
-		color: $color-white;
 		position: absolute;
 		bottom: $base*3;
 		left: $base*3;
@@ -307,15 +323,9 @@
 		overflow: hidden;
 	}
 
-	.card__summary {
-		@include body-text();
-		color: $color-white;
-	}
 
 	.card__meta {
 		padding-top: $base*3;
-		@include sub-title();
-		color: $color-white;
 	}
 
 	@include for(small-screens) {
@@ -353,6 +363,39 @@
 	}
 }
 
+
+.card--section {
+	background: $loam;
+	min-height: $card_base_h - $card_base_w;
+
+	a {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		padding: $base*3;
+		height: 100%;
+	}
+
+	.svg-icon {
+		@include card-icon-size();
+		fill: $color-white;
+		pointer-events: none;
+	}
+
+	.card__title {
+		margin-top: $base*2;
+		@include post-title(cards_side);
+		color: $color-white;
+	}
+
+	@include for(large-screens) {
+		min-height: $card_base_w;
+
+
+	}
+}
 
 
 
@@ -450,73 +493,3 @@
 	@include transition(opacity 0.3s);
 }
 
-// color scheme {
-.colors-white-orange-dbrown {
-    .card--linked {
-        .card__label {
-            background: $color-white;
-            color: $color-text-black;
-        }
-    }
-
-    .card--colored {
-	    background: $color-link-one;
-	    color: $color-white;
-	
-	    a {
-	        color: $color-white;
-        }
-    }
-    
-	.card--item {
-	    background: $color-secondary-dark;
-	    color: $color-white;
-	
-	    a {
-	        color: $color-white;
-	    }
-	}
-}
-
-.colors-dolive-dgreengray-white {
-	.card--linked {
-	    .card__label {
-	        background: $grass;
-	        color: $color-white;
-	    }
-    }
-	
-    .card--colored {
-        background: $moss;
-        color: $color-white;
-    
-        a {
-            color: $color-white;
-        }
-    }
-    
-    .card--item {
-        background: $color-white;
-        color: $color-text;
-    
-        a {
-            color: $color-text;
-        }
-    }
-}
-
-.colors-white-dolive-dbrown {
-}
-
-.colors-olive-dbrown-greengray {
-}
-
-.colors-white-dolive-dgreengray {
-}
-.help-block__content .flex-grid--stacked  {
-	.card--linked {
-		.card__label {
-			position: relative;
-		}
-	}
-}

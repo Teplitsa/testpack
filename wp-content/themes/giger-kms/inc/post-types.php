@@ -379,7 +379,7 @@ function tst_custom_content(){
 	//remove post tags
 	unregister_taxonomy_for_object_type('category', 'post');
     register_taxonomy_for_object_type( 'attachment_tag', 'attachment' );
-
+    
     tst_setup_terms();
 }
 
@@ -660,6 +660,48 @@ function tst_custom_metaboxes() {
 		'default' 	=> '',
 		'id'   		=> 'project_excerpt',
 		'type'		=> 'textarea_small'
+	));
+
+
+	/** Homepage settings */
+	$home_cmb = new_cmb2_box( array(
+        'id'            => 'home_settings_metabox',
+        'title'         => 'Настройки главной',
+        'object_types'  => array('page'), // Post type
+		'show_on'      => array( 'key' => 'page-template', 'value' => 'page-home.php' ),
+        'context'       => 'normal',
+        'priority'      => 'low',
+        'show_names'    => true,
+    ));
+
+	$home_cmb->add_field( array(
+		'name' => 'Сбросить настройки цветовой схемы',
+		'id'   => 'landing_reset_colors',
+		'type' => 'checkbox',
+	));
+
+	$partners_field_id = $home_cmb->add_field( array(
+		'name' 		  => 'Партнеры',
+		'id'          => 'home_partners',
+		'type'        => 'group',
+		'options'     => array(
+			'group_title'   => 'Партнер {#}',
+			'add_button'    => 'Добавить',
+			'remove_button' => 'Удалить',
+			'sortable'      => true,
+		),
+	));
+
+	$home_cmb->add_group_field( $partners_field_id, array(
+		'name' => 'Название',
+		'id'   => 'home_partner_title',
+		'type' => 'text'
+	));
+
+	$home_cmb->add_group_field( $partners_field_id, array(
+		'name' => 'Веб-сайт',
+		'id'   => 'home_partner_url',
+		'type' => 'text_url'
 	));
 
 }

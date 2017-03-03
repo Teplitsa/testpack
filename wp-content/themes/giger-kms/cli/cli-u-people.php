@@ -77,21 +77,21 @@ try {
 			$landing = array_map('trim', $landing);
 			$landing = array_unique($landing);
 
-			$c_count = 0;
-			if(!empty($landing)) { foreach($landing as $l_slug) {
-				if($l_slug == 'none')
-					continue;
+// 			$c_count = 0;
+// 			if(!empty($landing)) { foreach($landing as $l_slug) {
+// 				if($l_slug == 'none')
+// 					continue;
 
-				$item = get_posts(array('post_type' => 'landing', 'posts_per_page' => 1, 'name' => $l_slug));
-				if($item) {
-					$c = p2p_type('landing_person')->connect($item[0]->ID, $uid, array('date' => current_time('mysql')));
-					if(!is_wp_error($c)){
-						$c_count++;
-					}
-				}
-			}}
+// 				$item = get_posts(array('post_type' => 'landing', 'posts_per_page' => 1, 'name' => $l_slug));
+// 				if($item) {
+// 					$c = p2p_type('landing_person')->connect($item[0]->ID, $uid, array('date' => current_time('mysql')));
+// 					if(!is_wp_error($c)){
+// 						$c_count++;
+// 					}
+// 				}
+// 			}}
 
-			echo 'Added '.$c_count.' connections for '.$page_data['post_title'].chr(10);
+// 			echo 'Added '.$c_count.' connections for '.$page_data['post_title'].chr(10);
 		}
 	}
 

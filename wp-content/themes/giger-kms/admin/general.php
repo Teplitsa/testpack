@@ -137,10 +137,11 @@ function tst_correct_metaboxes($post_type, $post ){
 
 		if(!in_array($post_type, array('project', 'landing'))) {
 			$label = ($post_type == 'org') ? __('Website', 'tst') : __('Excerpt', 'tst');
-			add_meta_box('tst_postexcerpt', $label, 'tst_excerpt_meta_box', null, 'normal', 'core');
+
+			if($post->ID != (int)get_option('page_on_front'))
+				add_meta_box('tst_postexcerpt', $label, 'tst_excerpt_meta_box', null, 'normal', 'core');
 		}
 	}
-
 }
 
 function tst_excerpt_meta_box($post){
@@ -330,4 +331,3 @@ add_action( 'admin_enqueue_scripts', 'load_admin_style' );
 function load_admin_style() {
 	wp_enqueue_style( 'admin_css', get_template_directory_uri() . '/assets/css/admin.css', false, '1.0.0' );
 }
-

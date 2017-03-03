@@ -31,10 +31,14 @@ $grid_css .= ' '.tst_get_colors_for_section();
 			<?php tst_card_linked((int)$el1, array('size' => 'block-2col')) ;?>
 		</div>
 		<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
+		<?php if(in_array(get_post_type((int)$el2), array('post', 'event'))) { ?>
+			<?php tst_news_card((int)$el2, 'colored'); ?>
+		<?php } else { ?>
 			<?php tst_card_colored((int)$el2) ;?>
+		<?php } ?>
 		</div>
 		<div class="flex-cell--stacked sm-6 lg-3 card card--item">
-			<?php tst_card_linked((int)$el3, array('size' => 'block-small')) ;?>
+			<?php tst_card_linked((int)$el3, array('size' => 'block-small')); ?>
 		</div>
 	</div>
 </div>

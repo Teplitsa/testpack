@@ -477,7 +477,7 @@ class TST_Media {
 				'post_title' => $filename_no_ext,
 			    'post_name' => 'datt-' . sanitize_title( $filename_no_ext ),
 				'post_content' => '',
-				'post_status' => 'publish',
+				'post_status' => 'inherit',
 				'post_mime_type' => $result['type'],
 			);
 			$attachment_id = wp_insert_attachment( $args, $result['file'] );
@@ -486,8 +486,8 @@ class TST_Media {
 			    $attachment_id = false;
 			}
 			else {
-				$attach_data = wp_generate_attachment_metadata( $result['attachment_id'], $result['file'] );
-				wp_update_attachment_metadata( $result['attachment_id'], $attach_data );
+				$attach_data = wp_generate_attachment_metadata( $attachment_id, $result['file'] );
+				wp_update_attachment_metadata( $attachment_id, $attach_data );
 			}
 		}
 		else {

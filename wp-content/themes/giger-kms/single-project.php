@@ -103,13 +103,14 @@ get_header(); ?>
 	<?php
 		$news = tst_project_get_related_news($cpost, 4);
 		if(!empty($news)) {
+			$grid_css = (!empty($land)) ? tst_get_colors_for_news((int)$land[0]->ID) : '';
 	?>
 	<footer class="single__footer">
 		<div class="news-block container">
 			<h3 class="news-block__title--inpage"><?php _e('News on the topic', 'tst'); ?></h3>
 
 			<div class="news-block__content">
-				<div class="flex-grid--stacked ">
+				<div class="flex-grid--stacked <?php echo $grid_css;?>">
 				<?php foreach($news as $i => $n) { ?>
 					<?php if($i %2 > 0) { ?>
 						<div class="flex-cell--stacked sm-6 lg-3 card card--colored card--news">

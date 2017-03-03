@@ -1,14 +1,16 @@
 /** == Color schemes for cards (_colors.scss) == **/
 
+
 $scheme_colors: (
-	wetsoil:	$wetsoil,
-	moss:		$moss,
-	bark:		$bark,
-	loam:		$loam,
-	grass:	 	$grass,
-	leaf: 		$leaf,
-	white: 		$color-white,
-	ground: 	$ground
+	wetsoil:	#59705D,
+	moss:		#59705D,
+	bark:		#493b29,
+	loam:		#e99c34,
+	grass:	 	#9b9912,
+	leaf: 		#bcc600,
+	white: 		#ffffff,
+	ground: 	#444642,
+	pollen:     #d7db54
 );
 
 @function scheme_color($key) {
@@ -138,6 +140,55 @@ $scheme_colors: (
 		.scheme-color-2-#{$item} {
 			.card--colored:nth-of-type(2) { background: scheme_color($item); }
 		}
+
+		.card--item {
+			background: $color-white;
+			color: $color-text-black;
+			a, .card__summary, .card__meta {
+				color: $color-text-black;
+			}
+		}
+	}
+	
+	.publications-block__content {
+		.scheme-color-1-#{$item} {
+			.card--colored:nth-of-type(1) { background: scheme_color($item); }
+		}
+		.scheme-color-2-#{$item} {
+			.card--colored:nth-of-type(2) { background: scheme_color($item); }
+		}
+		.scheme-color-3-#{$item} {
+			.card--colored:nth-of-type(3) { background: scheme_color($item); }
+		}
+		.scheme-color-4-#{$item} {
+			.card--colored:nth-of-type(4) { background: scheme_color($item); }
+		}
 	}
 
 } //loop
+
+
+//donation color
+@each $item in moss, loam,  grass, leaf, pollen {
+
+	.help-block__content {
+
+		.scheme-color-#{$item} {
+			.card--colored { background: scheme_color($item); }
+			.card__button {
+				background: scheme_color($item);
+				&:hover {
+					background:  darken(call(scheme_color, $item), 20%);
+				}
+			}
+
+			.card--colored .card__button {
+				background: $bark;
+				&:hover {
+					background:  darken(call(scheme_color, $item), 20%);
+				}
+			}
+		}
+	}
+
+}
