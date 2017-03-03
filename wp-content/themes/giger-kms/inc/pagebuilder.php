@@ -74,6 +74,53 @@ function tst_add_cover_general_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
+/** Cover  - minimal **/
+add_filter( 'wds_page_builder_fields_cover-minimal', 'tst_add_cover_minimal_field' );
+function tst_add_cover_minimal_field( $fields ) {
+
+	$prefix = "cover_minimal_";
+	$new_fields = array(
+		array(
+			'name'        		=> 'Связанный элемент - заставка', //to do for private only
+			'id'          		=> $prefix.'cover_post',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'  		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name'    => 'Файл - заставка',
+			'id'      => $prefix.'cover_file',
+			'type'    => 'file',
+			'options' => array(
+				'url' => false,
+			),
+			'text'    => array(
+				'add_upload_file_text' => 'Добавить файл'
+			),
+			'query_args' => array(
+				'type' => array('image/jpeg', 'image/jpg', 'image/png'),
+			),
+		),
+		array(
+			'name' 		=> 'Заголовок',
+			'desc'	  	=> 'Если не указан - будет указан заголовок поста',
+			'default' 	=> '',
+			'id'   		=> $prefix.'cover_title',
+			'type'		=> 'text'
+		),
+		array(
+			'name' 		=> 'Подпись',
+			'desc'	  	=> 'Если не указана - будет сгенерирована автоматически из аннотации поста',
+			'default' 	=> '',
+			'id'   		=> $prefix.'cover_desc',
+			'type'		=> 'textarea_small'
+		)
+	);
+
+	return array_merge( $fields, $new_fields );
+}
+
 /** Cover archive **/
 add_filter( 'wds_page_builder_fields_cover-archive', 'tst_add_cover_archive_field' );
 function tst_add_cover_archive_field( $fields ) {
@@ -895,52 +942,7 @@ function tst_add_help_field( $fields ) {
 }
 
 
-/** Cover  - minimal **/
-add_filter( 'wds_page_builder_fields_cover-minimal', 'tst_add_cover_minimal_field' );
-function tst_add_cover_minimal_field( $fields ) {
 
-	$prefix = "cover_minimal_";
-	$new_fields = array(
-		array(
-			'name'        		=> 'Связанный элемент - заставка', //to do for private only
-			'id'          		=> $prefix.'cover_post',
-			'type'        		=> 'post_search_text', // This field type
-			'post_type'  		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
-			'select_type' 		=> 'radio',
-			'select_behavior' 	=> 'replace'
-		),
-		array(
-			'name'    => 'Файл - заставка',
-			'id'      => $prefix.'cover_file',
-			'type'    => 'file',
-			'options' => array(
-				'url' => false,
-			),
-			'text'    => array(
-				'add_upload_file_text' => 'Добавить файл'
-			),
-			'query_args' => array(
-				'type' => array('image/jpeg', 'image/jpg', 'image/png'),
-			),
-		),
-		array(
-			'name' 		=> 'Заголовок',
-			'desc'	  	=> 'Если не указан - будет указан заголовок поста',
-			'default' 	=> '',
-			'id'   		=> $prefix.'cover_title',
-			'type'		=> 'text'
-		),
-		array(
-			'name' 		=> 'Подпись',
-			'desc'	  	=> 'Если не указана - будет сгенерирована автоматически из аннотации поста',
-			'default' 	=> '',
-			'id'   		=> $prefix.'cover_desc',
-			'type'		=> 'textarea_small'
-		)
-	);
-
-	return array_merge( $fields, $new_fields );
-}
 
 //temp
 function tst_wds_get_field_name_prefix( $regex, $filter ) {
