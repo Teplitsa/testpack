@@ -249,6 +249,14 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
 	$wp_customize->remove_control('blogdescription'); //remove
 }
 
+add_filter('upload_mimes', 'tst_custom_upload_mimes');
+function tst_custom_upload_mimes ( $existing_mimes=array() ) {
+    $existing_mimes['zip'] = 'application/zip';
+    $existing_mimes['gz'] = 'application/x-gzip';
+    $existing_mimes['rar'] = 'application/x-rar-compressed';
+    return $existing_mimes;
+}
+
 /** Humans txt **/
 class TST_Humans_Txt {
 
