@@ -2,18 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-02 12:26+0000\n"
-"PO-Revision-Date: 2017-03-02 12:27+0000\n"
+"POT-Creation-Date: 2017-03-03 01:52+0200\n"
+"PO-Revision-Date: 2017-03-03 01:52+0200\n"
 "Last-Translator: ahaenor <ahaenor@gmail.com>\n"
 "Language-Team: Russian\n"
-"Language: ru-RU\n"
+"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
-"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
+"%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Loco - https://localise.biz/\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
 "__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
@@ -24,112 +24,11 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bower_components\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
-"X-Poedit-SearchPathExcluded-2: assets"
-
-#: archive-event.php:50
-msgid "Unfortunately, nothing found under your request."
-msgstr ""
-
-#: search.php:51
-msgid "Пожалуйста, укажите слова для поиска в форме и нажмите Enter."
-msgstr ""
-
-#: search.php:54
-msgid ""
-"К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать "
-"иначе."
-msgstr ""
-
-#: single-landing-ecoproblems-map.php:29
-msgid "Submit a problem!"
-msgstr "Отправить!"
-
-#. Name of the theme
-msgid "Dront Theme"
-msgstr ""
-
-#. Description of the theme
-msgid "Дизайн и функции сайта"
-msgstr ""
-
-#. Author of the theme
-msgid "Teplitsa"
-msgstr ""
-
-#. Author URI of the theme
-msgid "https://te-st.ru/"
-msgstr ""
+"X-Poedit-SearchPathExcluded-2: assets\n"
 
 #: 404.php:11
 msgid "404: Page not found"
 msgstr "Ошибка 404: Страница не найдена"
-
-#: archive-event.php:28
-#, php-format
-msgid "Total: %d"
-msgstr "Всего: %d"
-
-#: archive-leyka_donation.php:21
-msgid "Campaign"
-msgstr "Кампания"
-
-#: archive-leyka_donation.php:58
-msgid "No donations yet"
-msgstr "Пожертвований пока нет"
-
-#: footer.php:12
-msgid "Teplitsa of social technologies"
-msgstr "Теплица социальных технологий"
-
-#: footer.php:54
-#, php-format
-msgid "All materials of the site are avaliabe under license %s"
-msgstr "Все материалы сайта доступны по лицензии %s"
-
-#: header.php:19
-msgid "Skip to content"
-msgstr "Перейти к содержанию"
-
-#: index.php:8 single.php:13 inc/templates-single.php:86
-#: inc/templates-tags.php:116 pagebuilder/part-news.php:25
-msgid "News"
-msgstr "Новости"
-
-#: index.php:34 taxonomy-section.php:51
-msgid "Nothing found under your request"
-msgstr "По вашему запросу ничего не найдено."
-
-#: single-event.php:60
-msgid "Contacts"
-msgstr "Контакты"
-
-#: single-event.php:96 single-landing.php:54 single-project.php:69
-#: single.php:72 inc/templates-micro.php:373
-msgid "Tags"
-msgstr "Тэги"
-
-#: single-landing-ecoproblems-map.php:28 pagebuilder/part-cover-general.php:29
-msgid "Get details"
-msgstr "Вникнуть"
-
-#: single-landing-ecoproblems-map.php:69 single-landing.php:76
-#: single-project.php:86
-#, php-format
-msgid "Projects by topic: %s"
-msgstr "Проекты по теме: %s"
-
-#: single-landing.php:32
-#, php-format
-msgid "%s: What are we doing"
-msgstr "%s: Что мы делаем"
-
-#: single-project.php:109
-msgid "News on the topic"
-msgstr "Новости по теме"
-
-#: single.php:89
-msgid "More on the topic"
-msgstr "Еще по теме"
 
 #: admin/general.php:139 admin/general.php:149
 msgid "Website"
@@ -153,6 +52,40 @@ msgstr ""
 "ВНИМАНИЕ! Изображение миниатюры слишком маленькое. Необходимый размер - не "
 "менее %s px."
 
+#: archive-event.php:28
+#, php-format
+msgid "Total: %d"
+msgstr "Всего: %d"
+
+#: archive-event.php:50
+msgid "Unfortunately, nothing found under your request."
+msgstr ""
+
+#: archive-leyka_donation.php:21
+msgid "Campaign"
+msgstr "Кампания"
+
+#: archive-leyka_donation.php:46
+msgid "Anonymous"
+msgstr ""
+
+#: archive-leyka_donation.php:58
+msgid "No donations yet"
+msgstr "Пожертвований пока нет"
+
+#: footer.php:12
+msgid "Teplitsa of social technologies"
+msgstr "Теплица социальных технологий"
+
+#: footer.php:54
+#, php-format
+msgid "All materials of the site are avaliabe under license %s"
+msgstr "Все материалы сайта доступны по лицензии %s"
+
+#: header.php:19
+msgid "Skip to content"
+msgstr "Перейти к содержанию"
+
 #: inc/class-event.php:440 inc/class-event.php:454
 msgid "Online"
 msgstr "Online"
@@ -165,37 +98,25 @@ msgstr "Россия"
 msgid "By address"
 msgstr "По адресу"
 
-#: inc/class-part-colors.php:70
-msgid "white"
-msgstr "Белый"
+#: inc/donations.php:62
+msgid "Please, set a text of comment to describe an additional ways to donate."
+msgstr ""
 
-#: inc/class-part-colors.php:71
-msgid "orange"
-msgstr "Оранжевый"
+#: inc/donations.php:70
+msgid "Please, set a text to describe an additional ways to donate."
+msgstr ""
 
-#: inc/class-part-colors.php:72
-msgid "dbrown"
-msgstr "Темно-коричневый"
-
-#: inc/class-part-colors.php:73
-msgid "dolive"
-msgstr "Темно-оливковый"
-
-#: inc/class-part-colors.php:74
-msgid "dgreengray"
-msgstr "Темно-зеленый серый"
-
-#: inc/class-part-colors.php:75
-msgid "olive"
-msgstr "Оливковый"
-
-#: inc/class-part-colors.php:76
-msgid "greengray"
-msgstr "Зеленый серый"
+#: inc/donations.php:128
+msgid "Specify the amount of your donation"
+msgstr ""
 
 #: inc/donations.php:217
 msgid "Monthly donation"
 msgstr "Перечислять ежемесячно"
+
+#: inc/donations.php:399
+msgid "Your phone number in the 7xxxxxxxxxx format"
+msgstr ""
 
 #: inc/navs.php:48
 msgid "Load more"
@@ -217,18 +138,28 @@ msgstr "VKontakte"
 msgid "Details"
 msgstr "Подробнее"
 
-#: inc/templates-single.php:41
-msgid "Inform about problem"
-msgstr "Сообщить о проблеме"
+#: inc/templates-micro.php:373 single-event.php:102 single-landing.php:54
+#: single-project.php:69 single.php:72
+msgid "Tags"
+msgstr "Тэги"
 
-#: inc/templates-single.php:45 pagebuilder/part-help.php:44
+#: inc/templates-single.php:42 pagebuilder/part-help.php:44
 msgid "Donate"
 msgstr "Помочь сейчас"
 
-#: inc/templates-single.php:85 inc/templates-single.php:98
+#: inc/templates-single.php:50
+msgid "Inform about problem"
+msgstr "Сообщить о проблеме"
+
+#: inc/templates-single.php:86 inc/templates-single.php:99
 #: inc/templates-tags.php:115 inc/templates-tags.php:133
 msgid "Home"
 msgstr "Главная"
+
+#: inc/templates-single.php:87 inc/templates-tags.php:116 index.php:8
+#: pagebuilder/part-news.php:25 single.php:13
+msgid "News"
+msgstr "Новости"
 
 #: inc/widgets_old.php:111
 msgid "Widget doesn't have any settings"
@@ -238,9 +169,21 @@ msgstr "Виджет не имеет настроек"
 msgid "All news"
 msgstr "Все новости"
 
-#: pagebuilder/part-cover-general.php:30
+#: index.php:34 taxonomy-section.php:51
+msgid "Nothing found under your request"
+msgstr "По вашему запросу ничего не найдено."
+
+#: pagebuilder/part-cover-archive.php:36
+msgid "View all publications"
+msgstr "Смотреть все публикации"
+
+#: pagebuilder/part-cover-archive.php:38 pagebuilder/part-cover-general.php:30
 msgid "Join us"
 msgstr "Давайте вместе!"
+
+#: pagebuilder/part-cover-general.php:29 single-landing-ecoproblems-map.php:28
+msgid "Get details"
+msgstr "Вникнуть"
 
 #: pagebuilder/part-help.php:28
 msgid "Join our actions"
@@ -265,3 +208,65 @@ msgstr "Помощь компаний"
 #: pagebuilder/part-help.php:86
 msgid "Become partner"
 msgstr "Стать партнером"
+
+#: search.php:51
+msgid "Пожалуйста, укажите слова для поиска в форме и нажмите Enter."
+msgstr ""
+
+#: search.php:54
+msgid ""
+"К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать "
+"иначе."
+msgstr ""
+
+#: single-event.php:14
+msgid "Events"
+msgstr ""
+
+#: single-event.php:89
+msgid "Contacts"
+msgstr "Контакты"
+
+#: single-event.php:121 single.php:89
+msgid "More on the topic"
+msgstr "Еще по теме"
+
+#: single-landing-dront-publications.php:32 single-landing.php:32
+#, php-format
+msgid "%s: What are we doing"
+msgstr "%s: Что мы делаем"
+
+#: single-landing-ecoproblems-map.php:29
+msgid "Submit a problem!"
+msgstr "Отправить!"
+
+#: single-landing-ecoproblems-map.php:69 single-landing.php:76
+#: single-project.php:86
+#, php-format
+msgid "Projects by topic: %s"
+msgstr "Проекты по теме: %s"
+
+#: single-project.php:109
+msgid "News on the topic"
+msgstr "Новости по теме"
+
+#~ msgid "white"
+#~ msgstr "Белый"
+
+#~ msgid "orange"
+#~ msgstr "Оранжевый"
+
+#~ msgid "dbrown"
+#~ msgstr "Темно-коричневый"
+
+#~ msgid "dolive"
+#~ msgstr "Темно-оливковый"
+
+#~ msgid "dgreengray"
+#~ msgstr "Темно-зеленый серый"
+
+#~ msgid "olive"
+#~ msgstr "Оливковый"
+
+#~ msgid "greengray"
+#~ msgstr "Зеленый серый"

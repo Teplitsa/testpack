@@ -215,10 +215,11 @@ $landings_sections = array(
     
     'dront-publications' => array(
         array(
-            'template_group' => 'cover-archive',
-            'cover_general_cover_post' => '',
-            'cover_general_cover_file_id' => '',
-            'cover_archive_post_type' => ''
+            'template_group' => 'news',
+        ),
+        
+        array(
+            'template_group' => 'help',
         ),
     ),
 );

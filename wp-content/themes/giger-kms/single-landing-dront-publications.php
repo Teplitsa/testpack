@@ -95,8 +95,18 @@ get_header();?>
 
 <?php }  else { ?>
 <article class="landing dront-publication">
-    <?php wds_page_builder_area( 'page_builder_default' );?>
-    <section class="cta"><?php wds_page_builder_area('cta'); ?></section>
+    <section>
+        <header class="landing-header">
+        	<div class="cover-general__title container">
+        		<h1 class="landing-header__title"><?php echo get_the_title($cpost);?></h1>
+        		<div class="landing-header__tagline"><?php echo apply_filters('tst_the_title', get_post_meta($cpost->ID, 'landing_excerpt', true));?></div>
+        		<div class="landing-header__links">
+        			<a href="<?php echo trailingslashit(get_permalink($cpost)).'archive';?>"><?php _e('View all publications', 'tst');?></a>
+        			<a href="#help-block" class="local-scroll"><?php _e('Join us', 'tst');?></a>
+        		</div>
+        	</div>
+        </header>    
+    </section>
     
     <?php
     $main_pub_cols = 3;
@@ -172,9 +182,11 @@ get_header();?>
             </div>
         <?php } ?>
     <?php }?>
+    
+    <?php wds_page_builder_area( 'page_builder_default' );?>
+    <section class="cta"><?php wds_page_builder_area('cta'); ?></section>
+    
 </article>
-
-
 
 <?php }
 
