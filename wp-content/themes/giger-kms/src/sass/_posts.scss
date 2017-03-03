@@ -398,6 +398,9 @@ article.single {
 			text-align: center;
 			display: block;
 			padding-top: $base*3;
+			@include for(medium-screens) {
+				display: flex;
+			}
 		}
 	}
 
