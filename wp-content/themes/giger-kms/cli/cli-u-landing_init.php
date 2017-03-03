@@ -212,6 +212,27 @@ $landings_sections = array(
         ),
         
     ),
+    
+    'dront-publications' => array(
+        array(
+            'template_group' => 'news',
+        ),
+        
+        array(
+            'template_group' => 'help',
+        ),
+    ),
+    
+    'dront-bereginya' => array(
+        array(
+            'template_group' => 'news',
+        ),
+    
+        array(
+            'template_group' => 'help',
+        ),
+    ),
+    
 );
 
 try {
@@ -314,7 +335,7 @@ try {
 //             $landing_pb_meta[0]['col1_post_id_col1'] = $project_department->ID;
         }
         
-        print_r( $landing_pb_meta );
+//         print_r( $landing_pb_meta );
         
         $landing_data['meta_input'] = array( '_wds_builder_template' => $landing_pb_meta );
         
@@ -324,6 +345,9 @@ try {
         if( is_wp_error($landing_id) ){
             echo $res->get_error_message() . "\n";
         }
+        
+        delete_post_meta( $landing->ID, 'color_scheme_' . $landing->post_type . '-' . $landing->post_name . '-archive' );
+        delete_post_meta( $landing->ID, 'color_scheme_' . $landing->post_type . '-' . $landing->post_name . '-main-items' );
         
         $landing_count++;
         

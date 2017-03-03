@@ -1,6 +1,6 @@
 <?php
 /**
- * Tweaks for about section itmes - projects, pubs, reports
+ * Import posts from old dront CSV
  *
  **/
 set_time_limit (0);
@@ -9,20 +9,23 @@ ini_set('memory_limit','512M');
 try {
     $time_start = microtime(true);
     include('cli_common.php');
+    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+    require_once( ABSPATH . 'wp-admin/includes/image.php' );
     require_once( ABSPATH . 'wp-admin/includes/media.php' );
-
+    
     echo 'Memory before anything: '.memory_get_usage(true).chr(10).chr(10);
 
     global $wpdb;
     $uploads = wp_upload_dir();
 
-    $options = getopt("", array('file:', 'localpdf::'));
-
+    $options = getopt("", array('file:', 'localpdf::', 'convert2pdf::'));
+    
     $input_file = isset($options['file']) ? $options['file'] : '';
     printf( "Processing %s\n", $input_file );
 
     $localpdf = isset( $options['localpdf'] ) ? True : False;
-
+    $is_convert2pdf = isset( $options['convert2pdf'] ) ? True : False;
+    
     $count = 0;
     $converted2pdf_count = 0;
     $csv = array_map('str_getcsv', file( $input_file ));
@@ -74,7 +77,7 @@ try {
                     }
                     else {
 
-                        $attachment_id = TST_Import::get_instance()->import_file( $url );
+                        $attachment_id = TST_Import::get_instance()->import_big_file( $url );
 
                         if( $attachment_id ) {
                             $file_id = $attachment_id;
@@ -88,7 +91,7 @@ try {
                     
                     unset( $exist_attachment );
                     
-                    if( $file_id ) {
+                    if( $file_id && $is_convert2pdf ) {
                         
                         if( TST_Import::get_instance()->is_must_convert2pdf( $file_url ) ) {
                             $converted2pdf_count += 1;

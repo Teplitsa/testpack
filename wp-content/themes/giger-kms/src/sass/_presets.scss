@@ -161,6 +161,25 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 			font-size: 21px;
 		}
 	}
+	@elseif $mod == summary_italic {
+		font-size: 14px;
+		line-height: 1.35;
+		font-style: italic;
+
+		@include for(medium-screens){
+			font-size: 16px;
+		}
+
+	}
+	@elseif $mod == summary_small {
+		font-size: 14px;
+		line-height: 1.35;
+
+		@include for(medium-screens){
+			font-size: 16px;
+		}
+
+	}
 }
 
 
@@ -289,11 +308,11 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 		line-height: 1.35;
 
 		@include for(small-screens) {
-			font-size: 54px;
+			font-size: 48px;
 		}
 
 		@include for(medium-screens) {
-			font-size: 64px;
+			font-size: 54px;
 		}
 	}
 	@else if $mod == single {
@@ -595,7 +614,7 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 @mixin link-label() {
 	display: block;
 	@include post-title(cards_regular);
-	padding: $base*3;
+	padding: $base*2.5 $base*3 $base*3.5;
 	overflow: hidden;
 	text-overflow: fade(10px);
 
@@ -606,5 +625,16 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 
 @mixin link-label-box() {
 	width: $card_base_w;
-	height: $card_base_w / 1.618;
+	//height: $card_base_w / 1.618;
+	min-height: $card_base_h - $card_base_w;
+}
+
+@mixin card-icon-size() {
+	width: 54px;
+	height: 54px;
+
+	@include for(large-screens) {
+		width: 90px;
+		height: 90px;
+	}
 }

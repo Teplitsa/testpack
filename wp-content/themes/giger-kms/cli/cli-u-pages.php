@@ -193,7 +193,7 @@ try {
 		$test = get_page_by_path($slug);
 		$page_data['ID'] = ($test) ? $test->ID: 0;
 		$page_data['post_name'] = $slug;
-		$uid = tst_get_pb_post( $page_data, 'page' );
+		$uid = tst_get_pb_post( $slug, 'page' );
 
 		if($uid && isset($obj['section']) && !empty($obj['section'])) {
 			$section = ($obj['section'] == 'supportus') ? $support_section : $about_section;

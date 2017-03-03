@@ -1,14 +1,6 @@
 /** == Posts (_posts.scss) == **/
 
-@mixin card-icon-size() {
-	width: 54px;
-	height: 54px;
 
-	@include for(large-screens) {
-		width: 90px;
-		height: 90px;
-	}
-}
 
 /* single news */
 .single-card {
@@ -209,6 +201,27 @@ article.single {
 			padding: $base*6;
 		}
 	}
+	
+	h3 {
+		@include body-text(meta);
+		font-weight: bold;
+	}
+	h4 {
+		@include body-text(reading);
+		font-weight: bold;
+	}
+	h5 {
+		@include form-text(semi);
+		text-transform: uppercase;
+	}
+	h6 {
+		@include sub-title(default);
+		font-weight: bold;
+	}
+	figcaption {
+		@include sub-title(default);
+	}
+	
 }
 
 .single-body--summary {
@@ -240,17 +253,20 @@ article.single {
 
 	a {
 		display:  inline-block;
-		border: 1px solid $color-border-normal;
+		border: 1px solid $loam;
+		border-radius: 2px;
+		background: $loam;
 		padding: 2px $base;
 		@inlcude @include body-text();
 		text-transform: lowercase;
 		margin: 4px 6px;
-		color: $color-text-light;
+		color: $color-white;
 		@include transition(all 0.35s);
 		&:hover {
-			background: $color-secondary;
+			background: lighten($loam, 7%);
 		}
 	}
+	
 }
 
 //aside
@@ -450,4 +466,42 @@ article.single {
 	a:hover {
 		color: $grass;
 	}
+}
+/* Events */
+.single__event {
+	
+	.single__date-and-place {
+		// margin: -48px -48px 16px;
+	    background: $grass;
+	    padding: $base*3 $base*6;
+		color: $leaf;
+
+		@include for(large-screens) {
+			margin: $base*(-6) $base*(-6) $base*3;
+			padding: $base*3 $base*6;
+		}
+		.single__title {
+			@include post-title(cards_side);
+			color: $color-white;
+			
+			b {
+				color: $leaf;
+				margin-right: $base;
+				flex: 0 1 auto;
+			}
+			
+			span {
+				flex: 0 1 auto;
+			}
+			
+			.event-full-meta__item {
+				display: flex;
+			}
+		}
+	}
+	
+	.single-body--entry {
+		margin-bottom: $base*4;
+	}
+
 }
