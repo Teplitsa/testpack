@@ -212,6 +212,16 @@ $landings_sections = array(
         ),
         
     ),
+    
+    'dront-publications' => array(
+        array(
+            'template_group' => 'news',
+        ),
+        
+        array(
+            'template_group' => 'help',
+        ),
+    ),
 );
 
 try {
@@ -314,7 +324,7 @@ try {
 //             $landing_pb_meta[0]['col1_post_id_col1'] = $project_department->ID;
         }
         
-        print_r( $landing_pb_meta );
+//         print_r( $landing_pb_meta );
         
         $landing_data['meta_input'] = array( '_wds_builder_template' => $landing_pb_meta );
         

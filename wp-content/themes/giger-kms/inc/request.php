@@ -45,6 +45,7 @@ function tst_custom_rewrites(){
 
 	// urls for landing about
 	add_rewrite_rule('item/([^/]+)/about/?$', 'index.php?landing=$matches[1]&item_about=1', 'top');
+	add_rewrite_rule('item/([^/]+)/archive/?$', 'index.php?landing=$matches[1]&item_archive=1', 'top');
 
 
 	//should we flush permalinks
@@ -56,6 +57,7 @@ function tst_custom_rewrites(){
 
 	//add custom qv
 	$wp->add_query_var('item_about');
+	$wp->add_query_var('item_archive');
 }
 
 /* filters sections term link **/

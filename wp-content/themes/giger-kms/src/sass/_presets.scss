@@ -69,7 +69,7 @@ $color-link-three: $pollen; //light olive
 $color-link-four:  $wetsoil; //dark green-grey
 
 $color-text-black:		#222222;
-$color-text-semi:		#666666;
+$color-text-semi:		#222;
 $color-text-light:		#9b9b9b;
 $color-secondary:		#F5F5F5;
 $color-secondary-alt:	$wood;
@@ -155,7 +155,7 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	}
 	@else if $mod == meta {
 		font-size: 18px;
-		line-height: 1.35px;
+		line-height: 1.35;
 
 		@include for(medium-screens){
 			font-size: 21px;

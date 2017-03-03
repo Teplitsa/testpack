@@ -1,68 +1,89 @@
 <?php
 /**
- * The template for displaying all single posts.
+ * The template for landings
  *
  * @package bb
  */
 
-$cpost = get_queried_object();
 
+/** @var WP_Post $post */
+$post = get_queried_object();
 
 get_header();?>
 
-    <article class="single-card">
-        <div class="single-card__header">
-            <div class="single-card__title"><h1><?php echo get_the_title($cpost);?></h1></div>
-            <div class="single-card__options">
-                <div class="single-card__meta"><meta><?php echo tst_single_post_meta($cpost);?></div>
-                <div class="sharing"><?php tst_social_share($cpost);?></div>
+<div class="single-crumb container">
+	<?php if(isset($section)) { ?>
+		<a href="<?php echo get_term_link($section[0]->term_id);?>"><?php echo apply_filters('tst_the_title', $section[0]->name); ?></a>
+	<?php }?>
+</div>
+
+<article class="landing">
+
+    <header class="landing-header">
+
+        <div class="cover-general__title container">
+            <h1 class="landing-header__title"><?php echo get_the_title($post);?></h1>
+            <div class="landing-header__tagline"><?php echo apply_filters('tst_the_title', get_post_meta($post->ID, 'landing_excerpt', true));?></div>
+            <div class="landing-header__links">
+                <a href="#ecoproblems-map" class="local-scroll"><?php _e('Get details', 'tst');?></a>
+                <a href="#marker-submit-form-wrapper" class="local-scroll"><?php _e('Submit a problem!', 'tst');?></a>
             </div>
         </div>
 
-        <div class="single-card__content">
+    </header>
 
-            <div class="frame">
+    <div class="singleblock-map pagebuilder-part">
+        <div class="container scheme-color-1-ground">
+            <div id="ecoproblems-map">
+                <?php $included_groups = get_terms(array(
+                    'taxonomy' => 'marker_cat',
+                    'hide_empty' => false,
+                    'name' => array('Проблемы', 'Решенные проблемы'),
+                    'fields' => 'ids',
+                ));
+                echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'" enable_scroll_wheel="0"]');?>
+            </div>
+        </div>
+    </div>
 
-                <div class="bit md-12 single-body">
+    <div class="singleblock-map pagebuilder-part">
+        <div class="container scheme-color-1-ground">
+            <div id="marker-submit-form-wrapper">
+                <?php echo do_shortcode('[formidable id="'.get_option('ecoproblem_submission_form_id').'" title="true" description="true"]');?>
+            </div>
+        </div>
+    </div>
 
-<!--                    --><?php //if(has_post_thumbnail($cpost)) { ?>
-<!--                        <div class="single-body__preview">--><?php //tst_single_thumbnail($cpost);?><!--</div>-->
-<!--                    --><?php //} ?>
+	<div class="single__content"><div class="container">
+		<div class="flex-grid--stacked">
+            <?php echo apply_filters('tst_entry_the_content', get_post_meta($post->ID, 'landing_content', true));?>
+		</div>
+	</div></div><!-- .single__content -->
 
+	<?php
+		$projects = tst_landing_get_connected_projects($post);
+		if(!empty($projects)) {
+	?>
+		<footer class="single__footer">
+			<div class="projects-block container">
+				<h3 class="projects-block__title"><?php printf(__('Projects by topic: %s', 'tst'), get_the_title($post)); ?></h3>
 
-                    <div class="single-body--entry">
-<!--                        --><?php //echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
-                        <?php
-                            $included_groups = get_terms(array(
-                                'taxonomy' => 'marker_cat',
-                                'hide_empty' => false,
-                                'name' => array('Проблемы', 'Решенные проблемы'),
-                                'fields' => 'ids',
-                            ));
-                            echo do_shortcode('[tst_markers_map groups_ids="'.implode(',', $included_groups).'" enable_scroll_wheel="0"]');?>
-                        <div class="marker-submit-form">
-                            <?php echo do_shortcode('[formidable id=6]');?>
-                        </div>
-                    </div>
-                    <div class="single-body__footer single-body__footer-mobile"><?php tst_single_post_nav();?></div>
-                </div>
+				<div class="projects-block__content">
+					<div class="projects-block__icon hide-upto-medium"><?php tst_svg_icon('icon-project');?></div>
 
-                <div class="bit md-12 single-aside">
-                    <?php
-                    $related = tst_get_related_query($cpost, 'post_tag', 4);
-                    if(!empty($related)) {
-                        ?>
-                        <div class="widget">
-                            <div class="widget__title"><?php _e('More news', 'tst');?></div>
-                            <div class="widget__content"><?php tst_related_list($related->posts); ?></div>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-            </div></div><!-- .frame .single-card__content -->
-        <div class="single-body__footer single-body__footer-desktop"><?php tst_single_post_nav();?></div>
-    </article>
+					<div class="projects-block__list">
+						<ul>
+						<?php foreach($projects as $p) { ?>
+							<li><a href="<?php echo get_permalink($p);?>"><?php echo get_the_title($p);?></a></li>
+						<?php }	?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	<?php } ?>
 
-<?php
-get_footer();
+	<section class="cta"><?php wds_page_builder_area('cta'); ?></section>
+</article>
+
+<?php get_footer();

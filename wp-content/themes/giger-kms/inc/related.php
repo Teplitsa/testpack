@@ -155,7 +155,7 @@ function tst_get_related_landings(WP_Post $cpost, $num = 2) {
 			'post_type' => 'landing',
 			'posts_per_page' => $num,
 			'orderby' => 'rand',
-			'tax_qury' => array(
+			'tax_query' => array(
 				array(
 					'taxonomy' => 'section',
 					'field' => 'slug',
@@ -260,4 +260,23 @@ function tst_project_get_connected_projects($cpost, $num = -1 ) {
 	));
 
 	return $connected;
+}
+
+function tst_get_related_publications( $cpost ) {
+    $params = array(
+        'post_type' => 'attachment',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'attachment_tag',
+                'field' => 'slug',
+                'terms' => $cpost->post_name,
+            )
+        ),
+        'posts_per_page' => -1,
+        'fields' => 'ids',
+    );
+    
+    $posts = get_posts( $params );
+    
+    return $posts;
 }

@@ -10,98 +10,134 @@ $cpost = get_queried_object();
 $event = new TST_Event($cpost);
 
 get_header();?>
-<section class="top-content">
-	<div class="top-content__middle top-content__middle--padded">
-		<header class="single-header">
-			<div class="single-header__crumbs">
-<!--				--><?php //echo tst_single_section($cpost);?>
-			</div>
-			<h1 class="single-header__title"><?php echo get_the_title($cpost);?></h1>
-		</header>
-	</div>
-</section>
+<div class="single-crumb container">
+	<a href="<?php echo home_url('events');?>"><?php _e('Events', 'tst'); ?></a>
+</div>
+<article class="single single__event">
 
-<div class="spacer hide-upto-large"></div>
+	<header class="single__header">
+		<div class="container">
+			<div class="flex-grid--stacked">
 
-<div class="frame frame-rail--lg-8">
-<section class="main-content bit lg-8">
-<div class="left-div-padder">
-
-	<div class="single-body single-body--event border--space <?php echo $event->is_expired() ? 'event-expired' : '';?>">
-
-		<div class="single-body--meta--ontop">
-			<div class="event-full-meta">
-				<div class="event-full-meta__item event-full-meta__item--date"><?php echo $event->get_full_date_mark('human');?></div>
-				<div class="event-full-meta__item event-full-meta__item--place"><?php echo $event->get_full_address();?></div>
-<!--				<div class="event-full-meta__item event-full-meta__item--atc">--><?php //echo tst_add_to_calendar_link($event, 'tst-add-calendar', __('Add to calendar', 'tst'), true); ?><!--</div>-->
-			</div>
-		</div>
-
-		<?php if(has_post_thumbnail($cpost)) { ?>
-			<div class="single-body--preview"><?php tst_single_thumbnail($cpost);?></div>
-		<?php } ?>
-
-<!--		<div class="single-body--meta">--><?php //echo $event->get_format_meta(); ?><!--</div>-->
-
-		<article class="single-body--content">
-			<?php $event->schema_markup();?>
-			<div class="single-body--entry">
-				<?php echo apply_filters('tst_entry_the_content', $cpost->post_excerpt); ?>
-				<?php echo apply_filters('tst_entry_the_content', $cpost->post_content); ?>
-			</div>
-
-			<?php
-				$contacts = $event->contact;
-				if($contacts || $event->has_marker()) {?>
-
-				<div class="single-body--contacts-block">
-                <?php if($contacts) {?>
-					<div class="event-contacts">
-						<h5><?php _e('Contacts', 'tst');?></h5>
-						<?php echo apply_filters('tst_the_content', $contacts);?>
-					</div>
-                <?php }?>
-
-                <?php if($event->has_marker()) {
-                    tst_post_map($cpost->ID);
-                }?>
+				<div class="flex-cell--stacked lg-9 single__title-block">
+					<div class="single-card__meta"><?php echo get_the_date('d.m.Y', $cpost);?></div>
+					<h1><?php echo get_the_title($cpost);?></h1>
+					<div class="sharing"><?php tst_social_share($cpost);?></div>
 				</div>
-			<?php }?>
 
-			<?php
-//				$readmore = tst_event_relative_links($cpost, 3);
-//
-//				if($readmore && isset($readmore['html'])) {
-//			?>
-<!--			<div class="single-body--relations">-->
-<!--				<h4>--><?php //echo $readmore['title'];?><!--</h4>-->
-<!--				--><?php //echo $readmore['html'];?>
-<!--			</div>-->
-<!--			--><?php //} ?>
-		</article>
+				<div class="flex-cell--stacked lg-3 single__nav">
+					<?php tst_single_post_nav();?>
+				</div>
 
-		<div class="single-body--microsharing border--regular">
-<!--			--><?php //tst_social_share_mobile($cpost); ?>
-			<div class="clear"></div>
-		</div>
-
-		<?php
-//			$ngo = tst_single_ngos_list($cpost);
-			$tags = apply_filters('tst_entry_the_content', get_the_term_list($cpost->ID, 'post_tag', '', ', ', '' ));
-//			$regs = $event->get_regions_meta();
-
-			if($tags ) {
-		?>
-			<div class="single-body--vcard border--regular">
-			<?php if(!empty($tags)) { ?><div class="tags-vcard"><i><?php _e('Tags', 'tst');?>:</i> <?php echo $tags;?></div><?php } ?>
 			</div>
-		<?php }?>
+		</div>
+	</header>
+	
+	<?php if(has_post_thumbnail($cpost)) { ?>
+	<div class="single__preview"><div class="container">
+		<div class="flex-grid--stacked">
+			<div class="flex-cell--stacked lg-9 single__thumbnail">
+				<?php tst_single_thumbnail($cpost);?>
+			</div>
+			<?php
+				$land = tst_get_related_landings($cpost, 2);
+				if(!empty($land)) {
+			?>
+			<div class="flex-cell--stacked lg-3 single__related_land">
+				<div class="realted-landings">
+				<?php foreach($land as $l) { ?>
+					<div class="realted-landings__item">
+						<?php tst_card_iconic($l); ?>
+					</div>
+				<?php } ?>
+				</div>
+			</div>
+			<?php } ?>
+		</div>
+	</div></div>
+	<?php } ?>
+	
+	<div class="single__content"><div class="container">
+		<div class="flex-grid--stacked">
 
-	</div>
+			<div class="flex-cell--stacked lg-9 single-body">
 
-</div>
-</section>
-</div>
+				<div class="single__date-and-place">
+					<div class="single__title">
+						<div class="event-full-meta__item event-full-meta__item--date"><b>Дата:</b> <span><?php echo $event->get_full_date_mark('human');?></span></div>
+						<div class="event-full-meta__item event-full-meta__item--place"><b>Место:</b> <span><?php echo $event->get_full_address();?></span></div>
+						<!-- <div class="event-full-meta__item event-full-meta__item--atc">--><?php //echo tst_add_to_calendar_link($event, 'tst-add-calendar', __('Add to calendar', 'tst'), true); ?><!--</div>-->
+					</div>
+				</div>
+				
+				<?php if(!empty($cpost->post_excerpt)) { ?>
+					<div class="single-body--summary"><?php echo apply_filters('tst_entry_the_content', $cpost->post_excerpt);?></div>
+				<?php } ?>
 
+				<div class="single-body--entry">
+					<?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
+				</div>
+				
+				<div class="single-body--marker">
+					<?php
+						$contacts = $event->contact;
+						if($contacts || $event->has_marker()) {?>
+
+						<div class="single-body--contacts-block">
+		                <?php if($contacts) {?>
+							<div class="event-contacts">
+								<h5><?php _e('Contacts', 'tst');?></h5>
+								<?php echo apply_filters('tst_the_content', $contacts);?>
+							</div>
+		                <?php }?>
+
+		                <?php if($event->has_marker()) {
+		                    tst_post_map($cpost->ID);
+		                }?>
+						</div>
+					<?php }?>
+				</div>
+				
+				<div class="single-body__footer">
+					<?php $label = __('Tags', 'tst'); ?>
+					<?php echo get_the_term_list($cpost->ID, 'post_tag', '<span class="tags"><i>'.$label.'</i>', ' ', '</span>' );?>
+				</div>
+							
+				
+			</div>
+
+			<div class="flex-cell--stacked lg-3 single-aside">
+				<?php  tst_single_cta($cpost);?>
+			</div>
+		</div>
+	</div></div><!-- .single__content -->
+	
+	<?php
+		$news = tst_get_related_query($cpost, 'post_tag', 4);
+		if(!empty($news)) {
+	?>
+	<footer class="single__footer">
+		<div class="news-block container">
+			<h3 class="news-block__title--inpage"><?php _e('More on the topic', 'tst'); ?></h3>
+
+			<div class="news-block__content">
+				<div class="flex-grid--stacked ">
+				<?php foreach($news->posts as $i => $n) { ?>
+					<?php if($i %2 > 0) { ?>
+						<div class="flex-cell--stacked sm-6 lg-3 card card--colored card--news">
+							<?php tst_news_card($n, 'colored'); ?>
+					<?php } else { ?>
+						<div class="flex-cell--stacked sm-6 lg-3 card card--item card--news">
+							<?php tst_news_card($n, 'pictured'); ?>
+					<?php } ?>
+						</div>
+				<?php } ?>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<?php } ?>
+	
+</article>
 
 <?php get_footer();

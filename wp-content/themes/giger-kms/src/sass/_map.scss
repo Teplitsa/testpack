@@ -35,7 +35,6 @@
   }
 
   .pw_map_canvas {
-    border-bottom: 1px dashed $moss;
 
     .marker-cluster-small {
       background-color: transparentize($grass, 0.6);
@@ -91,9 +90,9 @@
 }
 
 .pw_map_legend {
+
   cursor: default;
   margin: 0;
-  padding: 2*$base 0;
   background-color: rgba(255, 255, 255, 0.95);
   width: 100%;
   text-align: left;
@@ -101,7 +100,18 @@
   display: flex;
   flex-direction: column;
 
+  @include for(small-screens) {
+    padding: 2*$base 0;
+  }
+  @include for(large-screens) {
+    padding: 2*$base 4*$base;
+  }
+
+  border: 1px solid $grass;
+  border-top: 1px dashed $grass;
+
   .legend-header {
+
     margin: 0 $base $base 3*$base;
 
     .legend-title {
@@ -116,10 +126,12 @@
   }
 
   ul.markers-map-legend {
-    margin: 0;
+
     display: flex;
     flex-wrap: wrap;
-    //flex-direction: column;
+    //justify-content: center;
+    align-items: flex-start;
+
     list-style: none;
 
     .mymap-icon.material-icons {
@@ -135,9 +147,19 @@
       content: '';
     }
 
+    > li {
+
+      margin: 0 $base;
+
+      @include for(exlarge-screens) {
+        &:not(:last-child) {
+          border-right: 1px solid $grass;
+        }
+      }
+
+    }
+
     li.legend-parent {
-      //flex: 0 1 15px;
-      //align-items: flex-start;
       padding: $base $base;
       margin-bottom: 0;
     }
@@ -176,6 +198,55 @@
       }
     }
 
+  }
+
+}
+
+#marker-submit-form-wrapper {
+
+  display: flex;
+  justify-content: center;
+
+  .frm_forms {
+
+    @include for(small-screens) {
+      width: 90%;
+    }
+    @include for(medium-screens) {
+      width: 60%;
+    }
+    @include for(large-screens) {
+      width: 50%;
+    }
+
+    .frm_form_title {
+      @include block-title();
+      padding: $base*6 0 $base*5;
+      text-align: center;
+
+      @include for(medium-screens) {
+        padding-top: $base*12;
+      }
+    }
+    .frm_description {
+      font-size: 13px;
+      margin-bottom: 2*$base;
+
+      p:not(:last-child) {
+        margin-bottom: $base;
+      }
+    }
+
+    //.frm_form_field {
+    //  border: 1px solid $grass;
+    //  padding: 3*$base;
+    //  margin: 0;
+    //  margin-top: -1px;
+    //}
+  }
+
+  .tst-file-upload {
+    margin-top: $base;
   }
 
 }

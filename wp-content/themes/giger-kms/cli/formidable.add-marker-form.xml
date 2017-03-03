@@ -1,152 +1,102 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/4.7.2" created="2017-02-20 14:36" -->
+<!-- generator="WordPress/4.7.2" created="2017-03-02 12:04" -->
 
 <channel>
 	<title>Дронт</title>
-	<pubDate>Mon, 20 Feb 2017 14:36:14 +0000</pubDate>
+	<pubDate>Thu, 02 Mar 2017 12:04:40 +0000</pubDate>
 
 	<form>
-		<id>5</id>
-		<form_key><![CDATA[kp6cw]]></form_key>
-		<name><![CDATA[Добавить маркер]]></name>
-		<description><![CDATA[]]></description>
-		<created_at>2017-02-16 10:07:29</created_at>
+		<id>6</id>
+		<form_key><![CDATA[kp6cw2]]></form_key>
+		<name><![CDATA[Cообщить об экопроблеме]]></name>
+		<description><![CDATA[Мы проверим вашу информацию, затем составим запросы и жалобы в соответствующие органы. Если материал острый, мы также составим и распространим пресс-релизы.
+
+После этого мы будем сопровождать проблему до её разрешения.]]></description>
+		<created_at>2017-02-27 16:02:49</created_at>
 		<logged_in>0</logged_in>
 		<is_template>0</is_template>
 		<default_template>0</default_template>
 		<editable>0</editable>
-		<options><![CDATA[{"success_action":"message","success_url":"","success_page_id":"","ajax_load":"1","ajax_submit":"1","js_validate":"1","logged_in_role":"","single_entry_type":"user","cookie_expiration":"8000","editable_role":"","open_editable_role":"-1","edit_action":"message","edit_url":"","edit_page_id":"","custom_style":"privet-mir","submit_value":"\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c","edit_value":"\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c","submit_align":"","success_msg":"\u0412\u0430\u0448\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u044b - \u0441\u043f\u0430\u0441\u0438\u0431\u043e \u0432\u0430\u043c!","edit_msg":"\u0412\u0430\u0448\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u044b","draft_msg":"Your draft has been saved.","form_class":"","before_html":"<legend class=\\\"frm_hidden\\\">[form_name]<\/legend>\r\n[if form_name]<h3 class=\\\"frm_form_title\\\">[form_name]<\/h3>[\/if form_name]\r\n[if form_description]<div class=\\\"frm_description\\\">[form_description]<\/div>[\/if form_description]","after_html":"","submit_html":"<div class=\\\"frm_submit\\\">\r\n[if back_button]<input type=\\\"button\\\" value=\\\"[back_label]\\\" name=\\\"frm_prev_page\\\" formnovalidate=\\\"formnovalidate\\\" class=\\\"frm_prev_page\\\" [back_hook] \/>[\/if back_button]\r\n<input type=\\\"submit\\\" value=\\\"[button_label]\\\" [button_action] \/>\r\n<img class=\\\"frm_ajax_loading\\\" src=\\\"[frmurl]\/images\/ajax_loader.gif\\\" alt=\\\"Sending\\\"\/>\r\n[if save_draft]<a href=\\\"#\\\" class=\\\"frm_save_draft\\\" [draft_hook]>[draft_label]<\/a>[\/if save_draft]\r\n<\/div>","show_form":0,"akismet":"","no_save":0,"save_draft":0,"copy":0,"single_entry":0,"prev_value":"Previous","protect_files":0}]]></options>
+		<options><![CDATA[{"success_action":"message","success_url":"","success_page_id":"","ajax_load":"1","ajax_submit":"1","js_validate":"1","logged_in_role":"","single_entry_type":"user","cookie_expiration":"8000","editable_role":"","open_editable_role":"-1","edit_action":"message","edit_url":"","edit_page_id":"","custom_style":1,"submit_value":"\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c","edit_value":"\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c","submit_align":"","success_msg":"\u041c\u044b \u043f\u043e\u043b\u0443\u0447\u0438\u043b\u0438 \u0432\u0430\u0448\u0438 \u0434\u0430\u043d\u043d\u044b\u0435, \u0441\u043f\u0430\u0441\u0438\u0431\u043e \u0432\u0430\u043c!","edit_msg":"\u0412\u0430\u0448\u0438 \u0434\u0430\u043d\u043d\u044b\u0435 \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u044b","draft_msg":"Your draft has been saved.","form_class":"","before_html":"<legend class=\\\"frm_hidden\\\">[form_name]<\/legend>\r\n[if form_name]<h3 class=\\\"frm_form_title\\\">[form_name]<\/h3>[\/if form_name]\r\n[if form_description]<div class=\\\"frm_description\\\">[form_description]<\/div>[\/if form_description]","after_html":"","submit_html":"<div class=\\\"frm_submit\\\">\r\n[if back_button]<input type=\\\"button\\\" value=\\\"[back_label]\\\" name=\\\"frm_prev_page\\\" formnovalidate=\\\"formnovalidate\\\" class=\\\"frm_prev_page\\\" [back_hook] \/>[\/if back_button]\r\n<input type=\\\"submit\\\" value=\\\"[button_label]\\\" [button_action] \/>\r\n<img class=\\\"frm_ajax_loading\\\" src=\\\"[frmurl]\/images\/ajax_loader.gif\\\" alt=\\\"Sending\\\"\/>\r\n[if save_draft]<a href=\\\"#\\\" class=\\\"frm_save_draft\\\" [draft_hook]>[draft_label]<\/a>[\/if save_draft]\r\n<\/div>","show_form":0,"akismet":"","no_save":0,"save_draft":0,"copy":0,"single_entry":0,"prev_value":"Previous","protect_files":0}]]></options>
 		<status><![CDATA[published]]></status>
         <parent_form_id>0</parent_form_id>
 		<field>
-		    <id>70</id>
-            <field_key><![CDATA[zlu9q]]></field_key>
-            <name><![CDATA[О проблеме]]></name>
-            <description><![CDATA[]]></description>
-            <type><![CDATA[divider]]></type>
-            <default_value><![CDATA[]]></default_value>
-            <field_order>0</field_order>
-            <form_id>5</form_id>
-            <required>0</required>
-            <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"","label":"top","blank":"","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":0,"default_blank":0,"classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field frm_section_heading form-field[error_class]\\\">\r\n<h3 class=\\\"frm_pos_[label_position][collapse_class]\\\">[field_name]<\/h3>\r\n[if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n[collapse_this]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u043c","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"in_section":"0","custom_field":"","post_field":"","taxonomy":"category","exclude_cat":0}]]></field_options>
-		</field>
-		<field>
-		    <id>65</id>
-            <field_key><![CDATA[vebl6]]></field_key>
+		    <id>90</id>
+            <field_key><![CDATA[vebl62]]></field_key>
             <name><![CDATA[Описание проблемы]]></name>
             <description><![CDATA[]]></description>
             <type><![CDATA[textarea]]></type>
             <default_value><![CDATA[Расскажите о проблеме]]></default_value>
-            <field_order>2</field_order>
-            <form_id>5</form_id>
+            <field_order>0</field_order>
+            <form_id>6</form_id>
             <required>1</required>
             <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"\u041f\u043e\u043b\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"1","default_blank":"1","classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"70","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"","post_field":"post_content","taxonomy":"category","exclude_cat":0}]]></field_options>
+            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u043e \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0435 \u0445\u043e\u0442\u044f \u0431\u044b \u043f\u0430\u0440\u0443 \u0441\u043b\u043e\u0432","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"1","default_blank":"1","classes":"","custom_html":"<div id=\"frm_field_[id]_container\" class=\"frm_form_field form-field [required_class][error_class]\">\r\n    <label for=\"field_[key]\" class=\"frm_primary_label\">[field_name]\r\n        <span class=\"frm_required\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\"frm_description\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\"frm_error\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"0","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"","post_field":"post_content","taxonomy":"category","exclude_cat":0}]]></field_options>
 		</field>
 		<field>
-		    <id>78</id>
-            <field_key><![CDATA[malr7]]></field_key>
+		    <id>91</id>
+            <field_key><![CDATA[malr72]]></field_key>
             <name><![CDATA[Адрес]]></name>
             <description><![CDATA[]]></description>
             <type><![CDATA[text]]></type>
             <default_value><![CDATA[Укажите адрес проблемного объекта или опишите, как его найти]]></default_value>
-            <field_order>3</field_order>
-            <form_id>5</form_id>
+            <field_order>1</field_order>
+            <form_id>6</form_id>
             <required>1</required>
             <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"\u041f\u043e\u043b\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"1","default_blank":"1","classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"70","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"marker_address","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
+            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0440\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435, \u043a\u0430\u043a \u043c\u043e\u0436\u043d\u043e \u043d\u0430\u0439\u0442\u0438 \u043c\u0435\u0441\u0442\u043e \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"1","default_blank":"1","classes":"","custom_html":"<div id=\"frm_field_[id]_container\" class=\"frm_form_field form-field [required_class][error_class]\">\r\n    <label for=\"field_[key]\" class=\"frm_primary_label\">[field_name]\r\n        <span class=\"frm_required\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\"frm_description\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\"frm_error\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"0","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"marker_address","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
 		</field>
 		<field>
-		    <id>69</id>
-            <field_key><![CDATA[4qdvj]]></field_key>
+		    <id>92</id>
+            <field_key><![CDATA[4qdvj2]]></field_key>
             <name><![CDATA[Фото проблемного объекта]]></name>
             <description><![CDATA[От одного до пяти изображений для иллюстрации проблемы.]]></description>
             <type><![CDATA[file]]></type>
             <default_value><![CDATA[]]></default_value>
-            <field_order>4</field_order>
-            <form_id>5</form_id>
+            <field_order>2</field_order>
+            <form_id>6</form_id>
             <required>0</required>
             <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"5","label":"","blank":"\u041f\u043e\u043b\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c","required_indicator":"*","invalid":"\u0424\u043e\u0442\u043e \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u043d\u043e\u0433\u043e \u043e\u0431\u044a\u0435\u043a\u0442\u0430 is invalid","separate_value":0,"clear_on_focus":0,"default_blank":0,"classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"70","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":{"jpg|jpeg|jpe":"image\/jpeg","png":"image\/png"},"data_type":"select","restrict":"1","start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":"1","minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":"1","unique_msg":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u043c","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"custom_field":"marker_photos","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
+            <field_options><![CDATA[{"size":"","max":"5","label":"","blank":"\u041f\u043e\u043b\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c","required_indicator":"*","invalid":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0435 \u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e\u0435 \u0444\u043e\u0442\u043e \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b","separate_value":0,"clear_on_focus":0,"default_blank":0,"classes":"","custom_html":"<div id=\"frm_field_[id]_container\" class=\"frm_form_field form-field [required_class][error_class]\">\r\n    <label for=\"field_[key]\" class=\"frm_primary_label\">[field_name]\r\n        <span class=\"frm_required\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\"frm_description\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\"frm_error\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"0","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":{"jpg|jpeg|jpe":"image\/jpeg","png":"image\/png"},"data_type":"select","restrict":"1","start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":"1","minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":"1","unique_msg":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u043c","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"custom_field":"marker_photos","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
 		</field>
 		<field>
-		    <id>71</id>
-            <field_key><![CDATA[12ekc]]></field_key>
-            <name><![CDATA[End Section]]></name>
-            <description><![CDATA[]]></description>
-            <type><![CDATA[end_divider]]></type>
-            <default_value><![CDATA[]]></default_value>
-            <field_order>5</field_order>
-            <form_id>5</form_id>
-            <required>0</required>
-            <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":0,"default_blank":0,"classes":"","custom_html":"","captcha_size":"normal","captcha_theme":"light","format":"both","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u043c","autocom":0,"repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"in_section":"0"}]]></field_options>
-		</field>
-		<field>
-		    <id>72</id>
-            <field_key><![CDATA[gjtzi]]></field_key>
-            <name><![CDATA[Ваша контактная информация]]></name>
-            <description><![CDATA[Мы используем её только для связи с вами при работе над проблемой.]]></description>
-            <type><![CDATA[divider]]></type>
-            <default_value><![CDATA[]]></default_value>
-            <field_order>6</field_order>
-            <form_id>5</form_id>
-            <required>0</required>
-            <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"","label":"top","blank":"","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":0,"default_blank":0,"classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field frm_section_heading form-field[error_class]\\\">\r\n<h3 class=\\\"frm_pos_[label_position][collapse_class]\\\">[field_name]<\/h3>\r\n[if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n[collapse_this]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u043c","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"in_section":"0","custom_field":"","post_field":"","taxonomy":"category","exclude_cat":0}]]></field_options>
-		</field>
-		<field>
-		    <id>67</id>
-            <field_key><![CDATA[mwfa]]></field_key>
-            <name><![CDATA[Ваши фамилия, имя и отчество]]></name>
-            <description><![CDATA[]]></description>
+		    <id>85</id>
+            <field_key><![CDATA[mwfa2]]></field_key>
+            <name><![CDATA[Фамилия, имя и отчество]]></name>
+            <description><![CDATA[Чтобы мы знали, как к вам обратиться.]]></description>
             <type><![CDATA[text]]></type>
             <default_value><![CDATA[Представьтесь, пожалуйста :)]]></default_value>
-            <field_order>7</field_order>
-            <form_id>5</form_id>
+            <field_order>3</field_order>
+            <form_id>6</form_id>
             <required>1</required>
             <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"\u041f\u043e\u043b\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0443\u0441\u0442\u044b\u043c","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"1","default_blank":"1","classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"72","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"marker_contact_fullname","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
+            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"\u041f\u043e\u043b\u0435 \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0437\u0430\u043f\u043e\u043b\u043d\u0435\u043d\u043e.","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"1","default_blank":"1","classes":"","custom_html":"<div id=\"frm_field_[id]_container\" class=\"frm_form_field form-field [required_class][error_class]\">\r\n    <label for=\"field_[key]\" class=\"frm_primary_label\">[field_name]\r\n        <span class=\"frm_required\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\"frm_description\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\"frm_error\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"89","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"marker_contact_fullname","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
 		</field>
 		<field>
-		    <id>75</id>
-            <field_key><![CDATA[3k2dq]]></field_key>
-            <name><![CDATA[Как с вами связаться?]]></name>
-            <description><![CDATA[Мы используем их только чтобы связаться с вами для уточнения деталей проблемы]]></description>
+		    <id>86</id>
+            <field_key><![CDATA[3k2dq2]]></field_key>
+            <name><![CDATA[Контакты]]></name>
+            <description><![CDATA[Мы используем их только чтобы связаться с вами для уточнения деталей проблемы.]]></description>
             <type><![CDATA[text]]></type>
             <default_value><![CDATA[Укажите ваш email или номер тел. в формате +7хххххххххх]]></default_value>
-            <field_order>8</field_order>
-            <form_id>5</form_id>
+            <field_order>4</field_order>
+            <form_id>6</form_id>
             <required>1</required>
             <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"115px","max":"","label":"","blank":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0443\u043a\u0430\u0436\u0438\u0442\u0435 \u0432\u0430\u0448 \u043d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0430 \u0438\u043b\u0438 email.","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"0","default_blank":"0","classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"72","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"marker_contacts","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
+            <field_options><![CDATA[{"size":"115px","max":"","label":"","blank":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0443\u043a\u0430\u0436\u0438\u0442\u0435 \u0432\u0430\u0448 \u043d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0430 \u0438\u043b\u0438 email.","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"1","default_blank":"1","classes":"","custom_html":"<div id=\"frm_field_[id]_container\" class=\"frm_form_field form-field [required_class][error_class]\">\r\n    <label for=\"field_[key]\" class=\"frm_primary_label\">[field_name]\r\n        <span class=\"frm_required\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\"frm_description\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\"frm_error\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"89","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"marker_contacts","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
 		</field>
 		<field>
-		    <id>66</id>
-            <field_key><![CDATA[gkv07]]></field_key>
+		    <id>87</id>
+            <field_key><![CDATA[gkv072]]></field_key>
             <name><![CDATA[Пожалуйста, подтвердите вашу человечность :)]]></name>
             <description><![CDATA[]]></description>
             <type><![CDATA[captcha]]></type>
             <default_value>1</default_value>
-            <field_order>10</field_order>
-            <form_id>5</form_id>
+            <field_order>5</field_order>
+            <form_id>6</form_id>
             <required>0</required>
             <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"","required_indicator":"*","invalid":"The reCAPTCHA was not entered correctly","separate_value":0,"clear_on_focus":0,"default_blank":0,"classes":"","custom_html":"<div id=\\\"frm_field_[id]_container\\\" class=\\\"frm_form_field form-field [required_class][error_class]\\\">\r\n    <label for=\\\"field_[key]\\\" class=\\\"frm_primary_label\\\">[field_name]\r\n        <span class=\\\"frm_required\\\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\\\"frm_description\\\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\\\"frm_error\\\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"72","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u043c","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"custom_field":"","post_field":"","taxonomy":"category","exclude_cat":0}]]></field_options>
-		</field>
-		<field>
-		    <id>73</id>
-            <field_key><![CDATA[q1qz1]]></field_key>
-            <name><![CDATA[End Section]]></name>
-            <description><![CDATA[]]></description>
-            <type><![CDATA[end_divider]]></type>
-            <default_value><![CDATA[]]></default_value>
-            <field_order>11</field_order>
-            <form_id>5</form_id>
-            <required>0</required>
-            <options><![CDATA[]]></options>
-            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":0,"default_blank":0,"classes":"","custom_html":"","captcha_size":"normal","captcha_theme":"light","format":"both","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u043c","autocom":0,"repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"in_section":"0"}]]></field_options>
+            <field_options><![CDATA[{"size":"","max":"","label":"","blank":"","required_indicator":"*","invalid":"The reCAPTCHA was not entered correctly","separate_value":0,"clear_on_focus":0,"default_blank":0,"classes":"","custom_html":"<div id=\"frm_field_[id]_container\" class=\"frm_form_field form-field [required_class][error_class]\">\r\n    <label for=\"field_[key]\" class=\"frm_primary_label\">[field_name]\r\n        <span class=\"frm_required\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\"frm_description\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\"frm_error\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"89","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u043c","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"custom_field":"","post_field":"","taxonomy":"category","exclude_cat":0}]]></field_options>
 		</field>
 	</form>
 	<view>
@@ -156,21 +106,25 @@
 		<description></description>
 		<content><![CDATA[{"email_to":"[admin_email],pautovat@gmail.com,dront-nn@mail.ru","cc":"","bcc":"","reply_to":"","from":"[sitename] <[admin_email]>","email_subject":"\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0430 \u043d\u043e\u0432\u0430\u044f \u044d\u043a\u043e\u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0430","email_message":"[default-message]","inc_user_info":"1","event":["create"],"conditions":{"send_stop":"send","any_all":"any"}}]]></content>
 		<excerpt><![CDATA[email]]></excerpt>
-		<post_id>6858</post_id>
+		<post_id>7102</post_id>
 		<post_date>2017-02-16 13:07:29</post_date>
 		<post_date_gmt>2017-02-16 10:07:29</post_date_gmt>
 		<comment_status>closed</comment_status>
 		<ping_status>closed</ping_status>
-		<post_name>5_email_6858</post_name>
+		<post_name>6_email_7102</post_name>
 		<status>publish</status>
 		<post_parent>0</post_parent>
-		<menu_order>5</menu_order>
+		<menu_order>6</menu_order>
 		<post_type>frm_form_actions</post_type>
 		<post_password><![CDATA[]]></post_password>
 		<is_sticky>0</is_sticky>
 		<postmeta>
+			<meta_key>landing_reset_colors</meta_key>
+			<meta_value><![CDATA[]]></meta_value>
+		</postmeta>
+		<postmeta>
 			<meta_key>_wp_old_slug</meta_key>
-			<meta_value><![CDATA[5_email_]]></meta_value>
+			<meta_value><![CDATA[5_email_6858-2]]></meta_value>
 		</postmeta>
 	</view>
 	<view>
@@ -178,19 +132,23 @@
 		<link></link>
 		<post_author><![CDATA[ahaenor]]></post_author>
 		<description></description>
-		<content><![CDATA[{"post_type":"marker","post_title":"","post_content":"65","display_id":"","post_excerpt":"","post_password":"","post_name":"","post_date":"","post_status":"","post_custom_fields":{"marker_address":{"meta_name":"marker_address","field_id":"78"},"marker_contact_fullname":{"meta_name":"marker_contact_fullname","field_id":"67"},"marker_contact_phone":{"meta_name":"marker_contacts","field_id":"75"},"marker_photos":{"meta_name":"marker_photos","field_id":"69"}},"event":["create","update","import"],"conditions":{"send_stop":"send","any_all":"any"}}]]></content>
+		<content><![CDATA[{"post_type":"marker","post_title":"","post_content":"80","display_id":"","post_excerpt":"","post_password":"","post_name":"","post_date":"","post_status":"","post_custom_fields":{"marker_address":{"meta_name":"marker_address","field_id":"81"},"marker_contact_fullname":{"meta_name":"marker_contact_fullname","field_id":"85"},"marker_contact_phone":{"meta_name":"marker_contacts","field_id":"86"},"marker_photos":{"meta_name":"marker_photos","field_id":"82"}},"event":["create","update","create","update","import"],"conditions":{"send_stop":"send","any_all":"any"},"post_category":[]}]]></content>
 		<excerpt><![CDATA[wppost]]></excerpt>
-		<post_id>6859</post_id>
+		<post_id>7103</post_id>
 		<post_date>2017-02-16 13:29:24</post_date>
 		<post_date_gmt>2017-02-16 10:29:24</post_date_gmt>
 		<comment_status>closed</comment_status>
 		<ping_status>closed</ping_status>
-		<post_name>5_wppost_6859</post_name>
+		<post_name>5_wppost_6859-2</post_name>
 		<status>publish</status>
 		<post_parent>0</post_parent>
-		<menu_order>5</menu_order>
+		<menu_order>6</menu_order>
 		<post_type>frm_form_actions</post_type>
 		<post_password><![CDATA[]]></post_password>
 		<is_sticky>0</is_sticky>
+		<postmeta>
+			<meta_key>landing_reset_colors</meta_key>
+			<meta_value><![CDATA[]]></meta_value>
+		</postmeta>
 	</view>
 </channel>
