@@ -20,7 +20,6 @@ get_header();?>
 			<div class="flex-grid--stacked">
 
 				<div class="flex-cell--stacked lg-9 single__title-block">
-					<div class="single-card__meta"><?php echo get_the_date('d.m.Y', $cpost);?></div>
 					<h1><?php echo get_the_title($cpost);?></h1>
 					<div class="sharing"><?php tst_social_share($cpost);?></div>
 				</div>
