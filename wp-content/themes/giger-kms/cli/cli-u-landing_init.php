@@ -346,6 +346,9 @@ try {
             echo $res->get_error_message() . "\n";
         }
         
+        delete_post_meta( $landing->ID, 'color_scheme_' . $landing->post_type . '-' . $landing->post_name . '-archive' );
+        delete_post_meta( $landing->ID, 'color_scheme_' . $landing->post_type . '-' . $landing->post_name . '-main-items' );
+        
         $landing_count++;
         
         printf( "%d - %s - done\n", $landing_id, $landing_name );

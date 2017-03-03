@@ -113,7 +113,7 @@ get_header();?>
     
     $landing_main_posts = isset( $tst_callback_get_main_posts ) && $tst_callback_get_main_posts ? call_user_func( $tst_callback_get_main_posts, $cpost ) : array();
     $main_pub_sections = range( 0, ceil( count( $landing_main_posts ) / $main_pub_cols ) );
-    TST_Color_Schemes::get_instance()->build_named_full_scheme( $cpost->ID, 'main_publications', $main_pub_sections );
+    TST_Color_Schemes::get_instance()->build_named_full_scheme( $cpost->ID, $cpost->post_type . '-' . $cpost->post_name . '-main-items', $main_pub_sections );
     
     if( !empty( $landing_main_posts ) ):
     ?>
@@ -121,7 +121,7 @@ get_header();?>
 		<div class="news-block__content publications-block__content">
     <?php 
     foreach( $main_pub_sections as $section ) {
-        $grid_css = TST_Color_Schemes::get_instance()->get_named_full_scheme( $cpost->ID, 'main_publications', $section );
+        $grid_css = TST_Color_Schemes::get_instance()->get_named_full_scheme( $cpost->ID, $cpost->post_type . '-' . $cpost->post_name . '-main-items', $section );
         
         if( empty( $main_pub_sections ) ) {
             break;
@@ -159,7 +159,7 @@ get_header();?>
     
     
     $years = tst_get_past_years( 20 );
-    TST_Color_Schemes::get_instance()->build_named_full_scheme( $cpost->ID, $cpost->post_type . '-archive', $years );
+    TST_Color_Schemes::get_instance()->build_named_full_scheme( $cpost->ID, $cpost->post_type . '-' . $cpost->post_name . '-archive', $years );
     $full_years = 0;
     
     foreach( $years as $year ) {
@@ -167,7 +167,7 @@ get_header();?>
             break;
         }
         
-        $grid_css = TST_Color_Schemes::get_instance()->get_named_full_scheme( $cpost->ID, $cpost->post_type . '-archive', $year );
+        $grid_css = TST_Color_Schemes::get_instance()->get_named_full_scheme( $cpost->ID, $cpost->post_type . '-' . $cpost->post_name . '-archive', $year );
         $posts = call_user_func( $tst_callback_get_latest_posts, $year, 4 );
         if( !empty( $posts ) ) {
             $full_years += 1;
