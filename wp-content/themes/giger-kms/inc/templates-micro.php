@@ -403,11 +403,6 @@ function tst_card_search(WP_Post $cpost) {
 		
 	 </div>
 
-	<?php if(!empty($tags)) { ?>
-		<?php $label = __('Tags', 'tst'); ?>
-		<?php echo get_the_term_list($cpost->ID, 'post_tag', '<span class="tags"><i>'.$label.'</i>', ' ', '</span>' );?>
-	<?php } ?>
-
 </a>
 
 <?php

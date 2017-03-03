@@ -35,27 +35,18 @@
  ?>
 
 <div class="single-crumb container">
-	<a href="<?php echo home_url('?s=');?>">Поиск</a>
+	<div class="search-block__title">
+	    Результаты поиска
+	</div>
 </div>
 <article class="single search">
     <header class="single__header">
-        <div class="container">
-            
+        <div class="container">            
             <div class="flex-grid--stacked">
-                
                 <div class="flex-cell--stacked lg-12 single__title-block">
                     <div class="search__regular"><?php get_search_form();?></div>
-            		<div class="search__meta single-card__meta"><?php echo tst_build_results_label($num);?></div>
-                    <?php
-            			if(empty($s_query)){
-            				echo "<div class='search__hint'><p>".__('Пожалуйста, укажите слова для поиска в форме и нажмите Enter.', 'tst')."</p></div>";
-            			}
-            			elseif($num == 0) {
-            				echo "<div class='search__hint'><p>".__('К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать иначе.', 'tst')."</p></div>";
-            			}
-        			?>
-    			</div>
-                
+                    <div class="search__meta single-card__meta"><?php echo tst_build_results_label($num);?></div>                    
+    			</div>                
             </div>            
         </div>
 
@@ -66,6 +57,14 @@
             <div class="flex-grid--stacked">
                 
                 <div class="flex-cell--stacked lg-12 single-body">
+                    <?php
+            			if(empty($s_query)){
+            				echo "<div class='search__hint'><p>".__('Пожалуйста, укажите слова для поиска в форме и нажмите Enter.', 'tst')."</p></div>";
+            			}
+            			elseif($num == 0) {
+            				echo "<div class='search__hint'><p>".__('К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать иначе.', 'tst')."</p></div>";
+            			}
+        			?>
                     <?php if(!empty($s_query)) {
                     ?>
                     <div id="loadmore-search-results">
