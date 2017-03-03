@@ -60,14 +60,15 @@ get_header();?>
 		<div class="flex-grid--stacked">
 
 			<div class="flex-cell--stacked lg-9 single-body">
-
-				<div class="single__date-and-place">
-					<div class="single__title">
-						<div class="event-full-meta__item event-full-meta__item--date"><b>Дата:</b> <span><?php echo $event->get_full_date_mark('human');?></span></div>
-						<div class="event-full-meta__item event-full-meta__item--place"><b>Место:</b> <span><?php echo $event->get_full_address();?></span></div>
-						<!-- <div class="event-full-meta__item event-full-meta__item--atc">--><?php //echo tst_add_to_calendar_link($event, 'tst-add-calendar', __('Add to calendar', 'tst'), true); ?><!--</div>-->
+				<?php if ($event->get_full_date_mark('human') || $event->get_full_address()) {?>
+					<div class="single__date-and-place">
+						<div class="single__title">
+							<?php if ($event->get_full_date_mark('human')) {?><div class="event-full-meta__item event-full-meta__item--date"><b>Дата:</b> <span><?php echo $event->get_full_date_mark('human');?></span></div><?php } ?>
+							<?php if ($event->get_full_address()) {?><div class="event-full-meta__item event-full-meta__item--place"><b>Место:</b> <span><?php echo $event->get_full_address();?></span></div><?php } ?>
+							<!-- <div class="event-full-meta__item event-full-meta__item--atc">--><?php //echo tst_add_to_calendar_link($event, 'tst-add-calendar', __('Add to calendar', 'tst'), true); ?><!--</div>-->
+						</div>
 					</div>
-				</div>
+				<?php } ?>
 				
 				<?php if(!empty($cpost->post_excerpt)) { ?>
 					<div class="single-body--summary"><?php echo apply_filters('tst_entry_the_content', $cpost->post_excerpt);?></div>
