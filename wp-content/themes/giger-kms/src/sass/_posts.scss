@@ -1,14 +1,6 @@
 /** == Posts (_posts.scss) == **/
 
-@mixin card-icon-size() {
-	width: 54px;
-	height: 54px;
 
-	@include for(large-screens) {
-		width: 90px;
-		height: 90px;
-	}
-}
 
 /* single news */
 .single-card {

@@ -36,13 +36,14 @@ if(empty($cover_desc)){
 
 	<?php if($cover) { ?>
 	<div class="cover-general__item">
+		<div class="cover-item__bg" style="background-image: url(<?php echo $cover_url;?>);"></div>
 		<div class="container">
 			<a href="<?php echo get_permalink($cover);?>" class="cover-item__link">
 				<h4><?php echo apply_filters('tst_the_title', $cover_title);?></h4>
 				<div class="cover-item__date"><?php echo apply_filters('tst_the_title', $cover_desc);?></div>
 			</a>
 		</div>
-		<div class="cover-item__bg" style="background-image: url(<?php echo $cover_url;?>);"></div>
+
 
 	</div>
 	<?php } ?>

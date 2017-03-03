@@ -1,0 +1,139 @@
+/** == Homepage (_homepage.scss) == **/
+
+.landing--home {
+	padding-bottom: 0;
+}
+
+
+
+/** partners **/
+.homenews-block__title,
+.home-partners__title {
+	@extend .news-block__title;
+}
+
+.home-about {
+	text-align: center;
+	padding: $base*6 0 0;
+
+	@include for(medium-screens) {
+		padding: $base*12 0 $base*3;
+	}
+
+	.home-about__text {
+		max-width: $text_col;
+		margin: 0 auto;
+		@include header-title(card_text);
+	}
+
+	.home-about__title {
+		@include post-title(cards_text_feature);
+		margin-bottom: $base;
+	}
+
+	.home-about__menu {
+		margin-top: $base*6;
+
+		@include for(medium-screens) {
+			margin-top: $base*8;
+		}
+	}
+}
+
+.work-menu {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: stretch;
+	justify-content: center;
+	max-width: 550px;
+	margin: 0 auto;
+
+	@include for(large-screens) {
+		max-width: 930px;
+	}
+
+	.work-menu__item {
+		text-align: center;
+		width: 33.33%;
+		padding: $base/2 0;
+		margin-bottom: $base*2;
+		min-width: 140px;
+		flex: 1 0 auto;
+
+		@include for(large-screens) {
+			width: 16.666%;
+		}
+	}
+
+	.work-menu__link {
+		display: inline-block;
+		width: 140px;
+	}
+
+	.svg-icon {
+		width: 54px;
+		height: 54px;
+		fill: $ground;
+
+		@include for(medium-screens) {
+			width: 80px;
+			height: 80px;
+		}
+	}
+
+	.work-menu__label {
+		display: block;
+		margin-top: $base/2;
+		@include nav-text(button_text);
+		color: $ground;
+	}
+
+	.work-menu__item:nth-of-type(2) {
+		.svg-icon  { fill: $leaf; }
+		.work-menu__label { color: $leaf; }
+	}
+
+	.work-menu__item:nth-of-type(3) {
+		.svg-icon  { fill: $loam; }
+		.work-menu__label { color: $loam; }
+	}
+
+	.work-menu__item:nth-of-type(5) {
+		.svg-icon  { fill: $grass; }
+		.work-menu__label { color: $grass; }
+	}
+
+	.work-menu__item:nth-of-type(6) {
+		.svg-icon  { fill: $wetsoil; }
+		.work-menu__label { color: $wetsoil; }
+	}
+}
+
+
+.partner {
+	border-left: 2px solid $ground;
+	flex: 1 1 auto;
+}
+
+.partner__link {
+	display: block;
+	padding: 0 $base*4;
+}
+
+.partner__label {
+	display: inline-block;
+	background: $ground;
+	color: $color-white;
+	padding: $base/2 $base;
+}
+
+.partner__title {
+	@include body-text(summary_italic);
+	margin-top: $base;
+}
+
+@include for(large-screens){
+	.partner {
+		flex: 0 0 auto;
+	}
+}

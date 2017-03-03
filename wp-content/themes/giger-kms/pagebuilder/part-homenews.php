@@ -55,12 +55,12 @@ $news = get_posts($news_args);
 				</div>
 			<?php } ?>
 			<?php if(isset($news[1])) { ?>
-				<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
+				<div class="flex-cell--stacked sm-6 lg-3 card card--colored card--news">
 					<?php tst_news_card($news[1], 'colored'); ?>
 				</div>
 			<?php } ?>
 			<?php if(isset($news[2])) { ?>
-				<div class="flex-cell--stacked sm-6 lg-3 card card--item">
+				<div class="flex-cell--stacked sm-6 lg-3 card card--item card--news">
 					<?php tst_card_linked($news[2], array('size' => 'block-small', 'show_desc' => true)); ?>
 				</div>
 			<?php } ?>

@@ -34,9 +34,9 @@ $grid_css .=  ' '.tst_get_colors_for_section();
 		<div class="flex-cell--stacked sm-6 md-8 lg-9 card card--linked block-3col label-<?php echo $label_order1;?>">
 			<?php tst_card_linked((int)$el1, array('size' => 'block-2col')) ;?>
 		</div>
-		<div class="flex-cell--stacked sm-6 lg-3 card card--section">
+		<div class="flex-cell--stacked sm-6  md-4 lg-3 card card--section">
 		<?php if($section) { ?>
-			<div class="flex-column-centered">
+
 				<a href="<?php echo get_term_link($section, $section->taxonomy);?>" class="card-link">
 					<div class="card__icon">
 						<?php tst_svg_icon($icon_id); ?>
@@ -45,7 +45,7 @@ $grid_css .=  ' '.tst_get_colors_for_section();
 						<h4><?php echo apply_filters('tst_the_title', $section->name);?></h4>
 					</div>
 				</a>
-			</div>
+
 		<?php } ?>
 		</div>
 	</div>

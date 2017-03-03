@@ -38,10 +38,7 @@ $grid_css .= ' '.tst_get_colors_for_section();
 		<?php } ?>
 		</div>
 		<div class="flex-cell--stacked sm-6 lg-3 card card--item">
-			<?php
-				$showdesc = (is_front_page()) ? true : false;
-				tst_card_linked((int)$el3, array('size' => 'block-small', 'show_desc' => $showdesc));
-			?>
+			<?php tst_card_linked((int)$el3, array('size' => 'block-small')); ?>
 		</div>
 	</div>
 </div>

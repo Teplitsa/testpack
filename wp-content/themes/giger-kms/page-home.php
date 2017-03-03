@@ -34,29 +34,39 @@ get_header();?>
 		<div class="home-about__menu">
 			<ul class="work-menu">
 			<?php foreach($lands as $l) { $icon_id = 'icon-item-'.$l->post_name;; ?>
-				<li class="work-menu__item"><?php tst_svg_icon($icon_id); ?><span class='work-menu__label'><?php echo get_the_title($l);?></span></li>
+				<li class="work-menu__item">
+					<a href="<?php echo get_permalink($l);?>" class="work-menu__link">
+					<?php tst_svg_icon($icon_id); ?><span class='work-menu__label'><?php echo get_the_title($l);?></span>
+					</a>
+				</li>
 			<?php } ?>
 			</ul>
 		</div>
 		<?php } ?>
 	</div></section>
 
-	<section class="home-cta"><div class="container">
+	<section class="home-cta">
 		<?php wds_page_builder_area('cta'); ?>
-	</div></section>
+	</section>
 
 <?php
 	$parnters = get_post_meta($cpost->ID, 'home_partners', true);
 	if(!empty($parnters)) {
 ?>
 	<section class="home-partners"><div class="container">
-		<h3 class="home-partners__title"><?php _e('Our partners');?></h2>
+		<h3 class="home-partners__title"><?php _e('Our partners', 'tst');?></h2>
 		<div class="home-partners__content">
 			<div class="flex-grid--stacked flex-grid--partners centered">
-			<?php foreach($parnters as $p) { ?>
-				<div class="flex-cell--stacked sm-12 md-4 lg-3 partner">
+			<?php foreach($parnters as $p) {
 
-				</div>
+				$url = esc_url($p['home_partner_url']);
+				$url_label = str_replace(array('http://', 'https://'), '', untrailingslashit($url));
+				$tx = apply_filters('tst_the_title', $p['home_partner_title']);
+			?>
+				<div class="flex-cell flex-md-6 flex-lg-3 partner"><a href="<?php echo $url;?>" class="partner__link">
+					<div class="partner__label"><?php echo $url_label;?></div>
+					<h4 class="partner__title"><?php echo $tx;?></h4>
+				</a></div>
 			<?php } ?>
 			</div>
 		</div>

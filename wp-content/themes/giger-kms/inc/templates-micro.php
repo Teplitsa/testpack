@@ -10,21 +10,27 @@ function tst_card_linked($cpost, $args = array()) {
 
 	$defaults = array(
 		'size' => 'block-2col',
-		'show_desc' => false
+		'show_desc' => (in_array($cpost->post_type, array('landing'))) ? true : false
 	);
 
 	$args = wp_parse_args($args, $defaults);
 	$pl = get_permalink($cpost);
 	$desc = '';
 
+	if($args['show_desc']) {
 
-	if($args['show_desc'] && $cpost->post_type == 'project'){
-		$desc = get_post_meta($cpost->ID, 'subtitle_meta', true);
+		if($cpost->post_type == 'project') {
+			$desc = get_post_meta($cpost->ID, 'subtitle_meta', true);
+		}
+		elseif($cpost->post_type == 'landing') {
+			$desc = get_post_meta($cpost->ID, 'landing_excerpt', true);
+		}
+
+		if(empty($desc)){
+			$desc = tst_get_post_excerpt($cpost, 10, true);
+		}
 	}
 
-	if($args['show_desc'] && empty($desc)){
-		$desc = tst_get_post_excerpt($cpost, 10, true);
-	}
 
 
 	$meta = '';
@@ -44,9 +50,11 @@ function tst_card_linked($cpost, $args = array()) {
 		<?php if(!empty($meta)) {?>
 			<div class="card__meta"><?php echo $meta;?></div>
 		<?php } ?>
+
 		<h4><?php echo get_the_title($cpost);?></h4>
+
 		<?php if(!empty($desc)) {?>
-			<div class="card__summary"><?php echo apply_filters('tst_the_title', $desc);?></div>
+			<div class="card__insummary"><?php echo apply_filters('tst_the_title', $desc);?></div>
 		<?php } ?>
 	</div>
 </a>
@@ -75,7 +83,7 @@ function tst_card_colored($cpost) {
 	}
 
 ?>
-<a href="<?php echo $pl;?>" class="card-link">
+<a href="<?php echo $pl;?>" class="card-link <?php if(!empty($icon)) { echo 'has-icon'; }?>">
 	<div class="card__title">
 		<h4><?php echo apply_filters('tst_the_title', $title);?></h4>
 	</div>
@@ -315,6 +323,10 @@ function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 	}
 	else {
 		$e = $cpost->post_excerpt;
+	}
+
+	if(empty($e) && $cpost->post_type == 'landing'){
+		$e = wp_trim_words(strip_shortcodes(get_post_meta($cpost, 'landing_content', true)));
 	}
 
 	$e = (!empty($e)) ? $e : wp_trim_words(strip_shortcodes($cpost->post_content), $l);
