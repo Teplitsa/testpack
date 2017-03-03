@@ -85,7 +85,7 @@ try {
 			    'post_name' 	=> $slug,
 				'post_status' 	=> 'publish',
 				'post_content' => $post_content,
-				'post_excerpt' => $tagline,
+				'post_excerpt' => '',
                 'post_parent' => $parent_post_id,
 			);
 			
