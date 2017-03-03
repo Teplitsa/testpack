@@ -52,6 +52,41 @@ $process_posts = array(
         'post_name' => 'datt-kak-20zashitit-20derevo',
         'post_date' => '2015-10-05',
     ),
+    
+    // pages
+    array(
+        'post_type' => 'page',
+        'post_name' => 'homepage',
+        'post_title' => 'Экоцентр "Дронт"',
+        'post_excerpt' => '',
+        'post_content' => 'Помогает деятельности экологических НПО и активистов Нижегородской области',
+        'meta_input' => array(
+            'home_partners' => array (
+                0 =>
+                array (
+                    'home_partner_title' => 'Международный социально-экологический союз',
+                    'home_partner_url' => 'https://www.seu.ru',
+                ),
+                1 => array (
+                    'home_partner_title' => 'Российский социально-экологический союз',
+                    'home_partner_url' => 'https://rusecounion.ru',
+                ),
+                2 => array (
+                    'home_partner_title' => 'Нижегородское отделение международного социально- экологического союза',
+                    'home_partner_url' => 'https://www.nro-msoes.ru',
+                ),
+            )
+        ),
+    ),
+    
+    // leyka_campaign
+    array(
+        'post_type' => 'leyka_campaign',
+        'post_name' => 'donate',
+        'post_title' => 'Поддержите работу экоцентра «Дронт»',
+        'post_excerpt' => 'Сделайте пожертвование на программы сохранения биоразнообразия',
+        'post_content' => '',
+    ),
 );
 
 try {

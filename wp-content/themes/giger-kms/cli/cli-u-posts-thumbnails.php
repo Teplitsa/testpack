@@ -18,6 +18,22 @@ $process_posts = array(
         'post_name' => 'dront-publications',
         'thumbnail' => '',
     ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-chebpotop',
+        'thumbnail' => 'datt-cheboksarges',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-bereginya',
+        'thumbnail' => 'datt-1-2-2',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-ecomap',
+        'thumbnail' => 'datt-sbereg-center2',
+    ),
+    
     
     // projects
     array(
@@ -25,6 +41,27 @@ $process_posts = array(
         'post_name' => 'birds-kadastr',
         'thumbnail' => 'birds-kadastr-eggs.jpg',
     ),
+    array(
+        'post_type' => 'project',
+        'post_name' => 'reptiles-photo',
+        'thumbnail' => 'datt-reptiles',
+    ),
+    
+    
+    // leyka_campaign
+    array(
+        'post_type' => 'leyka_campaign',
+        'post_name' => 'donate',
+        'thumbnail' => 'sopr.jpg',
+    ),
+    
+    // posts
+    array(
+        'post_type' => 'post',
+        'post_name' => 'v-kerzhenskom-zapovednike-nachalsya-sezon-zimnih-lyzhnyh-ekskursij',
+        'thumbnail' => 'datt-rubbit-footsteps',
+    ),
+    
 );
 
 try {
@@ -47,10 +84,30 @@ try {
         if( $post ) {
             
             if( isset( $post_data['thumbnail'] ) && $post_data['thumbnail'] ) {
-                $thumbnail_id = TST_Import::get_instance()->maybe_import_local_file( dirname( __FILE__ ) . '/sideload/' . $post_data['thumbnail'] );
+                
+                $thumbnail_id = 0;
+                
+                if( is_array( $post_data['thumbnail'] ) ) {
+                    
+                    $post = tst_get_pb_post( $post_data['thumbnail'][0], $post_data['thumbnail'][1] );
+                    if( $post ) {
+                        $thumbnail_id = $post->ID;
+                    }
+                    
+                }
+                elseif( preg_match( '/^datt-/', $post_data['thumbnail'] ) ) {
+                    $attachment = tst_get_pb_post( $post_data['thumbnail'], 'attachment' );
+                    $thumbnail_id = $attachment ? $attachment->ID : 0;
+                }
+                elseif( is_numeric( $post_data['thumbnail'] ) && (int)$post_data['thumbnail'] ) {
+                    $thumbnail_id = $post_data['thumbnail'];
+                }
+                elseif( $post_data['thumbnail'] ) {
+                    $thumbnail_id = TST_Import::get_instance()->maybe_import_local_file( dirname( __FILE__ ) . '/sideload/' . $post_data['thumbnail'] );
+                }
                 
                 if( $thumbnail_id ) {
-                    printf( "set post thumbnail: %d, %s\n", $thumbnail_id, get_attached_file( $thumbnail_id ) );
+                    printf( "set post_id: %d; thumbnail: %d, %s\n", $post->ID, $thumbnail_id, get_attached_file( $thumbnail_id ) );
                     set_post_thumbnail( $post->ID, $thumbnail_id );
                     wp_update_attachment_metadata( $thumbnail_id, wp_generate_attachment_metadata( $thumbnail_id, get_attached_file( $thumbnail_id ) ) );
                 }
