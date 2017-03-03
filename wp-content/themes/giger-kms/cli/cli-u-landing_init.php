@@ -222,6 +222,17 @@ $landings_sections = array(
             'template_group' => 'help',
         ),
     ),
+    
+    'dront-bereginya' => array(
+        array(
+            'template_group' => 'news',
+        ),
+    
+        array(
+            'template_group' => 'help',
+        ),
+    ),
+    
 );
 
 try {

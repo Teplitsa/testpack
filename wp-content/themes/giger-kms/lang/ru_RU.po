@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-03 08:00+0300\n"
-"PO-Revision-Date: 2017-03-03 08:00+0300\n"
+"POT-Creation-Date: 2017-03-03 13:22+0200\n"
+"PO-Revision-Date: 2017-03-03 13:23+0200\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language: ru\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
 "%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
 "__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
@@ -98,34 +98,6 @@ msgstr "Россия"
 msgid "By address"
 msgstr "По адресу"
 
-#: inc/class-part-colors.php:70
-msgid "white"
-msgstr "Белый"
-
-#: inc/class-part-colors.php:71
-msgid "orange"
-msgstr "Оранжевый"
-
-#: inc/class-part-colors.php:72
-msgid "dbrown"
-msgstr "Темно-коричневый"
-
-#: inc/class-part-colors.php:73
-msgid "dolive"
-msgstr "Темно-оливковый"
-
-#: inc/class-part-colors.php:74
-msgid "dgreengray"
-msgstr "Темно-зеленый серый"
-
-#: inc/class-part-colors.php:75
-msgid "olive"
-msgstr "Оливковый"
-
-#: inc/class-part-colors.php:76
-msgid "greengray"
-msgstr "Зеленый серый"
-
 #: inc/donations.php:62
 msgid "Please, set a text of comment to describe an additional ways to donate."
 msgstr "Пожалуйста, укажите текст комментария"
@@ -162,24 +134,29 @@ msgstr "Instagram"
 msgid "VKontakte"
 msgstr "VKontakte"
 
-#: inc/templates-micro.php:111
+#: inc/templates-micro.php:119
 msgid "Details"
 msgstr "Подробнее"
 
-#: inc/templates-single.php:41
-msgid "Inform about problem"
-msgstr "Сообщить о проблеме"
+#: inc/templates-micro.php:407 single-event.php:102 single-landing.php:54
+#: single-project.php:69 single.php:72
+msgid "Tags"
+msgstr "Тэги"
 
-#: inc/templates-single.php:45 pagebuilder/part-help.php:44
+#: inc/templates-single.php:42 pagebuilder/part-help.php:44
 msgid "Donate"
 msgstr "Помочь сейчас"
 
-#: inc/templates-single.php:85 inc/templates-single.php:98
+#: inc/templates-single.php:50
+msgid "Inform about problem"
+msgstr "Сообщить о проблеме"
+
+#: inc/templates-single.php:86 inc/templates-single.php:99
 #: inc/templates-tags.php:115 inc/templates-tags.php:133
 msgid "Home"
 msgstr "Главная"
 
-#: inc/templates-single.php:86 inc/templates-tags.php:116 index.php:8
+#: inc/templates-single.php:87 inc/templates-tags.php:116 index.php:8
 #: pagebuilder/part-news.php:25 single.php:13
 msgid "News"
 msgstr "Новости"
@@ -196,15 +173,16 @@ msgstr "Все новости"
 msgid "Nothing found under your request"
 msgstr "По вашему запросу ничего не найдено."
 
-#: page-home.php:53
+#: page-home.php:57
 msgid "Our partners"
 msgstr "Наши партнеры"
 
-#: pagebuilder/part-cover-general.php:29
+#: pagebuilder/part-cover-general.php:29 single-landing-ecoproblems-map.php:28
 msgid "Get details"
 msgstr "Вникнуть"
 
 #: pagebuilder/part-cover-general.php:30
+#: partial-landing-archive-by-years.php:105
 msgid "Join us"
 msgstr "Давайте вместе!"
 
@@ -236,35 +214,43 @@ msgstr "Стать партнером"
 msgid "News and Publishings"
 msgstr "Новости и публикации"
 
-#: search.php:47
+#: partial-landing-archive-by-years.php:32 single-landing.php:32
+#, php-format
+msgid "%s: What are we doing"
+msgstr "%s: Что мы делаем"
+
+#: partial-landing-archive-by-years.php:104
+msgid "View archive"
+msgstr "Перейти в архив"
+
+#: search.php:51
 msgid "Пожалуйста, укажите слова для поиска в форме и нажмите Enter."
 msgstr ""
 
-#: search.php:50
+#: search.php:54
 msgid ""
 "К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать "
 "иначе."
 msgstr ""
 
-#: single-event.php:60
+#: single-event.php:14
+msgid "Events"
+msgstr "Анонсы"
+
+#: single-event.php:89
 msgid "Contacts"
 msgstr "Контакты"
 
-#: single-event.php:96 single-landing.php:54 single-project.php:69
-#: single.php:72
-msgid "Tags"
-msgstr "Тэги"
+#: single-event.php:121 single.php:90
+msgid "More on the topic"
+msgstr "Еще по теме"
 
-#: single-landing-ecoproblems-map.php:56
-msgid "More news"
-msgstr "Еще новости"
+#: single-landing-ecoproblems-map.php:29
+msgid "Submit a problem!"
+msgstr ""
 
-#: single-landing.php:32
-#, php-format
-msgid "%s: What are we doing"
-msgstr "%s: Что мы делаем"
-
-#: single-landing.php:76 single-project.php:86
+#: single-landing-ecoproblems-map.php:69 single-landing.php:76
+#: single-project.php:86
 #, php-format
 msgid "Projects by topic: %s"
 msgstr "Проекты по теме: %s"
@@ -273,9 +259,29 @@ msgstr "Проекты по теме: %s"
 msgid "News on the topic"
 msgstr "Новости по теме"
 
-#: single.php:90
-msgid "More on the topic"
-msgstr "Еще по теме"
+#~ msgid "white"
+#~ msgstr "Белый"
+
+#~ msgid "orange"
+#~ msgstr "Оранжевый"
+
+#~ msgid "dbrown"
+#~ msgstr "Темно-коричневый"
+
+#~ msgid "dolive"
+#~ msgstr "Темно-оливковый"
+
+#~ msgid "dgreengray"
+#~ msgstr "Темно-зеленый серый"
+
+#~ msgid "olive"
+#~ msgstr "Оливковый"
+
+#~ msgid "greengray"
+#~ msgstr "Зеленый серый"
+
+#~ msgid "More news"
+#~ msgstr "Еще новости"
 
 #~ msgid "Title"
 #~ msgstr "Заголовок"
@@ -541,9 +547,6 @@ msgstr "Еще по теме"
 
 #~ msgid "Subscribe"
 #~ msgstr "Подпишись"
-
-#~ msgid "Events"
-#~ msgstr "Анонсы"
 
 #~ msgid "All materials of the site are avaliabe under license %s."
 #~ msgstr "Все материалы сайта доступны по лиценции %s."
