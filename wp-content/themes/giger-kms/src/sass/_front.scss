@@ -13,6 +13,7 @@ body {
 
 a {
 	text-decoration: none;
+	cursor: pointer;
 	@include green-link();
 }
 
@@ -35,6 +36,9 @@ p,ul,ol,dl,blockquote {
 //title with normal weights
 h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
+}
+pre {
+	white-space: normal;
 }
 
 

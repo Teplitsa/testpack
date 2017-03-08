@@ -9,6 +9,7 @@
 .card__title {
 	@include post-title(cards_regular);
 	h4 { font-weight: bold; }
+	
 }
 
 .card__title--text {
@@ -17,7 +18,11 @@
 }
 
 .card__subtitle {
-	@include header-title(cards_text);
+	@include header-title(small);
+	
+	@include for(medium-screens) {
+		@include header-title(card_text);
+	}
 	margin-top: $base;
 }
 
@@ -28,10 +33,13 @@
 	margin-top: $base *4;
 }
 
-.card__action {
+.card__action {	
 	@include nav-text(cta_link);
 	margin-top: $base*3;
-	white-space: nowrap;
+	
+	@include for(small-screens) {
+		white-space: nowrap;
+	}
 }
 
 .card__icon {
@@ -52,7 +60,7 @@
 	}
 }
 
-.card__label {
+.card__label {	
 	@include link-label();
 	min-height: $card_base_h - $card_base_w;
 }
@@ -69,7 +77,7 @@
 	}
 
 
-	@include for(small-screens) {
+	@include for(medium-screens) {
 		.card__label {
 			@include link-label-box();
 			position: absolute;
@@ -102,15 +110,17 @@
 
 	a {
 		color: $color-white;
-		padding: $base*3;
+		padding: $base*2 ;
+		height: 100%;
+		@include for(small-screens) {
+			padding: $base*3;
+		}
 
 		&.has-icon {
 			padding-bottom: $base*4 + 48px;
 		}
 
-		@include for(small-screens) {
-			height: 100%;
-		}
+
 	}
 
 	.card__icon {
@@ -143,8 +153,13 @@
 
 .card--text {
 	.flex-column-centered {
-		padding: $base*5 0 $base*5 $base*8;
+		padding: $base*2 0;
 		height: 100%;
+		
+		@include for(medium-screens) {
+			padding: $base*5 0 $base*5 $base*8;
+			height: 100%;
+		}
 	}
 
 	.row-reverse & .flex-column-centered {
@@ -478,3 +493,4 @@
     opacity: 1;
 	@include transition(opacity 0.3s);
 }
+

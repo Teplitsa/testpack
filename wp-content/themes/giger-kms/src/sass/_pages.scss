@@ -84,6 +84,8 @@ blockquote {
 
 /* Search Page */
 .search {
+    padding-bottom: 0;
+    
     .search__regular {
         margin-bottom: $inpage-margin-base;
         
@@ -99,8 +101,7 @@ blockquote {
         text-align: right;
     }
     .search__hint {
-        @include body-text(meta);
-    	color: $leaf;
+        @include body-text(reading);
     }
     
     .card__summary {
@@ -122,5 +123,23 @@ blockquote {
     a:hover {
         cursor: pointer;
     }
+    
+    .search-block__title {
+    	@include post-title(cover);
+    	padding: $base*6 0 $base*5;
+        text-transform: none;
+    	text-align: center;
+
+    	@include for(medium-screens) {
+    		padding-top: $base*9;
+    	}
+    }
 
 }
+.search-results,
+.search-no-results {
+    .site-content {
+        padding-bottom: 0;
+    }
+}
+

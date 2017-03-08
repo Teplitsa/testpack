@@ -64,8 +64,6 @@ try {
             $parent_post_id = $parent_post ? $parent_post->ID : 0;
             printf( "parent_id: %d\n", $parent_post_id );
             
-            $fulltext_file_path = dirname( __FILE__ ) . '/' . $fulltext_file_name;
-            
             if( preg_match( '/^import\s*\|\s*(.*)$/', $post_content, $matches ) ) {
                 $external_page_url = trim( $matches[1] );
                 

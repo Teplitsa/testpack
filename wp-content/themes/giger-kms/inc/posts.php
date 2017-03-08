@@ -4,19 +4,22 @@
  *
  **/
 
-function tst_get_latest_publications( $year = '', $num = -1, $fields = false ) {
+function tst_get_latest_attachments( $attachment_tag_slug = false, $year = '', $num = -1, $fields = false ) {
     
     $params = array(
         'post_type' => 'attachment',
-        'tax_query' => array(
+        'posts_per_page' => $num,
+    );
+    
+    if( $attachment_tag_slug ) {
+        $params['tax_query'] = array(
             array(
                 'taxonomy' => 'attachment_tag',
                 'field' => 'slug',
-                'terms' => 'publication'
+                'terms' => $attachment_tag_slug
             )
-        ),
-        'posts_per_page' => $num,
-    );
+        );
+    }
     
     $year = is_numeric( $year ) ? (int) $year : 0;
     if( !$year ) {
@@ -38,6 +41,14 @@ function tst_get_latest_publications( $year = '', $num = -1, $fields = false ) {
     $posts = get_posts( $params );
 
 	return $posts;
+}
+
+function tst_get_latest_publications( $year = '', $num = -1, $fields = false ) {
+    return tst_get_latest_attachments( 'publication', $year, $num, $fields );
+}
+
+function tst_get_latest_bereginya( $year = '', $num = -1, $fields = false ) {
+    return tst_get_latest_attachments( 'bereginya', $year, $num, $fields );
 }
 
 function tst_get_latest_news($num = 4) {

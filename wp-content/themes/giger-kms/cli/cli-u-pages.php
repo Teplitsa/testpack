@@ -190,15 +190,14 @@ try {
 			}
 		}
 
-		$test = get_page_by_path($slug);
-		$page_data['ID'] = ($test) ? $test->ID: 0;
+		$exist_page = tst_get_pb_post( $slug, 'page' );
+		$page_data['ID'] = $exist_page ? $exist_page->ID: 0;
 		$page_data['post_name'] = $slug;
-		$uid = tst_get_pb_post( $page_data, 'page' );
 
-		if($uid && isset($obj['section']) && !empty($obj['section'])) {
+		if($exist_page && isset($obj['section']) && !empty($obj['section'])) {
 			$section = ($obj['section'] == 'supportus') ? $support_section : $about_section;
 
-			wp_set_object_terms((int)$uid, $section->term_id, 'section');
+			wp_set_object_terms((int)$exist_page->ID, $section->term_id, 'section');
 			wp_cache_flush();
 		}
 	}

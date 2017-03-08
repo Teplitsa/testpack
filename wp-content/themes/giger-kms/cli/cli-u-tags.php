@@ -38,6 +38,9 @@ catch (Exception $ex) {
 }
 
 function tst_cli_tags_add_landing_tags() {
+    
+    $time_start = microtime(true);
+    
     global $wpdb;
     
     $landing_count = 0;
@@ -73,6 +76,8 @@ function tst_cli_tags_add_landing_tags() {
 }
 
 function tst_cli_tags_connect_posts_to_landing_with_tags() {
+    $time_start = microtime(true);
+    
     global $wpdb;
     
     $post_types = array( 'post', 'archive_page' );

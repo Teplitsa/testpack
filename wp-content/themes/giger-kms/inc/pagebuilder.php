@@ -121,44 +121,6 @@ function tst_add_cover_minimal_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
-/** Cover archive **/
-add_filter( 'wds_page_builder_fields_cover-archive', 'tst_add_cover_archive_field' );
-function tst_add_cover_archive_field( $fields ) {
-
-    $prefix = "cover_archive_";
-    $new_fields = array(
-        array(
-            'name'        		=> 'Связанный пост - заставка', //to do for private only
-            'id'          		=> $prefix.'cover_post',
-            'type'        		=> 'post_search_text', // This field type
-            'post_type'  		=> array('project', 'event', 'post'),
-            'select_type' 		=> 'radio',
-            'select_behavior' 	=> 'replace'
-        ),
-        array(
-            'name'    => 'Файл - заставка',
-            'id'      => $prefix.'cover_file',
-            'type'    => 'file',
-            'options' => array(
-                'url' => false,
-            ),
-            'text'    => array(
-                'add_upload_file_text' => 'Добавить файл'
-            ),
-            'query_args' => array(
-                'type' => array('image/jpeg', 'image/jpg', 'image/png'),
-            ),
-        ),
-        array(
-            'id'   => $prefix.'post_type',
-            'type' => 'hidden',
-            'default' => ''
-        )
-    );
-
-    return array_merge( $fields, $new_fields );
-}
-
 /** Triple block - picture/panel/card **/
 add_filter( 'wds_page_builder_fields_tripleblock-picture', 'tst_add_tripleblock_picture_field' );
 function tst_add_tripleblock_picture_field( $fields ) {

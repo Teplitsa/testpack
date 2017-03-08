@@ -70,6 +70,7 @@ function tst_single_cta(WP_Post $cpost, $mod = 'pictured') {
 		<h4><?php echo apply_filters('tst_the_title', $label);?></h4>
 	</div></div>
 </a>
+
 <?php
 }
 
