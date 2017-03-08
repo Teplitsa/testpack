@@ -396,9 +396,9 @@ function tst_markers_map_output($atts){
 
                     }
                 });
-
+                
             });
-
+            
         </script>
     </div>
 
@@ -422,6 +422,7 @@ add_action('wp_footer', function(){
                 $.each(mapFunc, function(index, map_function){
                     map_function();
                 });
+                $('.event-template-default .leaflet-marker-pane .leaflet-marker-icon').addClass(' mymap-icon material-icons red').text('room').removeClass('leaflet-div-icon');
             }
 
         });
