@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/4.7.2" created="2017-03-03 13:54" -->
+<!-- generator="WordPress/4.7.2" created="2017-03-03 15:00" -->
 
 <channel>
 	<title>Дронт</title>
-	<pubDate>Fri, 03 Mar 2017 13:54:12 +0000</pubDate>
+	<pubDate>Fri, 03 Mar 2017 15:00:55 +0000</pubDate>
 
 	<form>
 		<id>6</id>
 		<form_key><![CDATA[kp6cw2]]></form_key>
 		<name><![CDATA[Cообщить об экопроблеме]]></name>
-		<description><![CDATA[Мы проверим вашу информацию, затем составим запросы и жалобы в соответствующие органы. Если материал острый, мы также составим и распространим пресс-релизы.
+		<description><![CDATA[Незаконная вырубка или свалка мусора? Сообщите об этом нам!
 
-После этого мы будем сопровождать проблему до её разрешения.]]></description>
+Мы проверим информацию и составим запросы и жалобы в соответствующие органы. Если материал острый, мы также выпустим пресс-релизы. После этого мы будем сопровождать проблему до её разрешения.]]></description>
 		<created_at>2017-02-27 16:02:49</created_at>
 		<logged_in>0</logged_in>
 		<is_template>0</is_template>
@@ -47,7 +47,7 @@
             <field_options><![CDATA[{"size":"","max":"","label":"","blank":"\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0440\u0430\u0441\u0441\u043a\u0430\u0436\u0438\u0442\u0435, \u043a\u0430\u043a \u043c\u043e\u0436\u043d\u043e \u043d\u0430\u0439\u0442\u0438 \u043c\u0435\u0441\u0442\u043e \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b","required_indicator":"*","invalid":"","separate_value":0,"clear_on_focus":"1","default_blank":"1","classes":"","custom_html":"<div id=\"frm_field_[id]_container\" class=\"frm_form_field form-field [required_class][error_class]\">\r\n    <label for=\"field_[key]\" class=\"frm_primary_label\">[field_name]\r\n        <span class=\"frm_required\">[required_label]<\/span>\r\n    <\/label>\r\n    [input]\r\n    [if description]<div class=\"frm_description\">[description]<\/div>[\/if description]\r\n    [if error]<div class=\"frm_error\">[error]<\/div>[\/if error]\r\n<\/div>","captcha_size":"normal","captcha_theme":"light","in_section":"0","slide":0,"form_select":"","show_hide":"show","any_all":"any","align":"block","hide_field":[],"hide_field_cond":["=="],"hide_opt":[],"star":0,"ftypes":[],"data_type":"select","restrict":0,"start_year":2000,"end_year":2020,"read_only":0,"admin_only":"","locale":"","attach":false,"minnum":0,"maxnum":9999,"delete":false,"step":1,"clock":12,"start_time":"00:00","end_time":"23:59","unique":0,"use_calc":0,"calc":"","calc_dec":"","calc_type":"","dyn_default_value":"","multiple":0,"unique_msg":"","autocom":0,"format":"","repeat":0,"add_label":"Add","remove_label":"Remove","conf_field":"","conf_input":"","conf_desc":"","conf_msg":"The entered values do not match","other":0,"autopopulate_value":false,"get_values_form":"","get_values_field":"","watch_lookup":[""],"get_most_recent_value":"","lookup_filter_current_user":false,"custom_field":"marker_address","post_field":"post_custom","taxonomy":"category","exclude_cat":0}]]></field_options>
 		</field>
 		<field>
-		    <id>92</id>
+		    <id>93</id>
             <field_key><![CDATA[4qdvj2]]></field_key>
             <name><![CDATA[Фото проблемного объекта]]></name>
             <description><![CDATA[]]></description>
@@ -78,7 +78,7 @@
             <name><![CDATA[Телефон]]></name>
             <description><![CDATA[Мы используем их только чтобы связаться с вами для уточнения деталей проблемы.]]></description>
             <type><![CDATA[text]]></type>
-            <default_value><![CDATA[Укажите номер вашего тел. в формате +7хххххххххх]]></default_value>
+            <default_value><![CDATA[Номер вашего тел. в формате +7хххххххххх]]></default_value>
             <field_order>4</field_order>
             <form_id>6</form_id>
             <required>1</required>
