@@ -135,10 +135,10 @@ $scheme_colors: (
 
 	.news-block__content {
 		.scheme-color-1-#{$item} {
-			.card--colored:nth-of-type(1) { background: scheme_color($item); }
+			.card--news:nth-of-type(2) { background: scheme_color($item);   }
 		}
 		.scheme-color-2-#{$item} {
-			.card--colored:nth-of-type(2) { background: scheme_color($item); }
+			.card--news:nth-of-type(4) { background: scheme_color($item); } 
 		}
 
 		.card--item {
@@ -149,7 +149,7 @@ $scheme_colors: (
 			}
 		}
 	}
-	
+
 	.publications-block__content {
 		.scheme-color-1-#{$item} {
 			.card--colored:nth-of-type(1) { background: scheme_color($item); }

@@ -19,56 +19,6 @@ $corporate = get_page_by_path('corporate');
 //corrections for grid class
 $grid_css =  tst_get_colors_for_section();
 
-function tst_colored_help_card($help_id) {
-
-	$pl = get_permalink($help_id); //volunteer url here
-?>
-<a href="<?php echo $pl;?>" class="card-link">
-	<div class="card__title">
-		<h4><?php _e('Join our actions', 'tst');?></h4>
-	</div>
-
-	<div class="card__button">
-		<?php _e('Become volunteer', 'tst');?>
-	</div>
-</a>
-<?php
-}
-
-
-function tst_linked_help_card($help, $img_id = 0, $args = array()){
-
-	$defaults = array(
-		'size' => 'block-2col',
-		'title' => __('Support our programms', 'tst'),
-		'button' => __('Donate', 'tst'),
-	);
-
-	$args = wp_parse_args($args, $defaults);
-
-	$pl = get_permalink($help);
-	$thumbnail = '';
-
-	if($img_id > 0){
-		$thumbnail = wp_get_attachment_image($img_id, $args['title']);
-	}
-	else {
-		$thumbnail = get_the_post_thumbnail($help, $args['size']);
-	}
-?>
-<a href="<?php echo $pl;?>" class="card-link">
-	<div class="card__thumbnail">
-		<?php echo $thumbnail; ?>
-	</div>
-
-	<div class="card__label">
-		<h4><?php echo $args['title'];?></h4>
-		<div class="card__button"><?php echo $args['button'];?></div>
-	</div>
-</a>
-<?php
-}
-
 
 
 ?>
