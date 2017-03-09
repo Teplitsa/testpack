@@ -94,7 +94,7 @@ function tst_markers_map_output($atts){
             'include' => $groups_ids,
             'exclude' => $groups_excluded_ids,
 //            'parent' => 0,
-            'hide_empty' => false, /** @todo Make it true (or just remove) when debug is over */
+            'hide_empty' => false,
         ));
 
         foreach($groups_selected as $group) {

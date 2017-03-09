@@ -54,12 +54,6 @@ get_header();?>
         </div>
     </div>
 
-	<div class="single__content"><div class="container">
-		<div class="flex-grid--stacked">
-            <?php echo apply_filters('tst_entry_the_content', get_post_meta($post->ID, 'landing_content', true));?>
-		</div>
-	</div></div><!-- .single__content -->
-
 	<?php
 		$projects = tst_landing_get_connected_projects($post);
 		if(!empty($projects)) {
