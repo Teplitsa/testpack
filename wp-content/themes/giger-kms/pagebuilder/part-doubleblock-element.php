@@ -27,7 +27,7 @@ $grid_css = ($picture_position == 'right') ? ' row-reverse' : '';
 <div class="container">
 	<div class="flex-grid--stacked <?php echo $grid_css;?>">
 		<div class="flex-cell--stacked sm-12 lg-6 img-only block-2col">
-			<?php echo get_the_post_thumbnail((int)$el, 'block-2col'); ?>
+			<?php echo tst_get_the_post_thumbnail((int)$el, 'block-2col'); ?>
 		</div>
 		<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
 			<div class="flex-column-centered"><?php tst_card_text_markup($args); ?></div>

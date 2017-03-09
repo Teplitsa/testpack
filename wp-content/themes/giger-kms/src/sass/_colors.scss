@@ -54,6 +54,9 @@ $scheme_colors: (
 				}
 				@else {
 					color: $color-text-black;
+					@include upto(medium-screens) {
+						background: transparentize($moss, 0.85);
+					}
 				}
 			}
 		}
@@ -82,6 +85,9 @@ $scheme_colors: (
 				}
 				@else {
 					color: $color-text-black;
+					@include upto(medium-screens) {
+						background: transparentize($moss, 0.85);
+					}
 				}
 			}
 		}
@@ -96,6 +102,9 @@ $scheme_colors: (
 				}
 				@else {
 					color: $color-text-black;
+					@include upto(medium-screens) {
+						background: transparentize($moss, 0.85);
+					}
 				}
 			}
 		}
@@ -108,6 +117,9 @@ $scheme_colors: (
 				}
 				@else {
 					color: $color-text-black;
+					@include upto(medium-screens) {
+						background: transparentize($moss, 0.85);
+					}
 				}
 			}
 		}
@@ -122,6 +134,26 @@ $scheme_colors: (
 				}
 				@else {
 					color: $color-text-black;
+					@include upto(medium-screens) {
+						background: transparentize($moss, 0.85);
+					}
+				}
+			}
+		}
+	}
+
+	.doubleblock-picturepeople {
+		.scheme-color-1-#{$item} {
+			.card--linked .card__label {
+				background: scheme_color($item);
+				@if $item != white {
+					color: $color-white;
+				}
+				@else {
+					color: $color-text-black;
+					@include upto(medium-screens) {
+						background: transparentize($moss, 0.85);
+					}
 				}
 			}
 		}
@@ -142,6 +174,9 @@ $scheme_colors: (
 				}
 				@else {
 					color: $color-text-black;
+					@include upto(medium-screens) {
+						background: transparentize($moss, 0.85);
+					}
 				}
 			}
 		}

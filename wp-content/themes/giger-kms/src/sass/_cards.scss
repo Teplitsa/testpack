@@ -148,12 +148,17 @@
 
 .card--text {
 	.flex-column-centered {
-		padding: $base*2 0;
+		padding: $base*4;
 		height: 100%;
+		background: transparentize($moss, 0.85);
 
 		@include for(medium-screens) {
 			padding: $base*5 0 $base*5 $base*8;
 			height: 100%;
+		}
+
+		@include for(large-screens) {
+			background: transparent;
 		}
 	}
 
@@ -214,8 +219,8 @@
 
 .card--person {
 	.person-item__thumbnail  { float: none; }
-	.person-item__title,
-	.person-item__role { margin: $base*2 0 0; }
+	.person-item__title { margin: $base*2 0 0; }
+	.person-item__role { margin: 0; }
 
 	.flex-column-centered {
 		padding: $base*5 0 $base*5 $base*5;

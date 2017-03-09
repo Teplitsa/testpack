@@ -27,7 +27,7 @@ $grid_css .=  ' '.tst_get_colors_for_section();
 		<div class="flex-cell--stacked sm-6 md-8 lg-9 card card--linked block-3col label-<?php echo $label_order1;?>">
 			<?php tst_card_linked((int)$el1, array('size' => 'block-3col')) ;?>
 		</div>
-		<div class="flex-cell--stacked sm-6 lg-3 card card--person">
+		<div class="flex-cell--stacked sm-6  md-4 lg-3 card card--person">
 			<div class="flex-column-centered"><?php tst_person_card((int)$person);?></div>
 		</div>
 	</div>

@@ -8,7 +8,7 @@ function tst_thumbnails_setup() {
 	add_theme_support('post-thumbnails');
 
 	//sizes for landing blocks
-	add_image_size('block-full', 1192, 482, true );
+	//add_image_size('block-full', 1192, 482, true );
 	//add_image_size('block-2col', 596, 482, true );
 	//add_image_size('block-3col', 894, 482, true );
 	//add_image_size('block-small', 298, 298, true );
@@ -49,28 +49,28 @@ function tst_get_image_place_config($place_id) {
 			'small' 	=> array('size' => 'small-square', 'css' => 'aspect-100'),
 			'medium' 	=> array('size' => 'small-square', 'css' => 'aspect-100'),
 			'large' 	=> array('size' => 'small-square', 'css' => 'aspect-100'),
-			'base'	 	=> array('size' => 'small-square', 'css' => 'crop-fixed'),
+			'base'	 	=> array('size' => 'small-square', 'css' => ''),
 		),
 		'block-2col' => array(
 			'mobile' 	=> array('size' => 'mobile-common', 'css' => 'aspect-62'),
 			'small' 	=> array('size' => 'small-long', 'css' => 'aspect-54'),
 			'medium' 	=> array('size' => '3col', 'css' => 'aspect-54'),
-			'large' 	=> array('size' => '2col', 'css' => 'aspect-81'),
-			'base'	 	=> array('size' => '2col', 'css' => 'crop-fixed'),
+			'large' 	=> array('size' => '2col', 'css' => 'cover-482'),
+			'base'	 	=> array('size' => '2col', 'css' => ''),
 		),
 		'block-3col' => array(
 			'mobile' 	=> array('size' => 'mobile-common', 'css' => 'aspect-62'),
 			'small' 	=> array('size' => 'small-long', 'css' => 'aspect-54'),
 			'medium' 	=> array('size' => '3col', 'css' => 'aspect-54'),
-			'large' 	=> array('size' => '3col', 'css' => 'aspect-54'),
-			'base'	 	=> array('size' => 'small-long', 'css' => 'crop-fixed'),
+			'large' 	=> array('size' => '3col', 'css' => 'cover-482'),
+			'base'	 	=> array('size' => 'small-long', 'css' => ''),
 		),
 		'block-4col' => array(
 			'mobile' 	=> array('size' => 'mobile-common', 'css' => 'aspect-62'),
 			'small' 	=> array('size' => 'small-long', 'css' => 'aspect-54'),
 			'medium' 	=> array('size' => '3col', 'css' => 'aspect-54'),
 			'large' 	=> array('size' => '4col', 'css' => 'aspect-40'),
-			'base'	 	=> array('size' => 'small-long', 'css' => 'crop-fixed'),
+			'base'	 	=> array('size' => 'small-long', 'css' => ''),
 		)
 	);
 
