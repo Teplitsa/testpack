@@ -25,7 +25,7 @@ get_header();?>
             <h1 class="landing-header__title"><?php echo get_the_title($post);?></h1>
             <div class="landing-header__tagline"><?php echo apply_filters('tst_the_title', get_post_meta($post->ID, 'landing_excerpt', true));?></div>
             <div class="landing-header__links">
-                <a href="<?php echo tst_current_url().'about/';?>" class="local-scroll"><?php _e('Get details', 'tst');?></a>
+                <a href="<?php echo tst_current_url().'about/';?>"><?php _e('Get details', 'tst');?></a>
                 <a href="#marker-submit-form-wrapper" class="local-scroll"><?php _e('Submit a problem!', 'tst');?></a>
             </div>
         </div>
