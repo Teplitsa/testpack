@@ -63,9 +63,9 @@ $pollen:        #d7db54; //light olive
 $color-text:   #222222;
 $color-white:  #ffffff;
 
-$color-link-one:   $loam; //orange
-$color-link-two:   $leaf; //olive
-$color-link-three: $pollen; //light olive
+$color-link-one:   #EE8C08; //orange
+$color-link-two:   #B5BF01 ; //olive adopted for text
+$color-link-three: $grass; //light olive
 $color-link-four:  $wetsoil; //dark green-grey
 
 $color-text-black:		#222222;
@@ -627,7 +627,7 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	overflow: hidden;
 	text-overflow: fade(10px);
 	@include post-title(cards_regular);
-	
+
 	@include for(small-screens) {
 		padding: $base*3;
 	}
@@ -641,7 +641,7 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	width: $card_base_w;
 	height: auto;
 	min-height: auto;
-	
+
 	@include for(small-screens) {
 		min-height: $card_base_h - $card_base_w;
 	}

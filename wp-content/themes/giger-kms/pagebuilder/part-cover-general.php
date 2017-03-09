@@ -26,8 +26,8 @@ if($cover_img){
 		<h1 class="landing-header__title"><?php echo get_the_title($qo);?></h1>
 		<div class="landing-header__tagline"><?php echo apply_filters('tst_the_title', get_post_meta($qo->ID, 'landing_excerpt', true));?></div>
 		<div class="landing-header__links">
-			<a href="<?php echo $about_url;?>"><?php _e('Get details', 'tst');?></a>
-			<a href="#help-block" class="local-scroll"><?php _e('Join us', 'tst');?></a>
+			<a href="<?php echo $about_url;?>" class="text-link"><?php _e('Get details', 'tst');?></a>
+			<a href="#help-block" class="local-scroll button-link"><?php _e('Join us', 'tst');?></a>
 		</div>
 	</div>
 
