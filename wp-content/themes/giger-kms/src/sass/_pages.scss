@@ -32,11 +32,11 @@
 /* *Single Person* */
 .single-person {
     margin-top: $base*2;
-    
+
     .single-person-item {
-        
+
         .back_to_list {
-            
+
             &:before {
                 content: "\2190";
                 display: inline-block;
@@ -44,33 +44,33 @@
                 font-weight: bold;
                 margin-right: 10px;
             }
-            
+
             &:after {
                 display: block;
                 margin-bottom: $base;
                 content: "";
             }
         }
-        
+
         .single-person-item__thumbnail {
             float: right;
             margin: $base*3;
         }
-        
+
         .single-person-item__title{
             @include post-title(cards_text);
         }
-        
+
         .single-person-item__role {
             @include nav-text(cta_link);
             margin-bottom: $base*3;
         }
-        
+
     }
-    
+
 }
 .back_to_list {
-    
+
 }
 
 blockquote {
@@ -85,16 +85,16 @@ blockquote {
 /* Search Page */
 .search {
     padding-bottom: 0;
-    
+
     .search__regular {
         margin-bottom: $inpage-margin-base;
-        
+
         .searchform__field {
             padding-left: $inpage-margin-base;
         }
-        
+
     }
-    
+
     .search__meta {
         @include body-text(meta);
     	color: $leaf;
@@ -103,27 +103,25 @@ blockquote {
     .search__hint {
         @include body-text(reading);
     }
-    
+
     .card__summary {
         margin-top: $inpage-margin-base;
         @include body-text(reading);
         margin-bottom: $element-margin-base;
     }
-    
+
     .card__meta {
         color: $leaf;
-        float: left;
-        margin-right: $base;
     }
-    
+
     .layout-section__item {
         margin-bottom: $inpage-baseline;
     }
-    
+
     a:hover {
         cursor: pointer;
     }
-    
+
     .search-block__title {
     	@include post-title(cover);
     	padding: $base*6 0 $base*5;
@@ -134,12 +132,16 @@ blockquote {
     		padding-top: $base*9;
     	}
     }
-
-}
-.search-results,
-.search-no-results {
-    .site-content {
-        padding-bottom: 0;
-    }
 }
 
+
+/**  Sections */
+.landing-header--section {
+	@include for(small-screens) {
+		margin-bottom: $base*6;
+	}
+
+	@include for(medium-screens) {
+		margin-bottom: $base*10;
+	}
+}

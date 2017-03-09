@@ -64,7 +64,14 @@ pre {
 	@include for(medium-screens) {
 		padding-bottom: $base*10;
 	}
+
+	body.tax-section &,
+	body.search &,
+	body.single & {
+		padding: 0;
+	}
 }
+
 
 .widget {
 	margin-bottom: $gut;

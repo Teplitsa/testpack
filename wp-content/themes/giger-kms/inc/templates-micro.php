@@ -3,6 +3,7 @@
  * Micro elements
  **/
 
+/* Picture with label */
 function tst_card_linked($cpost, $args = array()) {
 
 	if(is_int($cpost))
@@ -18,28 +19,10 @@ function tst_card_linked($cpost, $args = array()) {
 	$desc = '';
 
 	if($args['show_desc']) {
-
-		if($cpost->post_type == 'project') {
-			$desc = get_post_meta($cpost->ID, 'subtitle_meta', true);
-		}
-		elseif($cpost->post_type == 'landing') {
-			$desc = get_post_meta($cpost->ID, 'landing_excerpt', true);
-		}
-
-		if(empty($desc)){
-			$desc = tst_get_post_excerpt($cpost, 10, true);
-		}
+		$desc = tst_get_post_excerpt($cpost, 10, true);
 	}
 
-
-
-	$meta = '';
-	if($cpost->post_type == 'post'){
-		$meta = get_the_date('d.m.Y', $cpost);
-	}
-	elseif($cpost->post_type == 'event') {
-		$meta = tst_event_card_meta($cpost);
-	}
+	$meta = tst_get_post_meta($cpost);
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
 	<div class="card__thumbnail">
@@ -61,7 +44,7 @@ function tst_card_linked($cpost, $args = array()) {
 <?php
 }
 
-
+/* Colored panel **/
 function tst_card_colored($cpost) {
 
 	if(is_int($cpost))
@@ -79,7 +62,7 @@ function tst_card_colored($cpost) {
 	else {
 		$pl = get_permalink($cpost);
 		$title = get_the_title($cpost);
-		$summary = $cpost->post_excerpt;
+		$summary = tst_get_post_excerpt($cpost, 20);
 	}
 
 ?>
@@ -103,7 +86,7 @@ function tst_card_colored($cpost) {
 <?php
 }
 
-//tst_event_card_meta($cpost)
+/* Title with text and link  */
 function tst_card_text($cpost) {
 
 	if(is_int($cpost))
@@ -111,22 +94,23 @@ function tst_card_text($cpost) {
 
 	$args = array();
 
+	//link
 	$args['action_url'] = get_permalink($cpost);
-
 	$args['action_text'] = get_post_meta($cpost->ID, 'action_text', true);
-	//add to calendar for events
 	if(empty($args['action_text']))
 		$args['action_text'] = __('Details', 'tst');
 
+	//title
 	$args['title'] = get_the_title($cpost);
+	$args['subtitle'] = tst_get_post_meta($cpost);
 
-	$args['subtitle'] = ($cpost->post_type == 'event') ? tst_event_card_meta($cpost) : apply_filters('tst_the_title', get_post_meta($cpost->ID, 'subtitle_meta', true));
-
-	$args['summary'] = (!empty($cpost->post_excerpt)) ? apply_filters('tst_the_content', $cpost->post_excerpt) : '';
+	//text
+	$args['summary'] = tst_get_post_excerpt($cpost, 20);
 
 	tst_card_text_markup($args);
 }
 
+/* Markup helper for text card */
 function tst_card_text_markup($args = array()) {
 
 	$defaults = array(
@@ -161,15 +145,15 @@ function tst_card_text_markup($args = array()) {
 }
 
 
-/** by type **/
+/** == Cards by context type == **/
+
+/* News in news block */
 function tst_news_card($cpost, $mod = 'pictured') {
 
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
 
 	$pl = get_permalink($cpost);
-
-	$meta = ($cpost->post_type == 'event') ? tst_event_card_meta($cpost) : get_the_date('d.m.Y', $cpost);
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
 	<?php if($mod == 'pictured' && has_post_thumbnail($cpost)) { ?>
@@ -179,18 +163,19 @@ function tst_news_card($cpost, $mod = 'pictured') {
 	<?php } ?>
 
 	<div class="card__title">
-		<h4><?php echo apply_filters('tst_the_title', get_the_title($cpost));?></h4>
+		<h4><?php echo get_the_title($cpost);?></h4>
 	</div>
 
 	<div class="card__summary">
 		<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost, 20)); ?>
 	</div>
 
-	<div class="card__meta"><?php echo $meta; ?></div>
+	<div class="card__meta"><?php echo tst_get_post_meta($cpost); ?></div>
 </a>
 <?php
 }
 
+/* News in sidebars */
 function tst_news_apart_card($cpost) {
 
 	if(is_int($cpost))
@@ -205,21 +190,21 @@ function tst_news_apart_card($cpost) {
 
 	<div class="card__label">
 		<div class="card__title">
-			<h4><?php echo apply_filters('tst_the_title', get_the_title($cpost));?></h4>
+			<h4><?php echo get_the_title($cpost);?></h4>
 		</div>
 		<div class="card__summary">
 			<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost, 20)); ?>
 		</div>
 
 		<div class="card__meta">
-			<?php echo get_the_date('d.m.Y', $cpost); ?>
+			<?php echo tst_get_post_meta($cpost); ?>
 		</div>
 	</div>
 </a>
 <?php
 }
 
-
+/* Person in list of people */
 function tst_person_card($cpost) {
 
 	if(is_int($cpost))
@@ -240,6 +225,7 @@ function tst_person_card($cpost) {
 <?php
 }
 
+/* Person as single item in card */
 function tst_single_person_card($cpost) {
 
 	if(is_int($cpost))
@@ -267,6 +253,7 @@ function tst_single_person_card($cpost) {
 <?php
 }
 
+/* Square block for sidebars */
 function tst_card_iconic($cpost) {
 
 	if(is_int($cpost))
@@ -303,7 +290,8 @@ function tst_card_iconic($cpost) {
 <?php
 }
 
-/* Card for help section */
+
+/* Card for help section - picture with badge  */
 function tst_linked_help_card($help, $img_id = 0, $args = array()){
 
 	$defaults = array(
@@ -318,7 +306,7 @@ function tst_linked_help_card($help, $img_id = 0, $args = array()){
 	$thumbnail = '';
 
 	if($img_id > 0){
-		$thumbnail = wp_get_attachment_image($img_id, $args['title']);
+		$thumbnail = wp_get_attachment_image($img_id, $args['size']);
 	}
 	else {
 		$thumbnail = get_the_post_thumbnail($help, $args['size']);
@@ -337,6 +325,7 @@ function tst_linked_help_card($help, $img_id = 0, $args = array()){
 <?php
 }
 
+/* Card for help section - colored panel */
 function tst_colored_help_card($help_id) {
 
 	$pl = get_permalink($help_id); //volunteer url here
@@ -386,7 +375,32 @@ function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 
 	return $e;
 }
-/** short title **/
+
+/** Meta **/
+function tst_get_post_meta($cpost) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+	$meta = '';
+
+	if($cpost->post_type == 'post'){
+		$meta = get_the_date('d.m.Y', $cpost);
+	}
+	elseif($cpost->post_type == 'event') {
+		$meta = tst_event_card_meta($cpost);
+	}
+	elseif($cpost->post_type == 'project') {
+		$meta = get_post_meta($cpost->ID, 'subtitle_meta', true);
+	}
+
+	//page, landing, campaign???
+
+	return $meta;
+}
+
+
+/* short title */
 function tst_get_post_title_excerpt($cpost, $l = 30, $force_l = false){
 
 	if(is_string($cpost))
@@ -398,6 +412,7 @@ function tst_get_post_title_excerpt($cpost, $l = 30, $force_l = false){
 	return $e;
 }
 
+/* tags list */
 function tst_get_tags_list(WP_Post $cpost) {
 
 	$tags = get_the_terms($cpost, 'post_tag');
@@ -413,6 +428,7 @@ function tst_get_tags_list(WP_Post $cpost) {
 	return "<span class='tags-list'>".implode(', ', $list)."</span>";
 }
 
+/* icon for card */
 function tst_get_card_icon($cpost) {
 
 	$icon_id = get_post_meta($cpost->ID, 'icon_id', true);
@@ -431,30 +447,30 @@ function tst_card_search(WP_Post $cpost) {
 	$pl = get_permalink($cpost);
 	$tags = tst_get_tags_list($cpost);
 	$cats = tst_get_search_cats($cpost);
-// var_dump($cpost);
+	$meta = tst_get_post_meta($cpost);
+
+	$s_meta = array();
+	if(!empty($cats))
+		$s_meta[] = $cats;
+
+	if(!empty($meta))
+		$s_meta[] = $meta;
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
 
 	<div class="card__title">
 		<h4><?php echo apply_filters('tst_the_title', tst_get_post_title_excerpt($cpost, 25, true));?></h4>
 	</div>
-	<div class="card__meta">
-		<?php echo get_the_date('d.m.Y', $cpost); ?>
-	</div>
 
-	<?php if(!empty($cats)) { ?>
-		<div class="card-search__meta"><?php echo $cats;?></div>
-	<?php } ?>
+	<div class="card__meta">
+		<?php echo implode(', ', $s_meta); ?>
+	</div>
 
 	<div class="card__summary">
 		<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost, 20)); ?>
 	</div>
-	<div class="card__author">
-
-	 </div>
 
 </a>
-
 <?php
 }
 
@@ -466,7 +482,15 @@ function tst_get_search_cats(WP_Post $cpost) {
 	if(!empty($terms)){ foreach($terms as $t) {
 		$list[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
 	}} else {
-		$list[] = "<a href='".home_url('news')."'>Новости</a>";
+
+		if($cpost->post_type == 'post'){
+			$list[] = "<a href='".home_url('news')."'>".__('News', 'tst')."</a>";
+		}
+		elseif($cpost->post_type == 'event'){
+			$list[] = "<a href='".home_url('item/dront-events/')."'>".__('Events', 'tst')."</a>";
+		}
+
+		//add further logic
 	}
 
 	$out = (!empty($list)) ? "<span class='category'>".implode(',', $list)."</span>" : '';
@@ -542,13 +566,4 @@ function tst_event_card_date(WP_Post $cpost) {
 
     return $event->get_start_date_mark();
 
-}
-
-
-function tst_event_thumbnail_img($post_id, $size = 'post-thumbnail') {
-
-    $event = new TST_Event($post_id);
-    $thumb = $event->post_thumbnail($size);
-
-    return $thumb;
 }

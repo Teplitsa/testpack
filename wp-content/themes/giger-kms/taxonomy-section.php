@@ -23,7 +23,7 @@ get_header();
 			$cover_desc = tst_get_post_excerpt($cover, 10, true);
 		}
 	?>
-		<header class="landing-header">
+		<header class="landing-header landing-header--section">
 			<div class="cover-general__title container">
 				<h1 class="landing-header__title"><?php echo apply_filters( 'single_term_title', $section->name );?></h1>
 				<div class="landing-header__tagline"><?php echo apply_filters('tst_the_title', $section->description);?></div>

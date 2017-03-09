@@ -154,7 +154,7 @@ function tst_custom_content(){
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
-        'show_in_admin_bar'   => false,
+        'show_in_admin_bar'   => true,
         //'query_var'           => true,
         'capability_type'     => 'post',
         'has_archive'         => false,
@@ -379,7 +379,7 @@ function tst_custom_content(){
 	//remove post tags
 	unregister_taxonomy_for_object_type('category', 'post');
     register_taxonomy_for_object_type( 'attachment_tag', 'attachment' );
-    
+
     tst_setup_terms();
 }
 
@@ -647,8 +647,8 @@ function tst_custom_metaboxes() {
     ));
 
 	$project_cmb->add_field(array(
-		'name' 		=> 'Теглайн',
-		'desc'	  	=> 'Теглайн - для отображения в текстовых карточках на лендинге (если применимо)',
+		'name' 		=> 'Подзаголовок',
+		'desc'	  	=> 'Используется в шаблонах карточек и страницы проекта как аналог метаданных',
 		'default' 	=> '',
 		'id'   		=> 'subtitle_meta',
 		'type'		=> 'text'
@@ -731,23 +731,6 @@ function tst_p2p_connection_types() {
     ));
 
 
-	p2p_register_connection_type(array(
-        'name' 	=> 'connected_attachments',
-        'from' 	=> array('landing', 'page', 'project'),
-        'to' 	=> 'attachment',
-		'admin_column' => false,
-		'from_labels' => array(
-			'column_title' => 'Файлы',
-		),
-		'to_labels' => array(
-			'column_title' => 'Связанные страницы',
-		),
-		'admin_box' => array(
-			'show' => 'any',
-			'context' => 'advanced',
-			'can_create_post' => false
-		)
-    ));
 
 	p2p_register_connection_type(array(
         'name' 	=> 'import_attachments',
