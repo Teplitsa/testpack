@@ -578,13 +578,17 @@ function tst_get_legend(array $groups, $title = '', $subtitle = '', $legend_is_f
 
         foreach($groups['parents'] as $parent) {
 
-            $parent_li = "<li class='legend-parent ".(empty($parent['children']) ? 'interactive' : '')." marker-group group-{$parent['term_id']}' data-group-id='{$parent['term_id']}'>"
-                .'<div class="group-title parent '.(get_term_meta($parent['term_id'], 'layer_marker_colors', true)).'">'
+            if(empty($parent['children'])) {
+                continue;
+            }
+
+            $parent_li = "<li class='legend-parent interactive marker-group group-{$parent['term_id']}' data-group-id='{$parent['term_id']}'>"
 //                .tst_get_layer_icon($parent['term_id'])
+                .'<div class="group-title parent '.(get_term_meta($parent['term_id'], 'layer_marker_colors', true)).'">'
                 .apply_filters('tst_the_title', $parent['name'])
                 .'</div>';
 
-            if( !empty($parent['children']) ) {
+//            if( !empty($parent['children']) ) {
 
                 $child_list = array();
                 foreach($parent['children'] as $child) {
@@ -596,7 +600,7 @@ function tst_get_legend(array $groups, $title = '', $subtitle = '', $legend_is_f
 
                 $parent_li .= "<ul class='children-groups-list'>".implode('', $child_list)."</ul>";
 
-            }
+//            }
 
             $list[] = $parent_li.'</li>';
 
