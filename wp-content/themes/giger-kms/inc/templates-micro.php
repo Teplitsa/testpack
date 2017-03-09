@@ -26,7 +26,7 @@ function tst_card_linked($cpost, $args = array()) {
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
 	<div class="card__thumbnail">
-		<?php echo get_the_post_thumbnail($cpost, $args['size']); ?>
+		<?php echo tst_get_the_post_thumbnail($cpost, $args['size']); ?>
 	</div>
 
 	<div class="card__label">

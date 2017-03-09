@@ -15,9 +15,9 @@ class TST_Media {
 	private function __construct() {
 
 		if(defined('TST_DEVMODE') && TST_DEVMODE){
-			add_action('tst_before_get_post_thumbnail',  array($this, 'localize_thumbnail'), 2, 2);
-			add_action('tst_before_display_attachment',  array($this, 'localize_attachment'), 2);
-			add_filter('tst_entry_the_content', array($this, 'localize_images_in_content'), 15);
+			//add_action('tst_before_get_post_thumbnail',  array($this, 'localize_thumbnail'), 2, 2);
+			add_action('tst_before_display_attachment',  array($this, 'regenerate_attachment'), 2, 2);
+			//add_filter('tst_entry_the_content', array($this, 'localize_images_in_content'), 15);
 		}
 	}
 
@@ -95,6 +95,13 @@ class TST_Media {
 		}
 		else {
 			//just regenerate thumbnails
+			$this->regenerate_thumbnails($attachment_id);
+		}
+	}
+
+	public function regenerate_attachment($attachment_id, $test_size){
+
+		if(!$this->_is_thumbnail_registered($attachment_id, $test_size )){
 			$this->regenerate_thumbnails($attachment_id);
 		}
 	}
@@ -440,13 +447,13 @@ class TST_Media {
 		if ( !file_exists( $path ) ) {
 			return $attachment_id;
 		}
-		
+
 		$filename = basename( $path );
 		$filename_no_ext = pathinfo( $path, PATHINFO_FILENAME );
 		$extension = pathinfo( $path, PATHINFO_EXTENSION );
-		
+
 		$mime_type = mime_content_type( $path );
-		
+
 		$tmp_dir = get_temp_dir() . 'tst_dront';
 		if( !is_dir( $tmp_dir ) ) {
 		    mkdir( $tmp_dir, 0777, true );
@@ -454,7 +461,7 @@ class TST_Media {
 		$tmp_path = $tmp_dir . '/' . $filename;
 		copy( $path, $tmp_path );
 // 		printf( "tmp_path=%s\n", $tmp_path );
-		
+
 		$fake_FILE = array(
 			'name' => $filename,
 			'type' => $mime_type,
@@ -462,16 +469,16 @@ class TST_Media {
 			#'error' => UPLOAD_ERR_OK,
 			'size' => filesize( $tmp_path ),
 		);
-		
+
 		$_FILES['file'] = $fake_FILE;
 // 		print_r( $_FILES['file'] ); echo "\n";
-		
+
 		$result = wp_handle_upload( $_FILES['file'], array( 'test_form' => false, 'action' => 'local' ) );
-		
+
 // 		print_r( $result ); echo "\n";
-		
+
 		unset( $_FILES[basename($tmp_path)] );
-		
+
 		if( empty( $result['error'] ) ) {
 			$args = array(
 				'post_title' => $filename_no_ext,
@@ -481,7 +488,7 @@ class TST_Media {
 				'post_mime_type' => $result['type'],
 			);
 			$attachment_id = wp_insert_attachment( $args, $result['file'] );
-			
+
 			if( is_wp_error( $attachment_id ) ) {
 			    $attachment_id = false;
 			}
@@ -493,7 +500,7 @@ class TST_Media {
 		else {
 		    print_r( $result ); echo "\n";
 		}
-		
+
 		return $attachment_id;
 	}
 

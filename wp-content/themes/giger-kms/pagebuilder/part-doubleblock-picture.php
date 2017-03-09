@@ -22,7 +22,17 @@ $args['action_text'] = wds_page_builder_get_this_part_data($prefix.'link_text');
 $el2 = wds_page_builder_get_this_part_data($prefix.'element2_post');
 $args['action_url'] = get_permalink($el2);
 
+if(empty($args['title']))
+	$args['title'] = get_the_title((int)$el2);
 
+if(empty($args['subtitle']))
+	$args['subtitle'] =  tst_get_post_meta((int)$el2);
+
+if(empty($args['summary']))
+	$args['summary'] =  tst_get_post_excerpt((int)$el2, 15);
+
+if(empty($args['action_text']))
+	$args['action_text'] = __('Details', 'tst');
 
 //corrections for grid class
 $grid_css = ($picture_position == 'right') ? ' row-reverse' : '';

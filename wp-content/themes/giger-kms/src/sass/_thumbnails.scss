@@ -1,0 +1,77 @@
+/** == Thumbnails (_thumbnails.scss) == **/
+
+.tst-picture.crop-fixed {
+
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 50%; //default
+	overflow: hidden;
+
+	.tst-picture__frame {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+	.tst-picture__noimage {
+		width: 100%;
+		height: 100%;
+		//may be some decoration
+	}
+
+	&.mobile-aspect-62 {
+		@include upto(small-screens) {
+			padding-bottom: 62.5%;
+		}
+	}
+
+	&.small-aspect-54{
+		@include for(small-screens) {
+			padding-bottom: 53.72%;
+		}
+	}
+
+	&.medium-aspect-54 {
+		@include for(medium-screens) {
+			padding-bottom: 53.92%;
+		}
+	}
+
+	&.large-aspect-81 {
+		@include for(large-screens) {
+			padding-bottom: 80.87%;
+		}
+	}
+
+
+
+	//temp
+	img {
+		position: absolute;
+		left:-10000%; right: -10000%;
+		top: -10000%; bottom: -10000%;
+		margin: auto auto;
+		min-width: 1000%;
+		min-height: 1000%;
+		-webkit-transform:scale(0.1);
+		transform: scale(0.1);
+	}
+}
+
+
+
+
+.no-js .lazyload {
+	display: none;
+}
+
+.lazyload,
+.lazyloading {
+    opacity: 0;
+}
+
+.lazyloaded {
+    opacity: 1;
+	@include transition(opacity 0.3s);
+}
