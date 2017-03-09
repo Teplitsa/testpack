@@ -104,7 +104,7 @@ function tst_markers_map_output($atts){
                 'parent' => $group->term_id,
                 'exclude' => $groups_excluded_ids,
                 'orderby' => 'name',
-                'hide_empty' => false, /** @todo Make it true (or just remove) when debug is over */
+//                'hide_empty' => false, /** @todo Make it true (or just remove) when debug is over */
             ));
 
             if($group_children) {
