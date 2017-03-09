@@ -58,7 +58,7 @@ function tst_markers_map_output($atts){
 
         $parent_groups = get_terms(array(
             'taxonomy' => 'marker_cat',
-            'hide_empty' => false,
+//            'hide_empty' => false,
             'exclude' => $groups_excluded_ids,
             'parent' => 0,
         ));
@@ -73,7 +73,7 @@ function tst_markers_map_output($atts){
 
             $child_groups = get_terms(array(
                 'taxonomy' => 'marker_cat',
-                'hide_empty' => false,
+//                'hide_empty' => false,
                 'exclude' => $groups_excluded_ids,
                 'parent' => $group->term_id,
                 'orderby' => 'name',

@@ -49,6 +49,8 @@ try {
 
     $objects_group_id = 0;
     $problems_group_id = 0;
+    $solved_group_id = 0;
+    $total_special_groups_inserted = 0;
     foreach($special_marker_groups as $group) {
 
         $group_in_db = get_term_by('name', $group['name'], 'marker_cat');
@@ -58,16 +60,54 @@ try {
             update_term_meta($group_in_db['term_id'], 'layer_marker_icon', $group['layer_marker_icon']);
             update_term_meta($group_in_db['term_id'], 'layer_marker_colors', $group['layer_marker_colors']);
 
+            $total_special_groups_inserted++;
+
             if($group['name'] == 'Объекты') {
                 $objects_group_id = $group_in_db['term_id'];
             } elseif($group['name'] == 'Проблемы') {
                 $problems_group_id = $group_in_db['term_id'];
+            } elseif($group['name'] == 'Решенные проблемы') {
+                $solved_group_id = $group_in_db['term_id'];
             }
 
-        } elseif( !get_term_meta($group_in_db->term_id, 'layer_marker_icon', true) ) {
-            update_term_meta($group_in_db->term_id, 'layer_marker_icon', $group['layer_marker_icon']);
+        } else {
+
+            $object_group_id = get_term_by('name', 'Объекты', 'marker_cat')->term_id;
+            $problems_group_id = get_term_by('name', 'Проблемы', 'marker_cat')->term_id;
+            $solved_group_id = get_term_by('name', 'Решенные проблемы', 'marker_cat')->term_id;
+
+            if( !get_term_meta($group_in_db->term_id, 'layer_marker_icon', true) ) {
+
+                update_term_meta($group_in_db->term_id, 'layer_marker_icon', $group['layer_marker_icon']);
+                update_term_meta($group_in_db->term_id, 'layer_marker_colors', $group['layer_marker_colors']);
+
+            }
         }
-        // Update marker parent groups' colors?
+
+    }
+    printf("Special marker groups processed (%s groups inserted)\n", $total_special_groups_inserted);
+
+    // A small helper
+    function tst_insert_solved_term_id_needed($group_name, $solved_group_id, $group_icon) {
+
+        $solved_term = get_terms(array(
+            'taxonomy' => 'marker_cat',
+            'hide_empty' => false,
+            'name' => $group_name,
+            'parent' => $solved_group_id,
+        ));
+
+        if( !$solved_term ) {
+
+            $solved_term = wp_insert_term($group_name, 'marker_cat', array('parent' => $solved_group_id,));
+            $solved_term_id = $solved_term['term_id'];
+
+            update_term_meta($solved_term_id, 'layer_marker_icon', $group_icon);
+            update_term_meta($solved_term_id, 'layer_marker_colors', 'green');
+
+            printf("%s - solved group term inserted\n", $group_name);
+
+        }
 
     }
 
@@ -97,6 +137,8 @@ try {
                 $term = wp_insert_term($group->name, 'marker_cat');
                 $term = $term['term_id'];
 
+                printf("%s - group term inserted\n", $group->name);
+
             } else {
 
                 $term = reset($term);
@@ -104,43 +146,84 @@ try {
 
             }
 
-            if( !get_term_meta($term, 'layer_marker_icon', true) ) {
-                switch($group->name) {
-                    case 'Проблемные проекты':
+            switch($group->name) {
+                case 'Проблемные проекты':
+                    if( !get_term_meta($term, 'layer_marker_icon', true) ) {
+
                         update_term_meta($term, 'layer_marker_icon', 'business');
                         update_term_meta($term, 'layer_marker_colors', 'red');
                         wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Свалки':
+
+                        printf("%s - group term updated\n", $group->name);
+
+                    }
+
+                    tst_insert_solved_term_id_needed($group->name, $solved_group_id, 'business');
+                    break;
+                case 'Свалки':
+                    if( !get_term_meta($term, 'layer_marker_icon', true) ) {
+
                         update_term_meta($term, 'layer_marker_icon', 'delete_sweep');
                         update_term_meta($term, 'layer_marker_colors', 'dark-pink');
                         wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Вырубка зеленых насаждений':
+
+                        printf("%s - group term updated\n", $group->name);
+
+                    }
+
+                    tst_insert_solved_term_id_needed($group->name, $solved_group_id, 'delete_sweep');
+                    break;
+                case 'Вырубка зеленых насаждений':
+                    if( !get_term_meta($term, 'layer_marker_icon', true) ) {
+
                         update_term_meta($term, 'layer_marker_icon', 'nature');
-                        update_term_meta($term, 'layer_marker_colors', 'green');
+                        update_term_meta($term, 'layer_marker_colors', 'dark-pink');
                         wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                        break;
-                    case 'Пункты приема вторсырья':
+
+                        printf("%s - group term updated\n", $group->name);
+
+                    }
+
+                    tst_insert_solved_term_id_needed($group->name, $solved_group_id, 'nature');
+                    break;
+                case 'Пункты приема вторсырья':
+                    if( !get_term_meta($term, 'layer_marker_icon', true) ) {
+
                         update_term_meta($term, 'layer_marker_icon', 'autorenew');
                         update_term_meta($term, 'layer_marker_colors', 'green');
                         wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
-                        break;
-                    case 'Экологические организации и ведомства':
+
+                        printf("%s - group term updated\n", $group->name);
+
+                    }
+                    break;
+                case 'Экологические организации и ведомства':
+                    if( !get_term_meta($term, 'layer_marker_icon', true) ) {
+
                         update_term_meta($term, 'layer_marker_icon', 'business_center');
                         update_term_meta($term, 'layer_marker_colors', 'grey-green');
                         wp_update_term($term, 'marker_cat', array('parent' => $objects_group_id));
-                        break;
 
-                    case 'Другие проблемы':
-                    default:
+                        printf("%s - group term updated\n", $group->name);
+
+                    }
+                    break;
+
+                case 'Другие проблемы':
+                default:
+                    if( !get_term_meta($term, 'layer_marker_icon', true) ) {
+
                         update_term_meta($term, 'layer_marker_icon', 'help');
                         update_term_meta($term, 'layer_marker_colors', 'grey-green');
                         wp_update_term($term, 'marker_cat', array('parent' => $problems_group_id));
-                }
-            }
 
-            // Update marker groups' colors here..
+                        printf("%s - group term updated\n", $group->name);
+
+
+                    }
+
+                    tst_insert_solved_term_id_needed($group->name, $solved_group_id, 'help');
+            }
 
             foreach($group->items as $marker_index => $marker) {
 
@@ -154,15 +237,15 @@ try {
 
                         $marker_post_id = reset($already_inserted)->ID;
                         wp_set_object_terms($marker_post_id, array($term), 'marker_cat');
-                        break 2;
+                        break;
 
                     }
-                    
+
                     $marker_title = str_replace(
-                            array("'",),
-                            array('"',),
-                            html_entity_decode($marker->name, ENT_COMPAT, 'UTF-8')
-                        );
+                        array("'",),
+                        array('"',),
+                        html_entity_decode($marker->name, ENT_COMPAT, 'UTF-8')
+                    );
                     $market_post_name = sanitize_title( $marker_title );
 
                     $marker_post_id = wp_insert_post(array(
