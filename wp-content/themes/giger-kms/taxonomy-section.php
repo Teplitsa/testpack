@@ -131,7 +131,7 @@ get_header();
 			?>
 				<div class="singleblock-picture section-row-3"><div class="scheme-color-1-ground">
 					<div class="card card--linked block-full label-left_top ">
-						<?php tst_card_linked($row_3_data[0], array('size' => 'block-full')) ;?>
+						<?php tst_card_linked($row_3_data[0], array('size' => 'block-4col')) ;?>
 					</div>
 				</div></div>
 			<?php
@@ -203,7 +203,7 @@ get_header();
 						<?php tst_colored_help_card($volunteer) ;?>
 					</div>
 					<div class="flex-cell--stacked sm-6 lg-3 card card--item">
-						<?php tst_linked_help_card($corporate, 0, array('size' => 'block-small', 'title' => __('Corporate help', 'tst'), 'button' => __('Become partner', 'tst'))) ;?>
+						<?php tst_linked_help_card($corporate, 0, array('size' => 'block-1col', 'title' => __('Corporate help', 'tst'), 'button' => __('Become partner', 'tst'))) ;?>
 					</div>
 				</div>
 			</div>

@@ -158,7 +158,7 @@ function tst_news_card($cpost, $mod = 'pictured') {
 <a href="<?php echo $pl;?>" class="card-link">
 	<?php if($mod == 'pictured' && has_post_thumbnail($cpost)) { ?>
 		<div class="card__thumbnail">
-			<?php echo get_the_post_thumbnail($cpost, "block-small"); ?>
+			<?php echo tst_get_the_post_thumbnail($cpost, "block-1col"); ?>
 		</div>
 	<?php } ?>
 
@@ -175,6 +175,7 @@ function tst_news_card($cpost, $mod = 'pictured') {
 <?php
 }
 
+
 /* News in sidebars */
 function tst_news_apart_card($cpost) {
 
@@ -185,7 +186,7 @@ function tst_news_apart_card($cpost) {
 ?>
 <a href="<?php echo $pl;?>" class="card-link card--news-apart">
 	<div class="card__thumbnail">
-		<?php echo get_the_post_thumbnail($cpost, "block-small"); ?>
+		<?php echo tst_get_the_post_thumbnail($cpost, "block-1col"); ?>
 	</div>
 
 	<div class="card__label">
@@ -306,10 +307,10 @@ function tst_linked_help_card($help, $img_id = 0, $args = array()){
 	$thumbnail = '';
 
 	if($img_id > 0){
-		$thumbnail = wp_get_attachment_image($img_id, $args['size']);
+		$thumbnail = tst_get_picture_markup($img_id, $args['size']);
 	}
 	else {
-		$thumbnail = get_the_post_thumbnail($help, $args['size']);
+		$thumbnail = tst_get_the_post_thumbnail($help, $args['size']);
 	}
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
@@ -324,6 +325,7 @@ function tst_linked_help_card($help, $img_id = 0, $args = array()){
 </a>
 <?php
 }
+
 
 /* Card for help section - colored panel */
 function tst_colored_help_card($help_id) {

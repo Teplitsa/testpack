@@ -20,6 +20,7 @@
 		//may be some decoration
 	}
 
+	//aspects
 	&.mobile-aspect-62 {
 		@include upto(small-screens) {
 			padding-bottom: 62.5%;
@@ -38,16 +39,45 @@
 		}
 	}
 
+	&.large-aspect-54 {
+		@include for(large-screens) {
+			padding-bottom: 53.92%;
+		}
+	}
+
+	&.small-aspect-100{
+		@include for(small-screens) {
+			padding-bottom: 100%;
+		}
+	}
+
+	&.medium-aspect-100 {
+		@include for(medium-screens) {
+			padding-bottom: 100%;
+		}
+	}
+
+	&.large-aspect-100 {
+		@include for(large-screens) {
+			padding-bottom: 100%;
+		}
+	}
+
 	&.large-aspect-81 {
 		@include for(large-screens) {
 			padding-bottom: 80.87%;
 		}
 	}
 
+	&.large-aspect-40 {
+		@include for(large-screens) {
+			padding-bottom: 40.43%;
+		}
+	}
+	//aspects end
 
-
-	//temp
-	img {
+	//cover
+	/*img {
 		position: absolute;
 		left:-10000%; right: -10000%;
 		top: -10000%; bottom: -10000%;
@@ -56,6 +86,10 @@
 		min-height: 1000%;
 		-webkit-transform:scale(0.1);
 		transform: scale(0.1);
+	}*/
+	img {
+		width: 100%;
+		height: auto;
 	}
 }
 

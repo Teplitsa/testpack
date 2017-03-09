@@ -33,7 +33,7 @@ $grid_css =  tst_get_colors_for_section();
 				<?php tst_colored_help_card($volunteer) ;?>
 			</div>
 			<div class="flex-cell--stacked sm-6 lg-3 card card--item">
-				<?php tst_linked_help_card($corporate, (int)$img2, array('size' => 'block-small', 'title' => __('Corporate help', 'tst'), 'button' => __('Become partner', 'tst'))) ;?>
+				<?php tst_linked_help_card($corporate, (int)$img2, array('size' => 'block-1col', 'title' => __('Corporate help', 'tst'), 'button' => __('Become partner', 'tst'))) ;?>
 			</div>
 		</div>
 	</div>

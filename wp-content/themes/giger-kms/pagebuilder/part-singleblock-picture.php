@@ -15,6 +15,6 @@ $color_css =  tst_get_colors_for_section();
 ?>
 <div class="container <?php echo $color_css;?>">
 	<div class="card card--linked block-full label-<?php echo $label_order;?> ">
-	<?php tst_card_linked((int)$el, array('size' => 'block-full')) ;?>
+	<?php tst_card_linked((int)$el, array('size' => 'block-4col')) ;?>
 	</div>
 </div>

@@ -9,18 +9,19 @@ function tst_thumbnails_setup() {
 
 	//sizes for landing blocks
 	add_image_size('block-full', 1192, 482, true );
-	add_image_size('block-2col', 596, 482, true );
-	add_image_size('block-3col', 894, 482, true );
-	add_image_size('block-small', 298, 298, true );
+	//add_image_size('block-2col', 596, 482, true );
+	//add_image_size('block-3col', 894, 482, true );
+	//add_image_size('block-small', 298, 298, true );
 	add_image_size('block-single', 894, 596, true );
 
 
 	//new sizes
 	add_image_size('mobile-common', 400, 250, true ); //aspect 1.618
 	add_image_size('small-long', 700, 376, true ); //aspect 1.855
-	add_image_size('medium-long', 894, 482, true ); //aspect 1.855
+	add_image_size('small-square', 298, 298, true ); //aspect 1
+	add_image_size('3col', 894, 482, true ); //aspect 1.855 - limit for 3 col pictures
 	add_image_size('2col', 596, 482, true ); // aspect 1.236 - limit for 2 col pictures
-
+	add_image_size('4col', 1192, 482, true ); // aspect 2.473 - limit for 4col pictures
 }
 
 /** Custom image size for medialib **/
@@ -43,12 +44,33 @@ function tst_medialib_custom_image_sizes($sizes) {
 function tst_get_image_place_config($place_id) {
 
 	$config = array(
+		'block-1col' => array(
+			'mobile' 	=> array('size' => 'mobile-common', 'css' => 'aspect-62'),
+			'small' 	=> array('size' => 'small-square', 'css' => 'aspect-100'),
+			'medium' 	=> array('size' => 'small-square', 'css' => 'aspect-100'),
+			'large' 	=> array('size' => 'small-square', 'css' => 'aspect-100'),
+			'base'	 	=> array('size' => 'small-square', 'css' => 'crop-fixed'),
+		),
 		'block-2col' => array(
 			'mobile' 	=> array('size' => 'mobile-common', 'css' => 'aspect-62'),
 			'small' 	=> array('size' => 'small-long', 'css' => 'aspect-54'),
-			'medium' 	=> array('size' => 'medium-long', 'css' => 'aspect-54'),
+			'medium' 	=> array('size' => '3col', 'css' => 'aspect-54'),
 			'large' 	=> array('size' => '2col', 'css' => 'aspect-81'),
 			'base'	 	=> array('size' => '2col', 'css' => 'crop-fixed'),
+		),
+		'block-3col' => array(
+			'mobile' 	=> array('size' => 'mobile-common', 'css' => 'aspect-62'),
+			'small' 	=> array('size' => 'small-long', 'css' => 'aspect-54'),
+			'medium' 	=> array('size' => '3col', 'css' => 'aspect-54'),
+			'large' 	=> array('size' => '3col', 'css' => 'aspect-54'),
+			'base'	 	=> array('size' => 'small-long', 'css' => 'crop-fixed'),
+		),
+		'block-4col' => array(
+			'mobile' 	=> array('size' => 'mobile-common', 'css' => 'aspect-62'),
+			'small' 	=> array('size' => 'small-long', 'css' => 'aspect-54'),
+			'medium' 	=> array('size' => '3col', 'css' => 'aspect-54'),
+			'large' 	=> array('size' => '4col', 'css' => 'aspect-40'),
+			'base'	 	=> array('size' => 'small-long', 'css' => 'crop-fixed'),
 		)
 	);
 
@@ -113,6 +135,7 @@ function tst_get_picture_markup($img_id, $place_id) {
 		}
 	}
 
+	ob_start();
 ?>
 <div class="tst-picture <?php echo implode(' ', $classes);?>"><div class="tst-picture__frame">
 <?php if(!empty($sources)) { ?>
@@ -133,23 +156,21 @@ function tst_get_picture_markup($img_id, $place_id) {
 <?php } ?>
 </div></div>
 <?php
-}
-
-function tst_get_the_post_thumbnail($cpost, $size) {
-
-	$thumbnail_id = get_post_thumbnail_id($cpost); 
-
-	if($thumbnail_id)
-		do_action('tst_before_display_attachment', $thumbnail_id, '2col');
-
-	ob_start();
-
-	tst_get_picture_markup($thumbnail_id, $size);
-
 	$out = ob_get_contents();
 	ob_end_clean();
 
 	return $out;
+}
+
+
+function tst_get_the_post_thumbnail($cpost, $size) {
+
+	$thumbnail_id = get_post_thumbnail_id($cpost);
+
+	if($thumbnail_id)
+		do_action('tst_before_display_attachment', $thumbnail_id, 'small-square');
+
+	return tst_get_picture_markup($thumbnail_id, $size);
 }
 
 
@@ -344,6 +365,3 @@ function tst_get_gallery_images(WP_Post $cpost){
 
 	return $ids;
 }
-
-
-
