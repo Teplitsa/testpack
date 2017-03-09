@@ -93,6 +93,11 @@
 			@include transform(translateX(100%));
 		}
 	}
+
+	.card-link,
+	.card__thumbnail {
+		height: 100%;
+	}
 }
 
 
