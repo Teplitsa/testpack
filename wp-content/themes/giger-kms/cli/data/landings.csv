@@ -14,7 +14,7 @@
 6,Активизм,dront-activist,Наша работа,landing,,activist.txt,,,
 7,Публикации,dront-publications,Наша работа,landing,,publications.txt,,,
 8,Экопроблемы,ecoproblems,Экопроблемы,section archive,,-,"Обложка, плитка проблем, иконки, последние новости, анонсы, публикации, карта выделена или может быть она сразу тут",,
-9,Карта экопомощи,dront-ecomap,Экопроблемы,landing,,dront-ecomap.txt,"Карта, сервис ""сообщить о проблеме"".",,
+9,Карта экопомощи,dront-ecomap,Экопроблемы,landing,Сообщите нам об экологической проблеме в вашем регионе,dront-ecomap.txt,"Карта, сервис ""сообщить о проблеме"".",,
 10,Чебоксарская ГЭС,dront-chebpotop,Экопроблемы,landing,,chebpotop.txt,,,
 11,Нижегородская АЭС,dront-nizhaes,Экопроблемы,landing,,nizhaes.txt,,,
 12,Охрана редких видов,dront-rares,Экопроблемы,landing,,rares.txt,,,
