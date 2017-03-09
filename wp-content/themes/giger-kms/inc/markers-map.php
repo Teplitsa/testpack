@@ -582,7 +582,7 @@ function tst_get_legend(array $groups, $title = '', $subtitle = '', $legend_is_f
                 continue;
             }
 
-            $parent_li = "<li class='legend-parent interactive marker-group group-{$parent['term_id']}' data-group-id='{$parent['term_id']}'>"
+            $parent_li = "<li class='legend-parent marker-group group-{$parent['term_id']}' data-group-id='{$parent['term_id']}'>"
 //                .tst_get_layer_icon($parent['term_id'])
                 .'<div class="group-title parent '.(get_term_meta($parent['term_id'], 'layer_marker_colors', true)).'">'
                 .apply_filters('tst_the_title', $parent['name'])
