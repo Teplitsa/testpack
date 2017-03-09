@@ -258,7 +258,7 @@ function tst_news_loop_pattern($posts) {
 			</div>
 
 			<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
-				<div class="flex-column-centered"><?php tst_card_text($row_2_data[1]); ?></div>
+				<div class="flex-column-centered"><?php tst_card_news_text($row_2_data[1]); ?></div>
 			</div>
 		</div>
 	</div>
@@ -270,7 +270,7 @@ function tst_news_loop_pattern($posts) {
 	<div class="tripleblock-2cardstext loop-pattern-row-3">
 		<div class="flex-grid--stacked row-reverse scheme-color-1-ground scheme-color-2-loam">
 			<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
-				<div class="flex-column-centered"><?php tst_card_text($row_3_data[0]); ?></div>
+				<div class="flex-column-centered"><?php tst_card_news_text($row_3_data[0]); ?></div>
 			</div>
 			<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
 				<?php tst_news_card($row_3_data[1], 'colored'); ?>
@@ -288,7 +288,7 @@ function tst_news_loop_pattern($posts) {
 	<div class="loop-pattern-row-4">
 		<div class="flex-grid--stacked">
 			<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
-				<div class="flex-column-centered"><?php tst_card_text($row_4_data[0]); ?></div>
+				<div class="flex-column-centered"><?php tst_card_news_text($row_4_data[0]); ?></div>
 			</div>
 
 			<?php tst_loop_injected_block();?>

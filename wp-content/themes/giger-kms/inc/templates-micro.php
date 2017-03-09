@@ -144,6 +144,24 @@ function tst_card_text_markup($args = array()) {
 	<?php }
 }
 
+function tst_card_news_text($cpost) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+
+?>
+	<div class="card__meta"><?php echo tst_get_post_meta($cpost);?></div>
+	<div class="card__title card__title--text"><h4><?php echo get_the_title($cpost);?></h4></div>
+
+	<div class="card__summary"><?php echo tst_get_post_excerpt($cpost, 20);?></div>
+
+	<div class="card__action">
+		<a href="<?php echo get_permalink($cpost);?>"><?php _e('Details', 'tst');?>&nbsp;&gt;</a>
+	</div>
+<?php
+}
+
 
 /** == Cards by context type == **/
 
