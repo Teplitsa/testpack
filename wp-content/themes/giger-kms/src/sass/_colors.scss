@@ -3,7 +3,7 @@
 
 $scheme_colors: (
 	wetsoil:	#59705D,
-	moss:		#59705D,
+	moss:		#a6bab7,
 	bark:		#493b29,
 	loam:		#e99c34,
 	grass:	 	#9b9912,
@@ -113,6 +113,20 @@ $scheme_colors: (
 		}
 	}
 
+	.doubleblock-picture {
+		.scheme-color-1-#{$item} {
+			.card--linked .card__label {
+				background: scheme_color($item);
+				@if $item != white {
+					color: $color-white;
+				}
+				@else {
+					color: $color-text-black;
+				}
+			}
+		}
+	}
+
 	.threeforth-picture {
 		.scheme-color-1-#{$item} {
 			.card--colored { background: scheme_color($item); }
@@ -138,7 +152,7 @@ $scheme_colors: (
 			.card--news:nth-of-type(2) { background: scheme_color($item);   }
 		}
 		.scheme-color-2-#{$item} {
-			.card--news:nth-of-type(4) { background: scheme_color($item); } 
+			.card--news:nth-of-type(4) { background: scheme_color($item); }
 		}
 
 		.card--item {

@@ -98,38 +98,42 @@ get_header();
 
 				if(!empty($row_1_data)) {
 			?>
-				<div class="flex-grid--stacked">
-					<div class="flex-cell--stacked sm-12 lg-6 card card--linked block-2col">
-						<?php tst_card_linked($row_1_data[0], array('size' => 'block-2col')) ;?>
-					</div>
-					<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
-						<div class="flex-column-centered"><?php tst_card_text($row_1_data[1]); ?></div>
+				<div class="doubleblock-picture section-row-1">
+					<div class="flex-grid--stacked scheme-color-1-moss">
+						<div class="flex-cell--stacked sm-12 lg-6 card card--linked block-2col">
+							<?php tst_card_linked($row_1_data[0], array('size' => 'block-2col')) ;?>
+						</div>
+						<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
+							<div class="flex-column-centered"><?php tst_card_text($row_1_data[1]); ?></div>
+						</div>
 					</div>
 				</div>
 			<?php
 				}
 				if(!empty($row_2_data)) {
 			?>
-				<div class="flex-grid--stacked row-reverse">
-					<div class="flex-cell--stacked sm-12 lg-6 card card--linked block-2col">
-						<?php tst_card_linked($row_2_data[0], array('size' => 'block-2col')) ;?>
-					</div>
-					<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
-						<?php tst_card_colored($row_2_data[1]) ;?>
-					</div>
-					<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
-						<?php tst_card_colored($row_2_data[2]) ;?>
+				<div class="tripleblock-2cards section-row-2">
+					<div class="flex-grid--stacked row-reverse scheme-color-1-bark scheme-color-2-leaf">
+						<div class="flex-cell--stacked sm-12 lg-6 card card--linked block-2col">
+							<?php tst_card_linked($row_2_data[0], array('size' => 'block-2col')) ;?>
+						</div>
+						<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
+							<?php tst_card_colored($row_2_data[1]) ;?>
+						</div>
+						<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
+							<?php tst_card_colored($row_2_data[2]) ;?>
+						</div>
 					</div>
 				</div>
 			<?php
 				}
 				if(!empty($row_3_data)) {
 			?>
-				<div class="last-row">
+				<div class="singleblock-picture section-row-3"><div class="scheme-color-1-ground">
 					<div class="card card--linked block-full label-left_top ">
 						<?php tst_card_linked($row_3_data[0], array('size' => 'block-full')) ;?>
 					</div>
-				</div>
+				</div></div>
 			<?php
 				}
 

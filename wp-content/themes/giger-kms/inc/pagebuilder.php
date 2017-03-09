@@ -392,6 +392,75 @@ function tst_add_doubleblock_element_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
+
+/** Double block - 2 elements: picture / text **/
+add_filter( 'wds_page_builder_fields_doubleblock-picture', 'tst_add_doubleblock_picture_field' );
+function tst_add_doubleblock_picture_field( $fields ) {
+
+	$prefix = "doubleblock_picture_";
+
+	$new_fields = array(
+		array(
+			'name' 				=> 'Положение картинки',
+			'id' 				=> $prefix.'picture_position',
+			'type' 				=> 'select',
+			'show_option_none'	=> false,
+			'default' 			=> 'left',
+			'options' 			=> array(
+				'left' 	=> 'Слева',
+				'right' => 'Справа',
+			)
+		),
+		array(
+			'name'        		=> 'Элемент 1 - с картинкой',
+			'id'          		=> $prefix.'element1_post',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name'        		=> 'Элемент 2 - текстовый',
+			'id'          		=> $prefix.'element2_post',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name' 		=> 'Заголовок',
+			'desc' 		=> 'Переопределяет значение для текстового элемента',
+			'id'   		=> $prefix.'title',
+			'type'		=> 'text'
+		),
+		array(
+			'name' 		=> 'Подзаголовок',
+			'desc' 		=> 'Переопределяет значение для текстового элемента',
+			'id'   		=> $prefix.'subtitle',
+			'type'		=> 'text'
+		),
+		array(
+			'name' 		=> 'Аннотация',
+			'desc' 		=> 'Переопределяет значение для текстового элемента',
+			'id'   		=> $prefix.'summary',
+			'type'		=> 'textarea_small'
+		),
+		array(
+			'name' 		=> 'Текст ссылки',
+			'desc' 		=> 'Переопределяет значение для текстового элемента',
+			'id'   		=> $prefix.'link_text',
+			'type'		=> 'text'
+		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-labels'
+		)
+	);
+
+	return array_merge( $fields, $new_fields );
+}
+
 /** Triple block - people/panel/panel **/
 add_filter( 'wds_page_builder_fields_tripleblock-people2cards', 'tst_add_tripleblock_people2cards_field' );
 function tst_add_tripleblock_people2cards_field( $fields ) {
