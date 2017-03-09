@@ -254,8 +254,16 @@
 
   }
 
-  .tst-file-upload, .tst-captcha {
+  .tst-file-upload {
     margin-top: $base;
+  }
+
+  .tst-captcha {
+    margin-top: 0.5*$base;
+
+    .frm_primary_label {
+      display: none;
+    }
   }
 
 }
