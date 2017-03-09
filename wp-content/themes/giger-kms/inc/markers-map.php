@@ -58,7 +58,7 @@ function tst_markers_map_output($atts){
 
         $parent_groups = get_terms(array(
             'taxonomy' => 'marker_cat',
-//            'hide_empty' => false,
+            'hide_empty' => false,
             'exclude' => $groups_excluded_ids,
             'parent' => 0,
         ));
@@ -73,7 +73,7 @@ function tst_markers_map_output($atts){
 
             $child_groups = get_terms(array(
                 'taxonomy' => 'marker_cat',
-//                'hide_empty' => false,
+                'hide_empty' => false,
                 'exclude' => $groups_excluded_ids,
                 'parent' => $group->term_id,
                 'orderby' => 'name',
@@ -579,20 +579,18 @@ function tst_get_legend(array $groups, $title = '', $subtitle = '', $legend_is_f
         foreach($groups['parents'] as $parent) {
 
             $parent_li = "<li class='legend-parent ".(empty($parent['children']) ? 'interactive' : '')." marker-group group-{$parent['term_id']}' data-group-id='{$parent['term_id']}'>"
-//                .'<div class="group-title">'
-                .tst_get_layer_icon($parent['term_id'])
-                .apply_filters('tst_the_title', $parent['name']);
-//                .'</div>';
+                .'<div class="group-title parent '.(get_term_meta($parent['term_id'], 'layer_marker_colors', true)).'">'
+//                .tst_get_layer_icon($parent['term_id'])
+                .apply_filters('tst_the_title', $parent['name'])
+                .'</div>';
 
             if( !empty($parent['children']) ) {
 
                 $child_list = array();
                 foreach($parent['children'] as $child) {
                     $child_list[] = "<li class='legend-child interactive marker-group group-{$child['term_id']}' data-group-id='{$child['term_id']}'>"
-//                        .'<div class="group-title">'
                         .tst_get_layer_icon($child['term_id'])
-                        .apply_filters('tst_the_title', $child['name'])
-//                        .'</div>'
+                        .'<div class="group-title child">'.apply_filters('tst_the_title', $child['name']).'</div>'
                         ."</li>";
                 }
 
