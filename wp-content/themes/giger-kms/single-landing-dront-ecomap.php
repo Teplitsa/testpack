@@ -25,7 +25,7 @@ get_header();?>
             <h1 class="landing-header__title"><?php echo get_the_title($post);?></h1>
             <div class="landing-header__tagline"><?php echo apply_filters('tst_the_title', get_post_meta($post->ID, 'landing_excerpt', true));?></div>
             <div class="landing-header__links">
-                <a href="<?php echo tst_current_url().'about/';?>" class="local-scroll"><?php _e('Get details', 'tst');?></a>
+                <a href="<?php echo tst_current_url().'about/';?>"><?php _e('Get details', 'tst');?></a>
                 <a href="#marker-submit-form-wrapper" class="local-scroll"><?php _e('Submit a problem!', 'tst');?></a>
             </div>
         </div>
@@ -53,12 +53,6 @@ get_header();?>
             </div>
         </div>
     </div>
-
-	<div class="single__content"><div class="container">
-		<div class="flex-grid--stacked">
-            <?php echo apply_filters('tst_entry_the_content', get_post_meta($post->ID, 'landing_content', true));?>
-		</div>
-	</div></div><!-- .single__content -->
 
 	<?php
 		$projects = tst_landing_get_connected_projects($post);

@@ -94,7 +94,7 @@ function tst_markers_map_output($atts){
             'include' => $groups_ids,
             'exclude' => $groups_excluded_ids,
 //            'parent' => 0,
-            'hide_empty' => false, /** @todo Make it true (or just remove) when debug is over */
+            'hide_empty' => false,
         ));
 
         foreach($groups_selected as $group) {
@@ -104,7 +104,7 @@ function tst_markers_map_output($atts){
                 'parent' => $group->term_id,
                 'exclude' => $groups_excluded_ids,
                 'orderby' => 'name',
-                'hide_empty' => false, /** @todo Make it true (or just remove) when debug is over */
+//                'hide_empty' => false, /** @todo Make it true (or just remove) when debug is over */
             ));
 
             if($group_children) {
@@ -313,11 +313,38 @@ function tst_markers_map_output($atts){
                 mapFunc.push(function(){
 
                     var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                            id: 'osm',
-                            attribution: 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                        id: 'osm',
+                        attribution: 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                        maxZoom: <?php echo $max_zoom;?>,
+                        minZoom: <?php echo $min_zoom;?>
+                    });
+
+                    var base_layers = {
+                        'Carto "light_all"': L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+                            id: 'carto-light_all',
                             maxZoom: <?php echo $max_zoom;?>,
-                            minZoom: <?php echo $min_zoom;?>
+                            minZoom: <?php echo $min_zoom;?>,
+                            attribution: 'Карта &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
                         }),
+                        'Carto "dark_all"': L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
+                            id: 'carto-dark_all',
+                            maxZoom: <?php echo $max_zoom;?>,
+                            minZoom: <?php echo $min_zoom;?>,
+                            attribution: 'Карта &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
+                        }),
+                        'Carto "light_nolabels"': L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png', {
+                            id: 'carto-light_nolabels',
+                            maxZoom: <?php echo $max_zoom;?>,
+                            minZoom: <?php echo $min_zoom;?>,
+                            attribution: 'Карта &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
+                        }),
+                        'Carto "dark_nolabels"': L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
+                            id: 'carto-dark_nolabels',
+                            maxZoom: <?php echo $max_zoom;?>,
+                            minZoom: <?php echo $min_zoom;?>,
+                            attribution: 'Карта &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
+                        })
+                    },
                         map_id = '<?php echo $map_id;?>';
 
                     var enable_scroll_zoom = '<?php echo strval($enable_scroll_wheel);?>';
@@ -336,8 +363,9 @@ function tst_markers_map_output($atts){
                         maxBounds: bounds,
                         layers: [osm]
                     });
+                    L.control.layers(base_layers).addTo(maps[map_id]);
 
-                    marker_clusters[map_id] = L.markerClusterGroup({maxClusterRadius: 40});
+                    marker_clusters[map_id] = L.markerClusterGroup({maxClusterRadius: 30});
                     $.each(points[map_id], function(group_id, group_markers){ // loop through all marker groups
 
                         marker_group_layers[map_id][group_id] = tst_fill_group_layer(group_markers);
@@ -578,27 +606,29 @@ function tst_get_legend(array $groups, $title = '', $subtitle = '', $legend_is_f
 
         foreach($groups['parents'] as $parent) {
 
-            $parent_li = "<li class='legend-parent ".(empty($parent['children']) ? 'interactive' : '')." marker-group group-{$parent['term_id']}' data-group-id='{$parent['term_id']}'>"
-//                .'<div class="group-title">'
-                .tst_get_layer_icon($parent['term_id'])
-                .apply_filters('tst_the_title', $parent['name']);
-//                .'</div>';
+            if(empty($parent['children'])) {
+                continue;
+            }
 
-            if( !empty($parent['children']) ) {
+            $parent_li = "<li class='legend-parent marker-group group-{$parent['term_id']}' data-group-id='{$parent['term_id']}'>"
+//                .tst_get_layer_icon($parent['term_id'])
+                .'<div class="group-title parent '.(get_term_meta($parent['term_id'], 'layer_marker_colors', true)).'">'
+                .apply_filters('tst_the_title', $parent['name'])
+                .'</div>';
+
+//            if( !empty($parent['children']) ) {
 
                 $child_list = array();
                 foreach($parent['children'] as $child) {
                     $child_list[] = "<li class='legend-child interactive marker-group group-{$child['term_id']}' data-group-id='{$child['term_id']}'>"
-//                        .'<div class="group-title">'
                         .tst_get_layer_icon($child['term_id'])
-                        .apply_filters('tst_the_title', $child['name'])
-//                        .'</div>'
+                        .'<div class="group-title child">'.apply_filters('tst_the_title', $child['name']).'</div>'
                         ."</li>";
                 }
 
                 $parent_li .= "<ul class='children-groups-list'>".implode('', $child_list)."</ul>";
 
-            }
+//            }
 
             $list[] = $parent_li.'</li>';
 

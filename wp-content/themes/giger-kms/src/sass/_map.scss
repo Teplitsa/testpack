@@ -4,34 +4,31 @@
 
 .pw_map-wrap {
   position: relative;
-  //border: 3px solid $moss;
-  //border-radius: 2px;
-  //box-shadow: 2px 2px 3px rgba(200, 200, 200, 0.4);
+
+  .black {
+    color: $ground;
+  }
+  .red {
+    color: darken($color-form-invalid, 10%);
+  }
+  .orange {
+    color: $loam;
+  }
+  .dark-pink {
+    color: lighten($color-form-invalid, 15%);
+  }
+  .sand {
+    color: lighten($loam, 20%);
+  }
+  .green {
+    color: $grass;
+  }
+  .grey-green {
+    color: darken($wetsoil, 0%);
+  }
 
   .material-icons {
     font-size: 30px;
-
-    &.black {
-      color: $ground;
-    }
-    &.red {
-      color: darken($color-form-invalid, 10%);
-    }
-    &.orange {
-      color: $loam;
-    }
-    &.dark-pink {
-      color: lighten($color-form-invalid, 15%);
-    }
-    &.sand {
-      color: lighten($loam, 20%);
-    }
-    &.green {
-      color: $grass;
-    }
-    &.grey-green {
-      color: darken($wetsoil, 0%);
-    }
   }
 
   .pw_map_canvas {
@@ -107,8 +104,10 @@
     padding: 2*$base 4*$base;
   }
 
-  border: 1px solid $grass;
-  border-top: 1px dashed $grass;
+  border-bottom: 1px solid $grass;
+  //border-top: 1px dashed $grass;
+
+
 
   .legend-header {
 
@@ -129,7 +128,6 @@
 
     display: flex;
     flex-wrap: wrap;
-    //justify-content: center;
     align-items: flex-start;
 
     list-style: none;
@@ -151,29 +149,42 @@
 
       margin: 0 $base;
 
-      @include for(exlarge-screens) {
-        &:not(:last-child) {
-          border-right: 1px solid $grass;
-        }
-      }
+      //@include for(exlarge-screens) {
+      //  &:not(:last-child) {
+      //    border-right: 1px solid $grass;
+      //  }
+      //}
 
     }
 
     li.legend-parent {
-      padding: $base $base;
       margin-bottom: 0;
+      flex: 0 1 100%;
+    }
+
+    .group-title.parent {
+      font-size: 16px;
+      font-weight: bold;
+
+      @include upto(large-screens) {
+        margin-top: $base;
+      }
     }
 
     ul.children-groups-list {
       display: flex;
       flex-wrap: wrap;
-      margin-left: 4*$base;
       list-style: none;
+
+      margin-bottom: $base;
     }
 
     li.legend-child {
       flex: 0 1 200px;
-      align-items: flex-start;
+
+      display: flex;
+      align-items: center;
+
       padding: $base $base;
       margin-bottom: 0;
     }
@@ -243,8 +254,16 @@
 
   }
 
-  .tst-file-upload, .tst-captcha {
+  .tst-file-upload {
     margin-top: $base;
+  }
+
+  .tst-captcha {
+    margin-top: 0.5*$base;
+
+    .frm_primary_label {
+      display: none;
+    }
   }
 
 }
