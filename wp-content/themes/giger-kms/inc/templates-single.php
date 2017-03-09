@@ -52,7 +52,7 @@ function tst_single_cta(WP_Post $cpost, $mod = 'pictured') {
 
 	if(empty($page))
 		return;
-		
+
 	$pl = get_permalink($page->ID);
 
 ?>

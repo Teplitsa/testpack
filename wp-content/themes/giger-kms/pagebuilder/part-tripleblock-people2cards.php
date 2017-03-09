@@ -52,7 +52,7 @@ $grid_css .= ' '.tst_get_colors_for_section();
 			<?php tst_card_colored((int)$el1) ;?>
 		</div>
 		<div class="flex-cell--stacked sm-6 lg-3 card card--item">
-			<?php tst_card_linked((int)$el2, array('size' => 'block-small')) ;?>
+			<?php tst_card_linked((int)$el2, array('size' => 'block-1col')) ;?>
 		</div>
 	</div>
 </div>

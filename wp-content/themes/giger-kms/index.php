@@ -4,40 +4,50 @@
  */
 
 $posts = $wp_query->posts;
-$paged = (get_query_var('paged', 0)) ? get_query_var('paged', 0) : 1;
+
 $title = __('News', 'tst');
+$desc = '';
 
 if(is_tag()){
 	$title = '#'.get_queried_object()->name;
+	$desc = apply_filters('tst_the_content', get_queried_object()->description);
+}
+elseif(is_home()) {
+	$news = get_post((int)get_option('page_for_posts'));
+	$desc = ($news && !empty($news->post_excerpt)) ? apply_filters('tst_the_content', $news->post_excerpt) : '';
 }
 
 get_header();
 ?>
-<section class="main"><div class="container-narrow">
+<article class="landing landing--news">
+	<section class="section-intro">
+		<header class="landing-header landing-header--news">
+			<div class="cover-general__title container">
+				<h1 class="landing-header__title"><?php echo apply_filters( 'tst_the_title', $title );?></h1>
+				<?php if(!empty($desc)) { ?>
+					<div class="landing-header__tagline"><?php echo $desc;?></div>
+				<?php } ?>
+			</div>
 
+		</header>
+	</section>
 
-	<?php if(!empty($posts)) { foreach($posts as $i => $cpost) { ?>
-		<div class="layout-section__item layout-section__item--card"><?php tst_cell($cpost);?></div>
-
-	<?php
-		}
-		if ($paged) {
-		?>
-			<div class="nav-links"><?php
-				previous_posts_link('<span class="meta-nav">&larr; Пред. страница</span>');
-				next_posts_link('<span class="meta-nav">След. страница &rarr;</span>');
-			?></div>
+	<!-- main blocks -->
+	<section class="section-loop">
+		<div class="container">
 			<?php
-		}
-		}
-		else {
-			echo "<p>".__('Nothing found under your request', 'tst')."</p>";
-		}
-	?>
+				if(!empty($posts)) {
+					tst_news_loop_page($posts);
 
-
-
-
-</div></section>
-
+					//load more here
+				}
+				else {
+			?>
+				<div class="loop-not-found"><?php _e('Nothing found under your request', 'tst');?></div>
+			<?php
+				}
+			?>
+		</div>
+	</section>
+</article>
 <?php get_footer();

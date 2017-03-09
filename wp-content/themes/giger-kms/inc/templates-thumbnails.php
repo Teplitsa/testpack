@@ -365,3 +365,4 @@ function tst_get_gallery_images(WP_Post $cpost){
 
 	return $ids;
 }
+

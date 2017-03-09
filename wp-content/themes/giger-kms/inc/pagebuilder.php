@@ -268,6 +268,112 @@ function tst_add_tripleblock_2cards_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
+
+/** Tripple block - text/panel/panel **/
+add_filter( 'wds_page_builder_fields_tripleblock-2cardstext', 'tst_add_tripleblock_2cardstext_field' );
+function tst_add_tripleblock_2cardstext_field( $fields ) {
+
+	$prefix = "tripleblock_2cardstext_";
+	$new_fields = array(
+		array(
+			'name' 				=> 'Порядок блоков',
+			'id' 				=> $prefix.'block_order',
+			'type' 				=> 'select',
+			'show_option_none'	=> false,
+			'default' 			=> 'direct',
+			'options' 			=> array(
+				'direct' => 'Прямой',
+				'revers' => 'Обратный'
+			)
+		),
+		array(
+			'name'        		=> 'Элемент - текстовый', //to do for private only
+			'id'          		=> $prefix.'element1_post',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name' 		=> 'Заголовок',
+			'desc' 		=> 'Переопределяет значение для текстового элемента',
+			'id'   		=> $prefix.'title',
+			'type'		=> 'text'
+		),
+		array(
+			'name' 		=> 'Подзаголовок',
+			'desc' 		=> 'Переопределяет значение для текстового элемента',
+			'id'   		=> $prefix.'subtitle',
+			'type'		=> 'text'
+		),
+		array(
+			'name' 		=> 'Аннотация',
+			'desc' 		=> 'Переопределяет значение для текстового элемента',
+			'id'   		=> $prefix.'summary',
+			'type'		=> 'textarea_small'
+		),
+		array(
+			'name' 		=> 'Текст ссылки',
+			'desc' 		=> 'Переопределяет значение для текстового элемента',
+			'id'   		=> $prefix.'link_text',
+			'type'		=> 'text'
+		),
+		array(
+			'name'        		=> 'Элемент - плашка', //to do for private only
+			'id'          		=> $prefix.'element2_post',
+			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name'    => 'Файл - плашка',
+			'id'      => $prefix.'element2_file',
+			'type'    => 'file',
+			'options' => array(
+				'url' => false,
+			),
+			'text'    => array(
+				'add_upload_file_text' => 'Добавить файл'
+			),
+			'query_args' => array(
+				'type' => 'application/pdf',
+			),
+		),
+		array(
+			'name'        		=> 'Элемент - плашка 2', //to do for private only
+			'id'          		=> $prefix.'element3_post',
+			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
+			'type'        		=> 'post_search_text', // This field type
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'select_type' 		=> 'radio',
+			'select_behavior' 	=> 'replace'
+		),
+		array(
+			'name'    => 'Файл - плашка 2',
+			'id'      => $prefix.'element3_file',
+			'type'    => 'file',
+			'options' => array(
+				'url' => false,
+			),
+			'text'    => array(
+				'add_upload_file_text' => 'Добавить файл'
+			),
+			'query_args' => array(
+				'type' => 'application/pdf',
+			),
+		),
+		array(
+			'id'   => $prefix.'color_scheme',
+			'type' => 'hidden',
+			'default' => 'color-1-panels__color-2-panels'
+		)
+	);
+
+	return array_merge( $fields, $new_fields );
+}
+
 /** Single block - picture **/
 add_filter( 'wds_page_builder_fields_singleblock-picture', 'tst_add_singleblock_picture_field' );
 function tst_add_singleblock_picture_field( $fields ) {
