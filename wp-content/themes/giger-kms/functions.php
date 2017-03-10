@@ -10,7 +10,7 @@ define('TST_DOC_URL', 'https://kms.te-st.ru/site-help/');
 
 
 if ( ! isset( $content_width ) ) {
-	$content_width = 770; /* pixels */
+	$content_width = 787; /* pixels */
 }
 
 

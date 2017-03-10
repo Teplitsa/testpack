@@ -5,17 +5,52 @@
 
 
 $cpost = get_queried_object();
+$dont_show_footer = get_post_meta($cpost->ID, 'dont_show_footer', true); 
+$section = get_the_terms($cpost, 'section');
+if($section)
+	$section = $section[0];
+
+
 
 get_header();?>
 
-<section class="main">
-	<div class="frame">
-        <div class="bit md-12 single-body">
-            <div class="single-body--title"><h1><?php echo get_the_title($cpost);?></h1></div>
-			<div class="single-body--entry"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?></div>
+<article class="page-general">
+	<header class="page-general__header">
+		<div class="container-narrow">
+		<?php if($section) { ?>
+			<div class="page-general__crumbs"><a href="<?php echo get_term_link($section);?>"><?php echo apply_filters('tst_the_title', $section->name);?></a></div>
+		<?php } ?>
+			<h1 class="page-general__title"><?php echo get_the_title($cpost);?></h1>
 		</div>
-    </div>
-</sectipn>
+	</header>
+
+	<div class="page-general__content"><div class="container-narrow">
+
+		<div class="single-body--entry">
+			<?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
+		</div>
+
+		<?php if(!$dont_show_footer) { ?>
+		<footer class="page-general__footer">
+
+			<div class="flex-grid">
+			<?php if($section) { ?>
+				<div class="flex-cell flex-md-6">
+					<h3><?php printf(__('At the section &laquo;%s&raquo;', 'tst'), $section->name);?></h3>
+					<?php tst_section_list($section->term_id, $cpost->ID);?>
+				</div>
+			<?php } ?>
+
+				<div class="flex-cell flex-md-6">
+					<h3><?php _e('Join us', 'tst');?></h3>
+					<?php tst_join_list(); ?>
+				</div>
+			</div>
+
+		</footer>
+		<?php }?>
+	</div></div>
+</article>
 
 
 <?php get_footer(); ?>

@@ -145,3 +145,71 @@ blockquote {
 		margin-bottom: $base*10;
 	}
 }
+
+
+/* General page **/
+.page-general__header {
+	padding-top: $base*4;
+	margin-bottom: $base*6;
+	@include for(medium-screens) {
+		margin-bottom: $base*8;
+	}
+}
+
+.page-general__crumbs {
+	display: inline-block;
+	@include nav-text(menu_item);
+	@include transition(all 0.35s);
+	margin-bottom: $base/2;
+}
+
+.page-general__title {
+	@include post-title(single);
+}
+
+.page-general__footer {
+	margin-top: $base*6;
+
+	h3 {
+		@include block-title(related);
+		color: $color-text-black;
+		margin-bottom: $base*4;
+	}
+}
+
+.inpage-menu {
+	li {
+		margin-bottom: $base*1.5;
+	}
+
+	a {
+		@include body-text(reading);
+		font-weight: bold;
+		color: $color-text;
+
+		&:hover {
+			color: transparentize($color-text, 0.4);
+		}
+	}
+
+	&.section-list {
+		li:nth-of-type(even) a {
+			color: $color-link-two;
+
+
+		&:hover {
+			color: transparentize($color-link-two, 0.4);
+		}
+		}
+	}
+
+	&.join-list {
+		li:nth-of-type(even) a {
+			color: $color-link-one;
+
+		&:hover {
+			color: transparentize( $color-link-one, 0.4);
+		}
+		}
+	}
+}

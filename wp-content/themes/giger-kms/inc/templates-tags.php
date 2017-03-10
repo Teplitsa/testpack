@@ -369,3 +369,72 @@ function tst_loop_injected_block(){
 <?php
 	}
 }
+
+/* print join options */
+function tst_join_list() {
+
+$type = array('donate', 'volunteer', 'corporate', 'problem');
+$support = get_page_by_path('donate', 'OBJECT', 'leyka_campaign');
+?>
+<ul class="inpage-menu join-list">
+<?php
+	foreach($type as $t) {
+		$support = null;
+		$button = '';
+
+		switch($t) {
+			case 'donate':
+				$support = get_page_by_path('donate', 'OBJECT', 'leyka_campaign');
+				$button = __('Donate', 'tst');
+				break;
+
+			case 'volunteer':
+				$support = get_page_by_path('volunteer');
+				$button = __('Become volunteer', 'tst');
+				break;
+
+			case 'corporate':
+				$support = get_page_by_path('corporate');
+				$button = __('Become partner', 'tst');
+				break;
+
+			case 'problem':
+				$support = get_page_by_path('dront-ecomap', 'OBJECT', 'landing');
+				$button = __('Report a problem', 'tst');
+				break;
+		}
+?>
+	<li><a href="<?php echo get_permalink($support);?>"><?php echo $button;?></a></li>
+<?php } ?>
+</ul>
+<?php
+}
+
+function tst_section_list($section_id, $exclude_post = 0) {
+
+	$posts = get_posts(array(
+		'post_type' => array('landing', 'page'),
+		'posts_per_page' => -1,
+		'orderby' => array('menu_order' => 'DESC', 'date' => 'DESC'),
+		'post__not_in' => array($exclude_post),
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'section',
+				'field' => 'term_id',
+				'terms' => $section_id
+			)
+		)
+
+	));
+
+	if(!empty($posts)) {
+?>
+
+<ul class="inpage-menu section-list">
+	<?php foreach($posts as $p) { ?>
+		<li><a href="<?php echo get_permalink($p);?>"><?php echo get_the_title($p);?></a></li>
+	<?php }?>
+</ul>
+<?php
+	}
+}

@@ -662,6 +662,24 @@ function tst_custom_metaboxes() {
 		'type'		=> 'textarea_small'
 	));
 
+	/** Page settings */
+	$home_cmb = new_cmb2_box( array(
+        'id'            => 'page_settings_metabox',
+        'title'         => 'Настройки страницы',
+        'object_types'  => array('page'), // Post type
+		//'show_on'      => array( 'key' => 'page-template', 'value' => 'page.php' ),
+        'context'       => 'normal',
+        'priority'      => 'low',
+        'show_names'    => true,
+    ));
+
+	$home_cmb->add_field( array(
+		'name' => 'Не выводить футер страницы',
+		'id'   => 'dont_show_footer',
+		'type' => 'checkbox',
+		'default' 	=> '',
+	));
+
 
 	/** Homepage settings */
 	$home_cmb = new_cmb2_box( array(

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-10 15:22+0300\n"
-"PO-Revision-Date: 2017-03-10 15:22+0300\n"
+"POT-Creation-Date: 2017-03-10 16:16+0300\n"
+"PO-Revision-Date: 2017-03-10 16:17+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -143,7 +143,7 @@ msgid "Support our programms"
 msgstr "Поддержите наши программы"
 
 #: inc/templates-micro.php:319 inc/templates-single.php:42
-#: inc/templates-tags.php:323
+#: inc/templates-tags.php:323 inc/templates-tags.php:385
 msgid "Donate"
 msgstr "Помочь сейчас"
 
@@ -152,6 +152,7 @@ msgid "Join our actions"
 msgstr "Примите участие в наших акциях"
 
 #: inc/templates-micro.php:359 inc/templates-tags.php:329
+#: inc/templates-tags.php:390
 msgid "Become volunteer"
 msgstr "Стать волонтером"
 
@@ -179,14 +180,18 @@ msgstr "Главная"
 msgid "Corporate help"
 msgstr "Помощь компаний"
 
-#: inc/templates-tags.php:335 pagebuilder/part-help.php:36
-#: taxonomy-section.php:206
+#: inc/templates-tags.php:335 inc/templates-tags.php:395
+#: pagebuilder/part-help.php:36 taxonomy-section.php:206
 msgid "Become partner"
 msgstr "Стать партнером"
 
 #: inc/templates-tags.php:355
 msgid "Ecological Topics"
 msgstr "Экологическая повестка"
+
+#: inc/templates-tags.php:400
+msgid "Report a problem"
+msgstr "Сообщить о проблеме"
 
 #: index.php:46
 msgid "Nothing found under your request"
@@ -195,6 +200,15 @@ msgstr "По вашему запросу ничего не найдено."
 #: page-home.php:57
 msgid "Our partners"
 msgstr "Наши партнеры"
+
+#: page.php:37
+#, php-format
+msgid "At the section &laquo;%s&raquo;"
+msgstr "В разделе &laquo;%s&raquo;"
+
+#: page.php:43
+msgid "Join our work"
+msgstr "Присоединится к нашей работе"
 
 #: pagebuilder/part-cover-general.php:29 single-landing-dront-ecomap.php:28
 msgid "Get details"
