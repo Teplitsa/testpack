@@ -312,40 +312,14 @@ function tst_markers_map_output($atts){
 
                 mapFunc.push(function(){
 
-                    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        id: 'osm',
-                        attribution: 'Карта &copy; <a href="http://osm.org/copyright">Участники OpenStreetMap</a>, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+                    var base_layer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png', {
+                        id: 'carto-light_nolabels',
                         maxZoom: <?php echo $max_zoom;?>,
-                        minZoom: <?php echo $min_zoom;?>
+                        minZoom: <?php echo $min_zoom;?>,
+                        attribution: 'Карта &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
                     });
 
-                    var base_layers = {
-                        'Carto "light_all"': L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
-                            id: 'carto-light_all',
-                            maxZoom: <?php echo $max_zoom;?>,
-                            minZoom: <?php echo $min_zoom;?>,
-                            attribution: 'Карта &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
-                        }),
-                        'Carto "dark_all"': L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
-                            id: 'carto-dark_all',
-                            maxZoom: <?php echo $max_zoom;?>,
-                            minZoom: <?php echo $min_zoom;?>,
-                            attribution: 'Карта &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
-                        }),
-                        'Carto "light_nolabels"': L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png', {
-                            id: 'carto-light_nolabels',
-                            maxZoom: <?php echo $max_zoom;?>,
-                            minZoom: <?php echo $min_zoom;?>,
-                            attribution: 'Карта &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
-                        }),
-                        'Carto "dark_nolabels"': L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
-                            id: 'carto-dark_nolabels',
-                            maxZoom: <?php echo $max_zoom;?>,
-                            minZoom: <?php echo $min_zoom;?>,
-                            attribution: 'Карта &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
-                        })
-                    },
-                        map_id = '<?php echo $map_id;?>';
+                    var map_id = '<?php echo $map_id;?>';
 
                     var enable_scroll_zoom = '<?php echo strval($enable_scroll_wheel);?>';
                     if(enable_scroll_zoom == 'mobile_only') {
@@ -361,7 +335,7 @@ function tst_markers_map_output($atts){
                         center: [<?php echo $lat_center;?>, <?php echo $lng_center;?>],
                         zoom: <?php echo $zoom;?>,
                         maxBounds: bounds,
-                        layers: [osm]
+                        layers: [base_layer]
                     });
                     L.control.layers(base_layers).addTo(maps[map_id]);
 
