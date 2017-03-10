@@ -5,7 +5,7 @@
 
 
 $cpost = get_queried_object();
-$dont_show_footer = get_post_meta($cpost->ID, 'dont_show_footer', true); 
+$dont_show_footer = get_post_meta($cpost->ID, 'dont_show_footer', true);
 $section = get_the_terms($cpost, 'section');
 if($section)
 	$section = $section[0];
@@ -14,7 +14,7 @@ if($section)
 
 get_header();?>
 
-<article class="page-general">
+<article class="landing page-general">
 	<header class="page-general__header">
 		<div class="container-narrow">
 		<?php if($section) { ?>
