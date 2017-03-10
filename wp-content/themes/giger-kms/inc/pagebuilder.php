@@ -1078,6 +1078,22 @@ function tst_add_help_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
+/** OOPT Map block **/
+add_filter( 'wds_page_builder_fields_oopt_map', 'tst_add_oopt_map_field' );
+function tst_add_oopt_map_field( $fields ) {
+
+    $prefix = 'oopt_map_';
+    $new_fields = array(
+        array(
+            'name'    => 'URL файла слоя карты (KML, KMZ)',
+            'id'      => $prefix.'layer_file_url',
+            'type'    => 'text_url',
+        )
+    );
+
+    return array_merge( $fields, $new_fields );
+}
+
 
 
 
