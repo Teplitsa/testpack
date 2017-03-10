@@ -306,7 +306,7 @@ function tst_loop_injected_block(){
 
 	$type = array('readmore', 'donate', 'volunteer', 'corporate');
 	$key = array_rand($type);
-	$type = 'readmore'; //$type[$key];
+	$type = $type[$key];
 
 
 
