@@ -40,14 +40,15 @@ $grid_css .= ' '.tst_get_colors_for_section();
 ?>
 <div class="container">
 	<div class="flex-grid--stacked <?php echo $grid_css;?>">
-		<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
-			<div class="flex-column-centered"><?php tst_card_text_markup($args); ?></div>
-		</div>
+
 		<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
 			<?php tst_card_colored((int)$el2) ;?>
 		</div>
 		<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
 			<?php tst_card_colored((int)$el3) ;?>
+		</div>
+		<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
+			<div class="flex-column-centered"><?php tst_card_text_markup($args); ?></div>
 		</div>
 	</div>
 </div>

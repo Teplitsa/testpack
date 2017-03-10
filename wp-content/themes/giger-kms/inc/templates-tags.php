@@ -251,13 +251,13 @@ function tst_news_loop_pattern($posts) {
 
 	if(!empty($row_2_data)) {
 ?>
-	<div class="tripleblock-2cards loop-pattern-row-2">
+	<div class="doubleblock-picture loop-pattern-row-2">
 		<div class="flex-grid--stacked row-reverse scheme-color-1-ground">
 			<div class="flex-cell--stacked sm-12 lg-6 card card--linked block-2col">
 				<?php tst_card_linked($row_2_data[0], array('size' => 'block-2col')) ;?>
 			</div>
 
-			<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
+			<div class="flex-cell--stacked sm-12 lg-6 card card--text card--textnews block-2col">
 				<div class="flex-column-centered"><?php tst_card_news_text($row_2_data[1]); ?></div>
 			</div>
 		</div>
@@ -268,16 +268,18 @@ function tst_news_loop_pattern($posts) {
 	if(!empty($row_3_data)) {
 ?>
 	<div class="tripleblock-2cardstext loop-pattern-row-3">
-		<div class="flex-grid--stacked row-reverse scheme-color-1-ground scheme-color-2-loam">
-			<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
-				<div class="flex-column-centered"><?php tst_card_news_text($row_3_data[0]); ?></div>
-			</div>
+		<div class="flex-grid--stacked scheme-color-1-ground scheme-color-2-loam">
+
 			<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
 				<?php tst_news_card($row_3_data[1], 'colored'); ?>
 			</div>
 			<div class="flex-cell--stacked sm-6 lg-3 card card--colored">
 				<?php tst_news_card($row_3_data[2], 'colored'); ?>
 			</div>
+			<div class="flex-cell--stacked sm-12 lg-6 card card--text card--textnews block-2col">
+				<div class="flex-column-centered"><?php tst_card_news_text($row_3_data[0]); ?></div>
+			</div>
+
 		</div>
 	</div>
 <?php
@@ -287,7 +289,8 @@ function tst_news_loop_pattern($posts) {
 ?>
 	<div class="loop-pattern-row-4">
 		<div class="flex-grid--stacked">
-			<div class="flex-cell--stacked sm-12 lg-6 card card--text block-2col">
+
+			<div class="flex-cell--stacked sm-12 lg-6 card card--text card--textnews block-2col">
 				<div class="flex-column-centered"><?php tst_card_news_text($row_4_data[0]); ?></div>
 			</div>
 
@@ -303,22 +306,33 @@ function tst_loop_injected_block(){
 
 	$type = array('readmore', 'donate', 'volunteer', 'corporate');
 	$key = array_rand($type);
-	$type = $type[$key];
+	$type = 'readmore'; //$type[$key];
+
+
 
 	if($type != 'readmore') {
+		$support = null;
+		$title = '';
+		$button = '';
 
 		switch($type) {
 
 			case 'donate':
 				$support = get_page_by_path('donate', 'OBJECT', 'leyka_campaign');
+				$title = __('Support our programms', 'tst');
+				$button = __('Donate', 'tst');
 				break;
 
 			case 'volunteer':
 				$support = get_page_by_path('volunteer');
+				$title = __('Join our actions', 'tst');
+				$button = __('Become volunteer', 'tst');
 				break;
 
 			case 'corporate':
 				$support = get_page_by_path('corporate');
+				$title = __('Corporate help', 'tst');
+				$button = __('Become partner', 'tst');
 				break;
 		}
 ?>
@@ -328,9 +342,29 @@ function tst_loop_injected_block(){
 <?php
 	}
 	else {
+
+		$items = get_posts(array(
+			'post_type' => 'landing',
+			'posts_per_page' => 6,
+			'orderby' => 'rand'
+		));
+
 ?>
 	<div class="flex-cell--stacked sm-12 lg-6 card card--inject">
-		add the read more block
+		<div class="flex-column-centered">
+			<h3> <?php _e('Ecological Topics', 'tst');?></h3>
+			<?php if(!empty($items)) { ?>
+			<ul class="inject-list">
+			<?php foreach($items as $i) { ?>
+				<li><a href="<?php echo get_permalink($i);?>"><?php echo get_the_title($i);?></a></li>
+			<?php } ?>
+			</ul>
+			<?php } ?>
+
+			<div class="inject-form">
+				<?php tst_subscribe_form();?>
+			</div>
+		</div>
 	</div>
 <?php
 	}

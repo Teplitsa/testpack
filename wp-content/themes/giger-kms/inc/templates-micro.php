@@ -144,23 +144,7 @@ function tst_card_text_markup($args = array()) {
 	<?php }
 }
 
-function tst_card_news_text($cpost) {
 
-	if(is_int($cpost))
-		$cpost = get_post($cpost);
-
-
-?>
-	<div class="card__meta"><?php echo tst_get_post_meta($cpost);?></div>
-	<div class="card__title card__title--text"><h4><?php echo get_the_title($cpost);?></h4></div>
-
-	<div class="card__summary"><?php echo tst_get_post_excerpt($cpost, 20);?></div>
-
-	<div class="card__action">
-		<a href="<?php echo get_permalink($cpost);?>"><?php _e('Details', 'tst');?>&nbsp;&gt;</a>
-	</div>
-<?php
-}
 
 
 /** == Cards by context type == **/
@@ -193,6 +177,22 @@ function tst_news_card($cpost, $mod = 'pictured') {
 <?php
 }
 
+/** Text card in News archive **/
+function tst_card_news_text($cpost) {
+
+	if(is_int($cpost))
+		$cpost = get_post($cpost);
+
+
+?>
+<a href="<?php echo get_permalink($cpost);?>" class="card-link">
+	<div class="card__meta"><?php echo wp_trim_words(tst_get_post_meta($cpost), 20);?></div>
+	<div class="card__title card__title--newstext"><h4><?php echo get_the_title($cpost);?></h4></div>
+
+	<div class="card__summary"><?php echo tst_get_post_excerpt($cpost, 20);?></div>
+</a>
+<?php
+}
 
 /* News in sidebars */
 function tst_news_apart_card($cpost) {

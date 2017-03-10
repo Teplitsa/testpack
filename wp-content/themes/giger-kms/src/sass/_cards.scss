@@ -94,9 +94,11 @@
 		}
 	}
 
-	.card-link,
-	.card__thumbnail {
-		height: 100%;
+	@include for(large-screens) {
+		.card-link,
+		.card__thumbnail {
+			height: 100%;
+		}
 	}
 }
 
@@ -148,34 +150,61 @@
 .card__meta {
 	@include sub-title();
 	color: currentColor;
+
 }
 
+.flex-column-centered {
+	padding: $base*4;
+	height: 100%;
+	background: transparentize($moss, 0.85);
 
-.card--text {
-	.flex-column-centered {
-		padding: $base*4;
+	@include for(medium-screens) {
+		padding: $base*5 $base*8;
 		height: 100%;
-		background: transparentize($moss, 0.85);
-
-		@include for(medium-screens) {
-			padding: $base*5 0 $base*5 $base*8;
-			height: 100%;
-		}
-
-		@include for(large-screens) {
-			background: transparent;
-		}
 	}
 
+	@include for(large-screens) {
+		background: transparent;
+		min-height: $card_base_h;
+		padding-right: 0;
+	}
+}
+
+.card--text {
+
 	.row-reverse & .flex-column-centered {
-		padding-left: 0;
-		padding-right: $base*8;
+		@include for(large-screens) {
+			padding-left: 0;
+			padding-right: $base*8;
+		}
 	}
 
 	.card__summary {
 		@include body-text(extra_summary);
 	}
 }
+
+.card--textnews {
+	.card-link {
+		color: $color-text;
+	}
+
+	.card__summary, .card__action {
+		//@include body-text(reading);
+	}
+
+	.card__meta {
+		margin-bottom: $base/2;
+		color: $color-link-two;
+	}
+}
+
+.card__title--newstext {
+	@include post-title(cards_textnews);
+	h4 { font-weight: bold; }
+}
+
+
 
 
 

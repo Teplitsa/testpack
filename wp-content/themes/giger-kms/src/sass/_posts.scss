@@ -534,3 +534,70 @@ article.single {
 		margin-bottom: $base;
 	}
 }
+
+
+/** News Loop **/
+.loop-pattern-row-4 {
+	.flex-column-centered {
+
+		@include for(large-screens) {
+			padding-left: 0;
+			padding-right: $base*8;
+		}
+	}
+
+	.card--linked {
+		.card__label {
+			background: $leaf;
+			color: $color-white;
+		}
+
+		.card__button {
+			background: $bark;
+			color: $color-white;
+			&:hover {
+				background: $grass;
+			}
+		}
+	}
+}
+
+
+.card--inject {
+	background: $wetsoil;
+	color: $color-white;
+
+	h3 {
+		@include block-title(related);
+		color: $color-white;
+		margin-bottom: $base*2;
+	}
+
+	.flex-column-centered {
+		padding: $base*4;
+
+		@include for(medium-screens) {
+			padding: $base*5 $base*8;
+		}
+	}
+
+	.inject-list {
+		margin: $base*4 0;
+
+		li {
+			margin-bottom: $base;
+		}
+
+		a {
+			@include body-text(reading);
+			font-weight: bold;
+			color: $color-white;
+			&:hover {
+				color: $pollen;
+			}
+		}
+	}
+	.inject-form {
+		width: 100%;
+	}
+}

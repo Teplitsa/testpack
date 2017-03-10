@@ -25,6 +25,15 @@
 	@include header-title(cover);
 	max-width: $text_col;
 	margin: $base*2 auto 0 auto;
+
+
+	a {
+		color: $color-text;
+		border-bottom: 1px solid $leaf;
+		&:hover {
+			color: $leaf;
+		}
+	}
 }
 
 
@@ -32,7 +41,7 @@
 	margin-top: $base*4;
 	white-space: nowrap;
 	letter-spacing: 0.5px;
-	
+
 	.button-link {
 		@include button();
 	}
