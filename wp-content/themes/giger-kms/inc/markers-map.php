@@ -439,7 +439,7 @@ add_action('wp_footer', function(){
                 $.each(mapFunc, function(index, map_function){
                     map_function();
                 });
-                $('.event-template-default .leaflet-marker-pane .leaflet-marker-icon').addClass(' mymap-icon material-icons red').text('room').removeClass('leaflet-div-icon');
+                $('.event-template-default .leaflet-marker-pane .leaflet-marker-icon').addClass(' mymap-icon material-icons wetsoil for-events-marker').text('room').removeClass('leaflet-div-icon');
             }
 
         });

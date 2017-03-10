@@ -23,12 +23,21 @@
   .green {
     color: $grass;
   }
+  .wetsoil {
+    color: $wetsoil;
+  }
   .grey-green {
     color: darken($wetsoil, 0%);
   }
 
   .material-icons {
     font-size: 30px;
+    
+    &.for-events-marker {
+        font-size: 48px;
+        margin-left: -24px !important;
+        margin-top: -48px !important;
+    }
   }
 
   .pw_map_canvas {
