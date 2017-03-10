@@ -12,6 +12,7 @@ function tst_markers_map_output($atts){
         'groups_excluded_ids' => '',
         'groups_ids' => '',
         'markers_ids' => '',
+        'kml_layer_url' => '',
         'width' => '',
         'height' => 460,
 
@@ -36,6 +37,7 @@ function tst_markers_map_output($atts){
     /** @var $groups_excluded_ids string */
     /** @var $groups_ids string */
     /** @var $markers_ids string */
+    /** @var $kml_layer_url string */
     /** @var $width integer */
     /** @var $height integer */
     /** @var $enable_scroll_wheel bool */
@@ -143,6 +145,8 @@ function tst_markers_map_output($atts){
     }
 
     $markers_ids = $markers_ids ? array_map('intval', explode(',', $markers_ids)) : array();
+
+    $kml_layer_url = $kml_layer_url ? (string)$kml_layer_url : '';
 
     $width = $width ? trim($width) : '100%';
     $height = $height ? intval($height) : 200;
@@ -280,9 +284,7 @@ function tst_markers_map_output($atts){
                                 icon: L.divIcon({
                                     className: 'mymap-icon material-icons ' + marker_data.class,
                                     html: marker_data.icon,
-                                    iconSize: [25, 25] //,
-//                                iconAnchor: [16, 32],
-//                                popupAnchor: [-5, -26]
+                                    iconSize: [25, 25]
                                 })
                             }).bindPopup(
                                 L.popup({
@@ -337,7 +339,20 @@ function tst_markers_map_output($atts){
                         maxBounds: bounds,
                         layers: [base_layer]
                     });
-                    L.control.layers(base_layers).addTo(maps[map_id]);
+
+                    var kml_layer_url = '<?php echo $kml_layer_url;?>';
+
+                    if(kml_layer_url) {
+
+                        var kmlLayer = new L.KML(kml_layer_url, {async: true});
+
+//                        kmlLayer.on("loaded", function(e) {
+//                            maps[map_id].fitBounds(e.target.getBounds());
+//                        });
+
+                        maps[map_id].addLayer(kmlLayer);
+
+                    }
 
                     marker_clusters[map_id] = L.markerClusterGroup({maxClusterRadius: 30});
                     $.each(points[map_id], function(group_id, group_markers){ // loop through all marker groups

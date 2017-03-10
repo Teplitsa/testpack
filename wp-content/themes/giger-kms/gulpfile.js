@@ -43,6 +43,7 @@ gulp.task('build-js', function() {
     var vendorFiles = [
         basePaths.npm + 'imagesloaded/imagesloaded.pkgd.js',
 		basePaths.bower + 'leaflet/dist/leaflet.js',
+		basePaths.npm + 'leaflet-plugins/layer/vector/KML.js',
         basePaths.bower + 'leaflet-markercluster/dist/leaflet.markercluster.js',
         basePaths.npm + 'fontfaceonload/dist/fontfaceonload.js'
         ],
