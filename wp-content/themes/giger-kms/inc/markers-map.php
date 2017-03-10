@@ -312,8 +312,8 @@ function tst_markers_map_output($atts){
 
                 mapFunc.push(function(){
 
-                    var base_layer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
-                        id: 'carto-light_all',
+                    var base_layer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png', {
+                        id: 'carto-light_nolabels',
                         maxZoom: <?php echo $max_zoom;?>,
                         minZoom: <?php echo $min_zoom;?>,
                         attribution: 'Карта &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy;<a href="https://carto.com/attribution">CARTO</a>'
