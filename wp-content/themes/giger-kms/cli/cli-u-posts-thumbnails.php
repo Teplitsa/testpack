@@ -62,6 +62,50 @@ $process_posts = array(
         'thumbnail' => 'datt-rubbit-footsteps',
     ),
     
+    // attachments
+    array(
+        'post_type' => 'attachment',
+        'post_name' => 'datt-16-11',
+        'thumbnail' => 'bereginya-201612.jpg',
+    ),
+    array(
+        'post_type' => 'attachment',
+        'post_name' => 'datt-limits_to_growth',
+        'thumbnail' => 'publications-2016-002.jpg',
+    ),
+    array(
+        'post_type' => 'attachment',
+        'post_name' => 'datt-factor_four',
+        'thumbnail' => 'publications-2016-004.jpg',
+    ),
+    array(
+        'post_type' => 'attachment',
+        'post_name' => 'datt-rastenia-detyam',
+        'thumbnail' => 'publications-2016-001.jpg',
+    ),
+    
+    array(
+        'post_type' => 'attachment',
+        'post_name' => 'datt-chto-takoe-prirodoohrannoe-dvizhenie',
+        'thumbnail' => 'publications-2016-006.jpg',
+    ),
+    array(
+        'post_type' => 'attachment',
+        'post_name' => 'datt-serebrovsky-1918',
+        'thumbnail' => 'publications-2016-005.jpg',
+    ),
+//     array(
+//         'post_type' => 'attachment',
+//         'post_name' => '',
+//         'thumbnail' => '',
+//     ),
+//     array(
+//         'post_type' => 'attachment',
+//         'post_name' => '',
+//         'thumbnail' => '',
+//     ),
+    
+    
 );
 
 try {

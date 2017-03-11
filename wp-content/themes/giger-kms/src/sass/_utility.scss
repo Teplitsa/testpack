@@ -292,3 +292,64 @@ a:link {
 .single-body--entry  {
 	@include the-content();
 }
+
+/* view pdf */
+.tst-view-pdf-popup {
+	position: fixed;
+	width: 100%;
+	height: 0px;
+	z-index: 10000;
+	top:0px;
+	left:0px;
+	
+	.tst-close-pdf-button {
+	
+		position:absolute;
+		top:65px;
+		cursor:pointer;
+		z-index: 10001;
+		
+        right:10px;
+		width: 21px;
+		height: 21px;
+		padding-top: 5px;
+		
+        text-align: center;
+		border-radius: 25px;
+		border: 2px solid $color-white;
+		background-color: $bark;
+		
+        @include for(medium-screens) {
+            right:30px;
+            width: 31px;
+            height: 31px;
+            border-radius: 50px;
+            padding-top: 6px;
+            background-color: none;
+        }
+        
+        @include for(large-screens) {
+            right:50px;
+        }
+        
+	   .icon-close {
+           fill: $color-white;
+           width:8px;
+           height:8px;
+           vertical-align:top;
+           
+	       @include for(medium-screens) {
+				width:14px;
+				height:14px;
+	       }
+	   }
+	}
+
+	iframe {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top:0px;
+		left:0px;
+	}
+}

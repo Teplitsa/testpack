@@ -228,6 +228,60 @@ $landings_sections = array(
     'dront-publications' => array(
         'sections' => array(
             '_wds_builder_template' => array(
+                
+                array(
+                    'template_group' => 'cover-archive',
+                    'cover_archive_title' => 'Статьи и публикации',
+                    'cover_archive_subtitle' => 'На базе экоцентра «Дронт» выпущено много книг и методических пособий.',
+                    'cover_archive_url' => '/item/dront-publications/archive',
+                ),
+                
+                array(
+                    'template_group' => 'threeforth-archive',
+                    'threeforth_archive_block_order' => 'direct',
+                    'threeforth_archive_element1_post' => array( 'datt-rastenia-detyam', 'attachment' ),
+                    'threeforth_archive_label1_order' => 'right_top',
+                    'threeforth_archive_link_title' => 'Все публикации',
+                    'threeforth_archive_link_url' => '/item/dront-publications/archive',
+                ),
+                
+                array(
+                    'template_group' => 'subtitle',
+                    'subtitle_subtitle_text' => 'Прочие публикации',
+                ),
+                
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'direct',
+                    'tripleblock_picture_element1_post' => array( 'datt-limits_to_growth', 'attachment' ),
+                    'tripleblock_picture_element2_post' => array( 'datt-mir-mezhdu-dvuh-ekologiy', 'attachment' ),
+                    'tripleblock_picture_element3_post' => array( 'datt-factor_four', 'attachment' ),
+                ),
+                
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'revers',
+                    'tripleblock_picture_element1_post' => array( 'datt-chto-takoe-prirodoohrannoe-dvizhenie', 'attachment' ),
+                    'tripleblock_picture_element2_post' => array( 'datt-zhitkov_buturlin', 'attachment' ),
+                    'tripleblock_picture_element3_post' => array( 'datt-serebrovsky-1918', 'attachment' ),
+                ),
+                
+                array(
+                    'template_group' => 'cover-archive',
+                    'cover_archive_title' => 'Ежемесячная газета «Берегиня»',
+                    'cover_archive_subtitle' => '',
+                    'cover_archive_url' => '/item/dront-bereginya/archive',
+                ),
+                
+                array(
+                    'template_group' => 'threeforth-archive',
+                    'threeforth_archive_block_order' => 'direct',
+                    'threeforth_archive_element1_post' => array( 'datt-16-11', 'attachment' ),
+                    'threeforth_archive_label1_order' => 'right_top',
+                    'threeforth_archive_link_title' => 'Все выпуски',
+                    'threeforth_archive_link_url' => '/item/dront-bereginya/archive',
+                ),
+                
                 array(
                     'template_group' => 'news',
                 ),
@@ -242,6 +296,23 @@ $landings_sections = array(
     'dront-bereginya' => array(
         'sections' => array(
             '_wds_builder_template' => array(
+                
+                array(
+                    'template_group' => 'cover-archive',
+                    'cover_archive_title' => 'Ежемесячная газета «Берегиня»',
+                    'cover_archive_subtitle' => '',
+                    'cover_archive_url' => '/item/dront-bereginya/archive',
+                ),
+                
+                array(
+                    'template_group' => 'threeforth-archive',
+                    'threeforth_archive_block_order' => 'direct',
+                    'threeforth_archive_element1_post' => array( 'datt-16-11', 'attachment' ),
+                    'threeforth_archive_label1_order' => 'right_top',
+                    'threeforth_archive_link_title' => 'Все выпуски',
+                    'threeforth_archive_link_url' => '/item/dront-bereginya/archive',
+                ),
+                
                 array(
                     'template_group' => 'news',
                 ),

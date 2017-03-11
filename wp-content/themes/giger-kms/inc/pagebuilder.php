@@ -121,6 +121,32 @@ function tst_add_cover_minimal_field( $fields ) {
 	return array_merge( $fields, $new_fields );
 }
 
+/** Cover  - archive **/
+add_filter( 'wds_page_builder_fields_cover-archive', 'tst_add_cover_archive_field' );
+function tst_add_cover_archive_field( $fields ) {
+
+    $prefix = "cover_archive_";
+    $new_fields = array(
+        array(
+            'name' 		=> 'Заголовок',
+            'id'   		=> $prefix.'title',
+            'type'		=> 'text'
+        ),
+        array(
+            'name' 		=> 'Подзаголовок',
+            'id'   		=> $prefix.'subtitle',
+            'type'		=> 'text'
+        ),
+        array(
+            'name' 		=> 'Ссылка на архив',
+            'id'   		=> $prefix.'url',
+            'type'		=> 'text'
+        ),
+    );
+
+    return array_merge( $fields, $new_fields );
+}
+
 /** Triple block - picture/panel/card **/
 add_filter( 'wds_page_builder_fields_tripleblock-picture', 'tst_add_tripleblock_picture_field' );
 function tst_add_tripleblock_picture_field( $fields ) {
@@ -142,7 +168,7 @@ function tst_add_tripleblock_picture_field( $fields ) {
 			'name'        		=> 'Элемент - картинка', //to do for private only
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'attachment' ),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -173,7 +199,7 @@ function tst_add_tripleblock_picture_field( $fields ) {
 			'name'        		=> 'Элемент - карточка', //to do for private only
 			'id'          		=> $prefix.'element3_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'attachment'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -860,6 +886,68 @@ function tst_add_threeforth_picture_field( $fields ) {
 	);
 
 	return array_merge( $fields, $new_fields );
+}
+
+
+/** Double block - picture3_4/link to archive **/
+add_filter( 'wds_page_builder_fields_threeforth-archive', 'tst_add_threeforth_archive_field' );
+function tst_add_threeforth_archive_field( $fields ) {
+
+    $prefix = "threeforth_archive_";
+    $new_fields = array(
+        array(
+            'name' 				=> 'Порядок блоков',
+            'id' 				=> $prefix.'block_order',
+            'type' 				=> 'select',
+            'show_option_none'	=> false,
+            'default' 			=> 'direct',
+            'options' 			=> array(
+                'direct' => 'Прямой',
+                'revers' => 'Обратный'
+            )
+        ),
+
+        array(
+            'name'        		=> 'Элемент - картинка', //to do for private only
+            'id'          		=> $prefix.'element1_post',
+            'desc'				=> 'Укажите файл публикации или выпуска газеты',
+            'type'        		=> 'post_search_text', // This field type
+            'post_type'   		=> array('attachment'),
+            'select_type' 		=> 'radio',
+            'select_behavior' 	=> 'replace'
+        ),
+
+        array(
+            'name' 				=> 'Положение ссылки - на картинке',
+            'id' 				=> $prefix.'label1_order',
+            'type' 				=> 'select',
+            'show_option_none'	=> false,
+            'default' 			=> 'left_bottom',
+            'options' 			=> array(
+                'left_bottom'	=> 'Левый нижний угол',
+                'right_top' 	=> 'Правый верхний угол',
+            )
+        ),
+        array(
+            'name'        		=> 'Текст ссылки',
+            'id'          		=> $prefix.'link_title',
+            'desc'				=> 'Укажите текст ссылки на архив',
+            'type'        		=> 'text'
+        ),
+        array(
+            'name'        		=> 'Ссылка',
+            'id'          		=> $prefix.'link_url',
+            'desc'				=> 'Укажите ссылку на архив',
+            'type'        		=> 'text'
+        ),
+        array(
+            'id'   => $prefix.'color_scheme',
+            'type' => 'hidden',
+            'default' => 'color-1-labels'
+        )
+    );
+
+    return array_merge( $fields, $new_fields );
 }
 
 

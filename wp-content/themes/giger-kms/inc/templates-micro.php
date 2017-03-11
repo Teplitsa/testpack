@@ -15,7 +15,7 @@ function tst_card_linked($cpost, $args = array()) {
 	);
 
 	$args = wp_parse_args($args, $defaults);
-	$pl = get_permalink($cpost);
+	$pl = $cpost->post_type == 'attachment' ? wp_get_attachment_url($cpost->ID) : get_permalink($cpost);
 	$desc = '';
 
 	if($args['show_desc']) {

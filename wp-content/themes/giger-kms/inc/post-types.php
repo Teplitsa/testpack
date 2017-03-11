@@ -375,6 +375,9 @@ function tst_custom_content(){
 	//pages
 	add_post_type_support('page', 'excerpt');
 	add_post_type_support('page', 'thumbnail');
+	
+	//attachment
+	add_post_type_support( 'attachment', 'thumbnail' );
 
 	//remove post tags
 	unregister_taxonomy_for_object_type('category', 'post');

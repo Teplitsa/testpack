@@ -1156,7 +1156,8 @@ case"touchend":return this.addPointerListenerEnd(t,e,i,n);case"touchmove":return
 
 /* Scripts */
 jQuery(document).ready(function($){
-
+    $('.green-number').parent().addClass("for-green-number");
+    $('.green-title').parent().addClass("for-green-title");
     /** Window width **/
 	var windowWidth = $('#top').width(),
 		$site_header = $('#site_header'),
@@ -1404,6 +1405,51 @@ jQuery(document).ready(function($){
 			$('html, body').animate({scrollTop:target.top - 50}, 900);
 		}
 
+	});
+
+	
+	/* View PDF */
+	$('a[href$=".pdf"]').on('click', function(e){
+		
+		var $tst_view_pdf_popup = $('#tst-view-pdf-popup');
+		var $link = $(this);
+		var $pdf_url = '/wp-content/plugins/pdf-viewer/stable/web/viewer.html?file=' + $link.attr('href');
+		
+		var $iframe = $tst_view_pdf_popup.find('iframe');
+		var is_create_iframe = false;
+		if( !$iframe.length ) {
+			is_create_iframe = true;
+			$iframe = $( '<iframe id="tst-view-pdf-iframe"/>' );
+		}
+		
+		$iframe.attr('src', $pdf_url);
+		$iframe.load(function(){
+			$tst_view_pdf_popup.find('.tst-close-pdf-button').show();
+		});
+		
+		if( is_create_iframe ) {
+			$tst_view_pdf_popup.append($iframe);
+		}
+
+		
+		var top_gap = $('#site_header').height();
+		if( parseInt( $('#site_header').css('top') ) > 0 ) {
+			top_gap += $('#wpadminbar').height();
+		}
+		$tst_view_pdf_popup.css('top', top_gap + 'px');
+		$tst_view_pdf_popup.css('height', ( $( window ).height() - top_gap ) + 'px');
+		
+		$tst_view_pdf_popup.show();
+		
+		return false;
+	});
+	
+	var $tst_view_pdf_popup = $('#tst-view-pdf-popup');
+	$tst_view_pdf_popup.hide();
+	$tst_view_pdf_popup.find('.tst-close-pdf-button').hide();
+	$tst_view_pdf_popup.find('.tst-close-pdf-button').click(function(){
+		$(this).parent().hide();
+		$(this).hide();
 	});
 
 }); //jQuery

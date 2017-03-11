@@ -72,5 +72,8 @@ $tst = __("Teplitsa of social technologies", 'tst');
 </div><!-- site_root -->
 
 <?php wp_footer(); ?>
+
+<div id="tst-view-pdf-popup" class="tst-view-pdf-popup" title="<?php _e( 'Close', 'tst' ) ?>"><div class="tst-close-pdf-button"><svg class="svg-icon icon-close"><use xlink:href="#icon-close"></use></svg></div></div>
+
 </body>
 </html>
