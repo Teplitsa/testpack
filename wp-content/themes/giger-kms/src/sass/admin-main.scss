@@ -145,3 +145,34 @@ div [id *="ninja_forms_metabox"] .item-edit.metabox-item-edit {
 	padding-bottom:  0.5em;
 	margin-bottom:  0.5em;
 }
+blockquote {
+    border-left: 4px solid #bcc600;
+    padding-left: 40px;
+    color: #a6bab7;
+    font-style: italic;
+    margin: 40px 24px 40px 0;
+	line-height: 1.3em;
+
+}
+
+#tinymce .green-number {
+    border:none;
+    color: #bcc600;
+    display:inline-block;
+    padding:10px 30px;
+    text-decoration:none;
+	float: left;
+}
+#tinymce .green-title {
+    border:none;
+    color: #bcc600;
+    display:inline-block;
+    padding:10px 30px;
+    text-decoration:none;
+	float: left;
+}
+#tinymce .green-title:after {
+	clear: both;
+	display: block;
+	content: "";
+}

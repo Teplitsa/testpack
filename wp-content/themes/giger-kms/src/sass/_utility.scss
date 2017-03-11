@@ -201,10 +201,13 @@ a:link {
 	ol + p { margin-top:  $inpage-margin-base }
 
 	blockquote {
-		border-left: 2px solid $leaf;
-		padding-left: $inpage-margin-base;
-		color: $moss;
-		font-style: italic;
+	    border-left: 4px solid $leaf;
+	    padding-left: $base*5;
+	    color: $moss;
+	    font-style: italic;
+	    margin: $base*5 $inpage-baseline $base*5 0;
+		line-height: 1.3em
+
 	}
 	//in text shortcodes
 
@@ -254,6 +257,36 @@ a:link {
 	//blockquote
 
 
+}
+.green-number {
+	border:none;
+    color: #bcc600;
+    display:inline-block;
+    padding:10px 30px;
+    text-decoration:none;
+	@include green-numero(green);
+	float: left;
+}
+.green-title {
+	border:none;
+    color: #bcc600;
+    display:inline-block;
+    padding:10px 30px;
+    text-decoration:none;
+	
+}
+.for-green-number {
+	display: table-cell;
+	float: left;
+}
+.for-green-title {
+	display: table-cell;
+	
+	&:after {
+		clear: both;
+		display: block;
+		content: "";
+	}
 }
 
 .single-body--entry  {

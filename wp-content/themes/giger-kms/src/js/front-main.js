@@ -1,6 +1,7 @@
 /* Scripts */
 jQuery(document).ready(function($){
-
+    $('.green-number').parent().addClass("for-green-number");
+    $('.green-title').parent().addClass("for-green-title");
     /** Window width **/
 	var windowWidth = $('#top').width(),
 		$site_header = $('#site_header'),

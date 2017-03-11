@@ -86,6 +86,7 @@ function tst_widgets_init() {
 //add_action( 'init', 'tst_widgets_init', 25 );
 
 
+
 /**
  * Includes
  */
@@ -124,3 +125,4 @@ if(is_admin()){
 	require get_template_directory() . '/admin/general.php';
 	require get_template_directory() . '/admin/post-hooks.php';
 }
+

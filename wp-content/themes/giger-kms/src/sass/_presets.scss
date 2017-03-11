@@ -264,9 +264,8 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	}
 
 	font-size: 24px;
-	line-height: 32px;
-
-
+	line-height: 32px;	
+	
 	@if $mod == cover {
 		font-size: 28px;
 		line-height: 1.35;
@@ -432,6 +431,34 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 
 
 /* Elements */
+@mixin green-numero($mod: default) {
+	font-family: $title_fb;
+	font-weight: 500;
+
+	.bwsurco-b & {
+		font-family: $title;
+	}
+
+	font-size: 24px;
+	line-height: 32px;	
+	@if $mod == green {
+		font-size: 28px;
+		line-height: 1.35;
+
+		@include for(small-screens) {
+			font-size: 32px;
+		}
+
+		@include for(medium-screens) {
+			font-size: 80px;
+		}
+
+		@include for(large-screens) {
+			font-size: 100px;
+		}
+	}
+}
+
 @mixin red-link() {
 	color: $color-link-one;
 	@include transition(color 0.3s);

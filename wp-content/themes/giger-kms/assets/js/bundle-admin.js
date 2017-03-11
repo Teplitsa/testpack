@@ -27,4 +27,8 @@ jQuery(function($){
 			$select.val( val );
 		});
 	}
+	
+	$(document).ready(function(){
+		$('.green-number').parent().addClass("for-green-number");
+	});
 });

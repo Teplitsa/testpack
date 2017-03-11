@@ -210,6 +210,7 @@ article.single {
 	h3 {
 		@include body-text(meta);
 		font-weight: bold;
+		clear: both;
 	}
 	h4 {
 		// @include body-text(reading);
