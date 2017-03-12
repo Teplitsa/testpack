@@ -6,8 +6,21 @@
  */
 
 $cpost = get_queried_object();
+$parent = wp_get_post_parent_id( $cpost );
 
-$land = tst_project_get_connected_landings($cpost, 2);
+($parent) ? $parent = $parent : $parent = $cpost;
+
+$land = tst_project_get_connected_landings($parent, 4);
+
+
+if (count($land) > 2) {
+	$land_top = array_values(array_chunk($land, 2))[0];
+	$land_bottom = array_values(array_chunk($land, 2))[1];
+} else {
+	$land_top = $land;
+	$land_bottom = '';
+}
+
 
 get_header(); ?>
 <div class="single-crumb container">
@@ -41,7 +54,7 @@ get_header(); ?>
 			<?php if(!empty($land)) { ?>
 			<div class="flex-cell--stacked lg-3 single__related_land">
 				<div class="realted-landings">
-				<?php foreach($land as $l) { ?>
+				<?php foreach($land_top as $l) { ?>
 					<div class="realted-landings__item">
 						<?php tst_card_iconic($l); ?>
 					</div>
@@ -72,6 +85,15 @@ get_header(); ?>
 			</div>
 
 			<div class="flex-cell--stacked lg-3 single-aside">
+				<?php if (!empty($land_bottom)): ?>
+					<div class="realted-landings--aside">
+						<?php foreach($land_bottom as $k) { ?>
+							<div class="realted-landings__item">
+								<?php tst_card_iconic($k); ?>
+							</div>
+						<?php } ?>
+					</div>
+				<?php endif; ?>				
 				<?php  tst_single_cta($cpost, true);?>
 			</div>
 		</div>
