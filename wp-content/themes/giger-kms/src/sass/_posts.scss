@@ -359,6 +359,10 @@ article.single {
 .news-block__title--inpage {
 	@include block-title(related);
 	margin-bottom: $base*3;
+	padding-left: $base*4;
+	@include for(large-screens) {
+		padding-left: $base*6;
+	}
 }
 
 
