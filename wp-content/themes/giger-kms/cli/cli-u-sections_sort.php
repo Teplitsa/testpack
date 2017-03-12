@@ -156,7 +156,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'dront-cheboksarges',
+		'slug' => 'dront-chebpotop',
 		'post_title' => 'Чебоксарская ГЭС',
 		'post_content' => 'cheboksarges.txt',
 		'section' => 'ecoproblems',

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-10 16:16+0300\n"
-"PO-Revision-Date: 2017-03-10 16:17+0300\n"
+"POT-Creation-Date: 2017-03-12 01:32+0200\n"
+"PO-Revision-Date: 2017-03-12 01:32+0200\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
 "%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
 "__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
@@ -44,7 +44,7 @@ msgid ""
 "page)"
 msgstr "Аннотация для списков (на странице записи добавляется в начало)"
 
-#: admin/general.php:323
+#: admin/general.php:361
 #, php-format
 msgid ""
 "ATTENTION! You thumbnail image is too small. It should be at least %s px"
@@ -81,6 +81,10 @@ msgstr "Теплица социальных технологий"
 #, php-format
 msgid "All materials of the site are avaliabe under license %s"
 msgstr "Все материалы сайта доступны по лицензии %s"
+
+#: footer.php:76
+msgid "Close"
+msgstr "Закрыть"
 
 #: header.php:19
 msgid "Skip to content"
@@ -143,7 +147,7 @@ msgid "Support our programms"
 msgstr "Поддержите наши программы"
 
 #: inc/templates-micro.php:319 inc/templates-single.php:42
-#: inc/templates-tags.php:323 inc/templates-tags.php:385
+#: inc/templates-tags.php:323 inc/templates-tags.php:388
 msgid "Donate"
 msgstr "Помочь сейчас"
 
@@ -152,7 +156,7 @@ msgid "Join our actions"
 msgstr "Примите участие в наших акциях"
 
 #: inc/templates-micro.php:359 inc/templates-tags.php:329
-#: inc/templates-tags.php:390
+#: inc/templates-tags.php:393
 msgid "Become volunteer"
 msgstr "Стать волонтером"
 
@@ -180,7 +184,7 @@ msgstr "Главная"
 msgid "Corporate help"
 msgstr "Помощь компаний"
 
-#: inc/templates-tags.php:335 inc/templates-tags.php:395
+#: inc/templates-tags.php:335 inc/templates-tags.php:398
 #: pagebuilder/part-help.php:36 taxonomy-section.php:206
 msgid "Become partner"
 msgstr "Стать партнером"
@@ -189,7 +193,7 @@ msgstr "Стать партнером"
 msgid "Ecological Topics"
 msgstr "Экологическая повестка"
 
-#: inc/templates-tags.php:400
+#: inc/templates-tags.php:403
 msgid "Report a problem"
 msgstr "Сообщить о проблеме"
 
@@ -201,23 +205,23 @@ msgstr "По вашему запросу ничего не найдено."
 msgid "Our partners"
 msgstr "Наши партнеры"
 
-#: page.php:37
+#: page.php:39
 #, php-format
 msgid "At the section &laquo;%s&raquo;"
 msgstr "В разделе &laquo;%s&raquo;"
 
-#: page.php:43
-msgid "Join our work"
-msgstr "Присоединится к нашей работе"
+#: page.php:45 pagebuilder/part-cover-archive.php:28
+#: pagebuilder/part-cover-general.php:30
+msgid "Join us"
+msgstr "Давайте вместе!"
+
+#: pagebuilder/part-cover-archive.php:27
+msgid "View archive"
+msgstr "Перейти в архив"
 
 #: pagebuilder/part-cover-general.php:29 single-landing-dront-ecomap.php:28
 msgid "Get details"
 msgstr "Вникнуть"
-
-#: pagebuilder/part-cover-general.php:30
-#: partial-landing-archive-by-years.php:105
-msgid "Join us"
-msgstr "Давайте вместе!"
 
 #: pagebuilder/part-help.php:26 taxonomy-section.php:195
 msgid "Support us"
@@ -231,10 +235,6 @@ msgstr "Новости и публикации"
 #, php-format
 msgid "%s: What are we doing"
 msgstr "%s: Что мы делаем"
-
-#: partial-landing-archive-by-years.php:104
-msgid "View archive"
-msgstr "Перейти в архив"
 
 #: search.php:62
 msgid "Пожалуйста, укажите слова для поиска в форме и нажмите Enter."
@@ -272,6 +272,9 @@ msgstr "Проекты по теме: %s"
 #: single-project.php:110
 msgid "News on the topic"
 msgstr "Новости по теме"
+
+#~ msgid "Join our work"
+#~ msgstr "Присоединится к нашей работе"
 
 #~ msgid "Widget doesn't have any settings"
 #~ msgstr "Виджет не имеет настроек"
