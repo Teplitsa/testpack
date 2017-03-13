@@ -125,7 +125,8 @@ class FRL_CssJs {
 		);
 		
 		wp_localize_script('tst-front', 'frontend', array(
-			'ajaxurl' => admin_url('admin-ajax.php')
+			'ajaxurl' => admin_url('admin-ajax.php'),
+		    'homeurl' => home_url()
 		));
 	}
 
