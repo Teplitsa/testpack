@@ -5,23 +5,33 @@
 
 
 /** next/previous post  */
-function tst_single_post_nav() {
+function tst_single_post_nav(WP_Post $cpost) {
 
 	$previous = get_adjacent_post(false, '', true);
 	$next = get_adjacent_post(false, '', false);
+
+	$parent = $cpost->post_parent;
+	
+	$connected = get_posts( array(
+		'posts_per_page' => 1,
+		'post_type' => 'project',
+		'orderby' => 'title',
+		'order' => 'ASC',
+		'post_parent' => $cpost->ID
+	));
 
 	if(!$previous && !$next) {
 		return;
 	}?>
 	<div class="nav-links">
-	<?php if($next) { ?>
+	<?php if($parent) { ?>
 		<div class="nav-links__link nav-links__link--next">
-			<a href="<?php echo get_permalink($next);?>"><?php tst_svg_icon('icon-prev');?></a>
+			<a href="<?php echo get_permalink($parent);?>"><span><?php tst_svg_icon('icon-prev');?></span><span><?php echo get_the_title( $parent ); ?></span></a>
 		</div>
 	<?php }?>
-	<?php if($previous) { ?>
+	<?php if($connected) { ?>
 		<div class="nav-links__link nav-links__link--prev">
-			<a href="<?php echo get_permalink($previous);?>"><?php tst_svg_icon('icon-next');?></a>
+			<a href="<?php echo get_permalink($connected[0]);?>"><span><?php tst_svg_icon('icon-next');?></span><span><?php echo get_the_title( $connected[0] ); ?></span></a>
 		</div>
 	<?php }?>
 	</div>

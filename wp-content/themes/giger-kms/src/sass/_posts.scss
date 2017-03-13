@@ -95,6 +95,8 @@ article.single {
 			padding: $base*3;
 			justify-content: center;
 			align-items: center;
+			@include nav-text(navs);
+			font-weight: bold;
 		}
 
 		@include for(medium-screens) {

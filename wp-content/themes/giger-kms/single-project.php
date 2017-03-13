@@ -38,7 +38,7 @@ get_header(); ?>
 				</div>
 
 				<div class="flex-cell--stacked lg-3 single__nav">
-					<?php tst_single_post_nav();?>
+					<?php tst_single_post_nav($cpost);?>
 				</div>
 
 			</div>
