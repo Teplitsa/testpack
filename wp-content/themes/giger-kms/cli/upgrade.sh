@@ -13,6 +13,7 @@ php cli-u-options.php --host=$HOST
 #php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_old_news_content.csv
 #php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_old_other_content.csv
 #php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_old_defence_content.csv
+#php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_single_content.csv
 
 # import old files
 #php cli-u-import-files-csv.php --host=$HOST --file=data/dront_urls_bereginya.csv --tag=bereginya
@@ -51,3 +52,6 @@ php cli-u-landing_init.php --host=$HOST
 # menu
 php cli-u-menu.php --host=$HOST
 #php cli-u-widgets.php --host=$HOST
+
+# convert to pdf
+php cli-u-pdf.php --host=$HOST

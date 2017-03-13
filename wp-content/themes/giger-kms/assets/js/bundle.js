@@ -1420,7 +1420,7 @@ jQuery(document).ready(function($){
 		
 		var $tst_view_pdf_popup = $('#tst-view-pdf-popup');
 		var $link = $(this);
-		var $pdf_url = '/wp-content/plugins/pdf-viewer/stable/web/viewer.html?file=' + $link.attr('href');
+		var $pdf_url = frontend.homeurl + '/wp-content/plugins/pdf-viewer/stable/web/viewer.html?file=' + $link.attr('href');
 		
 		var $iframe = $tst_view_pdf_popup.find('iframe');
 		var is_create_iframe = false;
