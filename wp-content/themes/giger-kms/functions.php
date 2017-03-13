@@ -109,7 +109,7 @@ require get_template_directory().'/inc/request.php';
 require get_template_directory().'/inc/markers-map.php';
 require get_template_directory().'/inc/navs.php';
 
-//require get_template_directory().'/inc/donations.php';
+require get_template_directory().'/inc/donations.php';
 require get_template_directory().'/inc/forms.php';
 
 require get_template_directory().'/inc/shortcodes.php';
@@ -121,8 +121,7 @@ require get_template_directory().'/inc/templates-micro.php';
 require get_template_directory().'/inc/templates-single.php';
 require get_template_directory().'/inc/templates-tags.php';
 
-if(is_admin()){
-	require get_template_directory() . '/admin/general.php';
-	require get_template_directory() . '/admin/post-hooks.php';
+if(is_admin()) {
+    require get_template_directory() . '/admin/general.php';
+    require get_template_directory() . '/admin/post-hooks.php';
 }
-
