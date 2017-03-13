@@ -49,7 +49,6 @@
     			</div>                
             </div>            
         </div>
-
     </header>
     
     <div class="single__content">

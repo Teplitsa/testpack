@@ -127,6 +127,59 @@
 }
 
 
+/* 404 Page */
+.error404 {
+    padding-bottom: 0;
+
+    .search__regular {
+        margin-bottom: $inpage-margin-base;
+
+        .searchform__field {
+            padding-left: $inpage-margin-base;
+        }
+
+    }
+
+    .search__meta {
+        @include body-text(meta);
+    	color: $leaf;
+        text-align: right;
+    }
+    .search__hint {
+        @include body-text(reading);
+    }
+
+    .card__summary {
+        margin-top: $inpage-margin-base;
+        @include body-text(reading);
+        margin-bottom: $element-margin-base;
+    }
+
+    .card__meta {
+        color: $leaf;
+    }
+
+    .layout-section__item {
+        margin-bottom: $inpage-baseline;
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+
+    .search-block__title {
+    	@include post-title(cover);
+    	padding: $base*6 0 $base*5;
+        text-transform: none;
+    	text-align: center;
+
+    	@include for(medium-screens) {
+    		padding-top: $base*9;
+    	}
+    }
+}
+
+
 /**  Sections */
 .landing-header--section {
 	@include for(small-screens) {
