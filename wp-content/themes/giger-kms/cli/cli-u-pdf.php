@@ -56,22 +56,28 @@ try {
                     $pdf_file_id = TST_Import::get_instance()->convert2pdf( $file_id, $localpdf );
                 }
                 
+                printf( "pdf_file_id: %s\n", $pdf_file_id );
+                
                 if( $pdf_file_id ) {
                     
-                    $pdf_file_url = wp_get_attachment_url( $file_id );
+                    $pdf_file_url = wp_get_attachment_url( $pdf_file_id );
                     update_post_meta( $file_id, 'pdf_file_id', $pdf_file_id );
                     
+                    printf( "pdf_file_url: %s\n", $pdf_file_url );
+                    
                     $params = array(
+                        'post_type' => array( 'post', 'import', 'project', 'event', 'landing', 'archive_page' ),
                         's' => $file_url,
                         'posts_per_page' => -1,
                         'fields' => 'ids',
                     );
+                    
                     $posts_id = get_posts( $params );
                     
                     foreach( $posts_id as $post_id ) {
                         printf( "  post: %d\n", $post_id );
                         
-                        $post = get_post($my_postid);
+                        $post = get_post( $post_id );
                         $post_content = $post->post_content;
                         $post_content = preg_replace( "/" . preg_quote( $file_url, '/' ) . "/", $pdf_file_url, $post_content );
                         
