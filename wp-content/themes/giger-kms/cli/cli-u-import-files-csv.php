@@ -82,6 +82,7 @@ try {
 
                         $pdf_file_id = TST_Import::get_instance()->convert2pdf( $file_id, $localpdf );
                         if( $pdf_file_id ) {
+                            update_post_meta( $file_id, 'pdf_file_id', $pdf_file_id );
                             $file_id = $pdf_file_id;
                             $file_url = wp_get_attachment_url( $file_id );
                         }

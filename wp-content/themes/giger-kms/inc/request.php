@@ -25,10 +25,6 @@ function tst_request_corrected(WP_Query $query) {
 
 }
 
-
-
-
-
 /** == Rewrites and links filters == **/
 
 add_action('init', 'tst_custom_rewrites', 25);
@@ -159,4 +155,35 @@ function tst_pages_redirect() {
 /** Helper to detect current page position from query **/
 function tst_get_current_page_for_query(WP_Query $query) {
     return isset($query->query_vars['paged']) && $query->query_vars['paged'] > 1 ? (int)$query->query_vars['paged'] : 1;
+}
+
+// add next page detection for load more actions
+add_filter('found_posts', 'tst_request_corrected_after_get_posts', 2, 2);
+function tst_request_corrected_after_get_posts($found_posts, WP_Query $query) {
+    //detect next page for load more request
+    $query = tst_request_correction_has_next_page($query);
+    return $found_posts;
+}
+
+/** after geeting posts detect if we have more posts to load **/
+function tst_request_correction_has_next_page(WP_Query $query) {
+
+    $query->set('has_next_page', 0);
+
+    $current = tst_get_current_page_for_query($query);
+    $per_page = $query->get('posts_per_page', get_option('posts_per_page'));
+    $displayed = 0;
+
+    if(isset($query->query_vars['offset']) && $query->query_vars['offset'] > 0){
+        $offset = (int)$query->query_vars['offset'];
+        $displayed = $offset + $per_page * ($current - 1);
+    }
+    else {
+        $displayed = $current * $per_page;
+    }
+
+    if($displayed < $query->found_posts)
+        $query->set('has_next_page', 1);
+
+        return $query;
 }

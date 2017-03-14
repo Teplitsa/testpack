@@ -45,6 +45,7 @@ gulp.task('build-js', function() {
 		basePaths.bower + 'leaflet/dist/leaflet.js',
 		basePaths.npm + 'leaflet-plugins/layer/vector/KML.js',
         basePaths.bower + 'leaflet-markercluster/dist/leaflet.markercluster.js',
+        basePaths.bower + 'object-fit/dist/polyfill.object-fit.js',
         basePaths.npm + 'fontfaceonload/dist/fontfaceonload.js'
         ],
         appFiles = [basePaths.src+'js/front-main*']; //our own JS files
@@ -97,6 +98,7 @@ gulp.task('build-css', function() {
 
     var vendorFiles = gulp.src([
             basePaths.bower + 'leaflet/dist/leaflet.css',
+            basePaths.bower + 'object-fit/dist/polyfill.object-fit.css',
             basePaths.bower + 'leaflet-markercluster/dist/MarkerCluster.css',
             basePaths.bower + 'leaflet-markercluster/dist/MarkerCluster.Default.css'
         ]), //components
