@@ -34,7 +34,7 @@ get_header();
 
 	<!-- main blocks -->
 	<section class="section-loop">
-		<div class="container">
+		<div class="container" id="loadmore-news" >
 			<?php
 				if(!empty($posts)) {
 					tst_news_loop_page($posts);
@@ -48,6 +48,15 @@ get_header();
 				}
 			?>
 		</div>
+		
+		<div class="layout-section--loadmore">
+		<?php
+			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
+				tst_load_more_button($wp_query, 'news_card', array(), "loadmore-news");
+			}
+		?>
+		</div>
+		
 	</section>
 </article>
 <?php get_footer();

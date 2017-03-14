@@ -353,3 +353,28 @@ a:link {
 		left:0px;
 	}
 }
+
+/* loader */
+.load-more {
+    text-align:center;
+    padding: 80px 0px 15px 0px;
+    
+    .loader {
+        display:none;
+        color: $color-link-two;
+    }
+    
+    .load-more-btn {
+        @include button();
+    }
+    
+    &.loading {
+        .loader {
+            display:block;
+        }
+        
+        .load-more-btn {
+            display:none;
+        }
+    }
+}

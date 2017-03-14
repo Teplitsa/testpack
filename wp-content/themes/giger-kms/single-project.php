@@ -100,7 +100,7 @@ get_header(); ?>
 	</div></div><!-- .single__content -->
 
 	<?php
-		$projects = tst_project_get_connected_projects($cpost);
+		$projects = tst_project_get_connected_projects($parent);
 		if(!empty($projects)) {
 	?>
 		<footer class="single__footer">

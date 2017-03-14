@@ -7,6 +7,7 @@
 
 define('TST_VERSION', '1.0');
 define('TST_DOC_URL', 'https://kms.te-st.ru/site-help/');
+define('TST_CARD_TITLE_WORDS_LIMIT', 15 );
 
 
 if ( ! isset( $content_width ) ) {

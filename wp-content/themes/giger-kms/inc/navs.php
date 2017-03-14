@@ -96,48 +96,8 @@ function tst_load_more_posts_screen() {
 	//build results
 	ob_start();
 
-	//print html here
-	foreach($query->posts as $i => $p){
-			$class = ($i == (count($query->posts) - 1)) ? 'border--regular-last' : 'border--regular';
-
-			if($template == 'events_card'){
-		?>
-			<div class="layout-section__item <?php echo $class;?>">
-				<?php tst_card_event($p); ?>
-			</div>
-
-		<?php } elseif($template == 'search_card')	{ ?>
-			<div class="layout-section__item <?php echo $class;?>">
-				<?php tst_card_search($p); ?>
-			</div>
-
-		<?php } elseif($template == 'gallery_card')	{ ?>
-<!--			--><?php //if(has_shortcode($p->post_content, 'gallery' )) { ?>
-<!--				<div class="flex-cell flex-md-6">--><?php //tst_card_gallery_post($p); ?><!--</div>-->
-<!--			--><?php //} ?>
-
-		<?php } elseif($template == 'video_gallery')	{ ?>
-<!--				<div class="flex-cell flex-sm-6 flex-md-4">--><?php //tst_card_video_post($p); ?><!--</div>-->
-
-		<?php } elseif($template == 'project_card') { ?>
-<!--				<div class="layout-section__item border--regular">--><?php //tst_project_card($p); ?><!--</div>-->
-
-		<?php } elseif($template == 'ngo_profile') { ?>
-<!--				<div class="layout-section__item border--regular">--><?php //tst_ngo_profile_card($p); ?><!--</div>-->
-
-		<?php } else {
-//				$template_args = explode('_', $template);
-//				$middle_meta = (isset($template_args[1])) ? trim($template_args[1]) : 'topics';
-//				$show_author = (isset($template_args[2])) ? (bool)$template_args[2] : false;
-//		?>
-<!---->
-<!--			<div class="layout-section__item --><?php //echo $class;?><!--">-->
-<!--				--><?php //tst_card_general($p, array('middle_meta' => $middle_meta, 'show_author' => $show_author)); ?>
-<!--			</div>-->
-		<?php
-			}
-	}
-
+	tst_news_loop_page( $query->posts );
+	
 	$result['data'] = ob_get_contents();
 	ob_end_clean();
 

@@ -34,7 +34,7 @@ function tst_card_linked($cpost, $args = array()) {
 			<div class="card__meta"><?php echo $meta;?></div>
 		<?php } ?>
 
-		<h4><?php echo get_the_title($cpost);?></h4>
+		<h4><?php echo wp_trim_words( get_the_title($cpost), TST_CARD_TITLE_WORDS_LIMIT );?></h4>
 
 		<?php if(!empty($desc)) {?>
 			<div class="card__insummary"><?php echo apply_filters('tst_the_title', $desc);?></div>
@@ -165,7 +165,7 @@ function tst_news_card($cpost, $mod = 'pictured') {
 	<?php } ?>
 
 	<div class="card__title">
-		<h4><?php echo get_the_title($cpost);?></h4>
+		<h4><?php echo wp_trim_words( get_the_title($cpost), TST_CARD_TITLE_WORDS_LIMIT );?></h4>
 	</div>
 
 	<div class="card__summary">
@@ -187,7 +187,7 @@ function tst_card_news_text($cpost) {
 ?>
 <a href="<?php echo get_permalink($cpost);?>" class="card-link">
 	<div class="card__meta"><?php echo wp_trim_words(tst_get_post_meta($cpost), 20);?></div>
-	<div class="card__title card__title--newstext"><h4><?php echo get_the_title($cpost);?></h4></div>
+	<div class="card__title card__title--newstext"><h4><?php echo wp_trim_words( get_the_title($cpost), TST_CARD_TITLE_WORDS_LIMIT );?></h4></div>
 
 	<div class="card__summary"><?php echo tst_get_post_excerpt($cpost, 20);?></div>
 </a>
