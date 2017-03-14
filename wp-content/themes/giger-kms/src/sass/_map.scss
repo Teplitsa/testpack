@@ -5,6 +5,8 @@
 .pw_map-wrap {
   position: relative;
 
+  border: 1px solid #EBEDEA;
+
   .black {
     color: $ground;
   }
@@ -113,7 +115,7 @@
     padding: 2*$base 4*$base;
   }
 
-  border-bottom: 1px solid $grass;
+  border: none; //1px solid #EBEDEA;
   //border-top: 1px dashed $grass;
 
 
