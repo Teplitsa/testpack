@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TST Next Project Design\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-12 01:32+0200\n"
-"PO-Revision-Date: 2017-03-12 01:32+0200\n"
+"POT-Creation-Date: 2017-03-14 16:46+0300\n"
+"PO-Revision-Date: 2017-03-14 16:47+0300\n"
 "Last-Translator: Anna Ladoshkina <webdev@foralien.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -13,13 +13,14 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
 "%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
-"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
-"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
-"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
-"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;"
+"__ngettext_noop:1,2;_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;"
+"_nx_js:1,2,3c;esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;"
+"esc_attr_x:1,2c;esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;"
+"transChoice:1,2\n"
 "X-Loco-Target-Locale: ru_RU\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: bower_components\n"
@@ -57,9 +58,19 @@ msgstr ""
 msgid "Total: %d"
 msgstr "Всего: %d"
 
-#: archive-event.php:50
+#: archive-event.php:50 archive-import.php:31 search.php:64
 msgid "Unfortunately, nothing found under your request."
 msgstr "К сожалению, по вашему запросу ничего не найдено"
+
+#: archive-import.php:12 single-import.php:21
+msgid "Archive"
+msgstr "Архив"
+
+#: archive-import.php:20
+msgid "Articles and documents fromt previous versions of out site"
+msgstr ""
+"Статьи, документы и публикации, размещенные на предыдущих версиях нашего "
+"сайта"
 
 #: archive-leyka_donation.php:21
 msgid "Campaign"
@@ -86,7 +97,7 @@ msgstr "Все материалы сайта доступны по лиценз�
 msgid "Close"
 msgstr "Закрыть"
 
-#: header.php:19
+#: header.php:27
 msgid "Skip to content"
 msgstr "Перейти к содержанию"
 
@@ -102,23 +113,15 @@ msgstr "Россия"
 msgid "By address"
 msgstr "По адресу"
 
-#: inc/donations.php:62
-msgid "Please, set a text of comment to describe an additional ways to donate."
-msgstr "Пожалуйста, укажите текст комментария"
-
-#: inc/donations.php:70
-msgid "Please, set a text to describe an additional ways to donate."
-msgstr "Пожалуйста, укажите текст комментария"
-
-#: inc/donations.php:128
+#: inc/donations.php:61
 msgid "Specify the amount of your donation"
 msgstr "Пожалуйста, укажите сумму пожертвования"
 
-#: inc/donations.php:217
+#: inc/donations.php:148
 msgid "Monthly donation"
 msgstr "Перечислять ежемесячно"
 
-#: inc/donations.php:399
+#: inc/donations.php:333
 msgid "Your phone number in the 7xxxxxxxxxx format"
 msgstr ""
 
@@ -146,7 +149,7 @@ msgstr "Подробнее"
 msgid "Support our programms"
 msgstr "Поддержите наши программы"
 
-#: inc/templates-micro.php:319 inc/templates-single.php:42
+#: inc/templates-micro.php:319 inc/templates-single.php:52
 #: inc/templates-tags.php:323 inc/templates-tags.php:388
 msgid "Donate"
 msgstr "Помочь сейчас"
@@ -160,21 +163,30 @@ msgstr "Примите участие в наших акциях"
 msgid "Become volunteer"
 msgstr "Стать волонтером"
 
-#: inc/templates-micro.php:507 inc/templates-single.php:88
+#: inc/templates-micro.php:502 inc/templates-single.php:98
 #: inc/templates-tags.php:116 index.php:8 pagebuilder/part-news.php:25
 #: single.php:13 taxonomy-section.php:166
 msgid "News"
 msgstr "Новости"
 
-#: inc/templates-micro.php:510 single-event.php:14
+#: inc/templates-micro.php:505 single-event.php:14
 msgid "Events"
 msgstr "Анонсы"
 
-#: inc/templates-single.php:50
+#: inc/templates-micro.php:508
+msgid "Projects"
+msgstr "Проекты"
+
+#: inc/templates-micro.php:523 single-import.php:11
+#, php-format
+msgid "Archive page - %s"
+msgstr "Архивная страница - %s"
+
+#: inc/templates-single.php:60
 msgid "Inform about problem"
 msgstr "Сообщить о проблеме"
 
-#: inc/templates-single.php:87 inc/templates-single.php:100
+#: inc/templates-single.php:97 inc/templates-single.php:110
 #: inc/templates-tags.php:115 inc/templates-tags.php:133
 msgid "Home"
 msgstr "Главная"
@@ -236,21 +248,11 @@ msgstr "Новости и публикации"
 msgid "%s: What are we doing"
 msgstr "%s: Что мы делаем"
 
-#: search.php:62
-msgid "Пожалуйста, укажите слова для поиска в форме и нажмите Enter."
-msgstr ""
-
-#: search.php:65
-msgid ""
-"К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать "
-"иначе."
-msgstr ""
-
 #: single-event.php:89
 msgid "Contacts"
 msgstr "Контакты"
 
-#: single-event.php:102 single-landing.php:54 single-project.php:69
+#: single-event.php:102 single-landing.php:54 single-project.php:82
 #: single.php:72
 msgid "Tags"
 msgstr "Тэги"
@@ -264,14 +266,21 @@ msgid "Submit a problem!"
 msgstr "Сообщить о проблеме!"
 
 #: single-landing-dront-ecomap.php:63 single-landing.php:76
-#: single-project.php:86
+#: single-project.php:108
 #, php-format
 msgid "Projects by topic: %s"
 msgstr "Проекты по теме: %s"
 
-#: single-project.php:110
+#: single-project.php:132
 msgid "News on the topic"
 msgstr "Новости по теме"
+
+#~ msgid ""
+#~ "Please, set a text of comment to describe an additional ways to donate."
+#~ msgstr "Пожалуйста, укажите текст комментария"
+
+#~ msgid "Please, set a text to describe an additional ways to donate."
+#~ msgstr "Пожалуйста, укажите текст комментария"
 
 #~ msgid "Join our work"
 #~ msgstr "Присоединится к нашей работе"

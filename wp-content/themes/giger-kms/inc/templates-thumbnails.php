@@ -305,6 +305,58 @@ function tst_get_picture_sources($attachment_id, $placement_type = '', $crop = '
 }
 
 
+/* markup for fullscreen case */
+function tst_fullscreen_thumbnail($attachment_id, $container_class = '') {
+
+	$id = esc_attr(uniqid('cover-'));
+	$class = esc_attr('fullscreen-bg '.$container_class);
+
+	if(!$attachment_id){
+		$class .= ' noicture';
+	}
+
+	$url = array();
+
+	if($attachment_id) {
+
+		$url_mobile = wp_get_attachment_image_src($attachment_id, 'mobile-common');
+		if($url_mobile)
+			$url['mobile'] = $url_mobile[0];
+
+		$url_small = wp_get_attachment_image_src($attachment_id, 'small-long');
+		if($url_small)
+			$url['small'] = $url_small[0];
+
+		$url_medium = wp_get_attachment_image_src($attachment_id, '4col');
+		if($url_medium)
+			$url['medium'] = $url_medium[0];
+
+		$url['large'] = wp_get_attachment_url($attachment_id);
+	}
+?>
+<style>
+
+	@media screen and (max-width: 480px) {
+		#<?php echo $id;?> { background-image: url(<?php echo ($url['mobile']) ? $url['mobile'] : '' ;?>); }
+	}
+
+	@media screen and (min-width: 481px) and (max-width: 779px) {
+		#<?php echo $id;?> { background-image:  url(<?php echo ($url['small']) ? $url['small'] : '' ;?>); }
+	}
+
+	@media screen and (min-width: 780px) and (max-width: 1023px) {
+		#<?php echo $id;?> { background-image:  url(<?php echo ($url['medium']) ? $url['medium'] : '' ;?>); }
+	}
+
+	@media screen and (min-width: 1024px) {
+		#<?php echo $id;?> { background-image:  url(<?php echo ($url['large']) ? $url['large'] : '' ;?>); }
+	}
+
+</style>
+<div id="<?php echo $id;?>" class="<?php echo $class;?>"></div>
+<?php
+}
+
 /** == Helpers == **/
 function tst_get_post_thumbnail_cation(WP_Post $cpost) {
 
@@ -365,4 +417,3 @@ function tst_get_gallery_images(WP_Post $cpost){
 
 	return $ids;
 }
-

@@ -41,27 +41,27 @@
 </div>
 <article class="single search">
     <header class="single__header">
-        <div class="container">            
+        <div class="container">
             <div class="flex-grid--stacked">
                 <div class="flex-cell--stacked lg-12 single__title-block">
                     <div class="search__regular"><?php get_search_form();?></div>
-                    <div class="search__meta single-card__meta"><?php echo tst_build_results_label($num);?></div>                    
-    			</div>                
-            </div>            
+                    <div class="search__meta single-card__meta"><?php echo tst_build_results_label($num);?></div>
+    			</div>
+            </div>
         </div>
     </header>
-    
+
     <div class="single__content">
         <div class="container">
             <div class="flex-grid--stacked">
-                
+
                 <div class="flex-cell--stacked lg-12 single-body">
                     <?php
             			if(empty($s_query)){
-            				echo "<div class='search__hint'><p>".__('Пожалуйста, укажите слова для поиска в форме и нажмите Enter.', 'tst')."</p></div>";
+            				echo "<div class='search__hint'><p>Пожалуйста, укажите слова для поиска в форме и нажмите Enter.</p></div>";
             			}
             			elseif($num == 0) {
-            				echo "<div class='search__hint'><p>".__('К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать иначе.', 'tst')."</p></div>";
+            				echo "<div class='search__hint'><p>".__('Unfortunately, nothing found under your request.', 'tst')."</p></div>";
             			}
         			?>
                     <?php if(!empty($s_query)) {
@@ -79,11 +79,11 @@
                     ?>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
-    
+
 </article>
 
  <?php get_footer(); ?>
