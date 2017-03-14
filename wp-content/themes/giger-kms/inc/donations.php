@@ -51,19 +51,22 @@ function tst_amount_field(Leyka_Payment_Form $form){
 
 	<div class="<?php echo $currency;?> amount-variants-container" <?php echo $currency == $current_curr ? '' : 'style="display:none;"';?> >
 		<div class="amount-variants-row">
-			<?php foreach($variants as $i => $amount) { ?>
-				<label class="figure">
-					<input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" class="figure-radio__button" <?php checked($i, 0);?> <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?> >
-					<span class="figure-radio__label"><?php echo (int)$amount;?>&nbsp;<?php echo $curr_mark;?></span>
-				</label>
+			<?php foreach($variants as $i => $amount) { $input_id = leyka_pf_get_form_id()."-$amount-$currency";?>
+            <input type="radio" value="<?php echo (int)$amount;?>" name="leyka_donation_amount" id="<?php echo $input_id;?>" class="figure-radio__button" <?php checked($i, 0);?> <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?>>
+            <label class="figure" for="<?php echo $input_id;?>">
+                <?php echo (int)$amount;?>&nbsp;<?php echo $curr_mark;?>
+            </label>
 			<?php }?>
 
-			<label class="figure-flex"><input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex figure-flex-input__text" value="" placeholder="Другая сумма" maxlength="6" size="12" <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?>></label>
+			<label class="figure-flex">
+                <input type="text" title="<?php echo __('Specify the amount of your donation', 'leyka');?>" name="leyka_donation_amount" class="donate_amount_flex figure-flex-input__text" value="" placeholder="Другая сумма" maxlength="6" size="12" <?php echo $currency == $current_curr ? '' : 'disabled="disabled"';?>>
+            </label>
+            <div class="currency"><?php echo $form->get_currency_field();?></div>
 		</div>
 	</div>	
 	<?php } ?>
 	</div>
-	<div class="currency"><span class="currency-frame"><?php echo $form->get_currency_field();?></span></div>
+
 </div>
 
 <div class="leyka_donation_amount-error field-error"></div>
@@ -89,34 +92,32 @@ function tst_donation_form($campaign_id = null) {
 
 	leyka_pf_submission_errors();?>
 
-<div id="leyka-payment-form" class="leyka-custom-template" data-template="toggles">
+<div id="leyka-payment-form" class="leyka-tabs-template" data-template="tabs">
 <?php
 	$counter = 0;
 	foreach($active_pm as $i => $pm) {
+
 		leyka_setup_current_pm($pm);
-		$counter++;
-?>
-<div class="leyka-payment-option toggle <?php if($counter == 1) echo 'toggled';?> <?php echo esc_attr($pm->full_id);?>">
-<div class="leyka-toggle-trigger <?php echo count($active_pm) > 1 ? '' : 'toggle-inactive';?>">
-    <?php echo leyka_pf_get_pm_label();?>
-</div>
-<div class="leyka-toggle-area">
-<form class="leyka-pm-form" id="<?php echo leyka_pf_get_form_id();?>" action="<?php echo leyka_pf_get_form_action();?>" method="post">
+		$counter++;?>
 
-	<div class="leyka-pm-fields">
+    <input type="radio" id="<?php echo esc_attr($pm->full_id);?>" class="leyka-payment-option tab" <?php echo $counter == 1 ? 'checked="checked"' : '';?> name="leyka_payment_method">
+    <label for="<?php echo esc_attr($pm->full_id);?>" class="leyka-pm-label"><?php echo leyka_pf_get_pm_label();?></label>
 
-	<!-- amount -->
-	<?php
-		if($leyka_current_pm->is_field_supported('amount') ) {
-			tst_amount_field($leyka_current_pm);
-		}
+    <div class="leyka-tab-area">
+        <form class="leyka-pm-form" id="<?php echo leyka_pf_get_form_id();?>" action="<?php echo leyka_pf_get_form_action();?>" method="post">
 
-		echo leyka_pf_get_hidden_fields($campaign_id);
-	?>
-	<input name="leyka_payment_method" value="<?php echo esc_attr($pm->full_id);?>" type="hidden" />
-	<input name="leyka_ga_payment_method" value="<?php echo esc_attr($pm->label);?>" type="hidden" />
+	        <div class="leyka-pm-fields">
 
-	<!-- name -->
+            <!-- amount -->
+            <?php if($leyka_current_pm->is_field_supported('amount') ) {
+                tst_amount_field($leyka_current_pm);
+            }
+
+		    echo leyka_pf_get_hidden_fields($campaign_id);?>
+
+<!--                <input name="leyka_payment_method" value="--><?php //echo esc_attr($pm->full_id);?><!--" type="hidden">-->
+                <input name="leyka_ga_payment_method" value="<?php echo esc_attr($pm->label);?>" type="hidden">
+
 	<?php if($leyka_current_pm->is_field_supported('name') ) { ?>
 	<div class="tst-textfield leyka-field name">
 		<input type="text" class="required tst-textfield__input" name="leyka_donor_name" id="leyka_donor_name" value="" placeholder="Ваше имя" autocomplete="on">
@@ -124,15 +125,13 @@ function tst_donation_form($campaign_id = null) {
 	</div>
 	<?php }?>
 
-	<!-- email -->
 	<?php if($leyka_current_pm->is_field_supported('email') ) { ?>
 	<div class="tst-textfield leyka-field email">
 		<input type="text" value="" id="leyka_donor_email" name="leyka_donor_email" class="required email tst-textfield__input" placeholder="Ваш email" autocomplete="on">
 		<span class="leyka_donor_email-error field-error tst-textfield__error" id="leyka_donor_email-error"></span>
 	</div>
-	<?php  }?>
+	<?php }?>
 
-	<!-- pm fields -->
 	<?php if($leyka_current_pm->full_id == 'cp-card') {
 
         $f_html = $leyka_current_pm->get_pm_fields();
@@ -142,12 +141,12 @@ function tst_donation_form($campaign_id = null) {
 
             $f_html = str_replace('input', 'input class="tst-checkbox__input"', $l[1]);?>
 
-    <div class="leyka-field recurring">
-        <label class="tst-checkbox checkbox" for="leyka_cp-card_recurring">
-            <?php echo $f_html; ?>
-            <span class="tst-checkbox__label"><?php _e('Monthly donation', 'tst');?></span>
-        </label>
-    </div>
+            <div class="leyka-field recurring">
+                <label class="tst-checkbox checkbox" for="leyka_cp-card_recurring">
+                    <?php echo $f_html; ?>
+                    <span class="tst-checkbox__label"><?php _e('Monthly donation', 'tst');?></span>
+                </label>
+            </div>
 
         <?php } else {
             echo $f_html;
@@ -155,16 +154,20 @@ function tst_donation_form($campaign_id = null) {
 
     } else {
 
-        $fields = leyka_pf_get_pm_fields();
-
-        $fields = str_replace('rdc-textfield', 'tst-textfield', $fields);
-        $fields = str_replace('rdc-textfield__input', 'tst-textfield__input', $fields);
+        $fields = str_replace(
+            array('rdc-textfield', 'rdc-textfield__input'),
+            array('tst-textfield', 'tst-textfield__input'),
+            leyka_pf_get_pm_fields()
+        );
 
         if(false !== strpos($fields, 'tst-textfield')) {
+
             preg_match("#<\s*?label\b[^>]*>(.*?)</label\b[^>]*>#s", $fields, $l);
+
             if(isset($l[1]) && !empty($l[1])){
                 $fields = str_replace('<input', '<input placeholder="'.esc_attr($l[1]).'"', $fields);
             }
+
         }
 
         echo $fields;
@@ -187,37 +190,38 @@ function tst_donation_form($campaign_id = null) {
 <!--	--><?php //}?>
 
 	<!-- submit -->
-	<div class="leyka-field submit">
+	            <div class="leyka-field submit">
 	<?php if($leyka_current_pm->is_field_supported('submit') ) { ?>
 		<input type="submit" class="tst-submit-button" id="leyka_donation_submit" name="leyka_donation_submit" value="<?php echo leyka_options()->opt('donation_submit_text');?>">
-	<?php  }
+	<?php }
 
-		$icons = leyka_pf_get_pm_icons();
-		if($icons) {
+    $icons = leyka_pf_get_pm_icons();
+    if($icons) {
 
-			$list = array();
-			foreach($icons as $i) {
-				$i = (is_ssl()) ? str_replace('http:', 'https:', $i) : $i;
-				$list[] = "<li>{$i}</li>";
-			}
+        $list = array();
+        foreach($icons as $i) {
 
-			echo '<ul class="leyka-pm-icons cf">'.implode('', $list).'</ul>';
-		}
-	?>
-	</div>
+            $i = is_ssl() ? str_replace('http:', 'https:', $i) : $i;
+            $list[] = "<li>{$i}</li>";
 
+        }
 
-	</div> <!-- .leyka-pm-fields -->
+        echo '<ul class="leyka-pm-icons cf">'.implode('', $list).'</ul>';
 
-	<div class="leyka-pm-desc">
-		<?php echo apply_filters('leyka_the_content', leyka_pf_get_pm_description()); ?>
-	</div>
+    }?>
+	            </div>
 
-</form>
+            </div> <!-- .leyka-pm-fields -->
+
+            <div class="leyka-pm-desc">
+                <?php echo apply_filters('leyka_the_content', leyka_pf_get_pm_description()); ?>
+            </div>
+
+        </form>
+    </div>
+    <?php }?>
 </div>
-</div>
-<?php } ?>
-</div><!-- #leyka-payment-form -->
+
 <?php leyka_pf_footer();?>
 
 
