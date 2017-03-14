@@ -16,7 +16,6 @@ get_header();
 	<section class="section-intro">
 	<?php
 		$cover_id = get_post_thumbnail_id($cover);
-		$cover_url = wp_get_attachment_url($cover_id, 'full');
 
 		$cover_desc = get_post_meta($cover->ID, 'landing_excerpt', true);
 		if(empty($cover_desc)){
@@ -31,7 +30,7 @@ get_header();
 
 			<?php if($cover) { ?>
 			<div class="cover-general__item">
-				<div class="cover-item__bg" style="background-image: url(<?php echo $cover_url;?>);"></div>
+				<?php tst_fullscreen_thumbnail($cover_id, 'cover-item__bg'); ?>
 				<div class="container">
 					<a href="<?php echo get_permalink($cover);?>" class="cover-item__link">
 						<h4><?php echo get_the_title($cover);?></h4>

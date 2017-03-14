@@ -14,10 +14,7 @@ $about_url = trailingslashit(get_permalink($qo)).'about';
 
 
 $cover_img = wds_page_builder_get_this_part_data($prefix.'cover_file_id'); //correct field id
-$cover_url = '';
-if($cover_img){
-	$cover_url = wp_get_attachment_url($cover_img, 'full');
-}
+
 ?>
 
 <header class="landing-header">
@@ -33,7 +30,7 @@ if($cover_img){
 
 	<?php if($cover) { ?>
 	<div class="cover-general__item">
-		<div class="cover-item__bg" style="background-image: url(<?php echo $cover_url;?>);"></div>
+		<?php tst_fullscreen_thumbnail($cover_img, 'cover-item__bg'); ?>
 		<div class="container">
 			<a href="<?php echo get_permalink($cover);?>" class="cover-item__link">
 				<h4><?php echo get_the_title($cover);?></h4>

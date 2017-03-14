@@ -11,10 +11,7 @@ $cover = wds_page_builder_get_this_part_data($prefix.'cover_post');
 $cover = ($cover) ? get_post($cover) : $cover;
 
 $cover_img = wds_page_builder_get_this_part_data($prefix.'cover_file_id');
-$cover_url = '';
-if($cover_img){
-	$cover_url = wp_get_attachment_url($cover_img, 'full');
-}
+
 
 $cover_title = wds_page_builder_get_this_part_data($prefix.'cover_title');
 if(empty($cover_title)){
@@ -36,7 +33,7 @@ if(empty($cover_desc)){
 
 	<?php if($cover) { ?>
 	<div class="cover-general__item">
-		<div class="cover-item__bg" style="background-image: url(<?php echo $cover_url;?>);"></div>
+		<?php tst_fullscreen_thumbnail($cover_img, 'cover-item__bg'); ?>
 		<div class="container">
 			<a href="<?php echo get_permalink($cover);?>" class="cover-item__link">
 				<h4><?php echo apply_filters('tst_the_title', $cover_title);?></h4>

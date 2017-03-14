@@ -39,16 +39,20 @@
 
 .landing-header__links {
 	margin-top: $base*4;
-	white-space: nowrap;
+
 	letter-spacing: 0.5px;
 
 	.button-link {
 		@include button();
+		white-space: nowrap;
 	}
 
 	.text-link {
 		@include nav-text(menu_item);
+		display: inline-block;
+		padding: 8px 0;
 
+		white-space: nowrap;
 	}
 
 }
