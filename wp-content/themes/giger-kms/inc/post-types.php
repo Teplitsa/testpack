@@ -34,35 +34,6 @@ function tst_custom_content(){
 	));
 
 
-	register_taxonomy('archive_page_cat', array('archive_page'), array(
-		'labels' => array(
-			'name'                       => 'Категории архива',
-			'singular_name'              => 'Категория',
-			'menu_name'                  => 'Категории',
-			'all_items'                  => 'Все категории',
-			'edit_item'                  => 'Редактировать категорию',
-			'view_item'                  => 'Просмотреть',
-			'update_item'                => 'Обновить категорию',
-			'add_new_item'               => 'Добавить новую категорию',
-			'new_item_name'              => 'Название новой категории',
-			'parent_item'                => 'Родительская категория',
-			'parent_item_colon'          => 'Родительская категория:',
-			'search_items'               => 'Искать категорию',
-			'popular_items'              => 'Часто используемые',
-			'separate_items_with_commas' => 'Разделять запятыми',
-			'add_or_remove_items'        => 'Добавить или удалить категорию',
-			'choose_from_most_used'      => 'Выбрать из часто используемых',
-			'not_found'                  => 'Не найдено'
-		),
-		'hierarchical'      => true,
-		'publicly_queryable'=> false,
-		'show_ui'           => true,
-		'show_in_nav_menus' => false,
-		'show_tagcloud'     => false,
-		'show_admin_column' => true,
-		'rewrite'           => false,
-		//'update_count_callback' => '',
-	));
 
 	register_taxonomy('attachment_tag', array('attachment'), array(
 		'labels' => array(
@@ -201,40 +172,7 @@ function tst_custom_content(){
         'taxonomies'          => array(),
     ));
 
-	register_post_type('archive_page', array(
-        'labels' => array(
-            'name'               => 'Архивные страницы',
-            'singular_name'      => 'Архивная страница',
-            'menu_name'          => 'Архив',
-            'name_admin_bar'     => 'Добавить страницу',
-            'add_new'            => 'Добавить новую',
-            'add_new_item'       => 'Добавить страницу',
-            'new_item'           => 'Новая страница',
-            'edit_item'          => 'Редактировать страницу',
-            'view_item'          => 'Просмотр страниц',
-            'all_items'          => 'Все страницы',
-            'search_items'       => 'Искать страницы',
-            'parent_item_colon'  => 'Родительская страница:',
-            'not_found'          => 'Страницы не найдены',
-            'not_found_in_trash' => 'В Корзине страницы не найдены'
-       ),
-        'public'              => true,
-        'exclude_from_search' => false,
-        'publicly_queryable'  => true,
-        'show_ui'             => true,
-        'show_in_nav_menus'   => false,
-        'show_in_menu'        => true,
-        'show_in_admin_bar'   => false,
-        //'query_var'           => true,
-        'capability_type'     => 'post',
-        'has_archive'         => 'archive',
-        'rewrite'             => array('slug' => 'archives', 'with_front' => false),
-        'hierarchical'        => true,
-        'menu_position'       => 25,
-		'menu_icon'           => 'dashicons-category',
-        'supports'            => array('title', 'editor', 'revisions'),
-        'taxonomies'          => array('archive_page_cat'),
-    ));
+
 
 	register_post_type('person', array(
         'labels' => array(
@@ -275,7 +213,7 @@ function tst_custom_content(){
         'labels' => array(
             'name'               => 'Импортные записи',
             'singular_name'      => 'Импортная запись',
-            'menu_name'          => 'Импорт',
+            'menu_name'          => 'Архив',
             'name_admin_bar'     => 'Добавить',
             'add_new'            => 'Добавить',
             'add_new_item'       => 'Добавить',
@@ -294,11 +232,11 @@ function tst_custom_content(){
         'show_ui'             => true,
         'show_in_nav_menus'   => false,
         'show_in_menu'        => true,
-        'show_in_admin_bar'   => false,
+        'show_in_admin_bar'   => true,
         //'query_var'           => true,
         'capability_type'     => 'post',
-        'has_archive'         => false,
-        'rewrite'             => array('slug' => 'import', 'with_front' => false),
+        'has_archive'         => 'dront-archive',
+        'rewrite'             => array('slug' => 'archive', 'with_front' => false),
         'hierarchical'        => false,
         'menu_position'       => 27,
 		'menu_icon'           => 'dashicons-category',
@@ -375,7 +313,7 @@ function tst_custom_content(){
 	//pages
 	add_post_type_support('page', 'excerpt');
 	add_post_type_support('page', 'thumbnail');
-	
+
 	//attachment
 	add_post_type_support( 'attachment', 'thumbnail' );
 
@@ -755,7 +693,7 @@ function tst_p2p_connection_types() {
 
 	p2p_register_connection_type(array(
         'name' 	=> 'import_attachments',
-        'from' 	=> array('archive_page', 'post', 'import'),
+        'from' 	=> array('post', 'import'),
         'to' 	=> 'attachment',
 		'admin_column' => false,
 		'from_labels' => array(

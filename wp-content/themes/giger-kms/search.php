@@ -41,20 +41,20 @@
 </div>
 <article class="single search">
     <header class="single__header">
-        <div class="container">            
+        <div class="container">
             <div class="flex-grid--stacked">
                 <div class="flex-cell--stacked lg-12 single__title-block">
                     <div class="search__regular"><?php get_search_form();?></div>
-                    <div class="search__meta single-card__meta"><?php echo tst_build_results_label($num);?></div>                    
-    			</div>                
-            </div>            
+                    <div class="search__meta single-card__meta"><?php echo tst_build_results_label($num);?></div>
+    			</div>
+            </div>
         </div>
     </header>
-    
+
     <div class="single__content">
         <div class="container">
             <div class="flex-grid--stacked">
-                
+
                 <div class="flex-cell--stacked lg-12 single-body">
                     <?php
             			if(empty($s_query)){
@@ -79,11 +79,11 @@
                     ?>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
-    
+
 </article>
 
  <?php get_footer(); ?>

@@ -88,26 +88,35 @@
     }
 
     .search__meta {
-        @include body-text(meta);
+        @include body-text(reading);
     	color: $leaf;
         text-align: right;
     }
+
     .search__hint {
         @include body-text(reading);
     }
 
     .card__summary {
-        margin-top: $inpage-margin-base;
+        margin-top: $base;
         @include body-text(reading);
-        margin-bottom: $element-margin-base;
     }
 
     .card__meta {
-        color: $leaf;
+        color: $bark;
+		margin-top: $base/2;
+		a {
+			color: $bark;
+			font-weight: bold;
+		}
+
+		.sep {
+			color: transparentize($bark, 0.5);
+		}
     }
 
     .layout-section__item {
-        margin-bottom: $inpage-baseline;
+        margin-bottom: $base*3;
     }
 
     a:hover {

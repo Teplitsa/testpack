@@ -465,7 +465,7 @@ function tst_get_card_icon($cpost) {
 function tst_card_search(WP_Post $cpost) {
 
 	$pl = get_permalink($cpost);
-	$tags = tst_get_tags_list($cpost);
+
 	$cats = tst_get_search_cats($cpost);
 	$meta = tst_get_post_meta($cpost);
 
@@ -476,21 +476,15 @@ function tst_card_search(WP_Post $cpost) {
 	if(!empty($meta))
 		$s_meta[] = $meta;
 ?>
-<a href="<?php echo $pl;?>" class="card-link">
-
-	<div class="card__title">
-		<h4><?php echo apply_filters('tst_the_title', tst_get_post_title_excerpt($cpost, 25, true));?></h4>
-	</div>
-
-	<div class="card__meta">
-		<?php echo implode(', ', $s_meta); ?>
-	</div>
-
-	<div class="card__summary">
-		<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost, 20)); ?>
-	</div>
-
-</a>
+<div class="card__title">
+	<h4><a href="<?php echo $pl;?>"><?php echo apply_filters('tst_the_title', tst_get_post_title_excerpt($cpost, 25, true));?></a></h4>
+</div>
+<div class="card__meta">
+	<?php echo implode(tst_get_sep('/'), $s_meta); ?>
+</div>
+<div class="card__summary">
+	<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost, 20)); ?>
+</div>
 <?php
 }
 
@@ -501,13 +495,17 @@ function tst_get_search_cats(WP_Post $cpost) {
 
 	if(!empty($terms)){ foreach($terms as $t) {
 		$list[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
+
 	}} else {
 
 		if($cpost->post_type == 'post'){
-			$list[] = "<a href='".home_url('news')."'>".__('News', 'tst')."</a>";
+			$list[] = "<a href='".home_url('news/')."'>".__('News', 'tst')."</a>";
 		}
 		elseif($cpost->post_type == 'event'){
 			$list[] = "<a href='".home_url('item/dront-events/')."'>".__('Events', 'tst')."</a>";
+		}
+		elseif($cpost->post_type == 'project'){
+			$list[] = "<a href='".home_url('projects/')."'>".__('Projects', 'tst')."</a>";
 		}
 
 		//add further logic

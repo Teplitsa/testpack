@@ -25,13 +25,13 @@ get_header();?>
 				</div>
 
 				<div class="flex-cell--stacked lg-3 single__nav">
-					<?php tst_single_post_nav();?>
+					<?php tst_single_post_nav($cpost);?>
 				</div>
 
 			</div>
 		</div>
 	</header>
-	
+
 	<?php if(has_post_thumbnail($cpost)) { ?>
 	<div class="single__preview"><div class="container">
 		<div class="flex-grid--stacked">
@@ -55,7 +55,7 @@ get_header();?>
 		</div>
 	</div></div>
 	<?php } ?>
-	
+
 	<div class="single__content"><div class="container">
 		<div class="flex-grid--stacked">
 
@@ -69,7 +69,7 @@ get_header();?>
 						</div>
 					</div>
 				<?php } ?>
-				
+
 				<?php if(!empty($cpost->post_excerpt)) { ?>
 					<div class="single-body--summary"><?php echo apply_filters('tst_entry_the_content', $cpost->post_excerpt);?></div>
 				<?php } ?>
@@ -77,7 +77,7 @@ get_header();?>
 				<div class="single-body--entry">
 					<?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
 				</div>
-				
+
 				<div class="single-body--marker">
 					<?php
 						$contacts = $event->contact;
@@ -97,13 +97,13 @@ get_header();?>
 						</div>
 					<?php }?>
 				</div>
-				
+
 				<div class="single-body__footer">
 					<?php $label = __('Tags', 'tst'); ?>
 					<?php echo get_the_term_list($cpost->ID, 'post_tag', '<span class="tags"><i>'.$label.'</i>', ' ', '</span>' );?>
 				</div>
-							
-				
+
+
 			</div>
 
 			<div class="flex-cell--stacked lg-3 single-aside">
@@ -111,7 +111,7 @@ get_header();?>
 			</div>
 		</div>
 	</div></div><!-- .single__content -->
-	
+
 	<?php
 		$news = tst_get_related_query($cpost, 'post_tag', 4);
 		if(!empty($news)) {
@@ -137,7 +137,7 @@ get_header();?>
 		</div>
 	</footer>
 	<?php } ?>
-	
+
 </article>
 
 <?php get_footer();
