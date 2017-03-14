@@ -5,6 +5,8 @@
 .pw_map-wrap {
   position: relative;
 
+  border: 1px solid #EBEDEA;
+
   .black {
     color: $ground;
   }
@@ -113,7 +115,7 @@
     padding: 2*$base 4*$base;
   }
 
-  border-bottom: 1px solid $grass;
+  border: none; //1px solid #EBEDEA;
   //border-top: 1px dashed $grass;
 
 
@@ -275,4 +277,32 @@
     }
   }
 
+}
+
+/* For responsive iframe of the Google Map */
+.resp-wrapper {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.ratio-25x9 {
+  padding-bottom: 36%;
+}
+.ratio-21x9 {
+  padding-bottom: 42.86%;
+}
+.ratio-16x9 {
+  padding-bottom: 56.25%;
+}
+.ratio-4x3 {
+  padding-bottom: 75%;
+}
+
+.resp-wrapper iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
