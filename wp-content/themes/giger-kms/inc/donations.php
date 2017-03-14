@@ -85,7 +85,7 @@ function tst_donation_form($campaign_id = null) {
     }
 
 	$active_pm = apply_filters('leyka_form_pm_order', leyka_get_pm_list(true));
-	$agree_link = home_url('oferta'); // oferta page
+//	$agree_link = home_url('oferta'); // oferta page
 
 	leyka_pf_submission_errors();?>
 
@@ -122,7 +122,7 @@ function tst_donation_form($campaign_id = null) {
 		<input type="text" class="required tst-textfield__input" name="leyka_donor_name" id="leyka_donor_name" value="" placeholder="Ваше имя" autocomplete="on">
 		<span id="leyka_donor_name-error" class="leyka_donor_name-error field-error tst-textfield__error"></span>
 	</div>
-	<?php  }?>
+	<?php }?>
 
 	<!-- email -->
 	<?php if($leyka_current_pm->is_field_supported('email') ) { ?>
