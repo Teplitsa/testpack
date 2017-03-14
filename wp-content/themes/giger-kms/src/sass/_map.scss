@@ -278,3 +278,28 @@
   }
 
 }
+
+/* For responsive iframe of the Google Map */
+.resp-wrapper {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.ratio-25x9 {
+  padding-bottom: 36%;
+}
+.ratio-16x9 {
+  padding-bottom: 56.25%;
+}
+.ratio-4x3 {
+  padding-bottom: 75%;
+}
+
+.resp-wrapper iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
