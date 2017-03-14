@@ -101,11 +101,12 @@ get_header(); ?>
 
 	<?php
 		$projects = tst_project_get_connected_projects($parent);
+		$title = ($parent) ? get_the_title($parent) : get_the_title($cpost);
 		if(!empty($projects)) {
 	?>
 		<footer class="single__footer">
 			<div class="projects-block container">
-				<h3 class="projects-block__title"><?php printf(__('Projects by topic: %s', 'tst'), get_the_title($cpost)); ?></h3>
+				<h3 class="projects-block__title"><?php printf(__('Projects by topic: %s', 'tst'), $title); ?></h3>
 
 				<div class="projects-block__content">
 					<div class="projects-block__icon hide-upto-medium"><?php tst_svg_icon('icon-project');?></div>
@@ -113,7 +114,9 @@ get_header(); ?>
 					<div class="projects-block__list">
 						<ul>
 						<?php foreach($projects as $p) { ?>
-							<li><a href="<?php echo get_permalink($p);?>"><?php echo get_the_title($p);?></a></li>
+							<?php if ($p->ID != $cpost->ID) { ?>
+								<li><a href="<?php echo get_permalink($p);?>"><?php echo get_the_title($p);?></a></li>
+							<?php }	?>
 						<?php }	?>
 						</ul>
 					</div>

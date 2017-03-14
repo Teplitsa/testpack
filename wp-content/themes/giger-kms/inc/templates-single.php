@@ -25,13 +25,13 @@ function tst_single_post_nav(WP_Post $cpost) {
 	}?>
 	<div class="nav-links">
 	<?php if($parent) { ?>
-		<div class="nav-links__link nav-links__link--next">
-			<a href="<?php echo get_permalink($parent);?>"><span><?php tst_svg_icon('icon-prev');?></span><span><?php echo get_the_title( $parent ); ?></span></a>
+		<div class="nav-links__link nav-links__link--next <?php if($parent && $connected) echo "nav-links__link--double-nav" ?>">
+			<a href="<?php echo get_permalink($parent);?>"><span><?php tst_svg_icon('icon-prev');?></span><span class="link"><?php echo get_the_title( $parent ); ?></span></a>
 		</div>
 	<?php }?>
 	<?php if($connected) { ?>
-		<div class="nav-links__link nav-links__link--prev">
-			<a href="<?php echo get_permalink($connected[0]);?>"><span><?php tst_svg_icon('icon-next');?></span><span><?php echo get_the_title( $connected[0] ); ?></span></a>
+		<div class="nav-links__link nav-links__link--prev <?php if($parent && $connected) echo "nav-links__link--double-nav" ?>">
+			<a href="<?php echo get_permalink($connected[0]);?>"><span><?php tst_svg_icon('icon-next');?></span><span class="link"><?php echo get_the_title( $connected[0] ); ?></span></a>
 		</div>
 	<?php }?>
 	</div>

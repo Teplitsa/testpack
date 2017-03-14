@@ -97,18 +97,30 @@ article.single {
 			align-items: center;
 			@include nav-text(navs);
 			font-weight: bold;
+			
 		}
 
 		@include for(medium-screens) {
 			width: 100%;
-			height: 50%;
+			height: 100%;
 			a {
 				height: 100%;
 			}
+			
+		}
+		.link {
+			color: $color-white;
+			opacity: 0.5;
+		    transition: ease 0.3s;
+		}
+		
+		&.nav-links__link--double-nav {
+			height: 50%;
 		}
 
-		&:hover .svg-icon {
+		&:hover .svg-icon, &:hover .link {
 			fill: $color-white;
+			opacity: 1;
 		}
 	}
 
