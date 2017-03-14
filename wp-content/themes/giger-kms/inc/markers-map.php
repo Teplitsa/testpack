@@ -239,9 +239,14 @@ function tst_markers_map_output($atts){
     <div class="<?php echo $css_classes;?>">
         <div class="pw_map-wrap">
             <div class="pw_map_canvas" id="<?php echo esc_attr($map_id);?>" style="height: <?php echo esc_attr($height);?>px; width: <?php echo esc_attr($width);?>"></div>
-            <?php if($show_legend) {?>
-                <div class="pw_map_legend"><?php echo tst_get_legend($groups, $legend_title, $legend_subtitle, $legend_is_filter);?></div>
-            <?php }?>
+            <?php if($show_legend) {
+
+                $legend = tst_get_legend($groups, $legend_title, $legend_subtitle, $legend_is_filter);
+
+                if($legend) {?>
+                    <div class="pw_map_legend"><?php echo $legend;?></div>
+                <?php }
+            }?>
         </div>
         <script type="text/javascript">
             if(typeof mapFunc == "undefined") {
@@ -625,11 +630,14 @@ function tst_get_legend(array $groups, $title = '', $subtitle = '', $legend_is_f
 
     }
 
-    return ($title || $subtitle ? "<div class='legend-header'>"
+    $title_part = ($title || $subtitle ? "<div class='legend-header'>"
         .($title ? "<div class='legend-title'>$title</div>" : "")
         .($subtitle ? "<div class='legend-subtitle'>$subtitle</div>" : "")
-        ."</div>" : "")
-    ."<ul class='markers-map-legend ".($legend_is_filter ? 'is-filter' : '')."'>".implode('', $list)."</ul>";
+        ."</div>" : "");
+    $list_part = empty($list) ?
+        '' : "<ul class='markers-map-legend ".($legend_is_filter ? 'is-filter' : '')."'>".implode('', $list)."</ul>";
+
+    return $list_part ? $title_part.$list_part : '';
 
 }
 
