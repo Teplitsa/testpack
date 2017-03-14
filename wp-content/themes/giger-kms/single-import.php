@@ -9,7 +9,7 @@ $cpost = get_queried_object();
 $title = get_the_title($cpost);
 if(empty($title)) {
 	$title = sprintf(__('Archive page - %s', 'tst'), get_the_date('d.m.Y', $cpost));
-	$title = mb_convert_case($title ,  MB_CASE_TITLE);
+
 }
 
 

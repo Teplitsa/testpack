@@ -515,6 +515,26 @@ function tst_get_search_cats(WP_Post $cpost) {
 	return $out;
 }
 
+/* Archive card **/
+function tst_card_archive(WP_Post $cpost) {
+
+	$pl = get_permalink($cpost);
+
+	$title = get_the_title($cpost);
+	if(empty($title)) {
+		$title = sprintf(__('Archive page - %s', 'tst'), get_the_date('d.m.Y', $cpost));
+	}
+
+?>
+<div class="card__title">
+	<h4><a href="<?php echo $pl;?>"><?php echo apply_filters('tst_the_title', $title);?></a></h4>
+</div>
+<div class="card__summary">
+	<?php echo apply_filters('tst_the_content', tst_get_post_excerpt($cpost, 20)); ?>
+</div>
+<?php
+}
+
 
 /** Events */
 function tst_card_event(WP_Post $cpost, $args = array()) {

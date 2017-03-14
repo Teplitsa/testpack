@@ -58,10 +58,10 @@
                 <div class="flex-cell--stacked lg-12 single-body">
                     <?php
             			if(empty($s_query)){
-            				echo "<div class='search__hint'><p>".__('Пожалуйста, укажите слова для поиска в форме и нажмите Enter.', 'tst')."</p></div>";
+            				echo "<div class='search__hint'><p>Пожалуйста, укажите слова для поиска в форме и нажмите Enter.</p></div>";
             			}
             			elseif($num == 0) {
-            				echo "<div class='search__hint'><p>".__('К сожалению, по вашему запросу ничего не найдено. Попробуйте сформулировать иначе.', 'tst')."</p></div>";
+            				echo "<div class='search__hint'><p>".__('Unfortunately, nothing found under your request.', 'tst')."</p></div>";
             			}
         			?>
                     <?php if(!empty($s_query)) {
