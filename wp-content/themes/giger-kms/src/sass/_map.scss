@@ -279,6 +279,17 @@
 
 }
 
+/* OOPT Map PB section */
+
+.oopt-map {
+
+  text-align: center;
+
+  .card__title {
+    margin-bottom: 4*$base;
+  }
+}
+
 /* For responsive iframe of the Google Map */
 .resp-wrapper {
   position: relative;

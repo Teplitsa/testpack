@@ -321,11 +321,11 @@ body.drawer-open {
 		a { @include nav-text(menu_item); }
 	}
 
-	li:last-child {
-		margin-right: 0;
-		a {
-			@include button();
-		}
-	}
+}
 
+.menu-item[class*="leyka_campaign"] {
+  margin-right: 0;
+  a {
+    @include button();
+  }
 }

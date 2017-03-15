@@ -20,12 +20,13 @@ try {
 	}
 
 	$menu_id = wp_create_nav_menu($menu_name);
-	$sections = array( 'work', 'ecoproblems', 'departments', 'about', 'supportus' );
-
+	$sections = array( 'work', 'ecoproblems', 'departments', 'about', 'supportus', );
 
 	foreach($sections as $s) {
+
 		$sec = get_term_by('slug', $s, 'section');
-		if($sec){
+
+		if($sec) {
 			wp_update_nav_menu_item($menu_id, 0, array(
 				'menu-item-object-id' => $sec->term_id,
 				'menu-item-object' => $sec->taxonomy,
@@ -42,8 +43,28 @@ try {
 				'menu-item-status' => 'publish',
 			));
 		}
+
 	}
 
+    // Add donation page link:
+    $campaign = get_posts(array('post_type' => Leyka_Campaign_Management::$post_type, 'name' => 'donate'));
+    $campaign = reset($campaign);
+
+    wp_update_nav_menu_item($menu_id, 0, array(
+        'menu-item-object-id' => $campaign->ID,
+        'menu-item-object' => 'leyka_campaign', // $campaign->ID,
+        'menu-item-parent-id' => 0,
+        'menu-item-position' => 0,
+        'menu-item-type' => 'post_type', //'custom',
+        'menu-item-title' => 'Пожертвуйте!',
+        'menu-item-url' => get_permalink($campaign),
+        //'menu-item-description' => '',
+        //'menu-item-attr-title' => '',
+        //'menu-item-target' => '',
+        'menu-item-classes' => 'campaign-'.$campaign->post_name,
+        //'menu-item-xfn' => '',
+        'menu-item-status' => 'publish',
+    ));
 
 	//assign to location
     $locations = get_theme_mod('nav_menu_locations');
@@ -51,7 +72,6 @@ try {
     set_theme_mod('nav_menu_locations', $locations );
 
 	echo 'Main menu created. Time in sec: '. (microtime(true) - $time_start).chr(10);
-
 
 	//Sitemap
 	$menu_name = 'Карта сайта';
