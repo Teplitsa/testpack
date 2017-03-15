@@ -69,7 +69,7 @@ function tst_single_cta(WP_Post $cpost, $mod = 'pictured') {
 <a href="<?php echo $pl;?>" class="card-link card--cta">
 	<?php if($mod == 'pictured' && has_post_thumbnail($page)) { ?>
 		<div class="card__thumbnail">
-			<?php echo get_the_post_thumbnail($page, "block-small"); ?>
+			<?php echo tst_get_the_post_thumbnail($page, 'block-1col');?>
 		</div>
 	<?php } ?>
 
