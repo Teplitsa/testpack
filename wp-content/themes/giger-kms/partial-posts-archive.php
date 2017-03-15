@@ -4,7 +4,6 @@
  */
 
 get_header();
-
 ?>
 <article class="landing landing--news">
 	<section class="section-intro">
@@ -21,12 +20,10 @@ get_header();
 
 	<!-- main blocks -->
 	<section class="section-loop">
-		<div class="container" id="loadmore-news" >
+		<div class="container" id="loadmore-<?php echo $wp_query->query_vars['post_type'] ?>" >
 			<?php
 				if(!empty($posts)) {
-					tst_news_loop_page($posts);
-
-					//load more here
+					tst_posts_loop_page( $posts, $wp_query->query_vars['post_type'] );
 				}
 				else {
 			?>
@@ -39,7 +36,7 @@ get_header();
 		<div class="layout-section--loadmore">
 		<?php
 			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
-				tst_load_more_button($wp_query, 'news_card', array(), "loadmore-news");
+				tst_load_more_button($wp_query, $wp_query->query_vars['post_type'] . '_card', array(), "loadmore-" . $wp_query->query_vars['post_type']);
 			}
 		?>
 		</div>

@@ -147,10 +147,36 @@ function tst_get_heading_style() {
 	return "style='background-image: url(".$url.")'";
 }
 
-
+function tst_search_loop_page( $posts ) {
+    foreach( $posts as $i => $cpost) :
+    ?>
+        <div class="layout-section__item layout-section__item--card">
+            <?php tst_card_search($cpost); ?>
+        </div>
+	<?php endforeach;
+}
 
 
 /* == Loop markups == **/
+function tst_posts_loop_page( $posts, $post_type ) {
+    if( $post_type  == 'project' ) {
+        tst_news_loop_page( $posts );
+    }
+    else {
+        tst_news_loop_page( $posts );
+    }
+}
+
+function tst_projects_loop_page( $posts ) {
+    
+    if(empty($posts)) {
+        return;
+    }
+    
+    tst_news_loop_pattern( $posts );
+    
+}
+
 function tst_news_loop_page($posts) {
 
 	if(empty($posts))
@@ -299,6 +325,7 @@ function tst_news_loop_pattern($posts) {
 	</div>
 <?php
 	}
+	
 }
 
 
