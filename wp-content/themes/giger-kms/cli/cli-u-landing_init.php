@@ -391,10 +391,6 @@ $landings_sections = array(
                     'threeforth_section_label1_order' => 'right_top',
                     'threeforth_section_section' => 'departments',
                 ),
-                
-            ),
-            
-            '_wds_builder_cta_template' => array(
                 array(
                     'template_group' => 'help',
                 ),
