@@ -219,6 +219,31 @@ article.single {
 	}
 }
 
+// page general content
+.page-general__content {
+	h3 {
+		@include body-text(meta);
+		font-weight: bold;
+		clear: both;
+	}
+	h4 {
+		// @include body-text(reading);
+		@include post-title(cards_regular);
+		font-weight: bold;
+	}
+	h5 {
+		@include form-text(semi);
+		text-transform: uppercase;
+	}
+	h6 {
+		@include sub-title(default);
+		font-weight: bold;
+	}
+	figcaption {
+		@include sub-title(default);
+		font-style: italic;
+	}
+}
 
 //content
 .single__content {
