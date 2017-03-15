@@ -126,6 +126,30 @@
 }
 
 
+//single post
+.post-thumbnail--single {
+	position: relative;
+	z-index: 1;
+
+	.tst-picture {
+		z-index: 10;
+	}
+
+	figcaption {
+		z-index: 100;
+		position: absolute;
+		padding: $base $base*2;
+		bottom: 0;
+		left: 0;
+
+		@include sub-title();
+		color: $color-white;
+
+		p {
+			margin: 0;
+		}
+	}
+}
 
 
 .no-js .lazyload {
