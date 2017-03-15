@@ -40,8 +40,9 @@
     "run-sequence": "^1.1.2"
   },
   "dependencies": {
+    "fontfaceonload": "^0.1.7",
     "imagesloaded": "^3.2.0",
-	"fontfaceonload": "^0.1.7",
-    "leaflet-plugins": "^3.0.0"
+    "leaflet-plugins": "^3.0.0",
+    "object-fit-images": "^3.1.3"
   }
 }

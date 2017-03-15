@@ -295,5 +295,10 @@ jQuery(document).ready(function($){
 		$(this).parent().hide();
 		$(this).hide();
 	});
+	
+	objectFitImages(false, {
+		watchMQ: true,
+		skipTest: true
+	});
 
 }); //jQuery

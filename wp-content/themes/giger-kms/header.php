@@ -12,14 +12,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <?php wp_head(); ?>
 
-<script>
-    objectFit.polyfill({
-        selector: 'img',
-        fittype: 'cover',
-        disableCrossDomain: 'false'
-    });
-</script>
-
 </head>
 
 <body id="top" <?php body_class(); ?>>
