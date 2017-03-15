@@ -3,6 +3,9 @@
  * Temp pagebuilder functions. REMOVE IT AFTER PB SETUP COMPLETE!
  **/
 
+if( !function_exists('register_page_builder_area') ) {
+    function register_page_builder_area($arg) {}
+}
 
 add_action( 'init', 'tst_pagebuilder_conifg', 30 );
 function tst_pagebuilder_conifg() {
@@ -31,7 +34,7 @@ function tst_add_subtitle_field( $fields ) {
 	$prefix = "subtitle_";
 	$new_fields = array(
 		array(
-			'name'        		=> 'Текст подзагловока', //to do for private only
+			'name'        		=> 'Текст подзаголовока', //to do for private only
 			'id'          		=> $prefix.'subtitle_text',
 			'type'        		=> 'text'
 		)
@@ -1167,16 +1170,28 @@ function tst_add_help_field( $fields ) {
 }
 
 /** OOPT Map block **/
-add_filter( 'wds_page_builder_fields_oopt_map', 'tst_add_oopt_map_field' );
+add_filter( 'wds_page_builder_fields_oopt-map', 'tst_add_oopt_map_field' );
 function tst_add_oopt_map_field( $fields ) {
 
     $prefix = 'oopt_map_';
     $new_fields = array(
         array(
-            'name'    => 'URL файла слоя карты (KML, KMZ)',
-            'id'      => $prefix.'layer_file_url',
-            'type'    => 'text_url',
-        )
+            'name'        		=> 'Заголовок',
+            'id'          		=> $prefix.'title',
+            'desc'				=> 'Укажите заголовок секции',
+            'type'        		=> 'text'
+        ),
+        array(
+            'name'        		=> 'Подзаголовок',
+            'id'          		=> $prefix.'subtitle',
+            'desc'				=> 'Укажите подзаголовок секции',
+            'type'        		=> 'text'
+        ),
+//        array(
+//            'name'    => 'URL файла слоя карты (KML, KMZ)',
+//            'id'      => $prefix.'layer_file_url',
+//            'type'    => 'text_url',
+//        )
     );
 
     return array_merge( $fields, $new_fields );

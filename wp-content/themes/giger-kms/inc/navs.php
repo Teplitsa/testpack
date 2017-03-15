@@ -77,15 +77,13 @@ function tst_load_more_posts_screen() {
 	//add paging arg to qv and mark for per_page recalculation
 	$query_vars['paged'] = $paged;
 	$query_vars['load_more_request'] = 1; //this works as hook for paging recalculation
-
-    if($template == 'search_card') {
-
+	
+    if( $template == 'event_card' ) {
         $query_vars['orderby'] = 'meta_value_num';
         $query_vars['meta_key'] = 'event_date_start';
-
     }
 
-	$query = new WP_Query( $query_vars );
+    $query = new WP_Query( $query_vars );
 //var_dump($query->query_vars);
 	if(!$query->have_posts()){
 		$result['type'] = 'error';
@@ -95,8 +93,12 @@ function tst_load_more_posts_screen() {
 
 	//build results
 	ob_start();
-
-	tst_news_loop_page( $query->posts );
+	    if( $template == 'search_card' ) {
+	        tst_search_loop_page( $query->posts );
+	    }
+	    else {
+	        tst_posts_loop_page( $query->posts, $query->query_vars['post_type'] );
+	    }
 	
 	$result['data'] = ob_get_contents();
 	ob_end_clean();

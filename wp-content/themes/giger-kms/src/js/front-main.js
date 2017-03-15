@@ -295,5 +295,17 @@ jQuery(document).ready(function($){
 		$(this).parent().hide();
 		$(this).hide();
 	});
+	
+	$(document).keyup(function(e) {
+		if(e.keyCode == 27) {
+			$tst_view_pdf_popup.find('.tst-close-pdf-button').parent().hide();
+			$tst_view_pdf_popup.find('.tst-close-pdf-button').hide();
+		}
+	});
+	
+	objectFitImages(false, {
+		watchMQ: true,
+		skipTest: true
+	});
 
 }); //jQuery

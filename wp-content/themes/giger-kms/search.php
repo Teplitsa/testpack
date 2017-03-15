@@ -9,8 +9,7 @@
  if(!empty($s_query) && $wp_query->found_posts > 0){
  	$num = (int)$wp_query->found_posts;
  }
-
-
+ 
  //build correct label for results
  function tst_build_results_label($number){
 
@@ -69,15 +68,23 @@
                     <div id="loadmore-search-results">
                         <?php
                         foreach($loop_1 as $i => $cpost) {
-                            $class = ($i == (count($loop_1) - 1)) ? 'layout-section__item--card' : 'layout-section__item--card';
                             ?>
-                            <div class="layout-section__item <?php echo $class;?>">
+                            <div class="layout-section__item layout-section__item--card">
                                 <?php tst_card_search($cpost); ?>
                             </div>
                         <?php }
                     }
                     ?>
                     </div>
+                    
+            		<div class="layout-section--loadmore">
+            		<?php
+            			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
+            				tst_load_more_button($wp_query, 'search_card', array(), "loadmore-search-results");
+            			}
+            		?>
+            		</div>
+                    
                 </div>
 
             </div>

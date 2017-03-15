@@ -83,10 +83,14 @@ $landings_sections = array(
                     'template_group' => 'news',
                 ),
                 
+            ),
+            
+            '_wds_builder_cta_template' => array(
                 array(
                     'template_group' => 'help',
                 ),
             ),
+            
         ),
     ),
     
@@ -146,11 +150,14 @@ $landings_sections = array(
                     'template_group' => 'news',
                 ),
                 
+            ),
+            
+            '_wds_builder_cta_template' => array(
                 array(
                     'template_group' => 'help',
                 ),
-                
             ),
+            
         ),
     ),
     
@@ -218,10 +225,14 @@ $landings_sections = array(
                     'template_group' => 'news',
                 ),
                 
+            ),
+            
+            '_wds_builder_cta_template' => array(
                 array(
                     'template_group' => 'help',
                 ),
             ),
+            
         ),
     ),
     
@@ -286,10 +297,14 @@ $landings_sections = array(
                     'template_group' => 'news',
                 ),
                 
+            ),
+            
+            '_wds_builder_cta_template' => array(
                 array(
                     'template_group' => 'help',
                 ),
             ),
+            
         ),
     ),
     
@@ -317,10 +332,14 @@ $landings_sections = array(
                     'template_group' => 'news',
                 ),
             
+            ),
+            
+            '_wds_builder_cta_template' => array(
                 array(
                     'template_group' => 'help',
                 ),
             ),
+            
         ),
     ),
     'homepage' => array( 'post_type' => 'page', 
@@ -375,11 +394,195 @@ $landings_sections = array(
                 array(
                     'template_group' => 'help',
                 ),
-                
             ),
+            
         ),
     ),
     
+    'dront-locals' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-locals', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+        
+                array(
+                    'template_group' => 'news',
+                ),
+        
+            ),
+        
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+        
+        ),
+    ),
+
+    'dront-health' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-health', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-resources' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-resources', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-garbage' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-garbage', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+
+    'dront-cpst' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-cpst', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-urban' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-urban', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'direct',
+                    'tripleblock_picture_element1_post' => array( 'ecodom-konkurs', 'project' ),
+                    'tripleblock_picture_element2_file_id' => array( 'datt-flora_nn_xi', 'attachment' ),
+                    'tripleblock_picture_element3_post' => array( 'ecodom-2015', 'project' ),
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'revers',
+                    'tripleblock_picture_element1_post' => array( 'marsh-konkurs', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'di-ogorodi-gazon-i-ne-meti-ego', 'import' ),
+                    'tripleblock_picture_element2_file_id' => '',
+                    'tripleblock_picture_element3_post' => array( 'ecodom-2014', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-text',
+                    'singleblock_text_title' => 'Экогорода - будущее планеты!',
+                    'singleblock_text_subtitle' => '',
+                    'singleblock_text_summary' => '',
+                    'singleblock_text_link_text' => 'Твой город должен быть чистым!',
+                    'singleblock_text_element_post' => array( 'ecodom-konkurs', 'project' ),
+                ),
+                
+                array(
+                    'template_group' => 'singleblock-picture',
+                    'singleblock_picture_label_order' => 'left_bottom',
+                    'singleblock_picture_element_post' => array( 'di-nizhegorodskoe-ekologo-pravovoe-agentstvo', 'import' ),
+                ),
+                
+                array(
+                    'template_group' => 'tripleblock-people2cards',
+                    'tripleblock_people2cards_block_order' => 'direct',
+                    'tripleblock_people2cards_element1_post' => array( 'dront-jungle', 'landing' ),
+                    'tripleblock_people2cards_element2_post' => array( 'othody-konkurs', 'project' ),
+                    'tripleblock_people2cards_people_ids' => array(
+                        array( 'chebotareva-olga-vasilevna', 'person' ),
+                        array( 'malova-nadezhda-nikolaevna', 'person' ),
+                        array( 'pinyaev-sergej-mihajlovich', 'person' ),
+                    ),
+                ),
+                
+                array(
+                    'template_group' => 'news',
+                ),
+        
+            ),
+            
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+            
+        ),
+    ),
 );
 
 try {
