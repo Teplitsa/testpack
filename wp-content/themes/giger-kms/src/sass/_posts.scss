@@ -130,6 +130,7 @@ article.single {
 		fill: $wood;
 		pointer-events: none;
 		@include transition(all 0.35s);
+		margin-bottom: $base*2;
 	}
 }
 

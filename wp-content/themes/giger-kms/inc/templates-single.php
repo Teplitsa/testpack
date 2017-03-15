@@ -19,6 +19,7 @@ function tst_single_post_nav(WP_Post $cpost) {
 		'order' => 'ASC',
 		'post_parent' => $cpost->ID
 	));
+	// tst_get_post_excerpt($cpost, 20)
 
 	if(!$previous && !$next) {
 		return;
@@ -26,14 +27,24 @@ function tst_single_post_nav(WP_Post $cpost) {
 	<div class="nav-links">
 	<?php if($parent) { ?>
 		<div class="nav-links__link nav-links__link--next <?php if($parent && $connected) echo "nav-links__link--double-nav" ?>">
-			<a href="<?php echo get_permalink($parent);?>"><span><?php tst_svg_icon('icon-prev');?></span><span class="link"><?php echo get_the_title( $parent ); ?></span></a>
+			<a href="<?php echo get_permalink($parent);?>"><span><?php tst_svg_icon('icon-prev');?></span><span class="link"><?php echo tst_get_post_excerpt( $parent, 6); ?></span></a>
 		</div>
-	<?php }?>
+	<?php } else if($next) { ?>
+		<div class="nav-links__link nav-links__link--next">
+			<a href="<?php echo get_permalink($next);?>"><span><?php tst_svg_icon('icon-prev');?></span><span class="link"><?php echo tst_get_post_excerpt( $next, 6 ); ?></span></a>
+		</div>
+	<?php } ?>
+	
 	<?php if($connected) { ?>
 		<div class="nav-links__link nav-links__link--prev <?php if($parent && $connected) echo "nav-links__link--double-nav" ?>">
-			<a href="<?php echo get_permalink($connected[0]);?>"><span><?php tst_svg_icon('icon-next');?></span><span class="link"><?php echo get_the_title( $connected[0] ); ?></span></a>
+			<a href="<?php echo get_permalink($connected[0]);?>"><span><?php tst_svg_icon('icon-next');?></span><span class="link"><?php echo tst_get_post_excerpt( $connected[0], 6 ); ?></span></a>
 		</div>
-	<?php }?>
+	<?php } else if($previous) { ?>
+		<div class="nav-links__link nav-links__link--prev">
+			<a href="<?php echo get_permalink($previous);?>"><span><?php tst_svg_icon('icon-next');?></span><span class="link"><?php echo tst_get_post_excerpt( $previous, 6 ); ?></span></a>
+		</div>
+	<?php } ?>
+	
 	</div>
 <?php
 }
