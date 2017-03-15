@@ -399,77 +399,176 @@ $landings_sections = array(
         ),
     ),
     
+    'dront-locals' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-locals', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+        
+                array(
+                    'template_group' => 'news',
+                ),
+        
+            ),
+        
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+        
+        ),
+    ),
+
+    'dront-health' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-health', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-resources' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-resources', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-garbage' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-garbage', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+
+    'dront-cpst' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-cpst', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
     'dront-urban' => array(
         'sections' => array(
             '_wds_builder_template' => array(
                 array(
                     'template_group' => 'cover-general',
-                    'cover_general_cover_post' => array( 'dront-birds', 'landing' ),
+                    'cover_general_cover_post' => array( 'dront-urban', 'landing' ),
                     'cover_general_cover_file_id' => 'thumbnail',
                 ),
                 array(
                     'template_group' => 'tripleblock-picture',
                     'tripleblock_picture_block_order' => 'direct',
-                    'tripleblock_picture_element1_post' => array( 'dront-ornotologlab', 'landing' ),
-                    'tripleblock_picture_element2_post' => array( 'birds-territ', 'project' ),
-                    'tripleblock_picture_element2_file_id' => array( 'di-vesna-ptitsy-buklet-2014', 'attachment' ),
-                    'tripleblock_picture_element3_post' => array( 'birds-kadastr', 'project' ),
+                    'tripleblock_picture_element1_post' => array( 'ecodom-konkurs', 'project' ),
+                    'tripleblock_picture_element2_file_id' => array( 'datt-flora_nn_xi', 'attachment' ),
+                    'tripleblock_picture_element3_post' => array( 'ecodom-2015', 'project' ),
                 ),
                 array(
                     'template_group' => 'tripleblock-picture',
                     'tripleblock_picture_block_order' => 'revers',
-                    'tripleblock_picture_element1_post' => array( 'birds-lep', 'project' ),
-                    'tripleblock_picture_element2_post' => array( 'ornotologlab-activity', 'project' ),
+                    'tripleblock_picture_element1_post' => array( 'marsh-konkurs', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'di-ogorodi-gazon-i-ne-meti-ego', 'import' ),
                     'tripleblock_picture_element2_file_id' => '',
-                    'tripleblock_picture_element3_post' => array( 'ugrozy-lep', 'project' ),
+                    'tripleblock_picture_element3_post' => array( 'ecodom-2014', 'project' ),
                 ),
                 array(
                     'template_group' => 'singleblock-text',
-                    'singleblock_text_title' => '20 млн. птиц',
-                    'singleblock_text_subtitle' => 'гибнет ежегодно от поражения электическим током на воздушных линиях электропередачи в России',
+                    'singleblock_text_title' => 'Экогорода - будущее планеты!',
+                    'singleblock_text_subtitle' => '',
                     'singleblock_text_summary' => '',
-                    'singleblock_text_link_text' => 'Птицы и ЛЭП',
-                    'singleblock_text_element_post' => array( 'ugrozy-lep', 'project' ),
+                    'singleblock_text_link_text' => 'Твой город должен быть чистым!',
+                    'singleblock_text_element_post' => array( 'ecodom-konkurs', 'project' ),
                 ),
+                
                 array(
                     'template_group' => 'singleblock-picture',
                     'singleblock_picture_label_order' => 'left_bottom',
-                    'singleblock_picture_element_post' => array( 'dozhit', 'project' ),
+                    'singleblock_picture_element_post' => array( 'di-nizhegorodskoe-ekologo-pravovoe-agentstvo', 'import' ),
                 ),
-        
-                array(
-                    'template_group' => 'doubleblock-element',
-                    'doubleblock_element_picture_position' => 'left',
-                    'doubleblock_element_title' => 'Удод',
-                    'doubleblock_element_subtitle' => 'птица 2016 года',
-                    'doubleblock_element_summary' => 'Удод - птица осторожная, но при этом она не из пугливых. Когда пернатый начинает нервничать или его что-то напугало, хохол распускается как веер.',
-                    'doubleblock_element_link_text' => 'Читать подробнее',
-                    'doubleblock_element_element_post' => array( 'portrety-prirody-2014', 'project' ),
-                ),
-        
+                
                 array(
                     'template_group' => 'tripleblock-people2cards',
                     'tripleblock_people2cards_block_order' => 'direct',
-                    'tripleblock_people2cards_element1_post' => array( 'portrety-prirody-2014', 'project' ),
-                    'tripleblock_people2cards_element2_post' => array( 'portrety-prirody-2013', 'project' ),
+                    'tripleblock_people2cards_element1_post' => array( 'dront-jungle', 'landing' ),
+                    'tripleblock_people2cards_element2_post' => array( 'othody-konkurs', 'project' ),
                     'tripleblock_people2cards_people_ids' => array(
-                        array( 'fufaeva-irina-vladimirovna', 'person' ),
-                        array( 'anufrieva-nataliya-gennadievna', 'person' ),
-                        array( 'temnuhin-valerij-borisovich', 'person' ),
-                    ),
-                ),
-        
-                array(
-                    'template_group' => 'doubleblock-picturepeople',
-                    'doubleblock_picturepeople_picture_position' => 'revers',
-                    'doubleblock_picturepeople_element1_post' => array( 'rodnaya-priroda', 'project' ),
-                    'doubleblock_picturepeople_people_ids' => array(
-                        array( 'toropova-nataliya-lvovna', 'person' ),
                         array( 'chebotareva-olga-vasilevna', 'person' ),
-                        array( 'sharlovskij-aleksej-valentinovich', 'person' ),
+                        array( 'malova-nadezhda-nikolaevna', 'person' ),
+                        array( 'pinyaev-sergej-mihajlovich', 'person' ),
                     ),
                 ),
-        
+                
                 array(
                     'template_group' => 'news',
                 ),

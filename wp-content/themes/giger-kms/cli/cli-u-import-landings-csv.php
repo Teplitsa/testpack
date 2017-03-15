@@ -80,6 +80,7 @@ try {
             $parent_post_id = $parent_post ? $parent_post->ID : 0;
             
             $fulltext_file_path = dirname( __FILE__ ) . '/data/txt/' . $fulltext_file_name;
+//             printf( "content: %s\n", $fulltext_file_path );
             $post_content = file_exists( $fulltext_file_path ) ? file_get_contents( $fulltext_file_path ) : '';
             
 			$post_arr = array(
