@@ -46,6 +46,11 @@ $process_posts = array(
         'post_name' => 'reptiles-photo',
         'thumbnail' => 'datt-reptiles',
     ),
+    array(
+        'post_type' => 'project',
+        'post_name' => 'marsh-konkurs',
+        'thumbnail' => 'marsh-park.jpg',
+    ),
     
     
     // leyka_campaign
@@ -53,6 +58,13 @@ $process_posts = array(
         'post_type' => 'leyka_campaign',
         'post_name' => 'donate',
         'thumbnail' => 'sopr.jpg',
+    ),
+
+    // import
+    array(
+        'post_type' => 'import',
+        'post_name' => 'di-nizhegorodskoe-ekologo-pravovoe-agentstvo',
+        'thumbnail' => 'eco-law-agency-002.jpg',
     ),
     
     // posts
