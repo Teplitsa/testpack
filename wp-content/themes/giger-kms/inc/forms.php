@@ -119,8 +119,8 @@ function tst_formidable_input_options_html($opt, $opt_key, $field) {
 		return $opt;
 
 	if($field['type'] == 'checkbox') {
-		if(isset($field['classes']) && false !== strpos($field['classes'], 'switch')){
-			$opt = "<span class='tst-checkbox__label'>{$opt}</span>";
+		if(is_array($opt) && isset($opt['label'])){
+			$opt['label'] = "<span class='tst-checkbox__label'>".$opt['label']."</span>";
 		}
 		else {
 			$opt = "<span class='tst-checkbox__label'>{$opt}</span>";
@@ -128,7 +128,12 @@ function tst_formidable_input_options_html($opt, $opt_key, $field) {
 
 	}
 	elseif($field['type'] == 'radio') {
-		$opt = "<span class='tst-radio__label'>{$opt}</span>";
+		if(is_array($opt) && isset($opt['label'])){
+			$opt['label'] = "<span class='tst-radio__label'>".$opt['label']."</span>";
+		}
+		else {
+			$opt = "<span class='tst-radio__label'>{$opt}</span>";
+		}
 	}
 
 	return $opt;
@@ -143,4 +148,3 @@ function tst_formidable_submit_button_html($html){
 
 	return $html;
 }
-

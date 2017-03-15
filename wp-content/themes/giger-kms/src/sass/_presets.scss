@@ -37,6 +37,7 @@ $text_col:     840px;
 $card_base_w: 298px;
 $card_base_h: 482px;
 
+
 //Dimensions
 $base: 8px;
 $inpage-baseline: 		$base*3;
@@ -273,8 +274,8 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	}
 
 	font-size: 24px;
-	line-height: 32px;	
-	
+	line-height: 32px;
+
 	@if $mod == cover {
 		font-size: 28px;
 		line-height: 1.35;
@@ -449,7 +450,7 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 	}
 
 	font-size: 24px;
-	line-height: 32px;	
+	line-height: 32px;
 	@if $mod == green {
 		font-size: 28px;
 		line-height: 1.35;

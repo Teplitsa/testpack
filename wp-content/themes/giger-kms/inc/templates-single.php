@@ -11,7 +11,7 @@ function tst_single_post_nav(WP_Post $cpost) {
 	$next = get_adjacent_post(false, '', false);
 
 	$parent = $cpost->post_parent;
-	
+
 	$connected = get_posts( array(
 		'posts_per_page' => 1,
 		'post_type' => 'project',
@@ -69,7 +69,7 @@ function tst_single_cta(WP_Post $cpost, $mod = 'pictured') {
 <a href="<?php echo $pl;?>" class="card-link card--cta">
 	<?php if($mod == 'pictured' && has_post_thumbnail($page)) { ?>
 		<div class="card__thumbnail">
-			<?php echo get_the_post_thumbnail($page, "block-small"); ?>
+			<?php echo tst_get_the_post_thumbnail($page, 'block-1col');?>
 		</div>
 	<?php } ?>
 
@@ -85,93 +85,17 @@ function tst_single_cta(WP_Post $cpost, $mod = 'pictured') {
 }
 
 
-
-
-/** == OLD == **/
-function tst_single_breadcrubms() {
-
-	$cpost = get_queried_object();
-
-	$list = array();
-
-	$list[] = "<a href='".home_url('/')."'>".__('Home', 'tst')."</a>";
-	$list[] = "<a href='".home_url('news')."'>".__('News', 'tst')."</a>";
-
-	$sep = tst_get_sep('&gt;');
-
-	return "<div class='crumbs'>".implode($sep, $list)."</div>";
-}
-
-function tst_item_breadcrubms() {
-
-	$cpost = get_queried_object();
-	$sep = tst_get_sep('&gt;');
-
-	$list[] = "<a href='".home_url('/')."'>".__('Home', 'tst')."</a>";
-
-	$section = get_the_terms($cpost, 'section');
-	if(!empty($section)) {
-		$list[] = "<a href='".get_term_link($section[0])."'>".$section[0]->name."</a>";
-	}
-
-	if($cpost->parent > 0) {
-		$list[] = "<a href='".get_permalink($cpost->parent)."'>".get_the_title($cpost->parent)."</a>";
-	}
-
-	return "<div class='crumbs'>".implode($sep, $list)."</div>";
-}
-
-function tst_related_list($posts) {
-
-	if(empty($posts))
-		return;
-
-?>
-	<ul class="realted-posts">
-	<?php foreach($posts as $p) { ?>
-		<li class="related-posts__item">
-			<a href="<?php echo get_permalink($p);?>" class="related-posts__link">
-				<?php echo get_the_title($p);?> <span class="related-posts__date"><?php echo get_the_date('d.m.Y', $p);?></span>
-			</a>
-		</li>
-	<?php }?>
-	</ul>
-<?php
-}
-
-function tst_single_post_meta(WP_Post $cpost) {
-
-	$list = array();
-	$list[] = "<span class='date'>".get_the_date('d.m.Y', $cpost)."</span>";
-
-	$tags = tst_get_tags_list($cpost);
-	if(!empty($tags))
-		$list[] = $tags;
-
-	return implode(' ', $list);
-}
-
-
-
-
 function tst_single_thumbnail(WP_Post $cpost) {
 
 	$thumb = $cap = '';
 
-	$cap = tst_get_post_thumbnail_cation($cpost);
+	$cap = tst_get_post_thumbnail_caption($cpost);
 	$cap = apply_filters('tst_the_content', $cap);
 
-	$thumb_args = array(
-		'placement_type'	=> 'medium-medium-large-large-large',
-		'aspect_ratio' 		=> 'standard',
-		'crop' 				=> 'flex'
-	);
-
-	//$thumb = tst_get_post_thumbnail_picture($cpost, $thumb_args);
-
-	$thumb = get_the_post_thumbnail($cpost, 'block-single');
+	$img_id = get_post_thumbnail_id($cpost);
+	$thumb = tst_get_picture_markup($img_id, 'block-single');
 ?>
-	<figure class="fixed-thumbnail--single">
+	<figure class="post-thumbnail--single">
 		<?php echo $thumb; ?>
 		<?php if($cap) { ?>
 			<figcaption><?php echo $cap; ?></figcaption>

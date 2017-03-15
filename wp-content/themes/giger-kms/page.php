@@ -33,19 +33,23 @@ get_header();?>
 		<?php if(!$dont_show_footer) { ?>
 		<footer class="page-general__footer">
 
-			<div class="flex-grid">
+			<div class="flex-grid--stacked">
 			<?php if($section) { ?>
-				<div class="flex-cell flex-md-6">
-					<h3><?php printf(__('At the section &laquo;%s&raquo;', 'tst'), $section->name);?></h3>
-					<?php tst_section_list($section->term_id, $cpost->ID);?>
+				<div class="flex-cell--stacked md-6 inpage-block inpage-block--section">
+					<div class="inpage-block__content">
+						<h3><?php printf(__('At the section &laquo;%s&raquo;', 'tst'), $section->name);?></h3>
+						<?php tst_section_list($section->term_id, $cpost->ID);?>
+					</div>
 				</div>
 			<?php } ?>
 
-				<div class="flex-cell flex-md-6">
-					<h3><?php _e('Join us', 'tst');?></h3>
+				<div class="flex-cell--stacked md-6 inpage-block inpage-block--join">
+					<div class="inpage-block__content"><h3><?php _e('Join us', 'tst');?></h3>
 					<?php tst_join_list(); ?>
+					</div>
 				</div>
 			</div>
+
 
 		</footer>
 		<?php }?>

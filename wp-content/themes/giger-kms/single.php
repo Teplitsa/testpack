@@ -60,7 +60,7 @@ get_header(); ?>
 		<div class="flex-grid--stacked">
 
 			<div class="flex-cell--stacked lg-9 single-body">
-
+				
 				<?php if(!empty($cpost->post_excerpt)) { ?>
 					<div class="single-body--summary"><?php echo apply_filters('tst_entry_the_content', $cpost->post_excerpt);?></div>
 				<?php } ?>
