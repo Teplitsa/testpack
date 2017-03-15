@@ -5,32 +5,35 @@
 
 
 $cpost = get_queried_object();
+$section = get_the_terms($cpost, 'section');
+if($section)
+	$section = $section[0];
+
+
 $args = array(
-	'posts_per_page'   => 50,
-	'orderby'          => 'date',
-	'order'            => 'DESC',
+	'posts_per_page'   => -1,
+	'orderby'          => array('menu_order' => 'DESC', 'title' => 'ASC'),
 	'post_type'        => 'person',
 	'post_status'      => 'publish',
-	'suppress_filters' => true 
+	'suppress_filters' => true
 );
+
 $posts_array = get_posts( $args );
 
+
+function tst_break_at_first_word($string, $break_str = ' ', $repl_str = '<br>') {
+  if ( strpos($string, $break_str) )
+    return substr( $string, 0, strpos($string, $break_str) ) . $repl_str . substr( $string, strpos($string, $break_str) + strlen($break_str)  );
+  else
+    return $string;
+}
+
 function tst_team_member_vcard(WP_Post $member) {
-	
-	$name = apply_filters('tst_the_title', $member->post_title);
+
+	$name = tst_break_at_first_word(apply_filters('tst_the_title', $member->post_title));
 	$role = apply_filters('tst_the_title', $member->post_excerpt);
 
-	$thumb_id = get_term_meta($member->term_id, 'author_image_id', true);
-	$thumb = '';
-    $img = get_the_post_thumbnail($member->ID, 'thumbnail');
-    $thumb_id = get_post_thumbnail_id( $member->ID );
-
-	if($thumb_id){
-		$src = wp_get_attachment_image_src($thumb_id, 'vcard');
-		if($src)
-			$thumb = "<div class='vcard-img-background' style='background-image: url(".$src[0].");'></div>";
-	}
-
+    $thumb = get_the_post_thumbnail($member->ID, 'thumbnail');
 ?>
 <article class="person-vcard">
 	<div class="person-vcard__thumbnail"><?php echo $thumb;?></div>
@@ -42,28 +45,56 @@ function tst_team_member_vcard(WP_Post $member) {
 }
 
 get_header();?>
-<section class="main-content tpl-page-regular person-page">
-    <div class="container-narrow">
-        <header class="page-header">
-            <h1 class="page-title"><?php echo get_the_title($cpost);?></h1>
-        </header>
+<div class="landing page-general">
+	<header class="page-general__header">
+		<div class="container-narrow">
+		<?php if($section) { ?>
+			<div class="page-general__crumbs"><a href="<?php echo get_term_link($section);?>"><?php echo apply_filters('tst_the_title', $section->name);?></a></div>
+		<?php } ?>
+			<h1 class="page-general__title"><?php echo get_the_title($cpost);?></h1>
 
-        <div class="entry-content"><?php echo apply_filters('tst_entry_the_content', $cpost->post_content); ?></div>
-    </div>
-    <div class="left-div-padder">
-    	<!-- page -->
-    	<div class="single-body border--space">
-    		<?php if(!empty($posts_array)) { ?>
-    		<div class="flex-grid start">
-    		<?php foreach($posts_array as $tm){ /*var_dump($tm);*/?>
-    			
-                <div class="flex-cell flex-mf-6 flex-md-3"><?php tst_team_member_vcard($tm);?></div>
-    		<?php } ?>
-    		</div>
-    		<?php } ?>
-    	</div>
+		</div>
 
-    </div>
-</section>  
+
+	</header>
+
+	<div class="page-general__content">
+		<div class="container">
+
+		<?php if(!empty($posts_array)) { ?>
+		<div class="flex-grid start">
+		<?php foreach($posts_array as $tm){ /*var_dump($tm);*/?>
+
+			<div class="flex-cell flex-mf-6 flex-md-3"><?php tst_team_member_vcard($tm);?></div>
+		<?php } ?>
+		</div>
+		<?php } ?>
+
+		</div>
+
+
+		<footer class="page-general__footer"><div class="container-narrow">
+
+			<div class="flex-grid--stacked">
+			<?php if($section) { ?>
+				<div class="flex-cell--stacked md-6 inpage-block inpage-block--section">
+					<div class="inpage-block__content">
+						<h3><?php printf(__('At the section &laquo;%s&raquo;', 'tst'), $section->name);?></h3>
+						<?php tst_section_list($section->term_id, $cpost->ID);?>
+					</div>
+				</div>
+			<?php } ?>
+
+				<div class="flex-cell--stacked md-6 inpage-block inpage-block--join">
+					<div class="inpage-block__content"><h3><?php _e('Join us', 'tst');?></h3>
+					<?php tst_join_list(); ?>
+					</div>
+				</div>
+			</div>
+
+		</div></footer>
+
+	</div>
+</div>
 
 <?php get_footer(); ?>

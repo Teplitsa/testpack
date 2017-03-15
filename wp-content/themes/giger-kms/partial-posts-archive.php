@@ -13,6 +13,10 @@ get_header();
 				<?php if(!empty($desc)) { ?>
 					<div class="landing-header__tagline"><?php echo $desc;?></div>
 				<?php } ?>
+
+				<?php if(!empty($crumb)) {?>
+					<div class="landing-header__links"><?php echo $crumb;?></div>
+				<?php } ?>
 			</div>
 
 		</header>
@@ -32,7 +36,7 @@ get_header();
 				}
 			?>
 		</div>
-		
+
 		<div class="layout-section--loadmore">
 		<?php
 			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
@@ -40,7 +44,7 @@ get_header();
 			}
 		?>
 		</div>
-		
+
 	</section>
 </article>
 <?php get_footer();

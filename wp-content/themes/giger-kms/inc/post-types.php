@@ -205,7 +205,7 @@ function tst_custom_content(){
         'hierarchical'        => false,
         'menu_position'       => 10,
 		'menu_icon'           => 'dashicons-businessman',
-        'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'thumbnail'),
+        'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'thumbnail', 'page-attributes'),
         'taxonomies'          => array(),
     ));
 
