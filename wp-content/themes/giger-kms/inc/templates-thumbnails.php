@@ -7,13 +7,6 @@ function tst_thumbnails_setup() {
 	// Thumbnails
 	add_theme_support('post-thumbnails');
 
-	//sizes for landing blocks
-	//add_image_size('block-full', 1192, 482, true );
-	//add_image_size('block-2col', 596, 482, true );
-	//add_image_size('block-3col', 894, 482, true );
-	//add_image_size('block-small', 298, 298, true );
-	add_image_size('block-single', 894, 596, true );
-
 
 	//new sizes
 	add_image_size('mobile-common', 400, 250, true ); //aspect 1.618
@@ -22,18 +15,18 @@ function tst_thumbnails_setup() {
 	add_image_size('3col', 894, 482, true ); //aspect 1.855 - limit for 3 col pictures
 	add_image_size('2col', 596, 482, true ); // aspect 1.236 - limit for 2 col pictures
 	add_image_size('4col', 1192, 482, true ); // aspect 2.473 - limit for 4col pictures
+	add_image_size('block-single', 894, 596, true );
 }
 
 /** Custom image size for medialib **/
-//add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
+add_filter('image_size_names_choose', 'tst_medialib_custom_image_sizes');
 function tst_medialib_custom_image_sizes($sizes) {
 
 	$sizes = array(
 		'thumbnail' 				=> 'Мин. квадратная',
-		"thumbnail-small-fixed"		=> 'Мин. маленькая',
-		'thumbnail-medium-fixed'	=> 'Мин. горизонтальная',
+		'mobile-common'				=> 'Мин. горизонтальная',
 		'medium'					=> 'Средний',
-		'feature'					=> 'Фиксированный',
+		'block-single'				=> 'Фиксированный',
 		'full'						=> 'Полный'
 	);
 
@@ -71,6 +64,13 @@ function tst_get_image_place_config($place_id) {
 			'medium' 	=> array('size' => '3col', 'css' => 'aspect-54'),
 			'large' 	=> array('size' => '4col', 'css' => 'aspect-40'),
 			'base'	 	=> array('size' => 'small-long', 'css' => ''),
+		),
+		'block-single' => array(
+			'mobile' 	=> array('size' => 'mobile-common', 'css' => 'aspect-62'),
+			'small' 	=> array('size' => '2col', 'css' => 'aspect-81'),
+			'medium' 	=> array('size' => 'block-single', 'css' => 'aspect-67'),
+			'large' 	=> array('size' => 'block-single', 'css' => 'cover-596'),
+			'base'	 	=> array('size' => 'block-single', 'css' => ''),
 		)
 	);
 
@@ -357,8 +357,9 @@ function tst_fullscreen_thumbnail($attachment_id, $container_class = '') {
 <?php
 }
 
+
 /** == Helpers == **/
-function tst_get_post_thumbnail_cation(WP_Post $cpost) {
+function tst_get_post_thumbnail_caption(WP_Post $cpost) {
 
 	$thumb = get_post(get_post_thumbnail_id($cpost->ID));
 	if(!$thumb)

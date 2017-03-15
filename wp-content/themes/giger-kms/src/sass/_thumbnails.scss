@@ -34,6 +34,9 @@
 			padding-bottom: 100%;
 		}
 
+		&.small-aspect-81 {
+			padding-bottom: 80.87%;
+		}
 	}
 
 	@include for(medium-screens) {
@@ -46,6 +49,10 @@
 
 		&.medium-aspect-54 {
 			padding-bottom: 53.92%;
+		}
+
+		&.medium-aspect-67 {
+			padding-bottom: 66.67%;
 		}
 
 		&.medium-aspect-100 {
@@ -69,6 +76,10 @@
 			padding-bottom: 100%;
 		}
 
+		&.large-aspect-67 {
+			padding-bottom: 66.67%;
+		}
+
 		&.large-aspect-81 {
 			padding-bottom: 80.87%;
 		}
@@ -86,6 +97,10 @@
 
 		&.large-cover-482 {
 			min-height: $card_base_h;
+		}
+
+		&.large-cover-596 {
+			min-height: $card_base_w*2;
 		}
 	}
 
