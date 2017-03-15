@@ -31,7 +31,7 @@ get_header();?>
 			</div>
 		</div>
 	</header>
-
+	
 	<?php if(has_post_thumbnail($cpost)) { ?>
 	<div class="single__preview"><div class="container">
 		<div class="flex-grid--stacked">
