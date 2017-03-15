@@ -32,8 +32,8 @@ function tst_single_post_nav(WP_Post $cpost) {
 		return;
 	}?>
 	<div class="nav-links">
-		<?php if ($parent || $connected): ?>	
-			<?php if($parent) { ?>
+		<?php if ($parent || $connected) { 
+			if($parent) { ?>
 				<div class="nav-links__link nav-links__link--next <?php if($parent && $connected) echo "nav-links__link--double-nav" ?>">
 					<a href="<?php echo get_permalink($parent);?>"><span><?php tst_svg_icon('icon-prev');?></span><span class="link"><?php echo get_the_title( $parent ); ?></span></a>
 				</div>
@@ -44,21 +44,18 @@ function tst_single_post_nav(WP_Post $cpost) {
 					<a href="<?php echo get_permalink($connected[0]);?>"><span><?php tst_svg_icon('icon-next');?></span><span class="link"><?php echo get_the_title( $connected[0] ); ?></span></a>
 				</div>
 			<?php } ?>
-		<?php endif; ?>
-	
-	<?php if ($next || $previous): ?>
-		<?php if($next) { ?>
-			<div class="nav-links__link nav-links__link--next">
-				<a href="<?php echo get_permalink($next);?>"><span><?php tst_svg_icon('icon-prev');?></span><span class="link"><?php echo $k; ?></span></a>
-			</div>
+		<?php } else if ($next || $previous) {
+			if($next) { ?>
+				<div class="nav-links__link nav-links__link--next">
+					<a href="<?php echo get_permalink($next);?>"><span><?php tst_svg_icon('icon-prev');?></span><span class="link"><?php echo $k; ?></span></a>
+				</div>
+			<?php } 
+			if($previous) { ?>
+				<div class="nav-links__link nav-links__link--prev">
+					<a href="<?php echo get_permalink($previous);?>"><span><?php tst_svg_icon('icon-next');?></span><span class="link"><?php echo $e; ?></span></a>
+				</div>
+			<?php } ?>
 		<?php } ?>
-		
-		<?php if($previous) { ?>
-			<div class="nav-links__link nav-links__link--prev">
-				<a href="<?php echo get_permalink($previous);?>"><span><?php tst_svg_icon('icon-next');?></span><span class="link"><?php echo $e; ?></span></a>
-			</div>
-		<?php } ?>
-	<?php endif; ?>
 	
 	</div>
 <?php

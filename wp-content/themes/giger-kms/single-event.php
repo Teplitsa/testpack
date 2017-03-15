@@ -14,7 +14,7 @@ get_header();?>
 	<a href="<?php echo home_url('events');?>"><?php _e('Events', 'tst'); ?></a>
 </div>
 <article class="single single__event">
-
+	
 	<header class="single__header">
 		<div class="container">
 			<div class="flex-grid--stacked">
