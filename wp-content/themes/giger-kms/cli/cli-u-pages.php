@@ -103,7 +103,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => 'Наша команда',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => 'about'
 		),
@@ -114,7 +114,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => 'import | http://dront.ru/dront/',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => 'about'
 		),
@@ -125,7 +125,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => 'Наши отчеты',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => 'about'
 		),
@@ -136,7 +136,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => file_get_contents('data/txt/contacts.txt'),
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input'   => array('_wp_page_template' => 'page-contacts.php')
 			),
 			'section' => 'about'
 		),
@@ -147,7 +147,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => 'Оставить заявку и стать волонтером',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => 'supportus'
 		),
@@ -158,7 +158,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => 'Оставить заявку и стать волонтером',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => 'supportus'
 		),
@@ -169,7 +169,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => '[tst_sitemap]',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => ''
 		)
@@ -200,6 +200,7 @@ try {
 			wp_set_object_terms((int)$exist_page->ID, $section->term_id, 'section');
 			wp_cache_flush();
 		}
+		echo $obj;
 	}
 
 

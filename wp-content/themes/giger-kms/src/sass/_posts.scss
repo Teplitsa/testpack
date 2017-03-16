@@ -222,6 +222,11 @@ article.single {
 
 // page general content
 .page-general__content {
+	h2 {
+		@include post-title(cards_textnews);
+		font-weight: bold;
+		clear: both;
+	}
 	h3 {
 		@include body-text(meta);
 		font-weight: bold;
