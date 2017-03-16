@@ -35,85 +35,182 @@
 
 /* Donation form tabs: */
 #leyka-payment-form {
+
   display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-}
 
-label.leyka-pm-label {
-  background: transparent; //#eee;
-  border: none; //1px solid #ddd;
-  padding: $base;
-  cursor: pointer;
-  z-index: 1;
-  //margin-left: -1px;
-}
+  label.leyka-pm-label {
+    background: transparent; //#eee;
+    border: none; //1px solid #ddd;
+    padding: $base;
+    cursor: pointer;
+    z-index: 1;
+    font-size: 18px;
+    //margin-left: -1px;
+  }
 
-//label.leyka-pm-label:first-of-type {
-//  margin-left: 0;
-//}
+  input.leyka-payment-option.tab, div.leyka-tab-area {
+    display: none;
+  }
+
+  input.leyka-payment-option.tab:checked + label.leyka-pm-label {
+    //background: #fff;
+    color: $leaf;
+    border-bottom: 3px solid $leaf;
+  }
+
+  input.leyka-payment-option.tab:checked + label.leyka-pm-label + div.leyka-tab-area {
+    display: block;
+  }
+
+}
+/* Donation form tabs - end */
 
 div.leyka-tab-area {
+
   width: 100%;
   //margin-top: -1px;
   padding: $base;
   //border: 1px solid #ddd;
   -webkit-order: 1;
   order: 1;
-}
 
-input.leyka-payment-option.tab, div.leyka-tab-area {
-  display: none;
-}
+  .leyka-pm-fields {
 
-input.leyka-payment-option.tab:checked + label.leyka-pm-label {
-  //background: #fff;
-  color: $leaf;
-  border-bottom: 3px solid $leaf;
-}
-
-input.leyka-payment-option.tab:checked + label.leyka-pm-label + div.leyka-tab-area {
-  display: block;
-}
-/* Donation form tabs - end */
-
-.currency-selector-row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.currency-variants {
-
-  .amount-variants-row {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 4*$base;
+
+    /* Donation amount & currency fields */
+    .amount-selector {
+      flex-basis: 100%;
+      margin-bottom: 2*$base;
+    }
+
+    .currency-selector-row {
+
+      display: flex;
+      flex-wrap: wrap;
+
+      .currency-variants {
+
+        flex-basis: 100%;
+        font-size: 16px;
+
+        .amount-variants-row {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        input[type="radio"][name="leyka_donation_amount"] {
+          display: none;
+        }
+
+        label.figure {
+          display: flex;
+          justify-content: center;
+
+          border: 2px solid $grass;
+          background-color: $color-white;
+          cursor: pointer;
+
+          padding: 2*$base $base;
+          margin: $base/2 $base $base/2 0;
+
+          flex: 100px 0 1;
+        }
+
+        input[type="radio"][name="leyka_donation_amount"]:checked + label.figure {
+          background-color: $leaf;
+          border-color: $leaf;
+        }
+
+        label.figure-flex {
+          flex: 150px 0 1;
+          display: inline-block;
+
+          input[type="text"] {
+            text-align: center;
+          }
+        }
+
+        .currency {
+          display: flex;
+          padding: 2*$base $base;
+          margin: $base/2 0;
+        }
+
+      }
+
+    }
+    /* Donation amount & currency fields - end */
+
+    /* PM information fields */
+    //.frm_error {
+    //  overflow: visible;
+    //}
+
+    .leyka-field.name {
+      flex: 45% 0 1;
+      margin-right: $base;
+    }
+    .leyka-field.email {
+      flex: 45% 0 1;
+    }
+    .leyka-field.recurring {
+      margin-top: $base;
+    }
+
+    .tst-checkbox__label {
+      cursor: pointer;
+    }
+
+    input[type="checkbox"].tst-checkbox__input {
+      display: none;
+    }
+    /* PM information fields - end */
+
+    /* Submit and agree fields */
+    .agree-submit-wrapper {
+
+      margin-top: 4*$base;
+      display: flex;
+
+      .frm_submit {
+        margin-top: 0;
+      }
+
+      .agree-wrapper {
+
+        display: flex;
+        align-items: center;
+
+        margin-left: 4*$base;
+        flex: 40% 1 1;
+
+        .leyka-custom-confirmation-trigger {
+          display: inline-block;
+          margin-left: $base;
+        }
+
+      }
+
+    }
+    /* Submit and agree fields - end */
   }
 
-  input[type="radio"][name="leyka_donation_amount"] {
-    display: none;
-  }
-
-  label.figure {
-    display: inline-block;
-    text-align: center;
-    border: 1px solid $grass;
-    background-color: $color-white;
-    cursor: pointer;
-
-    padding: $base;
-    margin: 0 $base/2 $base/2 0;
-
-    width: 100px;
-  }
-
-  input[type="radio"][name="leyka_donation_amount"]:checked + label.figure {
-    background-color: $grass;
-  }
 }
 
+.leyka-form-footer {
+  margin: $base;
+}
+
+
 //.single-leyka_campaign .site-footer { display: none; }
-//
+
+
 //.payment-from-project.single-campaign-full {
 //
 //    .leyka-form-footer {
@@ -368,89 +465,87 @@ input.leyka-payment-option.tab:checked + label.leyka-pm-label + div.leyka-tab-ar
 //		}
 //	}
 //}
+
+.leyka-form-footer {
+
+  margin-top: 3*$base;
+  padding: $base 2*$base;
+  text-align: center;
+  background: $color-secondary;
+  a {
+      color: $grass;
+      &:visited { color: $leaf; }
+      &:hover, &:focus, &:active {
+          text-decoration: underline;
+      }
+  }
+
+}
 //
-//.leyka-form-footer {
-//	padding: 8px 16px;
-//	text-align: right;
-//	font-size: 0.8em;
-//	text-align: center;
-//	background: $color-secondary;
-//	a {
-//		color: $color-link-one;
-//		&:visited { color: $color-link-one; }
-//		&:hover, &:focus, &:active {
-//			text-decoration: underline;
-//		}
-//	}
-//
-//}
-//
-////modal
-//
-//.leyka-custom-modal {
-//	display: none;
-//	box-sizing: border-box;
-//	border-radius: 2px;
-//	width: 90%;
-//
-//	@include for(medium-screns) {
-//		width: 80%;
-//	}
-//	max-width: 760px;
-//	@include calc(height, "100% - 220px");
-//    max-height: 700px;
-//
-//    @media screen and (max-height: 600px) {
-//        height:90%;
-//        top:20px !important;
-//    }
-//
-//	background-color: $color-white;
-//
-//	.leyka-modal-close {
-//		background: $color-link-one;
-//		color: $color-white;
-//		width: 28px;
-//		height: 28px;
-//		border-radius: 50%;
-//
-//		position: absolute;
-//		top: -16px;
-//		right: -16px;
-//		text-align: center;
-//		cursor: pointer;
-//
-//		.svg-icon {
-//			width: 12px;
-//			height: 12px;
-//			fill: $color-white;
-//			pointer-events: none;
-//			margin-top: 8px;
-//		}
-//	}
-//
-//
-//
-//	.leyka-oferta-text-frame {
-//		box-sizing: border-box;
-//		width: 100%;
-//		height: 100%;
-//		padding: $base*1.5;
-//		overflow-y: scroll;
-//	}
-//
-//	.leyka-oferta-text-flow {
-//		@include body-text(semi);
-//
-//		p {
-//			margin-bottom: $margin-base;
-//		}
-//
-//		p:first-child {
-//			@include post-title();
-//		}
-//	}
-//}
+// Modal
+
+.leyka-custom-modal {
+	display: none;
+	box-sizing: border-box;
+	border-radius: 2px;
+	width: 90%;
+
+	@include for(medium-screns) {
+		width: 80%;
+	}
+	max-width: 760px;
+	@include calc(height, "100% - 220px");
+    max-height: 700px;
+
+    @media screen and (max-height: 600px) {
+        height:90%;
+        top:20px !important;
+    }
+
+	background-color: $color-white;
+
+	.leyka-modal-close {
+		background: $color-link-one;
+		color: $color-white;
+		width: 28px;
+		height: 28px;
+		border-radius: 50%;
+
+		position: absolute;
+		top: -16px;
+		right: -16px;
+		text-align: center;
+		cursor: pointer;
+
+		.svg-icon {
+			width: 12px;
+			height: 12px;
+			fill: $color-white;
+			pointer-events: none;
+			margin-top: 8px;
+		}
+	}
+
+	.leyka-oferta-text-frame {
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		padding: $base*1.5;
+		overflow-y: scroll;
+	}
+
+	.leyka-oferta-text-flow {
+		@include body-text(semi);
+
+		p {
+			margin-bottom: $base;
+		}
+
+		p:first-child {
+			@include post-title();
+		}
+	}
+}
 //
 //.donation_history {
 //	.all-link  {
