@@ -128,7 +128,7 @@ div.leyka-tab-area {
         }
 
         label.figure-flex {
-          flex: 150px 0 1;
+          flex: 130px 0 1;
           display: inline-block;
 
           input[type="text"] {
@@ -177,6 +177,7 @@ div.leyka-tab-area {
 
       margin-top: 4*$base;
       display: flex;
+      flex-wrap: wrap;
 
       .frm_submit {
         margin-top: 0;
@@ -185,6 +186,7 @@ div.leyka-tab-area {
       .agree-wrapper {
 
         display: flex;
+        //flex-wrap: wrap;
         align-items: center;
 
         margin-left: 4*$base;
@@ -192,7 +194,7 @@ div.leyka-tab-area {
 
         .leyka-custom-confirmation-trigger {
           display: inline-block;
-          margin-left: $base;
+          margin-left: $base/2;
         }
 
       }
