@@ -147,7 +147,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => 'Оставить заявку и стать волонтером',
-				'meta_input' => array('_wp_page_template' => 'page.php')
+				'meta_input' => array('_wp_page_template' => 'page-vounteer.php')
 			),
 			'section' => 'supportus'
 		),
