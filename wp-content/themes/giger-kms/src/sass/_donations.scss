@@ -205,6 +205,15 @@ div.leyka-tab-area {
 
 }
 
+/* Global form errors: */
+.leyka-submit-errors {
+  @include form-text(small);
+  display: inline-block;
+  padding: 0 2px ;
+  font-size: 11px;
+  color: $input-color-error;
+}
+
 .leyka-form-footer {
   margin: $base;
 }
