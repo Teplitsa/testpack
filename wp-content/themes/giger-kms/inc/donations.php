@@ -115,7 +115,7 @@ function tst_donation_form($campaign_id = null) {
 
 		    echo leyka_pf_get_hidden_fields($campaign_id);?>
 
-<!--                <input name="leyka_payment_method" value="--><?php //echo esc_attr($pm->full_id);?><!--" type="hidden">-->
+                <input name="leyka_payment_method" value="<?php echo esc_attr($pm->full_id);?>" type="hidden">
                 <input name="leyka_ga_payment_method" value="<?php echo esc_attr($pm->label);?>" type="hidden">
 
 	<?php if($leyka_current_pm->is_field_supported('name') ) { ?>
