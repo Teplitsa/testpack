@@ -306,10 +306,24 @@ article.single {
 
 .single-body--entry {
 	@include body-text(reading);
+	
+	a {
+		@include post-title(cards_side);
+		color: $leaf;
+		@include transition(all 0.35s);
+		&:hover {
+			color: $grass;
+		}
+	}
+
 }
 
 .single-body__footer {
 	margin-top: $base*4;
+}
+
+.highslide-gallery {
+	margin-bottom: $base*2;
 }
 
 .tags {
