@@ -140,7 +140,7 @@ try {
 			),
 			'section' => 'about'
 		),
-		'volunteers' => array(
+		'volunteer' => array(
 			'post_data' => array(
 				'post_title' => 'Стань волонтером',
 				'post_type' => 'page',
@@ -151,7 +151,7 @@ try {
 			),
 			'section' => 'supportus'
 		),
-		'company' => array(
+		'corporate' => array(
 			'post_data' => array(
 				'post_title' => 'Помощь компаний',
 				'post_type' => 'page',
@@ -172,7 +172,17 @@ try {
 				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => ''
-		)
+		),
+	    'projects' => array(
+	        'post_data' => array(
+	            'post_title' => 'Проекты',
+	            'post_type' => 'page',
+	            'post_parent' => 0,
+	            'post_status' => 'publish',
+	            'post_content' => '',
+	        ),
+	        'section' => 'about'
+	    )
 	);
 
 	foreach($pages as $slug => $obj) {
@@ -188,11 +198,20 @@ try {
 			if($old_post) {
 				$page_data['post_content'] = $old_post->post_content;
 			}
+			else {
+			    $page_data['post_content'] = '';
+			}
 		}
 
 		$exist_page = tst_get_pb_post( $slug, 'page' );
 		$page_data['ID'] = $exist_page ? $exist_page->ID: 0;
 		$page_data['post_name'] = $slug;
+		
+		if( !$exist_page ) {
+		    $page_data['post_name'] = $slug;
+		    wp_insert_post( $page_data );
+		    $exist_page = tst_get_pb_post( $slug, 'page' );
+		}
 
 		if($exist_page && isset($obj['section']) && !empty($obj['section'])) {
 			$section = ($obj['section'] == 'supportus') ? $support_section : $about_section;
@@ -200,7 +219,6 @@ try {
 			wp_set_object_terms((int)$exist_page->ID, $section->term_id, 'section');
 			wp_cache_flush();
 		}
-		echo $obj;
 	}
 
 

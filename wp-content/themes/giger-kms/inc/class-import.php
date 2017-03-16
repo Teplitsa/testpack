@@ -28,7 +28,10 @@ if( !class_exists('TST_Import') ) {
                     'regexp' => '/(\d+-\d+-\d+).\w+$/i',
                     'pattern' => '%d-%m-%y',
                 ),
-
+                array(
+                    'regexp' => '/[^\/]*(\d{4})[^\/]*\.\w+$/i',
+                    'pattern' => '%Y',
+                ),
             ),
         );
 

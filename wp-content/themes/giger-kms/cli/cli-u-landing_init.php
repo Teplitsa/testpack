@@ -583,6 +583,47 @@ $landings_sections = array(
             
         ),
     ),
+    
+    'dront-events' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-archive',
+                    'cover_archive_title' => 'Мероприятия',
+                    'cover_archive_subtitle' => 'Анонсы встреч, акций, семинаров эконцентра и партнеров',
+                    'cover_archive_url' => '',
+                ),
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+
+    'projects' => array( 'post_type' => 'page',
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-archive',
+                    'cover_archive_title' => 'Проекты',
+                    'cover_archive_subtitle' => '',
+                    'cover_archive_url' => '',
+                ),
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
 );
 
 try {
