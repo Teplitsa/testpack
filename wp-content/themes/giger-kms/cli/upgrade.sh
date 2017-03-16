@@ -14,6 +14,8 @@ php cli-u-options.php --host=$HOST
 #php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_old_other_content.csv
 #php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_old_defence_content.csv
 #php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_single_content.csv
+#php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_single_content_bereginya.csv --tag=bereginya
+#php cli-u-import-posts-csv.php --host=$HOST --file=data/dront_urls_single_content_publications.csv --tag=publication
 
 # import old files
 #php cli-u-import-files-csv.php --host=$HOST --file=data/dront_urls_bereginya.csv --tag=bereginya

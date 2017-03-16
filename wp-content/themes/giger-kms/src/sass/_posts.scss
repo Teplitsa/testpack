@@ -571,6 +571,23 @@ article.single {
 	a:hover {
 		color: $grass;
 	}
+	
+	&.attachments-archive-list {
+	   li {
+          &:before {
+              content: "-";
+              padding-right: 15px;
+          }
+          
+	   }
+      
+		li:nth-of-type(even) a {
+			color: $ground;
+			&:hover {
+		       color: $grass;
+			}
+		}
+	}
 }
 /* Events */
 .single__event {

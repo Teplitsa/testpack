@@ -47,10 +47,12 @@ get_header();?>
             <div class="flex-cell--stacked lg-9 single-body">
 
                 <?php
-                $years = tst_get_past_years( 20 );
+                $years = tst_get_past_years( 200 );
 
                 foreach( $years as $year ) {
+                    
                     $posts = call_user_func( $tst_callback_get_latest_posts, $year );
+                    
                     if( !empty( $posts ) ) {
                     ?>
                         <div class="projects-block container">
@@ -59,7 +61,7 @@ get_header();?>
                             <div class="projects-block__content">
                                 <div class="projects-block__icon hide-upto-medium"><?php tst_svg_icon('icon-pdf');?></div>
 
-                                <div class="projects-block__list">
+                                <div class="projects-block__list attachments-archive-list">
                                     <ul>
                                     <?php foreach($posts as $p) { ?>
                                         <li><a href="<?php echo wp_get_attachment_url( $p->ID );?>"><?php echo get_the_title($p);?></a></li>

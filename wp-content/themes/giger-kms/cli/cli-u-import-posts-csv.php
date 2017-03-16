@@ -18,13 +18,18 @@ try {
     global $wpdb;
     $uploads = wp_upload_dir();
 
-    $options = getopt("", array('file:', 'localpdf::', 'convert2pdf::'));
+    $options = getopt("", array('file:', 'localpdf::', 'convert2pdf::', 'tag:',));
     
     $input_file = isset($options['file']) ? $options['file'] : '';
     printf( "Processing %s\n", $input_file );
 
     $localpdf = isset( $options['localpdf'] ) ? True : False;
     $is_convert2pdf = isset( $options['convert2pdf'] ) ? True : False;
+    
+    $tag_slug = isset($options['tag']) ? $options['tag'] : '';
+    if( $tag_slug ) {
+        printf( "Mark with TAG:  %s\n", $tag_slug );
+    }
     
     $count = 0;
     $converted2pdf_count = 0;
@@ -136,7 +141,13 @@ try {
                             wp_update_post( $attachment ); 
                         }
                         
-                        TST_Import::get_instance()->set_file_date( $file_id, $url );
+                        TST_Import::get_instance()->set_file_date( $file_id, $url, $tag_slug );
+                        
+                        $tag = get_term_by( 'slug', $tag_slug, 'attachment_tag' );
+                        if( $tag ) {
+                            wp_set_object_terms( $file_id, $tag->term_id, 'attachment_tag', true );
+                        }
+                        unset( $tag );
                         
                         // replace old url with new
                         $post_content = preg_replace( "/" . preg_quote( $url, '/' ) . "/", $file_url, $post_content );

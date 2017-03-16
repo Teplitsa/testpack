@@ -185,5 +185,5 @@ function tst_request_correction_has_next_page(WP_Query $query) {
     if($displayed < $query->found_posts)
         $query->set('has_next_page', 1);
 
-        return $query;
+    return $query;
 }

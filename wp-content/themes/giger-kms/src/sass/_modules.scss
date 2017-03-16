@@ -125,3 +125,33 @@
 		@include transform(none);
 	}
 }
+
+/** Loader **/
+
+// Animation for spinner
+@mixin rotate-forever {
+  0%    { @include transform(rotate(0deg)); }
+  100%  { @include transform(rotate(360deg)); }
+}
+
+@-webkit-keyframes rotate-forever { @include rotate-forever; }
+   @-moz-keyframes rotate-forever { @include rotate-forever; }
+        @keyframes rotate-forever { @include rotate-forever; }
+
+
+@mixin loader($size: 30px, $thickness: 8px) {
+    @include animation-duration(0.85s);
+    @include animation-iteration-count(infinite);
+    @include animation-name(rotate-forever);
+    @include animation-timing-function(linear);
+    @include size($size);
+    border: $thickness solid $color-link-two;
+    border-right-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.loader {
+    @include loader(48px, 8px);
+}
+

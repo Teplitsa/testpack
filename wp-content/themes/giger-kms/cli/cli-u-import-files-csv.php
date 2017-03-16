@@ -102,7 +102,7 @@ try {
                         
                         $tag = get_term_by( 'slug', $tag_slug, 'attachment_tag' );
                         if( $tag ) {
-                            wp_set_object_terms( $file_id, $tag->term_id, 'attachment_tag' );
+                            wp_set_object_terms( $file_id, $tag->term_id, 'attachment_tag', true );
                         }
                         unset( $tag );
                     }

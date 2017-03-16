@@ -527,7 +527,7 @@ function tst_clean_csv_file_url( $url ) {
 function tst_get_past_years( $limit = 20 ) {
     $year = (int)date('Y');
     $years = array();
-    for( $i = 0; $i < 20; $i++ ) {
+    for( $i = 0; $i < $limit; $i++ ) {
         $years[] = $year - $i;
     }
     return $years;
