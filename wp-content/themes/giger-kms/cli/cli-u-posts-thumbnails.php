@@ -38,6 +38,11 @@ $process_posts = array(
         'post_name' => 'dront-sopr',
         'thumbnail' => 'sopr-birds.jpg',
     ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-ornotologlab',
+        'thumbnail' => 'sopr-ornotologlab.jpg',
+    ),
     
     
     // projects

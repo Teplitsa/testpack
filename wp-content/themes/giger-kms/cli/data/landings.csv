@@ -8,17 +8,17 @@
 1,Наша работа,work,Наша работа,section archive,,-,"Обложка, плитка видов работ, иконки,
 последние новости анонсы публикации",,,-
 2,Мероприятия,dront-events,Наша работа,landing,,-,Анонсы будущие / прошедшие,,,-
-3,Экоправо,dront-ecopravo,Наша работа,landing,,ecopravo.txt,,,,Лев
-4,Экопросвещение,dront-education,Наша работа,landing,,education.txt,,,,Лев
-5,Исследования,dront-researches,Наша работа,landing,,researches.txt,,,,Лев
-6,Активизм,dront-activist,Наша работа,landing,,activist.txt,,,,Лев
+3,Экоправо,dront-ecopravo,Наша работа,landing,,ecopravo.txt,,Защищаем,dront-ecopravo-thumbnail.jpg,Готово (Лев)
+4,Экопросвещение,dront-education,Наша работа,landing,,education.txt,,Рассказываем,,Готово (Лев)
+5,Исследования,dront-researches,Наша работа,landing,,researches.txt,,Изучаем,dront-researches-thumbnail.jpg,Готово (Лев)
+6,Активизм,dront-activist,Наша работа,landing,,activist.txt,,Изменяем,dront-activist-thumbnail.jpg,Готово (Лев)
 7,Публикации,dront-publications,Наша работа,landing,,publications.txt,,,,-
 8,Экопроблемы,ecoproblems,Экопроблемы,section archive,,-,"Обложка, плитка проблем, иконки, последние новости, анонсы, публикации, карта выделена или может быть она сразу тут",,,-
 9,Карта экопомощи,dront-ecomap,Экопроблемы,landing,,dront-ecomap.txt,"Карта, сервис ""сообщить о проблеме"".",,,-
 10,Чебоксарская ГЭС,dront-chebpotop,Экопроблемы,landing,,chebpotop.txt,,,,Готово
 11,Нижегородская АЭС,dront-nizhaes,Экопроблемы,landing,,nizhaes.txt,,,,Готово
-12,Охрана редких видов,dront-rares,Экопроблемы,landing,,rares.txt,,,,Лев
-13,ООПТ,dront-oopt,Экопроблемы,landing,,oopt.txt,,,,Лев
+12,Охрана редких видов,dront-rares,Экопроблемы,landing,,rares.txt,,Соблюдаем природный баланс,dront-rares-thumbnail.jpg,Готово (Лев)
+13,ООПТ,dront-oopt,Экопроблемы,landing,,oopt.txt,"Текст с кратким описанием, карта с google maps.",Боремся за статус,dront-oopt-thumbnail.jpg,Готово (Лев)
 14,Птицы,dront-birds,Экопроблемы,landing,,birds.txt,,Спасаем прекрасных хрупких птиц Нижегородской области,birds-main.jpg,Готово
 15,Город,dront-urban,Экопроблемы,landing,,urban.txt,,Строим экодома,urban-001.jpg,Денис Ч.
 16,Проблемные территории,dront-locals,Экопроблемы,landing,,locals.txt,,Восстанавливаем экосистему,ecosystem-002.jpg,Денис Ч.
@@ -28,8 +28,8 @@
 20,Подразделения,departments,Подразделения,section archive,,-,,,,-
 21,"Ежемесячная газета ""Берегиня""",dront-bereginya,Подразделения,landing,,bereginya.txt,,,,-
 22,Центр природосберегающих технологий,dront-cpst,Подразделения,landing,,cpst.txt,,Поддерживаем экологические и энергосберегающие проекты,support-eco-project-001.jpg,Денис Ч.
-23,Нижегородское отделение Союза охраны птиц России,dront-sopr,Подразделения,landing,,sopr.txt,,Заботимся о пернатых,sopr-birds.jpg,Серхио
-24,Орнитологическая лаборатория,dront-ornotologlab,Подразделения,landing,,ornotologlab.txt,,,,Серхио
+23,Нижегородское отделение Союза охраны птиц России,dront-sopr,Подразделения,landing,,sopr.txt,,Заботимся о пернатых,sopr-birds.jpg,(готово)Серхио
+24,Орнитологическая лаборатория,dront-ornotologlab,Подразделения,landing,,ornotologlab.txt,,Защищаем птиц,sopr-ornotologlab.jpg,Серхио
 25,Нижегородский эколого-правовой центр,dront-lawcenter,Подразделения,landing,,lawcenter.txt,,,,Серхио
 26,"Информационно-консультационный центр ""Стрикс""",dront-striks,Подразделения,landing,,striks.txt,,,,Серхио
 27,Нижегородское общество охраны амфибий и рептилий,dront-reptiles,Подразделения,landing,,reptiles.txt,,,,Серхио
