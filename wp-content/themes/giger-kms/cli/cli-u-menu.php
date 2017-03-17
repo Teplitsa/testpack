@@ -18,8 +18,14 @@ try {
 	if(is_nav_menu($menu_name)){
 		wp_delete_nav_menu($menu_name);
 	}
-
 	$menu_id = wp_create_nav_menu($menu_name);
+	
+	$menu_name_f = 'Футер - 3';
+	if(is_nav_menu( $menu_name_f )){
+	    wp_delete_nav_menu( $menu_name_f );
+	}
+	$menu_id_f = wp_create_nav_menu( $menu_name_f );
+	
 	$sections = array( 'work', 'ecoproblems', 'departments', 'about', 'supportus', );
 
 	foreach($sections as $s) {
@@ -27,25 +33,31 @@ try {
 		$sec = get_term_by('slug', $s, 'section');
 
 		if($sec) {
-			wp_update_nav_menu_item($menu_id, 0, array(
-				'menu-item-object-id' => $sec->term_id,
-				'menu-item-object' => $sec->taxonomy,
-				'menu-item-parent-id' => 0,
-				'menu-item-position' => 0,
-				'menu-item-type' => 'taxonomy',
-				//'menu-item-title' => '',
-				//'menu-item-url' => '',
-				//'menu-item-description' => '',
-				//'menu-item-attr-title' => '',
-				//'menu-item-target' => '',
-				'menu-item-classes' => 'section-'.$sec->slug,
-				//'menu-item-xfn' => '',
-				'menu-item-status' => 'publish',
-			));
+		    $item_data = array(
+		        'menu-item-object-id' => $sec->term_id,
+		        'menu-item-object' => $sec->taxonomy,
+		        'menu-item-parent-id' => 0,
+		        'menu-item-position' => 0,
+		        'menu-item-type' => 'taxonomy',
+		        //'menu-item-title' => '',
+		        //'menu-item-url' => '',
+		        //'menu-item-description' => '',
+		        //'menu-item-attr-title' => '',
+		        //'menu-item-target' => '',
+		        'menu-item-classes' => 'section-'.$sec->slug,
+		        //'menu-item-xfn' => '',
+		        'menu-item-status' => 'publish',
+		    );
+		    
+			wp_update_nav_menu_item($menu_id, 0, $item_data);
+			wp_update_nav_menu_item($menu_id_f, 0, $item_data);
 		}
-
 	}
-
+	$locations = get_theme_mod( 'nav_menu_locations' );
+	$locations['footer_3'] = $menu_id_f;
+	set_theme_mod( 'nav_menu_locations', $locations );
+	
+	
     // Add donation page link:
     $campaign = get_posts(array('post_type' => Leyka_Campaign_Management::$post_type, 'name' => 'donate'));
     $campaign = reset($campaign);
@@ -101,7 +113,65 @@ try {
 		}
 	}
 
-
+	//Футер 1
+	$menu_name = 'Футер - 1';
+	if(is_nav_menu($menu_name)){
+	    wp_delete_nav_menu($menu_name);
+	}
+	
+	$menu_id = wp_create_nav_menu( $menu_name );
+	$pages = array( 'about-ecocenter', 'team', 'reports', 'news', 'projects', 'contacts', );
+	
+	foreach($pages as $s) {
+	    $post = tst_get_pb_post( $s, 'page' );
+	    if( $post ) {
+	        wp_update_nav_menu_item($menu_id, 0, array(
+	            'menu-item-object-id' => $post->ID,
+	            'menu-item-object' => 'page',
+	            'menu-item-parent-id' => 0,
+	            'menu-item-position' => 0,
+	            'menu-item-type' => 'post_type',
+	            'menu-item-title' => $post->post_title,
+	            'menu-item-url' => get_permalink( $post ),
+	            'menu-item-classes' => 'menu-item menu-item-type-post_type menu-item-object-page menu-item-' . $post->id,
+	            'menu-item-status' => 'publish',
+	        ));
+	    }
+	}
+	
+	$locations = get_theme_mod( 'nav_menu_locations' );
+	$locations['footer_1'] = $menu_id;
+	set_theme_mod( 'nav_menu_locations', $locations );
+	
+	
+	//Футер 2
+	$menu_name = 'Футер - 2';
+	if(is_nav_menu($menu_name)){
+	    wp_delete_nav_menu($menu_name);
+	}
+	$menu_id = wp_create_nav_menu( $menu_name );
+	$pages = array( 'about-dront', 'corporate', 'volunteer', );
+	
+	foreach($pages as $s) {
+	    $post = tst_get_pb_post( $s, 'page' );
+	    if( $post ) {
+	        wp_update_nav_menu_item($menu_id, 0, array(
+	            'menu-item-object-id' => $post->ID,
+	            'menu-item-object' => 'page',
+	            'menu-item-parent-id' => 0,
+	            'menu-item-position' => 0,
+	            'menu-item-type' => 'post_type',
+	            'menu-item-title' => $post->post_title,
+	            'menu-item-url' => get_permalink( $post ),
+	            'menu-item-classes' => 'menu-item menu-item-type-post_type menu-item-object-page menu-item-' . $post->id,
+	            'menu-item-status' => 'publish',
+	        ));
+	    }
+    }
+	$locations = get_theme_mod( 'nav_menu_locations' );
+	$locations['footer_2'] = $menu_id;
+	set_theme_mod( 'nav_menu_locations', $locations );
+	
 	echo 'Memory '.memory_get_usage(true).chr(10);
 
 	echo 'Total execution time in seconds: ' . (microtime(true) - $time_start).chr(10).chr(10);;

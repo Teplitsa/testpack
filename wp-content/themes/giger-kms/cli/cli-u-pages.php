@@ -82,6 +82,7 @@ try {
 	$page_data['post_title'] = $page_title;
 	$page_data['post_parent'] = 0;
 	$page_data['post_type'] = 'page';
+	$page_data['post_name'] = 'about-ecocenter';
 	$page_data['post_content'] = file_get_contents('data/txt/about.txt');
 	$page_data['post_status'] = 'publish';
 	//$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
