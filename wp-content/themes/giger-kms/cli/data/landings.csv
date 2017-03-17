@@ -29,15 +29,11 @@
 21,"Ежемесячная газета ""Берегиня""",dront-bereginya,Подразделения,landing,,bereginya.txt,,,,-
 22,Центр природосберегающих технологий,dront-cpst,Подразделения,landing,,cpst.txt,,Поддерживаем экологические и энергосберегающие проекты,support-eco-project-001.jpg,Денис Ч.
 23,Нижегородское отделение Союза охраны птиц России,dront-sopr,Подразделения,landing,,sopr.txt,,Заботимся о пернатых,sopr-birds.jpg,(готово)Серхио
-<<<<<<< HEAD
-24,Орнитологическая лаборатория,dront-ornotologlab,Подразделения,landing,,ornotologlab.txt,,Защищаем птиц,sopr-ornotologlab.jpg,Серхио
-=======
-24,Орнитологическая лаборатория,dront-ornotologlab,Подразделения,landing,,ornotologlab.txt,,Защищаем птиц,,Серхио
->>>>>>> 5b48f86b7ce55b867bbd622bacc9daea26b4bd7b
-25,Нижегородский эколого-правовой центр,dront-lawcenter,Подразделения,landing,,lawcenter.txt,,,,Серхио
-26,"Информационно-консультационный центр ""Стрикс""",dront-striks,Подразделения,landing,,striks.txt,,,,Серхио
-27,Нижегородское общество охраны амфибий и рептилий,dront-reptiles,Подразделения,landing,,reptiles.txt,,,,Серхио
-28,"Научно-просветительская организация ""Джунгли""",dront-jungle,Подразделения,landing,,jungle.txt,,,,Серхио
+24,Орнитологическая лаборатория,dront-ornotologlab,Подразделения,landing,,ornotologlab.txt,,Защищаем птиц,sopr-ornotologlab.jpg,(готово)Серхио
+25,Нижегородский эколого-правовой центр,dront-lawcenter,Подразделения,landing,,lawcenter.txt,,Стоим на защите ваших экологических прав,ecolawcenter.jpg,(готово)Серхио
+26,"Информационно-консультационный центр ""Стрикс""",dront-striks,Подразделения,landing,,striks.txt,,Разбираемся вместе,ecostriks.jpg,(готово)Серхио
+27,Нижегородское общество охраны амфибий и рептилий,dront-reptiles,Подразделения,landing,,reptiles.txt,,Охраняем змей и людей друг от друга,ecoreptiles.jpg,(готово)Серхио
+28,"Научно-просветительская организация ""Джунгли""",dront-jungle,Подразделения,landing,,jungle.txt,,Учим школьников бережно относиться к природе,ecojungle.jpg,(готово)Серхио
 29,Нижегородский фольклорный клуб,dront-folks,Подразделения,landing,,folks.txt,,,,Анна
 30,"Эколого-просветительский центр ""Оберег""",dront-obereg,Подразделения,landing,,obereg.txt,,,,Анна
 31,"Фотовидеостудия ""Реальный мир""",dront-realworld,Подразделения,landing,,realworld.txt,,,,Анна

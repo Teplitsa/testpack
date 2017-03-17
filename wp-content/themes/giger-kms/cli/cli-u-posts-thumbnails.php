@@ -38,13 +38,32 @@ $process_posts = array(
         'post_name' => 'dront-sopr',
         'thumbnail' => 'sopr-birds.jpg',
     ),
-<<<<<<< HEAD
     array(
         'post_type' => 'landing',
         'post_name' => 'dront-ornotologlab',
         'thumbnail' => 'sopr-ornotologlab.jpg',
     ),
-=======
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-lawcenter',
+        'thumbnail' => 'ecolawcenter.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-striks',
+        'thumbnail' => 'ecostriks.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-reptiles',
+        'thumbnail' => 'ecoreptiles.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-jungle',
+        'thumbnail' => 'ecojungle.jpg',
+    ),
+
     // Lev's part
     array(
         'post_type' => 'landing',
@@ -77,7 +96,7 @@ $process_posts = array(
         'thumbnail' => 'dront-activist-thumbnail.jpg',
     ),
     // Lev's part - end
->>>>>>> 5b48f86b7ce55b867bbd622bacc9daea26b4bd7b
+
     
     
     // projects

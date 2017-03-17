@@ -672,6 +672,102 @@ $landings_sections = array(
         ),
     ),
     
+    'dront-lawcenter' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-lawcenter', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-striks' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-striks', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-reptiles' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-reptiles', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-jungle' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-jungle', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
 );
 
 try {
