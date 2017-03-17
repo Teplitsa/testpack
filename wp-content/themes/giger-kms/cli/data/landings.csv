@@ -29,7 +29,11 @@
 21,"Ежемесячная газета ""Берегиня""",dront-bereginya,Подразделения,landing,,bereginya.txt,,,,-
 22,Центр природосберегающих технологий,dront-cpst,Подразделения,landing,,cpst.txt,,Поддерживаем экологические и энергосберегающие проекты,support-eco-project-001.jpg,Денис Ч.
 23,Нижегородское отделение Союза охраны птиц России,dront-sopr,Подразделения,landing,,sopr.txt,,Заботимся о пернатых,sopr-birds.jpg,(готово)Серхио
+<<<<<<< HEAD
 24,Орнитологическая лаборатория,dront-ornotologlab,Подразделения,landing,,ornotologlab.txt,,Защищаем птиц,sopr-ornotologlab.jpg,Серхио
+=======
+24,Орнитологическая лаборатория,dront-ornotologlab,Подразделения,landing,,ornotologlab.txt,,Защищаем птиц,,Серхио
+>>>>>>> 5b48f86b7ce55b867bbd622bacc9daea26b4bd7b
 25,Нижегородский эколого-правовой центр,dront-lawcenter,Подразделения,landing,,lawcenter.txt,,,,Серхио
 26,"Информационно-консультационный центр ""Стрикс""",dront-striks,Подразделения,landing,,striks.txt,,,,Серхио
 27,Нижегородское общество охраны амфибий и рептилий,dront-reptiles,Подразделения,landing,,reptiles.txt,,,,Серхио
