@@ -623,6 +623,54 @@ $landings_sections = array(
     
         ),
     ),
+    /* Lev's landings part */
+    'dront-ecopravo' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-ecopravo', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-education' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-education', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    /* Lev's landings part - end */
     
     'dront-sopr' => array(
         'sections' => array(
