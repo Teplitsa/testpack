@@ -31,11 +31,13 @@
 
 /* *Single Person* */
 .single-person {
-    margin-top: $base*2;
 
     .single-person-item {
 
         .back_to_list {
+            @include nav-text(menu_item);
+        	@include transition(all 0.35s);
+        	margin-bottom: $base/2;
 
             &:before {
                 content: "\2190";
@@ -53,8 +55,7 @@
         }
 
         .single-person-item__thumbnail {
-            float: right;
-            margin: $base*3;
+            margin: $base*3 0;
         }
 
         .single-person-item__title{
@@ -64,6 +65,7 @@
         .single-person-item__role {
             @include nav-text(cta_link);
             margin-bottom: $base*3;
+            margin-top: $base*2;
         }
 
     }
