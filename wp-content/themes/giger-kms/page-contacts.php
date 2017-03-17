@@ -31,13 +31,16 @@ get_header();?>
 			<div class="singleblock-map pagebuilder-part">
 		        <div class="container scheme-color-1-ground">
 		            <div id="ecoproblems-map">
-		                <?php $included_groups = get_terms(array(
-		                    'taxonomy' => 'marker_cat',
-		                    'hide_empty' => false,
-		                    'name' => array('Проблемы', 'Решенные проблемы'),
-		                    'fields' => 'ids',
-		                ));
-		                echo do_shortcode('[tst_markers_map map_id="4369" enable_scroll_wheel="0"]');?>
+		                <?php 
+						$home_marker = 'home-organisation';
+						$args = array(
+							'name'           => $home_marker,
+							'post_type'      => 'marker',
+							'post_status'    => 'publish',
+							'posts_per_page' => 1
+						);
+						$my_home = get_posts( $args );						
+		                echo do_shortcode('[tst_markers_map markers_ids="'.$my_home[0]->ID.'" enable_scroll_wheel="0" ]');?>
 		            </div>
 		        </div>
 		    </div>
