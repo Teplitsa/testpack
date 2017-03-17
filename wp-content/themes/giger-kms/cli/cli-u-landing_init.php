@@ -623,6 +623,154 @@ $landings_sections = array(
     
         ),
     ),
+    /* Lev's landings part */
+    'dront-ecopravo' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-ecopravo', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-education' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-education', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-researches' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-researches', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-activist' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-activist', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-rares' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-rares', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-oopt' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-oopt', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'singleblock-text',
+                    'singleblock_text_summary' => 'Главная функция таких природных территорий - сохранение биоразнообразия. Экоцентр «Дронт» много лет занимается их проектированием и изучением. Мы способствовали тому, что свыше 250 природных территорий Нижегородской области стали охраняемыми.',
+                ),
+                array(
+                    'template_group' => 'oopt-map',
+                    'oopt_map_title' => 'Карта особо охраняемых природных территорий',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    /* Lev's landings part - end */
     
     'dront-sopr' => array(
         'sections' => array(
