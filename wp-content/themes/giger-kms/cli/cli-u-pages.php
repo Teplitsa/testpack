@@ -158,8 +158,8 @@ try {
 				'post_type' => 'page',
 				'post_parent' => 0,
 				'post_status' => 'publish',
-				'post_content' => 'Оставить заявку и стать волонтером',
-				'meta_input' => array('_wp_page_template' => 'page.php')
+				'post_content' => file_get_contents('data/txt/corporate.txt'),
+				'meta_input' => array('_wp_page_template' => 'page-corporate.php')
 			),
 			'section' => 'supportus'
 		),
