@@ -11,7 +11,7 @@ $process_posts = array(
     array(
         'post_type' => 'landing',
         'post_name' => 'dront-ornotologlab',
-        'thumbnail' => 'birds-dront-ornotologlab.jpg',
+        'thumbnail' => 'birds-dront-ornotologlab.jpg', //sideload
     ),
     array(
         'post_type' => 'landing',
@@ -32,6 +32,11 @@ $process_posts = array(
         'post_type' => 'landing',
         'post_name' => 'dront-ecomap',
         'thumbnail' => 'datt-sbereg-center2',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-sopr',
+        'thumbnail' => 'sopr-birds.jpg',
     ),
     
     
