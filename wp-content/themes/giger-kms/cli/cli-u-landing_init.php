@@ -670,6 +670,102 @@ $landings_sections = array(
 
         ),
     ),
+    'dront-researches' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-researches', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-activist' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-activist', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-rares' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-rares', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-oopt' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-oopt', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'oopt-map',
+                    'oopt_map_title' => 'Карта особо охраняемых природных территорий',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
     /* Lev's landings part - end */
     
     'dront-sopr' => array(
