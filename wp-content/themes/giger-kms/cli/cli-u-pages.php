@@ -32,7 +32,7 @@ try {
 		'post_name' 	=> 'homepage',
 		'post_status'	=> 'publish',
 		'meta_input'	=> array('_wp_page_template' => 'page-home.php'),
-		'post_content'	=> 'Экологический центр «Дронт» был создан в 1989 году для осуществления различных природоохранных программ и проектов.</p>'
+		'post_content'	=> 'Экологический центр «Дронт» был создан в 1989 году для осуществления различных природоохранных программ и проектов.'
 	);
 
 	$home_id = wp_insert_post($update);
