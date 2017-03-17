@@ -38,6 +38,38 @@ $process_posts = array(
         'post_name' => 'dront-sopr',
         'thumbnail' => 'sopr-birds.jpg',
     ),
+    // Lev's part
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-oopt',
+        'thumbnail' => 'dront-oopt-thumbnail.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-rares',
+        'thumbnail' => 'dront-rares-thumbnail.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-ecopravo',
+        'thumbnail' => 'dront-ecopravo-thumbnail.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-researches',
+        'thumbnail' => 'dront-researches-thumbnail.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-education',
+        'thumbnail' => 'dront-education-thumbnail.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-activist',
+        'thumbnail' => 'dront-activist-thumbnail.jpg',
+    ),
+    // Lev's part - end
     
     
     // projects
