@@ -71,11 +71,46 @@ try {
 		"wordpress-seo/wp-seo.php"
 	);
 
-
 	//update_option('active_plugins', $active);
 
+	// Leyka options where updates needed:
+    $leyka_options = array(
+        'pm_order' => 'pm_order[]=cp-card&amp;pm_order[]=quittance-bank_order&amp;pm_order[]=text-text_box',
+        'quittance-bank_order_label' => 'Платёжная квитанция',
+        'cp-card_label' => 'Банковская карта',
+        'cp_public_id' => 'pk_ffb1e444b4f84a720234fcdde8f45',
+        'cp_test_mode' => '1',
+        'text-text_box_description' => '',
+        'text_box_details' => 'Реквизиты для банковских переводов:&lt;br&gt;&lt;ul&gt; &lt;li&gt;ОГРН: 1025200007568&lt;/li&gt; &lt;li&gt;КПП: 526001001&lt;/li&gt; &lt;li&gt;ИНН: 5260100542&lt;/li&gt; &lt;li&gt;Расчётный счёт: &lt;/li&gt; &lt;li&gt;Банк: ДО &quot;Окский&quot; Филиала &quot;Нижегородский&quot; АО &quot;АЛЬФA-БАHК&quot;&lt;/li&gt; &lt;li&gt;БИК: 042202824&lt;/li&gt; &lt;li&gt;Корр. счёт: 30101810200000000824&lt;/li&gt; &lt;/ul&gt;',
+        'text-text_box_label' => 'Реквизиты для перевода',
+        'org_full_name' => 'Нижегородское региональное отделение Международной общественной организации «Международный Социально-экологический союз»',
+        'org_face_fio_ip' => 'Каюмов Асхат Абдурахманович',
+        'org_face_fio_rp' => 'Каюмова Асхата Абдурахмановича',
+        'org_face_position' => 'исполнительный директор',
+        'org_address' => '603001, Нижний Новгород, ул. Рождественская, д. 16Д',
+        'org_state_reg_number' => '1025200007568',
+        'org_kpp' => '526001001',
+        'org_inn' => '5260100542',
+        'org_bank_account' => '40703810329120000011',
+        'org_bank_name' => 'ДО &quot;Окский&quot; Филиала &quot;Нижегородский&quot; АО &quot;АЛЬФA-БАHК&quot;',
+        'org_bank_bic' => '042202824',
+        'org_bank_corr_account' => '30101810200000000824',
+        'pm_available' => 'a:3:{i:0;s:7:"cp-card";i:1;s:20:"quittance-bank_order";i:2;s:13:"text-text_box";}',
+        'currency_rur_label' => '₽',
+        'agree_to_terms_text_text_part' => 'Я соглашаюсь с',
+        'agree_to_terms_text_link_part' => 'условиями сервиса сбора пожертвований',
+        'terms_agreed_by_default' => '1',
+        'donation_submit_text' => 'Поддержать',
+        'donation_sum_field_type' => 'mixed',
+        'donations_history_under_forms' => '0',
+        'show_campaign_sharing' => '0',
+    );
 
-	//Leyka options ???
+    echo "Leyka options update began...\n";
+    foreach($leyka_options as $name => $value) {
+        $wpdb->query($wpdb->prepare("UPDATE $wpdb->options SET option_value = %s WHERE option_name = 'leyka_$name'", $value));
+    }
+    echo "Leyka updates finished. Time in sec: ".(microtime(true) - $time_start).chr(10).chr(10);
 
 	//Plugin options
 	$disable_comm = maybe_unserialize('a:5:{s:19:"disabled_post_types";a:3:{i:0;s:4:"post";i:1;s:4:"page";i:2;s:10:"attachment";}s:17:"remove_everywhere";b:1;s:9:"permanent";b:0;s:16:"extra_post_types";b:0;s:10:"db_version";i:6;}');
