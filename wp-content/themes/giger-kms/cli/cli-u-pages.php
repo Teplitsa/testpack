@@ -24,10 +24,10 @@ try {
 
 	//Homepage
 	echo 'Create static homepage'.chr(10);
-	$homepage = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'page' AND post_title = %s", 'Главная'));
+	$homepage = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'page' AND post_name = %s", 'homepage'));
 	$update = array(
 		'ID' 			=> ($homepage) ? $homepage->ID : 0,
-		'post_title' 	=> 'Главная',
+		'post_title' 	=> 'Экоцентр "Дронт"',
 		'post_type' 	=> 'page',
 		'post_name' 	=> 'homepage',
 		'post_status'	=> 'publish',
