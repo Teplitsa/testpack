@@ -592,3 +592,28 @@ function tst_event_card_date(WP_Post $cpost) {
     return $event->get_start_date_mark();
 
 }
+
+function tst_get_landing_projects_list_as_content( $landing ) {
+    
+    $projects = tst_landing_get_connected_projects( $landing );
+    
+    $out = '';
+    if( !empty( $projects ) ) {
+        ob_start();
+        ?>
+        
+        <h3 class="projects-title-in-content">Проекты по теме: <?php echo $landing->post_title ?></h3>
+        
+        <?php
+        foreach( $projects as $p ) {
+        ?>
+            <p><a href="<?php echo get_permalink($p);?>"><?php echo get_the_title($p);?></a></p>
+        <?php 
+        }
+        
+        $out = ob_get_contents();
+        ob_end_clean();
+    }
+    
+    return $out;
+}

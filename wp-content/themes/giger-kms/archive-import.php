@@ -28,7 +28,7 @@ get_header();
 			<div class="flex-grid--stacked">
                 <div class="flex-cell--stacked lg-12 single-body">
 
-            <div class="archive-list">
+            <div class="archive-list" id="loadmore-archive-import">
 			<?php
 				if(empty($loop_1)) {
 				   echo "<div class='search__hint'><p>".__('Unfortunately, nothing found under your request.', 'tst')."</p></div>";
@@ -39,6 +39,15 @@ get_header();
 				<div class="layout-section__item"><?php tst_card_archive($cpost); ?></div>
 			<?php }}?>
             </div>
+            
+    		<div class="layout-section--loadmore">
+    		<?php
+    			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
+    				tst_load_more_button($wp_query, 'archive-import', array(), "loadmore-archive-import");
+    			}
+    		?>
+    		</div>
+            
 
 			<div></div>
         </div>

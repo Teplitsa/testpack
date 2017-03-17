@@ -93,7 +93,7 @@ function tst_load_more_posts_screen() {
 
 	//build results
 	ob_start();
-	    if( $template == 'search_card' ) {
+	    if( $template == 'search_card' || $template == 'archive-import' ) {
 	        tst_search_loop_page( $query->posts );
 	    }
 	    else {
