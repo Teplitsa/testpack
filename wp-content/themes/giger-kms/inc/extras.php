@@ -258,6 +258,19 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 40,
     ));
 
+    $wp_customize->add_setting('corporate_submission_form_id', array(
+        'default'   => '',
+        'transport' => 'postMessage',
+        'type' 		=> 'option'
+    ));
+    $wp_customize->add_control('corporate_submission_form_id', array(
+        'type'     => 'text',
+        'label'    => 'ID формы для добавления компании',
+        'section'  => 'tst_content_options',
+        'settings' => 'corporate_submission_form_id',
+        'priority' => 40,
+    ));
+
 	$wp_customize->remove_setting('site_icon'); //remove favicon
 	$wp_customize->remove_control('blogdescription'); //remove
 }
