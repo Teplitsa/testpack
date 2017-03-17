@@ -748,6 +748,10 @@ $landings_sections = array(
                     'cover_general_cover_file_id' => 'thumbnail',
                 ),
                 array(
+                    'template_group' => 'singleblock-text',
+                    'singleblock_text_summary' => 'Главная функция таких природных территорий - сохранение биоразнообразия. Экоцентр «Дронт» много лет занимается их проектированием и изучением. Мы способствовали тому, что свыше 250 природных территорий Нижегородской области стали охраняемыми.',
+                ),
+                array(
                     'template_group' => 'oopt-map',
                     'oopt_map_title' => 'Карта особо охраняемых природных территорий',
                 ),
