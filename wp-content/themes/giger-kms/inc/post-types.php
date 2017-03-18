@@ -378,7 +378,8 @@ function tst_custom_metaboxes() {
         'name'    => 'Адрес',
         'id'      => 'marker_address',
         'type'    => 'text',
-        'default' => ''
+        'default' => '',
+		'column' => true
     ));
 
     $marker_cmb->add_field( array(
@@ -393,7 +394,8 @@ function tst_custom_metaboxes() {
         'name'    => 'ФИО отправителя',
         'id'      => 'marker_contact_fullname',
         'type'    => 'text',
-        'default' => ''
+        'default' => '',
+		'column' => true
     ));
 
     $marker_cmb->add_field(array(
@@ -469,7 +471,8 @@ function tst_custom_metaboxes() {
 		'name'    => 'Название мероприятия',
 		'default' => '',
 		'id'      => 'event_name',
-		'type'    => 'text'
+		'type'    => 'text',
+		'column' => true
 	));
 
 	$event_cmb->add_field( array(
@@ -485,6 +488,7 @@ function tst_custom_metaboxes() {
 		'id' => 'event_time_start',
 		'type' => 'text_time',
 		'time_format' => 'H.i',
+		'column' => true
 	));
 
 	$event_cmb->add_field( array(
@@ -513,7 +517,8 @@ function tst_custom_metaboxes() {
 		'desc'	  	=> 'Укажите адрес: город, улицу и номер дома, для мероприятий без города - адрес полностью',
 		'default' 	=> '',
 		'id'   		=> 'event_address',
-		'type'		=> 'text'
+		'type'		=> 'text',
+		'column' => true
 	));
 
 	$event_cmb->add_field( array(
@@ -522,6 +527,7 @@ function tst_custom_metaboxes() {
 		'default' => '',
 		'id'      => 'event_location',
 		'type'    => 'text',
+		'column' => true
 	));
 
 	$event_cmb->add_field(array(
