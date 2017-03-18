@@ -13,8 +13,8 @@ $label_order1 = wds_page_builder_get_this_part_data($prefix.'label1_order');
 
 $link_title = wds_page_builder_get_this_part_data($prefix.'link_title');
 $link_url = wds_page_builder_get_this_part_data($prefix.'link_url');
-if( !preg_match( '/^(http[s]?:)\/\//', $link_url ) ) {
-	$url = home_url( $link_url );
+if( $link_url && !preg_match( '/^(http[s]?:)\/\//', $link_url ) ) {
+    $link_url = home_url( $link_url );
 }
 $icon_id = 'icon-item-dront-publications';
 
