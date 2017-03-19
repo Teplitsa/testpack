@@ -183,6 +183,11 @@ div.leyka-tab-area {
 	      margin: 0 auto 16px;
 	      clear: both;
 	      display: block;
+		  
+		   @include for(medium-screens) {
+			   margin: 0;
+		   }
+		  
       }
 
       .agree-wrapper {
@@ -191,7 +196,7 @@ div.leyka-tab-area {
 		  clear: both;
 		  flex: 100% 1 1;
 		  
-		  @include for(medium-sreens) {
+		  @include for(medium-screens) {
 			  display: flex;
 	          //flex-wrap: wrap;
 	          align-items: center;
