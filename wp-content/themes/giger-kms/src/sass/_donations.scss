@@ -205,8 +205,11 @@ div.leyka-tab-area {
 		  }
 
         .leyka-custom-confirmation-trigger {
-          display: inline-block;
           margin-left: $base/2;
+		  @include for(medium-screens) {
+			  display: inline-block;
+		  }
+		  
         }
 
       }
