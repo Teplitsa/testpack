@@ -780,7 +780,36 @@ $landings_sections = array(
                     'cover_general_cover_post' => array( 'dront-sopr', 'landing' ),
                     'cover_general_cover_file_id' => 'thumbnail',
                 ),
-    
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'direct',
+                    'tripleblock_picture_element1_post' => array( 'sopr-activity', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'bird-of-year', 'project' ),
+                    'tripleblock_picture_element2_file_id' => array( 'nablyud', 'attachment' ),
+                    'tripleblock_picture_element3_post' => array( 'day-of-birds', 'project' ),
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'revers',
+                    'tripleblock_picture_element1_post' => array( 'birds-kadastr', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'birds-rares', 'project' ),
+                    'tripleblock_picture_element2_file_id' => '',
+                    'tripleblock_picture_element3_post' => array( 'birds-flow', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-text',
+                    'singleblock_text_title' => 'Союз Охраны Птиц России (СОПР)',
+                    'singleblock_text_subtitle' => 'некоммерческая благотворительная общественная организация, цель которой — сохранение видового разнообразия и численности диких птиц России.',
+                    'singleblock_text_summary' => '',
+                    'singleblock_text_link_text' => 'Что мы делаем',
+                    'singleblock_text_element_post' => array( 'sopr-activity', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-picture',
+                    'singleblock_picture_label_order' => 'left_bottom',
+                    'singleblock_picture_element_post' => array( 'days-birds', 'project' ),
+                ),
+                
                 array(
                     'template_group' => 'news',
                 ),
@@ -803,6 +832,35 @@ $landings_sections = array(
                     'template_group' => 'cover-general',
                     'cover_general_cover_post' => array( 'dront-ornotologlab', 'landing' ),
                     'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'direct',
+                    'tripleblock_picture_element1_post' => array( 'birds-lep', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'ugrozy-lep', 'project' ),
+                    'tripleblock_picture_element2_file_id' => '',
+                    'tripleblock_picture_element3_post' => array( 'zakon-lep', 'project' ),
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'revers',
+                    'tripleblock_picture_element1_post' => array( 'metod-lep', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'birds-defender', 'project' ),
+                    'tripleblock_picture_element2_file_id' => '',
+                    'tripleblock_picture_element3_post' => array( 'birds-migration', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-text',
+                    'singleblock_text_title' => '«ООПТ — СПАСАТЕЛЬНЫЙ КРУГ»',
+                    'singleblock_text_subtitle' => 'Наша цель — защитить птиц, обитающих на охраняемых природных территориях, от поражения электрическим током воздушных линий электропередачи (ЛЭП).',
+                    'singleblock_text_summary' => '',
+                    'singleblock_text_link_text' => 'ООПТ-Спасательный круг',
+                    'singleblock_text_element_post' => array( 'birds-krug', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-picture',
+                    'singleblock_picture_label_order' => 'left_bottom',
+                    'singleblock_picture_element_post' => array( 'ornotologlab-activity', 'project' ),
                 ),
     
                 array(
@@ -828,6 +886,14 @@ $landings_sections = array(
                     'cover_general_cover_post' => array( 'dront-lawcenter', 'landing' ),
                     'cover_general_cover_file_id' => 'thumbnail',
                 ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'direct',
+                    'tripleblock_picture_element1_post' => array( 'lawcenter-activity', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'rights-defend', 'project' ),
+                    'tripleblock_picture_element2_file_id' => array( 'law-clinic', 'attachment' ),
+                    'tripleblock_picture_element3_post' => array( 'law-clinic', 'project' ),
+                ),
     
                 array(
                     'template_group' => 'news',
@@ -852,6 +918,20 @@ $landings_sections = array(
                     'cover_general_cover_post' => array( 'dront-striks', 'landing' ),
                     'cover_general_cover_file_id' => 'thumbnail',
                 ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'direct',
+                    'tripleblock_picture_element1_post' => array( 'striks-activity', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'striks-report', 'project' ),
+                    'tripleblock_picture_element2_file_id' => '',
+                    'tripleblock_picture_element3_post' => array( 'striks-projects', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-picture',
+                    'singleblock_picture_label_order' => 'left_bottom',
+                    'singleblock_picture_element_post' => array( 'striks-seminars', 'project' ),
+                ),
+                
     
                 array(
                     'template_group' => 'news',
@@ -875,6 +955,20 @@ $landings_sections = array(
                     'template_group' => 'cover-general',
                     'cover_general_cover_post' => array( 'dront-reptiles', 'landing' ),
                     'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'singleblock-picture',
+                    'singleblock_picture_label_order' => 'left_bottom',
+                    'singleblock_picture_element_post' => array( 'turtle', 'project' ),
+                ),
+                array(
+                    'template_group' => 'doubleblock-element',
+                    'doubleblock_element_picture_position' => 'left',
+                    'doubleblock_element_title' => 'Амфибии и рептилии',
+                    'doubleblock_element_subtitle' => '',
+                    'doubleblock_element_summary' => 'Нижегородское общество охраны амфибий и рептилий (НООАР) при экологическом центре «Дронт» (г. Нижний Новгород, РФ).',
+                    'doubleblock_element_link_text' => 'Читать подробнее',
+                    'doubleblock_element_element_post' => array( 'reptiles-activity', 'project' ),
                 ),
     
                 array(

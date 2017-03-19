@@ -115,6 +115,16 @@ $process_posts = array(
         'post_name' => 'marsh-konkurs',
         'thumbnail' => 'marsh-park.jpg',
     ),
+    array(
+        'post_type' => 'project',
+        'post_name' => 'lawcenter-activity',
+        'thumbnail' => '40750031-1.jpg',
+    ),
+    array(
+        'post_type' => 'project',
+        'post_name' => 'turtle',
+        'thumbnail' => 'sredneaziatskaya-cherepaha-big-1.jpg',
+    ),
     
     
     // leyka_campaign
