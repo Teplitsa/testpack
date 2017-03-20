@@ -3,6 +3,36 @@
 add_action('init', 'tst_custom_content', 20);
 function tst_custom_content(){
 
+	register_taxonomy('author_news', array('post'), array(
+		'labels' => array(
+			'name'                       => 'Авторы',
+			'singular_name'              => 'Автор',
+			'menu_name'                  => 'Авторы',
+			'all_items'                  => 'Все авторы',
+			'edit_item'                  => 'Редактировать автора',
+			'view_item'                  => 'Просмотреть',
+			'update_item'                => 'Обновить автора',
+			'add_new_item'               => 'Добавить нового автора',
+			'new_item_name'              => 'Название нового автора',
+			'parent_item'                => 'Родительский автор',
+			'parent_item_colon'          => 'Родительский автор:',
+			'search_items'               => 'Искать авторов',
+			'popular_items'              => 'Часто используемые',
+			'separate_items_with_commas' => 'Разделять запятыми',
+			'add_or_remove_items'        => 'Добавить или удалить авторов',
+			'choose_from_most_used'      => 'Выбрать из часто используемых',
+			'not_found'                  => 'Не найдено'
+		),
+		'hierarchical'      => true,
+		'show_ui'           => true,
+		'show_in_nav_menus' => false,
+		'show_tagcloud'     => false,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array('slug' => 'people', 'with_front' => false),
+		//'update_count_callback' => '',
+	));
+	
 	register_taxonomy('section', array('landing', 'page'), array(
 		'labels' => array(
 			'name'                       => 'Разделы',
@@ -378,7 +408,8 @@ function tst_custom_metaboxes() {
         'name'    => 'Адрес',
         'id'      => 'marker_address',
         'type'    => 'text',
-        'default' => ''
+        'default' => '',
+		'column' => true
     ));
 
     $marker_cmb->add_field( array(
@@ -393,7 +424,8 @@ function tst_custom_metaboxes() {
         'name'    => 'ФИО отправителя',
         'id'      => 'marker_contact_fullname',
         'type'    => 'text',
-        'default' => ''
+        'default' => '',
+		'column' => true
     ));
 
     $marker_cmb->add_field(array(
@@ -469,7 +501,8 @@ function tst_custom_metaboxes() {
 		'name'    => 'Название мероприятия',
 		'default' => '',
 		'id'      => 'event_name',
-		'type'    => 'text'
+		'type'    => 'text',
+		'column' => true
 	));
 
 	$event_cmb->add_field( array(
@@ -485,6 +518,7 @@ function tst_custom_metaboxes() {
 		'id' => 'event_time_start',
 		'type' => 'text_time',
 		'time_format' => 'H.i',
+		'column' => true
 	));
 
 	$event_cmb->add_field( array(
@@ -513,7 +547,8 @@ function tst_custom_metaboxes() {
 		'desc'	  	=> 'Укажите адрес: город, улицу и номер дома, для мероприятий без города - адрес полностью',
 		'default' 	=> '',
 		'id'   		=> 'event_address',
-		'type'		=> 'text'
+		'type'		=> 'text',
+		'column' => true
 	));
 
 	$event_cmb->add_field( array(
@@ -522,6 +557,7 @@ function tst_custom_metaboxes() {
 		'default' => '',
 		'id'      => 'event_location',
 		'type'    => 'text',
+		'column' => true
 	));
 
 	$event_cmb->add_field(array(

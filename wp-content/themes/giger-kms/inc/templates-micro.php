@@ -254,22 +254,56 @@ function tst_single_person_card($cpost) {
 	$name = apply_filters('tst_the_title', $cpost->post_title);
 	$role = apply_filters('tst_the_title', $cpost->post_excerpt);
 
-	$thumb = get_the_post_thumbnail($cpost, 'thumbnail');
+	$thumb = tst_get_the_post_thumbnail($cpost, "block-1col");
 
-	$content = $cpost->post_content;
-?>
-<article class="single-person-item">
-	<a class="back_to_list" href="<?php echo home_url('nashi-lyudi') ?>">Назад к списку сотрудников</a>
-	<div class="single-person-item__thumbnail"><?php echo $thumb;?></div>
-	<h4 class="single-person-item__title"><a href="<?php echo get_permalink($member);?>"><?php echo $name;?></a></h4>
-	<div class="single-person-item__role"><?php echo $role;?></div>
-	<div class="single-person-item__content">
-		<?php echo $content;?>
 
-	</div>
-</article>
+}
+/* POst author */
+function tst_single_post_authors_list(WP_Post $cpost) {
 
-<?php
+	$terms = get_the_terms($cpost, 'author_news');
+	if(is_wp_error($terms))
+		return '';
+
+	$term_order = array();
+	$authors = array();
+
+	if(!empty($terms)) { foreach($terms as $t){
+		$term_order[$t->term_id]['term'] = $t;
+		
+		/*$type = get_term_meta($t->term_id, 'author_news', true);
+
+		if($type == 'reg'){
+			$term_order[$t->term_id]['term'] = $t;
+		}
+		elseif($type == 'person' && $t->parent > 0) {
+			$term_order[$t->parent]['children'][] = $t;
+		}
+		elseif($type == 'person') {
+			$term_order[$t->term_id]['term'] = $t;
+		}*/
+	}}
+
+	if(empty($term_order))
+		return '';
+
+	foreach($term_order as $tobj) {
+
+		if(isset($tobj['term'])) {
+			// $authors[] = "<a href='".get_term_link($tobj['term'])."'>".apply_filters('tst_the_title', $tobj['term']->name)."</a>";
+			$authors[] = "<span>".apply_filters('tst_the_title', $tobj['term']->name)."</span>";
+		}
+
+		if(isset($tobj['children'])) { foreach($tobj['children'] as $t) {
+			// $authors[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
+			$authors[] = "<span>".apply_filters('tst_the_title', $t->name)."</span>";
+		}}
+	}
+
+	if(empty($authors))
+		return '';
+
+	return  "<span class='author'>".implode(', ', (array)$authors)."</span>";
 }
 
 /* Square block for sidebars */
@@ -604,4 +638,29 @@ function tst_event_card_date(WP_Post $cpost) {
 
     return $event->get_start_date_mark();
 
+}
+
+function tst_get_landing_projects_list_as_content( $landing ) {
+    
+    $projects = tst_landing_get_connected_projects( $landing );
+    
+    $out = '';
+    if( !empty( $projects ) ) {
+        ob_start();
+        ?>
+        
+        <h3 class="projects-title-in-content">Проекты по теме: <?php echo $landing->post_title ?></h3>
+        
+        <?php
+        foreach( $projects as $p ) {
+        ?>
+            <p><a href="<?php echo get_permalink($p);?>"><?php echo get_the_title($p);?></a></p>
+        <?php 
+        }
+        
+        $out = ob_get_contents();
+        ob_end_clean();
+    }
+    
+    return $out;
 }

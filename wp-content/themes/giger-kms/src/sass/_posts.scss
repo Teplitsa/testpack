@@ -66,6 +66,11 @@ article.single {
 .single-card__meta {
 	@include body-text(meta);
 	color: $leaf;
+	
+	.single-card__author {
+		display: inline-block;
+		margin-left: $base*2;
+	}
 }
 
 .single__nav {

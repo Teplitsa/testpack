@@ -51,6 +51,10 @@ function tst_get_latest_bereginya( $year = '', $num = -1, $fields = false ) {
     return tst_get_latest_attachments( 'bereginya', $year, $num, $fields );
 }
 
+function tst_get_latest_reports( $year = '', $num = -1, $fields = false ) {
+    return tst_get_latest_attachments( 'report', $year, $num, $fields );
+}
+
 function tst_get_latest_news($num = 4) {
     return get_posts(array( 'post_type' => 'post', 'posts_per_page' => $num, 'post_status' => 'publish' ));
 }

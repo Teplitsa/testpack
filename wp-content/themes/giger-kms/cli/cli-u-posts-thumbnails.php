@@ -38,6 +38,32 @@ $process_posts = array(
         'post_name' => 'dront-sopr',
         'thumbnail' => 'sopr-birds.jpg',
     ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-ornotologlab',
+        'thumbnail' => 'sopr-ornotologlab.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-lawcenter',
+        'thumbnail' => 'ecolawcenter.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-striks',
+        'thumbnail' => 'ecostriks.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-reptiles',
+        'thumbnail' => 'ecoreptiles.jpg',
+    ),
+    array(
+        'post_type' => 'landing',
+        'post_name' => 'dront-jungle',
+        'thumbnail' => 'ecojungle.jpg',
+    ),
+
     // Lev's part
     array(
         'post_type' => 'landing',
@@ -70,6 +96,7 @@ $process_posts = array(
         'thumbnail' => 'dront-activist-thumbnail.jpg',
     ),
     // Lev's part - end
+
     
     
     // projects
@@ -87,6 +114,16 @@ $process_posts = array(
         'post_type' => 'project',
         'post_name' => 'marsh-konkurs',
         'thumbnail' => 'marsh-park.jpg',
+    ),
+    array(
+        'post_type' => 'project',
+        'post_name' => 'lawcenter-activity',
+        'thumbnail' => '40750031-1.jpg',
+    ),
+    array(
+        'post_type' => 'project',
+        'post_name' => 'turtle',
+        'thumbnail' => 'sredneaziatskaya-cherepaha-big-1.jpg',
     ),
     
     
