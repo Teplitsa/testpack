@@ -258,6 +258,52 @@ function tst_single_person_card($cpost) {
 
 
 }
+/* POst author */
+function tst_single_post_authors_list(WP_Post $cpost) {
+
+	$terms = get_the_terms($cpost, 'author_news');
+	if(is_wp_error($terms))
+		return '';
+
+	$term_order = array();
+	$authors = array();
+
+	if(!empty($terms)) { foreach($terms as $t){
+		$term_order[$t->term_id]['term'] = $t;
+		
+		/*$type = get_term_meta($t->term_id, 'author_news', true);
+
+		if($type == 'reg'){
+			$term_order[$t->term_id]['term'] = $t;
+		}
+		elseif($type == 'person' && $t->parent > 0) {
+			$term_order[$t->parent]['children'][] = $t;
+		}
+		elseif($type == 'person') {
+			$term_order[$t->term_id]['term'] = $t;
+		}*/
+	}}
+
+	if(empty($term_order))
+		return '';
+
+	foreach($term_order as $tobj) {
+
+		if(isset($tobj['term'])) {
+			// $authors[] = "<a href='".get_term_link($tobj['term'])."'>".apply_filters('tst_the_title', $tobj['term']->name)."</a>";
+			$authors[] = "<span>".apply_filters('tst_the_title', $tobj['term']->name)."</span>";
+		}
+
+		// if(isset($tobj['children'])) { foreach($tobj['children'] as $t) {
+		// 	$authors[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
+		// }}
+	}
+
+	if(empty($authors))
+		return '';
+
+	return  "<span class='author'>".implode(', ', (array)$authors)."</span>";
+}
 
 /* Square block for sidebars */
 function tst_card_iconic($cpost) {
