@@ -17,7 +17,8 @@ if(is_int($cpost))
 $name = apply_filters('tst_the_title', $cpost->post_title);
 $role = apply_filters('tst_the_title', $cpost->post_excerpt);
 
-$thumb = tst_get_the_post_thumbnail($cpost, "block-1col");
+$thumb = tst_get_the_post_thumbnail($cpost, "block-single");
+
 
 
 
