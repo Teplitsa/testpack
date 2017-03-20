@@ -294,9 +294,10 @@ function tst_single_post_authors_list(WP_Post $cpost) {
 			$authors[] = "<span>".apply_filters('tst_the_title', $tobj['term']->name)."</span>";
 		}
 
-		// if(isset($tobj['children'])) { foreach($tobj['children'] as $t) {
-		// 	$authors[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
-		// }}
+		if(isset($tobj['children'])) { foreach($tobj['children'] as $t) {
+			// $authors[] = "<a href='".get_term_link($t)."'>".apply_filters('tst_the_title', $t->name)."</a>";
+			$authors[] = "<span>".apply_filters('tst_the_title', $t->name)."</span>";
+		}}
 	}
 
 	if(empty($authors))
