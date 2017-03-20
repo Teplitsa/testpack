@@ -634,6 +634,21 @@ $landings_sections = array(
                 ),
 
                 array(
+                    'template_group' => 'threeforth-picture',
+                    'threeforth_picture_block_order' => 'direct',
+                    'threeforth_picture_element1_post' => array('law-clinic', 'project'),
+                    'threeforth_picture_element2_post' => array('rights-defend', 'project'),
+                ),
+
+                array(
+                    'template_group' => 'singleblock-text',
+                    'singleblock_text_title' => 'Ваши экологические права',
+                    'singleblock_text_subtitle' => 'нуждаются в защите',
+                    'singleblock_text_link_text' => 'Получить консультацию',
+                    'singleblock_text_element_post' => array('law-clinic', 'project'),
+                ),
+
+                array(
                     'template_group' => 'news',
                 ),
 
