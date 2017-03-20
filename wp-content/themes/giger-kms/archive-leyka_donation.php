@@ -4,7 +4,9 @@
  **/
 
 $campaign_slug = get_query_var('leyka_campaign_filter');
-$campaign = null; 
+$campaign = null;
+
+global $wp_query;
 
 if($campaign_slug) {
 	if($campaign = get_posts(array('post_type' => 'leyka_campaign', 'name' => $campaign_slug))){		
@@ -16,7 +18,7 @@ get_header();
 ?>
 <section class="heading">
 	<div class="container">
-		<?php tst_section_title(); ?>
+<!--		--><?php //tst_section_title(); ?>
 		<?php if($campaign){ ?>
 		<h4><?php _e('Campaign', 'tst');?>: <a href="<?php echo get_permalink($campaign);?>"><?php echo get_the_title($campaign);?></a></h4>
 		<?php } ?>
@@ -61,6 +63,6 @@ get_header();
 	?>
 	</div>
 </div></section>
-<section class="paging"><?php tst_paging_nav($wp_query); ?></section>
+<!--<section class="paging">--><?php //tst_paging_nav($wp_query); ?><!--</section>-->
 
 <?php get_footer();
