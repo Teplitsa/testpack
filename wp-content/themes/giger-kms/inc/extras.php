@@ -217,7 +217,21 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'google_maps_api_key',
         'priority' => 40,
     ));
-
+    
+    $wp_customize->add_setting('ga_id', array(
+        'default'   => '',
+        'transport' => 'postMessage',
+        'type' 		=> 'option'
+    ));
+    
+    $wp_customize->add_control('ga_id', array(
+        'type'     => 'text',
+        'label'    => 'Google Analytics ID',
+        'section'  => 'tst_content_options',
+        'settings' => 'ga_id',
+        'priority' => 45,
+    ));
+    
 	$wp_customize->add_setting('now_campaign_id', array(
         'default'  	 => '',
         'transport'	 => 'postMessage',
