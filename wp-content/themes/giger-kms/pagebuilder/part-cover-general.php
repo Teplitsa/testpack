@@ -28,9 +28,10 @@ $cover_img = wds_page_builder_get_this_part_data($prefix.'cover_file_id'); //cor
 		</div>
 	</div>
 
-	<?php if($cover) { ?>
+	<?php if($cover || $cover_img) { ?>
 	<div class="cover-general__item">
 		<?php tst_fullscreen_thumbnail($cover_img, 'cover-item__bg'); ?>
+		<?php if($cover) { ?>
 		<div class="container">
 			<a href="<?php echo get_permalink($cover);?>" class="cover-item__link">
 				<h4><?php echo get_the_title($cover);?></h4>
@@ -39,7 +40,7 @@ $cover_img = wds_page_builder_get_this_part_data($prefix.'cover_file_id'); //cor
 				<?php } ?>
 			</a>
 		</div>
-
+		<?php } ?>
 
 	</div>
 	<?php } ?>
