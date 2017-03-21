@@ -77,7 +77,9 @@ try {
             }
             else {
                 $fulltext_file_path = dirname( __FILE__ ) . '/data/txt/' . $post_content;
-                $post_content = file_exists( $fulltext_file_path ) ? file_get_contents( $fulltext_file_path ) : '';
+                if( file_exists( $fulltext_file_path ) ) {
+                    $post_content =  file_get_contents( $fulltext_file_path );
+                }
             }
             
 			$post_arr = array(
@@ -94,7 +96,7 @@ try {
 // 			print_r( $post_arr );
             
             $post_id = wp_insert_post($post_arr);
-            
+
             if( $post_id ) {
                 
                 if( $department ) {
