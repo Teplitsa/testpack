@@ -576,24 +576,37 @@ article.single {
 	a:hover {
 		color: $grass;
 	}
-	
-	&.attachments-archive-list {
-	   li {
-          &:before {
-              content: "-";
-              padding-right: 15px;
-          }
-          
-	   }
-      
-		li:nth-of-type(even) a {
-			color: $ground;
-			&:hover {
-		       color: $grass;
-			}
-		}
-	}
 }
+
+.attachments-archive-list {
+	.projects-block__title {
+	   @include header-title();
+	   
+	}
+	
+	.projects-block__content {
+	       padding: $base*3;
+	
+	    .projects-block__list {
+	       li {
+	          &:before {
+	              content: "";
+	              padding-right: 15px;
+	          }
+	          
+	       }
+	      
+	        li:nth-of-type(even) a {
+	            color: $ground;
+	            &:hover {
+	               color: $grass;
+	            }
+	        }
+	   }
+	}
+	
+}
+
 /* Events */
 .single__event {
 
