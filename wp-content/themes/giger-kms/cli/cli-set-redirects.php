@@ -53,7 +53,7 @@ try {
         }
     }
 
-    $sql = "DELETE FROM {$table_name} WHERE old_url IN ('/')";
+    $sql = "DELETE FROM {$table_name} WHERE old_url IN ('/', '/about/')";
     $wpdb->query( $sql );
     
 	//Final

@@ -38,7 +38,7 @@ try {
     
     $site_domain_with_path = TST_URL::get_site_domain_with_path();
     if( preg_match( '/ngo2\.ru/', $site_domain_with_path ) ) {
-        $new_site_home = TST_URL::add_protocol( '//' . $ngo2_auth_cred . '@' . $site_domain_with_path );
+        $new_site_home = 'https://' . $ngo2_auth_cred . '@' . $site_domain_with_path;
     }
     else {
         $new_site_home = TST_URL::add_protocol( '//' . $site_domain_with_path );
