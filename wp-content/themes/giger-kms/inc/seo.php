@@ -75,7 +75,7 @@ function tst_wpseo_title($title){
 	
 	    $title = " Проекты: ".$qo->post_title;
 	}
-	elseif(is_singular('people')) {
+	elseif(is_singular('person')) {
 	
 	    $qo = get_queried_object();
 	
