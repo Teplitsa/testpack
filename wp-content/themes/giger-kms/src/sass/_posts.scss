@@ -589,11 +589,6 @@ article.single {
 	
 	    .projects-block__list {
 	       li {
-	          &:before {
-	              content: "";
-	              padding-right: 15px;
-	          }
-	          
 	       }
 	      
 	        li:nth-of-type(even) a {

@@ -125,6 +125,13 @@
 
 	}
 
+
+    .card__meta {
+        position: absolute;
+        bottom: $base*3;
+        left: $base*3;
+    }
+
 	.card__icon {
 		position: absolute;
 		bottom: $base*3;
