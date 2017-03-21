@@ -165,6 +165,8 @@ function tst_pages_redirect() {
         echo $request_uri_with_query . "<br />\n";
     }
     
+    $request_uri_with_query = str_replace( TST_URL::add_protocol( home_url( '/' ) ), '/', TST_URL::add_protocol( home_url( $request_uri_with_query ) ) );
+    
     $redirect = '';
     
     if( !$redirect ) {

@@ -2185,9 +2185,9 @@ jQuery(document).ready(function($){
 		}
 	});
 	
-//	objectFitImages(false, {
-//		watchMQ: true,
-//		skipTest: true
-//	});
+	objectFitImages(false, {
+		watchMQ: true,
+		skipTest: true
+	});
 
 }); //jQuery

@@ -47,7 +47,7 @@ try {
             }
             if( $old_url && $new_url ) {
                 $old_url = str_replace( 'http://dront.ru/', '/', $old_url );
-                $new_url = str_replace( home_url( '/' ), '/', $new_url );
+                $new_url = str_replace( TST_URL::add_protocol( home_url( '/' ) ), '/', TST_URL::add_protocol( $new_url ) );
                 $wpdb->insert( $table_name, array( 'old_url' => $old_url, 'new_url' => $new_url ) );
             }
         }
