@@ -75,11 +75,17 @@ function tst_wpseo_title($title){
 	
 	    $title = " Проекты: ".$qo->post_title;
 	}
+	elseif(is_singular('person')) {
+	
+	    $qo = get_queried_object();
+	
+	    $title = " Люди: ".$qo->post_title;
+	}
 	elseif(is_singular('event')) {
 	
 	    $qo = get_queried_object();
 	
-	    $title = " Анонсы: ".$qo->post_title;
+	    $title = " Мероприятия: ".$qo->post_title;
 	}
 	elseif(is_singular()) {
 
