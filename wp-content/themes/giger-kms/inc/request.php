@@ -159,13 +159,12 @@ function tst_pages_redirect() {
     
     $args = $wp_query->query_vars;
     $request_uri_with_query = $_SERVER['REQUEST_URI'] . ( $_SERVER['QUERY_STRING'] ? '?' . $_SERVER['QUERY_STRING'] : '');
+    $request_uri_with_query = preg_replace( '/^\/dront2\//', '/', $request_uri_with_query, 1 );
     $is_debug = false;
     
     if( $is_debug ) {
         echo $request_uri_with_query . "<br />\n";
     }
-    
-    $request_uri_with_query = str_replace( TST_URL::add_protocol( home_url( '/' ) ), '/', TST_URL::add_protocol( home_url( $request_uri_with_query ) ) );
     
     $redirect = '';
     
