@@ -29,19 +29,19 @@ if($section)
 		<div class="single-body--entry">
 			<?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
 		</div>
-		
+
         <div class="flex-cell--stacked lg-9 single-body">
 
             <?php
             $years = tst_get_past_years( 200 );
 
             foreach( $years as $year ) {
-                
+
                 $posts = tst_get_latest_reports( $year );
-                
+
                 if( !empty( $posts ) ) {
                 ?>
-                    <div class="projects-block container">
+                    <div class="projects-block">
                         <h3 class="projects-block__title"><?php echo $year; ?></h3>
 
                         <div class="projects-block__content">
@@ -60,7 +60,7 @@ if($section)
             <?php }?>
 
         </div>
-		
+
 
 		<?php if(!$dont_show_footer) { ?>
 		<footer class="page-general__footer">

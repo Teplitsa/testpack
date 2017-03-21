@@ -32,7 +32,7 @@ function tst_custom_content(){
 		'rewrite'           => array('slug' => 'people', 'with_front' => false),
 		//'update_count_callback' => '',
 	));
-	
+
 	register_taxonomy('section', array('landing', 'page'), array(
 		'labels' => array(
 			'name'                       => 'Разделы',
@@ -350,6 +350,7 @@ function tst_custom_content(){
 	//remove post tags
 	unregister_taxonomy_for_object_type('category', 'post');
     register_taxonomy_for_object_type( 'attachment_tag', 'attachment' );
+	register_taxonomy_for_object_type( 'section', 'leyka_campaign' );
 
     tst_setup_terms();
 }
