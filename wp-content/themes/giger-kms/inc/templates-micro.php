@@ -11,7 +11,7 @@ function tst_card_linked($cpost, $args = array()) {
 
 	$defaults = array(
 		'size' => 'block-2col',
-		'show_desc' => (in_array($cpost->post_type, array('landing'))) ? true : false
+		'show_desc' => (in_array($cpost->post_type, array('landing')) || is_front_page()) ? true : false
 	);
 
 	$args = wp_parse_args($args, $defaults);
@@ -373,11 +373,11 @@ function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 		$cpost = get_post($cpost);
 
 	if($cpost->post_type == 'landing'){
-		$e = get_post_meta($cpost, 'landing_excerpt', true);
+		$e = get_post_meta($cpost->ID, 'landing_excerpt', true);
 
 	}
 	elseif($cpost->post_type == 'project'){
-		$e = get_post_meta($cpost, 'project_excerpt', true);
+		$e = get_post_meta($cpost->ID, 'project_excerpt', true);
 
 	}
 	else {
