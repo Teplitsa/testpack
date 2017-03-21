@@ -245,6 +245,32 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'priority' => 40,
     ));
 
+    $wp_customize->add_setting('volunteer_submission_form_id', array(
+        'default'   => '',
+        'transport' => 'postMessage',
+        'type' 		=> 'option'
+    ));
+    $wp_customize->add_control('volunteer_submission_form_id', array(
+        'type'     => 'text',
+        'label'    => 'ID формы для добавления волонтера',
+        'section'  => 'tst_content_options',
+        'settings' => 'volunteer_submission_form_id',
+        'priority' => 40,
+    ));
+
+    $wp_customize->add_setting('corporate_submission_form_id', array(
+        'default'   => '',
+        'transport' => 'postMessage',
+        'type' 		=> 'option'
+    ));
+    $wp_customize->add_control('corporate_submission_form_id', array(
+        'type'     => 'text',
+        'label'    => 'ID формы для добавления компании',
+        'section'  => 'tst_content_options',
+        'settings' => 'corporate_submission_form_id',
+        'priority' => 40,
+    ));
+
 	$wp_customize->remove_setting('site_icon'); //remove favicon
 	$wp_customize->remove_control('blogdescription'); //remove
 }
@@ -514,7 +540,7 @@ function tst_clean_csv_file_url( $url ) {
 function tst_get_past_years( $limit = 20 ) {
     $year = (int)date('Y');
     $years = array();
-    for( $i = 0; $i < 20; $i++ ) {
+    for( $i = 0; $i < $limit; $i++ ) {
         $years[] = $year - $i;
     }
     return $years;

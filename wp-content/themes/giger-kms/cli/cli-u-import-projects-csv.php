@@ -75,6 +75,12 @@ try {
                 
                 $post_content = $import_post ? $import_post->post_content : '';
             }
+            else {
+                $fulltext_file_path = dirname( __FILE__ ) . '/data/txt/' . $post_content;
+                if( file_exists( $fulltext_file_path ) ) {
+                    $post_content =  file_get_contents( $fulltext_file_path );
+                }
+            }
             
 			$post_arr = array(
 				'ID' => $exist_post ? $exist_post->ID : 0,
@@ -90,7 +96,7 @@ try {
 // 			print_r( $post_arr );
             
             $post_id = wp_insert_post($post_arr);
-            
+
             if( $post_id ) {
                 
                 if( $department ) {

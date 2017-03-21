@@ -28,7 +28,10 @@ if( !class_exists('TST_Import') ) {
                     'regexp' => '/(\d+-\d+-\d+).\w+$/i',
                     'pattern' => '%d-%m-%y',
                 ),
-
+                array(
+                    'regexp' => '/[^\/]*(\d{4})[^\/]*\.\w+$/i',
+                    'pattern' => '%Y',
+                ),
             ),
         );
 
@@ -527,7 +530,7 @@ if( !class_exists('TST_Import') ) {
         }
 
         public function clean_content_xpath( $content, $section ) {
-            if( !is_array( $section["clean_content_xpath"] ) && isset( $section['xpath']['title'] ) ) {
+            if( ( !isset( $section["clean_content_xpath"] ) || !is_array( $section["clean_content_xpath"] ) ) && isset( $section['xpath']['title'] ) ) {
                 $section["clean_content_xpath"] = array();
             }
 

@@ -583,6 +583,448 @@ $landings_sections = array(
             
         ),
     ),
+    
+    'dront-events' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-archive',
+                    'cover_archive_title' => 'Мероприятия',
+                    'cover_archive_subtitle' => 'Анонсы встреч, акций, семинаров эконцентра и партнеров',
+                    'cover_archive_url' => '',
+                ),
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+
+    'projects' => array( 'post_type' => 'page',
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-archive',
+                    'cover_archive_title' => 'Проекты',
+                    'cover_archive_subtitle' => '',
+                    'cover_archive_url' => '',
+                ),
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    /* Lev's landings part */
+    'dront-ecopravo' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-ecopravo', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'threeforth-picture',
+                    'threeforth_picture_block_order' => 'direct',
+                    'threeforth_picture_element1_post' => array('law-clinic', 'project'),
+                    'threeforth_picture_element2_post' => array('rights-defend', 'project'),
+                ),
+
+                array(
+                    'template_group' => 'singleblock-text',
+                    'singleblock_text_title' => 'Ваши экологические права',
+                    'singleblock_text_subtitle' => 'нуждаются в защите',
+                    'singleblock_text_link_text' => 'Получить консультацию',
+                    'singleblock_text_element_post' => array('law-clinic', 'project'),
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-education' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-education', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-researches' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-researches', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-activist' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-activist', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-rares' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-rares', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    'dront-oopt' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array('dront-oopt', 'landing'),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'singleblock-text',
+                    'singleblock_text_summary' => 'Главная функция таких природных территорий - сохранение биоразнообразия. Экоцентр «Дронт» много лет занимается их проектированием и изучением. Мы способствовали тому, что свыше 250 природных территорий Нижегородской области стали охраняемыми.',
+                ),
+                array(
+                    'template_group' => 'oopt-map',
+                    'oopt_map_title' => 'Карта особо охраняемых природных территорий',
+                ),
+
+                array(
+                    'template_group' => 'news',
+                ),
+
+            ),
+
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+
+        ),
+    ),
+    /* Lev's landings part - end */
+    
+    'dront-sopr' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-sopr', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'direct',
+                    'tripleblock_picture_element1_post' => array( 'sopr-activity', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'bird-of-year', 'project' ),
+                    'tripleblock_picture_element2_file_id' => array( 'nablyud', 'attachment' ),
+                    'tripleblock_picture_element3_post' => array( 'day-of-birds', 'project' ),
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'revers',
+                    'tripleblock_picture_element1_post' => array( 'birds-kadastr', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'birds-rares', 'project' ),
+                    'tripleblock_picture_element2_file_id' => '',
+                    'tripleblock_picture_element3_post' => array( 'birds-flow', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-text',
+                    'singleblock_text_title' => 'Союз Охраны Птиц России (СОПР)',
+                    'singleblock_text_subtitle' => 'некоммерческая благотворительная общественная организация, цель которой — сохранение видового разнообразия и численности диких птиц России.',
+                    'singleblock_text_summary' => '',
+                    'singleblock_text_link_text' => 'Что мы делаем',
+                    'singleblock_text_element_post' => array( 'sopr-activity', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-picture',
+                    'singleblock_picture_label_order' => 'left_bottom',
+                    'singleblock_picture_element_post' => array( 'days-birds', 'project' ),
+                ),
+                
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-ornotologlab' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-ornotologlab', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'direct',
+                    'tripleblock_picture_element1_post' => array( 'birds-lep', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'ugrozy-lep', 'project' ),
+                    'tripleblock_picture_element2_file_id' => '',
+                    'tripleblock_picture_element3_post' => array( 'zakon-lep', 'project' ),
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'revers',
+                    'tripleblock_picture_element1_post' => array( 'metod-lep', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'birds-defender', 'project' ),
+                    'tripleblock_picture_element2_file_id' => '',
+                    'tripleblock_picture_element3_post' => array( 'birds-migration', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-text',
+                    'singleblock_text_title' => '«ООПТ — СПАСАТЕЛЬНЫЙ КРУГ»',
+                    'singleblock_text_subtitle' => 'Наша цель — защитить птиц, обитающих на охраняемых природных территориях, от поражения электрическим током воздушных линий электропередачи (ЛЭП).',
+                    'singleblock_text_summary' => '',
+                    'singleblock_text_link_text' => 'ООПТ-Спасательный круг',
+                    'singleblock_text_element_post' => array( 'birds-krug', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-picture',
+                    'singleblock_picture_label_order' => 'left_bottom',
+                    'singleblock_picture_element_post' => array( 'ornotologlab-activity', 'project' ),
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-lawcenter' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-lawcenter', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'direct',
+                    'tripleblock_picture_element1_post' => array( 'lawcenter-activity', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'rights-defend', 'project' ),
+                    'tripleblock_picture_element2_file_id' => array( 'law-clinic', 'attachment' ),
+                    'tripleblock_picture_element3_post' => array( 'law-clinic', 'project' ),
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-striks' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-striks', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'tripleblock-picture',
+                    'tripleblock_picture_block_order' => 'direct',
+                    'tripleblock_picture_element1_post' => array( 'striks-activity', 'project' ),
+                    'tripleblock_picture_element2_post' => array( 'striks-report', 'project' ),
+                    'tripleblock_picture_element2_file_id' => '',
+                    'tripleblock_picture_element3_post' => array( 'striks-projects', 'project' ),
+                ),
+                array(
+                    'template_group' => 'singleblock-picture',
+                    'singleblock_picture_label_order' => 'left_bottom',
+                    'singleblock_picture_element_post' => array( 'striks-seminars', 'project' ),
+                ),
+                
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-reptiles' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-reptiles', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+                array(
+                    'template_group' => 'singleblock-picture',
+                    'singleblock_picture_label_order' => 'left_bottom',
+                    'singleblock_picture_element_post' => array( 'turtle', 'project' ),
+                ),
+                array(
+                    'template_group' => 'doubleblock-element',
+                    'doubleblock_element_picture_position' => 'left',
+                    'doubleblock_element_title' => 'Амфибии и рептилии',
+                    'doubleblock_element_subtitle' => '',
+                    'doubleblock_element_summary' => 'Нижегородское общество охраны амфибий и рептилий (НООАР) при экологическом центре «Дронт» (г. Нижний Новгород, РФ).',
+                    'doubleblock_element_link_text' => 'Читать подробнее',
+                    'doubleblock_element_element_post' => array( 'reptiles-activity', 'project' ),
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
+    'dront-jungle' => array(
+        'sections' => array(
+            '_wds_builder_template' => array(
+                array(
+                    'template_group' => 'cover-general',
+                    'cover_general_cover_post' => array( 'dront-jungle', 'landing' ),
+                    'cover_general_cover_file_id' => 'thumbnail',
+                ),
+    
+                array(
+                    'template_group' => 'news',
+                ),
+    
+            ),
+    
+            '_wds_builder_cta_template' => array(
+                array(
+                    'template_group' => 'help',
+                ),
+            ),
+    
+        ),
+    ),
+    
 );
 
 try {

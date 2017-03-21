@@ -443,7 +443,7 @@ try {
 
 	$move_to_items[] = array(
 		'ID' => false,
-		'slug' => 'dront-sbereg-center',
+		'slug' => 'dront-cpst',
 		'post_title' => 'Центр природосберегающих технологий',
 		'post_content' => 'centerpt.txt',
 		'section' => 'departments',

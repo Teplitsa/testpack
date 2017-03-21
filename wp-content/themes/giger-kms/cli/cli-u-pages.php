@@ -24,15 +24,15 @@ try {
 
 	//Homepage
 	echo 'Create static homepage'.chr(10);
-	$homepage = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'page' AND post_title = %s", 'Главная'));
+	$homepage = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'page' AND post_name = %s", 'homepage'));
 	$update = array(
 		'ID' 			=> ($homepage) ? $homepage->ID : 0,
-		'post_title' 	=> 'Главная',
+		'post_title' 	=> 'Экоцентр "Дронт"',
 		'post_type' 	=> 'page',
 		'post_name' 	=> 'homepage',
 		'post_status'	=> 'publish',
 		'meta_input'	=> array('_wp_page_template' => 'page-home.php'),
-		'post_content'	=> 'Экологический центр «Дронт» был создан в 1989 году для осуществления различных природоохранных программ и проектов.</p>'
+		'post_content'	=> 'Экологический центр «Дронт» был создан в 1989 году для осуществления различных природоохранных программ и проектов.'
 	);
 
 	$home_id = wp_insert_post($update);
@@ -82,6 +82,7 @@ try {
 	$page_data['post_title'] = $page_title;
 	$page_data['post_parent'] = 0;
 	$page_data['post_type'] = 'page';
+	$page_data['post_name'] = 'about-ecocenter';
 	$page_data['post_content'] = file_get_contents('data/txt/about.txt');
 	$page_data['post_status'] = 'publish';
 	//$page_data['meta_input'] = array('_wp_page_template' => 'page-about.php');
@@ -103,7 +104,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => 'Наша команда',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => 'about'
 		),
@@ -114,7 +115,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => 'import | http://dront.ru/dront/',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => 'about'
 		),
@@ -125,7 +126,7 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => 'Наши отчеты',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => 'about'
 		),
@@ -136,29 +137,29 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => file_get_contents('data/txt/contacts.txt'),
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input'   => array('_wp_page_template' => 'page-contacts.php')
 			),
 			'section' => 'about'
 		),
-		'volunteers' => array(
+		'volunteer' => array(
 			'post_data' => array(
 				'post_title' => 'Стань волонтером',
 				'post_type' => 'page',
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => 'Оставить заявку и стать волонтером',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page-vounteer.php')
 			),
 			'section' => 'supportus'
 		),
-		'company' => array(
+		'corporate' => array(
 			'post_data' => array(
 				'post_title' => 'Помощь компаний',
 				'post_type' => 'page',
 				'post_parent' => 0,
 				'post_status' => 'publish',
-				'post_content' => 'Оставить заявку и стать волонтером',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'post_content' => file_get_contents('data/txt/corporate.txt'),
+				'meta_input' => array('_wp_page_template' => 'page-corporate.php')
 			),
 			'section' => 'supportus'
 		),
@@ -169,10 +170,20 @@ try {
 				'post_parent' => 0,
 				'post_status' => 'publish',
 				'post_content' => '[tst_sitemap]',
-				//'meta_input' => array('_wp_page_template' => 'page-about.php')
+				'meta_input' => array('_wp_page_template' => 'page.php')
 			),
 			'section' => ''
-		)
+		),
+	    'projects' => array(
+	        'post_data' => array(
+	            'post_title' => 'Проекты',
+	            'post_type' => 'page',
+	            'post_parent' => 0,
+	            'post_status' => 'publish',
+	            'post_content' => '',
+	        ),
+	        'section' => 'about'
+	    )
 	);
 
 	foreach($pages as $slug => $obj) {
@@ -188,11 +199,20 @@ try {
 			if($old_post) {
 				$page_data['post_content'] = $old_post->post_content;
 			}
+			else {
+			    $page_data['post_content'] = '';
+			}
 		}
 
 		$exist_page = tst_get_pb_post( $slug, 'page' );
 		$page_data['ID'] = $exist_page ? $exist_page->ID: 0;
 		$page_data['post_name'] = $slug;
+		
+		if( !$exist_page ) {
+		    $page_data['post_name'] = $slug;
+		    wp_insert_post( $page_data );
+		    $exist_page = tst_get_pb_post( $slug, 'page' );
+		}
 
 		if($exist_page && isset($obj['section']) && !empty($obj['section'])) {
 			$section = ($obj['section'] == 'supportus') ? $support_section : $about_section;

@@ -66,6 +66,11 @@ article.single {
 .single-card__meta {
 	@include body-text(meta);
 	color: $leaf;
+	
+	.single-card__author {
+		display: inline-block;
+		margin-left: $base*2;
+	}
 }
 
 .single__nav {
@@ -130,6 +135,7 @@ article.single {
 		fill: $wood;
 		pointer-events: none;
 		@include transition(all 0.35s);
+		margin-bottom: $base*2;
 	}
 }
 
@@ -221,6 +227,11 @@ article.single {
 
 // page general content
 .page-general__content {
+	h2 {
+		@include post-title(cards_textnews);
+		font-weight: bold;
+		clear: both;
+	}
 	h3 {
 		@include body-text(meta);
 		font-weight: bold;
@@ -300,10 +311,24 @@ article.single {
 
 .single-body--entry {
 	@include body-text(reading);
+	
+	a {
+		@include post-title(cards_side);
+		color: $leaf;
+		@include transition(all 0.35s);
+		&:hover {
+			color: $grass;
+		}
+	}
+
 }
 
 .single-body__footer {
 	margin-top: $base*4;
+}
+
+.highslide-gallery {
+	margin-bottom: $base*2;
 }
 
 .tags {
@@ -550,6 +575,23 @@ article.single {
 
 	a:hover {
 		color: $grass;
+	}
+	
+	&.attachments-archive-list {
+	   li {
+          &:before {
+              content: "-";
+              padding-right: 15px;
+          }
+          
+	   }
+      
+		li:nth-of-type(even) a {
+			color: $ground;
+			&:hover {
+		       color: $grass;
+			}
+		}
 	}
 }
 /* Events */

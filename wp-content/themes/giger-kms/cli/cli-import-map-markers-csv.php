@@ -45,6 +45,10 @@ try {
             'name' => 'Решенные проблемы', 'slug' => 'solved-problems', 'layer_marker_icon' => 'thumb_up',
             'layer_marker_colors' => 'green',
         ),
+        array(
+            'name' => 'Адрес организации', 'slug' => 'home-organisation', 'layer_marker_icon' => 'room',
+            'layer_marker_colors' => 'green',
+        ),
     );
 
     $objects_group_id = 0;
@@ -281,6 +285,27 @@ try {
 
     }
 
+	// Создаём метку организации
+	$home_marker = array(
+ 	 'post_type' => 'marker',
+	 'post_content' => '',
+	 'post_title' => 'Адрес организации',
+	 'post_name' => 'home-organisation',
+	 'post_status' => 'publish',
+	 'tax_input' => 'home-organisation',
+	 'meta_input' => array(
+		 'marker_address' => 'Нижний Новгород, ул. Рождественская, д. 16Д.',
+		 'marker_location' => array(
+			 'latitude' => floatval(56.3288441),
+			 'longitude' => floatval(43.9891835)
+		 ),
+		 'marker_location_latitude' => floatval(56.3288441),
+		 'marker_location_longitude' => floatval(43.9891835),
+	 ),
+	 
+	);
+	// Вставляем запись в базу данных
+	wp_insert_post( $home_marker );
 
 	//Final
 	echo 'Markers inserted: '.$markers_num.chr(10);

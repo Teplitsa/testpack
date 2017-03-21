@@ -22,29 +22,10 @@ get_header();
 		</header>
 	</section>
 
-	<!-- main blocks -->
-	<section class="section-loop">
-		<div class="container" id="loadmore-<?php echo $wp_query->query_vars['post_type'] ?>" >
-			<?php
-				if(!empty($posts)) {
-					tst_posts_loop_page( $posts, $wp_query->query_vars['post_type'] );
-				}
-				else {
-			?>
-				<div class="loop-not-found"><?php _e('Nothing found under your request', 'tst');?></div>
-			<?php
-				}
-			?>
-		</div>
-
-		<div class="layout-section--loadmore">
-		<?php
-			if(isset($wp_query->query_vars['has_next_page']) && $wp_query->query_vars['has_next_page']) {
-				tst_load_more_button($wp_query, $wp_query->query_vars['post_type'] . '_card', array(), "loadmore-" . $wp_query->query_vars['post_type']);
-			}
-		?>
-		</div>
-
-	</section>
+	<?php
+	    $archive_query = $wp_query;
+	    include( get_template_directory() . '/partial-posts-archive-items.php' );
+	?>
+	
 </article>
 <?php get_footer();

@@ -53,7 +53,7 @@ function tst_add_cover_general_field( $fields ) {
 			'name'        		=> 'Связанный проект - заставка', //to do for private only
 			'id'          		=> $prefix.'cover_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'  		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'  		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -87,7 +87,7 @@ function tst_add_cover_minimal_field( $fields ) {
 			'name'        		=> 'Связанный элемент - заставка', //to do for private only
 			'id'          		=> $prefix.'cover_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'  		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'  		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -171,7 +171,7 @@ function tst_add_tripleblock_picture_field( $fields ) {
 			'name'        		=> 'Элемент - картинка', //to do for private only
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'attachment' ),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'attachment', 'import' ),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -180,7 +180,7 @@ function tst_add_tripleblock_picture_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -202,7 +202,7 @@ function tst_add_tripleblock_picture_field( $fields ) {
 			'name'        		=> 'Элемент - карточка', //to do for private only
 			'id'          		=> $prefix.'element3_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'attachment'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'attachment', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -237,7 +237,7 @@ function tst_add_tripleblock_2cards_field( $fields ) {
 			'name'        		=> 'Элемент - картинка', //to do for private only
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -246,7 +246,7 @@ function tst_add_tripleblock_2cards_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -269,7 +269,7 @@ function tst_add_tripleblock_2cards_field( $fields ) {
 			'id'          		=> $prefix.'element3_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -319,7 +319,7 @@ function tst_add_tripleblock_2cardstext_field( $fields ) {
 			'name'        		=> 'Элемент - текстовый', //to do for private only
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -352,7 +352,7 @@ function tst_add_tripleblock_2cardstext_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -375,7 +375,7 @@ function tst_add_tripleblock_2cardstext_field( $fields ) {
 			'id'          		=> $prefix.'element3_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -424,7 +424,7 @@ function tst_add_singleblock_picture_field( $fields ) {
 			'name'        		=> 'Элемент', //to do for private only
 			'id'          		=> $prefix.'element_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -468,7 +468,7 @@ function tst_add_singleblock_text_field( $fields ) {
 			'name'        		=> 'Элемент',
 			'id'          		=> $prefix.'element_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -518,7 +518,7 @@ function tst_add_doubleblock_element_field( $fields ) {
 			'name'        		=> 'Элемент',
 			'id'          		=> $prefix.'element_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -550,7 +550,7 @@ function tst_add_doubleblock_picture_field( $fields ) {
 			'name'        		=> 'Элемент 1 - с картинкой',
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -558,7 +558,7 @@ function tst_add_doubleblock_picture_field( $fields ) {
 			'name'        		=> 'Элемент 2 - текстовый',
 			'id'          		=> $prefix.'element2_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -618,7 +618,7 @@ function tst_add_tripleblock_people2cards_field( $fields ) {
 			'id'          		=> $prefix.'element1_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -641,7 +641,7 @@ function tst_add_tripleblock_people2cards_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -686,7 +686,7 @@ function tst_add_tripleblock_person_field( $fields ) {
 			'id'          		=> $prefix.'element1_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -709,7 +709,7 @@ function tst_add_tripleblock_person_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -754,7 +754,7 @@ function tst_add_doubleblock_picturepeople_field( $fields ) {
 			'name'        		=> 'Элемент',
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -787,7 +787,7 @@ function tst_add_doubleblock_picturepicture_field( $fields ) {
 			'name'        		=> 'Элемент - 1',
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -806,7 +806,7 @@ function tst_add_doubleblock_picturepicture_field( $fields ) {
 			'name'        		=> 'Элемент',
 			'id'          		=> $prefix.'element2_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -854,7 +854,7 @@ function tst_add_threeforth_picture_field( $fields ) {
 			'name'        		=> 'Элемент - картинка', //to do for private only
 			'id'          		=> $prefix.'element1_post',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -863,7 +863,7 @@ function tst_add_threeforth_picture_field( $fields ) {
 			'id'          		=> $prefix.'element2_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -977,7 +977,7 @@ function tst_add_threeforth_person_field( $fields ) {
 			'id'          		=> $prefix.'element1_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),
@@ -1036,7 +1036,7 @@ function tst_add_threeforth_section_field( $fields ) {
 			'id'          		=> $prefix.'element1_post',
 			'desc'				=> 'Укажите элемент или файл публикации (ниже)',
 			'type'        		=> 'post_search_text', // This field type
-			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page'),
+			'post_type'   		=> array('project', 'event', 'landing', 'post', 'leyka_campaign', 'page', 'import'),
 			'select_type' 		=> 'radio',
 			'select_behavior' 	=> 'replace'
 		),

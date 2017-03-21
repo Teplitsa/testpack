@@ -148,8 +148,66 @@ function tst_section_redirects() {
 /* redirects fr urls of the old site **/
 add_action('template_redirect', 'tst_pages_redirect', 5);
 function tst_pages_redirect() {
-
-
+    global $wp_query, $wpdb;
+    
+//     if( !$wp_query->is_404 ) {
+//         return;
+//     }
+    
+    global $wp_query;
+    global $wp;
+    
+    $args = $wp_query->query_vars;
+    $request_uri_with_query = $_SERVER['REQUEST_URI'] . ( $_SERVER['QUERY_STRING'] ? '?' . $_SERVER['QUERY_STRING'] : '');
+    $request_uri_with_query = preg_replace( '/^\/dront2\//', '/', $request_uri_with_query, 1 );
+    $is_debug = false;
+    
+    if( $is_debug ) {
+        echo $request_uri_with_query . "<br />\n";
+    }
+    
+    $redirect = '';
+    
+    if( !$redirect ) {
+        $redirects_table_name = $wpdb->prefix . 'tst_redirects';
+        $sql = "SELECT new_url FROM {$redirects_table_name} WHERE old_url = %s";
+        $sql = $wpdb->prepare( $sql, $request_uri_with_query );
+        $new_url = $wpdb->get_var( $sql );
+        if( $new_url ) {
+            $redirect = home_url( $new_url );
+        }
+    }
+    
+    if( !$redirect ) {
+        $redirect = TST_URL::get_custom_redirect( $request_uri_with_query );
+    }
+    
+    $return_404 = false;
+    
+    if( preg_match( '/\/eta-stranitsa-byla-udalena/', $redirect ) ) {
+        $return_404 = true;
+        
+        if( $is_debug ) {
+            echo "<br /><br />return 404<br />"; exit();
+        }
+    }
+    
+    if( $is_debug ) {
+        echo "<br /><br />redirect: " . $redirect . "<br />"; exit();
+    }
+    
+    if(!empty($redirect)){
+        
+        if( $return_404 ) {
+            header("HTTP/1.0 404 Not Found");
+            $wp_query->set_404();
+        }
+        else {
+            wp_redirect($redirect, 301);
+            die();
+        }
+    }
+    
 }
 
 /** Helper to detect current page position from query **/
@@ -185,5 +243,5 @@ function tst_request_correction_has_next_page(WP_Query $query) {
     if($displayed < $query->found_posts)
         $query->set('has_next_page', 1);
 
-        return $query;
+    return $query;
 }
