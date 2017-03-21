@@ -29,25 +29,25 @@ if($section)
 		<div class="single-body--entry">
 			<?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
 		</div>
-
-        <div class="flex-cell--stacked lg-9 single-body">
+		
+        <div class="lg-12 single-body">
 
             <?php
             $years = tst_get_past_years( 200 );
 
             foreach( $years as $year ) {
-
+                
                 $posts = tst_get_latest_reports( $year );
-
+                
                 if( !empty( $posts ) ) {
                 ?>
-                    <div class="projects-block">
+                    <div class="projects-block container attachments-archive-list">
                         <h3 class="projects-block__title"><?php echo $year; ?></h3>
 
                         <div class="projects-block__content">
                             <div class="projects-block__icon hide-upto-medium"><?php tst_svg_icon('icon-pdf');?></div>
 
-                            <div class="projects-block__list attachments-archive-list">
+                            <div class="projects-block__list">
                                 <ul>
                                 <?php foreach($posts as $p) { ?>
                                     <li><a href="<?php echo wp_get_attachment_url( $p->ID );?>"><?php echo get_the_title($p);?></a></li>
@@ -60,7 +60,7 @@ if($section)
             <?php }?>
 
         </div>
-
+		
 
 		<?php if(!$dont_show_footer) { ?>
 		<footer class="page-general__footer">
