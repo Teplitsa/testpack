@@ -85,7 +85,7 @@ function tst_wpseo_title($title){
 	
 	    $qo = get_queried_object();
 	
-	    $title = " Анонсы: ".$qo->post_title;
+	    $title = " Мероприятия: ".$qo->post_title;
 	}
 	elseif(is_singular()) {
 
