@@ -32,14 +32,13 @@ try {
             $post_content = tst_fix_post_inner_urls( $post->post_content );
             $post_content = tst_remove_css_js( $post_content );
             
-            if( $post_content != $post->post_content ) {
+            if( $post_content && $post_content != $post->post_content ) {
                 $post_data = array(
                     'ID'             => $post->ID,
                     'post_content'   => $post_content,
                 );
                 wp_update_post( $post_data );
                 $updated_count += 1;
-//                 break;
             }
         }
     }
@@ -72,7 +71,7 @@ function tst_fix_post_inner_urls( $content ) {
     
     if (!preg_match_all('/<a [^>]+>/', $content, $matches)){
         echo 'links: 0' . chr(10);
-        return;
+        return $content;
     }
     
     echo "links: ".count($matches[0]) . chr(10);
