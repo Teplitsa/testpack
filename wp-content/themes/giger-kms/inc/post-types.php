@@ -241,8 +241,8 @@ function tst_custom_content(){
 
 	register_post_type('import', array(
         'labels' => array(
-            'name'               => 'Импортные записи',
-            'singular_name'      => 'Импортная запись',
+            'name'               => 'Архивные записи',
+            'singular_name'      => 'Архивная запись',
             'menu_name'          => 'Архив',
             'name_admin_bar'     => 'Добавить',
             'add_new'            => 'Добавить',

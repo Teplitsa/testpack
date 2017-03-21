@@ -52,6 +52,9 @@ try {
             }
         }
     }
+
+    $sql = "DELETE FROM {$table_name} WHERE old_url IN ('/')";
+    $wpdb->query( $sql );
     
 	//Final
 	echo 'Memory '.memory_get_usage(true).chr(10);
