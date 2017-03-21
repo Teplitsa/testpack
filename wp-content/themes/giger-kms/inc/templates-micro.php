@@ -11,7 +11,7 @@ function tst_card_linked($cpost, $args = array()) {
 
 	$defaults = array(
 		'size' => 'block-2col',
-		'show_desc' => (in_array($cpost->post_type, array('landing')) || is_front_page()) ? true : false
+		'show_desc' => (in_array($cpost->post_type, array('landing', 'page'))) ? true : false
 	);
 
 	$args = wp_parse_args($args, $defaults);
@@ -270,7 +270,7 @@ function tst_single_post_authors_list(WP_Post $cpost) {
 
 	if(!empty($terms)) { foreach($terms as $t){
 		$term_order[$t->term_id]['term'] = $t;
-		
+
 		/*$type = get_term_meta($t->term_id, 'author_news', true);
 
 		if($type == 'reg'){
@@ -641,26 +641,26 @@ function tst_event_card_date(WP_Post $cpost) {
 }
 
 function tst_get_landing_projects_list_as_content( $landing ) {
-    
+
     $projects = tst_landing_get_connected_projects( $landing );
-    
+
     $out = '';
     if( !empty( $projects ) ) {
         ob_start();
         ?>
-        
+
         <h3 class="projects-title-in-content">Проекты по теме: <?php echo $landing->post_title ?></h3>
-        
+
         <?php
         foreach( $projects as $p ) {
         ?>
             <p><a href="<?php echo get_permalink($p);?>"><?php echo get_the_title($p);?></a></p>
-        <?php 
+        <?php
         }
-        
+
         $out = ob_get_contents();
         ob_end_clean();
     }
-    
+
     return $out;
 }
