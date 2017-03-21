@@ -76,7 +76,7 @@ class TST_SocialButtons {
 
 		$link = get_option('tst_social_'.$key);
 		if(!$link)
-			$link = '#';
+			return '';
 
 		return "<a href='{$link}' target='_blank' class='social-buttons__link social-buttons__link--{$key}'>".tst_svg_icon('icon-'.$key, false)."</a>";
 	}
@@ -97,7 +97,7 @@ class TST_SocialButtons {
 		$list = array();
 		foreach($keys as $key) {
 			$btn = $this->get_social_button($key);
-			if(!is_wp_error($btn)){
+			if(!is_wp_error($btn) && !empty($btn)){
 				$list[] = "<li class='social-buttons__item social-buttons__item--{$key}'>{$btn}</li>";
 			}
 		}
