@@ -14,17 +14,18 @@ function tst_project_archive_ordering(WP_Query $query){
 
     if($query->is_post_type_archive('project') && $query->is_main_query()) {
 
-        $query->set('tax_query', array(
+        $query->set('meta_query', array(
             array(
-                'taxonomy' => 'project_placement',
-                'field'    => 'slug',
-                'terms'    => array('ne-vyvodit-v-arhive',),
-                'operator' => 'NOT IN',
+                array(
+                    'key'     => 'exclude-from-archive',
+                    'value'   => true,
+                    'compare' => '!=',
+                ),
             ),
         ));
 
-//        $query->set('orderby', 'meta_value');
-//        $query->set('meta_key', 'project_placement');
+        $query->set('orderby', 'meta_value_num');
+        $query->set('meta_key', 'archive-priority-output');
 //        $query->set('meta_value', 'vyvodit-vverhu-spiska');
 
     }
