@@ -22,14 +22,15 @@ function tst_project_archive_ordering(WP_Query $query){
 //            ),
 //        ));
 
-        if(isset($_GET['tst'])) {
-            echo '<pre>' . print_r($query, 1) . '</pre>';
-        }
-
-//        $query->set('orderby', 'meta_value_num');
         $query->set('meta_key', 'exclude_from_archive');
         $query->set('meta_value', 'on');
         $query->set('meta_compare', '!=');
+
+        if(isset($_GET['tst'])) {
+            echo '<pre>' . print_r($query->get_posts(), 1) . '</pre>';
+        }
+
+//        $query->set('orderby', 'meta_value_num');
 
     }
 
