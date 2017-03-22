@@ -5,8 +5,8 @@
  **/
 
 /** Project archive custom ordering */
-add_action('parse_query', 'tst_project_archive_ordering', 1, 100);
-function tst_project_archive_ordering(WP_Query $query){
+add_action('parse_query', 'tst_project_archive_placement', 1, 100);
+function tst_project_archive_placement(WP_Query $query){
 
     if(is_admin()) {
         return;
