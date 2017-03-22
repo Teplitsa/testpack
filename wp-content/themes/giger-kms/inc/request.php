@@ -14,6 +14,8 @@ function tst_project_archive_placement(WP_Query $query){
 
     if($query->is_post_type_archive('project') && $query->is_main_query()) {
 
+        $query->set('post_parent', 0);
+
         $query->set('meta_query', array(
             array(
                 'key'     => 'project_archive_placement',
@@ -22,8 +24,8 @@ function tst_project_archive_placement(WP_Query $query){
             ),
         ));
 
-//        $query->set('meta_key', 'project_archive_placement');
-//        $query->set('orderby', array('meta_value_num' => 'DESC',));
+        $query->set('meta_key', 'project_archive_placement');
+        $query->set('orderby', array('meta_value_num' => 'DESC',));
 
     }
 
