@@ -15,11 +15,11 @@ function tst_project_archive_ordering(WP_Query $query){
     if($query->is_post_type_archive('project') && $query->is_main_query()) {
 
         $query->set('meta_query', array(
-            'relation' => 'AND',
+//            'relation' => 'AND',
             array(
                 'key'     => 'exclude_from_archive',
                 'value'   => 'true',
-                'compare' => 'LIKE',
+                'compare' => '!=',
             ),
         ));
 
