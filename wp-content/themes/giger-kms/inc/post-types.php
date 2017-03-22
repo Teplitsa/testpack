@@ -231,8 +231,6 @@ function tst_custom_content(){
         'taxonomies'          => array(),
     ));
 
-
-
 	register_post_type('person', array(
         'labels' => array(
             'name'               => 'Люди',
@@ -496,24 +494,6 @@ function tst_custom_metaboxes() {
         'default' => ''
     ));
 
-	/** Projects fields **/
-	/*$project_cmb = new_cmb2_box( array(
-        'id'            => 'project_settings_metabox',
-        'title'         => 'Настройки проекта',
-        'object_types'  => array('project'), // Post type
-        'context'       => 'normal',
-        'priority'      => 'high',
-        'show_names'    => true,
-    ));
-
-	$project_cmb->add_field( array(
-		'name' => 'Страница',
-		'id'   => 'project_has_single',
-		'desc' => 'Не имеет собственной страницы',
-		'type' => 'checkbox',
-		'default' => 0
-	));*/
-
 	/** Events fields  **/
     $event_cmb = new_cmb2_box( array(
         'id'            => 'event_settings_metabox',
@@ -668,6 +648,19 @@ function tst_custom_metaboxes() {
 		'id'   		=> 'project_excerpt',
 		'type'		=> 'textarea_small'
 	));
+
+    $project_cmb->add_field(array(
+        'name'           => 'Вывод проектов в архиве',
+        'desc'           => '',
+        'id'             => 'project_placement',
+        'taxonomy'       => 'project_placement', //Enter Taxonomy Slug
+        'type'           => 'taxonomy_multicheck',
+        // Optional :
+//        'text'           => array(
+//            'no_terms_text' => 'Sorry, no terms could be found.' // Change default text. Default: "No terms"
+//        ),
+        'remove_default' => 'true' // Removes the default metabox provided by WP core. Pending release as of Aug-10-16
+    ));
 
 	/** Page settings */
 	$home_cmb = new_cmb2_box( array(

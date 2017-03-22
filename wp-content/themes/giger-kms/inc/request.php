@@ -14,16 +14,17 @@ function tst_project_archive_ordering(WP_Query $query){
 
     if($query->is_post_type_archive('project') && $query->is_main_query()) {
 
-        $tax_query = array(
-//        'relation' => 'AND',
+        $query->set('tax_query', array(
             array(
                 'taxonomy' => 'project_placement',
                 'field'    => 'slug',
                 'terms'    => array('ne-vyvodit-v-arhive',),
                 'operator' => 'NOT IN',
             ),
-        );
-        $query->set('tax_query', $tax_query);
+        ));
+
+//        $query->set();
+
     }
 
 }
