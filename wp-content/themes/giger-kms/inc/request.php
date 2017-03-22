@@ -16,8 +16,8 @@ function tst_project_archive_placement(WP_Query $query){
 
         $query->set('meta_query', array(
             array(
-                'key'     => 'exclude_from_archive',
-                'value'   => 'on',
+                'key'     => 'show_on_archive',
+                'value'   => 'n',
                 'compare' => '!=',
             ),
         ));

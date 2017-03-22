@@ -626,6 +626,16 @@ function tst_custom_metaboxes() {
         'type' => 'checkbox',
     ));
     $project_cmb->add_field(array(
+        'name'    => 'Выводить на странице архива',
+        'id'      => 'show_on_archive',
+        'type'    => 'radio_inline',
+        'options' => array(
+            'y' => 'Выводить',
+            'n'   => 'Не выводить',
+        ),
+        'default' => 'y',
+    ));
+    $project_cmb->add_field(array(
         'name' => 'Выводить в начале архива',
         'desc' => '',
         'id'   => 'archive_priority_output',
