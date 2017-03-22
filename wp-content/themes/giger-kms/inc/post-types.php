@@ -620,16 +620,15 @@ function tst_custom_metaboxes() {
 	));
 
     $project_cmb->add_field(array(
-        'name' => 'Выводить в архиве',
-        'desc' => '',
-        'id'   => 'projects_excluded_from_archive',
-        'type' => 'checkbox',
-    ));
-    $project_cmb->add_field(array(
-        'name' => 'Выводить в начале архива',
-        'desc' => '',
-        'id'   => 'projects_archive_output_priority',
-        'type' => 'checkbox',
+        'name'    => 'На странице архива',
+        'id'      => 'project_archive_placement',
+        'type'    => 'radio_inline',
+        'options' => array(
+            '1' => 'Выводить',
+            '2' => 'Выводить в начале списка',
+            '0'   => 'Не выводить',
+        ),
+        'default' => '1',
     ));
 
 	/** Page settings */

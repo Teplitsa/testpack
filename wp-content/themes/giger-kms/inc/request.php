@@ -16,21 +16,14 @@ function tst_project_archive_placement(WP_Query $query){
 
         $query->set('meta_query', array(
             array(
-                'key'     => 'show_on_archive',
-                'value'   => 'n',
+                'key'     => 'project_archive_placement',
+                'value'   => '0',
                 'compare' => '!=',
             ),
         ));
 
-//        $query->set('meta_key', 'exclude_from_archive');
-//        $query->set('meta_value', 'on');
-//        $query->set('meta_compare', '!=');
-
-//        if(isset($_GET['tst'])) {
-//            echo '<pre>' . print_r($query->get_posts(), 1) . '</pre>';
-//        }
-
-//        $query->set('orderby', 'meta_value_num');
+//        $query->set('meta_key', 'project_archive_placement');
+//        $query->set('orderby', array('meta_value_num' => 'DESC',));
 
     }
 

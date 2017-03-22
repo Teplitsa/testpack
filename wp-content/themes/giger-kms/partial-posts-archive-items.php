@@ -3,10 +3,6 @@
 <section class="section-loop">
 	<div class="container" id="loadmore-<?php echo $archive_query->query_vars['post_type'] ?>" >
 		<?php
-        if(isset($_GET['tst'])) {
-            global $wp_query;
-            echo '<pre>' . print_r($wp_query, 1) . '</pre>';
-        }
 			if(!empty($posts)) {
 				tst_posts_loop_page( $posts, $archive_query->query_vars['post_type'] );
 			}
