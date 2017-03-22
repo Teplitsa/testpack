@@ -5,6 +5,10 @@
 		<?php
 			if(!empty($posts)) {
 				tst_posts_loop_page( $posts, $archive_query->query_vars['post_type'] );
+
+                if(isset($_GET['tst'])) {
+                    echo '<pre>' . print_r($wp_query, 1) . '</pre>';
+                }
 			}
 			else {
 		?>
