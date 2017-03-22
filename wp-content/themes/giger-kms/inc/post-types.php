@@ -655,10 +655,6 @@ function tst_custom_metaboxes() {
         'id'             => 'project_placement',
         'taxonomy'       => 'project_placement', //Enter Taxonomy Slug
         'type'           => 'taxonomy_multicheck',
-        // Optional :
-//        'text'           => array(
-//            'no_terms_text' => 'Sorry, no terms could be found.' // Change default text. Default: "No terms"
-//        ),
         'remove_default' => 'true' // Removes the default metabox provided by WP core. Pending release as of Aug-10-16
     ));
 
