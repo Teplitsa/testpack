@@ -650,13 +650,26 @@ function tst_custom_metaboxes() {
 	));
 
     $project_cmb->add_field(array(
-        'name'           => 'Вывод проектов в архиве',
-        'desc'           => '',
-        'id'             => 'project_placement',
-        'taxonomy'       => 'project_placement', // Enter Taxonomy Slug
-        'type'           => 'taxonomy_multicheck',
-        'remove_default' => 'true' // Removes the default metabox provided by WP core. Pending release as of Aug-10-16
+        'name' => 'Ве выводить в архиве',
+        'desc' => '',
+        'id'   => 'exclude-from-archive',
+        'type' => 'checkbox',
     ));
+    $project_cmb->add_field(array(
+        'name' => 'Выводить в начале архива',
+        'desc' => '',
+        'id'   => 'archive-priority-output',
+        'type' => 'checkbox',
+    ));
+
+//    $project_cmb->add_field(array(
+//        'name'           => 'Вывод проектов в архиве',
+//        'desc'           => '',
+//        'id'             => 'project_placement',
+//        'taxonomy'       => 'project_placement', // Enter Taxonomy Slug
+//        'type'           => 'taxonomy_multicheck',
+//        'remove_default' => 'true' // Removes the default metabox provided by WP core. Pending release as of Aug-10-16
+//    ));
 
 	/** Page settings */
 	$home_cmb = new_cmb2_box( array(

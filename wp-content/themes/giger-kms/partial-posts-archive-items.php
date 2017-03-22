@@ -5,13 +5,6 @@
 		<?php
 			if(!empty($posts)) {
 				tst_posts_loop_page( $posts, $archive_query->query_vars['post_type'] );
-
-                if( !empty($_GET['tst']) ) {
-                    foreach($posts as $post) {
-                        echo '<pre>' . print_r(get_post_meta($post->ID, 'project_placement', true), 1) . '</pre>';
-                    }
-                }
-
 			}
 			else {
 		?>
