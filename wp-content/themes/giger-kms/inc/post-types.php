@@ -131,7 +131,6 @@ function tst_custom_content(){
         'taxonomies'          => array('section', 'post_tag'),
     ));
 
-
 	register_post_type('project', array(
         'labels' => array(
             'name'               => 'Проекты',
@@ -165,6 +164,36 @@ function tst_custom_content(){
 		'menu_icon'           => 'dashicons-portfolio',
         'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'page-attributes', 'thumbnail'),
         'taxonomies'          => array('post_tag'),
+    ));
+    register_taxonomy('project_order', array('project'), array(
+        'labels' => array(
+            'name'                       => 'Метки расположения',
+            'singular_name'              => 'Метка расположения',
+            'menu_name'                  => 'Метки расположения',
+            'all_items'                  => 'Все метки расположения',
+            'edit_item'                  => 'Редактировать метку',
+            'view_item'                  => 'Просмотреть',
+            'update_item'                => 'Обновить метку',
+            'add_new_item'               => 'Добавить новую метку',
+            'new_item_name'              => 'Название новой метки',
+            'parent_item'                => 'Родительская метка',
+            'parent_item_colon'          => 'Родительская метка:',
+            'search_items'               => 'Искать метку',
+            'popular_items'              => 'Часто используемые',
+            'separate_items_with_commas' => 'Разделять запятыми',
+            'add_or_remove_items'        => 'Добавить или удалить метку',
+            'choose_from_most_used'      => 'Выбрать из часто используемых',
+            'not_found'                  => 'Не найдено'
+        ),
+        'hierarchical'       => false,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'public'             => false,
+        'show_in_nav_menus'  => false,
+        'show_tagcloud'      => false,
+        'show_admin_column'  => true,
+        'rewrite'            => array('slug'=> 'placement-tag', 'with_front' => false),
+        //'update_count_callback' => '',
     ));
 
 	register_post_type('event', array(
