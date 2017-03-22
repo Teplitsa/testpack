@@ -8,26 +8,23 @@
 add_action('parse_query', 'tst_project_archive_ordering');
 function tst_project_archive_ordering(WP_Query $query){
 
-    if( !is_post_type_archive('project') || !$query->is_main_query() ) {
+    if(is_admin()) {
         return;
     }
 
-    $tax_query = array(
-//        'relation' => 'AND',
-//        array(
-//            'taxonomy' => 'movie_genre',
-//            'field'    => 'slug',
-//            'terms'    => array( 'action', 'comedy' ),
-//        ),
-        array(
-            'taxonomy' => 'project_placement',
-            'field'    => 'slug',
-            'terms'    => array('ne-vyvodit-v-arhive',),
-            'operator' => 'NOT IN',
-        ),
-    );
+    if($query->is_post_type_archive('project') && $query->is_main_query()) {
 
-    $query->set('tax_query', $tax_query);
+        $tax_query = array(
+//        'relation' => 'AND',
+            array(
+                'taxonomy' => 'project_placement',
+                'field'    => 'slug',
+                'terms'    => array('ne-vyvodit-v-arhive',),
+                'operator' => 'NOT IN',
+            ),
+        );
+        $query->set('tax_query', $tax_query);
+    }
 
 }
 
