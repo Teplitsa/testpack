@@ -24,8 +24,7 @@ function tst_project_archive_placement(WP_Query $query){
             ),
         ));
 
-        $query->set('meta_key', 'project_archive_placement');
-        $query->set('orderby', array('meta_value_num' => 'DESC',));
+        $query->set('orderby', array('menu_order' => 'DESC',));
 
     }
 
