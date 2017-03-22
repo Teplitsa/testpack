@@ -653,7 +653,7 @@ function tst_custom_metaboxes() {
         'name'           => 'Вывод проектов в архиве',
         'desc'           => '',
         'id'             => 'project_placement',
-        'taxonomy'       => 'project_placement', //Enter Taxonomy Slug
+        'taxonomy'       => 'project_placement', // Enter Taxonomy Slug
         'type'           => 'taxonomy_multicheck',
         'remove_default' => 'true' // Removes the default metabox provided by WP core. Pending release as of Aug-10-16
     ));
