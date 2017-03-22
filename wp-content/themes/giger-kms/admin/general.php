@@ -25,7 +25,10 @@ add_filter('manage_posts_columns', 'tst_project_columns_names', 50, 2);
 function tst_project_columns_names($columns, $post_type) {
 
     if($post_type == 'project') {
+
         $columns['project_archive_placement'] = 'Вывод в архиве';
+        $columns['project_archive_sorting'] = 'Сортировка';
+
     }
 
     return $columns;
@@ -33,6 +36,7 @@ function tst_project_columns_names($columns, $post_type) {
 
 add_action('manage_project_posts_custom_column', 'tst_project_columns_content', 2, 2);
 function tst_project_columns_content($column_name, $post_id) {
+
     if($column_name == 'project_archive_placement') {
         switch(get_post_meta($post_id, 'project_archive_placement', true)) {
             case '0': echo 'Не выводить'; break;
@@ -40,6 +44,8 @@ function tst_project_columns_content($column_name, $post_id) {
             case '1': echo 'Выводить'; break;
             default:
         }
+    } elseif($column_name == 'project_archive_sorting') {
+        echo get_post($post_id)->menu_order;
     }
 }
 
