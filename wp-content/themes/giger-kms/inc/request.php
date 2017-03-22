@@ -19,7 +19,7 @@ function tst_project_archive_ordering(WP_Query $query){
                 array(
                     'key'     => 'exclude-from-archive',
                     'value'   => 'on',
-                    'compare' => '!=',
+                    'compare' => 'NOT LIKE',
                 ),
             ),
         ));
