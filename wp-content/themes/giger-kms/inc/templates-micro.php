@@ -23,10 +23,6 @@ function tst_card_linked($cpost, $args = array()) {
 	}
 
 	$meta = tst_get_post_meta($cpost);
-
-    if(!empty($_GET['tst'])) {
-        echo '<pre>' . print_r(get_post_meta($cpost->ID, 'project_placement', true), 1) . '</pre>';
-    }
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
 	<div class="card__thumbnail">
@@ -68,10 +64,6 @@ function tst_card_colored($cpost) {
 		$title = get_the_title($cpost);
 		$summary = tst_get_post_excerpt($cpost, 20);
 	}
-
-    if(!empty($_GET['tst'])) {
-        echo '<pre>' . print_r(get_post_meta($cpost->ID, 'project_placement', true), 1) . '</pre>';
-    }
 
 ?>
 <a href="<?php echo $pl;?>" class="card-link <?php if(!empty($icon)) { echo 'has-icon'; }?>">
