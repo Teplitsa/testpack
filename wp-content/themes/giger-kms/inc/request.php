@@ -23,8 +23,9 @@ function tst_project_archive_ordering(WP_Query $query){
             ),
         ));
 
+        $query->set('orderby', 'meta_value');
         $query->set('meta_key', 'project_placement');
-        $query->set('meta_value', 'vyvodit-vverhu-spiska');
+//        $query->set('meta_value', 'vyvodit-vverhu-spiska');
 
     }
 
