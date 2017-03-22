@@ -165,11 +165,11 @@ function tst_custom_content(){
         'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'page-attributes', 'thumbnail'),
         'taxonomies'          => array('post_tag'),
     ));
-    register_taxonomy('project_order', array('project'), array(
+    register_taxonomy('project_placement', array('project'), array(
         'labels' => array(
-            'name'                       => 'Метки расположения',
-            'singular_name'              => 'Метка расположения',
-            'menu_name'                  => 'Метки расположения',
+            'name'                       => 'Расположение',
+            'singular_name'              => 'Расположение',
+            'menu_name'                  => 'Расположение',
             'all_items'                  => 'Все метки расположения',
             'edit_item'                  => 'Редактировать метку',
             'view_item'                  => 'Просмотреть',
