@@ -5,7 +5,7 @@
  **/
 
 /** Project archive custom ordering */
-add_action('parse_query', 'tst_project_archive_placement', 1, 100);
+add_action('parse_query', 'tst_project_archive_placement', 1000, 1);
 function tst_project_archive_placement(WP_Query $query){
 
     if(is_admin()) {
@@ -14,21 +14,21 @@ function tst_project_archive_placement(WP_Query $query){
 
     if($query->is_post_type_archive('project') && $query->is_main_query()) {
 
-//        $query->set('meta_query', array(
-//            array(
-//                'key'     => 'exclude_from_archive',
-//                'value'   => 'on',
-//                'compare' => '!=',
-//            ),
-//        ));
+        $query->set('meta_query', array(
+            array(
+                'key'     => 'exclude_from_archive',
+                'value'   => 'on',
+                'compare' => '!=',
+            ),
+        ));
 
-        $query->set('meta_key', 'exclude_from_archive');
-        $query->set('meta_value', 'on');
-        $query->set('meta_compare', '!=');
+//        $query->set('meta_key', 'exclude_from_archive');
+//        $query->set('meta_value', 'on');
+//        $query->set('meta_compare', '!=');
 
-        if(isset($_GET['tst'])) {
-            echo '<pre>' . print_r($query->get_posts(), 1) . '</pre>';
-        }
+//        if(isset($_GET['tst'])) {
+//            echo '<pre>' . print_r($query->get_posts(), 1) . '</pre>';
+//        }
 
 //        $query->set('orderby', 'meta_value_num');
 
