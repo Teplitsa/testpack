@@ -8,7 +8,7 @@
 
                 if( !empty($_GET['tst']) ) {
                     foreach($posts as $post) {
-                        echo '<pre>' . print_r(get_post_meta($cpost->ID, 'project_placement', true), 1) . '</pre>';
+                        echo '<pre>' . print_r(get_post_meta($post->ID, 'project_placement', true), 1) . '</pre>';
                     }
                 }
 
