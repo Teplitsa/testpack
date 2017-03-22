@@ -165,36 +165,6 @@ function tst_custom_content(){
         'supports'            => array('title', 'excerpt', 'editor', 'revisions', 'page-attributes', 'thumbnail'),
         'taxonomies'          => array('post_tag'),
     ));
-    register_taxonomy('project_placement', array('project'), array(
-        'labels' => array(
-            'name'                       => 'Расположение',
-            'singular_name'              => 'Расположение',
-            'menu_name'                  => 'Расположение',
-            'all_items'                  => 'Все метки расположения',
-            'edit_item'                  => 'Редактировать метку',
-            'view_item'                  => 'Просмотреть',
-            'update_item'                => 'Обновить метку',
-            'add_new_item'               => 'Добавить новую метку',
-            'new_item_name'              => 'Название новой метки',
-            'parent_item'                => 'Родительская метка',
-            'parent_item_colon'          => 'Родительская метка:',
-            'search_items'               => 'Искать метку',
-            'popular_items'              => 'Часто используемые',
-            'separate_items_with_commas' => 'Разделять запятыми',
-            'add_or_remove_items'        => 'Добавить или удалить метку',
-            'choose_from_most_used'      => 'Выбрать из часто используемых',
-            'not_found'                  => 'Не найдено'
-        ),
-        'hierarchical'       => false,
-        'publicly_queryable' => true,
-        'show_ui'            => true,
-        'public'             => false,
-        'show_in_nav_menus'  => false,
-        'show_tagcloud'      => false,
-        'show_admin_column'  => true,
-        'rewrite'            => array('slug'=> 'placement-tag', 'with_front' => false),
-        //'update_count_callback' => '',
-    ));
 
 	register_post_type('event', array(
         'labels' => array(
@@ -661,15 +631,6 @@ function tst_custom_metaboxes() {
         'id'   => 'archive-priority-output',
         'type' => 'checkbox',
     ));
-
-//    $project_cmb->add_field(array(
-//        'name'           => 'Вывод проектов в архиве',
-//        'desc'           => '',
-//        'id'             => 'project_placement',
-//        'taxonomy'       => 'project_placement', // Enter Taxonomy Slug
-//        'type'           => 'taxonomy_multicheck',
-//        'remove_default' => 'true' // Removes the default metabox provided by WP core. Pending release as of Aug-10-16
-//    ));
 
 	/** Page settings */
 	$home_cmb = new_cmb2_box( array(
