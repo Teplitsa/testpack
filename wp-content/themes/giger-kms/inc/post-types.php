@@ -622,13 +622,13 @@ function tst_custom_metaboxes() {
     $project_cmb->add_field(array(
         'name' => 'Ве выводить в архиве',
         'desc' => '',
-        'id'   => 'exclude-from-archive',
+        'id'   => 'exclude_from_archive',
         'type' => 'checkbox',
     ));
     $project_cmb->add_field(array(
         'name' => 'Выводить в начале архива',
         'desc' => '',
-        'id'   => 'archive-priority-output',
+        'id'   => 'archive_priority_output',
         'type' => 'checkbox',
     ));
 
