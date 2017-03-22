@@ -7,6 +7,7 @@
 				tst_posts_loop_page( $posts, $archive_query->query_vars['post_type'] );
 
                 if(isset($_GET['tst'])) {
+                    global $wp_query;
                     echo '<pre>' . print_r($wp_query, 1) . '</pre>';
                 }
 			}
