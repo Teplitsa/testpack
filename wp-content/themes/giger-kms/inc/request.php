@@ -5,7 +5,7 @@
  **/
 
 /** Project archive custom ordering */
-add_action('parse_query', 'tst_project_archive_ordering');
+add_action('parse_query', 'tst_project_archive_ordering', 1, 100);
 function tst_project_archive_ordering(WP_Query $query){
 
     if(is_admin()) {
@@ -14,24 +14,22 @@ function tst_project_archive_ordering(WP_Query $query){
 
     if($query->is_post_type_archive('project') && $query->is_main_query()) {
 
-        $query->set('meta_query', array(
-//            'relation' => 'AND',
-            array(
-                'key'     => 'exclude_from_archive',
-                'value'   => 'on',
-                'compare' => 'NOT LIKE',
-                'type' => 'CHAR',
-            ),
-        ));
+//        $query->set('meta_query', array(
+//            array(
+//                'key'     => 'exclude_from_archive',
+//                'value'   => 'on',
+//                'compare' => '!=',
+//            ),
+//        ));
 
         if(isset($_GET['tst'])) {
             echo '<pre>' . print_r($query, 1) . '</pre>';
         }
 
 //        $query->set('orderby', 'meta_value_num');
-//        $query->set('meta_key', 'archive-priority-output');
-
-//        $query->set('meta_value', 'vyvodit-vverhu-spiska');
+        $query->set('meta_key', 'exclude_from_archive');
+        $query->set('meta_value', 'on');
+        $query->set('meta_compare', '!=');
 
     }
 
