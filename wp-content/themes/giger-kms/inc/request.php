@@ -16,11 +16,9 @@ function tst_project_archive_ordering(WP_Query $query){
 
         $query->set('meta_query', array(
             array(
-                array(
-                    'key'     => 'exclude_from_archive',
-                    'value'   => 'on',
-                    'compare' => 'NOT LIKE',
-                ),
+                'key'     => 'exclude_from_archive',
+                'value'   => 'on',
+                'compare' => 'NOT LIKE',
             ),
         ));
 
