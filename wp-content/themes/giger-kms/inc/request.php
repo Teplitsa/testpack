@@ -24,6 +24,10 @@ function tst_project_archive_ordering(WP_Query $query){
             ),
         ));
 
+        if(isset($_GET['tst'])) {
+            echo '<pre>' . print_r($query, 1) . '</pre>';
+        }
+
 //        $query->set('orderby', 'meta_value_num');
 //        $query->set('meta_key', 'archive-priority-output');
 
