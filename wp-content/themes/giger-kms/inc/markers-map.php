@@ -561,7 +561,7 @@ function tst_get_marker_popup(WP_Post $marker, array $marker_meta) {
 
     $popup = "<div class='marker-content normal'><div class='mc-title'>".$name."</div>";
 
-    $thumbnail = get_the_post_thumbnail($marker, 'small-square');
+    $thumbnail = get_the_post_thumbnail($marker, 'thumbnail');
     if($thumbnail) {
         $popup .= "<div class='mc-thumbnail'>".$thumbnail."</div>";
     }
@@ -574,21 +574,21 @@ function tst_get_marker_popup(WP_Post $marker, array $marker_meta) {
         }
 
     }
-    if(isset($marker_meta['contacts'])) {
-        $contacts = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['contacts'], ENT_COMPAT, 'UTF-8')));
-    }
+//    if(isset($marker_meta['contacts'])) {
+//        $contacts = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['contacts'], ENT_COMPAT, 'UTF-8')));
+//    }
 
     if($content) {
         $popup .= "<div class='mc-content'>".$content."</div>";
     }
-    if( !empty($contacts) ) {
-
-        $contacts = explode("\n", $contacts);
-        $popup .= "<div class='mc-phones'><div class='phone'><i class='material-icons'>phone</i>"
-            .implode("</div><div class='phone'><i class='material-icons'>phone</i>", $contacts)
-            ."</div></div>";
-
-    }
+//    if( !empty($contacts) ) {
+//
+//        $contacts = explode("\n", $contacts);
+//        $popup .= "<div class='mc-phones'><div class='phone'><i class='material-icons'>phone</i>"
+//            .implode("</div><div class='phone'><i class='material-icons'>phone</i>", $contacts)
+//            ."</div></div>";
+//
+//    }
 
     $popup .= "</div>";
 
