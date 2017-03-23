@@ -139,10 +139,14 @@
 	}
 }
 
-.cover-item__date {
-	font-weight: normal;
-	font-size: 0.9em;
-	margin-top: $base/2;
+.cover-item__meta {
+	@include sub-title();
+	margin-bottom: $base/2;
+}
+
+.cover-item__summary {
+	@include body-text(summary_small);
+	margin-top: $base *2;
 }
 
 

@@ -16,11 +16,8 @@ get_header();
 	<section class="section-intro">
 	<?php
 		$cover_id = get_post_thumbnail_id($cover);
-
-		$cover_desc = get_post_meta($cover->ID, 'landing_excerpt', true);
-		if(empty($cover_desc)){
-			$cover_desc = tst_get_post_excerpt($cover, 10, true);
-		}
+		$cover_desc = tst_get_post_excerpt($cover, 15, true);
+		$meta = ($cover) ? tst_get_post_meta($cover) : '';
 	?>
 		<header class="landing-header landing-header--section">
 			<div class="cover-general__title container">
@@ -33,10 +30,15 @@ get_header();
 				<?php tst_fullscreen_thumbnail($cover_id, 'cover-item__bg'); ?>
 				<div class="container">
 					<a href="<?php echo get_permalink($cover);?>" class="cover-item__link">
-						<h4><?php echo get_the_title($cover);?></h4>
-						<!-- meta -->
-						<?php if(!empty($cover_desc)) {?>
-							<div class="card__insummary"><?php echo apply_filters('tst_the_title', $cover_desc);?></div>
+
+						<?php if(!empty($meta)) { ?>
+							<div class="cover-item__meta"><?php echo $meta;?></div>
+						<?php } ?>
+
+						<h4><?php echo wp_trim_words(get_the_title($cover), TST_CARD_TITLE_WORDS_LIMIT );?></h4>
+
+						<?php if(!empty($cover_desc)) { ?>
+							<div class="cover-item__summary"><?php echo $cover_desc;?></div>
 						<?php } ?>
 					</a>
 				</div>

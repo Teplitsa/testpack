@@ -20,13 +20,10 @@ if(empty($cover_title)){
 
 $cover_desc = wds_page_builder_get_this_part_data($prefix.'cover_desc');
 if(empty($cover_desc)){
-	if($cover->post_type == 'event') {
-		$cover_desc = tst_event_card_meta($cover);
-	}
-	else {
-		$cover_desc = tst_get_post_excerpt($cover, 10, true);
-	}
+	$cover_desc = tst_get_post_excerpt($cover, 15, true);
 }
+
+$meta = ($cover) ? tst_get_post_meta($cover) : '';
 ?>
 
 <header class="landing-header">
@@ -36,12 +33,21 @@ if(empty($cover_desc)){
 		<?php tst_fullscreen_thumbnail($cover_img, 'cover-item__bg'); ?>
 		<div class="container">
 			<a href="<?php echo get_permalink($cover);?>" class="cover-item__link">
-				<h4><?php echo apply_filters('tst_the_title', $cover_title);?></h4>
-				<div class="cover-item__date"><?php echo apply_filters('tst_the_title', $cover_desc);?></div>
+				<?php if(!empty($meta)) { ?>
+					<div class="cover-item__meta"><?php echo $meta;?></div>
+				<?php } ?>
+
+				<h4><?php echo wp_trim_words($cover_title, TST_CARD_TITLE_WORDS_LIMIT );?></h4>
+
+				<?php if(!empty($cover_desc)) { ?>
+					<div class="cover-item__summary"><?php echo $cover_desc;?></div>
+				<?php } ?>
 			</a>
 		</div>
 
 
 	</div>
 	<?php } ?>
+
+
 </header>

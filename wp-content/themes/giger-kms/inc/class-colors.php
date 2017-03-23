@@ -64,20 +64,20 @@ class TST_Color_Schemes {
 
     public function build_named_full_scheme( $post_id, $scheme_name, $sections, $force_rebuild = false ) {
         $scheme = array();
-        
+
         $scheme = get_post_meta( $post_id, 'color_scheme_' . $scheme_name, true);
         if( !empty( $scheme ) && !$force_rebuild ) {
             return $scheme;
         }
-        
+
         $panels = $this->panels_config();
         $labels = $this->labels_config();
 
         foreach($sections as $section_name) {
-            
+
             $scheme_code = 'color-1-panels__color-2-panels__color-3-panels__color-4-panels';
             $scheme_classes = $this->get_colors_classes($scheme_code);
-            
+
             $scheme[$section_name] = $scheme_classes;
         }
 
@@ -87,15 +87,15 @@ class TST_Color_Schemes {
 
         return $scheme;
     }
-    
+
     public function get_named_full_scheme( $post_id, $scheme_name, $section_name ) {
-        
+
         $scheme = get_post_meta( $post_id, 'color_scheme_' . $scheme_name, true);
-        
+
         return isset( $scheme[ $section_name ] ) ? $scheme[ $section_name ] : '';
-        
+
     }
-    
+
     //Build
     protected function build_scheme() {
 
@@ -263,7 +263,7 @@ function tst_get_colors_for_section(){
 function tst_get_colors_for_news($landing_id){
 
     $scheme = get_post_meta($landing_id, '_tst_color_scheme', true);
-    $colors = '';
+    $colors = 'scheme-color-1-bark scheme-color-2-grass'; //default
 
     if(empty($scheme))
         return $colors;
@@ -282,7 +282,7 @@ function tst_get_colors_for_news($landing_id){
 function tst_get_colors_for_help($landing_id){
 
     $scheme = get_post_meta($landing_id, '_tst_color_scheme', true);
-    $colors = '';
+    $colors = 'scheme-color-loam'; //default
 
     if(empty($scheme))
         return $colors;

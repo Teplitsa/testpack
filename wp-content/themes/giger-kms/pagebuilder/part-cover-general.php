@@ -29,14 +29,24 @@ $cover_img = wds_page_builder_get_this_part_data($prefix.'cover_file_id'); //cor
 	</div>
 
 	<?php if($cover || $cover_img) { ?>
+	<?php
+		$meta = tst_get_post_meta($cover);
+		$desc = tst_get_post_excerpt($cover, 15, true);
+	?>
 	<div class="cover-general__item">
 		<?php tst_fullscreen_thumbnail($cover_img, 'cover-item__bg'); ?>
 		<?php if($cover) { ?>
 		<div class="container">
 			<a href="<?php echo get_permalink($cover);?>" class="cover-item__link">
-				<h4><?php echo get_the_title($cover);?></h4>
-				<?php if(get_post_type($cover) == 'event') { ?>
-					<div class="cover-item__date"><?php echo tst_event_card_date($cover);?></div>
+
+				<?php if(!empty($meta)) { ?>
+					<div class="cover-item__meta"><?php echo $meta;?></div>
+				<?php } ?>
+
+					<h4><?php echo wp_trim_words( get_the_title($cover), TST_CARD_TITLE_WORDS_LIMIT );?></h4>
+
+				<?php if(!empty($desc)) { ?>
+					<div class="cover-item__summary"><?php echo $desc;?></div>
 				<?php } ?>
 			</a>
 		</div>

@@ -30,7 +30,7 @@
 .card__summary {
 	@include body-text(summary_small);
 	color: currentColor;
-	margin-top: $base *4;
+	margin-top: $base*2;
 }
 
 .card__action {

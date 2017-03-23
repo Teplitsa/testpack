@@ -217,13 +217,13 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'google_maps_api_key',
         'priority' => 40,
     ));
-    
+
     $wp_customize->add_setting('ga_id', array(
         'default'   => '',
         'transport' => 'postMessage',
         'type' 		=> 'option'
     ));
-    
+
     $wp_customize->add_control('ga_id', array(
         'type'     => 'text',
         'label'    => 'Google Analytics ID',
@@ -231,7 +231,7 @@ function tst_customize_register(WP_Customize_Manager $wp_customize) {
         'settings' => 'ga_id',
         'priority' => 45,
     ));
-    
+
 	$wp_customize->add_setting('now_campaign_id', array(
         'default'  	 => '',
         'transport'	 => 'postMessage',
@@ -367,8 +367,8 @@ Anna Ladoshkina
 webdev[at]foralien.com
 
 Graphic design:
-Oksana Grivina
-oksana[at]grivina.ru
+Elena Makurina
+lmakurina[at]gmail.com
 
 Contributors:
 
@@ -377,6 +377,9 @@ denis.cherniatev[at]gmail.com
 
 Sergey Ryabinin
 sgresr.test[at]gmail.com
+
+Lev Zvyagintsev
+ahaenor[at]gmail.com
 
 Denis Kulandin
 kulandin[at]gmail.com
@@ -533,13 +536,13 @@ function tst_get_pb_post( $post_id, $post_type = 'post' ) {
 
 function tst_get_post_by_title( $post_title, $post_type = 'post' ) {
     global $wpdb;
-    
+
     $post = null;
     $post_id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_title = %s AND post_type = %s LIMIT 1 ", $post_title, $post_type ) );
     if( $post_id ) {
         $post = get_post( $post_id, OBJECT );
     }
-    
+
     return $post;
 }
 

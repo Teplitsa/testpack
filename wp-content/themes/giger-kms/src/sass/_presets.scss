@@ -173,11 +173,11 @@ $hamburger-hover-filter    					: opacity(50%) !default;
 
 	}
 	@elseif $mod == summary_small {
-		font-size: 14px;
+		font-size: 13px;
 		line-height: 1.35;
 
 		@include for(medium-screens){
-			font-size: 16px;
+			font-size: 14px;
 		}
 
 	}

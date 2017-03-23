@@ -258,6 +258,8 @@ a:link {
 
 
 }
+
+
 .green-number {
 	border:none;
     color: #bcc600;
@@ -273,7 +275,7 @@ a:link {
     display:inline-block;
     padding:10px 30px;
     text-decoration:none;
-	
+
 }
 .for-green-number {
 	display: table-cell;
@@ -281,7 +283,7 @@ a:link {
 }
 .for-green-title {
 	display: table-cell;
-	
+
 	&:after {
 		clear: both;
 		display: block;
@@ -301,24 +303,24 @@ a:link {
 	z-index: 10000;
 	top:0px;
 	left:0px;
-	
+
 	.tst-close-pdf-button {
-	
+
 		position:absolute;
 		top:65px;
 		cursor:pointer;
 		z-index: 10001;
-		
+
         right:10px;
 		width: 21px;
 		height: 21px;
 		padding-top: 5px;
-		
+
         text-align: center;
 		border-radius: 25px;
 		border: 2px solid $color-white;
 		background-color: $leaf;
-		
+
         @include for(medium-screens) {
             right:30px;
             width: 31px;
@@ -327,17 +329,17 @@ a:link {
             padding-top: 6px;
             background-color: none;
         }
-        
+
         @include for(large-screens) {
             right:50px;
         }
-        
+
 	   .icon-close {
            fill: $color-white;
            width:8px;
            height:8px;
            vertical-align:top;
-           
+
 	       @include for(medium-screens) {
 				width:14px;
 				height:14px;
@@ -358,21 +360,21 @@ a:link {
 .load-more {
     text-align:center;
     padding: 80px 0px 15px 0px;
-    
+
     .loader {
         display:none;
         color: $color-link-two;
     }
-    
+
     .load-more-btn {
         @include button();
     }
-    
+
     &.loading {
         .loader {
             display:inline-block;
         }
-        
+
         .load-more-btn {
             display:none;
         }

@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+//inits
+@import "bourbon";
+
+@import 'fonts';
+@import 'reset';
+@import 'presets';
+@import 'utility';
+
+#tinymce{
+	margin: 20px;
+
+	@include the-content();
+
+	font-family: $body !important;
+	font-size: 16px;
+	line-height: 1.35;
+
+	blockquote {
+		margin-left: 0 !important;
+		@include for(large-screens) {
+			margin-left: 0 !important;
+		}
+	}
+
+	p a, p a:visited {
+		@include green-link();
+	}
+
+}

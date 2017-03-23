@@ -10,19 +10,17 @@ function tst_card_linked($cpost, $args = array()) {
 		$cpost = get_post($cpost);
 
 	$defaults = array(
-		'size' => 'block-2col',
-		'show_desc' => (in_array($cpost->post_type, array('landing', 'page'))) ? true : false
+		'size' => 'block-2col'
 	);
 
 	$args = wp_parse_args($args, $defaults);
 	$pl = $cpost->post_type == 'attachment' ? wp_get_attachment_url($cpost->ID) : get_permalink($cpost);
-	$desc = '';
-
-	if($args['show_desc']) {
-		$desc = tst_get_post_excerpt($cpost, 10, true);
-	}
 
 	$meta = tst_get_post_meta($cpost);
+	$desc = tst_get_post_excerpt($cpost, 15, true);
+
+
+
 ?>
 <a href="<?php echo $pl;?>" class="card-link">
 	<div class="card__thumbnail">
@@ -406,29 +404,41 @@ function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 	if(is_int($cpost))
 		$cpost = get_post($cpost);
 
+
 	if($cpost->post_type == 'landing'){
 		$e = get_post_meta($cpost->ID, 'landing_excerpt', true);
+		$words = (!empty($e)) ? count(preg_split('/\s+/', $e)) : 0;
 
-	}
-	elseif($cpost->post_type == 'project'){
-		$e = get_post_meta($cpost->ID, 'project_excerpt', true);
+		if($words == 0){
+			$e = wp_trim_words(strip_shortcodes(get_post_meta($cpost->ID, 'landing_content', true)), $l);
+		}
+		elseif(0 < $words && $words < 9) {
+			$add = wp_trim_words(strip_shortcodes(get_post_meta($cpost->ID, 'landing_content', true)), $l - $words);
+			$e = $e.'. '.$add;
+		}
 
 	}
 	else {
-		$e = $cpost->post_excerpt;
+		$e = ($cpost->post_type == 'project') ? get_post_meta($cpost->ID, 'project_excerpt', true) : $cpost->post_excerpt;
+		$words = (!empty($e)) ? count(preg_split('/\s+/', $e)) : 0; 
+
+		if($words == 0){
+			$e = wp_trim_words(strip_shortcodes($cpost->post_content), $l);
+		}
+		elseif(0 < $words && $words < $l/3) {
+			$add = wp_trim_words(strip_shortcodes($cpost->post_content), $l - $words);
+			$e = $e.'. '.$add;
+		}
 	}
 
-	if(empty($e) && $cpost->post_type == 'landing'){
-		$e = wp_trim_words(strip_shortcodes(get_post_meta($cpost, 'landing_content', true)));
-	}
 
-	$e = (!empty($e)) ? $e : wp_trim_words(strip_shortcodes($cpost->post_content), $l);
 
 	if($force_l)
 		$e = wp_trim_words($e, $l);
 
 	return $e;
 }
+
 
 /** Meta **/
 function tst_get_post_meta($cpost) {
