@@ -62,7 +62,7 @@ if( !function_exists('tst_get_map_marker_data') ) {
                 'lng' => get_post_meta($marker_id, 'marker_location_longitude', true),
                 'city' => get_post_meta($marker_id, 'marker_city', true),
                 'address' => get_post_meta($marker_id, 'marker_address', true),
-                'phones' => get_post_meta($marker_id, 'marker_phones', true),
+                'contacts' => get_post_meta($marker_id, 'marker_contacts', true),
                 'groups' => get_the_terms($marker_id, 'marker_cat'),
             );
             set_transient('map_marker_data_'.$marker_id, $result);
