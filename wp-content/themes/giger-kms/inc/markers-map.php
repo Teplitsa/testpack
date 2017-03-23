@@ -559,9 +559,6 @@ function tst_get_marker_popup(WP_Post $marker, array $marker_meta) {
     $name = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode(get_the_title($marker), ENT_COMPAT, 'UTF-8')));
     $content = trim(str_replace(array('"', "'", '«', '»'), array(), html_entity_decode(trim(apply_filters('tst_the_content', $marker->post_excerpt)), ENT_COMPAT, 'UTF-8')));
 
-    $addr = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['address'], ENT_COMPAT, 'UTF-8')));
-    $contacts = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['contacts'], ENT_COMPAT, 'UTF-8')));
-
     $popup = "<div class='marker-content normal'><div class='mc-title'>".$name."</div>";
 
     $thumbnail = get_the_post_thumbnail($marker, 'small-square');
@@ -569,13 +566,22 @@ function tst_get_marker_popup(WP_Post $marker, array $marker_meta) {
         $popup .= "<div class='mc-thumbnail'>".$thumbnail."</div>";
     }
 
-    if($addr && $addr != $name) {
-        $popup .= "<div class='mc-address'><i class='material-icons'>place</i>$addr</div>";
+    if(isset($marker_meta['address'])) {
+
+        $addr = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['address'], ENT_COMPAT, 'UTF-8')));
+        if($addr != $name) {
+            $popup .= "<div class='mc-address'><i class='material-icons'>place</i>$addr</div>";
+        }
+
     }
+    if(isset($marker_meta['contacts'])) {
+        $contacts = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['contacts'], ENT_COMPAT, 'UTF-8')));
+    }
+
     if($content) {
         $popup .= "<div class='mc-content'>".$content."</div>";
     }
-    if($contacts) {
+    if( !empty($contacts) ) {
 
         $contacts = explode("\n", $contacts);
         $popup .= "<div class='mc-phones'><div class='phone'><i class='material-icons'>phone</i>"
