@@ -8,13 +8,14 @@
 /** @var WP_Post $cpost */
 $cpost = get_queried_object();
 $event = new TST_Event($cpost);
+$land = tst_get_related_landings($cpost, 2);
 
 get_header();?>
 <div class="single-crumb container">
 	<a href="<?php echo home_url('events');?>"><?php _e('Events', 'tst'); ?></a>
 </div>
 <article class="single single__event">
-	
+
 	<header class="single__header">
 		<div class="container">
 			<div class="flex-grid--stacked">
@@ -31,7 +32,7 @@ get_header();?>
 			</div>
 		</div>
 	</header>
-	
+
 	<?php if(has_post_thumbnail($cpost)) { ?>
 	<div class="single__preview"><div class="container">
 		<div class="flex-grid--stacked">
@@ -39,7 +40,6 @@ get_header();?>
 				<?php tst_single_thumbnail($cpost);?>
 			</div>
 			<?php
-				$land = tst_get_related_landings($cpost, 2);
 				if(!empty($land)) {
 			?>
 			<div class="flex-cell--stacked lg-3 single__related_land">
@@ -115,13 +115,15 @@ get_header();?>
 	<?php
 		$news = tst_get_related_query($cpost, 'post_tag', 4);
 		if(!empty($news)) {
+			$grid_css = (!empty($land)) ? tst_get_colors_for_news((int)$land[0]->ID) : 'scheme-color-1-bark scheme-color-2-grass';
+		
 	?>
 	<footer class="single__footer">
 		<div class="news-block container">
 			<h3 class="news-block__title--inpage"><?php _e('More on the topic', 'tst'); ?></h3>
 
 			<div class="news-block__content">
-				<div class="flex-grid--stacked ">
+				<div class="flex-grid--stacked <?php echo $grid_css;?>">
 				<?php foreach($news->posts as $i => $n) { ?>
 					<?php if($i %2 > 0) { ?>
 						<div class="flex-cell--stacked sm-6 lg-3 card card--colored card--news">
