@@ -560,7 +560,7 @@ function tst_get_marker_popup(WP_Post $marker, array $marker_meta) {
     $content = trim(str_replace(array('"', "'", '«', '»'), array(), html_entity_decode(trim(apply_filters('tst_the_content', $marker->post_excerpt)), ENT_COMPAT, 'UTF-8')));
 
     $addr = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['address'], ENT_COMPAT, 'UTF-8')));
-    $phones = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['phones'], ENT_COMPAT, 'UTF-8')));
+    $contacts = trim(str_replace(array('"', "'", '«', '»'), array(''), html_entity_decode($marker_meta['marker_contacts'], ENT_COMPAT, 'UTF-8')));
 
     $popup = "<div class='marker-content normal'><div class='mc-title'>".$name."</div>";
 
@@ -570,11 +570,11 @@ function tst_get_marker_popup(WP_Post $marker, array $marker_meta) {
     if($content) {
         $popup .= "<div class='mc-content'>".$content."</div>";
     }
-    if($phones) {
+    if($contacts) {
 
-        $phones = explode("\n", $phones);
+        $contacts = explode("\n", $contacts);
         $popup .= "<div class='mc-phones'><div class='phone'><i class='material-icons'>phone</i>"
-            .implode("</div><div class='phone'><i class='material-icons'>phone</i>", $phones)
+            .implode("</div><div class='phone'><i class='material-icons'>phone</i>", $contacts)
             ."</div></div>";
 
     }
