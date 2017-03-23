@@ -183,7 +183,7 @@ class FRL_CssJs {
 		//enqueue again
 		$api_url = '//maps.googleapis.com/maps/api/js?libraries=places';
 
-        $api_key = stristr(home_url(), 'dront.local') !== false ? 'AIzaSyDoI_nMSgPYKfmW-FVHUGxYzEyByr4CtoI' : get_theme_mod('google_maps_api_key');
+        $api_key = stristr(home_url(), 'dront.local') !== false ? 'AIzaSyDoI_nMSgPYKfmW-FVHUGxYzEyByr4CtoI' : get_option('google_maps_api_key');
         if ( ! empty( $api_key ) ) {
             $api_url .= '&key=' . $api_key;
         }
