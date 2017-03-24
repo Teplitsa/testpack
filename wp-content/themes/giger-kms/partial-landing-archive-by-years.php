@@ -9,6 +9,7 @@
 //var_dump($wp_query->posts);
 $cpost = get_queried_object();
 $is_archive = get_query_var('item_archive');
+$landing_excerpt = get_post_meta( $cpost->ID, 'landing_excerpt', true );
 
 get_header();?>
 <?php
@@ -23,7 +24,7 @@ get_header();?>
     <?php } ?>
 </div>
 
-<article class="single">
+<article class="single archive-landing-<?php echo $cpost->post_name?>">
 
     <header class="single__header single__header--smaller">
         <div class="container">
@@ -40,6 +41,44 @@ get_header();?>
             </div>
         </div>
     </header>
+    
+    <?php if( isset( $tst_callback_get_sticky_posts ) ):
+    	$sticky_posts = call_user_func( $tst_callback_get_sticky_posts );
+    	if( !empty( $sticky_posts ) ):
+	?>
+    <div class="single__content"><div class="container">
+        <div class="flex-grid--stacked">
+            <div class="lg-9 single-body">
+                <div class="projects-block container attachments-archive-list">
+                    <div class="projects-block__content">
+                        <div class="projects-block__icon hide-upto-medium"><?php tst_svg_icon('icon-pdf');?></div>
+                        <div class="projects-block__list">
+                            <ul>
+                            <?php foreach($sticky_posts as $p) { ?>
+                                <li><?php echo tst_get_special_attachment_link( $p )?></li>
+                            <?php }    ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div><!-- .single__content -->
+	<?
+	    endif;
+    endif; 
+     
+    ?>
+     
+    <?php if( $landing_excerpt ):?>
+    <div class="single__content"><div class="container">
+        <div class="flex-grid--stacked">
+            <div class="lg-9 single-body single-body--entry">
+				<?php echo apply_filters('tst_the_content', $landing_excerpt );?>
+			</div>
+		</div>
+	</div></div>
+     <?php endif;?>
 
     <div class="single__content"><div class="container">
         <div class="flex-grid--stacked">
@@ -64,7 +103,7 @@ get_header();?>
                                 <div class="projects-block__list">
                                     <ul>
                                     <?php foreach($posts as $p) { ?>
-                                        <li><a href="<?php echo wp_get_attachment_url( $p->ID );?>"><?php echo get_the_title($p);?></a></li>
+                                        <li><?php echo tst_get_special_attachment_link( $p )?></li>
                                     <?php }    ?>
                                     </ul>
                                 </div>

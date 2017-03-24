@@ -674,3 +674,32 @@ function tst_get_landing_projects_list_as_content( $landing ) {
 
     return $out;
 }
+
+function tst_get_special_attachment_link( $p ) {
+    
+    $link = '<a href="'. wp_get_attachment_url( $p->ID ).'">'.get_the_title($p)."</a>";
+    $post_content = $p->post_content;
+    $replace_post_title = $p->post_title;
+    $replace_post_title = mb_ereg_replace( '[^а-яА-Я0-9a-zA-Z]', '.', $replace_post_title );
+    
+    $matches = array();
+    preg_match( '/^(\.*).*?(\.*)$/', $replace_post_title, $matches );
+    
+    $replace_post_title = mb_ereg_replace( '\.*$', '', $replace_post_title );
+    $replace_post_title = mb_ereg_replace( '^\.*', '', $replace_post_title );
+    $replace_post_title = mb_ereg_replace( '\.+', '.*?', $replace_post_title );
+    $replace_post_title = $matches[1] . $replace_post_title . $matches[2];
+    
+//     if( strpos( $post_content, '1.12 Мб' ) !== false ) {
+//         echo $replace_post_title;
+//         exit();
+//     }
+    
+    
+    if( mb_ereg_match( ".*$replace_post_title.*", $post_content ) ) {
+        $link = mb_ereg_replace( "$replace_post_title", $link, $post_content );
+    }
+    
+    return $link;
+    
+}

@@ -47,3 +47,25 @@ function tst_delete_post_related_transients($post_id, $post = null){
 
 
 }
+
+/** == Attachments (bublications, reports etc..) == **/
+add_action( 'edit_attachment', 'tst_change_attachment_date', 20, 1 );
+function tst_change_attachment_date( $post_id ){
+    remove_action( 'edit_attachment', 'tst_change_attachment_date', 20, 1 );
+    
+    $post_date = get_post_meta( $post_id, 'file_publication_date', true );
+    
+    if( $post_date ) {
+        
+        $post_date = date( 'Y-m-d', $post_date );
+        
+        wp_update_post( array(
+            'ID' => $post_id,
+            'post_date' => $post_date,
+            'post_date_gmt' => get_gmt_from_date( $post_date ),
+        ) );
+        
+    }
+    
+    add_action( 'edit_attachment', 'tst_change_attachment_date', 20, 1 );
+}

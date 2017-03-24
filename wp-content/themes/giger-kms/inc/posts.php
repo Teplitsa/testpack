@@ -4,7 +4,7 @@
  *
  **/
 
-function tst_get_latest_attachments( $attachment_tag_slug = false, $year = '', $num = -1, $fields = false ) {
+function tst_get_latest_attachments_query_params( $attachment_tag_slug = false, $year = '', $num = -1, $fields = false ) {
     
     $params = array(
         'post_type' => 'attachment',
@@ -38,13 +38,55 @@ function tst_get_latest_attachments( $attachment_tag_slug = false, $year = '', $
         $params['fields'] = $fields;
     }
     
+    $params['orderby'] = array( 'menu_order' => 'DESC', 'post_date' => 'DESC' );
+    
+    return $params;
+}
+
+function tst_get_latest_attachments( $attachment_tag_slug = false, $year = '', $num = -1, $fields = false ) {
+    
+    $params = tst_get_latest_attachments_query_params( $attachment_tag_slug, $year, $num, $fields );
     $posts = get_posts( $params );
 
 	return $posts;
 }
 
 function tst_get_latest_publications( $year = '', $num = -1, $fields = false ) {
-    return tst_get_latest_attachments( 'publication', $year, $num, $fields );
+    
+    $params = tst_get_latest_attachments_query_params( 'publication', $year, $num, $fields );
+    $params['meta_query'] = array(
+        'relation' => 'OR',
+        array(
+            'key'     => 'is_sticky',
+            'value'   => 'on',
+            'compare' => '!=',
+        ),
+        array(
+            'key'     => 'is_sticky',
+            'compare'   => 'NOT EXISTS',
+        ),
+    );
+    
+    $posts = get_posts( $params );
+    
+    return $posts;
+}
+
+function tst_get_sticky_publications() {
+
+    $params = tst_get_latest_attachments_query_params( 'publication' );
+    unset( $params['date_query'] );
+    $params['meta_query'] = array(
+        array(
+            'key'     => 'is_sticky',
+            'value'   => 'on',
+            'compare' => '=',
+        ),
+    );
+    
+    $posts = get_posts( $params );
+
+    return $posts;
 }
 
 function tst_get_latest_bereginya( $year = '', $num = -1, $fields = false ) {

@@ -54,29 +54,6 @@ get_header();?>
         </div>
     </div>
 
-	<?php
-		$projects = tst_landing_get_connected_projects($post);
-		if(!empty($projects)) {
-	?>
-		<footer class="single__footer">
-			<div class="projects-block container">
-				<h3 class="projects-block__title"><?php printf(__('Projects by topic: %s', 'tst'), get_the_title($post)); ?></h3>
-
-				<div class="projects-block__content">
-					<div class="projects-block__icon hide-upto-medium"><?php tst_svg_icon('icon-project');?></div>
-
-					<div class="projects-block__list">
-						<ul>
-						<?php foreach($projects as $p) { ?>
-							<li><a href="<?php echo get_permalink($p);?>"><?php echo get_the_title($p);?></a></li>
-						<?php }	?>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</footer>
-	<?php } ?>
-
 	<section class="cta"><?php wds_page_builder_area('cta'); ?></section>
 </article>
 

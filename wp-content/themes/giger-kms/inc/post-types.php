@@ -343,6 +343,7 @@ function tst_custom_content(){
 
 	//attachment
 	add_post_type_support( 'attachment', 'thumbnail' );
+	add_post_type_support( 'attachment', 'page-attributes' );
 
 	//remove post tags
 	unregister_taxonomy_for_object_type('category', 'post');
@@ -691,6 +692,31 @@ function tst_custom_metaboxes() {
 		'type' => 'text_url'
 	));
 
+	// attachments
+	$attachment_cmb = new_cmb2_box( array(
+	    'id'            => 'attachment_settings_metabox',
+	    'title'         => 'Дополнительные настройки',
+	    'object_types'  => array( 'attachment' ),
+	    'context'       => 'normal',
+	    'priority'      => 'high',
+	    'show_names'    => true,
+	));
+	
+	$attachment_cmb->add_field( array(
+	    'name' => 'Дата публикации',
+	    'id'   => 'file_publication_date',
+	    'type' => 'text_date_timestamp',
+	    'date_format' => 'd.m.Y',
+	    'column' => true
+	));
+	
+	$attachment_cmb->add_field( array(
+	    'name' => 'Прикрепить над архивом',
+	    'id'   => 'is_sticky',
+	    'type' => 'checkbox',
+	    'default' => '',
+	));
+	
 }
 
 

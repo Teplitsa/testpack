@@ -581,7 +581,6 @@ article.single {
 .attachments-archive-list {
 	.projects-block__title {
 	   @include header-title();
-	   
 	}
 	
 	.projects-block__content {
@@ -599,7 +598,26 @@ article.single {
 	        }
 	   }
 	}
-	
+}
+
+.archive-landing-dront-publications {
+    .attachments-archive-list {
+	    .projects-block__content {
+	    
+	        .projects-block__list {
+	            li {
+	               @include body-text(reading);
+	               
+	                a {
+	                    color: $leaf;
+	                    &:hover {
+	                       color: $grass;
+	                    }
+	                }
+	            }
+	       }
+	    }
+    }	
 }
 
 /* Events */
