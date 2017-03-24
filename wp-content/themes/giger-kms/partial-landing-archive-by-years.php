@@ -42,13 +42,16 @@ get_header();?>
         </div>
     </header>
     
-    <?php if( isset( $tst_callback_get_sticky_posts ) ):
-    	$sticky_posts = call_user_func( $tst_callback_get_sticky_posts );
-    	if( !empty( $sticky_posts ) ):
-	?>
     <div class="single__content"><div class="container">
         <div class="flex-grid--stacked">
+
             <div class="lg-9 single-body">
+            
+                <?php if( isset( $tst_callback_get_sticky_posts ) ):
+                	$sticky_posts = call_user_func( $tst_callback_get_sticky_posts );
+                	if( !empty( $sticky_posts ) ):
+            	?>
+            
                 <div class="projects-block container attachments-archive-list">
                     <div class="projects-block__content">
                         <div class="projects-block__icon hide-upto-medium"><?php tst_svg_icon('icon-pdf');?></div>
@@ -61,29 +64,22 @@ get_header();?>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div></div><!-- .single__content -->
-	<?
-	    endif;
-    endif; 
-     
-    ?>
-     
-    <?php if( $landing_excerpt ):?>
-    <div class="single__content"><div class="container">
-        <div class="flex-grid--stacked">
-            <div class="lg-9 single-body single-body--entry">
-				<?php echo apply_filters('tst_the_content', $landing_excerpt );?>
-			</div>
-		</div>
-	</div></div>
-     <?php endif;?>
-
-    <div class="single__content"><div class="container">
-        <div class="flex-grid--stacked">
-
-            <div class="lg-9 single-body">
+                
+            	<?
+            	    endif;
+                endif; 
+                 
+                ?>
+                
+                
+                <?php if( $landing_excerpt ):?>
+                	<div class="single-body">
+                		<div class="single-body--entry">
+                			<?php echo apply_filters('tst_the_content', $landing_excerpt );?>
+                		</div>
+                	</div>
+                <?php endif;?>
+                
 
                 <?php
                 $years = tst_get_past_years( 200 );
