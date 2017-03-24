@@ -190,7 +190,6 @@ try {
     printf( "all pubs: %d\n", count( $all_posts_urls ) );
     printf( "all li tags: %d\n", count( $all_urls_with_tags ) );
     printf( "not found li: %d\n", count( $not_found_li ) );
-    print_r( $not_found_li );
     
     print( "\n" );
     printf( "Data parsed: %d pages\n", $i );
