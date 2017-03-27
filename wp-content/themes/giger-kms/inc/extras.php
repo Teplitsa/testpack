@@ -562,3 +562,7 @@ function tst_get_past_years( $limit = 20 ) {
     }
     return $years;
 }
+
+function tst_get_csv_noneable_val( $val ) {
+    return trim( $val ) == 'none' ? '' : trim( $val );
+}

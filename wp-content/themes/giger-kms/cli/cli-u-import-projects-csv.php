@@ -198,7 +198,3 @@ catch (TstCLIHostNotSetException $ex) {
 catch (Exception $ex) {
 	echo $ex;
 }
-
-function tst_get_csv_noneable_val( $val ) {
-    return trim( $val ) == 'none' ? '' : trim( $val );
-}

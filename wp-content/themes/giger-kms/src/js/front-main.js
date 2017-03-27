@@ -303,9 +303,23 @@ jQuery(document).ready(function($){
 		}
 	});
 	
-	objectFitImages(false, {
-		watchMQ: true,
-		skipTest: true
-	});
+	// object-fit workaround for IE
+	var parser = new UAParser();
+	var tst_ua = parser.getResult();
+	if( tst_ua.browser.name == 'IE' || tst_ua.browser.name == 'Edge' ) {
+		$('.tst-lazyload').each( function(){
+	    	var srcset = $(this).parent().find( 'source' ).last().data( 'srcset' );
+			var img_params = srcset.split( ' ' );
+			$(this).prop( 'src', img_params[0] );
+		});
+
+		objectFitImages(false, {
+			watchMQ: true,
+			skipTest: true
+		});
+	}
+	else {
+		$('.tst-lazyload').removeClass( 'tst-lazyload' ).addClass( 'lazyload' );
+	}
 
 }); //jQuery

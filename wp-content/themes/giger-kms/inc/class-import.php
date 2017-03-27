@@ -884,9 +884,10 @@ if( !class_exists('TST_Convert2PDF') ) {
 
             $src_info = pathinfo( $src );
             $dst_info = pathinfo( $dst );
-//            print_r($dst_info);
+//             print_r($dst_info);
 
-            $original_file_copy = str_replace( $dst_info['basename'], $src_info['basename'], $dst );
+            $original_file_copy = preg_replace( '/'.$dst_info['extension'].'$/', $src_info['extension'], $dst );
+//             print_r( $original_file_copy . "\n" );
             copy( $src, $original_file_copy );
             $compiled_command = sprintf( $command, $dst_info['dirname'], $original_file_copy );
             printf( "%s\n", $compiled_command );

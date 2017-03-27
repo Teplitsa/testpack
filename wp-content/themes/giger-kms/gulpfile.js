@@ -61,6 +61,7 @@ gulp.task('build-js', function() {
 
 gulp.task('build-head-js', function() {
     var vendorFiles = [
+    	basePaths.bower + 'ua-parser-js/dist/ua-parser.min.js',
 		basePaths.bower + 'lazysizes/lazysizes.min.js'
         ],
         appFiles = [basePaths.src+'js/front-head.js']; //our own JS files

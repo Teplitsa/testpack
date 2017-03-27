@@ -1,1 +1,0 @@
-jQuery(function(t){function e(){var e=t("#_wds_builder_template_0_template_group option");if(e.length){var n=e.slice();n.sort(function(t,e){return t.text>e.text?1:t.text<e.text?-1:0}),t(".wds-simple-page-builder-template-select").each(function(){var e=t(this),i=e.val();e.empty(),n.each(function(){e.append(t(this).clone())}),e.val(i)})}}e()});

@@ -148,7 +148,7 @@ function tst_get_picture_markup($img_id, $place_id) {
 		<!-- fallback -->
 		<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 			 data-src="<?php echo $base_src;?>"
-			 class="lazyload">
+			 class="tst-lazyload">
 			<noscript><img src="<?php echo $base_src;?>"></noscript>
 	</picture>
 <?php } else { ?>
@@ -216,7 +216,7 @@ function tst_get_post_thumbnail_picture(WP_Post $cpost, $args = array()) {
 				<!-- fallback -->
 				<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 					 data-src="<?php echo $base[0];?>"
-					 class="lazyload">
+					 class="tst-lazyload">
 					<noscript><img src="<?php echo $base[0];?>"></noscript>
 			</picture>
 
