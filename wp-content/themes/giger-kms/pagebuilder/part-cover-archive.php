@@ -25,7 +25,7 @@ if( $url && !preg_match( '/^(http[s]?:)\/\//', $url ) ) {
 		<?php endif?>
 		<?php if( $url ): ?>
 		<div class="landing-header__links">
-			<a href="<?php echo $url;?>" class="text-link"><?php _e('View archive', 'tst');?></a>
+			<a href="<?php echo $url;?>" class="text-link tst-get-details-link"><?php _e('View archive', 'tst');?></a>
 			<a href="#help-block" class="local-scroll button-link"><?php _e('Join us', 'tst');?></a>
 		</div>
 		<?php endif ?>

@@ -323,3 +323,40 @@ jQuery(document).ready(function($){
 	}
 
 }); //jQuery
+
+//bind Google.Analytics events
+function tst_raise_main_ga_event( category, action ) {
+    console.log( 'GA EVENT TRACK - category: ' + category + ' action: ' + action );
+    if( typeof ga === "function" ) {
+        ga( 'send', 'event', category, action );
+    }
+}
+
+jQuery(document).ready(function($){
+	
+    // donation
+    $('.leyka-pm-form').submit(function(){
+    	tst_raise_main_ga_event( 'Пожертвование', 'Форма отправлена' );
+    });
+    
+    // become volonteer
+    $('#form_qaq5y').submit(function(){
+    	tst_raise_main_ga_event( 'Стать волонтером', 'Заявка отправлена' );
+    });
+
+    // corporate help
+    $('#form_brod8').submit(function(){
+    	tst_raise_main_ga_event( 'Помощь компаний', 'Заявка отправлена' );
+    });
+    
+    // report ecoproblem
+    $('#form_kp6cw2').submit(function(){
+    	tst_raise_main_ga_event( 'Сообщить о проблеме', 'Форма отправлена' );
+    });
+    
+    // report ecoproblem
+    $('.tst-get-details-link').click(function(){
+    	tst_raise_main_ga_event( 'Вникнуть', 'Переход по ссылке' );
+    });
+    
+}); //jQuery

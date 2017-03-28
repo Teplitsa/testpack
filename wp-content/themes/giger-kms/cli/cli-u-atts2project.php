@@ -58,21 +58,22 @@ try {
                             
                             $file_id = $doc_id;
                             
-//                             $url = $doc_url;
-//                             $file_url = wp_get_attachment_url( $file_id );
+                            $url = $doc_url;
+                            $file_url = wp_get_attachment_url( $file_id );
                             
-//                             if( $file_id && $is_convert2pdf ) {
+                            if( $file_id && $is_convert2pdf ) {
                             
-//                                 if( TST_Import::get_instance()->is_must_convert2pdf( $file_url ) ) {
-//                                     $converted2pdf_count += 1;
+                                if( TST_Import::get_instance()->is_must_convert2pdf( $file_url ) ) {
+                                    $converted2pdf_count += 1;
                             
-//                                     $pdf_file_id = TST_Import::get_instance()->convert2pdf( $file_id, $localpdf );
-//                                     if( $pdf_file_id ) {
-//                                         $file_id = $pdf_file_id;
-//                                         $file_url = wp_get_attachment_url( $file_id );
-//                                     }
-//                                 }
-//                             }
+                                    $pdf_file_id = TST_Import::get_instance()->convert2pdf( $file_id, $localpdf );
+                                    if( $pdf_file_id ) {
+                                        $file_id = $pdf_file_id;
+                                        $file_url = wp_get_attachment_url( $file_id );
+                                    }
+                                }
+                            }
+                            exit();
                             
                             $atts[] = $file_id;
                         }
