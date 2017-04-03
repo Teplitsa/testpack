@@ -224,19 +224,23 @@ function tst_news_apart_card($cpost) {
 /* Person in list of people */
 function tst_person_card($cpost) {
 
-	if(is_int($cpost))
-		$cpost = get_post($cpost);
+    if(empty($cpost)) {
+        return;
+    }
 
+    if(is_int($cpost))
+        $cpost = get_post($cpost);
 
-	$name = apply_filters('tst_the_title', $cpost->post_title);
-	$role = apply_filters('tst_the_title', $cpost->post_excerpt);
-
-	$thumb = get_the_post_thumbnail($cpost, 'thumbnail');
+    if( !is_object($cpost) || !is_a($cpost, 'WP_Post') ) {
+        return;
+    }
 ?>
 <article class="person-item">
-	<div class="person-item__thumbnail"><?php echo $thumb;?></div>
-	<h4 class="person-item__title"><a href="<?php echo get_permalink($member);?>"><?php echo $name;?></a></h4>
-	<div class="person-item__role"><?php echo $role;?></div>
+	<div class="person-item__thumbnail"><?php echo get_the_post_thumbnail($cpost, 'thumbnail');?></div>
+	<h4 class="person-item__title">
+        <a href="<?php echo get_permalink($cpost);?>"><?php echo apply_filters('tst_the_title', $cpost->post_title);?></a>
+    </h4>
+	<div class="person-item__role"><?php echo apply_filters('tst_the_title', $cpost->post_excerpt);?></div>
 </article>
 
 <?php
@@ -401,8 +405,16 @@ function tst_colored_help_card($help_id) {
 /** Excerpt **/
 function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 
-	if(is_int($cpost))
-		$cpost = get_post($cpost);
+    if(empty($cpost)) {
+        return '';
+    }
+
+    if(is_int($cpost))
+        $cpost = get_post($cpost);
+
+    if( !is_object($cpost) || !is_a($cpost, 'WP_Post') ) {
+        return '';
+    }
 
 
 	if($cpost->post_type == 'landing'){
@@ -443,18 +455,24 @@ function tst_get_post_excerpt($cpost, $l = 30, $force_l = false){
 /** Meta **/
 function tst_get_post_meta($cpost) {
 
+    if(empty($cpost)) {
+        return '';
+    }
+
 	if(is_int($cpost))
-		$cpost = get_post($cpost);
+        $cpost = get_post($cpost);
+
+    if( !is_object($cpost) || !is_a($cpost, 'WP_Post') ) {
+        return '';
+    }
 
 	$meta = '';
 
 	if($cpost->post_type == 'post'){
 		$meta = get_the_date('d.m.Y', $cpost);
-	}
-	elseif($cpost->post_type == 'event') {
+	} elseif($cpost->post_type == 'event') {
 		$meta = tst_event_card_meta($cpost);
-	}
-	elseif($cpost->post_type == 'project') {
+	} elseif($cpost->post_type == 'project') {
 		$meta = get_post_meta($cpost->ID, 'subtitle_meta', true);
 	}
 
