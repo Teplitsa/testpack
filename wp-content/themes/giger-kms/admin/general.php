@@ -214,31 +214,31 @@ function add_style_select_buttons( $buttons ) {
 // Register our callback to the appropriate filter
 add_filter( 'mce_buttons_2', 'add_style_select_buttons' );
 //add custom styles to the WordPress editor
-function my_custom_styles( $init_array ) {  
- 
-    $style_formats = array(  
+function my_custom_styles( $init_array ) {
+
+    $style_formats = array(
         // These are the custom styles
-        array(  
-            'title' => 'Зеленое число',  
-            'inline' => 'span',  
+        array(
+            'title' => 'Зеленое число',
+            'inline' => 'span',
             'classes' => 'green-number',
             'wrapper' => false,
-        ),  
-        array(  
-            'title' => 'Зеленый Текст',  
-            'inline' => 'span',  
+        ),
+        array(
+            'title' => 'Зеленый Текст',
+            'inline' => 'span',
             'classes' => 'green-title',
             'wrapper' => false,
-        ),  
-        
-    );  
+        ),
+
+    );
     // Insert the array, JSON ENCODED, into 'style_formats'
-    $init_array['style_formats'] = json_encode( $style_formats );  
-    
-    return $init_array;  
-  
-} 
-// Attach callback to 'tiny_mce_before_init' 
+    $init_array['style_formats'] = json_encode( $style_formats );
+
+    return $init_array;
+
+}
+// Attach callback to 'tiny_mce_before_init'
 add_filter( 'tiny_mce_before_init', 'my_custom_styles' );
 function custom_editor_styles() {
     add_editor_style( get_template_directory_uri() . '/assets/css/admin.css' );
@@ -330,7 +330,7 @@ function tst_support_widget(){
 
 	$doc = (defined('TST_DOC_URL') && TST_DOC_URL) ? TST_DOC_URL : '';
 	if(!empty($doc))
-		$doc = str_replace('<a', '<a target="_blank" ', make_clickable($doc));
+		$doc = "<a href='".$doc."' target='_blank'>по ссылке</a>";
 
 ?>
 <div id="rdc-support-card" class="rdc-dashboard">
@@ -361,7 +361,7 @@ function tst_admin_fotter_text($text) {
 		return $text;
 
 	if(!empty($doc))
-		$doc = str_replace('<a', '<a target="_blank" ', make_clickable($doc));
+		$doc = "<a href='".$doc."' target='_blank'>по ссылке</a>";
 
 	$text = '<span id="footer-thankyou">Инструкция по работе с сайтом - ' . $doc . '</span>';
 	return $text;
