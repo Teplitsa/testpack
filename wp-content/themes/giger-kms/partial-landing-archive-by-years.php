@@ -107,7 +107,11 @@ get_header();?>
                         </div>
                     <?php } ?>
                 <?php }?>
-
+                
+                <div class="single-body__footer--back">
+                    <a href="<?php echo get_permalink($cpost);?>">&larr;&nbsp;<?php printf(__("Back to topic: %s", 'tst'), $cpost->post_title);?></a>
+                </div>
+                
             </div>
 
             <div class="flex-cell--stacked lg-3 single-sidenews">

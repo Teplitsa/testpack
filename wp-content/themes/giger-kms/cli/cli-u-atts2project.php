@@ -53,6 +53,7 @@ try {
                     $doc_url = tst_clean_csv_file_url( $doc_url );
                     if( $doc_url ) {
                         printf( "doc url: %s\n", $doc_url );
+                        continue;
                         $doc_id = TST_Import::get_instance()->maybe_import( $doc_url );
                         if( $doc_id ) {
                             
@@ -73,7 +74,6 @@ try {
                                     }
                                 }
                             }
-                            exit();
                             
                             $atts[] = $file_id;
                         }
