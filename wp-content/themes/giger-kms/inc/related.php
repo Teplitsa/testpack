@@ -211,8 +211,7 @@ function tst_landing_get_connected_projects($cpost, $num = -1 ) {
 		'connected_items' => $cpost,
 		'posts_per_page' => $num,
 		'post_type' => 'project',
-		'orderby' => 'title',
-		'order' => 'ASC'
+		'orderby' => array('date' => 'DESC', 'title' => 'ASC')
 	));
 
 	return $connected;
@@ -275,8 +274,8 @@ function tst_get_related_publications( $cpost ) {
         'posts_per_page' => -1,
         'fields' => 'ids',
     );
-    
+
     $posts = get_posts( $params );
-    
+
     return $posts;
 }

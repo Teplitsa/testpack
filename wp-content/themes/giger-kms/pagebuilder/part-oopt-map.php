@@ -1,7 +1,7 @@
 <?php
 /**
- * Part Name: Встроенная карта ООПТ 
- * Description: Карта со встроенным слоем зеленых зон НН. 
+ * Part Name: Встроенная карта ООПТ
+ * Description: Карта со встроенным слоем зеленых зон НН.
  */
 
 $prefix = 'oopt_map_';
@@ -13,15 +13,19 @@ $summary = wds_page_builder_get_this_part_data($prefix.'summary');?>
 
 <div class="container">
     <div class="card card--text block-full">
-        <?php if($title) { ?>
-        <div class="card__title card__title--text">
-            <h4><?php echo apply_filters('tst_the_title', $title);?></h4>
-        </div>
-        <?php }?>
+		<?php if($title || $subtitle) { ?>
+		<div class="oopt_map_desc">
+			<?php if($title) { ?>
+			<div class="card__title card__title--text">
+				<h4><?php echo apply_filters('tst_the_title', $title);?></h4>
+			</div>
+			<?php }?>
 
-        <?php if($subtitle) { ?>
-        <div class="card__subtitle"><?php echo apply_filters('tst_the_title', $subtitle);?></div>
-        <?php }?>
+			<?php if($subtitle) { ?>
+			<div class="card__subtitle"><?php echo apply_filters('tst_the_title', $subtitle);?></div>
+			<?php }?>
+		</div>
+		<?php } ?>
 
         <div class="resp-wrapper ratio-21x9">
             <iframe src="https://www.google.com/maps/d/embed?mid=1stzOTm5y9rlznPGqQN3HQXwmSuo&hl=ru" class="rate-16x9" allowfullscreen></iframe>

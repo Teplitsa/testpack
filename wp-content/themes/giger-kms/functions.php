@@ -6,7 +6,7 @@
  */
 
 define('TST_VERSION', '1.0');
-define('TST_DOC_URL', 'https://kms.te-st.ru/site-help/');
+define('TST_DOC_URL', 'https://docs.google.com/document/d/1IZB8N4-YZP6Pj5BuPVZgu40ge5K3n5vL2F1iN3lQ5wk/edit');
 define('TST_CARD_TITLE_WORDS_LIMIT', 15 );
 
 

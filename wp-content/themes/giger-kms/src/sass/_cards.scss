@@ -295,6 +295,16 @@
 	}
 }
 
+.oopt-map {
+	.oopt_map_desc {
+		padding: $base*6 0;
+
+		@include for(medium-screens) {
+			padding: $base*12 0;
+		}
+	}
+}
+
 
 //news
 .news-block__title {

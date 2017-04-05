@@ -50,6 +50,9 @@ get_header();?>
 					<?php echo apply_filters('tst_entry_the_content', get_post_meta($cpost->ID, 'landing_content', true));?>
 				</div>
 
+				<div class="single-body__footer--back">
+					<a href="<?php echo get_permalink($cpost);?>">&larr;&nbsp;<?php printf(__("Back to topic: %s", 'tst'), $cpost->post_title);?></a>
+				</div>
 				<div class="single-body__footer">
 					<?php $label = __('Tags', 'tst'); ?>
 					<?php echo get_the_term_list($cpost->ID, 'post_tag', '<span class="tags"><i>'.$label.'</i>', ' ', '</span>' );?>
@@ -73,7 +76,7 @@ get_header();?>
 	?>
 		<footer class="single__footer">
 			<div class="projects-block container">
-				<h3 class="projects-block__title"><?php printf(__('Projects by topic: %s', 'tst'), get_the_title($cpost)); ?></h3>
+				<h3 class="projects-block__title"><?php printf(__('Materials by topic: %s', 'tst'), get_the_title($cpost)); ?></h3>
 
 				<div class="projects-block__content">
 					<div class="projects-block__icon hide-upto-medium"><?php tst_svg_icon('icon-project');?></div>

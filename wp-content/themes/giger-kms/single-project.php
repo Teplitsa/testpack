@@ -78,6 +78,8 @@ get_header(); ?>
 				<div class="single-body--entry">
 					<?php echo apply_filters('tst_entry_the_content', $cpost->post_content);?>
 				</div>
+
+				
 				<div class="single-body__footer">
 					<?php $label = __('Tags', 'tst'); ?>
 					<?php echo get_the_term_list($cpost->ID, 'post_tag', '<span class="tags"><i>'.$label.'</i>', ' ', '</span>' );?>
@@ -93,7 +95,7 @@ get_header(); ?>
 							</div>
 						<?php } ?>
 					</div>
-				<?php endif; ?>				
+				<?php endif; ?>
 				<?php  tst_single_cta($cpost, true);?>
 			</div>
 		</div>
@@ -106,7 +108,7 @@ get_header(); ?>
 	?>
 		<footer class="single__footer">
 			<div class="projects-block container">
-				<h3 class="projects-block__title"><?php printf(__('Projects by topic: %s', 'tst'), $title); ?></h3>
+				<h3 class="projects-block__title"><?php printf(__('Materials by topic: %s', 'tst'), $title); ?></h3>
 
 				<div class="projects-block__content">
 					<div class="projects-block__icon hide-upto-medium"><?php tst_svg_icon('icon-project');?></div>

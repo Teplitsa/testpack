@@ -210,6 +210,7 @@ jQuery(document).ready(function($){
                     }
 
                     loadingPosts = false;
+					essentialhopeitworks();
                 }
             }
         });
@@ -251,43 +252,43 @@ jQuery(document).ready(function($){
 
 	});
 
-	
+
 	/* View PDF */
 	$('a[href$=".pdf"]').on('click', function(e){
-		
+
 		var $tst_view_pdf_popup = $('#tst-view-pdf-popup');
 		var $link = $(this);
 		var $pdf_url = frontend.homeurl + '/wp-content/plugins/pdf-viewer/stable/web/viewer.html?file=' + $link.attr('href');
-		
+
 		var $iframe = $tst_view_pdf_popup.find('iframe');
 		var is_create_iframe = false;
 		if( !$iframe.length ) {
 			is_create_iframe = true;
 			$iframe = $( '<iframe id="tst-view-pdf-iframe"/>' );
 		}
-		
+
 		$iframe.attr('src', $pdf_url);
 		$iframe.load(function(){
 			$tst_view_pdf_popup.find('.tst-close-pdf-button').show();
 		});
-		
+
 		if( is_create_iframe ) {
 			$tst_view_pdf_popup.append($iframe);
 		}
 
-		
+
 		var top_gap = $('#site_header').height();
 		if( parseInt( $('#site_header').css('top') ) > 0 ) {
 			top_gap += $('#wpadminbar').height();
 		}
 		$tst_view_pdf_popup.css('top', top_gap + 'px');
 		$tst_view_pdf_popup.css('height', ( $( window ).height() - top_gap ) + 'px');
-		
+
 		$tst_view_pdf_popup.show();
-		
+
 		return false;
 	});
-	
+
 	var $tst_view_pdf_popup = $('#tst-view-pdf-popup');
 	$tst_view_pdf_popup.hide();
 	$tst_view_pdf_popup.find('.tst-close-pdf-button').hide();
@@ -295,32 +296,36 @@ jQuery(document).ready(function($){
 		$(this).parent().hide();
 		$(this).hide();
 	});
-	
+
 	$(document).keyup(function(e) {
 		if(e.keyCode == 27) {
 			$tst_view_pdf_popup.find('.tst-close-pdf-button').parent().hide();
 			$tst_view_pdf_popup.find('.tst-close-pdf-button').hide();
 		}
 	});
-	
-	// object-fit workaround for IE
-	var parser = new UAParser();
-	var tst_ua = parser.getResult();
-	if( tst_ua.browser.name == 'IE' || tst_ua.browser.name == 'Edge' ) {
-		$('.tst-lazyload').each( function(){
-	    	var srcset = $(this).parent().find( 'source' ).last().data( 'srcset' );
-			var img_params = srcset.split( ' ' );
-			$(this).prop( 'src', img_params[0] );
-		});
 
-		objectFitImages(false, {
-			watchMQ: true,
-			skipTest: true
-		});
+	// object-fit workaround for IE
+	function essentialhopeitworks() {
+		var parser = new UAParser();
+		var tst_ua = parser.getResult();
+		if( tst_ua.browser.name == 'IE' || tst_ua.browser.name == 'Edge' ) {
+			$('.tst-lazyload').each( function(){
+				var srcset = $(this).parent().find( 'source' ).last().data( 'srcset' );
+				var img_params = srcset.split( ' ' );
+				$(this).prop( 'src', img_params[0] );
+			});
+
+			objectFitImages(false, {
+				watchMQ: true,
+				skipTest: true
+			});
+		}
+		else {
+			$('.tst-lazyload').removeClass( 'tst-lazyload' ).addClass( 'lazyload' );
+		}
 	}
-	else {
-		$('.tst-lazyload').removeClass( 'tst-lazyload' ).addClass( 'lazyload' );
-	}
+
+	essentialhopeitworks();
 
 }); //jQuery
 
@@ -333,12 +338,12 @@ function tst_raise_main_ga_event( category, action ) {
 }
 
 jQuery(document).ready(function($){
-	
+
     // donation
     $('.leyka-pm-form').submit(function(){
     	tst_raise_main_ga_event( 'Пожертвование', 'Форма отправлена' );
     });
-    
+
     // become volonteer
     $('#form_qaq5y').submit(function(){
     	tst_raise_main_ga_event( 'Стать волонтером', 'Заявка отправлена' );
@@ -348,15 +353,15 @@ jQuery(document).ready(function($){
     $('#form_brod8').submit(function(){
     	tst_raise_main_ga_event( 'Помощь компаний', 'Заявка отправлена' );
     });
-    
+
     // report ecoproblem
     $('#form_kp6cw2').submit(function(){
     	tst_raise_main_ga_event( 'Сообщить о проблеме', 'Форма отправлена' );
     });
-    
+
     // report ecoproblem
     $('.tst-get-details-link').click(function(){
     	tst_raise_main_ga_event( 'Вникнуть', 'Переход по ссылке' );
     });
-    
+
 }); //jQuery
