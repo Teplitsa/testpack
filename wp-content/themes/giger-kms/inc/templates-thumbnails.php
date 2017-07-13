@@ -73,6 +73,7 @@ function tst_get_post_thumbnail_picture(WP_Post $cpost, $args = array()) {
 			if($thumbnail_id) {
 				$sources = tst_get_picture_sources($thumbnail_id, $placement_type, $crop);
 				$base = wp_get_attachment_image_src($thumbnail_id, $sources['base_size']);
+				$thumbnail_alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 		?>
 			<picture class="tst-thumbnail__picture">
 				<!-- sources -->
@@ -81,7 +82,8 @@ function tst_get_post_thumbnail_picture(WP_Post $cpost, $args = array()) {
 				<?php }} ?>
 				<!-- fallback -->
 				<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-					 data-src="<?php echo $base[0];?>"
+					 alt="<?php echo $thumbnail_alt ?>"
+                     data-src="<?php echo $base[0];?>"
 					 class="lazyload">
 					<noscript><img src="<?php echo $base[0];?>"></noscript>
 			</picture>
@@ -382,6 +384,7 @@ function tst_get_post_youtube_thumbnail_picture($cpost, $thumb_args = array()) {
 			if($thumbnail_id) {
 				$sources = tst_get_picture_sources($thumbnail_id, $placement_type, $crop);
 				$base = wp_get_attachment_image_src($thumbnail_id, $sources['base_size']);
+				$thumbnail_alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
 		?>
 			<picture class="tst-thumbnail__picture">
 				<!-- sources -->
@@ -390,6 +393,7 @@ function tst_get_post_youtube_thumbnail_picture($cpost, $thumb_args = array()) {
 				<?php }} ?>
 				<!-- fallback -->
 				<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                    alt="<?php echo $thumbnail_alt ?>"
 					 data-src="<?php echo $base[0];?>"
 					 class="lazyload">
 					<noscript><img src="<?php echo $base[0];?>"></noscript>
