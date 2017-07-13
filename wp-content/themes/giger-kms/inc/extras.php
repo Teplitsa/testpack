@@ -516,3 +516,14 @@ function tst_filter_search_query($s){
 
 	return $s;
 }
+
+function tst_get_book_url($book_post_id) {
+    
+    $book_download_url = get_post_meta( $book_post_id, 'book_att', true );
+    if(!$book_download_url) {
+        $book_att_id = get_post_meta( $book_post_id, 'book_att_id', true );
+        $book_download_url = $book_att_id ? wp_get_attachment_url( $book_att_id ) : "";
+    }
+    
+    return $book_download_url;
+}

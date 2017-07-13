@@ -13,7 +13,7 @@ $input-color-active: $color-link-one;
 $input-color-error:  $color-form-invalid;
 $input-border-color: $color-white;
 $input-text-color:   $color-text-black;
-$label-text-color:   $color-white;
+$label-text-color:   $color-text;
 
 @mixin input-text-label {
 	@include form-text();
@@ -218,7 +218,6 @@ select:-webkit-autofill:focus {
 	.tst-inputfix__label {
 		display: inline-block;
 		@include input-text-label();
-
 	}
 
 	.frm_opt_container {
@@ -337,7 +336,6 @@ select:-webkit-autofill:focus {
 	.tst-inputfix__label {
 		display: block;
 		@include input-text-label();
-
 	}
 
 	.tst-select-wrap {

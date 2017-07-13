@@ -8,9 +8,7 @@
 $cpost = get_queried_object();
 
 $book_author = get_post_meta( $cpost->ID, 'book_author', true );
-$book_att_id = get_post_meta( $cpost->ID, 'book_att_id', true );
-
-$book_download_url = $book_att_id ? wp_get_attachment_url( $book_att_id ) : "";
+$book_download_url = tst_get_book_url($cpost->ID);
 
 get_header(); ?>
 
